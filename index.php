@@ -273,7 +273,7 @@
 
         </main>
         <aside>
-            <label class="input rounded-xl">
+            <label class="input rounded-xl w-full">
                 <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <g
                         stroke-linejoin="round"
@@ -289,6 +289,43 @@
                 <kbd class="kbd kbd-sm">⌘</kbd>
                 <kbd class="kbd kbd-sm">K</kbd>
             </label>
+            <div class="card bg-secondary text-secondary-content w-full mt-4">
+                <div class="card-body">
+                    <div class="grid grid-cols-[80px_1fr] gap-4 items-center">
+                        <div>
+                            <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Podcast 1" class="w-20 h-20 rounded-md" />
+                        </div>
+                        <div>
+                            <h4 class="text-md font-bold">Podcast 1</h4>
+                            <p class="text-xs text-base-content/70">
+                                <span>2025/08/20 10:00</span>
+                                <span>|</span>
+                                <span>100k views</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mt-0 w-full">
+                        <div class="grid grid-cols-[1fr_1fr]">
+                            <span>0:00</span>
+                            <span class="justify-self-end">1:00</span>
+                        </div>
+                        <input type="range" min="0" max="100" value="40" class="range range-xs range-success w-full" />
+                    </div>
+                    <div class="mt-4 grid grid-cols-[1fr_1fr_1fr] gap-4 items-center w-full">
+                        <div>
+                            <i data-lucide="list-music" class="cursor-pointer w-4 h-4"></i>
+                        </div>
+                        <div class="flex justify-center gap-4 items-center">
+                            <i data-lucide="skip-back" class="cursor-pointer w-4 h-4"></i>
+                            <i data-lucide="play" class="cursor-pointer w-6 h-6 bg-success-500 rounded-full"></i>
+                            <i data-lucide="skip-forward" class="cursor-pointer w-4 h-4"></i>
+                        </div>
+                        <div class="justify-self-end">
+                            <i data-lucide="volume" class="cursor-pointer w-4 h-4"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </aside>
 
     </div>
@@ -298,6 +335,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js" integrity="sha512-xi/RZRIF/S0hJ+yJJYuZ5yk6/8pCiRlEXZzoguSMl+vk2i3m6UjUO/WcZ11blRL/O+rnj94JRGwt/CHbc9+6EA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         lucide.createIcons();
     </script>
