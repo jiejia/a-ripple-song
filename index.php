@@ -291,7 +291,7 @@
             </label>
             <div class="card bg-secondary text-secondary-content w-full mt-4">
                 <div class="card-body">
-                    <div class="grid grid-cols-[80px_1fr] gap-4 items-center">
+                    <div class="grid grid-cols-[80px_1fr] gap-4 items-center bg-primary/10 p-4 rounded-lg">
                         <div>
                             <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Podcast 1" class="w-20 h-20 rounded-md" />
                         </div>
@@ -307,9 +307,9 @@
                     <div class="mt-0 w-full">
                         <div class="grid grid-cols-[1fr_1fr]">
                             <span>0:00</span>
-                            <span class="justify-self-end">1:00</span>
+                            <span class="justify-self-end" id="sound-duration">0:00</span>
                         </div>
-                        <input type="range" min="0" max="100" value="40" class="range range-xs range-success w-full" />
+                        <input type="range" min="0" max="100" value="0" id="sound-progress" class="range range-xs range-success w-full" oninput="seek(this.value)" />
                     </div>
                     <div class="mt-4 grid grid-cols-[1fr_1fr_1fr] gap-4 items-center w-full">
                         <div>
@@ -317,7 +317,7 @@
                         </div>
                         <div class="flex justify-center gap-4 items-center">
                             <i data-lucide="skip-back" class="cursor-pointer w-4 h-4"></i>
-                            <i data-lucide="play" class="cursor-pointer w-6 h-6 bg-success-500 rounded-full"></i>
+                            <i data-lucide="play" class="cursor-pointer w-6 h-6 bg-success-500 rounded-full" data-type="play" id="play-pause-button" onclick="playOrPause()"></i>
                             <i data-lucide="skip-forward" class="cursor-pointer w-4 h-4"></i>
                         </div>
                         <div class="justify-self-end">
@@ -338,6 +338,69 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js" integrity="sha512-xi/RZRIF/S0hJ+yJJYuZ5yk6/8pCiRlEXZzoguSMl+vk2i3m6UjUO/WcZ11blRL/O+rnj94JRGwt/CHbc9+6EA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         lucide.createIcons();
+    </script>
+    <script>
+        const sound = new Howl({
+            src: ['https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'],
+            loop: true
+        });
+
+        sound.on('load', () => {
+            const soundDuration = sound.duration();
+
+            // convert into mm:ss   
+            const minutes = Math.floor(soundDuration / 60);
+            const seconds = Math.floor(soundDuration % 60);
+            const soundDurationText = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+            document.getElementById('sound-duration').textContent = soundDurationText;
+            document.getElementById('sound-progress').max = soundDuration;
+        });
+
+
+        var soundId = null;
+
+        /**
+         * 播放或暂停音频
+         */
+        function playOrPause() {
+            var button = document.querySelector('#play-pause-button');
+
+            // 获取当前按钮的图标状态
+            var currentIcon = button.getAttribute('data-lucide');
+
+            if (currentIcon === 'play') {
+                if (soundId === null) {
+                    soundId = sound.play();
+                } else {
+                    sound.play(soundId);
+                }
+                button.setAttribute('data-lucide', 'pause');
+                startTimer();
+            } else if (currentIcon === 'pause') {
+                sound.pause(soundId);
+                button.setAttribute('data-lucide', 'play');
+                stopTimer();
+            }
+
+            // 重新初始化 Lucide 图标以显示新的图标
+            lucide.createIcons();
+        };
+
+        function seek(pos) {
+            sound.seek(pos);
+        }
+
+        function startTimer() {
+            timer = setInterval(() => {
+                const pos = sound.seek(soundId) || 0;
+                document.getElementById('sound-progress').value = pos;
+            }, 500);
+        }
+
+        function stopTimer() {
+            clearInterval(timer);
+        }
     </script>
 </body>
 
