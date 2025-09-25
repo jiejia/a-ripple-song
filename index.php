@@ -304,6 +304,9 @@
                             </p>
                         </div>
                     </div>
+                    <div class="mt-4" id="wave">
+                        <canvas id="waveCanvas" class="w-full" height="60"></canvas>
+                    </div>
                     <div class="mt-0 w-full">
                         <div class="grid grid-cols-[1fr_1fr]">
                             <span>0:00</span>
@@ -344,6 +347,15 @@
             src: ['https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'],
             loop: true
         });
+
+        // 全局只创建一次
+        const audioCtx = Howler.ctx;
+        const analyser = audioCtx.createAnalyser();
+        analyser.fftSize = 2048;
+
+        // 连接到 Howler 输出
+        Howler.masterGain.connect(analyser);
+        analyser.connect(audioCtx.destination);
 
         sound.on('load', () => {
             const soundDuration = sound.duration();
@@ -394,13 +406,82 @@
         function startTimer() {
             timer = setInterval(() => {
                 const pos = sound.seek(soundId) || 0;
+
+                const dataArray = getAudioSpectrumData(40);
+                console.log('dataArray', dataArray); // ✅ 这里就有值了
+
                 document.getElementById('sound-progress').value = pos;
+
             }, 500);
         }
 
         function stopTimer() {
             clearInterval(timer);
         }
+
+        // 绘制音频波形柱子
+        function drawWave() {
+            const canvas = document.getElementById('waveCanvas');
+            const ctx = canvas.getContext('2d');
+
+            // 清除画布
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // 设置柱子参数
+            const barCount = 40;
+            const barWidth = 4;
+            const gap = 3;
+            const totalWidth = barCount * barWidth + (barCount - 1) * gap;
+            const startX = (canvas.width - totalWidth) / 2;
+
+            // 设置绿色
+            ctx.fillStyle = '#22c55e'; // Tailwind green-500
+
+            // 绘制40个柱子
+            for (let i = 0; i < barCount; i++) {
+                const x = startX + i * (barWidth + gap);
+                // 随机高度模拟音频波形
+                const height = Math.random() * 40 + 10;
+                const y = (canvas.height - height) / 2;
+
+                ctx.fillRect(x, y, barWidth, height);
+            }
+        }
+
+        /**
+         * 获取实时频谱数据（分桶）
+         * @param {number} bars - 柱子数量（默认 40）
+         * @returns {Uint8Array} - 频谱数据数组，长度 = bars，每个值 0~255
+         */
+        function getAudioSpectrumData(bars = 40) {
+            const bufferLength = analyser.frequencyBinCount;
+            const rawData = new Uint8Array(bufferLength);
+            analyser.getByteFrequencyData(rawData);
+
+            const bucketSize = Math.floor(bufferLength / bars);
+            const barValues = new Uint8Array(bars);
+
+            for (let i = 0; i < bars; i++) {
+                let sum = 0;
+                for (let j = 0; j < bucketSize; j++) {
+                    sum += rawData[i * bucketSize + j];
+                }
+                barValues[i] = sum / bucketSize;
+            }
+
+            return barValues;
+        }
+
+
+        // 页面加载完成后绘制波形
+        document.addEventListener('DOMContentLoaded', function() {
+            drawWave();
+
+
+
+            // 可选：定期更新波形以模拟动态效果
+            // setInterval(drawWave, 200);
+        });
     </script>
 </body>
 
