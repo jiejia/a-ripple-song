@@ -344,18 +344,42 @@
     </script>
     <script>
         const sound = new Howl({
-            src: ['https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'],
-            loop: true
+            src: ['http://localhost:9000/SoundHelix-Song-1.mp3'],
+            loop: true,
         });
 
         // 全局只创建一次
         const audioCtx = Howler.ctx;
         const analyser = audioCtx.createAnalyser();
-        analyser.fftSize = 2048;
+        analyser.fftSize = 2048; // 可调：512/1024/2048
+        analyser.smoothingTimeConstant = 0.8; // 平滑一点，柱子更自然
 
         // 连接到 Howler 输出
         Howler.masterGain.connect(analyser);
         analyser.connect(audioCtx.destination);
+
+        let wired = false;
+
+        function ensureWired() {
+            if (wired) return;
+            // 如有需要，恢复 AudioContext
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            try {
+                // 断开 masterGain 之前到 destination 的直连
+                Howler.masterGain.disconnect();
+            } catch (e) {
+                // 有的环境断不开也没关系
+            }
+
+            // 串联：masterGain -> analyser -> destination
+            Howler.masterGain.connect(analyser);
+            analyser.connect(audioCtx.destination);
+
+            wired = true;
+        }
 
         sound.on('load', () => {
             const soundDuration = sound.duration();
@@ -371,6 +395,7 @@
 
 
         var soundId = null;
+        var lastSpectrumData = null; // 存储最后一次的频谱数据
 
         /**
          * 播放或暂停音频
@@ -382,6 +407,7 @@
             var currentIcon = button.getAttribute('data-lucide');
 
             if (currentIcon === 'play') {
+                ensureWired(); // ✅ 串联 analyser + resume
                 if (soundId === null) {
                     soundId = sound.play();
                 } else {
@@ -393,6 +419,8 @@
                 sound.pause(soundId);
                 button.setAttribute('data-lucide', 'play');
                 stopTimer();
+                // 暂停时显示最后一帧的波形状态
+                drawWave(lastSpectrumData);
             }
 
             // 重新初始化 Lucide 图标以显示新的图标
@@ -407,12 +435,18 @@
             timer = setInterval(() => {
                 const pos = sound.seek(soundId) || 0;
 
-                const dataArray = getAudioSpectrumData(40);
+                const dataArray = getAudioSpectrumData(60);
                 console.log('dataArray', dataArray); // ✅ 这里就有值了
+
+                // 存储当前频谱数据
+                lastSpectrumData = dataArray;
+
+                // 使用真实的频谱数据更新波形图
+                drawWave(dataArray);
 
                 document.getElementById('sound-progress').value = pos;
 
-            }, 500);
+            }, 50);
         }
 
         function stopTimer() {
@@ -420,7 +454,7 @@
         }
 
         // 绘制音频波形柱子
-        function drawWave() {
+        function drawWave(spectrumData = null) {
             const canvas = document.getElementById('waveCanvas');
             const ctx = canvas.getContext('2d');
 
@@ -428,48 +462,66 @@
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             // 设置柱子参数
-            const barCount = 40;
-            const barWidth = 4;
-            const gap = 3;
-            const totalWidth = barCount * barWidth + (barCount - 1) * gap;
-            const startX = (canvas.width - totalWidth) / 2;
+            const barCount = 60;
+            const gap = 2; // 柱子间距
+            const availableWidth = canvas.width;
+            const totalGapWidth = (barCount - 1) * gap;
+            const barWidth = (availableWidth - totalGapWidth) / barCount;
+            const startX = 0;
 
             // 设置绿色
             ctx.fillStyle = '#22c55e'; // Tailwind green-500
 
-            // 绘制40个柱子
+            // 绘制60个柱子
             for (let i = 0; i < barCount; i++) {
                 const x = startX + i * (barWidth + gap);
-                // 随机高度模拟音频波形
-                const height = Math.random() * 40 + 10;
+                
+                let height;
+                if (spectrumData && spectrumData.length >= barCount) {
+                    // 使用真实的音频频谱数据 (0-255) 转换为柱子高度，增大跳动幅度
+                    const rawValue = spectrumData[i];
+                    
+                    if (rawValue < 10) {
+                        // 非常低的值保持最小高度
+                        height = 3;
+                    } else {
+                        // 应用指数变换增强高值的对比度，创造更强的节奏感
+                        const normalizedValue = rawValue / 255;
+                        const enhanced = Math.pow(normalizedValue, 0.6); // 指数变换增强中高频
+                        height = enhanced * 55 + 3; // 3-58 像素范围，更大的动态范围
+                    }
+                } else {
+                    // 初始状态显示最低高度
+                    height = 3;
+                }
+                
                 const y = (canvas.height - height) / 2;
-
                 ctx.fillRect(x, y, barWidth, height);
             }
         }
 
-        /**
-         * 获取实时频谱数据（分桶）
-         * @param {number} bars - 柱子数量（默认 40）
-         * @returns {Uint8Array} - 频谱数据数组，长度 = bars，每个值 0~255
-         */
-        function getAudioSpectrumData(bars = 40) {
-            const bufferLength = analyser.frequencyBinCount;
-            const rawData = new Uint8Array(bufferLength);
-            analyser.getByteFrequencyData(rawData);
 
-            const bucketSize = Math.floor(bufferLength / bars);
-            const barValues = new Uint8Array(bars);
+        // 3) 频谱采样函数：把当前时间点的频谱压缩成 N 段
+        function getAudioSpectrumData(bars = 60) {
+            if (!Howler.usingWebAudio || !wired) return new Uint8Array(bars); // 保底：全0
+            const n = analyser.frequencyBinCount; // fftSize / 2
+            const raw = new Uint8Array(n);
+            analyser.getByteFrequencyData(raw);
 
+            const bucket = Math.max(1, Math.floor(n / bars));
+            const out = new Uint8Array(bars);
             for (let i = 0; i < bars; i++) {
-                let sum = 0;
-                for (let j = 0; j < bucketSize; j++) {
-                    sum += rawData[i * bucketSize + j];
-                }
-                barValues[i] = sum / bucketSize;
+                let sum = 0,
+                    start = i * bucket,
+                    end = Math.min(n, start + bucket);
+                for (let j = start; j < end; j++) sum += raw[j];
+                const avg = sum / (end - start); // 0~255
+                
+                // 增强动态范围：应用对数变换增强节奏感
+                const enhanced = Math.min(255, avg * 1.5);
+                out[i] = enhanced;
             }
-
-            return barValues;
+            return out;
         }
 
 
