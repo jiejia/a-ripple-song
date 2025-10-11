@@ -21,6 +21,19 @@ require $composer;
 
 /*
 |--------------------------------------------------------------------------
+| Initialize CMB2
+|--------------------------------------------------------------------------
+|
+| Load CMB2 for custom metaboxes and fields.
+|
+*/
+
+if (file_exists(__DIR__ . '/vendor/cmb2/cmb2/init.php')) {
+    require_once __DIR__ . '/vendor/cmb2/cmb2/init.php';
+}
+
+/*
+|--------------------------------------------------------------------------
 | Register The Bootloader
 |--------------------------------------------------------------------------
 |
@@ -49,7 +62,7 @@ Application::configure()
 |
 */
 
-collect(['setup', 'filters'])
+collect(['setup', 'filters', 'podcast-types'])
     ->each(function ($file) {
         if (! locate_template($file = "app/{$file}.php", true, true)) {
             wp_die(
