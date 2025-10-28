@@ -21,28 +21,33 @@ const sound = new Howl({
   src: ['http://localhost:8888/SoundHelix-Song-1.mp3'],
   loop: true,
   onplay: () => {
-    // 等到开始播放时创建 AudioMotionAnalyzer
-    audioMotion = new AudioMotionAnalyzer(
-      document.getElementById('wave'),
-      {
-        source: sound._sounds[0]._node,
-        connectSpeakers: true,
-        mode: 5, // 添加这一行：使用 1/4 octave 模式（40个柱子）
-        roundBars: true,
-        colorMode: 'bar-level',
-        showScaleX: false,
-        showScaleY: false, // 隐藏左侧音量刻度
-        gradient: 'rainbow', // 可选：设置渐变色方案，如 'rainbow', 'prism', 'classic' 等
-        barSpace: 0.25, // 可选：条形图之间的间距 (0-1)
-        showBgColor: false,
-        overlay: true,
-        bgAlpha: 0, // 可选：0-1 之间，0 为完全透明
-        
-      }
-    );
+    if (!audioMotion) {
+      // 等到开始播放时创建 AudioMotionAnalyzer
+      audioMotion = new AudioMotionAnalyzer(
+        document.getElementById('wave'),
+        {
+          source: sound._sounds[0]._node,
+          connectSpeakers: true,
+          mode: 5, // 添加这一行：使用 1/4 octave 模式（40个柱子）
+          roundBars: true,
+          colorMode: 'bar-level',
+          showScaleX: false,
+          showScaleY: false, // 隐藏左侧音量刻度
+          gradient: 'prism', // 可选：设置渐变色方案，如 'rainbow', 'prism', 'classic' 等
+          barSpace: 0.25, // 可选：条形图之间的间距 (0-1)
+          showBgColor: false,
+          overlay: true,
+          bgAlpha: 0, // 可选：0-1 之间，0 为完全透明
+          reflexRatio: 0,
+        }
+      );
+    } else {
+      audioMotion.play();
+    }
+
   },
   onpause: () => {
-    audioMotion.destroy();
+    audioMotion.pause();
   }
 });
 

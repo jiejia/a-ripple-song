@@ -31,7 +31,7 @@
                 </p>
             </div>
         </div>
-        <div class="mt-4" id="wave" class="h_[129px]">
+        <div class="h-[129px]" id="wave">
             
         </div>
         <div class="mt-0 w-full">
@@ -39,7 +39,7 @@
                 <span>0:00</span>
                 <span class="justify-self-end" id="sound-duration">0:00</span>
             </div>
-            <input type="range" min="0" max="100" value="0" id="sound-progress" class="range range-xs range-success w-full" oninput="seek(this.value)" />
+            <input type="range" min="0" max="100" value="0" id="sound-progress" class="range range-xs w-full" oninput="seek(this.value)" />
         </div>
         <div class="mt-4 grid grid-cols-[1fr_1fr_1fr] gap-4 items-center w-full">
             <div>
@@ -47,7 +47,7 @@
             </div>
             <div class="flex justify-center gap-4 items-center">
                 <i data-lucide="skip-back" class="cursor-pointer w-4 h-4"></i>
-                <i data-lucide="play" class="cursor-pointer w-6 h-6 bg-success-500 rounded-full" data-type="play" id="play-pause-button" onclick="playOrPause()"></i>
+                <i data-lucide="play" class="cursor-pointer w-4 h-4 bg-success-500 rounded-full" data-type="play" id="play-pause-button" onclick="playOrPause()"></i>
                 <i data-lucide="skip-forward" class="cursor-pointer w-4 h-4"></i>
             </div>
             <div class="justify-self-end">
