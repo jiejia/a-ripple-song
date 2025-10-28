@@ -3,4 +3,15 @@
 @source "../../app/";
 
 
-@plugin "daisyui";
+@plugin "daisyui" {
+    themes: light --default, dark --prefersdark, retro --prefersdark;
+}
+
+@theme {
+    --link-decoration: none;
+}
+
+/* 全局移除所有链接的下划线 */
+a {
+    text-decoration: none;
+}

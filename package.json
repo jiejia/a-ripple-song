@@ -24,6 +24,7 @@
     "vite": "^6.2.0"
   },
   "dependencies": {
+    "audiomotion-analyzer": "^4.5.1",
     "howler": "^2.2.4",
     "lucide": "^0.544.0"
   }
