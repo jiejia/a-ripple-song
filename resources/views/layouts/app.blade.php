@@ -24,11 +24,10 @@
     @php(wp_body_open())
     <div id="app" class="h-full bg-base-200 rounded-2xl p-4 grid grid-cols-[220px_1fr] gap-4">
       @include('sections.header')
-
-      <div class="grid grid-cols-[1fr_290px] gap-4">
-        <main id="main" class="main relative">
+      <div class="grid grid-cols-[1fr_290px] gap-4 h-full">
+        <main id="main" class="main grid grid-rows-[1fr_100px] gap-4 h-full relative">
           @yield('content')
-          <div class="absolute bottom-0 left-0 w-full h-[100px] bg-base-300/75 z-100 rounded-2xl p-2 grid grid-cols-[1fr_1fr] gap-4">
+          <div class="w-full h-[100px] absolute bottom-0 left-0 bg-base-300/75 z-100 rounded-lg p-2 grid grid-cols-[1fr_1fr] gap-4">
             <div class="grid grid-cols-[60px_1fr] gap-4 items-center bg-base-100/75 p-2 rounded-lg">
               <div>
                 <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Podcast 1" class="w-15 h-15 rounded-md" />
@@ -45,7 +44,6 @@
             </div>
             <div>
               <div class="h-[40px]" id="wave">
-
               </div>
               <div class="mt-0 w-full">
                 <div class="grid grid-cols-[30px_1fr_30px] gap-2 items-center text-xs">
