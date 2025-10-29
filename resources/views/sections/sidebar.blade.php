@@ -15,7 +15,7 @@
     </label>
 </div>
 @php(dynamic_sidebar('sidebar-primary'))
-<div class="card bg-base-100 text-secondary-content w-full mt-4">
+<!-- <div class="card bg-base-100 text-secondary-content w-full mt-4">
     <div class="card-body p-4">
         <div class="grid grid-cols-[60px_1fr] gap-4 items-center bg-base-300/50 p-4 rounded-lg">
             <div>
@@ -31,17 +31,17 @@
                 </p>
             </div>
         </div>
-        <div class="h-[129px]" id="wave">
+        <div class="h-[40px]" id="wave">
             
         </div>
         <div class="mt-0 w-full">
-            <div class="grid grid-cols-[1fr_1fr]">
-                <span>0:00</span>
-                <span class="justify-self-end" id="sound-duration">0:00</span>
+            <div class="grid grid-cols-[30px_1fr_30px] gap-2 items-center text-xs">
+                <span id="sound-current-time">00:00</span>
+                <input type="range" min="0" max="100" value="0" id="sound-progress" class="range range-xs w-full" oninput="seek(this.value)" />
+                <span class="justify-self-end" id="sound-duration">00:00</span>
             </div>
-            <input type="range" min="0" max="100" value="0" id="sound-progress" class="range range-xs w-full" oninput="seek(this.value)" />
         </div>
-        <div class="mt-4 grid grid-cols-[1fr_1fr_1fr] gap-4 items-center w-full">
+        <div class="mt-2 grid grid-cols-[1fr_1fr_1fr] gap-4 items-center w-full">
             <div>
                 <i data-lucide="list-music" class="cursor-pointer w-4 h-4"></i>
             </div>
@@ -55,4 +55,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
