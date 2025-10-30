@@ -1,4 +1,4 @@
-<header class="bg-base-100 rounded-2xl p-4 fixed top-4 z-100 h-[calc(100vh-2rem)] w-[220px]" style="left: max(1rem, calc((100vw - 1280px) / 2 + 1rem));">
+<header class="bg-base-100 rounded-lg p-4 fixed top-4 z-100 h-[calc(100vh-2rem)] w-[220px]" style="left: max(1rem, calc((100vw - 1280px) / 2 + 1rem));">
   <div>
     <h1 class="text-xl font-bold text-center">
       <a href="{{ home_url('/') }}">
