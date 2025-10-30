@@ -20,9 +20,18 @@
 </head>
 
 <body @php(body_class('h-full bg-base-200 h-full'))>
-  <div class="max-w-screen-xl mx-auto p-1 h-full">
+  <div class="max-w-screen-xl mx-auto h-full">
     @php(wp_body_open())
-    <div id="app" class="h-full bg-base-200 rounded-2xl p-4 grid grid-cols-[1fr] gap-4 relative">
+    <div id="app" class="h-full p-4 gap-4">
+      <header class="fixed top-0 h-[60px] left-0 right-0 z-100">
+        <div class="max-w-screen-xl mx-auto h-full">
+          <div class="p-4">
+            <div class="">
+              <h1 class="text-2xl font-bold"><a href="{{ home_url('/') }}">{{ $siteName }}</a></h1>
+            </div>
+          </div>
+        </div>
+      </header>
       @include('sections.header')
       <div class="h-full ml-[240px] mr-[320px]">
         <main id="main" class="main h-full">
@@ -79,7 +88,7 @@
           </div>
         </div>
       </div> -->
-      <aside class="sidebar fixed top-4 right-0 h-[calc(100vh-2rem)] w-[300px]" style="right: max(1rem, calc((100vw - 1280px) / 2 + 1rem));">
+      <aside class="sidebar fixed top-[60px] right-0 h-[calc(100vh-2rem)] w-[300px]" style="right: max(1rem, calc((100vw - 1280px) / 2 + 1rem));">
         @hasSection('sidebar')
         @yield('sidebar')
         @endif

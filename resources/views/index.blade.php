@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="h-full">
+<div class="h-full mt-10">
   <div class="w-full rounded-lg bg-base-100 p-4 pb-2">
     <div class="carousel w-full rounded-lg">
       <div id="slide1" class="carousel-item relative w-full rounded-lg">
