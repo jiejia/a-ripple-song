@@ -1,5 +1,5 @@
 <!doctype html>
-<html @php(language_attributes()) class="h-full" data-theme="retro">
+<html @php(language_attributes()) class="h-full bg-base-200" data-theme="retro">
 
 <head>
   <meta charset="utf-8">
@@ -19,15 +19,21 @@
   </style>
 </head>
 
-<body @php(body_class('h-full bg-base-100'))>
-  <div class="max-w-screen-xl mx-auto p-4 h-full">
+<body @php(body_class('h-full bg-base-200 h-full'))>
+  <div class="max-w-screen-xl mx-auto p-1 h-full">
     @php(wp_body_open())
-    <div id="app" class="h-full bg-base-200 rounded-2xl p-4 grid grid-cols-[220px_1fr] gap-4">
+    <div id="app" class="h-full bg-base-200 rounded-2xl p-4 grid grid-cols-[1fr] gap-4 relative">
       @include('sections.header')
-      <div class="grid grid-cols-[1fr_290px] gap-4 h-full">
-        <main id="main" class="main grid grid-rows-[1fr_100px] gap-4 h-full relative">
+      <div class="h-full ml-[240px] mr-[320px]">
+        <main id="main" class="main h-full">
           @yield('content')
-          <div class="w-full h-[100px] absolute bottom-0 left-0 bg-base-300/75 z-100 rounded-lg p-2 grid grid-cols-[1fr_1fr] gap-4">
+        </main>
+        <!-- @include('sections.footer') -->
+      </div>
+      <!-- <div class="h-[100px] fixed bottom-0 left-0 right-0 z-100">
+        <div class="max-w-screen-xl mx-auto p-1">
+          <div class="px-4">
+            <div class="ml-[240px] mr-[280px] bg-base-300/75 rounded-lg p-2 grid grid-cols-[1fr_1fr] gap-4">
             <div class="grid grid-cols-[60px_1fr] gap-4 items-center bg-base-100/75 p-2 rounded-lg">
               <div>
                 <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Podcast 1" class="w-15 h-15 rounded-md" />
@@ -70,16 +76,14 @@
               </div>
             </div>
           </div>
-
-        </main>
-        <aside class="sidebar">
-          @hasSection('sidebar')
-          @yield('sidebar')
-          @endif
-        </aside>
-
-        <!-- @include('sections.footer') -->
-      </div>
+          </div>
+        </div>
+      </div> -->
+      <aside class="sidebar fixed top-4 right-0 h-[calc(100vh-2rem)] w-[300px]" style="right: max(1rem, calc((100vw - 1280px) / 2 + 1rem));">
+        @hasSection('sidebar')
+        @yield('sidebar')
+        @endif
+      </aside>
     </div>
     @php(do_action('get_footer'))
     @php(wp_footer())
