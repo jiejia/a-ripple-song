@@ -67,7 +67,7 @@
     </ul>
     <ul class="grid grid-flow-row gap-y-4 mt-4">
       <li>
-        <div class="bg-base-200/50 rounded-lg">
+        <div class="bg-base-200/50 rounded-lg hover:bg-base-200">
           <div class="p-4 grid grid-cols-[60px_1fr_60px] items-center">
             <div>
               <a href="#" class="block w-10 h-10 rounded-lg overflow-hidden">
@@ -90,7 +90,7 @@
         </div>
       </li>
       <li>
-        <div class="bg-base-200/50 rounded-lg">
+        <div class="bg-base-200/50 rounded-lg hover:bg-base-200">
           <div class="p-4 grid grid-cols-[60px_1fr_60px] items-center">
             <div>
               <a href="#" class="block w-10 h-10 rounded-lg overflow-hidden">
@@ -113,7 +113,7 @@
         </div>
       </li>
       <li>
-        <div class="bg-base-200/50 rounded-lg">
+        <div class="bg-base-200/50 rounded-lg hover:bg-base-200">
           <div class="p-4 grid grid-cols-[60px_1fr_60px] items-center">
             <div>
               <a href="#" class="block w-10 h-10 rounded-lg overflow-hidden">
@@ -146,7 +146,17 @@
       <span class="text-xs text-base-content/70"><a href="#">See all</a></span>
     </div>
     <ul class="grid grid-cols-3 gap-4 gap-y-8 mt-4">
-      <li class="bg-base-200/50 rounded-lg p-4">
+      <li class="bg-base-200/50 rounded-lg p-4 hover:bg-base-200">
+        <h3 class="text-md font-bold"><a href="#">Addendum to GPT-5 System Card: Sensitive conversationsSafety</a></h3>
+        <div class="grid grid-flow-row gap-1 mt-2">
+          <span class="text-xs text-base-content">
+            <span><a href="#">Company</a></span>
+          </span>
+          <span class="text-xs text-base-content/50">
+            <span>October 28, 2025</span>
+          </span>
+      </li>
+      <li class="bg-base-200/50 rounded-lg p-4 hover:bg-base-200">
         <h3 class="text-md font-bold"><a href="#">Addendum to GPT-5 System Card: Sensitive conversationsSafety</a></h3>
         <div class="grid grid-flow-row gap-1 mt-2">
           <span class="text-xs text-base-content">
@@ -166,7 +176,7 @@
             <span>October 28, 2025</span>
           </span>
       </li>
-      <li class="bg-base-200/50 rounded-lg p-4">
+      <li class="bg-base-200/50 rounded-lg p-4 hover:bg-base-200">
         <h3 class="text-md font-bold"><a href="#">Addendum to GPT-5 System Card: Sensitive conversationsSafety</a></h3>
         <div class="grid grid-flow-row gap-1 mt-2">
           <span class="text-xs text-base-content">
@@ -176,7 +186,7 @@
             <span>October 28, 2025</span>
           </span>
       </li>
-      <li class="bg-base-200/50 rounded-lg p-4">
+      <li class="bg-base-200/50 rounded-lg p-4 hover:bg-base-200">
         <h3 class="text-md font-bold"><a href="#">Addendum to GPT-5 System Card: Sensitive conversationsSafety</a></h3>
         <div class="grid grid-flow-row gap-1 mt-2">
           <span class="text-xs text-base-content">
@@ -186,17 +196,7 @@
             <span>October 28, 2025</span>
           </span>
       </li>
-      <li class="bg-base-200/50 rounded-lg p-4">
-        <h3 class="text-md font-bold"><a href="#">Addendum to GPT-5 System Card: Sensitive conversationsSafety</a></h3>
-        <div class="grid grid-flow-row gap-1 mt-2">
-          <span class="text-xs text-base-content">
-            <span><a href="#">Company</a></span>
-          </span>
-          <span class="text-xs text-base-content/50">
-            <span>October 28, 2025</span>
-          </span>
-      </li>
-      <li class="bg-base-200/50 rounded-lg p-4">
+      <li class="bg-base-200/50 rounded-lg p-4 hover:bg-base-200">
         <h3 class="text-md font-bold"><a href="#">Addendum to GPT-5 System Card: Sensitive conversationsSafety</a></h3>
         <div class="grid grid-flow-row gap-1 mt-2">
           <span class="text-xs text-base-content">
