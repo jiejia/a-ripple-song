@@ -23,11 +23,43 @@
   <div class="max-w-screen-xl mx-auto h-full">
     @php(wp_body_open())
     <div id="app" class="h-full p-4 gap-4">
-      <header class="fixed top-0 h-[60px] left-0 right-0 z-100">
+      <header class="fixed top-0 h-[55px] left-0 right-0 z-100 bg-base-100/75">
         <div class="max-w-screen-xl mx-auto h-full">
-          <div class="p-4">
-            <div class="">
-              <h1 class="text-2xl font-bold"><a href="{{ home_url('/') }}">{{ $siteName }}</a></h1>
+          <div class="px-6 py-3">
+            <div class="grid grid-cols-[220px_1fr_300px] gap-4">
+              <h1 class="text-2xl font-bold text-center">
+                <a href="{{ home_url('/') }}" class="flex items-center justify-center gap-2">
+                  <i data-lucide="podcast" class="w-6 h-6"></i>
+                  <span class="text-2xl">{{ $siteName }}</span>
+                </a>
+              </h1>
+              <ul class="grid grid-flow-col gap-2 text-md justify-center">
+                <li>
+                  <a href="#" class="grid place-items-center h-full w-full text-center px-4 hover:bg-base-200 rounded-lg">
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="grid place-items-center h-full w-full text-center px-4 hover:bg-base-200 rounded-lg">
+                    Podcasts
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="grid place-items-center h-full w-full text-center px-4 hover:bg-base-200 rounded-lg">
+                    Blog
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="grid place-items-center h-full w-full text-center px-4 hover:bg-base-200 rounded-lg">
+                    About
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="grid place-items-center h-full w-full text-center px-4 hover:bg-base-200 rounded-lg">
+                    Contact
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -88,7 +120,7 @@
           </div>
         </div>
       </div> -->
-      <aside class="sidebar fixed top-[60px] right-0 h-[calc(100vh-2rem)] w-[300px]" style="right: max(1rem, calc((100vw - 1280px) / 2 + 1rem));">
+      <aside class="sidebar fixed top-[70px] right-0 h-[calc(100vh-2rem)] w-[300px]" style="right: max(1rem, calc((100vw - 1280px) / 2 + 1rem));">
         @hasSection('sidebar')
         @yield('sidebar')
         @endif

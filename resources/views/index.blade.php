@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="h-full mt-10">
+<div class="h-full mt-[55px]">
   <div class="w-full rounded-lg bg-base-100 p-4 pb-2">
     <div class="carousel w-full rounded-lg">
       <div id="slide1" class="carousel-item relative w-full rounded-lg">
@@ -71,15 +71,15 @@
           <div class="p-4 grid grid-cols-[60px_1fr_60px] items-center">
             <div>
               <a href="#" class="block w-10 h-10 rounded-lg overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Podcast 1" class="w-10 h-10 rounded-md" />
+                <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="科技前沿对话" class="w-10 h-10 rounded-md" />
               </a>
             </div>
             <div class="grid grid-flow-row gap-1">
-              <h4 class="text-md font-bold">Podcast 1</h4>
+              <h4 class="text-md font-bold">科技前沿对话：AI时代的创业机会</h4>
               <p class="text-xs text-base-content/50">
-                <span>October 28, 2025</span>
+                <span>October 15, 2025</span>
                 <span>•</span>
-                <span>100k views</span>
+                <span>235k views</span>
               </p>
             </div>
             <div class="flex gap-2">
@@ -94,15 +94,15 @@
           <div class="p-4 grid grid-cols-[60px_1fr_60px] items-center">
             <div>
               <a href="#" class="block w-10 h-10 rounded-lg overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Podcast 1" class="w-10 h-10 rounded-md" />
+                <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="深夜电台" class="w-10 h-10 rounded-md" />
               </a>
             </div>
             <div class="grid grid-flow-row gap-1">
-              <h4 class="text-md font-bold">Podcast 1</h4>
+              <h4 class="text-md font-bold">深夜电台：那些年我们听过的民谣</h4>
               <p class="text-xs text-base-content/50">
-                <span>October 28, 2025</span>
+                <span>September 22, 2025</span>
                 <span>•</span>
-                <span>100k views</span>
+                <span>89k views</span>
               </p>
             </div>
             <div class="flex gap-2">
@@ -117,15 +117,15 @@
           <div class="p-4 grid grid-cols-[60px_1fr_60px] items-center">
             <div>
               <a href="#" class="block w-10 h-10 rounded-lg overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Podcast 1" class="w-10 h-10 rounded-md" />
+                <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="人物访谈" class="w-10 h-10 rounded-md" />
               </a>
             </div>
             <div class="grid grid-flow-row gap-1">
-              <h4 class="text-md font-bold">Podcast 1</h4>
+              <h4 class="text-md font-bold">人物访谈：独立开发者的成长之路</h4>
               <p class="text-xs text-base-content/50">
-                <span>October 28, 2025</span>
+                <span>October 5, 2025</span>
                 <span>•</span>
-                <span>100k views</span>
+                <span>167k views</span>
               </p>
             </div>
             <div class="flex gap-2">
@@ -147,63 +147,63 @@
     </div>
     <ul class="grid grid-cols-3 gap-4 gap-y-8 mt-4">
       <li class="bg-base-200/50 rounded-lg p-4 hover:bg-base-200">
-        <h3 class="text-md font-bold"><a href="#">Addendum to GPT-5 System Card: Sensitive conversationsSafety</a></h3>
+        <h3 class="text-md font-bold"><a href="#">探索 Web3.0：去中心化网络的未来趋势</a></h3>
         <div class="grid grid-flow-row gap-1 mt-2">
           <span class="text-xs text-base-content">
-            <span><a href="#">Company</a></span>
+            <span><a href="#">技术</a></span>
           </span>
           <span class="text-xs text-base-content/50">
-            <span>October 28, 2025</span>
+            <span>October 12, 2025</span>
           </span>
       </li>
       <li class="bg-base-200/50 rounded-lg p-4 hover:bg-base-200">
-        <h3 class="text-md font-bold"><a href="#">Addendum to GPT-5 System Card: Sensitive conversationsSafety</a></h3>
+        <h3 class="text-md font-bold"><a href="#">设计思维：如何打造用户喜爱的产品体验</a></h3>
         <div class="grid grid-flow-row gap-1 mt-2">
           <span class="text-xs text-base-content">
-            <span><a href="#">Company</a></span>
+            <span><a href="#">设计</a></span>
           </span>
           <span class="text-xs text-base-content/50">
-            <span>October 28, 2025</span>
+            <span>September 28, 2025</span>
           </span>
       </li>
       <li class="bg-base-200/50 rounded-lg p-4">
-        <h3 class="text-md font-bold"><a href="#">Addendum to GPT-5 System Card: Sensitive conversationsSafety</a></h3>
+        <h3 class="text-md font-bold"><a href="#">远程办公时代：如何保持团队高效协作</a></h3>
         <div class="grid grid-flow-row gap-1 mt-2">
           <span class="text-xs text-base-content">
-            <span><a href="#">Company</a></span>
+            <span><a href="#">职场</a></span>
           </span>
           <span class="text-xs text-base-content/50">
-            <span>October 28, 2025</span>
+            <span>October 3, 2025</span>
           </span>
       </li>
       <li class="bg-base-200/50 rounded-lg p-4 hover:bg-base-200">
-        <h3 class="text-md font-bold"><a href="#">Addendum to GPT-5 System Card: Sensitive conversationsSafety</a></h3>
+        <h3 class="text-md font-bold"><a href="#">机器学习入门：从零开始的实战指南</a></h3>
         <div class="grid grid-flow-row gap-1 mt-2">
           <span class="text-xs text-base-content">
-            <span><a href="#">Company</a></span>
+            <span><a href="#">编程</a></span>
           </span>
           <span class="text-xs text-base-content/50">
-            <span>October 28, 2025</span>
+            <span>September 15, 2025</span>
           </span>
       </li>
       <li class="bg-base-200/50 rounded-lg p-4 hover:bg-base-200">
-        <h3 class="text-md font-bold"><a href="#">Addendum to GPT-5 System Card: Sensitive conversationsSafety</a></h3>
+        <h3 class="text-md font-bold"><a href="#">可持续发展：科技如何助力环保事业</a></h3>
         <div class="grid grid-flow-row gap-1 mt-2">
           <span class="text-xs text-base-content">
-            <span><a href="#">Company</a></span>
+            <span><a href="#">环保</a></span>
           </span>
           <span class="text-xs text-base-content/50">
-            <span>October 28, 2025</span>
+            <span>October 20, 2025</span>
           </span>
       </li>
       <li class="bg-base-200/50 rounded-lg p-4 hover:bg-base-200">
-        <h3 class="text-md font-bold"><a href="#">Addendum to GPT-5 System Card: Sensitive conversationsSafety</a></h3>
+        <h3 class="text-md font-bold"><a href="#">创业者的自我修养：从想法到落地的实战经验</a></h3>
         <div class="grid grid-flow-row gap-1 mt-2">
           <span class="text-xs text-base-content">
-            <span><a href="#">Company</a></span>
+            <span><a href="#">创业</a></span>
           </span>
           <span class="text-xs text-base-content/50">
-            <span>October 28, 2025</span>
+            <span>October 8, 2025</span>
           </span>
       </li>
     </ul>

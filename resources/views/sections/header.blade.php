@@ -1,4 +1,4 @@
-<aside class="bg-base-100 rounded-lg p-4 fixed top-[60px] z-100 h-[calc(100vh-2rem-40px)] w-[220px]" style="left: max(1rem, calc((100vw - 1280px) / 2 + 1rem));">
+<aside class="bg-base-100 rounded-lg p-4 fixed top-[70px] z-100 h-[calc(100vh-2rem-40px)] w-[220px]" style="left: max(1rem, calc((100vw - 1280px) / 2 + 1rem));">
   <h3 class="text-sm font-bold text-base-content/50">Members</h3>
   <div class="grid grid-flow-row gap-2 mt-4">
     <div class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">

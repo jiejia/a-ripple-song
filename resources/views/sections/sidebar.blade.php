@@ -41,15 +41,15 @@
         <h2 class="text-lg font-bold">NOW PLAYING</h2>
         <div class="grid grid-cols-[60px_1fr] gap-4 items-center bg-base-300/50 p-4 rounded-lg">
             <div>
-                <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Podcast 1" class="w-15 h-15 rounded-md" />
+                <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="音乐漫谈" class="w-15 h-15 rounded-md" />
             </div>
             <div>
-                <h4 class="text-md font-bold">Podcast 1</h4>
+                <h4 class="text-md font-bold">音乐漫谈：从古典到流行的跨界之旅</h4>
                 <p class="text-xs text-base-content/80">
-                    <span>October 28, 2025</span>
+                    <span>October 18, 2025</span>
                 </p>
                 <p class="text-xs text-base-content/50">
-                    <span>100k views</span>
+                    <span>142k views</span>
                 </p>
             </div>
         </div>
