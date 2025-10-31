@@ -44,34 +44,46 @@
                     Podcasts
                   </a>
                 </li>
-                <li>
-                  <a href="#" class="grid place-items-center h-full w-full text-center px-4 hover:bg-base-200 rounded-lg">
-                    Blog
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="grid place-items-center h-full w-full text-center px-4 hover:bg-base-200 rounded-lg">
-                    About
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="grid place-items-center h-full w-full text-center px-4 hover:bg-base-200 rounded-lg">
-                    Contact
-                  </a>
-                </li>
-              </ul>
+                <li class=""">
+                  <div class=" dropdown dropdown-hover dropdown-start h-full w-full">
+                  <a tabindex="0" role="button" class="grid place-items-center h-full w-full text-center px-4 hover:bg-base-200 rounded-lg" href="#">Blog</a>
+                  <ul tabindex="-1" class="dropdown-content menu bg-base-200/75 rounded-box z-1 w-52 p-2 shadow-sm">
+                    <li><a href="#">Blog 1</a></li>
+                    <li><a href="#">Blog 2</a></li>
+                    <li><a href="#">Blog 3</a></li>
+                  </ul>
+            </div>
+            </li>
+            <li>
+              <a href="#" class="grid place-items-center h-full w-full text-center px-4 hover:bg-base-200 rounded-lg">
+                About
+              </a>
+            </li>
+            <li>
+              <a href="#" class="grid place-items-center h-full w-full text-center px-4 hover:bg-base-200 rounded-lg">
+                Contact
+              </a>
+            </li>
+            </ul>
+            <div class="grid grid-flow-col justify-end gap-2 place-items-center">
+              <button class="btn btn-circle btn-xs ">
+                <i data-lucide="moon" class="w-5 h-5"></i>
+              </button>
             </div>
           </div>
         </div>
-      </header>
-      @include('sections.header')
-      <div class="h-full ml-[240px] mr-[320px]">
-        <main id="main" class="main h-full">
-          @yield('content')
-        </main>
-        <!-- @include('sections.footer') -->
-      </div>
-      <!-- <div class="h-[100px] fixed bottom-0 left-0 right-0 z-100">
+    </div>
+    </header>
+    @include('sections.header')
+    <div class="h-full ml-[240px] mr-[320px] mt-[55px]">
+      <main id="main" class="main h-full">
+        @yield('content')
+        @include('sections.footer')
+      </main>
+      @php(do_action('get_footer'))
+      @php(wp_footer())
+    </div>
+    <!-- <div class="h-[100px] fixed bottom-0 left-0 right-0 z-100">
         <div class="max-w-screen-xl mx-auto p-1">
           <div class="px-4">
             <div class="ml-[240px] mr-[280px] bg-base-300/75 rounded-lg p-2 grid grid-cols-[1fr_1fr] gap-4">
@@ -120,14 +132,13 @@
           </div>
         </div>
       </div> -->
-      <aside class="sidebar fixed top-[70px] right-0 h-[calc(100vh-2rem)] w-[300px]" style="right: max(1rem, calc((100vw - 1280px) / 2 + 1rem));">
-        @hasSection('sidebar')
-        @yield('sidebar')
-        @endif
-      </aside>
-    </div>
-    @php(do_action('get_footer'))
-    @php(wp_footer())
+    <aside class="sidebar fixed top-[70px] right-0 h-[calc(100vh-2rem)] w-[300px]" style="right: max(1rem, calc((100vw - 1280px) / 2 + 1rem));">
+      @hasSection('sidebar')
+      @yield('sidebar')
+      @endif
+    </aside>
+  </div>
+
   </div>
 </body>
 
