@@ -3,7 +3,7 @@
   <div class="grid grid-flow-row gap-2 mt-4">
     <a href="/" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
       <div class="avatar">
-        <div class="ring-secondary ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
+        <div class="ring-base-content/50 ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
           <img src="https://img.daisyui.com/images/profile/demo/batperson@192.webp" />
         </div>
       </div>
@@ -12,7 +12,7 @@
     </a>
     <a href="/" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
       <div class="avatar">
-        <div class="ring-secondary ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
+        <div class="ring-base-content/50 ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
           <img src="https://img.daisyui.com/images/profile/demo/superperson@192.webp" />
         </div>
       </div>
@@ -21,7 +21,7 @@
     </a>
     <a href="/" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
       <div class="avatar">
-        <div class="ring-secondary ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
+        <div class="ring-base-content/50 ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
           <img src="https://img.daisyui.com/images/profile/demo/spiderperson@192.webp" />
         </div>
       </div>
@@ -30,7 +30,7 @@
     </a>
     <a href="/" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
       <div class="avatar">
-        <div class="ring-secondary ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
+        <div class="ring-base-content/50 ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
           <img src="https://img.daisyui.com/images/profile/demo/wonderperson@192.webp" />
         </div>
       </div>
@@ -39,7 +39,7 @@
     </a>
     <a href="/" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
       <div class="avatar">
-        <div class="ring-secondary ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
+        <div class="ring-base-content/50 ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
           <img src="https://img.daisyui.com/images/profile/demo/gordon@192.webp" />
         </div>
       </div>
@@ -51,7 +51,7 @@
   <div class="grid grid-flow-row gap-2 mt-4">
     <a href="/" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
       <div class="avatar">
-        <div class="ring-secondary ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
+        <div class="ring-base-content/50 ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
           <img src="https://img.daisyui.com/images/profile/demo/yellingwoman@192.webp" />
         </div>
       </div>
@@ -60,7 +60,7 @@
     </a>
     <a href="/" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
       <div class="avatar">
-        <div class="ring-secondary ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
+        <div class="ring-base-content/50 ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
           <img src="https://img.daisyui.com/images/profile/demo/averagebulk@192.webp" />
         </div>
       </div>
@@ -69,7 +69,7 @@
     </a>
     <a href="/" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
       <div class="avatar">
-        <div class="ring-secondary ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
+        <div class="ring-base-content/50 ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
           <img src="https://img.daisyui.com/images/profile/demo/distracted1@192.webp" />
         </div>
       </div>
@@ -78,7 +78,7 @@
     </a>
     <a href="/" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
       <div class="avatar">
-        <div class="ring-secondary ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
+        <div class="ring-base-content/50 ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
           <img src="https://img.daisyui.com/images/profile/demo/distracted2@192.webp" />
         </div>
       </div>
@@ -87,7 +87,7 @@
     </a>
     <a href="/" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
       <div class="avatar">
-        <div class="ring-secondary ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
+        <div class="ring-base-content/50 ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
           <img src="https://img.daisyui.com/images/profile/demo/distracted3@192.webp" />
         </div>
       </div>
