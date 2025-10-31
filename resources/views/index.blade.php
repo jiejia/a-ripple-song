@@ -6,7 +6,7 @@
     <div class="carousel w-full rounded-lg">
       <div id="slide1" class="carousel-item relative w-full rounded-lg">
         <img
-          src="https://cdn.pixabay.com/photo/2016/11/29/05/45/astronomy-1867616_1280.jpg"
+          src="https://cdn.pixabay.com/photo/2024/03/18/06/09/ai-generated-8640296_960_720.jpg"
           class="w-full h-48 object-cover rounded-lg"
           alt="浅棕色抽象背景" />
         <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
@@ -16,7 +16,7 @@
       </div>
       <div id="slide2" class="carousel-item relative w-full rounded-lg">
         <img
-          src="https://cdn.pixabay.com/photo/2016/11/29/12/13/fence-1869401_1280.jpg"
+          src="https://cdn.pixabay.com/photo/2024/09/24/09/47/ai-generated-9070892_640.png"
           class="w-full h-48 object-cover rounded-lg"
           alt="棕色木质纹理" />
         <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
@@ -26,7 +26,7 @@
       </div>
       <div id="slide3" class="carousel-item relative w-full rounded-lg">
         <img
-          src="https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_1280.jpg"
+          src="https://cdn.pixabay.com/photo/2023/12/03/15/23/ai-generated-8427689_640.jpg"
           class="w-full h-48 object-cover rounded-lg"
           alt="温暖的棕色调风景" />
         <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
@@ -36,7 +36,7 @@
       </div>
       <div id="slide4" class="carousel-item relative w-full rounded-lg">
         <img
-          src="https://cdn.pixabay.com/photo/2016/11/29/03/53/architecture-1867187_1280.jpg"
+          src="https://cdn.pixabay.com/photo/2024/09/24/09/47/ai-generated-9070891_640.png"
           class="w-full h-48 object-cover rounded-lg"
           alt="米色建筑背景" />
         <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
@@ -75,7 +75,7 @@
               </a>
             </div>
             <div class="grid grid-flow-row gap-1">
-              <h4 class="text-md font-bold">科技前沿对话：AI时代的创业机会</h4>
+              <h4 class="text-md font-bold"><a href="#">科技前沿对话：AI时代的创业机会</a></h4>
               <p class="text-xs text-base-content/50">
                 <span>October 15, 2025</span>
                 <span>•</span>
@@ -98,7 +98,7 @@
               </a>
             </div>
             <div class="grid grid-flow-row gap-1">
-              <h4 class="text-md font-bold">深夜电台：那些年我们听过的民谣</h4>
+              <h4 class="text-md font-bold"><a href="#">深夜电台：那些年我们听过的民谣</a></h4>
               <p class="text-xs text-base-content/50">
                 <span>September 22, 2025</span>
                 <span>•</span>
@@ -121,7 +121,7 @@
               </a>
             </div>
             <div class="grid grid-flow-row gap-1">
-              <h4 class="text-md font-bold">人物访谈：独立开发者的成长之路</h4>
+              <h4 class="text-md font-bold"><a href="#">人物访谈：独立开发者的成长之路</a></h4>
               <p class="text-xs text-base-content/50">
                 <span>October 5, 2025</span>
                 <span>•</span>

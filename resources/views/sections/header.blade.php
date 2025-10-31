@@ -1,99 +1,99 @@
-<aside class="bg-base-100 rounded-lg p-4 fixed top-[70px] z-100 h-[calc(100vh-2rem-50px)] w-[220px]" style="left: max(1rem, calc((100vw - 1280px) / 2 + 1rem));">
+<aside class="bg-base-100 rounded-lg p-4 fixed top-[70px] z-100 <!--h-[calc(100vh-2rem-50px)] -->w-[220px]" style="left: max(1rem, calc((100vw - 1280px) / 2 + 1rem));">
   <h3 class="text-sm font-bold text-base-content/50">Members</h3>
   <div class="grid grid-flow-row gap-2 mt-4">
-    <div class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
+    <a href="/" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
       <div class="avatar">
         <div class="ring-secondary ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
-          <img src="https://ui-avatars.com/api/?name=Sarah+Chen&background=667eea&color=fff&size=128" />
+          <img src="https://img.daisyui.com/images/profile/demo/batperson@192.webp" />
         </div>
       </div>
-      <a href="{{ home_url('/') }}" class="text-xs">Sarah Chen</a>
+      <span class="text-xs">Sarah Chen</span>
       <span class="text-xs text-base-content/50">856</span>
-    </div>
-    <div class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
+    </a>
+    <a href="/" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
       <div class="avatar">
         <div class="ring-secondary ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
-          <img src="https://ui-avatars.com/api/?name=Alex+Morgan&background=f093fb&color=fff&size=128" />
+          <img src="https://img.daisyui.com/images/profile/demo/superperson@192.webp" />
         </div>
       </div>
-      <a href="{{ home_url('/') }}" class="text-xs">Alex Morgan</a>
+      <span class="text-xs">Alex Morgan</span>
       <span class="text-xs text-base-content/50">742</span>
-    </div>
-    <div class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
+    </a>
+    <a href="/" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
       <div class="avatar">
         <div class="ring-secondary ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
-          <img src="https://ui-avatars.com/api/?name=Michael+Kim&background=4facfe&color=fff&size=128" />
+          <img src="https://img.daisyui.com/images/profile/demo/spiderperson@192.webp" />
         </div>
       </div>
-      <a href="{{ home_url('/') }}" class="text-xs">Michael Kim</a>
+      <span class="text-xs">Michael Kim</span>
       <span class="text-xs text-base-content/50">623</span>
-    </div>
-    <div class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
+    </a>
+    <a href="/" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
       <div class="avatar">
         <div class="ring-secondary ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
-          <img src="https://ui-avatars.com/api/?name=Emma+Wilson&background=fa709a&color=fff&size=128" />
+          <img src="https://img.daisyui.com/images/profile/demo/wonderperson@192.webp" />
         </div>
       </div>
-      <a href="{{ home_url('/') }}" class="text-xs">Emma Wilson</a>
+      <span class="text-xs">Emma Wilson</span>
       <span class="text-xs text-base-content/50">591</span>
-    </div>
-    <div class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
+    </a>
+    <a href="/" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
       <div class="avatar">
         <div class="ring-secondary ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
-          <img src="https://ui-avatars.com/api/?name=David+Park&background=43e97b&color=fff&size=128" />
+          <img src="https://img.daisyui.com/images/profile/demo/gordon@192.webp" />
         </div>
       </div>
-      <a href="{{ home_url('/') }}" class="text-xs">David Park</a>
+      <span class="text-xs">David Park</span>
       <span class="text-xs text-base-content/50">487</span>
-    </div>
+    </a>
   </div>
-  <h3 class="text-sm font-bold text-base-content/50 mt-8">Guests</h3>
+  <h3 class="text-sm font-bold text-base-content/50 mt-4">Guests</h3>
   <div class="grid grid-flow-row gap-2 mt-4">
-    <div class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
+    <a href="/" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
       <div class="avatar">
         <div class="ring-secondary ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
-          <img src="https://ui-avatars.com/api/?name=Jessica+Lee&background=fee140&color=000&size=128" />
+          <img src="https://img.daisyui.com/images/profile/demo/yellingwoman@192.webp" />
         </div>
       </div>
-      <a href="{{ home_url('/') }}" class="text-xs">Jessica Lee</a>
+      <span class="text-xs">Jessica Lee</span>
       <span class="text-xs text-base-content/50">342</span>
-    </div>
-    <div class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
+    </a>
+    <a href="/" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
       <div class="avatar">
         <div class="ring-secondary ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
-          <img src="https://ui-avatars.com/api/?name=Ryan+Taylor&background=764ba2&color=fff&size=128" />
+          <img src="https://img.daisyui.com/images/profile/demo/averagebulk@192.webp" />
         </div>
       </div>
-      <a href="{{ home_url('/') }}" class="text-xs">Ryan Taylor</a>
+      <span class="text-xs">Ryan Taylor</span>
       <span class="text-xs text-base-content/50">289</span>
-    </div>
-    <div class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
+    </a>
+    <a href="/" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
       <div class="avatar">
         <div class="ring-secondary ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
-          <img src="https://ui-avatars.com/api/?name=Olivia+Brown&background=f88dad&color=fff&size=128" />
+          <img src="https://img.daisyui.com/images/profile/demo/distracted1@192.webp" />
         </div>
       </div>
-      <a href="{{ home_url('/') }}" class="text-xs">Olivia Brown</a>
+      <span class="text-xs">Olivia Brown</span>
       <span class="text-xs text-base-content/50">256</span>
-    </div>
-    <div class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
+    </a>
+    <a href="/" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
       <div class="avatar">
         <div class="ring-secondary ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
-          <img src="https://ui-avatars.com/api/?name=James+Liu&background=38a169&color=fff&size=128" />
+          <img src="https://img.daisyui.com/images/profile/demo/distracted2@192.webp" />
         </div>
       </div>
-      <a href="{{ home_url('/') }}" class="text-xs">James Liu</a>
+      <span class="text-xs">James Liu</span>
       <span class="text-xs text-base-content/50">198</span>
-    </div>
-    <div class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
+    </a>
+    <a href="/" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
       <div class="avatar">
         <div class="ring-secondary ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
-          <img src="https://ui-avatars.com/api/?name=Sophie+Wang&background=f6d365&color=000&size=128" />
+          <img src="https://img.daisyui.com/images/profile/demo/distracted3@192.webp" />
         </div>
       </div>
-      <a href="{{ home_url('/') }}" class="text-xs">Sophie Wang</a>
+      <span class="text-xs">Sophie Wang</span>
       <span class="text-xs text-base-content/50">167</span>
-    </div>
+    </a>
   </div>
   <!-- <div>
     <h1 class="text-xl font-bold text-center">
