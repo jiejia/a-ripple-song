@@ -59,7 +59,7 @@
             <div class="mt-0 w-full">
                 <div class="grid grid-cols-[30px_1fr_30px] gap-2 items-center text-xs">
                     <span id="sound-current-time">00:00</span>
-                    <input type="range" min="0" max="100" value="0" id="sound-progress" class="range range-xs w-full text-transparent [--range-bg:orange] [--range-thumb:blue] [--range-fill:0] " oninput="seek(this.value)" />
+                    <input type="range" min="0" max="100" value="0" id="sound-progress" class="range range-xs w-full text-base-content/20 [--range-bg:orange] [--range-thumb:blue] [--range-fill:0.5] " oninput="seek(this.value)" />
                     <span class="justify-self-end" id="sound-duration">00:00</span>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                 <div class="justify-self-end relative">
                     <i data-lucide="volume" class="cursor-pointer w-4 h-4" id="volume-button" onclick="toggleVolumePanel()"></i>
                     <div id="volume-panel" class="hidden absolute bottom-full right-[-8px] mb-2 bg-base-100 rounded-full shadow-lg p-2 w-10 h-32">
-                        <input type="range" min="0" max="300" value="300" id="volume-slider" class="w-28 absolute left-[-35px] bottom-[55px] range range-xs transform -rotate-90" oninput="changeVolume(this.value)" />
+                        <input type="range" min="0" max="300" value="300" id="volume-slider" class="w-28 absolute left-[-35px] bottom-[55px] range range-xs range-success transform -rotate-90" oninput="changeVolume(this.value)" />
                     </div>
                 </div>
             </div>
