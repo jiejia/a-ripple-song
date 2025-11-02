@@ -4,26 +4,7 @@
 <div class="">
   <div class="w-full rounded-lg bg-base-100 p-4 pb-2">
     <div class="carousel w-full rounded-lg">
-      <div id="slide1" class="carousel-item relative w-full rounded-lg">
-        <img
-          src="https://cdn.pixabay.com/photo/2024/03/18/06/09/ai-generated-8640296_960_720.jpg"
-          class="w-full h-48 object-cover rounded-lg"
-          alt="浅棕色抽象背景" />
-        <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-          <a href="#slide4" class="btn btn-circle btn-xs">❮</a>
-          <a href="#slide2" class="btn btn-circle btn-xs">❯</a>
-        </div>
-      </div>
-      <div id="slide2" class="carousel-item relative w-full rounded-lg">
-        <img
-          src="https://cdn.pixabay.com/photo/2024/09/24/09/47/ai-generated-9070892_640.png"
-          class="w-full h-48 object-cover rounded-lg"
-          alt="棕色木质纹理" />
-        <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-          <a href="#slide1" class="btn btn-circle btn-xs">❮</a>
-          <a href="#slide3" class="btn btn-circle btn-xs">❯</a>
-        </div>
-      </div>
+
       <div id="slide3" class="carousel-item relative w-full rounded-lg">
         <img
           src="https://cdn.pixabay.com/photo/2023/12/03/15/23/ai-generated-8427689_640.jpg"
