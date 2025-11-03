@@ -41,7 +41,7 @@
                 </li>
                 <li>
                   <a href="{{ get_post_type_archive_link('podcast') }}" class="grid place-items-center h-full w-full text-center px-4 rounded-lg text-base-content/80 hover:text-base-content">
-                    Podcasts
+                    Podcast
                   </a>
                 </li>
                 <li class=""">
@@ -55,12 +55,12 @@
             </div>
             </li>
             <li>
-              <a href="{{ home_url('/about') }}" class="grid place-items-center h-full w-full text-center px-4 rounded-lg text-base-content/80 hover:text-base-content">
+              <a href="{{ get_permalink( get_page( 'about-us' ) ) }}" class="grid place-items-center h-full w-full text-center px-4 rounded-lg text-base-content/80 hover:text-base-content">
                 About
               </a>
             </li>
             <li>
-              <a href="{{ home_url('/contact') }}" class="grid place-items-center h-full w-full text-center px-4 rounded-lg text-base-content/80 hover:text-base-content">
+              <a href="{{ get_permalink( get_page_by_path( 'contact' ) ) }}" class="grid place-items-center h-full w-full text-center px-4 rounded-lg text-base-content/80 hover:text-base-content">
                 Contact
               </a>
             </li>

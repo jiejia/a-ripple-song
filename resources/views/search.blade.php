@@ -1,19 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
-  @include('partials.page-header')
-
+@include('partials.page-header')
+<ul class="grid grid-flow-row gap-y-4 mt-4">
   @if (! have_posts())
-    <x-alert type="warning">
-      {!! __('Sorry, no results were found.', 'sage') !!}
-    </x-alert>
+  <x-alert type="warning">
+    {!! __('Sorry, no results were found.', 'sage') !!}
+  </x-alert>
 
-    {!! get_search_form(false) !!}
+  {!! get_search_form(false) !!}
   @endif
 
-  @while(have_posts()) @php(the_post())
-    @include('partials.content-search')
+
+  @while(have_posts())
+
+  @php(the_post())
+  @include('partials.content-search')
   @endwhile
 
-  {!! get_the_posts_navigation() !!}
+
+{!! get_the_posts_navigation() !!}
+</ul>
+
+@endsection
+
+
+@section('sidebar')
+@include('sections.sidebar')
 @endsection

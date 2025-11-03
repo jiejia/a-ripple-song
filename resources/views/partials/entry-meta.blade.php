@@ -1,4 +1,4 @@
-<time class="dt-published" datetime="{{ get_post_time('c', true) }}">
+<!-- <time class="dt-published" datetime="{{ get_post_time('c', true) }}">
   {{ get_the_date() }}
 </time>
 
@@ -7,4 +7,13 @@
   <a href="{{ get_author_posts_url(get_the_author_meta('ID')) }}" class="p-author h-card">
     {{ get_the_author() }}
   </a>
+</p> -->
+
+
+<p class="text-xs text-base-content/50">
+  <time class="dt-published" datetime="{{ get_post_time('c', true) }}">
+    {{ get_the_date() }}
+  </time>
+  <span>•</span>
+  <span>100k views</span>
 </p>
