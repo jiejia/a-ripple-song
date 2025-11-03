@@ -4,16 +4,18 @@
 <div class="mt-4 rounded-lg bg-base-100 p-4">
     <div class="grid grid-flow-row gap-2">
         <div class="bg-base-200/50 rounded-lg hover:bg-base-200">
-            <div class="p-4 grid grid-cols-[1fr_60px] items-center">
+            <div class="p-4 grid grid-cols-[1fr_60px] items-center pb-2">
                 <div class="grid grid-flow-row gap-1">
                     <h2 class="text-lg font-bold"><a href="#">科技前沿对话：AI时代的创业机会</a></h2>
-                    <p class="text-xs text-base-content/50">
-                        <a href="#" class="text-base-content/80">访谈</a>
-                        <span>•</span>
-                        <span>October 15, 2025</span>
-                        <span>•</span>
-                        <span>167k views</span>
-                    </p>
+                    <div class="text-xs text-base-content/50 grid grid-flow-col gap-2 justify-start content-center items-center">
+                        <div>
+                            <a href="/" class="text-xs text-base-content/50">Company</a>
+                            <span>•</span>
+                            <span>October 15, 2025</span>
+                            <span>•</span>
+                            <span>167k views</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="flex gap-2">
                     <i data-lucide="heart" class="text-xs h-4"></i>
@@ -37,6 +39,41 @@
             <p class="indent-6">
                 最后，我们还聊到了独立开发者的生活方式和工作节奏。如何在保持工作热情的同时，避免过度疲劳？如何平衡开发工作和个人生活？这些问题对于长期从事独立开发的创作者来说都是至关重要的。嘉宾分享了自己的时间管理方法和保持动力的秘诀。
             </p>
+        </div>
+        <div class="grid grid-flow-row gap-2 mt-2">
+            <ul class="flex gap-2 justify-center">
+                <li>
+                    <a href="/" class="text-xs text-base-content/50 bg-base-200/50 hover:bg-base-200 rounded-full py-0.5 px-2"># Company</a>
+                </li>
+                <li>
+                    <a href="/" class="text-xs text-base-content/50 bg-base-200/50 hover:bg-base-200 rounded-full py-0.5 px-2"># Technology</a>
+                </li>
+                <li>
+                    <a href="/" class="text-xs text-base-content/50 bg-base-200/50 hover:bg-base-200 rounded-full py-0.5 px-2"># Product</a>
+                </li>
+            </ul>
+        </div>
+        <div class="avatar-group -space-x-2 mt-2 justify-center">
+            <div class="avatar">
+                <a href="/" class="w-6 block" title="Jamie">
+                    <img src="https://img.daisyui.com/images/profile/demo/batperson@192.webp" />
+                </a>
+            </div>
+            <div class="avatar">
+                <a href="/" class="w-6 block" title="Jamie">
+                    <img src="https://img.daisyui.com/images/profile/demo/spiderperson@192.webp" />
+                </a>
+            </div>
+            <div class="avatar">
+                <a href="/" class="w-6 block" title="Jamie">
+                    <img src="https://img.daisyui.com/images/profile/demo/averagebulk@192.webp" />
+                </a>
+            </div>
+            <div class="avatar">
+                <a href="/" class="w-6 block" title="Jamie">
+                    <img src="https://img.daisyui.com/images/profile/demo/wonderperson@192.webp" />
+                </a>
+            </div>
         </div>
     </div>
 </div>

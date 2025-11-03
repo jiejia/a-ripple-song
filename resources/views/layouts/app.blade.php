@@ -46,7 +46,7 @@
                 </li>
                 <li class=""">
                   <div class=" dropdown dropdown-hover dropdown-start h-full w-full">
-                  <a tabindex="0" role="button" class="grid place-items-center h-full w-full text-center px-4 rounded-lg text-base-content/80 hover:text-base-content" href="{{ get_post_type_archive_link('post') }}">Blog</a>
+                  <a class="grid place-items-center h-full w-full text-center px-4 rounded-lg text-base-content/80 hover:text-base-content" href="{{ get_permalink( get_page_by_path( 'blog' ) ) }}">Blog</a>
                   <ul tabindex="-1" class="dropdown-content menu bg-base-200/75 rounded-box z-1 w-52 p-2 shadow-sm">
                     <li><a href="#">Blog 1</a></li>
                     <li><a href="#">Blog 2</a></li>
