@@ -215,16 +215,16 @@
             </div>
         </li>
     </ul>
-    <div class="join mt-4 text-center justify-center flex">
+    <div class="join mt-4 text-center justify-center flex gap-1">
         <input
-            class="join-item btn btn-square bg-base-100"
+            class="join-item btn btn-sm btn-square bg-base-100"
             type="radio"
             name="options"
             aria-label="1"
             checked="checked" />
-        <input class="join-item btn btn-square bg-base-100" type="radio" name="options" aria-label="2" />
-        <input class="join-item btn btn-square bg-base-100" type="radio" name="options" aria-label="3" />
-        <input class="join-item btn btn-square bg-base-100" type="radio" name="options" aria-label="4" />
+        <input class="join-item btn btn-sm btn-square bg-base-100" type="radio" name="options" aria-label="2" />
+        <input class="join-item btn btn-sm btn-square bg-base-100" type="radio" name="options" aria-label="3" />
+        <input class="join-item btn btn-sm btn-square bg-base-100" type="radio" name="options" aria-label="4" />
     </div>
 </div>
 

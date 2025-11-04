@@ -153,3 +153,141 @@ add_action('widgets_init', function () {
         'id' => 'sidebar-footer',
     ] + $config);
 });
+
+/**
+ * Customize posts pagination to use DaisyUI join structure with Lucide icons.
+ *
+ * @return void
+ */
+add_filter('the_posts_pagination_args', function ($args) {
+    // Set Lucide icons for prev/next buttons
+    $args['prev_text'] = '<i data-lucide="chevron-left" class="w-4 h-4"></i>';
+    $args['next_text'] = '<i data-lucide="chevron-right" class="w-4 h-4"></i>';
+    return $args;
+});
+
+/**
+ * Customize navigation markup template to use DaisyUI join structure.
+ *
+ * @param string $template The navigation markup template.
+ * @param string $class The navigation class.
+ * @return string
+ */
+add_filter('navigation_markup_template', function ($template, $class) {
+    // Only apply to post pagination
+    if ('pagination' !== $class) {
+        return $template;
+    }
+
+    // Return custom template with DaisyUI join structure
+    return '<nav class="navigation %1$s" role="navigation" aria-label="%4$s">
+        <div class="join mt-4 text-center justify-center flex gap-1">%3$s</div>
+    </nav>';
+}, 10, 2);
+
+/**
+ * Customize paginate_links output to match DaisyUI join structure.
+ *
+ * @param string $output The pagination HTML output.
+ * @param array $args The paginate_links arguments.
+ * @return string
+ */
+function custom_paginate_links_output($output, $args) {
+    global $wp_query;
+
+    // Only apply to posts pagination (check if this is called from get_the_posts_pagination)
+    if (! $wp_query || $wp_query->max_num_pages <= 1) {
+        return $output;
+    }
+
+    // Prevent infinite loop by checking if we're already processing
+    static $processing = false;
+    if ($processing) {
+        return $output;
+    }
+    $processing = true;
+
+    // Get current page
+    $current_page = max(1, get_query_var('paged'));
+    $total_pages = $wp_query->max_num_pages;
+
+    // Get pagination links as array to rebuild
+    $links_args = array_merge($args, [
+        'type' => 'array',
+        'prev_text' => '<i data-lucide="chevron-left" class="w-4 h-4"></i>',
+        'next_text' => '<i data-lucide="chevron-right" class="w-4 h-4"></i>',
+    ]);
+    
+    // Temporarily remove our filter to prevent recursion
+    remove_filter('paginate_links_output', __NAMESPACE__ . '\\custom_paginate_links_output');
+    $links = paginate_links($links_args);
+    add_filter('paginate_links_output', __NAMESPACE__ . '\\custom_paginate_links_output', 10, 2);
+    
+    $processing = false;
+
+    if (empty($links)) {
+        return '';
+    }
+
+    // Build DaisyUI join structure
+    $html = '';
+
+    // Previous button
+    if ($current_page > 1) {
+        $prev_url = get_pagenum_link($current_page - 1);
+        $html .= sprintf(
+            '<a href="%s" class="join-item btn btn-sm btn-square bg-base-100">%s</a>',
+            esc_url($prev_url),
+            '<i data-lucide="chevron-left" class="w-4 h-4"></i>'
+        );
+    } else {
+        $html .= '<span class="join-item btn btn-sm btn-square bg-base-100 btn-disabled"><i data-lucide="chevron-left" class="w-4 h-4"></i></span>';
+    }
+
+    // Page numbers
+    foreach ($links as $link) {
+        // Extract page number from link
+        if (preg_match('/<a[^>]*href=["\']([^"\']+)["\'][^>]*>(\d+)<\/a>/', $link, $matches)) {
+            $url = $matches[1];
+            $page_num = $matches[2];
+            $html .= sprintf(
+                '<a href="%s" class="join-item btn btn-sm btn-square bg-base-100" aria-label="%s">%s</a>',
+                esc_url($url),
+                esc_attr($page_num),
+                esc_html($page_num)
+            );
+        } elseif (preg_match('/<span[^>]*class=["\'][^"\']*page-numbers[^"\']*current[^"\']*["\'][^>]*>(\d+)<\/span>/', $link, $matches)) {
+            // Current page - use radio input
+            $page_num = $matches[1];
+            $html .= sprintf(
+                '<input class="join-item btn btn-sm btn-square bg-base-100" type="radio" name="pagination" aria-label="%s" checked="checked" />',
+                esc_attr($page_num)
+            );
+        } elseif (preg_match('/<span[^>]*class=["\'][^"\']*page-numbers[^"\']*dots[^"\']*["\'][^>]*>/', $link)) {
+            // Dots - skip or show as disabled
+            $html .= '<span class="join-item btn btn-sm btn-square bg-base-100 btn-disabled">...</span>';
+        } elseif (preg_match('/<a[^>]*href=["\']([^"\']+)["\'][^>]*class=["\'][^"\']*prev[^"\']*["\'][^>]*>/', $link)) {
+            // Previous link already handled above
+            continue;
+        } elseif (preg_match('/<a[^>]*href=["\']([^"\']+)["\'][^>]*class=["\'][^"\']*next[^"\']*["\'][^>]*>/', $link)) {
+            // Next link will be handled below
+            continue;
+        }
+    }
+
+    // Next button
+    if ($current_page < $total_pages) {
+        $next_url = get_pagenum_link($current_page + 1);
+        $html .= sprintf(
+            '<a href="%s" class="join-item btn btn-sm btn-square bg-base-100">%s</a>',
+            esc_url($next_url),
+            '<i data-lucide="chevron-right" class="w-4 h-4"></i>'
+        );
+    } else {
+        $html .= '<span class="join-item btn btn-sm btn-square bg-base-100 btn-disabled"><i data-lucide="chevron-right" class="w-4 h-4"></i></span>';
+    }
+
+    return $html;
+}
+
+add_filter('paginate_links_output', __NAMESPACE__ . '\\custom_paginate_links_output', 10, 2);
