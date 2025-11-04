@@ -20,28 +20,7 @@
         </li>
       </ul>
     </div>
-    <div class="avatar-group -space-x-2 mt-2 justify-center">
-      <div class="avatar">
-        <a href="/" class="w-6 block" title="Jamie">
-          <img src="https://img.daisyui.com/images/profile/demo/batperson@192.webp" />
-        </a>
-      </div>
-      <div class="avatar">
-        <a href="/" class="w-6 block" title="Jamie">
-          <img src="https://img.daisyui.com/images/profile/demo/spiderperson@192.webp" />
-        </a>
-      </div>
-      <div class="avatar">
-        <a href="/" class="w-6 block" title="Jamie">
-          <img src="https://img.daisyui.com/images/profile/demo/averagebulk@192.webp" />
-        </a>
-      </div>
-      <div class="avatar">
-        <a href="/" class="w-6 block" title="Jamie">
-          <img src="https://img.daisyui.com/images/profile/demo/wonderperson@192.webp" />
-        </a>
-      </div>
-    </div>
+    @include('partials.entry-authors')
   </div>
   <div class="mt-4 rounded-lg bg-base-100 p-4">
   </div>

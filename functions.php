@@ -73,6 +73,54 @@ collect(['setup', 'filters', 'podcast-types'])
     });
 
 /**
+ * Get all authors/participants for a post.
+ * 
+ * This includes:
+ * - The post author
+ * - For podcasts: users listed in members and guests fields
+ *
+ * @param int $post_id Post ID
+ * @return array Array of user IDs (unique)
+ */
+function get_post_all_authors($post_id) {
+    $authors = [];
+    
+    // Get the post author
+    $author_id = get_post_field('post_author', $post_id);
+    if ($author_id) {
+        $authors[] = (int)$author_id;
+    }
+    
+    // If it's a podcast, also get members and guests
+    $post_type = get_post_type($post_id);
+    if ($post_type === 'podcast') {
+        // Get members field
+        $members = get_post_meta($post_id, 'members', true);
+        if (!empty($members) && is_array($members)) {
+            foreach ($members as $member_id) {
+                $member_id = (int)$member_id;
+                if ($member_id && !in_array($member_id, $authors, true)) {
+                    $authors[] = $member_id;
+                }
+            }
+        }
+        
+        // Get guests field
+        $guests = get_post_meta($post_id, 'guests', true);
+        if (!empty($guests) && is_array($guests)) {
+            foreach ($guests as $guest_id) {
+                $guest_id = (int)$guest_id;
+                if ($guest_id && !in_array($guest_id, $authors, true)) {
+                    $authors[] = $guest_id;
+                }
+            }
+        }
+    }
+    
+    return $authors;
+}
+
+/**
  * Get all post IDs for a user including podcasts they participated in.
  * 
  * This includes:
