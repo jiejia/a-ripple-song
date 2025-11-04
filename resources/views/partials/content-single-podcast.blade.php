@@ -8,7 +8,7 @@
                     </a>
                 </div>
                 <div class="grid grid-flow-row gap-1">
-                    <h4 class="text-md font-bold"><a href="#">{!! $title !!}</a></h4>
+                    <h4 class="text-md font-bold">{!! $title !!}</h4>
                     @include('partials.entry-meta')
                 </div>
                 <div class="flex gap-2">

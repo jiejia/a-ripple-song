@@ -2,7 +2,6 @@
 
 @section('content')
 @include('partials.page-header')
-<ul class="grid grid-flow-row gap-y-4 mt-4">
   @if (! have_posts())
   <x-alert type="warning">
     {!! __('Sorry, no results were found.', 'sage') !!}
@@ -11,16 +10,17 @@
   {!! get_search_form(false) !!}
   @endif
 
+  <ul class="grid grid-flow-row gap-y-2">
 
   @while(have_posts())
 
   @php(the_post())
-  @include('partials.content-search')
+  @includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
   @endwhile
+  </ul>
 
 
-{!! get_the_posts_navigation() !!}
-</ul>
+{!! the_posts_pagination() !!}
 
 @endsection
 

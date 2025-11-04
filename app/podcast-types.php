@@ -132,7 +132,172 @@ add_action('cmb2_admin_init', function () {
             'teeny' => false,
         ],
     ]);
+
+    // 获取用户列表的辅助函数
+    $build_user_options = function($users) {
+        $options = [];
+        
+        // 获取所有角色信息
+        global $wp_roles;
+        if (!isset($wp_roles)) {
+            $wp_roles = new \WP_Roles();
+        }
+        
+        foreach ($users as $user) {
+            // 获取用户角色
+            $user_roles = $user->roles;
+            $role_name = '';
+            
+            if (!empty($user_roles)) {
+                // 获取第一个角色（通常是主角色）
+                $role_key = reset($user_roles);
+                // 获取角色的显示名称（本地化）
+                if (isset($wp_roles->roles[$role_key])) {
+                    $role_name = translate_user_role($wp_roles->roles[$role_key]['name']);
+                } else {
+                    $role_name = $role_key;
+                }
+            }
+            
+            // 构建显示文本：Display Name (username) role_name
+            $display_text = $user->display_name . ' (' . $user->user_login . ')';
+            if (!empty($role_name)) {
+                $display_text .= ' ' . $role_name;
+            }
+            
+            $options[$user->ID] = $display_text;
+        }
+        return $options;
+    };
+
+    // 获取成员列表（只能是 administrator、author 和 editor 角色）
+    $get_members_list = function() use ($build_user_options) {
+        $users = get_users([
+            'role__in' => ['administrator', 'author', 'editor'],
+            'orderby' => 'display_name',
+            'order' => 'ASC',
+        ]);
+        return $build_user_options($users);
+    };
+
+    // 获取嘉宾列表（只能是 contributor 角色）
+    $get_guests_list = function() use ($build_user_options) {
+        $users = get_users([
+            'role' => 'contributor',
+            'orderby' => 'display_name',
+            'order' => 'ASC',
+        ]);
+        return $build_user_options($users);
+    };
+
+    // Members 字段（多选用户，只能是 administrator、author 和 editor，默认当前用户）
+    $members_field = $cmb->add_field([
+        'name' => __('成员', 'sage'),
+        'desc' => __('选择播客成员（只能选择管理员、作者或编辑角色，可多选）', 'sage'),
+        'id' => 'members',
+        'type' => 'multicheck',
+        'options' => $get_members_list(),
+        'default_cb' => function($field_args, $field) {
+            // 如果是新建文章，返回当前用户ID数组（如果是 administrator、author 或 editor）
+            global $post;
+            if (!$post || $post->ID == 0 || !metadata_exists('post', $post->ID, 'members')) {
+                $current_user_id = get_current_user_id();
+                if ($current_user_id) {
+                    $current_user = get_userdata($current_user_id);
+                    // 只有当前用户是 administrator、author 或 editor 时才设置默认值
+                    if ($current_user && !empty(array_intersect(['administrator', 'author', 'editor'], $current_user->roles))) {
+                        return [$current_user_id];
+                    }
+                }
+            }
+            return [];
+        },
+    ]);
+
+    // Guests 字段（多选用户，只能是 contributor 角色，默认为空）
+    $cmb->add_field([
+        'name' => __('嘉宾', 'sage'),
+        'desc' => __('选择播客嘉宾（只能选择投稿者角色，可多选）', 'sage'),
+        'id' => 'guests',
+        'type' => 'multicheck',
+        'options' => $get_guests_list(),
+    ]);
 });
+
+/**
+ * 设置播客成员的默认值
+ * 新建播客时，如果 members 字段为空，自动添加当前用户（仅当用户是 administrator、author 或 editor 时）
+ *
+ * @param int $post_id 文章 ID
+ * @return void
+ */
+add_action('cmb2_before_save_post_fields_podcast_metabox', function ($post_id) {
+    // 检查是否是自动保存
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+
+    // 检查用户权限
+    if (!current_user_can('edit_post', $post_id)) {
+        return;
+    }
+
+    // 检查是否是新建文章（通过检查 meta 是否已存在）
+    $members_exist = metadata_exists('post', $post_id, 'members');
+    
+    // 如果是新建文章且表单中没有提交 members 值，设置默认值
+    if (!$members_exist) {
+        // 检查表单中是否有提交 members（multicheck 类型使用数组格式）
+        $submitted_members = isset($_POST['members']) ? $_POST['members'] : null;
+        
+        // 如果表单中没有提交值，设置默认值为当前用户（仅当用户是 administrator、author 或 editor 时）
+        if (empty($submitted_members)) {
+            $current_user_id = get_current_user_id();
+            if ($current_user_id) {
+                $current_user = get_userdata($current_user_id);
+                // 只有当前用户是 administrator、author 或 editor 时才设置默认值
+                if ($current_user && !empty(array_intersect(['administrator', 'author', 'editor'], $current_user->roles))) {
+                    // multicheck 类型使用数组格式，key 为用户ID，value 为 'on'
+                    $_POST['members'][$current_user_id] = 'on';
+                }
+            }
+        }
+    }
+});
+
+/**
+ * 备用方案：在 CMB2 保存之后检查并设置默认值
+ *
+ * @param int $post_id 文章 ID
+ * @return void
+ */
+add_action('cmb2_save_post_fields_podcast_metabox', function ($post_id) {
+    // 检查是否是自动保存
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+
+    // 检查用户权限
+    if (!current_user_can('edit_post', $post_id)) {
+        return;
+    }
+
+    // 获取当前的 members 值（multicheck 类型存储为数组）
+    $members = get_post_meta($post_id, 'members', true);
+    
+    // 如果 members 为空，设置默认值为当前用户（仅当用户是 administrator、author 或 editor 时）
+    if (empty($members)) {
+        $current_user_id = get_current_user_id();
+        if ($current_user_id) {
+            $current_user = get_userdata($current_user_id);
+            // 只有当前用户是 administrator、author 或 editor 时才设置默认值
+            if ($current_user && !empty(array_intersect(['administrator', 'author', 'editor'], $current_user->roles))) {
+                // multicheck 类型存储为数组，key 为用户ID
+                update_post_meta($post_id, 'members', [$current_user_id => 'on']);
+            }
+        }
+    }
+}, 20);
 
 /**
  * 自动获取音频文件时长
