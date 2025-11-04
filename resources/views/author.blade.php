@@ -1,8 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+    @php
+        $author = get_queried_object();
+        $author_name = $author->display_name ?? '';
+    @endphp
 
-    @include('partials.page-header')
+    @include('partials.page-header', ['title' => 'Author: ' . $author_name])
 
     {{-- Use the main query which has been modified via pre_get_posts hook --}}
     @if(have_posts())

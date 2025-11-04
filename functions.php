@@ -263,6 +263,16 @@ function modify_author_archive_query($query) {
             }
         }
         
+        // IMPORTANT: Store the author object in the query before we clear the author vars
+        // This allows templates to access the author via get_queried_object()
+        if ($author_id) {
+            $author_object = get_userdata($author_id);
+            if ($author_object) {
+                $query->queried_object = $author_object;
+                $query->queried_object_id = $author_id;
+            }
+        }
+        
         // Debug log
         if (defined('WP_DEBUG') && WP_DEBUG) {
             error_log("Author Archive Query - Author ID: " . $author_id);
