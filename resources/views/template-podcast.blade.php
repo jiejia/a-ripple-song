@@ -1,5 +1,5 @@
 {{--
-  Template Name: Blog Template
+  Template Name: Podcast Template
 --}}
 
 @extends('layouts.app')
@@ -8,13 +8,13 @@
 
     @include('partials.page-header')
     @php(query_posts([
-        'post_type' => 'post',
+        'post_type' => 'podcast',
         'posts_per_page' => get_option('posts_per_page'),
         'paged' => get_query_var('paged') ? get_query_var('paged') : 1
     ]))
 
     @while(have_posts()) @php(the_post())
-    @includeFirst(['partials.content'])
+    @includeFirst(['partials.content-podcast'])
     @endwhile
 
     {!! the_posts_pagination() !!}

@@ -291,3 +291,19 @@ function custom_paginate_links_output($output, $args) {
 }
 
 add_filter('paginate_links_output', __NAMESPACE__ . '\\custom_paginate_links_output', 10, 2);
+
+/**
+ * Modify tag archive query to include both post and podcast types.
+ *
+ * By default, WordPress tag archives only query 'post' type.
+ * This filter ensures that both 'post' and 'podcast' types are included.
+ *
+ * @param WP_Query $query The WordPress query object.
+ * @return void
+ */
+add_action('pre_get_posts', function ($query) {
+    // Only modify the main query on tag archive pages
+    if (!is_admin() && $query->is_main_query() && $query->is_tag()) {
+        $query->set('post_type', ['post', 'podcast']);
+    }
+});

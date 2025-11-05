@@ -18,7 +18,7 @@ import AudioMotionAnalyzer from 'audiomotion-analyzer';
 let audioMotion = null;
 
 const sound = new Howl({
-  src: ['http://localhost:8888/SoundHelix-Song-1.mp3'],
+  src: ['http://localhost:8888/韩寒-奉献.flac'],
   loop: true,
   onplay: () => {
     if (!audioMotion) {

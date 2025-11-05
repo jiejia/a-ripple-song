@@ -300,3 +300,80 @@ function modify_author_archive_query($query) {
     }
 }
 add_action('pre_get_posts', 'modify_author_archive_query');
+
+/**
+ * Get primary navigation menu items with parent-child relationship structure
+ * 
+ * @param string $location Menu location name, defaults to 'primary_navigation'
+ * @return array Returns an array containing top-level menu items and their child menu items mapping
+ */
+function get_primary_navigation_menu_items($location = 'primary_navigation') {
+    $menu_locations = get_nav_menu_locations();
+    $menu_items = [];
+    
+    if (isset($menu_locations[$location])) {
+        $menu_id = $menu_locations[$location];
+        $menu_items = wp_get_nav_menu_items($menu_id);
+    }
+    
+    if (!$menu_items) {
+        return [];
+    }
+    
+    // Build parent-child relationship array
+    $children = [];
+    foreach ($menu_items as $item) {
+        if ($item->menu_item_parent == 0) {
+            $children[$item->ID] = [];
+        }
+    }
+    
+    foreach ($menu_items as $item) {
+        if ($item->menu_item_parent != 0) {
+            $children[$item->menu_item_parent][] = $item;
+        }
+    }
+    
+    // Return top-level menu items with their children
+    $top_level_items = [];
+    foreach ($menu_items as $item) {
+        if ($item->menu_item_parent == 0) {
+            $top_level_items[] = [
+                'item' => $item,
+                'children' => $children[$item->ID] ?? []
+            ];
+        }
+    }
+    
+    return $top_level_items;
+}
+
+/**
+ * Check if a menu item is active (current page or has active child)
+ * 
+ * @param object $item The menu item object
+ * @param array $children Array of child menu items
+ * @param string $current_url The current page URL
+ * @return bool True if the menu item is active
+ */
+function is_menu_item_active($item, $children = [], $current_url = '') {
+    if (empty($current_url)) {
+        $current_url = home_url($_SERVER['REQUEST_URI']);
+    }
+    
+    // Check if current item is active
+    $is_current = ($item->url === $current_url);
+    
+    // Check if any child item is active
+    $has_active_child = false;
+    if (!empty($children)) {
+        foreach ($children as $child) {
+            if ($child->url === $current_url) {
+                $has_active_child = true;
+                break;
+            }
+        }
+    }
+    
+    return $is_current || $has_active_child;
+}

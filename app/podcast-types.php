@@ -32,11 +32,23 @@ add_action('init', function () {
         'has_archive' => true,
         'menu_icon' => 'dashicons-microphone',
         'supports' => ['title', 'editor', 'thumbnail', 'excerpt', 'author'],
+        'taxonomies' => ['post_tag'],
         'show_in_rest' => true,
+        'show_in_nav_menus' => true, // 允许在导航菜单中显示
         'rewrite' => ['slug' => 'podcasts'],
         'menu_position' => 5,
     ]);
 });
+
+/**
+ * Register Post Tag Taxonomy for Podcast
+ * 让播客文章类型支持 WordPress 默认标签
+ *
+ * @return void
+ */
+add_action('init', function () {
+    register_taxonomy_for_object_type('post_tag', 'podcast');
+}, 10);
 
 /**
  * Register Podcast Category Taxonomy
@@ -61,6 +73,7 @@ add_action('init', function () {
         'hierarchical' => true,
         'show_ui' => true,
         'show_admin_column' => true,
+        'show_in_nav_menus' => true, // 允许在导航菜单中显示
         'query_var' => true,
         'show_in_rest' => true,
         'rewrite' => ['slug' => 'podcast-category'],
@@ -395,3 +408,55 @@ add_action('cmb2_save_post_fields', function ($post_id) {
         error_log("播客 #{$post_id}: getID3 错误 - " . $e->getMessage());
     }
 }, 20, 1);
+
+/**
+ * 在导航菜单的 Screen Options 中默认显示播客文章类型和分类
+ *
+ * @param array $user_metaboxes 用户已选中的 metaboxes
+ * @param int $screen_id 当前屏幕 ID
+ * @param int $user_id 当前用户 ID
+ * @return array
+ */
+add_filter('default_hidden_meta_boxes', function ($hidden, $screen) {
+    // 只在导航菜单页面生效
+    if ($screen->id === 'nav-menus') {
+        // 从隐藏列表中移除播客相关的 metaboxes
+        $hidden = array_diff($hidden, [
+            'add-podcast',           // 播客文章类型
+            'add-podcast_category',  // 播客分类
+        ]);
+    }
+    return $hidden;
+}, 10, 2);
+
+/**
+ * 确保播客文章类型和分类在导航菜单中可见
+ * 为用户设置默认的显示选项
+ *
+ * @param int $user_id 用户 ID
+ * @return void
+ */
+add_action('admin_init', function () {
+    // 检查是否在导航菜单页面
+    global $pagenow;
+    if ($pagenow === 'nav-menus.php') {
+        $user_id = get_current_user_id();
+        
+        // 获取用户的 metabox 隐藏设置
+        $hidden_meta_boxes = get_user_option('metaboxhidden_nav-menus', $user_id);
+        
+        // 如果是首次访问（没有设置），或者需要更新
+        if ($hidden_meta_boxes === false || !is_array($hidden_meta_boxes)) {
+            $hidden_meta_boxes = [];
+        }
+        
+        // 从隐藏列表中移除播客相关的 metaboxes
+        $hidden_meta_boxes = array_diff($hidden_meta_boxes, [
+            'add-podcast',
+            'add-podcast_category',
+        ]);
+        
+        // 更新用户选项
+        update_user_option($user_id, 'metaboxhidden_nav-menus', $hidden_meta_boxes, true);
+    }
+});
