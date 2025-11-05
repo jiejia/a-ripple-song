@@ -152,6 +152,16 @@ add_action('widgets_init', function () {
         'name' => __('Footer', 'sage'),
         'id' => 'sidebar-footer',
     ] + $config);
+
+    register_sidebar([
+        'name' => __('Home Main', 'sage'),
+        'id' => 'home-main',
+        'description' => __('首页主要区域，用于显示首页的各种内容模块', 'sage'),
+        'before_widget' => '<div class="widget %1$s %2$s mb-4">',
+        'after_widget' => '</div>',
+        'before_title' => '<h2 class="widget-title text-lg font-bold mb-2">',
+        'after_title' => '</h2>',
+    ]);
 });
 
 /**

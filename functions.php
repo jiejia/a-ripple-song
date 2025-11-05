@@ -62,7 +62,7 @@ Application::configure()
 |
 */
 
-collect(['setup', 'filters', 'podcast-types'])
+collect(['setup', 'filters', 'podcast-types', 'widgets'])
     ->each(function ($file) {
         if (! locate_template($file = "app/{$file}.php", true, true)) {
             wp_die(
