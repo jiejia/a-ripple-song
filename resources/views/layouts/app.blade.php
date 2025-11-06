@@ -11,6 +11,7 @@
   <style>
     html {
       margin-top: 0px !important;
+      scrollbar-gutter: stable;
     }
 
     #wpadminbar {
@@ -20,27 +21,29 @@
 </head>
 
 <body @php(body_class('bg-base-200'))>
-  <div class="max-w-screen-xl mx-auto">
+  <div class="max-w-screen-xl mx-auto mb-[230px] md:mb-0">
     @php(wp_body_open())
     <div id="app" class="p-4 gap-4">
       @include('sections.header')
-      <div class="grid grid-cols-[220px_1fr_300px] gap-4 mt-[55px] items-start">
+      <div class="grid lg:grid-cols-[220px_1fr_300px] md:grid-cols-[1fr_300px] grid-cols-[1fr] gap-4 mt-[55px] items-start relative">
         @include('sections.leftbar')
         <div class="">
           <main id="main" class="main">
             @yield('content')
-            @include('sections.footer')
           </main>
-          @php(do_action('get_footer'))
-          @php(wp_footer())
+
         </div>
         @hasSection('sidebar')
         @yield('sidebar')
         @endif
       </div>
+      @include('sections.footer')
+      @php(do_action('get_footer'))
+      @php(wp_footer())
     </div>
-
   </div>
+  @include('sections.mobile-menu')
+  @include('sections.search-modal')
 </body>
 
 </html>

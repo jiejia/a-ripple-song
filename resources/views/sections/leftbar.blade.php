@@ -1,4 +1,4 @@
-<aside class="sticky top-[70px]">
+<aside class="sticky top-[70px] hidden lg:block md:hidden">
   @php
   $members = get_users([
   'role__in' => ['administrator', 'editor', 'author'],

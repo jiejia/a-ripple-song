@@ -1,4 +1,4 @@
-<div class="mt-4 rounded-lg bg-base-100 p-4">
+<div class="rounded-lg bg-base-100 p-4">
     <div class="grid grid-flow-row gap-2">
         <div class="bg-base-200/50 rounded-lg hover:bg-base-200">
             <div class="p-4 grid grid-cols-[60px_1fr_60px] items-center">

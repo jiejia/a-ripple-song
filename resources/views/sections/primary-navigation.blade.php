@@ -1,4 +1,4 @@
-<ul class="grid grid-flow-col gap-2 text-md justify-center" id="menu-1">
+<ul class="xl:grid hidden grid-flow-col gap-2 text-md justify-center" id="menu-1">
   @php
     $menu_items = get_primary_navigation_menu_items();
     $current_url = home_url($_SERVER['REQUEST_URI']);
