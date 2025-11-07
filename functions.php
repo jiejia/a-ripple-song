@@ -320,28 +320,27 @@ function get_primary_navigation_menu_items($location = 'primary_navigation') {
         return [];
     }
     
-    // Build parent-child relationship array
-    $children = [];
+    // Build hierarchical menu structure (up to 3 levels)
+    $menu_items_by_id = [];
     foreach ($menu_items as $item) {
-        if ($item->menu_item_parent == 0) {
-            $children[$item->ID] = [];
+        $menu_items_by_id[$item->ID] = [
+            'item' => $item,
+            'children' => []
+        ];
+    }
+    
+    // Build parent-child relationships recursively
+    foreach ($menu_items as $item) {
+        if ($item->menu_item_parent != 0 && isset($menu_items_by_id[$item->menu_item_parent])) {
+            $menu_items_by_id[$item->menu_item_parent]['children'][] = &$menu_items_by_id[$item->ID];
         }
     }
     
-    foreach ($menu_items as $item) {
-        if ($item->menu_item_parent != 0) {
-            $children[$item->menu_item_parent][] = $item;
-        }
-    }
-    
-    // Return top-level menu items with their children
+    // Return only top-level menu items (with their nested children)
     $top_level_items = [];
     foreach ($menu_items as $item) {
         if ($item->menu_item_parent == 0) {
-            $top_level_items[] = [
-                'item' => $item,
-                'children' => $children[$item->ID] ?? []
-            ];
+            $top_level_items[] = $menu_items_by_id[$item->ID];
         }
     }
     
@@ -349,10 +348,10 @@ function get_primary_navigation_menu_items($location = 'primary_navigation') {
 }
 
 /**
- * Check if a menu item is active (current page or has active child)
+ * Check if a menu item is active (current page or has active child/grandchild)
  * 
  * @param object $item The menu item object
- * @param array $children Array of child menu items
+ * @param array $children Array of child menu items (with nested structure)
  * @param string $current_url The current page URL
  * @return bool True if the menu item is active
  */
@@ -364,16 +363,25 @@ function is_menu_item_active($item, $children = [], $current_url = '') {
     // Check if current item is active
     $is_current = ($item->url === $current_url);
     
-    // Check if any child item is active
-    $has_active_child = false;
+    // Recursively check if any descendant item is active
+    $has_active_descendant = false;
     if (!empty($children)) {
-        foreach ($children as $child) {
+        foreach ($children as $child_data) {
+            $child = is_array($child_data) ? $child_data['item'] : $child_data;
+            $grandchildren = is_array($child_data) && isset($child_data['children']) ? $child_data['children'] : [];
+            
             if ($child->url === $current_url) {
-                $has_active_child = true;
+                $has_active_descendant = true;
+                break;
+            }
+            
+            // Check grandchildren recursively
+            if (!empty($grandchildren) && is_menu_item_active($child, $grandchildren, $current_url)) {
+                $has_active_descendant = true;
                 break;
             }
         }
     }
     
-    return $is_current || $has_active_child;
+    return $is_current || $has_active_descendant;
 }

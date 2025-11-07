@@ -34,12 +34,39 @@
                 </a>
               </summary>
               <ul>
-                @foreach ($children as $child)
+                @foreach ($children as $child_data)
                   @php
-                    $child_is_active = $child->url === $current_url;
+                    $child = $child_data['item'];
+                    $grandchildren = $child_data['children'];
+                    $has_grandchildren = !empty($grandchildren);
+                    
+                    $child_is_active = is_menu_item_active($child, $grandchildren, $current_url);
                     $child_active_class = $child_is_active ? 'active font-semibold' : '';
                   @endphp
-                  <li><a href="{{ $child->url }}" class="{{ $child_active_class }}">{{ $child->title }}</a></li>
+                  
+                  @if ($has_grandchildren)
+                    <li>
+                      <details open>
+                        <summary class="{{ $child_active_class }} flex justify-between items-center">
+                          <a href="{{ $child->url }}" class="flex-1" onclick="event.stopPropagation()">
+                            {{ $child->title }}
+                          </a>
+                        </summary>
+                        <ul>
+                          @foreach ($grandchildren as $grandchild_data)
+                            @php
+                              $grandchild = $grandchild_data['item'];
+                              $grandchild_is_active = $grandchild->url === $current_url;
+                              $grandchild_active_class = $grandchild_is_active ? 'active font-semibold' : '';
+                            @endphp
+                            <li><a href="{{ $grandchild->url }}" class="{{ $grandchild_active_class }}">{{ $grandchild->title }}</a></li>
+                          @endforeach
+                        </ul>
+                      </details>
+                    </li>
+                  @else
+                    <li><a href="{{ $child->url }}" class="{{ $child_active_class }}">{{ $child->title }}</a></li>
+                  @endif
                 @endforeach
               </ul>
             </details>
