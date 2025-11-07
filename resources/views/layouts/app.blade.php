@@ -44,6 +44,7 @@
   </div>
   @include('sections.mobile-menu')
   @include('sections.search-modal')
+  @include('sections.playlist-drawer')
 </body>
 
 </html>

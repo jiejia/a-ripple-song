@@ -6,11 +6,14 @@ import Swup from 'swup';
 import { createIcons, icons } from 'lucide';
 import { Howl, Howler } from 'howler';
 import AudioMotionAnalyzer from 'audiomotion-analyzer';
+import SwupFormsPlugin from '@swup/forms-plugin';
+
 
 // 初始化 Swup (v4.x 版本)
 const swup = new Swup({
   containers: ['#swup-main', '#swup-header'], // 指定要替换的容器
   animateHistoryBrowsing: true,
+  plugins: [new SwupFormsPlugin()]
 });
 
 // 初始化函数 - 在页面加载和 Swup 切换后都会调用

@@ -1,4 +1,4 @@
-<form role="search" method="get" class="search-form" action="{{ home_url('/') }}">
+<form role="search" method="get" class="search-form" action="{{ home_url('/') }}" data-swup-form data-swup-animation="overlay">
   <div class="grid grid-cols-[1fr_auto] gap-2">
     <label class="input w-full">
       <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

@@ -27,7 +27,9 @@
             </div>
             <div class="mt-2 grid grid-cols-[1fr_1fr_1fr] gap-4 items-center w-full">
                 <div>
-                    <i data-lucide="list-music" class="cursor-pointer w-4 h-4"></i>
+                    <label for="playlist-drawer" class="cursor-pointer">
+                        <i data-lucide="list-music" class="w-4 h-4"></i>
+                    </label>
                 </div>
                 <div class="flex justify-center gap-4 items-center">
                     <i data-lucide="skip-back" class="cursor-pointer w-4 h-4"></i>
