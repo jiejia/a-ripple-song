@@ -2,18 +2,32 @@ import.meta.glob([
   '../images/**',
   '../fonts/**',
 ]);
-
+import Swup from 'swup';
 import { createIcons, icons } from 'lucide';
-
-document.addEventListener('DOMContentLoaded', () => {
-  // 如果你想只包含某些图标以减小包体积
-  // createIcons({ icons: { Menu: icons.Menu, X: icons.X } });
-  createIcons({ icons });
-});
-
-// resources/scripts/app.js
 import { Howl, Howler } from 'howler';
 import AudioMotionAnalyzer from 'audiomotion-analyzer';
+
+// 初始化 Swup (v4.x 版本)
+const swup = new Swup({
+  containers: ['#swup-main', '#swup-header'], // 指定要替换的容器
+  animateHistoryBrowsing: true,
+});
+
+// 初始化函数 - 在页面加载和 Swup 切换后都会调用
+function init() {
+  // 重新初始化 Lucide 图标
+  createIcons({ icons });
+  
+  // 其他需要在页面切换后重新初始化的代码可以放在这里
+  console.log('页面初始化完成');
+}
+
+// 页面首次加载
+document.addEventListener('DOMContentLoaded', init);
+
+// Swup v4.x 使用 hooks API
+// 在新内容加载完成后重新初始化
+swup.hooks.on('content:replace', init);
 
 let audioMotion = null;
 
@@ -137,6 +151,8 @@ function stopTimer() {
 }
 
 let volumeAutoCloseTimer = null;
+let lastVolume = 1; // 保存静音前的音量值
+let isMuted = false; // 静音状态
 
 function toggleVolumePanel() {
   const volumePanel = document.getElementById('volume-panel');
@@ -196,7 +212,62 @@ function startVolumeAutoCloseTimer() {
 }
 
 function changeVolume(value) {
-  Howler.volume(value / 300);
+  const volume = parseFloat(value) / 300;
+  Howler.volume(volume);
+  
+  // 更新静音状态和按钮
+  const muteCheckbox = document.getElementById('mute-checkbox');
+  const volumeButton = document.getElementById('volume-button');
+  
+  if (volume === 0) {
+    isMuted = true;
+    if (muteCheckbox) muteCheckbox.checked = true;
+    if (volumeButton) {
+      volumeButton.setAttribute('data-lucide', 'volume-x');
+      createIcons({ icons });
+    }
+  } else {
+    isMuted = false;
+    if (muteCheckbox) muteCheckbox.checked = false;
+    if (volumeButton) {
+      volumeButton.setAttribute('data-lucide', 'volume-2');
+      createIcons({ icons });
+    }
+    lastVolume = volume; // 保存非零音量值
+  }
+  
+  // 重置自动关闭定时器
+  startVolumeAutoCloseTimer();
+}
+
+function toggleMute() {
+  const volumeSlider = document.getElementById('volume-slider');
+  const muteCheckbox = document.getElementById('mute-checkbox');
+  const volumeButton = document.getElementById('volume-button');
+  
+  if (isMuted) {
+    // 取消静音，恢复之前的音量
+    const restoreVolume = lastVolume > 0 ? lastVolume : 1;
+    Howler.volume(restoreVolume);
+    volumeSlider.value = restoreVolume * 300;
+    isMuted = false;
+    if (muteCheckbox) muteCheckbox.checked = false;
+    if (volumeButton) {
+      volumeButton.setAttribute('data-lucide', 'volume-2');
+      createIcons({ icons });
+    }
+  } else {
+    // 静音
+    lastVolume = Howler.volume(); // 保存当前音量
+    Howler.volume(0);
+    volumeSlider.value = 0;
+    isMuted = true;
+    if (muteCheckbox) muteCheckbox.checked = true;
+    if (volumeButton) {
+      volumeButton.setAttribute('data-lucide', 'volume-x');
+      createIcons({ icons });
+    }
+  }
   
   // 重置自动关闭定时器
   startVolumeAutoCloseTimer();
@@ -204,6 +275,7 @@ function changeVolume(value) {
 
 window.toggleVolumePanel = toggleVolumePanel;
 window.changeVolume = changeVolume;
+window.toggleMute = toggleMute;
 
 
 

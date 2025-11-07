@@ -15,7 +15,7 @@
       <input type="search" placeholder="{!! esc_attr_x('Search &hellip;', 'placeholder', 'sage') !!}"
         value="{{ get_search_query() }}" name="s">
     </label>
-    <a class="btn btn-square bg-base-100" href="{{ get_feed_link() }}">
+    <a class="btn btn-square bg-base-100" href="{{ get_feed_link() }}" target="_blank">
       <i data-lucide="Rss" class="w-4 h-4"></i>
     </a>
   </div>

@@ -28,7 +28,7 @@
       <div class="grid lg:grid-cols-[220px_1fr_300px] md:grid-cols-[1fr_300px] grid-cols-[1fr] gap-4 mt-[55px] items-start relative">
         @include('sections.leftbar')
         <div class="">
-          <main id="main" class="main">
+          <main id="swup-main" class="main transition-fade">
             @yield('content')
           </main>
 

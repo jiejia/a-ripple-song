@@ -19,17 +19,17 @@
     <li>
       @if ($has_children)
         <div class="dropdown dropdown-hover dropdown-start h-full w-full">
-          <a class="grid place-items-center h-full w-full text-center px-4 rounded-lg {{ $active_class }}" href="{{ $item->url }}">
+          <a class="grid place-items-center h-full w-full text-center px-4 rounded-lg {{ $active_class }}" href="{{ $item->url }}" data-pjax>
             {{ $item->title }}
           </a>
           <ul tabindex="-1" class="dropdown-content menu bg-base-200/75 rounded-box z-1 w-52 p-2 shadow-sm">
             @foreach ($children as $child)
-              <li><a href="{{ $child->url }}">{{ $child->title }}</a></li>
+              <li><a href="{{ $child->url }}" data-pjax>{{ $child->title }}</a></li>
             @endforeach
           </ul>
         </div>
       @else
-        <a href="{{ $item->url }}" class="grid place-items-center h-full w-full text-center px-4 rounded-lg {{ $active_class }}">
+        <a href="{{ $item->url }}" class="grid place-items-center h-full w-full text-center px-4 rounded-lg {{ $active_class }}" data-pjax>
           {{ $item->title }}
         </a>
       @endif
