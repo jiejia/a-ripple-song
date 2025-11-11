@@ -460,3 +460,31 @@ add_action('admin_init', function () {
         update_user_option($user_id, 'metaboxhidden_nav-menus', $hidden_meta_boxes, true);
     }
 });
+
+
+/**
+ * Register custom fields for REST API
+ */
+add_action('rest_api_init', function () {
+    // 注册 audio_file 字段
+    register_rest_field('podcast', 'audio_file', [
+        'get_callback' => function ($post) {
+            return get_post_meta($post['id'], 'audio_file', true);
+        },
+        'schema' => [
+            'description' => '音频文件 URL',
+            'type' => 'string',
+        ],
+    ]);
+
+    // 注册 duration 字段
+    register_rest_field('podcast', 'duration', [
+        'get_callback' => function ($post) {
+            return get_post_meta($post['id'], 'duration', true);
+        },
+        'schema' => [
+            'description' => '音频时长（秒）',
+            'type' => 'integer',
+        ],
+    ]);
+});

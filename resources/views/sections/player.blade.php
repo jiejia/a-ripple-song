@@ -1,4 +1,4 @@
-<div class="card md:bg-base-100 bg-base-300/90 mt-4 md:static fixed bottom-0 left-0 right-0 z-100">
+<div class="card md:bg-base-100 bg-base-300/90 mt-4 md:static fixed bottom-0 left-0 right-0 z-100" x-data>
     <div class="card-body p-4">
         <h2 class="text-lg font-bold">NOW PLAYING</h2>
         <div class="grid grid-cols-[60px_1fr] gap-4 items-center md:bg-base-300/50 bg-base-100/75 p-4 rounded-lg">
@@ -20,9 +20,9 @@
             </div>
             <div class="mt-0 w-full">
                 <div class="grid grid-cols-[30px_1fr_30px] gap-2 items-center text-xs">
-                    <span id="sound-current-time">00:00</span>
-                    <input type="range" min="0" max="100" value="0" id="sound-progress" class="range range-xs w-full text-base-content/20 [--range-bg:orange] [--range-thumb:blue] [--range-fill:0.5] " oninput="seek(this.value)" />
-                    <span class="justify-self-end" id="sound-duration">00:00</span>
+                    <span x-text="$store.player.currentTimeText">00:00</span>
+                    <input type="range" min="0" :max="$store.player.duration" :value="$store.player.currentTime" x-on:input="$store.player.seek($event.target.value)" class="range range-xs w-full text-base-content/20 [--range-bg:orange] [--range-thumb:blue] [--range-fill:0.5] " />
+                    <span class="justify-self-end" x-text="$store.player.durationText">00:00</span>
                 </div>
             </div>
             <div class="mt-2 grid grid-cols-[1fr_1fr_1fr] gap-4 items-center w-full">
@@ -33,7 +33,7 @@
                 </div>
                 <div class="flex justify-center gap-4 items-center">
                     <i data-lucide="skip-back" class="cursor-pointer w-4 h-4"></i>
-                    <i data-lucide="play" class="cursor-pointer w-4 h-4 bg-success-500 rounded-full" data-type="play" id="play-pause-button" onclick="playOrPause()"></i>
+                    <i :data-lucide="$store.player.isPlaying ? 'pause' : 'play'" class="cursor-pointer w-4 h-4 bg-success-500 rounded-full" x-on:click="$store.player.togglePlay()"></i>
                     <i data-lucide="skip-forward" class="cursor-pointer w-4 h-4"></i>
                 </div>
                 <div class="justify-self-end relative">
@@ -51,3 +51,8 @@
         </div>
     </div>
 </div>
+
+<script>
+
+
+</script>
