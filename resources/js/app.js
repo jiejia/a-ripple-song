@@ -21,11 +21,17 @@ Alpine.store('player', {
   isPlaying: false,
   currentTime: 0,
   duration: 0,
-  volume: 1,
+  volume: 0.5,
   isMuted: false,
   lastVolume: 1,
   volumePanelOpen: false,
   timer: null,
+  volumeGainNode: null, // 用于独立控制输出音量的 GainNode
+  
+  // playback rate
+  playbackRate: 1.0,
+  availableRates: [0.5, 0.75, 1, 1.25, 1.5, 2],
+  playbackRatePanelOpen: false,
 
   // playlist
   playlist: [],
@@ -41,6 +47,10 @@ Alpine.store('player', {
 
   get durationText() {
     return this.formatTime(this.duration);
+  },
+
+  get playbackRateText() {
+    return this.playbackRate === 1 ? '1x' : `${this.playbackRate}x`;
   },
 
   /**
@@ -166,14 +176,7 @@ Alpine.store('player', {
     this.currentEpisode = episode;
     this.loadTrack(episode.audioUrl);
 
-    // 播放当前节目（先播放，设置 soundId）
     this.play();
-
-    // 启动进度更新定时器
-    this.startProgressTimer();
-
-
-    console.log('✅ 播放器已初始化');
   },
 
   // ========== 播放器核心方法 ==========
@@ -184,16 +187,25 @@ Alpine.store('player', {
       this.currentSound.unload();
     }
 
+    // ⭐ 重置 soundId（新增这一行）
+    this.soundId = null;
+
     // 清理 AudioMotion
     if (this.audioMotion) {
       this.audioMotion.destroy();
       this.audioMotion = null;
     }
 
-    // 创建新的 Howl 实例
+    // 清理 volumeGainNode
+    if (this.volumeGainNode) {
+      this.volumeGainNode.disconnect();
+      this.volumeGainNode = null;
+    }
+
+    // 创建新的 Howl 实例，volume 保持为 1，让波形图获取完整信号
     this.currentSound = new Howl({
       src: [audioUrl],
-      volume: this.volume,
+      volume: 1, // 保持最大音量，音量控制将在 GainNode 中进行
       onplay: () => {
         this.isPlaying = true;
         this.initAudioMotion();
@@ -203,7 +215,7 @@ Alpine.store('player', {
       },
       onload: () => {
         this.duration = this.currentSound.duration();
-        console.log('duration', this.durationText);
+        // console.log('duration', this.durationText);
       },
       onend: () => {
         this.playNext();
@@ -213,29 +225,26 @@ Alpine.store('player', {
 
   play() {
     if (!this.currentSound) {
-      console.log('currentSound is not loaded');
       return;
     }
     if (this.soundId === null) {
       this.soundId = this.currentSound.play();
+      // 应用播放速度
+      this.currentSound.rate(this.playbackRate, this.soundId);
     } else {
       this.currentSound.play(this.soundId);
     }
     this.isPlaying = true;
 
-    console.log('play', this.isPlaying);
+    this.startProgressTimer();
 
-    this.recreateIcons();
   },
 
   pause() {
     if (!this.currentSound) return;
     this.currentSound.pause(this.soundId);
     this.isPlaying = false;
-
-    console.log('pause', this.isPlaying);
-
-    this.recreateIcons();
+    this.stopProgressTimer();
   },
 
   recreateIcons() {
@@ -260,18 +269,17 @@ Alpine.store('player', {
 
   setVolume(volume) {
     this.volume = volume;
-    Howler.volume(volume);
 
-    // 如果当前有声音实例，也要设置实例的音量
-    if (this.currentSound) {
-      this.currentSound.volume(volume);
+    // 使用独立的 GainNode 控制音量，不影响波形图
+    if (this.volumeGainNode) {
+      this.volumeGainNode.gain.value = volume;
     }
 
     this.isMuted = volume == 0;
     this.recreateIcons();
 
     if (volume > 0) {
-      this.lastVolume = Howler.volume();
+      this.lastVolume = volume;
     }
 
   },
@@ -294,13 +302,56 @@ Alpine.store('player', {
     this.recreateIcons();
 
   },
+
+  /**
+   * 循环切换播放速度
+   */
+  cyclePlaybackRate() {
+    const currentIndex = this.availableRates.indexOf(this.playbackRate);
+    const nextIndex = (currentIndex + 1) % this.availableRates.length;
+    this.setPlaybackRate(this.availableRates[nextIndex]);
+  },
+
+  /**
+   * 切换播放速度面板显示状态
+   */
+  togglePlaybackRatePanel() {
+    this.playbackRatePanelOpen = !this.playbackRatePanelOpen;
+  },
+
+  /**
+   * 设置播放速度
+   */
+  setPlaybackRate(rate) {
+    this.playbackRate = rate;
+    if (this.currentSound && this.soundId !== null) {
+      this.currentSound.rate(rate, this.soundId);
+    }
+    // 设置后关闭面板
+    this.playbackRatePanelOpen = false;
+  },
   initAudioMotion() {
     if (!this.audioMotion && this.currentSound) {
       const container = document.getElementById('wave');
       if (container) {
+        const audioContext = Howler.ctx;
+        const sourceNode = this.currentSound._sounds[0]._node;
+
+        // 创建独立的 GainNode 用于音量控制
+        this.volumeGainNode = audioContext.createGain();
+        this.volumeGainNode.gain.value = this.volume;
+
+        // 断开原有连接
+        sourceNode.disconnect();
+
+        // 创建新的音频路径：source -> volumeGainNode -> destination
+        sourceNode.connect(this.volumeGainNode);
+        this.volumeGainNode.connect(audioContext.destination);
+
+        // AudioMotion 分析原始的 sourceNode（音量控制之前）
         this.audioMotion = new AudioMotionAnalyzer(container, {
-          source: this.currentSound._sounds[0]._node,
-          connectSpeakers: true,
+          source: sourceNode,
+          connectSpeakers: false, // 改为 false，因为我们手动管理连接
           mode: 4,
           alphaBars: false,
           ansiBands: false,
@@ -339,6 +390,11 @@ Alpine.store('player', {
     }, 100);
   },
 
+  stopProgressTimer() {
+    clearInterval(this.timer);
+    this.timer = null;
+  },
+
   // ========== 播放列表管理 ==========
   loadPlaylist() {
     const data = localStorage.getItem(this.storageKey);
@@ -352,6 +408,11 @@ Alpine.store('player', {
     localStorage.setItem(this.currentIndexKey, this.currentIndex.toString());
     // 触发播放列表更新事件，通知播放列表抽屉更新
     window.dispatchEvent(new CustomEvent('playlist-updated'));
+
+    // 重新初始化 Lucide 图标（延迟执行以确保 DOM 更新完成）
+    setTimeout(() => {
+      createIcons({ icons });
+    }, 10);
   },
 
   /**
@@ -442,6 +503,7 @@ Alpine.store('player', {
       this.currentIndex = index;
       const episode = this.playlist[index];
       this.currentEpisode = episode;
+      console.log('audio_url', episode.audioUrl);
       this.loadTrack(episode.audioUrl);
       this.play();
       this.savePlaylist();

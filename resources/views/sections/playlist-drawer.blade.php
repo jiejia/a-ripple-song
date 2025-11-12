@@ -1,4 +1,4 @@
-<div class="drawer drawer-end z-[200]">
+<div class="drawer drawer-end z-[200]" x-data>
   <input id="playlist-drawer" type="checkbox" class="drawer-toggle" />
   <div class="drawer-side">
     <label for="playlist-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
@@ -12,9 +12,9 @@
       <!-- Playlist Content -->
       <div class="p-4">
         <div class="text-sm text-base-content/60 mb-4 flex items-center justify-between">
-          <span id="playlist-stats">共 0 首</span>
+          <span x-text="'共 ' + $store.player.playlist.length + ' 首'"></span>
           <button 
-            onclick="if(confirm('确定要清空播放列表吗？')) window.playlistManager.clearPlaylist();"
+            @click="if(confirm('确定要清空播放列表吗？')) $store.player.clearPlaylist();"
             class="btn btn-ghost btn-xs"
             title="清空播放列表">
             <i data-lucide="trash-2" class="w-3 h-3"></i>
@@ -22,9 +22,60 @@
           </button>
         </div>
         
-        <!-- 播放列表容器 - 由 JavaScript 动态渲染 -->
-        <ul id="playlist-container" class="space-y-2">
-          <!-- 播放列表项将由 JavaScript 动态生成 -->
+        <!-- 播放列表容器 -->
+        <ul class="space-y-2">
+          <!-- 空状态 -->
+          <template x-if="$store.player.playlist.length === 0">
+            <div class="p-8 text-center text-base-content/60">
+              <i data-lucide="list-music" class="w-12 h-12 mx-auto mb-3 opacity-50"></i>
+              <p>播放列表为空</p>
+              <p class="text-sm mt-2">添加一些节目开始收听吧</p>
+            </div>
+          </template>
+
+          <!-- 播放列表项 -->
+          <template x-for="(episode, index) in $store.player.playlist" :key="episode.id">
+            <li 
+              @click="$store.player.playByIndex(index)"
+              :class="index === $store.player.currentIndex ? 'bg-primary/10 border-l-4 border-primary' : 'hover:bg-base-200'"
+              class="p-3 rounded-lg cursor-pointer transition-colors group">
+              <div class="flex gap-3 items-center">
+                <!-- 封面图 -->
+                <div class="relative flex-shrink-0">
+                  <img 
+                    :src="episode.featuredImage || 'https://cdn.pixabay.com/photo/2025/10/03/09/14/asters-9870320_960_720.jpg'" 
+                    :alt="episode.title" 
+                    class="w-14 h-14 rounded object-cover" />
+                  <!-- 播放中指示器 -->
+                  <template x-if="index === $store.player.currentIndex">
+                    <div class="absolute inset-0 flex items-center justify-center bg-black/30 rounded">
+                      <i data-lucide="volume-2" class="w-5 h-5 text-white"></i>
+                    </div>
+                  </template>
+                </div>
+
+                <!-- 节目信息 -->
+                <div class="flex-1 min-w-0">
+                  <p 
+                    x-text="episode.title"
+                    :class="index === $store.player.currentIndex ? 'text-primary' : ''"
+                    class="font-semibold text-sm truncate"></p>
+                  <p x-text="episode.publishDate" class="text-xs text-base-content/60"></p>
+                  <template x-if="episode.description">
+                    <p x-text="episode.description" class="text-xs text-base-content/50 truncate"></p>
+                  </template>
+                </div>
+
+                <!-- 删除按钮 -->
+                <button 
+                  @click.stop="$store.player.removeEpisode(episode.id)"
+                  class="btn btn-ghost btn-sm btn-circle opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0"
+                  title="删除">
+                  <i data-lucide="trash-2" class="w-4 h-4"></i>
+                </button>
+              </div>
+            </li>
+          </template>
         </ul>
       </div>
     </div>
