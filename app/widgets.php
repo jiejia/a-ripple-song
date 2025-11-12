@@ -167,9 +167,25 @@ class Podcast_List_Widget extends WP_Widget {
             <ul class="grid grid-flow-row gap-y-4 mt-4">
                 <?php if ($podcasts->have_posts()): ?>
                     <?php while ($podcasts->have_posts()): $podcasts->the_post(); ?>
+                        <?php
+                        $post_id = get_the_ID();
+                        $audio_file = get_post_meta($post_id, 'audio_file', true);
+                        $featured_image = get_the_post_thumbnail_url($post_id, 'medium') ?: 'https://cdn.pixabay.com/photo/2025/10/03/09/14/asters-9870320_960_720.jpg';
+                        $episode_data = [
+                            'id' => $post_id,
+                            'audioUrl' => $audio_file,
+                            'title' => get_the_title(),
+                            'description' => wp_strip_all_tags(get_the_excerpt()),
+                            'publishDate' => get_the_date(),
+                            'featuredImage' => $featured_image,
+                            'link' => get_permalink()
+                        ];
+                        ?>
                         <li>
                             <div class="bg-base-200/50 rounded-lg hover:bg-base-200">
-                                <div class="p-4 grid grid-cols-[60px_1fr_60px] items-center">
+                                <div class="p-4 grid grid-cols-[60px_1fr_60px] items-center" 
+                                     x-data 
+                                     data-episode='<?php echo esc_attr(wp_json_encode($episode_data)); ?>'>
                                     <div>
                                         <a href="<?php the_permalink(); ?>" class="block w-10 h-10 rounded-lg overflow-hidden">
                                             <?php if (has_post_thumbnail()): ?>
@@ -194,8 +210,15 @@ class Podcast_List_Widget extends WP_Widget {
                                         </p>
                                     </div>
                                     <div class="flex gap-2">
-                                        <i data-lucide="heart" class="text-xs h-4"></i>
-                                        <i data-lucide="ellipsis-vertical" class="text-xs h-4"></i>
+                                        <?php if ($audio_file): ?>
+                                            <button type="button" 
+                                                    @click="$store.player.addEpisode(JSON.parse($el.closest('[data-episode]').dataset.episode))"
+                                                    class="cursor-pointer hover:text-primary transition-colors"
+                                                    title="加入播放列表">
+                                                <i data-lucide="plus-circle" class="text-xs h-4"></i>
+                                            </button>
+                                        <?php endif; ?>
+                                        <i data-lucide="ellipsis-vertical" class="text-xs h-4 cursor-pointer"></i>
                                     </div>
                                 </div>
                             </div>

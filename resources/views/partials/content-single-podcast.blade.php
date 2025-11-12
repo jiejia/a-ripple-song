@@ -13,7 +13,7 @@
     ];
 @endphp
 
-<div class="rounded-lg bg-base-100 p-4">
+<div class="rounded-lg bg-base-100 p-4" x-data="{ episode: @js($episode_data) }">
     <div class="grid grid-flow-row gap-2">
         <div class="bg-base-200/50 rounded-lg hover:bg-base-200">
             <div class="p-4 grid grid-cols-[60px_1fr_60px] items-center">
@@ -32,11 +32,12 @@
                 </div>
                 <div class="flex gap-2">
                     @if($audio_file)
-                        <i data-lucide="plus-circle" 
-                           class="text-xs h-4 cursor-pointer hover:text-primary transition-colors" 
-                           data-episode='@json($episode_data)'
-                           onclick="window.playlistManager.addEpisode(JSON.parse(this.dataset.episode));"
-                           title="加入播放列表"></i>
+                        <button type="button" 
+                                @click="$store.player.addEpisode(episode)"
+                                class="cursor-pointer hover:text-primary transition-colors"
+                                title="加入播放列表">
+                            <i data-lucide="plus-circle" class="text-xs h-4"></i>
+                        </button>
                     @endif
                     <i data-lucide="ellipsis-vertical" class="text-xs h-4 cursor-pointer"></i>
                 </div>

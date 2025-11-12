@@ -469,14 +469,55 @@ Alpine.store('player', {
     if (this.currentIndex >= this.playlist.length) {
       this.currentIndex = Math.max(0, this.playlist.length - 1);
     }
+    
+    // 如果播放列表为空，停止播放并清空状态
+    if (this.playlist.length === 0) {
+      this.stopAndClear();
+    }
+    
     this.savePlaylist();
   },
 
   clearPlaylist() {
+    this.stopAndClear();
     this.playlist = [];
     this.currentIndex = 0;
     this.currentEpisode = null;
     this.savePlaylist();
+  },
+
+  /**
+   * 停止播放并清空所有状态
+   */
+  stopAndClear() {
+    // 停止当前播放
+    if (this.currentSound) {
+      this.currentSound.stop();
+      this.currentSound.unload();
+      this.currentSound = null;
+    }
+
+    // 清理定时器
+    this.stopProgressTimer();
+
+    // 清理 AudioMotion
+    if (this.audioMotion) {
+      this.audioMotion.destroy();
+      this.audioMotion = null;
+    }
+
+    // 清理 volumeGainNode
+    if (this.volumeGainNode) {
+      this.volumeGainNode.disconnect();
+      this.volumeGainNode = null;
+    }
+
+    // 重置所有播放状态
+    this.soundId = null;
+    this.isPlaying = false;
+    this.currentTime = 0;
+    this.duration = 0;
+    this.currentEpisode = null;
   },
 
   playNext() {
