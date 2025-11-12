@@ -37,13 +37,11 @@
                     <i data-lucide="skip-forward" class="cursor-pointer w-4 h-4"></i>
                 </div>
                 <div class="justify-self-end relative">
-                    <i data-lucide="volume-2" class="cursor-pointer w-4 h-4" id="volume-button" onclick="toggleVolumePanel()"></i>
-                    <div id="volume-panel" class="hidden absolute bottom-full right-[-8px] mb-2 bg-base-100 rounded-full shadow-lg p-2 w-10 h-32">
-                        <input type="range" min="0" max="300" value="300" id="volume-slider" class="w-22 absolute left-[-23px] bottom-[70px] range range-xs range-success transform -rotate-90" oninput="changeVolume(this.value)" />
+                    <i :data-lucide="$store.player.isMuted ? 'volume-x' : 'volume-2'" class="cursor-pointer w-4 h-4" x-on:click="$store.player.toggleVolumePanel()"></i>
+                    <div x-show="$store.player.volumePanelOpen" @click.outside="$store.player.volumePanelOpen = false"  class="absolute bottom-full right-[-8px] mb-2 bg-base-100 rounded-full shadow-lg p-2 w-10 h-32">
+                        <input type="range" min="0" max="1" step="0.01" :value="$store.player.volume" x-on:input="$store.player.setVolume($event.target.value)" class="w-22 absolute left-[-23px] bottom-[70px] range range-xs range-success transform -rotate-90" />
                         <label class="swap absolute bottom-3 left-3 cursor-pointer">
-                            <input type="checkbox" id="mute-checkbox" onchange="toggleMute()" />
-                            <i data-lucide="volume-x" class="w-4 h-4 swap-on"></i>
-                            <i data-lucide="volume-2" class="w-4 h-4 swap-off"></i>
+                            <i :data-lucide="$store.player.isMuted ? 'volume-x' : 'volume-2'" class="w-4 h-4 " x-on:click="$store.player.toggleMute()"></i>
                         </label>
                     </div>
                 </div>

@@ -212,19 +212,36 @@ Alpine.store('player', {
   },
 
   play() {
-    if (!this.currentSound) return;
+    if (!this.currentSound) {
+      console.log('currentSound is not loaded');
+      return;
+    }
     if (this.soundId === null) {
       this.soundId = this.currentSound.play();
     } else {
       this.currentSound.play(this.soundId);
     }
     this.isPlaying = true;
+
+    console.log('play', this.isPlaying);
+
+    this.recreateIcons();
   },
 
   pause() {
     if (!this.currentSound) return;
     this.currentSound.pause(this.soundId);
     this.isPlaying = false;
+
+    console.log('pause', this.isPlaying);
+
+    this.recreateIcons();
+  },
+
+  recreateIcons() {
+    setTimeout(() => {
+      createIcons({ icons });
+    }, 10);
   },
 
   togglePlay() {
@@ -233,10 +250,6 @@ Alpine.store('player', {
     } else {
       this.play();
     }
-    // 延迟调用以确保 DOM 已更新
-    setTimeout(() => {
-      createIcons({ icons });
-    }, 10);
   },
 
   seek(position) {
@@ -248,19 +261,38 @@ Alpine.store('player', {
   setVolume(volume) {
     this.volume = volume;
     Howler.volume(volume);
-    this.isMuted = volume === 0;
-    if (volume > 0) {
-      this.lastVolume = volume;
+
+    // 如果当前有声音实例，也要设置实例的音量
+    if (this.currentSound) {
+      this.currentSound.volume(volume);
     }
+
+    this.isMuted = volume == 0;
+    this.recreateIcons();
+
+    if (volume > 0) {
+      this.lastVolume = Howler.volume();
+    }
+
+  },
+
+  toggleVolumePanel() {
+    this.volumePanelOpen = !this.volumePanelOpen;
   },
 
   toggleMute() {
+
     if (this.isMuted) {
       this.setVolume(this.lastVolume);
     } else {
       this.lastVolume = this.volume;
       this.setVolume(0);
     }
+
+    console.log('isMuted', this.isMuted);
+
+    this.recreateIcons();
+
   },
   initAudioMotion() {
     if (!this.audioMotion && this.currentSound) {
