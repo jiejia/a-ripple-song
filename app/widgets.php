@@ -24,67 +24,163 @@ class Banner_Carousel_Widget extends WP_Widget {
         $slides = isset($instance['slides']) ? $instance['slides'] : [];
         
         if (empty($slides)) {
-            // 默认幻灯片
-            $slides = [
-                [
-                    'url' => 'https://cdn.pixabay.com/photo/2023/12/03/15/23/ai-generated-8427689_640.jpg',
-                    'alt' => '温暖的棕色调风景'
-                ],
-                [
-                    'url' => 'https://cdn.pixabay.com/photo/2024/09/24/09/47/ai-generated-9070891_640.png',
-                    'alt' => '米色建筑背景'
-                ]
-            ];
-        }
-        ?>
-        <div class="w-full rounded-lg bg-base-100 p-4 pb-2">
-            <div class="carousel w-full rounded-lg">
-                <?php foreach ($slides as $index => $slide): ?>
-                    <?php 
-                    $slide_id = 'slide' . ($index + 1);
-                    $prev_slide = 'slide' . (($index - 1 + count($slides)) % count($slides) + 1);
-                    $next_slide = 'slide' . (($index + 1) % count($slides) + 1);
-                    ?>
-                    <div id="<?php echo esc_attr($slide_id); ?>" class="carousel-item relative w-full rounded-lg">
-                        <img
-                            src="<?php echo esc_url($slide['url']); ?>"
-                            class="w-full h-48 object-cover rounded-lg"
-                            alt="<?php echo esc_attr($slide['alt']); ?>" />
-                        <?php if (count($slides) > 1): ?>
-                        <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-                            <a href="#<?php echo esc_attr($prev_slide); ?>" class="btn btn-circle btn-xs">❮</a>
-                            <a href="#<?php echo esc_attr($next_slide); ?>" class="btn btn-circle btn-xs">❯</a>
-                        </div>
-                        <?php endif; ?>
+            // 没有横幅时显示占位提示
+            ?>
+            <div class="w-full rounded-lg bg-base-100 p-4 pb-2">
+                <div class="w-full h-48 rounded-lg bg-base-200 flex items-center justify-center">
+                    <div class="text-center text-base-content/50">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <p class="text-sm font-medium"><?php _e('暂无横幅', 'sage'); ?></p>
+                        <p class="text-xs mt-1"><?php _e('请在后台添加横幅内容', 'sage'); ?></p>
                     </div>
-                <?php endforeach; ?>
+                </div>
             </div>
-        </div>
-        <?php
+            <?php
+        } else {
+            ?>
+            <div class="w-full rounded-lg bg-base-100 p-4 pb-2">
+                <div class="carousel w-full rounded-lg">
+                    <?php foreach ($slides as $index => $slide): ?>
+                        <?php 
+                        $slide_id = 'slide' . ($index + 1);
+                        $prev_slide = 'slide' . (($index - 1 + count($slides)) % count($slides) + 1);
+                        $next_slide = 'slide' . (($index + 1) % count($slides) + 1);
+                        $image_url = isset($slide['image']) ? $slide['image'] : '';
+                        $link_url = isset($slide['link']) ? $slide['link'] : '';
+                        $description = isset($slide['description']) ? $slide['description'] : '';
+                        $link_target = isset($slide['link_target']) ? $slide['link_target'] : '_self';
+                        ?>
+                        <div id="<?php echo esc_attr($slide_id); ?>" class="carousel-item relative w-full rounded-lg">
+                            <?php if ($link_url): ?>
+                                <a href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>" class="w-full">
+                                    <img
+                                        src="<?php echo esc_url($image_url); ?>"
+                                        class="w-full h-48 object-cover rounded-lg"
+                                        alt="<?php echo esc_attr($description); ?>" />
+                                </a>
+                            <?php else: ?>
+                                <img
+                                    src="<?php echo esc_url($image_url); ?>"
+                                    class="w-full h-48 object-cover rounded-lg"
+                                    alt="<?php echo esc_attr($description); ?>" />
+                            <?php endif; ?>
+                            <?php if (count($slides) > 1): ?>
+                            <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+                                <a href="#<?php echo esc_attr($prev_slide); ?>" class="btn btn-circle btn-xs">❮</a>
+                                <a href="#<?php echo esc_attr($next_slide); ?>" class="btn btn-circle btn-xs">❯</a>
+                            </div>
+                            <?php endif; ?>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <?php
+        }
         
         echo $args['after_widget'];
     }
     
     public function form($instance) {
-        $slides = isset($instance['slides']) ? $instance['slides'] : [
-            ['url' => '', 'alt' => '']
-        ];
+        $slides = isset($instance['slides']) && is_array($instance['slides']) ? $instance['slides'] : [];
+        
+        if (empty($slides)) {
+            $slides = [
+                ['image' => '', 'link' => '', 'description' => '', 'link_target' => '_self']
+            ];
+        }
+        
+        $widget_id = $this->get_field_id('slides');
+        $field_prefix = $this->get_field_name('slides');
         ?>
-        <div class="banner-carousel-widget-form">
+        <div
+            class="banner-carousel-widget-form"
+            data-widget-id="<?php echo esc_attr($widget_id); ?>"
+            data-field-prefix="<?php echo esc_attr($field_prefix); ?>"
+        >
             <p>
-                <strong><?php _e('幻灯片图片:', 'sage'); ?></strong><br>
-                <small><?php _e('每行输入一张图片的URL和描述，用竖线(|)分隔，例如: https://example.com/image.jpg|图片描述', 'sage'); ?></small>
+                <strong><?php _e('横幅幻灯片:', 'sage'); ?></strong>
             </p>
+            <div class="banner-slides-container" id="<?php echo esc_attr($widget_id); ?>_container">
+                <?php foreach ($slides as $index => $slide): ?>
+                    <?php 
+                    $image = isset($slide['image']) ? $slide['image'] : '';
+                    $link = isset($slide['link']) ? $slide['link'] : '';
+                    $description = isset($slide['description']) ? $slide['description'] : '';
+                    $link_target = isset($slide['link_target']) ? $slide['link_target'] : '_self';
+                    ?>
+                    <div class="banner-slide-item" style="margin-bottom: 15px; padding: 10px; border: 1px solid #ddd; border-radius: 4px; background: #f9f9f9;">
+                        <div style="margin-bottom: 8px;">
+                            <label style="display: block; margin-bottom: 4px; font-weight: 600;">
+                                <?php _e('图片地址:', 'sage'); ?>
+                            </label>
+                            <div style="display: flex; gap: 5px;">
+                                <input type="text" 
+                                       class="widefat banner-image-url" 
+                                       name="<?php echo $this->get_field_name('slides'); ?>[<?php echo $index; ?>][image]" 
+                                       value="<?php echo esc_attr($image); ?>" 
+                                       placeholder="<?php _e('图片URL', 'sage'); ?>" 
+                                       style="flex: 1;">
+                                <button type="button" 
+                                        class="button banner-select-image" 
+                                        style="flex-shrink: 0;">
+                                    <?php _e('选择图片', 'sage'); ?>
+                                </button>
+                            </div>
+                            <?php if ($image): ?>
+                                <div class="banner-image-preview" style="margin-top: 8px;">
+                                    <img src="<?php echo esc_url($image); ?>" style="max-width: 100%; height: auto; max-height: 150px; border-radius: 4px;">
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                        <div style="margin-bottom: 8px;">
+                            <label style="display: block; margin-bottom: 4px; font-weight: 600;">
+                                <?php _e('链接地址 (可选):', 'sage'); ?>
+                            </label>
+                            <input type="url" 
+                                   class="widefat banner-link-url" 
+                                   name="<?php echo $this->get_field_name('slides'); ?>[<?php echo $index; ?>][link]" 
+                                   value="<?php echo esc_attr($link); ?>" 
+                                   placeholder="<?php _e('https://example.com', 'sage'); ?>">
+                        </div>
+                        <div style="margin-bottom: 8px;">
+                            <label style="display: block; margin-bottom: 4px; font-weight: 600;">
+                                <?php _e('链接打开方式:', 'sage'); ?>
+                            </label>
+                            <select class="widefat banner-link-target" 
+                                    name="<?php echo $this->get_field_name('slides'); ?>[<?php echo $index; ?>][link_target]">
+                                <option value="_self" <?php selected($link_target, '_self'); ?>>
+                                    <?php _e('当前页面', 'sage'); ?>
+                                </option>
+                                <option value="_blank" <?php selected($link_target, '_blank'); ?>>
+                                    <?php _e('新标签页', 'sage'); ?>
+                                </option>
+                            </select>
+                        </div>
+                        <div style="margin-bottom: 8px;">
+                            <label style="display: block; margin-bottom: 4px; font-weight: 600;">
+                                <?php _e('描述:', 'sage'); ?>
+                            </label>
+                            <input type="text" 
+                                   class="widefat banner-description" 
+                                   name="<?php echo $this->get_field_name('slides'); ?>[<?php echo $index; ?>][description]" 
+                                   value="<?php echo esc_attr($description); ?>" 
+                                   placeholder="<?php _e('图片描述', 'sage'); ?>">
+                        </div>
+                        <div style="text-align: right;">
+                            <button type="button" class="button button-link button-link-delete banner-remove-slide" style="color: #b32d2e;">
+                                <?php _e('删除', 'sage'); ?>
+                            </button>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <input type="hidden" class="banner-slides-flag" name="<?php echo esc_attr($field_prefix); ?>[__flag]" value="1">
             <p>
-                <textarea 
-                    class="widefat" 
-                    rows="5" 
-                    id="<?php echo $this->get_field_id('slides_data'); ?>" 
-                    name="<?php echo $this->get_field_name('slides_data'); ?>"><?php 
-                    foreach ($slides as $slide) {
-                        echo esc_textarea($slide['url'] . '|' . $slide['alt']) . "\n";
-                    }
-                ?></textarea>
+                <button type="button" class="button banner-add-slide" data-widget-id="<?php echo esc_attr($widget_id); ?>">
+                    <?php _e('+ 添加横幅', 'sage'); ?>
+                </button>
             </p>
         </div>
         <?php
@@ -92,19 +188,24 @@ class Banner_Carousel_Widget extends WP_Widget {
     
     public function update($new_instance, $old_instance) {
         $instance = [];
-        $slides_data = isset($new_instance['slides_data']) ? $new_instance['slides_data'] : '';
-        $lines = explode("\n", $slides_data);
         $slides = [];
         
-        foreach ($lines as $line) {
-            $line = trim($line);
-            if (empty($line)) continue;
-            
-            $parts = explode('|', $line);
-            $slides[] = [
-                'url' => isset($parts[0]) ? esc_url_raw(trim($parts[0])) : '',
-                'alt' => isset($parts[1]) ? sanitize_text_field(trim($parts[1])) : ''
-            ];
+        if (isset($new_instance['slides']) && is_array($new_instance['slides'])) {
+            foreach ($new_instance['slides'] as $key => $slide) {
+                if ($key === '__flag') {
+                    continue;
+                }
+                
+                // 只保存有图片地址的幻灯片
+                if (!empty($slide['image'])) {
+                    $slides[] = [
+                        'image' => esc_url_raw($slide['image']),
+                        'link' => !empty($slide['link']) ? esc_url_raw($slide['link']) : '',
+                        'description' => isset($slide['description']) ? sanitize_text_field($slide['description']) : '',
+                        'link_target' => isset($slide['link_target']) && in_array($slide['link_target'], ['_self', '_blank']) ? $slide['link_target'] : '_self'
+                    ];
+                }
+            }
         }
         
         $instance['slides'] = $slides;
@@ -435,21 +536,12 @@ function set_default_home_widgets() {
         return; // 已经有 widgets 了，不覆盖
     }
     
-    // 创建 Banner Widget 实例
+    // 创建 Banner Widget 实例（空横幅，显示占位提示）
     $banner_widget = new Banner_Carousel_Widget();
     $banner_options = get_option($banner_widget->option_name, []);
     $banner_instance_id = count($banner_options) + 1;
     $banner_options[$banner_instance_id] = [
-        'slides' => [
-            [
-                'url' => 'https://cdn.pixabay.com/photo/2023/12/03/15/23/ai-generated-8427689_640.jpg',
-                'alt' => '温暖的棕色调风景'
-            ],
-            [
-                'url' => 'https://cdn.pixabay.com/photo/2024/09/24/09/47/ai-generated-9070891_640.png',
-                'alt' => '米色建筑背景'
-            ]
-        ]
+        'slides' => [] // 空数组，将显示占位提示
     ];
     update_option($banner_widget->option_name, $banner_options);
     
@@ -511,6 +603,9 @@ add_action('admin_enqueue_scripts', function($hook) {
         return;
     }
     
+    // 加载 WordPress 媒体上传器
+    wp_enqueue_media();
+    
     // 添加内联样式以确保主题在后台也能正常工作
     $custom_css = '
         /* 确保 widgets 容器支持 DaisyUI 主题 */
@@ -536,6 +631,183 @@ add_action('admin_enqueue_scripts', function($hook) {
     ';
     
     wp_add_inline_style('wp-admin', $custom_css);
+    
+    // 添加 Banner Widget 的 JavaScript
+    $banner_widget_js = "
+    (function($) {
+        'use strict';
+        
+        var bannerWidgetHandlersInitialized = false;
+        
+        // 初始化函数
+        function initBannerWidget() {
+            if (bannerWidgetHandlersInitialized) {
+                return;
+            }
+            
+            bannerWidgetHandlersInitialized = true;
+            
+            // 处理添加横幅按钮
+            $(document).on('click', '.banner-add-slide', function(e) {
+                e.preventDefault();
+                var button = $(this);
+                var widgetId = button.data('widget-id');
+                var container = $('#' + widgetId + '_container');
+                var slideCount = container.find('.banner-slide-item').length;
+                var widgetForm = button.closest('.banner-carousel-widget-form');
+                var fieldNamePrefix = widgetForm.data('field-prefix');
+                
+                if (!fieldNamePrefix) {
+                    // 如果无法获取前缀，则不继续执行
+                    return;
+                }
+                
+                var slideHtml = '<div class=\"banner-slide-item\" style=\"margin-bottom: 15px; padding: 10px; border: 1px solid #ddd; border-radius: 4px; background: #f9f9f9;\">' +
+                    '<div style=\"margin-bottom: 8px;\">' +
+                        '<label style=\"display: block; margin-bottom: 4px; font-weight: 600;\">图片地址:</label>' +
+                        '<div style=\"display: flex; gap: 5px;\">' +
+                            '<input type=\"text\" class=\"widefat banner-image-url\" name=\"' + fieldNamePrefix + '[' + slideCount + '][image]\" placeholder=\"图片URL\" style=\"flex: 1;\">' +
+                            '<button type=\"button\" class=\"button banner-select-image\" style=\"flex-shrink: 0;\">选择图片</button>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div style=\"margin-bottom: 8px;\">' +
+                        '<label style=\"display: block; margin-bottom: 4px; font-weight: 600;\">链接地址 (可选):</label>' +
+                        '<input type=\"url\" class=\"widefat banner-link-url\" name=\"' + fieldNamePrefix + '[' + slideCount + '][link]\" placeholder=\"https://example.com\">' +
+                    '</div>' +
+                    '<div style=\"margin-bottom: 8px;\">' +
+                        '<label style=\"display: block; margin-bottom: 4px; font-weight: 600;\">链接打开方式:</label>' +
+                        '<select class=\"widefat banner-link-target\" name=\"' + fieldNamePrefix + '[' + slideCount + '][link_target]\">' +
+                            '<option value=\"_self\">当前页面</option>' +
+                            '<option value=\"_blank\">新标签页</option>' +
+                        '</select>' +
+                    '</div>' +
+                    '<div style=\"margin-bottom: 8px;\">' +
+                        '<label style=\"display: block; margin-bottom: 4px; font-weight: 600;\">描述:</label>' +
+                        '<input type=\"text\" class=\"widefat banner-description\" name=\"' + fieldNamePrefix + '[' + slideCount + '][description]\" placeholder=\"图片描述\">' +
+                    '</div>' +
+                    '<div style=\"text-align: right;\">' +
+                        '<button type=\"button\" class=\"button button-link button-link-delete banner-remove-slide\" style=\"color: #b32d2e;\">删除</button>' +
+                    '</div>' +
+                '</div>';
+                
+                container.append(slideHtml);
+                
+                var flagInput = widgetForm.find('.banner-slides-flag');
+                if (flagInput.length) {
+                    flagInput.trigger('change');
+                }
+            });
+            
+            // 处理删除横幅按钮
+            $(document).on('click', '.banner-remove-slide', function(e) {
+                e.preventDefault();
+                var slideItem = $(this).closest('.banner-slide-item');
+                var container = slideItem.closest('.banner-slides-container');
+                var widgetForm = slideItem.closest('.banner-carousel-widget-form');
+                
+                // 如果只剩一个，清空内容而不删除
+                if (container.find('.banner-slide-item').length <= 1) {
+                    slideItem.find('input').val('');
+                    slideItem.find('select').val('_self');
+                    slideItem.find('.banner-image-preview').remove();
+                } else {
+                    slideItem.remove();
+                }
+                
+                var flagInput = widgetForm.find('.banner-slides-flag');
+                if (flagInput.length) {
+                    flagInput.trigger('change');
+                }
+            });
+            
+            // 处理选择图片按钮
+            $(document).on('click', '.banner-select-image', function(e) {
+                e.preventDefault();
+                var button = $(this);
+                var slideItem = button.closest('.banner-slide-item');
+                var imageInput = slideItem.find('.banner-image-url');
+                
+                // 创建媒体上传器
+                var mediaUploader;
+                
+                // 如果已经存在实例，重用它
+                if (typeof wp.media.frames.bannerImageUploader === 'undefined') {
+                    mediaUploader = wp.media({
+                        title: '选择横幅图片',
+                        button: {
+                            text: '使用此图片'
+                        },
+                        multiple: false
+                    });
+                    wp.media.frames.bannerImageUploader = mediaUploader;
+                } else {
+                    mediaUploader = wp.media.frames.bannerImageUploader;
+                }
+                
+                // 清除之前的事件监听器，避免重复触发
+                mediaUploader.off('select');
+                
+                // 当选择图片时
+                mediaUploader.on('select', function() {
+                    var attachment = mediaUploader.state().get('selection').first().toJSON();
+                    imageInput.val(attachment.url);
+                    
+                    // 更新或添加预览
+                    var preview = slideItem.find('.banner-image-preview');
+                    if (preview.length) {
+                        preview.find('img').attr('src', attachment.url);
+                    } else {
+                        imageInput.closest('div').after(
+                            '<div class=\"banner-image-preview\" style=\"margin-top: 8px;\">' +
+                                '<img src=\"' + attachment.url + '\" style=\"max-width: 100%; height: auto; max-height: 150px; border-radius: 4px;\">' +
+                            '</div>'
+                        );
+                    }
+                    
+                    // 触发 change 事件以便 widget 知道有变化
+                    imageInput.trigger('change');
+                });
+                
+                mediaUploader.open();
+            });
+            
+            // 处理图片 URL 输入变化
+            $(document).on('input', '.banner-image-url', function() {
+                var input = $(this);
+                var slideItem = input.closest('.banner-slide-item');
+                var preview = slideItem.find('.banner-image-preview');
+                var url = input.val().trim();
+                
+                if (url) {
+                    if (preview.length) {
+                        preview.find('img').attr('src', url);
+                    } else {
+                        input.closest('div').after(
+                            '<div class=\"banner-image-preview\" style=\"margin-top: 8px;\">' +
+                                '<img src=\"' + url + '\" style=\"max-width: 100%; height: auto; max-height: 150px; border-radius: 4px;\">' +
+                            '</div>'
+                        );
+                    }
+                } else {
+                    preview.remove();
+                }
+            });
+        }
+        
+        // 页面加载时初始化
+        $(document).ready(function() {
+            initBannerWidget();
+        });
+        
+        // 当 widget 被添加或更新时重新初始化
+        $(document).on('widget-added widget-updated', function(e, widget) {
+            initBannerWidget();
+        });
+        
+    })(jQuery);
+    ";
+    
+    wp_add_inline_script('jquery', $banner_widget_js);
 });
 
 /**
