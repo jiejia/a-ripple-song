@@ -1,13 +1,15 @@
 <!doctype html>
-<html @php(language_attributes()) class="bg-base-200" data-theme="retro">
+<html @php(language_attributes()) class="bg-base-200" x-data x-init="$store.theme.init()" :data-theme="$store.theme.current">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   @php(do_action('get_header'))
   @php(wp_head())
-
   @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+  {{-- Vite assets are now loaded via wp_enqueue_scripts in setup.php --}}
+  {{-- This ensures they work in all contexts including customizer preview --}}
   <style>
     html {
       margin-top: 0px !important;

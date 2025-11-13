@@ -12,6 +12,29 @@ import Alpine from 'alpinejs'
 
 window.Alpine = Alpine
 
+// 创建主题 Store
+Alpine.store('theme', {
+  current: 'retro',
+  storageKey: 'aripplesong-theme',
+  
+  init() {
+    // 从 localStorage 加载主题
+    const savedTheme = localStorage.getItem(this.storageKey);
+    if (savedTheme) {
+      this.current = savedTheme;
+    }
+  },
+  
+  toggle() {
+    this.current = this.current === 'retro' ? 'dim' : 'retro';
+    localStorage.setItem(this.storageKey, this.current);
+  },
+  
+  get isDark() {
+    return this.current === 'dark';
+  }
+});
+
 // 创建 Alpine Store
 Alpine.store('player', {
   // player
@@ -39,6 +62,10 @@ Alpine.store('player', {
   currentEpisode: null,
   storageKey: 'aripplesong-playlist',
   currentIndexKey: 'aripplesong-current-index',
+  volumeKey: 'aripplesong-volume',
+  currentTimeKey: 'aripplesong-current-time',
+  isPlayingKey: 'aripplesong-is-playing',
+  playbackRateKey: 'aripplesong-playback-rate',
 
   // ========== 计算属性 ==========
   get currentTimeText() {
@@ -157,9 +184,19 @@ Alpine.store('player', {
     // 从本地存储加载播放列表
     this.loadPlaylist();
 
+    // 从本地存储加载音量设置
+    this.loadVolume();
+
+    // 从本地存储加载播放速度
+    this.loadPlaybackRate();
+
+    // 从本地存储加载播放状态
+    const playbackState = this.loadPlaybackState();
+
     // 如果播放列表为空，则获取最新播客
     if (this.playlist.length == 0) {
       await this.fetchLatestPodcast(true);
+      return; // 如果是新加载的播客，fetchLatestPodcast 会自动播放
     }
 
     // 加载当前播放的节目
@@ -176,7 +213,27 @@ Alpine.store('player', {
     this.currentEpisode = episode;
     this.loadTrack(episode.audioUrl);
 
-    this.play();
+    // 恢复播放进度
+    if (playbackState.currentTime > 0) {
+      // ⭐ 立即更新 UI 中的进度显示（即使音频还在加载）
+      this.currentTime = playbackState.currentTime;
+      
+      // 等待音频加载完成后再跳转到保存的位置
+      this.currentSound.once('load', () => {
+        this.seek(playbackState.currentTime);
+        console.log('✅ 已恢复播放进度:', playbackState.currentTime);
+        
+        // 根据保存的状态决定是否自动播放
+        if (playbackState.isPlaying) {
+          this.play();
+          console.log('✅ 已恢复播放状态');
+        }
+      });
+    } else if (playbackState.isPlaying) {
+      // 如果没有保存的进度但保存了播放状态，直接播放
+      this.play();
+      console.log('✅ 已恢复播放状态');
+    }
   },
 
   // ========== 播放器核心方法 ==========
@@ -237,7 +294,9 @@ Alpine.store('player', {
     this.isPlaying = true;
 
     this.startProgressTimer();
-
+    
+    // 保存播放状态
+    this.savePlaybackState();
   },
 
   pause() {
@@ -245,6 +304,9 @@ Alpine.store('player', {
     this.currentSound.pause(this.soundId);
     this.isPlaying = false;
     this.stopProgressTimer();
+    
+    // 保存播放状态
+    this.savePlaybackState();
   },
 
   recreateIcons() {
@@ -265,6 +327,9 @@ Alpine.store('player', {
     if (!this.currentSound) return;
     this.currentSound.seek(parseFloat(position));
     this.currentTime = parseFloat(position);
+    
+    // 保存播放进度
+    this.savePlaybackState();
   },
 
   setVolume(volume) {
@@ -282,6 +347,8 @@ Alpine.store('player', {
       this.lastVolume = volume;
     }
 
+    // 保存音量到 localStorage
+    this.saveVolume();
   },
 
   toggleVolumePanel() {
@@ -329,6 +396,9 @@ Alpine.store('player', {
     }
     // 设置后关闭面板
     this.playbackRatePanelOpen = false;
+    
+    // 保存播放速度到 localStorage
+    this.savePlaybackRate();
   },
   initAudioMotion() {
     if (!this.audioMotion && this.currentSound) {
@@ -383,9 +453,17 @@ Alpine.store('player', {
     }
   },
   startProgressTimer() {
+    let saveCounter = 0;
     this.timer = setInterval(() => {
       if (this.currentSound && this.isPlaying) {
         this.currentTime = this.currentSound.seek(this.soundId) || 0;
+        
+        // 每10次（约1秒）保存一次播放状态，避免频繁写入
+        saveCounter++;
+        if (saveCounter >= 10) {
+          this.savePlaybackState();
+          saveCounter = 0;
+        }
       }
     }, 100);
   },
@@ -415,6 +493,75 @@ Alpine.store('player', {
     }, 10);
   },
 
+  // ========== 音量管理 ==========
+  loadVolume() {
+    const savedVolume = localStorage.getItem(this.volumeKey);
+    if (savedVolume !== null) {
+      const volume = parseFloat(savedVolume);
+      this.volume = volume;
+      this.lastVolume = volume > 0 ? volume : this.lastVolume;
+      this.isMuted = volume === 0;
+      console.log('✅ 已加载音量设置:', volume);
+    }
+  },
+
+  saveVolume() {
+    localStorage.setItem(this.volumeKey, this.volume.toString());
+  },
+
+  // ========== 播放速度管理 ==========
+  /**
+   * 保存播放速度到 localStorage
+   */
+  savePlaybackRate() {
+    localStorage.setItem(this.playbackRateKey, this.playbackRate.toString());
+  },
+
+  /**
+   * 从 localStorage 加载播放速度
+   */
+  loadPlaybackRate() {
+    const savedRate = localStorage.getItem(this.playbackRateKey);
+    if (savedRate !== null) {
+      const rate = parseFloat(savedRate);
+      // 确保速率在可用范围内
+      if (this.availableRates.includes(rate)) {
+        this.playbackRate = rate;
+        console.log('✅ 已加载播放速度设置:', rate);
+      }
+    }
+  },
+
+  // ========== 播放状态管理 ==========
+  /**
+   * 保存播放状态到 localStorage
+   */
+  savePlaybackState() {
+    localStorage.setItem(this.currentTimeKey, this.currentTime.toString());
+    localStorage.setItem(this.isPlayingKey, this.isPlaying.toString());
+  },
+
+  /**
+   * 从 localStorage 加载播放状态
+   */
+  loadPlaybackState() {
+    const savedTime = localStorage.getItem(this.currentTimeKey);
+    const savedIsPlaying = localStorage.getItem(this.isPlayingKey);
+    
+    return {
+      currentTime: savedTime ? parseFloat(savedTime) : 0,
+      isPlaying: savedIsPlaying === 'true'
+    };
+  },
+
+  /**
+   * 清除播放状态
+   */
+  clearPlaybackState() {
+    localStorage.removeItem(this.currentTimeKey);
+    localStorage.removeItem(this.isPlayingKey);
+  },
+
   /**
    * 添加节目到播放列表并立即播放
    * @param {Object} episode - 节目对象
@@ -429,6 +576,9 @@ Alpine.store('player', {
       this.loadTrack(episode.audioUrl);
       this.play();
       this.savePlaylist();
+      // 切换曲目后重置进度为0
+      this.currentTime = 0;
+      this.savePlaybackState();
       console.log('✅ 切换到已存在的节目:', episode.title);
       return;
     }
@@ -442,6 +592,10 @@ Alpine.store('player', {
     // 加载并播放
     this.loadTrack(episode.audioUrl);
     this.play();
+    
+    // 新节目从头播放
+    this.currentTime = 0;
+    this.savePlaybackState();
 
     console.log('✅ 已添加到播放列表:', episode.title);
   },
@@ -518,6 +672,9 @@ Alpine.store('player', {
     this.currentTime = 0;
     this.duration = 0;
     this.currentEpisode = null;
+    
+    // 清除保存的播放状态
+    this.clearPlaybackState();
   },
 
   playNext() {
@@ -528,6 +685,9 @@ Alpine.store('player', {
     this.loadTrack(episode.audioUrl);
     this.play();
     this.savePlaylist();
+    // 切换曲目后重置进度为0
+    this.currentTime = 0;
+    this.savePlaybackState();
   },
   playPrevious() {
     if (this.playlist.length === 0) return;
@@ -537,6 +697,9 @@ Alpine.store('player', {
     this.loadTrack(episode.audioUrl);
     this.play();
     this.savePlaylist();
+    // 切换曲目后重置进度为0
+    this.currentTime = 0;
+    this.savePlaybackState();
   },
 
   playByIndex(index) {
@@ -548,6 +711,9 @@ Alpine.store('player', {
       this.loadTrack(episode.audioUrl);
       this.play();
       this.savePlaylist();
+      // 切换曲目后重置进度为0
+      this.currentTime = 0;
+      this.savePlaybackState();
     }
   },
 

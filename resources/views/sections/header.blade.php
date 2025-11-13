@@ -11,9 +11,9 @@
         @include('sections.primary-navigation')
         <div class="grid grid-flow-col justify-end gap-2 place-items-center">
           <label for="search-modal" class="md:hidden block"><i data-lucide="search" class="w-5 h-5 cursor-pointer"></i></label>
-          <label class="swap swap-rotate">
+          <label class="swap swap-rotate" x-data>
             <!-- this hidden checkbox controls the state -->
-            <input type="checkbox" class="theme-controller" value="synthwave" />
+            <input type="checkbox" class="theme-controller" x-model="$store.theme.isDark" @change="$store.theme.toggle()" />
 
             <!-- sun icon -->
             <i data-lucide="sun" class="swap-off w-5 h-5"></i>

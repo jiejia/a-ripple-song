@@ -317,3 +317,44 @@ add_action('pre_get_posts', function ($query) {
         $query->set('post_type', ['post', 'podcast']);
     }
 });
+
+/**
+ * Enqueue theme assets using Vite
+ * 
+ * This ensures that theme assets are properly loaded in all contexts,
+ * including customizer preview and widget previews.
+ *
+ * @return void
+ */
+add_action('wp_enqueue_scripts', function () {
+    if (class_exists('\Illuminate\Support\Facades\Vite')) {
+        try {
+            // Get the asset URLs from Vite manifest
+            $css_url = \Illuminate\Support\Facades\Vite::asset('resources/css/app.css');
+            $js_url = \Illuminate\Support\Facades\Vite::asset('resources/js/app.js');
+            
+            // Enqueue the CSS
+            if ($css_url) {
+                wp_enqueue_style(
+                    'aripplesong-app',
+                    $css_url,
+                    [],
+                    null
+                );
+            }
+            
+            // Enqueue the JS
+            if ($js_url) {
+                wp_enqueue_script(
+                    'aripplesong-app',
+                    $js_url,
+                    [],
+                    null,
+                    true // Load in footer
+                );
+            }
+        } catch (\Exception $e) {
+            error_log('Failed to enqueue Vite assets: ' . $e->getMessage());
+        }
+    }
+}, 100);
