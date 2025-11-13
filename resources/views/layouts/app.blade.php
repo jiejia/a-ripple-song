@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   @php(do_action('get_header'))
   @php(wp_head())
-  @vite(['resources/css/app.css', 'resources/js/app.js'])
 
   {{-- Vite assets are now loaded via wp_enqueue_scripts in setup.php --}}
   {{-- This ensures they work in all contexts including customizer preview --}}

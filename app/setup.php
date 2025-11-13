@@ -13,49 +13,42 @@ use Illuminate\Support\Facades\Vite;
  *
  * @return array
  */
-add_filter('block_editor_settings_all', function ($settings) {
-    $style = Vite::asset('resources/css/editor.css');
+// add_filter('block_editor_settings_all', function ($settings) {
+//     $style = Vite::asset('resources/css/editor.css');
 
-    $settings['styles'][] = [
-        'css' => "@import url('{$style}')",
-    ];
+//     $settings['styles'][] = [
+//         'css' => "@import url('{$style}')",
+//     ];
 
-    return $settings;
-});
+//     return $settings;
+// });
 
 /**
  * Inject scripts into the block editor.
  *
  * @return void
  */
-add_filter('admin_head', function () {
-    if (! get_current_screen()?->is_block_editor()) {
-        return;
-    }
+// add_filter('admin_head', function () {
+//     if (! get_current_screen()?->is_block_editor()) {
+//         return;
+//     }
 
-    $dependencies = json_decode(Vite::content('editor.deps.json'));
-
-    foreach ($dependencies as $dependency) {
-        if (! wp_script_is($dependency)) {
-            wp_enqueue_script($dependency);
-        }
-    }
-
-    echo Vite::withEntryPoints([
-        'resources/js/editor.js',
-    ])->toHtml();
-});
+//     // editor.js no longer depends on WordPress packages, just output it directly
+//     echo Vite::withEntryPoints([
+//         'resources/js/editor.js',
+//     ])->toHtml();
+// });
 
 /**
  * Use the generated theme.json file.
  *
  * @return string
  */
-add_filter('theme_file_path', function ($path, $file) {
-    return $file === 'theme.json'
-        ? public_path('build/assets/theme.json')
-        : $path;
-}, 10, 2);
+// add_filter('theme_file_path', function ($path, $file) {
+//     return $file === 'theme.json'
+//         ? public_path('build/assets/theme.json')
+//         : $path;
+// }, 10, 2);
 
 /**
  * Register the initial theme setup.
@@ -327,34 +320,56 @@ add_action('pre_get_posts', function ($query) {
  * @return void
  */
 add_action('wp_enqueue_scripts', function () {
-    if (class_exists('\Illuminate\Support\Facades\Vite')) {
-        try {
-            // Get the asset URLs from Vite manifest
+    if (!class_exists('\Illuminate\Support\Facades\Vite')) {
+        return;
+    }
+    
+    try {
+        // Check if this is a widget preview in admin
+        // Widget previews render through wp_enqueue_scripts but should use editor assets
+        $is_widget_preview = is_admin() || (isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], 'widgets.php') !== false);
+        
+        if ($is_widget_preview) {
+            // Load editor assets for widget preview
+            $css_url = \Illuminate\Support\Facades\Vite::asset('resources/css/editor.css');
+            $js_url = \Illuminate\Support\Facades\Vite::asset('resources/js/editor.js');
+            
+            if ($css_url) {
+                wp_enqueue_style('aripplesong-editor', $css_url, [], null);
+            }
+            
+            if ($js_url) {
+                wp_enqueue_script('aripplesong-editor', $js_url, [], null, true);
+            }
+        } else {
+            // Load app assets for normal frontend pages
             $css_url = \Illuminate\Support\Facades\Vite::asset('resources/css/app.css');
             $js_url = \Illuminate\Support\Facades\Vite::asset('resources/js/app.js');
             
-            // Enqueue the CSS
             if ($css_url) {
-                wp_enqueue_style(
-                    'aripplesong-app',
-                    $css_url,
-                    [],
-                    null
-                );
+                wp_enqueue_style('aripplesong-app', $css_url, [], null);
             }
             
-            // Enqueue the JS
             if ($js_url) {
-                wp_enqueue_script(
-                    'aripplesong-app',
-                    $js_url,
-                    [],
-                    null,
-                    true // Load in footer
-                );
+                wp_enqueue_script('aripplesong-app', $js_url, [], null, true);
             }
-        } catch (\Exception $e) {
-            error_log('Failed to enqueue Vite assets: ' . $e->getMessage());
         }
+    } catch (\Exception $e) {
+        error_log('Failed to enqueue Vite assets: ' . $e->getMessage());
     }
 }, 100);
+
+/**
+ * Add type="module" attribute to editor script tag
+ *
+ * @param string $tag The script tag HTML.
+ * @param string $handle The script handle.
+ * @param string $src The script source URL.
+ * @return string
+ */
+add_filter('script_loader_tag', function ($tag, $handle, $src) {
+    if ($handle === 'aripplesong-editor' || $handle === 'aripplesong-app') {
+        $tag = str_replace('<script ', '<script type="module" ', $tag);
+    }
+    return $tag;
+}, 10, 3);

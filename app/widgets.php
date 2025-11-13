@@ -502,33 +502,13 @@ add_action('widgets_init', function() {
 }, 100);
 
 /**
- * Enqueue frontend styles and scripts in widgets admin page
- * 在后台 widgets 页面加载前端样式和脚本，让预览效果和前台一致
+ * Add custom CSS for widgets admin page
+ * 为后台 widgets 页面添加自定义样式，确保 DaisyUI 主题变量可用
  */
 add_action('admin_enqueue_scripts', function($hook) {
     // 只在 widgets 页面加载
     if ($hook !== 'widgets.php' && $hook !== 'customize.php') {
         return;
-    }
-    
-    // 使用 Vite 加载主题样式和脚本
-    if (class_exists('\Illuminate\Support\Facades\Vite')) {
-        try {
-            // 获取 Vite 生成的 manifest 来正确加载资源
-            $css_url = \Illuminate\Support\Facades\Vite::asset('resources/css/editor.css');
-            $js_url = \Illuminate\Support\Facades\Vite::asset('resources/js/editor.js');
-            
-            if ($css_url) {
-                wp_enqueue_style('aripplesong-widgets-style', $css_url, [], null);
-            }
-            
-            if ($js_url) {
-                wp_enqueue_script('aripplesong-widgets-script', $js_url, [], null, true);
-            }
-        } catch (\Exception $e) {
-            // 如果 Vite 资源不可用，记录错误但不中断
-            error_log('Failed to load Vite assets in widgets admin: ' . $e->getMessage());
-        }
     }
     
     // 添加内联样式以确保主题在后台也能正常工作
@@ -555,103 +535,12 @@ add_action('admin_enqueue_scripts', function($hook) {
         }
     ';
     
-    wp_add_inline_style('aripplesong-widgets-style', $custom_css);
+    wp_add_inline_style('wp-admin', $custom_css);
 });
 
 /**
- * Inject styles and scripts into widget preview iframe
- * 在 widget 预览的 iframe 中注入样式和脚本
- */
-add_action('admin_print_styles-widgets.php', function() {
-    if (class_exists('\Illuminate\Support\Facades\Vite')) {
-        echo \Illuminate\Support\Facades\Vite::withEntryPoints([
-            'resources/css/editor.css',
-            'resources/js/editor.js'
-        ])->toHtml();
-    }
-});
-
-/**
- * Add Vite assets to customize preview iframe
- * 在自定义器预览中添加 Vite 资源
- */
-add_action('customize_controls_print_styles', function() {
-    if (class_exists('\Illuminate\Support\Facades\Vite')) {
-        echo \Illuminate\Support\Facades\Vite::withEntryPoints([
-            'resources/css/editor.css',
-            'resources/js/editor.js'
-        ])->toHtml();
-    }
-});
-
-/**
- * Inject styles and scripts in widget callback output
- * 直接在 widget 输出中注入样式和脚本（适用于预览）
- */
-add_filter('dynamic_sidebar_params', function($params) {
-    // 检查是否是我们的自定义 widgets
-    if (strpos($params[0]['widget_id'], 'podcast_list_widget') !== false || 
-        strpos($params[0]['widget_id'], 'blog_list_widget') !== false ||
-        strpos($params[0]['widget_id'], 'banner_carousel_widget') !== false) {
-        
-        // 在 before_widget 中注入样式和脚本以及设置主题属性的脚本
-        static $assets_injected = false;
-        if (!$assets_injected && is_admin() && class_exists('\Illuminate\Support\Facades\Vite')) {
-            $vite_html = \Illuminate\Support\Facades\Vite::withEntryPoints([
-                'resources/css/editor.css',
-                'resources/js/editor.js'
-            ])->toHtml();
-            
-            // 添加设置主题属性的脚本
-            $theme_script = '<script>
-                (function() {
-                    // 为 HTML 元素设置 data-theme 属性
-                    if (document.documentElement) {
-                        document.documentElement.setAttribute("data-theme", "retro");
-                    }
-                    // 为 body 添加背景色类
-                    if (document.body) {
-                        document.body.classList.add("bg-base-200");
-                    }
-                })();
-            </script>';
-            
-            $params[0]['before_widget'] = $vite_html . $theme_script . $params[0]['before_widget'];
-            $assets_injected = true;
-        }
-    }
-    
-    return $params;
-});
-
-/**
- * Add Vite assets and theme attribute to customize preview (iframe)
- * 在自定义器预览（iframe）中添加 Vite 资源和主题属性
- */
-add_action('wp_head', function() {
-    // 只在自定义器预览中加载
-    if (is_customize_preview()) {
-        // 输出脚本来设置主题属性
-        ?>
-        <script>
-        (function() {
-            // 为 HTML 元素设置 data-theme 属性
-            if (document.documentElement) {
-                document.documentElement.setAttribute('data-theme', 'retro');
-            }
-            // 为 body 添加背景色类
-            if (document.body) {
-                document.body.classList.add('bg-base-200');
-            }
-        })();
-        </script>
-        <?php
-    }
-}, 999);
-
-/**
- * Add data-theme attribute to widgets admin page
- * 为 widgets 后台页面添加主题属性
+ * Add theme setup script to widgets preview and admin pages
+ * 为 widgets 预览和后台页面添加主题设置脚本
  */
 add_action('admin_footer', function() {
     $screen = get_current_screen();
@@ -659,62 +548,57 @@ add_action('admin_footer', function() {
         ?>
         <script>
         (function() {
-            // 设置 data-theme 属性以匹配前端
-            document.documentElement.setAttribute('data-theme', 'retro');
-            
-            // 为 widgets 容器添加必要的类
-            const widgetsEditor = document.getElementById('widgets-editor');
-            if (widgetsEditor) {
-                widgetsEditor.setAttribute('data-theme', 'retro');
+            // 设置主题属性的函数
+            function setupTheme(doc) {
+                if (doc && doc.documentElement) {
+                    doc.documentElement.setAttribute('data-theme', 'retro');
+                }
+                if (doc && doc.body) {
+                    doc.body.classList.add('bg-base-200');
+                }
             }
             
-            // 为所有 widget 容器添加主题属性
-            const widgetContainers = document.querySelectorAll('.widgets-holder-wrap, .widget-inside');
-            widgetContainers.forEach(function(container) {
-                container.setAttribute('data-theme', 'retro');
-            });
+            // 为主文档设置主题
+            setupTheme(document);
             
-            // 为所有 iframe 中的 html 元素设置主题属性
-            function setIframeTheme() {
+            // 为 widgets 容器添加主题属性
+            function setupWidgetContainers() {
+                const widgetsEditor = document.getElementById('widgets-editor');
+                if (widgetsEditor) {
+                    widgetsEditor.setAttribute('data-theme', 'retro');
+                }
+                
+                const widgetContainers = document.querySelectorAll('.widgets-holder-wrap, .widget-inside');
+                widgetContainers.forEach(function(container) {
+                    container.setAttribute('data-theme', 'retro');
+                });
+            }
+            
+            // 为 iframe 设置主题
+            function setupIframeTheme() {
                 const iframes = document.querySelectorAll('iframe');
                 iframes.forEach(function(iframe) {
                     try {
-                        // 尝试访问 iframe 内容（可能受同源策略限制）
-                        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-                        if (iframeDoc && iframeDoc.documentElement) {
-                            iframeDoc.documentElement.setAttribute('data-theme', 'retro');
-                            if (iframeDoc.body) {
-                                iframeDoc.body.classList.add('bg-base-200');
-                            }
+                        const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+                        if (iframeDoc) {
+                            setupTheme(iframeDoc);
                         }
                     } catch (e) {
-                        // 如果无法访问iframe，忽略错误
-                        console.log('Cannot access iframe:', e);
+                        // 跨域 iframe 无法访问，忽略
                     }
                 });
             }
             
             // 初始设置
-            setIframeTheme();
+            setupWidgetContainers();
+            setupIframeTheme();
             
-            // 监听 iframe 加载完成
-            document.addEventListener('DOMContentLoaded', function() {
-                const iframes = document.querySelectorAll('iframe');
-                iframes.forEach(function(iframe) {
-                    iframe.addEventListener('load', setIframeTheme);
-                });
-            });
-            
-            // 监听 DOM 变化，为新添加的 widgets 和 iframes 也设置主题
-            const observer = new MutationObserver(function(mutations) {
-                widgetContainers.forEach(function(container) {
-                    container.setAttribute('data-theme', 'retro');
-                });
+            // 监听 DOM 变化
+            const observer = new MutationObserver(function() {
+                setupWidgetContainers();
+                setupIframeTheme();
                 
-                // 检查是否有新的 iframe
-                setIframeTheme();
-                
-                // 重新初始化 Lucide 图标（如果已加载）
+                // 重新初始化 Lucide 图标
                 if (typeof lucide !== 'undefined' && lucide.createIcons) {
                     lucide.createIcons();
                 }
@@ -729,5 +613,26 @@ add_action('admin_footer', function() {
         <?php
     }
 });
+
+/**
+ * Add theme setup script to customize preview iframe
+ * 为自定义器预览 iframe 添加主题设置脚本
+ */
+add_action('wp_head', function() {
+    if (is_customize_preview()) {
+        ?>
+        <script>
+        (function() {
+            if (document.documentElement) {
+                document.documentElement.setAttribute('data-theme', 'retro');
+            }
+            if (document.body) {
+                document.body.classList.add('bg-base-200');
+            }
+        })();
+        </script>
+        <?php
+    }
+}, 999);
 
 
