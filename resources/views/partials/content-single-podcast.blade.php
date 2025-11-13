@@ -1,16 +1,7 @@
 @php
     $post_id = get_the_ID();
     $audio_file = get_post_meta($post_id, 'audio_file', true);
-    $featured_image = get_the_post_thumbnail_url($post_id, 'medium') ?: 'https://cdn.pixabay.com/photo/2025/10/03/09/14/asters-9870320_960_720.jpg';
-    $episode_data = [
-        'id' => $post_id,
-        'audioUrl' => esc_js($audio_file),
-        'title' => esc_js(get_the_title()),
-        'description' => esc_js(wp_strip_all_tags(get_the_excerpt())),
-        'publishDate' => esc_js(get_the_date()),
-        'featuredImage' => esc_url($featured_image),
-        'link' => esc_url(get_permalink())
-    ];
+    $episode_data = get_episode_data($post_id);
 @endphp
 
 <div class="rounded-lg bg-base-100 p-4" x-data="{ episode: @js($episode_data) }">
@@ -49,4 +40,7 @@
         @include('partials.entry-tags')
         @include('partials.entry-authors')
     </div>
+    <div class="mt-4 rounded-lg bg-base-100 p-4">
+    @php(comments_template())
+  </div>
 </div>

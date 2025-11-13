@@ -31,7 +31,7 @@ add_action('init', function () {
         'public' => true,
         'has_archive' => true,
         'menu_icon' => 'dashicons-microphone',
-        'supports' => ['title', 'editor', 'thumbnail', 'excerpt', 'author'],
+        'supports' => ['title', 'editor', 'thumbnail', 'excerpt', 'author', 'comments', 'trackbacks'],
         'taxonomies' => ['post_tag'],
         'show_in_rest' => true,
         'show_in_nav_menus' => true, // 允许在导航菜单中显示
@@ -49,6 +49,23 @@ add_action('init', function () {
 add_action('init', function () {
     register_taxonomy_for_object_type('post_tag', 'podcast');
 }, 10);
+
+/**
+ * Set default comment status to open for podcast post type
+ * 为播客文章类型设置默认打开评论
+ *
+ * @param array $data Post data
+ * @param array $postarr Original post data
+ * @return array Modified post data
+ */
+add_filter('wp_insert_post_data', function ($data, $postarr) {
+    // 只处理新创建的播客文章（ID 为 0 表示新文章）
+    if ($data['post_type'] === 'podcast' && empty($postarr['ID'])) {
+        $data['comment_status'] = 'open';
+        $data['ping_status'] = 'open';
+    }
+    return $data;
+}, 10, 2);
 
 /**
  * Register Podcast Category Taxonomy

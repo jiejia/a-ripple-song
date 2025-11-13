@@ -41,6 +41,8 @@ class Comments extends Composer
             'style' => 'ol',
             'short_ping' => true,
             'echo' => false,
+            'callback' => 'sage_custom_comment',
+            'avatar_size' => 24,
         ]);
     }
 

@@ -170,16 +170,7 @@ class Podcast_List_Widget extends WP_Widget {
                         <?php
                         $post_id = get_the_ID();
                         $audio_file = get_post_meta($post_id, 'audio_file', true);
-                        $featured_image = get_the_post_thumbnail_url($post_id, 'medium') ?: 'https://cdn.pixabay.com/photo/2025/10/03/09/14/asters-9870320_960_720.jpg';
-                        $episode_data = [
-                            'id' => $post_id,
-                            'audioUrl' => $audio_file,
-                            'title' => get_the_title(),
-                            'description' => wp_strip_all_tags(get_the_excerpt()),
-                            'publishDate' => get_the_date(),
-                            'featuredImage' => $featured_image,
-                            'link' => get_permalink()
-                        ];
+                        $episode_data = get_episode_data($post_id);
                         ?>
                         <li>
                             <div class="bg-base-200/50 rounded-lg hover:bg-base-200">

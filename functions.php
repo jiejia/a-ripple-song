@@ -385,3 +385,151 @@ function is_menu_item_active($item, $children = [], $current_url = '') {
     
     return $is_current || $has_active_descendant;
 }
+
+/**
+ * Get episode data for a podcast post
+ * 
+ * @param int|null $post_id Post ID (defaults to current post)
+ * @return array Episode data array with id, audioUrl, title, description, publishDate, featuredImage, link
+ */
+function get_episode_data($post_id = null) {
+    if (!$post_id) {
+        $post_id = get_the_ID();
+    }
+    
+    $audio_file = get_post_meta($post_id, 'audio_file', true);
+    $featured_image = get_the_post_thumbnail_url($post_id, 'medium') ?: 'https://cdn.pixabay.com/photo/2025/10/03/09/14/asters-9870320_960_720.jpg';
+    
+    return [
+        'id' => $post_id,
+        'audioUrl' => $audio_file,
+        'title' => get_the_title($post_id),
+        'description' => wp_strip_all_tags(get_the_excerpt()),
+        'publishDate' => get_the_date('', $post_id),
+        'featuredImage' => $featured_image,
+        'link' => get_permalink($post_id)
+    ];
+}
+
+/**
+ * Custom comment callback with DaisyUI styling
+ * 
+ * @param object $comment Comment object
+ * @param array $args Comment arguments
+ * @param int $depth Comment depth level
+ */
+function sage_custom_comment($comment, $args, $depth) {
+    // All comments use bg-base-100 regardless of depth
+    $bg_class = 'bg-base-100';
+    
+    // Get comment type class
+    $comment_type = get_comment_type($comment->comment_ID);
+    ?>
+    <li id="comment-<?php comment_ID(); ?>" <?php comment_class('comment-item'); ?>>
+        <article class="<?php echo esc_attr($bg_class); ?> rounded-lg p-4 hover:shadow-sm transition-shadow">
+            <div class="flex gap-2">
+                <!-- Avatar -->
+                <div class="flex-shrink-0">
+                    <?php if ($args['avatar_size'] != 0): ?>
+                        <div class="avatar">
+                            <div class="w-6 h-6 rounded-full ring ring-primary ring-offset-base-100 ring-offset-1">
+                                <?php echo get_avatar($comment, $args['avatar_size']); ?>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </div>
+                
+                <!-- Comment Content -->
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-2 mb-2 flex-wrap">
+                        <span class="font-bold text-xs">
+                            <?php echo get_comment_author_link($comment); ?>
+                        </span>
+                        
+                        <?php if ($comment->user_id === get_post()->post_author): ?>
+                            <span class="badge badge-primary badge-xs">作者</span>
+                        <?php endif; ?>
+                        
+                        <span class="text-xs text-base-content/60 flex items-center gap-1">
+                            <i data-lucide="clock" class="w-3 h-3"></i>
+                            <?php echo get_comment_date('Y-m-d H:i', $comment); ?>
+                        </span>
+                        
+                        <?php if ($comment->comment_approved == '0'): ?>
+                            <span class="badge badge-warning badge-xs">待审核</span>
+                        <?php endif; ?>
+                    </div>
+                    
+                    <div class="text-xs text-base-content/80 mb-3 leading-relaxed">
+                        <?php comment_text(); ?>
+                    </div>
+                    
+                    <div class="flex items-center gap-3">
+                        <?php 
+                        comment_reply_link(array_merge($args, [
+                            'add_below' => 'comment',
+                            'depth' => $depth,
+                            'max_depth' => $args['max_depth'],
+                            'before' => '<button class="btn btn-ghost btn-xs gap-1 text-xs">',
+                            'after' => '</button>',
+                            'reply_text' => '<i data-lucide="reply" class="w-3 h-3"></i> 回复'
+                        ]));
+                        ?>
+                        
+                        <?php edit_comment_link(
+                            '<i data-lucide="pencil" class="w-3 h-3"></i> 编辑',
+                            '<button class="btn btn-ghost btn-xs gap-1 text-xs">',
+                            '</button>'
+                        ); ?>
+                    </div>
+                </div>
+            </div>
+        </article>
+    <?php
+}
+
+/**
+ * Customize comment form with DaisyUI styling
+ */
+add_filter('comment_form_defaults', function($defaults) {
+    $defaults['class_form'] = 'space-y-4';
+    $defaults['class_submit'] = 'btn btn-primary btn-sm gap-2 text-xs';
+    $defaults['submit_button'] = '<button type="submit" id="%2$s" class="%3$s">%4$s <i data-lucide="send" class="w-3 h-3"></i></button>';
+    $defaults['title_reply_before'] = '<h3 id="reply-title" class="text-md font-bold mb-4 hidden">';
+    $defaults['title_reply_after'] = '</h3>';
+    $defaults['cancel_reply_before'] = '<div class="text-xs">';
+    $defaults['cancel_reply_after'] = '</div>';
+    $defaults['cancel_reply_link'] = '<button type="button" class="btn btn-ghost btn-xs gap-1 text-xs"><i data-lucide="x" class="w-3 h-3"></i> %s</button>';
+    $defaults['comment_notes_before'] = '<p class="comment-notes text-xs text-base-content/60">' . __('Your email address will not be published.') . '</p>';
+    $defaults['comment_notes_after'] = '';
+    $defaults['logged_in_as'] = '<p class="logged-in-as text-xs text-base-content/60">' . 
+        sprintf(__('Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>'), 
+            get_edit_user_link(), 
+            wp_get_current_user()->display_name, 
+            wp_logout_url(apply_filters('the_permalink', get_permalink()))) . 
+        '</p>';
+    
+    return $defaults;
+});
+
+/**
+ * Customize comment form fields with DaisyUI styling
+ */
+add_filter('comment_form_default_fields', function($fields) {
+    $fields['author'] = '<div class="form-control"><label class="label"><span class="label-text text-xs">姓名 <span class="text-error">*</span></span></label><input type="text" id="author" name="author" class="input input-bordered input-sm w-full text-xs" required /></div>';
+    
+    $fields['email'] = '<div class="form-control"><label class="label"><span class="label-text text-xs">电子邮箱 <span class="text-error">*</span></span></label><input type="email" id="email" name="email" class="input input-bordered input-sm w-full text-xs" required /></div>';
+    
+    $fields['url'] = '<div class="form-control"><label class="label"><span class="label-text text-xs">网站</span></label><input type="url" id="url" name="url" class="input input-bordered input-sm w-full text-xs" /></div>';
+    
+    $fields['cookies'] = '<div class="form-control"><label class="label cursor-pointer justify-start gap-2"><input type="checkbox" id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" value="yes" class="checkbox checkbox-sm" /><span class="label-text text-xs">' . __('Save my name, email, and website in this browser for the next time I comment.') . '</span></label></div>';
+    
+    return $fields;
+});
+
+/**
+ * Customize comment textarea field with DaisyUI styling
+ */
+add_filter('comment_form_field_comment', function($field) {
+    return '<div class="form-control"><label class="label"><span class="label-text text-xs">评论 <span class="text-error">*</span></span></label><textarea id="comment" name="comment" rows="6" class="textarea textarea-bordered textarea-sm w-full text-xs" required></textarea></div>';
+});
