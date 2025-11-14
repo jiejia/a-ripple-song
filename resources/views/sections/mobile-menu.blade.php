@@ -1,4 +1,4 @@
-<div class="drawer drawer-start z-[101]">
+<div class="drawer drawer-start z-[101]" id="swup-mobile-menu">
   <input type="checkbox" id="mobile-menu" class="drawer-toggle" />
   <div class="drawer-side">
     <label for="mobile-menu" aria-label="close sidebar" class="drawer-overlay"></label>
@@ -20,6 +20,9 @@
             $children = $menu_data['children'];
             $has_children = !empty($children);
             
+            // Check if this item itself (not children) is the current page
+            $is_current_page = $item->url === $current_url;
+            
             // Check if menu item is active (current page or has active child)
             $is_active = is_menu_item_active($item, $children, $current_url);
             
@@ -30,8 +33,8 @@
           @if ($has_children)
             <li>
               <details open>
-                <summary class="{{ $active_class }} flex justify-between items-center">
-                  <a href="{{ $item->url }}" class="flex-1" onclick="event.stopPropagation()">
+                <summary class="flex justify-between items-center {{ $is_current_page ? 'bg-base-200/50' : '' }}">
+                  <a href="{{ $item->url }}" class="flex-1 {{ $active_class }}" onclick="event.stopPropagation()">
                     {{ $item->title }}
                   </a>
                 </summary>
@@ -42,6 +45,9 @@
                       $grandchildren = $child_data['children'];
                       $has_grandchildren = !empty($grandchildren);
                       
+                      // Check if this child itself (not grandchildren) is the current page
+                      $child_is_current_page = $child->url === $current_url;
+                      
                       $child_is_active = is_menu_item_active($child, $grandchildren, $current_url);
                       $child_active_class = $child_is_active ? 'active font-semibold' : '';
                     @endphp
@@ -49,8 +55,8 @@
                     @if ($has_grandchildren)
                       <li>
                         <details open>
-                          <summary class="{{ $child_active_class }} flex justify-between items-center">
-                            <a href="{{ $child->url }}" class="flex-1" onclick="event.stopPropagation()">
+                          <summary class="flex justify-between items-center {{ $child_is_current_page ? 'bg-base-200/50' : '' }}">
+                            <a href="{{ $child->url }}" class="flex-1 {{ $child_active_class }}" onclick="event.stopPropagation()">
                               {{ $child->title }}
                             </a>
                           </summary>
@@ -61,20 +67,20 @@
                                 $grandchild_is_active = $grandchild->url === $current_url;
                                 $grandchild_active_class = $grandchild_is_active ? 'active font-semibold' : '';
                               @endphp
-                              <li><a href="{{ $grandchild->url }}" class="{{ $grandchild_active_class }}">{{ $grandchild->title }}</a></li>
+                              <li><a href="{{ $grandchild->url }}" class="{{ $grandchild_active_class }} {{ $grandchild_is_active ? 'bg-base-200/50' : '' }}">{{ $grandchild->title }}</a></li>
                             @endforeach
                           </ul>
                         </details>
                       </li>
                     @else
-                      <li><a href="{{ $child->url }}" class="{{ $child_active_class }}">{{ $child->title }}</a></li>
+                      <li><a href="{{ $child->url }}" class="{{ $child_active_class }} {{ $child_is_active ? 'bg-base-200/50' : '' }}">{{ $child->title }}</a></li>
                     @endif
                   @endforeach
                 </ul>
               </details>
             </li>
           @else
-            <li><a href="{{ $item->url }}" class="{{ $active_class }}">{{ $item->title }}</a></li>
+            <li><a href="{{ $item->url }}" class="{{ $active_class }} {{ $is_current_page ? 'bg-base-200/50' : '' }}">{{ $item->title }}</a></li>
           @endif
         @endforeach
       </ul>

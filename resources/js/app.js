@@ -792,7 +792,7 @@ Alpine.start();
 
 // 初始化 Swup (v4.x 版本)
 const swup = new Swup({
-  containers: ['#swup-main', '#swup-header'], // 指定要替换的容器
+  containers: ['#swup-main', '#swup-header', '#swup-mobile-menu'], // 指定要替换的容器
   animateHistoryBrowsing: true,
   plugins: [new SwupFormsPlugin()]
 });
