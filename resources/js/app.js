@@ -53,6 +53,15 @@ Alpine.store('theme', {
     this.applyTheme();
   },
   
+  setMode(mode) {
+    // 直接设置主题模式
+    if (['light', 'dark', 'auto'].includes(mode)) {
+      this.mode = mode;
+      localStorage.setItem(this.storageKey, this.mode);
+      this.applyTheme();
+    }
+  },
+  
   applyTheme() {
     let theme;
     if (this.mode === 'auto') {
