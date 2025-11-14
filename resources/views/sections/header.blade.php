@@ -26,7 +26,7 @@
             <!-- 跟随系统图标 -->
             <i data-lucide="monitor" class="w-5 h-5" x-show="$store.theme.isAuto"></i>
             </button>
-            <ul tabindex="0" class="dropdown-content menu bg-base-200 rounded-box z-[1] w-auto p-2 shadow-lg mt-3">
+            <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-auto p-2 shadow-lg">
               <li>
                 <a 
                   @click.prevent="$store.theme.setMode('light')" 
