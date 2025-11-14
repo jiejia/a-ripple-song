@@ -14,24 +14,72 @@ window.Alpine = Alpine
 
 // 创建主题 Store
 Alpine.store('theme', {
-  current: 'retro',
-  storageKey: 'aripplesong-theme',
+  mode: 'auto', // 'light', 'dark', 'auto'
+  storageKey: 'aripplesong-theme-mode',
+  lightTheme: 'retro',
+  darkTheme: 'dim',
+  mediaQuery: null,
   
   init() {
-    // 从 localStorage 加载主题
-    const savedTheme = localStorage.getItem(this.storageKey);
-    if (savedTheme) {
-      this.current = savedTheme;
+    // 从 localStorage 加载主题模式
+    const savedMode = localStorage.getItem(this.storageKey);
+    if (savedMode && ['light', 'dark', 'auto'].includes(savedMode)) {
+      this.mode = savedMode;
     }
+    
+    // 监听系统主题变化
+    this.mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    this.mediaQuery.addEventListener('change', () => {
+      if (this.mode === 'auto') {
+        this.applyTheme();
+      }
+    });
+    
+    // 应用初始主题
+    this.applyTheme();
   },
   
   toggle() {
-    this.current = this.current === 'retro' ? 'dim' : 'retro';
-    localStorage.setItem(this.storageKey, this.current);
+    // 循环切换：light -> dark -> auto -> light
+    if (this.mode === 'light') {
+      this.mode = 'dark';
+    } else if (this.mode === 'dark') {
+      this.mode = 'auto';
+    } else {
+      this.mode = 'light';
+    }
+    
+    localStorage.setItem(this.storageKey, this.mode);
+    this.applyTheme();
+  },
+  
+  applyTheme() {
+    let theme;
+    if (this.mode === 'auto') {
+      // 跟随系统
+      theme = this.mediaQuery.matches ? this.darkTheme : this.lightTheme;
+    } else if (this.mode === 'dark') {
+      theme = this.darkTheme;
+    } else {
+      theme = this.lightTheme;
+    }
+    
+    document.documentElement.setAttribute('data-theme', theme);
   },
   
   get isDark() {
-    return this.current === 'dark';
+    if (this.mode === 'auto') {
+      return this.mediaQuery ? this.mediaQuery.matches : false;
+    }
+    return this.mode === 'dark';
+  },
+  
+  get isLight() {
+    return this.mode === 'light';
+  },
+  
+  get isAuto() {
+    return this.mode === 'auto';
   }
 });
 
