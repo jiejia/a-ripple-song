@@ -21,16 +21,46 @@ class Podcast_List_Widget extends WP_Widget {
         $posts_per_page = !empty($instance['posts_per_page']) ? absint($instance['posts_per_page']) : 3;
         $show_see_all = !empty($instance['show_see_all']) ? $instance['show_see_all'] : true;
         
-        // 查询播客
-        $podcasts = new WP_Query([
+        // 查询最新播客 (Recent)
+        $recent_podcasts = new WP_Query([
             'post_type' => 'podcast',
             'posts_per_page' => $posts_per_page,
             'post_status' => 'publish',
             'orderby' => 'date',
             'order' => 'DESC'
         ]);
+        
+        // 查询热门播客 (Popular - 按评论数排序)
+        $popular_podcasts = new WP_Query([
+            'post_type' => 'podcast',
+            'posts_per_page' => $posts_per_page,
+            'post_status' => 'publish',
+            'orderby' => 'comment_count',
+            'order' => 'DESC'
+        ]);
+        
+        // 查询随机播客 (Random)
+        $random_podcasts = new WP_Query([
+            'post_type' => 'podcast',
+            'posts_per_page' => $posts_per_page,
+            'post_status' => 'publish',
+            'orderby' => 'rand'
+        ]);
+        
+        // 准备三种类型的播客数据
+        $podcast_data = [
+            'recent' => $this->prepare_podcast_list($recent_podcasts),
+            'popular' => $this->prepare_podcast_list($popular_podcasts),
+            'random' => $this->prepare_podcast_list($random_podcasts)
+        ];
+        
+        wp_reset_postdata();
         ?>
-        <div class="rounded-lg bg-base-100 p-4">
+        <div class="rounded-lg bg-base-100 p-4" 
+             x-data="{ 
+                 activeTab: 'recent',
+                 podcastData: <?php echo esc_attr(wp_json_encode($podcast_data)); ?>
+             }">
             <div class="grid grid-cols-[1fr_auto] items-center">
                 <h2 class="text-lg font-bold">
                     <?php echo esc_html($title); ?>
@@ -43,36 +73,89 @@ class Podcast_List_Widget extends WP_Widget {
             </div>
             <ul class="flex gap-2 mt-2">
                 <li>
-                    <button class="btn bg-base-200 rounded-full btn-sm">Recent</button>
+                    <button 
+                        @click="activeTab = 'recent'" 
+                        :class="activeTab === 'recent' ? 'bg-base-200' : 'bg-base-100'"
+                        class="btn rounded-full btn-sm">
+                        Recent
+                    </button>
                 </li>
                 <li>
-                    <button class="btn bg-base-100 rounded-full btn-sm">Popular</button>
+                    <button 
+                        @click="activeTab = 'popular'" 
+                        :class="activeTab === 'popular' ? 'bg-base-200' : 'bg-base-100'"
+                        class="btn rounded-full btn-sm">
+                        Popular
+                    </button>
                 </li>
                 <li>
-                    <button class="btn bg-base-100 rounded-full btn-sm">Random</button>
+                    <button 
+                        @click="activeTab = 'random'" 
+                        :class="activeTab === 'random' ? 'bg-base-200' : 'bg-base-100'"
+                        class="btn rounded-full btn-sm">
+                        Random
+                    </button>
                 </li>
             </ul>
-            <ul class="grid grid-flow-row gap-y-4 mt-4">
-                <?php if ($podcasts->have_posts()): ?>
-                    <?php while ($podcasts->have_posts()): $podcasts->the_post(); ?>
-                        <?php
-                        $post_id = get_the_ID();
-                        $audio_file = get_post_meta($post_id, 'audio_file', true);
-                        $episode_data = get_episode_data($post_id);
-                        ?>
-                        <li x-data="{ episode: <?php echo esc_attr(wp_json_encode($episode_data)); ?> }">
+            
+            <!-- Recent Tab -->
+            <ul class="grid grid-flow-row gap-y-4 mt-4" x-show="activeTab === 'recent'">
+                <?php if (!empty($podcast_data['recent'])): ?>
+                    <?php foreach ($podcast_data['recent'] as $podcast): ?>
+                        <li x-data="{ episode: <?php echo esc_attr(wp_json_encode($podcast['episode_data'])); ?> }">
                             <?php 
                                 echo \Roots\view('partials.podcast-episode-card', [
-                                    'post_id' => $post_id,
-                                    'audio_file' => $audio_file,
-                                    'episode_data' => $episode_data,
-                                    'title' => get_the_title(),
+                                    'post_id' => $podcast['post_id'],
+                                    'audio_file' => $podcast['audio_file'],
+                                    'episode_data' => $podcast['episode_data'],
+                                    'title' => $podcast['title'],
                                     'show_link' => true
                                 ])->render();
                             ?>
                         </li>
-                    <?php endwhile; ?>
-                    <?php wp_reset_postdata(); ?>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <li class="text-center text-base-content/50 py-8">暂无播客内容</li>
+                <?php endif; ?>
+            </ul>
+            
+            <!-- Popular Tab -->
+            <ul class="grid grid-flow-row gap-y-4 mt-4" x-show="activeTab === 'popular'" style="display: none;">
+                <?php if (!empty($podcast_data['popular'])): ?>
+                    <?php foreach ($podcast_data['popular'] as $podcast): ?>
+                        <li x-data="{ episode: <?php echo esc_attr(wp_json_encode($podcast['episode_data'])); ?> }">
+                            <?php 
+                                echo \Roots\view('partials.podcast-episode-card', [
+                                    'post_id' => $podcast['post_id'],
+                                    'audio_file' => $podcast['audio_file'],
+                                    'episode_data' => $podcast['episode_data'],
+                                    'title' => $podcast['title'],
+                                    'show_link' => true
+                                ])->render();
+                            ?>
+                        </li>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <li class="text-center text-base-content/50 py-8">暂无播客内容</li>
+                <?php endif; ?>
+            </ul>
+            
+            <!-- Random Tab -->
+            <ul class="grid grid-flow-row gap-y-4 mt-4" x-show="activeTab === 'random'" style="display: none;">
+                <?php if (!empty($podcast_data['random'])): ?>
+                    <?php foreach ($podcast_data['random'] as $podcast): ?>
+                        <li x-data="{ episode: <?php echo esc_attr(wp_json_encode($podcast['episode_data'])); ?> }">
+                            <?php 
+                                echo \Roots\view('partials.podcast-episode-card', [
+                                    'post_id' => $podcast['post_id'],
+                                    'audio_file' => $podcast['audio_file'],
+                                    'episode_data' => $podcast['episode_data'],
+                                    'title' => $podcast['title'],
+                                    'show_link' => true
+                                ])->render();
+                            ?>
+                        </li>
+                    <?php endforeach; ?>
                 <?php else: ?>
                     <li class="text-center text-base-content/50 py-8">暂无播客内容</li>
                 <?php endif; ?>
@@ -81,6 +164,31 @@ class Podcast_List_Widget extends WP_Widget {
         <?php
         
         echo $args['after_widget'];
+    }
+    
+    /**
+     * 准备播客列表数据
+     */
+    private function prepare_podcast_list($query) {
+        $podcasts = [];
+        
+        if ($query->have_posts()) {
+            while ($query->have_posts()) {
+                $query->the_post();
+                $post_id = get_the_ID();
+                $audio_file = get_post_meta($post_id, 'audio_file', true);
+                $episode_data = get_episode_data($post_id);
+                
+                $podcasts[] = [
+                    'post_id' => $post_id,
+                    'audio_file' => $audio_file,
+                    'episode_data' => $episode_data,
+                    'title' => get_the_title()
+                ];
+            }
+        }
+        
+        return $podcasts;
     }
     
     public function form($instance) {
