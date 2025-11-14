@@ -509,12 +509,445 @@ class Blog_List_Widget extends WP_Widget {
 }
 
 /**
+ * Subscribe Links Widget
+ * 显示订阅链接按钮
+ */
+class Subscribe_Links_Widget extends WP_Widget {
+    
+    public function __construct() {
+        parent::__construct(
+            'subscribe_links_widget',
+            __('aripplesong - 订阅链接', 'sage'),
+            ['description' => __('显示播客订阅平台链接', 'sage')]
+        );
+    }
+    
+    public function widget($args, $instance) {
+        echo $args['before_widget'];
+        
+        $title = !empty($instance['title']) ? $instance['title'] : 'SUBSCRIBE';
+        $apple_podcast_url = !empty($instance['apple_podcast_url']) ? $instance['apple_podcast_url'] : '';
+        $spotify_url = !empty($instance['spotify_url']) ? $instance['spotify_url'] : '';
+        $youtube_music_url = !empty($instance['youtube_music_url']) ? $instance['youtube_music_url'] : '';
+        
+        // 检查是否至少有一个链接
+        $has_links = !empty($apple_podcast_url) || !empty($spotify_url) || !empty($youtube_music_url);
+        
+        if (!$has_links) {
+            // 没有配置任何链接时不显示
+            echo $args['after_widget'];
+            return;
+        }
+        ?>
+        <div class="card bg-base-100 w-full mt-4">
+            <div class="card-body p-4">
+                <h2 class="text-lg font-bold"><?php echo esc_html($title); ?></h2>
+                
+                <?php if (!empty($apple_podcast_url)): ?>
+                <a href="<?php echo esc_url($apple_podcast_url); ?>" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="btn bg-gradient-to-r from-gray-600 via-gray-800 to-black btn-sm text-white border-black transition-all duration-500 ease-in-out hover:from-black hover:via-gray-800 hover:to-gray-600">
+                    <i data-lucide="podcast" class="w-4 h-4"></i>
+                    Apple Podcast
+                </a>
+                <?php endif; ?>
+                
+                <?php if (!empty($spotify_url)): ?>
+                <a href="<?php echo esc_url($spotify_url); ?>" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="btn bg-gradient-to-r from-green-400 via-green-500 to-[#03C755] btn-sm text-white border-[#00b544] transition-all duration-500 ease-in-out hover:from-[#03C755] hover:via-green-500 hover:to-green-400">
+                    <i data-lucide="music" class="w-4 h-4"></i>
+                    Spotify
+                </a>
+                <?php endif; ?>
+                
+                <?php if (!empty($youtube_music_url)): ?>
+                <a href="<?php echo esc_url($youtube_music_url); ?>" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="btn bg-gradient-to-r from-yellow-300 via-yellow-400 to-[#FEE502] btn-sm text-[#181600] border-[#f1d800] transition-all duration-500 ease-in-out hover:from-[#FEE502] hover:via-yellow-400 hover:to-yellow-300">
+                    <i data-lucide="youtube" class="w-4 h-4"></i>
+                    Youtube Music
+                </a>
+                <?php endif; ?>
+            </div>
+        </div>
+        <?php
+        
+        echo $args['after_widget'];
+    }
+    
+    public function form($instance) {
+        $title = !empty($instance['title']) ? $instance['title'] : 'SUBSCRIBE';
+        $apple_podcast_url = !empty($instance['apple_podcast_url']) ? $instance['apple_podcast_url'] : '';
+        $spotify_url = !empty($instance['spotify_url']) ? $instance['spotify_url'] : '';
+        $youtube_music_url = !empty($instance['youtube_music_url']) ? $instance['youtube_music_url'] : '';
+        ?>
+        <p>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('标题:', 'sage'); ?></label>
+            <input class="widefat" 
+                   id="<?php echo $this->get_field_id('title'); ?>" 
+                   name="<?php echo $this->get_field_name('title'); ?>" 
+                   type="text" 
+                   value="<?php echo esc_attr($title); ?>"
+                   placeholder="SUBSCRIBE">
+        </p>
+        
+        <p>
+            <label for="<?php echo $this->get_field_id('apple_podcast_url'); ?>">
+                <?php _e('Apple Podcast 链接:', 'sage'); ?>
+            </label>
+            <input class="widefat" 
+                   id="<?php echo $this->get_field_id('apple_podcast_url'); ?>" 
+                   name="<?php echo $this->get_field_name('apple_podcast_url'); ?>" 
+                   type="url" 
+                   value="<?php echo esc_attr($apple_podcast_url); ?>"
+                   placeholder="https://podcasts.apple.com/...">
+            <small class="description"><?php _e('留空则不显示该按钮', 'sage'); ?></small>
+        </p>
+        
+        <p>
+            <label for="<?php echo $this->get_field_id('spotify_url'); ?>">
+                <?php _e('Spotify 链接:', 'sage'); ?>
+            </label>
+            <input class="widefat" 
+                   id="<?php echo $this->get_field_id('spotify_url'); ?>" 
+                   name="<?php echo $this->get_field_name('spotify_url'); ?>" 
+                   type="url" 
+                   value="<?php echo esc_attr($spotify_url); ?>"
+                   placeholder="https://open.spotify.com/...">
+            <small class="description"><?php _e('留空则不显示该按钮', 'sage'); ?></small>
+        </p>
+        
+        <p>
+            <label for="<?php echo $this->get_field_id('youtube_music_url'); ?>">
+                <?php _e('Youtube Music 链接:', 'sage'); ?>
+            </label>
+            <input class="widefat" 
+                   id="<?php echo $this->get_field_id('youtube_music_url'); ?>" 
+                   name="<?php echo $this->get_field_name('youtube_music_url'); ?>" 
+                   type="url" 
+                   value="<?php echo esc_attr($youtube_music_url); ?>"
+                   placeholder="https://music.youtube.com/...">
+            <small class="description"><?php _e('留空则不显示该按钮', 'sage'); ?></small>
+        </p>
+        <?php
+    }
+    
+    public function update($new_instance, $old_instance) {
+        $instance = [];
+        $instance['title'] = (!empty($new_instance['title'])) ? sanitize_text_field($new_instance['title']) : 'SUBSCRIBE';
+        $instance['apple_podcast_url'] = (!empty($new_instance['apple_podcast_url'])) ? esc_url_raw($new_instance['apple_podcast_url']) : '';
+        $instance['spotify_url'] = (!empty($new_instance['spotify_url'])) ? esc_url_raw($new_instance['spotify_url']) : '';
+        $instance['youtube_music_url'] = (!empty($new_instance['youtube_music_url'])) ? esc_url_raw($new_instance['youtube_music_url']) : '';
+        return $instance;
+    }
+}
+
+/**
+ * Tags Cloud Widget
+ * 显示标签云
+ */
+class Tags_Cloud_Widget extends WP_Widget {
+    
+    public function __construct() {
+        parent::__construct(
+            'tags_cloud_widget',
+            __('aripplesong - 标签云', 'sage'),
+            ['description' => __('显示文章标签云', 'sage')]
+        );
+    }
+    
+    public function widget($args, $instance) {
+        echo $args['before_widget'];
+        
+        $title = !empty($instance['title']) ? $instance['title'] : 'TAGS';
+        $number = !empty($instance['number']) ? absint($instance['number']) : 20;
+        $orderby = !empty($instance['orderby']) ? $instance['orderby'] : 'count';
+        $order = !empty($instance['order']) ? $instance['order'] : 'DESC';
+        
+        // 获取标签
+        $tags = get_tags([
+            'number' => $number,
+            'orderby' => $orderby,
+            'order' => $order,
+            'hide_empty' => true
+        ]);
+        
+        if (empty($tags)) {
+            // 没有标签时显示占位提示
+            ?>
+            <div class="card bg-base-100 w-full mt-4">
+                <div class="card-body p-4">
+                    <h2 class="text-lg font-bold"><?php echo esc_html($title); ?></h2>
+                    <div class="text-center py-8">
+                        <div class="text-base-content/50">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                            </svg>
+                            <p class="text-sm font-medium"><?php _e('暂无标签', 'sage'); ?></p>
+                            <p class="text-xs mt-1"><?php _e('发布文章并添加标签后将显示在这里', 'sage'); ?></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php
+        } else {
+            ?>
+            <div class="card bg-base-100 w-full mt-4">
+                <div class="card-body p-4">
+                    <h2 class="text-lg font-bold"><?php echo esc_html($title); ?></h2>
+                    <ul class="mt-0 flex flex-wrap gap-2 text-xs text-base-content/75">
+                        <?php foreach ($tags as $tag): ?>
+                            <li>
+                                <a href="<?php echo get_tag_link($tag->term_id); ?>" 
+                                   class="bg-base-200/50 hover:bg-base-200 rounded-full py-0.5 px-2 transition-colors"
+                                   title="<?php printf(__('%d 篇文章', 'sage'), $tag->count); ?>">
+                                    # <?php echo esc_html($tag->name); ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </div>
+            <?php
+        }
+        
+        echo $args['after_widget'];
+    }
+    
+    public function form($instance) {
+        $title = !empty($instance['title']) ? $instance['title'] : 'TAGS';
+        $number = !empty($instance['number']) ? absint($instance['number']) : 20;
+        $orderby = !empty($instance['orderby']) ? $instance['orderby'] : 'count';
+        $order = !empty($instance['order']) ? $instance['order'] : 'DESC';
+        ?>
+        <p>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('标题:', 'sage'); ?></label>
+            <input class="widefat" 
+                   id="<?php echo $this->get_field_id('title'); ?>" 
+                   name="<?php echo $this->get_field_name('title'); ?>" 
+                   type="text" 
+                   value="<?php echo esc_attr($title); ?>">
+        </p>
+        
+        <p>
+            <label for="<?php echo $this->get_field_id('number'); ?>"><?php _e('显示数量:', 'sage'); ?></label>
+            <input class="tiny-text" 
+                   id="<?php echo $this->get_field_id('number'); ?>" 
+                   name="<?php echo $this->get_field_name('number'); ?>" 
+                   type="number" 
+                   step="1" 
+                   min="1" 
+                   value="<?php echo esc_attr($number); ?>" 
+                   size="3">
+            <small class="description"><?php _e('最多显示多少个标签', 'sage'); ?></small>
+        </p>
+        
+        <p>
+            <label for="<?php echo $this->get_field_id('orderby'); ?>"><?php _e('排序依据:', 'sage'); ?></label>
+            <select class="widefat" 
+                    id="<?php echo $this->get_field_id('orderby'); ?>" 
+                    name="<?php echo $this->get_field_name('orderby'); ?>">
+                <option value="count" <?php selected($orderby, 'count'); ?>><?php _e('文章数量', 'sage'); ?></option>
+                <option value="name" <?php selected($orderby, 'name'); ?>><?php _e('标签名称', 'sage'); ?></option>
+                <option value="term_id" <?php selected($orderby, 'term_id'); ?>><?php _e('标签ID', 'sage'); ?></option>
+                <option value="rand" <?php selected($orderby, 'rand'); ?>><?php _e('随机', 'sage'); ?></option>
+            </select>
+        </p>
+        
+        <p>
+            <label for="<?php echo $this->get_field_id('order'); ?>"><?php _e('排序顺序:', 'sage'); ?></label>
+            <select class="widefat" 
+                    id="<?php echo $this->get_field_id('order'); ?>" 
+                    name="<?php echo $this->get_field_name('order'); ?>">
+                <option value="DESC" <?php selected($order, 'DESC'); ?>><?php _e('降序 (多到少/Z到A)', 'sage'); ?></option>
+                <option value="ASC" <?php selected($order, 'ASC'); ?>><?php _e('升序 (少到多/A到Z)', 'sage'); ?></option>
+            </select>
+        </p>
+        <?php
+    }
+    
+    public function update($new_instance, $old_instance) {
+        $instance = [];
+        $instance['title'] = (!empty($new_instance['title'])) ? sanitize_text_field($new_instance['title']) : 'TAGS';
+        $instance['number'] = (!empty($new_instance['number'])) ? absint($new_instance['number']) : 20;
+        $instance['orderby'] = (!empty($new_instance['orderby'])) && in_array($new_instance['orderby'], ['count', 'name', 'term_id', 'rand']) 
+            ? $new_instance['orderby'] 
+            : 'count';
+        $instance['order'] = (!empty($new_instance['order'])) && in_array($new_instance['order'], ['ASC', 'DESC']) 
+            ? $new_instance['order'] 
+            : 'DESC';
+        return $instance;
+    }
+}
+
+/**
+ * Authors Widget
+ * 显示作者列表（成员和访客）
+ */
+class Authors_Widget extends WP_Widget {
+    
+    public function __construct() {
+        parent::__construct(
+            'authors_widget',
+            __('aripplesong - 作者列表', 'sage'),
+            ['description' => __('显示成员和访客作者列表', 'sage')]
+        );
+    }
+    
+    public function widget($args, $instance) {
+        echo $args['before_widget'];
+        
+        $members_title = !empty($instance['members_title']) ? $instance['members_title'] : 'Members';
+        $guests_title = !empty($instance['guests_title']) ? $instance['guests_title'] : 'Guests';
+        $show_members = isset($instance['show_members']) ? $instance['show_members'] : true;
+        $show_guests = isset($instance['show_guests']) ? $instance['show_guests'] : true;
+        
+        // 获取成员（管理员、编辑、作者）
+        $members = get_users([
+            'role__in' => ['administrator', 'editor', 'author'],
+            'orderby' => 'display_name',
+            'order' => 'ASC',
+        ]);
+        
+        // 获取访客（投稿者）
+        $contributors = get_users([
+            'role' => 'contributor',
+            'orderby' => 'display_name',
+            'order' => 'ASC',
+        ]);
+        ?>
+        <div class="bg-base-100 rounded-lg p-4">
+            <?php if ($show_members && !empty($members)): ?>
+            <h3 class="text-sm font-bold text-base-content/50"><?php echo esc_html($members_title); ?></h3>
+            <div class="grid grid-flow-row gap-2 mt-4">
+                <?php foreach($members as $user): ?>
+                    <?php
+                    $avatar_url = get_avatar_url($user->ID, ['size' => 192]);
+                    $post_count = function_exists('calculate_user_post_count') 
+                        ? calculate_user_post_count($user->ID) 
+                        : count_user_posts($user->ID, 'post') + count_user_posts($user->ID, 'podcast');
+                    ?>
+                    <a href="<?php echo get_author_posts_url($user->ID); ?>" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
+                        <div class="avatar">
+                            <div class="ring-base-content/50 ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
+                                <img src="<?php echo esc_url($avatar_url); ?>" alt="<?php echo esc_attr($user->display_name); ?>" />
+                            </div>
+                        </div>
+                        <span class="text-xs"><?php echo esc_html($user->display_name); ?></span>
+                        <span class="text-xs text-base-content/50"><?php echo esc_html($post_count); ?></span>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+            <?php endif; ?>
+            
+            <?php if ($show_guests && !empty($contributors)): ?>
+            <h3 class="text-sm font-bold text-base-content/50 <?php echo ($show_members && !empty($members)) ? 'mt-4' : ''; ?>"><?php echo esc_html($guests_title); ?></h3>
+            <div class="grid grid-flow-row gap-2 mt-4">
+                <?php foreach($contributors as $user): ?>
+                    <?php
+                    $avatar_url = get_avatar_url($user->ID, ['size' => 192]);
+                    $post_count = function_exists('calculate_user_post_count') 
+                        ? calculate_user_post_count($user->ID) 
+                        : count_user_posts($user->ID, 'post') + count_user_posts($user->ID, 'podcast');
+                    ?>
+                    <a href="<?php echo get_author_posts_url($user->ID); ?>" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
+                        <div class="avatar">
+                            <div class="ring-base-content/50 ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
+                                <img src="<?php echo esc_url($avatar_url); ?>" alt="<?php echo esc_attr($user->display_name); ?>" />
+                            </div>
+                        </div>
+                        <span class="text-xs"><?php echo esc_html($user->display_name); ?></span>
+                        <span class="text-xs text-base-content/50"><?php echo esc_html($post_count); ?></span>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+            <?php endif; ?>
+            
+            <?php if ((!$show_members || empty($members)) && (!$show_guests || empty($contributors))): ?>
+            <div class="text-center py-8">
+                <div class="text-base-content/50">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    <p class="text-sm font-medium"><?php _e('暂无作者', 'sage'); ?></p>
+                    <p class="text-xs mt-1"><?php _e('添加用户后将显示在这里', 'sage'); ?></p>
+                </div>
+            </div>
+            <?php endif; ?>
+        </div>
+        <?php
+        
+        echo $args['after_widget'];
+    }
+    
+    public function form($instance) {
+        $members_title = !empty($instance['members_title']) ? $instance['members_title'] : 'Members';
+        $guests_title = !empty($instance['guests_title']) ? $instance['guests_title'] : 'Guests';
+        $show_members = isset($instance['show_members']) ? $instance['show_members'] : true;
+        $show_guests = isset($instance['show_guests']) ? $instance['show_guests'] : true;
+        ?>
+        <p>
+            <label for="<?php echo $this->get_field_id('members_title'); ?>"><?php _e('成员标题:', 'sage'); ?></label>
+            <input class="widefat" 
+                   id="<?php echo $this->get_field_id('members_title'); ?>" 
+                   name="<?php echo $this->get_field_name('members_title'); ?>" 
+                   type="text" 
+                   value="<?php echo esc_attr($members_title); ?>">
+        </p>
+        
+        <p>
+            <input class="checkbox" 
+                   type="checkbox" 
+                   <?php checked($show_members); ?> 
+                   id="<?php echo $this->get_field_id('show_members'); ?>" 
+                   name="<?php echo $this->get_field_name('show_members'); ?>">
+            <label for="<?php echo $this->get_field_id('show_members'); ?>"><?php _e('显示成员（管理员、编辑、作者）', 'sage'); ?></label>
+        </p>
+        
+        <p>
+            <label for="<?php echo $this->get_field_id('guests_title'); ?>"><?php _e('访客标题:', 'sage'); ?></label>
+            <input class="widefat" 
+                   id="<?php echo $this->get_field_id('guests_title'); ?>" 
+                   name="<?php echo $this->get_field_name('guests_title'); ?>" 
+                   type="text" 
+                   value="<?php echo esc_attr($guests_title); ?>">
+        </p>
+        
+        <p>
+            <input class="checkbox" 
+                   type="checkbox" 
+                   <?php checked($show_guests); ?> 
+                   id="<?php echo $this->get_field_id('show_guests'); ?>" 
+                   name="<?php echo $this->get_field_name('show_guests'); ?>">
+            <label for="<?php echo $this->get_field_id('show_guests'); ?>"><?php _e('显示访客（投稿者）', 'sage'); ?></label>
+        </p>
+        <?php
+    }
+    
+    public function update($new_instance, $old_instance) {
+        $instance = [];
+        $instance['members_title'] = (!empty($new_instance['members_title'])) ? sanitize_text_field($new_instance['members_title']) : 'Members';
+        $instance['guests_title'] = (!empty($new_instance['guests_title'])) ? sanitize_text_field($new_instance['guests_title']) : 'Guests';
+        $instance['show_members'] = (!empty($new_instance['show_members'])) ? 1 : 0;
+        $instance['show_guests'] = (!empty($new_instance['show_guests'])) ? 1 : 0;
+        return $instance;
+    }
+}
+
+/**
  * Register widgets
  */
 add_action('widgets_init', function() {
     register_widget('Banner_Carousel_Widget');
     register_widget('Podcast_List_Widget');
     register_widget('Blog_List_Widget');
+    register_widget('Subscribe_Links_Widget');
+    register_widget('Tags_Cloud_Widget');
+    register_widget('Authors_Widget');
 });
 
 /**

@@ -155,6 +155,24 @@ add_action('widgets_init', function () {
         'before_title' => '<h2 class="widget-title text-lg font-bold mb-2">',
         'after_title' => '</h2>',
     ]);
+    register_sidebar([
+        'name' => __('Sidebar Primary', 'sage'),
+        'id' => 'sidebar-primary',
+        'description' => __('侧边栏主要区域，用于显示侧边栏的各种内容模块', 'sage'),
+        'before_widget' => '<div class="widget %1$s %2$s mb-4">',
+        'after_widget' => '</div>',
+        'before_title' => '<h2 class="widget-title text-lg font-bold mb-2">',
+        'after_title' => '</h2>',
+    ]);
+    register_sidebar([
+        'name' => __('Leftbar Primary', 'sage'),
+        'id' => 'leftbar-primary',
+        'description' => __('左侧栏主要区域，用于显示左侧栏的各种内容模块', 'sage'),
+        'before_widget' => '<div class="widget %1$s %2$s mb-4">',
+        'after_widget' => '</div>',
+        'before_title' => '<h2 class="widget-title text-lg font-bold mb-2">',
+        'after_title' => '</h2>',
+    ]);
 });
 
 /**

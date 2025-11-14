@@ -1,4 +1,4 @@
-<div class="card md:bg-base-100 bg-base-300/90 mt-4 md:static fixed bottom-0 left-0 right-0 z-100" x-data>
+<div class="card md:bg-base-100 bg-base-300/90 md:static fixed bottom-0 left-0 right-0 z-100" x-data>
     <div class="card-body p-4">
         <h2 class="text-lg font-bold">NOW PLAYING</h2>
         <div class="grid grid-cols-[60px_1fr] gap-4 items-center md:bg-base-300/50 bg-base-100/75 p-4 rounded-lg">
