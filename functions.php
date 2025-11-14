@@ -420,7 +420,7 @@ function get_episode_data($post_id = null) {
  */
 function sage_custom_comment($comment, $args, $depth) {
     // All comments use bg-base-100 regardless of depth
-    $bg_class = 'bg-base-100';
+    $bg_class = 'bg-base-200/50';
     
     // Get comment type class
     $comment_type = get_comment_type($comment->comment_ID);
