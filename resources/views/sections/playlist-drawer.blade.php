@@ -49,7 +49,7 @@
                   <!-- 播放中指示器 -->
                   <template x-if="index === $store.player.currentIndex">
                     <div class="absolute inset-0 flex items-center justify-center bg-black/30 rounded">
-                      <i data-lucide="volume-2" class="w-5 h-5 text-white"></i>
+                      <i data-lucide="audio-lines" class="w-5 h-5 text-white"></i>
                     </div>
                   </template>
                 </div>
