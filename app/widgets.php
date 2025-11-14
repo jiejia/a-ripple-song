@@ -273,47 +273,16 @@ class Podcast_List_Widget extends WP_Widget {
                         $audio_file = get_post_meta($post_id, 'audio_file', true);
                         $episode_data = get_episode_data($post_id);
                         ?>
-                        <li>
-                            <div class="bg-base-200/50 rounded-lg hover:bg-base-200">
-                                <div class="p-4 grid grid-cols-[60px_1fr_60px] items-center" 
-                                     x-data 
-                                     data-episode='<?php echo esc_attr(wp_json_encode($episode_data)); ?>'>
-                                    <div>
-                                        <a href="<?php the_permalink(); ?>" class="block w-10 h-10 rounded-lg overflow-hidden">
-                                            <?php if (has_post_thumbnail()): ?>
-                                                <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'thumbnail'); ?>" 
-                                                     alt="<?php the_title_attribute(); ?>" 
-                                                     class="w-10 h-10 rounded-md object-cover" />
-                                            <?php else: ?>
-                                                <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
-                                                     alt="<?php the_title_attribute(); ?>" 
-                                                     class="w-10 h-10 rounded-md" />
-                                            <?php endif; ?>
-                                        </a>
-                                    </div>
-                                    <div class="grid grid-flow-row gap-1">
-                                        <h4 class="text-md font-bold">
-                                            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                                        </h4>
-                                        <p class="text-xs text-base-content/50">
-                                            <span><?php echo get_the_date(); ?></span>
-                                            <span>•</span>
-                                            <span><?php echo get_post_meta(get_the_ID(), '_post_views_count', true) ?: 0; ?> views</span>
-                                        </p>
-                                    </div>
-                                    <div class="flex gap-2">
-                                        <?php if ($audio_file): ?>
-                                            <button type="button" 
-                                                    @click="$store.player.addEpisode(JSON.parse($el.closest('[data-episode]').dataset.episode))"
-                                                    class="cursor-pointer hover:text-primary transition-colors"
-                                                    title="加入播放列表">
-                                                <i data-lucide="plus-circle" class="text-xs h-4"></i>
-                                            </button>
-                                        <?php endif; ?>
-                                        <i data-lucide="ellipsis-vertical" class="text-xs h-4 cursor-pointer"></i>
-                                    </div>
-                                </div>
-                            </div>
+                        <li x-data="{ episode: <?php echo esc_attr(wp_json_encode($episode_data)); ?> }">
+                            <?php 
+                                echo \Roots\view('partials.podcast-episode-card', [
+                                    'post_id' => $post_id,
+                                    'audio_file' => $audio_file,
+                                    'episode_data' => $episode_data,
+                                    'title' => get_the_title(),
+                                    'show_link' => true
+                                ])->render();
+                            ?>
                         </li>
                     <?php endwhile; ?>
                     <?php wp_reset_postdata(); ?>
