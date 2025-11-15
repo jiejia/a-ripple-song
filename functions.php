@@ -398,7 +398,7 @@ function get_episode_data($post_id = null) {
     }
     
     $audio_file = get_post_meta($post_id, 'audio_file', true);
-    $featured_image = get_the_post_thumbnail_url($post_id, 'medium') ?: 'https://cdn.pixabay.com/photo/2025/10/03/09/14/asters-9870320_960_720.jpg';
+    $featured_image = get_the_post_thumbnail_url($post_id, 'medium');
     
     return [
         'id' => $post_id,

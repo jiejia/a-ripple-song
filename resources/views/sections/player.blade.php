@@ -2,8 +2,23 @@
     <div class="card-body p-4">
         <h2 class="text-lg font-bold">NOW PLAYING</h2>
         <div class="grid grid-cols-[60px_1fr] gap-4 items-center md:bg-base-300/50 bg-base-100/75 p-4 rounded-lg">
-            <div>
-                <img :src="$store.player.currentEpisode?.featuredImage || 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80'" :alt="$store.player.currentEpisode?.title || '音乐漫谈'" class="w-15 h-15 rounded-md" />
+            <div class="w-15 h-15">
+                <template x-if="$store.player.currentEpisode?.featuredImage">
+                    <div class="relative w-15 h-15">
+                        <img 
+                            :src="$store.player.currentEpisode?.featuredImage" 
+                            :alt="$store.player.currentEpisode?.title || '音乐漫谈'" 
+                            class="w-15 h-15 rounded-md object-cover" />
+                        <div class="pointer-events-none absolute inset-0 bg-base-900/30 flex items-center justify-center rounded-md">
+                            <i data-lucide="podcast" class="w-6 h-6 text-base-100"></i>
+                        </div>
+                    </div>
+                </template>
+                <template x-if="!$store.player.currentEpisode?.featuredImage">
+                    <div class="w-15 h-15 rounded-md bg-base-300/60 flex items-center justify-center">
+                        <i data-lucide="podcast" class="w-6 h-6 text-base-content/70"></i>
+                    </div>
+                </template>
             </div>
             <div>
                 <h4 class="text-md font-bold" x-text="$store.player.currentEpisode?.title || '暂无播放'">音乐漫谈：从古典到流行的跨界之旅</h4>

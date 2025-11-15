@@ -177,8 +177,8 @@ Alpine.store('player', {
           continue;
         }
 
-        // 获取特色图片
-        let featuredImage = 'https://cdn.pixabay.com/photo/2025/10/03/09/14/asters-9870320_960_720.jpg';
+        // 获取特色图片（为空时交由前端显示占位图标）
+        let featuredImage = null;
         if (post._embedded?.['wp:featuredmedia']?.[0]?.source_url) {
           featuredImage = post._embedded['wp:featuredmedia'][0].source_url;
         }

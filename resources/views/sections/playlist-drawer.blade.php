@@ -41,15 +41,25 @@
               class="p-3 rounded-lg cursor-pointer transition-colors group">
               <div class="flex gap-3 items-center">
                 <!-- 封面图 -->
-                <div class="relative flex-shrink-0">
-                  <img 
-                    :src="episode.featuredImage || 'https://cdn.pixabay.com/photo/2025/10/03/09/14/asters-9870320_960_720.jpg'" 
-                    :alt="episode.title" 
-                    class="w-14 h-14 rounded object-cover" />
-                  <!-- 播放中指示器 -->
-                  <template x-if="index === $store.player.currentIndex">
-                    <div class="absolute inset-0 flex items-center justify-center bg-black/30 rounded">
-                      <i data-lucide="audio-lines" class="w-5 h-5 text-white"></i>
+                <div class="relative flex-shrink-0 w-14 h-14">
+                  <template x-if="episode.featuredImage">
+                    <div class="relative w-full h-full">
+                      <img 
+                        :src="episode.featuredImage" 
+                        :alt="episode.title" 
+                        class="w-14 h-14 rounded object-cover" />
+                      <div class="pointer-events-none absolute inset-0 flex items-center justify-center bg-base-900/30 rounded">
+                        <i 
+                          data-lucide="podcast" 
+                          class="w-5 h-5 text-base-100" 
+                          :class="{ 'text-primary': index === $store.player.currentIndex }"></i>
+                      </div>
+                    </div>
+                  </template>
+                  <template x-if="!episode.featuredImage">
+                    <div class="w-full h-full rounded bg-base-300/60 flex items-center justify-center">
+                      <i data-lucide="podcast" class="w-5 h-5 text-base-content/70" x-show="index !== $store.player.currentIndex"></i>
+                      <i data-lucide="podcast" class="w-5 h-5 text-primary" x-show="index === $store.player.currentIndex"></i>
                     </div>
                   </template>
                 </div>

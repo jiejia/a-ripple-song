@@ -16,15 +16,18 @@
 <div class="bg-base-200/50 rounded-lg hover:bg-base-200">
     <div class="p-4 grid grid-cols-[60px_1fr_30px] items-center">
         <div>
-            <a href="{{ get_permalink($post_id) }}" class="block w-10 h-10 rounded-lg overflow-hidden">
+            <a href="{{ get_permalink($post_id) }}" class="relative block w-10 h-10 rounded-lg overflow-hidden">
                 @if(has_post_thumbnail($post_id))
-                    <img src="{{ get_the_post_thumbnail_url($post_id, 'thumbnail') }}" 
-                         alt="{{ get_the_title($post_id) }}" 
+                    <img src="{{ get_the_post_thumbnail_url($post_id, 'thumbnail') }}"
+                         alt="{{ get_the_title($post_id) }}"
                          class="w-10 h-10 rounded-md object-cover" />
+                    <div class="pointer-events-none absolute inset-0 bg-base-900/30 flex items-center justify-center">
+                        <i data-lucide="podcast" class="w-5 h-5 text-base-100"></i>
+                    </div>
                 @else
-                    <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
-                         alt="{{ get_the_title($post_id) }}" 
-                         class="w-10 h-10 rounded-md" />
+                    <div class="w-10 h-10 rounded-md bg-base-300/50 flex items-center justify-center">
+                        <i data-lucide="podcast" class="w-5 h-5 text-base-content/70"></i>
+                    </div>
                 @endif
             </a>
         </div>
