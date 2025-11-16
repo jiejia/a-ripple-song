@@ -37,7 +37,7 @@
           <template x-for="(episode, index) in $store.player.playlist" :key="episode.id">
             <li 
               @click="$store.player.playByIndex(index)"
-              :class="index === $store.player.currentIndex ? 'bg-primary/10 border-l-4 border-primary' : 'hover:bg-base-200'"
+              :class="index === $store.player.currentIndex ? 'bg-base-300/50' : 'hover:bg-base-200'"
               class="p-3 rounded-lg cursor-pointer transition-colors group">
               <div class="flex gap-3 items-center">
                 <!-- 封面图 -->
@@ -52,14 +52,13 @@
                         <i 
                           data-lucide="podcast" 
                           class="w-5 h-5 text-base-100" 
-                          :class="{ 'text-primary': index === $store.player.currentIndex }"></i>
+                          ></i>
                       </div>
                     </div>
                   </template>
                   <template x-if="!episode.featuredImage">
                     <div class="w-full h-full rounded bg-base-300/60 flex items-center justify-center">
-                      <i data-lucide="podcast" class="w-5 h-5 text-base-content/70" x-show="index !== $store.player.currentIndex"></i>
-                      <i data-lucide="podcast" class="w-5 h-5 text-primary" x-show="index === $store.player.currentIndex"></i>
+                      <i data-lucide="podcast" class="w-5 h-5 text-base-content/70"></i>
                     </div>
                   </template>
                 </div>
@@ -68,7 +67,7 @@
                 <div class="flex-1 min-w-0">
                   <p 
                     x-text="episode.title"
-                    :class="index === $store.player.currentIndex ? 'text-primary' : ''"
+                    :class="index === $store.player.currentIndex ? 'text-base-content' : 'text-base-content/80'"
                     class="font-semibold text-sm truncate"></p>
                   <p x-text="episode.publishDate" class="text-xs text-base-content/60"></p>
                   <template x-if="episode.description">

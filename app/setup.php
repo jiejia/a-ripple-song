@@ -391,3 +391,8 @@ add_filter('script_loader_tag', function ($tag, $handle, $src) {
     }
     return $tag;
 }, 10, 3);
+
+
+add_action('after_setup_theme', function () {
+    load_theme_textdomain('sage', get_template_directory() . '/resources/lang');
+});
