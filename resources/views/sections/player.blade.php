@@ -1,13 +1,13 @@
 <div class="card md:bg-base-100 bg-base-300/90 md:static fixed bottom-0 left-0 right-0 z-100" x-data>
     <div class="card-body p-4">
-        <h2 class="text-lg font-bold">NOW PLAYING</h2>
+        <h2 class="text-lg font-bold">{!! __('NOW PLAYING', 'sage') !!}</h2>
         <div class="grid grid-cols-[60px_1fr] gap-4 items-center md:bg-base-300/50 bg-base-100/75 p-4 rounded-lg">
             <div class="w-15 h-15">
                 <template x-if="$store.player.currentEpisode?.featuredImage">
                     <div class="relative w-15 h-15">
                         <img 
                             :src="$store.player.currentEpisode?.featuredImage" 
-                            :alt="$store.player.currentEpisode?.title || '音乐漫谈'" 
+                            :alt="$store.player.currentEpisode?.title || '{{ __('Podcast', 'sage') }}'" 
                             class="w-15 h-15 rounded-md object-cover" />
                         <div class="pointer-events-none absolute inset-0 bg-base-900/30 flex items-center justify-center rounded-md">
                             <i data-lucide="podcast" class="w-6 h-6 text-base-100"></i>
@@ -21,9 +21,9 @@
                 </template>
             </div>
             <div>
-                <h4 class="text-md font-bold" x-text="$store.player.currentEpisode?.title || '暂无播放'">音乐漫谈：从古典到流行的跨界之旅</h4>
+                <h4 class="text-md font-bold" x-text="$store.player.currentEpisode?.title || '{{ __('No Episode Playing', 'sage') }}'">{{ __('Podcast Episode', 'sage') }}</h4>
                 <p class="text-xs text-base-content/80">
-                    <span x-text="$store.player.currentEpisode?.publishDate || '-'">October 18, 2025</span>
+                    <span x-text="$store.player.currentEpisodePublishDate">October 18, 2025</span>
                 </p>
                 <p class="text-xs text-base-content/50" x-show="$store.player.currentEpisode?.description">
                     <span x-text="$store.player.currentEpisode?.description" class="line-clamp-1">142k views</span>

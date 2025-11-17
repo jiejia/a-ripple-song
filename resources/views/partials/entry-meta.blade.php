@@ -10,10 +10,12 @@
 </p> -->
 
 
+@php
+  $meta_post_id = $post_id ?? get_the_ID();
+@endphp
+
 <p class="text-xs text-base-content/50">
-  <time class="dt-published" datetime="{{ get_post_time('c', true) }}">
-    {{ get_the_date() }}
+  <time class="dt-published" datetime="{{ get_post_time('c', true, $meta_post_id) }}">
+    {{ get_localized_date($meta_post_id) }}
   </time>
-  <span>•</span>
-  <span>100k views</span>
 </p>

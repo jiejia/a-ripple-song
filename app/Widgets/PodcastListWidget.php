@@ -9,8 +9,8 @@ class Podcast_List_Widget extends WP_Widget {
     public function __construct() {
         parent::__construct(
             'podcast_list_widget',
-            __('aripplesong - 播客列表', 'sage'),
-            ['description' => __('显示最新的播客列表', 'sage')]
+            __('aripplesong - Podcast List', 'sage'),
+            ['description' => __('Display latest podcast list', 'sage')]
         );
     }
     
@@ -115,7 +115,7 @@ class Podcast_List_Widget extends WP_Widget {
                         </li>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <li class="text-center text-base-content/50 py-8">暂无播客内容</li>
+                    <li class="text-center text-base-content/50 py-8"><?php _e('No podcast content', 'sage'); ?></li>
                 <?php endif; ?>
             </ul>
             
@@ -136,7 +136,7 @@ class Podcast_List_Widget extends WP_Widget {
                         </li>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <li class="text-center text-base-content/50 py-8">暂无播客内容</li>
+                    <li class="text-center text-base-content/50 py-8"><?php _e('No podcast content', 'sage'); ?></li>
                 <?php endif; ?>
             </ul>
             
@@ -157,7 +157,7 @@ class Podcast_List_Widget extends WP_Widget {
                         </li>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <li class="text-center text-base-content/50 py-8">暂无播客内容</li>
+                    <li class="text-center text-base-content/50 py-8"><?php _e('No podcast content', 'sage'); ?></li>
                 <?php endif; ?>
             </ul>
         </div>
@@ -197,7 +197,7 @@ class Podcast_List_Widget extends WP_Widget {
         $show_see_all = isset($instance['show_see_all']) ? $instance['show_see_all'] : true;
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('标题:', 'sage'); ?></label>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'sage'); ?></label>
             <input class="widefat" 
                    id="<?php echo $this->get_field_id('title'); ?>" 
                    name="<?php echo $this->get_field_name('title'); ?>" 
@@ -205,7 +205,7 @@ class Podcast_List_Widget extends WP_Widget {
                    value="<?php echo esc_attr($title); ?>">
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('posts_per_page'); ?>"><?php _e('显示数量:', 'sage'); ?></label>
+            <label for="<?php echo $this->get_field_id('posts_per_page'); ?>"><?php _e('Number of posts:', 'sage'); ?></label>
             <input class="tiny-text" 
                    id="<?php echo $this->get_field_id('posts_per_page'); ?>" 
                    name="<?php echo $this->get_field_name('posts_per_page'); ?>" 
@@ -221,7 +221,7 @@ class Podcast_List_Widget extends WP_Widget {
                    <?php checked($show_see_all); ?> 
                    id="<?php echo $this->get_field_id('show_see_all'); ?>" 
                    name="<?php echo $this->get_field_name('show_see_all'); ?>">
-            <label for="<?php echo $this->get_field_id('show_see_all'); ?>"><?php _e('显示"查看全部"链接', 'sage'); ?></label>
+            <label for="<?php echo $this->get_field_id('show_see_all'); ?>"><?php _e('Show "See all" link', 'sage'); ?></label>
         </p>
         <?php
     }

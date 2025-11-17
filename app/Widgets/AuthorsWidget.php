@@ -9,8 +9,8 @@ class Authors_Widget extends WP_Widget {
     public function __construct() {
         parent::__construct(
             'authors_widget',
-            __('aripplesong - 作者列表', 'sage'),
-            ['description' => __('显示成员和访客作者列表', 'sage')]
+            __('aripplesong - Authors List', 'sage'),
+            ['description' => __('Display members and guest authors list', 'sage')]
         );
     }
     
@@ -89,8 +89,8 @@ class Authors_Widget extends WP_Widget {
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                     </svg>
-                    <p class="text-sm font-medium"><?php _e('暂无作者', 'sage'); ?></p>
-                    <p class="text-xs mt-1"><?php _e('添加用户后将显示在这里', 'sage'); ?></p>
+                    <p class="text-sm font-medium"><?php _e('No authors yet', 'sage'); ?></p>
+                    <p class="text-xs mt-1"><?php _e('Authors will appear here after adding users', 'sage'); ?></p>
                 </div>
             </div>
             <?php endif; ?>
@@ -107,7 +107,7 @@ class Authors_Widget extends WP_Widget {
         $show_guests = isset($instance['show_guests']) ? $instance['show_guests'] : true;
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id('members_title'); ?>"><?php _e('成员标题:', 'sage'); ?></label>
+            <label for="<?php echo $this->get_field_id('members_title'); ?>"><?php _e('Members Title:', 'sage'); ?></label>
             <input class="widefat" 
                    id="<?php echo $this->get_field_id('members_title'); ?>" 
                    name="<?php echo $this->get_field_name('members_title'); ?>" 
@@ -121,11 +121,11 @@ class Authors_Widget extends WP_Widget {
                    <?php checked($show_members); ?> 
                    id="<?php echo $this->get_field_id('show_members'); ?>" 
                    name="<?php echo $this->get_field_name('show_members'); ?>">
-            <label for="<?php echo $this->get_field_id('show_members'); ?>"><?php _e('显示成员（管理员、编辑、作者）', 'sage'); ?></label>
+            <label for="<?php echo $this->get_field_id('show_members'); ?>"><?php _e('Show Members (Administrators, Editors, Authors)', 'sage'); ?></label>
         </p>
         
         <p>
-            <label for="<?php echo $this->get_field_id('guests_title'); ?>"><?php _e('访客标题:', 'sage'); ?></label>
+            <label for="<?php echo $this->get_field_id('guests_title'); ?>"><?php _e('Guests Title:', 'sage'); ?></label>
             <input class="widefat" 
                    id="<?php echo $this->get_field_id('guests_title'); ?>" 
                    name="<?php echo $this->get_field_name('guests_title'); ?>" 
@@ -139,7 +139,7 @@ class Authors_Widget extends WP_Widget {
                    <?php checked($show_guests); ?> 
                    id="<?php echo $this->get_field_id('show_guests'); ?>" 
                    name="<?php echo $this->get_field_name('show_guests'); ?>">
-            <label for="<?php echo $this->get_field_id('show_guests'); ?>"><?php _e('显示访客（投稿者）', 'sage'); ?></label>
+            <label for="<?php echo $this->get_field_id('show_guests'); ?>"><?php _e('Show Guests (Contributors)', 'sage'); ?></label>
         </p>
         <?php
     }

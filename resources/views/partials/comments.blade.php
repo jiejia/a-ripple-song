@@ -45,7 +45,7 @@
   <div class="bg-base-200/50 rounded-lg p-4">
     <h3 class="text-sm font-bold mb-4 flex items-center gap-2">
       <i data-lucide="pen-line" class="w-4 h-4"></i>
-      发表评论
+      {!! __('Leave a Comment', 'sage') !!}
     </h3>
     @php(comment_form())
   </div>

@@ -5,20 +5,20 @@
     <div class="bg-base-100 text-base-content min-h-full w-96 max-w-[90vw]">
       <!-- Header -->
       <div class="sticky top-0 bg-base-100 p-4 border-b border-base-300 flex items-center justify-between z-10">
-        <h3 class="font-bold text-lg">播放列表</h3>
+        <h3 class="font-bold text-lg">{!! __('Playlist', 'sage') !!}</h3>
         <label for="playlist-drawer" class="btn btn-sm btn-circle btn-ghost">✕</label>
       </div>
       
       <!-- Playlist Content -->
       <div class="p-4">
         <div class="text-sm text-base-content/60 mb-4 flex items-center justify-between">
-          <span x-text="'共 ' + $store.player.playlist.length + ' 首'"></span>
+          <span x-text="'{{ __('Total', 'sage') }} ' + $store.player.playlist.length + ' {{ __('episodes', 'sage') }}'"></span>
           <button 
-            @click="if(confirm('确定要清空播放列表吗？')) $store.player.clearPlaylist();"
+            @click="if(confirm('{{ __('Are you sure you want to clear the playlist?', 'sage') }}')) $store.player.clearPlaylist();"
             class="btn btn-ghost btn-xs"
-            title="清空播放列表">
+            title="{{ __('Clear Playlist', 'sage') }}">
             <i data-lucide="trash-2" class="w-3 h-3"></i>
-            清空
+            {{ __('Clear', 'sage') }}
           </button>
         </div>
         
@@ -28,8 +28,8 @@
           <template x-if="$store.player.playlist.length === 0">
             <div class="p-8 text-center text-base-content/60">
               <i data-lucide="list-music" class="w-12 h-12 mx-auto mb-3 opacity-50"></i>
-              <p>播放列表为空</p>
-              <p class="text-sm mt-2">添加一些节目开始收听吧</p>
+              <p>{!! __('Playlist is empty', 'sage') !!}</p>
+              <p class="text-sm mt-2">{!! __('Add some episodes to start listening', 'sage') !!}</p>
             </div>
           </template>
 
@@ -69,7 +69,7 @@
                     x-text="episode.title"
                     :class="index === $store.player.currentIndex ? 'text-base-content' : 'text-base-content/80'"
                     class="font-semibold text-sm truncate"></p>
-                  <p x-text="episode.publishDate" class="text-xs text-base-content/60"></p>
+                  <p x-text="window.formatLocalizedDate(episode.publishDate)" class="text-xs text-base-content/60"></p>
                   <template x-if="episode.description">
                     <p x-text="episode.description" class="text-xs text-base-content/50 truncate"></p>
                   </template>
@@ -79,7 +79,7 @@
                 <button 
                   @click.stop="$store.player.removeEpisode(episode.id)"
                   class="btn btn-ghost btn-sm btn-circle opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0"
-                  title="删除">
+                  title="{{ __('Remove', 'sage') }}">
                   <i data-lucide="trash-2" class="w-4 h-4"></i>
                 </button>
               </div>

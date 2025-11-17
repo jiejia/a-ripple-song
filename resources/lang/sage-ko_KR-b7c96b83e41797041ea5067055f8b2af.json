@@ -1,0 +1,63 @@
+{
+    "translation-revision-date": "2025-01-27 12:00+0900",
+    "generator": "WP-CLI\/2.12.0",
+    "source": "resources\/js\/app.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "ko_KR",
+                "plural-forms": "nplurals=1; plural=0;"
+            },
+            "No podcasts found": [
+                "\ud31f\uce90\uc2a4\ud2b8\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4"
+            ],
+            "Fetched %d podcasts": [
+                "%d\uac1c\uc758 \ud31f\uce90\uc2a4\ud2b8\ub97c \uac00\uc838\uc654\uc2b5\ub2c8\ub2e4"
+            ],
+            "Podcast has no audio file, skipping:": [
+                "\ud31f\uce90\uc2a4\ud2b8\uc5d0 \uc624\ub514\uc624 \ud30c\uc77c\uc774 \uc5c6\uc2b5\ub2c8\ub2e4. \uac74\ub108\ub700:"
+            ],
+            "Added:": [
+                "\ucd94\uac00\ub428:"
+            ],
+            "Already exists, skipping:": [
+                "\uc774\ubbf8 \uc874\uc7ac\ud569\ub2c8\ub2e4. \uac74\ub108\ub700:"
+            ],
+            "Successfully added %d new podcasts to playlist": [
+                "\uc7ac\uc0dd \ubaa9\ub85d\uc5d0 %d\uac1c\uc758 \uc0c8 \ud31f\uce90\uc2a4\ud2b8\ub97c \uc131\uacf5\uc801\uc73c\ub85c \ucd94\uac00\ud588\uc2b5\ub2c8\ub2e4"
+            ],
+            "No new podcasts to add": [
+                "\ucd94\uac00\ud560 \uc0c8 \ud31f\uce90\uc2a4\ud2b8\uac00 \uc5c6\uc2b5\ub2c8\ub2e4"
+            ],
+            "Failed to fetch latest podcasts:": [
+                "\ucd5c\uc2e0 \ud31f\uce90\uc2a4\ud2b8\ub97c \uac00\uc838\uc624\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4:"
+            ],
+            "No episode available to play": [
+                "\uc7ac\uc0dd\ud560 \uc218 \uc788\ub294 \uc5d0\ud53c\uc18c\ub4dc\uac00 \uc5c6\uc2b5\ub2c8\ub2e4"
+            ],
+            "Playback progress restored:": [
+                "\uc7ac\uc0dd \uc9c4\ud589 \uc0c1\ud669 \ubcf5\uc6d0\ub428:"
+            ],
+            "Playback state restored": [
+                "\uc7ac\uc0dd \uc0c1\ud0dc \ubcf5\uc6d0\ub428"
+            ],
+            "Volume settings loaded:": [
+                "\ubcfc\ub968 \uc124\uc815 \ub85c\ub4dc\ub428:"
+            ],
+            "Playback rate loaded:": [
+                "\uc7ac\uc0dd \uc18d\ub3c4 \ub85c\ub4dc\ub428:"
+            ],
+            "Switched to existing episode:": [
+                "\uae30\uc874 \uc5d0\ud53c\uc18c\ub4dc\ub85c \uc804\ud658\ub428:"
+            ],
+            "Added to playlist:": [
+                "\uc7ac\uc0dd \ubaa9\ub85d\uc5d0 \ucd94\uac00\ub428:"
+            ],
+            "Episode already exists:": [
+                "\uc5d0\ud53c\uc18c\ub4dc\uac00 \uc774\ubbf8 \uc874\uc7ac\ud569\ub2c8\ub2e4:"
+            ]
+        }
+    }
+}

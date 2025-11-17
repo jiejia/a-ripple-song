@@ -180,29 +180,29 @@ add_action('admin_enqueue_scripts', function($hook) {
                 
                 var slideHtml = '<div class=\"banner-slide-item\" style=\"margin-bottom: 15px; padding: 10px; border: 1px solid #ddd; border-radius: 4px; background: #f9f9f9;\">' +
                     '<div style=\"margin-bottom: 8px;\">' +
-                        '<label style=\"display: block; margin-bottom: 4px; font-weight: 600;\">图片地址:</label>' +
+                        '<label style=\"display: block; margin-bottom: 4px; font-weight: 600;\">" . esc_js(__('Image URL:', 'sage')) . "</label>' +
                         '<div style=\"display: flex; gap: 5px;\">' +
-                            '<input type=\"text\" class=\"widefat banner-image-url\" name=\"' + fieldNamePrefix + '[' + slideCount + '][image]\" placeholder=\"图片URL\" style=\"flex: 1;\">' +
-                            '<button type=\"button\" class=\"button banner-select-image\" style=\"flex-shrink: 0;\">选择图片</button>' +
+                            '<input type=\"text\" class=\"widefat banner-image-url\" name=\"' + fieldNamePrefix + '[' + slideCount + '][image]\" placeholder=\"" . esc_js(__('Image URL', 'sage')) . "\" style=\"flex: 1;\">' +
+                            '<button type=\"button\" class=\"button banner-select-image\" style=\"flex-shrink: 0;\">" . esc_js(__('Select Image', 'sage')) . "</button>' +
                         '</div>' +
                     '</div>' +
                     '<div style=\"margin-bottom: 8px;\">' +
-                        '<label style=\"display: block; margin-bottom: 4px; font-weight: 600;\">链接地址 (可选):</label>' +
+                        '<label style=\"display: block; margin-bottom: 4px; font-weight: 600;\">" . esc_js(__('Link URL (optional):', 'sage')) . "</label>' +
                         '<input type=\"url\" class=\"widefat banner-link-url\" name=\"' + fieldNamePrefix + '[' + slideCount + '][link]\" placeholder=\"https://example.com\">' +
                     '</div>' +
                     '<div style=\"margin-bottom: 8px;\">' +
-                        '<label style=\"display: block; margin-bottom: 4px; font-weight: 600;\">链接打开方式:</label>' +
+                        '<label style=\"display: block; margin-bottom: 4px; font-weight: 600;\">" . esc_js(__('Link Target:', 'sage')) . "</label>' +
                         '<select class=\"widefat banner-link-target\" name=\"' + fieldNamePrefix + '[' + slideCount + '][link_target]\">' +
-                            '<option value=\"_self\">当前页面</option>' +
-                            '<option value=\"_blank\">新标签页</option>' +
+                            '<option value=\"_self\">" . esc_js(__('Current Page', 'sage')) . "</option>' +
+                            '<option value=\"_blank\">" . esc_js(__('New Tab', 'sage')) . "</option>' +
                         '</select>' +
                     '</div>' +
                     '<div style=\"margin-bottom: 8px;\">' +
-                        '<label style=\"display: block; margin-bottom: 4px; font-weight: 600;\">描述:</label>' +
-                        '<input type=\"text\" class=\"widefat banner-description\" name=\"' + fieldNamePrefix + '[' + slideCount + '][description]\" placeholder=\"图片描述\">' +
+                        '<label style=\"display: block; margin-bottom: 4px; font-weight: 600;\">" . esc_js(__('Description:', 'sage')) . "</label>' +
+                        '<input type=\"text\" class=\"widefat banner-description\" name=\"' + fieldNamePrefix + '[' + slideCount + '][description]\" placeholder=\"" . esc_js(__('Image description', 'sage')) . "\">' +
                     '</div>' +
                     '<div style=\"text-align: right;\">' +
-                        '<button type=\"button\" class=\"button button-link button-link-delete banner-remove-slide\" style=\"color: #b32d2e;\">删除</button>' +
+                        '<button type=\"button\" class=\"button button-link button-link-delete banner-remove-slide\" style=\"color: #b32d2e;\">" . esc_js(__('Delete', 'sage')) . "</button>' +
                     '</div>' +
                 '</div>';
                 
@@ -249,9 +249,9 @@ add_action('admin_enqueue_scripts', function($hook) {
                 // 如果已经存在实例，重用它
                 if (typeof wp.media.frames.bannerImageUploader === 'undefined') {
                     mediaUploader = wp.media({
-                        title: '选择横幅图片',
+                        title: '" . esc_js(__('Select Banner Image', 'sage')) . "',
                         button: {
-                            text: '使用此图片'
+                            text: '" . esc_js(__('Use This Image', 'sage')) . "'
                         },
                         multiple: false
                     });

@@ -149,7 +149,7 @@ add_action('widgets_init', function () {
     register_sidebar([
         'name' => __('Home Main', 'sage'),
         'id' => 'home-main',
-        'description' => __('首页主要区域，用于显示首页的各种内容模块', 'sage'),
+        'description' => __('Main area of the homepage for displaying various content modules', 'sage'),
         'before_widget' => '<div class="widget %1$s %2$s mb-4">',
         'after_widget' => '</div>',
         'before_title' => '<h2 class="widget-title text-lg font-bold mb-2">',
@@ -158,7 +158,7 @@ add_action('widgets_init', function () {
     register_sidebar([
         'name' => __('Sidebar Primary', 'sage'),
         'id' => 'sidebar-primary',
-        'description' => __('侧边栏主要区域，用于显示侧边栏的各种内容模块', 'sage'),
+        'description' => __('Primary sidebar area for displaying various content modules', 'sage'),
         'before_widget' => '<div class="widget %1$s %2$s mb-4">',
         'after_widget' => '</div>',
         'before_title' => '<h2 class="widget-title text-lg font-bold mb-2">',
@@ -167,7 +167,7 @@ add_action('widgets_init', function () {
     register_sidebar([
         'name' => __('Leftbar Primary', 'sage'),
         'id' => 'leftbar-primary',
-        'description' => __('左侧栏主要区域，用于显示左侧栏的各种内容模块', 'sage'),
+        'description' => __('Primary left sidebar area for displaying various content modules', 'sage'),
         'before_widget' => '<div class="widget %1$s %2$s mb-4">',
         'after_widget' => '</div>',
         'before_title' => '<h2 class="widget-title text-lg font-bold mb-2">',
@@ -369,7 +369,9 @@ add_action('wp_enqueue_scripts', function () {
             }
             
             if ($js_url) {
-                wp_enqueue_script('aripplesong-app', $js_url, [], null, true);
+                wp_enqueue_script('aripplesong-app', $js_url, ['wp-i18n'], null, true);
+                // Set script translations for JavaScript i18n
+                wp_set_script_translations('aripplesong-app', 'sage', get_template_directory() . '/resources/lang');
             }
         }
     } catch (\Exception $e) {

@@ -39,7 +39,7 @@
                     {!! $title !!}
                 @endif
             </h4>
-            @include('partials.entry-meta')
+            @include('partials.entry-meta', ['post_id' => $post_id])
         </div>
         <div class="flex gap-2">
             @if($audio_file)
@@ -56,7 +56,7 @@
                         }
                     "
                     class="cursor-pointer hover:text-primary transition-colors"
-                    :title="$store.player.currentEpisode && $store.player.currentEpisode.id === episode.id && $store.player.isPlaying ? '暂停' : '播放'">
+                    :title="$store.player.currentEpisode && $store.player.currentEpisode.id === episode.id && $store.player.isPlaying ? '{{ __('Pause', 'sage') }}' : '{{ __('Play', 'sage') }}'">
                     <i data-lucide="pause" 
                        class="text-xs h-4"
                        x-show="$store.player.currentEpisode && $store.player.currentEpisode.id === episode.id && $store.player.isPlaying"></i>

@@ -5,7 +5,7 @@
         @php(dynamic_sidebar('sidebar-primary'))
         @else
         <div class="rounded-lg bg-base-100 p-4 mt-4 text-center text-base-content/50">
-            <p>请在后台的 外观 > 小工具 中添加小工具到"侧边栏"。</p>
+            <p>{!! __('Please add widgets to "Sidebar" area in Appearance > Widgets in the admin panel.', 'sage') !!}</p>
         </div>
         @endif
     </div>

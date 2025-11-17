@@ -6,7 +6,7 @@
     @php dynamic_sidebar('home-main') @endphp
   @else
     <div class="rounded-lg bg-base-100 p-8 text-center text-base-content/50">
-      <p>请在后台的 外观 > 小工具 中添加小工具到"首页主要区域"。</p>
+      <p>{!! __('Please add widgets to "Home Main" area in Appearance > Widgets in the admin panel.', 'sage') !!}</p>
     </div>
   @endif
 </div>

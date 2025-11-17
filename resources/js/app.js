@@ -8,7 +8,76 @@ import { Howl, Howler } from 'howler';
 import AudioMotionAnalyzer from 'audiomotion-analyzer';
 import SwupFormsPlugin from '@swup/forms-plugin';
 import Alpine from 'alpinejs'
+import { DateTime } from 'luxon';
 
+// WordPress i18n
+const { __ } = wp.i18n;
+
+// ========== Date Formatting Utility ==========
+/**
+ * Format timestamp to localized date string (similar to PHP get_localized_date)
+ * @param {number} timestamp - Unix timestamp in seconds
+ * @param {string} format - 'relative' (default), 'short', 'long'
+ * @returns {string} Formatted date string
+ */
+window.formatLocalizedDate = function(timestamp, format = 'relative') {
+  if (!timestamp || isNaN(timestamp)) return '-';
+  
+  // Get WordPress locale from HTML lang attribute or document.documentElement.lang
+  const wpLocale = document.documentElement.lang || 'en-US';
+  // Convert WordPress locale format (e.g., 'zh-CN', 'en-US') to Luxon format
+  const luxonLocale = wpLocale.replace('_', '-');
+  
+  // Create DateTime from Unix timestamp (seconds)
+  const date = DateTime.fromSeconds(parseInt(timestamp)).setLocale(luxonLocale);
+  const now = DateTime.now();
+  
+  if (format === 'relative') {
+    // Smart relative time: show relative for recent posts, absolute for older ones
+    const diffInDays = now.diff(date, 'days').days;
+    
+    if (diffInDays < 7) {
+      // Recent: use relative time (e.g., "30 minutes ago", "2 days ago")
+      return date.toRelative() || date.toLocaleString(DateTime.DATE_MED);
+    } else {
+      // Older: use absolute date format based on locale
+      const baseLocale = luxonLocale.split('-')[0];
+      
+      if (['zh', 'ja'].includes(baseLocale)) {
+        // Chinese/Japanese: 2025年11月4日
+        return date.toFormat('yyyy年M月d日');
+      } else if (baseLocale === 'ko') {
+        // Korean: 2025년 11월 4일
+        return date.toFormat('yyyy년 M월 d일');
+      } else {
+        // Western languages: Nov 4, 2025
+        return date.toLocaleString(DateTime.DATE_MED);
+      }
+    }
+  } else if (format === 'short') {
+    const baseLocale = luxonLocale.split('-')[0];
+    
+    if (['zh', 'ja'].includes(baseLocale)) {
+      return date.toFormat('yyyy年M月d日');
+    } else if (baseLocale === 'ko') {
+      return date.toFormat('yyyy년 M월 d일');
+    } else {
+      return date.toLocaleString(DateTime.DATE_MED);
+    }
+  } else if (format === 'long') {
+    const baseLocale = luxonLocale.split('-')[0];
+    
+    if (['zh', 'ja'].includes(baseLocale)) {
+      return date.toFormat('yyyy年M月d日');
+    } else if (baseLocale === 'ko') {
+      return date.toFormat('yyyy년 M월 d일');
+    } else {
+      return date.toLocaleString(DateTime.DATE_FULL);
+    }
+  }
+  
+  return date.toLocaleString(DateTime.DATE_MED);
+};
 
 window.Alpine = Alpine
 
@@ -137,6 +206,11 @@ Alpine.store('player', {
     return this.playbackRate === 1 ? '1x' : `${this.playbackRate}x`;
   },
 
+  get currentEpisodePublishDate() {
+    if (!this.currentEpisode?.publishDate) return '-';
+    return window.formatLocalizedDate(this.currentEpisode.publishDate);
+  },
+
   /**
    * 从 WordPress REST API 获取最新5条播客并添加到播放列表
    * @param {boolean} autoPlay - 是否自动播放第一条（默认不播放）
@@ -153,11 +227,11 @@ Alpine.store('player', {
       const podcasts = await response.json();
 
       if (podcasts.length === 0) {
-        console.log('❌ 没有找到播客');
+        console.log(__('No podcasts found', 'sage'));
         return [];
       }
 
-      console.log(`📥 获取到 ${podcasts.length} 条播客`);
+      console.log(__('Fetched %d podcasts', 'sage').replace('%d', podcasts.length));
 
       const addedEpisodes = [];
       let firstNewEpisode = null;
@@ -173,7 +247,7 @@ Alpine.store('player', {
         }
 
         if (!audioUrl) {
-          console.warn('⚠️ 播客没有音频文件，跳过:', post.title.rendered);
+          console.warn(__('Podcast has no audio file, skipping:', 'sage'), post.title.rendered);
           continue;
         }
 
@@ -189,7 +263,7 @@ Alpine.store('player', {
           audioUrl: audioUrl,
           title: post.title.rendered,
           description: post.excerpt.rendered.replace(/<[^>]*>/g, ''), // 移除 HTML 标签
-          publishDate: new Date(post.date).toLocaleDateString('zh-CN'),
+          publishDate: Math.floor(new Date(post.date).getTime() / 1000), // Store Unix timestamp (seconds)
           featuredImage: featuredImage,
           link: post.link
         };
@@ -207,14 +281,14 @@ Alpine.store('player', {
             firstNewEpisode = episode;
           }
 
-          console.log('✅ 已添加:', episode.title);
+          console.log(__('Added:', 'sage'), episode.title);
         } else {
-          console.log('⏭️ 已存在，跳过:', episode.title);
+          console.log(__('Already exists, skipping:', 'sage'), episode.title);
         }
       }
 
       if (addedEpisodes.length > 0) {
-        console.log(`✅ 成功添加 ${addedEpisodes.length} 条新播客到播放列表`);
+        console.log(__('Successfully added %d new podcasts to playlist', 'sage').replace('%d', addedEpisodes.length));
 
         // 如果需要自动播放且有新节目
         if (autoPlay && firstNewEpisode) {
@@ -225,13 +299,13 @@ Alpine.store('player', {
           }
         }
       } else {
-        console.log('ℹ️ 没有新的播客需要添加');
+        console.log(__('No new podcasts to add', 'sage'));
       }
 
       return addedEpisodes;
 
     } catch (error) {
-      console.error('❌ 获取最新播客失败:', error);
+      console.error(__('Failed to fetch latest podcasts:', 'sage'), error);
       return [];
     }
   },
@@ -263,7 +337,7 @@ Alpine.store('player', {
 
     // 检查 episode 是否存在
     if (!episode) {
-      console.log('⚠️ 没有可播放的节目');
+      console.log(__('No episode available to play', 'sage'));
       return;
     }
 
@@ -278,18 +352,18 @@ Alpine.store('player', {
       // 等待音频加载完成后再跳转到保存的位置
       this.currentSound.once('load', () => {
         this.seek(playbackState.currentTime);
-        console.log('✅ 已恢复播放进度:', playbackState.currentTime);
+        console.log(__('Playback progress restored:', 'sage'), playbackState.currentTime);
         
         // 根据保存的状态决定是否自动播放
         if (playbackState.isPlaying) {
           this.play();
-          console.log('✅ 已恢复播放状态');
+          console.log(__('Playback state restored', 'sage'));
         }
       });
     } else if (playbackState.isPlaying) {
       // 如果没有保存的进度但保存了播放状态，直接播放
       this.play();
-      console.log('✅ 已恢复播放状态');
+      console.log(__('Playback state restored', 'sage'));
     }
   },
 
@@ -558,7 +632,7 @@ Alpine.store('player', {
       this.volume = volume;
       this.lastVolume = volume > 0 ? volume : this.lastVolume;
       this.isMuted = volume === 0;
-      console.log('✅ 已加载音量设置:', volume);
+      console.log(__('Volume settings loaded:', 'sage'), volume);
     }
   },
 
@@ -584,7 +658,7 @@ Alpine.store('player', {
       // 确保速率在可用范围内
       if (this.availableRates.includes(rate)) {
         this.playbackRate = rate;
-        console.log('✅ 已加载播放速度设置:', rate);
+        console.log(__('Playback rate loaded:', 'sage'), rate);
       }
     }
   },
@@ -636,7 +710,7 @@ Alpine.store('player', {
       // 切换曲目后重置进度为0
       this.currentTime = 0;
       this.savePlaybackState();
-      console.log('✅ 切换到已存在的节目:', episode.title);
+      console.log(__('Switched to existing episode:', 'sage'), episode.title);
       return;
     }
 
@@ -654,7 +728,7 @@ Alpine.store('player', {
     this.currentTime = 0;
     this.savePlaybackState();
 
-    console.log('✅ 已添加到播放列表:', episode.title);
+    console.log(__('Added to playlist:', 'sage'), episode.title);
   },
 
   /**
@@ -665,7 +739,7 @@ Alpine.store('player', {
     const existingIndex = this.playlist.findIndex(item => item.id === episode.id);
 
     if (existingIndex !== -1) {
-      console.log('⏭️ 节目已存在:', episode.title);
+      console.log(__('Episode already exists:', 'sage'), episode.title);
       return false;
     }
 

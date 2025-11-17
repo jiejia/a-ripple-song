@@ -9,8 +9,8 @@ class Banner_Carousel_Widget extends WP_Widget {
     public function __construct() {
         parent::__construct(
             'banner_carousel_widget',
-            __('aripplesong - 横幅轮播', 'sage'),
-            ['description' => __('显示图片轮播横幅', 'sage')]
+            __('aripplesong - Banner Carousel', 'sage'),
+            ['description' => __('Display banner carousel with images', 'sage')]
         );
     }
     
@@ -28,8 +28,8 @@ class Banner_Carousel_Widget extends WP_Widget {
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
-                        <p class="text-sm font-medium"><?php _e('暂无横幅', 'sage'); ?></p>
-                        <p class="text-xs mt-1"><?php _e('请在后台添加横幅内容', 'sage'); ?></p>
+                        <p class="text-sm font-medium"><?php _e('No banner yet', 'sage'); ?></p>
+                        <p class="text-xs mt-1"><?php _e('Please add banner content in the admin panel', 'sage'); ?></p>
                     </div>
                 </div>
             </div>
@@ -96,7 +96,7 @@ class Banner_Carousel_Widget extends WP_Widget {
             data-field-prefix="<?php echo esc_attr($field_prefix); ?>"
         >
             <p>
-                <strong><?php _e('横幅幻灯片:', 'sage'); ?></strong>
+                <strong><?php _e('Banner Slides:', 'sage'); ?></strong>
             </p>
             <div class="banner-slides-container" id="<?php echo esc_attr($widget_id); ?>_container">
                 <?php foreach ($slides as $index => $slide): ?>
@@ -109,19 +109,19 @@ class Banner_Carousel_Widget extends WP_Widget {
                     <div class="banner-slide-item" style="margin-bottom: 15px; padding: 10px; border: 1px solid #ddd; border-radius: 4px; background: #f9f9f9;">
                         <div style="margin-bottom: 8px;">
                             <label style="display: block; margin-bottom: 4px; font-weight: 600;">
-                                <?php _e('图片地址:', 'sage'); ?>
+                                <?php _e('Image URL:', 'sage'); ?>
                             </label>
                             <div style="display: flex; gap: 5px;">
                                 <input type="text" 
                                        class="widefat banner-image-url" 
                                        name="<?php echo $this->get_field_name('slides'); ?>[<?php echo $index; ?>][image]" 
                                        value="<?php echo esc_attr($image); ?>" 
-                                       placeholder="<?php _e('图片URL', 'sage'); ?>" 
+                                       placeholder="<?php _e('Image URL', 'sage'); ?>" 
                                        style="flex: 1;">
                                 <button type="button" 
                                         class="button banner-select-image" 
                                         style="flex-shrink: 0;">
-                                    <?php _e('选择图片', 'sage'); ?>
+                                    <?php _e('Select Image', 'sage'); ?>
                                 </button>
                             </div>
                             <?php if ($image): ?>
@@ -132,7 +132,7 @@ class Banner_Carousel_Widget extends WP_Widget {
                         </div>
                         <div style="margin-bottom: 8px;">
                             <label style="display: block; margin-bottom: 4px; font-weight: 600;">
-                                <?php _e('链接地址 (可选):', 'sage'); ?>
+                                <?php _e('Link URL (optional):', 'sage'); ?>
                             </label>
                             <input type="url" 
                                    class="widefat banner-link-url" 
@@ -142,31 +142,31 @@ class Banner_Carousel_Widget extends WP_Widget {
                         </div>
                         <div style="margin-bottom: 8px;">
                             <label style="display: block; margin-bottom: 4px; font-weight: 600;">
-                                <?php _e('链接打开方式:', 'sage'); ?>
+                                <?php _e('Link Target:', 'sage'); ?>
                             </label>
                             <select class="widefat banner-link-target" 
                                     name="<?php echo $this->get_field_name('slides'); ?>[<?php echo $index; ?>][link_target]">
                                 <option value="_self" <?php selected($link_target, '_self'); ?>>
-                                    <?php _e('当前页面', 'sage'); ?>
+                                    <?php _e('Current Page', 'sage'); ?>
                                 </option>
                                 <option value="_blank" <?php selected($link_target, '_blank'); ?>>
-                                    <?php _e('新标签页', 'sage'); ?>
+                                    <?php _e('New Tab', 'sage'); ?>
                                 </option>
                             </select>
                         </div>
                         <div style="margin-bottom: 8px;">
                             <label style="display: block; margin-bottom: 4px; font-weight: 600;">
-                                <?php _e('描述:', 'sage'); ?>
+                                <?php _e('Description:', 'sage'); ?>
                             </label>
                             <input type="text" 
                                    class="widefat banner-description" 
                                    name="<?php echo $this->get_field_name('slides'); ?>[<?php echo $index; ?>][description]" 
                                    value="<?php echo esc_attr($description); ?>" 
-                                   placeholder="<?php _e('图片描述', 'sage'); ?>">
+                                   placeholder="<?php _e('Image description', 'sage'); ?>">
                         </div>
                         <div style="text-align: right;">
                             <button type="button" class="button button-link button-link-delete banner-remove-slide" style="color: #b32d2e;">
-                                <?php _e('删除', 'sage'); ?>
+                                <?php _e('Delete', 'sage'); ?>
                             </button>
                         </div>
                     </div>
@@ -175,7 +175,7 @@ class Banner_Carousel_Widget extends WP_Widget {
             <input type="hidden" class="banner-slides-flag" name="<?php echo esc_attr($field_prefix); ?>[__flag]" value="1">
             <p>
                 <button type="button" class="button banner-add-slide" data-widget-id="<?php echo esc_attr($widget_id); ?>">
-                    <?php _e('+ 添加横幅', 'sage'); ?>
+                    <?php _e('+ Add Banner', 'sage'); ?>
                 </button>
             </p>
         </div>

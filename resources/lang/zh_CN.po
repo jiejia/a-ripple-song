@@ -1,0 +1,739 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Sage Starter Theme 11.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/aripplesong\n"
+"Last-Translator: aripplesong\n"
+"Language-Team: Chinese (Simplified)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-11-17T01:57:30+00:00\n"
+"PO-Revision-Date: 2025-11-17 10:00+0800\n"
+"Language: zh_CN\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: sage\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. Theme Name of the theme
+#: style.css
+msgid "Sage Starter Theme"
+msgstr ""
+
+#. Theme URI of the theme
+#: style.css
+msgid "https://roots.io/sage/"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "Sage is a WordPress starter theme."
+msgstr ""
+
+#. Author of the theme
+#: style.css
+msgid "Roots"
+msgstr ""
+
+#. Author URI of the theme
+#: style.css
+msgid "https://roots.io/"
+msgstr ""
+
+#: app/filters.php:15
+msgid "Continued"
+msgstr "继续阅读"
+
+#: app/podcast-types.php:17
+#: app/podcast-types.php:29
+msgid "Podcasts"
+msgstr "播客"
+
+#: app/podcast-types.php:18
+#: resources/views/sections/player.blade.php:10
+#: resources/views/sections/player.blade.php:24
+msgid "Podcast"
+msgstr "播客"
+
+#: app/podcast-types.php:19
+#: app/podcast-types.php:20
+msgid "Add New Podcast"
+msgstr "添加新播客"
+
+#: app/podcast-types.php:21
+msgid "Edit Podcast"
+msgstr "编辑播客"
+
+#: app/podcast-types.php:22
+msgid "New Podcast"
+msgstr "新播客"
+
+#: app/podcast-types.php:23
+msgid "View Podcast"
+msgstr "查看播客"
+
+#: app/podcast-types.php:24
+msgid "View Podcasts"
+msgstr "查看播客"
+
+#: app/podcast-types.php:25
+msgid "Search Podcasts"
+msgstr "搜索播客"
+
+#: app/podcast-types.php:26
+#: resources/js/app.js:158
+msgid "No podcasts found"
+msgstr "未找到播客"
+
+#: app/podcast-types.php:27
+msgid "No podcasts found in Trash"
+msgstr "回收站中未找到播客"
+
+#: app/podcast-types.php:28
+msgid "All Podcasts"
+msgstr "所有播客"
+
+#: app/podcast-types.php:78
+#: app/podcast-types.php:88
+msgid "Podcast Categories"
+msgstr "播客分类"
+
+#: app/podcast-types.php:79
+msgid "Podcast Category"
+msgstr "播客分类"
+
+#: app/podcast-types.php:80
+msgid "Search Podcast Categories"
+msgstr "搜索播客分类"
+
+#: app/podcast-types.php:81
+msgid "All Podcast Categories"
+msgstr "所有播客分类"
+
+#: app/podcast-types.php:82
+msgid "Parent Podcast Category"
+msgstr "父级播客分类"
+
+#: app/podcast-types.php:83
+msgid "Parent Podcast Category:"
+msgstr "父级播客分类："
+
+#: app/podcast-types.php:84
+msgid "Edit Podcast Category"
+msgstr "编辑播客分类"
+
+#: app/podcast-types.php:85
+msgid "Update Podcast Category"
+msgstr "更新播客分类"
+
+#: app/podcast-types.php:86
+msgid "Add New Podcast Category"
+msgstr "添加新播客分类"
+
+#: app/podcast-types.php:87
+msgid "New Podcast Category Name"
+msgstr "新播客分类名称"
+
+#: app/podcast-types.php:108
+msgid "Podcast Details"
+msgstr "播客详细信息"
+
+#: app/podcast-types.php:117
+msgid "Audio File"
+msgstr "音频文件"
+
+#: app/podcast-types.php:118
+msgid "Upload an audio file or enter audio file URL"
+msgstr "上传音频文件或输入音频文件 URL"
+
+#: app/podcast-types.php:125
+msgid "Add Audio File"
+msgstr "添加音频文件"
+
+#: app/podcast-types.php:140
+msgid "Duration (seconds)"
+msgstr "时长（秒）"
+
+#: app/podcast-types.php:141
+msgid "Enter audio duration in seconds. For example: 180 means 3 minutes"
+msgstr "输入音频时长，单位为秒。例如：180 表示 3 分钟"
+
+#: app/podcast-types.php:155
+msgid "Subtitles"
+msgstr "字幕"
+
+#: app/podcast-types.php:156
+msgid "Enter podcast subtitle content (supports rich text format)"
+msgstr "输入播客字幕内容（支持富文本格式）"
+
+#: app/podcast-types.php:225
+msgid "Members"
+msgstr "成员"
+
+#: app/podcast-types.php:226
+msgid "Select podcast members (only administrators, authors, or editors, multiple selection allowed)"
+msgstr "选择播客成员（只能选择管理员、作者或编辑角色，可多选）"
+
+#: app/podcast-types.php:249
+msgid "Guests"
+msgstr "嘉宾"
+
+#: app/podcast-types.php:250
+msgid "Select podcast guests (only contributors, multiple selection allowed)"
+msgstr "选择播客嘉宾（只能选择投稿者角色，可多选）"
+
+#: app/podcast-types.php:492
+msgid "Audio file URL"
+msgstr "音频文件 URL"
+
+#: app/podcast-types.php:503
+msgid "Audio duration (seconds)"
+msgstr "音频时长（秒）"
+
+#: app/setup.php:72
+msgid "Primary Navigation"
+msgstr "主导航"
+
+#: app/setup.php:140
+msgid "Primary"
+msgstr "主要"
+
+#: app/setup.php:145
+msgid "Footer"
+msgstr "页脚"
+
+#: app/setup.php:150
+msgid "Home Main"
+msgstr "首页主要"
+
+#: app/setup.php:152
+msgid "Main area of the homepage for displaying various content modules"
+msgstr "首页主要区域，用于显示首页的各种内容模块"
+
+#: app/setup.php:159
+msgid "Sidebar Primary"
+msgstr "侧边栏主要"
+
+#: app/setup.php:161
+msgid "Primary sidebar area for displaying various content modules"
+msgstr "侧边栏主要区域，用于显示侧边栏的各种内容模块"
+
+#: app/setup.php:168
+msgid "Leftbar Primary"
+msgstr "左侧栏主要"
+
+#: app/setup.php:170
+msgid "Primary left sidebar area for displaying various content modules"
+msgstr "左侧栏主要区域，用于显示左侧栏的各种内容模块"
+
+#. translators: %1$s is replaced with the number of comments and %2$s with the post title
+#: app/View/Composers/Comments.php:25
+#, php-format
+msgctxt "comments title"
+msgid "%1$s response to &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s responses to &ldquo;%2$s&rdquo;"
+msgstr[0] "%1$s 条评论关于 &ldquo;%2$s&rdquo;"
+
+#: app/View/Composers/Comments.php:26
+msgctxt "comments title"
+msgid "One"
+msgstr "1"
+
+#: app/View/Composers/Comments.php:59
+msgid "&larr; Older comments"
+msgstr "&larr; 更早的评论"
+
+#: app/View/Composers/Comments.php:73
+msgid "Newer comments &rarr;"
+msgstr "更新的评论 &rarr;"
+
+#: app/View/Composers/Post.php:34
+msgid "Latest Posts"
+msgstr "最新文章"
+
+#. translators: %s is replaced with the search query
+#: app/View/Composers/Post.php:44
+#, php-format
+msgid "Search Results for %s"
+msgstr "%s 的搜索结果"
+
+#: app/View/Composers/Post.php:50
+msgid "Not Found"
+msgstr "未找到"
+
+#: app/View/Composers/Post.php:63
+msgid "Pages:"
+msgstr "页面："
+
+#: app/Widgets/AuthorsWidget.php:12
+msgid "aripplesong - Authors List"
+msgstr "aripplesong - 作者列表"
+
+#: app/Widgets/AuthorsWidget.php:13
+msgid "Display members and guest authors list"
+msgstr "显示成员和访客作者列表"
+
+#: app/Widgets/AuthorsWidget.php:92
+msgid "No authors yet"
+msgstr "暂无作者"
+
+#: app/Widgets/AuthorsWidget.php:93
+msgid "Authors will appear here after adding users"
+msgstr "添加用户后将显示在这里"
+
+#: app/Widgets/AuthorsWidget.php:110
+msgid "Members Title:"
+msgstr "成员标题："
+
+#: app/Widgets/AuthorsWidget.php:124
+msgid "Show Members (Administrators, Editors, Authors)"
+msgstr "显示成员（管理员、编辑、作者）"
+
+#: app/Widgets/AuthorsWidget.php:128
+msgid "Guests Title:"
+msgstr "访客标题："
+
+#: app/Widgets/AuthorsWidget.php:142
+msgid "Show Guests (Contributors)"
+msgstr "显示访客（投稿者）"
+
+#: app/Widgets/BannerCarouselWidget.php:12
+msgid "aripplesong - Banner Carousel"
+msgstr "aripplesong - 横幅轮播"
+
+#: app/Widgets/BannerCarouselWidget.php:13
+msgid "Display banner carousel with images"
+msgstr "显示图片轮播横幅"
+
+#: app/Widgets/BannerCarouselWidget.php:31
+msgid "No banner yet"
+msgstr "暂无横幅"
+
+#: app/Widgets/BannerCarouselWidget.php:32
+msgid "Please add banner content in the admin panel"
+msgstr "请在后台添加横幅内容"
+
+#: app/Widgets/BannerCarouselWidget.php:99
+msgid "Banner Slides:"
+msgstr "横幅幻灯片："
+
+#: app/Widgets/BannerCarouselWidget.php:112
+msgid "Image URL:"
+msgstr "图片地址："
+
+#: app/Widgets/BannerCarouselWidget.php:119
+msgid "Image URL"
+msgstr "图片URL"
+
+#: app/Widgets/BannerCarouselWidget.php:124
+msgid "Select Image"
+msgstr "选择图片"
+
+#: app/Widgets/BannerCarouselWidget.php:135
+msgid "Link URL (optional):"
+msgstr "链接地址（可选）："
+
+#: app/Widgets/BannerCarouselWidget.php:141
+msgid "https://example.com"
+msgstr "https://example.com"
+
+#: app/Widgets/BannerCarouselWidget.php:145
+msgid "Link Target:"
+msgstr "链接打开方式："
+
+#: app/Widgets/BannerCarouselWidget.php:150
+msgid "Current Page"
+msgstr "当前页面"
+
+#: app/Widgets/BannerCarouselWidget.php:153
+msgid "New Tab"
+msgstr "新标签页"
+
+#: app/Widgets/BannerCarouselWidget.php:159
+msgid "Description:"
+msgstr "描述："
+
+#: app/Widgets/BannerCarouselWidget.php:165
+msgid "Image description"
+msgstr "图片描述"
+
+#: app/Widgets/BannerCarouselWidget.php:169
+msgid "Delete"
+msgstr "删除"
+
+#: app/Widgets/BannerCarouselWidget.php:178
+msgid "+ Add Banner"
+msgstr "+ 添加横幅"
+
+#: app/Widgets/BlogListWidget.php:12
+msgid "aripplesong - Blog List"
+msgstr "aripplesong - 博客列表"
+
+#: app/Widgets/BlogListWidget.php:13
+msgid "Display latest blog posts list"
+msgstr "显示最新的博客文章列表"
+
+#: app/Widgets/BlogListWidget.php:73
+msgid "No blog posts yet"
+msgstr "暂无博客文章"
+
+#: app/Widgets/BlogListWidget.php:89
+#: app/Widgets/PodcastListWidget.php:200
+#: app/Widgets/SubscribeLinksWidget.php:81
+#: app/Widgets/TagsCloudWidget.php:82
+msgid "Title:"
+msgstr "标题："
+
+#: app/Widgets/BlogListWidget.php:97
+#: app/Widgets/PodcastListWidget.php:208
+msgid "Number of posts:"
+msgstr "显示数量："
+
+#: app/Widgets/BlogListWidget.php:108
+msgid "Number of columns:"
+msgstr "列数："
+
+#: app/Widgets/BlogListWidget.php:125
+#: app/Widgets/PodcastListWidget.php:224
+msgid "Show \"See all\" link"
+msgstr "显示\"查看全部\"链接"
+
+#: app/Widgets/PodcastListWidget.php:12
+msgid "aripplesong - Podcast List"
+msgstr "aripplesong - 播客列表"
+
+#: app/Widgets/PodcastListWidget.php:13
+msgid "Display latest podcast list"
+msgstr "显示最新的播客列表"
+
+#: app/Widgets/PodcastListWidget.php:118
+#: app/Widgets/PodcastListWidget.php:139
+#: app/Widgets/PodcastListWidget.php:160
+msgid "No podcast content"
+msgstr "暂无播客内容"
+
+#: app/Widgets/SubscribeLinksWidget.php:12
+msgid "aripplesong - Subscribe Links"
+msgstr "aripplesong - 订阅链接"
+
+#: app/Widgets/SubscribeLinksWidget.php:13
+msgid "Display podcast subscription platform links"
+msgstr "显示播客订阅平台链接"
+
+#: app/Widgets/SubscribeLinksWidget.php:92
+msgid "Apple Podcast Link:"
+msgstr "Apple Podcast 链接："
+
+#: app/Widgets/SubscribeLinksWidget.php:100
+#: app/Widgets/SubscribeLinksWidget.php:113
+#: app/Widgets/SubscribeLinksWidget.php:126
+msgid "Leave blank to hide this button"
+msgstr "留空则不显示该按钮"
+
+#: app/Widgets/SubscribeLinksWidget.php:105
+msgid "Spotify Link:"
+msgstr "Spotify 链接："
+
+#: app/Widgets/SubscribeLinksWidget.php:118
+msgid "Youtube Music Link:"
+msgstr "Youtube Music 链接："
+
+#: app/Widgets/TagsCloudWidget.php:12
+msgid "aripplesong - Tags Cloud"
+msgstr "aripplesong - 标签云"
+
+#: app/Widgets/TagsCloudWidget.php:13
+msgid "Display article tags cloud"
+msgstr "显示文章标签云"
+
+#: app/Widgets/TagsCloudWidget.php:44
+msgid "No tags yet"
+msgstr "暂无标签"
+
+#: app/Widgets/TagsCloudWidget.php:45
+msgid "Tags will appear here after publishing articles with tags"
+msgstr "发布文章并添加标签后将显示在这里"
+
+#: app/Widgets/TagsCloudWidget.php:61
+#, php-format
+msgid "%d post"
+msgid_plural "%d posts"
+msgstr[0] "%d 篇文章"
+
+#: app/Widgets/TagsCloudWidget.php:91
+msgid "Number of tags:"
+msgstr "显示数量："
+
+#: app/Widgets/TagsCloudWidget.php:100
+msgid "Maximum number of tags to display"
+msgstr "最多显示多少个标签"
+
+#: app/Widgets/TagsCloudWidget.php:104
+msgid "Order by:"
+msgstr "排序依据："
+
+#: app/Widgets/TagsCloudWidget.php:108
+msgid "Post Count"
+msgstr "文章数量"
+
+#: app/Widgets/TagsCloudWidget.php:109
+msgid "Tag Name"
+msgstr "标签名称"
+
+#: app/Widgets/TagsCloudWidget.php:110
+msgid "Tag ID"
+msgstr "标签ID"
+
+#: app/Widgets/TagsCloudWidget.php:111
+msgid "Random"
+msgstr "随机"
+
+#: app/Widgets/TagsCloudWidget.php:116
+msgid "Sort order:"
+msgstr "排序顺序："
+
+#: app/Widgets/TagsCloudWidget.php:120
+msgid "Descending (High to Low/Z to A)"
+msgstr "降序（多到少/Z到A）"
+
+#: app/Widgets/TagsCloudWidget.php:121
+msgid "Ascending (Low to High/A to Z)"
+msgstr "升序（少到多/A到Z）"
+
+#. Template Name of the theme
+msgid "Blog Template"
+msgstr "博客模板"
+
+#. Template Name of the theme
+msgid "Custom Template"
+msgstr "自定义模板"
+
+#. Template Name of the theme
+msgid "Podcast Template"
+msgstr "播客模板"
+
+#: resources/views/404.blade.php:8
+msgid "Sorry, but the page you are trying to view does not exist."
+msgstr "抱歉，您尝试查看的页面不存在。"
+
+#: resources/views/author.blade.php:22
+#: resources/views/search.blade.php:7
+msgid "Sorry, no results were found."
+msgstr "抱歉，未找到结果。"
+
+#: resources/views/forms/search.blade.php:15
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr "搜索 &hellip;"
+
+#: resources/views/partials/comments.blade.php:45
+msgid "Comments are closed."
+msgstr "评论已关闭。"
+
+#: resources/views/partials/entry-meta.blade.php:7
+msgid "By"
+msgstr "作者"
+
+#: resources/views/index.blade.php:9
+msgid "Please add widgets to \"Home Main\" area in Appearance > Widgets in the admin panel."
+msgstr "请在后台的 外观 > 小工具 中添加小工具到\"首页主要区域\"。"
+
+#: resources/views/author.blade.php:9
+msgid "Author:"
+msgstr "作者："
+
+#: resources/views/partials/comments.blade.php:48
+msgid "Leave a Comment"
+msgstr "发表评论"
+
+#: resources/views/partials/podcast-episode-card.blade.php:59
+msgid "Pause"
+msgstr "暂停"
+
+#: resources/views/partials/podcast-episode-card.blade.php:59
+msgid "Play"
+msgstr "播放"
+
+#: resources/views/sections/leftbar.blade.php:6
+msgid "Please add widgets to \"Leftbar\" area in Appearance > Widgets in the admin panel."
+msgstr "请在后台的 外观 > 小工具 中添加小工具到\"左侧栏\"。"
+
+#: resources/views/sections/sidebar.blade.php:8
+msgid "Please add widgets to \"Sidebar\" area in Appearance > Widgets in the admin panel."
+msgstr "请在后台的 外观 > 小工具 中添加小工具到\"侧边栏\"。"
+
+#: resources/views/sections/mobile-menu.blade.php:7
+msgid "Menu"
+msgstr "菜单"
+
+#: resources/views/sections/search-modal.blade.php:6
+msgid "Close"
+msgstr "关闭"
+
+#: resources/views/sections/footer.blade.php:3
+msgid "© %s A Ripple Song. Designed by %s"
+msgstr "© %s A Ripple Song. 由 %s 设计"
+
+#: resources/views/sections/header.blade.php:20
+msgid "Light Mode"
+msgstr "明亮模式"
+
+#: resources/views/sections/header.blade.php:20
+msgid "Dark Mode"
+msgstr "黑暗模式"
+
+#: resources/views/sections/header.blade.php:20
+msgid "Follow System"
+msgstr "跟随系统"
+
+#: resources/views/sections/player.blade.php:3
+msgid "NOW PLAYING"
+msgstr "正在播放"
+
+#: resources/views/sections/player.blade.php:24
+msgid "No Episode Playing"
+msgstr "暂无播放"
+
+#: resources/views/sections/player.blade.php:24
+msgid "Podcast Episode"
+msgstr "播客节目"
+
+#: resources/views/sections/playlist-drawer.blade.php:8
+msgid "Playlist"
+msgstr "播放列表"
+
+#: resources/views/sections/playlist-drawer.blade.php:15
+msgid "Total"
+msgstr "共"
+
+#: resources/views/sections/playlist-drawer.blade.php:15
+msgid "episodes"
+msgstr "首"
+
+#: resources/views/sections/playlist-drawer.blade.php:17
+msgid "Are you sure you want to clear the playlist?"
+msgstr "确定要清空播放列表吗？"
+
+#: resources/views/sections/playlist-drawer.blade.php:19
+msgid "Clear Playlist"
+msgstr "清空播放列表"
+
+#: resources/views/sections/playlist-drawer.blade.php:21
+msgid "Clear"
+msgstr "清空"
+
+#: resources/views/sections/playlist-drawer.blade.php:31
+msgid "Playlist is empty"
+msgstr "播放列表为空"
+
+#: resources/views/sections/playlist-drawer.blade.php:32
+msgid "Add some episodes to start listening"
+msgstr "添加一些节目开始收听吧"
+
+#: resources/views/sections/playlist-drawer.blade.php:82
+msgid "Remove"
+msgstr "删除"
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Red (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Red (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Yellow (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Yellow (300)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Yellow (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Green (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Green (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Green (500)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Indigo (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Indigo (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Gray (600)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Gray (800)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Black"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "White"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font family name"
+msgid "sans"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font family name"
+msgid "mono"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "xs"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "sm"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "base"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "lg"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "2xl"
+msgstr ""

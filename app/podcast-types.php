@@ -14,19 +14,19 @@ namespace App;
 add_action('init', function () {
     register_post_type('podcast', [
         'labels' => [
-            'name' => __('播客', 'sage'),
-            'singular_name' => __('播客', 'sage'),
-            'add_new' => __('添加新播客', 'sage'),
-            'add_new_item' => __('添加新播客', 'sage'),
-            'edit_item' => __('编辑播客', 'sage'),
-            'new_item' => __('新播客', 'sage'),
-            'view_item' => __('查看播客', 'sage'),
-            'view_items' => __('查看播客', 'sage'),
-            'search_items' => __('搜索播客', 'sage'),
-            'not_found' => __('未找到播客', 'sage'),
-            'not_found_in_trash' => __('回收站中未找到播客', 'sage'),
-            'all_items' => __('所有播客', 'sage'),
-            'menu_name' => __('播客', 'sage'),
+            'name' => __('Podcasts', 'sage'),
+            'singular_name' => __('Podcast', 'sage'),
+            'add_new' => __('Add New Podcast', 'sage'),
+            'add_new_item' => __('Add New Podcast', 'sage'),
+            'edit_item' => __('Edit Podcast', 'sage'),
+            'new_item' => __('New Podcast', 'sage'),
+            'view_item' => __('View Podcast', 'sage'),
+            'view_items' => __('View Podcasts', 'sage'),
+            'search_items' => __('Search Podcasts', 'sage'),
+            'not_found' => __('No podcasts found', 'sage'),
+            'not_found_in_trash' => __('No podcasts found in Trash', 'sage'),
+            'all_items' => __('All Podcasts', 'sage'),
+            'menu_name' => __('Podcasts', 'sage'),
         ],
         'public' => true,
         'has_archive' => true,
@@ -75,17 +75,17 @@ add_filter('wp_insert_post_data', function ($data, $postarr) {
 add_action('init', function () {
     register_taxonomy('podcast_category', 'podcast', [
         'labels' => [
-            'name' => __('播客分类', 'sage'),
-            'singular_name' => __('播客分类', 'sage'),
-            'search_items' => __('搜索播客分类', 'sage'),
-            'all_items' => __('所有播客分类', 'sage'),
-            'parent_item' => __('父级播客分类', 'sage'),
-            'parent_item_colon' => __('父级播客分类：', 'sage'),
-            'edit_item' => __('编辑播客分类', 'sage'),
-            'update_item' => __('更新播客分类', 'sage'),
-            'add_new_item' => __('添加新播客分类', 'sage'),
-            'new_item_name' => __('新播客分类名称', 'sage'),
-            'menu_name' => __('播客分类', 'sage'),
+            'name' => __('Podcast Categories', 'sage'),
+            'singular_name' => __('Podcast Category', 'sage'),
+            'search_items' => __('Search Podcast Categories', 'sage'),
+            'all_items' => __('All Podcast Categories', 'sage'),
+            'parent_item' => __('Parent Podcast Category', 'sage'),
+            'parent_item_colon' => __('Parent Podcast Category:', 'sage'),
+            'edit_item' => __('Edit Podcast Category', 'sage'),
+            'update_item' => __('Update Podcast Category', 'sage'),
+            'add_new_item' => __('Add New Podcast Category', 'sage'),
+            'new_item_name' => __('New Podcast Category Name', 'sage'),
+            'menu_name' => __('Podcast Categories', 'sage'),
         ],
         'hierarchical' => true,
         'show_ui' => true,
@@ -105,7 +105,7 @@ add_action('init', function () {
 add_action('cmb2_admin_init', function () {
     $cmb = \new_cmb2_box([
         'id' => 'podcast_metabox',
-        'title' => __('播客详细信息', 'sage'),
+        'title' => __('Podcast Details', 'sage'),
         'object_types' => ['podcast'],
         'context' => 'normal',
         'priority' => 'high',
@@ -114,15 +114,15 @@ add_action('cmb2_admin_init', function () {
 
     // 音频文件字段
     $cmb->add_field([
-        'name' => __('音频文件', 'sage'),
-        'desc' => __('上传音频文件或输入音频文件 URL', 'sage'),
+        'name' => __('Audio File', 'sage'),
+        'desc' => __('Upload an audio file or enter audio file URL', 'sage'),
         'id' => 'audio_file',
         'type' => 'file',
         'options' => [
             'url' => true, // 允许直接输入 URL
         ],
         'text' => [
-            'add_upload_file_text' => __('添加音频文件', 'sage'),
+            'add_upload_file_text' => __('Add Audio File', 'sage'),
         ],
         'query_args' => [
             'type' => [
@@ -137,8 +137,8 @@ add_action('cmb2_admin_init', function () {
 
     // 时长字段（秒）
     $cmb->add_field([
-        'name' => __('时长（秒）', 'sage'),
-        'desc' => __('输入音频时长，单位为秒。例如：180 表示 3 分钟', 'sage'),
+        'name' => __('Duration (seconds)', 'sage'),
+        'desc' => __('Enter audio duration in seconds. For example: 180 means 3 minutes', 'sage'),
         'id' => 'duration',
         'type' => 'text',
         'attributes' => [
@@ -152,8 +152,8 @@ add_action('cmb2_admin_init', function () {
 
     // 字幕字段（富文本）
     $cmb->add_field([
-        'name' => __('字幕', 'sage'),
-        'desc' => __('输入播客字幕内容（支持富文本格式）', 'sage'),
+        'name' => __('Subtitles', 'sage'),
+        'desc' => __('Enter podcast subtitle content (supports rich text format)', 'sage'),
         'id' => 'subtitle',
         'type' => 'wysiwyg',
         'options' => [
@@ -222,8 +222,8 @@ add_action('cmb2_admin_init', function () {
 
     // Members 字段（多选用户，只能是 administrator、author 和 editor，默认当前用户）
     $members_field = $cmb->add_field([
-        'name' => __('成员', 'sage'),
-        'desc' => __('选择播客成员（只能选择管理员、作者或编辑角色，可多选）', 'sage'),
+        'name' => __('Members', 'sage'),
+        'desc' => __('Select podcast members (only administrators, authors, or editors, multiple selection allowed)', 'sage'),
         'id' => 'members',
         'type' => 'multicheck',
         'options' => $get_members_list(),
@@ -246,8 +246,8 @@ add_action('cmb2_admin_init', function () {
 
     // Guests 字段（多选用户，只能是 contributor 角色，默认为空）
     $cmb->add_field([
-        'name' => __('嘉宾', 'sage'),
-        'desc' => __('选择播客嘉宾（只能选择投稿者角色，可多选）', 'sage'),
+        'name' => __('Guests', 'sage'),
+        'desc' => __('Select podcast guests (only contributors, multiple selection allowed)', 'sage'),
         'id' => 'guests',
         'type' => 'multicheck',
         'options' => $get_guests_list(),
@@ -489,7 +489,7 @@ add_action('rest_api_init', function () {
             return get_post_meta($post['id'], 'audio_file', true);
         },
         'schema' => [
-            'description' => '音频文件 URL',
+            'description' => __('Audio file URL', 'sage'),
             'type' => 'string',
         ],
     ]);
@@ -500,7 +500,7 @@ add_action('rest_api_init', function () {
             return get_post_meta($post['id'], 'duration', true);
         },
         'schema' => [
-            'description' => '音频时长（秒）',
+            'description' => __('Audio duration (seconds)', 'sage'),
             'type' => 'integer',
         ],
     ]);

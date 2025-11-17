@@ -73,6 +73,132 @@ collect(['setup', 'filters', 'podcast-types', 'widgets'])
     });
 
 /**
+ * Get localized date using Carbon library
+ * 
+ * @param int|null $post_id Optional post ID. Defaults to current post.
+ * @param string $format Optional format. Use 'relative' for human diff (default), 'long' for full date, 'short' for abbreviated, or custom PHP date format
+ * @return string Formatted date string appropriate for current locale
+ */
+function get_localized_date($post_id = null, $format = 'relative') {
+    $timestamp = get_post_time('U', false, $post_id);
+    
+    // Get WordPress locale (e.g., 'zh_CN', 'en_US', 'ja')
+    $wp_locale = get_locale();
+    
+    // Convert WordPress locale to Carbon locale format
+    // WordPress uses underscore (zh_CN), Carbon uses hyphen (zh-CN)
+    $carbon_locale = str_replace('_', '-', $wp_locale);
+    
+    // Create Carbon instance and set locale
+    $date = \Carbon\Carbon::createFromTimestamp($timestamp);
+    
+    try {
+        $date->locale($carbon_locale);
+    } catch (\Exception $e) {
+        // Fallback to base language if specific locale not found
+        // e.g., zh-CN -> zh, en-US -> en
+        $base_locale = explode('-', $carbon_locale)[0];
+        try {
+            $date->locale($base_locale);
+        } catch (\Exception $e2) {
+            // Final fallback to English
+            $date->locale('en');
+        }
+    }
+    
+    // Define locale-specific formats
+    $base_locale = explode('-', $carbon_locale)[0];
+    
+    if ($format === 'relative') {
+        // Smart relative time: show "30 minutes ago", "1 day ago" for recent posts
+        // But show absolute date for posts older than 7 days
+        $now = \Carbon\Carbon::now();
+        $diff_in_days = $now->diffInDays($date);
+        
+        if ($diff_in_days < 7) {
+            // Recent: use relative time (e.g., "30 minutes ago", "2 days ago")
+            return $date->diffForHumans();
+        } else {
+            // Older: use absolute date format
+            if (in_array($base_locale, ['zh', 'ja'])) {
+                return $date->translatedFormat('Y年n月j日');
+            } elseif ($base_locale === 'ko') {
+                return $date->translatedFormat('Y년 n월 j일');
+            } else {
+                return $date->isoFormat('ll');
+            }
+        }
+    } elseif ($format === 'short' || $format === 'long') {
+        // Use locale-specific formats for Asian languages
+        if (in_array($base_locale, ['zh', 'ja'])) {
+            // Chinese/Japanese: 2025年11月4日
+            return $date->translatedFormat('Y年n月j日');
+        } elseif ($base_locale === 'ko') {
+            // Korean: 2025년 11월 4일
+            return $date->translatedFormat('Y년 n월 j일');
+        } else {
+            // Western languages: use isoFormat for better localization
+            // 'll' in isoFormat = Nov 4, 2025 (localized)
+            // 'LL' in isoFormat = November 4, 2025 (localized)
+            return $date->isoFormat($format === 'long' ? 'LL' : 'll');
+        }
+    } else {
+        // Custom format provided
+        return $date->translatedFormat($format);
+    }
+}
+
+/**
+ * Get localized comment date using Carbon library
+ * 
+ * @param object $comment Comment object
+ * @param bool $include_time Whether to include time in the output
+ * @return string Formatted date string appropriate for current locale
+ */
+function get_localized_comment_date($comment, $include_time = true) {
+    $timestamp = strtotime($comment->comment_date);
+    
+    // Get WordPress locale
+    $wp_locale = get_locale();
+    $carbon_locale = str_replace('_', '-', $wp_locale);
+    
+    // Create Carbon instance and set locale
+    $date = \Carbon\Carbon::createFromTimestamp($timestamp);
+    
+    try {
+        $date->locale($carbon_locale);
+    } catch (\Exception $e) {
+        $base_locale = explode('-', $carbon_locale)[0];
+        try {
+            $date->locale($base_locale);
+        } catch (\Exception $e2) {
+            $date->locale('en');
+        }
+    }
+    
+    // Get base locale for format selection
+    $base_locale = explode('-', $carbon_locale)[0];
+    
+    // Format based on locale
+    if (in_array($base_locale, ['zh', 'ja'])) {
+        // Chinese/Japanese
+        $format = $include_time ? 'Y年n月j日 H:i' : 'Y年n月j日';
+        return $date->translatedFormat($format);
+    } elseif ($base_locale === 'ko') {
+        // Korean
+        $format = $include_time ? 'Y년 n월 j일 H:i' : 'Y년 n월 j일';
+        return $date->translatedFormat($format);
+    } else {
+        // Western languages
+        if ($include_time) {
+            return $date->isoFormat('ll HH:mm');
+        } else {
+            return $date->isoFormat('ll');
+        }
+    }
+}
+
+/**
  * Get all authors/participants for a post.
  * 
  * This includes:
@@ -390,7 +516,7 @@ function is_menu_item_active($item, $children = [], $current_url = '') {
  * Get episode data for a podcast post
  * 
  * @param int|null $post_id Post ID (defaults to current post)
- * @return array Episode data array with id, audioUrl, title, description, publishDate, featuredImage, link
+ * @return array Episode data array with id, audioUrl, title, description, publishDate (timestamp), featuredImage, link
  */
 function get_episode_data($post_id = null) {
     if (!$post_id) {
@@ -405,7 +531,7 @@ function get_episode_data($post_id = null) {
         'audioUrl' => $audio_file,
         'title' => get_the_title($post_id),
         'description' => wp_strip_all_tags(get_the_excerpt()),
-        'publishDate' => get_the_date('', $post_id),
+        'publishDate' => get_post_time('U', false, $post_id), // Return Unix timestamp
         'featuredImage' => $featured_image,
         'link' => get_permalink($post_id)
     ];
@@ -447,16 +573,16 @@ function sage_custom_comment($comment, $args, $depth) {
                         </span>
                         
                         <?php if ($comment->user_id === get_post()->post_author): ?>
-                            <span class="badge badge-primary badge-xs">作者</span>
+                            <span class="badge badge-primary badge-xs"><?php _e('Author', 'sage'); ?></span>
                         <?php endif; ?>
                         
                         <span class="text-xs text-base-content/60 flex items-center gap-1">
                             <i data-lucide="clock" class="w-3 h-3"></i>
-                            <?php echo get_comment_date('Y-m-d H:i', $comment); ?>
+                            <?php echo get_localized_comment_date($comment); ?>
                         </span>
                         
                         <?php if ($comment->comment_approved == '0'): ?>
-                            <span class="badge badge-warning badge-xs">待审核</span>
+                            <span class="badge badge-warning badge-xs"><?php _e('Pending Approval', 'sage'); ?></span>
                         <?php endif; ?>
                     </div>
                     
@@ -472,12 +598,12 @@ function sage_custom_comment($comment, $args, $depth) {
                             'max_depth' => $args['max_depth'],
                             'before' => '<button class="btn btn-ghost btn-xs gap-1 text-xs">',
                             'after' => '</button>',
-                            'reply_text' => '<i data-lucide="reply" class="w-3 h-3"></i> 回复'
+                            'reply_text' => '<i data-lucide="reply" class="w-3 h-3"></i> ' . __('Reply', 'sage')
                         ]));
                         ?>
                         
                         <?php edit_comment_link(
-                            '<i data-lucide="pencil" class="w-3 h-3"></i> 编辑',
+                            '<i data-lucide="pencil" class="w-3 h-3"></i> ' . __('Edit', 'sage'),
                             '<button class="btn btn-ghost btn-xs gap-1 text-xs">',
                             '</button>'
                         ); ?>
@@ -516,11 +642,11 @@ add_filter('comment_form_defaults', function($defaults) {
  * Customize comment form fields with DaisyUI styling
  */
 add_filter('comment_form_default_fields', function($fields) {
-    $fields['author'] = '<div class="form-control"><label class="label"><span class="label-text text-xs">姓名 <span class="text-error">*</span></span></label><input type="text" id="author" name="author" class="input input-bordered input-sm w-full text-xs" required /></div>';
+    $fields['author'] = '<div class="form-control"><label class="label"><span class="label-text text-xs">' . __('Name', 'sage') . ' <span class="text-error">*</span></span></label><input type="text" id="author" name="author" class="input input-bordered input-sm w-full text-xs" required /></div>';
     
-    $fields['email'] = '<div class="form-control"><label class="label"><span class="label-text text-xs">电子邮箱 <span class="text-error">*</span></span></label><input type="email" id="email" name="email" class="input input-bordered input-sm w-full text-xs" required /></div>';
+    $fields['email'] = '<div class="form-control"><label class="label"><span class="label-text text-xs">' . __('Email', 'sage') . ' <span class="text-error">*</span></span></label><input type="email" id="email" name="email" class="input input-bordered input-sm w-full text-xs" required /></div>';
     
-    $fields['url'] = '<div class="form-control"><label class="label"><span class="label-text text-xs">网站</span></label><input type="url" id="url" name="url" class="input input-bordered input-sm w-full text-xs" /></div>';
+    $fields['url'] = '<div class="form-control"><label class="label"><span class="label-text text-xs">' . __('Website', 'sage') . '</span></label><input type="url" id="url" name="url" class="input input-bordered input-sm w-full text-xs" /></div>';
     
     $fields['cookies'] = '<div class="form-control"><label class="label cursor-pointer justify-start gap-2"><input type="checkbox" id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" value="yes" class="checkbox checkbox-sm" /><span class="label-text text-xs">' . __('Save my name, email, and website in this browser for the next time I comment.') . '</span></label></div>';
     
@@ -531,5 +657,5 @@ add_filter('comment_form_default_fields', function($fields) {
  * Customize comment textarea field with DaisyUI styling
  */
 add_filter('comment_form_field_comment', function($field) {
-    return '<div class="form-control"><label class="label"><span class="label-text text-xs">评论 <span class="text-error">*</span></span></label><textarea id="comment" name="comment" rows="6" class="textarea textarea-bordered textarea-sm w-full text-xs" required></textarea></div>';
+    return '<div class="form-control"><label class="label"><span class="label-text text-xs">' . __('Comment', 'sage') . ' <span class="text-error">*</span></span></label><textarea id="comment" name="comment" rows="6" class="textarea textarea-bordered textarea-sm w-full text-xs" required></textarea></div>';
 });

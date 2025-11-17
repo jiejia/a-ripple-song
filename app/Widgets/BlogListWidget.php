@@ -9,8 +9,8 @@ class Blog_List_Widget extends WP_Widget {
     public function __construct() {
         parent::__construct(
             'blog_list_widget',
-            __('aripplesong - 博客列表', 'sage'),
-            ['description' => __('显示最新的博客文章列表', 'sage')]
+            __('aripplesong - Blog List', 'sage'),
+            ['description' => __('Display latest blog posts list', 'sage')]
         );
     }
     
@@ -63,14 +63,14 @@ class Blog_List_Widget extends WP_Widget {
                                     </span>
                                 <?php endif; ?>
                                 <span class="text-xs text-base-content/50">
-                                    <span><?php echo get_the_date(); ?></span>
+                                    <span><?php echo get_localized_date(); ?></span>
                                 </span>
                             </div>
                         </li>
                     <?php endwhile; ?>
                     <?php wp_reset_postdata(); ?>
                 <?php else: ?>
-                    <li class="col-span-<?php echo esc_attr($columns); ?> text-center text-base-content/50 py-8">暂无博客文章</li>
+                    <li class="col-span-<?php echo esc_attr($columns); ?> text-center text-base-content/50 py-8"><?php _e('No blog posts yet', 'sage'); ?></li>
                 <?php endif; ?>
             </ul>
         </div>
@@ -86,7 +86,7 @@ class Blog_List_Widget extends WP_Widget {
         $columns = !empty($instance['columns']) ? absint($instance['columns']) : 3;
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('标题:', 'sage'); ?></label>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'sage'); ?></label>
             <input class="widefat" 
                    id="<?php echo $this->get_field_id('title'); ?>" 
                    name="<?php echo $this->get_field_name('title'); ?>" 
@@ -94,7 +94,7 @@ class Blog_List_Widget extends WP_Widget {
                    value="<?php echo esc_attr($title); ?>">
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('posts_per_page'); ?>"><?php _e('显示数量:', 'sage'); ?></label>
+            <label for="<?php echo $this->get_field_id('posts_per_page'); ?>"><?php _e('Number of posts:', 'sage'); ?></label>
             <input class="tiny-text" 
                    id="<?php echo $this->get_field_id('posts_per_page'); ?>" 
                    name="<?php echo $this->get_field_name('posts_per_page'); ?>" 
@@ -105,7 +105,7 @@ class Blog_List_Widget extends WP_Widget {
                    size="3">
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('columns'); ?>"><?php _e('列数:', 'sage'); ?></label>
+            <label for="<?php echo $this->get_field_id('columns'); ?>"><?php _e('Number of columns:', 'sage'); ?></label>
             <input class="tiny-text" 
                    id="<?php echo $this->get_field_id('columns'); ?>" 
                    name="<?php echo $this->get_field_name('columns'); ?>" 
@@ -122,7 +122,7 @@ class Blog_List_Widget extends WP_Widget {
                    <?php checked($show_see_all); ?> 
                    id="<?php echo $this->get_field_id('show_see_all'); ?>" 
                    name="<?php echo $this->get_field_name('show_see_all'); ?>">
-            <label for="<?php echo $this->get_field_id('show_see_all'); ?>"><?php _e('显示"查看全部"链接', 'sage'); ?></label>
+            <label for="<?php echo $this->get_field_id('show_see_all'); ?>"><?php _e('Show "See all" link', 'sage'); ?></label>
         </p>
         <?php
     }

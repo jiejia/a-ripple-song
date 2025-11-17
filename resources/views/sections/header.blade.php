@@ -17,7 +17,7 @@
               type="button" 
               tabindex="0" 
               class="btn btn-ghost btn-sm btn-circle"
-              :title="$store.theme.mode === 'light' ? '明亮模式' : ($store.theme.mode === 'dark' ? '黑暗模式' : '跟随系统')"
+              :title="$store.theme.mode === 'light' ? '{{ __('Light Mode', 'sage') }}' : ($store.theme.mode === 'dark' ? '{{ __('Dark Mode', 'sage') }}' : '{{ __('Follow System', 'sage') }}')"
             >
             <!-- 明亮模式图标 -->
             <i data-lucide="sun" class="w-5 h-5" x-show="$store.theme.isLight"></i>
@@ -32,7 +32,7 @@
                   @click.prevent="$store.theme.setMode('light')" 
                   :class="{ 'active': $store.theme.mode === 'light' }"
                   class="flex items-center justify-center"
-                  title="明亮模式"
+                  title="{{ __('Light Mode', 'sage') }}"
                 >
                   <i data-lucide="sun" class="w-4 h-4"></i>
                 </a>
@@ -42,7 +42,7 @@
                   @click.prevent="$store.theme.setMode('dark')" 
                   :class="{ 'active': $store.theme.mode === 'dark' }"
                   class="flex items-center justify-center"
-                  title="黑暗模式"
+                  title="{{ __('Dark Mode', 'sage') }}"
                 >
                   <i data-lucide="moon" class="w-4 h-4"></i>
                 </a>
@@ -52,7 +52,7 @@
                   @click.prevent="$store.theme.setMode('auto')" 
                   :class="{ 'active': $store.theme.mode === 'auto' }"
                   class="flex items-center justify-center"
-                  title="跟随系统"
+                  title="{{ __('Follow System', 'sage') }}"
                 >
                   <i data-lucide="monitor" class="w-4 h-4"></i>
                 </a>

@@ -4,7 +4,7 @@
     <label for="mobile-menu" aria-label="close sidebar" class="drawer-overlay"></label>
     <div class="bg-base-100 h-full w-80 max-w-xs">
       <div class="sticky top-0 bg-base-100 p-4 border-b border-base-300 flex items-center justify-between">
-        <h3 class="font-bold text-lg">菜单</h3>
+        <h3 class="font-bold text-lg">{!! __('Menu', 'sage') !!}</h3>
         <label for="mobile-menu" class="btn btn-sm btn-circle btn-ghost">✕</label>
       </div>
       

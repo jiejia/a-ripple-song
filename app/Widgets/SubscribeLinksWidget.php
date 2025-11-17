@@ -9,8 +9,8 @@ class Subscribe_Links_Widget extends WP_Widget {
     public function __construct() {
         parent::__construct(
             'subscribe_links_widget',
-            __('aripplesong - 订阅链接', 'sage'),
-            ['description' => __('显示播客订阅平台链接', 'sage')]
+            __('aripplesong - Subscribe Links', 'sage'),
+            ['description' => __('Display podcast subscription platform links', 'sage')]
         );
     }
     
@@ -78,7 +78,7 @@ class Subscribe_Links_Widget extends WP_Widget {
         $youtube_music_url = !empty($instance['youtube_music_url']) ? $instance['youtube_music_url'] : '';
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('标题:', 'sage'); ?></label>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'sage'); ?></label>
             <input class="widefat" 
                    id="<?php echo $this->get_field_id('title'); ?>" 
                    name="<?php echo $this->get_field_name('title'); ?>" 
@@ -89,7 +89,7 @@ class Subscribe_Links_Widget extends WP_Widget {
         
         <p>
             <label for="<?php echo $this->get_field_id('apple_podcast_url'); ?>">
-                <?php _e('Apple Podcast 链接:', 'sage'); ?>
+                <?php _e('Apple Podcast Link:', 'sage'); ?>
             </label>
             <input class="widefat" 
                    id="<?php echo $this->get_field_id('apple_podcast_url'); ?>" 
@@ -97,12 +97,12 @@ class Subscribe_Links_Widget extends WP_Widget {
                    type="url" 
                    value="<?php echo esc_attr($apple_podcast_url); ?>"
                    placeholder="https://podcasts.apple.com/...">
-            <small class="description"><?php _e('留空则不显示该按钮', 'sage'); ?></small>
+            <small class="description"><?php _e('Leave blank to hide this button', 'sage'); ?></small>
         </p>
         
         <p>
             <label for="<?php echo $this->get_field_id('spotify_url'); ?>">
-                <?php _e('Spotify 链接:', 'sage'); ?>
+                <?php _e('Spotify Link:', 'sage'); ?>
             </label>
             <input class="widefat" 
                    id="<?php echo $this->get_field_id('spotify_url'); ?>" 
@@ -110,12 +110,12 @@ class Subscribe_Links_Widget extends WP_Widget {
                    type="url" 
                    value="<?php echo esc_attr($spotify_url); ?>"
                    placeholder="https://open.spotify.com/...">
-            <small class="description"><?php _e('留空则不显示该按钮', 'sage'); ?></small>
+            <small class="description"><?php _e('Leave blank to hide this button', 'sage'); ?></small>
         </p>
         
         <p>
             <label for="<?php echo $this->get_field_id('youtube_music_url'); ?>">
-                <?php _e('Youtube Music 链接:', 'sage'); ?>
+                <?php _e('Youtube Music Link:', 'sage'); ?>
             </label>
             <input class="widefat" 
                    id="<?php echo $this->get_field_id('youtube_music_url'); ?>" 
@@ -123,7 +123,7 @@ class Subscribe_Links_Widget extends WP_Widget {
                    type="url" 
                    value="<?php echo esc_attr($youtube_music_url); ?>"
                    placeholder="https://music.youtube.com/...">
-            <small class="description"><?php _e('留空则不显示该按钮', 'sage'); ?></small>
+            <small class="description"><?php _e('Leave blank to hide this button', 'sage'); ?></small>
         </p>
         <?php
     }

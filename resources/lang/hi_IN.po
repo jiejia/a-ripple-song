@@ -1,0 +1,741 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Sage Starter Theme 11.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/aripplesong\n"
+"Last-Translator: aripplesong\n"
+"Language-Team: Hindi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-11-17T01:57:30+00:00\n"
+"PO-Revision-Date: 2025-11-17 10:00+0800\n"
+"Language: hi_IN\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: sage\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Theme Name of the theme
+#: style.css
+msgid "Sage Starter Theme"
+msgstr ""
+
+#. Theme URI of the theme
+#: style.css
+msgid "https://roots.io/sage/"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "Sage is a WordPress starter theme."
+msgstr ""
+
+#. Author of the theme
+#: style.css
+msgid "Roots"
+msgstr ""
+
+#. Author URI of the theme
+#: style.css
+msgid "https://roots.io/"
+msgstr ""
+
+#: app/filters.php:15
+msgid "Continued"
+msgstr "जारी रखें"
+
+#: app/podcast-types.php:17
+#: app/podcast-types.php:29
+msgid "Podcasts"
+msgstr "पॉडकास्ट"
+
+#: app/podcast-types.php:18
+#: resources/views/sections/player.blade.php:10
+#: resources/views/sections/player.blade.php:24
+msgid "Podcast"
+msgstr "पॉडकास्ट"
+
+#: app/podcast-types.php:19
+#: app/podcast-types.php:20
+msgid "Add New Podcast"
+msgstr "नया पॉडकास्ट जोड़ें"
+
+#: app/podcast-types.php:21
+msgid "Edit Podcast"
+msgstr "पॉडकास्ट संपादित करें"
+
+#: app/podcast-types.php:22
+msgid "New Podcast"
+msgstr "नया पॉडकास्ट"
+
+#: app/podcast-types.php:23
+msgid "View Podcast"
+msgstr "पॉडकास्ट देखें"
+
+#: app/podcast-types.php:24
+msgid "View Podcasts"
+msgstr "पॉडकास्ट देखें"
+
+#: app/podcast-types.php:25
+msgid "Search Podcasts"
+msgstr "पॉडकास्ट खोजें"
+
+#: app/podcast-types.php:26
+#: resources/js/app.js:158
+msgid "No podcasts found"
+msgstr "कोई पॉडकास्ट नहीं मिला"
+
+#: app/podcast-types.php:27
+msgid "No podcasts found in Trash"
+msgstr "ट्रैश में कोई पॉडकास्ट नहीं मिला"
+
+#: app/podcast-types.php:28
+msgid "All Podcasts"
+msgstr "सभी पॉडकास्ट"
+
+#: app/podcast-types.php:78
+#: app/podcast-types.php:88
+msgid "Podcast Categories"
+msgstr "पॉडकास्ट श्रेणियां"
+
+#: app/podcast-types.php:79
+msgid "Podcast Category"
+msgstr "पॉडकास्ट श्रेणी"
+
+#: app/podcast-types.php:80
+msgid "Search Podcast Categories"
+msgstr "पॉडकास्ट श्रेणियां खोजें"
+
+#: app/podcast-types.php:81
+msgid "All Podcast Categories"
+msgstr "सभी पॉडकास्ट श्रेणियां"
+
+#: app/podcast-types.php:82
+msgid "Parent Podcast Category"
+msgstr "मूल पॉडकास्ट श्रेणी"
+
+#: app/podcast-types.php:83
+msgid "Parent Podcast Category:"
+msgstr "मूल पॉडकास्ट श्रेणी:"
+
+#: app/podcast-types.php:84
+msgid "Edit Podcast Category"
+msgstr "पॉडकास्ट श्रेणी संपादित करें"
+
+#: app/podcast-types.php:85
+msgid "Update Podcast Category"
+msgstr "पॉडकास्ट श्रेणी अपडेट करें"
+
+#: app/podcast-types.php:86
+msgid "Add New Podcast Category"
+msgstr "नई पॉडकास्ट श्रेणी जोड़ें"
+
+#: app/podcast-types.php:87
+msgid "New Podcast Category Name"
+msgstr "नई पॉडकास्ट श्रेणी का नाम"
+
+#: app/podcast-types.php:108
+msgid "Podcast Details"
+msgstr "पॉडकास्ट विवरण"
+
+#: app/podcast-types.php:117
+msgid "Audio File"
+msgstr "ऑडियो फ़ाइल"
+
+#: app/podcast-types.php:118
+msgid "Upload an audio file or enter audio file URL"
+msgstr "ऑडियो फ़ाइल अपलोड करें या ऑडियो फ़ाइल URL दर्ज करें"
+
+#: app/podcast-types.php:125
+msgid "Add Audio File"
+msgstr "ऑडियो फ़ाइल जोड़ें"
+
+#: app/podcast-types.php:140
+msgid "Duration (seconds)"
+msgstr "अवधि (सेकंड)"
+
+#: app/podcast-types.php:141
+msgid "Enter audio duration in seconds. For example: 180 means 3 minutes"
+msgstr "ऑडियो अवधि सेकंड में दर्ज करें। उदाहरण: 180 का अर्थ है 3 मिनट"
+
+#: app/podcast-types.php:155
+msgid "Subtitles"
+msgstr "उपशीर्षक"
+
+#: app/podcast-types.php:156
+msgid "Enter podcast subtitle content (supports rich text format)"
+msgstr "पॉडकास्ट उपशीर्षक सामग्री दर्ज करें (रिच टेक्स्ट फॉर्मेट समर्थित)"
+
+#: app/podcast-types.php:225
+msgid "Members"
+msgstr "सदस्य"
+
+#: app/podcast-types.php:226
+msgid "Select podcast members (only administrators, authors, or editors, multiple selection allowed)"
+msgstr "पॉडकास्ट सदस्य चुनें (केवल प्रशासक, लेखक, या संपादक, एकाधिक चयन की अनुमति)"
+
+#: app/podcast-types.php:249
+msgid "Guests"
+msgstr "अतिथि"
+
+#: app/podcast-types.php:250
+msgid "Select podcast guests (only contributors, multiple selection allowed)"
+msgstr "पॉडकास्ट अतिथि चुनें (केवल योगदानकर्ता, एकाधिक चयन की अनुमति)"
+
+#: app/podcast-types.php:492
+msgid "Audio file URL"
+msgstr "ऑडियो फ़ाइल URL"
+
+#: app/podcast-types.php:503
+msgid "Audio duration (seconds)"
+msgstr "ऑडियो अवधि (सेकंड)"
+
+#: app/setup.php:72
+msgid "Primary Navigation"
+msgstr "प्राथमिक नेविगेशन"
+
+#: app/setup.php:140
+msgid "Primary"
+msgstr "प्राथमिक"
+
+#: app/setup.php:145
+msgid "Footer"
+msgstr "फुटर"
+
+#: app/setup.php:150
+msgid "Home Main"
+msgstr "होम मुख्य"
+
+#: app/setup.php:152
+msgid "Main area of the homepage for displaying various content modules"
+msgstr "विभिन्न सामग्री मॉड्यूल प्रदर्शित करने के लिए होमपेज का मुख्य क्षेत्र"
+
+#: app/setup.php:159
+msgid "Sidebar Primary"
+msgstr "साइडबार प्राथमिक"
+
+#: app/setup.php:161
+msgid "Primary sidebar area for displaying various content modules"
+msgstr "विभिन्न सामग्री मॉड्यूल प्रदर्शित करने के लिए प्राथमिक साइडबार क्षेत्र"
+
+#: app/setup.php:168
+msgid "Leftbar Primary"
+msgstr "लेफ्टबार प्राथमिक"
+
+#: app/setup.php:170
+msgid "Primary left sidebar area for displaying various content modules"
+msgstr "विभिन्न सामग्री मॉड्यूल प्रदर्शित करने के लिए प्राथमिक बाएं साइडबार क्षेत्र"
+
+#. translators: %1$s is replaced with the number of comments and %2$s with the post title
+#: app/View/Composers/Comments.php:25
+#, php-format
+msgctxt "comments title"
+msgid "%1$s response to &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s responses to &ldquo;%2$s&rdquo;"
+msgstr[0] "&ldquo;%2$s&rdquo; पर %1$s प्रतिक्रिया"
+msgstr[1] "&ldquo;%2$s&rdquo; पर %1$s प्रतिक्रियाएं"
+
+#: app/View/Composers/Comments.php:26
+msgctxt "comments title"
+msgid "One"
+msgstr "एक"
+
+#: app/View/Composers/Comments.php:59
+msgid "&larr; Older comments"
+msgstr "&larr; पुरानी टिप्पणियां"
+
+#: app/View/Composers/Comments.php:73
+msgid "Newer comments &rarr;"
+msgstr "नई टिप्पणियां &rarr;"
+
+#: app/View/Composers/Post.php:34
+msgid "Latest Posts"
+msgstr "नवीनतम पोस्ट"
+
+#. translators: %s is replaced with the search query
+#: app/View/Composers/Post.php:44
+#, php-format
+msgid "Search Results for %s"
+msgstr "%s के लिए खोज परिणाम"
+
+#: app/View/Composers/Post.php:50
+msgid "Not Found"
+msgstr "नहीं मिला"
+
+#: app/View/Composers/Post.php:63
+msgid "Pages:"
+msgstr "पृष्ठ:"
+
+#: app/Widgets/AuthorsWidget.php:12
+msgid "aripplesong - Authors List"
+msgstr "aripplesong - लेखक सूची"
+
+#: app/Widgets/AuthorsWidget.php:13
+msgid "Display members and guest authors list"
+msgstr "सदस्य और अतिथि लेखकों की सूची प्रदर्शित करें"
+
+#: app/Widgets/AuthorsWidget.php:92
+msgid "No authors yet"
+msgstr "अभी तक कोई लेखक नहीं"
+
+#: app/Widgets/AuthorsWidget.php:93
+msgid "Authors will appear here after adding users"
+msgstr "उपयोगकर्ता जोड़ने के बाद लेखक यहां दिखाई देंगे"
+
+#: app/Widgets/AuthorsWidget.php:110
+msgid "Members Title:"
+msgstr "सदस्य शीर्षक:"
+
+#: app/Widgets/AuthorsWidget.php:124
+msgid "Show Members (Administrators, Editors, Authors)"
+msgstr "सदस्य दिखाएं (प्रशासक, संपादक, लेखक)"
+
+#: app/Widgets/AuthorsWidget.php:128
+msgid "Guests Title:"
+msgstr "अतिथि शीर्षक:"
+
+#: app/Widgets/AuthorsWidget.php:142
+msgid "Show Guests (Contributors)"
+msgstr "अतिथि दिखाएं (योगदानकर्ता)"
+
+#: app/Widgets/BannerCarouselWidget.php:12
+msgid "aripplesong - Banner Carousel"
+msgstr "aripplesong - बैनर कैरोसेल"
+
+#: app/Widgets/BannerCarouselWidget.php:13
+msgid "Display banner carousel with images"
+msgstr "छवियों के साथ बैनर कैरोसेल प्रदर्शित करें"
+
+#: app/Widgets/BannerCarouselWidget.php:31
+msgid "No banner yet"
+msgstr "अभी तक कोई बैनर नहीं"
+
+#: app/Widgets/BannerCarouselWidget.php:32
+msgid "Please add banner content in the admin panel"
+msgstr "कृपया व्यवस्थापक पैनल में बैनर सामग्री जोड़ें"
+
+#: app/Widgets/BannerCarouselWidget.php:99
+msgid "Banner Slides:"
+msgstr "बैनर स्लाइड:"
+
+#: app/Widgets/BannerCarouselWidget.php:112
+msgid "Image URL:"
+msgstr "छवि URL:"
+
+#: app/Widgets/BannerCarouselWidget.php:119
+msgid "Image URL"
+msgstr "छवि URL"
+
+#: app/Widgets/BannerCarouselWidget.php:124
+msgid "Select Image"
+msgstr "छवि चुनें"
+
+#: app/Widgets/BannerCarouselWidget.php:135
+msgid "Link URL (optional):"
+msgstr "लिंक URL (वैकल्पिक):"
+
+#: app/Widgets/BannerCarouselWidget.php:141
+msgid "https://example.com"
+msgstr "https://example.com"
+
+#: app/Widgets/BannerCarouselWidget.php:145
+msgid "Link Target:"
+msgstr "लिंक लक्ष्य:"
+
+#: app/Widgets/BannerCarouselWidget.php:150
+msgid "Current Page"
+msgstr "वर्तमान पृष्ठ"
+
+#: app/Widgets/BannerCarouselWidget.php:153
+msgid "New Tab"
+msgstr "नया टैब"
+
+#: app/Widgets/BannerCarouselWidget.php:159
+msgid "Description:"
+msgstr "विवरण:"
+
+#: app/Widgets/BannerCarouselWidget.php:165
+msgid "Image description"
+msgstr "छवि विवरण"
+
+#: app/Widgets/BannerCarouselWidget.php:169
+msgid "Delete"
+msgstr "हटाएं"
+
+#: app/Widgets/BannerCarouselWidget.php:178
+msgid "+ Add Banner"
+msgstr "+ बैनर जोड़ें"
+
+#: app/Widgets/BlogListWidget.php:12
+msgid "aripplesong - Blog List"
+msgstr "aripplesong - ब्लॉग सूची"
+
+#: app/Widgets/BlogListWidget.php:13
+msgid "Display latest blog posts list"
+msgstr "नवीनतम ब्लॉग पोस्ट सूची प्रदर्शित करें"
+
+#: app/Widgets/BlogListWidget.php:73
+msgid "No blog posts yet"
+msgstr "अभी तक कोई ब्लॉग पोस्ट नहीं"
+
+#: app/Widgets/BlogListWidget.php:89
+#: app/Widgets/PodcastListWidget.php:200
+#: app/Widgets/SubscribeLinksWidget.php:81
+#: app/Widgets/TagsCloudWidget.php:82
+msgid "Title:"
+msgstr "शीर्षक:"
+
+#: app/Widgets/BlogListWidget.php:97
+#: app/Widgets/PodcastListWidget.php:208
+msgid "Number of posts:"
+msgstr "पोस्ट की संख्या:"
+
+#: app/Widgets/BlogListWidget.php:108
+msgid "Number of columns:"
+msgstr "कॉलम की संख्या:"
+
+#: app/Widgets/BlogListWidget.php:125
+#: app/Widgets/PodcastListWidget.php:224
+msgid "Show \"See all\" link"
+msgstr "\"सभी देखें\" लिंक दिखाएं"
+
+#: app/Widgets/PodcastListWidget.php:12
+msgid "aripplesong - Podcast List"
+msgstr "aripplesong - पॉडकास्ट सूची"
+
+#: app/Widgets/PodcastListWidget.php:13
+msgid "Display latest podcast list"
+msgstr "नवीनतम पॉडकास्ट सूची प्रदर्शित करें"
+
+#: app/Widgets/PodcastListWidget.php:118
+#: app/Widgets/PodcastListWidget.php:139
+#: app/Widgets/PodcastListWidget.php:160
+msgid "No podcast content"
+msgstr "कोई पॉडकास्ट सामग्री नहीं"
+
+#: app/Widgets/SubscribeLinksWidget.php:12
+msgid "aripplesong - Subscribe Links"
+msgstr "aripplesong - सदस्यता लिंक"
+
+#: app/Widgets/SubscribeLinksWidget.php:13
+msgid "Display podcast subscription platform links"
+msgstr "पॉडकास्ट सदस्यता प्लेटफॉर्म लिंक प्रदर्शित करें"
+
+#: app/Widgets/SubscribeLinksWidget.php:92
+msgid "Apple Podcast Link:"
+msgstr "Apple Podcast लिंक:"
+
+#: app/Widgets/SubscribeLinksWidget.php:100
+#: app/Widgets/SubscribeLinksWidget.php:113
+#: app/Widgets/SubscribeLinksWidget.php:126
+msgid "Leave blank to hide this button"
+msgstr "इस बटन को छिपाने के लिए खाली छोड़ें"
+
+#: app/Widgets/SubscribeLinksWidget.php:105
+msgid "Spotify Link:"
+msgstr "Spotify लिंक:"
+
+#: app/Widgets/SubscribeLinksWidget.php:118
+msgid "Youtube Music Link:"
+msgstr "Youtube Music लिंक:"
+
+#: app/Widgets/TagsCloudWidget.php:12
+msgid "aripplesong - Tags Cloud"
+msgstr "aripplesong - टैग क्लाउड"
+
+#: app/Widgets/TagsCloudWidget.php:13
+msgid "Display article tags cloud"
+msgstr "लेख टैग क्लाउड प्रदर्शित करें"
+
+#: app/Widgets/TagsCloudWidget.php:44
+msgid "No tags yet"
+msgstr "अभी तक कोई टैग नहीं"
+
+#: app/Widgets/TagsCloudWidget.php:45
+msgid "Tags will appear here after publishing articles with tags"
+msgstr "टैग के साथ लेख प्रकाशित करने के बाद टैग यहां दिखाई देंगे"
+
+#: app/Widgets/TagsCloudWidget.php:61
+#, php-format
+msgid "%d post"
+msgid_plural "%d posts"
+msgstr[0] "%d पोस्ट"
+msgstr[1] "%d पोस्ट"
+
+#: app/Widgets/TagsCloudWidget.php:91
+msgid "Number of tags:"
+msgstr "टैग की संख्या:"
+
+#: app/Widgets/TagsCloudWidget.php:100
+msgid "Maximum number of tags to display"
+msgstr "प्रदर्शित करने के लिए अधिकतम टैग संख्या"
+
+#: app/Widgets/TagsCloudWidget.php:104
+msgid "Order by:"
+msgstr "क्रम से:"
+
+#: app/Widgets/TagsCloudWidget.php:108
+msgid "Post Count"
+msgstr "पोस्ट गणना"
+
+#: app/Widgets/TagsCloudWidget.php:109
+msgid "Tag Name"
+msgstr "टैग नाम"
+
+#: app/Widgets/TagsCloudWidget.php:110
+msgid "Tag ID"
+msgstr "टैग ID"
+
+#: app/Widgets/TagsCloudWidget.php:111
+msgid "Random"
+msgstr "यादृच्छिक"
+
+#: app/Widgets/TagsCloudWidget.php:116
+msgid "Sort order:"
+msgstr "क्रम व्यवस्था:"
+
+#: app/Widgets/TagsCloudWidget.php:120
+msgid "Descending (High to Low/Z to A)"
+msgstr "अवरोही (उच्च से निम्न/Z से A)"
+
+#: app/Widgets/TagsCloudWidget.php:121
+msgid "Ascending (Low to High/A to Z)"
+msgstr "आरोही (निम्न से उच्च/A से Z)"
+
+#. Template Name of the theme
+msgid "Blog Template"
+msgstr "ब्लॉग टेम्पलेट"
+
+#. Template Name of the theme
+msgid "Custom Template"
+msgstr "कस्टम टेम्पलेट"
+
+#. Template Name of the theme
+msgid "Podcast Template"
+msgstr "पॉडकास्ट टेम्पलेट"
+
+#: resources/views/404.blade.php:8
+msgid "Sorry, but the page you are trying to view does not exist."
+msgstr "क्षमा करें, लेकिन जिस पृष्ठ को आप देखने का प्रयास कर रहे हैं वह मौजूद नहीं है।"
+
+#: resources/views/author.blade.php:22
+#: resources/views/search.blade.php:7
+msgid "Sorry, no results were found."
+msgstr "क्षमा करें, कोई परिणाम नहीं मिला।"
+
+#: resources/views/forms/search.blade.php:15
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr "खोजें &hellip;"
+
+#: resources/views/partials/comments.blade.php:45
+msgid "Comments are closed."
+msgstr "टिप्पणियां बंद हैं।"
+
+#: resources/views/partials/entry-meta.blade.php:7
+msgid "By"
+msgstr "द्वारा"
+
+#: resources/views/index.blade.php:9
+msgid "Please add widgets to \"Home Main\" area in Appearance > Widgets in the admin panel."
+msgstr "कृपया व्यवस्थापक पैनल में दिखावट > विजेट में \"होम मुख्य\" क्षेत्र में विजेट जोड़ें।"
+
+#: resources/views/author.blade.php:9
+msgid "Author:"
+msgstr "लेखक:"
+
+#: resources/views/partials/comments.blade.php:48
+msgid "Leave a Comment"
+msgstr "एक टिप्पणी छोड़ें"
+
+#: resources/views/partials/podcast-episode-card.blade.php:59
+msgid "Pause"
+msgstr "रोकें"
+
+#: resources/views/partials/podcast-episode-card.blade.php:59
+msgid "Play"
+msgstr "चलाएं"
+
+#: resources/views/sections/leftbar.blade.php:6
+msgid "Please add widgets to \"Leftbar\" area in Appearance > Widgets in the admin panel."
+msgstr "कृपया व्यवस्थापक पैनल में दिखावट > विजेट में \"लेफ्टबार\" क्षेत्र में विजेट जोड़ें।"
+
+#: resources/views/sections/sidebar.blade.php:8
+msgid "Please add widgets to \"Sidebar\" area in Appearance > Widgets in the admin panel."
+msgstr "कृपया व्यवस्थापक पैनल में दिखावट > विजेट में \"साइडबार\" क्षेत्र में विजेट जोड़ें।"
+
+#: resources/views/sections/mobile-menu.blade.php:7
+msgid "Menu"
+msgstr "मेन्यू"
+
+#: resources/views/sections/search-modal.blade.php:6
+msgid "Close"
+msgstr "बंद करें"
+
+#: resources/views/sections/footer.blade.php:3
+msgid "© %s A Ripple Song. Designed by %s"
+msgstr "© %s A Ripple Song. %s द्वारा डिज़ाइन किया गया"
+
+#: resources/views/sections/header.blade.php:20
+msgid "Light Mode"
+msgstr "लाइट मोड"
+
+#: resources/views/sections/header.blade.php:20
+msgid "Dark Mode"
+msgstr "डार्क मोड"
+
+#: resources/views/sections/header.blade.php:20
+msgid "Follow System"
+msgstr "सिस्टम का पालन करें"
+
+#: resources/views/sections/player.blade.php:3
+msgid "NOW PLAYING"
+msgstr "अभी चल रहा है"
+
+#: resources/views/sections/player.blade.php:24
+msgid "No Episode Playing"
+msgstr "कोई एपिसोड नहीं चल रहा"
+
+#: resources/views/sections/player.blade.php:24
+msgid "Podcast Episode"
+msgstr "पॉडकास्ट एपिसोड"
+
+#: resources/views/sections/playlist-drawer.blade.php:8
+msgid "Playlist"
+msgstr "प्लेलिस्ट"
+
+#: resources/views/sections/playlist-drawer.blade.php:15
+msgid "Total"
+msgstr "कुल"
+
+#: resources/views/sections/playlist-drawer.blade.php:15
+msgid "episodes"
+msgstr "एपिसोड"
+
+#: resources/views/sections/playlist-drawer.blade.php:17
+msgid "Are you sure you want to clear the playlist?"
+msgstr "क्या आप वाकई प्लेलिस्ट साफ़ करना चाहते हैं?"
+
+#: resources/views/sections/playlist-drawer.blade.php:19
+msgid "Clear Playlist"
+msgstr "प्लेलिस्ट साफ़ करें"
+
+#: resources/views/sections/playlist-drawer.blade.php:21
+msgid "Clear"
+msgstr "साफ़ करें"
+
+#: resources/views/sections/playlist-drawer.blade.php:31
+msgid "Playlist is empty"
+msgstr "प्लेलिस्ट खाली है"
+
+#: resources/views/sections/playlist-drawer.blade.php:32
+msgid "Add some episodes to start listening"
+msgstr "सुनना शुरू करने के लिए कुछ एपिसोड जोड़ें"
+
+#: resources/views/sections/playlist-drawer.blade.php:82
+msgid "Remove"
+msgstr "हटाएं"
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Red (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Red (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Yellow (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Yellow (300)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Yellow (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Green (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Green (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Green (500)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Indigo (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Indigo (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Gray (600)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Gray (800)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Black"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "White"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font family name"
+msgid "sans"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font family name"
+msgid "mono"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "xs"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "sm"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "base"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "lg"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "2xl"
+msgstr ""

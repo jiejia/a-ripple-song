@@ -1,0 +1,741 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Sage Starter Theme 11.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/aripplesong\n"
+"Last-Translator: aripplesong\n"
+"Language-Team: French (France)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-11-17T01:57:30+00:00\n"
+"PO-Revision-Date: 2025-11-17 10:00+0800\n"
+"Language: fr_FR\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: sage\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. Theme Name of the theme
+#: style.css
+msgid "Sage Starter Theme"
+msgstr ""
+
+#. Theme URI of the theme
+#: style.css
+msgid "https://roots.io/sage/"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "Sage is a WordPress starter theme."
+msgstr ""
+
+#. Author of the theme
+#: style.css
+msgid "Roots"
+msgstr ""
+
+#. Author URI of the theme
+#: style.css
+msgid "https://roots.io/"
+msgstr ""
+
+#: app/filters.php:15
+msgid "Continued"
+msgstr "Lire la suite"
+
+#: app/podcast-types.php:17
+#: app/podcast-types.php:29
+msgid "Podcasts"
+msgstr "Podcasts"
+
+#: app/podcast-types.php:18
+#: resources/views/sections/player.blade.php:10
+#: resources/views/sections/player.blade.php:24
+msgid "Podcast"
+msgstr "Podcast"
+
+#: app/podcast-types.php:19
+#: app/podcast-types.php:20
+msgid "Add New Podcast"
+msgstr "Ajouter un nouveau podcast"
+
+#: app/podcast-types.php:21
+msgid "Edit Podcast"
+msgstr "Modifier le podcast"
+
+#: app/podcast-types.php:22
+msgid "New Podcast"
+msgstr "Nouveau podcast"
+
+#: app/podcast-types.php:23
+msgid "View Podcast"
+msgstr "Voir le podcast"
+
+#: app/podcast-types.php:24
+msgid "View Podcasts"
+msgstr "Voir les podcasts"
+
+#: app/podcast-types.php:25
+msgid "Search Podcasts"
+msgstr "Rechercher des podcasts"
+
+#: app/podcast-types.php:26
+#: resources/js/app.js:158
+msgid "No podcasts found"
+msgstr "Aucun podcast trouvé"
+
+#: app/podcast-types.php:27
+msgid "No podcasts found in Trash"
+msgstr "Aucun podcast trouvé dans la corbeille"
+
+#: app/podcast-types.php:28
+msgid "All Podcasts"
+msgstr "Tous les podcasts"
+
+#: app/podcast-types.php:78
+#: app/podcast-types.php:88
+msgid "Podcast Categories"
+msgstr "Catégories de podcast"
+
+#: app/podcast-types.php:79
+msgid "Podcast Category"
+msgstr "Catégorie de podcast"
+
+#: app/podcast-types.php:80
+msgid "Search Podcast Categories"
+msgstr "Rechercher des catégories de podcast"
+
+#: app/podcast-types.php:81
+msgid "All Podcast Categories"
+msgstr "Toutes les catégories de podcast"
+
+#: app/podcast-types.php:82
+msgid "Parent Podcast Category"
+msgstr "Catégorie de podcast parente"
+
+#: app/podcast-types.php:83
+msgid "Parent Podcast Category:"
+msgstr "Catégorie de podcast parente :"
+
+#: app/podcast-types.php:84
+msgid "Edit Podcast Category"
+msgstr "Modifier la catégorie de podcast"
+
+#: app/podcast-types.php:85
+msgid "Update Podcast Category"
+msgstr "Mettre à jour la catégorie de podcast"
+
+#: app/podcast-types.php:86
+msgid "Add New Podcast Category"
+msgstr "Ajouter une nouvelle catégorie de podcast"
+
+#: app/podcast-types.php:87
+msgid "New Podcast Category Name"
+msgstr "Nom de la nouvelle catégorie de podcast"
+
+#: app/podcast-types.php:108
+msgid "Podcast Details"
+msgstr "Détails du podcast"
+
+#: app/podcast-types.php:117
+msgid "Audio File"
+msgstr "Fichier audio"
+
+#: app/podcast-types.php:118
+msgid "Upload an audio file or enter audio file URL"
+msgstr "Télécharger un fichier audio ou entrer l'URL du fichier audio"
+
+#: app/podcast-types.php:125
+msgid "Add Audio File"
+msgstr "Ajouter un fichier audio"
+
+#: app/podcast-types.php:140
+msgid "Duration (seconds)"
+msgstr "Durée (secondes)"
+
+#: app/podcast-types.php:141
+msgid "Enter audio duration in seconds. For example: 180 means 3 minutes"
+msgstr "Entrer la durée audio en secondes. Par exemple : 180 signifie 3 minutes"
+
+#: app/podcast-types.php:155
+msgid "Subtitles"
+msgstr "Sous-titres"
+
+#: app/podcast-types.php:156
+msgid "Enter podcast subtitle content (supports rich text format)"
+msgstr "Entrer le contenu des sous-titres du podcast (supporte le format texte enrichi)"
+
+#: app/podcast-types.php:225
+msgid "Members"
+msgstr "Membres"
+
+#: app/podcast-types.php:226
+msgid "Select podcast members (only administrators, authors, or editors, multiple selection allowed)"
+msgstr "Sélectionner les membres du podcast (uniquement administrateurs, auteurs ou éditeurs, sélection multiple autorisée)"
+
+#: app/podcast-types.php:249
+msgid "Guests"
+msgstr "Invités"
+
+#: app/podcast-types.php:250
+msgid "Select podcast guests (only contributors, multiple selection allowed)"
+msgstr "Sélectionner les invités du podcast (uniquement contributeurs, sélection multiple autorisée)"
+
+#: app/podcast-types.php:492
+msgid "Audio file URL"
+msgstr "URL du fichier audio"
+
+#: app/podcast-types.php:503
+msgid "Audio duration (seconds)"
+msgstr "Durée audio (secondes)"
+
+#: app/setup.php:72
+msgid "Primary Navigation"
+msgstr "Navigation principale"
+
+#: app/setup.php:140
+msgid "Primary"
+msgstr "Principal"
+
+#: app/setup.php:145
+msgid "Footer"
+msgstr "Pied de page"
+
+#: app/setup.php:150
+msgid "Home Main"
+msgstr "Accueil principal"
+
+#: app/setup.php:152
+msgid "Main area of the homepage for displaying various content modules"
+msgstr "Zone principale de la page d'accueil pour afficher divers modules de contenu"
+
+#: app/setup.php:159
+msgid "Sidebar Primary"
+msgstr "Barre latérale principale"
+
+#: app/setup.php:161
+msgid "Primary sidebar area for displaying various content modules"
+msgstr "Zone de barre latérale principale pour afficher divers modules de contenu"
+
+#: app/setup.php:168
+msgid "Leftbar Primary"
+msgstr "Barre gauche principale"
+
+#: app/setup.php:170
+msgid "Primary left sidebar area for displaying various content modules"
+msgstr "Zone de barre latérale gauche principale pour afficher divers modules de contenu"
+
+#. translators: %1$s is replaced with the number of comments and %2$s with the post title
+#: app/View/Composers/Comments.php:25
+#, php-format
+msgctxt "comments title"
+msgid "%1$s response to &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s responses to &ldquo;%2$s&rdquo;"
+msgstr[0] "%1$s réponse à &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s réponses à &ldquo;%2$s&rdquo;"
+
+#: app/View/Composers/Comments.php:26
+msgctxt "comments title"
+msgid "One"
+msgstr "Une"
+
+#: app/View/Composers/Comments.php:59
+msgid "&larr; Older comments"
+msgstr "&larr; Commentaires plus anciens"
+
+#: app/View/Composers/Comments.php:73
+msgid "Newer comments &rarr;"
+msgstr "Commentaires plus récents &rarr;"
+
+#: app/View/Composers/Post.php:34
+msgid "Latest Posts"
+msgstr "Derniers articles"
+
+#. translators: %s is replaced with the search query
+#: app/View/Composers/Post.php:44
+#, php-format
+msgid "Search Results for %s"
+msgstr "Résultats de recherche pour %s"
+
+#: app/View/Composers/Post.php:50
+msgid "Not Found"
+msgstr "Non trouvé"
+
+#: app/View/Composers/Post.php:63
+msgid "Pages:"
+msgstr "Pages :"
+
+#: app/Widgets/AuthorsWidget.php:12
+msgid "aripplesong - Authors List"
+msgstr "aripplesong - Liste des auteurs"
+
+#: app/Widgets/AuthorsWidget.php:13
+msgid "Display members and guest authors list"
+msgstr "Afficher la liste des membres et auteurs invités"
+
+#: app/Widgets/AuthorsWidget.php:92
+msgid "No authors yet"
+msgstr "Pas encore d'auteurs"
+
+#: app/Widgets/AuthorsWidget.php:93
+msgid "Authors will appear here after adding users"
+msgstr "Les auteurs apparaîtront ici après l'ajout d'utilisateurs"
+
+#: app/Widgets/AuthorsWidget.php:110
+msgid "Members Title:"
+msgstr "Titre des membres :"
+
+#: app/Widgets/AuthorsWidget.php:124
+msgid "Show Members (Administrators, Editors, Authors)"
+msgstr "Afficher les membres (Administrateurs, Éditeurs, Auteurs)"
+
+#: app/Widgets/AuthorsWidget.php:128
+msgid "Guests Title:"
+msgstr "Titre des invités :"
+
+#: app/Widgets/AuthorsWidget.php:142
+msgid "Show Guests (Contributors)"
+msgstr "Afficher les invités (Contributeurs)"
+
+#: app/Widgets/BannerCarouselWidget.php:12
+msgid "aripplesong - Banner Carousel"
+msgstr "aripplesong - Carrousel de bannières"
+
+#: app/Widgets/BannerCarouselWidget.php:13
+msgid "Display banner carousel with images"
+msgstr "Afficher le carrousel de bannières avec images"
+
+#: app/Widgets/BannerCarouselWidget.php:31
+msgid "No banner yet"
+msgstr "Pas encore de bannière"
+
+#: app/Widgets/BannerCarouselWidget.php:32
+msgid "Please add banner content in the admin panel"
+msgstr "Veuillez ajouter du contenu de bannière dans le panneau d'administration"
+
+#: app/Widgets/BannerCarouselWidget.php:99
+msgid "Banner Slides:"
+msgstr "Diapositives de bannière :"
+
+#: app/Widgets/BannerCarouselWidget.php:112
+msgid "Image URL:"
+msgstr "URL de l'image :"
+
+#: app/Widgets/BannerCarouselWidget.php:119
+msgid "Image URL"
+msgstr "URL de l'image"
+
+#: app/Widgets/BannerCarouselWidget.php:124
+msgid "Select Image"
+msgstr "Sélectionner une image"
+
+#: app/Widgets/BannerCarouselWidget.php:135
+msgid "Link URL (optional):"
+msgstr "URL du lien (optionnel) :"
+
+#: app/Widgets/BannerCarouselWidget.php:141
+msgid "https://example.com"
+msgstr "https://example.com"
+
+#: app/Widgets/BannerCarouselWidget.php:145
+msgid "Link Target:"
+msgstr "Cible du lien :"
+
+#: app/Widgets/BannerCarouselWidget.php:150
+msgid "Current Page"
+msgstr "Page actuelle"
+
+#: app/Widgets/BannerCarouselWidget.php:153
+msgid "New Tab"
+msgstr "Nouvel onglet"
+
+#: app/Widgets/BannerCarouselWidget.php:159
+msgid "Description:"
+msgstr "Description :"
+
+#: app/Widgets/BannerCarouselWidget.php:165
+msgid "Image description"
+msgstr "Description de l'image"
+
+#: app/Widgets/BannerCarouselWidget.php:169
+msgid "Delete"
+msgstr "Supprimer"
+
+#: app/Widgets/BannerCarouselWidget.php:178
+msgid "+ Add Banner"
+msgstr "+ Ajouter une bannière"
+
+#: app/Widgets/BlogListWidget.php:12
+msgid "aripplesong - Blog List"
+msgstr "aripplesong - Liste du blog"
+
+#: app/Widgets/BlogListWidget.php:13
+msgid "Display latest blog posts list"
+msgstr "Afficher la liste des derniers articles du blog"
+
+#: app/Widgets/BlogListWidget.php:73
+msgid "No blog posts yet"
+msgstr "Pas encore d'articles de blog"
+
+#: app/Widgets/BlogListWidget.php:89
+#: app/Widgets/PodcastListWidget.php:200
+#: app/Widgets/SubscribeLinksWidget.php:81
+#: app/Widgets/TagsCloudWidget.php:82
+msgid "Title:"
+msgstr "Titre :"
+
+#: app/Widgets/BlogListWidget.php:97
+#: app/Widgets/PodcastListWidget.php:208
+msgid "Number of posts:"
+msgstr "Nombre d'articles :"
+
+#: app/Widgets/BlogListWidget.php:108
+msgid "Number of columns:"
+msgstr "Nombre de colonnes :"
+
+#: app/Widgets/BlogListWidget.php:125
+#: app/Widgets/PodcastListWidget.php:224
+msgid "Show \"See all\" link"
+msgstr "Afficher le lien \"Voir tout\""
+
+#: app/Widgets/PodcastListWidget.php:12
+msgid "aripplesong - Podcast List"
+msgstr "aripplesong - Liste des podcasts"
+
+#: app/Widgets/PodcastListWidget.php:13
+msgid "Display latest podcast list"
+msgstr "Afficher la liste des derniers podcasts"
+
+#: app/Widgets/PodcastListWidget.php:118
+#: app/Widgets/PodcastListWidget.php:139
+#: app/Widgets/PodcastListWidget.php:160
+msgid "No podcast content"
+msgstr "Pas de contenu de podcast"
+
+#: app/Widgets/SubscribeLinksWidget.php:12
+msgid "aripplesong - Subscribe Links"
+msgstr "aripplesong - Liens d'abonnement"
+
+#: app/Widgets/SubscribeLinksWidget.php:13
+msgid "Display podcast subscription platform links"
+msgstr "Afficher les liens des plateformes d'abonnement au podcast"
+
+#: app/Widgets/SubscribeLinksWidget.php:92
+msgid "Apple Podcast Link:"
+msgstr "Lien Apple Podcast :"
+
+#: app/Widgets/SubscribeLinksWidget.php:100
+#: app/Widgets/SubscribeLinksWidget.php:113
+#: app/Widgets/SubscribeLinksWidget.php:126
+msgid "Leave blank to hide this button"
+msgstr "Laisser vide pour masquer ce bouton"
+
+#: app/Widgets/SubscribeLinksWidget.php:105
+msgid "Spotify Link:"
+msgstr "Lien Spotify :"
+
+#: app/Widgets/SubscribeLinksWidget.php:118
+msgid "Youtube Music Link:"
+msgstr "Lien Youtube Music :"
+
+#: app/Widgets/TagsCloudWidget.php:12
+msgid "aripplesong - Tags Cloud"
+msgstr "aripplesong - Nuage de tags"
+
+#: app/Widgets/TagsCloudWidget.php:13
+msgid "Display article tags cloud"
+msgstr "Afficher le nuage de tags des articles"
+
+#: app/Widgets/TagsCloudWidget.php:44
+msgid "No tags yet"
+msgstr "Pas encore de tags"
+
+#: app/Widgets/TagsCloudWidget.php:45
+msgid "Tags will appear here after publishing articles with tags"
+msgstr "Les tags apparaîtront ici après la publication d'articles avec des tags"
+
+#: app/Widgets/TagsCloudWidget.php:61
+#, php-format
+msgid "%d post"
+msgid_plural "%d posts"
+msgstr[0] "%d article"
+msgstr[1] "%d articles"
+
+#: app/Widgets/TagsCloudWidget.php:91
+msgid "Number of tags:"
+msgstr "Nombre de tags :"
+
+#: app/Widgets/TagsCloudWidget.php:100
+msgid "Maximum number of tags to display"
+msgstr "Nombre maximum de tags à afficher"
+
+#: app/Widgets/TagsCloudWidget.php:104
+msgid "Order by:"
+msgstr "Trier par :"
+
+#: app/Widgets/TagsCloudWidget.php:108
+msgid "Post Count"
+msgstr "Nombre d'articles"
+
+#: app/Widgets/TagsCloudWidget.php:109
+msgid "Tag Name"
+msgstr "Nom du tag"
+
+#: app/Widgets/TagsCloudWidget.php:110
+msgid "Tag ID"
+msgstr "ID du tag"
+
+#: app/Widgets/TagsCloudWidget.php:111
+msgid "Random"
+msgstr "Aléatoire"
+
+#: app/Widgets/TagsCloudWidget.php:116
+msgid "Sort order:"
+msgstr "Ordre de tri :"
+
+#: app/Widgets/TagsCloudWidget.php:120
+msgid "Descending (High to Low/Z to A)"
+msgstr "Décroissant (Haut vers Bas/Z vers A)"
+
+#: app/Widgets/TagsCloudWidget.php:121
+msgid "Ascending (Low to High/A to Z)"
+msgstr "Croissant (Bas vers Haut/A vers Z)"
+
+#. Template Name of the theme
+msgid "Blog Template"
+msgstr "Modèle de blog"
+
+#. Template Name of the theme
+msgid "Custom Template"
+msgstr "Modèle personnalisé"
+
+#. Template Name of the theme
+msgid "Podcast Template"
+msgstr "Modèle de podcast"
+
+#: resources/views/404.blade.php:8
+msgid "Sorry, but the page you are trying to view does not exist."
+msgstr "Désolé, mais la page que vous essayez de voir n'existe pas."
+
+#: resources/views/author.blade.php:22
+#: resources/views/search.blade.php:7
+msgid "Sorry, no results were found."
+msgstr "Désolé, aucun résultat trouvé."
+
+#: resources/views/forms/search.blade.php:15
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr "Rechercher &hellip;"
+
+#: resources/views/partials/comments.blade.php:45
+msgid "Comments are closed."
+msgstr "Les commentaires sont fermés."
+
+#: resources/views/partials/entry-meta.blade.php:7
+msgid "By"
+msgstr "Par"
+
+#: resources/views/index.blade.php:9
+msgid "Please add widgets to \"Home Main\" area in Appearance > Widgets in the admin panel."
+msgstr "Veuillez ajouter des widgets à la zone \"Accueil principal\" dans Apparence > Widgets dans le panneau d'administration."
+
+#: resources/views/author.blade.php:9
+msgid "Author:"
+msgstr "Auteur :"
+
+#: resources/views/partials/comments.blade.php:48
+msgid "Leave a Comment"
+msgstr "Laisser un commentaire"
+
+#: resources/views/partials/podcast-episode-card.blade.php:59
+msgid "Pause"
+msgstr "Pause"
+
+#: resources/views/partials/podcast-episode-card.blade.php:59
+msgid "Play"
+msgstr "Lecture"
+
+#: resources/views/sections/leftbar.blade.php:6
+msgid "Please add widgets to \"Leftbar\" area in Appearance > Widgets in the admin panel."
+msgstr "Veuillez ajouter des widgets à la zone \"Barre gauche\" dans Apparence > Widgets dans le panneau d'administration."
+
+#: resources/views/sections/sidebar.blade.php:8
+msgid "Please add widgets to \"Sidebar\" area in Appearance > Widgets in the admin panel."
+msgstr "Veuillez ajouter des widgets à la zone \"Barre latérale\" dans Apparence > Widgets dans le panneau d'administration."
+
+#: resources/views/sections/mobile-menu.blade.php:7
+msgid "Menu"
+msgstr "Menu"
+
+#: resources/views/sections/search-modal.blade.php:6
+msgid "Close"
+msgstr "Fermer"
+
+#: resources/views/sections/footer.blade.php:3
+msgid "© %s A Ripple Song. Designed by %s"
+msgstr "© %s A Ripple Song. Conçu par %s"
+
+#: resources/views/sections/header.blade.php:20
+msgid "Light Mode"
+msgstr "Mode clair"
+
+#: resources/views/sections/header.blade.php:20
+msgid "Dark Mode"
+msgstr "Mode sombre"
+
+#: resources/views/sections/header.blade.php:20
+msgid "Follow System"
+msgstr "Suivre le système"
+
+#: resources/views/sections/player.blade.php:3
+msgid "NOW PLAYING"
+msgstr "EN COURS DE LECTURE"
+
+#: resources/views/sections/player.blade.php:24
+msgid "No Episode Playing"
+msgstr "Aucun épisode en lecture"
+
+#: resources/views/sections/player.blade.php:24
+msgid "Podcast Episode"
+msgstr "Épisode de podcast"
+
+#: resources/views/sections/playlist-drawer.blade.php:8
+msgid "Playlist"
+msgstr "Liste de lecture"
+
+#: resources/views/sections/playlist-drawer.blade.php:15
+msgid "Total"
+msgstr "Total"
+
+#: resources/views/sections/playlist-drawer.blade.php:15
+msgid "episodes"
+msgstr "épisodes"
+
+#: resources/views/sections/playlist-drawer.blade.php:17
+msgid "Are you sure you want to clear the playlist?"
+msgstr "Êtes-vous sûr de vouloir vider la liste de lecture ?"
+
+#: resources/views/sections/playlist-drawer.blade.php:19
+msgid "Clear Playlist"
+msgstr "Vider la liste de lecture"
+
+#: resources/views/sections/playlist-drawer.blade.php:21
+msgid "Clear"
+msgstr "Vider"
+
+#: resources/views/sections/playlist-drawer.blade.php:31
+msgid "Playlist is empty"
+msgstr "La liste de lecture est vide"
+
+#: resources/views/sections/playlist-drawer.blade.php:32
+msgid "Add some episodes to start listening"
+msgstr "Ajoutez des épisodes pour commencer à écouter"
+
+#: resources/views/sections/playlist-drawer.blade.php:82
+msgid "Remove"
+msgstr "Supprimer"
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Red (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Red (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Yellow (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Yellow (300)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Yellow (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Green (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Green (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Green (500)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Indigo (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Indigo (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Gray (600)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Gray (800)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Black"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "White"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font family name"
+msgid "sans"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font family name"
+msgid "mono"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "xs"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "sm"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "base"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "lg"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "2xl"
+msgstr ""
