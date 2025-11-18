@@ -372,6 +372,13 @@ add_action('wp_enqueue_scripts', function () {
                 wp_enqueue_script('aripplesong-app', $js_url, ['wp-i18n'], null, true);
                 // Set script translations for JavaScript i18n
                 wp_set_script_translations('aripplesong-app', 'sage', get_template_directory() . '/resources/lang');
+                
+                // Localize script with REST API URL
+                wp_localize_script('aripplesong-app', 'aripplesongData', [
+                    'restUrl' => esc_url_raw(rest_url()),
+                    'restNonce' => wp_create_nonce('wp_rest'),
+                    'siteUrl' => esc_url_raw(home_url('/')),
+                ]);
             }
         }
     } catch (\Exception $e) {

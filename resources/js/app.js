@@ -217,8 +217,12 @@ Alpine.store('player', {
    */
   async fetchLatestPodcast(autoPlay = false) {
     try {
+      // 使用 PHP 传递的 REST API URL
+      const restUrl = window.aripplesongData?.restUrl || '/wp-json/';
+      const apiUrl = `${restUrl}wp/v2/podcast?per_page=5&orderby=date&order=desc&_embed`;
+      
       // 调用 WordPress REST API 获取最新的5条播客
-      const response = await fetch('/wp-json/wp/v2/podcast?per_page=5&orderby=date&order=desc&_embed');
+      const response = await fetch(apiUrl);
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
