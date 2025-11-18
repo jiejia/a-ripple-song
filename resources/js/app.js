@@ -864,6 +864,49 @@ Alpine.start();
 
 
 
+// ========== Image Lightbox ==========
+/**
+ * Initialize image lightbox for content images
+ */
+function initImageLightbox() {
+  const contentImages = document.querySelectorAll('#content img');
+  const modal = document.getElementById('image-lightbox-modal');
+  const lightboxImage = document.getElementById('lightbox-image');
+  
+  if (!modal || !lightboxImage) return;
+  
+  contentImages.forEach(img => {
+    // Skip if image is already inside a link
+    if (img.closest('a')) return;
+    
+    // Remove any existing click listeners
+    img.replaceWith(img.cloneNode(true));
+    const newImg = img.parentNode ? img : document.querySelector(`#content img[src="${img.src}"]`);
+    
+    if (!newImg) return;
+    
+    newImg.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Get the full-size image URL (WordPress responsive images)
+      const fullSizeUrl = this.dataset.fullUrl || this.src;
+      const imgAlt = this.alt || '';
+      
+      // Set lightbox image
+      lightboxImage.src = fullSizeUrl;
+      lightboxImage.alt = imgAlt;
+      
+      // Show modal
+      modal.showModal();
+    });
+  });
+  
+  // Close modal on ESC key
+  modal.addEventListener('close', () => {
+    lightboxImage.src = '';
+  });
+}
+
 // 初始化 Swup (v4.x 版本)
 const swup = new Swup({
   containers: ['#swup-main', '#swup-header', '#swup-mobile-menu'], // 指定要替换的容器
@@ -874,6 +917,9 @@ const swup = new Swup({
 function init() {
   // 重新初始化 Lucide 图标
   createIcons({ icons });
+  
+  // 初始化图片灯箱
+  initImageLightbox();
 }
 
 // 页面首次加载

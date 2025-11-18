@@ -46,6 +46,7 @@
   @include('sections.mobile-menu')
   @include('sections.search-modal')
   @include('sections.playlist-drawer')
+  @include('partials.image-lightbox')
 </body>
 
 </html>
