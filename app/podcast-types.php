@@ -255,6 +255,26 @@ add_action('cmb2_admin_init', function () {
 });
 
 /**
+ * Ensure TinyMCE assets load for the subtitle wysiwyg when editing podcasts in
+ * the block editor.
+ */
+add_action('admin_enqueue_scripts', function ($hook) {
+    if (!in_array($hook, ['post.php', 'post-new.php'], true)) {
+        return;
+    }
+
+    $screen = function_exists('get_current_screen') ? get_current_screen() : null;
+
+    if (!$screen || $screen->post_type !== 'podcast') {
+        return;
+    }
+
+    if (function_exists('wp_enqueue_editor')) {
+        wp_enqueue_editor();
+    }
+});
+
+/**
  * 设置播客成员的默认值
  * 新建播客时，如果 members 字段为空，自动添加当前用户（仅当用户是 administrator、author 或 editor 时）
  *

@@ -10,13 +10,34 @@
   {{-- Vite assets are now loaded via wp_enqueue_scripts in setup.php --}}
   {{-- This ensures they work in all contexts including customizer preview --}}
   <style>
-    html {
+    /* html {
       margin-top: 0px !important;
       scrollbar-gutter: stable;
     }
 
     #wpadminbar {
       display: none;
+    } */
+    html {
+      scrollbar-gutter: stable;
+    }
+    
+    /* 当显示 WordPress 管理工具栏时的调整 */
+    body.admin-bar #swup-header {
+      top: 32px;
+    }
+    
+    body.admin-bar .sticky.top-\[70px\] {
+      top: 102px;
+    }
+    
+    @media screen and (max-width: 782px) {
+      body.admin-bar #swup-header {
+        top: 46px;
+      }
+      body.admin-bar .sticky.top-\[70px\] {
+        top: 116px;
+      }
     }
   </style>
 </head>
