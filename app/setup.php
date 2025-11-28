@@ -405,3 +405,21 @@ add_filter('script_loader_tag', function ($tag, $handle, $src) {
 add_action('after_setup_theme', function () {
     load_theme_textdomain('sage', get_template_directory() . '/resources/lang');
 });
+
+/**
+ * Allow additional file types to be uploaded.
+ *
+ * @param array $mimes Existing allowed mime types.
+ * @return array Modified mime types.
+ */
+add_filter('upload_mimes', function ($mimes) {
+    // Audio files
+    $mimes['mp3'] = 'audio/mpeg';
+    $mimes['m4a'] = 'audio/m4a';
+    
+    // eBook files
+    $mimes['epub'] = 'application/epub+zip';
+    
+    return $mimes;
+});
+
