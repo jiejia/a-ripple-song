@@ -415,11 +415,43 @@ add_action('after_setup_theme', function () {
 add_filter('upload_mimes', function ($mimes) {
     // Audio files
     $mimes['mp3'] = 'audio/mpeg';
-    $mimes['m4a'] = 'audio/m4a';
+    $mimes['m4a'] = 'audio/x-m4a';
     
     // eBook files
     $mimes['epub'] = 'application/epub+zip';
     
     return $mimes;
 });
+
+/**
+ * Fix file type detection for custom mime types.
+ *
+ * WordPress performs additional security checks on file uploads that can
+ * incorrectly reject valid files. This filter ensures our allowed types pass validation.
+ *
+ * @param array  $data File data array containing 'ext', 'type', 'proper_filename'.
+ * @param string $file Full path to the file.
+ * @param string $filename The name of the file.
+ * @param array  $mimes Array of mime types keyed by their file extension.
+ * @return array Modified file data.
+ */
+add_filter('wp_check_filetype_and_ext', function ($data, $file, $filename, $mimes) {
+    // Get the file extension
+    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+    
+    // Define our custom mime types
+    $custom_mimes = [
+        'mp3'  => 'audio/mpeg',
+        'm4a'  => 'audio/x-m4a',
+        'epub' => 'application/epub+zip',
+    ];
+    
+    // If this is one of our custom types and WordPress couldn't identify it
+    if (isset($custom_mimes[$ext]) && (empty($data['type']) || empty($data['ext']))) {
+        $data['ext'] = $ext;
+        $data['type'] = $custom_mimes[$ext];
+    }
+    
+    return $data;
+}, 10, 4);
 
