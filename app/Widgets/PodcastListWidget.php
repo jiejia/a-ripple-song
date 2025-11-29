@@ -67,7 +67,7 @@ class Podcast_List_Widget extends WP_Widget {
                 </h2>
                 <?php if ($show_see_all): ?>
                 <span class="text-xs text-base-content/70">
-                    <a href="<?php echo get_permalink(get_page_by_path('podcast')); ?>">See all</a>
+                    <a href="<?php echo get_permalink(get_page_by_path('podcast')); ?>"><?php _e('See all', 'sage'); ?></a>
                 </span>
                 <?php endif; ?>
             </div>
@@ -77,7 +77,7 @@ class Podcast_List_Widget extends WP_Widget {
                         @click="activeTab = 'recent'" 
                         :class="activeTab === 'recent' ? 'bg-base-200' : 'bg-base-100'"
                         class="btn rounded-full btn-sm">
-                        Recent
+                        <?php _e('Recent', 'sage'); ?>
                     </button>
                 </li>
                 <li>
@@ -85,7 +85,7 @@ class Podcast_List_Widget extends WP_Widget {
                         @click="activeTab = 'popular'" 
                         :class="activeTab === 'popular' ? 'bg-base-200' : 'bg-base-100'"
                         class="btn rounded-full btn-sm">
-                        Popular
+                        <?php _e('Popular', 'sage'); ?>
                     </button>
                 </li>
                 <li>
@@ -93,7 +93,7 @@ class Podcast_List_Widget extends WP_Widget {
                         @click="activeTab = 'random'" 
                         :class="activeTab === 'random' ? 'bg-base-200' : 'bg-base-100'"
                         class="btn rounded-full btn-sm">
-                        Random
+                        <?php _e('Random', 'sage'); ?>
                     </button>
                 </li>
             </ul>

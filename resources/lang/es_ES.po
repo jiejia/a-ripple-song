@@ -751,3 +751,16 @@ msgstr "Episodio desconocido"
 #: resources/views/sections/autoplay-confirm.blade.php:40
 msgid "Cancel"
 msgstr "Cancelar"
+
+#: app/Widgets/BlogListWidget.php:41
+#: app/Widgets/PodcastListWidget.php:70
+msgid "See all"
+msgstr "Ver todos"
+
+#: app/Widgets/PodcastListWidget.php:80
+msgid "Recent"
+msgstr "Recientes"
+
+#: app/Widgets/PodcastListWidget.php:88
+msgid "Popular"
+msgstr "Popular"

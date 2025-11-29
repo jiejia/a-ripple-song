@@ -751,3 +751,16 @@ msgstr "অজানা পর্ব"
 #: resources/views/sections/autoplay-confirm.blade.php:40
 msgid "Cancel"
 msgstr "বাতিল"
+
+#: app/Widgets/BlogListWidget.php:41
+#: app/Widgets/PodcastListWidget.php:70
+msgid "See all"
+msgstr "সব দেখুন"
+
+#: app/Widgets/PodcastListWidget.php:80
+msgid "Recent"
+msgstr "সাম্প্রতিক"
+
+#: app/Widgets/PodcastListWidget.php:88
+msgid "Popular"
+msgstr "জনপ্রিয়"

@@ -751,3 +751,16 @@ msgstr "अज्ञात एपिसोड"
 #: resources/views/sections/autoplay-confirm.blade.php:40
 msgid "Cancel"
 msgstr "रद्द करें"
+
+#: app/Widgets/BlogListWidget.php:41
+#: app/Widgets/PodcastListWidget.php:70
+msgid "See all"
+msgstr "सभी देखें"
+
+#: app/Widgets/PodcastListWidget.php:80
+msgid "Recent"
+msgstr "हाल ही का"
+
+#: app/Widgets/PodcastListWidget.php:88
+msgid "Popular"
+msgstr "लोकप्रिय"

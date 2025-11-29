@@ -38,7 +38,7 @@ class Blog_List_Widget extends WP_Widget {
                 </h2>
                 <?php if ($show_see_all): ?>
                 <span class="text-xs text-base-content/70">
-                    <a href="<?php echo get_permalink(get_page_by_path('blog')); ?>">See all</a>
+                    <a href="<?php echo get_permalink(get_page_by_path('blog')); ?>"><?php _e('See all', 'sage'); ?></a>
                 </span>
                 <?php endif; ?>
             </div>

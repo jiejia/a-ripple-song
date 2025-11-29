@@ -749,3 +749,16 @@ msgstr "未知節目"
 #: resources/views/sections/autoplay-confirm.blade.php:40
 msgid "Cancel"
 msgstr "取消"
+
+#: app/Widgets/BlogListWidget.php:41
+#: app/Widgets/PodcastListWidget.php:70
+msgid "See all"
+msgstr "查看全部"
+
+#: app/Widgets/PodcastListWidget.php:80
+msgid "Recent"
+msgstr "最近"
+
+#: app/Widgets/PodcastListWidget.php:88
+msgid "Popular"
+msgstr "熱門"

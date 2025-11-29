@@ -751,3 +751,16 @@ msgstr "نامعلوم قسط"
 #: resources/views/sections/autoplay-confirm.blade.php:40
 msgid "Cancel"
 msgstr "منسوخ کریں"
+
+#: app/Widgets/BlogListWidget.php:41
+#: app/Widgets/PodcastListWidget.php:70
+msgid "See all"
+msgstr "تمام دیکھیں"
+
+#: app/Widgets/PodcastListWidget.php:80
+msgid "Recent"
+msgstr "حالیہ"
+
+#: app/Widgets/PodcastListWidget.php:88
+msgid "Popular"
+msgstr "مقبول"

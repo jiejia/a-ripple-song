@@ -749,3 +749,16 @@ msgstr "알 수 없는 에피소드"
 #: resources/views/sections/autoplay-confirm.blade.php:40
 msgid "Cancel"
 msgstr "취소"
+
+#: app/Widgets/BlogListWidget.php:41
+#: app/Widgets/PodcastListWidget.php:70
+msgid "See all"
+msgstr "모두 보기"
+
+#: app/Widgets/PodcastListWidget.php:80
+msgid "Recent"
+msgstr "최근"
+
+#: app/Widgets/PodcastListWidget.php:88
+msgid "Popular"
+msgstr "인기"
