@@ -68,6 +68,7 @@
   @include('sections.search-modal')
   @include('sections.playlist-drawer')
   @include('partials.image-lightbox')
+  @include('sections.autoplay-confirm')
 </body>
 
 </html>

@@ -737,3 +737,15 @@ msgstr "lg"
 msgctxt "Font size name"
 msgid "2xl"
 msgstr "2xl"
+
+#: resources/views/sections/autoplay-confirm.blade.php:21
+msgid "Continue playing?"
+msgstr "繼續播放？"
+
+#: resources/views/sections/autoplay-confirm.blade.php:24
+msgid "Unknown episode"
+msgstr "未知節目"
+
+#: resources/views/sections/autoplay-confirm.blade.php:40
+msgid "Cancel"
+msgstr "取消"

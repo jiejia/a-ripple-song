@@ -182,6 +182,13 @@ Alpine.store('player', {
   availableRates: [0.5, 0.75, 1, 1.25, 1.5, 2],
   playbackRatePanelOpen: false,
 
+  // autoplay confirm (用于处理浏览器自动播放策略)
+  showAutoplayConfirm: false,
+  pendingAutoplay: false, // 标记是否有待确认的自动播放
+  autoplayConfirmTimer: null, // 自动关闭定时器
+  autoplayCountdown: 10, // 倒计时秒数
+  autoplayCountdownTimer: null, // 倒计时更新定时器
+
   // playlist
   playlist: [],
   currentIndex: 0,
@@ -219,7 +226,13 @@ Alpine.store('player', {
     try {
       // 使用 PHP 传递的 REST API URL
       const restUrl = window.aripplesongData?.restUrl || '/wp-json/';
-      const apiUrl = `${restUrl}wp/v2/podcast?per_page=5&orderby=date&order=desc&_embed`;
+      
+      // 构建 API URL，处理不同的 REST URL 格式
+      // 如果 restUrl 已经包含 ?（如 /index.php?rest_route=/），则用 & 连接参数
+      // 否则使用标准的 ? 连接参数
+      const queryParams = 'per_page=5&orderby=date&order=desc&_embed';
+      const separator = restUrl.includes('?') ? '&' : '?';
+      const apiUrl = `${restUrl}wp/v2/podcast${separator}${queryParams}`;
       
       // 调用 WordPress REST API 获取最新的5条播客
       const response = await fetch(apiUrl);
@@ -359,16 +372,80 @@ Alpine.store('player', {
         console.log(__('Playback progress restored:', 'sage'), playbackState.currentTime);
         
         // 根据保存的状态决定是否自动播放
+        // ⭐ 由于浏览器自动播放策略，需要用户交互后才能播放
+        // 显示确认提示栏让用户决定是否继续播放
         if (playbackState.isPlaying) {
-          this.play();
-          console.log(__('Playback state restored', 'sage'));
+          this.showAutoplayConfirmDialog();
         }
       });
     } else if (playbackState.isPlaying) {
-      // 如果没有保存的进度但保存了播放状态，直接播放
-      this.play();
-      console.log(__('Playback state restored', 'sage'));
+      // 如果没有保存的进度但保存了播放状态
+      // ⭐ 同样需要用户确认
+      this.showAutoplayConfirmDialog();
     }
+  },
+
+  /**
+   * 显示自动播放确认对话框
+   */
+  showAutoplayConfirmDialog() {
+    this.pendingAutoplay = true;
+    this.showAutoplayConfirm = true;
+    this.autoplayCountdown = 10; // 重置倒计时
+    
+    // 重新初始化图标
+    setTimeout(() => {
+      createIcons({ icons });
+    }, 10);
+    
+    // 每秒更新倒计时
+    this.autoplayCountdownTimer = setInterval(() => {
+      this.autoplayCountdown--;
+      if (this.autoplayCountdown <= 0) {
+        this.cancelAutoplay();
+        console.log(__('Autoplay confirm dialog auto-closed', 'sage'));
+      }
+    }, 1000);
+    
+    console.log(__('Showing autoplay confirm dialog', 'sage'));
+  },
+
+  /**
+   * 清除所有自动播放相关的定时器
+   */
+  clearAutoplayTimers() {
+    if (this.autoplayConfirmTimer) {
+      clearTimeout(this.autoplayConfirmTimer);
+      this.autoplayConfirmTimer = null;
+    }
+    if (this.autoplayCountdownTimer) {
+      clearInterval(this.autoplayCountdownTimer);
+      this.autoplayCountdownTimer = null;
+    }
+  },
+
+  /**
+   * 用户确认自动播放
+   */
+  confirmAutoplay() {
+    this.clearAutoplayTimers();
+    this.showAutoplayConfirm = false;
+    this.pendingAutoplay = false;
+    this.play();
+    console.log(__('User confirmed autoplay', 'sage'));
+  },
+
+  /**
+   * 用户取消自动播放
+   */
+  cancelAutoplay() {
+    this.clearAutoplayTimers();
+    this.showAutoplayConfirm = false;
+    this.pendingAutoplay = false;
+    // 更新保存的状态为暂停
+    this.isPlaying = false;
+    this.savePlaybackState();
+    console.log(__('User cancelled autoplay', 'sage'));
   },
 
   // ========== 播放器核心方法 ==========

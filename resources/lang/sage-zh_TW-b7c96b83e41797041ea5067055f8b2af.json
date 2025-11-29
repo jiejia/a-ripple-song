@@ -12,51 +12,6 @@
             },
             "No podcasts found": [
                 "\u627e\u4e0d\u5230\u64ad\u5ba2"
-            ],
-            "Fetched %d podcasts": [
-                "\u5df2\u53d6\u5f97 %d \u500b\u64ad\u5ba2"
-            ],
-            "Podcast has no audio file, skipping:": [
-                "\u64ad\u5ba2\u6c92\u6709\u97f3\u8a0a\u6a94\u6848\uff0c\u8df3\u904e\uff1a"
-            ],
-            "Added:": [
-                "\u5df2\u65b0\u589e\uff1a"
-            ],
-            "Already exists, skipping:": [
-                "\u5df2\u5b58\u5728\uff0c\u8df3\u904e\uff1a"
-            ],
-            "Successfully added %d new podcasts to playlist": [
-                "\u5df2\u6210\u529f\u5c07 %d \u500b\u65b0\u64ad\u5ba2\u65b0\u589e\u81f3\u64ad\u653e\u6e05\u55ae"
-            ],
-            "No new podcasts to add": [
-                "\u6c92\u6709\u8981\u65b0\u589e\u7684\u65b0\u64ad\u5ba2"
-            ],
-            "Failed to fetch latest podcasts:": [
-                "\u53d6\u5f97\u6700\u65b0\u64ad\u5ba2\u5931\u6557\uff1a"
-            ],
-            "No episode available to play": [
-                "\u6c92\u6709\u53ef\u64ad\u653e\u7684\u96c6\u6578"
-            ],
-            "Playback progress restored:": [
-                "\u64ad\u653e\u9032\u5ea6\u5df2\u9084\u539f\uff1a"
-            ],
-            "Playback state restored": [
-                "\u64ad\u653e\u72c0\u614b\u5df2\u9084\u539f"
-            ],
-            "Volume settings loaded:": [
-                "\u97f3\u91cf\u8a2d\u5b9a\u5df2\u8f09\u5165\uff1a"
-            ],
-            "Playback rate loaded:": [
-                "\u64ad\u653e\u901f\u5ea6\u5df2\u8f09\u5165\uff1a"
-            ],
-            "Switched to existing episode:": [
-                "\u5df2\u5207\u63db\u81f3\u73fe\u6709\u96c6\u6578\uff1a"
-            ],
-            "Added to playlist:": [
-                "\u5df2\u65b0\u589e\u81f3\u64ad\u653e\u6e05\u55ae\uff1a"
-            ],
-            "Episode already exists:": [
-                "\u96c6\u6578\u5df2\u5b58\u5728\uff1a"
             ]
         }
     }

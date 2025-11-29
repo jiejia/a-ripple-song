@@ -739,3 +739,15 @@ msgstr ""
 msgctxt "Font size name"
 msgid "2xl"
 msgstr ""
+
+#: resources/views/sections/autoplay-confirm.blade.php:21
+msgid "Continue playing?"
+msgstr "Continuer la lecture ?"
+
+#: resources/views/sections/autoplay-confirm.blade.php:24
+msgid "Unknown episode"
+msgstr "Épisode inconnu"
+
+#: resources/views/sections/autoplay-confirm.blade.php:40
+msgid "Cancel"
+msgstr "Annuler"
