@@ -2,6 +2,7 @@
 {{-- 当用户刷新页面且之前状态为正在播放时显示 --}}
 <div 
     x-data
+    x-cloak
     x-show="$store.player.showAutoplayConfirm" 
     x-transition:enter="transition ease-out duration-300"
     x-transition:enter-start="transform translate-y-full opacity-0"

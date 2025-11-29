@@ -12,6 +12,11 @@
     --link-decoration: none;
 }
 
+/* Alpine.js x-cloak: 在 Alpine 初始化前隐藏元素，防止闪烁 */
+[x-cloak] {
+    display: none !important;
+}
+
 /* 全局移除所有链接的下划线 */
 a {
     text-decoration: none;

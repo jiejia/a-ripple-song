@@ -502,6 +502,14 @@ Alpine.store('player', {
     if (!this.currentSound) {
       return;
     }
+    
+    // 如果弹窗正在显示，直接关闭弹窗（用户通过其他方式触发了播放）
+    if (this.showAutoplayConfirm) {
+      this.clearAutoplayTimers();
+      this.showAutoplayConfirm = false;
+      this.pendingAutoplay = false;
+    }
+    
     if (this.soundId === null) {
       this.soundId = this.currentSound.play();
       // 应用播放速度
