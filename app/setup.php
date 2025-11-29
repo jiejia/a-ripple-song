@@ -420,6 +420,9 @@ add_filter('upload_mimes', function ($mimes) {
     // eBook files
     $mimes['epub'] = 'application/epub+zip';
     
+    // Image files
+    $mimes['webp'] = 'image/webp';
+    
     return $mimes;
 });
 
@@ -444,6 +447,7 @@ add_filter('wp_check_filetype_and_ext', function ($data, $file, $filename, $mime
         'mp3'  => 'audio/mpeg',
         'm4a'  => 'audio/x-m4a',
         'epub' => 'application/epub+zip',
+        'webp' => 'image/webp',
     ];
     
     // If this is one of our custom types and WordPress couldn't identify it
