@@ -309,10 +309,16 @@ Alpine.store('player', {
 
         // 如果需要自动播放且有新节目
         if (autoPlay && firstNewEpisode) {
-          // 切换到第一个新添加的节目并播放
+          // 切换到第一个新添加的节目
           const index = this.playlist.findIndex(item => item.id === firstNewEpisode.id);
           if (index !== -1) {
-            this.playByIndex(index);
+            // ⭐ 只加载音轨，不自动播放，显示确认对话框
+            this.currentIndex = index;
+            this.currentEpisode = firstNewEpisode;
+            this.loadTrack(firstNewEpisode.audioUrl);
+            this.savePlaylist();
+            // 显示确认对话框让用户决定是否播放
+            this.showAutoplayConfirmDialog();
           }
         }
       } else {
