@@ -4,7 +4,7 @@
       <h4 class="text-md font-bold"><a href="#">{!! $title !!}</a></h4>
       @include('partials.entry-meta')
     </div>
-    <div class="prose prose-sm max-w-none text-xs text-base-content/80 [&_p]:py-2 [&_img]:mx-auto [&_img]:cursor-pointer [&_img]:rounded-lg [&_img]:shadow-md" id="content">
+    <div class="max-w-none text-xs text-base-content/80 [&_p]:py-2 [&_img]:mx-auto [&_img]:cursor-pointer [&_img]:rounded-lg [&_img]:shadow-md" id="content">
       @php(the_content())
     </div>
   </div>
