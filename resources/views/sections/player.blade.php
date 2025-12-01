@@ -25,9 +25,9 @@
                 <p class="text-xs text-base-content/80">
                     <span x-text="$store.player.currentEpisodePublishDate">October 18, 2025</span>
                 </p>
-                <p class="text-xs text-base-content/50" x-show="$store.player.currentEpisode?.description">
+                <!-- <p class="text-xs text-base-content/50" x-show="$store.player.currentEpisode?.description">
                     <span x-text="$store.player.currentEpisode?.description" class="line-clamp-1">142k views</span>
-                </p>
+                </p> -->
             </div>
         </div>
         <div>
