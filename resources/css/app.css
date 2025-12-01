@@ -12,6 +12,12 @@
     --link-decoration: none;
 }
 
+/* 防止移动端浏览器自动放大文字 */
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
 /* Alpine.js x-cloak: 在 Alpine 初始化前隐藏元素，防止闪烁 */
 [x-cloak] {
     display: none !important;
