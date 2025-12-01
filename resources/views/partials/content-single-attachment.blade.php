@@ -4,7 +4,7 @@
       <h4 class="text-md font-bold">{!! $title !!}</h4>
       @include('partials.entry-meta')
     </div>
-    <div class="max-w-none text-xs text-base-content/80 [&_p]:py-2 [&_img]:mx-auto [&_img]:cursor-pointer [&_img]:rounded-lg [&_img]:shadow-md" id="content">
+    <div class="max-w-none text-sm text-base-content/80 [&_p]:py-2 [&_img]:mx-auto [&_img]:cursor-pointer [&_img]:rounded-lg [&_img]:shadow-md" id="content">
       @if(has_excerpt())
       <div class="prose max-w-none">{!! wpautop(get_the_excerpt()) !!}</div>
       @endif
