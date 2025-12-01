@@ -21,7 +21,7 @@
                 </template>
             </div>
             <div>
-                <h4 class="text-md font-bold" x-text="$store.player.currentEpisode?.title || '{{ __('No Episode Playing', 'sage') }}'">{{ __('Podcast Episode', 'sage') }}</h4>
+                <h4 class="text-md font-bold line-clamp-2" x-text="$store.player.currentEpisode?.title || '{{ __('No Episode Playing', 'sage') }}'">{{ __('Podcast Episode', 'sage') }}</h4>
                 <p class="text-xs text-base-content/80">
                     <span x-text="$store.player.currentEpisodePublishDate">October 18, 2025</span>
                 </p>
