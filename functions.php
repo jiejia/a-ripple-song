@@ -655,7 +655,7 @@ add_filter('comment_form_default_fields', function($fields) {
         'author' => '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Name', 'sage') . ' <span class="text-error">*</span></span></label><input type="text" id="author" name="author" class="input input-bordered w-full text-base" required /></div>',
         'email' => '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Email', 'sage') . ' <span class="text-error">*</span></span></label><input type="email" id="email" name="email" class="input input-bordered w-full text-base" required /></div>',
         'url' => '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Website', 'sage') . '</span></label><input type="url" id="url" name="url" class="input input-bordered w-full text-base" /></div>',
-        'cookies' => '',
+        'cookies' => '<div class="form-control"><label class="label cursor-pointer justify-start gap-2"><input type="checkbox" id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" value="yes" class="checkbox" /><span class="label-text text-base text-sm">' . __('Save my name, email, and website in this browser for the next time I comment.') . '</span></label></div>',
     ];
 });
 
