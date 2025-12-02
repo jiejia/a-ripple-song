@@ -586,7 +586,7 @@ function sage_custom_comment($comment, $args, $depth) {
                         <?php endif; ?>
                     </div>
                     
-                    <div class="text-sm text-base-content/80 mb-3 leading-relaxed">
+                    <div class="text-base text-base-content/80 mb-3 leading-relaxed">
                         <?php comment_text(); ?>
                     </div>
                     
