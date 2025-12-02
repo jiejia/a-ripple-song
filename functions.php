@@ -619,7 +619,7 @@ function sage_custom_comment($comment, $args, $depth) {
  */
 add_filter('comment_form_defaults', function($defaults) {
     $defaults['class_form'] = 'space-y-4';
-    $defaults['class_submit'] = 'btn btn-primary btn-sm gap-2 text-sm';
+    $defaults['class_submit'] = 'btn btn-primary gap-2 text-base';
     $defaults['submit_button'] = '<button type="submit" id="%2$s" class="%3$s">%4$s <i data-lucide="send" class="w-4 h-4"></i></button>';
     $defaults['title_reply_before'] = '<h3 id="reply-title" class="text-md font-bold mb-4 hidden">';
     $defaults['title_reply_after'] = '</h3>';
@@ -628,7 +628,7 @@ add_filter('comment_form_defaults', function($defaults) {
     $defaults['cancel_reply_link'] = '<button type="button" class="btn btn-ghost btn-sm gap-1 text-sm"><i data-lucide="x" class="w-4 h-4"></i> %s</button>';
     $defaults['comment_notes_before'] = '<p class="comment-notes text-sm text-base-content/60">' . __('Your email address will not be published.') . '</p>';
     $defaults['comment_notes_after'] = '';
-    $defaults['logged_in_as'] = '<p class="logged-in-as text-sm text-base-content/60">' . 
+    $defaults['logged_in_as'] = '<p class="logged-in-as text-md text-base-content/60">' . 
         sprintf(__('Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>'), 
             get_edit_user_link(), 
             wp_get_current_user()->display_name, 
@@ -642,13 +642,13 @@ add_filter('comment_form_defaults', function($defaults) {
  * Customize comment form fields with DaisyUI styling
  */
 add_filter('comment_form_default_fields', function($fields) {
-    $fields['author'] = '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Name', 'sage') . ' <span class="text-error">*</span></span></label><input type="text" id="author" name="author" class="input input-bordered input-sm w-full text-sm" required /></div>';
+    $fields['author'] = '<div class="form-control"><label class="label"><span class="label-text text-md">' . __('Name', 'sage') . ' <span class="text-error">*</span></span></label><input type="text" id="author" name="author" class="input input-bordered w-full text-base" required /></div>';
     
-    $fields['email'] = '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Email', 'sage') . ' <span class="text-error">*</span></span></label><input type="email" id="email" name="email" class="input input-bordered input-sm w-full text-sm" required /></div>';
+    $fields['email'] = '<div class="form-control"><label class="label"><span class="label-text text-md">' . __('Email', 'sage') . ' <span class="text-error">*</span></span></label><input type="email" id="email" name="email" class="input input-bordered w-full text-base" required /></div>';
     
-    $fields['url'] = '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Website', 'sage') . '</span></label><input type="url" id="url" name="url" class="input input-bordered input-sm w-full text-sm" /></div>';
+    $fields['url'] = '<div class="form-control"><label class="label"><span class="label-text text-md">' . __('Website', 'sage') . '</span></label><input type="url" id="url" name="url" class="input input-bordered w-full text-base" /></div>';
     
-    $fields['cookies'] = '<div class="form-control"><label class="label cursor-pointer justify-start gap-2"><input type="checkbox" id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" value="yes" class="checkbox checkbox-sm" /><span class="label-text text-sm">' . __('Save my name, email, and website in this browser for the next time I comment.') . '</span></label></div>';
+    $fields['cookies'] = '<div class="form-control"><label class="label cursor-pointer justify-start gap-2"><input type="checkbox" id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" value="yes" class="checkbox" /><span class="label-text text-md">' . __('Save my name, email, and website in this browser for the next time I comment.') . '</span></label></div>';
     
     return $fields;
 });
@@ -657,5 +657,5 @@ add_filter('comment_form_default_fields', function($fields) {
  * Customize comment textarea field with DaisyUI styling
  */
 add_filter('comment_form_field_comment', function($field) {
-    return '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Comment', 'sage') . ' <span class="text-error">*</span></span></label><textarea id="comment" name="comment" rows="6" class="textarea textarea-bordered textarea-sm w-full text-sm" required></textarea></div>';
+    return '<div class="form-control"><label class="label"><span class="label-text text-md">' . __('Comment', 'sage') . ' <span class="text-error">*</span></span></label><textarea id="comment" name="comment" rows="6" class="textarea textarea-bordered w-full text-base" required></textarea></div>';
 });
