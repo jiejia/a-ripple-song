@@ -642,11 +642,11 @@ add_filter('comment_form_defaults', function($defaults) {
  * Customize comment form fields with DaisyUI styling
  */
 add_filter('comment_form_default_fields', function($fields) {
-    $fields['author'] = '<div class="form-control"><label class="label"><span class="label-text text-xs">' . __('Name', 'sage') . ' <span class="text-error">*</span></span></label><input type="text" id="author" name="author" class="input input-bordered input-sm w-full text-base" required /></div>';
+    $fields['author'] = '<div class="form-control"><label class="label"><span class="label-text text-xs">' . __('Name', 'sage') . ' <span class="text-error">*</span></span></label><input type="text" id="author" name="author" class="input input-bordered w-full text-base" required style="font-size:16px;" /></div>';
     
-    $fields['email'] = '<div class="form-control"><label class="label"><span class="label-text text-xs">' . __('Email', 'sage') . ' <span class="text-error">*</span></span></label><input type="email" id="email" name="email" class="input input-bordered input-sm w-full text-base" required /></div>';
+    $fields['email'] = '<div class="form-control"><label class="label"><span class="label-text text-xs">' . __('Email', 'sage') . ' <span class="text-error">*</span></span></label><input type="email" id="email" name="email" class="input input-bordered w-full text-base" required style="font-size:16px;" /></div>';
     
-    $fields['url'] = '<div class="form-control"><label class="label"><span class="label-text text-xs">' . __('Website', 'sage') . '</span></label><input type="url" id="url" name="url" class="input input-bordered input-sm w-full text-base" /></div>';
+    $fields['url'] = '<div class="form-control"><label class="label"><span class="label-text text-xs">' . __('Website', 'sage') . '</span></label><input type="url" id="url" name="url" class="input input-bordered w-full text-base" style="font-size:16px;" /></div>';
     
     $fields['cookies'] = '<div class="form-control"><label class="label cursor-pointer justify-start gap-2"><input type="checkbox" id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" value="yes" class="checkbox checkbox-sm" /><span class="label-text text-xs">' . __('Save my name, email, and website in this browser for the next time I comment.') . '</span></label></div>';
     
@@ -657,5 +657,5 @@ add_filter('comment_form_default_fields', function($fields) {
  * Customize comment textarea field with DaisyUI styling
  */
 add_filter('comment_form_field_comment', function($field) {
-    return '<div class="form-control"><label class="label"><span class="label-text text-xs">' . __('Comment', 'sage') . ' <span class="text-error">*</span></span></label><textarea id="comment" name="comment" rows="6" class="textarea textarea-bordered textarea-sm w-full text-base" required></textarea></div>';
+    return '<div class="form-control"><label class="label"><span class="label-text text-xs">' . __('Comment', 'sage') . ' <span class="text-error">*</span></span></label><textarea id="comment" name="comment" rows="6" class="textarea textarea-bordered w-full text-base" required style="font-size:16px;"></textarea></div>';
 });
