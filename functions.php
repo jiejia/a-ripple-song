@@ -651,7 +651,12 @@ add_filter('comment_form_default_fields', function($fields) {
     
     // $fields['cookies'] = '<div class="form-control"><label class="label cursor-pointer justify-start gap-2"><input type="checkbox" id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" value="yes" class="checkbox" /><span class="label-text text-base">' . __('Save my name, email, and website in this browser for the next time I comment.') . '</span></label></div>';
     
-    return $fields;
+    return $fields = [
+        'author' => '',
+        'email' => '',
+        'url' => '',
+        'cookies' => '',
+    ];
 });
 
 /**
