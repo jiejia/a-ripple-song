@@ -34,8 +34,8 @@
             <div class="h-[40px] relative" id="wave">
                 {{-- 加载状态提示 --}}
                 <div x-show="$store.player.isLoading" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="absolute inset-0 flex items-center justify-center gap-2 text-base-content/60">
-                    <span class="loading loading-ring loading-lg"></span>
-                    <span class="text-xs">{{ __('Loading audio', 'sage') }}</span>
+                    <span class="loading loading-ring loading-lg text-base-content"></span>
+                    <span class="text-xs text-base-content/75">{{ __('Loading audio', 'sage') }}</span>
                 </div>
             </div>
             <div class="mt-0 w-full">
