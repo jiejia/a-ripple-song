@@ -21,5 +21,4 @@ $episode_data = get_episode_data($post_id);
     </div>
 </div>
 <div class="mt-4 rounded-lg bg-base-100 p-4">
-    @php(comments_template())
 </div>
