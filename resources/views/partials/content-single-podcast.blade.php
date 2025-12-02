@@ -20,6 +20,7 @@ $episode_data = get_episode_data($post_id);
         @include('partials.entry-authors')
     </div>
 </div>
-<div class="mt-4 rounded-lg bg-base-100 p-4">
+{{-- 评论区在部分安卓设备上会触发自动放大，这里添加专用钩子类方便样式修正 --}}
+<div class="mt-4 rounded-lg bg-base-100 p-4 mobile-comment-safe">
     @php(comments_template())
 </div>

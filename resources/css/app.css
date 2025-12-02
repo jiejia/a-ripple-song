@@ -68,3 +68,14 @@ a {
 #cancel-comment-reply-link {
     margin-left: 0.5rem;
 }
+
+/* 移动端强制评论表单控件 >=16px，避免安卓 Chrome 自动放大 */
+@media (max-width: 768px) {
+    #comments input,
+    #comments textarea,
+    #comments select,
+    #comments button {
+        font-size: 16px !important;
+        line-height: 1.4;
+    }
+}
