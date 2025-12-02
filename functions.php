@@ -653,8 +653,8 @@ add_filter('comment_form_default_fields', function($fields) {
     
     return $fields = [
         'author' => '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Name', 'sage') . ' <span class="text-error">*</span></span></label><input type="text" id="author" name="author" class="input input-bordered w-full text-base" required /></div>',
-        'email' => '',
-        'url' => '',
+        'email' => '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Email', 'sage') . ' <span class="text-error">*</span></span></label><input type="email" id="email" name="email" class="input input-bordered w-full text-base" required /></div>',
+        'url' => '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Website', 'sage') . '</span></label><input type="url" id="url" name="url" class="input input-bordered w-full text-base" /></div>',
         'cookies' => '',
     ];
 });
