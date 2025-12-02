@@ -31,10 +31,10 @@
                 @endif
             </a>
         </div>
-        <div class="grid grid-flow-row gap-1">
-            <h4 class="text-md font-bold">
+        <div class="grid grid-flow-row gap-1 overflow-hidden">
+            <h4 class="text-md font-bold truncate">
                 @if($show_link)
-                    <a href="{{ get_permalink($post_id) }}">{!! $title !!}</a>
+                    <a href="{{ get_permalink($post_id) }}" class="block truncate">{!! $title !!}</a>
                 @else
                     {!! $title !!}
                 @endif
