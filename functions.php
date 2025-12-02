@@ -568,25 +568,25 @@ function sage_custom_comment($comment, $args, $depth) {
                 <!-- Comment Content -->
                 <div class="flex-1 min-w-0">
                     <div class="flex items-center gap-2 mb-2 flex-wrap">
-                        <span class="font-bold text-xs">
+                        <span class="font-bold text-sm">
                             <?php echo get_comment_author_link($comment); ?>
                         </span>
                         
                         <?php if ($comment->user_id === get_post()->post_author): ?>
-                            <span class="badge badge-primary badge-xs"><?php _e('Author', 'sage'); ?></span>
+                            <span class="badge badge-primary badge-sm"><?php _e('Author', 'sage'); ?></span>
                         <?php endif; ?>
                         
-                        <span class="text-xs text-base-content/60 flex items-center gap-1">
-                            <i data-lucide="clock" class="w-3 h-3"></i>
+                        <span class="text-sm text-base-content/60 flex items-center gap-1">
+                            <i data-lucide="clock" class="w-4 h-4"></i>
                             <?php echo get_localized_comment_date($comment); ?>
                         </span>
                         
                         <?php if ($comment->comment_approved == '0'): ?>
-                            <span class="badge badge-warning badge-xs"><?php _e('Pending Approval', 'sage'); ?></span>
+                            <span class="badge badge-warning badge-sm"><?php _e('Pending Approval', 'sage'); ?></span>
                         <?php endif; ?>
                     </div>
                     
-                    <div class="text-xs text-base-content/80 mb-3 leading-relaxed">
+                    <div class="text-sm text-base-content/80 mb-3 leading-relaxed">
                         <?php comment_text(); ?>
                     </div>
                     
@@ -596,15 +596,15 @@ function sage_custom_comment($comment, $args, $depth) {
                             'add_below' => 'comment',
                             'depth' => $depth,
                             'max_depth' => $args['max_depth'],
-                            'before' => '<button class="btn btn-ghost btn-xs gap-1 text-xs">',
+                            'before' => '<button class="btn btn-ghost btn-sm gap-1 text-sm">',
                             'after' => '</button>',
-                            'reply_text' => '<i data-lucide="reply" class="w-3 h-3"></i> ' . __('Reply', 'sage')
+                            'reply_text' => '<i data-lucide="reply" class="w-4 h-4"></i> ' . __('Reply', 'sage')
                         ]));
                         ?>
                         
                         <?php edit_comment_link(
-                            '<i data-lucide="pencil" class="w-3 h-3"></i> ' . __('Edit', 'sage'),
-                            '<button class="btn btn-ghost btn-xs gap-1 text-xs">',
+                            '<i data-lucide="pencil" class="w-4 h-4"></i> ' . __('Edit', 'sage'),
+                            '<button class="btn btn-ghost btn-sm gap-1 text-sm">',
                             '</button>'
                         ); ?>
                     </div>
@@ -619,16 +619,16 @@ function sage_custom_comment($comment, $args, $depth) {
  */
 add_filter('comment_form_defaults', function($defaults) {
     $defaults['class_form'] = 'space-y-4';
-    $defaults['class_submit'] = 'btn btn-primary gap-2 text-base md:text-sm';
-    $defaults['submit_button'] = '<button type="submit" id="%2$s" class="%3$s">%4$s <i data-lucide="send" class="w-3 h-3"></i></button>';
+    $defaults['class_submit'] = 'btn btn-primary btn-sm gap-2 text-sm';
+    $defaults['submit_button'] = '<button type="submit" id="%2$s" class="%3$s">%4$s <i data-lucide="send" class="w-4 h-4"></i></button>';
     $defaults['title_reply_before'] = '<h3 id="reply-title" class="text-md font-bold mb-4 hidden">';
     $defaults['title_reply_after'] = '</h3>';
-    $defaults['cancel_reply_before'] = '<div class="text-xs">';
+    $defaults['cancel_reply_before'] = '<div class="text-sm">';
     $defaults['cancel_reply_after'] = '</div>';
-    $defaults['cancel_reply_link'] = '<button type="button" class="btn btn-ghost btn-xs gap-1 text-xs"><i data-lucide="x" class="w-3 h-3"></i> %s</button>';
-    $defaults['comment_notes_before'] = '<p class="comment-notes text-xs text-base-content/60">' . __('Your email address will not be published.') . '</p>';
+    $defaults['cancel_reply_link'] = '<button type="button" class="btn btn-ghost btn-sm gap-1 text-sm"><i data-lucide="x" class="w-4 h-4"></i> %s</button>';
+    $defaults['comment_notes_before'] = '<p class="comment-notes text-sm text-base-content/60">' . __('Your email address will not be published.') . '</p>';
     $defaults['comment_notes_after'] = '';
-    $defaults['logged_in_as'] = '<p class="logged-in-as text-xs text-base-content/60">' . 
+    $defaults['logged_in_as'] = '<p class="logged-in-as text-sm text-base-content/60">' . 
         sprintf(__('Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>'), 
             get_edit_user_link(), 
             wp_get_current_user()->display_name, 
@@ -642,13 +642,13 @@ add_filter('comment_form_defaults', function($defaults) {
  * Customize comment form fields with DaisyUI styling
  */
 add_filter('comment_form_default_fields', function($fields) {
-    $fields['author'] = '<div class="form-control"><label class="label"><span class="label-text text-xs">' . __('Name', 'sage') . ' <span class="text-error">*</span></span></label><input type="text" id="author" name="author" class="input input-bordered w-full text-base md:text-sm" required /></div>';
+    $fields['author'] = '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Name', 'sage') . ' <span class="text-error">*</span></span></label><input type="text" id="author" name="author" class="input input-bordered input-sm w-full text-sm" required /></div>';
     
-    $fields['email'] = '<div class="form-control"><label class="label"><span class="label-text text-xs">' . __('Email', 'sage') . ' <span class="text-error">*</span></span></label><input type="email" id="email" name="email" class="input input-bordered w-full text-base md:text-sm" required /></div>';
+    $fields['email'] = '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Email', 'sage') . ' <span class="text-error">*</span></span></label><input type="email" id="email" name="email" class="input input-bordered input-sm w-full text-sm" required /></div>';
     
-    $fields['url'] = '<div class="form-control"><label class="label"><span class="label-text text-xs">' . __('Website', 'sage') . '</span></label><input type="url" id="url" name="url" class="input input-bordered w-full text-base md:text-sm" /></div>';
+    $fields['url'] = '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Website', 'sage') . '</span></label><input type="url" id="url" name="url" class="input input-bordered input-sm w-full text-sm" /></div>';
     
-    $fields['cookies'] = '<div class="form-control"><label class="label cursor-pointer justify-start gap-2"><input type="checkbox" id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" value="yes" class="checkbox checkbox-sm" /><span class="label-text text-xs">' . __('Save my name, email, and website in this browser for the next time I comment.') . '</span></label></div>';
+    $fields['cookies'] = '<div class="form-control"><label class="label cursor-pointer justify-start gap-2"><input type="checkbox" id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" value="yes" class="checkbox checkbox-sm" /><span class="label-text text-sm">' . __('Save my name, email, and website in this browser for the next time I comment.') . '</span></label></div>';
     
     return $fields;
 });
@@ -657,5 +657,5 @@ add_filter('comment_form_default_fields', function($fields) {
  * Customize comment textarea field with DaisyUI styling
  */
 add_filter('comment_form_field_comment', function($field) {
-    return '<div class="form-control"><label class="label"><span class="label-text text-xs">' . __('Comment', 'sage') . ' <span class="text-error">*</span></span></label><textarea id="comment" name="comment" rows="6" class="textarea textarea-bordered w-full text-base md:text-sm" required></textarea></div>';
+    return '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Comment', 'sage') . ' <span class="text-error">*</span></span></label><textarea id="comment" name="comment" rows="6" class="textarea textarea-bordered textarea-sm w-full text-sm" required></textarea></div>';
 });
