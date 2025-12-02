@@ -18,62 +18,12 @@ class Banner_Carousel_Widget extends WP_Widget {
         echo $args['before_widget'];
         
         $slides = isset($instance['slides']) ? $instance['slides'] : [];
+        $carousel_id = 'banner-carousel-' . $this->id;
         
-        if (empty($slides)) {
-            // 没有横幅时显示占位提示
-            ?>
-            <div class="w-full rounded-lg bg-base-100 p-4 pb-2">
-                <div class="w-full h-48 rounded-lg bg-base-200 flex items-center justify-center">
-                    <div class="text-center text-base-content/50">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                        <p class="text-sm font-medium"><?php _e('No banner yet', 'sage'); ?></p>
-                        <p class="text-xs mt-1"><?php _e('Please add banner content in the admin panel', 'sage'); ?></p>
-                    </div>
-                </div>
-            </div>
-            <?php
-        } else {
-            ?>
-            <div class="w-full rounded-lg bg-base-100 p-4 pb-2">
-                <div class="carousel w-full rounded-lg">
-                    <?php foreach ($slides as $index => $slide): ?>
-                        <?php 
-                        $slide_id = 'slide' . ($index + 1);
-                        $prev_slide = 'slide' . (($index - 1 + count($slides)) % count($slides) + 1);
-                        $next_slide = 'slide' . (($index + 1) % count($slides) + 1);
-                        $image_url = isset($slide['image']) ? $slide['image'] : '';
-                        $link_url = isset($slide['link']) ? $slide['link'] : '';
-                        $description = isset($slide['description']) ? $slide['description'] : '';
-                        $link_target = isset($slide['link_target']) ? $slide['link_target'] : '_self';
-                        ?>
-                        <div id="<?php echo esc_attr($slide_id); ?>" class="carousel-item relative w-full rounded-lg">
-                            <?php if ($link_url): ?>
-                                <a href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>" class="w-full">
-                                    <img
-                                        src="<?php echo esc_url($image_url); ?>"
-                                        class="w-full h-48 object-cover rounded-lg"
-                                        alt="<?php echo esc_attr($description); ?>" />
-                                </a>
-                            <?php else: ?>
-                                <img
-                                    src="<?php echo esc_url($image_url); ?>"
-                                    class="w-full h-48 object-cover rounded-lg"
-                                    alt="<?php echo esc_attr($description); ?>" />
-                            <?php endif; ?>
-                            <?php if (count($slides) > 1): ?>
-                            <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-                                <a href="#<?php echo esc_attr($prev_slide); ?>" class="btn btn-circle btn-xs">❮</a>
-                                <a href="#<?php echo esc_attr($next_slide); ?>" class="btn btn-circle btn-xs">❯</a>
-                            </div>
-                            <?php endif; ?>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-            <?php
-        }
+        echo \Roots\view('widgets.banner-carousel', [
+            'slides' => $slides,
+            'carousel_id' => $carousel_id,
+        ])->render();
         
         echo $args['after_widget'];
     }
