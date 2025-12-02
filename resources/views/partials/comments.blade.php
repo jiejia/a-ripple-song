@@ -1,7 +1,7 @@
 @if (! post_password_required())
 <section id="comments" class="comments">
   @if ($responses())
-  <h2 class="text-sm font-bold mb-4 flex items-center gap-2">
+  <h2 class="text-base font-bold mb-4 flex items-center gap-2">
     <i data-lucide="message-circle" class="w-4 h-4"></i>
     {!! $title !!}
   </h2>
@@ -12,7 +12,7 @@
 
   @if ($paginated())
   <nav aria-label="Comment" class="mt-4">
-    <ul class="flex gap-2 justify-center text-xs">
+    <ul class="flex gap-2 justify-center text-sm">
       @if ($previous())
       <li class="previous">
         <div class="btn btn-xs btn-outline gap-1">
@@ -36,14 +36,14 @@
   @endif
 
   @if ($closed())
-  <div class="alert alert-warning rounded-lg mb-6 text-xs">
+  <div class="alert alert-warning rounded-lg mb-6 text-sm">
     <i data-lucide="lock" class="w-4 h-4"></i>
     <span>{!! __('Comments are closed.', 'sage') !!}</span>
   </div>
   @endif
 
   <div class="bg-base-200/50 rounded-lg p-4">
-    <h3 class="text-sm font-bold mb-4 flex items-center gap-2">
+    <h3 class="text-base font-bold mb-4 flex items-center gap-2">
       <i data-lucide="pen-line" class="w-4 h-4"></i>
       {!! __('Leave a Comment', 'sage') !!}
     </h3>
