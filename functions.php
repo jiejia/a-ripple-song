@@ -652,7 +652,7 @@ add_filter('comment_form_default_fields', function($fields) {
     // $fields['cookies'] = '<div class="form-control"><label class="label cursor-pointer justify-start gap-2"><input type="checkbox" id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" value="yes" class="checkbox" /><span class="label-text text-base">' . __('Save my name, email, and website in this browser for the next time I comment.') . '</span></label></div>';
     
     return $fields = [
-        'author' => '',
+        'author' => '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Name', 'sage') . ' <span class="text-error">*</span></span></label><input type="text" id="author" name="author" class="input input-bordered w-full text-base" required /></div>',
         'email' => '',
         'url' => '',
         'cookies' => '',
