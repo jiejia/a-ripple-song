@@ -764,3 +764,7 @@ msgstr "हाल ही का"
 #: app/Widgets/PodcastListWidget.php:88
 msgid "Popular"
 msgstr "लोकप्रिय"
+
+#: resources/views/sections/player.blade.php:38
+msgid "Loading audio"
+msgstr "ऑडियो लोड हो रहा है"

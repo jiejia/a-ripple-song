@@ -5,9 +5,9 @@
             <div class="md:w-15 md:h-15 w-10 h-10">
                 <template x-if="$store.player.currentEpisode?.featuredImage">
                     <div class="relative md:w-15 md:h-15 w-10 h-10">
-                        <img 
-                            :src="$store.player.currentEpisode?.featuredImage" 
-                            :alt="$store.player.currentEpisode?.title || '{{ __('Podcast', 'sage') }}'" 
+                        <img
+                            :src="$store.player.currentEpisode?.featuredImage"
+                            :alt="$store.player.currentEpisode?.title || '{{ __('Podcast', 'sage') }}'"
                             class="md:w-15 md:h-15 w-10 h-10 rounded-md object-cover" />
                         <div class="pointer-events-none absolute inset-0 bg-base-900/30 flex items-center justify-center rounded-md">
                             <i data-lucide="podcast" class="w-6 h-6 text-base-100"></i>
@@ -31,7 +31,12 @@
             </div>
         </div>
         <div>
-            <div class="h-[40px]" id="wave">
+            <div class="h-[40px] relative" id="wave">
+                {{-- 加载状态提示 --}}
+                <div x-show="$store.player.isLoading" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="absolute inset-0 flex items-center justify-center gap-2 text-base-content/60">
+                    <span class="loading loading-ring loading-lg"></span>
+                    <span class="text-xs">{{ __('Loading audio', 'sage') }}</span>
+                </div>
             </div>
             <div class="mt-0 w-full">
                 <div class="grid grid-cols-[30px_1fr_30px] gap-2 items-center text-xs">
@@ -47,7 +52,7 @@
                     </label>
                     <div class="relative">
                         <label class="cursor-pointer text-xs font-semibold px-2 py-1 rounded transition-colors flex items-center gap-1 hover:opacity-70" x-text="$store.player.playbackRateText" x-on:click="$store.player.togglePlaybackRatePanel()">1x</label>
-                        
+
                         <div x-show="$store.player.playbackRatePanelOpen" @click.outside="$store.player.playbackRatePanelOpen = false" class="absolute bottom-full left-0 mb-2 bg-base-100 rounded-lg shadow-lg p-2 min-w-[80px]">
                             <template x-for="rate in $store.player.availableRates" :key="rate">
                                 <button x-on:click="$store.player.setPlaybackRate(rate)" class="w-full text-left px-3 py-2 text-xs rounded transition-colors" :class="{ 'bg-primary text-primary-content': $store.player.playbackRate === rate }">
@@ -67,7 +72,7 @@
                     <i x-show="!$store.player.isMuted" data-lucide="volume" class="cursor-pointer w-4 h-4" x-on:click="$store.player.toggleVolumePanel()"></i>
                     <i x-show="$store.player.isMuted" data-lucide="volume-x" class="cursor-pointer w-4 h-4" x-on:click="$store.player.toggleVolumePanel()"></i>
 
-                    <div x-show="$store.player.volumePanelOpen" @click.outside="$store.player.volumePanelOpen = false"  class="absolute bottom-full right-[-8px] mb-2 bg-base-100 rounded-full shadow-lg p-2 w-10 h-32">
+                    <div x-show="$store.player.volumePanelOpen" @click.outside="$store.player.volumePanelOpen = false" class="absolute bottom-full right-[-8px] mb-2 bg-base-100 rounded-full shadow-lg p-2 w-10 h-32">
                         <input type="range" min="0" max="1" step="0.01" :value="$store.player.volume" x-on:input="$store.player.setVolume($event.target.value)" class="w-22 absolute left-[-23px] bottom-[70px] range range-xs range-success transform -rotate-90" />
                         <label class="swap absolute bottom-3 left-3 cursor-pointer">
                             <i x-show="!$store.player.isMuted" data-lucide="volume-2" class="w-4 h-4 " x-on:click="$store.player.toggleMute()"></i>

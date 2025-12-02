@@ -168,6 +168,7 @@ Alpine.store('player', {
   soundId: null,
   audioMotion: null,
   isPlaying: false,
+  isLoading: false, // 音频加载状态
   currentTime: 0,
   duration: 0,
   volume: 0.5,
@@ -477,6 +478,9 @@ Alpine.store('player', {
       this.volumeGainNode = null;
     }
 
+    // ⭐ 设置加载状态为 true
+    this.isLoading = true;
+
     // 创建新的 Howl 实例，volume 保持为 1，让波形图获取完整信号
     this.currentSound = new Howl({
       src: [audioUrl],
@@ -490,7 +494,14 @@ Alpine.store('player', {
       },
       onload: () => {
         this.duration = this.currentSound.duration();
+        // ⭐ 音频加载完成，设置加载状态为 false
+        this.isLoading = false;
         // console.log('duration', this.durationText);
+      },
+      onloaderror: (id, error) => {
+        // ⭐ 加载失败也要重置加载状态
+        this.isLoading = false;
+        console.error(__('Audio load error:', 'sage'), error);
       },
       onend: () => {
         this.playNext();

@@ -772,3 +772,7 @@ msgstr "الأحدث"
 #: app/Widgets/PodcastListWidget.php:88
 msgid "Popular"
 msgstr "الأكثر شعبية"
+
+#: resources/views/sections/player.blade.php:38
+msgid "Loading audio"
+msgstr "جارٍ تحميل الصوت"

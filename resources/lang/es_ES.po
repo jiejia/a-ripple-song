@@ -764,3 +764,7 @@ msgstr "Recientes"
 #: app/Widgets/PodcastListWidget.php:88
 msgid "Popular"
 msgstr "Popular"
+
+#: resources/views/sections/player.blade.php:38
+msgid "Loading audio"
+msgstr "Cargando audio"

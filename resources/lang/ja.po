@@ -762,3 +762,7 @@ msgstr "最近"
 #: app/Widgets/PodcastListWidget.php:88
 msgid "Popular"
 msgstr "人気"
+
+#: resources/views/sections/player.blade.php:38
+msgid "Loading audio"
+msgstr "音声を読み込み中"

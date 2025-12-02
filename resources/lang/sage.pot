@@ -818,3 +818,7 @@ msgstr ""
 #: resources/views/sections/autoplay-confirm.blade.php:40
 msgid "Cancel"
 msgstr ""
+
+#: resources/views/sections/player.blade.php:38
+msgid "Loading audio"
+msgstr ""
