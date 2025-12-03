@@ -752,19 +752,111 @@ msgstr "نامعلوم قسط"
 msgid "Cancel"
 msgstr "منسوخ کریں"
 
-#: app/Widgets/BlogListWidget.php:41
-#: app/Widgets/PodcastListWidget.php:70
-msgid "See all"
-msgstr "تمام دیکھیں"
-
-#: app/Widgets/PodcastListWidget.php:80
-msgid "Recent"
-msgstr "حالیہ"
-
-#: app/Widgets/PodcastListWidget.php:88
-msgid "Popular"
-msgstr "مقبول"
-
 #: resources/views/sections/player.blade.php:38
 msgid "Loading audio"
 msgstr "آڈیو لوڈ ہو رہا ہے"
+
+#: app/Customizer/CustomScripts.php:38
+msgid "Custom Scripts"
+msgstr "کسٹم اسکرپٹس"
+
+#: app/Customizer/CustomScripts.php:39
+msgid "Add custom JavaScript code to your site. Use with caution - incorrect code may break your site."
+msgstr "اپنی سائٹ پر کسٹم JavaScript کوڈ شامل کریں۔ احتیاط سے استعمال کریں - غلط کوڈ آپ کی سائٹ کو خراب کر سکتا ہے۔"
+
+#: app/Customizer/CustomScripts.php:45
+msgid "Header Inline JavaScript"
+msgstr "ہیڈر ان لائن JavaScript"
+
+#: app/Customizer/CustomScripts.php:46
+msgid "JavaScript code to be added in the &lt;head&gt; section. Do not include &lt;script&gt; tags."
+msgstr "&lt;head&gt; سیکشن میں شامل کیا جانے والا JavaScript کوڈ۔ &lt;script&gt; ٹیگز شامل نہ کریں۔"
+
+#: app/Customizer/CustomScripts.php:59
+msgid "Footer Inline JavaScript"
+msgstr "فوٹر ان لائن JavaScript"
+
+#: app/Customizer/CustomScripts.php:60
+msgid "JavaScript code to be added before &lt;/body&gt;. Do not include &lt;script&gt; tags."
+msgstr "&lt;/body&gt; سے پہلے شامل کیا جانے والا JavaScript کوڈ۔ &lt;script&gt; ٹیگز شامل نہ کریں۔"
+
+#: app/Customizer/CustomScripts.php:73
+msgid "External JavaScript URLs"
+msgstr "بیرونی JavaScript URLs"
+
+#: app/Customizer/CustomScripts.php:74
+msgid "Enter external JavaScript URLs, one per line."
+msgstr "بیرونی JavaScript URLs درج کریں، ہر لائن میں ایک۔"
+
+#: app/Customizer/CustomScripts.php:87
+msgid "External Scripts Loading Position"
+msgstr "بیرونی اسکرپٹس لوڈنگ پوزیشن"
+
+#: app/Customizer/CustomScripts.php:91
+msgid "Header (in &lt;head&gt;)"
+msgstr "ہیڈر (&lt;head&gt; میں)"
+
+#: app/Customizer/CustomScripts.php:92
+msgid "Footer (before &lt;/body&gt;)"
+msgstr "فوٹر (&lt;/body&gt; سے پہلے)"
+
+#: resources/js/app.js:162
+msgid "Fetched %d podcasts"
+msgstr ""
+
+#: resources/js/app.js:178
+msgid "Podcast has no audio file, skipping:"
+msgstr ""
+
+#: resources/js/app.js:212
+msgid "Added:"
+msgstr ""
+
+#: resources/js/app.js:214
+msgid "Already exists, skipping:"
+msgstr ""
+
+#: resources/js/app.js:219
+msgid "Successfully added %d new podcasts to playlist"
+msgstr ""
+
+#: resources/js/app.js:230
+msgid "No new podcasts to add"
+msgstr ""
+
+#: resources/js/app.js:236
+msgid "Failed to fetch latest podcasts:"
+msgstr ""
+
+#: resources/js/app.js:268
+msgid "No episode available to play"
+msgstr ""
+
+#: resources/js/app.js:283
+msgid "Playback progress restored:"
+msgstr ""
+
+#: resources/js/app.js:288
+#: resources/js/app.js:294
+msgid "Playback state restored"
+msgstr ""
+
+#: resources/js/app.js:563
+msgid "Volume settings loaded:"
+msgstr ""
+
+#: resources/js/app.js:589
+msgid "Playback rate loaded:"
+msgstr ""
+
+#: resources/js/app.js:641
+msgid "Switched to existing episode:"
+msgstr ""
+
+#: resources/js/app.js:659
+msgid "Added to playlist:"
+msgstr ""
+
+#: resources/js/app.js:670
+msgid "Episode already exists:"
+msgstr ""
