@@ -763,98 +763,17 @@ msgid "Add custom JavaScript code to your site. Use with caution - incorrect cod
 msgstr "사이트에 사용자 정의 JavaScript 코드를 추가합니다. 잘못된 코드는 사이트를 손상시킬 수 있으므로 주의해서 사용하세요."
 
 #: app/Customizer/CustomScripts.php:45
-msgid "Header Inline JavaScript"
-msgstr "헤더 인라인 JavaScript"
+msgid "Header Scripts"
+msgstr "헤더 스크립트"
 
 #: app/Customizer/CustomScripts.php:46
-msgid "JavaScript code to be added in the &lt;head&gt; section. Do not include &lt;script&gt; tags."
-msgstr "&lt;head&gt; 섹션에 추가될 JavaScript 코드입니다. &lt;script&gt; 태그는 포함하지 마세요."
+msgid "Scripts to be added in the &lt;head&gt; section. You can include complete &lt;script&gt; tags."
+msgstr "&lt;head&gt; 섹션에 추가될 스크립트입니다. 완전한 &lt;script&gt; 태그를 포함할 수 있습니다."
 
 #: app/Customizer/CustomScripts.php:59
-msgid "Footer Inline JavaScript"
-msgstr "푸터 인라인 JavaScript"
+msgid "Footer Scripts"
+msgstr "푸터 스크립트"
 
 #: app/Customizer/CustomScripts.php:60
-msgid "JavaScript code to be added before &lt;/body&gt;. Do not include &lt;script&gt; tags."
-msgstr "&lt;/body&gt; 앞에 추가될 JavaScript 코드입니다. &lt;script&gt; 태그는 포함하지 마세요."
-
-#: app/Customizer/CustomScripts.php:73
-msgid "External JavaScript URLs"
-msgstr "외부 JavaScript URL"
-
-#: app/Customizer/CustomScripts.php:74
-msgid "Enter external JavaScript URLs, one per line."
-msgstr "외부 JavaScript URL을 한 줄에 하나씩 입력하세요."
-
-#: app/Customizer/CustomScripts.php:87
-msgid "External Scripts Loading Position"
-msgstr "외부 스크립트 로딩 위치"
-
-#: app/Customizer/CustomScripts.php:91
-msgid "Header (in &lt;head&gt;)"
-msgstr "헤더 (&lt;head&gt; 내)"
-
-#: app/Customizer/CustomScripts.php:92
-msgid "Footer (before &lt;/body&gt;)"
-msgstr "푸터 (&lt;/body&gt; 앞)"
-
-#: resources/js/app.js:162
-msgid "Fetched %d podcasts"
-msgstr ""
-
-#: resources/js/app.js:178
-msgid "Podcast has no audio file, skipping:"
-msgstr ""
-
-#: resources/js/app.js:212
-msgid "Added:"
-msgstr ""
-
-#: resources/js/app.js:214
-msgid "Already exists, skipping:"
-msgstr ""
-
-#: resources/js/app.js:219
-msgid "Successfully added %d new podcasts to playlist"
-msgstr ""
-
-#: resources/js/app.js:230
-msgid "No new podcasts to add"
-msgstr ""
-
-#: resources/js/app.js:236
-msgid "Failed to fetch latest podcasts:"
-msgstr ""
-
-#: resources/js/app.js:268
-msgid "No episode available to play"
-msgstr ""
-
-#: resources/js/app.js:283
-msgid "Playback progress restored:"
-msgstr ""
-
-#: resources/js/app.js:288
-#: resources/js/app.js:294
-msgid "Playback state restored"
-msgstr ""
-
-#: resources/js/app.js:563
-msgid "Volume settings loaded:"
-msgstr ""
-
-#: resources/js/app.js:589
-msgid "Playback rate loaded:"
-msgstr ""
-
-#: resources/js/app.js:641
-msgid "Switched to existing episode:"
-msgstr ""
-
-#: resources/js/app.js:659
-msgid "Added to playlist:"
-msgstr ""
-
-#: resources/js/app.js:670
-msgid "Episode already exists:"
-msgstr ""
+msgid "Scripts to be added before &lt;/body&gt;. You can include complete &lt;script&gt; tags."
+msgstr "&lt;/body&gt; 앞에 추가될 스크립트입니다. 완전한 &lt;script&gt; 태그를 포함할 수 있습니다."

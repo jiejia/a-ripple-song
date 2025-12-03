@@ -765,98 +765,17 @@ msgid "Add custom JavaScript code to your site. Use with caution - incorrect cod
 msgstr "আপনার সাইটে কাস্টম JavaScript কোড যোগ করুন। সাবধানে ব্যবহার করুন - ভুল কোড আপনার সাইট নষ্ট করতে পারে।"
 
 #: app/Customizer/CustomScripts.php:45
-msgid "Header Inline JavaScript"
-msgstr "হেডার ইনলাইন JavaScript"
+msgid "Header Scripts"
+msgstr "হেডার স্ক্রিপ্ট"
 
 #: app/Customizer/CustomScripts.php:46
-msgid "JavaScript code to be added in the &lt;head&gt; section. Do not include &lt;script&gt; tags."
-msgstr "&lt;head&gt; সেকশনে যোগ করা JavaScript কোড। &lt;script&gt; ট্যাগ অন্তর্ভুক্ত করবেন না।"
+msgid "Scripts to be added in the &lt;head&gt; section. You can include complete &lt;script&gt; tags."
+msgstr "&lt;head&gt; সেকশনে যোগ করা স্ক্রিপ্ট। আপনি সম্পূর্ণ &lt;script&gt; ট্যাগ অন্তর্ভুক্ত করতে পারেন।"
 
 #: app/Customizer/CustomScripts.php:59
-msgid "Footer Inline JavaScript"
-msgstr "ফুটার ইনলাইন JavaScript"
+msgid "Footer Scripts"
+msgstr "ফুটার স্ক্রিপ্ট"
 
 #: app/Customizer/CustomScripts.php:60
-msgid "JavaScript code to be added before &lt;/body&gt;. Do not include &lt;script&gt; tags."
-msgstr "&lt;/body&gt; এর আগে যোগ করা JavaScript কোড। &lt;script&gt; ট্যাগ অন্তর্ভুক্ত করবেন না।"
-
-#: app/Customizer/CustomScripts.php:73
-msgid "External JavaScript URLs"
-msgstr "বাহ্যিক JavaScript URLs"
-
-#: app/Customizer/CustomScripts.php:74
-msgid "Enter external JavaScript URLs, one per line."
-msgstr "বাহ্যিক JavaScript URLs লিখুন, প্রতি লাইনে একটি।"
-
-#: app/Customizer/CustomScripts.php:87
-msgid "External Scripts Loading Position"
-msgstr "বাহ্যিক স্ক্রিপ্ট লোডিং অবস্থান"
-
-#: app/Customizer/CustomScripts.php:91
-msgid "Header (in &lt;head&gt;)"
-msgstr "হেডার (&lt;head&gt; এ)"
-
-#: app/Customizer/CustomScripts.php:92
-msgid "Footer (before &lt;/body&gt;)"
-msgstr "ফুটার (&lt;/body&gt; এর আগে)"
-
-#: resources/js/app.js:162
-msgid "Fetched %d podcasts"
-msgstr ""
-
-#: resources/js/app.js:178
-msgid "Podcast has no audio file, skipping:"
-msgstr ""
-
-#: resources/js/app.js:212
-msgid "Added:"
-msgstr ""
-
-#: resources/js/app.js:214
-msgid "Already exists, skipping:"
-msgstr ""
-
-#: resources/js/app.js:219
-msgid "Successfully added %d new podcasts to playlist"
-msgstr ""
-
-#: resources/js/app.js:230
-msgid "No new podcasts to add"
-msgstr ""
-
-#: resources/js/app.js:236
-msgid "Failed to fetch latest podcasts:"
-msgstr ""
-
-#: resources/js/app.js:268
-msgid "No episode available to play"
-msgstr ""
-
-#: resources/js/app.js:283
-msgid "Playback progress restored:"
-msgstr ""
-
-#: resources/js/app.js:288
-#: resources/js/app.js:294
-msgid "Playback state restored"
-msgstr ""
-
-#: resources/js/app.js:563
-msgid "Volume settings loaded:"
-msgstr ""
-
-#: resources/js/app.js:589
-msgid "Playback rate loaded:"
-msgstr ""
-
-#: resources/js/app.js:641
-msgid "Switched to existing episode:"
-msgstr ""
-
-#: resources/js/app.js:659
-msgid "Added to playlist:"
-msgstr ""
-
-#: resources/js/app.js:670
-msgid "Episode already exists:"
-msgstr ""
+msgid "Scripts to be added before &lt;/body&gt;. You can include complete &lt;script&gt; tags."
+msgstr "&lt;/body&gt; এর আগে যোগ করা স্ক্রিপ্ট। আপনি সম্পূর্ণ &lt;script&gt; ট্যাগ অন্তর্ভুক্ত করতে পারেন।"

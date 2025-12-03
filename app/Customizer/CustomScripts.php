@@ -3,8 +3,8 @@
 /**
  * Custom Scripts Customizer Module.
  * 
- * Allows adding custom JavaScript code and external script URLs
- * through the WordPress Customizer.
+ * Allows adding custom JavaScript code through the WordPress Customizer.
+ * Supports complete script tags including external scripts like Google Analytics.
  */
 
 namespace App\Customizer;
@@ -21,8 +21,6 @@ class CustomScripts
      */
     const SETTING_HEADER_JS = 'aripplesong_header_js';
     const SETTING_FOOTER_JS = 'aripplesong_footer_js';
-    const SETTING_EXTERNAL_JS = 'aripplesong_external_js';
-    const SETTING_EXTERNAL_JS_POSITION = 'aripplesong_external_js_position';
 
     /**
      * Register customizer settings and controls.
@@ -39,7 +37,7 @@ class CustomScripts
             'priority'    => 200,
         ]);
 
-        // Header inline JS
+        // Header scripts
         $wp_customize->add_setting(self::SETTING_HEADER_JS, [
             'default'           => '',
             'sanitize_callback' => [$this, 'sanitizeJS'],
@@ -47,17 +45,17 @@ class CustomScripts
         ]);
 
         $wp_customize->add_control(self::SETTING_HEADER_JS, [
-            'label'       => __('Header Inline JavaScript', 'sage'),
-            'description' => __('JavaScript code to be added in the &lt;head&gt; section. Do not include &lt;script&gt; tags.', 'sage'),
+            'label'       => __('Header Scripts', 'sage'),
+            'description' => __('Scripts to be added in the &lt;head&gt; section. You can include complete &lt;script&gt; tags.', 'sage'),
             'section'     => self::SECTION_ID,
             'type'        => 'textarea',
             'input_attrs' => [
-                'placeholder' => 'console.log("Hello from header");',
-                'rows'        => 6,
+                'placeholder' => '<script async src="https://example.com/script.js"></script>',
+                'rows'        => 8,
             ],
         ]);
 
-        // Footer inline JS
+        // Footer scripts
         $wp_customize->add_setting(self::SETTING_FOOTER_JS, [
             'default'           => '',
             'sanitize_callback' => [$this, 'sanitizeJS'],
@@ -65,48 +63,13 @@ class CustomScripts
         ]);
 
         $wp_customize->add_control(self::SETTING_FOOTER_JS, [
-            'label'       => __('Footer Inline JavaScript', 'sage'),
-            'description' => __('JavaScript code to be added before &lt;/body&gt;. Do not include &lt;script&gt; tags.', 'sage'),
+            'label'       => __('Footer Scripts', 'sage'),
+            'description' => __('Scripts to be added before &lt;/body&gt;. You can include complete &lt;script&gt; tags.', 'sage'),
             'section'     => self::SECTION_ID,
             'type'        => 'textarea',
             'input_attrs' => [
-                'placeholder' => 'console.log("Hello from footer");',
-                'rows'        => 6,
-            ],
-        ]);
-
-        // External JS URLs
-        $wp_customize->add_setting(self::SETTING_EXTERNAL_JS, [
-            'default'           => '',
-            'sanitize_callback' => [$this, 'sanitizeURLs'],
-            'transport'         => 'postMessage',
-        ]);
-
-        $wp_customize->add_control(self::SETTING_EXTERNAL_JS, [
-            'label'       => __('External JavaScript URLs', 'sage'),
-            'description' => __('Enter external JavaScript URLs, one per line.', 'sage'),
-            'section'     => self::SECTION_ID,
-            'type'        => 'textarea',
-            'input_attrs' => [
-                'placeholder' => "https://example.com/script1.js\nhttps://example.com/script2.js",
-                'rows'        => 4,
-            ],
-        ]);
-
-        // External JS position
-        $wp_customize->add_setting(self::SETTING_EXTERNAL_JS_POSITION, [
-            'default'           => 'footer',
-            'sanitize_callback' => [$this, 'sanitizePosition'],
-            'transport'         => 'postMessage',
-        ]);
-
-        $wp_customize->add_control(self::SETTING_EXTERNAL_JS_POSITION, [
-            'label'   => __('External Scripts Loading Position', 'sage'),
-            'section' => self::SECTION_ID,
-            'type'    => 'radio',
-            'choices' => [
-                'header' => __('Header (in &lt;head&gt;)', 'sage'),
-                'footer' => __('Footer (before &lt;/body&gt;)', 'sage'),
+                'placeholder' => '<script>console.log("Hello");</script>',
+                'rows'        => 8,
             ],
         ]);
 
@@ -126,13 +89,10 @@ class CustomScripts
 
         // Output footer scripts
         add_action('wp_footer', [$this, 'outputFooterScripts'], 999);
-
-        // Enqueue external scripts
-        add_action('wp_enqueue_scripts', [$this, 'enqueueExternalScripts'], 999);
     }
 
     /**
-     * Output header inline JavaScript.
+     * Output header scripts.
      *
      * @return void
      */
@@ -142,14 +102,13 @@ class CustomScripts
 
         if (!empty(trim($header_js))) {
             echo "\n<!-- Custom Header Scripts -->\n";
-            echo "<script>\n";
             echo $header_js;
-            echo "\n</script>\n";
+            echo "\n";
         }
     }
 
     /**
-     * Output footer inline JavaScript.
+     * Output footer scripts.
      *
      * @return void
      */
@@ -159,110 +118,25 @@ class CustomScripts
 
         if (!empty(trim($footer_js))) {
             echo "\n<!-- Custom Footer Scripts -->\n";
-            echo "<script>\n";
             echo $footer_js;
-            echo "\n</script>\n";
+            echo "\n";
         }
     }
 
     /**
-     * Enqueue external JavaScript files.
-     *
-     * @return void
-     */
-    public function enqueueExternalScripts()
-    {
-        $external_js = get_theme_mod(self::SETTING_EXTERNAL_JS, '');
-        $position = get_theme_mod(self::SETTING_EXTERNAL_JS_POSITION, 'footer');
-
-        if (empty(trim($external_js))) {
-            return;
-        }
-
-        $urls = $this->parseURLs($external_js);
-        $in_footer = ($position === 'footer');
-
-        foreach ($urls as $index => $url) {
-            if (!empty($url)) {
-                wp_enqueue_script(
-                    'aripplesong-custom-external-' . $index,
-                    $url,
-                    [],
-                    null,
-                    $in_footer
-                );
-            }
-        }
-    }
-
-    /**
-     * Sanitize JavaScript code.
+     * Sanitize script code.
      * 
-     * Note: We don't escape JS code since it's entered by administrators
+     * Note: We don't escape the code since it's entered by administrators
      * and needs to execute as-is. The Customizer already requires
-     * appropriate capabilities to access.
+     * appropriate capabilities to access. Users can include complete
+     * <script> tags for services like Google Analytics.
      *
      * @param string $input
      * @return string
      */
     public function sanitizeJS($input)
     {
-        // Remove script tags if accidentally included
-        $input = preg_replace('/<\/?script[^>]*>/i', '', $input);
-        
+        // Return the input as-is to allow complete script tags
         return $input;
     }
-
-    /**
-     * Sanitize URL list.
-     *
-     * @param string $input
-     * @return string
-     */
-    public function sanitizeURLs($input)
-    {
-        $urls = $this->parseURLs($input);
-        $sanitized = [];
-
-        foreach ($urls as $url) {
-            $url = trim($url);
-            if (!empty($url)) {
-                $sanitized_url = esc_url_raw($url);
-                if (!empty($sanitized_url)) {
-                    $sanitized[] = $sanitized_url;
-                }
-            }
-        }
-
-        return implode("\n", $sanitized);
-    }
-
-    /**
-     * Sanitize position setting.
-     *
-     * @param string $input
-     * @return string
-     */
-    public function sanitizePosition($input)
-    {
-        $valid = ['header', 'footer'];
-        return in_array($input, $valid, true) ? $input : 'footer';
-    }
-
-    /**
-     * Parse URLs from textarea input.
-     *
-     * @param string $input
-     * @return array
-     */
-    protected function parseURLs($input)
-    {
-        return array_filter(
-            array_map('trim', explode("\n", $input)),
-            function ($url) {
-                return !empty($url);
-            }
-        );
-    }
 }
-

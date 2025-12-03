@@ -832,37 +832,18 @@ msgid "Add custom JavaScript code to your site. Use with caution - incorrect cod
 msgstr ""
 
 #: app/Customizer/CustomScripts.php:45
-msgid "Header Inline JavaScript"
+msgid "Header Scripts"
 msgstr ""
 
 #: app/Customizer/CustomScripts.php:46
-msgid "JavaScript code to be added in the &lt;head&gt; section. Do not include &lt;script&gt; tags."
+msgid "Scripts to be added in the &lt;head&gt; section. You can include complete &lt;script&gt; tags."
 msgstr ""
 
 #: app/Customizer/CustomScripts.php:59
-msgid "Footer Inline JavaScript"
+msgid "Footer Scripts"
 msgstr ""
 
 #: app/Customizer/CustomScripts.php:60
-msgid "JavaScript code to be added before &lt;/body&gt;. Do not include &lt;script&gt; tags."
+msgid "Scripts to be added before &lt;/body&gt;. You can include complete &lt;script&gt; tags."
 msgstr ""
 
-#: app/Customizer/CustomScripts.php:73
-msgid "External JavaScript URLs"
-msgstr ""
-
-#: app/Customizer/CustomScripts.php:74
-msgid "Enter external JavaScript URLs, one per line."
-msgstr ""
-
-#: app/Customizer/CustomScripts.php:87
-msgid "External Scripts Loading Position"
-msgstr ""
-
-#: app/Customizer/CustomScripts.php:91
-msgid "Header (in &lt;head&gt;)"
-msgstr ""
-
-#: app/Customizer/CustomScripts.php:92
-msgid "Footer (before &lt;/body&gt;)"
-msgstr ""
