@@ -80,10 +80,12 @@
           
           function goToSlide(index) {
             currentIndex = index;
-            const slideId = `${carouselId}-slide-${index}`;
-            const slide = document.getElementById(slideId);
-            if (slide) {
-              slide.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+            if (carousel) {
+              const slideWidth = carousel.offsetWidth;
+              carousel.scrollTo({ 
+                left: slideWidth * index, 
+                behavior: 'smooth' 
+              });
             }
             
             // Update dots

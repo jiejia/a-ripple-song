@@ -21,20 +21,21 @@
     html {
       scrollbar-gutter: stable;
     }
-    
+
     /* 当显示 WordPress 管理工具栏时的调整 */
     body.admin-bar #swup-header {
       top: 32px;
     }
-    
+
     body.admin-bar .sticky.top-\[70px\] {
       top: 102px;
     }
-    
+
     @media screen and (max-width: 782px) {
       body.admin-bar #swup-header {
         top: 46px;
       }
+
       body.admin-bar .sticky.top-\[70px\] {
         top: 116px;
       }
@@ -43,26 +44,28 @@
 </head>
 
 <body @php(body_class('bg-base-200'))>
-  <div class="max-w-screen-xl mx-auto mb-[230px] md:mb-0">
-    @php(wp_body_open())
-    <div id="app" class="p-4 gap-4">
-      @include('sections.header')
-      <div class="grid lg:grid-cols-[220px_1fr_300px] md:grid-cols-[1fr_300px] grid-cols-[1fr] gap-4 mt-[55px] items-start relative">
-        @include('sections.leftbar')
-        <div class="">
-          <main id="swup-main" class="main transition-fade">
-            @yield('content')
-          </main>
+  <div class="mb-[190px] md:mb-0">
+    <div class="max-w-screen-xl mx-auto">
+      @php(wp_body_open())
+      <div id="app" class="p-4 gap-4">
+        @include('sections.header')
+        <div class="grid lg:grid-cols-[220px_1fr_300px] md:grid-cols-[1fr_300px] grid-cols-[1fr] gap-4 mt-[55px] items-start relative">
+          @include('sections.leftbar')
+          <div class="">
+            <main id="swup-main" class="main transition-fade">
+              @yield('content')
+            </main>
 
+          </div>
+          @hasSection('sidebar')
+          @yield('sidebar')
+          @endif
         </div>
-        @hasSection('sidebar')
-        @yield('sidebar')
-        @endif
       </div>
-      @include('sections.footer')
-      @php(do_action('get_footer'))
-      @php(wp_footer())
     </div>
+    @include('sections.footer')
+    @php(do_action('get_footer'))
+    @php(wp_footer())
   </div>
   @include('sections.mobile-menu')
   @include('sections.search-modal')

@@ -1,6 +1,6 @@
 <div class="card md:bg-base-100 bg-base-300/90 md:static fixed bottom-0 left-0 right-0 z-100" x-data>
     <div class="card-body md:p-4 py-2 px-4">
-        <h2 class="md:text-lg text-md font-bold hidden md:block">{!! __('NOW PLAYING', 'sage') !!}</h2>
+        <h2 class="md:text-lg text-md font-bold">{!! __('NOW PLAYING', 'sage') !!}</h2>
         <div class="grid grid-cols-[60px_1fr] gap-4 items-center md:bg-base-300/50 bg-base-100/75 md:p-4 py-2 px-4 rounded-lg">
             <div class="md:w-15 md:h-15 w-10 h-10">
                 <template x-if="$store.player.currentEpisode?.featuredImage">
