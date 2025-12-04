@@ -40,7 +40,12 @@ add_action('customize_register', function ($wp_customize) {
 /**
  * Output custom scripts in the frontend.
  * 
- * Each module is responsible for hooking its own output methods.
- * This is handled in the module's register() method.
+ * The output hooks need to be registered independently of customize_register,
+ * because customize_register only fires in the Customizer context, not on frontend.
  */
+if (!is_admin() || wp_doing_ajax()) {
+    $customScripts = new CustomScripts();
+    add_action('wp_head', [$customScripts, 'outputHeaderScripts'], 999);
+    add_action('wp_footer', [$customScripts, 'outputFooterScripts'], 999);
+}
 

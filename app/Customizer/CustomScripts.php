@@ -72,9 +72,7 @@ class CustomScripts
                 'rows'        => 8,
             ],
         ]);
-
-        // Register output hooks
-        $this->registerOutputHooks();
+        // Note: Output hooks are registered in customizer.php for frontend rendering
     }
 
     /**
