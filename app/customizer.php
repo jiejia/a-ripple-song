@@ -10,6 +10,7 @@
 namespace App;
 
 use App\Customizer\CustomScripts;
+use App\Customizer\SocialLinks;
 
 /**
  * Register all Customizer modules.
@@ -25,8 +26,8 @@ add_action('customize_register', function ($wp_customize) {
     // List of Customizer modules to register
     $modules = [
         CustomScripts::class,
+        SocialLinks::class,
         // Add future modules here:
-        // SocialLinks::class,
         // ThemeColors::class,
     ];
 

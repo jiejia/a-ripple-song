@@ -40,14 +40,20 @@
 
     <div class="grid md:grid-cols-2 grid-flow-row gap-2 md:justify-between border-t-1 border-dotted border-base-content/25 pt-2">
       <div class="md:justify-self-start">{!! sprintf(__('© %s A Ripple Song. Designed by %s', 'sage'), '2025', '<a href="https://github.com/jiejia/a-ripple-song" target="_blank" class="text-primary">Jamie</a>') !!}</div>
-      <div class="md:justify-self-end">
-        <ul class="flex justify-center gap-2">
-          <li><a href="#"><i data-lucide="facebook" class="w-4 h-4"></i></a></li>
-          <li><a href="#"><i data-lucide="twitter" class="w-4 h-4"></i></a></li>
-          <li><a href="#"><i data-lucide="instagram" class="w-4 h-4"></i></a></li>
-          <li><a href="#"><i data-lucide="linkedin" class="w-4 h-4"></i></a></li>
-        </ul>
-      </div>
+      @php($socialLinks = \App\Customizer\SocialLinks::getConfiguredLinks())
+      @if(!empty($socialLinks))
+        <div class="md:justify-self-end">
+          <ul class="flex justify-center gap-2">
+            @foreach($socialLinks as $key => $social)
+              <li>
+                <a href="{{ $social['url'] }}" target="_blank" rel="noopener" title="{{ $social['label'] }}">
+                  <i data-lucide="{{ $social['icon'] }}" class="w-4 h-4"></i>
+                </a>
+              </li>
+            @endforeach
+          </ul>
+        </div>
+      @endif
     </div>
   </div>
 </footer>
