@@ -758,26 +758,93 @@ msgstr "Отмена"
 msgid "Loading audio"
 msgstr "Загрузка аудио"
 
-#: app/Customizer/CustomScripts.php:38
+#: app/carbon-fields.php:30
+msgid "Theme Settings"
+msgstr "Настройки темы"
+
+#: app/carbon-fields.php:37
+msgid "Welcome to the theme settings. Use the sub-menus to configure social links and custom scripts."
+msgstr "Добро пожаловать в настройки темы. Используйте подменю для настройки социальных ссылок и пользовательских скриптов."
+
+#: app/carbon-fields.php:43
+msgid "Social Links"
+msgstr "Социальные ссылки"
+
+#: app/carbon-fields.php:48
 msgid "Custom Scripts"
 msgstr "Пользовательские скрипты"
 
-#: app/Customizer/CustomScripts.php:39
-msgid "Add custom JavaScript code to your site. Use with caution - incorrect code may break your site."
-msgstr "Добавьте пользовательский JavaScript код на ваш сайт. Используйте осторожно — неправильный код может сломать ваш сайт."
-
-#: app/Customizer/CustomScripts.php:45
+#: app/carbon-fields.php:51
 msgid "Header Scripts"
 msgstr "Скрипты в заголовке"
 
-#: app/Customizer/CustomScripts.php:46
-msgid "Scripts to be added in the &lt;head&gt; section. You can include complete &lt;script&gt; tags."
-msgstr "Скрипты для добавления в секцию &lt;head&gt;. Можно включать полные теги &lt;script&gt;."
+#: app/carbon-fields.php:52
+msgid "Scripts to be added in the <head> section. You can include complete <script> tags for services like Google Analytics."
+msgstr "Скрипты для добавления в секцию <head>. Можно включать полные теги <script> для сервисов вроде Google Analytics."
 
-#: app/Customizer/CustomScripts.php:59
+#: app/carbon-fields.php:53
 msgid "Footer Scripts"
 msgstr "Скрипты в подвале"
 
-#: app/Customizer/CustomScripts.php:60
-msgid "Scripts to be added before &lt;/body&gt;. You can include complete &lt;script&gt; tags."
-msgstr "Скрипты для добавления перед &lt;/body&gt;. Можно включать полные теги &lt;script&gt;."
+#: app/carbon-fields.php:54
+msgid "Scripts to be added before </body>. You can include complete <script> tags."
+msgstr "Скрипты для добавления перед </body>. Можно включать полные теги <script>."
+
+#: app/carbon-fields.php:73
+msgid "Configure your social media links. Leave empty to hide a platform."
+msgstr "Настройте ссылки на социальные сети. Оставьте пустым, чтобы скрыть платформу."
+
+#: app/carbon-fields.php:79
+#: app/Customizer/SocialLinks.php:23
+msgid "Facebook"
+msgstr "Facebook"
+
+#: app/carbon-fields.php:83
+#: app/Customizer/SocialLinks.php:27
+msgid "Twitter / X"
+msgstr "Twitter / X"
+
+#: app/carbon-fields.php:87
+#: app/Customizer/SocialLinks.php:31
+msgid "Instagram"
+msgstr "Instagram"
+
+#: app/carbon-fields.php:91
+#: app/Customizer/SocialLinks.php:35
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: app/carbon-fields.php:95
+#: app/Customizer/SocialLinks.php:39
+msgid "YouTube"
+msgstr "YouTube"
+
+#: app/carbon-fields.php:99
+#: app/Customizer/SocialLinks.php:43
+msgid "TikTok"
+msgstr "TikTok"
+
+#: app/carbon-fields.php:103
+#: app/Customizer/SocialLinks.php:47
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: app/carbon-fields.php:107
+#: app/Customizer/SocialLinks.php:51
+msgid "Threads"
+msgstr "Threads"
+
+#: app/carbon-fields.php:111
+#: app/Customizer/SocialLinks.php:55
+msgid "Weibo"
+msgstr "Weibo"
+
+#: app/carbon-fields.php:115
+#: app/Customizer/SocialLinks.php:59
+msgid "WeChat"
+msgstr "WeChat"
+
+#: app/carbon-fields.php:119
+#: app/Customizer/SocialLinks.php:63
+msgid "RSS Feed"
+msgstr "RSS-лента"

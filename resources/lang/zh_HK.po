@@ -754,26 +754,93 @@ msgstr "取消"
 msgid "Loading audio"
 msgstr "正在載入音訊"
 
-#: app/Customizer/CustomScripts.php:38
+#: app/carbon-fields.php:30
+msgid "Theme Settings"
+msgstr "主題設置"
+
+#: app/carbon-fields.php:37
+msgid "Welcome to the theme settings. Use the sub-menus to configure social links and custom scripts."
+msgstr "歡迎使用主題設置。請使用子選單配置社交連結和自訂指令碼。"
+
+#: app/carbon-fields.php:43
+msgid "Social Links"
+msgstr "社交連結"
+
+#: app/carbon-fields.php:48
 msgid "Custom Scripts"
 msgstr "自訂指令碼"
 
-#: app/Customizer/CustomScripts.php:39
-msgid "Add custom JavaScript code to your site. Use with caution - incorrect code may break your site."
-msgstr "向您的網站添加自訂 JavaScript 代碼。請謹慎使用，錯誤的代碼可能導致網站無法正常運作。"
-
-#: app/Customizer/CustomScripts.php:45
+#: app/carbon-fields.php:51
 msgid "Header Scripts"
 msgstr "頁首指令碼"
 
-#: app/Customizer/CustomScripts.php:46
-msgid "Scripts to be added in the &lt;head&gt; section. You can include complete &lt;script&gt; tags."
-msgstr "將添加到 &lt;head&gt; 區域的指令碼代碼。可以直接包含完整的 &lt;script&gt; 標籤。"
+#: app/carbon-fields.php:52
+msgid "Scripts to be added in the <head> section. You can include complete <script> tags for services like Google Analytics."
+msgstr "將添加到 <head> 區域的指令碼。可以包含完整的 <script> 標籤，例如 Google Analytics 代碼。"
 
-#: app/Customizer/CustomScripts.php:59
+#: app/carbon-fields.php:53
 msgid "Footer Scripts"
 msgstr "頁尾指令碼"
 
-#: app/Customizer/CustomScripts.php:60
-msgid "Scripts to be added before &lt;/body&gt;. You can include complete &lt;script&gt; tags."
-msgstr "將添加到 &lt;/body&gt; 之前的指令碼代碼。可以直接包含完整的 &lt;script&gt; 標籤。"
+#: app/carbon-fields.php:54
+msgid "Scripts to be added before </body>. You can include complete <script> tags."
+msgstr "將添加到 </body> 之前的指令碼。可以包含完整的 <script> 標籤。"
+
+#: app/carbon-fields.php:73
+msgid "Configure your social media links. Leave empty to hide a platform."
+msgstr "配置您的社交媒體連結。留空則隱藏該平台。"
+
+#: app/carbon-fields.php:79
+#: app/Customizer/SocialLinks.php:23
+msgid "Facebook"
+msgstr "Facebook"
+
+#: app/carbon-fields.php:83
+#: app/Customizer/SocialLinks.php:27
+msgid "Twitter / X"
+msgstr "Twitter / X"
+
+#: app/carbon-fields.php:87
+#: app/Customizer/SocialLinks.php:31
+msgid "Instagram"
+msgstr "Instagram"
+
+#: app/carbon-fields.php:91
+#: app/Customizer/SocialLinks.php:35
+msgid "LinkedIn"
+msgstr "領英"
+
+#: app/carbon-fields.php:95
+#: app/Customizer/SocialLinks.php:39
+msgid "YouTube"
+msgstr "YouTube"
+
+#: app/carbon-fields.php:99
+#: app/Customizer/SocialLinks.php:43
+msgid "TikTok"
+msgstr "TikTok"
+
+#: app/carbon-fields.php:103
+#: app/Customizer/SocialLinks.php:47
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: app/carbon-fields.php:107
+#: app/Customizer/SocialLinks.php:51
+msgid "Threads"
+msgstr "Threads"
+
+#: app/carbon-fields.php:111
+#: app/Customizer/SocialLinks.php:55
+msgid "Weibo"
+msgstr "微博"
+
+#: app/carbon-fields.php:115
+#: app/Customizer/SocialLinks.php:59
+msgid "WeChat"
+msgstr "微信"
+
+#: app/carbon-fields.php:119
+#: app/Customizer/SocialLinks.php:63
+msgid "RSS Feed"
+msgstr "RSS 訂閱"
