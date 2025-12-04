@@ -365,8 +365,22 @@ msgid "+ Add Banner"
 msgstr "+ 添加横幅"
 
 #: app/Widgets/TagsCloudWidget.php:111
+#: app/Widgets/PodcastListWidget.php:96
 msgid "Random"
 msgstr "随机"
+
+#: app/Widgets/BlogListWidget.php:41
+#: app/Widgets/PodcastListWidget.php:70
+msgid "See all"
+msgstr "查看全部"
+
+#: app/Widgets/PodcastListWidget.php:80
+msgid "Recent"
+msgstr "最新"
+
+#: app/Widgets/PodcastListWidget.php:88
+msgid "Popular"
+msgstr "热门"
 
 #: app/Widgets/BlogListWidget.php:12
 msgid "aripplesong - Blog List"

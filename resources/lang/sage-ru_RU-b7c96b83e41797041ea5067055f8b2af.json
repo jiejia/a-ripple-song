@@ -12,51 +12,6 @@
             },
             "No podcasts found": [
                 "\u041f\u043e\u0434\u043a\u0430\u0441\u0442\u044b \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u044b"
-            ],
-            "Fetched %d podcasts": [
-                ""
-            ],
-            "Podcast has no audio file, skipping:": [
-                ""
-            ],
-            "Added:": [
-                ""
-            ],
-            "Already exists, skipping:": [
-                ""
-            ],
-            "Successfully added %d new podcasts to playlist": [
-                ""
-            ],
-            "No new podcasts to add": [
-                ""
-            ],
-            "Failed to fetch latest podcasts:": [
-                ""
-            ],
-            "No episode available to play": [
-                ""
-            ],
-            "Playback progress restored:": [
-                ""
-            ],
-            "Playback state restored": [
-                ""
-            ],
-            "Volume settings loaded:": [
-                ""
-            ],
-            "Playback rate loaded:": [
-                ""
-            ],
-            "Switched to existing episode:": [
-                ""
-            ],
-            "Added to playlist:": [
-                ""
-            ],
-            "Episode already exists:": [
-                ""
             ]
         }
     }

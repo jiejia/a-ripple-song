@@ -494,8 +494,22 @@ msgid "Tag ID"
 msgstr "معرف الوسم"
 
 #: app/Widgets/TagsCloudWidget.php:111
+#: app/Widgets/PodcastListWidget.php:96
 msgid "Random"
 msgstr "عشوائي"
+
+#: app/Widgets/BlogListWidget.php:41
+#: app/Widgets/PodcastListWidget.php:70
+msgid "See all"
+msgstr "مشاهدة الكل"
+
+#: app/Widgets/PodcastListWidget.php:80
+msgid "Recent"
+msgstr "الأحدث"
+
+#: app/Widgets/PodcastListWidget.php:88
+msgid "Popular"
+msgstr "الأكثر شعبية"
 
 #: app/Widgets/TagsCloudWidget.php:116
 msgid "Sort order:"

@@ -483,7 +483,21 @@ msgid "Tag ID"
 msgstr ""
 
 #: app/Widgets/TagsCloudWidget.php:111
+#: app/Widgets/PodcastListWidget.php:96
 msgid "Random"
+msgstr ""
+
+#: app/Widgets/BlogListWidget.php:41
+#: app/Widgets/PodcastListWidget.php:70
+msgid "See all"
+msgstr ""
+
+#: app/Widgets/PodcastListWidget.php:80
+msgid "Recent"
+msgstr ""
+
+#: app/Widgets/PodcastListWidget.php:88
+msgid "Popular"
 msgstr ""
 
 #: app/Widgets/TagsCloudWidget.php:116

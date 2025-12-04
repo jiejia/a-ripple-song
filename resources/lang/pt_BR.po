@@ -486,8 +486,22 @@ msgid "Tag ID"
 msgstr "ID da tag"
 
 #: app/Widgets/TagsCloudWidget.php:111
+#: app/Widgets/PodcastListWidget.php:96
 msgid "Random"
 msgstr "Aleatório"
+
+#: app/Widgets/BlogListWidget.php:41
+#: app/Widgets/PodcastListWidget.php:70
+msgid "See all"
+msgstr "Ver tudo"
+
+#: app/Widgets/PodcastListWidget.php:80
+msgid "Recent"
+msgstr "Recentes"
+
+#: app/Widgets/PodcastListWidget.php:88
+msgid "Popular"
+msgstr "Populares"
 
 #: app/Widgets/TagsCloudWidget.php:116
 msgid "Sort order:"

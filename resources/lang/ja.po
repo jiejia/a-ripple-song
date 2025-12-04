@@ -484,8 +484,22 @@ msgid "Tag ID"
 msgstr "タグ ID"
 
 #: app/Widgets/TagsCloudWidget.php:111
+#: app/Widgets/PodcastListWidget.php:96
 msgid "Random"
 msgstr "ランダム"
+
+#: app/Widgets/BlogListWidget.php:41
+#: app/Widgets/PodcastListWidget.php:70
+msgid "See all"
+msgstr "すべて見る"
+
+#: app/Widgets/PodcastListWidget.php:80
+msgid "Recent"
+msgstr "最新"
+
+#: app/Widgets/PodcastListWidget.php:88
+msgid "Popular"
+msgstr "人気"
 
 #: app/Widgets/TagsCloudWidget.php:116
 msgid "Sort order:"

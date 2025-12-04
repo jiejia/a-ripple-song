@@ -486,8 +486,22 @@ msgid "Tag ID"
 msgstr "टैग ID"
 
 #: app/Widgets/TagsCloudWidget.php:111
+#: app/Widgets/PodcastListWidget.php:96
 msgid "Random"
 msgstr "यादृच्छिक"
+
+#: app/Widgets/BlogListWidget.php:41
+#: app/Widgets/PodcastListWidget.php:70
+msgid "See all"
+msgstr "सभी देखें"
+
+#: app/Widgets/PodcastListWidget.php:80
+msgid "Recent"
+msgstr "हाल का"
+
+#: app/Widgets/PodcastListWidget.php:88
+msgid "Popular"
+msgstr "लोकप्रिय"
 
 #: app/Widgets/TagsCloudWidget.php:116
 msgid "Sort order:"
