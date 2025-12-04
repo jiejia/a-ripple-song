@@ -501,6 +501,54 @@ msgstr "Decrescente (Alto para Baixo/Z para A)"
 msgid "Ascending (Low to High/A to Z)"
 msgstr "Crescente (Baixo para Alto/A para Z)"
 
+#: app/Widgets/FooterLinksWidget.php:12
+msgid "aripplesong - Footer Links"
+msgstr "aripplesong - Links do Rodapé"
+
+#: app/Widgets/FooterLinksWidget.php:13
+msgid "Display a list of links or text items in the footer"
+msgstr "Exibir uma lista de links ou itens de texto no rodapé"
+
+#: app/Widgets/FooterLinksWidget.php:72
+msgid "e.g., Contact, Navigate, Support"
+msgstr "ex., Contato, Navegar, Suporte"
+
+#: app/Widgets/FooterLinksWidget.php:76
+msgid "Items:"
+msgstr "Itens:"
+
+#: app/Widgets/FooterLinksWidget.php:85
+#: app/widgets.php:170
+msgid "Text:"
+msgstr "Texto:"
+
+#: app/Widgets/FooterLinksWidget.php:90
+#: app/widgets.php:172
+msgid "Display text"
+msgstr "Texto de exibição"
+
+#: app/Widgets/FooterLinksWidget.php:94
+#: app/widgets.php:175
+msgid "URL (optional - leave empty for plain text):"
+msgstr "URL (opcional - deixe vazio para texto simples):"
+
+#: app/Widgets/FooterLinksWidget.php:102
+#: app/widgets.php:180
+msgid "Open in new tab"
+msgstr "Abrir em nova aba"
+
+#: app/Widgets/FooterLinksWidget.php:113
+msgid "+ Add Item"
+msgstr "+ Adicionar item"
+
+#: app/setup.php:150
+msgid "Footer Links"
+msgstr "Links do Rodapé"
+
+#: app/setup.php:152
+msgid "Footer links area for displaying link columns"
+msgstr "Área de links do rodapé para exibir colunas de links"
+
 #. Template Name of the theme
 msgid "Blog Template"
 msgstr "Modelo de blog"

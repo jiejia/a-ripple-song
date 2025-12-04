@@ -509,6 +509,54 @@ msgstr "تنازلي (من الأعلى للأسفل/من ي إلى أ)"
 msgid "Ascending (Low to High/A to Z)"
 msgstr "تصاعدي (من الأسفل للأعلى/من أ إلى ي)"
 
+#: app/Widgets/FooterLinksWidget.php:12
+msgid "aripplesong - Footer Links"
+msgstr "aripplesong - روابط التذييل"
+
+#: app/Widgets/FooterLinksWidget.php:13
+msgid "Display a list of links or text items in the footer"
+msgstr "عرض قائمة بالروابط أو عناصر النص في التذييل"
+
+#: app/Widgets/FooterLinksWidget.php:72
+msgid "e.g., Contact, Navigate, Support"
+msgstr "مثال: اتصل، تصفح، الدعم"
+
+#: app/Widgets/FooterLinksWidget.php:76
+msgid "Items:"
+msgstr "العناصر:"
+
+#: app/Widgets/FooterLinksWidget.php:85
+#: app/widgets.php:170
+msgid "Text:"
+msgstr "النص:"
+
+#: app/Widgets/FooterLinksWidget.php:90
+#: app/widgets.php:172
+msgid "Display text"
+msgstr "نص العرض"
+
+#: app/Widgets/FooterLinksWidget.php:94
+#: app/widgets.php:175
+msgid "URL (optional - leave empty for plain text):"
+msgstr "الرابط (اختياري - اتركه فارغًا للنص العادي):"
+
+#: app/Widgets/FooterLinksWidget.php:102
+#: app/widgets.php:180
+msgid "Open in new tab"
+msgstr "فتح في علامة تبويب جديدة"
+
+#: app/Widgets/FooterLinksWidget.php:113
+msgid "+ Add Item"
+msgstr "+ إضافة عنصر"
+
+#: app/setup.php:150
+msgid "Footer Links"
+msgstr "روابط التذييل"
+
+#: app/setup.php:152
+msgid "Footer links area for displaying link columns"
+msgstr "منطقة روابط التذييل لعرض أعمدة الروابط"
+
 #. Template Name of the theme
 msgid "Blog Template"
 msgstr "قالب المدونة"

@@ -503,6 +503,54 @@ msgstr "По убыванию (От высокого к низкому/От Я �
 msgid "Ascending (Low to High/A to Z)"
 msgstr "По возрастанию (От низкого к высокому/От А к Я)"
 
+#: app/Widgets/FooterLinksWidget.php:12
+msgid "aripplesong - Footer Links"
+msgstr "aripplesong - Ссылки подвала"
+
+#: app/Widgets/FooterLinksWidget.php:13
+msgid "Display a list of links or text items in the footer"
+msgstr "Отображение списка ссылок или текстовых элементов в подвале"
+
+#: app/Widgets/FooterLinksWidget.php:72
+msgid "e.g., Contact, Navigate, Support"
+msgstr "напр., Контакты, Навигация, Поддержка"
+
+#: app/Widgets/FooterLinksWidget.php:76
+msgid "Items:"
+msgstr "Элементы:"
+
+#: app/Widgets/FooterLinksWidget.php:85
+#: app/widgets.php:170
+msgid "Text:"
+msgstr "Текст:"
+
+#: app/Widgets/FooterLinksWidget.php:90
+#: app/widgets.php:172
+msgid "Display text"
+msgstr "Отображаемый текст"
+
+#: app/Widgets/FooterLinksWidget.php:94
+#: app/widgets.php:175
+msgid "URL (optional - leave empty for plain text):"
+msgstr "URL (необязательно - оставьте пустым для простого текста):"
+
+#: app/Widgets/FooterLinksWidget.php:102
+#: app/widgets.php:180
+msgid "Open in new tab"
+msgstr "Открыть в новой вкладке"
+
+#: app/Widgets/FooterLinksWidget.php:113
+msgid "+ Add Item"
+msgstr "+ Добавить элемент"
+
+#: app/setup.php:150
+msgid "Footer Links"
+msgstr "Ссылки подвала"
+
+#: app/setup.php:152
+msgid "Footer links area for displaying link columns"
+msgstr "Область ссылок подвала для отображения колонок ссылок"
+
 #. Template Name of the theme
 msgid "Blog Template"
 msgstr "Шаблон блога"

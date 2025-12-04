@@ -501,6 +501,54 @@ msgstr "نزولی (زیادہ سے کم/Z سے A)"
 msgid "Ascending (Low to High/A to Z)"
 msgstr "صعودی (کم سے زیادہ/A سے Z)"
 
+#: app/Widgets/FooterLinksWidget.php:12
+msgid "aripplesong - Footer Links"
+msgstr "aripplesong - فوٹر لنکس"
+
+#: app/Widgets/FooterLinksWidget.php:13
+msgid "Display a list of links or text items in the footer"
+msgstr "فوٹر میں لنکس یا ٹیکسٹ آئٹمز کی فہرست دکھائیں"
+
+#: app/Widgets/FooterLinksWidget.php:72
+msgid "e.g., Contact, Navigate, Support"
+msgstr "مثلاً، رابطہ، نیویگیٹ، سپورٹ"
+
+#: app/Widgets/FooterLinksWidget.php:76
+msgid "Items:"
+msgstr "آئٹمز:"
+
+#: app/Widgets/FooterLinksWidget.php:85
+#: app/widgets.php:170
+msgid "Text:"
+msgstr "ٹیکسٹ:"
+
+#: app/Widgets/FooterLinksWidget.php:90
+#: app/widgets.php:172
+msgid "Display text"
+msgstr "دکھائی دینے والا ٹیکسٹ"
+
+#: app/Widgets/FooterLinksWidget.php:94
+#: app/widgets.php:175
+msgid "URL (optional - leave empty for plain text):"
+msgstr "URL (اختیاری - سادہ ٹیکسٹ کے لیے خالی چھوڑیں):"
+
+#: app/Widgets/FooterLinksWidget.php:102
+#: app/widgets.php:180
+msgid "Open in new tab"
+msgstr "نئے ٹیب میں کھولیں"
+
+#: app/Widgets/FooterLinksWidget.php:113
+msgid "+ Add Item"
+msgstr "+ آئٹم شامل کریں"
+
+#: app/setup.php:150
+msgid "Footer Links"
+msgstr "فوٹر لنکس"
+
+#: app/setup.php:152
+msgid "Footer links area for displaying link columns"
+msgstr "لنک کالم دکھانے کے لیے فوٹر لنکس کا علاقہ"
+
 #. Template Name of the theme
 msgid "Blog Template"
 msgstr "بلاگ ٹیمپلیٹ"

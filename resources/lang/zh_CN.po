@@ -513,6 +513,54 @@ msgstr "降序（多到少/Z到A）"
 msgid "Ascending (Low to High/A to Z)"
 msgstr "升序（少到多/A到Z）"
 
+#: app/Widgets/FooterLinksWidget.php:12
+msgid "aripplesong - Footer Links"
+msgstr "aripplesong - 页脚链接"
+
+#: app/Widgets/FooterLinksWidget.php:13
+msgid "Display a list of links or text items in the footer"
+msgstr "在页脚显示链接或文字项目列表"
+
+#: app/Widgets/FooterLinksWidget.php:72
+msgid "e.g., Contact, Navigate, Support"
+msgstr "例如：联系、导航、支持"
+
+#: app/Widgets/FooterLinksWidget.php:76
+msgid "Items:"
+msgstr "项目："
+
+#: app/Widgets/FooterLinksWidget.php:85
+#: app/widgets.php:170
+msgid "Text:"
+msgstr "文字："
+
+#: app/Widgets/FooterLinksWidget.php:90
+#: app/widgets.php:172
+msgid "Display text"
+msgstr "显示文字"
+
+#: app/Widgets/FooterLinksWidget.php:94
+#: app/widgets.php:175
+msgid "URL (optional - leave empty for plain text):"
+msgstr "链接（可选 - 留空则显示纯文字）："
+
+#: app/Widgets/FooterLinksWidget.php:102
+#: app/widgets.php:180
+msgid "Open in new tab"
+msgstr "在新标签页打开"
+
+#: app/Widgets/FooterLinksWidget.php:113
+msgid "+ Add Item"
+msgstr "+ 添加项目"
+
+#: app/setup.php:150
+msgid "Footer Links"
+msgstr "页脚链接"
+
+#: app/setup.php:152
+msgid "Footer links area for displaying link columns"
+msgstr "页脚链接区域，用于显示链接列"
+
 #. Template Name of the theme
 msgid "Blog Template"
 msgstr "博客模板"

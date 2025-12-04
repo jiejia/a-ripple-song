@@ -501,6 +501,54 @@ msgstr "अवरोही (उच्च से निम्न/Z से A)"
 msgid "Ascending (Low to High/A to Z)"
 msgstr "आरोही (निम्न से उच्च/A से Z)"
 
+#: app/Widgets/FooterLinksWidget.php:12
+msgid "aripplesong - Footer Links"
+msgstr "aripplesong - फुटर लिंक"
+
+#: app/Widgets/FooterLinksWidget.php:13
+msgid "Display a list of links or text items in the footer"
+msgstr "फुटर में लिंक या टेक्स्ट आइटम की सूची प्रदर्शित करें"
+
+#: app/Widgets/FooterLinksWidget.php:72
+msgid "e.g., Contact, Navigate, Support"
+msgstr "जैसे, संपर्क, नेविगेट, सहायता"
+
+#: app/Widgets/FooterLinksWidget.php:76
+msgid "Items:"
+msgstr "आइटम:"
+
+#: app/Widgets/FooterLinksWidget.php:85
+#: app/widgets.php:170
+msgid "Text:"
+msgstr "टेक्स्ट:"
+
+#: app/Widgets/FooterLinksWidget.php:90
+#: app/widgets.php:172
+msgid "Display text"
+msgstr "प्रदर्शन टेक्स्ट"
+
+#: app/Widgets/FooterLinksWidget.php:94
+#: app/widgets.php:175
+msgid "URL (optional - leave empty for plain text):"
+msgstr "URL (वैकल्पिक - सादे टेक्स्ट के लिए खाली छोड़ें):"
+
+#: app/Widgets/FooterLinksWidget.php:102
+#: app/widgets.php:180
+msgid "Open in new tab"
+msgstr "नए टैब में खोलें"
+
+#: app/Widgets/FooterLinksWidget.php:113
+msgid "+ Add Item"
+msgstr "+ आइटम जोड़ें"
+
+#: app/setup.php:150
+msgid "Footer Links"
+msgstr "फुटर लिंक"
+
+#: app/setup.php:152
+msgid "Footer links area for displaying link columns"
+msgstr "लिंक कॉलम प्रदर्शित करने के लिए फुटर लिंक क्षेत्र"
+
 #. Template Name of the theme
 msgid "Blog Template"
 msgstr "ब्लॉग टेम्पलेट"

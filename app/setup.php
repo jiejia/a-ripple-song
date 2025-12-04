@@ -136,15 +136,25 @@ add_action('widgets_init', function () {
         'after_title' => '</h3>',
     ];
 
-    register_sidebar([
-        'name' => __('Primary', 'sage'),
-        'id' => 'sidebar',
-    ] + $config);
+    // register_sidebar([
+    //     'name' => __('Primary', 'sage'),
+    //     'id' => 'sidebar',
+    // ] + $config);
+
+    // register_sidebar([
+    //     'name' => __('Footer', 'sage'),
+    //     'id' => 'sidebar-footer',
+    // ] + $config);
 
     register_sidebar([
-        'name' => __('Footer', 'sage'),
-        'id' => 'sidebar-footer',
-    ] + $config);
+        'name' => __('Footer Links', 'sage'),
+        'id' => 'footer-links',
+        'description' => __('Footer links area for displaying link columns', 'sage'),
+        'before_widget' => '',
+        'after_widget' => '',
+        'before_title' => '',
+        'after_title' => '',
+    ]);
 
     register_sidebar([
         'name' => __('Home Main', 'sage'),

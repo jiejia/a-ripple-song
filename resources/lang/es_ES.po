@@ -501,6 +501,54 @@ msgstr "Descendente (Mayor a menor/Z a A)"
 msgid "Ascending (Low to High/A to Z)"
 msgstr "Ascendente (Menor a mayor/A a Z)"
 
+#: app/Widgets/FooterLinksWidget.php:12
+msgid "aripplesong - Footer Links"
+msgstr "aripplesong - Enlaces del pie de página"
+
+#: app/Widgets/FooterLinksWidget.php:13
+msgid "Display a list of links or text items in the footer"
+msgstr "Mostrar una lista de enlaces o elementos de texto en el pie de página"
+
+#: app/Widgets/FooterLinksWidget.php:72
+msgid "e.g., Contact, Navigate, Support"
+msgstr "ej., Contacto, Navegar, Soporte"
+
+#: app/Widgets/FooterLinksWidget.php:76
+msgid "Items:"
+msgstr "Elementos:"
+
+#: app/Widgets/FooterLinksWidget.php:85
+#: app/widgets.php:170
+msgid "Text:"
+msgstr "Texto:"
+
+#: app/Widgets/FooterLinksWidget.php:90
+#: app/widgets.php:172
+msgid "Display text"
+msgstr "Texto a mostrar"
+
+#: app/Widgets/FooterLinksWidget.php:94
+#: app/widgets.php:175
+msgid "URL (optional - leave empty for plain text):"
+msgstr "URL (opcional - dejar vacío para texto simple):"
+
+#: app/Widgets/FooterLinksWidget.php:102
+#: app/widgets.php:180
+msgid "Open in new tab"
+msgstr "Abrir en nueva pestaña"
+
+#: app/Widgets/FooterLinksWidget.php:113
+msgid "+ Add Item"
+msgstr "+ Agregar elemento"
+
+#: app/setup.php:150
+msgid "Footer Links"
+msgstr "Enlaces del pie de página"
+
+#: app/setup.php:152
+msgid "Footer links area for displaying link columns"
+msgstr "Área de enlaces del pie de página para mostrar columnas de enlaces"
+
 #. Template Name of the theme
 msgid "Blog Template"
 msgstr "Plantilla de blog"

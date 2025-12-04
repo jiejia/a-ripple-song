@@ -13,6 +13,7 @@ $widget_files = [
     __DIR__ . '/Widgets/SubscribeLinksWidget.php',
     __DIR__ . '/Widgets/TagsCloudWidget.php',
     __DIR__ . '/Widgets/AuthorsWidget.php',
+    __DIR__ . '/Widgets/FooterLinksWidget.php',
 ];
 
 foreach ($widget_files as $file) {
@@ -31,6 +32,7 @@ add_action('widgets_init', function() {
     register_widget('Subscribe_Links_Widget');
     register_widget('Tags_Cloud_Widget');
     register_widget('Authors_Widget');
+    register_widget('Footer_Links_Widget');
 });
 
 /**
@@ -324,6 +326,96 @@ add_action('admin_enqueue_scripts', function($hook) {
     ";
     
     wp_add_inline_script('jquery', $banner_widget_js);
+    
+    // 添加 Footer Links Widget 的 JavaScript
+    $footer_links_widget_js = "
+    (function($) {
+        'use strict';
+        
+        var footerLinksHandlersInitialized = false;
+        
+        function initFooterLinksWidget() {
+            if (footerLinksHandlersInitialized) {
+                return;
+            }
+            
+            footerLinksHandlersInitialized = true;
+            
+            // 处理添加链接按钮
+            $(document).on('click', '.footer-add-link', function(e) {
+                e.preventDefault();
+                var button = $(this);
+                var widgetId = button.data('widget-id');
+                var container = $('#' + widgetId + '_container');
+                var linkCount = container.find('.footer-link-item').length;
+                var widgetForm = button.closest('.footer-links-widget-form');
+                var fieldNamePrefix = widgetForm.data('field-prefix');
+                
+                if (!fieldNamePrefix) {
+                    return;
+                }
+                
+                var linkHtml = '<div class=\"footer-link-item\" style=\"margin-bottom: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 4px; background: #f9f9f9;\">' +
+                    '<div style=\"margin-bottom: 8px;\">' +
+                        '<label style=\"display: block; margin-bottom: 4px; font-weight: 600;\">" . esc_js(__('Text:', 'sage')) . "</label>' +
+                        '<input type=\"text\" class=\"widefat footer-link-text\" name=\"' + fieldNamePrefix + '[' + linkCount + '][text]\" placeholder=\"" . esc_js(__('Display text', 'sage')) . "\">' +
+                    '</div>' +
+                    '<div style=\"margin-bottom: 8px;\">' +
+                        '<label style=\"display: block; margin-bottom: 4px; font-weight: 600;\">" . esc_js(__('URL (optional - leave empty for plain text):', 'sage')) . "</label>' +
+                        '<input type=\"url\" class=\"widefat footer-link-url\" name=\"' + fieldNamePrefix + '[' + linkCount + '][url]\" placeholder=\"https://example.com\">' +
+                    '</div>' +
+                    '<div style=\"margin-bottom: 8px;\">' +
+                        '<label>' +
+                            '<input type=\"checkbox\" class=\"footer-link-new-tab\" name=\"' + fieldNamePrefix + '[' + linkCount + '][new_tab]\" value=\"1\"> " . esc_js(__('Open in new tab', 'sage')) . "' +
+                        '</label>' +
+                    '</div>' +
+                    '<div style=\"text-align: right;\">' +
+                        '<button type=\"button\" class=\"button button-link button-link-delete footer-remove-link\" style=\"color: #b32d2e;\">" . esc_js(__('Delete', 'sage')) . "</button>' +
+                    '</div>' +
+                '</div>';
+                
+                container.append(linkHtml);
+                
+                var flagInput = widgetForm.find('.footer-links-flag');
+                if (flagInput.length) {
+                    flagInput.trigger('change');
+                }
+            });
+            
+            // 处理删除链接按钮
+            $(document).on('click', '.footer-remove-link', function(e) {
+                e.preventDefault();
+                var linkItem = $(this).closest('.footer-link-item');
+                var container = linkItem.closest('.footer-links-container');
+                var widgetForm = linkItem.closest('.footer-links-widget-form');
+                
+                // 如果只剩一个，清空内容而不删除
+                if (container.find('.footer-link-item').length <= 1) {
+                    linkItem.find('input[type=\"text\"], input[type=\"url\"]').val('');
+                    linkItem.find('input[type=\"checkbox\"]').prop('checked', false);
+                } else {
+                    linkItem.remove();
+                }
+                
+                var flagInput = widgetForm.find('.footer-links-flag');
+                if (flagInput.length) {
+                    flagInput.trigger('change');
+                }
+            });
+        }
+        
+        $(document).ready(function() {
+            initFooterLinksWidget();
+        });
+        
+        $(document).on('widget-added widget-updated', function(e, widget) {
+            initFooterLinksWidget();
+        });
+        
+    })(jQuery);
+    ";
+    
+    wp_add_inline_script('jquery', $footer_links_widget_js);
 });
 
 /**

@@ -499,6 +499,54 @@ msgstr "降順（高から低へ/Z から A へ）"
 msgid "Ascending (Low to High/A to Z)"
 msgstr "昇順（低から高へ/A から Z へ）"
 
+#: app/Widgets/FooterLinksWidget.php:12
+msgid "aripplesong - Footer Links"
+msgstr "aripplesong - フッターリンク"
+
+#: app/Widgets/FooterLinksWidget.php:13
+msgid "Display a list of links or text items in the footer"
+msgstr "フッターにリンクまたはテキスト項目のリストを表示"
+
+#: app/Widgets/FooterLinksWidget.php:72
+msgid "e.g., Contact, Navigate, Support"
+msgstr "例：連絡先、ナビゲーション、サポート"
+
+#: app/Widgets/FooterLinksWidget.php:76
+msgid "Items:"
+msgstr "項目："
+
+#: app/Widgets/FooterLinksWidget.php:85
+#: app/widgets.php:170
+msgid "Text:"
+msgstr "テキスト："
+
+#: app/Widgets/FooterLinksWidget.php:90
+#: app/widgets.php:172
+msgid "Display text"
+msgstr "表示テキスト"
+
+#: app/Widgets/FooterLinksWidget.php:94
+#: app/widgets.php:175
+msgid "URL (optional - leave empty for plain text):"
+msgstr "URL（オプション - 空欄でプレーンテキスト）："
+
+#: app/Widgets/FooterLinksWidget.php:102
+#: app/widgets.php:180
+msgid "Open in new tab"
+msgstr "新しいタブで開く"
+
+#: app/Widgets/FooterLinksWidget.php:113
+msgid "+ Add Item"
+msgstr "+ 項目を追加"
+
+#: app/setup.php:150
+msgid "Footer Links"
+msgstr "フッターリンク"
+
+#: app/setup.php:152
+msgid "Footer links area for displaying link columns"
+msgstr "リンク列を表示するフッターリンク領域"
+
 #. Template Name of the theme
 msgid "Blog Template"
 msgstr "ブログテンプレート"

@@ -499,6 +499,54 @@ msgstr "내림차순(높음에서 낮음/Z에서 A)"
 msgid "Ascending (Low to High/A to Z)"
 msgstr "오름차순(낮음에서 높음/A에서 Z)"
 
+#: app/Widgets/FooterLinksWidget.php:12
+msgid "aripplesong - Footer Links"
+msgstr "aripplesong - 푸터 링크"
+
+#: app/Widgets/FooterLinksWidget.php:13
+msgid "Display a list of links or text items in the footer"
+msgstr "푸터에 링크 또는 텍스트 항목 목록 표시"
+
+#: app/Widgets/FooterLinksWidget.php:72
+msgid "e.g., Contact, Navigate, Support"
+msgstr "예: 연락처, 탐색, 지원"
+
+#: app/Widgets/FooterLinksWidget.php:76
+msgid "Items:"
+msgstr "항목:"
+
+#: app/Widgets/FooterLinksWidget.php:85
+#: app/widgets.php:170
+msgid "Text:"
+msgstr "텍스트:"
+
+#: app/Widgets/FooterLinksWidget.php:90
+#: app/widgets.php:172
+msgid "Display text"
+msgstr "표시 텍스트"
+
+#: app/Widgets/FooterLinksWidget.php:94
+#: app/widgets.php:175
+msgid "URL (optional - leave empty for plain text):"
+msgstr "URL (선택 사항 - 일반 텍스트는 비워 두세요):"
+
+#: app/Widgets/FooterLinksWidget.php:102
+#: app/widgets.php:180
+msgid "Open in new tab"
+msgstr "새 탭에서 열기"
+
+#: app/Widgets/FooterLinksWidget.php:113
+msgid "+ Add Item"
+msgstr "+ 항목 추가"
+
+#: app/setup.php:150
+msgid "Footer Links"
+msgstr "푸터 링크"
+
+#: app/setup.php:152
+msgid "Footer links area for displaying link columns"
+msgstr "링크 열을 표시하기 위한 푸터 링크 영역"
+
 #. Template Name of the theme
 msgid "Blog Template"
 msgstr "블로그 템플릿"

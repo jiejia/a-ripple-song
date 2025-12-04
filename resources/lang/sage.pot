@@ -498,6 +498,54 @@ msgstr ""
 msgid "Ascending (Low to High/A to Z)"
 msgstr ""
 
+#: app/Widgets/FooterLinksWidget.php:12
+msgid "aripplesong - Footer Links"
+msgstr ""
+
+#: app/Widgets/FooterLinksWidget.php:13
+msgid "Display a list of links or text items in the footer"
+msgstr ""
+
+#: app/Widgets/FooterLinksWidget.php:72
+msgid "e.g., Contact, Navigate, Support"
+msgstr ""
+
+#: app/Widgets/FooterLinksWidget.php:76
+msgid "Items:"
+msgstr ""
+
+#: app/Widgets/FooterLinksWidget.php:85
+#: app/widgets.php:170
+msgid "Text:"
+msgstr ""
+
+#: app/Widgets/FooterLinksWidget.php:90
+#: app/widgets.php:172
+msgid "Display text"
+msgstr ""
+
+#: app/Widgets/FooterLinksWidget.php:94
+#: app/widgets.php:175
+msgid "URL (optional - leave empty for plain text):"
+msgstr ""
+
+#: app/Widgets/FooterLinksWidget.php:102
+#: app/widgets.php:180
+msgid "Open in new tab"
+msgstr ""
+
+#: app/Widgets/FooterLinksWidget.php:113
+msgid "+ Add Item"
+msgstr ""
+
+#: app/setup.php:150
+msgid "Footer Links"
+msgstr ""
+
+#: app/setup.php:152
+msgid "Footer links area for displaying link columns"
+msgstr ""
+
 #. Template Name of the theme
 msgid "Blog Template"
 msgstr ""
