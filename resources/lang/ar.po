@@ -963,3 +963,19 @@ msgstr "احفظ اسمي وبريدي الإلكتروني وموقعي في ه
 #: functions.php:661
 msgid "Comment"
 msgstr "تعليق"
+
+#: resources/views/sections/leftbar-drawer.blade.php:10
+msgid "Left Sidebar"
+msgstr "الشريط الجانبي الأيسر"
+
+#: resources/views/sections/sidebar-drawer.blade.php:10
+msgid "Right Sidebar"
+msgstr "الشريط الجانبي الأيمن"
+
+#: resources/views/layouts/app.blade.php:119
+msgid "Open Left Sidebar"
+msgstr "فتح الشريط الجانبي الأيسر"
+
+#: resources/views/layouts/app.blade.php:131
+msgid "Open Right Sidebar"
+msgstr "فتح الشريط الجانبي الأيمن"

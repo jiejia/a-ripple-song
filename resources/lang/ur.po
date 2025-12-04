@@ -955,3 +955,19 @@ msgstr "اگلی بار تبصرہ کرنے کے لیے اس براؤزر میں
 #: functions.php:661
 msgid "Comment"
 msgstr "تبصرہ"
+
+#: resources/views/sections/leftbar-drawer.blade.php:10
+msgid "Left Sidebar"
+msgstr "بائیں سائیڈبار"
+
+#: resources/views/sections/sidebar-drawer.blade.php:10
+msgid "Right Sidebar"
+msgstr "دائیں سائیڈبار"
+
+#: resources/views/layouts/app.blade.php:119
+msgid "Open Left Sidebar"
+msgstr "بائیں سائیڈبار کھولیں"
+
+#: resources/views/layouts/app.blade.php:131
+msgid "Open Right Sidebar"
+msgstr "دائیں سائیڈبار کھولیں"

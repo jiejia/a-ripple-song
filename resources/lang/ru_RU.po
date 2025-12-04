@@ -957,3 +957,19 @@ msgstr "Сохранить моё имя, email и сайт в этом брау
 #: functions.php:661
 msgid "Comment"
 msgstr "Комментарий"
+
+#: resources/views/sections/leftbar-drawer.blade.php:10
+msgid "Left Sidebar"
+msgstr "Левая боковая панель"
+
+#: resources/views/sections/sidebar-drawer.blade.php:10
+msgid "Right Sidebar"
+msgstr "Правая боковая панель"
+
+#: resources/views/layouts/app.blade.php:119
+msgid "Open Left Sidebar"
+msgstr "Открыть левую боковую панель"
+
+#: resources/views/layouts/app.blade.php:131
+msgid "Open Right Sidebar"
+msgstr "Открыть правую боковую панель"

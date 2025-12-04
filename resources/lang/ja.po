@@ -953,3 +953,19 @@ msgstr "次回のコメント時に使用するため、このブラウザに名
 #: functions.php:661
 msgid "Comment"
 msgstr "コメント"
+
+#: resources/views/sections/leftbar-drawer.blade.php:10
+msgid "Left Sidebar"
+msgstr "左サイドバー"
+
+#: resources/views/sections/sidebar-drawer.blade.php:10
+msgid "Right Sidebar"
+msgstr "右サイドバー"
+
+#: resources/views/layouts/app.blade.php:119
+msgid "Open Left Sidebar"
+msgstr "左サイドバーを開く"
+
+#: resources/views/layouts/app.blade.php:131
+msgid "Open Right Sidebar"
+msgstr "右サイドバーを開く"

@@ -955,3 +955,19 @@ msgstr "Save my name, email, and website in this browser for the next time I com
 #: functions.php:661
 msgid "Comment"
 msgstr "Comment"
+
+#: resources/views/sections/leftbar-drawer.blade.php:10
+msgid "Left Sidebar"
+msgstr "Left Sidebar"
+
+#: resources/views/sections/sidebar-drawer.blade.php:10
+msgid "Right Sidebar"
+msgstr "Right Sidebar"
+
+#: resources/views/layouts/app.blade.php:119
+msgid "Open Left Sidebar"
+msgstr "Open Left Sidebar"
+
+#: resources/views/layouts/app.blade.php:131
+msgid "Open Right Sidebar"
+msgstr "Open Right Sidebar"

@@ -955,3 +955,19 @@ msgstr "Guardar mi nombre, correo electrónico y sitio web en este navegador par
 #: functions.php:661
 msgid "Comment"
 msgstr "Comentario"
+
+#: resources/views/sections/leftbar-drawer.blade.php:10
+msgid "Left Sidebar"
+msgstr "Barra lateral izquierda"
+
+#: resources/views/sections/sidebar-drawer.blade.php:10
+msgid "Right Sidebar"
+msgstr "Barra lateral derecha"
+
+#: resources/views/layouts/app.blade.php:119
+msgid "Open Left Sidebar"
+msgstr "Abrir barra lateral izquierda"
+
+#: resources/views/layouts/app.blade.php:131
+msgid "Open Right Sidebar"
+msgstr "Abrir barra lateral derecha"

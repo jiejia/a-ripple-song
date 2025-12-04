@@ -72,6 +72,36 @@
   @include('sections.playlist-drawer')
   @include('partials.image-lightbox')
   @include('sections.autoplay-confirm')
+  @include('sections.leftbar-drawer')
+  @include('sections.sidebar-drawer')
+
+  {{-- Leftbar Drawer Toggle Button - Shows when leftbar is hidden (below lg) --}}
+  <label 
+    for="leftbar-drawer" 
+    class="fixed left-0 top-1/2 -translate-y-1/2 z-[99] lg:hidden cursor-pointer
+           bg-base-300/80 text-base-content/70 
+           rounded-r-md shadow-sm
+           py-3 px-1
+           hover:bg-base-300 hover:text-base-content hover:px-2
+           transition-all duration-200"
+    aria-label="{{ __('Open Left Sidebar', 'sage') }}"
+  >
+    <i data-lucide="chevron-right" class="w-3 h-3"></i>
+  </label>
+
+  {{-- Sidebar Drawer Toggle Button - Shows when sidebar is hidden (below md) --}}
+  <label 
+    for="sidebar-drawer" 
+    class="fixed right-0 top-1/2 -translate-y-1/2 z-[99] md:hidden cursor-pointer
+           bg-base-300/80 text-base-content/70 
+           rounded-l-md shadow-sm
+           py-3 px-1
+           hover:bg-base-300 hover:text-base-content hover:px-2
+           transition-all duration-200"
+    aria-label="{{ __('Open Right Sidebar', 'sage') }}"
+  >
+    <i data-lucide="chevron-left" class="w-3 h-3"></i>
+  </label>
 
   {{-- Back to Top Button --}}
   <button

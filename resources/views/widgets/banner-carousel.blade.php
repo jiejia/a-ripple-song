@@ -81,11 +81,14 @@
           function goToSlide(index) {
             currentIndex = index;
             if (carousel) {
-              const slideWidth = carousel.offsetWidth;
-              carousel.scrollTo({ 
-                left: slideWidth * index, 
-                behavior: 'smooth' 
-              });
+              // Use the target slide's actual offsetLeft for precise scrolling
+              const targetSlide = document.getElementById(`${carouselId}-slide-${index}`);
+              if (targetSlide) {
+                carousel.scrollTo({ 
+                  left: targetSlide.offsetLeft, 
+                  behavior: 'smooth' 
+                });
+              }
             }
             
             // Update dots

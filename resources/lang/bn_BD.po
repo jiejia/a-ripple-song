@@ -955,3 +955,19 @@ msgstr "পরবর্তী মন্তব্যের জন্য এই �
 #: functions.php:661
 msgid "Comment"
 msgstr "মন্তব্য"
+
+#: resources/views/sections/leftbar-drawer.blade.php:10
+msgid "Left Sidebar"
+msgstr "বাম সাইডবার"
+
+#: resources/views/sections/sidebar-drawer.blade.php:10
+msgid "Right Sidebar"
+msgstr "ডান সাইডবার"
+
+#: resources/views/layouts/app.blade.php:119
+msgid "Open Left Sidebar"
+msgstr "বাম সাইডবার খুলুন"
+
+#: resources/views/layouts/app.blade.php:131
+msgid "Open Right Sidebar"
+msgstr "ডান সাইডবার খুলুন"

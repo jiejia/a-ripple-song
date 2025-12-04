@@ -953,3 +953,19 @@ msgstr "다음 댓글 작성을 위해 이 브라우저에 이름, 이메일, �
 #: functions.php:661
 msgid "Comment"
 msgstr "댓글"
+
+#: resources/views/sections/leftbar-drawer.blade.php:10
+msgid "Left Sidebar"
+msgstr "왼쪽 사이드바"
+
+#: resources/views/sections/sidebar-drawer.blade.php:10
+msgid "Right Sidebar"
+msgstr "오른쪽 사이드바"
+
+#: resources/views/layouts/app.blade.php:119
+msgid "Open Left Sidebar"
+msgstr "왼쪽 사이드바 열기"
+
+#: resources/views/layouts/app.blade.php:131
+msgid "Open Right Sidebar"
+msgstr "오른쪽 사이드바 열기"

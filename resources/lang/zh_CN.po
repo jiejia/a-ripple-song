@@ -953,3 +953,19 @@ msgstr "在此浏览器中保存我的姓名、电子邮箱和网站地址，以
 #: functions.php:661
 msgid "Comment"
 msgstr "评论"
+
+#: resources/views/sections/leftbar-drawer.blade.php:10
+msgid "Left Sidebar"
+msgstr "左边栏"
+
+#: resources/views/sections/sidebar-drawer.blade.php:10
+msgid "Right Sidebar"
+msgstr "右边栏"
+
+#: resources/views/layouts/app.blade.php:119
+msgid "Open Left Sidebar"
+msgstr "打开左边栏"
+
+#: resources/views/layouts/app.blade.php:131
+msgid "Open Right Sidebar"
+msgstr "打开右边栏"
