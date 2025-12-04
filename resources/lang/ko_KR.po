@@ -892,3 +892,50 @@ msgstr "위챗"
 #: app/Customizer/SocialLinks.php:63
 msgid "RSS Feed"
 msgstr "RSS 피드"
+
+#. Comment form and display strings
+#: functions.php:576
+msgid "Author"
+msgstr "작성자"
+
+#: functions.php:585
+msgid "Pending Approval"
+msgstr "승인 대기 중"
+
+#: functions.php:601
+msgid "Reply"
+msgstr "답글"
+
+#: functions.php:606
+msgid "Edit"
+msgstr "편집"
+
+#: functions.php:629
+msgid "Your email address will not be published."
+msgstr "이메일 주소는 공개되지 않습니다."
+
+#. translators: %1$s is the edit profile link, %2$s is the username, %3$s is the logout link
+#: functions.php:632
+#, php-format
+msgid "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of this account\">Log out?</a>"
+msgstr "<a href=\"%1$s\">%2$s</a>(으)로 로그인됨. <a href=\"%3$s\" title=\"이 계정에서 로그아웃\">로그아웃 하시겠습니까?</a>"
+
+#: functions.php:646
+msgid "Name"
+msgstr "이름"
+
+#: functions.php:648
+msgid "Email"
+msgstr "이메일"
+
+#: functions.php:650
+msgid "Website"
+msgstr "웹사이트"
+
+#: functions.php:652
+msgid "Save my name, email, and website in this browser for the next time I comment."
+msgstr "다음 댓글 작성을 위해 이 브라우저에 이름, 이메일, 웹사이트를 저장합니다."
+
+#: functions.php:661
+msgid "Comment"
+msgstr "댓글"

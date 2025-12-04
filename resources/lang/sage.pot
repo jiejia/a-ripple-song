@@ -962,3 +962,50 @@ msgstr ""
 msgid "RSS Feed"
 msgstr ""
 
+#. Comment form and display strings
+#: functions.php:576
+msgid "Author"
+msgstr ""
+
+#: functions.php:585
+msgid "Pending Approval"
+msgstr ""
+
+#: functions.php:601
+msgid "Reply"
+msgstr ""
+
+#: functions.php:606
+msgid "Edit"
+msgstr ""
+
+#: functions.php:629
+msgid "Your email address will not be published."
+msgstr ""
+
+#. translators: %1$s is the edit profile link, %2$s is the username, %3$s is the logout link
+#: functions.php:632
+#, php-format
+msgid "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of this account\">Log out?</a>"
+msgstr ""
+
+#: functions.php:646
+msgid "Name"
+msgstr ""
+
+#: functions.php:648
+msgid "Email"
+msgstr ""
+
+#: functions.php:650
+msgid "Website"
+msgstr ""
+
+#: functions.php:652
+msgid "Save my name, email, and website in this browser for the next time I comment."
+msgstr ""
+
+#: functions.php:661
+msgid "Comment"
+msgstr ""
+

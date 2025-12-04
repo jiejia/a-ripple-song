@@ -364,20 +364,6 @@ msgstr "删除"
 msgid "+ Add Banner"
 msgstr "+ 添加横幅"
 
-#: app/Widgets/BlogListWidget.php:41
-#: app/Widgets/PodcastListWidget.php:70
-msgid "See all"
-msgstr "查看全部"
-
-#: app/Widgets/PodcastListWidget.php:80
-msgid "Recent"
-msgstr "最新"
-
-#: app/Widgets/PodcastListWidget.php:88
-msgid "Popular"
-msgstr "热门"
-
-#: app/Widgets/PodcastListWidget.php:96
 #: app/Widgets/TagsCloudWidget.php:111
 msgid "Random"
 msgstr "随机"
@@ -906,3 +892,50 @@ msgstr "微信"
 #: app/Customizer/SocialLinks.php:63
 msgid "RSS Feed"
 msgstr "RSS 订阅"
+
+#. Comment form and display strings
+#: functions.php:576
+msgid "Author"
+msgstr "作者"
+
+#: functions.php:585
+msgid "Pending Approval"
+msgstr "待审核"
+
+#: functions.php:601
+msgid "Reply"
+msgstr "回复"
+
+#: functions.php:606
+msgid "Edit"
+msgstr "编辑"
+
+#: functions.php:629
+msgid "Your email address will not be published."
+msgstr "您的电子邮箱地址不会被公开。"
+
+#. translators: %1$s is the edit profile link, %2$s is the username, %3$s is the logout link
+#: functions.php:632
+#, php-format
+msgid "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of this account\">Log out?</a>"
+msgstr "登录为 <a href=\"%1$s\">%2$s</a>。<a href=\"%3$s\" title=\"登出此账户\">登出？</a>"
+
+#: functions.php:646
+msgid "Name"
+msgstr "姓名"
+
+#: functions.php:648
+msgid "Email"
+msgstr "电子邮箱"
+
+#: functions.php:650
+msgid "Website"
+msgstr "网站"
+
+#: functions.php:652
+msgid "Save my name, email, and website in this browser for the next time I comment."
+msgstr "在此浏览器中保存我的姓名、电子邮箱和网站地址，以便下次评论时使用。"
+
+#: functions.php:661
+msgid "Comment"
+msgstr "评论"

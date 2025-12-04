@@ -894,3 +894,50 @@ msgstr "वीचैट"
 #: app/Customizer/SocialLinks.php:63
 msgid "RSS Feed"
 msgstr "RSS फ़ीड"
+
+#. Comment form and display strings
+#: functions.php:576
+msgid "Author"
+msgstr "लेखक"
+
+#: functions.php:585
+msgid "Pending Approval"
+msgstr "स्वीकृति लंबित"
+
+#: functions.php:601
+msgid "Reply"
+msgstr "जवाब दें"
+
+#: functions.php:606
+msgid "Edit"
+msgstr "संपादित करें"
+
+#: functions.php:629
+msgid "Your email address will not be published."
+msgstr "आपका ईमेल पता प्रकाशित नहीं किया जाएगा।"
+
+#. translators: %1$s is the edit profile link, %2$s is the username, %3$s is the logout link
+#: functions.php:632
+#, php-format
+msgid "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of this account\">Log out?</a>"
+msgstr "<a href=\"%1$s\">%2$s</a> के रूप में लॉग इन। <a href=\"%3$s\" title=\"इस खाते से लॉग आउट करें\">लॉग आउट करें?</a>"
+
+#: functions.php:646
+msgid "Name"
+msgstr "नाम"
+
+#: functions.php:648
+msgid "Email"
+msgstr "ईमेल"
+
+#: functions.php:650
+msgid "Website"
+msgstr "वेबसाइट"
+
+#: functions.php:652
+msgid "Save my name, email, and website in this browser for the next time I comment."
+msgstr "अगली बार टिप्पणी करने के लिए इस ब्राउज़र में मेरा नाम, ईमेल और वेबसाइट सहेजें।"
+
+#: functions.php:661
+msgid "Comment"
+msgstr "टिप्पणी"

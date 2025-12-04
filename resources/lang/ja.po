@@ -892,3 +892,50 @@ msgstr "WeChat"
 #: app/Customizer/SocialLinks.php:63
 msgid "RSS Feed"
 msgstr "RSSフィード"
+
+#. Comment form and display strings
+#: functions.php:576
+msgid "Author"
+msgstr "作成者"
+
+#: functions.php:585
+msgid "Pending Approval"
+msgstr "承認待ち"
+
+#: functions.php:601
+msgid "Reply"
+msgstr "返信"
+
+#: functions.php:606
+msgid "Edit"
+msgstr "編集"
+
+#: functions.php:629
+msgid "Your email address will not be published."
+msgstr "メールアドレスが公開されることはありません。"
+
+#. translators: %1$s is the edit profile link, %2$s is the username, %3$s is the logout link
+#: functions.php:632
+#, php-format
+msgid "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of this account\">Log out?</a>"
+msgstr "<a href=\"%1$s\">%2$s</a> としてログイン中。<a href=\"%3$s\" title=\"このアカウントからログアウト\">ログアウトしますか？</a>"
+
+#: functions.php:646
+msgid "Name"
+msgstr "名前"
+
+#: functions.php:648
+msgid "Email"
+msgstr "メールアドレス"
+
+#: functions.php:650
+msgid "Website"
+msgstr "ウェブサイト"
+
+#: functions.php:652
+msgid "Save my name, email, and website in this browser for the next time I comment."
+msgstr "次回のコメント時に使用するため、このブラウザに名前、メールアドレス、ウェブサイトを保存する。"
+
+#: functions.php:661
+msgid "Comment"
+msgstr "コメント"

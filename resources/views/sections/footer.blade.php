@@ -7,7 +7,7 @@
       </div>
     @endif
 
-    <div class="grid md:grid-cols-2 grid-flow-row gap-2 md:justify-between bg-base-100/50 rounded-lg p-4">
+    <div class="grid md:grid-cols-2 grid-flow-row gap-2 md:justify-between bg-base-100/60 rounded-lg p-4">
       <div class="md:justify-self-start">{!! sprintf(__('© %s A Ripple Song. Designed by %s', 'sage'), '2025', '<a href="https://github.com/jiejia/a-ripple-song" target="_blank" class="text-primary">Jamie</a>') !!}</div>
       @php($socialLinks = \App\Customizer\SocialLinks::getConfiguredLinks())
       @if(!empty($socialLinks))

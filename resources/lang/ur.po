@@ -894,3 +894,50 @@ msgstr "وی چیٹ"
 #: app/Customizer/SocialLinks.php:63
 msgid "RSS Feed"
 msgstr "RSS فیڈ"
+
+#. Comment form and display strings
+#: functions.php:576
+msgid "Author"
+msgstr "مصنف"
+
+#: functions.php:585
+msgid "Pending Approval"
+msgstr "منظوری کا انتظار"
+
+#: functions.php:601
+msgid "Reply"
+msgstr "جواب دیں"
+
+#: functions.php:606
+msgid "Edit"
+msgstr "ترمیم"
+
+#: functions.php:629
+msgid "Your email address will not be published."
+msgstr "آپ کا ای میل پتہ شائع نہیں کیا جائے گا۔"
+
+#. translators: %1$s is the edit profile link, %2$s is the username, %3$s is the logout link
+#: functions.php:632
+#, php-format
+msgid "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of this account\">Log out?</a>"
+msgstr "<a href=\"%1$s\">%2$s</a> کے طور پر لاگ ان۔ <a href=\"%3$s\" title=\"اس اکاؤنٹ سے لاگ آؤٹ کریں\">لاگ آؤٹ؟</a>"
+
+#: functions.php:646
+msgid "Name"
+msgstr "نام"
+
+#: functions.php:648
+msgid "Email"
+msgstr "ای میل"
+
+#: functions.php:650
+msgid "Website"
+msgstr "ویب سائٹ"
+
+#: functions.php:652
+msgid "Save my name, email, and website in this browser for the next time I comment."
+msgstr "اگلی بار تبصرہ کرنے کے لیے اس براؤزر میں میرا نام، ای میل اور ویب سائٹ محفوظ کریں۔"
+
+#: functions.php:661
+msgid "Comment"
+msgstr "تبصرہ"

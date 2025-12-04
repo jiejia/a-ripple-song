@@ -894,3 +894,50 @@ msgstr "উইচ্যাট"
 #: app/Customizer/SocialLinks.php:63
 msgid "RSS Feed"
 msgstr "RSS ফিড"
+
+#. Comment form and display strings
+#: functions.php:576
+msgid "Author"
+msgstr "লেখক"
+
+#: functions.php:585
+msgid "Pending Approval"
+msgstr "অনুমোদনের অপেক্ষায়"
+
+#: functions.php:601
+msgid "Reply"
+msgstr "উত্তর দিন"
+
+#: functions.php:606
+msgid "Edit"
+msgstr "সম্পাদনা"
+
+#: functions.php:629
+msgid "Your email address will not be published."
+msgstr "আপনার ইমেইল ঠিকানা প্রকাশ করা হবে না।"
+
+#. translators: %1$s is the edit profile link, %2$s is the username, %3$s is the logout link
+#: functions.php:632
+#, php-format
+msgid "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of this account\">Log out?</a>"
+msgstr "<a href=\"%1$s\">%2$s</a> হিসেবে লগইন করা হয়েছে। <a href=\"%3$s\" title=\"এই অ্যাকাউন্ট থেকে লগআউট করুন\">লগআউট করবেন?</a>"
+
+#: functions.php:646
+msgid "Name"
+msgstr "নাম"
+
+#: functions.php:648
+msgid "Email"
+msgstr "ইমেইল"
+
+#: functions.php:650
+msgid "Website"
+msgstr "ওয়েবসাইট"
+
+#: functions.php:652
+msgid "Save my name, email, and website in this browser for the next time I comment."
+msgstr "পরবর্তী মন্তব্যের জন্য এই ব্রাউজারে আমার নাম, ইমেইল এবং ওয়েবসাইট সংরক্ষণ করুন।"
+
+#: functions.php:661
+msgid "Comment"
+msgstr "মন্তব্য"

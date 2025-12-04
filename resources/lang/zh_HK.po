@@ -892,3 +892,50 @@ msgstr "微信"
 #: app/Customizer/SocialLinks.php:63
 msgid "RSS Feed"
 msgstr "RSS 訂閱"
+
+#. Comment form and display strings
+#: functions.php:576
+msgid "Author"
+msgstr "作者"
+
+#: functions.php:585
+msgid "Pending Approval"
+msgstr "待審核"
+
+#: functions.php:601
+msgid "Reply"
+msgstr "回覆"
+
+#: functions.php:606
+msgid "Edit"
+msgstr "編輯"
+
+#: functions.php:629
+msgid "Your email address will not be published."
+msgstr "你嘅電郵地址唔會被公開。"
+
+#. translators: %1$s is the edit profile link, %2$s is the username, %3$s is the logout link
+#: functions.php:632
+#, php-format
+msgid "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of this account\">Log out?</a>"
+msgstr "登入為 <a href=\"%1$s\">%2$s</a>。<a href=\"%3$s\" title=\"登出呢個帳戶\">登出？</a>"
+
+#: functions.php:646
+msgid "Name"
+msgstr "姓名"
+
+#: functions.php:648
+msgid "Email"
+msgstr "電郵"
+
+#: functions.php:650
+msgid "Website"
+msgstr "網站"
+
+#: functions.php:652
+msgid "Save my name, email, and website in this browser for the next time I comment."
+msgstr "喺呢個瀏覽器儲存我嘅姓名、電郵同網站地址，方便下次留言時使用。"
+
+#: functions.php:661
+msgid "Comment"
+msgstr "留言"

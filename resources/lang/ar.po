@@ -902,3 +902,50 @@ msgstr "وي شات"
 #: app/Customizer/SocialLinks.php:63
 msgid "RSS Feed"
 msgstr "خلاصة RSS"
+
+#. Comment form and display strings
+#: functions.php:576
+msgid "Author"
+msgstr "الكاتب"
+
+#: functions.php:585
+msgid "Pending Approval"
+msgstr "في انتظار الموافقة"
+
+#: functions.php:601
+msgid "Reply"
+msgstr "رد"
+
+#: functions.php:606
+msgid "Edit"
+msgstr "تعديل"
+
+#: functions.php:629
+msgid "Your email address will not be published."
+msgstr "لن يتم نشر عنوان بريدك الإلكتروني."
+
+#. translators: %1$s is the edit profile link, %2$s is the username, %3$s is the logout link
+#: functions.php:632
+#, php-format
+msgid "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of this account\">Log out?</a>"
+msgstr "تم تسجيل الدخول باسم <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"تسجيل الخروج من هذا الحساب\">تسجيل الخروج؟</a>"
+
+#: functions.php:646
+msgid "Name"
+msgstr "الاسم"
+
+#: functions.php:648
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+#: functions.php:650
+msgid "Website"
+msgstr "الموقع الإلكتروني"
+
+#: functions.php:652
+msgid "Save my name, email, and website in this browser for the next time I comment."
+msgstr "احفظ اسمي وبريدي الإلكتروني وموقعي في هذا المتصفح للمرة القادمة التي أعلق فيها."
+
+#: functions.php:661
+msgid "Comment"
+msgstr "تعليق"

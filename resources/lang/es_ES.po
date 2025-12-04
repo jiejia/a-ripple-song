@@ -894,3 +894,50 @@ msgstr "WeChat"
 #: app/Customizer/SocialLinks.php:63
 msgid "RSS Feed"
 msgstr "Feed RSS"
+
+#. Comment form and display strings
+#: functions.php:576
+msgid "Author"
+msgstr "Autor"
+
+#: functions.php:585
+msgid "Pending Approval"
+msgstr "Pendiente de aprobación"
+
+#: functions.php:601
+msgid "Reply"
+msgstr "Responder"
+
+#: functions.php:606
+msgid "Edit"
+msgstr "Editar"
+
+#: functions.php:629
+msgid "Your email address will not be published."
+msgstr "Tu dirección de correo electrónico no será publicada."
+
+#. translators: %1$s is the edit profile link, %2$s is the username, %3$s is the logout link
+#: functions.php:632
+#, php-format
+msgid "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of this account\">Log out?</a>"
+msgstr "Conectado como <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Cerrar sesión de esta cuenta\">¿Cerrar sesión?</a>"
+
+#: functions.php:646
+msgid "Name"
+msgstr "Nombre"
+
+#: functions.php:648
+msgid "Email"
+msgstr "Correo electrónico"
+
+#: functions.php:650
+msgid "Website"
+msgstr "Sitio web"
+
+#: functions.php:652
+msgid "Save my name, email, and website in this browser for the next time I comment."
+msgstr "Guardar mi nombre, correo electrónico y sitio web en este navegador para la próxima vez que comente."
+
+#: functions.php:661
+msgid "Comment"
+msgstr "Comentario"

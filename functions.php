@@ -626,10 +626,10 @@ add_filter('comment_form_defaults', function($defaults) {
     $defaults['cancel_reply_before'] = '<div class="text-sm">';
     $defaults['cancel_reply_after'] = '</div>';
     $defaults['cancel_reply_link'] = '<button type="button" class="btn btn-ghost btn-sm gap-1 text-sm"><i data-lucide="x" class="w-4 h-4"></i> %s</button>';
-    $defaults['comment_notes_before'] = '<p class="comment-notes text-sm text-base-content/60">' . __('Your email address will not be published.') . '</p>';
+    $defaults['comment_notes_before'] = '<p class="comment-notes text-sm text-base-content/60">' . __('Your email address will not be published.', 'sage') . '</p>';
     $defaults['comment_notes_after'] = '';
     $defaults['logged_in_as'] = '<p class="logged-in-as text-sm text-base-content/60">' . 
-        sprintf(__('Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>'), 
+        sprintf(__('Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>', 'sage'), 
             get_edit_user_link(), 
             wp_get_current_user()->display_name, 
             wp_logout_url(apply_filters('the_permalink', get_permalink()))) . 
@@ -649,7 +649,7 @@ add_filter('comment_form_default_fields', function($fields) {
     
     $fields['url'] = '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Website', 'sage') . '</span></label><input type="url" id="url" name="url" class="input input-bordered w-full text-base" /></div>';
     
-    $fields['cookies'] = '<div class="form-control"><label class="comment-form-cookies-consent"><input type="checkbox" id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" value="yes" class="checkbox" /><span class="label-text text-base leading-relaxed">' . __('Save my name, email, and website in this browser for the next time I comment.') . '</span></label></div>';
+    $fields['cookies'] = '<div class="form-control"><label class="comment-form-cookies-consent"><input type="checkbox" id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" value="yes" class="checkbox" /><span class="label-text text-base leading-relaxed">' . __('Save my name, email, and website in this browser for the next time I comment.', 'sage') . '</span></label></div>';
     
     return $fields;
 });

@@ -25,34 +25,10 @@ class Footer_Links_Widget extends WP_Widget {
             return !empty($item['text']);
         });
         
-        if (empty($items) && empty($title)) {
-            echo $args['after_widget'];
-            return;
-        }
-        ?>
-        <div class="text-left bg-base-100/60 rounded-lg p-4">
-            <?php if (!empty($title)): ?>
-                <h4 class="text-base-content/70 text-lg font-bold mb-2"><?php echo esc_html($title); ?></h4>
-            <?php endif; ?>
-            
-            <?php if (!empty($items)): ?>
-                <ul class="grid grid-flow-row gap-2">
-                    <?php foreach ($items as $item): ?>
-                        <li>
-                            <?php if (!empty($item['url'])): ?>
-                                <a href="<?php echo esc_url($item['url']); ?>"
-                                   <?php if (!empty($item['new_tab'])): ?>target="_blank" rel="noopener"<?php endif; ?>>
-                                    <?php echo esc_html($item['text']); ?>
-                                </a>
-                            <?php else: ?>
-                                <span><?php echo esc_html($item['text']); ?></span>
-                            <?php endif; ?>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            <?php endif; ?>
-        </div>
-        <?php
+        echo \Roots\view('widgets.footer-links', [
+            'title' => $title,
+            'items' => $items,
+        ])->render();
         
         echo $args['after_widget'];
     }

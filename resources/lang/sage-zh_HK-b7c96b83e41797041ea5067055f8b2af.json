@@ -12,6 +12,51 @@
             },
             "No podcasts found": [
                 "\u627e\u4e0d\u5230\u64ad\u5ba2"
+            ],
+            "Fetched %d podcasts": [
+                ""
+            ],
+            "Podcast has no audio file, skipping:": [
+                ""
+            ],
+            "Added:": [
+                ""
+            ],
+            "Already exists, skipping:": [
+                ""
+            ],
+            "Successfully added %d new podcasts to playlist": [
+                ""
+            ],
+            "No new podcasts to add": [
+                ""
+            ],
+            "Failed to fetch latest podcasts:": [
+                ""
+            ],
+            "No episode available to play": [
+                ""
+            ],
+            "Playback progress restored:": [
+                ""
+            ],
+            "Playback state restored": [
+                ""
+            ],
+            "Volume settings loaded:": [
+                ""
+            ],
+            "Playback rate loaded:": [
+                ""
+            ],
+            "Switched to existing episode:": [
+                ""
+            ],
+            "Added to playlist:": [
+                ""
+            ],
+            "Episode already exists:": [
+                ""
             ]
         }
     }
