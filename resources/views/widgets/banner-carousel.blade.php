@@ -47,6 +47,26 @@ Banner Carousel Widget Template
         @endforeach
       </div>
 
+      {{-- Navigation Buttons (Desktop only) --}}
+      @if(count($slides) > 1)
+        <button type="button"
+          class="banner-prev absolute top-1/2 left-2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center w-8 h-8 rounded-full bg-black/20 hover:bg-black/40 text-white transition-colors backdrop-blur-sm"
+          data-carousel-prev="{{ $carousel_id }}" aria-label="{{ __('Previous slide', 'sage') }}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15 18-6-6 6-6" />
+          </svg>
+        </button>
+        <button type="button"
+          class="banner-next absolute top-1/2 right-2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center w-8 h-8 rounded-full bg-black/20 hover:bg-black/40 text-white transition-colors backdrop-blur-sm"
+          data-carousel-next="{{ $carousel_id }}" aria-label="{{ __('Next slide', 'sage') }}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m9 18 6-6-6-6" />
+          </svg>
+        </button>
+      @endif
+
       {{-- Dot indicators --}}
       @if(count($slides) > 1)
         <div class="absolute bottom-3 left-0 right-0 flex justify-center gap-2 z-10">
@@ -198,6 +218,16 @@ Banner Carousel Widget Template
               });
             }
 
+            function prevSlide() {
+              const width = carousel.offsetWidth;
+              const currentDomIndex = Math.round(carousel.scrollLeft / width);
+
+              carousel.scrollTo({
+                left: (currentDomIndex - 1) * width,
+                behavior: 'smooth'
+              });
+            }
+
             function startAutoplay() {
               stopAutoplay();
               autoplayTimer = setInterval(nextSlide, 5000);
@@ -218,6 +248,30 @@ Banner Carousel Widget Template
                 goToRealSlide(index);
               });
             });
+
+            // Nav Buttons
+            const prevBtn = document.querySelector(`[data-carousel-prev="${carouselId}"]`);
+            const nextBtn = document.querySelector(`[data-carousel-next="${carouselId}"]`);
+
+            if (prevBtn) {
+              prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                stopAutoplay();
+                prevSlide();
+              });
+              prevBtn.addEventListener('mouseenter', stopAutoplay);
+              prevBtn.addEventListener('mouseleave', startAutoplay);
+            }
+
+            if (nextBtn) {
+              nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                stopAutoplay();
+                nextSlide();
+              });
+              nextBtn.addEventListener('mouseenter', stopAutoplay);
+              nextBtn.addEventListener('mouseleave', startAutoplay);
+            }
 
             // Pause on hover
             carousel.addEventListener('mouseenter', stopAutoplay);
