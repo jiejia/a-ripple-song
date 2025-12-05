@@ -32,7 +32,8 @@ Banner Carousel Widget Template
             $description = $slide['description'] ?? '';
             $link_target = $slide['link_target'] ?? '_self';
           @endphp
-          <div id="{{ $slide_id }}" class="carousel-item relative w-full rounded-lg snap-center">
+          <div id="{{ $slide_id }}" class="carousel-item relative w-full rounded-lg snap-center"
+            style="scroll-snap-stop: always">
             @if($link_url)
               <a href="{{ esc_url($link_url) }}" target="{{ esc_attr($link_target) }}" class="w-full">
                 <img src="{{ esc_url($image_url) }}" class="w-full h-48 object-cover rounded-lg"
@@ -66,32 +67,41 @@ Banner Carousel Widget Template
             if (!carousel) return;
 
             const dots = document.querySelectorAll(`[data-carousel="${carouselId}"]`);
-            const slides = carousel.querySelectorAll('.carousel-item');
-            const totalSlides = slides.length;
-            let currentIndex = 0;
+            // Get original slides before cloning
+            const originalSlides = Array.from(carousel.querySelectorAll('.carousel-item'));
+            const totalSlides = originalSlides.length;
+
+            if (totalSlides < 2) return; // No need for loop/dots if single slide
+
+            // --- 1. Setup Infinite Loop (Clones) ---
+            const firstClone = originalSlides[0].cloneNode(true);
+            const lastClone = originalSlides[totalSlides - 1].cloneNode(true);
+
+            // Add marker classes or ids to clones if needed (optional, logic relies on index)
+            firstClone.removeAttribute('id'); // Avoid duplicate IDs
+            lastClone.removeAttribute('id');
+            firstClone.setAttribute('aria-hidden', 'true');
+            lastClone.setAttribute('aria-hidden', 'true');
+
+            carousel.appendChild(firstClone);
+            carousel.insertBefore(lastClone, originalSlides[0]);
+
+            // --- 2. Initial Positioning ---
+            // Need to wait for layout to ensure widths are correct
+            let slideWidth = carousel.offsetWidth;
+
+            // Start at index 1 (the first real slide)
+            // Using 'auto' behavior to prevent initialization animation
+            carousel.scrollTo({ left: slideWidth, behavior: 'auto' });
+
+            let currentIndex = 0; // Represents real index (0 to totalSlides - 1)
             let autoplayTimer = null;
+            let isScrolling = false;
+            let scrollTimeout = null;
 
-            // Use IntersectionObserver for performant slide detection
-            const observer = new IntersectionObserver((entries) => {
-              entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                  const index = Array.from(slides).indexOf(entry.target);
-                  if (index !== -1) {
-                    currentIndex = index;
-                    updateDots(currentIndex);
-                  }
-                }
-              });
-            }, {
-              root: carousel,
-              threshold: 0.5
-            });
-
-            slides.forEach(slide => observer.observe(slide));
-
-            function updateDots(index) {
+            function updateDots(realIndex) {
               dots.forEach((dot, i) => {
-                if (i === index) {
+                if (i === realIndex) {
                   dot.classList.remove('bg-white/50', 'hover:bg-white/80');
                   dot.classList.add('bg-white', 'scale-125');
                 } else {
@@ -101,19 +111,91 @@ Banner Carousel Widget Template
               });
             }
 
-            function goToSlide(index) {
-              // Handle wrap-around and limits
-              const targetIndex = (index + totalSlides) % totalSlides;
-              const scrollPosition = carousel.clientWidth * targetIndex;
+            function getRealIndexFromScroll() {
+              const currentScroll = carousel.scrollLeft;
+              const width = carousel.offsetWidth;
+              // Dom Index: 0 (Clone Last), 1 (Real 1), ... , Total (Real Last), Total+1 (Clone First)
+              const domIndex = Math.round(currentScroll / width);
+
+              let realIndex = 0;
+              if (domIndex === 0) {
+                realIndex = totalSlides - 1;
+              } else if (domIndex === totalSlides + 1) {
+                realIndex = 0;
+              } else {
+                realIndex = domIndex - 1;
+              }
+
+              // Safety clamp
+              if (realIndex < 0) realIndex = totalSlides - 1;
+              if (realIndex >= totalSlides) realIndex = 0;
+
+              return realIndex;
+            }
+
+            // --- 3. Scroll Handler (Loop Logic) ---
+            carousel.addEventListener('scroll', () => {
+              if (scrollTimeout) clearTimeout(scrollTimeout);
+              isScrolling = true;
+              stopAutoplay();
+
+              const width = carousel.offsetWidth;
+              const scrollLeft = carousel.scrollLeft;
+
+              // Check for loop jump conditions (Snap points)
+              // If at Clone Last (Index 0) -> Jump to Real Last
+              if (scrollLeft <= 5) { // Use small threshold for float inaccuracies
+                carousel.classList.remove('scroll-smooth');
+                carousel.style.scrollBehavior = 'auto';
+                carousel.scrollLeft = width * totalSlides;
+                // Force reflow/flush could be done here implicitly
+                carousel.style.scrollBehavior = '';
+                carousel.classList.add('scroll-smooth');
+              }
+              // If at Clone First (Index Total + 1) -> Jump to Real First
+              else if (scrollLeft >= width * (totalSlides + 1) - 5) {
+                carousel.classList.remove('scroll-smooth');
+                carousel.style.scrollBehavior = 'auto';
+                carousel.scrollLeft = width;
+                carousel.style.scrollBehavior = '';
+                carousel.classList.add('scroll-smooth');
+              }
+
+              // Update Dots continuously for responsiveness, or debounced
+              const realIndex = getRealIndexFromScroll();
+              if (realIndex !== currentIndex) {
+                currentIndex = realIndex;
+                updateDots(currentIndex);
+              }
+
+              // Restart autoplay after interaction stops
+              scrollTimeout = setTimeout(() => {
+                isScrolling = false;
+                startAutoplay();
+              }, 1500); // Wait a bit longer before auto-resuming
+            });
+
+            // --- 4. Navigation Logic ---
+            function goToRealSlide(realIndex) {
+              const width = carousel.offsetWidth;
+              const targetDomIndex = realIndex + 1; // +1 because of prev clone
 
               carousel.scrollTo({
-                left: scrollPosition,
+                left: targetDomIndex * width,
                 behavior: 'smooth'
               });
             }
 
             function nextSlide() {
-              goToSlide(currentIndex + 1);
+              // If currently not changing slides, move forward
+              // We can just increment existing scroll based index
+              const width = carousel.offsetWidth;
+              const currentDomIndex = Math.round(carousel.scrollLeft / width);
+
+              carousel.scrollTo({
+                left: (currentDomIndex + 1) * width,
+                behavior: 'smooth'
+              });
             }
 
             function startAutoplay() {
@@ -128,20 +210,34 @@ Banner Carousel Widget Template
               }
             }
 
-            // Event Listeners
+            // --- 5. Event Listeners ---
             dots.forEach((dot, index) => {
               dot.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent bubbling issues
+                e.stopPropagation();
                 stopAutoplay();
-                goToSlide(index);
+                goToRealSlide(index);
               });
             });
 
-            // Pause on interaction
+            // Pause on hover
             carousel.addEventListener('mouseenter', stopAutoplay);
             carousel.addEventListener('mouseleave', startAutoplay);
             carousel.addEventListener('touchstart', stopAutoplay, { passive: true });
-            carousel.addEventListener('touchend', startAutoplay, { passive: true });
+
+            // Handle Resize
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+              // Re-adjust scroll position to maintain current slide
+              clearTimeout(resizeTimer);
+              resizeTimer = setTimeout(() => {
+                slideWidth = carousel.offsetWidth;
+                carousel.classList.remove('scroll-smooth');
+                carousel.style.scrollBehavior = 'auto';
+                carousel.scrollLeft = (currentIndex + 1) * slideWidth;
+                carousel.classList.add('scroll-smooth');
+                carousel.style.scrollBehavior = '';
+              }, 100);
+            });
 
             // Start
             startAutoplay();
