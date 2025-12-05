@@ -21,7 +21,7 @@
   <div class="w-full rounded-lg bg-base-100 p-4 pb-2">
     <div class="relative">
       {{-- Carousel slides --}}
-      <div id="{{ $carousel_id }}" class="carousel w-full rounded-lg snap-x snap-mandatory overflow-x-auto scroll-smooth">
+      <div id="{{ $carousel_id }}" data-total="{{ count($slides) }}" class="carousel w-full rounded-lg snap-x snap-mandatory overflow-x-auto scroll-smooth">
         @foreach($slides as $index => $slide)
           @php
             $slide_id = $carousel_id . '-slide-' . $index;
@@ -68,22 +68,12 @@
           const carouselId = '{{ $carousel_id }}';
           const carousel = document.getElementById(carouselId);
           const dots = document.querySelectorAll(`[data-carousel="${carouselId}"]`);
-          const totalSlides = {{ count($slides) }};
+          const totalSlides = Number(carousel?.dataset.total || 0);
+          const slideElements = carousel ? Array.from(carousel.children) : [];
           let currentIndex = 0;
           let autoplayTimer = null;
-          
-          function goToSlide(index) {
-            currentIndex = index;
-            if (carousel) {
-              // Calculate scroll position based on carousel width for precise scrolling
-              const scrollPosition = carousel.clientWidth * index;
-              carousel.scrollTo({
-                left: scrollPosition,
-                behavior: 'smooth'
-              });
-            }
 
-            // Update dots
+          function updateDots(index) {
             dots.forEach((dot, i) => {
               if (i === index) {
                 dot.classList.remove('bg-white/50', 'hover:bg-white/80');
@@ -94,25 +84,40 @@
               }
             });
           }
+          
+          function goToSlide(index) {
+            if (!carousel || !slideElements.length) return;
+            const target = slideElements[index];
+            const scrollPosition = target ? target.offsetLeft : carousel.clientWidth * index;
+            currentIndex = index;
+            carousel.scrollTo({
+              left: scrollPosition,
+              behavior: 'smooth'
+            });
+            updateDots(index);
+          }
+
+          function findNearestSlideIndex() {
+            if (!carousel || !slideElements.length) return 0;
+            let nearestIndex = currentIndex;
+            let minDiff = Number.POSITIVE_INFINITY;
+            const currentLeft = carousel.scrollLeft;
+            slideElements.forEach((slide, idx) => {
+              const diff = Math.abs(slide.offsetLeft - currentLeft);
+              if (diff < minDiff) {
+                minDiff = diff;
+                nearestIndex = idx;
+              }
+            });
+            return nearestIndex;
+          }
 
           // Detect current slide based on scroll position
           function updateCurrentSlide() {
-            if (!carousel) return;
-            const scrollLeft = carousel.scrollLeft;
-            const slideWidth = carousel.clientWidth;
-            const newIndex = Math.round(scrollLeft / slideWidth);
-            if (newIndex !== currentIndex && newIndex >= 0 && newIndex < totalSlides) {
+            const newIndex = findNearestSlideIndex();
+            if (newIndex !== currentIndex) {
               currentIndex = newIndex;
-              // Update dots without scrolling
-              dots.forEach((dot, i) => {
-                if (i === currentIndex) {
-                  dot.classList.remove('bg-white/50', 'hover:bg-white/80');
-                  dot.classList.add('bg-white', 'scale-125');
-                } else {
-                  dot.classList.remove('bg-white', 'scale-125');
-                  dot.classList.add('bg-white/50', 'hover:bg-white/80');
-                }
-              });
+              updateDots(currentIndex);
             }
           }
           
@@ -139,15 +144,10 @@
           // Track scroll events to update current slide
           let scrollTimeout = null;
           carousel.addEventListener('scroll', () => {
-            // Clear existing timeout
             if (scrollTimeout) {
               clearTimeout(scrollTimeout);
             }
-
-            // Stop autoplay during manual scroll
             stopAutoplay();
-
-            // Wait for scroll to finish before updating
             scrollTimeout = setTimeout(() => {
               updateCurrentSlide();
               startAutoplay();
@@ -158,7 +158,7 @@
           dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
               goToSlide(index);
-              startAutoplay(); // Reset autoplay timer on manual navigation
+              startAutoplay();
             });
           });
           
