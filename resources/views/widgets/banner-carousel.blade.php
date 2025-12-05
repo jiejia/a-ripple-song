@@ -21,7 +21,7 @@
   <div class="w-full rounded-lg bg-base-100 p-4 pb-2">
     <div class="relative">
       {{-- Carousel slides --}}
-      <div id="{{ $carousel_id }}" class="carousel w-full rounded-lg">
+      <div id="{{ $carousel_id }}" class="carousel w-full rounded-lg snap-x snap-mandatory overflow-x-auto scroll-smooth">
         @foreach($slides as $index => $slide)
           @php
             $slide_id = $carousel_id . '-slide-' . $index;
@@ -30,7 +30,7 @@
             $description = $slide['description'] ?? '';
             $link_target = $slide['link_target'] ?? '_self';
           @endphp
-          <div id="{{ $slide_id }}" class="carousel-item relative w-full rounded-lg">
+          <div id="{{ $slide_id }}" class="carousel-item relative w-full rounded-lg snap-center">
             @if($link_url)
               <a href="{{ esc_url($link_url) }}" target="{{ esc_attr($link_target) }}" class="w-full">
                 <img
@@ -72,25 +72,17 @@
           let currentIndex = 0;
           let autoplayTimer = null;
           
-          // Touch swipe variables
-          let touchStartX = 0;
-          let touchEndX = 0;
-          let isSwiping = false;
-          const swipeThreshold = 50; // Minimum swipe distance in pixels
-          
           function goToSlide(index) {
             currentIndex = index;
             if (carousel) {
-              // Use the target slide's actual offsetLeft for precise scrolling
-              const targetSlide = document.getElementById(`${carouselId}-slide-${index}`);
-              if (targetSlide) {
-                carousel.scrollTo({ 
-                  left: targetSlide.offsetLeft, 
-                  behavior: 'smooth' 
-                });
-              }
+              // Calculate scroll position based on carousel width for precise scrolling
+              const scrollPosition = carousel.clientWidth * index;
+              carousel.scrollTo({
+                left: scrollPosition,
+                behavior: 'smooth'
+              });
             }
-            
+
             // Update dots
             dots.forEach((dot, i) => {
               if (i === index) {
@@ -101,6 +93,27 @@
                 dot.classList.add('bg-white/50', 'hover:bg-white/80');
               }
             });
+          }
+
+          // Detect current slide based on scroll position
+          function updateCurrentSlide() {
+            if (!carousel) return;
+            const scrollLeft = carousel.scrollLeft;
+            const slideWidth = carousel.clientWidth;
+            const newIndex = Math.round(scrollLeft / slideWidth);
+            if (newIndex !== currentIndex && newIndex >= 0 && newIndex < totalSlides) {
+              currentIndex = newIndex;
+              // Update dots without scrolling
+              dots.forEach((dot, i) => {
+                if (i === currentIndex) {
+                  dot.classList.remove('bg-white/50', 'hover:bg-white/80');
+                  dot.classList.add('bg-white', 'scale-125');
+                } else {
+                  dot.classList.remove('bg-white', 'scale-125');
+                  dot.classList.add('bg-white/50', 'hover:bg-white/80');
+                }
+              });
+            }
           }
           
           function nextSlide() {
@@ -122,41 +135,23 @@
               autoplayTimer = null;
             }
           }
-          
-          // Handle swipe gesture
-          function handleSwipe() {
-            const swipeDistance = touchEndX - touchStartX;
-            if (Math.abs(swipeDistance) >= swipeThreshold) {
-              if (swipeDistance > 0) {
-                // Swipe right - go to previous slide
-                prevSlide();
-              } else {
-                // Swipe left - go to next slide
-                nextSlide();
-              }
-              startAutoplay(); // Reset autoplay timer after swipe
+
+          // Track scroll events to update current slide
+          let scrollTimeout = null;
+          carousel.addEventListener('scroll', () => {
+            // Clear existing timeout
+            if (scrollTimeout) {
+              clearTimeout(scrollTimeout);
             }
-          }
-          
-          // Touch event handlers
-          carousel.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-            isSwiping = true;
+
+            // Stop autoplay during manual scroll
             stopAutoplay();
-          }, { passive: true });
-          
-          carousel.addEventListener('touchmove', (e) => {
-            if (isSwiping) {
-              touchEndX = e.changedTouches[0].screenX;
-            }
-          }, { passive: true });
-          
-          carousel.addEventListener('touchend', (e) => {
-            if (isSwiping) {
-              touchEndX = e.changedTouches[0].screenX;
-              handleSwipe();
-              isSwiping = false;
-            }
+
+            // Wait for scroll to finish before updating
+            scrollTimeout = setTimeout(() => {
+              updateCurrentSlide();
+              startAutoplay();
+            }, 150);
           }, { passive: true });
           
           // Dot click handlers
