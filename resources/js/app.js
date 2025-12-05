@@ -7,6 +7,7 @@ import { createIcons, icons } from 'lucide';
 import { Howl, Howler } from 'howler';
 import AudioMotionAnalyzer from 'audiomotion-analyzer';
 import SwupFormsPlugin from '@swup/forms-plugin';
+import SwupScriptsPlugin from '@swup/scripts-plugin';
 import Alpine from 'alpinejs'
 import { DateTime } from 'luxon';
 
@@ -1017,7 +1018,8 @@ function initImageLightbox() {
 const swup = new Swup({
   containers: ['#swup-main', '#swup-header', '#swup-mobile-menu'], // 指定要替换的容器
   animateHistoryBrowsing: true,
-  plugins: [new SwupFormsPlugin()]
+  // 让 Swup 在无刷新切换后重新执行页面内联脚本
+  plugins: [new SwupFormsPlugin(), new SwupScriptsPlugin()]
 });
 
 function init() {

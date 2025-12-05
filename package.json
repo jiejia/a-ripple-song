@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@swup/forms-plugin": "^3.6.0",
+    "@swup/scripts-plugin": "^2.1.0",
     "alpinejs": "^3.15.1",
     "audiomotion-analyzer": "^4.5.1",
     "howler": "^2.2.4",
