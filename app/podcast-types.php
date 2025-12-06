@@ -150,19 +150,6 @@ add_action('cmb2_admin_init', function () {
         'sanitization_cb' => 'absint',
     ]);
 
-    // 字幕字段（富文本）
-    $cmb->add_field([
-        'name' => __('Subtitles', 'sage'),
-        'desc' => __('Enter podcast subtitle content (supports rich text format)', 'sage'),
-        'id' => 'subtitle',
-        'type' => 'wysiwyg',
-        'options' => [
-            'textarea_rows' => 10,
-            'media_buttons' => true,
-            'teeny' => false,
-        ],
-    ]);
-
     // 获取用户列表的辅助函数
     $build_user_options = function($users) {
         $options = [];
