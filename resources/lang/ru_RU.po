@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Sage Starter Theme 11.0.1\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/aripplesong\n"
 "Last-Translator: aripplesong\n"
 "Language-Team: Russian (Russia)\n"
@@ -9,7 +9,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-11-17T01:57:30+00:00\n"
 "PO-Revision-Date: 2025-01-27 12:00+0300\n"
-"Language: ru_RU\n"
+"Language: ru_RU: Sage Starter Theme 11.0.1\n"
 "X-Generator: Manual Translation\n"
 "X-Domain: sage\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
@@ -973,3 +973,11 @@ msgstr "Открыть левую боковую панель"
 #: resources/views/layouts/app.blade.php:131
 msgid "Open Right Sidebar"
 msgstr "Открыть правую боковую панель"
+
+#: app/carbon-fields.php:36
+msgid "Site Logo"
+msgstr "Логотип сайта"
+
+#: app/carbon-fields.php:38
+msgid "Upload a logo image. If no logo is set, the site title with icon will be displayed."
+msgstr "Загрузите изображение логотипа. Если логотип не установлен, будет отображаться название сайта с иконкой."

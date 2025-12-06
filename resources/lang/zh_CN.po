@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Sage Starter Theme 11.0.1\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/aripplesong\n"
 "Last-Translator: aripplesong\n"
 "Language-Team: Chinese (Simplified)\n"
@@ -9,7 +9,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-11-17T01:57:30+00:00\n"
 "PO-Revision-Date: 2025-11-17 10:00+0800\n"
-"Language: zh_CN\n"
+"Language: zh_CN: Sage Starter Theme 11.0.1\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: sage\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -969,3 +969,11 @@ msgstr "打开左边栏"
 #: resources/views/layouts/app.blade.php:131
 msgid "Open Right Sidebar"
 msgstr "打开右边栏"
+
+#: app/carbon-fields.php:36
+msgid "Site Logo"
+msgstr "网站 Logo"
+
+#: app/carbon-fields.php:38
+msgid "Upload a logo image. If no logo is set, the site title with icon will be displayed."
+msgstr "上传一张 Logo 图片。如果没有设置 Logo，将显示网站标题和图标。"

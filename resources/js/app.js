@@ -14,6 +14,51 @@ import { DateTime } from 'luxon';
 // WordPress i18n
 const { __ } = wp.i18n;
 
+// Storage helpers: gracefully handle browsers/contexts where storage is blocked
+const createMemoryStorage = () => {
+  const store = {};
+  return {
+    getItem(key) {
+      return Object.prototype.hasOwnProperty.call(store, key) ? store[key] : null;
+    },
+    setItem(key, value) {
+      store[key] = String(value);
+    },
+    removeItem(key) {
+      delete store[key];
+    },
+    clear() {
+      Object.keys(store).forEach(key => delete store[key]);
+    },
+    key(index) {
+      const keys = Object.keys(store);
+      return keys[index] || null;
+    },
+    get length() {
+      return Object.keys(store).length;
+    }
+  };
+};
+
+function createSafeStorage(type = 'localStorage') {
+  if (typeof window === 'undefined') {
+    return createMemoryStorage();
+  }
+
+  try {
+    const storage = window[type];
+    const testKey = '__aripplesong_storage_test__';
+    storage.setItem(testKey, '1');
+    storage.removeItem(testKey);
+    return storage;
+  } catch (error) {
+    console.warn(`[aripplesong] ${type} is not accessible; falling back to memory storage.`, error);
+    return createMemoryStorage();
+  }
+}
+
+const safeLocalStorage = createSafeStorage('localStorage');
+
 // ========== Date Formatting Utility ==========
 /**
  * Format timestamp to localized date string (similar to PHP get_localized_date)
@@ -92,7 +137,7 @@ Alpine.store('theme', {
   
   init() {
     // 从 localStorage 加载主题模式
-    const savedMode = localStorage.getItem(this.storageKey);
+    const savedMode = safeLocalStorage.getItem(this.storageKey);
     if (savedMode && ['light', 'dark', 'auto'].includes(savedMode)) {
       this.mode = savedMode;
     }
@@ -119,7 +164,7 @@ Alpine.store('theme', {
       this.mode = 'light';
     }
     
-    localStorage.setItem(this.storageKey, this.mode);
+    safeLocalStorage.setItem(this.storageKey, this.mode);
     this.applyTheme();
   },
   
@@ -127,7 +172,7 @@ Alpine.store('theme', {
     // 直接设置主题模式
     if (['light', 'dark', 'auto'].includes(mode)) {
       this.mode = mode;
-      localStorage.setItem(this.storageKey, this.mode);
+      safeLocalStorage.setItem(this.storageKey, this.mode);
       this.applyTheme();
     }
   },
@@ -713,15 +758,15 @@ Alpine.store('player', {
 
   // ========== 播放列表管理 ==========
   loadPlaylist() {
-    const data = localStorage.getItem(this.storageKey);
+    const data = safeLocalStorage.getItem(this.storageKey);
     this.playlist = data ? JSON.parse(data) : [];
-    const index = localStorage.getItem(this.currentIndexKey);
+    const index = safeLocalStorage.getItem(this.currentIndexKey);
     this.currentIndex = index ? parseInt(index) : 0;
   },
 
   savePlaylist() {
-    localStorage.setItem(this.storageKey, JSON.stringify(this.playlist));
-    localStorage.setItem(this.currentIndexKey, this.currentIndex.toString());
+    safeLocalStorage.setItem(this.storageKey, JSON.stringify(this.playlist));
+    safeLocalStorage.setItem(this.currentIndexKey, this.currentIndex.toString());
     // 触发播放列表更新事件，通知播放列表抽屉更新
     window.dispatchEvent(new CustomEvent('playlist-updated'));
 
@@ -733,7 +778,7 @@ Alpine.store('player', {
 
   // ========== 音量管理 ==========
   loadVolume() {
-    const savedVolume = localStorage.getItem(this.volumeKey);
+    const savedVolume = safeLocalStorage.getItem(this.volumeKey);
     if (savedVolume !== null) {
       const volume = parseFloat(savedVolume);
       this.volume = volume;
@@ -744,7 +789,7 @@ Alpine.store('player', {
   },
 
   saveVolume() {
-    localStorage.setItem(this.volumeKey, this.volume.toString());
+    safeLocalStorage.setItem(this.volumeKey, this.volume.toString());
   },
 
   // ========== 播放速度管理 ==========
@@ -752,14 +797,14 @@ Alpine.store('player', {
    * 保存播放速度到 localStorage
    */
   savePlaybackRate() {
-    localStorage.setItem(this.playbackRateKey, this.playbackRate.toString());
+    safeLocalStorage.setItem(this.playbackRateKey, this.playbackRate.toString());
   },
 
   /**
    * 从 localStorage 加载播放速度
    */
   loadPlaybackRate() {
-    const savedRate = localStorage.getItem(this.playbackRateKey);
+    const savedRate = safeLocalStorage.getItem(this.playbackRateKey);
     if (savedRate !== null) {
       const rate = parseFloat(savedRate);
       // 确保速率在可用范围内
@@ -775,16 +820,16 @@ Alpine.store('player', {
    * 保存播放状态到 localStorage
    */
   savePlaybackState() {
-    localStorage.setItem(this.currentTimeKey, this.currentTime.toString());
-    localStorage.setItem(this.isPlayingKey, this.isPlaying.toString());
+    safeLocalStorage.setItem(this.currentTimeKey, this.currentTime.toString());
+    safeLocalStorage.setItem(this.isPlayingKey, this.isPlaying.toString());
   },
 
   /**
    * 从 localStorage 加载播放状态
    */
   loadPlaybackState() {
-    const savedTime = localStorage.getItem(this.currentTimeKey);
-    const savedIsPlaying = localStorage.getItem(this.isPlayingKey);
+    const savedTime = safeLocalStorage.getItem(this.currentTimeKey);
+    const savedIsPlaying = safeLocalStorage.getItem(this.isPlayingKey);
     
     return {
       currentTime: savedTime ? parseFloat(savedTime) : 0,
@@ -796,8 +841,8 @@ Alpine.store('player', {
    * 清除播放状态
    */
   clearPlaybackState() {
-    localStorage.removeItem(this.currentTimeKey);
-    localStorage.removeItem(this.isPlayingKey);
+    safeLocalStorage.removeItem(this.currentTimeKey);
+    safeLocalStorage.removeItem(this.isPlayingKey);
   },
 
   /**

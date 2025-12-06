@@ -7,7 +7,7 @@
         "messages": {
             "": {
                 "domain": "messages",
-                "lang": "ru_RU",
+                "lang": "ru_RU: Sage Starter Theme 11.0.1",
                 "plural-forms": "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);"
             },
             "No podcasts found": [

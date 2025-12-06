@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Sage Starter Theme 11.0.1\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/aripplesong\n"
 "Last-Translator: aripplesong\n"
 "Language-Team: Arabic\n"
@@ -9,7 +9,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-11-17T01:57:30+00:00\n"
 "PO-Revision-Date: 2025-11-17 10:00+0800\n"
-"Language: ar\n"
+"Language: ar: Sage Starter Theme 11.0.1\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: sage\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5);\n"
@@ -979,3 +979,11 @@ msgstr "فتح الشريط الجانبي الأيسر"
 #: resources/views/layouts/app.blade.php:131
 msgid "Open Right Sidebar"
 msgstr "فتح الشريط الجانبي الأيمن"
+
+#: app/carbon-fields.php:36
+msgid "Site Logo"
+msgstr "شعار الموقع"
+
+#: app/carbon-fields.php:38
+msgid "Upload a logo image. If no logo is set, the site title with icon will be displayed."
+msgstr "قم بتحميل صورة الشعار. إذا لم يتم تعيين شعار، سيتم عرض عنوان الموقع مع الأيقونة."

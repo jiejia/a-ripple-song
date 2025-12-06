@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Sage Starter Theme 11.0.1\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/aripplesong\n"
 "Last-Translator: aripplesong\n"
 "Language-Team: Japanese\n"
@@ -9,7 +9,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-11-17T01:57:30+00:00\n"
 "PO-Revision-Date: 2025-01-27 12:00+0900\n"
-"Language: ja\n"
+"Language: ja: Sage Starter Theme 11.0.1\n"
 "X-Generator: Manual Translation\n"
 "X-Domain: sage\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -969,3 +969,11 @@ msgstr "左サイドバーを開く"
 #: resources/views/layouts/app.blade.php:131
 msgid "Open Right Sidebar"
 msgstr "右サイドバーを開く"
+
+#: app/carbon-fields.php:36
+msgid "Site Logo"
+msgstr "サイトロゴ"
+
+#: app/carbon-fields.php:38
+msgid "Upload a logo image. If no logo is set, the site title with icon will be displayed."
+msgstr "ロゴ画像をアップロードします。ロゴが設定されていない場合は、サイト名とアイコンが表示されます。"

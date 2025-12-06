@@ -33,11 +33,13 @@ add_action('carbon_fields_register_fields', function () {
         ->set_icon('dashicons-admin-settings')
         ->set_page_menu_position(60)
         ->add_fields([
-            Field::make('html', 'crb_theme_info')
-                ->set_html(sprintf(
-                    '<p>%s</p>',
-                    __('Welcome to the theme settings. Use the sub-menus to configure social links and custom scripts.', 'sage')
-                )),
+            Field::make('image', 'crb_site_logo', __('Site Logo', 'sage'))
+                ->set_value_type('url')
+                ->set_help_text(__('Upload a logo image. If no logo is set, the site title with icon will be displayed.', 'sage')),
+            Field::make('header_scripts', 'crb_header_scripts', __('Header Scripts', 'sage'))
+                ->set_help_text(__('Scripts to be added in the <head> section. You can include complete <script> tags for services like Google Analytics.', 'sage')),
+            Field::make('footer_scripts', 'crb_footer_scripts', __('Footer Scripts', 'sage'))
+                ->set_help_text(__('Scripts to be added before </body>. You can include complete <script> tags.', 'sage')),
         ]);
 
     // Social Links sub-page
@@ -45,15 +47,6 @@ add_action('carbon_fields_register_fields', function () {
         ->set_page_parent($theme_settings)
         ->add_fields(crb_get_social_links_fields());
 
-    // Custom Scripts sub-page
-    Container::make('theme_options', __('Custom Scripts', 'sage'))
-        ->set_page_parent($theme_settings)
-        ->add_fields([
-            Field::make('header_scripts', 'crb_header_scripts', __('Header Scripts', 'sage'))
-                ->set_help_text(__('Scripts to be added in the <head> section. You can include complete <script> tags for services like Google Analytics.', 'sage')),
-            Field::make('footer_scripts', 'crb_footer_scripts', __('Footer Scripts', 'sage'))
-                ->set_help_text(__('Scripts to be added before </body>. You can include complete <script> tags.', 'sage')),
-        ]);
 });
 
 /**
