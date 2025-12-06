@@ -20,38 +20,15 @@
         <div class="grid grid-flow-col justify-end gap-2 place-items-center">
           <label for="search-modal" class="md:hidden block"><i data-lucide="search"
               class="w-5 h-5 cursor-pointer"></i></label>
-          <!-- 主题切换下拉菜单 -->
-          <div class="dropdown dropdown-end" x-data>
-            <button type="button" tabindex="0" class="btn btn-ghost btn-sm btn-circle"
-              :title="$store.theme.mode === 'light' ? '{{ __('Light Mode', 'sage') }}' : ($store.theme.mode === 'dark' ? '{{ __('Dark Mode', 'sage') }}' : '{{ __('Follow System', 'sage') }}')">
-              <!-- 明亮模式图标 -->
-              <i data-lucide="sun" class="w-5 h-5" x-show="$store.theme.isLight"></i>
-              <!-- 黑暗模式图标 -->
-              <i data-lucide="moon" class="w-5 h-5" x-show="$store.theme.isDark && !$store.theme.isAuto"></i>
-              <!-- 跟随系统图标 -->
-              <i data-lucide="monitor" class="w-5 h-5" x-show="$store.theme.isAuto"></i>
-            </button>
-            <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-auto p-2 shadow-lg">
-              <li>
-                <a @click.prevent="$store.theme.setMode('light')" :class="{ 'active': $store.theme.mode === 'light' }"
-                  class="flex items-center justify-center" title="{{ __('Light Mode', 'sage') }}">
-                  <i data-lucide="sun" class="w-4 h-4"></i>
-                </a>
-              </li>
-              <li>
-                <a @click.prevent="$store.theme.setMode('dark')" :class="{ 'active': $store.theme.mode === 'dark' }"
-                  class="flex items-center justify-center" title="{{ __('Dark Mode', 'sage') }}">
-                  <i data-lucide="moon" class="w-4 h-4"></i>
-                </a>
-              </li>
-              <li>
-                <a @click.prevent="$store.theme.setMode('auto')" :class="{ 'active': $store.theme.mode === 'auto' }"
-                  class="flex items-center justify-center" title="{{ __('Follow System', 'sage') }}">
-                  <i data-lucide="monitor" class="w-4 h-4"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
+          <!-- 主题循环切换按钮 -->
+          <button type="button" class="btn btn-ghost btn-sm btn-circle"
+            @click="$store.theme.toggle()"
+            :title="$store.theme.mode === 'light' ? '{{ __('Light Mode', 'sage') }}' : ($store.theme.mode === 'dark' ? '{{ __('Dark Mode', 'sage') }}' : '{{ __('Follow System', 'sage') }}')">
+            <i data-lucide="sun" class="w-5 h-5" x-show="$store.theme.isLight"></i>
+            <i data-lucide="moon" class="w-5 h-5" x-show="$store.theme.isDark && !$store.theme.isAuto"></i>
+            <i data-lucide="sun-moon" class="w-5 h-5" x-show="$store.theme.isAuto"></i>
+            <span class="sr-only">{{ __('Toggle Theme', 'sage') }}</span>
+          </button>
 
           <label for="mobile-menu" class="xl:hidden block"><i data-lucide="menu"
               class="w-5 h-5 cursor-pointer"></i></label>
