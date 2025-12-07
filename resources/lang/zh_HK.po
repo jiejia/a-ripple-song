@@ -978,63 +978,26 @@ msgstr "網站 Logo"
 msgid "Upload a logo image. If no logo is set, the site title with icon will be displayed."
 msgstr "上傳一張 Logo 圖片。如果沒有設置 Logo，將顯示網站標題和圖標。"
 
-#: resources/js/app.js:162
-msgid "Fetched %d podcasts"
-msgstr ""
+#: app/carbon-fields.php
+msgid "Click any card to choose the light theme."
+msgstr "點擊任意卡片選擇淺色主題。"
 
-#: resources/js/app.js:178
-msgid "Podcast has no audio file, skipping:"
-msgstr ""
+#: app/carbon-fields.php
+msgid "Click any card to choose the dark theme."
+msgstr "點擊任意卡片選擇深色主題。"
 
-#: resources/js/app.js:212
-msgid "Added:"
-msgstr ""
+#: app/carbon-fields.php
+msgid "If the card picker is unavailable, use this dropdown (default: retro)."
+msgstr "如果卡片控制不可用，請使用此下拉選單（預設：retro）。"
 
-#: resources/js/app.js:214
-msgid "Already exists, skipping:"
-msgstr ""
+#: app/carbon-fields.php
+msgid "If the card picker is unavailable, use this dropdown (default: dim)."
+msgstr "如果卡片控制不可用，請使用此下拉選單（預設：dim）。"
 
-#: resources/js/app.js:219
-msgid "Successfully added %d new podcasts to playlist"
-msgstr ""
+#: app/carbon-fields.php
+msgid "Light Theme"
+msgstr "淺色主題"
 
-#: resources/js/app.js:230
-msgid "No new podcasts to add"
-msgstr ""
-
-#: resources/js/app.js:236
-msgid "Failed to fetch latest podcasts:"
-msgstr ""
-
-#: resources/js/app.js:268
-msgid "No episode available to play"
-msgstr ""
-
-#: resources/js/app.js:283
-msgid "Playback progress restored:"
-msgstr ""
-
-#: resources/js/app.js:288
-#: resources/js/app.js:294
-msgid "Playback state restored"
-msgstr ""
-
-#: resources/js/app.js:563
-msgid "Volume settings loaded:"
-msgstr ""
-
-#: resources/js/app.js:589
-msgid "Playback rate loaded:"
-msgstr ""
-
-#: resources/js/app.js:641
-msgid "Switched to existing episode:"
-msgstr ""
-
-#: resources/js/app.js:659
-msgid "Added to playlist:"
-msgstr ""
-
-#: resources/js/app.js:670
-msgid "Episode already exists:"
-msgstr ""
+#: app/carbon-fields.php
+msgid "Dark Theme"
+msgstr "深色主題"

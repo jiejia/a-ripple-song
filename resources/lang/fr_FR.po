@@ -980,63 +980,18 @@ msgstr "Logo du site"
 msgid "Upload a logo image. If no logo is set, the site title with icon will be displayed."
 msgstr "Téléchargez une image de logo. Si aucun logo n'est défini, le titre du site avec l'icône sera affiché."
 
-#: resources/js/app.js:162
-msgid "Fetched %d podcasts"
-msgstr ""
+#: app/carbon-fields.php
+msgid "Click any card to choose the light theme."
+msgstr "Click any card to choose the light theme."
 
-#: resources/js/app.js:178
-msgid "Podcast has no audio file, skipping:"
-msgstr ""
+#: app/carbon-fields.php
+msgid "Click any card to choose the dark theme."
+msgstr "Click any card to choose the dark theme."
 
-#: resources/js/app.js:212
-msgid "Added:"
-msgstr ""
+#: app/carbon-fields.php
+msgid "If the card picker is unavailable, use this dropdown (default: retro)."
+msgstr "If the card picker is unavailable, use this dropdown (default: retro)."
 
-#: resources/js/app.js:214
-msgid "Already exists, skipping:"
-msgstr ""
-
-#: resources/js/app.js:219
-msgid "Successfully added %d new podcasts to playlist"
-msgstr ""
-
-#: resources/js/app.js:230
-msgid "No new podcasts to add"
-msgstr ""
-
-#: resources/js/app.js:236
-msgid "Failed to fetch latest podcasts:"
-msgstr ""
-
-#: resources/js/app.js:268
-msgid "No episode available to play"
-msgstr ""
-
-#: resources/js/app.js:283
-msgid "Playback progress restored:"
-msgstr ""
-
-#: resources/js/app.js:288
-#: resources/js/app.js:294
-msgid "Playback state restored"
-msgstr ""
-
-#: resources/js/app.js:563
-msgid "Volume settings loaded:"
-msgstr ""
-
-#: resources/js/app.js:589
-msgid "Playback rate loaded:"
-msgstr ""
-
-#: resources/js/app.js:641
-msgid "Switched to existing episode:"
-msgstr ""
-
-#: resources/js/app.js:659
-msgid "Added to playlist:"
-msgstr ""
-
-#: resources/js/app.js:670
-msgid "Episode already exists:"
-msgstr ""
+#: app/carbon-fields.php
+msgid "If the card picker is unavailable, use this dropdown (default: dim)."
+msgstr "If the card picker is unavailable, use this dropdown (default: dim)."

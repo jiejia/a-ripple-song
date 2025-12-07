@@ -1281,8 +1281,32 @@ msgid "Site Logo"
 msgstr ""
 
 
+#: app/carbon-fields.php
+msgid "Light Theme"
+msgstr ""
+
+#: app/carbon-fields.php
+msgid "Dark Theme"
+msgstr ""
+
 #: app/carbon-fields.php:38
 msgid "Upload a logo image. If no logo is set, the site title with icon will be displayed."
+msgstr ""
+
+#: app/carbon-fields.php
+msgid "Click any card to choose the light theme."
+msgstr ""
+
+#: app/carbon-fields.php
+msgid "Click any card to choose the dark theme."
+msgstr ""
+
+#: app/carbon-fields.php
+msgid "If the card picker is unavailable, use this dropdown (default: retro)."
+msgstr ""
+
+#: app/carbon-fields.php
+msgid "If the card picker is unavailable, use this dropdown (default: dim)."
 msgstr ""
 
 
