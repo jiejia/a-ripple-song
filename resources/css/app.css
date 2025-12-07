@@ -5,7 +5,7 @@
 @plugin 'tailwind-scrollbar';
 
 @plugin "daisyui" {
-    themes: light --default, dark --prefersdark, retro --prefersdark, dim --prefersdark;
+    themes: all;
 }
 
 @theme {

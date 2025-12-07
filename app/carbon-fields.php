@@ -36,6 +36,14 @@ add_action('carbon_fields_register_fields', function () {
             Field::make('image', 'crb_site_logo', __('Site Logo', 'sage'))
                 ->set_value_type('url')
                 ->set_help_text(__('Upload a logo image. If no logo is set, the site title with icon will be displayed.', 'sage')),
+            Field::make('select', 'crb_light_theme', __('Light Theme', 'sage'))
+                ->set_options(crb_get_daisyui_light_themes())
+                ->set_default_value('retro')
+                ->set_help_text(__('Choose the DaisyUI theme used for light mode (default: retro).', 'sage')),
+            Field::make('select', 'crb_dark_theme', __('Dark Theme', 'sage'))
+                ->set_options(crb_get_daisyui_dark_themes())
+                ->set_default_value('dim')
+                ->set_help_text(__('Choose the DaisyUI theme used for dark mode (default: dim).', 'sage')),
             Field::make('header_scripts', 'crb_header_scripts', __('Header Scripts', 'sage'))
                 ->set_help_text(esc_html__('Scripts to be added in the <head> section. You can include complete <script> tags for services like Google Analytics.', 'sage')),
             Field::make('footer_scripts', 'crb_footer_scripts', __('Footer Scripts', 'sage'))
@@ -118,5 +126,62 @@ function crb_get_social_links_fields()
     }
 
     return $fields;
+}
+
+/**
+ * DaisyUI light themes list keyed by slug.
+ *
+ * @return array<string, string>
+ */
+function crb_get_daisyui_light_themes(): array
+{
+    return [
+        'light' => 'light',
+        'cupcake' => 'cupcake',
+        'bumblebee' => 'bumblebee',
+        'emerald' => 'emerald',
+        'corporate' => 'corporate',
+        'retro' => 'retro',
+        'valentine' => 'valentine',
+        'garden' => 'garden',
+        'aqua' => 'aqua',
+        'lofi' => 'lofi',
+        'pastel' => 'pastel',
+        'fantasy' => 'fantasy',
+        'wireframe' => 'wireframe',
+        'cmyk' => 'cmyk',
+        'autumn' => 'autumn',
+        'acid' => 'acid',
+        'lemonade' => 'lemonade',
+        'winter' => 'winter',
+        'caramellatte' => 'caramellatte',
+        'silk' => 'silk',
+    ];
+}
+
+/**
+ * DaisyUI dark themes list keyed by slug.
+ *
+ * @return array<string, string>
+ */
+function crb_get_daisyui_dark_themes(): array
+{
+    return [
+        'dark' => 'dark',
+        'synthwave' => 'synthwave',
+        'cyberpunk' => 'cyberpunk',
+        'halloween' => 'halloween',
+        'forest' => 'forest',
+        'black' => 'black',
+        'luxury' => 'luxury',
+        'dracula' => 'dracula',
+        'business' => 'business',
+        'night' => 'night',
+        'coffee' => 'coffee',
+        'dim' => 'dim',
+        'nord' => 'nord',
+        'abyss' => 'abyss',
+        'sunset' => 'sunset',
+    ];
 }
 

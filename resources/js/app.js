@@ -59,6 +59,56 @@ function createSafeStorage(type = 'localStorage') {
 
 const safeLocalStorage = createSafeStorage('localStorage');
 
+const FALLBACK_LIGHT_THEME = 'retro';
+const FALLBACK_DARK_THEME = 'dim';
+const LIGHT_THEMES = window.aripplesongData?.theme?.lightThemes || [
+  'light',
+  'cupcake',
+  'bumblebee',
+  'emerald',
+  'corporate',
+  'retro',
+  'valentine',
+  'garden',
+  'aqua',
+  'lofi',
+  'pastel',
+  'fantasy',
+  'wireframe',
+  'cmyk',
+  'autumn',
+  'acid',
+  'lemonade',
+  'winter',
+  'caramellatte',
+  'silk'
+];
+
+const DARK_THEMES = window.aripplesongData?.theme?.darkThemes || [
+  'dark',
+  'synthwave',
+  'cyberpunk',
+  'halloween',
+  'forest',
+  'black',
+  'luxury',
+  'dracula',
+  'business',
+  'night',
+  'coffee',
+  'dim',
+  'nord',
+  'abyss',
+  'sunset'
+];
+
+const resolveTheme = (theme, available, fallback) => {
+  if (theme && available.includes(theme)) {
+    return theme;
+  }
+  return fallback;
+};
+
 // ========== Date Formatting Utility ==========
 /**
  * Format timestamp to localized date string (similar to PHP get_localized_date)
@@ -131,8 +181,8 @@ window.Alpine = Alpine
 Alpine.store('theme', {
   mode: 'auto', // 'light', 'dark', 'auto'
   storageKey: 'aripplesong-theme-mode',
-  lightTheme: 'retro',
-  darkTheme: 'dim',
+  lightTheme: resolveTheme(window.aripplesongData?.theme?.lightTheme, LIGHT_THEMES, FALLBACK_LIGHT_THEME),
+  darkTheme: resolveTheme(window.aripplesongData?.theme?.darkTheme, DARK_THEMES, FALLBACK_DARK_THEME),
   mediaQuery: null,
   
   init() {

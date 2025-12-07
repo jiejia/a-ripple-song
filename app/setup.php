@@ -382,12 +382,23 @@ add_action('wp_enqueue_scripts', function () {
                 wp_enqueue_script('aripplesong-app', $js_url, ['wp-i18n'], null, true);
                 // Set script translations for JavaScript i18n
                 wp_set_script_translations('aripplesong-app', 'sage', get_template_directory() . '/resources/lang');
-                
-                // Localize script with REST API URL
+
+                $light_theme = function_exists('\carbon_get_theme_option') ? \carbon_get_theme_option('crb_light_theme') : null;
+                $dark_theme = function_exists('\carbon_get_theme_option') ? \carbon_get_theme_option('crb_dark_theme') : null;
+                $light_themes = function_exists('\App\crb_get_daisyui_light_themes') ? array_keys(\App\crb_get_daisyui_light_themes()) : [];
+                $dark_themes = function_exists('\App\crb_get_daisyui_dark_themes') ? array_keys(\App\crb_get_daisyui_dark_themes()) : [];
+
+                // Localize script with REST API URL and theme options
                 wp_localize_script('aripplesong-app', 'aripplesongData', [
                     'restUrl' => esc_url_raw(rest_url()),
                     'restNonce' => wp_create_nonce('wp_rest'),
                     'siteUrl' => esc_url_raw(home_url('/')),
+                    'theme' => [
+                        'lightTheme' => $light_theme ?: 'retro',
+                        'darkTheme' => $dark_theme ?: 'dim',
+                        'lightThemes' => $light_themes,
+                        'darkThemes' => $dark_themes,
+                    ],
                 ]);
             }
         }
