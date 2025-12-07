@@ -1,5 +1,5 @@
 @if (! post_password_required())
-<section id="comments" class="comments">
+<section id="comments" class="comments text-sm">
   @if ($responses())
   <h2 class="text-base font-bold mb-4 flex items-center gap-2">
     <i data-lucide="message-circle" class="w-4 h-4"></i>

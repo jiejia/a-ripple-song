@@ -576,7 +576,7 @@ function sage_custom_comment($comment, $args, $depth) {
                             <span class="badge badge-primary badge-sm"><?php _e('Author', 'sage'); ?></span>
                         <?php endif; ?>
                         
-                        <span class="text-sm text-base-content/60 flex items-center gap-1">
+                        <span class="text-xs text-base-content/60 flex items-center gap-1">
                             <i data-lucide="clock" class="w-4 h-4"></i>
                             <?php echo get_localized_comment_date($comment); ?>
                         </span>
@@ -643,13 +643,13 @@ add_filter('comment_form_defaults', function($defaults) {
  */
 add_filter('comment_form_default_fields', function($fields) {
     // Keep interactive controls at >=16px to stop Chrome/Android auto-zoom.
-    $fields['author'] = '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Name', 'sage') . ' <span class="text-error">*</span></span></label><input type="text" id="author" name="author" class="input input-bordered w-full text-base" required /></div>';
+    $fields['author'] = '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Name', 'sage') . ' <span class="text-error">*</span></span></label><input type="text" id="author" name="author" class="input input-bordered w-full text-sm" required /></div>';
     
-    $fields['email'] = '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Email', 'sage') . ' <span class="text-error">*</span></span></label><input type="email" id="email" name="email" class="input input-bordered w-full text-base" required /></div>';
+    $fields['email'] = '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Email', 'sage') . ' <span class="text-error">*</span></span></label><input type="email" id="email" name="email" class="input input-bordered w-full text-sm" required /></div>';
     
-    $fields['url'] = '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Website', 'sage') . '</span></label><input type="url" id="url" name="url" class="input input-bordered w-full text-base" /></div>';
+    $fields['url'] = '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Website', 'sage') . '</span></label><input type="url" id="url" name="url" class="input input-bordered w-full text-sm" /></div>';
     
-    $fields['cookies'] = '<div class="form-control"><label class="comment-form-cookies-consent"><input type="checkbox" id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" value="yes" class="checkbox" /><span class="label-text text-base leading-relaxed">' . __('Save my name, email, and website in this browser for the next time I comment.', 'sage') . '</span></label></div>';
+    $fields['cookies'] = '<div class="form-control"><label class="comment-form-cookies-consent"><input type="checkbox" id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" value="yes" class="checkbox" /><span class="label-text text-sm leading-relaxed">' . __('Save my name, email, and website in this browser for the next time I comment.', 'sage') . '</span></label></div>';
     
     return $fields;
 });
@@ -658,5 +658,5 @@ add_filter('comment_form_default_fields', function($fields) {
  * Customize comment textarea field with DaisyUI styling
  */
 add_filter('comment_form_field_comment', function($field) {
-    return '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Comment', 'sage') . ' <span class="text-error">*</span></span></label><textarea id="comment" name="comment" rows="6" class="textarea textarea-bordered w-full text-base" required></textarea></div>';
+    return '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Comment', 'sage') . ' <span class="text-error">*</span></span></label><textarea id="comment" name="comment" rows="6" class="textarea textarea-bordered w-full text-sm" required></textarea></div>';
 });
