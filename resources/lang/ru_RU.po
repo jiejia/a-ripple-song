@@ -17,7 +17,7 @@ msgstr ""
 #. Theme Name of the theme
 #: style.css
 msgid "Sage Starter Theme"
-msgstr "Sage Starter Theme"
+msgstr "Стартовая тема Sage"
 
 #. Theme URI of the theme
 #: style.css
@@ -984,16 +984,190 @@ msgstr "Загрузите изображение логотипа. Если л�
 
 #: app/carbon-fields.php
 msgid "Click any card to choose the light theme."
-msgstr "Click any card to choose the light theme."
+msgstr "Щёлкните любую карточку, чтобы выбрать светлую тему."
 
 #: app/carbon-fields.php
 msgid "Click any card to choose the dark theme."
-msgstr "Click any card to choose the dark theme."
+msgstr "Щёлкните любую карточку, чтобы выбрать тёмную тему."
 
 #: app/carbon-fields.php
 msgid "If the card picker is unavailable, use this dropdown (default: retro)."
-msgstr "If the card picker is unavailable, use this dropdown (default: retro)."
+msgstr "Если выбор карточек недоступен, используйте этот список (по умолчанию: retro)."
 
 #: app/carbon-fields.php
 msgid "If the card picker is unavailable, use this dropdown (default: dim)."
-msgstr "If the card picker is unavailable, use this dropdown (default: dim)."
+msgstr "Если выбор карточек недоступен, используйте этот список (по умолчанию: dim)."
+
+msgid "Podcast Cover file not found. Please re-upload."
+msgstr "Файл обложки подкаста не найден. Загрузите его снова."
+
+msgid "Podcast Cover validation failed"
+msgstr "Проверка обложки подкаста не прошла."
+
+msgid "Podcast Cover is not a valid image."
+msgstr "Обложка подкаста не является допустимым изображением."
+
+msgid "Podcast Cover must be JPG or PNG."
+msgstr "Обложка подкаста должна быть JPG или PNG."
+
+msgid "Podcast Cover must be square. Current: %1%2."
+msgstr "Обложка подкаста должна быть квадратной. Текущее значение: %1%2."
+
+msgid "Podcast Cover must be between %1 and %2 px. Current: %3 px."
+msgstr "Обложка подкаста должна быть от %1 до %2 пикселей. Текущее: %3 пикс."
+
+msgid "Podcast Settings"
+msgstr "Настройки подкаста"
+
+msgid "Podcast Title"
+msgstr "Название подкаста"
+
+msgid "Required. If empty, falls back to site title."
+msgstr "Обязательно. Если пусто, будет использовано название сайта."
+
+msgid "Podcast Subtitle"
+msgstr "Подзаголовок подкаста"
+
+msgid "Short tagline shown in some apps."
+msgstr "Короткий слоган, отображается в некоторых приложениях."
+
+msgid "Podcast Description"
+msgstr "Описание подкаста"
+
+msgid "Required. Plain text description of the show."
+msgstr "Обязательно. Описание шоу в виде простого текста."
+
+msgid "Podcast Author (itunes:author)"
+msgstr "Автор подкаста (itunes:author)"
+
+msgid "Required. Displayed as show author in directories."
+msgstr "Обязательно. Отображается как автор шоу в каталогах."
+
+msgid "Owner Name"
+msgstr "Имя владельца"
+
+msgid "Required. For <itunes:owner><itunes:name>."
+msgstr "Обязательно для <itunes:owner><itunes:name>."
+
+msgid "Owner Email"
+msgstr "Email владельца"
+
+msgid "Required. For <itunes:owner><itunes:email>. Use a monitored inbox."
+msgstr "Обязательно для <itunes:owner><itunes:email>. Используйте контролируемый ящик."
+
+msgid "Podcast Cover (1400–3000px square)"
+msgstr "Обложка подкаста (квадрат 1400–3000 px)"
+
+msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Will be validated on save."
+msgstr "Обязательно. Квадратный JPG/PNG 1400–3000 px для <itunes:image>. Будет проверено при сохранении."
+
+msgid "Default Explicit Flag"
+msgstr "Флаг Explicit по умолчанию"
+
+msgid "clean (no explicit content)"
+msgstr "clean (без откровенного контента)"
+
+msgid "explicit"
+msgstr "explicit"
+
+msgid "Required. Single-episode value can override."
+msgstr "Обязательно. Значение отдельного эпизода может переопределить."
+
+msgid "Language (RSS <language>)"
+msgstr "Язык (RSS <language>)"
+
+msgid "RFC 5646 language tag, e.g. en-US, zh-CN."
+msgstr "Языковой тег RFC 5646, например en-US, zh-CN."
+
+msgid "Primary Category"
+msgstr "Основная категория"
+
+msgid "Required. Use Apple’s category list."
+msgstr "Обязательно. Используйте список категорий Apple."
+
+msgid "Secondary Category (optional)"
+msgstr "Вторичная категория (опционально)"
+
+msgid "Optional second category."
+msgstr "Необязательная вторая категория."
+
+msgid "Copyright (optional)"
+msgstr "Авторское право (опционально)"
+
+msgid "Example: © 2025 Your Studio. Plain text."
+msgstr "Пример: © 2025 Your Studio. Простой текст."
+
+msgid "podcast:locked"
+msgstr "podcast:locked"
+
+msgid "yes (recommended, prevents unauthorized moves)"
+msgstr "yes (рекомендуется, предотвращает несанкционированные переносы)"
+
+msgid "no"
+msgstr "no"
+
+msgid "Podcasting 2.0: lock feed to this publisher."
+msgstr "Podcasting 2.0: закрепить ленту за этим издателем."
+
+msgid "podcast:guid (optional)"
+msgstr "podcast:guid (опционально)"
+
+msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
+msgstr "GUID Podcasting 2.0. Если пусто, лента использует URL сайта как запасной."
+
+msgid "Podcast Cover must be square. Current: %1$dx%2$d."
+msgstr "Обложка подкаста должна быть квадратной. Текущее: %1$dx%2$d."
+
+msgid "Podcast Cover must be between %1$d and %2$d px. Current: %3$d px."
+msgstr "Обложка подкаста должна быть от %1$d до %2$d пикселей. Текущее: %3$d пикс."
+
+msgid "Required. Upload an audio file or enter audio file URL (https)."
+msgstr "Обязательно. Загрузите аудиофайл или введите URL файла (https)."
+
+msgid "Required. Enter audio duration in seconds. Example: 180 = 3 minutes"
+msgstr "Обязательно. Укажите длительность в секундах. Пример: 180 = 3 минуты"
+
+msgid "Required. Use file size in bytes for enclosure length. Example: 12345678"
+msgstr "Обязательно. Используйте размер файла в байтах для длины enclosure. Пример: 12345678"
+
+msgid "Required. Example: audio/mpeg, audio/mp3, audio/aac"
+msgstr "Обязательно. Пример: audio/mpeg, audio/mp3, audio/aac"
+
+msgid "Required. clean / explicit."
+msgstr "Обязательно. clean / explicit."
+
+msgid "Required. full / trailer / bonus"
+msgstr "Обязательно. full / trailer / bonus"
+
+msgid "https://facebook.com/yourpage"
+msgstr "https://facebook.com/yourpage"
+
+msgid "https://twitter.com/yourhandle"
+msgstr "https://twitter.com/yourhandle"
+
+msgid "https://instagram.com/yourhandle"
+msgstr "https://instagram.com/yourhandle"
+
+msgid "https://linkedin.com/in/yourprofile"
+msgstr "https://linkedin.com/in/yourprofile"
+
+msgid "https://youtube.com/@yourchannel"
+msgstr "https://youtube.com/@yourchannel"
+
+msgid "https://tiktok.com/@yourhandle"
+msgstr "https://tiktok.com/@yourhandle"
+
+msgid "https://pinterest.com/yourhandle"
+msgstr "https://pinterest.com/yourhandle"
+
+msgid "https://threads.net/@yourhandle"
+msgstr "https://threads.net/@yourhandle"
+
+msgid "https://weibo.com/yourpage"
+msgstr "https://weibo.com/yourpage"
+
+msgid "WeChat ID or QR code link"
+msgstr "ID WeChat или ссылка на QR-код"
+
+msgid "/feed/"
+msgstr "/feed/"

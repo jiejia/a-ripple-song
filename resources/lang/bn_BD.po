@@ -17,27 +17,27 @@ msgstr ""
 #. Theme Name of the theme
 #: style.css
 msgid "Sage Starter Theme"
-msgstr ""
+msgstr "Sage স্টার্টার থিম"
 
 #. Theme URI of the theme
 #: style.css
 msgid "https://roots.io/sage/"
-msgstr ""
+msgstr "https://roots.io/sage/"
 
 #. Description of the theme
 #: style.css
 msgid "Sage is a WordPress starter theme."
-msgstr ""
+msgstr "Sage একটি ওয়ার্ডপ্রেস স্টার্টার থিম।"
 
 #. Author of the theme
 #: style.css
 msgid "Roots"
-msgstr ""
+msgstr "Roots"
 
 #. Author URI of the theme
 #: style.css
 msgid "https://roots.io/"
-msgstr ""
+msgstr "https://roots.io/"
 
 #: app/filters.php:15
 msgid "Continued"
@@ -700,107 +700,107 @@ msgstr "সরান"
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Red (50)"
-msgstr ""
+msgstr "লাল (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Red (400)"
-msgstr ""
+msgstr "লাল (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (50)"
-msgstr ""
+msgstr "হলুদ (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (300)"
-msgstr ""
+msgstr "হলুদ (300)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (400)"
-msgstr ""
+msgstr "হলুদ (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (50)"
-msgstr ""
+msgstr "সবুজ (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (400)"
-msgstr ""
+msgstr "সবুজ (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (500)"
-msgstr ""
+msgstr "সবুজ (500)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Indigo (50)"
-msgstr ""
+msgstr "ইনডিগো (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Indigo (400)"
-msgstr ""
+msgstr "ইনডিগো (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Gray (600)"
-msgstr ""
+msgstr "ধূসর (600)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Gray (800)"
-msgstr ""
+msgstr "ধূসর (800)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Black"
-msgstr ""
+msgstr "কালো"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "White"
-msgstr ""
+msgstr "সাদা"
 
 #: public/build/assets/theme.json
 msgctxt "Font family name"
 msgid "sans"
-msgstr ""
+msgstr "sans"
 
 #: public/build/assets/theme.json
 msgctxt "Font family name"
 msgid "mono"
-msgstr ""
+msgstr "mono"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "xs"
-msgstr ""
+msgstr "xs"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "sm"
-msgstr ""
+msgstr "sm"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "base"
-msgstr ""
+msgstr "base"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "lg"
-msgstr ""
+msgstr "lg"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "2xl"
-msgstr ""
+msgstr "2xl"
 
 #: resources/views/sections/autoplay-confirm.blade.php:21
 msgid "Continue playing?"
@@ -982,16 +982,190 @@ msgstr "একটি লোগো ছবি আপলোড করুন। য�
 
 #: app/carbon-fields.php
 msgid "Click any card to choose the light theme."
-msgstr "Click any card to choose the light theme."
+msgstr "লাইট থিম বেছে নিতে যেকোনো কার্ডে ক্লিক করুন।"
 
 #: app/carbon-fields.php
 msgid "Click any card to choose the dark theme."
-msgstr "Click any card to choose the dark theme."
+msgstr "ডার্ক থিম বেছে নিতে যেকোনো কার্ডে ক্লিক করুন।"
 
 #: app/carbon-fields.php
 msgid "If the card picker is unavailable, use this dropdown (default: retro)."
-msgstr "If the card picker is unavailable, use this dropdown (default: retro)."
+msgstr "কার্ড পিকার না থাকলে এই ড্রপডাউন ব্যবহার করুন (ডিফল্ট: retro)।"
 
 #: app/carbon-fields.php
 msgid "If the card picker is unavailable, use this dropdown (default: dim)."
-msgstr "If the card picker is unavailable, use this dropdown (default: dim)."
+msgstr "কার্ড পিকার না থাকলে এই ড্রপডাউন ব্যবহার করুন (ডিফল্ট: dim)।"
+
+msgid "Podcast Cover file not found. Please re-upload."
+msgstr "পডকাস্ট কভার ফাইল পাওয়া যায়নি। দয়া করে আবার আপলোড করুন।"
+
+msgid "Podcast Cover validation failed"
+msgstr "পডকাস্ট কভার যাচাই ব্যর্থ হয়েছে"
+
+msgid "Podcast Cover is not a valid image."
+msgstr "পডকাস্ট কভারটি বৈধ ছবি নয়।"
+
+msgid "Podcast Cover must be JPG or PNG."
+msgstr "পডকাস্ট কভার JPG বা PNG হতে হবে।"
+
+msgid "Podcast Cover must be square. Current: %1%2."
+msgstr "পডকাস্ট কভার অবশ্যই বর্গাকার হতে হবে। বর্তমান: %1%2।"
+
+msgid "Podcast Cover must be between %1 and %2 px. Current: %3 px."
+msgstr "পডকাস্ট কভার %1 থেকে %2 পিক্সেলের মধ্যে হতে হবে। বর্তমান: %3 পিক্সেল।"
+
+msgid "Podcast Settings"
+msgstr "পডকাস্ট সেটিংস"
+
+msgid "Podcast Title"
+msgstr "পডকাস্ট শিরোনাম"
+
+msgid "Required. If empty, falls back to site title."
+msgstr "আবশ্যিক। খালি থাকলে সাইট টাইটেল ব্যবহার হবে।"
+
+msgid "Podcast Subtitle"
+msgstr "পডকাস্ট সাবটাইটেল"
+
+msgid "Short tagline shown in some apps."
+msgstr "কিছু অ্যাপে প্রদর্শিত ছোট ট্যাগলাইন।"
+
+msgid "Podcast Description"
+msgstr "পডকাস্ট বর্ণনা"
+
+msgid "Required. Plain text description of the show."
+msgstr "আবশ্যিক। অনুষ্ঠানের সাধারণ টেক্সট বর্ণনা।"
+
+msgid "Podcast Author (itunes:author)"
+msgstr "পডকাস্ট লেখক (itunes:author)"
+
+msgid "Required. Displayed as show author in directories."
+msgstr "আবশ্যিক। ডিরেক্টরিতে অনুষ্ঠান লেখক হিসেবে দেখানো হবে।"
+
+msgid "Owner Name"
+msgstr "মালিকের নাম"
+
+msgid "Required. For <itunes:owner><itunes:name>."
+msgstr "<itunes:owner><itunes:name> এর জন্য আবশ্যিক।"
+
+msgid "Owner Email"
+msgstr "মালিকের ইমেল"
+
+msgid "Required. For <itunes:owner><itunes:email>. Use a monitored inbox."
+msgstr "<itunes:owner><itunes:email> এর জন্য আবশ্যিক। মনিটর করা ইনবক্স ব্যবহার করুন।"
+
+msgid "Podcast Cover (1400–3000px square)"
+msgstr "পডকাস্ট কভার (1400–3000px বর্গাকার)"
+
+msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Will be validated on save."
+msgstr "আবশ্যিক। <itunes:image> এর জন্য 1400–3000px বর্গাকার JPG/PNG। সেভের সময় যাচাই হবে।"
+
+msgid "Default Explicit Flag"
+msgstr "ডিফল্ট এক্সপ্লিসিট ফ্ল্যাগ"
+
+msgid "clean (no explicit content)"
+msgstr "clean (কোনো এক্সপ্লিসিট কনটেন্ট নয়)"
+
+msgid "explicit"
+msgstr "explicit"
+
+msgid "Required. Single-episode value can override."
+msgstr "আবশ্যিক। একক এপিসোড মান ওভাররাইড করতে পারে।"
+
+msgid "Language (RSS <language>)"
+msgstr "ভাষা (RSS <language>)"
+
+msgid "RFC 5646 language tag, e.g. en-US, zh-CN."
+msgstr "RFC 5646 ভাষা ট্যাগ, যেমন en-US, zh-CN।"
+
+msgid "Primary Category"
+msgstr "প্রাথমিক বিভাগ"
+
+msgid "Required. Use Apple’s category list."
+msgstr "আবশ্যিক। Apple-এর বিভাগ তালিকা ব্যবহার করুন।"
+
+msgid "Secondary Category (optional)"
+msgstr "গৌণ বিভাগ (ঐচ্ছিক)"
+
+msgid "Optional second category."
+msgstr "ঐচ্ছিক দ্বিতীয় বিভাগ।"
+
+msgid "Copyright (optional)"
+msgstr "কপিরাইট (ঐচ্ছিক)"
+
+msgid "Example: © 2025 Your Studio. Plain text."
+msgstr "উদাহরণ: © 2025 Your Studio। সাধারণ টেক্সট।"
+
+msgid "podcast:locked"
+msgstr "podcast:locked"
+
+msgid "yes (recommended, prevents unauthorized moves)"
+msgstr "yes (প্রস্তাবিত, অনুমতিহীন স্থানান্তর রোধ করে)"
+
+msgid "no"
+msgstr "no"
+
+msgid "Podcasting 2.0: lock feed to this publisher."
+msgstr "Podcasting 2.0: ফিড এই প্রকাশকের জন্য লক করুন।"
+
+msgid "podcast:guid (optional)"
+msgstr "podcast:guid (ঐচ্ছিক)"
+
+msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
+msgstr "Podcasting 2.0 GUID। খালি থাকলে ফিড সাইটের URL ব্যাকআপ হিসেবে ব্যবহার করবে।"
+
+msgid "Podcast Cover must be square. Current: %1$dx%2$d."
+msgstr "পডকাস্ট কভার অবশ্যই বর্গাকার হতে হবে। বর্তমান: %1$dx%2$d।"
+
+msgid "Podcast Cover must be between %1$d and %2$d px. Current: %3$d px."
+msgstr "পডকাস্ট কভার %1$d থেকে %2$d পিক্সেলের মধ্যে হতে হবে। বর্তমান: %3$d পিক্সেল।"
+
+msgid "Required. Upload an audio file or enter audio file URL (https)."
+msgstr "আবশ্যিক। অডিও ফাইল আপলোড করুন বা ফাইল URL (https) দিন।"
+
+msgid "Required. Enter audio duration in seconds. Example: 180 = 3 minutes"
+msgstr "আবশ্যিক। সেকেন্ডে অডিও সময় লিখুন। উদাহরণ: 180 = 3 মিনিট"
+
+msgid "Required. Use file size in bytes for enclosure length. Example: 12345678"
+msgstr "আবশ্যিক। এনক্লোজার দৈর্ঘ্যের জন্য ফাইল সাইজ (বাইট) ব্যবহার করুন। উদাহরণ: 12345678"
+
+msgid "Required. Example: audio/mpeg, audio/mp3, audio/aac"
+msgstr "আবশ্যিক। উদাহরণ: audio/mpeg, audio/mp3, audio/aac"
+
+msgid "Required. clean / explicit."
+msgstr "আবশ্যিক। clean / explicit."
+
+msgid "Required. full / trailer / bonus"
+msgstr "আবশ্যিক। full / trailer / bonus"
+
+msgid "https://facebook.com/yourpage"
+msgstr "https://facebook.com/yourpage"
+
+msgid "https://twitter.com/yourhandle"
+msgstr "https://twitter.com/yourhandle"
+
+msgid "https://instagram.com/yourhandle"
+msgstr "https://instagram.com/yourhandle"
+
+msgid "https://linkedin.com/in/yourprofile"
+msgstr "https://linkedin.com/in/yourprofile"
+
+msgid "https://youtube.com/@yourchannel"
+msgstr "https://youtube.com/@yourchannel"
+
+msgid "https://tiktok.com/@yourhandle"
+msgstr "https://tiktok.com/@yourhandle"
+
+msgid "https://pinterest.com/yourhandle"
+msgstr "https://pinterest.com/yourhandle"
+
+msgid "https://threads.net/@yourhandle"
+msgstr "https://threads.net/@yourhandle"
+
+msgid "https://weibo.com/yourpage"
+msgstr "https://weibo.com/yourpage"
+
+msgid "WeChat ID or QR code link"
+msgstr "WeChat ID বা QR কোড লিঙ্ক"
+
+msgid "/feed/"
+msgstr "/feed/"

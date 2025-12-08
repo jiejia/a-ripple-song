@@ -17,27 +17,27 @@ msgstr ""
 #. Theme Name of the theme
 #: style.css
 msgid "Sage Starter Theme"
-msgstr ""
+msgstr "قالب Sage المبدئي"
 
 #. Theme URI of the theme
 #: style.css
 msgid "https://roots.io/sage/"
-msgstr ""
+msgstr "https://roots.io/sage/"
 
 #. Description of the theme
 #: style.css
 msgid "Sage is a WordPress starter theme."
-msgstr ""
+msgstr "Sage هو قالب مبدئي لـ WordPress."
 
 #. Author of the theme
 #: style.css
 msgid "Roots"
-msgstr ""
+msgstr "Roots"
 
 #. Author URI of the theme
 #: style.css
 msgid "https://roots.io/"
-msgstr ""
+msgstr "https://roots.io/"
 
 #: app/filters.php:15
 msgid "Continued"
@@ -708,107 +708,107 @@ msgstr "إزالة"
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Red (50)"
-msgstr ""
+msgstr "أحمر (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Red (400)"
-msgstr ""
+msgstr "أحمر (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (50)"
-msgstr ""
+msgstr "أصفر (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (300)"
-msgstr ""
+msgstr "أصفر (300)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (400)"
-msgstr ""
+msgstr "أصفر (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (50)"
-msgstr ""
+msgstr "أخضر (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (400)"
-msgstr ""
+msgstr "أخضر (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (500)"
-msgstr ""
+msgstr "أخضر (500)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Indigo (50)"
-msgstr ""
+msgstr "نيلي (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Indigo (400)"
-msgstr ""
+msgstr "نيلي (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Gray (600)"
-msgstr ""
+msgstr "رمادي (600)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Gray (800)"
-msgstr ""
+msgstr "رمادي (800)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Black"
-msgstr ""
+msgstr "أسود"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "White"
-msgstr ""
+msgstr "أبيض"
 
 #: public/build/assets/theme.json
 msgctxt "Font family name"
 msgid "sans"
-msgstr ""
+msgstr "sans"
 
 #: public/build/assets/theme.json
 msgctxt "Font family name"
 msgid "mono"
-msgstr ""
+msgstr "mono"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "xs"
-msgstr ""
+msgstr "xs"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "sm"
-msgstr ""
+msgstr "sm"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "base"
-msgstr ""
+msgstr "base"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "lg"
-msgstr ""
+msgstr "lg"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "2xl"
-msgstr ""
+msgstr "2xl"
 
 #: resources/views/sections/autoplay-confirm.blade.php:21
 msgid "Continue playing?"
@@ -990,16 +990,190 @@ msgstr "قم بتحميل صورة الشعار. إذا لم يتم تعيين �
 
 #: app/carbon-fields.php
 msgid "Click any card to choose the light theme."
-msgstr "Click any card to choose the light theme."
+msgstr "انقر أي بطاقة لاختيار الوضع الفاتح."
 
 #: app/carbon-fields.php
 msgid "Click any card to choose the dark theme."
-msgstr "Click any card to choose the dark theme."
+msgstr "انقر أي بطاقة لاختيار الوضع الداكن."
 
 #: app/carbon-fields.php
 msgid "If the card picker is unavailable, use this dropdown (default: retro)."
-msgstr "If the card picker is unavailable, use this dropdown (default: retro)."
+msgstr "إذا كان منتقي البطاقات غير متاح، استخدم هذه القائمة المنسدلة (الافتراضي: retro)."
 
 #: app/carbon-fields.php
 msgid "If the card picker is unavailable, use this dropdown (default: dim)."
-msgstr "If the card picker is unavailable, use this dropdown (default: dim)."
+msgstr "إذا كان منتقي البطاقات غير متاح، استخدم هذه القائمة المنسدلة (الافتراضي: dim)."
+
+msgid "Podcast Cover file not found. Please re-upload."
+msgstr "لم يتم العثور على ملف غلاف البودكاست. يرجى إعادة الرفع."
+
+msgid "Podcast Cover validation failed"
+msgstr "فشل التحقق من غلاف البودكاست"
+
+msgid "Podcast Cover is not a valid image."
+msgstr "غلاف البودكاست ليس صورة صالحة."
+
+msgid "Podcast Cover must be JPG or PNG."
+msgstr "يجب أن يكون غلاف البودكاست بصيغة JPG أو PNG."
+
+msgid "Podcast Cover must be square. Current: %1%2."
+msgstr "يجب أن يكون غلاف البودكاست مربعاً. الحالي: %1%2."
+
+msgid "Podcast Cover must be between %1 and %2 px. Current: %3 px."
+msgstr "يجب أن يكون غلاف البودكاست بين %1 و %2 بكسل. الحالي: %3 بكسل."
+
+msgid "Podcast Settings"
+msgstr "إعدادات البودكاست"
+
+msgid "Podcast Title"
+msgstr "عنوان البودكاست"
+
+msgid "Required. If empty, falls back to site title."
+msgstr "إلزامي. إذا تُرك فارغاً سيُستخدم عنوان الموقع."
+
+msgid "Podcast Subtitle"
+msgstr "العنوان الفرعي للبودكاست"
+
+msgid "Short tagline shown in some apps."
+msgstr "سطر قصير يظهر في بعض التطبيقات."
+
+msgid "Podcast Description"
+msgstr "وصف البودكاست"
+
+msgid "Required. Plain text description of the show."
+msgstr "إلزامي. وصف نصي بسيط للبرنامج."
+
+msgid "Podcast Author (itunes:author)"
+msgstr "مؤلف البودكاست (itunes:author)"
+
+msgid "Required. Displayed as show author in directories."
+msgstr "إلزامي. يظهر كمؤلف البرنامج في الدلائل."
+
+msgid "Owner Name"
+msgstr "اسم المالك"
+
+msgid "Required. For <itunes:owner><itunes:name>."
+msgstr "إلزامي لـ <itunes:owner><itunes:name>."
+
+msgid "Owner Email"
+msgstr "البريد الإلكتروني للمالك"
+
+msgid "Required. For <itunes:owner><itunes:email>. Use a monitored inbox."
+msgstr "إلزامي لـ <itunes:owner><itunes:email>. استخدم بريداً تتم متابعته."
+
+msgid "Podcast Cover (1400–3000px square)"
+msgstr "غلاف البودكاست (مربع 1400–3000 بكسل)"
+
+msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Will be validated on save."
+msgstr "إلزامي. صورة JPG/PNG مربعة بين 1400–3000 بكسل لـ <itunes:image>. سيتم التحقق عند الحفظ."
+
+msgid "Default Explicit Flag"
+msgstr "علم المحتوى الصريح الافتراضي"
+
+msgid "clean (no explicit content)"
+msgstr "clean (بلا محتوى صريح)"
+
+msgid "explicit"
+msgstr "explicit"
+
+msgid "Required. Single-episode value can override."
+msgstr "إلزامي. يمكن لقيمة الحلقة الواحدة أن تتجاوز ذلك."
+
+msgid "Language (RSS <language>)"
+msgstr "اللغة (RSS <language>)"
+
+msgid "RFC 5646 language tag, e.g. en-US, zh-CN."
+msgstr "وسم لغة RFC 5646، مثل en-US أو zh-CN."
+
+msgid "Primary Category"
+msgstr "الفئة الرئيسية"
+
+msgid "Required. Use Apple’s category list."
+msgstr "إلزامي. استخدم قائمة فئات Apple."
+
+msgid "Secondary Category (optional)"
+msgstr "الفئة الثانوية (اختياري)"
+
+msgid "Optional second category."
+msgstr "فئة ثانية اختيارية."
+
+msgid "Copyright (optional)"
+msgstr "حقوق النشر (اختياري)"
+
+msgid "Example: © 2025 Your Studio. Plain text."
+msgstr "مثال: © 2025 Your Studio. نص عادي."
+
+msgid "podcast:locked"
+msgstr "podcast:locked"
+
+msgid "yes (recommended, prevents unauthorized moves)"
+msgstr "yes (موصى به، يمنع النقل غير المصرح)"
+
+msgid "no"
+msgstr "no"
+
+msgid "Podcasting 2.0: lock feed to this publisher."
+msgstr "Podcasting 2.0: قفل الخلاصة لهذا الناشر."
+
+msgid "podcast:guid (optional)"
+msgstr "podcast:guid (اختياري)"
+
+msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
+msgstr "معرّف Podcasting 2.0. إذا تُرك فارغاً ستستخدم الخلاصة رابط الموقع كبديل."
+
+msgid "Podcast Cover must be square. Current: %1$dx%2$d."
+msgstr "يجب أن يكون غلاف البودكاست مربعاً. الحالي: %1$dx%2$d."
+
+msgid "Podcast Cover must be between %1$d and %2$d px. Current: %3$d px."
+msgstr "يجب أن يكون غلاف البودكاست بين %1$d و %2$d بكسل. الحالي: %3$d بكسل."
+
+msgid "Required. Upload an audio file or enter audio file URL (https)."
+msgstr "إلزامي. ارفع ملفاً صوتياً أو أدخل رابط الملف (https)."
+
+msgid "Required. Enter audio duration in seconds. Example: 180 = 3 minutes"
+msgstr "إلزامي. أدخل مدة الصوت بالثواني. مثال: 180 = 3 دقائق"
+
+msgid "Required. Use file size in bytes for enclosure length. Example: 12345678"
+msgstr "إلزامي. استخدم حجم الملف بالبايت لطول enclosure. مثال: 12345678"
+
+msgid "Required. Example: audio/mpeg, audio/mp3, audio/aac"
+msgstr "إلزامي. مثال: audio/mpeg, audio/mp3, audio/aac"
+
+msgid "Required. clean / explicit."
+msgstr "إلزامي. clean / explicit."
+
+msgid "Required. full / trailer / bonus"
+msgstr "إلزامي. full / trailer / bonus"
+
+msgid "https://facebook.com/yourpage"
+msgstr "https://facebook.com/yourpage"
+
+msgid "https://twitter.com/yourhandle"
+msgstr "https://twitter.com/yourhandle"
+
+msgid "https://instagram.com/yourhandle"
+msgstr "https://instagram.com/yourhandle"
+
+msgid "https://linkedin.com/in/yourprofile"
+msgstr "https://linkedin.com/in/yourprofile"
+
+msgid "https://youtube.com/@yourchannel"
+msgstr "https://youtube.com/@yourchannel"
+
+msgid "https://tiktok.com/@yourhandle"
+msgstr "https://tiktok.com/@yourhandle"
+
+msgid "https://pinterest.com/yourhandle"
+msgstr "https://pinterest.com/yourhandle"
+
+msgid "https://threads.net/@yourhandle"
+msgstr "https://threads.net/@yourhandle"
+
+msgid "https://weibo.com/yourpage"
+msgstr "https://weibo.com/yourpage"
+
+msgid "WeChat ID or QR code link"
+msgstr "معرّف WeChat أو رابط رمز QR"
+
+msgid "/feed/"
+msgstr "/feed/"

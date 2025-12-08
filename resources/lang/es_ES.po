@@ -17,27 +17,27 @@ msgstr ""
 #. Theme Name of the theme
 #: style.css
 msgid "Sage Starter Theme"
-msgstr ""
+msgstr "Tema inicial Sage"
 
 #. Theme URI of the theme
 #: style.css
 msgid "https://roots.io/sage/"
-msgstr ""
+msgstr "https://roots.io/sage/"
 
 #. Description of the theme
 #: style.css
 msgid "Sage is a WordPress starter theme."
-msgstr ""
+msgstr "Sage es un tema inicial de WordPress."
 
 #. Author of the theme
 #: style.css
 msgid "Roots"
-msgstr ""
+msgstr "Roots"
 
 #. Author URI of the theme
 #: style.css
 msgid "https://roots.io/"
-msgstr ""
+msgstr "https://roots.io/"
 
 #: app/filters.php:15
 msgid "Continued"
@@ -700,107 +700,107 @@ msgstr "Eliminar"
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Red (50)"
-msgstr ""
+msgstr "Rojo (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Red (400)"
-msgstr ""
+msgstr "Rojo (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (50)"
-msgstr ""
+msgstr "Amarillo (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (300)"
-msgstr ""
+msgstr "Amarillo (300)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (400)"
-msgstr ""
+msgstr "Amarillo (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (50)"
-msgstr ""
+msgstr "Verde (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (400)"
-msgstr ""
+msgstr "Verde (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (500)"
-msgstr ""
+msgstr "Verde (500)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Indigo (50)"
-msgstr ""
+msgstr "Índigo (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Indigo (400)"
-msgstr ""
+msgstr "Índigo (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Gray (600)"
-msgstr ""
+msgstr "Gris (600)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Gray (800)"
-msgstr ""
+msgstr "Gris (800)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Black"
-msgstr ""
+msgstr "Negro"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "White"
-msgstr ""
+msgstr "Blanco"
 
 #: public/build/assets/theme.json
 msgctxt "Font family name"
 msgid "sans"
-msgstr ""
+msgstr "sans"
 
 #: public/build/assets/theme.json
 msgctxt "Font family name"
 msgid "mono"
-msgstr ""
+msgstr "mono"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "xs"
-msgstr ""
+msgstr "xs"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "sm"
-msgstr ""
+msgstr "sm"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "base"
-msgstr ""
+msgstr "base"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "lg"
-msgstr ""
+msgstr "lg"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "2xl"
-msgstr ""
+msgstr "2xl"
 
 #: resources/views/sections/autoplay-confirm.blade.php:21
 msgid "Continue playing?"
@@ -982,16 +982,190 @@ msgstr "Sube una imagen de logo. Si no se establece un logo, se mostrará el tí
 
 #: app/carbon-fields.php
 msgid "Click any card to choose the light theme."
-msgstr "Click any card to choose the light theme."
+msgstr "Haz clic en cualquier tarjeta para elegir el tema claro."
 
 #: app/carbon-fields.php
 msgid "Click any card to choose the dark theme."
-msgstr "Click any card to choose the dark theme."
+msgstr "Haz clic en cualquier tarjeta para elegir el tema oscuro."
 
 #: app/carbon-fields.php
 msgid "If the card picker is unavailable, use this dropdown (default: retro)."
-msgstr "If the card picker is unavailable, use this dropdown (default: retro)."
+msgstr "Si el selector de tarjetas no está disponible, usa este desplegable (predeterminado: retro)."
 
 #: app/carbon-fields.php
 msgid "If the card picker is unavailable, use this dropdown (default: dim)."
-msgstr "If the card picker is unavailable, use this dropdown (default: dim)."
+msgstr "Si el selector de tarjetas no está disponible, usa este desplegable (predeterminado: dim)."
+
+msgid "Podcast Cover file not found. Please re-upload."
+msgstr "Archivo de portada del podcast no encontrado. Vuelve a subirlo."
+
+msgid "Podcast Cover validation failed"
+msgstr "La validación de la portada del podcast falló."
+
+msgid "Podcast Cover is not a valid image."
+msgstr "La portada del podcast no es una imagen válida."
+
+msgid "Podcast Cover must be JPG or PNG."
+msgstr "La portada del podcast debe ser JPG o PNG."
+
+msgid "Podcast Cover must be square. Current: %1%2."
+msgstr "La portada del podcast debe ser cuadrada. Actual: %1%2."
+
+msgid "Podcast Cover must be between %1 and %2 px. Current: %3 px."
+msgstr "La portada del podcast debe estar entre %1 y %2 px. Actual: %3 px."
+
+msgid "Podcast Settings"
+msgstr "Ajustes del podcast"
+
+msgid "Podcast Title"
+msgstr "Título del podcast"
+
+msgid "Required. If empty, falls back to site title."
+msgstr "Obligatorio. Si está vacío, se usa el título del sitio."
+
+msgid "Podcast Subtitle"
+msgstr "Subtítulo del podcast"
+
+msgid "Short tagline shown in some apps."
+msgstr "Eslogan corto mostrado en algunas apps."
+
+msgid "Podcast Description"
+msgstr "Descripción del podcast"
+
+msgid "Required. Plain text description of the show."
+msgstr "Obligatorio. Descripción en texto plano del programa."
+
+msgid "Podcast Author (itunes:author)"
+msgstr "Autor del podcast (itunes:author)"
+
+msgid "Required. Displayed as show author in directories."
+msgstr "Obligatorio. Se muestra como autor del programa en los directorios."
+
+msgid "Owner Name"
+msgstr "Nombre del propietario"
+
+msgid "Required. For <itunes:owner><itunes:name>."
+msgstr "Obligatorio para <itunes:owner><itunes:name>."
+
+msgid "Owner Email"
+msgstr "Correo del propietario"
+
+msgid "Required. For <itunes:owner><itunes:email>. Use a monitored inbox."
+msgstr "Obligatorio para <itunes:owner><itunes:email>. Usa un buzón monitoreado."
+
+msgid "Podcast Cover (1400–3000px square)"
+msgstr "Portada del podcast (cuadrada de 1400–3000 px)"
+
+msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Will be validated on save."
+msgstr "Obligatorio. JPG/PNG cuadrado entre 1400–3000 px para <itunes:image>. Se validará al guardar."
+
+msgid "Default Explicit Flag"
+msgstr "Indicador explícito predeterminado"
+
+msgid "clean (no explicit content)"
+msgstr "clean (sin contenido explícito)"
+
+msgid "explicit"
+msgstr "explicit"
+
+msgid "Required. Single-episode value can override."
+msgstr "Obligatorio. El valor por episodio puede sobrescribir."
+
+msgid "Language (RSS <language>)"
+msgstr "Idioma (RSS <language>)"
+
+msgid "RFC 5646 language tag, e.g. en-US, zh-CN."
+msgstr "Etiqueta de idioma RFC 5646, p. ej. en-US, zh-CN."
+
+msgid "Primary Category"
+msgstr "Categoría principal"
+
+msgid "Required. Use Apple’s category list."
+msgstr "Obligatorio. Usa la lista de categorías de Apple."
+
+msgid "Secondary Category (optional)"
+msgstr "Categoría secundaria (opcional)"
+
+msgid "Optional second category."
+msgstr "Segunda categoría opcional."
+
+msgid "Copyright (optional)"
+msgstr "Copyright (opcional)"
+
+msgid "Example: © 2025 Your Studio. Plain text."
+msgstr "Ejemplo: © 2025 Your Studio. Texto plano."
+
+msgid "podcast:locked"
+msgstr "podcast:locked"
+
+msgid "yes (recommended, prevents unauthorized moves)"
+msgstr "yes (recomendado, evita traslados no autorizados)"
+
+msgid "no"
+msgstr "no"
+
+msgid "Podcasting 2.0: lock feed to this publisher."
+msgstr "Podcasting 2.0: bloquea el feed para este publicador."
+
+msgid "podcast:guid (optional)"
+msgstr "podcast:guid (opcional)"
+
+msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
+msgstr "GUID de Podcasting 2.0. Si está vacío, el feed usará la URL del sitio como respaldo."
+
+msgid "Podcast Cover must be square. Current: %1$dx%2$d."
+msgstr "La portada del podcast debe ser cuadrada. Actual: %1$dx%2$d."
+
+msgid "Podcast Cover must be between %1$d and %2$d px. Current: %3$d px."
+msgstr "La portada del podcast debe estar entre %1$d y %2$d px. Actual: %3$d px."
+
+msgid "Required. Upload an audio file or enter audio file URL (https)."
+msgstr "Obligatorio. Sube un archivo de audio o ingresa la URL del archivo (https)."
+
+msgid "Required. Enter audio duration in seconds. Example: 180 = 3 minutes"
+msgstr "Obligatorio. Ingresa la duración en segundos. Ejemplo: 180 = 3 minutos"
+
+msgid "Required. Use file size in bytes for enclosure length. Example: 12345678"
+msgstr "Obligatorio. Usa el tamaño del archivo en bytes para la longitud del enclosure. Ejemplo: 12345678"
+
+msgid "Required. Example: audio/mpeg, audio/mp3, audio/aac"
+msgstr "Obligatorio. Ejemplo: audio/mpeg, audio/mp3, audio/aac"
+
+msgid "Required. clean / explicit."
+msgstr "Obligatorio. clean / explicit."
+
+msgid "Required. full / trailer / bonus"
+msgstr "Obligatorio. full / trailer / bonus"
+
+msgid "https://facebook.com/yourpage"
+msgstr "https://facebook.com/yourpage"
+
+msgid "https://twitter.com/yourhandle"
+msgstr "https://twitter.com/yourhandle"
+
+msgid "https://instagram.com/yourhandle"
+msgstr "https://instagram.com/yourhandle"
+
+msgid "https://linkedin.com/in/yourprofile"
+msgstr "https://linkedin.com/in/yourprofile"
+
+msgid "https://youtube.com/@yourchannel"
+msgstr "https://youtube.com/@yourchannel"
+
+msgid "https://tiktok.com/@yourhandle"
+msgstr "https://tiktok.com/@yourhandle"
+
+msgid "https://pinterest.com/yourhandle"
+msgstr "https://pinterest.com/yourhandle"
+
+msgid "https://threads.net/@yourhandle"
+msgstr "https://threads.net/@yourhandle"
+
+msgid "https://weibo.com/yourpage"
+msgstr "https://weibo.com/yourpage"
+
+msgid "WeChat ID or QR code link"
+msgstr "ID de WeChat o enlace del código QR"
+
+msgid "/feed/"
+msgstr "/feed/"

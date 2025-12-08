@@ -17,7 +17,7 @@ msgstr ""
 #. Theme Name of the theme
 #: style.css
 msgid "Sage Starter Theme"
-msgstr "Sage Starter Theme"
+msgstr "Sage 시작 테마"
 
 #. Theme URI of the theme
 #: style.css
@@ -768,12 +768,12 @@ msgstr "흰색"
 #: public/build/assets/theme.json
 msgctxt "Font family name"
 msgid "sans"
-msgstr "sans"
+msgstr "산세리프"
 
 #: public/build/assets/theme.json
 msgctxt "Font family name"
 msgid "mono"
-msgstr "mono"
+msgstr "모노"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
@@ -980,16 +980,190 @@ msgstr "로고 이미지를 업로드하세요. 로고가 설정되지 않은 �
 
 #: app/carbon-fields.php
 msgid "Click any card to choose the light theme."
-msgstr "Click any card to choose the light theme."
+msgstr "아무 카드나 클릭해 라이트 테마를 선택하세요."
 
 #: app/carbon-fields.php
 msgid "Click any card to choose the dark theme."
-msgstr "Click any card to choose the dark theme."
+msgstr "아무 카드나 클릭해 다크 테마를 선택하세요."
 
 #: app/carbon-fields.php
 msgid "If the card picker is unavailable, use this dropdown (default: retro)."
-msgstr "If the card picker is unavailable, use this dropdown (default: retro)."
+msgstr "카드 선택기를 사용할 수 없으면 이 드롭다운을 사용하세요(기본값: retro)."
 
 #: app/carbon-fields.php
 msgid "If the card picker is unavailable, use this dropdown (default: dim)."
-msgstr "If the card picker is unavailable, use this dropdown (default: dim)."
+msgstr "카드 선택기를 사용할 수 없으면 이 드롭다운을 사용하세요(기본값: dim)."
+
+msgid "Podcast Cover file not found. Please re-upload."
+msgstr "팟캐스트 커버 파일을 찾을 수 없습니다. 다시 업로드하세요."
+
+msgid "Podcast Cover validation failed"
+msgstr "팟캐스트 커버 검증에 실패했습니다."
+
+msgid "Podcast Cover is not a valid image."
+msgstr "팟캐스트 커버가 유효한 이미지가 아닙니다."
+
+msgid "Podcast Cover must be JPG or PNG."
+msgstr "팟캐스트 커버는 JPG 또는 PNG여야 합니다."
+
+msgid "Podcast Cover must be square. Current: %1%2."
+msgstr "팟캐스트 커버는 정사각형이어야 합니다. 현재: %1%2."
+
+msgid "Podcast Cover must be between %1 and %2 px. Current: %3 px."
+msgstr "팟캐스트 커버는 %1~%2 픽셀이어야 합니다. 현재: %3 픽셀."
+
+msgid "Podcast Settings"
+msgstr "팟캐스트 설정"
+
+msgid "Podcast Title"
+msgstr "팟캐스트 제목"
+
+msgid "Required. If empty, falls back to site title."
+msgstr "필수. 비워두면 사이트 제목이 사용됩니다."
+
+msgid "Podcast Subtitle"
+msgstr "팟캐스트 부제"
+
+msgid "Short tagline shown in some apps."
+msgstr "일부 앱에 표시되는 짧은 태그라인."
+
+msgid "Podcast Description"
+msgstr "팟캐스트 설명"
+
+msgid "Required. Plain text description of the show."
+msgstr "필수. 프로그램의 일반 텍스트 설명."
+
+msgid "Podcast Author (itunes:author)"
+msgstr "팟캐스트 작성자 (itunes:author)"
+
+msgid "Required. Displayed as show author in directories."
+msgstr "필수. 디렉터리에서 프로그램 작성자로 표시됩니다."
+
+msgid "Owner Name"
+msgstr "소유자 이름"
+
+msgid "Required. For <itunes:owner><itunes:name>."
+msgstr "필수. <itunes:owner><itunes:name> 용."
+
+msgid "Owner Email"
+msgstr "소유자 이메일"
+
+msgid "Required. For <itunes:owner><itunes:email>. Use a monitored inbox."
+msgstr "필수. <itunes:owner><itunes:email> 용. 모니터링되는 메일함을 사용하세요."
+
+msgid "Podcast Cover (1400–3000px square)"
+msgstr "팟캐스트 커버(1400–3000px 정사각형)"
+
+msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Will be validated on save."
+msgstr "필수. <itunes:image>용 1400–3000px 정사각형 JPG/PNG. 저장 시 검증됩니다."
+
+msgid "Default Explicit Flag"
+msgstr "기본 노골적 플래그"
+
+msgid "clean (no explicit content)"
+msgstr "clean (노골적 내용 없음)"
+
+msgid "explicit"
+msgstr "explicit"
+
+msgid "Required. Single-episode value can override."
+msgstr "필수. 단일 에피소드 값이 덮어쓸 수 있습니다."
+
+msgid "Language (RSS <language>)"
+msgstr "언어 (RSS <language>)"
+
+msgid "RFC 5646 language tag, e.g. en-US, zh-CN."
+msgstr "RFC 5646 언어 태그, 예: en-US, zh-CN."
+
+msgid "Primary Category"
+msgstr "주 카테고리"
+
+msgid "Required. Use Apple’s category list."
+msgstr "필수. Apple 카테고리 목록을 사용하세요."
+
+msgid "Secondary Category (optional)"
+msgstr "보조 카테고리(선택)"
+
+msgid "Optional second category."
+msgstr "선택적 두 번째 카테고리."
+
+msgid "Copyright (optional)"
+msgstr "저작권(선택)"
+
+msgid "Example: © 2025 Your Studio. Plain text."
+msgstr "예: © 2025 Your Studio. 일반 텍스트."
+
+msgid "podcast:locked"
+msgstr "podcast:locked"
+
+msgid "yes (recommended, prevents unauthorized moves)"
+msgstr "yes(권장, 무단 이동을 방지)"
+
+msgid "no"
+msgstr "no"
+
+msgid "Podcasting 2.0: lock feed to this publisher."
+msgstr "Podcasting 2.0: 피드를 이 퍼블리셔로 잠급니다."
+
+msgid "podcast:guid (optional)"
+msgstr "podcast:guid(선택)"
+
+msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
+msgstr "Podcasting 2.0 GUID. 비워두면 사이트 URL이 사용됩니다."
+
+msgid "Podcast Cover must be square. Current: %1$dx%2$d."
+msgstr "팟캐스트 커버는 정사각형이어야 합니다. 현재: %1$dx%2$d."
+
+msgid "Podcast Cover must be between %1$d and %2$d px. Current: %3$d px."
+msgstr "팟캐스트 커버는 %1$d~%2$d 픽셀이어야 합니다. 현재: %3$d 픽셀."
+
+msgid "Required. Upload an audio file or enter audio file URL (https)."
+msgstr "필수. 오디오 파일을 업로드하거나 파일 URL(https)을 입력하세요."
+
+msgid "Required. Enter audio duration in seconds. Example: 180 = 3 minutes"
+msgstr "필수. 오디오 길이를 초 단위로 입력하세요. 예: 180 = 3분"
+
+msgid "Required. Use file size in bytes for enclosure length. Example: 12345678"
+msgstr "필수. 첨부 길이에는 파일 크기(바이트)를 사용하세요. 예: 12345678"
+
+msgid "Required. Example: audio/mpeg, audio/mp3, audio/aac"
+msgstr "필수. 예: audio/mpeg, audio/mp3, audio/aac"
+
+msgid "Required. clean / explicit."
+msgstr "필수. clean / explicit."
+
+msgid "Required. full / trailer / bonus"
+msgstr "필수. full / trailer / bonus"
+
+msgid "https://facebook.com/yourpage"
+msgstr "https://facebook.com/yourpage"
+
+msgid "https://twitter.com/yourhandle"
+msgstr "https://twitter.com/yourhandle"
+
+msgid "https://instagram.com/yourhandle"
+msgstr "https://instagram.com/yourhandle"
+
+msgid "https://linkedin.com/in/yourprofile"
+msgstr "https://linkedin.com/in/yourprofile"
+
+msgid "https://youtube.com/@yourchannel"
+msgstr "https://youtube.com/@yourchannel"
+
+msgid "https://tiktok.com/@yourhandle"
+msgstr "https://tiktok.com/@yourhandle"
+
+msgid "https://pinterest.com/yourhandle"
+msgstr "https://pinterest.com/yourhandle"
+
+msgid "https://threads.net/@yourhandle"
+msgstr "https://threads.net/@yourhandle"
+
+msgid "https://weibo.com/yourpage"
+msgstr "https://weibo.com/yourpage"
+
+msgid "WeChat ID or QR code link"
+msgstr "위챗 ID 또는 QR 코드 링크"
+
+msgid "/feed/"
+msgstr "/feed/"

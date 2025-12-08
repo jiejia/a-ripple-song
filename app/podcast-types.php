@@ -112,15 +112,38 @@ add_action('cmb2_admin_init', function () {
         'show_names' => true,
     ]);
 
-    // 音频文件字段
+    // 后台标红必填星号
+    add_action('admin_head', function () {
+        $screen = function_exists('get_current_screen') ? get_current_screen() : null;
+        if (!$screen || $screen->post_type !== 'podcast') {
+            return;
+        }
+        ?>
+        <style>
+            .cmb-row.cmb-required .cmb-th label:after {
+                content: " *";
+                color: #e11d48;
+                font-weight: 700;
+                margin-left: 4px;
+            }
+        </style>
+        <?php
+    });
+
+    // 音频文件字段（必填）
     $cmb->add_field([
         'name' => __('Audio File', 'sage'),
-        'desc' => __('Upload an audio file or enter audio file URL', 'sage'),
+        'desc' => __('Required. Upload an audio file or enter audio file URL (https).', 'sage'),
         'id' => 'audio_file',
         'type' => 'file',
         'options' => [
             'url' => true, // 允许直接输入 URL
         ],
+        'attributes' => [
+            'required' => 'required',
+            'aria-required' => 'true',
+        ],
+        'classes' => 'cmb-required',
         'text' => [
             'add_upload_file_text' => __('Add Audio File', 'sage'),
         ],
@@ -135,10 +158,10 @@ add_action('cmb2_admin_init', function () {
         ],
     ]);
 
-    // 时长字段（秒）
+    // 时长字段（秒，必填）
     $cmb->add_field([
         'name' => __('Duration (seconds)', 'sage'),
-        'desc' => __('Enter audio duration in seconds. For example: 180 means 3 minutes', 'sage'),
+        'desc' => __('Required. Enter audio duration in seconds. Example: 180 = 3 minutes', 'sage'),
         'id' => 'duration',
         'type' => 'text',
         'attributes' => [
@@ -146,8 +169,165 @@ add_action('cmb2_admin_init', function () {
             'pattern' => '\d*',
             'min' => '0',
             'step' => '1',
+            'required' => 'required',
+            'aria-required' => 'true',
+        ],
+        'classes' => 'cmb-required',
+        'sanitization_cb' => 'absint',
+    ]);
+
+    // 音频文件大小（字节，必填）
+    $cmb->add_field([
+        'name' => __('Audio Length (bytes)', 'sage'),
+        'desc' => __('Required. Use file size in bytes for enclosure length. Example: 12345678', 'sage'),
+        'id' => 'audio_length',
+        'type' => 'text_small',
+        'attributes' => [
+            'type' => 'number',
+            'pattern' => '\d*',
+            'min' => '1',
+            'required' => 'required',
+            'aria-required' => 'true',
+        ],
+        'classes' => 'cmb-required',
+        'sanitization_cb' => 'absint',
+    ]);
+
+    // 音频 MIME 类型（必填）
+    $cmb->add_field([
+        'name' => __('Audio MIME Type', 'sage'),
+        'desc' => __('Required. Example: audio/mpeg, audio/mp3, audio/aac', 'sage'),
+        'id' => 'audio_mime',
+        'type' => 'text_medium',
+        'default' => 'audio/mpeg',
+        'attributes' => [
+            'required' => 'required',
+            'aria-required' => 'true',
+        ],
+        'classes' => 'cmb-required',
+    ]);
+
+    // 显式级别（必填）
+    $cmb->add_field([
+        'name' => __('Explicit', 'sage'),
+        'desc' => __('Required. clean / explicit.', 'sage'),
+        'id' => 'episode_explicit',
+        'type' => 'radio_inline',
+        'options' => [
+            'clean' => __('clean', 'sage'),
+            'explicit' => __('explicit', 'sage'),
+        ],
+        'default' => 'clean',
+        'attributes' => [
+            'required' => 'required',
+            'aria-required' => 'true',
+        ],
+        'classes' => 'cmb-required',
+    ]);
+
+    // Episode type（必填）
+    $cmb->add_field([
+        'name' => __('Episode Type', 'sage'),
+        'desc' => __('Required. full / trailer / bonus', 'sage'),
+        'id' => 'episode_type',
+        'type' => 'select',
+        'options' => [
+            'full' => __('full', 'sage'),
+            'trailer' => __('trailer', 'sage'),
+            'bonus' => __('bonus', 'sage'),
+        ],
+        'default' => 'full',
+        'attributes' => [
+            'required' => 'required',
+            'aria-required' => 'true',
+        ],
+        'classes' => 'cmb-required',
+    ]);
+
+    // Episode number
+    $cmb->add_field([
+        'name' => __('Episode Number', 'sage'),
+        'desc' => __('Optional but recommended. Integer.', 'sage'),
+        'id' => 'episode_number',
+        'type' => 'text_small',
+        'attributes' => [
+            'type' => 'number',
+            'pattern' => '\d*',
+            'min' => '0',
+            'step' => '1',
         ],
         'sanitization_cb' => 'absint',
+    ]);
+
+    // Season number
+    $cmb->add_field([
+        'name' => __('Season Number', 'sage'),
+        'desc' => __('Optional. Integer.', 'sage'),
+        'id' => 'season_number',
+        'type' => 'text_small',
+        'attributes' => [
+            'type' => 'number',
+            'pattern' => '\d*',
+            'min' => '0',
+            'step' => '1',
+        ],
+        'sanitization_cb' => 'absint',
+    ]);
+
+    // 单集作者覆盖
+    $cmb->add_field([
+        'name' => __('Episode Author (override)', 'sage'),
+        'desc' => __('Optional. Overrides channel author for this episode.', 'sage'),
+        'id' => 'episode_author',
+        'type' => 'text',
+    ]);
+
+    // 单集封面
+    $cmb->add_field([
+        'name' => __('Episode Cover (square)', 'sage'),
+        'desc' => __('Optional. Square 1400–3000px. Overrides channel cover.', 'sage'),
+        'id' => 'episode_image',
+        'type' => 'file',
+        'options' => [
+            'url' => true,
+        ],
+    ]);
+
+    // Subtitle
+    $cmb->add_field([
+        'name' => __('Subtitle', 'sage'),
+        'desc' => __('Optional. Short subtitle for iTunes.', 'sage'),
+        'id' => 'episode_subtitle',
+        'type' => 'text',
+    ]);
+
+    // Summary
+    $cmb->add_field([
+        'name' => __('Summary', 'sage'),
+        'desc' => __('Optional. Plain text summary for iTunes.', 'sage'),
+        'id' => 'episode_summary',
+        'type' => 'textarea_small',
+    ]);
+
+    // Episode GUID（可自定义）
+    $cmb->add_field([
+        'name' => __('Custom GUID (optional)', 'sage'),
+        'desc' => __('Optional. If empty, feed uses WP permalink as GUID.', 'sage'),
+        'id' => 'episode_guid',
+        'type' => 'text',
+    ]);
+
+    // 是否 block（隐藏单集）
+    $cmb->add_field([
+        'name' => __('iTunes Block', 'sage'),
+        'desc' => __('Optional. yes = hide this episode in Apple Podcasts.', 'sage'),
+        'id' => 'episode_block',
+        'type' => 'radio_inline',
+        'options' => [
+            'no' => __('no', 'sage'),
+            'yes' => __('yes', 'sage'),
+        ],
+        'default' => 'no',
     ]);
 
     // 获取用户列表的辅助函数
@@ -319,6 +499,49 @@ add_action('cmb2_save_post_fields_podcast_metabox', function ($post_id) {
         return;
     }
 
+    // 必填字段验证（阻止保存）
+    $errors = [];
+    $audio_url = isset($_POST['audio_file']) ? trim((string) $_POST['audio_file']) : '';
+    $duration = isset($_POST['duration']) ? (int) $_POST['duration'] : 0;
+    $audio_length = isset($_POST['audio_length']) ? (int) $_POST['audio_length'] : 0;
+    $audio_mime = isset($_POST['audio_mime']) ? trim((string) $_POST['audio_mime']) : '';
+    $episode_explicit = isset($_POST['episode_explicit']) ? trim((string) $_POST['episode_explicit']) : '';
+    $episode_type = isset($_POST['episode_type']) ? trim((string) $_POST['episode_type']) : '';
+
+    if ($audio_url === '') {
+        $errors[] = __('Audio File is required.', 'sage');
+    } elseif (!filter_var($audio_url, FILTER_VALIDATE_URL) || stripos($audio_url, 'http') !== 0) {
+        $errors[] = __('Audio File must be a valid URL (https recommended).', 'sage');
+    }
+
+    if ($duration <= 0) {
+        $errors[] = __('Duration (seconds) must be greater than 0.', 'sage');
+    }
+
+    if ($audio_length <= 0) {
+        $errors[] = __('Audio Length (bytes) must be greater than 0.', 'sage');
+    }
+
+    if ($audio_mime === '') {
+        $errors[] = __('Audio MIME Type is required.', 'sage');
+    }
+
+    if (!in_array($episode_explicit, ['clean', 'explicit'], true)) {
+        $errors[] = __('Explicit must be clean or explicit.', 'sage');
+    }
+
+    if (!in_array($episode_type, ['full', 'trailer', 'bonus'], true)) {
+        $errors[] = __('Episode Type must be full, trailer, or bonus.', 'sage');
+    }
+
+    if ($errors) {
+        wp_die(
+            '<p>' . implode('<br>', array_map('esc_html', $errors)) . '</p>',
+            __('Podcast validation failed', 'sage'),
+            ['back_link' => true]
+        );
+    }
+
     // 获取当前的 members 值（multicheck 类型存储为数组）
     $members = get_post_meta($post_id, 'members', true);
     
@@ -426,6 +649,24 @@ add_action('cmb2_save_post_fields', function ($post_id) {
             update_post_meta($post_id, 'duration', $duration);
         } else {
             error_log("播客 #{$post_id}: 未能从文件信息中获取播放时长");
+        }
+
+        // 获取文件大小（字节）并保存到 audio_length
+        if (!empty($file_info['filesize'])) {
+            $length_bytes = (int) $file_info['filesize'];
+            update_post_meta($post_id, 'audio_length', $length_bytes);
+            error_log("播客 #{$post_id}: 检测到文件大小 = {$length_bytes} 字节");
+        } else {
+            error_log("播客 #{$post_id}: 未能获取文件大小");
+        }
+
+        // 获取 MIME 类型
+        $mime = $file_info['mime_type'] ?? '';
+        if ($mime) {
+            update_post_meta($post_id, 'audio_mime', $mime);
+            error_log("播客 #{$post_id}: 检测到 MIME = {$mime}");
+        } else {
+            error_log("播客 #{$post_id}: 未能获取 MIME 类型");
         }
     } catch (\Exception $e) {
         // 记录错误，不影响文章保存

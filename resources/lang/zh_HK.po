@@ -17,7 +17,7 @@ msgstr ""
 #. Theme Name of the theme
 #: style.css
 msgid "Sage Starter Theme"
-msgstr "Sage Starter Theme"
+msgstr "Sage 起始主題"
 
 #. Theme URI of the theme
 #: style.css
@@ -768,37 +768,37 @@ msgstr "白色"
 #: public/build/assets/theme.json
 msgctxt "Font family name"
 msgid "sans"
-msgstr "sans"
+msgstr "無襯線"
 
 #: public/build/assets/theme.json
 msgctxt "Font family name"
 msgid "mono"
-msgstr "mono"
+msgstr "等寬"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "xs"
-msgstr "xs"
+msgstr "極小"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "sm"
-msgstr "sm"
+msgstr "小"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "base"
-msgstr "base"
+msgstr "基準"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "lg"
-msgstr "lg"
+msgstr "大"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "2xl"
-msgstr "2xl"
+msgstr "2 倍特大"
 
 #: resources/views/sections/autoplay-confirm.blade.php:21
 msgid "Continue playing?"
@@ -1001,3 +1001,177 @@ msgstr "淺色主題"
 #: app/carbon-fields.php
 msgid "Dark Theme"
 msgstr "深色主題"
+
+msgid "Podcast Cover file not found. Please re-upload."
+msgstr "找不到 Podcast 封面檔案，請重新上載。"
+
+msgid "Podcast Cover validation failed"
+msgstr "Podcast 封面驗證失敗"
+
+msgid "Podcast Cover is not a valid image."
+msgstr "Podcast 封面不是有效圖片。"
+
+msgid "Podcast Cover must be JPG or PNG."
+msgstr "Podcast 封面必須是 JPG 或 PNG。"
+
+msgid "Podcast Cover must be square. Current: %1%2."
+msgstr "Podcast 封面必須為正方形。目前：%1%2。"
+
+msgid "Podcast Cover must be between %1 and %2 px. Current: %3 px."
+msgstr "Podcast 封面像素必須在 %1 到 %2 之間。目前：%3 像素。"
+
+msgid "Podcast Settings"
+msgstr "播客設定"
+
+msgid "Podcast Title"
+msgstr "播客標題"
+
+msgid "Required. If empty, falls back to site title."
+msgstr "必填。如留空，將使用網站標題。"
+
+msgid "Podcast Subtitle"
+msgstr "播客副標題"
+
+msgid "Short tagline shown in some apps."
+msgstr "在部分應用中顯示的簡短標語。"
+
+msgid "Podcast Description"
+msgstr "播客描述"
+
+msgid "Required. Plain text description of the show."
+msgstr "必填。節目純文字描述。"
+
+msgid "Podcast Author (itunes:author)"
+msgstr "播客作者 (itunes:author)"
+
+msgid "Required. Displayed as show author in directories."
+msgstr "必填。會在目錄中顯示為節目作者。"
+
+msgid "Owner Name"
+msgstr "擁有者姓名"
+
+msgid "Required. For <itunes:owner><itunes:name>."
+msgstr "必填，用於 <itunes:owner><itunes:name>。"
+
+msgid "Owner Email"
+msgstr "擁有者電郵"
+
+msgid "Required. For <itunes:owner><itunes:email>. Use a monitored inbox."
+msgstr "必填，用於 <itunes:owner><itunes:email>。請使用有人監察的郵箱。"
+
+msgid "Podcast Cover (1400–3000px square)"
+msgstr "播客封面（1400–3000px 正方形）"
+
+msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Will be validated on save."
+msgstr "必填。<itunes:image> 用的 1400–3000px 正方形 JPG/PNG。儲存時將驗證。"
+
+msgid "Default Explicit Flag"
+msgstr "預設露骨標記"
+
+msgid "clean (no explicit content)"
+msgstr "clean（無露骨內容）"
+
+msgid "explicit"
+msgstr "explicit"
+
+msgid "Required. Single-episode value can override."
+msgstr "必填。可被單集值覆寫。"
+
+msgid "Language (RSS <language>)"
+msgstr "語言（RSS <language>）"
+
+msgid "RFC 5646 language tag, e.g. en-US, zh-CN."
+msgstr "RFC 5646 語言標籤，例如 en-US、zh-CN。"
+
+msgid "Primary Category"
+msgstr "主要分類"
+
+msgid "Required. Use Apple’s category list."
+msgstr "必填。使用 Apple 的分類列表。"
+
+msgid "Secondary Category (optional)"
+msgstr "次要分類（可選）"
+
+msgid "Optional second category."
+msgstr "可選的第二分類。"
+
+msgid "Copyright (optional)"
+msgstr "版權（可選）"
+
+msgid "Example: © 2025 Your Studio. Plain text."
+msgstr "示例：© 2025 Your Studio。純文字。"
+
+msgid "podcast:locked"
+msgstr "podcast:locked"
+
+msgid "yes (recommended, prevents unauthorized moves)"
+msgstr "yes（建議，可防止未授權移動）"
+
+msgid "no"
+msgstr "no"
+
+msgid "Podcasting 2.0: lock feed to this publisher."
+msgstr "Podcasting 2.0：將摘要鎖定到此發布者。"
+
+msgid "podcast:guid (optional)"
+msgstr "podcast:guid（可選）"
+
+msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
+msgstr "Podcasting 2.0 GUID。如留空，摘要將用網站 URL 作後備。"
+
+msgid "Podcast Cover must be square. Current: %1$dx%2$d."
+msgstr "Podcast 封面必須為正方形。目前：%1$dx%2$d。"
+
+msgid "Podcast Cover must be between %1$d and %2$d px. Current: %3$d px."
+msgstr "Podcast 封面必須在 %1$d 到 %2$d 像素之間。目前：%3$d 像素。"
+
+msgid "Required. Upload an audio file or enter audio file URL (https)."
+msgstr "必填。上載音訊檔案或輸入音訊檔案 URL（https）。"
+
+msgid "Required. Enter audio duration in seconds. Example: 180 = 3 minutes"
+msgstr "必填。以秒輸入音訊時長。示例：180 = 3 分鐘"
+
+msgid "Required. Use file size in bytes for enclosure length. Example: 12345678"
+msgstr "必填。附件長度請用檔案大小（位元組）。示例：12345678"
+
+msgid "Required. Example: audio/mpeg, audio/mp3, audio/aac"
+msgstr "必填。示例：audio/mpeg、audio/mp3、audio/aac"
+
+msgid "Required. clean / explicit."
+msgstr "必填。clean / explicit。"
+
+msgid "Required. full / trailer / bonus"
+msgstr "必填。full / trailer / bonus"
+
+msgid "https://facebook.com/yourpage"
+msgstr "https://facebook.com/yourpage"
+
+msgid "https://twitter.com/yourhandle"
+msgstr "https://twitter.com/yourhandle"
+
+msgid "https://instagram.com/yourhandle"
+msgstr "https://instagram.com/yourhandle"
+
+msgid "https://linkedin.com/in/yourprofile"
+msgstr "https://linkedin.com/in/yourprofile"
+
+msgid "https://youtube.com/@yourchannel"
+msgstr "https://youtube.com/@yourchannel"
+
+msgid "https://tiktok.com/@yourhandle"
+msgstr "https://tiktok.com/@yourhandle"
+
+msgid "https://pinterest.com/yourhandle"
+msgstr "https://pinterest.com/yourhandle"
+
+msgid "https://threads.net/@yourhandle"
+msgstr "https://threads.net/@yourhandle"
+
+msgid "https://weibo.com/yourpage"
+msgstr "https://weibo.com/yourpage"
+
+msgid "WeChat ID or QR code link"
+msgstr "微信 ID 或 QR 碼連結"
+
+msgid "/feed/"
+msgstr "/feed/"

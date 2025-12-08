@@ -396,7 +396,7 @@ msgstr "Number of columns:"
 #: app/Widgets/BlogListWidget.php:125
 #: app/Widgets/PodcastListWidget.php:224
 msgid "Show \"See all\" link"
-msgstr "Show \"See all\" link"
+msgstr "Show \\\"See all\\\" link"
 
 #: app/Widgets/PodcastListWidget.php:12
 msgid "aripplesong - Podcast List"
@@ -599,7 +599,7 @@ msgstr "By"
 
 #: resources/views/index.blade.php:9
 msgid "Please add widgets to \"Home Main\" area in Appearance > Widgets in the admin panel."
-msgstr "Please add widgets to \"Home Main\" area in Appearance > Widgets in the admin panel."
+msgstr "Please add widgets to \\\"Home Main\\\" area in Appearance > Widgets in the admin panel."
 
 #: resources/views/author.blade.php:9
 msgid "Author:"
@@ -619,11 +619,11 @@ msgstr "Play"
 
 #: resources/views/sections/leftbar.blade.php:6
 msgid "Please add widgets to \"Leftbar\" area in Appearance > Widgets in the admin panel."
-msgstr "Please add widgets to \"Leftbar\" area in Appearance > Widgets in the admin panel."
+msgstr "Please add widgets to \\\"Leftbar\\\" area in Appearance > Widgets in the admin panel."
 
 #: resources/views/sections/sidebar.blade.php:8
 msgid "Please add widgets to \"Sidebar\" area in Appearance > Widgets in the admin panel."
-msgstr "Please add widgets to \"Sidebar\" area in Appearance > Widgets in the admin panel."
+msgstr "Please add widgets to \\\"Sidebar\\\" area in Appearance > Widgets in the admin panel."
 
 #: resources/views/sections/mobile-menu.blade.php:7
 msgid "Menu"
@@ -934,7 +934,7 @@ msgstr "Your email address will not be published."
 #: functions.php:632
 #, php-format
 msgid "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of this account\">Log out?</a>"
-msgstr "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of this account\">Log out?</a>"
+msgstr "Logged in as <a href=\\\"%1$s\\\">%2$s</a>. <a href=\\\"%3$s\\\" title=\\\"Log out of this account\\\">Log out?</a>"
 
 #: functions.php:646
 msgid "Name"
@@ -995,3 +995,177 @@ msgstr "If the card picker is unavailable, use this dropdown (default: retro)."
 #: app/carbon-fields.php
 msgid "If the card picker is unavailable, use this dropdown (default: dim)."
 msgstr "If the card picker is unavailable, use this dropdown (default: dim)."
+
+msgid "Podcast Cover file not found. Please re-upload."
+msgstr "Podcast Cover file not found. Please re-upload."
+
+msgid "Podcast Cover validation failed"
+msgstr "Podcast Cover validation failed"
+
+msgid "Podcast Cover is not a valid image."
+msgstr "Podcast Cover is not a valid image."
+
+msgid "Podcast Cover must be JPG or PNG."
+msgstr "Podcast Cover must be JPG or PNG."
+
+msgid "Podcast Cover must be square. Current: %1%2."
+msgstr "Podcast Cover must be square. Current: %1%2."
+
+msgid "Podcast Cover must be between %1 and %2 px. Current: %3 px."
+msgstr "Podcast Cover must be between %1 and %2 px. Current: %3 px."
+
+msgid "Podcast Settings"
+msgstr "Podcast Settings"
+
+msgid "Podcast Title"
+msgstr "Podcast Title"
+
+msgid "Required. If empty, falls back to site title."
+msgstr "Required. If empty, falls back to site title."
+
+msgid "Podcast Subtitle"
+msgstr "Podcast Subtitle"
+
+msgid "Short tagline shown in some apps."
+msgstr "Short tagline shown in some apps."
+
+msgid "Podcast Description"
+msgstr "Podcast Description"
+
+msgid "Required. Plain text description of the show."
+msgstr "Required. Plain text description of the show."
+
+msgid "Podcast Author (itunes:author)"
+msgstr "Podcast Author (itunes:author)"
+
+msgid "Required. Displayed as show author in directories."
+msgstr "Required. Displayed as show author in directories."
+
+msgid "Owner Name"
+msgstr "Owner Name"
+
+msgid "Required. For <itunes:owner><itunes:name>."
+msgstr "Required. For <itunes:owner><itunes:name>."
+
+msgid "Owner Email"
+msgstr "Owner Email"
+
+msgid "Required. For <itunes:owner><itunes:email>. Use a monitored inbox."
+msgstr "Required. For <itunes:owner><itunes:email>. Use a monitored inbox."
+
+msgid "Podcast Cover (1400–3000px square)"
+msgstr "Podcast Cover (1400–3000px square)"
+
+msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Will be validated on save."
+msgstr "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Will be validated on save."
+
+msgid "Default Explicit Flag"
+msgstr "Default Explicit Flag"
+
+msgid "clean (no explicit content)"
+msgstr "clean (no explicit content)"
+
+msgid "explicit"
+msgstr "explicit"
+
+msgid "Required. Single-episode value can override."
+msgstr "Required. Single-episode value can override."
+
+msgid "Language (RSS <language>)"
+msgstr "Language (RSS <language>)"
+
+msgid "RFC 5646 language tag, e.g. en-US, zh-CN."
+msgstr "RFC 5646 language tag, e.g. en-US, zh-CN."
+
+msgid "Primary Category"
+msgstr "Primary Category"
+
+msgid "Required. Use Apple’s category list."
+msgstr "Required. Use Apple’s category list."
+
+msgid "Secondary Category (optional)"
+msgstr "Secondary Category (optional)"
+
+msgid "Optional second category."
+msgstr "Optional second category."
+
+msgid "Copyright (optional)"
+msgstr "Copyright (optional)"
+
+msgid "Example: © 2025 Your Studio. Plain text."
+msgstr "Example: © 2025 Your Studio. Plain text."
+
+msgid "podcast:locked"
+msgstr "podcast:locked"
+
+msgid "yes (recommended, prevents unauthorized moves)"
+msgstr "yes (recommended, prevents unauthorized moves)"
+
+msgid "no"
+msgstr "no"
+
+msgid "Podcasting 2.0: lock feed to this publisher."
+msgstr "Podcasting 2.0: lock feed to this publisher."
+
+msgid "podcast:guid (optional)"
+msgstr "podcast:guid (optional)"
+
+msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
+msgstr "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
+
+msgid "Podcast Cover must be square. Current: %1$dx%2$d."
+msgstr "Podcast Cover must be square. Current: %1$dx%2$d."
+
+msgid "Podcast Cover must be between %1$d and %2$d px. Current: %3$d px."
+msgstr "Podcast Cover must be between %1$d and %2$d px. Current: %3$d px."
+
+msgid "Required. Upload an audio file or enter audio file URL (https)."
+msgstr "Required. Upload an audio file or enter audio file URL (https)."
+
+msgid "Required. Enter audio duration in seconds. Example: 180 = 3 minutes"
+msgstr "Required. Enter audio duration in seconds. Example: 180 = 3 minutes"
+
+msgid "Required. Use file size in bytes for enclosure length. Example: 12345678"
+msgstr "Required. Use file size in bytes for enclosure length. Example: 12345678"
+
+msgid "Required. Example: audio/mpeg, audio/mp3, audio/aac"
+msgstr "Required. Example: audio/mpeg, audio/mp3, audio/aac"
+
+msgid "Required. clean / explicit."
+msgstr "Required. clean / explicit."
+
+msgid "Required. full / trailer / bonus"
+msgstr "Required. full / trailer / bonus"
+
+msgid "https://facebook.com/yourpage"
+msgstr "https://facebook.com/yourpage"
+
+msgid "https://twitter.com/yourhandle"
+msgstr "https://twitter.com/yourhandle"
+
+msgid "https://instagram.com/yourhandle"
+msgstr "https://instagram.com/yourhandle"
+
+msgid "https://linkedin.com/in/yourprofile"
+msgstr "https://linkedin.com/in/yourprofile"
+
+msgid "https://youtube.com/@yourchannel"
+msgstr "https://youtube.com/@yourchannel"
+
+msgid "https://tiktok.com/@yourhandle"
+msgstr "https://tiktok.com/@yourhandle"
+
+msgid "https://pinterest.com/yourhandle"
+msgstr "https://pinterest.com/yourhandle"
+
+msgid "https://threads.net/@yourhandle"
+msgstr "https://threads.net/@yourhandle"
+
+msgid "https://weibo.com/yourpage"
+msgstr "https://weibo.com/yourpage"
+
+msgid "WeChat ID or QR code link"
+msgstr "WeChat ID or QR code link"
+
+msgid "/feed/"
+msgstr "/feed/"

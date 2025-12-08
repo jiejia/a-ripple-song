@@ -17,7 +17,7 @@ msgstr ""
 #. Theme Name of the theme
 #: style.css
 msgid "Sage Starter Theme"
-msgstr "Sage Starter Theme"
+msgstr "سیج اسٹارٹر تھیم"
 
 #. Theme URI of the theme
 #: style.css
@@ -982,16 +982,190 @@ msgstr "لوگو کی تصویر اپ لوڈ کریں۔ اگر کوئی لوگو
 
 #: app/carbon-fields.php
 msgid "Click any card to choose the light theme."
-msgstr "Click any card to choose the light theme."
+msgstr "لائٹ تھیم منتخب کرنے کے لیے کسی بھی کارڈ پر کلک کریں۔"
 
 #: app/carbon-fields.php
 msgid "Click any card to choose the dark theme."
-msgstr "Click any card to choose the dark theme."
+msgstr "ڈارک تھیم منتخب کرنے کے لیے کسی بھی کارڈ پر کلک کریں۔"
 
 #: app/carbon-fields.php
 msgid "If the card picker is unavailable, use this dropdown (default: retro)."
-msgstr "If the card picker is unavailable, use this dropdown (default: retro)."
+msgstr "اگر کارڈ پیکر دستیاب نہیں تو یہ ڈراپ ڈاؤن استعمال کریں (ڈیفالٹ: retro)।"
 
 #: app/carbon-fields.php
 msgid "If the card picker is unavailable, use this dropdown (default: dim)."
-msgstr "If the card picker is unavailable, use this dropdown (default: dim)."
+msgstr "اگر کارڈ پیکر دستیاب نہیں تو یہ ڈراپ ڈاؤن استعمال کریں (ڈیفالٹ: dim)।"
+
+msgid "Podcast Cover file not found. Please re-upload."
+msgstr "پوڈکاسٹ کور فائل نہیں ملی۔ دوبارہ اپلوڈ کریں۔"
+
+msgid "Podcast Cover validation failed"
+msgstr "پوڈکاسٹ کور کی توثیق ناکام ہوئی"
+
+msgid "Podcast Cover is not a valid image."
+msgstr "پوڈکاسٹ کور درست تصویر نہیں ہے۔"
+
+msgid "Podcast Cover must be JPG or PNG."
+msgstr "پوڈکاسٹ کور JPG یا PNG ہونا چاہیے۔"
+
+msgid "Podcast Cover must be square. Current: %1%2."
+msgstr "پوڈکاسٹ کور مربع ہونا چاہیے۔ موجودہ: %1%2۔"
+
+msgid "Podcast Cover must be between %1 and %2 px. Current: %3 px."
+msgstr "پوڈکاسٹ کور %1 سے %2 پکسل کے درمیان ہونا چاہیے۔ موجودہ: %3 پکسل۔"
+
+msgid "Podcast Settings"
+msgstr "پوڈکاسٹ سیٹنگز"
+
+msgid "Podcast Title"
+msgstr "پوڈکاسٹ عنوان"
+
+msgid "Required. If empty, falls back to site title."
+msgstr "ضروری۔ خالی ہونے پر سائٹ ٹائٹل استعمال ہوگا۔"
+
+msgid "Podcast Subtitle"
+msgstr "پوڈکاسٹ ذیلی عنوان"
+
+msgid "Short tagline shown in some apps."
+msgstr "کچھ ایپس میں دکھائی دینے والی مختصر ٹیگ لائن۔"
+
+msgid "Podcast Description"
+msgstr "پوڈکاسٹ کی تفصیل"
+
+msgid "Required. Plain text description of the show."
+msgstr "ضروری۔ شو کی سادہ متن میں تفصیل۔"
+
+msgid "Podcast Author (itunes:author)"
+msgstr "پوڈکاسٹ مصنف (itunes:author)"
+
+msgid "Required. Displayed as show author in directories."
+msgstr "ضروری۔ ڈائریکٹریوں میں شو کے مصنف کے طور پر دکھایا جاتا ہے۔"
+
+msgid "Owner Name"
+msgstr "مالک کا نام"
+
+msgid "Required. For <itunes:owner><itunes:name>."
+msgstr "ضروری۔ <itunes:owner><itunes:name> کے لیے۔"
+
+msgid "Owner Email"
+msgstr "مالک کا ای میل"
+
+msgid "Required. For <itunes:owner><itunes:email>. Use a monitored inbox."
+msgstr "ضروری۔ <itunes:owner><itunes:email> کے لیے۔ مانیٹر کی گئی ان باکس استعمال کریں۔"
+
+msgid "Podcast Cover (1400–3000px square)"
+msgstr "پوڈکاسٹ کور (1400–3000px مربع)"
+
+msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Will be validated on save."
+msgstr "ضروری۔ <itunes:image> کے لیے 1400–3000px مربع JPG/PNG۔ محفوظ کرتے وقت تصدیق ہوگی۔"
+
+msgid "Default Explicit Flag"
+msgstr "ڈیفالٹ Explicit فلیگ"
+
+msgid "clean (no explicit content)"
+msgstr "clean (بغیر واضح مواد)"
+
+msgid "explicit"
+msgstr "explicit"
+
+msgid "Required. Single-episode value can override."
+msgstr "ضروری۔ واحد قسط کی ویلیو اوور رائیڈ کر سکتی ہے۔"
+
+msgid "Language (RSS <language>)"
+msgstr "زبان (RSS <language>)"
+
+msgid "RFC 5646 language tag, e.g. en-US, zh-CN."
+msgstr "RFC 5646 زبان ٹیگ، مثلاً en-US، zh-CN۔"
+
+msgid "Primary Category"
+msgstr "بنیادی زمرہ"
+
+msgid "Required. Use Apple’s category list."
+msgstr "ضروری۔ Apple کی زمرہ فہرست استعمال کریں۔"
+
+msgid "Secondary Category (optional)"
+msgstr "ثانوی زمرہ (اختیاری)"
+
+msgid "Optional second category."
+msgstr "اختیاری دوسرا زمرہ۔"
+
+msgid "Copyright (optional)"
+msgstr "کاپی رائٹ (اختیاری)"
+
+msgid "Example: © 2025 Your Studio. Plain text."
+msgstr "مثال: © 2025 Your Studio۔ سادہ متن۔"
+
+msgid "podcast:locked"
+msgstr "podcast:locked"
+
+msgid "yes (recommended, prevents unauthorized moves)"
+msgstr "yes (سفارش کردہ، غیر مجاز نقل و حرکت روکتا ہے)"
+
+msgid "no"
+msgstr "no"
+
+msgid "Podcasting 2.0: lock feed to this publisher."
+msgstr "Podcasting 2.0: فیڈ کو اس پبلشر تک مقفل کریں۔"
+
+msgid "podcast:guid (optional)"
+msgstr "podcast:guid (اختیاری)"
+
+msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
+msgstr "Podcasting 2.0 GUID۔ خالی ہونے پر فیڈ سائٹ URL بطور بیک اپ استعمال کرے گی۔"
+
+msgid "Podcast Cover must be square. Current: %1$dx%2$d."
+msgstr "پوڈکاسٹ کور مربع ہونا چاہیے۔ موجودہ: %1$dx%2$d۔"
+
+msgid "Podcast Cover must be between %1$d and %2$d px. Current: %3$d px."
+msgstr "پوڈکاسٹ کور %1$d سے %2$d پکسل کے درمیان ہونا چاہیے۔ موجودہ: %3$d پکسل۔"
+
+msgid "Required. Upload an audio file or enter audio file URL (https)."
+msgstr "ضروری۔ آڈیو فائل اپلوڈ کریں یا فائل کا URL (https) درج کریں۔"
+
+msgid "Required. Enter audio duration in seconds. Example: 180 = 3 minutes"
+msgstr "ضروری۔ آڈیو دورانیہ سیکنڈ میں درج کریں۔ مثال: 180 = 3 منٹ"
+
+msgid "Required. Use file size in bytes for enclosure length. Example: 12345678"
+msgstr "ضروری۔ enclosure لمبائی کے لیے فائل سائز (بائٹس) استعمال کریں۔ مثال: 12345678"
+
+msgid "Required. Example: audio/mpeg, audio/mp3, audio/aac"
+msgstr "ضروری۔ مثال: audio/mpeg, audio/mp3, audio/aac"
+
+msgid "Required. clean / explicit."
+msgstr "ضروری۔ clean / explicit."
+
+msgid "Required. full / trailer / bonus"
+msgstr "ضروری۔ full / trailer / bonus"
+
+msgid "https://facebook.com/yourpage"
+msgstr "https://facebook.com/yourpage"
+
+msgid "https://twitter.com/yourhandle"
+msgstr "https://twitter.com/yourhandle"
+
+msgid "https://instagram.com/yourhandle"
+msgstr "https://instagram.com/yourhandle"
+
+msgid "https://linkedin.com/in/yourprofile"
+msgstr "https://linkedin.com/in/yourprofile"
+
+msgid "https://youtube.com/@yourchannel"
+msgstr "https://youtube.com/@yourchannel"
+
+msgid "https://tiktok.com/@yourhandle"
+msgstr "https://tiktok.com/@yourhandle"
+
+msgid "https://pinterest.com/yourhandle"
+msgstr "https://pinterest.com/yourhandle"
+
+msgid "https://threads.net/@yourhandle"
+msgstr "https://threads.net/@yourhandle"
+
+msgid "https://weibo.com/yourpage"
+msgstr "https://weibo.com/yourpage"
+
+msgid "WeChat ID or QR code link"
+msgstr "WeChat ID یا QR کوڈ لنک"
+
+msgid "/feed/"
+msgstr "/feed/"

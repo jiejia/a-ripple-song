@@ -17,7 +17,7 @@ msgstr ""
 #. Theme Name of the theme
 #: style.css
 msgid "Sage Starter Theme"
-msgstr "Sage Starter Theme"
+msgstr "Sageスターターテーマ"
 
 #. Theme URI of the theme
 #: style.css
@@ -768,12 +768,12 @@ msgstr "白"
 #: public/build/assets/theme.json
 msgctxt "Font family name"
 msgid "sans"
-msgstr "sans"
+msgstr "サンセリフ"
 
 #: public/build/assets/theme.json
 msgctxt "Font family name"
 msgid "mono"
-msgstr "mono"
+msgstr "等幅"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
@@ -980,16 +980,190 @@ msgstr "ロゴ画像をアップロードします。ロゴが設定されてい
 
 #: app/carbon-fields.php
 msgid "Click any card to choose the light theme."
-msgstr "Click any card to choose the light theme."
+msgstr "任意のカードをクリックしてライトテーマを選択してください。"
 
 #: app/carbon-fields.php
 msgid "Click any card to choose the dark theme."
-msgstr "Click any card to choose the dark theme."
+msgstr "任意のカードをクリックしてダークテーマを選択してください。"
 
 #: app/carbon-fields.php
 msgid "If the card picker is unavailable, use this dropdown (default: retro)."
-msgstr "If the card picker is unavailable, use this dropdown (default: retro)."
+msgstr "カードピッカーが使用できない場合は、このドロップダウンを使ってください（デフォルト: retro）。"
 
 #: app/carbon-fields.php
 msgid "If the card picker is unavailable, use this dropdown (default: dim)."
-msgstr "If the card picker is unavailable, use this dropdown (default: dim)."
+msgstr "カードピッカーが使用できない場合は、このドロップダウンを使ってください（デフォルト: dim）。"
+
+msgid "Podcast Cover file not found. Please re-upload."
+msgstr "ポッドキャストのカバーが見つかりません。再アップロードしてください。"
+
+msgid "Podcast Cover validation failed"
+msgstr "ポッドキャストのカバーの検証に失敗しました。"
+
+msgid "Podcast Cover is not a valid image."
+msgstr "ポッドキャストのカバーが有効な画像ではありません。"
+
+msgid "Podcast Cover must be JPG or PNG."
+msgstr "ポッドキャストのカバーは JPG または PNG にしてください。"
+
+msgid "Podcast Cover must be square. Current: %1%2."
+msgstr "ポッドキャストのカバーは正方形にする必要があります。現在: %1%2。"
+
+msgid "Podcast Cover must be between %1 and %2 px. Current: %3 px."
+msgstr "ポッドキャストのカバーは %1〜%2 px である必要があります。現在: %3 px。"
+
+msgid "Podcast Settings"
+msgstr "ポッドキャスト設定"
+
+msgid "Podcast Title"
+msgstr "ポッドキャストタイトル"
+
+msgid "Required. If empty, falls back to site title."
+msgstr "必須。空の場合はサイトタイトルが使われます。"
+
+msgid "Podcast Subtitle"
+msgstr "ポッドキャストサブタイトル"
+
+msgid "Short tagline shown in some apps."
+msgstr "一部のアプリに表示される短いタグライン。"
+
+msgid "Podcast Description"
+msgstr "ポッドキャストの説明"
+
+msgid "Required. Plain text description of the show."
+msgstr "必須。番組のプレーンテキスト説明。"
+
+msgid "Podcast Author (itunes:author)"
+msgstr "ポッドキャスト作者 (itunes:author)"
+
+msgid "Required. Displayed as show author in directories."
+msgstr "必須。ディレクトリで番組作者として表示されます。"
+
+msgid "Owner Name"
+msgstr "オーナー名"
+
+msgid "Required. For <itunes:owner><itunes:name>."
+msgstr "必須。<itunes:owner><itunes:name> 用。"
+
+msgid "Owner Email"
+msgstr "オーナーのメール"
+
+msgid "Required. For <itunes:owner><itunes:email>. Use a monitored inbox."
+msgstr "必須。<itunes:owner><itunes:email> 用。監視されているメールボックスを使用してください。"
+
+msgid "Podcast Cover (1400–3000px square)"
+msgstr "ポッドキャストカバー（1400〜3000px の正方形）"
+
+msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Will be validated on save."
+msgstr "必須。<itunes:image> 用の 1400〜3000px の正方形 JPG/PNG。保存時に検証されます。"
+
+msgid "Default Explicit Flag"
+msgstr "デフォルトの露骨フラグ"
+
+msgid "clean (no explicit content)"
+msgstr "clean（露骨な内容なし）"
+
+msgid "explicit"
+msgstr "explicit"
+
+msgid "Required. Single-episode value can override."
+msgstr "必須。エピソード個別の値で上書き可能。"
+
+msgid "Language (RSS <language>)"
+msgstr "言語（RSS <language>）"
+
+msgid "RFC 5646 language tag, e.g. en-US, zh-CN."
+msgstr "RFC 5646 の言語タグ（例: en-US, zh-CN）。"
+
+msgid "Primary Category"
+msgstr "主要カテゴリ"
+
+msgid "Required. Use Apple’s category list."
+msgstr "必須。Apple のカテゴリ一覧を使用。"
+
+msgid "Secondary Category (optional)"
+msgstr "第二カテゴリ（任意）"
+
+msgid "Optional second category."
+msgstr "任意の第二カテゴリ。"
+
+msgid "Copyright (optional)"
+msgstr "著作権（任意）"
+
+msgid "Example: © 2025 Your Studio. Plain text."
+msgstr "例: © 2025 Your Studio。プレーンテキスト。"
+
+msgid "podcast:locked"
+msgstr "podcast:locked"
+
+msgid "yes (recommended, prevents unauthorized moves)"
+msgstr "yes（推奨。無断移行を防止）"
+
+msgid "no"
+msgstr "no"
+
+msgid "Podcasting 2.0: lock feed to this publisher."
+msgstr "Podcasting 2.0: この配信をこのパブリッシャーにロックします。"
+
+msgid "podcast:guid (optional)"
+msgstr "podcast:guid（任意）"
+
+msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
+msgstr "Podcasting 2.0 の GUID。空の場合はサイトURLを使用します。"
+
+msgid "Podcast Cover must be square. Current: %1$dx%2$d."
+msgstr "ポッドキャストのカバーは正方形にする必要があります。現在: %1$dx%2$d。"
+
+msgid "Podcast Cover must be between %1$d and %2$d px. Current: %3$d px."
+msgstr "ポッドキャストのカバーは %1$d〜%2$d px である必要があります。現在: %3$d px。"
+
+msgid "Required. Upload an audio file or enter audio file URL (https)."
+msgstr "必須。音声ファイルをアップロードするか、ファイルURL（https）を入力してください。"
+
+msgid "Required. Enter audio duration in seconds. Example: 180 = 3 minutes"
+msgstr "必須。音声の長さを秒で入力してください。例: 180 = 3 分"
+
+msgid "Required. Use file size in bytes for enclosure length. Example: 12345678"
+msgstr "必須。エンクロージャー長にはファイルサイズ（バイト）を使用してください。例: 12345678"
+
+msgid "Required. Example: audio/mpeg, audio/mp3, audio/aac"
+msgstr "必須。例: audio/mpeg, audio/mp3, audio/aac"
+
+msgid "Required. clean / explicit."
+msgstr "必須。clean / explicit。"
+
+msgid "Required. full / trailer / bonus"
+msgstr "必須。full / trailer / bonus"
+
+msgid "https://facebook.com/yourpage"
+msgstr "https://facebook.com/yourpage"
+
+msgid "https://twitter.com/yourhandle"
+msgstr "https://twitter.com/yourhandle"
+
+msgid "https://instagram.com/yourhandle"
+msgstr "https://instagram.com/yourhandle"
+
+msgid "https://linkedin.com/in/yourprofile"
+msgstr "https://linkedin.com/in/yourprofile"
+
+msgid "https://youtube.com/@yourchannel"
+msgstr "https://youtube.com/@yourchannel"
+
+msgid "https://tiktok.com/@yourhandle"
+msgstr "https://tiktok.com/@yourhandle"
+
+msgid "https://pinterest.com/yourhandle"
+msgstr "https://pinterest.com/yourhandle"
+
+msgid "https://threads.net/@yourhandle"
+msgstr "https://threads.net/@yourhandle"
+
+msgid "https://weibo.com/yourpage"
+msgstr "https://weibo.com/yourpage"
+
+msgid "WeChat ID or QR code link"
+msgstr "WeChat のIDまたはQRコードリンク"
+
+msgid "/feed/"
+msgstr "/feed/"
