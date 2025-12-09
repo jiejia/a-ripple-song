@@ -1177,7 +1177,7 @@ msgid "/feed/"
 msgstr "/feed/"
 
 msgid "views"
-msgstr "次浏览"
+msgstr "浏览"
 
 msgid "plays"
-msgstr "次播放"
+msgstr "播放"
