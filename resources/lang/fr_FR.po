@@ -1169,3 +1169,9 @@ msgstr "ID WeChat ou lien du QR code"
 
 msgid "/feed/"
 msgstr "/feed/"
+
+msgid "views"
+msgstr "vues"
+
+msgid "plays"
+msgstr "lectures"

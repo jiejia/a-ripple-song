@@ -1175,3 +1175,9 @@ msgstr "微信 ID 或 QR 碼連結"
 
 msgid "/feed/"
 msgstr "/feed/"
+
+msgid "views"
+msgstr "次瀏覽"
+
+msgid "plays"
+msgstr "次播放"

@@ -1177,3 +1177,9 @@ msgstr "معرّف WeChat أو رابط رمز QR"
 
 msgid "/feed/"
 msgstr "/feed/"
+
+msgid "views"
+msgstr "المشاهدات"
+
+msgid "plays"
+msgstr "مرات التشغيل"

@@ -14,6 +14,121 @@ import { DateTime } from 'luxon';
 // WordPress i18n
 const { __ } = wp.i18n;
 
+const METRIC_ACTIONS = {
+  view: 'aripplesong_increment_view',
+  play: 'aripplesong_increment_play',
+};
+
+let lastViewMetricKey = null;
+
+async function sendAjaxMetric(action, postId) {
+  const ajax = window.aripplesongData?.ajax;
+
+  if (!ajax?.url || !ajax?.nonce || !postId) {
+    return null;
+  }
+
+  try {
+    const response = await fetch(ajax.url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        action,
+        post_id: postId,
+        _ajax_nonce: ajax.nonce,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error(`[aripplesong] Failed to send metric "${action}"`, error);
+    return null;
+  }
+}
+
+function maybeSendViewMetric() {
+  const ajax = window.aripplesongData?.ajax;
+  const postId = ajax?.postId;
+
+  if (!postId) {
+    return;
+  }
+
+  const key = `${postId}:${window.location.href}`;
+  if (lastViewMetricKey === key) {
+    return;
+  }
+
+  lastViewMetricKey = key;
+  sendAjaxMetric(METRIC_ACTIONS.view, postId);
+}
+
+async function fetchMetrics(postIds = []) {
+  const ajax = window.aripplesongData?.ajax;
+  if (!ajax?.url || !ajax?.nonce || !Array.isArray(postIds) || postIds.length === 0) {
+    return null;
+  }
+
+  try {
+    const params = new URLSearchParams({
+      action: 'aripplesong_get_metrics',
+      _ajax_nonce: ajax.nonce,
+    });
+
+    postIds.forEach(id => {
+      params.append('post_ids[]', id);
+    });
+
+    const response = await fetch(ajax.url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: params,
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const json = await response.json();
+    return json?.data?.counts || null;
+  } catch (error) {
+    console.error('[aripplesong] Failed to fetch metrics', error);
+    return null;
+  }
+}
+
+function hydrateMetricsFromDom() {
+  const viewEls = Array.from(document.querySelectorAll('.js-views-count'));
+  if (!viewEls.length) return;
+
+  const ids = [...new Set(viewEls.map(el => Number(el.dataset.postId)).filter(Boolean))];
+
+  fetchMetrics(ids).then(counts => {
+    if (!counts) return;
+
+    viewEls.forEach(el => {
+      const id = Number(el.dataset.postId);
+      const entry = counts[id];
+      if (entry && typeof entry.views === 'number') {
+        el.textContent = entry.views;
+      }
+    });
+
+    const playEls = Array.from(document.querySelectorAll('.js-play-count'));
+    playEls.forEach(el => {
+      const id = Number(el.dataset.postId);
+      const entry = counts[id];
+      if (entry && typeof entry.plays === 'number') {
+        el.textContent = entry.plays;
+      }
+    });
+  });
+}
+
 // Storage helpers: gracefully handle browsers/contexts where storage is blocked
 const createMemoryStorage = () => {
   const store = {};
@@ -618,6 +733,10 @@ Alpine.store('player', {
     }
     
     if (this.soundId === null) {
+      if (this.currentEpisode?.id) {
+        sendAjaxMetric(METRIC_ACTIONS.play, this.currentEpisode.id);
+      }
+
       this.soundId = this.currentSound.play();
       // 应用播放速度
       this.currentSound.rate(this.playbackRate, this.soundId);
@@ -1123,6 +1242,12 @@ function init() {
   
   // 初始化图片灯箱
   initImageLightbox();
+
+  // Send view metric on each page render
+  maybeSendViewMetric();
+
+  // Hydrate metrics for all posts on page
+  hydrateMetricsFromDom();
 }
 
 // 页面首次加载

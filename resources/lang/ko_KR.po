@@ -1167,3 +1167,9 @@ msgstr "위챗 ID 또는 QR 코드 링크"
 
 msgid "/feed/"
 msgstr "/feed/"
+
+msgid "views"
+msgstr "조회수"
+
+msgid "plays"
+msgstr "재생수"

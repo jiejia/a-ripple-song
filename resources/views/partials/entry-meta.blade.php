@@ -18,4 +18,11 @@
   <time class="dt-published" datetime="{{ get_post_time('c', true, $meta_post_id) }}">
     {{ get_localized_date($meta_post_id) }}
   </time>
+  @php $meta_post_type = get_post_type($meta_post_id); @endphp
+  <span class="ml-2">
+    · <span class="js-views-count" data-post-id="{{ $meta_post_id }}" data-post-type="{{ $meta_post_type }}">--</span> {{ __('views', 'sage') }}
+    @if ($meta_post_type === 'podcast')
+      · <span class="js-play-count" data-post-id="{{ $meta_post_id }}">--</span> {{ __('plays', 'sage') }}
+    @endif
+  </span>
 </p>

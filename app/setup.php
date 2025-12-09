@@ -387,12 +387,20 @@ add_action('wp_enqueue_scripts', function () {
                 $dark_theme = function_exists('\carbon_get_theme_option') ? \carbon_get_theme_option('crb_dark_theme') : null;
                 $light_themes = function_exists('\App\crb_get_daisyui_light_themes') ? array_keys(\App\crb_get_daisyui_light_themes()) : [];
                 $dark_themes = function_exists('\App\crb_get_daisyui_dark_themes') ? array_keys(\App\crb_get_daisyui_dark_themes()) : [];
+                $current_post_id = is_singular() ? get_queried_object_id() : 0;
+                $current_post_type = $current_post_id ? get_post_type($current_post_id) : '';
 
                 // Localize script with REST API URL and theme options
                 wp_localize_script('aripplesong-app', 'aripplesongData', [
                     'restUrl' => esc_url_raw(rest_url()),
                     'restNonce' => wp_create_nonce('wp_rest'),
                     'siteUrl' => esc_url_raw(home_url('/')),
+                    'ajax' => [
+                        'url' => esc_url_raw(admin_url('admin-ajax.php')),
+                        'nonce' => wp_create_nonce('aripplesong-ajax'),
+                        'postId' => $current_post_id,
+                        'postType' => $current_post_type,
+                    ],
                     'theme' => [
                         'lightTheme' => $light_theme ?: 'retro',
                         'darkTheme' => $dark_theme ?: 'dim',

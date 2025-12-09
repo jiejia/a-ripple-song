@@ -51,6 +51,7 @@ class Blog_List_Widget extends WP_Widget {
                             </h3>
                             <div class="grid grid-flow-row gap-1 mt-2">
                                 <?php
+                                // 保留分类标签展示
                                 $categories = get_the_category();
                                 if (!empty($categories)):
                                 ?>
@@ -62,9 +63,10 @@ class Blog_List_Widget extends WP_Widget {
                                         </span>
                                     </span>
                                 <?php endif; ?>
-                                <span class="text-xs text-base-content/50">
-                                    <span><?php echo get_localized_date(); ?></span>
-                                </span>
+                                <?php
+                                // 复用 entry-meta 模板以统一日期与计数展示
+                                echo \Roots\view('partials.entry-meta', ['post_id' => get_the_ID()])->render();
+                                ?>
                             </div>
                         </li>
                     <?php endwhile; ?>
