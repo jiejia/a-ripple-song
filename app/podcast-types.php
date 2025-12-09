@@ -422,6 +422,78 @@ add_action('cmb2_admin_init', function () {
 });
 
 /**
+ * Calculate podcast audio metadata (duration, length, mime) via getID3.
+ *
+ * @param int $post_id
+ * @param string $audio_url Optional audio URL override.
+ * @return array{duration:int|null,length:int|null,mime:string|null}
+ */
+function calculate_podcast_audio_meta(int $post_id, string $audio_url = ''): array
+{
+    $result = [
+        'duration' => null,
+        'length'   => null,
+        'mime'     => null,
+    ];
+
+    if ($audio_url === '') {
+        $audio_url = get_post_meta($post_id, 'audio_file', true);
+    }
+
+    if (empty($audio_url)) {
+        return $result;
+    }
+
+    if (!class_exists('getID3')) {
+        $vendor_path = get_template_directory() . '/vendor/autoload.php';
+        if (file_exists($vendor_path)) {
+            require_once $vendor_path;
+        }
+    }
+
+    if (!class_exists('getID3')) {
+        error_log("Podcast #{$post_id}: getID3 not available");
+        return $result;
+    }
+
+    $upload_dir = wp_get_upload_dir();
+    $file_path = str_replace($upload_dir['baseurl'], $upload_dir['basedir'], $audio_url);
+
+    if (!file_exists($file_path)) {
+        $parsed_url = parse_url($audio_url);
+        if (isset($parsed_url['path'])) {
+            $file_path = ABSPATH . ltrim($parsed_url['path'], '/');
+        }
+    }
+
+    if (!file_exists($file_path)) {
+        error_log("Podcast #{$post_id}: audio file missing for size/mime detection");
+        return $result;
+    }
+
+    try {
+        $getID3 = new \getID3();
+        $file_info = $getID3->analyze($file_path);
+
+        if (isset($file_info['playtime_seconds'])) {
+            $result['duration'] = (int) round($file_info['playtime_seconds']);
+        }
+
+        if (!empty($file_info['filesize'])) {
+            $result['length'] = (int) $file_info['filesize'];
+        }
+
+        if (!empty($file_info['mime_type'])) {
+            $result['mime'] = $file_info['mime_type'];
+        }
+    } catch (\Exception $e) {
+        error_log("Podcast #{$post_id}: getID3 error - " . $e->getMessage());
+    }
+
+    return $result;
+}
+
+/**
  * Ensure TinyMCE assets load for the subtitle wysiwyg when editing podcasts in
  * the block editor.
  */
@@ -508,6 +580,24 @@ add_action('cmb2_save_post_fields_podcast_metabox', function ($post_id) {
     $episode_explicit = isset($_POST['episode_explicit']) ? trim((string) $_POST['episode_explicit']) : '';
     $episode_type = isset($_POST['episode_type']) ? trim((string) $_POST['episode_type']) : '';
 
+    // Auto-fill missing duration/length/mime via getID3 when possible
+    $auto_meta = calculate_podcast_audio_meta($post_id, $audio_url);
+    if ($duration <= 0 && !empty($auto_meta['duration'])) {
+        $duration = $auto_meta['duration'];
+        $_POST['duration'] = $duration;
+        update_post_meta($post_id, 'duration', $duration);
+    }
+    if ($audio_length <= 0 && !empty($auto_meta['length'])) {
+        $audio_length = $auto_meta['length'];
+        $_POST['audio_length'] = $audio_length;
+        update_post_meta($post_id, 'audio_length', $audio_length);
+    }
+    if ($audio_mime === '' && !empty($auto_meta['mime'])) {
+        $audio_mime = $auto_meta['mime'];
+        $_POST['audio_mime'] = $audio_mime;
+        update_post_meta($post_id, 'audio_mime', $audio_mime);
+    }
+
     if ($audio_url === '') {
         $errors[] = __('Audio File is required.', 'sage');
     } elseif (!filter_var($audio_url, FILTER_VALIDATE_URL) || stripos($audio_url, 'http') !== 0) {
@@ -582,95 +672,18 @@ add_action('cmb2_save_post_fields', function ($post_id) {
         return;
     }
 
-    // 获取音频文件 URL
-    $audio_file = get_post_meta($post_id, 'audio_file', true);
-    
-    if (empty($audio_file)) {
-        error_log("播客 #{$post_id}: 没有找到音频文件");
-        return;
+    $auto_meta = calculate_podcast_audio_meta($post_id);
+
+    if (!empty($auto_meta['duration'])) {
+        update_post_meta($post_id, 'duration', $auto_meta['duration']);
     }
 
-    error_log("播客 #{$post_id}: 音频文件 URL = {$audio_file}");
-
-    // 检查 getID3 类是否存在
-    if (!class_exists('getID3')) {
-        // 尝试加载 composer autoload
-        $vendor_path = get_template_directory() . '/vendor/autoload.php';
-        if (file_exists($vendor_path)) {
-            require_once $vendor_path;
-        }
+    if (!empty($auto_meta['length'])) {
+        update_post_meta($post_id, 'audio_length', $auto_meta['length']);
     }
 
-    // 如果 getID3 类还是不存在，退出
-    if (!class_exists('getID3')) {
-        error_log("播客 #{$post_id}: getID3 类不存在");
-        return;
-    }
-
-    try {
-        // 将 URL 转换为本地文件路径
-        $upload_dir = wp_get_upload_dir();
-        $file_path = str_replace($upload_dir['baseurl'], $upload_dir['basedir'], $audio_file);
-        
-        // 尝试另一种方式：处理域名可能不一致的情况
-        if (!file_exists($file_path)) {
-            // 解析 URL，只保留路径部分
-            $parsed_url = parse_url($audio_file);
-            if (isset($parsed_url['path'])) {
-                // 尝试使用 ABSPATH 构建完整路径
-                $file_path = ABSPATH . ltrim($parsed_url['path'], '/');
-            }
-        }
-        
-        error_log("播客 #{$post_id}: 文件路径 = {$file_path}");
-        error_log("播客 #{$post_id}: 文件存在? " . (file_exists($file_path) ? '是' : '否'));
-        
-        // 如果文件不存在，退出
-        if (!file_exists($file_path)) {
-            error_log("播客 #{$post_id}: 文件不存在，无法解析时长");
-            return;
-        }
-
-        // 初始化 getID3
-        $getID3 = new \getID3();
-        
-        // 分析音频文件
-        $file_info = $getID3->analyze($file_path);
-        
-        error_log("播客 #{$post_id}: getID3 分析结果 = " . print_r($file_info, true));
-        
-        // 获取播放时长（秒）
-        if (isset($file_info['playtime_seconds'])) {
-            $duration = round($file_info['playtime_seconds']);
-            
-            error_log("播客 #{$post_id}: 检测到时长 = {$duration} 秒");
-            
-            // 更新 duration 字段
-            update_post_meta($post_id, 'duration', $duration);
-        } else {
-            error_log("播客 #{$post_id}: 未能从文件信息中获取播放时长");
-        }
-
-        // 获取文件大小（字节）并保存到 audio_length
-        if (!empty($file_info['filesize'])) {
-            $length_bytes = (int) $file_info['filesize'];
-            update_post_meta($post_id, 'audio_length', $length_bytes);
-            error_log("播客 #{$post_id}: 检测到文件大小 = {$length_bytes} 字节");
-        } else {
-            error_log("播客 #{$post_id}: 未能获取文件大小");
-        }
-
-        // 获取 MIME 类型
-        $mime = $file_info['mime_type'] ?? '';
-        if ($mime) {
-            update_post_meta($post_id, 'audio_mime', $mime);
-            error_log("播客 #{$post_id}: 检测到 MIME = {$mime}");
-        } else {
-            error_log("播客 #{$post_id}: 未能获取 MIME 类型");
-        }
-    } catch (\Exception $e) {
-        // 记录错误，不影响文章保存
-        error_log("播客 #{$post_id}: getID3 错误 - " . $e->getMessage());
+    if (!empty($auto_meta['mime'])) {
+        update_post_meta($post_id, 'audio_mime', $auto_meta['mime']);
     }
 }, 20, 1);
 
