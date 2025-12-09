@@ -21,6 +21,23 @@ const METRIC_ACTIONS = {
 
 let lastViewMetricKey = null;
 
+function resolvePrimaryPostId() {
+  const ajax = window.aripplesongData?.ajax;
+  if (ajax?.postId) {
+    return ajax.postId;
+  }
+
+  const viewEls = Array.from(document.querySelectorAll('.js-views-count[data-post-id]'));
+  const ids = [...new Set(viewEls.map(el => Number(el.dataset.postId)).filter(Boolean))];
+
+  // 仅当页面上唯一一个 postId 时才认为是详情页，避免列表页误计数
+  if (ids.length === 1) {
+    return ids[0];
+  }
+
+  return 0;
+}
+
 async function sendAjaxMetric(action, postId) {
   const ajax = window.aripplesongData?.ajax;
 
@@ -51,8 +68,7 @@ async function sendAjaxMetric(action, postId) {
 }
 
 function maybeSendViewMetric() {
-  const ajax = window.aripplesongData?.ajax;
-  const postId = ajax?.postId;
+  const postId = resolvePrimaryPostId();
 
   if (!postId) {
     return;
