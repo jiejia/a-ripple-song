@@ -21,6 +21,16 @@ const METRIC_ACTIONS = {
 
 let lastViewMetricKey = null;
 
+function bumpPlayCountDom(postId) {
+  if (!postId) return;
+  const els = Array.from(document.querySelectorAll(`.js-play-count[data-post-id="${postId}"]`));
+  els.forEach(el => {
+    const current = parseInt(el.textContent, 10);
+    const safe = isNaN(current) ? 0 : current;
+    el.textContent = safe + 1;
+  });
+}
+
 function resolvePrimaryPostId() {
   const ajax = window.aripplesongData?.ajax;
   if (ajax?.postId) {
@@ -750,6 +760,7 @@ Alpine.store('player', {
     
     if (this.soundId === null) {
       if (this.currentEpisode?.id) {
+        bumpPlayCountDom(this.currentEpisode.id);
         sendAjaxMetric(METRIC_ACTIONS.play, this.currentEpisode.id);
       }
 
