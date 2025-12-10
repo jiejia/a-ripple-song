@@ -12,6 +12,16 @@
     --link-decoration: none;
 }
 
+@layer base {
+    :root {
+        --aripplesong-color-scheme: light;
+    }
+
+    [data-theme] {
+        color-scheme: var(--aripplesong-color-scheme, light);
+    }
+}
+
 /* 防止移动端浏览器自动放大文字 */
 html {
     -webkit-text-size-adjust: 100%;

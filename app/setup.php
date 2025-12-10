@@ -387,6 +387,8 @@ add_action('wp_enqueue_scripts', function () {
                 $dark_theme = function_exists('\carbon_get_theme_option') ? \carbon_get_theme_option('crb_dark_theme') : null;
                 $light_themes = function_exists('\App\crb_get_daisyui_light_themes') ? array_keys(\App\crb_get_daisyui_light_themes()) : [];
                 $dark_themes = function_exists('\App\crb_get_daisyui_dark_themes') ? array_keys(\App\crb_get_daisyui_dark_themes()) : [];
+                $palette_slugs = array_unique(array_merge($light_themes, $dark_themes));
+                $palette_map = function_exists('\App\crb_get_daisyui_theme_palette') ? \App\crb_get_daisyui_theme_palette($palette_slugs) : [];
                 $current_post_id = is_singular() ? get_queried_object_id() : 0;
                 $current_post_type = $current_post_id ? get_post_type($current_post_id) : '';
 
@@ -406,6 +408,7 @@ add_action('wp_enqueue_scripts', function () {
                         'darkTheme' => $dark_theme ?: 'dim',
                         'lightThemes' => $light_themes,
                         'darkThemes' => $dark_themes,
+                        'palette' => $palette_map,
                     ],
                 ]);
             }

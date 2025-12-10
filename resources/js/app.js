@@ -203,45 +203,70 @@ const safeLocalStorage = createSafeStorage('localStorage');
 const FALLBACK_LIGHT_THEME = 'retro';
 const FALLBACK_DARK_THEME = 'dim';
 const LIGHT_THEMES = window.aripplesongData?.theme?.lightThemes || [
-  'light',
-  'cupcake',
-  'bumblebee',
-  'emerald',
-  'corporate',
   'retro',
-  'valentine',
-  'garden',
-  'aqua',
-  'lofi',
-  'pastel',
-  'fantasy',
-  'wireframe',
-  'cmyk',
-  'autumn',
-  'acid',
-  'lemonade',
-  'winter',
-  'caramellatte',
-  'silk'
+  'pastel-breeze',
+  'soft-sand',
+  'mint-cream',
+  'blush-mist',
+  'sky-peach',
+  'lemon-fizz',
+  'lavender-fog',
+  'coral-sunset',
+  'sea-glass',
+  'apricot-sorbet',
+  'cotton-candy',
+  'pear-spritz',
+  'cloud-latte',
+  'dew-frost',
+  'peach-foam',
+  'lilac-ice',
+  'sage-mint',
+  'buttercup',
+  'powder-blue',
+  'melon-ice',
+  'hazy-rose',
+  'calm-water',
+  'honey-milk',
+  'arctic-mint',
+  'vanilla-berry',
+  'morning-sun',
+  'matcha-cream'
 ];
 
 const DARK_THEMES = window.aripplesongData?.theme?.darkThemes || [
-  'dark',
-  'synthwave',
-  'cyberpunk',
-  'halloween',
-  'forest',
-  'black',
-  'luxury',
-  'dracula',
-  'business',
-  'night',
-  'coffee',
   'dim',
-  'nord',
-  'abyss',
-  'sunset'
+  'midnight-aurora',
+  'neon-plasma',
+  'cyber-grape',
+  'velvet-ember',
+  'ink-cyan',
+  'dusk-rose',
+  'obsidian-gold',
+  'deep-space',
+  'ocean-night',
+  'noir-mint',
+  'plum-neon',
+  'cobalt-flare',
+  'dusk-marine',
+  'ember-glow',
+  'midnight-teal',
+  'aurora-mist',
+  'shadow-berry',
+  'neon-blush',
+  'abyss-blue',
+  'charcoal-mint',
+  'galaxy-candy',
+  'violet-storm',
+  'magma-ice',
+  'stormy-sea',
+  'lunar-mauve',
+  'acid-jungle',
+  'carbon-ember'
 ];
+
+const THEME_PALETTE = window.aripplesongData?.theme?.palette || {};
+const LIGHT_THEME_SET = new Set(LIGHT_THEMES);
+const DARK_THEME_SET = new Set(DARK_THEMES);
 
 const resolveTheme = (theme, available, fallback) => {
   if (theme && available.includes(theme)) {
@@ -249,6 +274,43 @@ const resolveTheme = (theme, available, fallback) => {
   }
   return fallback;
 };
+
+const ensureThemeStylesInjected = (() => {
+  let injected = false;
+  return () => {
+    if (injected) return;
+    const entries = Object.entries(THEME_PALETTE || {});
+    if (!entries.length) return;
+
+    const rules = entries.map(([slug, colors]) => {
+      const scheme = DARK_THEME_SET.has(slug) ? 'dark' : 'light';
+      const palette = {
+        base100: colors.base100 || '#f3f4f6',
+        base200: colors.base200 || '#e5e7eb',
+        base300: colors.base300 || '#d1d5db',
+        baseContent: colors.baseContent || '#111827',
+        primary: colors.primary || '#570df8',
+        primaryContent: colors.primaryContent || '#ffffff',
+        secondary: colors.secondary || '#f000b8',
+        secondaryContent: colors.secondaryContent || '#ffffff',
+        accent: colors.accent || '#37cdbe',
+        accentContent: colors.accentContent || '#ffffff',
+        neutral: colors.neutral || '#3d4451',
+        neutralContent: colors.neutralContent || '#f3f4f6',
+      };
+
+      return `:root[data-theme="${slug}"]{color-scheme:${scheme};--color-base-100:${palette.base100};--color-base-200:${palette.base200};--color-base-300:${palette.base300};--color-base-content:${palette.baseContent};--color-primary:${palette.primary};--color-primary-content:${palette.primaryContent};--color-secondary:${palette.secondary};--color-secondary-content:${palette.secondaryContent};--color-accent:${palette.accent};--color-accent-content:${palette.accentContent};--color-neutral:${palette.neutral};--color-neutral-content:${palette.neutralContent};}`;
+    });
+
+    if (!rules.length) return;
+
+    const style = document.createElement('style');
+    style.id = 'aripplesong-theme-styles';
+    style.textContent = rules.join('');
+    document.head.appendChild(style);
+    injected = true;
+  };
+})();
 
 // ========== Date Formatting Utility ==========
 /**
@@ -327,6 +389,8 @@ Alpine.store('theme', {
   mediaQuery: null,
   
   init() {
+    ensureThemeStylesInjected();
+
     // 从 localStorage 加载主题模式
     const savedMode = safeLocalStorage.getItem(this.storageKey);
     if (savedMode && ['light', 'dark', 'auto'].includes(savedMode)) {
@@ -369,6 +433,7 @@ Alpine.store('theme', {
   },
   
   applyTheme() {
+    ensureThemeStylesInjected();
     let theme;
     if (this.mode === 'auto') {
       // 跟随系统
@@ -379,7 +444,11 @@ Alpine.store('theme', {
       theme = this.lightTheme;
     }
     
-    document.documentElement.setAttribute('data-theme', theme);
+    const root = document.documentElement;
+    const isDarkTheme = DARK_THEME_SET.has(theme);
+    root.setAttribute('data-theme', theme);
+    root.style.setProperty('--aripplesong-color-scheme', isDarkTheme ? 'dark' : 'light');
+    root.style.colorScheme = isDarkTheme ? 'dark' : 'light';
   },
   
   get isDark() {
