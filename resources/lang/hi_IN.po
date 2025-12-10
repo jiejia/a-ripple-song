@@ -811,6 +811,7 @@ msgid "Unknown episode"
 msgstr "अज्ञात एपिसोड"
 
 #: resources/views/sections/autoplay-confirm.blade.php:40
+#: app/carbon-fields.php
 msgid "Cancel"
 msgstr "रद्द करें"
 
@@ -973,6 +974,7 @@ msgid "Open Right Sidebar"
 msgstr "दायां साइडबार खोलें"
 
 #: app/carbon-fields.php:36
+#: app/carbon-fields.php
 msgid "Site Logo"
 msgstr "साइट लोगो"
 
@@ -1175,3 +1177,63 @@ msgstr "दृश्य"
 
 msgid "plays"
 msgstr "प्ले"
+
+#: app/carbon-fields.php
+msgid "Upload a logo image (220px × 32px). You will be able to crop the image after upload."
+msgstr "एक लोगो छवि (220px × 32px) अपलोड करें, अपलोड के बाद आप क्रॉप कर सकते हैं।"
+
+#: app/carbon-fields.php
+msgid "Upload / Change Logo"
+msgstr "लोगो अपलोड / बदलें"
+
+#: app/carbon-fields.php
+msgid "Remove Logo"
+msgstr "लोगो हटाएं"
+
+#: app/carbon-fields.php
+msgid "Choose Logo Image"
+msgstr "लोगो छवि चुनें"
+
+#: app/carbon-fields.php
+msgid "Crop Image"
+msgstr "छवि क्रॉप करें"
+
+#: app/carbon-fields.php
+msgid "Image is too small. Minimum size: %1$dpx × %2$dpx"
+msgstr "छवि बहुत छोटी है। न्यूनतम आकार: %1$dpx × %2$dpx"
+
+#: app/carbon-fields.php
+msgid "Crop and Save"
+msgstr "क्रॉप करें और सहेजें"
+
+#: app/carbon-fields.php
+msgid "Please select a crop area."
+msgstr "कृपया क्रॉप क्षेत्र चुनें।"
+
+#: app/carbon-fields.php
+msgid "Cropping..."
+msgstr "क्रॉप हो रहा है..."
+
+#: app/carbon-fields.php
+msgid "Error cropping image:"
+msgstr "छवि क्रॉप करते समय त्रुटि:"
+
+#: app/carbon-fields.php
+msgid "Error cropping image. Please try again."
+msgstr "छवि क्रॉप करने में त्रुटि। कृपया पुनः प्रयास करें।"
+
+#: app/carbon-fields.php
+msgid "You do not have permission to upload files."
+msgstr "आपको फाइल अपलोड करने की अनुमति नहीं है।"
+
+#: app/carbon-fields.php
+msgid "Missing attachment ID."
+msgstr "अटैचमेंट ID गायब है।"
+
+#: app/carbon-fields.php
+msgid "Missing crop details."
+msgstr "क्रॉप विवरण गायब है।"
+
+#: app/carbon-fields.php
+msgid "Original image not found."
+msgstr "मूल छवि नहीं मिली।"

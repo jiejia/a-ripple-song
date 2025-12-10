@@ -809,6 +809,7 @@ msgid "Unknown episode"
 msgstr "알 수 없는 에피소드"
 
 #: resources/views/sections/autoplay-confirm.blade.php:40
+#: app/carbon-fields.php
 msgid "Cancel"
 msgstr "취소"
 
@@ -971,6 +972,7 @@ msgid "Open Right Sidebar"
 msgstr "오른쪽 사이드바 열기"
 
 #: app/carbon-fields.php:36
+#: app/carbon-fields.php
 msgid "Site Logo"
 msgstr "사이트 로고"
 
@@ -1173,3 +1175,63 @@ msgstr "조회수"
 
 msgid "plays"
 msgstr "재생수"
+
+#: app/carbon-fields.php
+msgid "Upload a logo image (220px × 32px). You will be able to crop the image after upload."
+msgstr "로고 이미지(220px × 32px)를 업로드하세요. 업로드 후 자를 수 있습니다."
+
+#: app/carbon-fields.php
+msgid "Upload / Change Logo"
+msgstr "로고 업로드/변경"
+
+#: app/carbon-fields.php
+msgid "Remove Logo"
+msgstr "로고 제거"
+
+#: app/carbon-fields.php
+msgid "Choose Logo Image"
+msgstr "로고 이미지 선택"
+
+#: app/carbon-fields.php
+msgid "Crop Image"
+msgstr "이미지 자르기"
+
+#: app/carbon-fields.php
+msgid "Image is too small. Minimum size: %1$dpx × %2$dpx"
+msgstr "이미지가 너무 작습니다. 최소 크기: %1$dpx × %2$dpx"
+
+#: app/carbon-fields.php
+msgid "Crop and Save"
+msgstr "자르고 저장"
+
+#: app/carbon-fields.php
+msgid "Please select a crop area."
+msgstr "크롭 영역을 선택하세요."
+
+#: app/carbon-fields.php
+msgid "Cropping..."
+msgstr "자르는 중..."
+
+#: app/carbon-fields.php
+msgid "Error cropping image:"
+msgstr "이미지 자르기 오류:"
+
+#: app/carbon-fields.php
+msgid "Error cropping image. Please try again."
+msgstr "이미지 자르기에 실패했습니다. 다시 시도하세요."
+
+#: app/carbon-fields.php
+msgid "You do not have permission to upload files."
+msgstr "파일을 업로드할 권한이 없습니다."
+
+#: app/carbon-fields.php
+msgid "Missing attachment ID."
+msgstr "첨부 ID가 없습니다."
+
+#: app/carbon-fields.php
+msgid "Missing crop details."
+msgstr "크롭 정보가 없습니다."
+
+#: app/carbon-fields.php
+msgid "Original image not found."
+msgstr "원본 이미지를 찾을 수 없습니다."

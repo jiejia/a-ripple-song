@@ -811,6 +811,7 @@ msgid "Unknown episode"
 msgstr "Unknown episode"
 
 #: resources/views/sections/autoplay-confirm.blade.php:40
+#: app/carbon-fields.php
 msgid "Cancel"
 msgstr "Cancel"
 
@@ -973,6 +974,7 @@ msgid "Open Right Sidebar"
 msgstr "Open Right Sidebar"
 
 #: app/carbon-fields.php:36
+#: app/carbon-fields.php
 msgid "Site Logo"
 msgstr "Site Logo"
 
@@ -1118,6 +1120,66 @@ msgstr "Podcast Cover must be square. Current: %1$dx%2$d."
 
 msgid "Podcast Cover must be between %1$d and %2$d px. Current: %3$d px."
 msgstr "Podcast Cover must be between %1$d and %2$d px. Current: %3$d px."
+
+#: app/carbon-fields.php
+msgid "Upload a logo image (220px × 32px). You will be able to crop the image after upload."
+msgstr "Upload a logo image (220px × 32px). You will be able to crop the image after upload."
+
+#: app/carbon-fields.php
+msgid "Upload / Change Logo"
+msgstr "Upload / Change Logo"
+
+#: app/carbon-fields.php
+msgid "Remove Logo"
+msgstr "Remove Logo"
+
+#: app/carbon-fields.php
+msgid "Choose Logo Image"
+msgstr "Choose Logo Image"
+
+#: app/carbon-fields.php
+msgid "Crop Image"
+msgstr "Crop Image"
+
+#: app/carbon-fields.php
+msgid "Image is too small. Minimum size: %1$dpx × %2$dpx"
+msgstr "Image is too small. Minimum size: %1$dpx × %2$dpx"
+
+#: app/carbon-fields.php
+msgid "Crop and Save"
+msgstr "Crop and Save"
+
+#: app/carbon-fields.php
+msgid "Please select a crop area."
+msgstr "Please select a crop area."
+
+#: app/carbon-fields.php
+msgid "Cropping..."
+msgstr "Cropping..."
+
+#: app/carbon-fields.php
+msgid "Error cropping image:"
+msgstr "Error cropping image:"
+
+#: app/carbon-fields.php
+msgid "Error cropping image. Please try again."
+msgstr "Error cropping image. Please try again."
+
+#: app/carbon-fields.php
+msgid "You do not have permission to upload files."
+msgstr "You do not have permission to upload files."
+
+#: app/carbon-fields.php
+msgid "Missing attachment ID."
+msgstr "Missing attachment ID."
+
+#: app/carbon-fields.php
+msgid "Missing crop details."
+msgstr "Missing crop details."
+
+#: app/carbon-fields.php
+msgid "Original image not found."
+msgstr "Original image not found."
 
 msgid "Required. Upload an audio file or enter audio file URL (https)."
 msgstr "Required. Upload an audio file or enter audio file URL (https)."

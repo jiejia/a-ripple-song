@@ -813,6 +813,7 @@ msgid "Unknown episode"
 msgstr "Неизвестный эпизод"
 
 #: resources/views/sections/autoplay-confirm.blade.php:40
+#: app/carbon-fields.php
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -975,6 +976,7 @@ msgid "Open Right Sidebar"
 msgstr "Открыть правую боковую панель"
 
 #: app/carbon-fields.php:36
+#: app/carbon-fields.php
 msgid "Site Logo"
 msgstr "Логотип сайта"
 
@@ -1177,3 +1179,63 @@ msgstr "просмотры"
 
 msgid "plays"
 msgstr "воспроизведения"
+
+#: app/carbon-fields.php
+msgid "Upload a logo image (220px × 32px). You will be able to crop the image after upload."
+msgstr "Загрузите логотип (220px × 32px). После загрузки можно обрезать."
+
+#: app/carbon-fields.php
+msgid "Upload / Change Logo"
+msgstr "Загрузить / изменить логотип"
+
+#: app/carbon-fields.php
+msgid "Remove Logo"
+msgstr "Удалить логотип"
+
+#: app/carbon-fields.php
+msgid "Choose Logo Image"
+msgstr "Выбрать изображение логотипа"
+
+#: app/carbon-fields.php
+msgid "Crop Image"
+msgstr "Обрезать изображение"
+
+#: app/carbon-fields.php
+msgid "Image is too small. Minimum size: %1$dpx × %2$dpx"
+msgstr "Изображение слишком маленькое. Минимальный размер: %1$dpx × %2$dpx"
+
+#: app/carbon-fields.php
+msgid "Crop and Save"
+msgstr "Обрезать и сохранить"
+
+#: app/carbon-fields.php
+msgid "Please select a crop area."
+msgstr "Пожалуйста, выберите область обрезки."
+
+#: app/carbon-fields.php
+msgid "Cropping..."
+msgstr "Обрезка..."
+
+#: app/carbon-fields.php
+msgid "Error cropping image:"
+msgstr "Ошибка обрезки изображения:"
+
+#: app/carbon-fields.php
+msgid "Error cropping image. Please try again."
+msgstr "Ошибка обрезки изображения. Повторите попытку."
+
+#: app/carbon-fields.php
+msgid "You do not have permission to upload files."
+msgstr "У вас нет прав на загрузку файлов."
+
+#: app/carbon-fields.php
+msgid "Missing attachment ID."
+msgstr "Отсутствует ID вложения."
+
+#: app/carbon-fields.php
+msgid "Missing crop details."
+msgstr "Отсутствуют параметры обрезки."
+
+#: app/carbon-fields.php
+msgid "Original image not found."
+msgstr "Исходное изображение не найдено."

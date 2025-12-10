@@ -809,6 +809,7 @@ msgid "Unknown episode"
 msgstr "未知节目"
 
 #: resources/views/sections/autoplay-confirm.blade.php:40
+#: app/carbon-fields.php
 msgid "Cancel"
 msgstr "取消"
 
@@ -971,6 +972,7 @@ msgid "Open Right Sidebar"
 msgstr "打开右边栏"
 
 #: app/carbon-fields.php:36
+#: app/carbon-fields.php
 msgid "Site Logo"
 msgstr "网站 Logo"
 
@@ -1181,3 +1183,63 @@ msgstr "浏览"
 
 msgid "plays"
 msgstr "播放"
+
+#: app/carbon-fields.php
+msgid "Upload a logo image (220px × 32px). You will be able to crop the image after upload."
+msgstr "上传一张 Logo 图片（220px × 32px），上传后可以裁剪。"
+
+#: app/carbon-fields.php
+msgid "Upload / Change Logo"
+msgstr "上传/更换 Logo"
+
+#: app/carbon-fields.php
+msgid "Remove Logo"
+msgstr "移除 Logo"
+
+#: app/carbon-fields.php
+msgid "Choose Logo Image"
+msgstr "选择 Logo 图片"
+
+#: app/carbon-fields.php
+msgid "Crop Image"
+msgstr "裁剪图片"
+
+#: app/carbon-fields.php
+msgid "Image is too small. Minimum size: %1$dpx × %2$dpx"
+msgstr "图片尺寸过小。最小尺寸：%1$dpx × %2$dpx"
+
+#: app/carbon-fields.php
+msgid "Crop and Save"
+msgstr "裁剪并保存"
+
+#: app/carbon-fields.php
+msgid "Please select a crop area."
+msgstr "请选择裁剪区域。"
+
+#: app/carbon-fields.php
+msgid "Cropping..."
+msgstr "正在裁剪..."
+
+#: app/carbon-fields.php
+msgid "Error cropping image:"
+msgstr "裁剪图片出错："
+
+#: app/carbon-fields.php
+msgid "Error cropping image. Please try again."
+msgstr "裁剪图片出错，请重试。"
+
+#: app/carbon-fields.php
+msgid "You do not have permission to upload files."
+msgstr "您没有上传文件的权限。"
+
+#: app/carbon-fields.php
+msgid "Missing attachment ID."
+msgstr "缺少附件 ID。"
+
+#: app/carbon-fields.php
+msgid "Missing crop details."
+msgstr "缺少裁剪参数。"
+
+#: app/carbon-fields.php
+msgid "Original image not found."
+msgstr "未找到原始图片。"

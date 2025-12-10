@@ -33,9 +33,13 @@ add_action('carbon_fields_register_fields', function () {
         ->set_icon('dashicons-admin-settings')
         ->set_page_menu_position(60)
         ->add_fields([
-            Field::make('image', 'crb_site_logo', __('Site Logo', 'sage'))
-                ->set_value_type('url')
-                ->set_help_text(__('Upload a logo image. If no logo is set, the site title with icon will be displayed.', 'sage')),
+            Field::make('html', 'crb_site_logo_uploader', __('Site Logo', 'sage'))
+                ->set_html(crb_render_logo_uploader())
+                ->set_help_text(__('Upload a logo image (220px × 32px). You will be able to crop the image after upload.', 'sage')),
+            Field::make('text', 'crb_site_logo', '')
+                ->set_attribute('type', 'hidden')
+                ->set_attribute('data-logo-field', 'true')
+                ->set_classes('crb-logo-carbon-field'),
             Field::make('html', 'crb_light_theme_picker', __('Light Theme', 'sage'))
                 ->set_html(
                     sprintf(
@@ -138,6 +142,46 @@ add_action('carbon_fields_register_fields', function () {
         ]);
 
 });
+
+/**
+ * Render custom logo uploader with cropper.
+ *
+ * @return string
+ */
+function crb_render_logo_uploader(): string
+{
+    $current_logo = carbon_get_theme_option('crb_site_logo');
+    $preview_html = '';
+
+    if (!empty($current_logo)) {
+        $preview_html = sprintf(
+            '<div class="crb-logo-preview" style="margin-top: 12px;">
+                <img src="%s" alt="%s" style="max-width: 220px; height: auto; border: 1px solid #ddd; padding: 8px; background: #f9f9f9;">
+            </div>',
+            esc_url($current_logo),
+            esc_attr__('Site Logo', 'sage')
+        );
+    }
+
+    return sprintf(
+        '<div class="crb-logo-uploader-wrapper">
+            <button type="button" class="button button-primary crb-logo-upload-btn" data-logo-width="220" data-logo-height="32">
+                %s
+            </button>
+            <button type="button" class="button crb-logo-remove-btn" style="margin-left: 8px; %s">
+                %s
+            </button>
+            <input type="hidden" name="_crb_site_logo" class="crb-site-logo-input" id="crb_site_logo_field" value="%s" data-current-value="%s">
+            %s
+        </div>',
+        esc_html__('Upload / Change Logo', 'sage'),
+        empty($current_logo) ? 'display: none;' : '',
+        esc_html__('Remove Logo', 'sage'),
+        esc_attr($current_logo),
+        esc_attr($current_logo),
+        $preview_html
+    );
+}
 
 /**
  * Get social links fields configuration.
@@ -826,6 +870,396 @@ function crb_output_daisyui_theme_picker_assets(): void
     <?php
 }
 
+/**
+ * Output inline scripts for the logo uploader with cropper.
+ *
+ * @return void
+ */
+function crb_output_logo_uploader_assets(): void
+{
+    ?>
+    <script>
+        jQuery(document).ready(function($) {
+            if (typeof wp === 'undefined' || typeof wp.media === 'undefined') {
+                console.error('wp.media is not available');
+                return;
+            }
+
+            let logoCropperFrame = null;
+            let isInitialized = false;
+
+            function initLogoUploader() {
+                const uploadBtn = document.querySelector('.crb-logo-upload-btn');
+                const removeBtn = document.querySelector('.crb-logo-remove-btn');
+                const hiddenField = document.getElementById('crb_site_logo_field');
+                const previewContainer = document.querySelector('.crb-logo-preview');
+                const findCarbonField = () => document.querySelector('input[data-logo-field="true"]') ||
+                    document.querySelector('.crb-logo-carbon-field input') ||
+                    document.querySelector('input[name*="crb_site_logo"]');
+
+                if (!uploadBtn || !hiddenField) {
+                    console.log('Upload button or hidden field not found');
+                    return;
+                }
+
+                if (isInitialized) {
+                    console.log('Already initialized');
+                    return;
+                }
+
+                isInitialized = true;
+                console.log('Initializing logo uploader');
+
+                const logoWidth = parseInt(uploadBtn.dataset.logoWidth) || 220;
+                const logoHeight = parseInt(uploadBtn.dataset.logoHeight) || 32;
+
+                // Remove existing event listeners
+                const newUploadBtn = uploadBtn.cloneNode(true);
+                uploadBtn.parentNode.replaceChild(newUploadBtn, uploadBtn);
+                const ensurePreview = (url) => {
+                    if (!url) return;
+                    const existingPreview = document.querySelector('.crb-logo-preview');
+                    if (existingPreview) {
+                        const img = existingPreview.querySelector('img');
+                        if (img) {
+                            img.src = url;
+                        }
+                        return;
+                    }
+                    const newPreview = document.createElement('div');
+                    newPreview.className = 'crb-logo-preview';
+                    newPreview.style.marginTop = '12px';
+                    newPreview.innerHTML = '<img src="' + url + '" alt="<?php echo esc_js(__('Site Logo', 'sage')); ?>" style="max-width: 220px; height: auto; border: 1px solid #ddd; padding: 8px; background: #f9f9f9;">';
+                    newUploadBtn.parentElement.appendChild(newPreview);
+                };
+
+                // Sync initial value from Carbon Fields (fallback if PHP preview failed)
+                const carbonField = findCarbonField();
+                const initialValue = (hiddenField.value || hiddenField.dataset.currentValue || '').trim() ||
+                    (carbonField && carbonField.value ? carbonField.value.trim() : '');
+                if (initialValue) {
+                    hiddenField.value = initialValue;
+                    if (carbonField) {
+                        carbonField.value = initialValue;
+                    }
+                    ensurePreview(initialValue);
+                    if (removeBtn) {
+                        removeBtn.style.display = 'inline-block';
+                    }
+                }
+
+                newUploadBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('Upload button clicked');
+
+                    // Create media frame for selecting image
+                    logoCropperFrame = wp.media({
+                        title: '<?php echo esc_js(__('Choose Logo Image', 'sage')); ?>',
+                        button: {
+                            text: '<?php echo esc_js(__('Crop Image', 'sage')); ?>'
+                        },
+                        multiple: false,
+                        library: {
+                            type: 'image'
+                        }
+                    });
+
+                    logoCropperFrame.on('select', function() {
+                        const attachment = logoCropperFrame.state().get('selection').first().toJSON();
+                        console.log('Image selected:', attachment);
+
+                        if (attachment.width < logoWidth || attachment.height < logoHeight) {
+                            alert('<?php echo esc_js(sprintf(__('Image is too small. Minimum size: %1$dpx × %2$dpx', 'sage'), 220, 32)); ?>');
+                            return;
+                        }
+
+                        // Open cropper
+                        openCropper(attachment);
+                    });
+
+                    function openCropper(attachment) {
+                        const ratio = logoWidth / logoHeight;
+                        const realWidth = attachment.width;
+                        const realHeight = attachment.height;
+
+                        // Calculate initial crop box
+                        let cropWidth = realWidth;
+                        let cropHeight = realHeight;
+
+                        if (realWidth / realHeight > ratio) {
+                            cropWidth = realHeight * ratio;
+                        } else {
+                            cropHeight = realWidth / ratio;
+                        }
+
+                        // Create cropper modal
+                        const modal = $('<div class="crb-crop-modal" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 160000; display: flex; align-items: center; justify-content: center;"></div>');
+                        const container = $('<div style="background: white; padding: 20px; border-radius: 8px; max-width: 90%; max-height: 90%; overflow: auto;"></div>');
+                        const img = $('<img src="' + attachment.url + '" style="max-width: 100%; display: block;">');
+                        const btnContainer = $('<div style="margin-top: 15px; text-align: right;"></div>');
+                        const cropBtn = $('<button class="button button-primary" style="margin-right: 10px;"><?php echo esc_js(__('Crop and Save', 'sage')); ?></button>');
+                        const cancelBtn = $('<button class="button"><?php echo esc_js(__('Cancel', 'sage')); ?></button>');
+
+                        btnContainer.append(cropBtn).append(cancelBtn);
+                        container.append(img).append(btnContainer);
+                        modal.append(container);
+                        $('body').append(modal);
+
+                        // Initialize imgAreaSelect
+                        const ias = img.imgAreaSelect({
+                            aspectRatio: logoWidth + ':' + logoHeight,
+                            handles: true,
+                            instance: true,
+                            persistent: true,
+                            imageWidth: realWidth,
+                            imageHeight: realHeight,
+                            minWidth: logoWidth,
+                            minHeight: logoHeight,
+                            x1: 0,
+                            y1: 0,
+                            x2: cropWidth,
+                            y2: cropHeight
+                        });
+
+                        cancelBtn.on('click', function() {
+                            ias.cancelSelection();
+                            ias.remove();
+                            modal.remove();
+                        });
+
+                        cropBtn.on('click', function() {
+                            const selection = ias.getSelection();
+                            console.log('Crop selection:', selection);
+
+                            if (!selection.width || !selection.height) {
+                                alert('<?php echo esc_js(__('Please select a crop area.', 'sage')); ?>');
+                                return;
+                            }
+
+                            cropBtn.prop('disabled', true).text('<?php echo esc_js(__('Cropping...', 'sage')); ?>');
+
+                            // Generate nonce for this specific attachment
+                            const nonce = wp.media.view.settings.post.nonce || '';
+
+                            // Send AJAX request to crop image
+                            $.ajax({
+                                url: ajaxurl,
+                                type: 'POST',
+                                data: {
+                                    action: 'crb_crop_logo',
+                                    id: attachment.id,
+                                    cropDetails: {
+                                        x1: selection.x1,
+                                        y1: selection.y1,
+                                        width: selection.width,
+                                        height: selection.height,
+                                        dst_width: logoWidth,
+                                        dst_height: logoHeight
+                                    }
+                                },
+                                success: function(response) {
+                                    console.log('Crop response:', response);
+
+                                    if (response.success) {
+                                        hiddenField.value = response.data.url;
+
+                                        // Update Carbon Fields hidden field
+                                        const carbonField = document.querySelector('input[data-logo-field="true"]') ||
+                                                          document.querySelector('.crb-logo-carbon-field input') ||
+                                                          document.querySelector('input[name*="crb_site_logo"]');
+                                        if (carbonField) {
+                                            carbonField.value = response.data.url;
+                                            // Trigger change event for Carbon Fields
+                                            $(carbonField).trigger('change').trigger('input');
+                                            console.log('Updated Carbon Fields field:', carbonField.value);
+                                        } else {
+                                            console.warn('Carbon Fields field not found');
+                                        }
+
+                                        // Update preview
+                                        ensurePreview(response.data.url);
+
+                                        const currentRemoveBtn = document.querySelector('.crb-logo-remove-btn');
+                                        if (currentRemoveBtn) {
+                                            currentRemoveBtn.style.display = 'inline-block';
+                                        }
+
+                                        ias.cancelSelection();
+                                        ias.remove();
+                                        modal.remove();
+                                    } else {
+                                        alert('<?php echo esc_js(__('Error cropping image:', 'sage')); ?> ' + (response.data.message || ''));
+                                        cropBtn.prop('disabled', false).text('<?php echo esc_js(__('Crop and Save', 'sage')); ?>');
+                                    }
+                                },
+                                error: function(xhr, status, error) {
+                                    console.error('AJAX error:', xhr, status, error);
+                                    alert('<?php echo esc_js(__('Error cropping image. Please try again.', 'sage')); ?>');
+                                    cropBtn.prop('disabled', false).text('<?php echo esc_js(__('Crop and Save', 'sage')); ?>');
+                                }
+                            });
+                        });
+                    }
+
+                    console.log('Opening media frame');
+                    logoCropperFrame.open();
+                });
+
+                // Handle remove button
+                if (removeBtn) {
+                    const newRemoveBtn = removeBtn.cloneNode(true);
+                    removeBtn.parentNode.replaceChild(newRemoveBtn, removeBtn);
+
+                    newRemoveBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        hiddenField.value = '';
+
+                        // Update Carbon Fields hidden field
+                        const carbonField = document.querySelector('input[data-logo-field="true"]') ||
+                                          document.querySelector('.crb-logo-carbon-field input') ||
+                                          document.querySelector('input[name*="crb_site_logo"]');
+                        if (carbonField) {
+                            carbonField.value = '';
+                            $(carbonField).trigger('change').trigger('input');
+                            console.log('Cleared Carbon Fields field');
+                        }
+
+                        const preview = document.querySelector('.crb-logo-preview');
+                        if (preview) {
+                            preview.remove();
+                        }
+                        newRemoveBtn.style.display = 'none';
+                    });
+                }
+            }
+
+            // Initialize on page load
+            initLogoUploader();
+
+            // Re-initialize when Carbon Fields reloads content
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.addedNodes.length) {
+                        mutation.addedNodes.forEach(function(node) {
+                            if (node.nodeType === 1 && (node.classList.contains('crb-logo-upload-btn') || node.querySelector('.crb-logo-upload-btn'))) {
+                                isInitialized = false;
+                                setTimeout(initLogoUploader, 100);
+                            }
+                        });
+                    }
+                });
+            });
+
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+        });
+    </script>
+    <?php
+}
+
+/**
+ * Handle AJAX request for cropping logo image.
+ */
+add_action('wp_ajax_crb_crop_logo', function () {
+    // Check user permissions
+    if (!current_user_can('upload_files')) {
+        wp_send_json_error(['message' => __('You do not have permission to upload files.', 'sage')]);
+    }
+
+    // Verify required parameters
+    if (!isset($_POST['id'])) {
+        wp_send_json_error(['message' => __('Missing attachment ID.', 'sage')]);
+    }
+
+    if (!isset($_POST['cropDetails'])) {
+        wp_send_json_error(['message' => __('Missing crop details.', 'sage')]);
+    }
+
+    $attachment_id = absint($_POST['id']);
+
+    $crop_details = $_POST['cropDetails'];
+
+    // Get the original image path
+    $original_path = get_attached_file($attachment_id);
+    if (!$original_path || !file_exists($original_path)) {
+        wp_send_json_error(['message' => __('Original image not found.', 'sage')]);
+    }
+
+    // Perform the crop
+    $cropped = wp_crop_image(
+        $attachment_id,
+        (int) $crop_details['x1'],
+        (int) $crop_details['y1'],
+        (int) $crop_details['width'],
+        (int) $crop_details['height'],
+        (int) $crop_details['dst_width'],
+        (int) $crop_details['dst_height']
+    );
+
+    if (is_wp_error($cropped)) {
+        wp_send_json_error(['message' => $cropped->get_error_message()]);
+    }
+
+    // Get the parent URL and construct the cropped image URL
+    $parent_url = wp_get_attachment_url($attachment_id);
+    $url = str_replace(basename($parent_url), basename($cropped), $parent_url);
+
+    // Get image info
+    $size = @getimagesize($cropped);
+    $image_type = ($size) ? $size['mime'] : 'image/jpeg';
+
+    // Create attachment for the cropped image
+    $attachment = [
+        'post_title' => 'crb-logo-' . basename($cropped),
+        'post_content' => '',
+        'post_mime_type' => $image_type,
+        'guid' => $url,
+        'post_parent' => $attachment_id
+    ];
+
+    $cropped_id = wp_insert_attachment($attachment, $cropped);
+
+    if (is_wp_error($cropped_id)) {
+        @unlink($cropped);
+        wp_send_json_error(['message' => $cropped_id->get_error_message()]);
+    }
+
+    // Generate metadata
+    $metadata = wp_generate_attachment_metadata($cropped_id, $cropped);
+    wp_update_attachment_metadata($cropped_id, $metadata);
+
+    wp_send_json_success([
+        'url' => $url,
+        'attachment_id' => $cropped_id,
+        'width' => isset($metadata['width']) ? $metadata['width'] : $crop_details['dst_width'],
+        'height' => isset($metadata['height']) ? $metadata['height'] : $crop_details['dst_height']
+    ]);
+});
+
+/**
+ * Intercept Carbon Fields save to handle custom logo field.
+ */
+add_action('carbon_fields_theme_options_container_saved', function ($container) {
+    // Check if this is the main Theme Settings container
+    if (!is_object($container) || !method_exists($container, 'get_title')) {
+        return;
+    }
+
+    if ($container->get_title() !== __('Theme Settings', 'sage')) {
+        return;
+    }
+
+    // Check if logo field was submitted
+    if (isset($_POST['_crb_site_logo'])) {
+        $logo_url = sanitize_text_field(wp_unslash($_POST['_crb_site_logo']));
+
+        // Directly update the Carbon Fields option
+        carbon_set_theme_option('crb_site_logo', $logo_url);
+    }
+}, 10, 1);
+
 add_action('admin_head', function () {
     // 在部分非英文语言下，Carbon Fields 选项页的 page 参数可能变化，导致样式未输出。
     // 为确保管理员后台都能看到主题卡片样式，这里直接在 admin 页输出（体量很小，影响可忽略）。
@@ -834,5 +1268,6 @@ add_action('admin_head', function () {
     }
 
     crb_output_daisyui_theme_picker_assets();
+    crb_output_logo_uploader_assets();
 });
 

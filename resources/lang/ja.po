@@ -809,6 +809,7 @@ msgid "Unknown episode"
 msgstr "不明なエピソード"
 
 #: resources/views/sections/autoplay-confirm.blade.php:40
+#: app/carbon-fields.php
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -971,6 +972,7 @@ msgid "Open Right Sidebar"
 msgstr "右サイドバーを開く"
 
 #: app/carbon-fields.php:36
+#: app/carbon-fields.php
 msgid "Site Logo"
 msgstr "サイトロゴ"
 
@@ -1173,3 +1175,63 @@ msgstr "閲覧数"
 
 msgid "plays"
 msgstr "再生数"
+
+#: app/carbon-fields.php
+msgid "Upload a logo image (220px × 32px). You will be able to crop the image after upload."
+msgstr "ロゴ画像をアップロード（220px × 32px）。アップロード後にトリミングできます。"
+
+#: app/carbon-fields.php
+msgid "Upload / Change Logo"
+msgstr "ロゴをアップロード / 変更"
+
+#: app/carbon-fields.php
+msgid "Remove Logo"
+msgstr "ロゴを削除"
+
+#: app/carbon-fields.php
+msgid "Choose Logo Image"
+msgstr "ロゴ画像を選択"
+
+#: app/carbon-fields.php
+msgid "Crop Image"
+msgstr "画像をトリミング"
+
+#: app/carbon-fields.php
+msgid "Image is too small. Minimum size: %1$dpx × %2$dpx"
+msgstr "画像が小さすぎます。最小サイズ: %1$dpx × %2$dpx"
+
+#: app/carbon-fields.php
+msgid "Crop and Save"
+msgstr "トリミングして保存"
+
+#: app/carbon-fields.php
+msgid "Please select a crop area."
+msgstr "トリミング範囲を選択してください。"
+
+#: app/carbon-fields.php
+msgid "Cropping..."
+msgstr "トリミング中..."
+
+#: app/carbon-fields.php
+msgid "Error cropping image:"
+msgstr "画像のトリミングエラー:"
+
+#: app/carbon-fields.php
+msgid "Error cropping image. Please try again."
+msgstr "画像のトリミングに失敗しました。もう一度お試しください。"
+
+#: app/carbon-fields.php
+msgid "You do not have permission to upload files."
+msgstr "ファイルをアップロードする権限がありません。"
+
+#: app/carbon-fields.php
+msgid "Missing attachment ID."
+msgstr "添付 ID がありません。"
+
+#: app/carbon-fields.php
+msgid "Missing crop details."
+msgstr "トリミング情報がありません。"
+
+#: app/carbon-fields.php
+msgid "Original image not found."
+msgstr "元画像が見つかりません。"

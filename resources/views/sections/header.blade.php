@@ -8,7 +8,7 @@
         <h1 class="text-2xl font-bold text-center">
           <a href="{{ home_url('/') }}" class="flex items-center gap-2">
             @if($siteLogo)
-              <img src="{{ $siteLogo }}" alt="{{ $siteName }}" class="h-6 w-auto object-contain">
+              <img src="{{ $siteLogo }}" alt="{{ $siteName }}" class="object-contain" width="220" height="32">
             @else
               <i data-lucide="podcast" class="w-6 h-6"></i>
               <span
