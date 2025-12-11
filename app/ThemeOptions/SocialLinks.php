@@ -7,7 +7,7 @@
  * Only displays configured links in the frontend.
  */
 
-namespace App\Customizer;
+namespace App\ThemeOptions;
 
 class SocialLinks
 {

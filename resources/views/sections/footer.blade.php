@@ -12,7 +12,7 @@
 
     <div class="grid md:grid-cols-2 grid-flow-row gap-2 md:justify-between bg-base-100/60 rounded-lg p-4">
       <div class="md:justify-self-start">{!! wp_kses_post($copyrightYear . ' ' . ($footerCopyright ?: $defaultCopyright)) !!}</div>
-      @php($socialLinks = \App\Customizer\SocialLinks::getConfiguredLinks())
+      @php($socialLinks = \App\ThemeOptions\SocialLinks::getConfiguredLinks())
       @if(!empty($socialLinks))
         <div class="md:justify-self-end">
           <ul class="flex justify-center gap-2">

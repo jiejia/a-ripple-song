@@ -1,69 +1,78 @@
 <?php
 
-namespace App;
+namespace App\Feeds;
 
 /**
  * Register /feed/podcast for Apple Podcasts / Spotify / YouTube Music + Podcasting 2.0.
  */
-add_action('init', function () {
-    add_feed('podcast', __NAMESPACE__ . '\\render_podcast_feed');
-}, 20);
-
-/**
- * Format seconds to HH:MM:SS.
- *
- * @param int $seconds
- * @return string
- */
-function format_podcast_duration(int $seconds): string
+class Podcast
 {
-    $seconds = max(0, $seconds);
-    $h = floor($seconds / 3600);
-    $m = floor(($seconds % 3600) / 60);
-    $s = $seconds % 60;
-
-    if ($h > 0) {
-        return sprintf('%02d:%02d:%02d', $h, $m, $s);
+    /**
+    * Register the podcast feed hook.
+    */
+    public function register(): void
+    {
+        add_action('init', [$this, 'registerFeed'], 20);
     }
 
-    return sprintf('%02d:%02d', $m, $s);
-}
+    /**
+     * Add the podcast feed endpoint.
+     */
+    public function registerFeed(): void
+    {
+        add_feed('podcast', [$this, 'renderFeed']);
+    }
 
-/**
- * Render podcast RSS feed.
- *
- * @return void
- */
-function render_podcast_feed(): void
-{
-    header('Content-Type: application/rss+xml; charset=UTF-8');
+    /**
+     * Format seconds to HH:MM:SS.
+     */
+    private function formatDuration(int $seconds): string
+    {
+        $seconds = max(0, $seconds);
+        $h = floor($seconds / 3600);
+        $m = floor(($seconds % 3600) / 60);
+        $s = $seconds % 60;
 
-    $site_url = home_url('/');
-    $channel_title = carbon_get_theme_option('crb_podcast_title') ?: get_bloginfo('name');
-    $channel_subtitle = carbon_get_theme_option('crb_podcast_subtitle') ?: '';
-    $channel_description = carbon_get_theme_option('crb_podcast_description') ?: get_bloginfo('description');
-    $channel_author = carbon_get_theme_option('crb_podcast_author') ?: get_bloginfo('name');
-    $channel_owner_name = carbon_get_theme_option('crb_podcast_owner_name') ?: $channel_author;
-    $channel_owner_email = carbon_get_theme_option('crb_podcast_owner_email') ?: get_bloginfo('admin_email');
-    $channel_cover = carbon_get_theme_option('crb_podcast_cover') ?: '';
-    $channel_explicit = carbon_get_theme_option('crb_podcast_explicit') ?: 'clean';
-    $channel_language = carbon_get_theme_option('crb_podcast_language') ?: (get_bloginfo('language') ?: 'en-US');
-    $channel_category_primary = carbon_get_theme_option('crb_podcast_category_primary') ?: '';
-    $channel_category_secondary = carbon_get_theme_option('crb_podcast_category_secondary') ?: '';
-    $channel_copyright = carbon_get_theme_option('crb_podcast_copyright') ?: '';
-    $podcast_locked = carbon_get_theme_option('crb_podcast_locked') ?: 'yes';
-    $podcast_guid = carbon_get_theme_option('crb_podcast_guid') ?: $site_url;
+        if ($h > 0) {
+            return sprintf('%02d:%02d:%02d', $h, $m, $s);
+        }
 
-    $query = new \WP_Query([
-        'post_type' => 'podcast',
-        'post_status' => 'publish',
-        'posts_per_page' => 100,
-        'orderby' => 'date',
-        'order' => 'DESC',
-    ]);
+        return sprintf('%02d:%02d', $m, $s);
+    }
 
-    echo '<?xml version="1.0" encoding="UTF-8"?>';
-    ?>
+    /**
+     * Render the podcast RSS feed.
+     */
+    public function renderFeed(): void
+    {
+        header('Content-Type: application/rss+xml; charset=UTF-8');
+
+        $site_url = home_url('/');
+        $channel_title = carbon_get_theme_option('crb_podcast_title') ?: get_bloginfo('name');
+        $channel_subtitle = carbon_get_theme_option('crb_podcast_subtitle') ?: '';
+        $channel_description = carbon_get_theme_option('crb_podcast_description') ?: get_bloginfo('description');
+        $channel_author = carbon_get_theme_option('crb_podcast_author') ?: get_bloginfo('name');
+        $channel_owner_name = carbon_get_theme_option('crb_podcast_owner_name') ?: $channel_author;
+        $channel_owner_email = carbon_get_theme_option('crb_podcast_owner_email') ?: get_bloginfo('admin_email');
+        $channel_cover = carbon_get_theme_option('crb_podcast_cover') ?: '';
+        $channel_explicit = carbon_get_theme_option('crb_podcast_explicit') ?: 'clean';
+        $channel_language = carbon_get_theme_option('crb_podcast_language') ?: (get_bloginfo('language') ?: 'en-US');
+        $channel_category_primary = carbon_get_theme_option('crb_podcast_category_primary') ?: '';
+        $channel_category_secondary = carbon_get_theme_option('crb_podcast_category_secondary') ?: '';
+        $channel_copyright = carbon_get_theme_option('crb_podcast_copyright') ?: '';
+        $podcast_locked = carbon_get_theme_option('crb_podcast_locked') ?: 'yes';
+        $podcast_guid = carbon_get_theme_option('crb_podcast_guid') ?: $site_url;
+
+        $query = new \WP_Query([
+            'post_type' => 'podcast',
+            'post_status' => 'publish',
+            'posts_per_page' => 100,
+            'orderby' => 'date',
+            'order' => 'DESC',
+        ]);
+
+        echo '<?xml version="1.0" encoding="UTF-8"?>';
+        ?>
 <rss version="2.0"
     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
     xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -122,7 +131,7 @@ function render_podcast_feed(): void
 
                 $audio_mime = get_post_meta($post_id, 'audio_mime', true) ?: 'audio/mpeg';
                 $duration_seconds = (int) get_post_meta($post_id, 'duration', true);
-                $duration_formatted = $duration_seconds ? format_podcast_duration($duration_seconds) : '';
+                $duration_formatted = $duration_seconds ? $this->formatDuration($duration_seconds) : '';
                 $episode_explicit = get_post_meta($post_id, 'episode_explicit', true) ?: $channel_explicit;
                 $episode_type = get_post_meta($post_id, 'episode_type', true) ?: 'full';
                 $episode_number = get_post_meta($post_id, 'episode_number', true);
@@ -180,6 +189,9 @@ function render_podcast_feed(): void
         ?>
     </channel>
 </rss>
-    <?php
+        <?php
+    }
 }
+
+(new Podcast())->register();
 
