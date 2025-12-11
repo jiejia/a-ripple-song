@@ -1237,3 +1237,19 @@ msgstr "Détails de recadrage manquants."
 #: app/carbon-fields.php
 msgid "Original image not found."
 msgstr "Image originale introuvable."
+
+#: resources/views/sections/footer.blade.php:11
+msgid "Powered by %s"
+msgstr "Propulsé par %s"
+
+#: resources/views/sections/footer.blade.php:11
+msgid "Powered by A Ripple Song Theme"
+msgstr "Propulsé par le thème A Ripple Song"
+
+#: app/carbon-fields.php:1
+msgid "Footer Copyright"
+msgstr "Copyright du pied de page"
+
+#: app/carbon-fields.php:1
+msgid "Overrides the footer copyright line. Leave empty to use the default."
+msgstr "Remplace la mention de copyright du pied de page. Laisser vide pour utiliser la valeur par défaut."

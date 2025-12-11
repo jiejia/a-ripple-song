@@ -1235,3 +1235,19 @@ msgstr "トリミング情報がありません。"
 #: app/carbon-fields.php
 msgid "Original image not found."
 msgstr "元画像が見つかりません。"
+
+#: resources/views/sections/footer.blade.php:11
+msgid "Powered by %s"
+msgstr "%s で運営"
+
+#: resources/views/sections/footer.blade.php:11
+msgid "Powered by A Ripple Song Theme"
+msgstr "A Ripple Song テーマで運営"
+
+#: app/carbon-fields.php:1
+msgid "Footer Copyright"
+msgstr "フッター著作権"
+
+#: app/carbon-fields.php:1
+msgid "Overrides the footer copyright line. Leave empty to use the default."
+msgstr "フッターの著作権表記を上書きします。空欄ならデフォルトを使用します。"

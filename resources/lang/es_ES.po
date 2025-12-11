@@ -1237,3 +1237,19 @@ msgstr "Faltan los detalles de recorte."
 #: app/carbon-fields.php
 msgid "Original image not found."
 msgstr "No se encontró la imagen original."
+
+#: resources/views/sections/footer.blade.php:11
+msgid "Powered by %s"
+msgstr "Impulsado por %s"
+
+#: resources/views/sections/footer.blade.php:11
+msgid "Powered by A Ripple Song Theme"
+msgstr "Impulsado por A Ripple Song Theme"
+
+#: app/carbon-fields.php:1
+msgid "Footer Copyright"
+msgstr "Copyright del pie de página"
+
+#: app/carbon-fields.php:1
+msgid "Overrides the footer copyright line. Leave empty to use the default."
+msgstr "Reemplaza la línea de copyright del pie. Déjalo vacío para usar el valor predeterminado."

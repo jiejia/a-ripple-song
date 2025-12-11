@@ -70,6 +70,10 @@ add_action('carbon_fields_register_fields', function () {
                 ->set_help_text(__('If the card picker is unavailable, use this dropdown (default: dim).', 'sage'))
                 ->set_classes('crb-theme-select')
                 ->set_attribute('data-theme-target', 'dark'),
+            Field::make('textarea', 'crb_footer_copyright', __('Footer Copyright', 'sage'))
+                ->set_rows(2)
+                ->set_attribute('placeholder', __('Powered by A Ripple Song Theme', 'sage'))
+                ->set_help_text(__('Overrides the footer copyright line. Leave empty to use the default.', 'sage')),
             Field::make('header_scripts', 'crb_header_scripts', __('Header Scripts', 'sage'))
                 ->set_help_text(esc_html__('Scripts to be added in the <head> section. You can include complete <script> tags for services like Google Analytics.', 'sage')),
             Field::make('footer_scripts', 'crb_footer_scripts', __('Footer Scripts', 'sage'))

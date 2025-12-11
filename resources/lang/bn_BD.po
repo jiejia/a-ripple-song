@@ -1237,3 +1237,19 @@ msgstr "ক্রপের বিবরণ নেই।"
 #: app/carbon-fields.php
 msgid "Original image not found."
 msgstr "মূল ছবি পাওয়া যায়নি।"
+
+#: resources/views/sections/footer.blade.php:11
+msgid "Powered by %s"
+msgstr "%s দ্বারা চালিত"
+
+#: resources/views/sections/footer.blade.php:11
+msgid "Powered by A Ripple Song Theme"
+msgstr "A Ripple Song থিম দ্বারা চালিত"
+
+#: app/carbon-fields.php:1
+msgid "Footer Copyright"
+msgstr "ফুটার কপিরাইট"
+
+#: app/carbon-fields.php:1
+msgid "Overrides the footer copyright line. Leave empty to use the default."
+msgstr "ফুটার কপিরাইট লাইন ওভাররাইড করে। খালি রাখলে ডিফল্ট ব্যবহার হবে।"

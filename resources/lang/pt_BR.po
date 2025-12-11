@@ -1237,3 +1237,19 @@ msgstr "Detalhes de recorte ausentes."
 #: app/carbon-fields.php
 msgid "Original image not found."
 msgstr "Imagem original não encontrada."
+
+#: resources/views/sections/footer.blade.php:11
+msgid "Powered by %s"
+msgstr "Distribuído por %s"
+
+#: resources/views/sections/footer.blade.php:11
+msgid "Powered by A Ripple Song Theme"
+msgstr "Distribuído por A Ripple Song Theme"
+
+#: app/carbon-fields.php:1
+msgid "Footer Copyright"
+msgstr "Copyright do rodapé"
+
+#: app/carbon-fields.php:1
+msgid "Overrides the footer copyright line. Leave empty to use the default."
+msgstr "Substitui o texto de copyright do rodapé. Deixe em branco para usar o padrão."

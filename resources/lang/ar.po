@@ -1245,3 +1245,19 @@ msgstr "بيانات القص مفقودة."
 #: app/carbon-fields.php
 msgid "Original image not found."
 msgstr "لم يتم العثور على الصورة الأصلية."
+
+#: resources/views/sections/footer.blade.php:11
+msgid "Powered by %s"
+msgstr "مشغّل بواسطة %s"
+
+#: resources/views/sections/footer.blade.php:11
+msgid "Powered by A Ripple Song Theme"
+msgstr "مشغّل بواسطة قالب A Ripple Song"
+
+#: app/carbon-fields.php:1
+msgid "Footer Copyright"
+msgstr "حقوق النشر في التذييل"
+
+#: app/carbon-fields.php:1
+msgid "Overrides the footer copyright line. Leave empty to use the default."
+msgstr "يستبدل سطر حقوق النشر في التذييل. اتركه فارغًا لاستخدام الافتراضي."

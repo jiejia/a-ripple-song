@@ -1243,3 +1243,19 @@ msgstr "缺少裁剪参数。"
 #: app/carbon-fields.php
 msgid "Original image not found."
 msgstr "未找到原始图片。"
+
+#: resources/views/sections/footer.blade.php:11
+msgid "Powered by %s"
+msgstr "由 %s 驱动"
+
+#: resources/views/sections/footer.blade.php:11
+msgid "Powered by A Ripple Song Theme"
+msgstr "由 A Ripple Song 主题驱动"
+
+#: app/carbon-fields.php:1
+msgid "Footer Copyright"
+msgstr "页脚版权"
+
+#: app/carbon-fields.php:1
+msgid "Overrides the footer copyright line. Leave empty to use the default."
+msgstr "覆盖页脚版权文案，留空使用默认值。"

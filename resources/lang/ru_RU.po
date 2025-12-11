@@ -1239,3 +1239,19 @@ msgstr "Отсутствуют параметры обрезки."
 #: app/carbon-fields.php
 msgid "Original image not found."
 msgstr "Исходное изображение не найдено."
+
+#: resources/views/sections/footer.blade.php:11
+msgid "Powered by %s"
+msgstr "Работает на %s"
+
+#: resources/views/sections/footer.blade.php:11
+msgid "Powered by A Ripple Song Theme"
+msgstr "Работает на теме A Ripple Song"
+
+#: app/carbon-fields.php:1
+msgid "Footer Copyright"
+msgstr "Копирайт в подвале"
+
+#: app/carbon-fields.php:1
+msgid "Overrides the footer copyright line. Leave empty to use the default."
+msgstr "Заменяет строку копирайта в подвале. Оставьте пустым, чтобы использовать значение по умолчанию."

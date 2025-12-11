@@ -1237,3 +1237,19 @@ msgstr "क्रॉप विवरण गायब है।"
 #: app/carbon-fields.php
 msgid "Original image not found."
 msgstr "मूल छवि नहीं मिली।"
+
+#: resources/views/sections/footer.blade.php:11
+msgid "Powered by %s"
+msgstr "%s द्वारा संचालित"
+
+#: resources/views/sections/footer.blade.php:11
+msgid "Powered by A Ripple Song Theme"
+msgstr "A Ripple Song थीम द्वारा संचालित"
+
+#: app/carbon-fields.php:1
+msgid "Footer Copyright"
+msgstr "फ़ूटर कॉपीराइट"
+
+#: app/carbon-fields.php:1
+msgid "Overrides the footer copyright line. Leave empty to use the default."
+msgstr "फ़ूटर कॉपीराइट पंक्ति को ओवरराइड करता है। खाली छोड़ें तो डिफ़ॉल्ट उपयोग होगा।"

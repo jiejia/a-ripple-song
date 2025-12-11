@@ -1237,3 +1237,19 @@ msgstr "Views"
 
 msgid "plays"
 msgstr "Plays"
+
+#: resources/views/sections/footer.blade.php:11
+msgid "Powered by %s"
+msgstr "Powered by %s"
+
+#: resources/views/sections/footer.blade.php:11
+msgid "Powered by A Ripple Song Theme"
+msgstr "Powered by A Ripple Song Theme"
+
+#: app/carbon-fields.php:1
+msgid "Footer Copyright"
+msgstr "Footer Copyright"
+
+#: app/carbon-fields.php:1
+msgid "Overrides the footer copyright line. Leave empty to use the default."
+msgstr "Overrides the footer copyright line. Leave empty to use the default."

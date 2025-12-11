@@ -1237,3 +1237,19 @@ msgstr "کاپ کی تفصیلات غائب ہیں۔"
 #: app/carbon-fields.php
 msgid "Original image not found."
 msgstr "اصل تصویر نہیں ملی۔"
+
+#: resources/views/sections/footer.blade.php:11
+msgid "Powered by %s"
+msgstr "%s کے ذریعے چلتا ہے"
+
+#: resources/views/sections/footer.blade.php:11
+msgid "Powered by A Ripple Song Theme"
+msgstr "A Ripple Song تھیم کے ذریعے چلتا ہے"
+
+#: app/carbon-fields.php:1
+msgid "Footer Copyright"
+msgstr "فوٹر کاپی رائٹ"
+
+#: app/carbon-fields.php:1
+msgid "Overrides the footer copyright line. Leave empty to use the default."
+msgstr "فوٹر کاپی رائٹ لائن اووررائیڈ کرتا ہے۔ خالی چھوڑیں تو ڈیفالٹ استعمال ہوگا۔"
