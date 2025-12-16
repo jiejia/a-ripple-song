@@ -155,7 +155,7 @@ class Podcast
 
         $cmb->add_field([
             'name' => __('Duration (seconds)', 'sage'),
-            'desc' => __('Required. Enter audio duration in seconds. Example: 180 = 3 minutes', 'sage'),
+            'desc' => __('Auto detected from "Audio File" on save.', 'sage'),
             'id' => 'duration',
             'type' => 'text',
             'attributes' => [
@@ -163,40 +163,34 @@ class Podcast
                 'pattern' => '\d*',
                 'min' => '0',
                 'step' => '1',
-                'required' => 'required',
-                'aria-required' => 'true',
+                'readonly' => 'readonly',
             ],
-            'classes' => 'cmb-required',
             'sanitization_cb' => 'absint',
         ]);
 
         $cmb->add_field([
             'name' => __('Audio Length (bytes)', 'sage'),
-            'desc' => __('Required. Use file size in bytes for enclosure length. Example: 12345678', 'sage'),
+            'desc' => __('Auto detected from "Audio File" on save.', 'sage'),
             'id' => 'audio_length',
             'type' => 'text_small',
             'attributes' => [
                 'type' => 'number',
                 'pattern' => '\d*',
                 'min' => '1',
-                'required' => 'required',
-                'aria-required' => 'true',
+                'readonly' => 'readonly',
             ],
-            'classes' => 'cmb-required',
             'sanitization_cb' => 'absint',
         ]);
 
         $cmb->add_field([
             'name' => __('Audio MIME Type', 'sage'),
-            'desc' => __('Required. Example: audio/mpeg, audio/mp3, audio/aac', 'sage'),
+            'desc' => __('Auto detected from "Audio File" on save.', 'sage'),
             'id' => 'audio_mime',
             'type' => 'text_medium',
             'default' => 'audio/mpeg',
             'attributes' => [
-                'required' => 'required',
-                'aria-required' => 'true',
+                'readonly' => 'readonly',
             ],
-            'classes' => 'cmb-required',
         ]);
 
         $cmb->add_field([
@@ -451,6 +445,21 @@ class Podcast
         if (function_exists('wp_enqueue_editor')) {
             wp_enqueue_editor();
         }
+
+        if (function_exists('use_block_editor_for_post_type') && use_block_editor_for_post_type('podcast')) {
+            wp_register_script(
+                'podcast-editor-guard',
+                '',
+                ['wp-data', 'wp-notices', 'wp-edit-post', 'wp-dom-ready'],
+                null,
+                true
+            );
+            wp_enqueue_script('podcast-editor-guard');
+            wp_add_inline_script(
+                'podcast-editor-guard',
+                "(function(wp){if(!wp||!wp.data||!wp.data.dispatch||!wp.data.select){return;}var lockKey='podcast-audio-required';var editor=wp.data.dispatch('core/editor');var notices=wp.data.dispatch('core/notices');var selectNotices=wp.data.select('core/notices');var locked=null;function getAudioValue(){var el=document.querySelector('#audio_file')||document.querySelector('input[name=\"audio_file\"]');if(!el){return '';}return (el.value||'').trim();}function setLocked(shouldLock){if(locked===shouldLock){return;}locked=shouldLock;if(shouldLock){editor.lockPostSaving(lockKey);if(!selectNotices.getNotice(lockKey)){notices.createNotice('error','Audio File 不能为空，填写后才能保存。',{id:lockKey,isDismissible:false});}}else{editor.unlockPostSaving(lockKey);notices.removeNotice(lockKey);}}function apply(){setLocked(getAudioValue()==='');}wp.domReady(function(){apply();setInterval(apply,500);});})(window.wp);"
+            );
+        }
     }
 
     /**
@@ -497,46 +506,70 @@ class Podcast
         }
 
         $errors = [];
-        $audio_url = isset($_POST['audio_file']) ? trim((string) $_POST['audio_file']) : '';
-        $duration = isset($_POST['duration']) ? (int) $_POST['duration'] : 0;
-        $audio_length = isset($_POST['audio_length']) ? (int) $_POST['audio_length'] : 0;
-        $audio_mime = isset($_POST['audio_mime']) ? trim((string) $_POST['audio_mime']) : '';
         $episode_explicit = isset($_POST['episode_explicit']) ? trim((string) $_POST['episode_explicit']) : '';
         $episode_type = isset($_POST['episode_type']) ? trim((string) $_POST['episode_type']) : '';
 
-        $auto_meta = $this->calculateAudioMeta($post_id, $audio_url);
-        if ($duration <= 0 && !empty($auto_meta['duration'])) {
-            $duration = $auto_meta['duration'];
-            $_POST['duration'] = $duration;
-            update_post_meta($post_id, 'duration', $duration);
-        }
-        if ($audio_length <= 0 && !empty($auto_meta['length'])) {
-            $audio_length = $auto_meta['length'];
-            $_POST['audio_length'] = $audio_length;
-            update_post_meta($post_id, 'audio_length', $audio_length);
-        }
-        if ($audio_mime === '' && !empty($auto_meta['mime'])) {
-            $audio_mime = $auto_meta['mime'];
-            $_POST['audio_mime'] = $audio_mime;
-            update_post_meta($post_id, 'audio_mime', $audio_mime);
-        }
+        $existing_audio_url = (string) get_post_meta($post_id, 'audio_file', true);
+        $audio_url_submitted = array_key_exists('audio_file', $_POST);
+        $audio_url_posted = $audio_url_submitted ? $this->normalizeAudioFileValue($_POST['audio_file']) : '';
+        $audio_url = $audio_url_submitted ? $audio_url_posted : $existing_audio_url;
+        $existing_duration = (int) get_post_meta($post_id, 'duration', true);
+        $existing_length = (int) get_post_meta($post_id, 'audio_length', true);
+        $existing_mime = (string) get_post_meta($post_id, 'audio_mime', true);
 
         if ($audio_url === '') {
             $errors[] = __('Audio File is required.', 'sage');
-        } elseif (!filter_var($audio_url, FILTER_VALIDATE_URL) || stripos($audio_url, 'http') !== 0) {
-            $errors[] = __('Audio File must be a valid URL (https recommended).', 'sage');
+        } elseif (
+            $audio_url !== ''
+            && $existing_audio_url !== ''
+            && $audio_url === $existing_audio_url
+            && $existing_duration > 0
+            && $existing_length > 0
+            && $existing_mime !== ''
+        ) {
+            $auto_meta = [
+                'duration' => $existing_duration,
+                'length' => $existing_length,
+                'mime' => $existing_mime,
+            ];
+        } else {
+            $auto_meta = $this->calculateAudioMeta($post_id, $audio_url);
         }
 
-        if ($duration <= 0) {
-            $errors[] = __('Duration (seconds) must be greater than 0.', 'sage');
-        }
+        if ($audio_url !== '') {
+            $duration = !empty($auto_meta['duration']) ? (int) $auto_meta['duration'] : 0;
+            $audio_length = !empty($auto_meta['length']) ? (int) $auto_meta['length'] : 0;
+            $audio_mime = !empty($auto_meta['mime']) ? (string) $auto_meta['mime'] : '';
 
-        if ($audio_length <= 0) {
-            $errors[] = __('Audio Length (bytes) must be greater than 0.', 'sage');
-        }
+            $_POST['duration'] = $duration;
+            $_POST['audio_length'] = $audio_length;
+            $_POST['audio_mime'] = $audio_mime;
 
-        if ($audio_mime === '') {
-            $errors[] = __('Audio MIME Type is required.', 'sage');
+            if ($duration > 0) {
+                update_post_meta($post_id, 'duration', $duration);
+            }
+            if ($audio_length > 0) {
+                update_post_meta($post_id, 'audio_length', $audio_length);
+            }
+            if ($audio_mime !== '') {
+                update_post_meta($post_id, 'audio_mime', $audio_mime);
+            }
+
+            if (!filter_var($audio_url, FILTER_VALIDATE_URL) || stripos($audio_url, 'http') !== 0) {
+                $errors[] = __('Audio File must be a valid URL (https recommended).', 'sage');
+            }
+
+            if ($duration <= 0) {
+                $errors[] = __('Duration (seconds) could not be auto detected from Audio File.', 'sage');
+            }
+
+            if ($audio_length <= 0) {
+                $errors[] = __('Audio Length (bytes) could not be auto detected from Audio File.', 'sage');
+            }
+
+            if ($audio_mime === '') {
+                $errors[] = __('Audio MIME Type could not be auto detected from Audio File.', 'sage');
+            }
         }
 
         if (!in_array($episode_explicit, ['clean', 'explicit'], true)) {
@@ -566,6 +599,29 @@ class Podcast
                 }
             }
         }
+    }
+
+    private function normalizeAudioFileValue($value): string
+    {
+        if (is_string($value)) {
+            return trim($value);
+        }
+
+        if (is_array($value)) {
+            foreach (['url', 'value', 'file', 'src'] as $key) {
+                if (isset($value[$key]) && is_string($value[$key])) {
+                    return trim($value[$key]);
+                }
+            }
+
+            foreach ($value as $item) {
+                if (is_string($item) && trim($item) !== '') {
+                    return trim($item);
+                }
+            }
+        }
+
+        return '';
     }
 
     /**
