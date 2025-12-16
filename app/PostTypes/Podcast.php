@@ -555,7 +555,7 @@ class Podcast
                 update_post_meta($post_id, 'audio_mime', $audio_mime);
             }
 
-            if (!filter_var($audio_url, FILTER_VALIDATE_URL) || stripos($audio_url, 'http') !== 0) {
+            if (!$this->isValidHttpUrl($audio_url)) {
                 $errors[] = __('Audio File must be a valid URL (https recommended).', 'sage');
             }
 
@@ -622,6 +622,69 @@ class Podcast
         }
 
         return '';
+    }
+
+    private function isValidHttpUrl(string $url): bool
+    {
+        $url = trim($url);
+        if ($url === '') {
+            return false;
+        }
+
+        $encoded = $this->encodeUrlForRequest($url);
+
+        if (function_exists('wp_http_validate_url')) {
+            return (bool) wp_http_validate_url($encoded);
+        }
+
+        $parts = parse_url($encoded);
+        if ($parts === false) {
+            return false;
+        }
+
+        $scheme = isset($parts['scheme']) ? strtolower((string) $parts['scheme']) : '';
+        return in_array($scheme, ['http', 'https'], true) && !empty($parts['host']);
+    }
+
+    private function encodeUrlForRequest(string $url): string
+    {
+        $parts = function_exists('wp_parse_url') ? wp_parse_url($url) : parse_url($url);
+        if ($parts === false || !is_array($parts)) {
+            return $url;
+        }
+
+        $scheme = isset($parts['scheme']) ? strtolower((string) $parts['scheme']) : '';
+        $host = isset($parts['host']) ? (string) $parts['host'] : '';
+        if ($scheme === '' || $host === '') {
+            return $url;
+        }
+
+        $user = isset($parts['user']) ? (string) $parts['user'] : '';
+        $pass = isset($parts['pass']) ? (string) $parts['pass'] : '';
+        $auth = '';
+        if ($user !== '') {
+            $auth = $user;
+            if ($pass !== '') {
+                $auth .= ':' . $pass;
+            }
+            $auth .= '@';
+        }
+
+        $port = isset($parts['port']) ? ':' . (int) $parts['port'] : '';
+
+        $path = isset($parts['path']) ? (string) $parts['path'] : '';
+        if ($path !== '') {
+            $segments = explode('/', $path);
+            $segments = array_map(static function (string $segment): string {
+                return rawurlencode(rawurldecode($segment));
+            }, $segments);
+            $path = implode('/', $segments);
+        }
+
+        $query = isset($parts['query']) && $parts['query'] !== '' ? '?' . (string) $parts['query'] : '';
+        $fragment = isset($parts['fragment']) && $parts['fragment'] !== '' ? '#' . (string) $parts['fragment'] : '';
+
+        return $scheme . '://' . $auth . $host . $port . $path . $query . $fragment;
     }
 
     /**
@@ -720,8 +783,10 @@ class Podcast
 
         if (!file_exists($file_path)) {
             // Last resort: download remote audio to a temp file so getID3 can analyze it.
-            if (filter_var($audio_url, FILTER_VALIDATE_URL) && preg_match('#^https?://#i', $audio_url)) {
-                if (function_exists('wp_http_validate_url') && !wp_http_validate_url($audio_url)) {
+            if ($this->isValidHttpUrl($audio_url)) {
+                $request_url = $this->encodeUrlForRequest($audio_url);
+
+                if (function_exists('wp_http_validate_url') && !wp_http_validate_url($request_url)) {
                     $last_error = "Podcast #{$post_id}: audio URL rejected by wp_http_validate_url";
                     error_log($last_error);
                     update_post_meta($post_id, '_podcast_audio_meta_last_error', $last_error);
@@ -737,7 +802,7 @@ class Podcast
                     $timeout = 30;
                 }
 
-                $tmp = download_url($audio_url, $timeout);
+                $tmp = download_url($request_url, $timeout);
                 if (is_wp_error($tmp)) {
                     $last_error = "Podcast #{$post_id}: audio download failed - " . $tmp->get_error_message();
                     error_log($last_error);
