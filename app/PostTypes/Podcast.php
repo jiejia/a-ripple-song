@@ -23,6 +23,7 @@ class Podcast
         add_action('cmb2_save_post_fields', [$this, 'autoFillAudioMeta'], 20, 1);
         add_filter('default_hidden_meta_boxes', [$this, 'showPodcastMetaboxesInNavMenu'], 10, 2);
         add_action('admin_init', [$this, 'ensureNavMenuVisibility']);
+        add_action('admin_notices', [$this, 'showAudioMetaErrorNotice']);
         add_action('rest_api_init', [$this, 'registerRestFields']);
     }
 
@@ -618,6 +619,8 @@ class Podcast
             return $result;
         }
 
+        $last_error = null;
+
         if (!class_exists('getID3')) {
             $vendor_path = get_template_directory() . '/vendor/autoload.php';
             if (file_exists($vendor_path)) {
@@ -626,22 +629,103 @@ class Podcast
         }
 
         if (!class_exists('getID3')) {
-            error_log("Podcast #{$post_id}: getID3 not available");
+            $last_error = "Podcast #{$post_id}: getID3 not available";
+            error_log($last_error);
+            update_post_meta($post_id, '_podcast_audio_meta_last_error', $last_error);
             return $result;
         }
 
         $upload_dir = wp_get_upload_dir();
-        $file_path = str_replace($upload_dir['baseurl'], $upload_dir['basedir'], $audio_url);
+        $file_path = $audio_url;
 
-        if (!file_exists($file_path)) {
-            $parsed_url = parse_url($audio_url);
-            if (isset($parsed_url['path'])) {
-                $file_path = ABSPATH . ltrim($parsed_url['path'], '/');
+        if (filter_var($audio_url, FILTER_VALIDATE_URL)) {
+            // Fast path: standard uploads URL (same domain).
+            $file_path = str_replace($upload_dir['baseurl'], $upload_dir['basedir'], $audio_url);
+
+            // CDN/domain-mapped uploads URL: map by path fragment rather than full baseurl.
+            if (!file_exists($file_path)) {
+                $audio_path = (string) parse_url($audio_url, PHP_URL_PATH);
+                $audio_path = $audio_path !== '' ? rawurldecode($audio_path) : '';
+                $uploads_url_path = (string) parse_url($upload_dir['baseurl'], PHP_URL_PATH);
+
+                if ($audio_path !== '' && $uploads_url_path !== '' && strpos($audio_path, $uploads_url_path) === 0) {
+                    $relative = ltrim(substr($audio_path, strlen($uploads_url_path)), '/');
+                    $file_path = trailingslashit($upload_dir['basedir']) . $relative;
+                }
             }
         }
 
         if (!file_exists($file_path)) {
-            error_log("Podcast #{$post_id}: audio file missing for size/mime detection");
+            $parsed_url = parse_url($audio_url);
+            if (isset($parsed_url['path'])) {
+                $file_path = ABSPATH . ltrim(rawurldecode((string) $parsed_url['path']), '/');
+            }
+        }
+
+        if (!file_exists($file_path)) {
+            // Last resort: download remote audio to a temp file so getID3 can analyze it.
+            if (filter_var($audio_url, FILTER_VALIDATE_URL) && preg_match('#^https?://#i', $audio_url)) {
+                if (function_exists('wp_http_validate_url') && !wp_http_validate_url($audio_url)) {
+                    $last_error = "Podcast #{$post_id}: audio URL rejected by wp_http_validate_url";
+                    error_log($last_error);
+                    update_post_meta($post_id, '_podcast_audio_meta_last_error', $last_error);
+                    return $result;
+                }
+
+                if (!function_exists('download_url')) {
+                    require_once ABSPATH . 'wp-admin/includes/file.php';
+                }
+
+                $timeout = (int) apply_filters('podcast_audio_meta_download_timeout', 300, $audio_url, $post_id);
+                if ($timeout < 30) {
+                    $timeout = 30;
+                }
+
+                $tmp = download_url($audio_url, $timeout);
+                if (is_wp_error($tmp)) {
+                    $last_error = "Podcast #{$post_id}: audio download failed - " . $tmp->get_error_message();
+                    error_log($last_error);
+                    update_post_meta($post_id, '_podcast_audio_meta_last_error', $last_error);
+                    return $result;
+                }
+
+                try {
+                    $getID3 = new \getID3();
+                    $file_info = $getID3->analyze($tmp);
+
+                    if (isset($file_info['playtime_seconds'])) {
+                        $result['duration'] = (int) round($file_info['playtime_seconds']);
+                    } else {
+                        $last_error = "Podcast #{$post_id}: getID3 did not return playtime_seconds for downloaded audio";
+                    }
+
+                    $tmp_size = @filesize($tmp);
+                    if ($tmp_size !== false) {
+                        $result['length'] = (int) $tmp_size;
+                    }
+
+                    if (!empty($file_info['mime_type'])) {
+                        $result['mime'] = $file_info['mime_type'];
+                    }
+                } catch (\Exception $e) {
+                    $last_error = "Podcast #{$post_id}: getID3 error - " . $e->getMessage();
+                    error_log($last_error);
+                } finally {
+                    @unlink($tmp);
+                }
+
+                if ($last_error) {
+                    update_post_meta($post_id, '_podcast_audio_meta_last_error', $last_error);
+                } elseif (!empty($result['duration'])) {
+                    delete_post_meta($post_id, '_podcast_audio_meta_last_error');
+                }
+
+                return $result;
+            }
+
+            $last_error = "Podcast #{$post_id}: audio file missing for duration/size/mime detection";
+            error_log($last_error);
+            update_post_meta($post_id, '_podcast_audio_meta_last_error', $last_error);
             return $result;
         }
 
@@ -651,6 +735,8 @@ class Podcast
 
             if (isset($file_info['playtime_seconds'])) {
                 $result['duration'] = (int) round($file_info['playtime_seconds']);
+            } else {
+                $last_error = "Podcast #{$post_id}: getID3 did not return playtime_seconds for local file";
             }
 
             if (!empty($file_info['filesize'])) {
@@ -661,10 +747,52 @@ class Podcast
                 $result['mime'] = $file_info['mime_type'];
             }
         } catch (\Exception $e) {
-            error_log("Podcast #{$post_id}: getID3 error - " . $e->getMessage());
+            $last_error = "Podcast #{$post_id}: getID3 error - " . $e->getMessage();
+            error_log($last_error);
+        }
+
+        if ($last_error) {
+            update_post_meta($post_id, '_podcast_audio_meta_last_error', $last_error);
+        } elseif (!empty($result['duration'])) {
+            delete_post_meta($post_id, '_podcast_audio_meta_last_error');
         }
 
         return $result;
+    }
+
+    /**
+     * Show last audio meta extraction error on the podcast editor screen.
+     */
+    public function showAudioMetaErrorNotice(): void
+    {
+        if (!is_admin()) {
+            return;
+        }
+
+        if (!function_exists('get_current_screen')) {
+            return;
+        }
+
+        $screen = get_current_screen();
+        if (!$screen || $screen->post_type !== 'podcast') {
+            return;
+        }
+
+        if (!current_user_can('manage_options')) {
+            return;
+        }
+
+        $post_id = isset($_GET['post']) ? (int) $_GET['post'] : 0;
+        if ($post_id <= 0) {
+            return;
+        }
+
+        $last_error = (string) get_post_meta($post_id, '_podcast_audio_meta_last_error', true);
+        if ($last_error === '') {
+            return;
+        }
+
+        echo '<div class="notice notice-warning"><p>' . esc_html($last_error) . '</p></div>';
     }
 
     /**
@@ -733,4 +861,3 @@ class Podcast
 }
 
 (new Podcast())->register();
-
