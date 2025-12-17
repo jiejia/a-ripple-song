@@ -13,8 +13,11 @@ class PodcastOptions
     public static function boot(): void
     {
         add_action('carbon_fields_register_fields', [static::class, 'registerFields']);
-        add_action('carbon_fields_theme_options_container_saved', [static::class, 'validateCover'], 10, 1);
+        add_filter('carbon_fields_should_save_field_value', [static::class, 'validateCoverFieldValue'], 10, 3);
+        add_action('admin_notices', [static::class, 'displayCoverValidationErrors']);
         add_filter('carbon_fields_attachment_not_found_metadata', [static::class, 'previewExternalCoverUrl'], 10, 3);
+        // Intercept REST API to validate before save
+        add_filter('rest_pre_dispatch', [static::class, 'validateCoverOnRestSave'], 10, 3);
     }
 
     /**
@@ -279,88 +282,419 @@ class PodcastOptions
     }
 
     /**
-     * Validate podcast cover size (1400–3000px square) before save.
+     * Validate podcast cover field value before saving.
+     *
+     * @param mixed $save Whether to save the field value
+     * @param mixed $value The field value being saved
+     * @param \Carbon_Fields\Field\Field $field The field object
+     * @return mixed
      */
-    public static function validateCover($container): void
+    public static function validateCoverFieldValue($save, $value, $field)
     {
-        if (!is_object($container) || !method_exists($container, 'get_title')) {
-            return;
-        }
-        if ($container->get_title() !== __('Podcast Settings', 'sage')) {
-            return;
+        // Only validate the podcast cover field
+        if (!is_object($field) || !method_exists($field, 'get_base_name')) {
+            return $save;
         }
 
-        $cover_url = carbon_get_theme_option('crb_podcast_cover');
+        $field_name = $field->get_base_name();
+
+        // Carbon Fields prefixes field names with _
+        if ($field_name !== 'crb_podcast_cover' && $field_name !== '_crb_podcast_cover') {
+            return $save;
+        }
+
+        // If value is empty, let Carbon Fields handle required validation
+        if (empty($value)) {
+            return $save;
+        }
+
+        $validation_result = static::validateCoverImage((string) $value);
+
+        if (is_wp_error($validation_result)) {
+            // Store error in transient for display
+            $user_id = get_current_user_id();
+            set_transient('crb_podcast_cover_error_' . $user_id, $validation_result->get_error_message(), 120);
+
+            // Return false to prevent saving this field
+            return false;
+        }
+
+        // Clear any previous error for this user
+        delete_transient('crb_podcast_cover_error_' . get_current_user_id());
+
+        return $save;
+    }
+
+    /**
+     * Validate podcast cover on REST API save request.
+     *
+     * @param mixed $result Response to replace the requested version with
+     * @param \WP_REST_Server $server Server instance
+     * @param \WP_REST_Request $request Request used to generate the response
+     * @return mixed
+     */
+    public static function validateCoverOnRestSave($result, $server, $request)
+    {
+        // Only intercept Carbon Fields save requests
+        $route = $request->get_route();
+        if (strpos($route, '/carbon-fields/') === false) {
+            return $result;
+        }
+
+        // Only intercept POST/PUT requests (save operations)
+        $method = $request->get_method();
+        if (!in_array($method, ['POST', 'PUT'], true)) {
+            return $result;
+        }
+
+        // Get the request parameters (Carbon Fields sends data as JSON body or form data)
+        $params = $request->get_json_params();
+        if (empty($params)) {
+            $params = $request->get_body_params();
+        }
+        if (empty($params)) {
+            $body = $request->get_body();
+            $params = json_decode($body, true) ?: [];
+        }
+
+        if (!is_array($params)) {
+            return $result;
+        }
+
+        // Look for podcast cover field in the data
+        $cover_url = static::findCoverUrlInData($params);
+
+        // If no cover URL found, let the request proceed
         if (empty($cover_url)) {
-            return;
+            return $result;
         }
 
-        $upload_dir = wp_get_upload_dir();
-        $file_path = str_replace($upload_dir['baseurl'], $upload_dir['basedir'], $cover_url);
+        // Validate the cover image
+        $validation_result = static::validateCoverImage((string) $cover_url);
 
-        if (!file_exists($file_path)) {
-            $parsed = parse_url($cover_url);
-            if (isset($parsed['path'])) {
-                $file_path = ABSPATH . ltrim($parsed['path'], '/');
+        if (is_wp_error($validation_result)) {
+            // Return error response
+            return new \WP_Error(
+                'podcast_cover_validation_failed',
+                $validation_result->get_error_message(),
+                ['status' => 400]
+            );
+        }
+
+        return $result;
+    }
+
+    /**
+     * Find podcast cover URL in request data (supports various data structures).
+     *
+     * @param array $data Request data
+     * @return string|null Cover URL or null if not found
+     */
+    private static function findCoverUrlInData(array $data): ?string
+    {
+        // Direct field keys
+        $field_keys = ['_crb_podcast_cover', 'crb_podcast_cover'];
+        foreach ($field_keys as $key) {
+            if (isset($data[$key]) && is_string($data[$key]) && $data[$key] !== '') {
+                return $data[$key];
             }
         }
 
-        if (!file_exists($file_path)) {
-            wp_die(
-                __('Podcast Cover file not found. Please re-upload.', 'sage'),
-                __('Podcast Cover validation failed', 'sage'),
-                ['back_link' => true]
-            );
+        // Check in 'fields' array (common Carbon Fields structure)
+        if (isset($data['fields']) && is_array($data['fields'])) {
+            foreach ($data['fields'] as $field) {
+                if (!is_array($field)) {
+                    continue;
+                }
+                $name = $field['name'] ?? ($field['base_name'] ?? ($field['field_name'] ?? ''));
+                if (in_array($name, $field_keys, true) && isset($field['value'])) {
+                    return (string) $field['value'];
+                }
+            }
         }
 
-        $max_bytes = 512 * 1024;
+        // Check in nested containers (Theme Options may have container ID as key)
+        foreach ($data as $key => $value) {
+            if (is_array($value)) {
+                $found = static::findCoverUrlInData($value);
+                if ($found !== null) {
+                    return $found;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Display validation errors as admin notices.
+     */
+    public static function displayCoverValidationErrors(): void
+    {
+        $user_id = get_current_user_id();
+        $error = get_transient('crb_podcast_cover_error_' . $user_id);
+
+        if (!$error) {
+            return;
+        }
+
+        printf(
+            '<div class="notice notice-error is-dismissible"><p><strong>%s</strong> %s</p></div>',
+            esc_html__('Podcast Cover validation failed:', 'sage'),
+            esc_html($error)
+        );
+
+        // Clear the error after displaying
+        delete_transient('crb_podcast_cover_error_' . $user_id);
+    }
+
+    /**
+     * Validate cover image from URL (local or remote).
+     *
+     * Requirements:
+     * - Resolution: 1400x1400 to 3000x3000 pixels
+     * - Must be square (width === height)
+     * - File size: < 512KB
+     * - Format: JPG or PNG
+     *
+     * @param string $url Image URL (local or remote)
+     * @return true|\WP_Error True on success, WP_Error on failure
+     */
+    public static function validateCoverImage(string $url)
+    {
+        $max_bytes = 512 * 1024; // 512KB
+        $min_dimension = 1400;
+        $max_dimension = 3000;
+        $allowed_mimes = ['image/jpeg', 'image/png'];
+
+        // Try to resolve as local file first
+        $file_path = static::resolveLocalFilePath($url);
+
+        if ($file_path !== null && file_exists($file_path)) {
+            // Local file validation
+            return static::validateLocalCoverFile($file_path, $max_bytes, $min_dimension, $max_dimension, $allowed_mimes);
+        }
+
+        // Remote URL validation
+        if (!preg_match('~^https?://~i', $url)) {
+            return new \WP_Error('invalid_url', __('Podcast Cover URL is invalid.', 'sage'));
+        }
+
+        return static::validateRemoteCoverUrl($url, $max_bytes, $min_dimension, $max_dimension, $allowed_mimes);
+    }
+
+    /**
+     * Try to resolve URL to a local file path.
+     *
+     * @param string $url
+     * @return string|null Local file path or null if not found
+     */
+    private static function resolveLocalFilePath(string $url): ?string
+    {
+        $upload_dir = wp_get_upload_dir();
+
+        // Check if URL matches upload directory
+        if (strpos($url, $upload_dir['baseurl']) === 0) {
+            $file_path = str_replace($upload_dir['baseurl'], $upload_dir['basedir'], $url);
+            if (file_exists($file_path)) {
+                return $file_path;
+            }
+        }
+
+        // Try site URL match
+        $site_url = site_url();
+        if (strpos($url, $site_url) === 0) {
+            $relative_path = str_replace($site_url, '', $url);
+            $file_path = ABSPATH . ltrim($relative_path, '/');
+            if (file_exists($file_path)) {
+                return $file_path;
+            }
+        }
+
+        // Try home URL match
+        $home_url = home_url();
+        if (strpos($url, $home_url) === 0) {
+            $relative_path = str_replace($home_url, '', $url);
+            $file_path = ABSPATH . ltrim($relative_path, '/');
+            if (file_exists($file_path)) {
+                return $file_path;
+            }
+        }
+
+        // Parse URL path as fallback
+        $parsed = wp_parse_url($url);
+        if (isset($parsed['path'])) {
+            $file_path = ABSPATH . ltrim($parsed['path'], '/');
+            if (file_exists($file_path)) {
+                return $file_path;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Validate a local cover file.
+     *
+     * @param string $file_path
+     * @param int $max_bytes
+     * @param int $min_dimension
+     * @param int $max_dimension
+     * @param array $allowed_mimes
+     * @return true|\WP_Error
+     */
+    private static function validateLocalCoverFile(
+        string $file_path,
+        int $max_bytes,
+        int $min_dimension,
+        int $max_dimension,
+        array $allowed_mimes
+    ) {
+        // Check file size
         $file_size = @filesize($file_path);
         if (is_int($file_size) && $file_size > $max_bytes) {
-            wp_die(
-                sprintf(__('Podcast Cover file is too large (%1$s). Please compress it to under %2$s.', 'sage'), size_format($file_size), size_format($max_bytes)),
-                __('Podcast Cover validation failed', 'sage'),
-                ['back_link' => true]
+            return new \WP_Error(
+                'file_too_large',
+                sprintf(
+                    __('Podcast Cover file is too large (%1$s). Please compress it to under %2$s.', 'sage'),
+                    size_format($file_size),
+                    size_format($max_bytes)
+                )
             );
         }
 
+        // Get image info
         $image_info = @getimagesize($file_path);
         if (!$image_info) {
-            wp_die(
-                __('Podcast Cover is not a valid image.', 'sage'),
-                __('Podcast Cover validation failed', 'sage'),
-                ['back_link' => true]
+            return new \WP_Error('invalid_image', __('Podcast Cover is not a valid image.', 'sage'));
+        }
+
+        return static::validateImageDimensions($image_info, $min_dimension, $max_dimension, $allowed_mimes);
+    }
+
+    /**
+     * Validate a remote cover URL.
+     *
+     * @param string $url
+     * @param int $max_bytes
+     * @param int $min_dimension
+     * @param int $max_dimension
+     * @param array $allowed_mimes
+     * @return true|\WP_Error
+     */
+    private static function validateRemoteCoverUrl(
+        string $url,
+        int $max_bytes,
+        int $min_dimension,
+        int $max_dimension,
+        array $allowed_mimes
+    ) {
+        // First, try HEAD request to check Content-Length
+        $head_response = wp_remote_head($url, [
+            'timeout' => 10,
+            'redirection' => 5,
+            'sslverify' => false,
+        ]);
+
+        if (!is_wp_error($head_response)) {
+            $content_length = wp_remote_retrieve_header($head_response, 'content-length');
+            if (!empty($content_length) && (int) $content_length > $max_bytes) {
+                return new \WP_Error(
+                    'file_too_large',
+                    sprintf(
+                        __('Podcast Cover file is too large (%1$s). Please compress it to under %2$s.', 'sage'),
+                        size_format((int) $content_length),
+                        size_format($max_bytes)
+                    )
+                );
+            }
+        }
+
+        // Download file to temp location for validation
+        $temp_file = download_url($url, 30);
+
+        if (is_wp_error($temp_file)) {
+            return new \WP_Error(
+                'download_failed',
+                sprintf(
+                    __('Could not download Podcast Cover for validation: %s', 'sage'),
+                    $temp_file->get_error_message()
+                )
             );
         }
 
-        [$width, $height, $type] = $image_info;
-        $min = 1400;
-        $max = 3000;
+        // Validate downloaded file
+        $result = static::validateLocalCoverFile($temp_file, $max_bytes, $min_dimension, $max_dimension, $allowed_mimes);
 
+        // Clean up temp file
+        @unlink($temp_file);
+
+        return $result;
+    }
+
+    /**
+     * Validate image dimensions and format.
+     *
+     * @param array $image_info Result from getimagesize()
+     * @param int $min_dimension
+     * @param int $max_dimension
+     * @param array $allowed_mimes
+     * @return true|\WP_Error
+     */
+    private static function validateImageDimensions(
+        array $image_info,
+        int $min_dimension,
+        int $max_dimension,
+        array $allowed_mimes
+    ) {
+        [$width, $height] = $image_info;
         $mime = $image_info['mime'] ?? '';
-        $allowed = ['image/jpeg', 'image/png'];
-        if (!in_array($mime, $allowed, true)) {
-            wp_die(
-                __('Podcast Cover must be JPG or PNG.', 'sage'),
-                __('Podcast Cover validation failed', 'sage'),
-                ['back_link' => true]
+
+        // Check MIME type
+        if (!in_array($mime, $allowed_mimes, true)) {
+            return new \WP_Error(
+                'invalid_format',
+                __('Podcast Cover must be JPG or PNG.', 'sage')
             );
         }
 
+        // Check if square
         if ($width !== $height) {
-            wp_die(
-                sprintf(__('Podcast Cover must be square. Current: %1$dx%2$d.', 'sage'), $width, $height),
-                __('Podcast Cover validation failed', 'sage'),
-                ['back_link' => true]
+            return new \WP_Error(
+                'not_square',
+                sprintf(
+                    __('Podcast Cover must be square. Current dimensions: %1$d × %2$d px.', 'sage'),
+                    $width,
+                    $height
+                )
             );
         }
 
-        if ($width < $min || $width > $max) {
-            wp_die(
-                sprintf(__('Podcast Cover must be between %1$d and %2$d px. Current: %3$d px.', 'sage'), $min, $max, $width),
-                __('Podcast Cover validation failed', 'sage'),
-                ['back_link' => true]
+        // Check minimum dimension
+        if ($width < $min_dimension) {
+            return new \WP_Error(
+                'too_small',
+                sprintf(
+                    __('Podcast Cover resolution is too small. Minimum: %1$d × %1$d px. Current: %2$d × %2$d px.', 'sage'),
+                    $min_dimension,
+                    $width
+                )
             );
         }
+
+        // Check maximum dimension
+        if ($width > $max_dimension) {
+            return new \WP_Error(
+                'too_large',
+                sprintf(
+                    __('Podcast Cover resolution is too large. Maximum: %1$d × %1$d px. Current: %2$d × %2$d px.', 'sage'),
+                    $max_dimension,
+                    $width
+                )
+            );
+        }
+
+        return true;
     }
 }
 
