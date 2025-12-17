@@ -191,36 +191,25 @@ class Podcast
     /**
      * Normalize <itunes:explicit> values to Apple-accepted values.
      *
-     * Apple expects: "yes", "no", or "clean".
+     * Apple expects: "true" or "false" (modern spec).
      *
      * @param mixed $value
      */
-    private function normalizeItunesExplicit($value, string $fallback = 'clean'): string
+    private function normalizeItunesExplicit($value, string $fallback = 'false'): string
     {
-        $fallback = strtolower(trim($fallback));
-        if (!in_array($fallback, ['yes', 'no', 'clean'], true)) {
-            $fallback = 'clean';
-        }
-
         $normalized = strtolower(trim((string) $value));
 
-        if ($normalized === 'explicit') {
-            return 'yes';
+        // Explicit content indicators
+        if (in_array($normalized, ['yes', 'true', '1', 'explicit'], true)) {
+            return 'true';
         }
 
-        if (in_array($normalized, ['yes', 'no', 'clean'], true)) {
-            return $normalized;
+        // Clean/non-explicit content indicators
+        if (in_array($normalized, ['no', 'false', '0', 'clean'], true)) {
+            return 'false';
         }
 
-        if (in_array($normalized, ['true', '1'], true)) {
-            return 'yes';
-        }
-
-        if (in_array($normalized, ['false', '0'], true)) {
-            return 'no';
-        }
-
-        return $fallback;
+        return 'false';
     }
 
     /**
@@ -256,7 +245,7 @@ class Podcast
         $channel_owner_name = carbon_get_theme_option('crb_podcast_owner_name') ?: $channel_author;
         $channel_owner_email = carbon_get_theme_option('crb_podcast_owner_email') ?: get_bloginfo('admin_email');
         $channel_cover = carbon_get_theme_option('crb_podcast_cover') ?: '';
-        $channel_explicit = $this->normalizeItunesExplicit(carbon_get_theme_option('crb_podcast_explicit') ?: 'clean', 'clean');
+        $channel_explicit = $this->normalizeItunesExplicit(carbon_get_theme_option('crb_podcast_explicit') ?: 'false', 'false');
         $channel_language = carbon_get_theme_option('crb_podcast_language') ?: (get_bloginfo('language') ?: 'en-US');
         $channel_category_primary = carbon_get_theme_option('crb_podcast_category_primary') ?: '';
         $channel_category_secondary = carbon_get_theme_option('crb_podcast_category_secondary') ?: '';
@@ -290,7 +279,7 @@ class Podcast
         <?php endif; ?>
         <itunes:author><?php echo esc_html($channel_author); ?></itunes:author>
         <itunes:summary><?php echo esc_html($channel_description); ?></itunes:summary>
-        <itunes:explicit><?php echo esc_html($channel_explicit ?: 'clean'); ?></itunes:explicit>
+        <itunes:explicit><?php echo esc_html($channel_explicit ?: 'false'); ?></itunes:explicit>
         <?php if ($channel_cover) : ?>
         <itunes:image href="<?php echo esc_url($channel_cover); ?>" />
         <?php endif; ?>
@@ -376,7 +365,7 @@ class Podcast
             <?php if ($duration_formatted) : ?>
             <itunes:duration><?php echo esc_html($duration_formatted); ?></itunes:duration>
             <?php endif; ?>
-            <itunes:explicit><?php echo esc_html($episode_explicit ?: $channel_explicit ?: 'clean'); ?></itunes:explicit>
+            <itunes:explicit><?php echo esc_html($episode_explicit ?: $channel_explicit ?: 'false'); ?></itunes:explicit>
             <itunes:author><?php echo esc_html($episode_author); ?></itunes:author>
             <?php if ($episode_subtitle) : ?>
             <itunes:subtitle><?php echo esc_html($episode_subtitle); ?></itunes:subtitle>
