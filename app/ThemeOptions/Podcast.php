@@ -98,7 +98,7 @@ class PodcastOptions
                 ->set_required(true),
             Field::make('image', 'crb_podcast_cover', __('Podcast Cover (1400–3000px square)', 'sage'))
                 ->set_value_type('url')
-                ->set_help_text(__('Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Will be validated on save.', 'sage'))
+                ->set_help_text(__('Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple recommends keeping the file under 512KB. Will be validated on save.', 'sage'))
                 ->set_required(true),
             Field::make('select', 'crb_podcast_explicit', __('Default Explicit Flag', 'sage'))
                 ->set_options([
@@ -308,6 +308,16 @@ class PodcastOptions
         if (!file_exists($file_path)) {
             wp_die(
                 __('Podcast Cover file not found. Please re-upload.', 'sage'),
+                __('Podcast Cover validation failed', 'sage'),
+                ['back_link' => true]
+            );
+        }
+
+        $max_bytes = 512 * 1024;
+        $file_size = @filesize($file_path);
+        if (is_int($file_size) && $file_size > $max_bytes) {
+            wp_die(
+                sprintf(__('Podcast Cover file is too large (%1$s). Please compress it to under %2$s.', 'sage'), size_format($file_size), size_format($max_bytes)),
                 __('Podcast Cover validation failed', 'sage'),
                 ['back_link' => true]
             );

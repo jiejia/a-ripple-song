@@ -13,6 +13,7 @@ class Podcast
     public function register(): void
     {
         add_action('init', [$this, 'registerFeed'], 20);
+        add_action('template_redirect', [$this, 'redirectQueryFeedToPretty'], 1);
     }
 
     /**
@@ -21,6 +22,67 @@ class Podcast
     public function registerFeed(): void
     {
         add_feed('podcast', [$this, 'renderFeed']);
+    }
+
+    /**
+     * Canonical feed URL (no query parameters).
+     */
+    private function getPrettyFeedUrl(): string
+    {
+        return home_url('/feed/podcast/');
+    }
+
+    /**
+     * Prefer the attachment URL when the media was selected from the WP Media Library (CMB2 stores `{key}_id`).
+     */
+    private function resolveMediaUrl(int $postId, string $urlMetaKey): string
+    {
+        $url = (string) get_post_meta($postId, $urlMetaKey, true);
+        $attachmentId = (int) get_post_meta($postId, $urlMetaKey . '_id', true);
+
+        if ($attachmentId > 0) {
+            $attachmentUrl = wp_get_attachment_url($attachmentId);
+            if (is_string($attachmentUrl) && $attachmentUrl !== '') {
+                return $attachmentUrl;
+            }
+        }
+
+        if ($url !== '' && filter_var($url, FILTER_VALIDATE_URL)) {
+            $maybeId = attachment_url_to_postid($url);
+            if ($maybeId) {
+                $attachmentUrl = wp_get_attachment_url($maybeId);
+                if (is_string($attachmentUrl) && $attachmentUrl !== '') {
+                    return $attachmentUrl;
+                }
+            }
+
+            $maybePostId = url_to_postid($url);
+            if ($maybePostId && get_post_type($maybePostId) === 'attachment') {
+                $attachmentUrl = wp_get_attachment_url($maybePostId);
+                if (is_string($attachmentUrl) && $attachmentUrl !== '') {
+                    return $attachmentUrl;
+                }
+            }
+        }
+
+        return $url;
+    }
+
+    /**
+     * Redirect `/?feed=podcast` to `/feed/podcast/` for better sharing/SEO.
+     */
+    public function redirectQueryFeedToPretty(): void
+    {
+        if (!function_exists('is_feed') || !is_feed('podcast')) {
+            return;
+        }
+
+        if (!isset($_GET['feed']) || $_GET['feed'] !== 'podcast') {
+            return;
+        }
+
+        wp_safe_redirect($this->getPrettyFeedUrl(), 301);
+        exit;
     }
 
     /**
@@ -83,7 +145,7 @@ class Podcast
         header('Content-Type: application/rss+xml; charset=UTF-8');
 
         $site_url = home_url('/');
-        $feed_url = get_feed_link('podcast');
+        $feed_url = $this->getPrettyFeedUrl();
         $channel_title = carbon_get_theme_option('crb_podcast_title') ?: get_bloginfo('name');
         $channel_subtitle = carbon_get_theme_option('crb_podcast_subtitle') ?: '';
         $channel_description = carbon_get_theme_option('crb_podcast_description') ?: get_bloginfo('description');
@@ -160,11 +222,21 @@ class Podcast
                 $query->the_post();
 
                 $post_id = get_the_ID();
-                $audio_url = get_post_meta($post_id, 'audio_file', true);
+                $audio_url = $this->resolveMediaUrl($post_id, 'audio_file');
                 $audio_length = (int) get_post_meta($post_id, 'audio_length', true);
                 if (empty($audio_url) || $audio_length <= 0) {
-                    // Skip invalid episodes to keep feed valid.
-                    continue;
+                    $audio_attachment_id = (int) get_post_meta($post_id, 'audio_file_id', true);
+                    if ($audio_attachment_id > 0) {
+                        $file_path = get_attached_file($audio_attachment_id);
+                        if (is_string($file_path) && $file_path !== '' && file_exists($file_path)) {
+                            $audio_length = (int) filesize($file_path);
+                        }
+                    }
+
+                    if (empty($audio_url) || $audio_length <= 0) {
+                        // Skip invalid episodes to keep feed valid.
+                        continue;
+                    }
                 }
 
                 $audio_mime = get_post_meta($post_id, 'audio_mime', true) ?: 'audio/mpeg';
@@ -175,7 +247,7 @@ class Podcast
                 $episode_number = get_post_meta($post_id, 'episode_number', true);
                 $season_number = get_post_meta($post_id, 'season_number', true);
                 $episode_author = get_post_meta($post_id, 'episode_author', true) ?: $channel_author;
-                $episode_image = get_post_meta($post_id, 'episode_image', true) ?: $channel_cover;
+                $episode_image = $this->resolveMediaUrl($post_id, 'episode_image') ?: $channel_cover;
                 $episode_subtitle = get_post_meta($post_id, 'episode_subtitle', true);
                 $episode_summary = get_post_meta($post_id, 'episode_summary', true);
                 $episode_block = get_post_meta($post_id, 'episode_block', true) ?: 'no';
@@ -217,7 +289,7 @@ class Podcast
             <?php endif; ?>
             <itunes:episodeType><?php echo esc_html($episode_type); ?></itunes:episodeType>
             <?php if ($episode_block === 'yes') : ?>
-            <itunes:block>Yes</itunes:block>
+            <itunes:block>yes</itunes:block>
             <?php endif; ?>
         </item>
                 <?php
