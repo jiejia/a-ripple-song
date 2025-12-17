@@ -14,6 +14,53 @@ class PodcastOptions
     {
         add_action('carbon_fields_register_fields', [static::class, 'registerFields']);
         add_action('carbon_fields_theme_options_container_saved', [static::class, 'validateCover'], 10, 1);
+        add_filter('carbon_fields_attachment_not_found_metadata', [static::class, 'previewExternalCoverUrl'], 10, 3);
+    }
+
+    /**
+     * Ensure Carbon Fields "image" fields using value_type=url can still preview external URLs.
+     *
+     * Carbon Fields only renders a preview when the attachment metadata contains a truthy `id`.
+     * For non-local URLs, Carbon cannot resolve an attachment post, so we provide lightweight
+     * metadata based on the URL itself.
+     *
+     * @param array $attachment_metadata
+     * @param int|string $id
+     * @param string $type
+     * @return array
+     */
+    public static function previewExternalCoverUrl(array $attachment_metadata, $id, string $type): array
+    {
+        if ($type !== 'url') {
+            return $attachment_metadata;
+        }
+
+        $url = $attachment_metadata['thumb_url'] ?? '';
+        if (!is_string($url) || $url === '') {
+            return $attachment_metadata;
+        }
+
+        if (!preg_match('~^https?://~i', $url)) {
+            return $attachment_metadata;
+        }
+
+        $path = parse_url($url, PHP_URL_PATH);
+        $fileName = is_string($path) && $path !== '' ? wp_basename($path) : wp_basename($url);
+
+        $fileTypeInfo = wp_check_filetype($fileName);
+        $mime = $fileTypeInfo['type'] ?? '';
+
+        $attachment_metadata['id'] = -1;
+        $attachment_metadata['file_url'] = $url;
+        $attachment_metadata['thumb_url'] = $url;
+        $attachment_metadata['file_name'] = $fileName;
+
+        if (is_string($mime) && strpos($mime, 'image/') === 0) {
+            $attachment_metadata['filetype'] = $fileTypeInfo;
+            $attachment_metadata['file_type'] = 'image';
+        }
+
+        return $attachment_metadata;
     }
 
     /**
