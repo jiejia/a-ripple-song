@@ -13,6 +13,7 @@ class Podcast
     public function register(): void
     {
         add_action('init', [$this, 'registerFeed'], 20);
+        add_action('template_redirect', [$this, 'preventPodcastSlugFromRenderingFeed'], 0);
         add_action('template_redirect', [$this, 'redirectQueryFeedToPretty'], 1);
         add_action('admin_init', [$this, 'maybeFlushRewriteRules']);
         add_filter('redirect_canonical', [$this, 'preventCanonicalRedirectForPodcastFeed'], 10, 2);
@@ -24,6 +25,35 @@ class Podcast
     public function registerFeed(): void
     {
         add_feed('podcast', [$this, 'renderFeed']);
+    }
+
+    /**
+     * Prevent /podcast/ from being treated as the podcast feed.
+     * Only /feed/podcast/ or /?feed=podcast should render the RSS feed.
+     */
+    public function preventPodcastSlugFromRenderingFeed(): void
+    {
+        if (!function_exists('is_feed') || !is_feed('podcast')) {
+            return;
+        }
+
+        $request_uri = $_SERVER['REQUEST_URI'] ?? '';
+        $path = wp_parse_url($request_uri, PHP_URL_PATH);
+        $query = wp_parse_url($request_uri, PHP_URL_QUERY);
+
+        // Allow /feed/podcast/ or /podcast/feed/
+        if (is_string($path) && preg_match('~(?:feed/podcast|podcast/feed)/?$~', $path)) {
+            return;
+        }
+
+        // Allow /?feed=podcast
+        if (is_string($query) && preg_match('~(?:^|&)feed=podcast(?:&|$)~', $query)) {
+            return;
+        }
+
+        // If we reach here, it's probably /podcast/ alone - reset feed flag so WordPress handles it normally
+        global $wp_query;
+        $wp_query->is_feed = false;
     }
 
     /**
