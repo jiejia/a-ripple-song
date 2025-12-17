@@ -290,7 +290,7 @@ class Podcast
         <?php endif; ?>
         <itunes:author><?php echo esc_html($channel_author); ?></itunes:author>
         <itunes:summary><?php echo esc_html($channel_description); ?></itunes:summary>
-        <itunes:explicit><?php echo esc_html($channel_explicit); ?></itunes:explicit>
+        <itunes:explicit><?php echo esc_html($channel_explicit ?: 'clean'); ?></itunes:explicit>
         <?php if ($channel_cover) : ?>
         <itunes:image href="<?php echo esc_url($channel_cover); ?>" />
         <?php endif; ?>
@@ -376,7 +376,7 @@ class Podcast
             <?php if ($duration_formatted) : ?>
             <itunes:duration><?php echo esc_html($duration_formatted); ?></itunes:duration>
             <?php endif; ?>
-            <itunes:explicit><?php echo esc_html($episode_explicit); ?></itunes:explicit>
+            <itunes:explicit><?php echo esc_html($episode_explicit ?: $channel_explicit ?: 'clean'); ?></itunes:explicit>
             <itunes:author><?php echo esc_html($episode_author); ?></itunes:author>
             <?php if ($episode_subtitle) : ?>
             <itunes:subtitle><?php echo esc_html($episode_subtitle); ?></itunes:subtitle>
