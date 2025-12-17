@@ -14,6 +14,8 @@ class Podcast
     {
         add_action('init', [$this, 'registerFeed'], 20);
         add_action('template_redirect', [$this, 'redirectQueryFeedToPretty'], 1);
+        add_action('admin_init', [$this, 'maybeFlushRewriteRules']);
+        add_filter('redirect_canonical', [$this, 'preventCanonicalRedirectForPodcastFeed'], 10, 2);
     }
 
     /**
@@ -25,11 +27,78 @@ class Podcast
     }
 
     /**
-     * Canonical feed URL (no query parameters).
+     * Whether rewrite rules include the custom `podcast` feed endpoint.
      */
-    private function getPrettyFeedUrl(): string
+    private function prettyPodcastFeedIsRegistered(): bool
     {
-        return home_url('/feed/podcast/');
+        $rules = get_option('rewrite_rules');
+        if (!is_array($rules)) {
+            return false;
+        }
+
+        foreach (array_keys($rules) as $regex) {
+            if (strpos($regex, 'podcast') !== false && strpos($regex, 'feed') !== false) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Canonical feed URL (prefer pretty permalink, fallback to query form).
+     */
+    private function getCanonicalFeedUrl(): string
+    {
+        if ($this->prettyPodcastFeedIsRegistered()) {
+            return home_url('/feed/podcast/');
+        }
+
+        return add_query_arg('feed', 'podcast', home_url('/'));
+    }
+
+    /**
+     * One-time rewrite flush so `/feed/podcast/` starts working after deployment.
+     */
+    public function maybeFlushRewriteRules(): void
+    {
+        if (!is_admin() || !current_user_can('manage_options')) {
+            return;
+        }
+
+        $flag = 'aripplesong_podcast_feed_rewrite_flushed_v1';
+        if (get_option($flag)) {
+            return;
+        }
+
+        flush_rewrite_rules(false);
+        update_option($flag, '1', 'no');
+    }
+
+    /**
+     * Prevent WordPress canonical redirects from rewriting the feed URL (e.g. `/feed/podcast/` → `/podcast/`).
+     *
+     * @param string|false $redirect_url
+     * @param string $requested_url
+     * @return string|false
+     */
+    public function preventCanonicalRedirectForPodcastFeed($redirect_url, string $requested_url)
+    {
+        if (function_exists('is_feed') && is_feed('podcast')) {
+            return false;
+        }
+
+        $path = wp_parse_url($requested_url, PHP_URL_PATH);
+        if (is_string($path) && preg_match('~/(?:feed/podcast|podcast/feed)/?$~', $path)) {
+            return false;
+        }
+
+        $query = wp_parse_url($requested_url, PHP_URL_QUERY);
+        if (is_string($query) && preg_match('~(?:^|&)feed=podcast(?:&|$)~', $query)) {
+            return false;
+        }
+
+        return $redirect_url;
     }
 
     /**
@@ -81,7 +150,11 @@ class Podcast
             return;
         }
 
-        wp_safe_redirect($this->getPrettyFeedUrl(), 301);
+        if (!$this->prettyPodcastFeedIsRegistered()) {
+            return;
+        }
+
+        wp_safe_redirect(home_url('/feed/podcast/'), 301);
         exit;
     }
 
@@ -145,7 +218,7 @@ class Podcast
         header('Content-Type: application/rss+xml; charset=UTF-8');
 
         $site_url = home_url('/');
-        $feed_url = $this->getPrettyFeedUrl();
+        $feed_url = $this->getCanonicalFeedUrl();
         $channel_title = carbon_get_theme_option('crb_podcast_title') ?: get_bloginfo('name');
         $channel_subtitle = carbon_get_theme_option('crb_podcast_subtitle') ?: '';
         $channel_description = carbon_get_theme_option('crb_podcast_description') ?: get_bloginfo('description');
