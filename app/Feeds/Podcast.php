@@ -433,6 +433,14 @@ class Podcast
     }
 
     /**
+     * Escape the CDATA terminator so we can safely wrap text in a CDATA section.
+     */
+    private function escapeCdata(string $text): string
+    {
+        return str_replace(']]>', ']]]]><![CDATA[>', $text);
+    }
+
+    /**
      * Render the podcast RSS feed.
      */
     public function renderFeed(): void
@@ -483,6 +491,15 @@ class Podcast
             'order' => 'DESC',
         ]);
 
+        $last_build_date = gmdate('r');
+        if (!empty($query->posts)) {
+            $latest_post_id = (int) $query->posts[0]->ID;
+            $latest_mysql = get_post_time('Y-m-d H:i:s', true, $latest_post_id, false);
+            if (is_string($latest_mysql) && $latest_mysql !== '') {
+                $last_build_date = mysql2date('r', $latest_mysql, false);
+            }
+        }
+
         echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
         ?>
 <rss version="2.0"
@@ -495,12 +512,12 @@ class Podcast
         <link><?php echo esc_url($site_url); ?></link>
         <atom:link href="<?php echo esc_url($feed_url); ?>" rel="self" type="application/rss+xml" />
         <language><?php echo esc_html($channel_language); ?></language>
-        <description><?php echo esc_html($channel_description); ?></description>
+        <description><![CDATA[<?php echo $this->escapeCdata((string) $channel_description); ?>]]></description>
         <?php if ($channel_subtitle) : ?>
         <itunes:subtitle><?php echo esc_html($channel_subtitle); ?></itunes:subtitle>
         <?php endif; ?>
         <itunes:author><?php echo esc_html($channel_author); ?></itunes:author>
-        <itunes:summary><?php echo esc_html($channel_description); ?></itunes:summary>
+        <itunes:summary><![CDATA[<?php echo $this->escapeCdata((string) $channel_description); ?>]]></itunes:summary>
         <itunes:explicit><?php echo esc_html($channel_explicit ?: 'false'); ?></itunes:explicit>
         <?php if ($channel_cover) : ?>
         <itunes:image href="<?php echo esc_url($channel_cover); ?>" />
@@ -529,7 +546,7 @@ class Podcast
         ?>
         <podcast:locked><?php echo esc_html($podcast_locked); ?></podcast:locked>
         <podcast:guid><?php echo esc_html($podcast_guid); ?></podcast:guid>
-        <lastBuildDate><?php echo esc_html(gmdate('r')); ?></lastBuildDate>
+        <lastBuildDate><?php echo esc_html($last_build_date); ?></lastBuildDate>
         <?php
         if ($query->have_posts()) :
             while ($query->have_posts()) :
@@ -583,8 +600,8 @@ class Podcast
             <link><?php echo esc_url(get_permalink()); ?></link>
             <guid isPermaLink="<?php echo esc_attr($episode_guid === $episode_permalink ? 'true' : 'false'); ?>"><?php echo esc_html($episode_guid); ?></guid>
             <pubDate><?php echo esc_html($pub_date); ?></pubDate>
-            <description><?php echo esc_html($item_summary); ?></description>
-            <itunes:summary><?php echo esc_html($item_summary); ?></itunes:summary>
+            <description><![CDATA[<?php echo $this->escapeCdata((string) $item_summary); ?>]]></description>
+            <itunes:summary><![CDATA[<?php echo $this->escapeCdata((string) $item_summary); ?>]]></itunes:summary>
             <?php if ($content_html) : ?>
             <content:encoded><![CDATA[<?php echo $content_html; ?>]]></content:encoded>
             <?php endif; ?>
