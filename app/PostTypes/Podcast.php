@@ -274,6 +274,19 @@ class Podcast
         ]);
 
         $cmb->add_field([
+            'name' => __('Transcript (optional)', 'sage'),
+            'desc' => __('Optional. Upload a transcript file (vtt/srt/txt/pdf) or enter a transcript URL (https).', 'sage'),
+            'id' => 'episode_transcript',
+            'type' => 'file',
+            'options' => [
+                'url' => true,
+            ],
+            'text' => [
+                'add_upload_file_text' => __('Add Transcript', 'sage'),
+            ],
+        ]);
+
+        $cmb->add_field([
             'name' => __('Subtitle', 'sage'),
             'desc' => __('Optional. Short subtitle for iTunes.', 'sage'),
             'id' => 'episode_subtitle',
@@ -976,6 +989,16 @@ class Podcast
             'schema' => [
                 'description' => __('Audio duration (seconds)', 'sage'),
                 'type' => 'integer',
+            ],
+        ]);
+
+        register_rest_field('podcast', 'episode_transcript', [
+            'get_callback' => function ($post) {
+                return get_post_meta($post['id'], 'episode_transcript', true);
+            },
+            'schema' => [
+                'description' => __('Episode transcript URL', 'sage'),
+                'type' => 'string',
             ],
         ]);
     }
