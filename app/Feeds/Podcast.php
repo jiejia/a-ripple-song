@@ -15,7 +15,7 @@ class Podcast
         add_action('init', [$this, 'registerFeed'], 20);
         add_action('pre_get_posts', [$this, 'fixPodcastArchiveQuery'], 1);
         add_action('template_redirect', [$this, 'preventPodcastSlugFromRenderingFeed'], 0);
-        add_action('template_redirect', [$this, 'redirectQueryFeedToPretty'], 1);
+        // add_action('template_redirect', [$this, 'redirectQueryFeedToPretty'], 1);
         add_action('admin_init', [$this, 'maybeFlushRewriteRules']);
         add_action('send_headers', [$this, 'forcePodcastFeedHeaders'], 0);
         add_filter('redirect_canonical', [$this, 'preventCanonicalRedirectForPodcastFeed'], 10, 2);

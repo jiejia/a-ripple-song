@@ -43,149 +43,132 @@ msgstr "https://roots.io/"
 msgid "Continued"
 msgstr "Continuar lendo"
 
-#: app/podcast-types.php:17
-#: app/podcast-types.php:29
+#: app/PostTypes/Podcast.php:37
+#: app/PostTypes/Podcast.php:49
 msgid "Podcasts"
 msgstr "Podcasts"
 
-#: app/podcast-types.php:18
+#: app/PostTypes/Podcast.php:38
 #: resources/views/sections/player.blade.php:10
-#: resources/views/sections/player.blade.php:24
 msgid "Podcast"
 msgstr "Podcast"
 
-#: app/podcast-types.php:19
-#: app/podcast-types.php:20
+#: app/PostTypes/Podcast.php:39
+#: app/PostTypes/Podcast.php:40
 msgid "Add New Podcast"
 msgstr "Adicionar novo podcast"
 
-#: app/podcast-types.php:21
+#: app/PostTypes/Podcast.php:41
 msgid "Edit Podcast"
 msgstr "Editar podcast"
 
-#: app/podcast-types.php:22
+#: app/PostTypes/Podcast.php:42
 msgid "New Podcast"
 msgstr "Novo podcast"
 
-#: app/podcast-types.php:23
+#: app/PostTypes/Podcast.php:43
 msgid "View Podcast"
 msgstr "Ver podcast"
 
-#: app/podcast-types.php:24
+#: app/PostTypes/Podcast.php:44
 msgid "View Podcasts"
 msgstr "Ver podcasts"
 
-#: app/podcast-types.php:25
+#: app/PostTypes/Podcast.php:45
 msgid "Search Podcasts"
 msgstr "Pesquisar podcasts"
 
-#: app/podcast-types.php:26
-#: resources/js/app.js:158
+#: app/PostTypes/Podcast.php:46
+#: resources/js/app.js:554
 msgid "No podcasts found"
 msgstr "Nenhum podcast encontrado"
 
-#: app/podcast-types.php:27
+#: app/PostTypes/Podcast.php:47
 msgid "No podcasts found in Trash"
 msgstr "Nenhum podcast encontrado na lixeira"
 
-#: app/podcast-types.php:28
+#: app/PostTypes/Podcast.php:48
 msgid "All Podcasts"
 msgstr "Todos os podcasts"
 
-#: app/podcast-types.php:78
-#: app/podcast-types.php:88
+#: app/PostTypes/Podcast.php:91
+#: app/PostTypes/Podcast.php:101
 msgid "Podcast Categories"
 msgstr "Categorias de podcast"
 
-#: app/podcast-types.php:79
+#: app/PostTypes/Podcast.php:92
 msgid "Podcast Category"
 msgstr "Categoria de podcast"
 
-#: app/podcast-types.php:80
+#: app/PostTypes/Podcast.php:93
 msgid "Search Podcast Categories"
 msgstr "Pesquisar categorias de podcast"
 
-#: app/podcast-types.php:81
+#: app/PostTypes/Podcast.php:94
 msgid "All Podcast Categories"
 msgstr "Todas as categorias de podcast"
 
-#: app/podcast-types.php:82
+#: app/PostTypes/Podcast.php:95
 msgid "Parent Podcast Category"
 msgstr "Categoria de podcast pai"
 
-#: app/podcast-types.php:83
+#: app/PostTypes/Podcast.php:96
 msgid "Parent Podcast Category:"
 msgstr "Categoria de podcast pai:"
 
-#: app/podcast-types.php:84
+#: app/PostTypes/Podcast.php:97
 msgid "Edit Podcast Category"
 msgstr "Editar categoria de podcast"
 
-#: app/podcast-types.php:85
+#: app/PostTypes/Podcast.php:98
 msgid "Update Podcast Category"
 msgstr "Atualizar categoria de podcast"
 
-#: app/podcast-types.php:86
+#: app/PostTypes/Podcast.php:99
 msgid "Add New Podcast Category"
 msgstr "Adicionar nova categoria de podcast"
 
-#: app/podcast-types.php:87
+#: app/PostTypes/Podcast.php:100
 msgid "New Podcast Category Name"
 msgstr "Nome da nova categoria de podcast"
 
-#: app/podcast-types.php:108
+#: app/PostTypes/Podcast.php:122
 msgid "Podcast Details"
 msgstr "Detalhes do podcast"
 
-#: app/podcast-types.php:117
+#: app/PostTypes/Podcast.php:130
 msgid "Audio File"
 msgstr "Arquivo de áudio"
 
-#: app/podcast-types.php:118
-msgid "Upload an audio file or enter audio file URL"
-msgstr "Enviar um arquivo de áudio ou inserir URL do arquivo de áudio"
-
-#: app/podcast-types.php:125
+#: app/PostTypes/Podcast.php:143
 msgid "Add Audio File"
 msgstr "Adicionar arquivo de áudio"
 
-#: app/podcast-types.php:140
+#: app/PostTypes/Podcast.php:157
 msgid "Duration (seconds)"
 msgstr "Duração (segundos)"
 
-#: app/podcast-types.php:141
-msgid "Enter audio duration in seconds. For example: 180 means 3 minutes"
-msgstr "Inserir duração do áudio em segundos. Por exemplo: 180 significa 3 minutos"
-
-#: app/podcast-types.php:155
-msgid "Subtitles"
-msgstr "Legendas"
-
-#: app/podcast-types.php:156
-msgid "Enter podcast subtitle content (supports rich text format)"
-msgstr "Inserir conteúdo de legendas do podcast (suporta formato de texto rico)"
-
-#: app/podcast-types.php:225
+#: app/PostTypes/Podcast.php:323
 msgid "Members"
 msgstr "Membros"
 
-#: app/podcast-types.php:226
+#: app/PostTypes/Podcast.php:324
 msgid "Select podcast members (only administrators, authors, or editors, multiple selection allowed)"
 msgstr "Selecionar membros do podcast (apenas administradores, autores ou editores, seleção múltipla permitida)"
 
-#: app/podcast-types.php:249
+#: app/PostTypes/Podcast.php:332
 msgid "Guests"
 msgstr "Convidados"
 
-#: app/podcast-types.php:250
+#: app/PostTypes/Podcast.php:333
 msgid "Select podcast guests (only contributors, multiple selection allowed)"
 msgstr "Selecionar convidados do podcast (apenas colaboradores, seleção múltipla permitida)"
 
-#: app/podcast-types.php:492
+#: app/PostTypes/Podcast.php:980
 msgid "Audio file URL"
 msgstr "URL do arquivo de áudio"
 
-#: app/podcast-types.php:503
+#: app/PostTypes/Podcast.php:990
 msgid "Audio duration (seconds)"
 msgstr "Duração do áudio (segundos)"
 
@@ -193,35 +176,27 @@ msgstr "Duração do áudio (segundos)"
 msgid "Primary Navigation"
 msgstr "Navegação principal"
 
-#: app/setup.php:140
-msgid "Primary"
-msgstr "Principal"
-
-#: app/setup.php:145
-msgid "Footer"
-msgstr "Rodapé"
-
-#: app/setup.php:150
+#: app/setup.php:160
 msgid "Home Main"
 msgstr "Página inicial principal"
 
-#: app/setup.php:152
+#: app/setup.php:162
 msgid "Main area of the homepage for displaying various content modules"
 msgstr "Área principal da página inicial para exibir vários módulos de conteúdo"
 
-#: app/setup.php:159
+#: app/setup.php:169
 msgid "Sidebar Primary"
 msgstr "Barra lateral principal"
 
-#: app/setup.php:161
+#: app/setup.php:171
 msgid "Primary sidebar area for displaying various content modules"
 msgstr "Área da barra lateral principal para exibir vários módulos de conteúdo"
 
-#: app/setup.php:168
+#: app/setup.php:178
 msgid "Leftbar Primary"
 msgstr "Barra esquerda principal"
 
-#: app/setup.php:170
+#: app/setup.php:180
 msgid "Primary left sidebar area for displaying various content modules"
 msgstr "Área da barra lateral esquerda principal para exibir vários módulos de conteúdo"
 
@@ -305,63 +280,75 @@ msgstr "aripplesong - Carrossel de banners"
 msgid "Display banner carousel with images"
 msgstr "Exibir carrossel de banners com imagens"
 
-#: app/Widgets/BannerCarouselWidget.php:31
+#: resources/views/widgets/banner-carousel.blade.php:17
 msgid "No banner yet"
 msgstr "Ainda não há banners"
 
-#: app/Widgets/BannerCarouselWidget.php:32
+#: resources/views/widgets/banner-carousel.blade.php:18
 msgid "Please add banner content in the admin panel"
 msgstr "Por favor, adicione conteúdo de banner no painel de administração"
 
-#: app/Widgets/BannerCarouselWidget.php:99
+#: app/Widgets/BannerCarouselWidget.php:49
 msgid "Banner Slides:"
 msgstr "Slides do banner:"
 
-#: app/Widgets/BannerCarouselWidget.php:112
+#: app/widgets.php:185
+#: app/Widgets/BannerCarouselWidget.php:62
 msgid "Image URL:"
 msgstr "URL da imagem:"
 
-#: app/Widgets/BannerCarouselWidget.php:119
+#: app/widgets.php:187
+#: app/Widgets/BannerCarouselWidget.php:69
 msgid "Image URL"
 msgstr "URL da imagem"
 
-#: app/Widgets/BannerCarouselWidget.php:124
+#: app/widgets.php:188
+#: app/Widgets/BannerCarouselWidget.php:74
 msgid "Select Image"
 msgstr "Selecionar imagem"
 
-#: app/Widgets/BannerCarouselWidget.php:135
+#: app/widgets.php:192
+#: app/Widgets/BannerCarouselWidget.php:85
 msgid "Link URL (optional):"
 msgstr "URL do link (opcional):"
 
-#: app/Widgets/BannerCarouselWidget.php:141
+#: app/Widgets/BannerCarouselWidget.php:91
 msgid "https://example.com"
 msgstr "https://example.com"
 
-#: app/Widgets/BannerCarouselWidget.php:145
+#: app/widgets.php:196
+#: app/Widgets/BannerCarouselWidget.php:95
 msgid "Link Target:"
 msgstr "Destino do link:"
 
-#: app/Widgets/BannerCarouselWidget.php:150
+#: app/widgets.php:198
+#: app/Widgets/BannerCarouselWidget.php:100
 msgid "Current Page"
 msgstr "Página atual"
 
-#: app/Widgets/BannerCarouselWidget.php:153
+#: app/widgets.php:199
+#: app/Widgets/BannerCarouselWidget.php:103
 msgid "New Tab"
 msgstr "Nova aba"
 
-#: app/Widgets/BannerCarouselWidget.php:159
+#: app/widgets.php:203
+#: app/Widgets/BannerCarouselWidget.php:109
 msgid "Description:"
 msgstr "Descrição:"
 
-#: app/Widgets/BannerCarouselWidget.php:165
+#: app/widgets.php:204
+#: app/Widgets/BannerCarouselWidget.php:115
 msgid "Image description"
 msgstr "Descrição da imagem"
 
-#: app/Widgets/BannerCarouselWidget.php:169
+#: app/widgets.php:207
+#: app/widgets.php:373
+#: app/Widgets/BannerCarouselWidget.php:119
+#: app/Widgets/FooterLinksWidget.php:91
 msgid "Delete"
 msgstr "Excluir"
 
-#: app/Widgets/BannerCarouselWidget.php:178
+#: app/Widgets/BannerCarouselWidget.php:128
 msgid "+ Add Banner"
 msgstr "+ Adicionar banner"
 
@@ -373,27 +360,28 @@ msgstr "aripplesong - Lista do blog"
 msgid "Display latest blog posts list"
 msgstr "Exibir lista das últimas publicações do blog"
 
-#: app/Widgets/BlogListWidget.php:73
+#: app/Widgets/BlogListWidget.php:75
 msgid "No blog posts yet"
 msgstr "Ainda não há publicações no blog"
 
-#: app/Widgets/BlogListWidget.php:89
+#: app/Widgets/BlogListWidget.php:91
+#: app/Widgets/FooterLinksWidget.php:50
 #: app/Widgets/PodcastListWidget.php:200
 #: app/Widgets/SubscribeLinksWidget.php:81
 #: app/Widgets/TagsCloudWidget.php:82
 msgid "Title:"
 msgstr "Título:"
 
-#: app/Widgets/BlogListWidget.php:97
+#: app/Widgets/BlogListWidget.php:99
 #: app/Widgets/PodcastListWidget.php:208
 msgid "Number of posts:"
 msgstr "Número de publicações:"
 
-#: app/Widgets/BlogListWidget.php:108
+#: app/Widgets/BlogListWidget.php:110
 msgid "Number of columns:"
 msgstr "Número de colunas:"
 
-#: app/Widgets/BlogListWidget.php:125
+#: app/Widgets/BlogListWidget.php:127
 #: app/Widgets/PodcastListWidget.php:224
 msgid "Show \"See all\" link"
 msgstr "Mostrar link \"Ver todos\""
@@ -485,8 +473,8 @@ msgstr "Nome da tag"
 msgid "Tag ID"
 msgstr "ID da tag"
 
-#: app/Widgets/TagsCloudWidget.php:111
 #: app/Widgets/PodcastListWidget.php:96
+#: app/Widgets/TagsCloudWidget.php:111
 msgid "Random"
 msgstr "Aleatório"
 
@@ -523,35 +511,35 @@ msgstr "aripplesong - Links do Rodapé"
 msgid "Display a list of links or text items in the footer"
 msgstr "Exibir uma lista de links ou itens de texto no rodapé"
 
-#: app/Widgets/FooterLinksWidget.php:72
+#: app/Widgets/FooterLinksWidget.php:56
 msgid "e.g., Contact, Navigate, Support"
 msgstr "ex., Contato, Navegar, Suporte"
 
-#: app/Widgets/FooterLinksWidget.php:76
+#: app/Widgets/FooterLinksWidget.php:59
 msgid "Items:"
 msgstr "Itens:"
 
-#: app/Widgets/FooterLinksWidget.php:85
-#: app/widgets.php:170
+#: app/widgets.php:360
+#: app/Widgets/FooterLinksWidget.php:65
 msgid "Text:"
 msgstr "Texto:"
 
-#: app/Widgets/FooterLinksWidget.php:90
-#: app/widgets.php:172
+#: app/widgets.php:361
+#: app/Widgets/FooterLinksWidget.php:70
 msgid "Display text"
 msgstr "Texto de exibição"
 
-#: app/Widgets/FooterLinksWidget.php:94
-#: app/widgets.php:175
+#: app/widgets.php:364
+#: app/Widgets/FooterLinksWidget.php:73
 msgid "URL (optional - leave empty for plain text):"
 msgstr "URL (opcional - deixe vazio para texto simples):"
 
-#: app/Widgets/FooterLinksWidget.php:102
-#: app/widgets.php:180
+#: app/widgets.php:369
+#: app/Widgets/FooterLinksWidget.php:87
 msgid "Open in new tab"
 msgstr "Abrir em nova aba"
 
-#: app/Widgets/FooterLinksWidget.php:113
+#: app/Widgets/FooterLinksWidget.php:102
 msgid "+ Add Item"
 msgstr "+ Adicionar item"
 
@@ -605,22 +593,25 @@ msgstr "Por favor, adicione widgets à área \"Página inicial principal\" em Ap
 msgid "Author:"
 msgstr "Autor:"
 
-#: resources/views/partials/comments.blade.php:48
+#: resources/views/partials/comments.blade.php:52
 msgid "Leave a Comment"
 msgstr "Deixe um comentário"
 
-#: resources/views/partials/podcast-episode-card.blade.php:59
+#: resources/views/partials/podcast-episode-card.blade.php:60
 msgid "Pause"
 msgstr "Pausar"
 
-#: resources/views/partials/podcast-episode-card.blade.php:59
+#: resources/views/partials/podcast-episode-card.blade.php:60
+#: resources/views/sections/autoplay-confirm.blade.php:34
 msgid "Play"
 msgstr "Reproduzir"
 
+#: resources/views/sections/leftbar-drawer.blade.php:21
 #: resources/views/sections/leftbar.blade.php:6
 msgid "Please add widgets to \"Leftbar\" area in Appearance > Widgets in the admin panel."
 msgstr "Por favor, adicione widgets à área \"Barra esquerda\" em Aparência > Widgets no painel de administração."
 
+#: resources/views/sections/sidebar-drawer.blade.php:22
 #: resources/views/sections/sidebar.blade.php:8
 msgid "Please add widgets to \"Sidebar\" area in Appearance > Widgets in the admin panel."
 msgstr "Por favor, adicione widgets à área \"Barra lateral\" em Aparência > Widgets no painel de administração."
@@ -633,19 +624,15 @@ msgstr "Menu"
 msgid "Close"
 msgstr "Fechar"
 
-#: resources/views/sections/footer.blade.php:3
-msgid "© %s A Ripple Song. Designed by %s"
-msgstr "© %s A Ripple Song. Projetado por %s"
-
-#: resources/views/sections/header.blade.php:20
+#: resources/views/sections/header.blade.php:26
 msgid "Light Mode"
 msgstr "Modo claro"
 
-#: resources/views/sections/header.blade.php:20
+#: resources/views/sections/header.blade.php:26
 msgid "Dark Mode"
 msgstr "Modo escuro"
 
-#: resources/views/sections/header.blade.php:20
+#: resources/views/sections/header.blade.php:26
 msgid "Follow System"
 msgstr "Seguir sistema"
 
@@ -685,133 +672,28 @@ msgstr "Limpar lista de reprodução"
 msgid "Clear"
 msgstr "Limpar"
 
-#: resources/views/sections/playlist-drawer.blade.php:31
+#: resources/views/sections/playlist-drawer.blade.php:32
 msgid "Playlist is empty"
 msgstr "A lista de reprodução está vazia"
 
-#: resources/views/sections/playlist-drawer.blade.php:32
+#: resources/views/sections/playlist-drawer.blade.php:33
 msgid "Add some episodes to start listening"
 msgstr "Adicione alguns episódios para começar a ouvir"
 
-#: resources/views/sections/playlist-drawer.blade.php:82
+#: resources/views/sections/playlist-drawer.blade.php:83
 msgid "Remove"
 msgstr "Remover"
 
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Red (50)"
-msgstr "Vermelho (50)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Red (400)"
-msgstr "Vermelho (400)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Yellow (50)"
-msgstr "Amarelo (50)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Yellow (300)"
-msgstr "Amarelo (300)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Yellow (400)"
-msgstr "Amarelo (400)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Green (50)"
-msgstr "Verde (50)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Green (400)"
-msgstr "Verde (400)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Green (500)"
-msgstr "Verde (500)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Indigo (50)"
-msgstr "Índigo (50)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Indigo (400)"
-msgstr "Índigo (400)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Gray (600)"
-msgstr "Cinza (600)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Gray (800)"
-msgstr "Cinza (800)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Black"
-msgstr "Preto"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "White"
-msgstr "Branco"
-
-#: public/build/assets/theme.json
-msgctxt "Font family name"
-msgid "sans"
-msgstr "sans"
-
-#: public/build/assets/theme.json
-msgctxt "Font family name"
-msgid "mono"
-msgstr "mono"
-
-#: public/build/assets/theme.json
-msgctxt "Font size name"
-msgid "xs"
-msgstr "xs"
-
-#: public/build/assets/theme.json
-msgctxt "Font size name"
-msgid "sm"
-msgstr "sm"
-
-#: public/build/assets/theme.json
-msgctxt "Font size name"
-msgid "base"
-msgstr "base"
-
-#: public/build/assets/theme.json
-msgctxt "Font size name"
-msgid "lg"
-msgstr "lg"
-
-#: public/build/assets/theme.json
-msgctxt "Font size name"
-msgid "2xl"
-msgstr "2xl"
-
-#: resources/views/sections/autoplay-confirm.blade.php:21
+#: resources/views/sections/autoplay-confirm.blade.php:22
 msgid "Continue playing?"
 msgstr "Continuar reproduzindo?"
 
-#: resources/views/sections/autoplay-confirm.blade.php:24
+#: resources/views/sections/autoplay-confirm.blade.php:25
 msgid "Unknown episode"
 msgstr "Episódio desconhecido"
 
-#: resources/views/sections/autoplay-confirm.blade.php:40
-#: app/carbon-fields.php
+#: app/ThemeOptions/General.php:1653
+#: resources/views/sections/autoplay-confirm.blade.php:42
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -819,437 +701,719 @@ msgstr "Cancelar"
 msgid "Loading audio"
 msgstr "Carregando áudio"
 
-#: app/carbon-fields.php:30
+#: app/ThemeOptions/General.php:51
+#: app/ThemeOptions/General.php:197
 msgid "Theme Settings"
 msgstr "Configurações do Tema"
 
-#: app/carbon-fields.php:37
-msgid "Welcome to the theme settings. Use the sub-menus to configure social links and custom scripts."
-msgstr "Bem-vindo às configurações do tema. Use os submenus para configurar links sociais e scripts personalizados."
-
-#: app/carbon-fields.php:43
+#: app/ThemeOptions/General.php:107
 msgid "Social Links"
 msgstr "Links Sociais"
 
-#: app/carbon-fields.php:48
-msgid "Custom Scripts"
-msgstr "Scripts Personalizados"
-
-#: app/carbon-fields.php:51
+#: app/ThemeOptions/General.php:96
 msgid "Header Scripts"
 msgstr "Scripts do cabeçalho"
 
-#: app/carbon-fields.php:52
+#: app/ThemeOptions/General.php:97
 msgid "Scripts to be added in the <head> section. You can include complete <script> tags for services like Google Analytics."
 msgstr "Scripts a serem adicionados na seção <head>. Você pode incluir tags <script> completas para serviços como Google Analytics."
 
-#: app/carbon-fields.php:53
+#: app/ThemeOptions/General.php:98
 msgid "Footer Scripts"
 msgstr "Scripts do rodapé"
 
-#: app/carbon-fields.php:54
+#: app/ThemeOptions/General.php:99
 msgid "Scripts to be added before </body>. You can include complete <script> tags."
 msgstr "Scripts a serem adicionados antes de </body>. Você pode incluir tags <script> completas."
 
-#: app/carbon-fields.php:73
+#: app/ThemeOptions/General.php:309
 msgid "Configure your social media links. Leave empty to hide a platform."
 msgstr "Configure seus links de redes sociais. Deixe vazio para ocultar uma plataforma."
 
-#: app/carbon-fields.php:79
-#: app/Customizer/SocialLinks.php:23
+#: app/ThemeOptions/General.php:260
+#: app/ThemeOptions/SocialLinks.php:28
 msgid "Facebook"
 msgstr "Facebook"
 
-#: app/carbon-fields.php:83
-#: app/Customizer/SocialLinks.php:27
+#: app/ThemeOptions/General.php:264
+#: app/ThemeOptions/SocialLinks.php:32
 msgid "Twitter / X"
 msgstr "Twitter / X"
 
-#: app/carbon-fields.php:87
-#: app/Customizer/SocialLinks.php:31
+#: app/ThemeOptions/General.php:268
+#: app/ThemeOptions/SocialLinks.php:36
 msgid "Instagram"
 msgstr "Instagram"
 
-#: app/carbon-fields.php:91
-#: app/Customizer/SocialLinks.php:35
+#: app/ThemeOptions/General.php:272
+#: app/ThemeOptions/SocialLinks.php:40
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: app/carbon-fields.php:95
-#: app/Customizer/SocialLinks.php:39
+#: app/ThemeOptions/General.php:276
+#: app/ThemeOptions/SocialLinks.php:44
 msgid "YouTube"
 msgstr "YouTube"
 
-#: app/carbon-fields.php:99
-#: app/Customizer/SocialLinks.php:43
+#: app/ThemeOptions/General.php:280
+#: app/ThemeOptions/SocialLinks.php:48
 msgid "TikTok"
 msgstr "TikTok"
 
-#: app/carbon-fields.php:103
-#: app/Customizer/SocialLinks.php:47
+#: app/ThemeOptions/General.php:284
+#: app/ThemeOptions/SocialLinks.php:52
 msgid "Pinterest"
 msgstr "Pinterest"
 
-#: app/carbon-fields.php:107
-#: app/Customizer/SocialLinks.php:51
+#: app/ThemeOptions/General.php:288
+#: app/ThemeOptions/SocialLinks.php:56
 msgid "Threads"
 msgstr "Threads"
 
-#: app/carbon-fields.php:111
-#: app/Customizer/SocialLinks.php:55
+#: app/ThemeOptions/General.php:292
+#: app/ThemeOptions/SocialLinks.php:60
 msgid "Weibo"
 msgstr "Weibo"
 
-#: app/carbon-fields.php:115
-#: app/Customizer/SocialLinks.php:59
+#: app/ThemeOptions/General.php:296
+#: app/ThemeOptions/SocialLinks.php:64
 msgid "WeChat"
 msgstr "WeChat"
 
-#: app/carbon-fields.php:119
-#: app/Customizer/SocialLinks.php:63
+#: app/ThemeOptions/General.php:300
+#: app/ThemeOptions/SocialLinks.php:68
 msgid "RSS Feed"
 msgstr "Feed RSS"
 
-#. Comment form and display strings
-#: functions.php:576
-msgid "Author"
-msgstr "Autor"
-
-#: functions.php:585
-msgid "Pending Approval"
-msgstr "Aguardando aprovação"
-
-#: functions.php:601
-msgid "Reply"
-msgstr "Responder"
-
-#: functions.php:606
-msgid "Edit"
-msgstr "Editar"
-
-#: functions.php:629
-msgid "Your email address will not be published."
-msgstr "Seu endereço de e-mail não será publicado."
-
-#. translators: %1$s is the edit profile link, %2$s is the username, %3$s is the logout link
-#: functions.php:632
-#, php-format
-msgid "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of this account\">Log out?</a>"
-msgstr "Conectado como <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Sair desta conta\">Sair?</a>"
-
-#: functions.php:646
-msgid "Name"
-msgstr "Nome"
-
-#: functions.php:648
-msgid "Email"
-msgstr "E-mail"
-
-#: functions.php:650
-msgid "Website"
-msgstr "Site"
-
-#: functions.php:652
-msgid "Save my name, email, and website in this browser for the next time I comment."
-msgstr "Salvar meu nome, e-mail e site neste navegador para a próxima vez que eu comentar."
-
-#: functions.php:661
-msgid "Comment"
-msgstr "Comentário"
-
-#: resources/views/sections/leftbar-drawer.blade.php:10
+#: resources/views/sections/leftbar-drawer.blade.php:9
 msgid "Left Sidebar"
 msgstr "Barra lateral esquerda"
 
-#: resources/views/sections/sidebar-drawer.blade.php:10
+#: resources/views/sections/sidebar-drawer.blade.php:9
 msgid "Right Sidebar"
 msgstr "Barra lateral direita"
 
-#: resources/views/layouts/app.blade.php:119
+#: resources/views/layouts/app.blade.php:87
 msgid "Open Left Sidebar"
 msgstr "Abrir barra lateral esquerda"
 
-#: resources/views/layouts/app.blade.php:131
+#: resources/views/layouts/app.blade.php:101
 msgid "Open Right Sidebar"
 msgstr "Abrir barra lateral direita"
 
-#: app/carbon-fields.php:36
-#: app/carbon-fields.php
+#: app/ThemeOptions/General.php:55
+#: app/ThemeOptions/General.php:227
+#: app/ThemeOptions/General.php:1584
 msgid "Site Logo"
 msgstr "Logo do site"
 
-#: app/carbon-fields.php:38
-msgid "Upload a logo image. If no logo is set, the site title with icon will be displayed."
-msgstr "Envie uma imagem de logo. Se nenhum logo for definido, o título do site com o ícone será exibido."
-
-#: app/carbon-fields.php
+#: app/ThemeOptions/General.php:70
 msgid "Click any card to choose the light theme."
 msgstr "Clique em qualquer cartão para escolher o tema claro."
 
-#: app/carbon-fields.php
+#: app/ThemeOptions/General.php:85
 msgid "Click any card to choose the dark theme."
 msgstr "Clique em qualquer cartão para escolher o tema escuro."
 
-#: app/carbon-fields.php
+#: app/ThemeOptions/General.php:74
 msgid "If the card picker is unavailable, use this dropdown (default: retro)."
 msgstr "Se o seletor de cartões não estiver disponível, use este dropdown (padrão: retro)."
 
-#: app/carbon-fields.php
+#: app/ThemeOptions/General.php:89
 msgid "If the card picker is unavailable, use this dropdown (default: dim)."
 msgstr "Se o seletor de cartões não estiver disponível, use este dropdown (padrão: dim)."
 
-msgid "Podcast Cover file not found. Please re-upload."
-msgstr "Arquivo de capa do podcast não encontrado. Envie novamente."
-
-msgid "Podcast Cover validation failed"
-msgstr "Falha na validação da capa do podcast."
-
+#: app/ThemeOptions/Podcast.php:605
 msgid "Podcast Cover is not a valid image."
 msgstr "A capa do podcast não é uma imagem válida."
 
+#: app/ThemeOptions/Podcast.php:693
 msgid "Podcast Cover must be JPG or PNG."
 msgstr "A capa do podcast deve ser JPG ou PNG."
 
-msgid "Podcast Cover must be square. Current: %1%2."
-msgstr "A capa do podcast deve ser quadrada. Atual: %1%2."
-
-msgid "Podcast Cover must be between %1 and %2 px. Current: %3 px."
-msgstr "A capa do podcast deve ter entre %1 e %2 px. Atual: %3 px."
-
+#: app/ThemeOptions/Podcast.php:76
 msgid "Podcast Settings"
 msgstr "Configurações do podcast"
 
+#: app/ThemeOptions/Podcast.php:91
 msgid "Podcast Title"
 msgstr "Título do podcast"
 
+#: app/ThemeOptions/Podcast.php:92
 msgid "Required. If empty, falls back to site title."
 msgstr "Obrigatório. Se vazio, usa o título do site."
 
+#: app/ThemeOptions/Podcast.php:94
 msgid "Podcast Subtitle"
 msgstr "Subtítulo do podcast"
 
+#: app/ThemeOptions/Podcast.php:95
 msgid "Short tagline shown in some apps."
 msgstr "Linha curta exibida em alguns apps."
 
+#: app/ThemeOptions/Podcast.php:96
 msgid "Podcast Description"
 msgstr "Descrição do podcast"
 
+#: app/ThemeOptions/Podcast.php:97
 msgid "Required. Plain text description of the show."
 msgstr "Obrigatório. Descrição do programa em texto simples."
 
+#: app/ThemeOptions/Podcast.php:99
 msgid "Podcast Author (itunes:author)"
 msgstr "Autor do podcast (itunes:author)"
 
+#: app/ThemeOptions/Podcast.php:100
 msgid "Required. Displayed as show author in directories."
 msgstr "Obrigatório. Exibido como autor do programa nos diretórios."
 
+#: app/ThemeOptions/Podcast.php:102
 msgid "Owner Name"
 msgstr "Nome do proprietário"
 
+#: app/ThemeOptions/Podcast.php:103
 msgid "Required. For <itunes:owner><itunes:name>."
 msgstr "Obrigatório para <itunes:owner><itunes:name>."
 
+#: app/ThemeOptions/Podcast.php:105
 msgid "Owner Email"
 msgstr "Email do proprietário"
 
+#: app/ThemeOptions/Podcast.php:108
 msgid "Required. For <itunes:owner><itunes:email>. Use a monitored inbox."
 msgstr "Obrigatório para <itunes:owner><itunes:email>. Use uma caixa monitorada."
 
+#: app/ThemeOptions/Podcast.php:110
 msgid "Podcast Cover (1400–3000px square)"
 msgstr "Capa do podcast (quadrada de 1400–3000 px)"
 
-msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Will be validated on save."
-msgstr "Obrigatório. JPG/PNG quadrado entre 1400–3000 px para <itunes:image>. Será validado ao salvar."
-
+#: app/ThemeOptions/Podcast.php:114
 msgid "Default Explicit Flag"
 msgstr "Indicador explícito padrão"
 
+#: app/ThemeOptions/Podcast.php:116
 msgid "clean (no explicit content)"
 msgstr "clean (sem conteúdo explícito)"
 
+#: app/PostTypes/Podcast.php:203
+#: app/ThemeOptions/Podcast.php:117
 msgid "explicit"
 msgstr "explicit"
 
+#: app/ThemeOptions/Podcast.php:120
 msgid "Required. Single-episode value can override."
 msgstr "Obrigatório. O valor por episódio pode substituir."
 
+#: app/ThemeOptions/Podcast.php:122
 msgid "Language (RSS <language>)"
 msgstr "Idioma (RSS <language>)"
 
+#: app/ThemeOptions/Podcast.php:125
 msgid "RFC 5646 language tag, e.g. en-US, zh-CN."
 msgstr "Tag de idioma RFC 5646, ex.: en-US, zh-CN."
 
+#: app/ThemeOptions/Podcast.php:127
 msgid "Primary Category"
 msgstr "Categoria principal"
 
+#: app/ThemeOptions/Podcast.php:129
 msgid "Required. Use Apple’s category list."
 msgstr "Obrigatório. Use a lista de categorias da Apple."
 
+#: app/ThemeOptions/Podcast.php:131
 msgid "Secondary Category (optional)"
 msgstr "Categoria secundária (opcional)"
 
+#: app/ThemeOptions/Podcast.php:133
 msgid "Optional second category."
 msgstr "Segunda categoria opcional."
 
+#: app/ThemeOptions/Podcast.php:134
 msgid "Copyright (optional)"
 msgstr "Direitos autorais (opcional)"
 
+#: app/ThemeOptions/Podcast.php:135
 msgid "Example: © 2025 Your Studio. Plain text."
 msgstr "Exemplo: © 2025 Your Studio. Texto simples."
 
+#: app/ThemeOptions/Podcast.php:136
 msgid "podcast:locked"
 msgstr "podcast:locked"
 
+#: app/ThemeOptions/Podcast.php:138
 msgid "yes (recommended, prevents unauthorized moves)"
 msgstr "yes (recomendado, evita movimentações não autorizadas)"
 
+#: app/PostTypes/Podcast.php:316
+#: app/ThemeOptions/Podcast.php:139
 msgid "no"
 msgstr "no"
 
+#: app/ThemeOptions/Podcast.php:142
 msgid "Podcasting 2.0: lock feed to this publisher."
 msgstr "Podcasting 2.0: bloquear o feed para este publicador."
 
+#: app/ThemeOptions/Podcast.php:143
 msgid "podcast:guid (optional)"
 msgstr "podcast:guid (opcional)"
 
+#: app/ThemeOptions/Podcast.php:144
 msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
 msgstr "GUID Podcasting 2.0. Se vazio, o feed usará a URL do site como fallback."
 
-msgid "Podcast Cover must be square. Current: %1$dx%2$d."
-msgstr "A capa do podcast deve ser quadrada. Atual: %1$dx%2$d."
-
-msgid "Podcast Cover must be between %1$d and %2$d px. Current: %3$d px."
-msgstr "A capa do podcast deve ter entre %1$d e %2$d px. Atual: %3$d px."
-
+#: app/PostTypes/Podcast.php:131
 msgid "Required. Upload an audio file or enter audio file URL (https)."
 msgstr "Obrigatório. Envie um arquivo de áudio ou insira a URL do arquivo (https)."
 
-msgid "Required. Enter audio duration in seconds. Example: 180 = 3 minutes"
-msgstr "Obrigatório. Insira a duração em segundos. Exemplo: 180 = 3 minutos"
-
-msgid "Required. Use file size in bytes for enclosure length. Example: 12345678"
-msgstr "Obrigatório. Use o tamanho do arquivo em bytes para o comprimento do enclosure. Exemplo: 12345678"
-
-msgid "Required. Example: audio/mpeg, audio/mp3, audio/aac"
-msgstr "Obrigatório. Exemplo: audio/mpeg, audio/mp3, audio/aac"
-
+#: app/PostTypes/Podcast.php:198
 msgid "Required. clean / explicit."
 msgstr "Obrigatório. clean / explicit."
 
+#: app/PostTypes/Podcast.php:215
 msgid "Required. full / trailer / bonus"
 msgstr "Obrigatório. full / trailer / bonus"
 
-msgid "https://facebook.com/yourpage"
-msgstr "https://facebook.com/yourpage"
+#: app/ThemeOptions/Podcast.php:83
+#: app/ThemeOptions/Podcast.php:88
+msgid "Podcast RSS URL"
+msgstr "URL RSS do podcast"
 
-msgid "https://twitter.com/yourhandle"
-msgstr "https://twitter.com/yourhandle"
+#: app/ThemeOptions/Podcast.php:87
+msgid "Open feed"
+msgstr "Abrir feed"
 
-msgid "https://instagram.com/yourhandle"
-msgstr "https://instagram.com/yourhandle"
+#: app/ThemeOptions/Podcast.php:89
+msgid "Your podcast RSS feed URL. Click to select and copy."
+msgstr "URL do feed RSS do seu podcast. Clique para selecionar e copiar."
 
-msgid "https://linkedin.com/in/yourprofile"
-msgstr "https://linkedin.com/in/yourprofile"
+#: app/ThemeOptions/General.php:62
+#: app/ThemeOptions/General.php:66
+msgid "Light Theme"
+msgstr ""
 
-msgid "https://youtube.com/@yourchannel"
-msgstr "https://youtube.com/@yourchannel"
+#: app/ThemeOptions/General.php:71
+msgid "Light Theme (fallback)"
+msgstr ""
 
-msgid "https://tiktok.com/@yourhandle"
-msgstr "https://tiktok.com/@yourhandle"
+#: app/ThemeOptions/General.php:77
+#: app/ThemeOptions/General.php:81
+msgid "Dark Theme"
+msgstr ""
 
-msgid "https://pinterest.com/yourhandle"
-msgstr "https://pinterest.com/yourhandle"
+#: app/ThemeOptions/General.php:86
+msgid "Dark Theme (fallback)"
+msgstr ""
 
-msgid "https://threads.net/@yourhandle"
-msgstr "https://threads.net/@yourhandle"
+#: app/PostTypes/Podcast.php:172
+msgid "Audio Length (bytes)"
+msgstr ""
 
-msgid "https://weibo.com/yourpage"
-msgstr "https://weibo.com/yourpage"
+#: app/PostTypes/Podcast.php:186
+msgid "Audio MIME Type"
+msgstr ""
 
-msgid "WeChat ID or QR code link"
-msgstr "ID do WeChat ou link do QR code"
+#: app/PostTypes/Podcast.php:197
+msgid "Explicit"
+msgstr ""
 
-msgid "/feed/"
-msgstr "/feed/"
+#: app/PostTypes/Podcast.php:202
+msgid "clean"
+msgstr ""
 
-msgid "views"
-msgstr "visualizações"
+#: app/PostTypes/Podcast.php:214
+msgid "Episode Type"
+msgstr ""
 
-msgid "plays"
-msgstr "reproduções"
+#: app/PostTypes/Podcast.php:219
+msgid "full"
+msgstr ""
 
-#: app/carbon-fields.php
+#: app/PostTypes/Podcast.php:220
+msgid "trailer"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:221
+msgid "bonus"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:232
+msgid "Episode Number"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:233
+msgid "Optional but recommended. Integer."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:246
+msgid "Season Number"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:247
+msgid "Optional. Integer."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:260
+msgid "Episode Author (override)"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:261
+msgid "Optional. Overrides channel author for this episode."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:267
+msgid "Episode Cover (square)"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:268
+msgid "Optional. Square 1400–3000px. Overrides channel cover."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:290
+msgid "Subtitle"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:291
+msgid "Optional. Short subtitle for iTunes."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:297
+msgid "Summary"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:298
+msgid "Optional. Plain text summary for iTunes."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:304
+msgid "Custom GUID (optional)"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:305
+msgid "Optional. If empty, feed uses WP permalink as GUID."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:311
+msgid "iTunes Block"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:312
+msgid "Optional. yes = hide this episode in Apple Podcasts."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:317
+msgid "yes"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:534
+msgid "Audio File is required."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:572
+msgid "Audio File must be a valid URL (https recommended)."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:589
+msgid "Explicit must be clean or explicit."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:593
+msgid "Episode Type must be full, trailer, or bonus."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:599
+msgid "Podcast validation failed"
+msgstr ""
+
+#: app/widgets.php:254
+msgid "Select Banner Image"
+msgstr ""
+
+#: app/widgets.php:256
+msgid "Use This Image"
+msgstr ""
+
+#: resources/views/partials/content-single-attachment.blade.php:13
+msgid "Download"
+msgstr ""
+
+#: resources/views/sections/header.blade.php:30
+msgid "Toggle Theme"
+msgstr ""
+
+#: resources/views/widgets/banner-carousel.blade.php:55
+msgid "Previous slide"
+msgstr ""
+
+#: resources/views/widgets/banner-carousel.blade.php:63
+msgid "Next slide"
+msgstr ""
+
+#: resources/views/widgets/banner-carousel.blade.php:79
+#, php-format
+msgid "Go to slide %d"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:158
+#: app/PostTypes/Podcast.php:173
+#: app/PostTypes/Podcast.php:187
+msgid "Auto detected from \"Audio File\" on save."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:277
+msgid "Transcript (optional)"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:278
+msgid "Optional. Upload a transcript file (vtt/srt/txt/pdf) or enter a transcript URL (https)."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:285
+msgid "Add Transcript"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:576
+msgid "Duration (seconds) could not be auto detected from Audio File."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:580
+msgid "Audio Length (bytes) could not be auto detected from Audio File."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:584
+msgid "Audio MIME Type could not be auto detected from Audio File."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:1000
+msgid "Episode transcript URL"
+msgstr ""
+
+#: app/ThemeOptions/General.php:57
 msgid "Upload a logo image (220px × 32px). You will be able to crop the image after upload."
-msgstr "Envie uma imagem de logotipo (220px × 32px). Você poderá recortar após o upload."
+msgstr ""
 
-#: app/carbon-fields.php
-msgid "Upload / Change Logo"
-msgstr "Enviar / Alterar logotipo"
-
-#: app/carbon-fields.php
-msgid "Remove Logo"
-msgstr "Remover logotipo"
-
-#: app/carbon-fields.php
-msgid "Choose Logo Image"
-msgstr "Escolher imagem do logotipo"
-
-#: app/carbon-fields.php
-msgid "Crop Image"
-msgstr "Recortar imagem"
-
-#: app/carbon-fields.php
-msgid "Image is too small. Minimum size: %1$dpx × %2$dpx"
-msgstr "A imagem é muito pequena. Tamanho mínimo: %1$dpx × %2$dpx"
-
-#: app/carbon-fields.php
-msgid "Crop and Save"
-msgstr "Recortar e salvar"
-
-#: app/carbon-fields.php
-msgid "Please select a crop area."
-msgstr "Selecione uma área de recorte."
-
-#: app/carbon-fields.php
-msgid "Cropping..."
-msgstr "Recortando..."
-
-#: app/carbon-fields.php
-msgid "Error cropping image:"
-msgstr "Erro ao recortar a imagem:"
-
-#: app/carbon-fields.php
-msgid "Error cropping image. Please try again."
-msgstr "Erro ao recortar a imagem. Tente novamente."
-
-#: app/carbon-fields.php
-msgid "You do not have permission to upload files."
-msgstr "Você não tem permissão para enviar arquivos."
-
-#: app/carbon-fields.php
-msgid "Missing attachment ID."
-msgstr "ID do anexo ausente."
-
-#: app/carbon-fields.php
-msgid "Missing crop details."
-msgstr "Detalhes de recorte ausentes."
-
-#: app/carbon-fields.php
-msgid "Original image not found."
-msgstr "Imagem original não encontrada."
-
-#: resources/views/sections/footer.blade.php:11
-msgid "Powered by %s"
-msgstr "Distribuído por %s"
-
-#: resources/views/sections/footer.blade.php:11
-msgid "Powered by A Ripple Song Theme"
-msgstr "Distribuído por A Ripple Song Theme"
-
-#: app/carbon-fields.php:1
+#: app/ThemeOptions/General.php:92
 msgid "Footer Copyright"
-msgstr "Copyright do rodapé"
+msgstr ""
 
-#: app/carbon-fields.php:1
+#: app/ThemeOptions/General.php:94
+msgid "Powered by A Ripple Song Theme"
+msgstr ""
+
+#: app/ThemeOptions/General.php:95
 msgid "Overrides the footer copyright line. Leave empty to use the default."
-msgstr "Substitui o texto de copyright do rodapé. Deixe em branco para usar o padrão."
+msgstr ""
+
+#: app/ThemeOptions/General.php:242
+msgid "Upload / Change Logo"
+msgstr ""
+
+#: app/ThemeOptions/General.php:244
+msgid "Remove Logo"
+msgstr ""
+
+#: app/ThemeOptions/General.php:1609
+msgid "Choose Logo Image"
+msgstr ""
+
+#: app/ThemeOptions/General.php:1611
+msgid "Crop Image"
+msgstr ""
+
+#: app/ThemeOptions/General.php:1624
+#, php-format
+msgid "Image is too small. Minimum size: %1$dpx × %2$dpx"
+msgstr ""
+
+#: app/ThemeOptions/General.php:1652
+#: app/ThemeOptions/General.php:1744
+#: app/ThemeOptions/General.php:1750
+msgid "Crop and Save"
+msgstr ""
+
+#: app/ThemeOptions/General.php:1687
+msgid "Please select a crop area."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1691
+msgid "Cropping..."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1743
+msgid "Error cropping image:"
+msgstr ""
+
+#: app/ThemeOptions/General.php:1749
+msgid "Error cropping image. Please try again."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1821
+msgid "You do not have permission to upload files."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1826
+msgid "Missing attachment ID."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1830
+msgid "Missing crop details."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1840
+msgid "Original image not found."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:112
+msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple recommends keeping the file under 512KB. Will be validated on save."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:479
+msgid "Podcast Cover validation failed:"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:516
+msgid "Podcast Cover URL is invalid."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:595
+#: app/ThemeOptions/Podcast.php:641
+#, php-format
+msgid "Podcast Cover file is too large (%1$s). Please compress it to under %2$s."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:656
+#, php-format
+msgid "Could not download Podcast Cover for validation: %s"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:702
+#, php-format
+msgid "Podcast Cover must be square. Current dimensions: %1$d × %2$d px."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:714
+#, php-format
+msgid "Podcast Cover resolution is too small. Minimum: %1$d × %1$d px. Current: %2$d × %2$d px."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:726
+#, php-format
+msgid "Podcast Cover resolution is too large. Maximum: %1$d × %1$d px. Current: %2$d × %2$d px."
+msgstr ""
+
+#: resources/views/partials/entry-meta.blade.php:26
+msgid "views"
+msgstr ""
+
+#: resources/views/partials/entry-meta.blade.php:29
+msgid "plays"
+msgstr ""
+
+#: resources/views/sections/footer.blade.php:5
+#, php-format
+msgid "Powered by %s"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Red (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Red (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Yellow (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Yellow (300)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Yellow (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Green (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Green (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Green (500)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Indigo (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Indigo (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Gray (600)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Gray (800)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Black"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "White"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font family name"
+msgid "sans"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font family name"
+msgid "mono"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "xs"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "sm"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "base"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "lg"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "2xl"
+msgstr ""

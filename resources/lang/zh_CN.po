@@ -43,149 +43,132 @@ msgstr "https://roots.io/"
 msgid "Continued"
 msgstr "继续阅读"
 
-#: app/podcast-types.php:17
-#: app/podcast-types.php:29
+#: app/PostTypes/Podcast.php:37
+#: app/PostTypes/Podcast.php:49
 msgid "Podcasts"
 msgstr "播客"
 
-#: app/podcast-types.php:18
+#: app/PostTypes/Podcast.php:38
 #: resources/views/sections/player.blade.php:10
-#: resources/views/sections/player.blade.php:24
 msgid "Podcast"
 msgstr "播客"
 
-#: app/podcast-types.php:19
-#: app/podcast-types.php:20
+#: app/PostTypes/Podcast.php:39
+#: app/PostTypes/Podcast.php:40
 msgid "Add New Podcast"
 msgstr "添加新播客"
 
-#: app/podcast-types.php:21
+#: app/PostTypes/Podcast.php:41
 msgid "Edit Podcast"
 msgstr "编辑播客"
 
-#: app/podcast-types.php:22
+#: app/PostTypes/Podcast.php:42
 msgid "New Podcast"
 msgstr "新播客"
 
-#: app/podcast-types.php:23
+#: app/PostTypes/Podcast.php:43
 msgid "View Podcast"
 msgstr "查看播客"
 
-#: app/podcast-types.php:24
+#: app/PostTypes/Podcast.php:44
 msgid "View Podcasts"
 msgstr "查看播客"
 
-#: app/podcast-types.php:25
+#: app/PostTypes/Podcast.php:45
 msgid "Search Podcasts"
 msgstr "搜索播客"
 
-#: app/podcast-types.php:26
-#: resources/js/app.js:158
+#: app/PostTypes/Podcast.php:46
+#: resources/js/app.js:554
 msgid "No podcasts found"
 msgstr "未找到播客"
 
-#: app/podcast-types.php:27
+#: app/PostTypes/Podcast.php:47
 msgid "No podcasts found in Trash"
 msgstr "回收站中未找到播客"
 
-#: app/podcast-types.php:28
+#: app/PostTypes/Podcast.php:48
 msgid "All Podcasts"
 msgstr "所有播客"
 
-#: app/podcast-types.php:78
-#: app/podcast-types.php:88
+#: app/PostTypes/Podcast.php:91
+#: app/PostTypes/Podcast.php:101
 msgid "Podcast Categories"
 msgstr "播客分类"
 
-#: app/podcast-types.php:79
+#: app/PostTypes/Podcast.php:92
 msgid "Podcast Category"
 msgstr "播客分类"
 
-#: app/podcast-types.php:80
+#: app/PostTypes/Podcast.php:93
 msgid "Search Podcast Categories"
 msgstr "搜索播客分类"
 
-#: app/podcast-types.php:81
+#: app/PostTypes/Podcast.php:94
 msgid "All Podcast Categories"
 msgstr "所有播客分类"
 
-#: app/podcast-types.php:82
+#: app/PostTypes/Podcast.php:95
 msgid "Parent Podcast Category"
 msgstr "父级播客分类"
 
-#: app/podcast-types.php:83
+#: app/PostTypes/Podcast.php:96
 msgid "Parent Podcast Category:"
 msgstr "父级播客分类："
 
-#: app/podcast-types.php:84
+#: app/PostTypes/Podcast.php:97
 msgid "Edit Podcast Category"
 msgstr "编辑播客分类"
 
-#: app/podcast-types.php:85
+#: app/PostTypes/Podcast.php:98
 msgid "Update Podcast Category"
 msgstr "更新播客分类"
 
-#: app/podcast-types.php:86
+#: app/PostTypes/Podcast.php:99
 msgid "Add New Podcast Category"
 msgstr "添加新播客分类"
 
-#: app/podcast-types.php:87
+#: app/PostTypes/Podcast.php:100
 msgid "New Podcast Category Name"
 msgstr "新播客分类名称"
 
-#: app/podcast-types.php:108
+#: app/PostTypes/Podcast.php:122
 msgid "Podcast Details"
 msgstr "播客详细信息"
 
-#: app/podcast-types.php:117
+#: app/PostTypes/Podcast.php:130
 msgid "Audio File"
 msgstr "音频文件"
 
-#: app/podcast-types.php:118
-msgid "Upload an audio file or enter audio file URL"
-msgstr "上传音频文件或输入音频文件 URL"
-
-#: app/podcast-types.php:125
+#: app/PostTypes/Podcast.php:143
 msgid "Add Audio File"
 msgstr "添加音频文件"
 
-#: app/podcast-types.php:140
+#: app/PostTypes/Podcast.php:157
 msgid "Duration (seconds)"
 msgstr "时长（秒）"
 
-#: app/podcast-types.php:141
-msgid "Enter audio duration in seconds. For example: 180 means 3 minutes"
-msgstr "输入音频时长，单位为秒。例如：180 表示 3 分钟"
-
-#: app/podcast-types.php:155
-msgid "Subtitles"
-msgstr "字幕"
-
-#: app/podcast-types.php:156
-msgid "Enter podcast subtitle content (supports rich text format)"
-msgstr "输入播客字幕内容（支持富文本格式）"
-
-#: app/podcast-types.php:225
+#: app/PostTypes/Podcast.php:323
 msgid "Members"
 msgstr "成员"
 
-#: app/podcast-types.php:226
+#: app/PostTypes/Podcast.php:324
 msgid "Select podcast members (only administrators, authors, or editors, multiple selection allowed)"
 msgstr "选择播客成员（只能选择管理员、作者或编辑角色，可多选）"
 
-#: app/podcast-types.php:249
+#: app/PostTypes/Podcast.php:332
 msgid "Guests"
 msgstr "嘉宾"
 
-#: app/podcast-types.php:250
+#: app/PostTypes/Podcast.php:333
 msgid "Select podcast guests (only contributors, multiple selection allowed)"
 msgstr "选择播客嘉宾（只能选择投稿者角色，可多选）"
 
-#: app/podcast-types.php:492
+#: app/PostTypes/Podcast.php:980
 msgid "Audio file URL"
 msgstr "音频文件 URL"
 
-#: app/podcast-types.php:503
+#: app/PostTypes/Podcast.php:990
 msgid "Audio duration (seconds)"
 msgstr "音频时长（秒）"
 
@@ -193,35 +176,27 @@ msgstr "音频时长（秒）"
 msgid "Primary Navigation"
 msgstr "主导航"
 
-#: app/setup.php:140
-msgid "Primary"
-msgstr "主要"
-
-#: app/setup.php:145
-msgid "Footer"
-msgstr "页脚"
-
-#: app/setup.php:150
+#: app/setup.php:160
 msgid "Home Main"
 msgstr "首页主要"
 
-#: app/setup.php:152
+#: app/setup.php:162
 msgid "Main area of the homepage for displaying various content modules"
 msgstr "首页主要区域，用于显示首页的各种内容模块"
 
-#: app/setup.php:159
+#: app/setup.php:169
 msgid "Sidebar Primary"
 msgstr "侧边栏主要"
 
-#: app/setup.php:161
+#: app/setup.php:171
 msgid "Primary sidebar area for displaying various content modules"
 msgstr "侧边栏主要区域，用于显示侧边栏的各种内容模块"
 
-#: app/setup.php:168
+#: app/setup.php:178
 msgid "Leftbar Primary"
 msgstr "左侧栏主要"
 
-#: app/setup.php:170
+#: app/setup.php:180
 msgid "Primary left sidebar area for displaying various content modules"
 msgstr "左侧栏主要区域，用于显示左侧栏的各种内容模块"
 
@@ -304,68 +279,80 @@ msgstr "aripplesong - 横幅轮播"
 msgid "Display banner carousel with images"
 msgstr "显示图片轮播横幅"
 
-#: app/Widgets/BannerCarouselWidget.php:31
+#: resources/views/widgets/banner-carousel.blade.php:17
 msgid "No banner yet"
 msgstr "暂无横幅"
 
-#: app/Widgets/BannerCarouselWidget.php:32
+#: resources/views/widgets/banner-carousel.blade.php:18
 msgid "Please add banner content in the admin panel"
 msgstr "请在后台添加横幅内容"
 
-#: app/Widgets/BannerCarouselWidget.php:99
+#: app/Widgets/BannerCarouselWidget.php:49
 msgid "Banner Slides:"
 msgstr "横幅幻灯片："
 
-#: app/Widgets/BannerCarouselWidget.php:112
+#: app/widgets.php:185
+#: app/Widgets/BannerCarouselWidget.php:62
 msgid "Image URL:"
 msgstr "图片地址："
 
-#: app/Widgets/BannerCarouselWidget.php:119
+#: app/widgets.php:187
+#: app/Widgets/BannerCarouselWidget.php:69
 msgid "Image URL"
 msgstr "图片URL"
 
-#: app/Widgets/BannerCarouselWidget.php:124
+#: app/widgets.php:188
+#: app/Widgets/BannerCarouselWidget.php:74
 msgid "Select Image"
 msgstr "选择图片"
 
-#: app/Widgets/BannerCarouselWidget.php:135
+#: app/widgets.php:192
+#: app/Widgets/BannerCarouselWidget.php:85
 msgid "Link URL (optional):"
 msgstr "链接地址（可选）："
 
-#: app/Widgets/BannerCarouselWidget.php:141
+#: app/Widgets/BannerCarouselWidget.php:91
 msgid "https://example.com"
 msgstr "https://example.com"
 
-#: app/Widgets/BannerCarouselWidget.php:145
+#: app/widgets.php:196
+#: app/Widgets/BannerCarouselWidget.php:95
 msgid "Link Target:"
 msgstr "链接打开方式："
 
-#: app/Widgets/BannerCarouselWidget.php:150
+#: app/widgets.php:198
+#: app/Widgets/BannerCarouselWidget.php:100
 msgid "Current Page"
 msgstr "当前页面"
 
-#: app/Widgets/BannerCarouselWidget.php:153
+#: app/widgets.php:199
+#: app/Widgets/BannerCarouselWidget.php:103
 msgid "New Tab"
 msgstr "新标签页"
 
-#: app/Widgets/BannerCarouselWidget.php:159
+#: app/widgets.php:203
+#: app/Widgets/BannerCarouselWidget.php:109
 msgid "Description:"
 msgstr "描述："
 
-#: app/Widgets/BannerCarouselWidget.php:165
+#: app/widgets.php:204
+#: app/Widgets/BannerCarouselWidget.php:115
 msgid "Image description"
 msgstr "图片描述"
 
-#: app/Widgets/BannerCarouselWidget.php:169
+#: app/widgets.php:207
+#: app/widgets.php:373
+#: app/Widgets/BannerCarouselWidget.php:119
+#: app/Widgets/FooterLinksWidget.php:91
 msgid "Delete"
 msgstr "删除"
 
-#: app/Widgets/BannerCarouselWidget.php:178
+#: app/Widgets/BannerCarouselWidget.php:128
 msgid "+ Add Banner"
 msgstr "+ 添加横幅"
 
-#: app/Widgets/TagsCloudWidget.php:111
 #: app/Widgets/PodcastListWidget.php:96
+#: app/Widgets/TagsCloudWidget.php:111
 msgid "Random"
 msgstr "随机"
 
@@ -390,27 +377,28 @@ msgstr "aripplesong - 博客列表"
 msgid "Display latest blog posts list"
 msgstr "显示最新的博客文章列表"
 
-#: app/Widgets/BlogListWidget.php:73
+#: app/Widgets/BlogListWidget.php:75
 msgid "No blog posts yet"
 msgstr "暂无博客文章"
 
-#: app/Widgets/BlogListWidget.php:89
+#: app/Widgets/BlogListWidget.php:91
+#: app/Widgets/FooterLinksWidget.php:50
 #: app/Widgets/PodcastListWidget.php:200
 #: app/Widgets/SubscribeLinksWidget.php:81
 #: app/Widgets/TagsCloudWidget.php:82
 msgid "Title:"
 msgstr "标题："
 
-#: app/Widgets/BlogListWidget.php:97
+#: app/Widgets/BlogListWidget.php:99
 #: app/Widgets/PodcastListWidget.php:208
 msgid "Number of posts:"
 msgstr "显示数量："
 
-#: app/Widgets/BlogListWidget.php:108
+#: app/Widgets/BlogListWidget.php:110
 msgid "Number of columns:"
 msgstr "列数："
 
-#: app/Widgets/BlogListWidget.php:125
+#: app/Widgets/BlogListWidget.php:127
 #: app/Widgets/PodcastListWidget.php:224
 msgid "Show \"See all\" link"
 msgstr "显示\"查看全部\"链接"
@@ -521,35 +509,35 @@ msgstr "aripplesong - 页脚链接"
 msgid "Display a list of links or text items in the footer"
 msgstr "在页脚显示链接或文字项目列表"
 
-#: app/Widgets/FooterLinksWidget.php:72
+#: app/Widgets/FooterLinksWidget.php:56
 msgid "e.g., Contact, Navigate, Support"
 msgstr "例如：联系、导航、支持"
 
-#: app/Widgets/FooterLinksWidget.php:76
+#: app/Widgets/FooterLinksWidget.php:59
 msgid "Items:"
 msgstr "项目："
 
-#: app/Widgets/FooterLinksWidget.php:85
-#: app/widgets.php:170
+#: app/widgets.php:360
+#: app/Widgets/FooterLinksWidget.php:65
 msgid "Text:"
 msgstr "文字："
 
-#: app/Widgets/FooterLinksWidget.php:90
-#: app/widgets.php:172
+#: app/widgets.php:361
+#: app/Widgets/FooterLinksWidget.php:70
 msgid "Display text"
 msgstr "显示文字"
 
-#: app/Widgets/FooterLinksWidget.php:94
-#: app/widgets.php:175
+#: app/widgets.php:364
+#: app/Widgets/FooterLinksWidget.php:73
 msgid "URL (optional - leave empty for plain text):"
 msgstr "链接（可选 - 留空则显示纯文字）："
 
-#: app/Widgets/FooterLinksWidget.php:102
-#: app/widgets.php:180
+#: app/widgets.php:369
+#: app/Widgets/FooterLinksWidget.php:87
 msgid "Open in new tab"
 msgstr "在新标签页打开"
 
-#: app/Widgets/FooterLinksWidget.php:113
+#: app/Widgets/FooterLinksWidget.php:102
 msgid "+ Add Item"
 msgstr "+ 添加项目"
 
@@ -603,22 +591,25 @@ msgstr "请在后台的 外观 > 小工具 中添加小工具到\"首页主要�
 msgid "Author:"
 msgstr "作者："
 
-#: resources/views/partials/comments.blade.php:48
+#: resources/views/partials/comments.blade.php:52
 msgid "Leave a Comment"
 msgstr "发表评论"
 
-#: resources/views/partials/podcast-episode-card.blade.php:59
+#: resources/views/partials/podcast-episode-card.blade.php:60
 msgid "Pause"
 msgstr "暂停"
 
-#: resources/views/partials/podcast-episode-card.blade.php:59
+#: resources/views/partials/podcast-episode-card.blade.php:60
+#: resources/views/sections/autoplay-confirm.blade.php:34
 msgid "Play"
 msgstr "播放"
 
+#: resources/views/sections/leftbar-drawer.blade.php:21
 #: resources/views/sections/leftbar.blade.php:6
 msgid "Please add widgets to \"Leftbar\" area in Appearance > Widgets in the admin panel."
 msgstr "请在后台的 外观 > 小工具 中添加小工具到\"左侧栏\"。"
 
+#: resources/views/sections/sidebar-drawer.blade.php:22
 #: resources/views/sections/sidebar.blade.php:8
 msgid "Please add widgets to \"Sidebar\" area in Appearance > Widgets in the admin panel."
 msgstr "请在后台的 外观 > 小工具 中添加小工具到\"侧边栏\"。"
@@ -631,19 +622,15 @@ msgstr "菜单"
 msgid "Close"
 msgstr "关闭"
 
-#: resources/views/sections/footer.blade.php:3
-msgid "© %s A Ripple Song. Designed by %s"
-msgstr "© %s A Ripple Song. 由 %s 设计"
-
-#: resources/views/sections/header.blade.php:20
+#: resources/views/sections/header.blade.php:26
 msgid "Light Mode"
 msgstr "明亮模式"
 
-#: resources/views/sections/header.blade.php:20
+#: resources/views/sections/header.blade.php:26
 msgid "Dark Mode"
 msgstr "黑暗模式"
 
-#: resources/views/sections/header.blade.php:20
+#: resources/views/sections/header.blade.php:26
 msgid "Follow System"
 msgstr "跟随系统"
 
@@ -683,133 +670,28 @@ msgstr "清空播放列表"
 msgid "Clear"
 msgstr "清空"
 
-#: resources/views/sections/playlist-drawer.blade.php:31
+#: resources/views/sections/playlist-drawer.blade.php:32
 msgid "Playlist is empty"
 msgstr "播放列表为空"
 
-#: resources/views/sections/playlist-drawer.blade.php:32
+#: resources/views/sections/playlist-drawer.blade.php:33
 msgid "Add some episodes to start listening"
 msgstr "添加一些节目开始收听吧"
 
-#: resources/views/sections/playlist-drawer.blade.php:82
+#: resources/views/sections/playlist-drawer.blade.php:83
 msgid "Remove"
 msgstr "删除"
 
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Red (50)"
-msgstr "红色 (50)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Red (400)"
-msgstr "红色 (400)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Yellow (50)"
-msgstr "黄色 (50)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Yellow (300)"
-msgstr "黄色 (300)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Yellow (400)"
-msgstr "黄色 (400)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Green (50)"
-msgstr "绿色 (50)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Green (400)"
-msgstr "绿色 (400)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Green (500)"
-msgstr "绿色 (500)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Indigo (50)"
-msgstr "靛蓝 (50)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Indigo (400)"
-msgstr "靛蓝 (400)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Gray (600)"
-msgstr "灰色 (600)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Gray (800)"
-msgstr "灰色 (800)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Black"
-msgstr "黑色"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "White"
-msgstr "白色"
-
-#: public/build/assets/theme.json
-msgctxt "Font family name"
-msgid "sans"
-msgstr "无衬线"
-
-#: public/build/assets/theme.json
-msgctxt "Font family name"
-msgid "mono"
-msgstr "等宽"
-
-#: public/build/assets/theme.json
-msgctxt "Font size name"
-msgid "xs"
-msgstr "超小"
-
-#: public/build/assets/theme.json
-msgctxt "Font size name"
-msgid "sm"
-msgstr "小"
-
-#: public/build/assets/theme.json
-msgctxt "Font size name"
-msgid "base"
-msgstr "基础"
-
-#: public/build/assets/theme.json
-msgctxt "Font size name"
-msgid "lg"
-msgstr "大"
-
-#: public/build/assets/theme.json
-msgctxt "Font size name"
-msgid "2xl"
-msgstr "2 倍特大"
-
-#: resources/views/sections/autoplay-confirm.blade.php:21
+#: resources/views/sections/autoplay-confirm.blade.php:22
 msgid "Continue playing?"
 msgstr "继续播放？"
 
-#: resources/views/sections/autoplay-confirm.blade.php:24
+#: resources/views/sections/autoplay-confirm.blade.php:25
 msgid "Unknown episode"
 msgstr "未知节目"
 
-#: resources/views/sections/autoplay-confirm.blade.php:40
-#: app/carbon-fields.php
+#: app/ThemeOptions/General.php:1653
+#: resources/views/sections/autoplay-confirm.blade.php:42
 msgid "Cancel"
 msgstr "取消"
 
@@ -817,445 +699,719 @@ msgstr "取消"
 msgid "Loading audio"
 msgstr "正在加载音频"
 
-#: app/carbon-fields.php:30
+#: app/ThemeOptions/General.php:51
+#: app/ThemeOptions/General.php:197
 msgid "Theme Settings"
 msgstr "主题设置"
 
-#: app/carbon-fields.php:37
-msgid "Welcome to the theme settings. Use the sub-menus to configure social links and custom scripts."
-msgstr "欢迎使用主题设置。请使用子菜单配置社交链接和自定义脚本。"
-
-#: app/carbon-fields.php:43
+#: app/ThemeOptions/General.php:107
 msgid "Social Links"
 msgstr "社交链接"
 
-#: app/carbon-fields.php:48
-msgid "Custom Scripts"
-msgstr "自定义脚本"
-
-#: app/carbon-fields.php:51
+#: app/ThemeOptions/General.php:96
 msgid "Header Scripts"
 msgstr "头部脚本"
 
-#: app/carbon-fields.php:52
+#: app/ThemeOptions/General.php:97
 msgid "Scripts to be added in the <head> section. You can include complete <script> tags for services like Google Analytics."
 msgstr "将添加到 <head> 区域的脚本，可包含完整的 <script> 标签（如 Google Analytics 代码）。"
 
-#: app/carbon-fields.php:53
+#: app/ThemeOptions/General.php:98
 msgid "Footer Scripts"
 msgstr "底部脚本"
 
-#: app/carbon-fields.php:54
+#: app/ThemeOptions/General.php:99
 msgid "Scripts to be added before </body>. You can include complete <script> tags."
 msgstr "将添加到 </body> 之前的脚本。可以包含完整的 <script> 标签。"
 
-#: app/carbon-fields.php:73
+#: app/ThemeOptions/General.php:309
 msgid "Configure your social media links. Leave empty to hide a platform."
 msgstr "配置您的社交媒体链接。留空则隐藏该平台。"
 
-#: app/carbon-fields.php:79
-#: app/Customizer/SocialLinks.php:23
+#: app/ThemeOptions/General.php:260
+#: app/ThemeOptions/SocialLinks.php:28
 msgid "Facebook"
 msgstr "Facebook"
 
-#: app/carbon-fields.php:83
-#: app/Customizer/SocialLinks.php:27
+#: app/ThemeOptions/General.php:264
+#: app/ThemeOptions/SocialLinks.php:32
 msgid "Twitter / X"
 msgstr "Twitter / X"
 
-#: app/carbon-fields.php:87
-#: app/Customizer/SocialLinks.php:31
+#: app/ThemeOptions/General.php:268
+#: app/ThemeOptions/SocialLinks.php:36
 msgid "Instagram"
 msgstr "Instagram"
 
-#: app/carbon-fields.php:91
-#: app/Customizer/SocialLinks.php:35
+#: app/ThemeOptions/General.php:272
+#: app/ThemeOptions/SocialLinks.php:40
 msgid "LinkedIn"
 msgstr "领英"
 
-#: app/carbon-fields.php:95
-#: app/Customizer/SocialLinks.php:39
+#: app/ThemeOptions/General.php:276
+#: app/ThemeOptions/SocialLinks.php:44
 msgid "YouTube"
 msgstr "YouTube"
 
-#: app/carbon-fields.php:99
-#: app/Customizer/SocialLinks.php:43
+#: app/ThemeOptions/General.php:280
+#: app/ThemeOptions/SocialLinks.php:48
 msgid "TikTok"
 msgstr "抖音国际版"
 
-#: app/carbon-fields.php:103
-#: app/Customizer/SocialLinks.php:47
+#: app/ThemeOptions/General.php:284
+#: app/ThemeOptions/SocialLinks.php:52
 msgid "Pinterest"
 msgstr "Pinterest"
 
-#: app/carbon-fields.php:107
-#: app/Customizer/SocialLinks.php:51
+#: app/ThemeOptions/General.php:288
+#: app/ThemeOptions/SocialLinks.php:56
 msgid "Threads"
 msgstr "Threads"
 
-#: app/carbon-fields.php:111
-#: app/Customizer/SocialLinks.php:55
+#: app/ThemeOptions/General.php:292
+#: app/ThemeOptions/SocialLinks.php:60
 msgid "Weibo"
 msgstr "微博"
 
-#: app/carbon-fields.php:115
-#: app/Customizer/SocialLinks.php:59
+#: app/ThemeOptions/General.php:296
+#: app/ThemeOptions/SocialLinks.php:64
 msgid "WeChat"
 msgstr "微信"
 
-#: app/carbon-fields.php:119
-#: app/Customizer/SocialLinks.php:63
+#: app/ThemeOptions/General.php:300
+#: app/ThemeOptions/SocialLinks.php:68
 msgid "RSS Feed"
 msgstr "RSS 订阅"
 
-#. Comment form and display strings
-#: functions.php:576
-msgid "Author"
-msgstr "作者"
-
-#: functions.php:585
-msgid "Pending Approval"
-msgstr "待审核"
-
-#: functions.php:601
-msgid "Reply"
-msgstr "回复"
-
-#: functions.php:606
-msgid "Edit"
-msgstr "编辑"
-
-#: functions.php:629
-msgid "Your email address will not be published."
-msgstr "您的电子邮箱地址不会被公开。"
-
-#. translators: %1$s is the edit profile link, %2$s is the username, %3$s is the logout link
-#: functions.php:632
-#, php-format
-msgid "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of this account\">Log out?</a>"
-msgstr "登录为 <a href=\"%1$s\">%2$s</a>。<a href=\"%3$s\" title=\"登出此账户\">登出？</a>"
-
-#: functions.php:646
-msgid "Name"
-msgstr "姓名"
-
-#: functions.php:648
-msgid "Email"
-msgstr "电子邮箱"
-
-#: functions.php:650
-msgid "Website"
-msgstr "网站"
-
-#: functions.php:652
-msgid "Save my name, email, and website in this browser for the next time I comment."
-msgstr "在此浏览器中保存我的姓名、电子邮箱和网站地址，以便下次评论时使用。"
-
-#: functions.php:661
-msgid "Comment"
-msgstr "评论"
-
-#: resources/views/sections/leftbar-drawer.blade.php:10
+#: resources/views/sections/leftbar-drawer.blade.php:9
 msgid "Left Sidebar"
 msgstr "左边栏"
 
-#: resources/views/sections/sidebar-drawer.blade.php:10
+#: resources/views/sections/sidebar-drawer.blade.php:9
 msgid "Right Sidebar"
 msgstr "右边栏"
 
-#: resources/views/layouts/app.blade.php:119
+#: resources/views/layouts/app.blade.php:87
 msgid "Open Left Sidebar"
 msgstr "打开左边栏"
 
-#: resources/views/layouts/app.blade.php:131
+#: resources/views/layouts/app.blade.php:101
 msgid "Open Right Sidebar"
 msgstr "打开右边栏"
 
-#: app/carbon-fields.php:36
-#: app/carbon-fields.php
+#: app/ThemeOptions/General.php:55
+#: app/ThemeOptions/General.php:227
+#: app/ThemeOptions/General.php:1584
 msgid "Site Logo"
 msgstr "网站 Logo"
 
-#: app/carbon-fields.php:38
-msgid "Upload a logo image. If no logo is set, the site title with icon will be displayed."
-msgstr "上传一张 Logo 图片。如果没有设置 Logo，将显示网站标题和图标。"
-
-#: app/carbon-fields.php
+#: app/ThemeOptions/General.php:70
 msgid "Click any card to choose the light theme."
 msgstr "点击任意卡片选择浅色主题。"
 
-#: app/carbon-fields.php
+#: app/ThemeOptions/General.php:85
 msgid "Click any card to choose the dark theme."
 msgstr "点击任意卡片选择深色主题。"
 
-#: app/carbon-fields.php
+#: app/ThemeOptions/General.php:74
 msgid "If the card picker is unavailable, use this dropdown (default: retro)."
 msgstr "如果卡片控件不可用，请使用此下拉框（默认：retro）。"
 
-#: app/carbon-fields.php
+#: app/ThemeOptions/General.php:89
 msgid "If the card picker is unavailable, use this dropdown (default: dim)."
 msgstr "如果卡片控件不可用，请使用此下拉框（默认：dim）。"
 
-#: app/carbon-fields.php
+#: app/ThemeOptions/General.php:62
+#: app/ThemeOptions/General.php:66
 msgid "Light Theme"
 msgstr "浅色主题"
 
-#: app/carbon-fields.php
+#: app/ThemeOptions/General.php:77
+#: app/ThemeOptions/General.php:81
 msgid "Dark Theme"
 msgstr "深色主题"
 
-msgid "Podcast Cover file not found. Please re-upload."
-msgstr "未找到播客封面文件，请重新上传。"
-
-msgid "Podcast Cover validation failed"
-msgstr "播客封面校验失败"
-
+#: app/ThemeOptions/Podcast.php:605
 msgid "Podcast Cover is not a valid image."
 msgstr "播客封面不是有效的图片。"
 
+#: app/ThemeOptions/Podcast.php:693
 msgid "Podcast Cover must be JPG or PNG."
 msgstr "播客封面必须是 JPG 或 PNG。"
 
-msgid "Podcast Cover must be square. Current: %1%2."
-msgstr "播客封面必须为正方形。目前：%1%2。"
-
-msgid "Podcast Cover must be between %1 and %2 px. Current: %3 px."
-msgstr "播客封面像素必须在 %1 到 %2 之间。目前：%3 像素。"
-
+#: app/ThemeOptions/Podcast.php:76
 msgid "Podcast Settings"
 msgstr "播客设置"
 
+#: app/ThemeOptions/Podcast.php:91
 msgid "Podcast Title"
 msgstr "播客标题"
 
+#: app/ThemeOptions/Podcast.php:92
 msgid "Required. If empty, falls back to site title."
 msgstr "必填。如留空，将使用站点标题。"
 
+#: app/ThemeOptions/Podcast.php:94
 msgid "Podcast Subtitle"
 msgstr "播客副标题"
 
+#: app/ThemeOptions/Podcast.php:95
 msgid "Short tagline shown in some apps."
 msgstr "在部分应用中显示的简短标语。"
 
+#: app/ThemeOptions/Podcast.php:96
 msgid "Podcast Description"
 msgstr "播客描述"
 
+#: app/ThemeOptions/Podcast.php:97
 msgid "Required. Plain text description of the show."
 msgstr "必填。节目纯文本描述。"
 
+#: app/ThemeOptions/Podcast.php:99
 msgid "Podcast Author (itunes:author)"
 msgstr "播客作者 (itunes:author)"
 
+#: app/ThemeOptions/Podcast.php:100
 msgid "Required. Displayed as show author in directories."
 msgstr "必填。用于目录中显示节目作者。"
 
+#: app/ThemeOptions/Podcast.php:102
 msgid "Owner Name"
 msgstr "所有者姓名"
 
+#: app/ThemeOptions/Podcast.php:103
 msgid "Required. For <itunes:owner><itunes:name>."
 msgstr "必填，用于 <itunes:owner><itunes:name>。"
 
+#: app/ThemeOptions/Podcast.php:105
 msgid "Owner Email"
 msgstr "所有者邮箱"
 
+#: app/ThemeOptions/Podcast.php:108
 msgid "Required. For <itunes:owner><itunes:email>. Use a monitored inbox."
 msgstr "必填，用于 <itunes:owner><itunes:email>。请使用有人值守的邮箱。"
 
+#: app/ThemeOptions/Podcast.php:110
 msgid "Podcast Cover (1400–3000px square)"
 msgstr "播客封面（1400–3000px 正方形）"
 
-msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Will be validated on save."
-msgstr "必填。用于 <itunes:image> 的 1400–3000px 正方形 JPG/PNG。保存时将验证。"
-
+#: app/ThemeOptions/Podcast.php:114
 msgid "Default Explicit Flag"
 msgstr "默认露骨标记"
 
+#: app/ThemeOptions/Podcast.php:116
 msgid "clean (no explicit content)"
 msgstr "clean（无露骨内容）"
 
+#: app/PostTypes/Podcast.php:203
+#: app/ThemeOptions/Podcast.php:117
 msgid "explicit"
 msgstr "explicit"
 
+#: app/ThemeOptions/Podcast.php:120
 msgid "Required. Single-episode value can override."
 msgstr "必填。可被单集值覆盖。"
 
+#: app/ThemeOptions/Podcast.php:122
 msgid "Language (RSS <language>)"
 msgstr "语言（RSS <language>）"
 
+#: app/ThemeOptions/Podcast.php:125
 msgid "RFC 5646 language tag, e.g. en-US, zh-CN."
 msgstr "RFC 5646 语言标签，如 en-US、zh-CN。"
 
+#: app/ThemeOptions/Podcast.php:127
 msgid "Primary Category"
 msgstr "主分类"
 
+#: app/ThemeOptions/Podcast.php:129
 msgid "Required. Use Apple’s category list."
 msgstr "必填。使用 Apple 的分类列表。"
 
+#: app/ThemeOptions/Podcast.php:131
 msgid "Secondary Category (optional)"
 msgstr "次要分类（可选）"
 
+#: app/ThemeOptions/Podcast.php:133
 msgid "Optional second category."
 msgstr "可选的第二分类。"
 
+#: app/ThemeOptions/Podcast.php:134
 msgid "Copyright (optional)"
 msgstr "版权（可选）"
 
+#: app/ThemeOptions/Podcast.php:135
 msgid "Example: © 2025 Your Studio. Plain text."
 msgstr "示例：© 2025 Your Studio。纯文本。"
 
+#: app/ThemeOptions/Podcast.php:136
 msgid "podcast:locked"
 msgstr "podcast:locked"
 
+#: app/ThemeOptions/Podcast.php:138
 msgid "yes (recommended, prevents unauthorized moves)"
 msgstr "yes（推荐，可防止未授权迁移）"
 
+#: app/PostTypes/Podcast.php:316
+#: app/ThemeOptions/Podcast.php:139
 msgid "no"
 msgstr "no"
 
+#: app/ThemeOptions/Podcast.php:142
 msgid "Podcasting 2.0: lock feed to this publisher."
 msgstr "Podcasting 2.0：将订阅源锁定到此发布者。"
 
+#: app/ThemeOptions/Podcast.php:143
 msgid "podcast:guid (optional)"
 msgstr "podcast:guid（可选）"
 
+#: app/ThemeOptions/Podcast.php:144
 msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
 msgstr "Podcasting 2.0 GUID。如留空，源将使用站点 URL 作为后备。"
 
-msgid "Podcast Cover must be square. Current: %1$dx%2$d."
-msgstr "播客封面必须为正方形。目前：%1$dx%2$d。"
-
-msgid "Podcast Cover must be between %1$d and %2$d px. Current: %3$d px."
-msgstr "播客封面必须在 %1$d 到 %2$d 像素之间。目前：%3$d 像素。"
-
+#: app/PostTypes/Podcast.php:131
 msgid "Required. Upload an audio file or enter audio file URL (https)."
 msgstr "必填。上传音频文件或输入音频文件 URL（https）。"
 
-msgid "Required. Enter audio duration in seconds. Example: 180 = 3 minutes"
-msgstr "必填。输入音频时长（秒）。示例：180 = 3 分钟"
-
-msgid "Required. Use file size in bytes for enclosure length. Example: 12345678"
-msgstr "必填。使用文件大小（字节）作为附件长度。示例：12345678"
-
-msgid "Required. Example: audio/mpeg, audio/mp3, audio/aac"
-msgstr "必填。示例：audio/mpeg、audio/mp3、audio/aac"
-
+#: app/PostTypes/Podcast.php:198
 msgid "Required. clean / explicit."
 msgstr "必填。clean / explicit。"
 
+#: app/PostTypes/Podcast.php:215
 msgid "Required. full / trailer / bonus"
 msgstr "必填。full / trailer / bonus"
 
-msgid "https://facebook.com/yourpage"
-msgstr "https://facebook.com/yourpage"
+#: app/ThemeOptions/Podcast.php:83
+#: app/ThemeOptions/Podcast.php:88
+msgid "Podcast RSS URL"
+msgstr "播客 RSS 地址"
 
-msgid "https://twitter.com/yourhandle"
-msgstr "https://twitter.com/yourhandle"
+#: app/ThemeOptions/Podcast.php:87
+msgid "Open feed"
+msgstr "打开订阅源"
 
-msgid "https://instagram.com/yourhandle"
-msgstr "https://instagram.com/yourhandle"
+#: app/ThemeOptions/Podcast.php:89
+msgid "Your podcast RSS feed URL. Click to select and copy."
+msgstr "您的播客 RSS 订阅地址。点击选择并复制。"
 
-msgid "https://linkedin.com/in/yourprofile"
-msgstr "https://linkedin.com/in/yourprofile"
+#: app/ThemeOptions/General.php:71
+msgid "Light Theme (fallback)"
+msgstr ""
 
-msgid "https://youtube.com/@yourchannel"
-msgstr "https://youtube.com/@yourchannel"
+#: app/ThemeOptions/General.php:86
+msgid "Dark Theme (fallback)"
+msgstr ""
 
-msgid "https://tiktok.com/@yourhandle"
-msgstr "https://tiktok.com/@yourhandle"
+#: app/PostTypes/Podcast.php:172
+msgid "Audio Length (bytes)"
+msgstr ""
 
-msgid "https://pinterest.com/yourhandle"
-msgstr "https://pinterest.com/yourhandle"
+#: app/PostTypes/Podcast.php:186
+msgid "Audio MIME Type"
+msgstr ""
 
-msgid "https://threads.net/@yourhandle"
-msgstr "https://threads.net/@yourhandle"
+#: app/PostTypes/Podcast.php:197
+msgid "Explicit"
+msgstr ""
 
-msgid "https://weibo.com/yourpage"
-msgstr "https://weibo.com/yourpage"
+#: app/PostTypes/Podcast.php:202
+msgid "clean"
+msgstr ""
 
-msgid "WeChat ID or QR code link"
-msgstr "微信号或二维码链接"
+#: app/PostTypes/Podcast.php:214
+msgid "Episode Type"
+msgstr ""
 
-msgid "/feed/"
-msgstr "/feed/"
+#: app/PostTypes/Podcast.php:219
+msgid "full"
+msgstr ""
 
-msgid "views"
-msgstr "浏览"
+#: app/PostTypes/Podcast.php:220
+msgid "trailer"
+msgstr ""
 
-msgid "plays"
-msgstr "播放"
+#: app/PostTypes/Podcast.php:221
+msgid "bonus"
+msgstr ""
 
-#: app/carbon-fields.php
+#: app/PostTypes/Podcast.php:232
+msgid "Episode Number"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:233
+msgid "Optional but recommended. Integer."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:246
+msgid "Season Number"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:247
+msgid "Optional. Integer."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:260
+msgid "Episode Author (override)"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:261
+msgid "Optional. Overrides channel author for this episode."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:267
+msgid "Episode Cover (square)"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:268
+msgid "Optional. Square 1400–3000px. Overrides channel cover."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:290
+msgid "Subtitle"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:291
+msgid "Optional. Short subtitle for iTunes."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:297
+msgid "Summary"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:298
+msgid "Optional. Plain text summary for iTunes."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:304
+msgid "Custom GUID (optional)"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:305
+msgid "Optional. If empty, feed uses WP permalink as GUID."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:311
+msgid "iTunes Block"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:312
+msgid "Optional. yes = hide this episode in Apple Podcasts."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:317
+msgid "yes"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:534
+msgid "Audio File is required."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:572
+msgid "Audio File must be a valid URL (https recommended)."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:589
+msgid "Explicit must be clean or explicit."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:593
+msgid "Episode Type must be full, trailer, or bonus."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:599
+msgid "Podcast validation failed"
+msgstr ""
+
+#: app/widgets.php:254
+msgid "Select Banner Image"
+msgstr ""
+
+#: app/widgets.php:256
+msgid "Use This Image"
+msgstr ""
+
+#: resources/views/partials/content-single-attachment.blade.php:13
+msgid "Download"
+msgstr ""
+
+#: resources/views/sections/header.blade.php:30
+msgid "Toggle Theme"
+msgstr ""
+
+#: resources/views/widgets/banner-carousel.blade.php:55
+msgid "Previous slide"
+msgstr ""
+
+#: resources/views/widgets/banner-carousel.blade.php:63
+msgid "Next slide"
+msgstr ""
+
+#: resources/views/widgets/banner-carousel.blade.php:79
+#, php-format
+msgid "Go to slide %d"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:158
+#: app/PostTypes/Podcast.php:173
+#: app/PostTypes/Podcast.php:187
+msgid "Auto detected from \"Audio File\" on save."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:277
+msgid "Transcript (optional)"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:278
+msgid "Optional. Upload a transcript file (vtt/srt/txt/pdf) or enter a transcript URL (https)."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:285
+msgid "Add Transcript"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:576
+msgid "Duration (seconds) could not be auto detected from Audio File."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:580
+msgid "Audio Length (bytes) could not be auto detected from Audio File."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:584
+msgid "Audio MIME Type could not be auto detected from Audio File."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:1000
+msgid "Episode transcript URL"
+msgstr ""
+
+#: app/ThemeOptions/General.php:57
 msgid "Upload a logo image (220px × 32px). You will be able to crop the image after upload."
-msgstr "上传一张 Logo 图片（220px × 32px），上传后可以裁剪。"
+msgstr ""
 
-#: app/carbon-fields.php
-msgid "Upload / Change Logo"
-msgstr "上传/更换 Logo"
-
-#: app/carbon-fields.php
-msgid "Remove Logo"
-msgstr "移除 Logo"
-
-#: app/carbon-fields.php
-msgid "Choose Logo Image"
-msgstr "选择 Logo 图片"
-
-#: app/carbon-fields.php
-msgid "Crop Image"
-msgstr "裁剪图片"
-
-#: app/carbon-fields.php
-msgid "Image is too small. Minimum size: %1$dpx × %2$dpx"
-msgstr "图片尺寸过小。最小尺寸：%1$dpx × %2$dpx"
-
-#: app/carbon-fields.php
-msgid "Crop and Save"
-msgstr "裁剪并保存"
-
-#: app/carbon-fields.php
-msgid "Please select a crop area."
-msgstr "请选择裁剪区域。"
-
-#: app/carbon-fields.php
-msgid "Cropping..."
-msgstr "正在裁剪..."
-
-#: app/carbon-fields.php
-msgid "Error cropping image:"
-msgstr "裁剪图片出错："
-
-#: app/carbon-fields.php
-msgid "Error cropping image. Please try again."
-msgstr "裁剪图片出错，请重试。"
-
-#: app/carbon-fields.php
-msgid "You do not have permission to upload files."
-msgstr "您没有上传文件的权限。"
-
-#: app/carbon-fields.php
-msgid "Missing attachment ID."
-msgstr "缺少附件 ID。"
-
-#: app/carbon-fields.php
-msgid "Missing crop details."
-msgstr "缺少裁剪参数。"
-
-#: app/carbon-fields.php
-msgid "Original image not found."
-msgstr "未找到原始图片。"
-
-#: resources/views/sections/footer.blade.php:11
-msgid "Powered by %s"
-msgstr "由 %s 驱动"
-
-#: resources/views/sections/footer.blade.php:11
-msgid "Powered by A Ripple Song Theme"
-msgstr "由 A Ripple Song 主题驱动"
-
-#: app/carbon-fields.php:1
+#: app/ThemeOptions/General.php:92
 msgid "Footer Copyright"
-msgstr "页脚版权"
+msgstr ""
 
-#: app/carbon-fields.php:1
+#: app/ThemeOptions/General.php:94
+msgid "Powered by A Ripple Song Theme"
+msgstr ""
+
+#: app/ThemeOptions/General.php:95
 msgid "Overrides the footer copyright line. Leave empty to use the default."
-msgstr "覆盖页脚版权文案，留空使用默认值。"
+msgstr ""
+
+#: app/ThemeOptions/General.php:242
+msgid "Upload / Change Logo"
+msgstr ""
+
+#: app/ThemeOptions/General.php:244
+msgid "Remove Logo"
+msgstr ""
+
+#: app/ThemeOptions/General.php:1609
+msgid "Choose Logo Image"
+msgstr ""
+
+#: app/ThemeOptions/General.php:1611
+msgid "Crop Image"
+msgstr ""
+
+#: app/ThemeOptions/General.php:1624
+#, php-format
+msgid "Image is too small. Minimum size: %1$dpx × %2$dpx"
+msgstr ""
+
+#: app/ThemeOptions/General.php:1652
+#: app/ThemeOptions/General.php:1744
+#: app/ThemeOptions/General.php:1750
+msgid "Crop and Save"
+msgstr ""
+
+#: app/ThemeOptions/General.php:1687
+msgid "Please select a crop area."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1691
+msgid "Cropping..."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1743
+msgid "Error cropping image:"
+msgstr ""
+
+#: app/ThemeOptions/General.php:1749
+msgid "Error cropping image. Please try again."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1821
+msgid "You do not have permission to upload files."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1826
+msgid "Missing attachment ID."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1830
+msgid "Missing crop details."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1840
+msgid "Original image not found."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:112
+msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple recommends keeping the file under 512KB. Will be validated on save."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:479
+msgid "Podcast Cover validation failed:"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:516
+msgid "Podcast Cover URL is invalid."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:595
+#: app/ThemeOptions/Podcast.php:641
+#, php-format
+msgid "Podcast Cover file is too large (%1$s). Please compress it to under %2$s."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:656
+#, php-format
+msgid "Could not download Podcast Cover for validation: %s"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:702
+#, php-format
+msgid "Podcast Cover must be square. Current dimensions: %1$d × %2$d px."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:714
+#, php-format
+msgid "Podcast Cover resolution is too small. Minimum: %1$d × %1$d px. Current: %2$d × %2$d px."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:726
+#, php-format
+msgid "Podcast Cover resolution is too large. Maximum: %1$d × %1$d px. Current: %2$d × %2$d px."
+msgstr ""
+
+#: resources/views/partials/entry-meta.blade.php:26
+msgid "views"
+msgstr ""
+
+#: resources/views/partials/entry-meta.blade.php:29
+msgid "plays"
+msgstr ""
+
+#: resources/views/sections/footer.blade.php:5
+#, php-format
+msgid "Powered by %s"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Red (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Red (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Yellow (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Yellow (300)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Yellow (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Green (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Green (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Green (500)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Indigo (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Indigo (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Gray (600)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Gray (800)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Black"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "White"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font family name"
+msgid "sans"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font family name"
+msgid "mono"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "xs"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "sm"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "base"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "lg"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "2xl"
+msgstr ""

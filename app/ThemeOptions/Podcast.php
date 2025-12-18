@@ -80,6 +80,14 @@ class PodcastOptions
         }
 
         $podcast->add_fields([
+            Field::make('html', 'crb_podcast_rss_url', __('Podcast RSS URL', 'sage'))
+                ->set_html(sprintf(
+                    '<div class="carbon-label"><label style="font-weight: 600; display: block; margin-bottom: 8px;">%3$s</label></div><p><input type="text" class="regular-text" readonly value="%1$s" onclick="this.select();" style="max-width: 520px;" /></p><p class="description">%4$s</p><p><a href="%1$s" target="_blank" rel="noopener noreferrer">%2$s</a></p>',
+                    esc_url(static::getPodcastFeedUrl()),
+                    esc_html__('Open feed', 'sage'),
+                    esc_html__('Podcast RSS URL', 'sage'),
+                    esc_html__('Your podcast RSS feed URL. Click to select and copy.', 'sage')
+                )),
             Field::make('text', 'crb_podcast_title', __('Podcast Title', 'sage'))
                 ->set_help_text(__('Required. If empty, falls back to site title.', 'sage'))
                 ->set_required(true),
@@ -160,6 +168,34 @@ class PodcastOptions
             'pt-BR' => 'pt-BR',
             'ru-RU' => 'ru-RU',
         ];
+    }
+
+    /**
+     * Get the podcast feed URL with proper permalink structure handling.
+     *
+     * Handles three scenarios:
+     * 1. No permalinks enabled: /?feed=podcast
+     * 2. Permalinks with index.php: /index.php/feed/podcast/
+     * 3. Full pretty permalinks: /feed/podcast/
+     *
+     * @return string
+     */
+    public static function getPodcastFeedUrl(): string
+    {
+        $permalink_structure = get_option('permalink_structure');
+
+        // 没有启用固定链接，使用查询参数
+        if (empty($permalink_structure)) {
+            return home_url('/?feed=podcast');
+        }
+
+        // 检查固定链接结构是否包含 index.php
+        if (strpos($permalink_structure, '/index.php/') === 0) {
+            return home_url('/index.php/feed/podcast/');
+        }
+
+        // 标准美化链接
+        return home_url('/feed/podcast/');
     }
 
     /**

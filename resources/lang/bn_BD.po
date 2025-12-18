@@ -43,149 +43,132 @@ msgstr "https://roots.io/"
 msgid "Continued"
 msgstr "পড়া চালিয়ে যান"
 
-#: app/podcast-types.php:17
-#: app/podcast-types.php:29
+#: app/PostTypes/Podcast.php:37
+#: app/PostTypes/Podcast.php:49
 msgid "Podcasts"
 msgstr "পডকাস্ট"
 
-#: app/podcast-types.php:18
+#: app/PostTypes/Podcast.php:38
 #: resources/views/sections/player.blade.php:10
-#: resources/views/sections/player.blade.php:24
 msgid "Podcast"
 msgstr "পডকাস্ট"
 
-#: app/podcast-types.php:19
-#: app/podcast-types.php:20
+#: app/PostTypes/Podcast.php:39
+#: app/PostTypes/Podcast.php:40
 msgid "Add New Podcast"
 msgstr "নতুন পডকাস্ট যোগ করুন"
 
-#: app/podcast-types.php:21
+#: app/PostTypes/Podcast.php:41
 msgid "Edit Podcast"
 msgstr "পডকাস্ট সম্পাদনা করুন"
 
-#: app/podcast-types.php:22
+#: app/PostTypes/Podcast.php:42
 msgid "New Podcast"
 msgstr "নতুন পডকাস্ট"
 
-#: app/podcast-types.php:23
+#: app/PostTypes/Podcast.php:43
 msgid "View Podcast"
 msgstr "পডকাস্ট দেখুন"
 
-#: app/podcast-types.php:24
+#: app/PostTypes/Podcast.php:44
 msgid "View Podcasts"
 msgstr "পডকাস্ট দেখুন"
 
-#: app/podcast-types.php:25
+#: app/PostTypes/Podcast.php:45
 msgid "Search Podcasts"
 msgstr "পডকাস্ট খুঁজুন"
 
-#: app/podcast-types.php:26
-#: resources/js/app.js:158
+#: app/PostTypes/Podcast.php:46
+#: resources/js/app.js:554
 msgid "No podcasts found"
 msgstr "কোনো পডকাস্ট পাওয়া যায়নি"
 
-#: app/podcast-types.php:27
+#: app/PostTypes/Podcast.php:47
 msgid "No podcasts found in Trash"
 msgstr "ট্র্যাশে কোনো পডকাস্ট পাওয়া যায়নি"
 
-#: app/podcast-types.php:28
+#: app/PostTypes/Podcast.php:48
 msgid "All Podcasts"
 msgstr "সব পডকাস্ট"
 
-#: app/podcast-types.php:78
-#: app/podcast-types.php:88
+#: app/PostTypes/Podcast.php:91
+#: app/PostTypes/Podcast.php:101
 msgid "Podcast Categories"
 msgstr "পডকাস্ট বিভাগ"
 
-#: app/podcast-types.php:79
+#: app/PostTypes/Podcast.php:92
 msgid "Podcast Category"
 msgstr "পডকাস্ট বিভাগ"
 
-#: app/podcast-types.php:80
+#: app/PostTypes/Podcast.php:93
 msgid "Search Podcast Categories"
 msgstr "পডকাস্ট বিভাগ খুঁজুন"
 
-#: app/podcast-types.php:81
+#: app/PostTypes/Podcast.php:94
 msgid "All Podcast Categories"
 msgstr "সব পডকাস্ট বিভাগ"
 
-#: app/podcast-types.php:82
+#: app/PostTypes/Podcast.php:95
 msgid "Parent Podcast Category"
 msgstr "প্যারেন্ট পডকাস্ট বিভাগ"
 
-#: app/podcast-types.php:83
+#: app/PostTypes/Podcast.php:96
 msgid "Parent Podcast Category:"
 msgstr "প্যারেন্ট পডকাস্ট বিভাগ:"
 
-#: app/podcast-types.php:84
+#: app/PostTypes/Podcast.php:97
 msgid "Edit Podcast Category"
 msgstr "পডকাস্ট বিভাগ সম্পাদনা করুন"
 
-#: app/podcast-types.php:85
+#: app/PostTypes/Podcast.php:98
 msgid "Update Podcast Category"
 msgstr "পডকাস্ট বিভাগ আপডেট করুন"
 
-#: app/podcast-types.php:86
+#: app/PostTypes/Podcast.php:99
 msgid "Add New Podcast Category"
 msgstr "নতুন পডকাস্ট বিভাগ যোগ করুন"
 
-#: app/podcast-types.php:87
+#: app/PostTypes/Podcast.php:100
 msgid "New Podcast Category Name"
 msgstr "নতুন পডকাস্ট বিভাগের নাম"
 
-#: app/podcast-types.php:108
+#: app/PostTypes/Podcast.php:122
 msgid "Podcast Details"
 msgstr "পডকাস্ট বিস্তারিত"
 
-#: app/podcast-types.php:117
+#: app/PostTypes/Podcast.php:130
 msgid "Audio File"
 msgstr "অডিও ফাইল"
 
-#: app/podcast-types.php:118
-msgid "Upload an audio file or enter audio file URL"
-msgstr "একটি অডিও ফাইল আপলোড করুন বা অডিও ফাইল URL লিখুন"
-
-#: app/podcast-types.php:125
+#: app/PostTypes/Podcast.php:143
 msgid "Add Audio File"
 msgstr "অডিও ফাইল যোগ করুন"
 
-#: app/podcast-types.php:140
+#: app/PostTypes/Podcast.php:157
 msgid "Duration (seconds)"
 msgstr "সময়কাল (সেকেন্ড)"
 
-#: app/podcast-types.php:141
-msgid "Enter audio duration in seconds. For example: 180 means 3 minutes"
-msgstr "সেকেন্ডে অডিও সময়কাল লিখুন। উদাহরণ: ১৮০ মানে ৩ মিনিট"
-
-#: app/podcast-types.php:155
-msgid "Subtitles"
-msgstr "সাবটাইটেল"
-
-#: app/podcast-types.php:156
-msgid "Enter podcast subtitle content (supports rich text format)"
-msgstr "পডকাস্ট সাবটাইটেল কন্টেন্ট লিখুন (রিচ টেক্সট ফরম্যাট সমর্থিত)"
-
-#: app/podcast-types.php:225
+#: app/PostTypes/Podcast.php:323
 msgid "Members"
 msgstr "সদস্য"
 
-#: app/podcast-types.php:226
+#: app/PostTypes/Podcast.php:324
 msgid "Select podcast members (only administrators, authors, or editors, multiple selection allowed)"
 msgstr "পডকাস্ট সদস্য নির্বাচন করুন (শুধুমাত্র প্রশাসক, লেখক, বা সম্পাদক, একাধিক নির্বাচন অনুমোদিত)"
 
-#: app/podcast-types.php:249
+#: app/PostTypes/Podcast.php:332
 msgid "Guests"
 msgstr "অতিথি"
 
-#: app/podcast-types.php:250
+#: app/PostTypes/Podcast.php:333
 msgid "Select podcast guests (only contributors, multiple selection allowed)"
 msgstr "পডকাস্ট অতিথি নির্বাচন করুন (শুধুমাত্র অবদানকারী, একাধিক নির্বাচন অনুমোদিত)"
 
-#: app/podcast-types.php:492
+#: app/PostTypes/Podcast.php:980
 msgid "Audio file URL"
 msgstr "অডিও ফাইল URL"
 
-#: app/podcast-types.php:503
+#: app/PostTypes/Podcast.php:990
 msgid "Audio duration (seconds)"
 msgstr "অডিও সময়কাল (সেকেন্ড)"
 
@@ -193,35 +176,27 @@ msgstr "অডিও সময়কাল (সেকেন্ড)"
 msgid "Primary Navigation"
 msgstr "প্রাথমিক নেভিগেশন"
 
-#: app/setup.php:140
-msgid "Primary"
-msgstr "প্রাথমিক"
-
-#: app/setup.php:145
-msgid "Footer"
-msgstr "ফুটার"
-
-#: app/setup.php:150
+#: app/setup.php:160
 msgid "Home Main"
 msgstr "হোম মেইন"
 
-#: app/setup.php:152
+#: app/setup.php:162
 msgid "Main area of the homepage for displaying various content modules"
 msgstr "বিভিন্ন কন্টেন্ট মডিউল প্রদর্শনের জন্য হোমপেজের মূল এলাকা"
 
-#: app/setup.php:159
+#: app/setup.php:169
 msgid "Sidebar Primary"
 msgstr "সাইডবার প্রাথমিক"
 
-#: app/setup.php:161
+#: app/setup.php:171
 msgid "Primary sidebar area for displaying various content modules"
 msgstr "বিভিন্ন কন্টেন্ট মডিউল প্রদর্শনের জন্য প্রাথমিক সাইডবার এলাকা"
 
-#: app/setup.php:168
+#: app/setup.php:178
 msgid "Leftbar Primary"
 msgstr "লেফ্টবার প্রাথমিক"
 
-#: app/setup.php:170
+#: app/setup.php:180
 msgid "Primary left sidebar area for displaying various content modules"
 msgstr "বিভিন্ন কন্টেন্ট মডিউল প্রদর্শনের জন্য প্রাথমিক বাম সাইডবার এলাকা"
 
@@ -305,63 +280,75 @@ msgstr "aripplesong - ব্যানার ক্যারোসেল"
 msgid "Display banner carousel with images"
 msgstr "ছবি সহ ব্যানার ক্যারোসেল প্রদর্শন করুন"
 
-#: app/Widgets/BannerCarouselWidget.php:31
+#: resources/views/widgets/banner-carousel.blade.php:17
 msgid "No banner yet"
 msgstr "এখনো কোনো ব্যানার নেই"
 
-#: app/Widgets/BannerCarouselWidget.php:32
+#: resources/views/widgets/banner-carousel.blade.php:18
 msgid "Please add banner content in the admin panel"
 msgstr "অনুগ্রহ করে অ্যাডমিন প্যানেলে ব্যানার কন্টেন্ট যোগ করুন"
 
-#: app/Widgets/BannerCarouselWidget.php:99
+#: app/Widgets/BannerCarouselWidget.php:49
 msgid "Banner Slides:"
 msgstr "ব্যানার স্লাইড:"
 
-#: app/Widgets/BannerCarouselWidget.php:112
+#: app/widgets.php:185
+#: app/Widgets/BannerCarouselWidget.php:62
 msgid "Image URL:"
 msgstr "ছবির URL:"
 
-#: app/Widgets/BannerCarouselWidget.php:119
+#: app/widgets.php:187
+#: app/Widgets/BannerCarouselWidget.php:69
 msgid "Image URL"
 msgstr "ছবির URL"
 
-#: app/Widgets/BannerCarouselWidget.php:124
+#: app/widgets.php:188
+#: app/Widgets/BannerCarouselWidget.php:74
 msgid "Select Image"
 msgstr "ছবি নির্বাচন করুন"
 
-#: app/Widgets/BannerCarouselWidget.php:135
+#: app/widgets.php:192
+#: app/Widgets/BannerCarouselWidget.php:85
 msgid "Link URL (optional):"
 msgstr "লিঙ্ক URL (ঐচ্ছিক):"
 
-#: app/Widgets/BannerCarouselWidget.php:141
+#: app/Widgets/BannerCarouselWidget.php:91
 msgid "https://example.com"
 msgstr "https://example.com"
 
-#: app/Widgets/BannerCarouselWidget.php:145
+#: app/widgets.php:196
+#: app/Widgets/BannerCarouselWidget.php:95
 msgid "Link Target:"
 msgstr "লিঙ্ক টার্গেট:"
 
-#: app/Widgets/BannerCarouselWidget.php:150
+#: app/widgets.php:198
+#: app/Widgets/BannerCarouselWidget.php:100
 msgid "Current Page"
 msgstr "বর্তমান পৃষ্ঠা"
 
-#: app/Widgets/BannerCarouselWidget.php:153
+#: app/widgets.php:199
+#: app/Widgets/BannerCarouselWidget.php:103
 msgid "New Tab"
 msgstr "নতুন ট্যাব"
 
-#: app/Widgets/BannerCarouselWidget.php:159
+#: app/widgets.php:203
+#: app/Widgets/BannerCarouselWidget.php:109
 msgid "Description:"
 msgstr "বিবরণ:"
 
-#: app/Widgets/BannerCarouselWidget.php:165
+#: app/widgets.php:204
+#: app/Widgets/BannerCarouselWidget.php:115
 msgid "Image description"
 msgstr "ছবির বিবরণ"
 
-#: app/Widgets/BannerCarouselWidget.php:169
+#: app/widgets.php:207
+#: app/widgets.php:373
+#: app/Widgets/BannerCarouselWidget.php:119
+#: app/Widgets/FooterLinksWidget.php:91
 msgid "Delete"
 msgstr "মুছে ফেলুন"
 
-#: app/Widgets/BannerCarouselWidget.php:178
+#: app/Widgets/BannerCarouselWidget.php:128
 msgid "+ Add Banner"
 msgstr "+ ব্যানার যোগ করুন"
 
@@ -373,27 +360,28 @@ msgstr "aripplesong - ব্লগ তালিকা"
 msgid "Display latest blog posts list"
 msgstr "সাম্প্রতিক ব্লগ পোস্টের তালিকা প্রদর্শন করুন"
 
-#: app/Widgets/BlogListWidget.php:73
+#: app/Widgets/BlogListWidget.php:75
 msgid "No blog posts yet"
 msgstr "এখনো কোনো ব্লগ পোস্ট নেই"
 
-#: app/Widgets/BlogListWidget.php:89
+#: app/Widgets/BlogListWidget.php:91
+#: app/Widgets/FooterLinksWidget.php:50
 #: app/Widgets/PodcastListWidget.php:200
 #: app/Widgets/SubscribeLinksWidget.php:81
 #: app/Widgets/TagsCloudWidget.php:82
 msgid "Title:"
 msgstr "শিরোনাম:"
 
-#: app/Widgets/BlogListWidget.php:97
+#: app/Widgets/BlogListWidget.php:99
 #: app/Widgets/PodcastListWidget.php:208
 msgid "Number of posts:"
 msgstr "পোস্টের সংখ্যা:"
 
-#: app/Widgets/BlogListWidget.php:108
+#: app/Widgets/BlogListWidget.php:110
 msgid "Number of columns:"
 msgstr "কলামের সংখ্যা:"
 
-#: app/Widgets/BlogListWidget.php:125
+#: app/Widgets/BlogListWidget.php:127
 #: app/Widgets/PodcastListWidget.php:224
 msgid "Show \"See all\" link"
 msgstr "\"সব দেখুন\" লিঙ্ক দেখান"
@@ -485,8 +473,8 @@ msgstr "ট্যাগ নাম"
 msgid "Tag ID"
 msgstr "ট্যাগ ID"
 
-#: app/Widgets/TagsCloudWidget.php:111
 #: app/Widgets/PodcastListWidget.php:96
+#: app/Widgets/TagsCloudWidget.php:111
 msgid "Random"
 msgstr "এলোমেলো"
 
@@ -523,35 +511,35 @@ msgstr "aripplesong - ফুটার লিংক"
 msgid "Display a list of links or text items in the footer"
 msgstr "ফুটারে লিংক বা টেক্সট আইটেমের তালিকা প্রদর্শন করুন"
 
-#: app/Widgets/FooterLinksWidget.php:72
+#: app/Widgets/FooterLinksWidget.php:56
 msgid "e.g., Contact, Navigate, Support"
 msgstr "যেমন, যোগাযোগ, নেভিগেট, সাপোর্ট"
 
-#: app/Widgets/FooterLinksWidget.php:76
+#: app/Widgets/FooterLinksWidget.php:59
 msgid "Items:"
 msgstr "আইটেম:"
 
-#: app/Widgets/FooterLinksWidget.php:85
-#: app/widgets.php:170
+#: app/widgets.php:360
+#: app/Widgets/FooterLinksWidget.php:65
 msgid "Text:"
 msgstr "টেক্সট:"
 
-#: app/Widgets/FooterLinksWidget.php:90
-#: app/widgets.php:172
+#: app/widgets.php:361
+#: app/Widgets/FooterLinksWidget.php:70
 msgid "Display text"
 msgstr "প্রদর্শন টেক্সট"
 
-#: app/Widgets/FooterLinksWidget.php:94
-#: app/widgets.php:175
+#: app/widgets.php:364
+#: app/Widgets/FooterLinksWidget.php:73
 msgid "URL (optional - leave empty for plain text):"
 msgstr "URL (ঐচ্ছিক - সাধারণ টেক্সটের জন্য খালি রাখুন):"
 
-#: app/Widgets/FooterLinksWidget.php:102
-#: app/widgets.php:180
+#: app/widgets.php:369
+#: app/Widgets/FooterLinksWidget.php:87
 msgid "Open in new tab"
 msgstr "নতুন ট্যাবে খুলুন"
 
-#: app/Widgets/FooterLinksWidget.php:113
+#: app/Widgets/FooterLinksWidget.php:102
 msgid "+ Add Item"
 msgstr "+ আইটেম যোগ করুন"
 
@@ -605,22 +593,25 @@ msgstr "অনুগ্রহ করে অ্যাডমিন প্যান
 msgid "Author:"
 msgstr "লেখক:"
 
-#: resources/views/partials/comments.blade.php:48
+#: resources/views/partials/comments.blade.php:52
 msgid "Leave a Comment"
 msgstr "একটি মন্তব্য করুন"
 
-#: resources/views/partials/podcast-episode-card.blade.php:59
+#: resources/views/partials/podcast-episode-card.blade.php:60
 msgid "Pause"
 msgstr "বিরতি"
 
-#: resources/views/partials/podcast-episode-card.blade.php:59
+#: resources/views/partials/podcast-episode-card.blade.php:60
+#: resources/views/sections/autoplay-confirm.blade.php:34
 msgid "Play"
 msgstr "চালান"
 
+#: resources/views/sections/leftbar-drawer.blade.php:21
 #: resources/views/sections/leftbar.blade.php:6
 msgid "Please add widgets to \"Leftbar\" area in Appearance > Widgets in the admin panel."
 msgstr "অনুগ্রহ করে অ্যাডমিন প্যানেলে চেহারা > উইজেট এ \"লেফ্টবার\" এলাকায় উইজেট যোগ করুন।"
 
+#: resources/views/sections/sidebar-drawer.blade.php:22
 #: resources/views/sections/sidebar.blade.php:8
 msgid "Please add widgets to \"Sidebar\" area in Appearance > Widgets in the admin panel."
 msgstr "অনুগ্রহ করে অ্যাডমিন প্যানেলে চেহারা > উইজেট এ \"সাইডবার\" এলাকায় উইজেট যোগ করুন।"
@@ -633,19 +624,15 @@ msgstr "মেনু"
 msgid "Close"
 msgstr "বন্ধ করুন"
 
-#: resources/views/sections/footer.blade.php:3
-msgid "© %s A Ripple Song. Designed by %s"
-msgstr "© %s A Ripple Song. %s দ্বারা ডিজাইন করা"
-
-#: resources/views/sections/header.blade.php:20
+#: resources/views/sections/header.blade.php:26
 msgid "Light Mode"
 msgstr "লাইট মোড"
 
-#: resources/views/sections/header.blade.php:20
+#: resources/views/sections/header.blade.php:26
 msgid "Dark Mode"
 msgstr "ডার্ক মোড"
 
-#: resources/views/sections/header.blade.php:20
+#: resources/views/sections/header.blade.php:26
 msgid "Follow System"
 msgstr "সিস্টেম অনুসরণ করুন"
 
@@ -685,133 +672,28 @@ msgstr "প্লেলিস্ট মুছে ফেলুন"
 msgid "Clear"
 msgstr "মুছুন"
 
-#: resources/views/sections/playlist-drawer.blade.php:31
+#: resources/views/sections/playlist-drawer.blade.php:32
 msgid "Playlist is empty"
 msgstr "প্লেলিস্ট খালি"
 
-#: resources/views/sections/playlist-drawer.blade.php:32
+#: resources/views/sections/playlist-drawer.blade.php:33
 msgid "Add some episodes to start listening"
 msgstr "শোনা শুরু করতে কিছু এপিসোড যোগ করুন"
 
-#: resources/views/sections/playlist-drawer.blade.php:82
+#: resources/views/sections/playlist-drawer.blade.php:83
 msgid "Remove"
 msgstr "সরান"
 
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Red (50)"
-msgstr "লাল (50)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Red (400)"
-msgstr "লাল (400)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Yellow (50)"
-msgstr "হলুদ (50)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Yellow (300)"
-msgstr "হলুদ (300)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Yellow (400)"
-msgstr "হলুদ (400)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Green (50)"
-msgstr "সবুজ (50)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Green (400)"
-msgstr "সবুজ (400)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Green (500)"
-msgstr "সবুজ (500)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Indigo (50)"
-msgstr "ইনডিগো (50)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Indigo (400)"
-msgstr "ইনডিগো (400)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Gray (600)"
-msgstr "ধূসর (600)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Gray (800)"
-msgstr "ধূসর (800)"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Black"
-msgstr "কালো"
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "White"
-msgstr "সাদা"
-
-#: public/build/assets/theme.json
-msgctxt "Font family name"
-msgid "sans"
-msgstr "sans"
-
-#: public/build/assets/theme.json
-msgctxt "Font family name"
-msgid "mono"
-msgstr "mono"
-
-#: public/build/assets/theme.json
-msgctxt "Font size name"
-msgid "xs"
-msgstr "xs"
-
-#: public/build/assets/theme.json
-msgctxt "Font size name"
-msgid "sm"
-msgstr "sm"
-
-#: public/build/assets/theme.json
-msgctxt "Font size name"
-msgid "base"
-msgstr "base"
-
-#: public/build/assets/theme.json
-msgctxt "Font size name"
-msgid "lg"
-msgstr "lg"
-
-#: public/build/assets/theme.json
-msgctxt "Font size name"
-msgid "2xl"
-msgstr "2xl"
-
-#: resources/views/sections/autoplay-confirm.blade.php:21
+#: resources/views/sections/autoplay-confirm.blade.php:22
 msgid "Continue playing?"
 msgstr "চালানো চালিয়ে যেতে চান?"
 
-#: resources/views/sections/autoplay-confirm.blade.php:24
+#: resources/views/sections/autoplay-confirm.blade.php:25
 msgid "Unknown episode"
 msgstr "অজানা পর্ব"
 
-#: resources/views/sections/autoplay-confirm.blade.php:40
-#: app/carbon-fields.php
+#: app/ThemeOptions/General.php:1653
+#: resources/views/sections/autoplay-confirm.blade.php:42
 msgid "Cancel"
 msgstr "বাতিল"
 
@@ -819,437 +701,719 @@ msgstr "বাতিল"
 msgid "Loading audio"
 msgstr "অডিও লোড হচ্ছে"
 
-#: app/carbon-fields.php:30
+#: app/ThemeOptions/General.php:51
+#: app/ThemeOptions/General.php:197
 msgid "Theme Settings"
 msgstr "থিম সেটিংস"
 
-#: app/carbon-fields.php:37
-msgid "Welcome to the theme settings. Use the sub-menus to configure social links and custom scripts."
-msgstr "থিম সেটিংসে স্বাগতম। সোশ্যাল লিংক এবং কাস্টম স্ক্রিপ্ট কনফিগার করতে সাব-মেনু ব্যবহার করুন।"
-
-#: app/carbon-fields.php:43
+#: app/ThemeOptions/General.php:107
 msgid "Social Links"
 msgstr "সোশ্যাল লিংক"
 
-#: app/carbon-fields.php:48
-msgid "Custom Scripts"
-msgstr "কাস্টম স্ক্রিপ্ট"
-
-#: app/carbon-fields.php:51
+#: app/ThemeOptions/General.php:96
 msgid "Header Scripts"
 msgstr "হেডার স্ক্রিপ্ট"
 
-#: app/carbon-fields.php:52
+#: app/ThemeOptions/General.php:97
 msgid "Scripts to be added in the <head> section. You can include complete <script> tags for services like Google Analytics."
 msgstr "<head> সেকশনে যোগ করা স্ক্রিপ্ট। আপনি Google Analytics এর মতো সার্ভিসের জন্য সম্পূর্ণ <script> ট্যাগ অন্তর্ভুক্ত করতে পারেন।"
 
-#: app/carbon-fields.php:53
+#: app/ThemeOptions/General.php:98
 msgid "Footer Scripts"
 msgstr "ফুটার স্ক্রিপ্ট"
 
-#: app/carbon-fields.php:54
+#: app/ThemeOptions/General.php:99
 msgid "Scripts to be added before </body>. You can include complete <script> tags."
 msgstr "</body> এর আগে যোগ করা স্ক্রিপ্ট। আপনি সম্পূর্ণ <script> ট্যাগ অন্তর্ভুক্ত করতে পারেন।"
 
-#: app/carbon-fields.php:73
+#: app/ThemeOptions/General.php:309
 msgid "Configure your social media links. Leave empty to hide a platform."
 msgstr "আপনার সোশ্যাল মিডিয়া লিংক কনফিগার করুন। প্ল্যাটফর্ম লুকাতে খালি রাখুন।"
 
-#: app/carbon-fields.php:79
-#: app/Customizer/SocialLinks.php:23
+#: app/ThemeOptions/General.php:260
+#: app/ThemeOptions/SocialLinks.php:28
 msgid "Facebook"
 msgstr "ফেসবুক"
 
-#: app/carbon-fields.php:83
-#: app/Customizer/SocialLinks.php:27
+#: app/ThemeOptions/General.php:264
+#: app/ThemeOptions/SocialLinks.php:32
 msgid "Twitter / X"
 msgstr "টুইটার / X"
 
-#: app/carbon-fields.php:87
-#: app/Customizer/SocialLinks.php:31
+#: app/ThemeOptions/General.php:268
+#: app/ThemeOptions/SocialLinks.php:36
 msgid "Instagram"
 msgstr "ইনস্টাগ্রাম"
 
-#: app/carbon-fields.php:91
-#: app/Customizer/SocialLinks.php:35
+#: app/ThemeOptions/General.php:272
+#: app/ThemeOptions/SocialLinks.php:40
 msgid "LinkedIn"
 msgstr "লিংকডইন"
 
-#: app/carbon-fields.php:95
-#: app/Customizer/SocialLinks.php:39
+#: app/ThemeOptions/General.php:276
+#: app/ThemeOptions/SocialLinks.php:44
 msgid "YouTube"
 msgstr "ইউটিউব"
 
-#: app/carbon-fields.php:99
-#: app/Customizer/SocialLinks.php:43
+#: app/ThemeOptions/General.php:280
+#: app/ThemeOptions/SocialLinks.php:48
 msgid "TikTok"
 msgstr "টিকটক"
 
-#: app/carbon-fields.php:103
-#: app/Customizer/SocialLinks.php:47
+#: app/ThemeOptions/General.php:284
+#: app/ThemeOptions/SocialLinks.php:52
 msgid "Pinterest"
 msgstr "পিনটারেস্ট"
 
-#: app/carbon-fields.php:107
-#: app/Customizer/SocialLinks.php:51
+#: app/ThemeOptions/General.php:288
+#: app/ThemeOptions/SocialLinks.php:56
 msgid "Threads"
 msgstr "থ্রেডস"
 
-#: app/carbon-fields.php:111
-#: app/Customizer/SocialLinks.php:55
+#: app/ThemeOptions/General.php:292
+#: app/ThemeOptions/SocialLinks.php:60
 msgid "Weibo"
 msgstr "ওয়েইবো"
 
-#: app/carbon-fields.php:115
-#: app/Customizer/SocialLinks.php:59
+#: app/ThemeOptions/General.php:296
+#: app/ThemeOptions/SocialLinks.php:64
 msgid "WeChat"
 msgstr "উইচ্যাট"
 
-#: app/carbon-fields.php:119
-#: app/Customizer/SocialLinks.php:63
+#: app/ThemeOptions/General.php:300
+#: app/ThemeOptions/SocialLinks.php:68
 msgid "RSS Feed"
 msgstr "RSS ফিড"
 
-#. Comment form and display strings
-#: functions.php:576
-msgid "Author"
-msgstr "লেখক"
-
-#: functions.php:585
-msgid "Pending Approval"
-msgstr "অনুমোদনের অপেক্ষায়"
-
-#: functions.php:601
-msgid "Reply"
-msgstr "উত্তর দিন"
-
-#: functions.php:606
-msgid "Edit"
-msgstr "সম্পাদনা"
-
-#: functions.php:629
-msgid "Your email address will not be published."
-msgstr "আপনার ইমেইল ঠিকানা প্রকাশ করা হবে না।"
-
-#. translators: %1$s is the edit profile link, %2$s is the username, %3$s is the logout link
-#: functions.php:632
-#, php-format
-msgid "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of this account\">Log out?</a>"
-msgstr "<a href=\"%1$s\">%2$s</a> হিসেবে লগইন করা হয়েছে। <a href=\"%3$s\" title=\"এই অ্যাকাউন্ট থেকে লগআউট করুন\">লগআউট করবেন?</a>"
-
-#: functions.php:646
-msgid "Name"
-msgstr "নাম"
-
-#: functions.php:648
-msgid "Email"
-msgstr "ইমেইল"
-
-#: functions.php:650
-msgid "Website"
-msgstr "ওয়েবসাইট"
-
-#: functions.php:652
-msgid "Save my name, email, and website in this browser for the next time I comment."
-msgstr "পরবর্তী মন্তব্যের জন্য এই ব্রাউজারে আমার নাম, ইমেইল এবং ওয়েবসাইট সংরক্ষণ করুন।"
-
-#: functions.php:661
-msgid "Comment"
-msgstr "মন্তব্য"
-
-#: resources/views/sections/leftbar-drawer.blade.php:10
+#: resources/views/sections/leftbar-drawer.blade.php:9
 msgid "Left Sidebar"
 msgstr "বাম সাইডবার"
 
-#: resources/views/sections/sidebar-drawer.blade.php:10
+#: resources/views/sections/sidebar-drawer.blade.php:9
 msgid "Right Sidebar"
 msgstr "ডান সাইডবার"
 
-#: resources/views/layouts/app.blade.php:119
+#: resources/views/layouts/app.blade.php:87
 msgid "Open Left Sidebar"
 msgstr "বাম সাইডবার খুলুন"
 
-#: resources/views/layouts/app.blade.php:131
+#: resources/views/layouts/app.blade.php:101
 msgid "Open Right Sidebar"
 msgstr "ডান সাইডবার খুলুন"
 
-#: app/carbon-fields.php:36
-#: app/carbon-fields.php
+#: app/ThemeOptions/General.php:55
+#: app/ThemeOptions/General.php:227
+#: app/ThemeOptions/General.php:1584
 msgid "Site Logo"
 msgstr "সাইট লোগো"
 
-#: app/carbon-fields.php:38
-msgid "Upload a logo image. If no logo is set, the site title with icon will be displayed."
-msgstr "একটি লোগো ছবি আপলোড করুন। যদি কোনো লোগো সেট না থাকে, তাহলে আইকন সহ সাইটের শিরোনাম প্রদর্শিত হবে।"
-
-#: app/carbon-fields.php
+#: app/ThemeOptions/General.php:70
 msgid "Click any card to choose the light theme."
 msgstr "লাইট থিম বেছে নিতে যেকোনো কার্ডে ক্লিক করুন।"
 
-#: app/carbon-fields.php
+#: app/ThemeOptions/General.php:85
 msgid "Click any card to choose the dark theme."
 msgstr "ডার্ক থিম বেছে নিতে যেকোনো কার্ডে ক্লিক করুন।"
 
-#: app/carbon-fields.php
+#: app/ThemeOptions/General.php:74
 msgid "If the card picker is unavailable, use this dropdown (default: retro)."
 msgstr "কার্ড পিকার না থাকলে এই ড্রপডাউন ব্যবহার করুন (ডিফল্ট: retro)।"
 
-#: app/carbon-fields.php
+#: app/ThemeOptions/General.php:89
 msgid "If the card picker is unavailable, use this dropdown (default: dim)."
 msgstr "কার্ড পিকার না থাকলে এই ড্রপডাউন ব্যবহার করুন (ডিফল্ট: dim)।"
 
-msgid "Podcast Cover file not found. Please re-upload."
-msgstr "পডকাস্ট কভার ফাইল পাওয়া যায়নি। দয়া করে আবার আপলোড করুন।"
-
-msgid "Podcast Cover validation failed"
-msgstr "পডকাস্ট কভার যাচাই ব্যর্থ হয়েছে"
-
+#: app/ThemeOptions/Podcast.php:605
 msgid "Podcast Cover is not a valid image."
 msgstr "পডকাস্ট কভারটি বৈধ ছবি নয়।"
 
+#: app/ThemeOptions/Podcast.php:693
 msgid "Podcast Cover must be JPG or PNG."
 msgstr "পডকাস্ট কভার JPG বা PNG হতে হবে।"
 
-msgid "Podcast Cover must be square. Current: %1%2."
-msgstr "পডকাস্ট কভার অবশ্যই বর্গাকার হতে হবে। বর্তমান: %1%2।"
-
-msgid "Podcast Cover must be between %1 and %2 px. Current: %3 px."
-msgstr "পডকাস্ট কভার %1 থেকে %2 পিক্সেলের মধ্যে হতে হবে। বর্তমান: %3 পিক্সেল।"
-
+#: app/ThemeOptions/Podcast.php:76
 msgid "Podcast Settings"
 msgstr "পডকাস্ট সেটিংস"
 
+#: app/ThemeOptions/Podcast.php:91
 msgid "Podcast Title"
 msgstr "পডকাস্ট শিরোনাম"
 
+#: app/ThemeOptions/Podcast.php:92
 msgid "Required. If empty, falls back to site title."
 msgstr "আবশ্যিক। খালি থাকলে সাইট টাইটেল ব্যবহার হবে।"
 
+#: app/ThemeOptions/Podcast.php:94
 msgid "Podcast Subtitle"
 msgstr "পডকাস্ট সাবটাইটেল"
 
+#: app/ThemeOptions/Podcast.php:95
 msgid "Short tagline shown in some apps."
 msgstr "কিছু অ্যাপে প্রদর্শিত ছোট ট্যাগলাইন।"
 
+#: app/ThemeOptions/Podcast.php:96
 msgid "Podcast Description"
 msgstr "পডকাস্ট বর্ণনা"
 
+#: app/ThemeOptions/Podcast.php:97
 msgid "Required. Plain text description of the show."
 msgstr "আবশ্যিক। অনুষ্ঠানের সাধারণ টেক্সট বর্ণনা।"
 
+#: app/ThemeOptions/Podcast.php:99
 msgid "Podcast Author (itunes:author)"
 msgstr "পডকাস্ট লেখক (itunes:author)"
 
+#: app/ThemeOptions/Podcast.php:100
 msgid "Required. Displayed as show author in directories."
 msgstr "আবশ্যিক। ডিরেক্টরিতে অনুষ্ঠান লেখক হিসেবে দেখানো হবে।"
 
+#: app/ThemeOptions/Podcast.php:102
 msgid "Owner Name"
 msgstr "মালিকের নাম"
 
+#: app/ThemeOptions/Podcast.php:103
 msgid "Required. For <itunes:owner><itunes:name>."
 msgstr "<itunes:owner><itunes:name> এর জন্য আবশ্যিক।"
 
+#: app/ThemeOptions/Podcast.php:105
 msgid "Owner Email"
 msgstr "মালিকের ইমেল"
 
+#: app/ThemeOptions/Podcast.php:108
 msgid "Required. For <itunes:owner><itunes:email>. Use a monitored inbox."
 msgstr "<itunes:owner><itunes:email> এর জন্য আবশ্যিক। মনিটর করা ইনবক্স ব্যবহার করুন।"
 
+#: app/ThemeOptions/Podcast.php:110
 msgid "Podcast Cover (1400–3000px square)"
 msgstr "পডকাস্ট কভার (1400–3000px বর্গাকার)"
 
-msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Will be validated on save."
-msgstr "আবশ্যিক। <itunes:image> এর জন্য 1400–3000px বর্গাকার JPG/PNG। সেভের সময় যাচাই হবে।"
-
+#: app/ThemeOptions/Podcast.php:114
 msgid "Default Explicit Flag"
 msgstr "ডিফল্ট এক্সপ্লিসিট ফ্ল্যাগ"
 
+#: app/ThemeOptions/Podcast.php:116
 msgid "clean (no explicit content)"
 msgstr "clean (কোনো এক্সপ্লিসিট কনটেন্ট নয়)"
 
+#: app/PostTypes/Podcast.php:203
+#: app/ThemeOptions/Podcast.php:117
 msgid "explicit"
 msgstr "explicit"
 
+#: app/ThemeOptions/Podcast.php:120
 msgid "Required. Single-episode value can override."
 msgstr "আবশ্যিক। একক এপিসোড মান ওভাররাইড করতে পারে।"
 
+#: app/ThemeOptions/Podcast.php:122
 msgid "Language (RSS <language>)"
 msgstr "ভাষা (RSS <language>)"
 
+#: app/ThemeOptions/Podcast.php:125
 msgid "RFC 5646 language tag, e.g. en-US, zh-CN."
 msgstr "RFC 5646 ভাষা ট্যাগ, যেমন en-US, zh-CN।"
 
+#: app/ThemeOptions/Podcast.php:127
 msgid "Primary Category"
 msgstr "প্রাথমিক বিভাগ"
 
+#: app/ThemeOptions/Podcast.php:129
 msgid "Required. Use Apple’s category list."
 msgstr "আবশ্যিক। Apple-এর বিভাগ তালিকা ব্যবহার করুন।"
 
+#: app/ThemeOptions/Podcast.php:131
 msgid "Secondary Category (optional)"
 msgstr "গৌণ বিভাগ (ঐচ্ছিক)"
 
+#: app/ThemeOptions/Podcast.php:133
 msgid "Optional second category."
 msgstr "ঐচ্ছিক দ্বিতীয় বিভাগ।"
 
+#: app/ThemeOptions/Podcast.php:134
 msgid "Copyright (optional)"
 msgstr "কপিরাইট (ঐচ্ছিক)"
 
+#: app/ThemeOptions/Podcast.php:135
 msgid "Example: © 2025 Your Studio. Plain text."
 msgstr "উদাহরণ: © 2025 Your Studio। সাধারণ টেক্সট।"
 
+#: app/ThemeOptions/Podcast.php:136
 msgid "podcast:locked"
 msgstr "podcast:locked"
 
+#: app/ThemeOptions/Podcast.php:138
 msgid "yes (recommended, prevents unauthorized moves)"
 msgstr "yes (প্রস্তাবিত, অনুমতিহীন স্থানান্তর রোধ করে)"
 
+#: app/PostTypes/Podcast.php:316
+#: app/ThemeOptions/Podcast.php:139
 msgid "no"
 msgstr "no"
 
+#: app/ThemeOptions/Podcast.php:142
 msgid "Podcasting 2.0: lock feed to this publisher."
 msgstr "Podcasting 2.0: ফিড এই প্রকাশকের জন্য লক করুন।"
 
+#: app/ThemeOptions/Podcast.php:143
 msgid "podcast:guid (optional)"
 msgstr "podcast:guid (ঐচ্ছিক)"
 
+#: app/ThemeOptions/Podcast.php:144
 msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
 msgstr "Podcasting 2.0 GUID। খালি থাকলে ফিড সাইটের URL ব্যাকআপ হিসেবে ব্যবহার করবে।"
 
-msgid "Podcast Cover must be square. Current: %1$dx%2$d."
-msgstr "পডকাস্ট কভার অবশ্যই বর্গাকার হতে হবে। বর্তমান: %1$dx%2$d।"
-
-msgid "Podcast Cover must be between %1$d and %2$d px. Current: %3$d px."
-msgstr "পডকাস্ট কভার %1$d থেকে %2$d পিক্সেলের মধ্যে হতে হবে। বর্তমান: %3$d পিক্সেল।"
-
+#: app/PostTypes/Podcast.php:131
 msgid "Required. Upload an audio file or enter audio file URL (https)."
 msgstr "আবশ্যিক। অডিও ফাইল আপলোড করুন বা ফাইল URL (https) দিন।"
 
-msgid "Required. Enter audio duration in seconds. Example: 180 = 3 minutes"
-msgstr "আবশ্যিক। সেকেন্ডে অডিও সময় লিখুন। উদাহরণ: 180 = 3 মিনিট"
-
-msgid "Required. Use file size in bytes for enclosure length. Example: 12345678"
-msgstr "আবশ্যিক। এনক্লোজার দৈর্ঘ্যের জন্য ফাইল সাইজ (বাইট) ব্যবহার করুন। উদাহরণ: 12345678"
-
-msgid "Required. Example: audio/mpeg, audio/mp3, audio/aac"
-msgstr "আবশ্যিক। উদাহরণ: audio/mpeg, audio/mp3, audio/aac"
-
+#: app/PostTypes/Podcast.php:198
 msgid "Required. clean / explicit."
 msgstr "আবশ্যিক। clean / explicit."
 
+#: app/PostTypes/Podcast.php:215
 msgid "Required. full / trailer / bonus"
 msgstr "আবশ্যিক। full / trailer / bonus"
 
-msgid "https://facebook.com/yourpage"
-msgstr "https://facebook.com/yourpage"
+#: app/ThemeOptions/Podcast.php:83
+#: app/ThemeOptions/Podcast.php:88
+msgid "Podcast RSS URL"
+msgstr "পডকাস্ট RSS URL"
 
-msgid "https://twitter.com/yourhandle"
-msgstr "https://twitter.com/yourhandle"
+#: app/ThemeOptions/Podcast.php:87
+msgid "Open feed"
+msgstr "ফিড খুলুন"
 
-msgid "https://instagram.com/yourhandle"
-msgstr "https://instagram.com/yourhandle"
+#: app/ThemeOptions/Podcast.php:89
+msgid "Your podcast RSS feed URL. Click to select and copy."
+msgstr "আপনার পডকাস্ট RSS ফিড URL। নির্বাচন এবং অনুলিপি করতে ক্লিক করুন।"
 
-msgid "https://linkedin.com/in/yourprofile"
-msgstr "https://linkedin.com/in/yourprofile"
+#: app/ThemeOptions/General.php:62
+#: app/ThemeOptions/General.php:66
+msgid "Light Theme"
+msgstr ""
 
-msgid "https://youtube.com/@yourchannel"
-msgstr "https://youtube.com/@yourchannel"
+#: app/ThemeOptions/General.php:71
+msgid "Light Theme (fallback)"
+msgstr ""
 
-msgid "https://tiktok.com/@yourhandle"
-msgstr "https://tiktok.com/@yourhandle"
+#: app/ThemeOptions/General.php:77
+#: app/ThemeOptions/General.php:81
+msgid "Dark Theme"
+msgstr ""
 
-msgid "https://pinterest.com/yourhandle"
-msgstr "https://pinterest.com/yourhandle"
+#: app/ThemeOptions/General.php:86
+msgid "Dark Theme (fallback)"
+msgstr ""
 
-msgid "https://threads.net/@yourhandle"
-msgstr "https://threads.net/@yourhandle"
+#: app/PostTypes/Podcast.php:172
+msgid "Audio Length (bytes)"
+msgstr ""
 
-msgid "https://weibo.com/yourpage"
-msgstr "https://weibo.com/yourpage"
+#: app/PostTypes/Podcast.php:186
+msgid "Audio MIME Type"
+msgstr ""
 
-msgid "WeChat ID or QR code link"
-msgstr "WeChat ID বা QR কোড লিঙ্ক"
+#: app/PostTypes/Podcast.php:197
+msgid "Explicit"
+msgstr ""
 
-msgid "/feed/"
-msgstr "/feed/"
+#: app/PostTypes/Podcast.php:202
+msgid "clean"
+msgstr ""
 
-msgid "views"
-msgstr "দর্শন"
+#: app/PostTypes/Podcast.php:214
+msgid "Episode Type"
+msgstr ""
 
-msgid "plays"
-msgstr "প্লে"
+#: app/PostTypes/Podcast.php:219
+msgid "full"
+msgstr ""
 
-#: app/carbon-fields.php
+#: app/PostTypes/Podcast.php:220
+msgid "trailer"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:221
+msgid "bonus"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:232
+msgid "Episode Number"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:233
+msgid "Optional but recommended. Integer."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:246
+msgid "Season Number"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:247
+msgid "Optional. Integer."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:260
+msgid "Episode Author (override)"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:261
+msgid "Optional. Overrides channel author for this episode."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:267
+msgid "Episode Cover (square)"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:268
+msgid "Optional. Square 1400–3000px. Overrides channel cover."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:290
+msgid "Subtitle"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:291
+msgid "Optional. Short subtitle for iTunes."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:297
+msgid "Summary"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:298
+msgid "Optional. Plain text summary for iTunes."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:304
+msgid "Custom GUID (optional)"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:305
+msgid "Optional. If empty, feed uses WP permalink as GUID."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:311
+msgid "iTunes Block"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:312
+msgid "Optional. yes = hide this episode in Apple Podcasts."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:317
+msgid "yes"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:534
+msgid "Audio File is required."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:572
+msgid "Audio File must be a valid URL (https recommended)."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:589
+msgid "Explicit must be clean or explicit."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:593
+msgid "Episode Type must be full, trailer, or bonus."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:599
+msgid "Podcast validation failed"
+msgstr ""
+
+#: app/widgets.php:254
+msgid "Select Banner Image"
+msgstr ""
+
+#: app/widgets.php:256
+msgid "Use This Image"
+msgstr ""
+
+#: resources/views/partials/content-single-attachment.blade.php:13
+msgid "Download"
+msgstr ""
+
+#: resources/views/sections/header.blade.php:30
+msgid "Toggle Theme"
+msgstr ""
+
+#: resources/views/widgets/banner-carousel.blade.php:55
+msgid "Previous slide"
+msgstr ""
+
+#: resources/views/widgets/banner-carousel.blade.php:63
+msgid "Next slide"
+msgstr ""
+
+#: resources/views/widgets/banner-carousel.blade.php:79
+#, php-format
+msgid "Go to slide %d"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:158
+#: app/PostTypes/Podcast.php:173
+#: app/PostTypes/Podcast.php:187
+msgid "Auto detected from \"Audio File\" on save."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:277
+msgid "Transcript (optional)"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:278
+msgid "Optional. Upload a transcript file (vtt/srt/txt/pdf) or enter a transcript URL (https)."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:285
+msgid "Add Transcript"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:576
+msgid "Duration (seconds) could not be auto detected from Audio File."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:580
+msgid "Audio Length (bytes) could not be auto detected from Audio File."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:584
+msgid "Audio MIME Type could not be auto detected from Audio File."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:1000
+msgid "Episode transcript URL"
+msgstr ""
+
+#: app/ThemeOptions/General.php:57
 msgid "Upload a logo image (220px × 32px). You will be able to crop the image after upload."
-msgstr "একটি লোগো ছবি (220px × 32px) আপলোড করুন, আপলোডের পরে ক্রপ করতে পারবেন।"
+msgstr ""
 
-#: app/carbon-fields.php
-msgid "Upload / Change Logo"
-msgstr "লোগো আপলোড / পরিবর্তন করুন"
-
-#: app/carbon-fields.php
-msgid "Remove Logo"
-msgstr "লোগো সরান"
-
-#: app/carbon-fields.php
-msgid "Choose Logo Image"
-msgstr "লোগো ছবি নির্বাচন করুন"
-
-#: app/carbon-fields.php
-msgid "Crop Image"
-msgstr "ছবি ক্রপ করুন"
-
-#: app/carbon-fields.php
-msgid "Image is too small. Minimum size: %1$dpx × %2$dpx"
-msgstr "ছবিটি খুব ছোট। ন্যূনতম আকার: %1$dpx × %2$dpx"
-
-#: app/carbon-fields.php
-msgid "Crop and Save"
-msgstr "ক্রপ করে সংরক্ষণ করুন"
-
-#: app/carbon-fields.php
-msgid "Please select a crop area."
-msgstr "দয়া করে একটি ক্রপ এলাকা নির্বাচন করুন।"
-
-#: app/carbon-fields.php
-msgid "Cropping..."
-msgstr "ক্রপ করা হচ্ছে..."
-
-#: app/carbon-fields.php
-msgid "Error cropping image:"
-msgstr "ছবি ক্রপ করতে ত্রুটি:"
-
-#: app/carbon-fields.php
-msgid "Error cropping image. Please try again."
-msgstr "ছবি ক্রপ করতে ত্রুটি হয়েছে। আবার চেষ্টা করুন।"
-
-#: app/carbon-fields.php
-msgid "You do not have permission to upload files."
-msgstr "আপনার ফাইল আপলোড করার অনুমতি নেই।"
-
-#: app/carbon-fields.php
-msgid "Missing attachment ID."
-msgstr "সংযুক্তির ID নেই।"
-
-#: app/carbon-fields.php
-msgid "Missing crop details."
-msgstr "ক্রপের বিবরণ নেই।"
-
-#: app/carbon-fields.php
-msgid "Original image not found."
-msgstr "মূল ছবি পাওয়া যায়নি।"
-
-#: resources/views/sections/footer.blade.php:11
-msgid "Powered by %s"
-msgstr "%s দ্বারা চালিত"
-
-#: resources/views/sections/footer.blade.php:11
-msgid "Powered by A Ripple Song Theme"
-msgstr "A Ripple Song থিম দ্বারা চালিত"
-
-#: app/carbon-fields.php:1
+#: app/ThemeOptions/General.php:92
 msgid "Footer Copyright"
-msgstr "ফুটার কপিরাইট"
+msgstr ""
 
-#: app/carbon-fields.php:1
+#: app/ThemeOptions/General.php:94
+msgid "Powered by A Ripple Song Theme"
+msgstr ""
+
+#: app/ThemeOptions/General.php:95
 msgid "Overrides the footer copyright line. Leave empty to use the default."
-msgstr "ফুটার কপিরাইট লাইন ওভাররাইড করে। খালি রাখলে ডিফল্ট ব্যবহার হবে।"
+msgstr ""
+
+#: app/ThemeOptions/General.php:242
+msgid "Upload / Change Logo"
+msgstr ""
+
+#: app/ThemeOptions/General.php:244
+msgid "Remove Logo"
+msgstr ""
+
+#: app/ThemeOptions/General.php:1609
+msgid "Choose Logo Image"
+msgstr ""
+
+#: app/ThemeOptions/General.php:1611
+msgid "Crop Image"
+msgstr ""
+
+#: app/ThemeOptions/General.php:1624
+#, php-format
+msgid "Image is too small. Minimum size: %1$dpx × %2$dpx"
+msgstr ""
+
+#: app/ThemeOptions/General.php:1652
+#: app/ThemeOptions/General.php:1744
+#: app/ThemeOptions/General.php:1750
+msgid "Crop and Save"
+msgstr ""
+
+#: app/ThemeOptions/General.php:1687
+msgid "Please select a crop area."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1691
+msgid "Cropping..."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1743
+msgid "Error cropping image:"
+msgstr ""
+
+#: app/ThemeOptions/General.php:1749
+msgid "Error cropping image. Please try again."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1821
+msgid "You do not have permission to upload files."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1826
+msgid "Missing attachment ID."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1830
+msgid "Missing crop details."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1840
+msgid "Original image not found."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:112
+msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple recommends keeping the file under 512KB. Will be validated on save."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:479
+msgid "Podcast Cover validation failed:"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:516
+msgid "Podcast Cover URL is invalid."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:595
+#: app/ThemeOptions/Podcast.php:641
+#, php-format
+msgid "Podcast Cover file is too large (%1$s). Please compress it to under %2$s."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:656
+#, php-format
+msgid "Could not download Podcast Cover for validation: %s"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:702
+#, php-format
+msgid "Podcast Cover must be square. Current dimensions: %1$d × %2$d px."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:714
+#, php-format
+msgid "Podcast Cover resolution is too small. Minimum: %1$d × %1$d px. Current: %2$d × %2$d px."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:726
+#, php-format
+msgid "Podcast Cover resolution is too large. Maximum: %1$d × %1$d px. Current: %2$d × %2$d px."
+msgstr ""
+
+#: resources/views/partials/entry-meta.blade.php:26
+msgid "views"
+msgstr ""
+
+#: resources/views/partials/entry-meta.blade.php:29
+msgid "plays"
+msgstr ""
+
+#: resources/views/sections/footer.blade.php:5
+#, php-format
+msgid "Powered by %s"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Red (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Red (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Yellow (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Yellow (300)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Yellow (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Green (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Green (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Green (500)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Indigo (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Indigo (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Gray (600)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Gray (800)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Black"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "White"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font family name"
+msgid "sans"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font family name"
+msgid "mono"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "xs"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "sm"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "base"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "lg"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "2xl"
+msgstr ""
