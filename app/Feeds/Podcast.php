@@ -17,6 +17,7 @@ class Podcast
         add_action('template_redirect', [$this, 'preventPodcastSlugFromRenderingFeed'], 0);
         add_action('template_redirect', [$this, 'redirectQueryFeedToPretty'], 1);
         add_action('admin_init', [$this, 'maybeFlushRewriteRules']);
+        add_action('send_headers', [$this, 'forcePodcastFeedHeaders'], 0);
         add_filter('redirect_canonical', [$this, 'preventCanonicalRedirectForPodcastFeed'], 10, 2);
     }
 
@@ -79,6 +80,26 @@ class Podcast
         }
 
         return false;
+    }
+
+    /**
+     * Force stable headers for the podcast feed, including for HEAD requests.
+     *
+     * Some feed validators rely on a HEAD request (or PHP's get_headers()), and may fail when the
+     * server responds with a non-XML Content-Type for HEAD but a correct one for GET.
+     */
+    public function forcePodcastFeedHeaders(): void
+    {
+        $isPodcastFeed =
+            (function_exists('is_feed') && is_feed('podcast'))
+            || $this->isValidPodcastFeedUrl();
+
+        if (!$isPodcastFeed) {
+            return;
+        }
+
+        header('Content-Type: application/rss+xml; charset=UTF-8', true);
+        header('X-Content-Type-Options: nosniff', true);
     }
 
     /**
@@ -404,6 +425,12 @@ class Podcast
         }
 
         header('Content-Type: application/rss+xml; charset=UTF-8');
+        status_header(200);
+        nocache_headers();
+
+        if (strtoupper((string) ($_SERVER['REQUEST_METHOD'] ?? 'GET')) === 'HEAD') {
+            exit;
+        }
 
         $site_url = home_url('/');
         $feed_url = $this->getCanonicalFeedUrl();
@@ -562,6 +589,7 @@ class Podcast
     </channel>
 </rss>
         <?php
+        exit;
     }
 }
 
