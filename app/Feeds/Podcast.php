@@ -235,6 +235,75 @@ class Podcast
     }
 
     /**
+     * Encode non-ASCII characters in the URL path for better compatibility with podcast clients/validators.
+     *
+     * Some validators treat unescaped Unicode in <enclosure url="..."> as an invalid URL and may misreport
+     * it as a byte-range (HTTP Range) support issue.
+     */
+    private function encodeUrlPathForRss(string $url): string
+    {
+        $url = trim($url);
+        if ($url === '') {
+            return '';
+        }
+
+        $parts = wp_parse_url($url);
+        if (!is_array($parts) || empty($parts['host'])) {
+            return $url;
+        }
+
+        $scheme = $parts['scheme'] ?? '';
+        $host = $parts['host'];
+        $port = isset($parts['port']) ? (int) $parts['port'] : null;
+        $user = isset($parts['user']) ? (string) $parts['user'] : '';
+        $pass = isset($parts['pass']) ? (string) $parts['pass'] : '';
+        $path = isset($parts['path']) ? (string) $parts['path'] : '';
+        $query = isset($parts['query']) ? (string) $parts['query'] : '';
+        $fragment = isset($parts['fragment']) ? (string) $parts['fragment'] : '';
+
+        if ($path !== '') {
+            $segments = explode('/', $path);
+            foreach ($segments as $i => $segment) {
+                if ($segment === '') {
+                    continue;
+                }
+                $segments[$i] = rawurlencode(rawurldecode($segment));
+            }
+            $path = implode('/', $segments);
+        }
+
+        $rebuilt = '';
+        if ($scheme !== '') {
+            $rebuilt .= $scheme . '://';
+        }
+
+        if ($user !== '') {
+            $rebuilt .= $user;
+            if ($pass !== '') {
+                $rebuilt .= ':' . $pass;
+            }
+            $rebuilt .= '@';
+        }
+
+        $rebuilt .= $host;
+        if ($port) {
+            $rebuilt .= ':' . $port;
+        }
+
+        $rebuilt .= $path;
+
+        if ($query !== '') {
+            $rebuilt .= '?' . $query;
+        }
+
+        if ($fragment !== '') {
+            $rebuilt .= '#' . $fragment;
+        }
+
+        return $rebuilt;
+    }
+
+    /**
      * Redirect `/?feed=podcast` to `/feed/podcast/` for better sharing/SEO.
      */
     public function redirectQueryFeedToPretty(): void
@@ -317,7 +386,7 @@ class Podcast
         $channel_author = carbon_get_theme_option('crb_podcast_author') ?: get_bloginfo('name');
         $channel_owner_name = carbon_get_theme_option('crb_podcast_owner_name') ?: $channel_author;
         $channel_owner_email = carbon_get_theme_option('crb_podcast_owner_email') ?: get_bloginfo('admin_email');
-        $channel_cover = carbon_get_theme_option('crb_podcast_cover') ?: '';
+        $channel_cover = $this->encodeUrlPathForRss((string) (carbon_get_theme_option('crb_podcast_cover') ?: ''));
         $channel_explicit = $this->normalizeItunesExplicit(carbon_get_theme_option('crb_podcast_explicit') ?: 'false', 'false');
         $channel_language = carbon_get_theme_option('crb_podcast_language') ?: (get_bloginfo('language') ?: 'en-US');
         $channel_category_primary = carbon_get_theme_option('crb_podcast_category_primary') ?: '';
@@ -387,7 +456,7 @@ class Podcast
                 $query->the_post();
 
                 $post_id = get_the_ID();
-                $audio_url = $this->resolveMediaUrl($post_id, 'audio_file');
+                $audio_url = $this->encodeUrlPathForRss($this->resolveMediaUrl($post_id, 'audio_file'));
                 $audio_length = (int) get_post_meta($post_id, 'audio_length', true);
                 if (empty($audio_url) || $audio_length <= 0) {
                     $audio_attachment_id = (int) get_post_meta($post_id, 'audio_file_id', true);
@@ -412,7 +481,7 @@ class Podcast
                 $episode_number = get_post_meta($post_id, 'episode_number', true);
                 $season_number = get_post_meta($post_id, 'season_number', true);
                 $episode_author = get_post_meta($post_id, 'episode_author', true) ?: $channel_author;
-                $episode_image = $this->resolveMediaUrl($post_id, 'episode_image') ?: $channel_cover;
+                $episode_image = $this->encodeUrlPathForRss($this->resolveMediaUrl($post_id, 'episode_image')) ?: $channel_cover;
                 $episode_subtitle = get_post_meta($post_id, 'episode_subtitle', true);
                 $episode_summary = get_post_meta($post_id, 'episode_summary', true);
                 $episode_block = get_post_meta($post_id, 'episode_block', true) ?: 'no';
