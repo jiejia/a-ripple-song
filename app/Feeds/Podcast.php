@@ -13,6 +13,7 @@ class Podcast
     public function register(): void
     {
         add_action('init', [$this, 'registerFeed'], 20);
+        add_action('pre_get_posts', [$this, 'fixPodcastArchiveQuery'], 1);
         add_action('template_redirect', [$this, 'preventPodcastSlugFromRenderingFeed'], 0);
         add_action('template_redirect', [$this, 'redirectQueryFeedToPretty'], 1);
         add_action('admin_init', [$this, 'maybeFlushRewriteRules']);
@@ -28,6 +29,59 @@ class Podcast
     }
 
     /**
+     * Fix podcast archive query being incorrectly identified as a feed.
+     * This runs early in pre_get_posts to correct the query before template loading.
+     */
+    public function fixPodcastArchiveQuery(\WP_Query $query): void
+    {
+        if (!$query->is_main_query() || is_admin()) {
+            return;
+        }
+
+        // Check if WordPress thinks this is a podcast feed
+        if (!$query->is_feed || $query->get('feed') !== 'podcast') {
+            return;
+        }
+
+        // But it's not actually a valid feed URL
+        if ($this->isValidPodcastFeedUrl()) {
+            return;
+        }
+
+        // Fix the query - this is actually a post type archive, not a feed
+        $query->is_feed = false;
+        $query->set('feed', '');
+
+        if (post_type_exists('podcast')) {
+            $query->is_post_type_archive = true;
+            $query->is_archive = true;
+            $query->set('post_type', 'podcast');
+        }
+    }
+
+    /**
+     * Check if current URL is a valid podcast feed URL.
+     */
+    private function isValidPodcastFeedUrl(): bool
+    {
+        $request_uri = $_SERVER['REQUEST_URI'] ?? '';
+        $path = wp_parse_url($request_uri, PHP_URL_PATH);
+        $query = wp_parse_url($request_uri, PHP_URL_QUERY);
+
+        // Allow /feed/podcast/ or /podcast/feed/
+        if (is_string($path) && preg_match('~(?:feed/podcast|podcast/feed)/?$~', $path)) {
+            return true;
+        }
+
+        // Allow /?feed=podcast
+        if (is_string($query) && preg_match('~(?:^|&)feed=podcast(?:&|$)~', $query)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * Prevent /podcast/ from being treated as the podcast feed.
      * Only /feed/podcast/ or /?feed=podcast should render the RSS feed.
      */
@@ -37,23 +91,36 @@ class Podcast
             return;
         }
 
-        $request_uri = $_SERVER['REQUEST_URI'] ?? '';
-        $path = wp_parse_url($request_uri, PHP_URL_PATH);
-        $query = wp_parse_url($request_uri, PHP_URL_QUERY);
-
-        // Allow /feed/podcast/ or /podcast/feed/
-        if (is_string($path) && preg_match('~(?:feed/podcast|podcast/feed)/?$~', $path)) {
+        if ($this->isValidPodcastFeedUrl()) {
             return;
         }
 
-        // Allow /?feed=podcast
-        if (is_string($query) && preg_match('~(?:^|&)feed=podcast(?:&|$)~', $query)) {
-            return;
-        }
-
-        // If we reach here, it's probably /podcast/ alone - reset feed flag so WordPress handles it normally
+        // Not a valid feed URL (e.g., /podcast/ archive page)
+        // Reset all feed-related flags and query vars
         global $wp_query;
         $wp_query->is_feed = false;
+        $wp_query->set('feed', '');
+        unset($wp_query->query_vars['feed']);
+
+        // Remove the feed action to prevent any RSS output
+        remove_all_actions('do_feed_podcast');
+
+        // Re-parse the request as a post type archive
+        if (post_type_exists('podcast')) {
+            $wp_query->is_post_type_archive = true;
+            $wp_query->is_archive = true;
+            $wp_query->set('post_type', 'podcast');
+
+            // Force WordPress to load the archive template instead of feed
+            add_filter('template_include', function ($template) {
+                // Let WordPress find the appropriate archive template
+                $new_template = get_post_type_archive_template();
+                if ($new_template) {
+                    return $new_template;
+                }
+                return get_archive_template() ?: $template;
+            }, 999);
+        }
     }
 
     /**
@@ -234,6 +301,12 @@ class Podcast
      */
     public function renderFeed(): void
     {
+        // Double-check we're on a valid feed URL before rendering RSS
+        if (!$this->isValidPodcastFeedUrl()) {
+            // Not a valid feed URL (e.g., /podcast/ archive page) - abort and let WordPress handle it
+            return;
+        }
+
         header('Content-Type: application/rss+xml; charset=UTF-8');
 
         $site_url = home_url('/');
