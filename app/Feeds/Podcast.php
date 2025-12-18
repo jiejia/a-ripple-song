@@ -325,6 +325,25 @@ class Podcast
     }
 
     /**
+     * Best-effort transcript MIME type from URL.
+     */
+    private function guessTranscriptType(string $url): string
+    {
+        $path = (string) (wp_parse_url($url, PHP_URL_PATH) ?? '');
+        $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+
+        return match ($ext) {
+            'txt' => 'text/plain',
+            'html', 'htm' => 'text/html',
+            'vtt' => 'text/vtt',
+            'srt' => 'application/srt',
+            'json' => 'application/json',
+            'pdf' => 'application/pdf',
+            default => 'text/html',
+        };
+    }
+
+    /**
      * Redirect `/?feed=podcast` to `/feed/podcast/` for better sharing/SEO.
      */
     public function redirectQueryFeedToPretty(): void
@@ -441,6 +460,13 @@ class Podcast
         $channel_owner_name = carbon_get_theme_option('crb_podcast_owner_name') ?: $channel_author;
         $channel_owner_email = carbon_get_theme_option('crb_podcast_owner_email') ?: get_bloginfo('admin_email');
         $channel_cover = $this->encodeUrlPathForRss((string) (carbon_get_theme_option('crb_podcast_cover') ?: ''));
+        $default_item_image = $channel_cover;
+        if ($default_item_image === '') {
+            $site_icon = get_site_icon_url(1400);
+            if (is_string($site_icon) && $site_icon !== '') {
+                $default_item_image = $this->encodeUrlPathForRss($site_icon);
+            }
+        }
         $channel_explicit = $this->normalizeItunesExplicit(carbon_get_theme_option('crb_podcast_explicit') ?: 'false', 'false');
         $channel_language = carbon_get_theme_option('crb_podcast_language') ?: (get_bloginfo('language') ?: 'en-US');
         $channel_category_primary = carbon_get_theme_option('crb_podcast_category_primary') ?: '';
@@ -535,7 +561,11 @@ class Podcast
                 $episode_number = get_post_meta($post_id, 'episode_number', true);
                 $season_number = get_post_meta($post_id, 'season_number', true);
                 $episode_author = get_post_meta($post_id, 'episode_author', true) ?: $channel_author;
-                $episode_image = $this->encodeUrlPathForRss($this->resolveMediaUrl($post_id, 'episode_image')) ?: $channel_cover;
+                $episode_image = $this->encodeUrlPathForRss($this->resolveMediaUrl($post_id, 'episode_image'));
+                if ($episode_image === '') {
+                    $episode_image = $default_item_image;
+                }
+                $transcript_url = $this->encodeUrlPathForRss($this->resolveMediaUrl($post_id, 'episode_transcript'));
                 $episode_subtitle = get_post_meta($post_id, 'episode_subtitle', true);
                 $episode_summary = get_post_meta($post_id, 'episode_summary', true);
                 $episode_block = get_post_meta($post_id, 'episode_block', true) ?: 'no';
@@ -569,6 +599,9 @@ class Podcast
             <?php endif; ?>
             <?php if ($episode_image) : ?>
             <itunes:image href="<?php echo esc_url($episode_image); ?>" />
+            <?php endif; ?>
+            <?php if ($transcript_url) : ?>
+            <podcast:transcript url="<?php echo esc_url($transcript_url); ?>" type="<?php echo esc_attr($this->guessTranscriptType($transcript_url)); ?>" />
             <?php endif; ?>
             <?php if (!empty($episode_number)) : ?>
             <itunes:episode><?php echo esc_html((int) $episode_number); ?></itunes:episode>
