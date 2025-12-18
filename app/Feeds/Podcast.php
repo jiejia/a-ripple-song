@@ -374,13 +374,20 @@ class Podcast
         $text = html_entity_decode($text, ENT_QUOTES | ENT_HTML5, 'UTF-8');
         $text = preg_replace('/\\s+/u', ' ', $text) ?? $text;
 
+        $text = preg_replace('/[\\x00-\\x08\\x0B\\x0C\\x0E-\\x1F\\x7F]/u', '', $text) ?? $text;
+        $text = str_replace(['**', '__'], '', $text);
+
         $text = preg_replace(
-            '/\\s*(?:\\[\\s*)?(?:&hellip;|…|\\.{3})(?:\\s*\\])?\\s*(?:continued|continue\\s+reading|read\\s+more)\\b\\s*$/iu',
+            '/\\s*(?:\\[\\s*)?(?:&hellip;|…|\\.{3})(?:\\s*\\])?\\s*(?:continued|continue\\s+reading|read\\s+more|\\x{7EE7}\\x{7EED}\\x{9605}\\x{8BFB}|\\x{7E7C}\\x{7E8C}\\x{95B1}\\x{8B80}|\\x{9605}\\x{8BFB}\\x{66F4}\\x{591A})\\s*$/iu',
             '',
             $text
         ) ?? $text;
 
-        $text = preg_replace('/\\s*(?:continued|continue\\s+reading|read\\s+more)\\b\\s*$/iu', '', $text) ?? $text;
+        $text = preg_replace(
+            '/\\s*(?:continued|continue\\s+reading|read\\s+more|\\x{7EE7}\\x{7EED}\\x{9605}\\x{8BFB}|\\x{7E7C}\\x{7E8C}\\x{95B1}\\x{8B80}|\\x{9605}\\x{8BFB}\\x{66F4}\\x{591A})\\s*$/iu',
+            '',
+            $text
+        ) ?? $text;
 
         return trim($text);
     }
@@ -423,7 +430,7 @@ class Podcast
             'order' => 'DESC',
         ]);
 
-        echo '<?xml version="1.0" encoding="UTF-8"?>';
+        echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
         ?>
 <rss version="2.0"
     xmlns:atom="http://www.w3.org/2005/Atom"
