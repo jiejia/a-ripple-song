@@ -366,6 +366,26 @@ class Podcast
     }
 
     /**
+     * Remove WordPress/theme excerpt suffixes like "&hellip; Continued" from RSS summary fields.
+     */
+    private function sanitizeRssSummary(string $text): string
+    {
+        $text = wp_strip_all_tags($text, true);
+        $text = html_entity_decode($text, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        $text = preg_replace('/\\s+/u', ' ', $text) ?? $text;
+
+        $text = preg_replace(
+            '/\\s*(?:\\[\\s*)?(?:&hellip;|…|\\.{3})(?:\\s*\\])?\\s*(?:continued|continue\\s+reading|read\\s+more)\\b\\s*$/iu',
+            '',
+            $text
+        ) ?? $text;
+
+        $text = preg_replace('/\\s*(?:continued|continue\\s+reading|read\\s+more)\\b\\s*$/iu', '', $text) ?? $text;
+
+        return trim($text);
+    }
+
+    /**
      * Render the podcast RSS feed.
      */
     public function renderFeed(): void
@@ -488,7 +508,8 @@ class Podcast
                 $episode_permalink = get_permalink();
                 $episode_guid = get_post_meta($post_id, 'episode_guid', true) ?: $episode_permalink;
 
-                $item_summary = $episode_summary ?: wp_strip_all_tags(get_the_excerpt(), true);
+                $item_summary = $episode_summary ?: get_the_excerpt();
+                $item_summary = $this->sanitizeRssSummary((string) $item_summary);
                 $content_html = apply_filters('the_content', get_the_content(null, false, $post_id));
                 $content_html = str_replace(']]>', ']]]]><![CDATA[>', (string) $content_html);
                 $pub_date = mysql2date('r', get_post_time('Y-m-d H:i:s', true, $post_id), false);
