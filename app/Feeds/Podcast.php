@@ -49,9 +49,27 @@ class Podcast
             return;
         }
 
-        // Fix the query - this is actually a post type archive, not a feed
+        // Fix the query - this is actually a page/archive, not a feed
         $query->is_feed = false;
         $query->set('feed', '');
+        unset($query->query_vars['feed']);
+
+        global $wp;
+        if (isset($wp) && $wp instanceof \WP) {
+            unset($wp->query_vars['feed']);
+        }
+
+        $podcast_page = get_page_by_path('podcast');
+        if ($podcast_page) {
+            $query->set('pagename', $podcast_page->post_name);
+            $query->set('page_id', $podcast_page->ID);
+            $query->set('post_type', 'page');
+            $query->is_page = true;
+            $query->is_singular = true;
+            $query->is_post_type_archive = false;
+            $query->is_archive = false;
+            return;
+        }
 
         if (post_type_exists('podcast')) {
             $query->is_post_type_archive = true;
