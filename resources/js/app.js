@@ -127,14 +127,25 @@ async function fetchMetrics(postIds = []) {
   }
 }
 
+function markMetricsReady() {
+  window.aripplesongMetricsReady = true;
+  window.dispatchEvent(new CustomEvent('aripplesong:metrics:ready'));
+}
+
 function hydrateMetricsFromDom() {
+  window.aripplesongMetricsReady = false;
   const viewEls = Array.from(document.querySelectorAll('.js-views-count'));
-  if (!viewEls.length) return;
+  if (!viewEls.length) {
+    markMetricsReady();
+    return;
+  }
 
   const ids = [...new Set(viewEls.map(el => Number(el.dataset.postId)).filter(Boolean))];
 
   fetchMetrics(ids).then(counts => {
-    if (!counts) return;
+    if (!counts) {
+      return;
+    }
 
     viewEls.forEach(el => {
       const id = Number(el.dataset.postId);
@@ -152,6 +163,8 @@ function hydrateMetricsFromDom() {
         el.textContent = entry.plays;
       }
     });
+  }).catch(() => null).then(() => {
+    markMetricsReady();
   });
 }
 
