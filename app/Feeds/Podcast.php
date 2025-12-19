@@ -362,6 +362,93 @@ class Podcast
     }
 
     /**
+     * Normalize stored CMB2 multicheck values into user IDs.
+     */
+    private function normalizeUserIds($raw): array
+    {
+        $ids = [];
+
+        if (is_array($raw)) {
+            foreach ($raw as $key => $value) {
+                if (is_numeric($key)) {
+                    $ids[] = (int) $key;
+                }
+                if (is_numeric($value)) {
+                    $ids[] = (int) $value;
+                }
+            }
+        } elseif (is_numeric($raw)) {
+            $ids[] = (int) $raw;
+        }
+
+        $ids = array_filter(array_unique($ids), static function ($id) {
+            return $id > 0;
+        });
+
+        return array_values($ids);
+    }
+
+    /**
+     * Build Podcasting 2.0 person entries for a role.
+     */
+    private function buildPersonEntries($rawIds, string $role): array
+    {
+        $ids = $this->normalizeUserIds($rawIds);
+        if (empty($ids)) {
+            return [];
+        }
+
+        $people = [];
+        foreach ($ids as $user_id) {
+            $user = get_userdata($user_id);
+            if (!$user) {
+                continue;
+            }
+
+            $name = $user->display_name ?: $user->user_nicename ?: $user->user_login;
+            if ($name === '') {
+                continue;
+            }
+
+            $person = [
+                'name' => $name,
+                'role' => $role,
+                'href' => $user->user_url ?: '',
+                'img' => get_avatar_url($user_id, ['size' => 300]) ?: '',
+            ];
+
+            $people[] = $person;
+        }
+
+        return $people;
+    }
+
+    /**
+     * Get episode-level people for Podcasting 2.0 person tags.
+     */
+    private function getEpisodePeople(int $post_id): array
+    {
+        $members = $this->buildPersonEntries(get_post_meta($post_id, 'members', true), 'host');
+        $guests = $this->buildPersonEntries(get_post_meta($post_id, 'guests', true), 'guest');
+
+        $people = array_merge($members, $guests);
+        if (empty($people)) {
+            return [];
+        }
+
+        $deduped = [];
+        foreach ($people as $person) {
+            $key = strtolower($person['name']) . '|' . $person['role'];
+            if (isset($deduped[$key])) {
+                continue;
+            }
+            $deduped[$key] = $person;
+        }
+
+        return array_values($deduped);
+    }
+
+    /**
      * Redirect `/?feed=podcast` to `/feed/podcast/` for better sharing/SEO.
      */
     public function redirectQueryFeedToPretty(): void
@@ -606,6 +693,7 @@ class Podcast
                 $episode_block = get_post_meta($post_id, 'episode_block', true) ?: 'no';
                 $episode_permalink = get_permalink();
                 $episode_guid = get_post_meta($post_id, 'episode_guid', true) ?: $episode_permalink;
+                $episode_people = $this->getEpisodePeople($post_id);
 
                 $item_summary = $episode_summary ?: get_the_excerpt();
                 $item_summary = $this->sanitizeRssSummary((string) $item_summary);
@@ -634,6 +722,23 @@ class Podcast
             <?php endif; ?>
             <?php if ($episode_image) : ?>
             <itunes:image href="<?php echo esc_url($episode_image); ?>" />
+            <?php endif; ?>
+            <?php if (!empty($episode_people)) : ?>
+                <?php foreach ($episode_people as $person) : ?>
+                    <?php
+                        $attrs = '';
+                        if (!empty($person['role'])) {
+                            $attrs .= ' role="' . esc_attr($person['role']) . '"';
+                        }
+                        if (!empty($person['href'])) {
+                            $attrs .= ' href="' . esc_url($person['href']) . '"';
+                        }
+                        if (!empty($person['img'])) {
+                            $attrs .= ' img="' . esc_url($person['img']) . '"';
+                        }
+                    ?>
+            <podcast:person<?php echo $attrs; ?>><?php echo esc_html($person['name']); ?></podcast:person>
+                <?php endforeach; ?>
             <?php endif; ?>
             <?php if ($transcript_url) : ?>
             <podcast:transcript url="<?php echo esc_url($transcript_url); ?>" type="<?php echo esc_attr($this->guessTranscriptType($transcript_url)); ?>" />
