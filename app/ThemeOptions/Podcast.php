@@ -570,41 +570,42 @@ class PodcastOptions
     private static function resolveLocalFilePath(string $url): ?string
     {
         $upload_dir = wp_get_upload_dir();
+        $basedir = isset($upload_dir['basedir']) ? (string) $upload_dir['basedir'] : '';
+        $basedir_real = $basedir !== '' ? realpath($basedir) : false;
+        $basedir_real = $basedir_real !== false ? wp_normalize_path($basedir_real) : false;
 
         // Check if URL matches upload directory
-        if (strpos($url, $upload_dir['baseurl']) === 0) {
-            $file_path = str_replace($upload_dir['baseurl'], $upload_dir['basedir'], $url);
-            if (file_exists($file_path)) {
-                return $file_path;
+        if ($basedir_real && isset($upload_dir['baseurl']) && strpos($url, $upload_dir['baseurl']) === 0) {
+            $candidate = str_replace($upload_dir['baseurl'], $upload_dir['basedir'], $url);
+            $candidate_real = realpath($candidate);
+            if ($candidate_real !== false) {
+                $candidate_real = wp_normalize_path($candidate_real);
+                if (strpos($candidate_real, $basedir_real . '/') === 0 || $candidate_real === $basedir_real) {
+                    return $candidate_real;
+                }
             }
         }
 
-        // Try site URL match
-        $site_url = site_url();
-        if (strpos($url, $site_url) === 0) {
-            $relative_path = str_replace($site_url, '', $url);
-            $file_path = ABSPATH . ltrim($relative_path, '/');
-            if (file_exists($file_path)) {
-                return $file_path;
-            }
-        }
+        // CDN/domain-mapped uploads URL: map by path fragment rather than full baseurl.
+        $uploads_url_path = isset($upload_dir['baseurl']) ? wp_parse_url($upload_dir['baseurl'], PHP_URL_PATH) : null;
+        $url_path = wp_parse_url($url, PHP_URL_PATH);
 
-        // Try home URL match
-        $home_url = home_url();
-        if (strpos($url, $home_url) === 0) {
-            $relative_path = str_replace($home_url, '', $url);
-            $file_path = ABSPATH . ltrim($relative_path, '/');
-            if (file_exists($file_path)) {
-                return $file_path;
-            }
-        }
-
-        // Parse URL path as fallback
-        $parsed = wp_parse_url($url);
-        if (isset($parsed['path'])) {
-            $file_path = ABSPATH . ltrim($parsed['path'], '/');
-            if (file_exists($file_path)) {
-                return $file_path;
+        if ($basedir_real
+            && is_string($uploads_url_path) && $uploads_url_path !== ''
+            && is_string($url_path) && $url_path !== ''
+            && strpos($url_path, $uploads_url_path) === 0
+        ) {
+            $relative = ltrim(substr($url_path, strlen($uploads_url_path)), '/');
+            $relative = $relative !== '' ? rawurldecode($relative) : '';
+            if ($relative !== '') {
+                $candidate = trailingslashit((string) $upload_dir['basedir']) . $relative;
+                $candidate_real = realpath($candidate);
+                if ($candidate_real !== false) {
+                    $candidate_real = wp_normalize_path($candidate_real);
+                    if (strpos($candidate_real, $basedir_real . '/') === 0 || $candidate_real === $basedir_real) {
+                        return $candidate_real;
+                    }
+                }
             }
         }
 
@@ -667,11 +668,15 @@ class PodcastOptions
         int $max_dimension,
         array $allowed_mimes
     ) {
+        if (function_exists('wp_http_validate_url') && !wp_http_validate_url($url)) {
+            return new \WP_Error('invalid_url', __('Podcast Cover URL is invalid.', 'sage'));
+        }
+
         // First, try HEAD request to check Content-Length
-        $head_response = wp_remote_head($url, [
+        $head_fn = function_exists('wp_safe_remote_head') ? 'wp_safe_remote_head' : 'wp_remote_head';
+        $head_response = $head_fn($url, [
             'timeout' => 10,
             'redirection' => 5,
-            'sslverify' => false,
         ]);
 
         if (!is_wp_error($head_response)) {
