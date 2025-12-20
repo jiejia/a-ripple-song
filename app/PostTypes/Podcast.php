@@ -287,6 +287,75 @@ class Podcast
         ]);
 
         $cmb->add_field([
+            'name' => __('iTunes Title (optional)', 'sage'),
+            'desc' => __('Optional. Apple Podcasts: overrides the episode title for <itunes:title>.', 'sage'),
+            'id' => 'itunes_title',
+            'type' => 'text',
+        ]);
+
+        $cmb->add_field([
+            'name' => __('Chapters (Podcasting 2.0)', 'sage'),
+            'desc' => __('Optional. Provide a chapters JSON URL/file for <podcast:chapters>.', 'sage'),
+            'id' => 'episode_chapters',
+            'type' => 'file',
+            'options' => [
+                'url' => true,
+            ],
+            'text' => [
+                'add_upload_file_text' => __('Add Chapters File', 'sage'),
+            ],
+        ]);
+
+        $cmb->add_field([
+            'name' => __('Chapters MIME Type', 'sage'),
+            'desc' => __('Optional. Defaults to application/json+chapters.', 'sage'),
+            'id' => 'episode_chapters_type',
+            'type' => 'text_medium',
+            'default' => 'application/json+chapters',
+        ]);
+
+        $soundbites_group = $cmb->add_field([
+            'id' => 'episode_soundbites',
+            'type' => 'group',
+            'name' => __('Soundbites (Podcasting 2.0)', 'sage'),
+            'desc' => __('Optional. Adds one or more <podcast:soundbite> tags.', 'sage'),
+            'options' => [
+                'group_title' => __('Soundbite {#}', 'sage'),
+                'add_button' => __('Add Soundbite', 'sage'),
+                'remove_button' => __('Remove Soundbite', 'sage'),
+                'sortable' => true,
+            ],
+        ]);
+
+        $cmb->add_group_field($soundbites_group, [
+            'name' => __('Start Time (seconds)', 'sage'),
+            'id' => 'start_time',
+            'type' => 'text_small',
+            'attributes' => [
+                'type' => 'number',
+                'min' => '0',
+                'step' => '0.01',
+            ],
+        ]);
+
+        $cmb->add_group_field($soundbites_group, [
+            'name' => __('Duration (seconds)', 'sage'),
+            'id' => 'duration',
+            'type' => 'text_small',
+            'attributes' => [
+                'type' => 'number',
+                'min' => '0.01',
+                'step' => '0.01',
+            ],
+        ]);
+
+        $cmb->add_group_field($soundbites_group, [
+            'name' => __('Title (optional)', 'sage'),
+            'id' => 'title',
+            'type' => 'text',
+        ]);
+
+        $cmb->add_field([
             'name' => __('Subtitle', 'sage'),
             'desc' => __('Optional. Short subtitle for iTunes.', 'sage'),
             'id' => 'episode_subtitle',

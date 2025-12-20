@@ -1004,123 +1004,123 @@ msgstr ""
 
 #: app/PostTypes/Podcast.php:172
 msgid "Audio Length (bytes)"
-msgstr ""
+msgstr "音訊大小（位元組）"
 
 #: app/PostTypes/Podcast.php:186
 msgid "Audio MIME Type"
-msgstr ""
+msgstr "音訊 MIME 類型"
 
 #: app/PostTypes/Podcast.php:197
 msgid "Explicit"
-msgstr ""
+msgstr "內容分級"
 
 #: app/PostTypes/Podcast.php:202
 msgid "clean"
-msgstr ""
+msgstr "clean"
 
 #: app/PostTypes/Podcast.php:214
 msgid "Episode Type"
-msgstr ""
+msgstr "單集類型"
 
 #: app/PostTypes/Podcast.php:219
 msgid "full"
-msgstr ""
+msgstr "full"
 
 #: app/PostTypes/Podcast.php:220
 msgid "trailer"
-msgstr ""
+msgstr "trailer"
 
 #: app/PostTypes/Podcast.php:221
 msgid "bonus"
-msgstr ""
+msgstr "bonus"
 
 #: app/PostTypes/Podcast.php:232
 msgid "Episode Number"
-msgstr ""
+msgstr "集數"
 
 #: app/PostTypes/Podcast.php:233
 msgid "Optional but recommended. Integer."
-msgstr ""
+msgstr "可選但建議填寫。整數。"
 
 #: app/PostTypes/Podcast.php:246
 msgid "Season Number"
-msgstr ""
+msgstr "季數"
 
 #: app/PostTypes/Podcast.php:247
 msgid "Optional. Integer."
-msgstr ""
+msgstr "可選。整數。"
 
 #: app/PostTypes/Podcast.php:260
 msgid "Episode Author (override)"
-msgstr ""
+msgstr "單集作者（覆寫）"
 
 #: app/PostTypes/Podcast.php:261
 msgid "Optional. Overrides channel author for this episode."
-msgstr ""
+msgstr "可選。覆寫此單集的頻道作者。"
 
 #: app/PostTypes/Podcast.php:267
 msgid "Episode Cover (square)"
-msgstr ""
+msgstr "單集封面（正方形）"
 
 #: app/PostTypes/Podcast.php:268
 msgid "Optional. Square 1400–3000px. Overrides channel cover."
-msgstr ""
+msgstr "可選。正方形 1400–3000px。覆寫頻道封面。"
 
 #: app/PostTypes/Podcast.php:290
 msgid "Subtitle"
-msgstr ""
+msgstr "副標題"
 
 #: app/PostTypes/Podcast.php:291
 msgid "Optional. Short subtitle for iTunes."
-msgstr ""
+msgstr "可選。iTunes 的短副標題。"
 
 #: app/PostTypes/Podcast.php:297
 msgid "Summary"
-msgstr ""
+msgstr "摘要"
 
 #: app/PostTypes/Podcast.php:298
 msgid "Optional. Plain text summary for iTunes."
-msgstr ""
+msgstr "可選。iTunes 純文字摘要。"
 
 #: app/PostTypes/Podcast.php:304
 msgid "Custom GUID (optional)"
-msgstr ""
+msgstr "自訂 GUID（可選）"
 
 #: app/PostTypes/Podcast.php:305
 msgid "Optional. If empty, feed uses WP permalink as GUID."
-msgstr ""
+msgstr "可選。留空則使用 WP 固定連結作為 GUID。"
 
 #: app/PostTypes/Podcast.php:311
 msgid "iTunes Block"
-msgstr ""
+msgstr "iTunes 屏蔽"
 
 #: app/PostTypes/Podcast.php:312
 msgid "Optional. yes = hide this episode in Apple Podcasts."
-msgstr ""
+msgstr "可選。yes = 在 Apple Podcasts 中隱藏此單集。"
 
 #: app/PostTypes/Podcast.php:317
 msgid "yes"
-msgstr ""
+msgstr "yes"
 
 #: app/PostTypes/Podcast.php:534
 msgid "Audio File is required."
-msgstr ""
+msgstr "音訊檔案為必填。"
 
 #: app/PostTypes/Podcast.php:572
 msgid "Audio File must be a valid URL (https recommended)."
-msgstr ""
+msgstr "音訊檔案必須是有效的 URL（建議 https）。"
 
 #: app/PostTypes/Podcast.php:589
 msgid "Explicit must be clean or explicit."
-msgstr ""
+msgstr "內容分級必須為 clean 或 explicit。"
 
 #: app/PostTypes/Podcast.php:593
 msgid "Episode Type must be full, trailer, or bonus."
-msgstr ""
+msgstr "單集類型必須為 full、trailer 或 bonus。"
 
 #: app/PostTypes/Podcast.php:599
 msgid "Podcast validation failed"
-msgstr ""
+msgstr "播客驗證失敗"
 
 #: app/widgets.php:254
 msgid "Select Banner Image"
@@ -1155,35 +1155,35 @@ msgstr ""
 #: app/PostTypes/Podcast.php:173
 #: app/PostTypes/Podcast.php:187
 msgid "Auto detected from \"Audio File\" on save."
-msgstr ""
+msgstr "儲存時從「音訊檔案」自動識別。"
 
 #: app/PostTypes/Podcast.php:277
 msgid "Transcript (optional)"
-msgstr ""
+msgstr "文字稿（可選）"
 
 #: app/PostTypes/Podcast.php:278
 msgid "Optional. Upload a transcript file (vtt/srt/txt/pdf) or enter a transcript URL (https)."
-msgstr ""
+msgstr "可選。上傳文字稿檔案（vtt/srt/txt/pdf）或填寫文字稿 URL（https）。"
 
 #: app/PostTypes/Podcast.php:285
 msgid "Add Transcript"
-msgstr ""
+msgstr "新增文字稿"
 
 #: app/PostTypes/Podcast.php:576
 msgid "Duration (seconds) could not be auto detected from Audio File."
-msgstr ""
+msgstr "無法從「音訊檔案」自動識別時長（秒）。"
 
 #: app/PostTypes/Podcast.php:580
 msgid "Audio Length (bytes) could not be auto detected from Audio File."
-msgstr ""
+msgstr "無法從「音訊檔案」自動識別音訊大小（位元組）。"
 
 #: app/PostTypes/Podcast.php:584
 msgid "Audio MIME Type could not be auto detected from Audio File."
-msgstr ""
+msgstr "無法從「音訊檔案」自動識別音訊 MIME 類型。"
 
 #: app/PostTypes/Podcast.php:1000
 msgid "Episode transcript URL"
-msgstr ""
+msgstr "單集文字稿 URL"
 
 #: app/ThemeOptions/General.php:57
 msgid "Upload a logo image (220px × 32px). You will be able to crop the image after upload."
@@ -1262,41 +1262,41 @@ msgstr ""
 
 #: app/ThemeOptions/Podcast.php:112
 msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple recommends keeping the file under 512KB. Will be validated on save."
-msgstr ""
+msgstr "必填。用於 <itunes:image> 的正方形 JPG/PNG（1400–3000px）。Apple 建議檔案小於 512KB。儲存時會進行驗證。"
 
 #: app/ThemeOptions/Podcast.php:479
 msgid "Podcast Cover validation failed:"
-msgstr ""
+msgstr "播客封面驗證失敗："
 
 #: app/ThemeOptions/Podcast.php:516
 msgid "Podcast Cover URL is invalid."
-msgstr ""
+msgstr "播客封面 URL 無效。"
 
 #: app/ThemeOptions/Podcast.php:595
 #: app/ThemeOptions/Podcast.php:641
 #, php-format
 msgid "Podcast Cover file is too large (%1$s). Please compress it to under %2$s."
-msgstr ""
+msgstr "播客封面檔案過大（%1$s）。請壓縮至小於 %2$s。"
 
 #: app/ThemeOptions/Podcast.php:656
 #, php-format
 msgid "Could not download Podcast Cover for validation: %s"
-msgstr ""
+msgstr "無法下載播客封面以進行驗證：%s"
 
 #: app/ThemeOptions/Podcast.php:702
 #, php-format
 msgid "Podcast Cover must be square. Current dimensions: %1$d × %2$d px."
-msgstr ""
+msgstr "播客封面必須為正方形。目前尺寸：%1$d × %2$d px。"
 
 #: app/ThemeOptions/Podcast.php:714
 #, php-format
 msgid "Podcast Cover resolution is too small. Minimum: %1$d × %1$d px. Current: %2$d × %2$d px."
-msgstr ""
+msgstr "播客封面解析度過低。最小：%1$d × %1$d px。目前：%2$d × %2$d px。"
 
 #: app/ThemeOptions/Podcast.php:726
 #, php-format
 msgid "Podcast Cover resolution is too large. Maximum: %1$d × %1$d px. Current: %2$d × %2$d px."
-msgstr ""
+msgstr "播客封面解析度過高。最大：%1$d × %1$d px。目前：%2$d × %2$d px。"
 
 #: resources/views/partials/entry-meta.blade.php:26
 msgid "views"
@@ -1415,3 +1415,120 @@ msgstr ""
 msgctxt "Font size name"
 msgid "2xl"
 msgstr ""
+
+msgid "iTunes Type (itunes:type)"
+msgstr "iTunes 類型（itunes:type）"
+
+msgid "(not set)"
+msgstr "（未設定）"
+
+msgid "episodic"
+msgstr "episodic（分集）"
+
+msgid "serial"
+msgstr "serial（連載）"
+
+msgid "Optional. Apple Podcasts: episodic or serial."
+msgstr "可選。Apple Podcasts：episodic 或 serial。"
+
+msgid "iTunes Title (optional)"
+msgstr "iTunes 標題（可選）"
+
+msgid "Optional. Use only if you need a separate Apple-facing title."
+msgstr "可選。僅在需要另外提供 Apple 顯示標題時填寫。"
+
+msgid "iTunes Block (itunes:block)"
+msgstr "iTunes 封鎖（itunes:block）"
+
+msgid "Optional. yes = hide this show in Apple Podcasts."
+msgstr "可選。yes = 在 Apple Podcasts 中隱藏此節目。"
+
+msgid "iTunes Complete (itunes:complete)"
+msgstr "iTunes 完結（itunes:complete）"
+
+msgid "Optional. yes = this show is complete (no more episodes)."
+msgstr "可選。yes = 節目已完結（不再更新）。"
+
+msgid "iTunes New Feed URL (itunes:new-feed-url)"
+msgstr "iTunes 新 Feed URL（itunes:new-feed-url）"
+
+msgid "Optional. Only for moving your show to a new RSS feed URL."
+msgstr "可選。僅在搬移到新的 RSS Feed URL 時填寫。"
+
+msgid "podcast:locked owner (optional)"
+msgstr "podcast:locked owner（可選）"
+
+msgid "Optional. Podcasting 2.0: email used to verify ownership during moves."
+msgstr "可選。Podcasting 2.0：搬移/匯入時用於驗證擁有權的電子郵件。"
+
+msgid "Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
+msgstr "Apple Podcasts 驗證碼（podcast:txt purpose=\"applepodcastsverify\"）"
+
+msgid "Optional. Used by Apple Podcasts to verify feed ownership."
+msgstr "可選。用於 Apple Podcasts 驗證 feed 擁有權。"
+
+msgid "Podcasting 2.0 Funding Links (podcast:funding)"
+msgstr "Podcasting 2.0 贊助連結（podcast:funding）"
+
+msgid "Optional. If empty, no podcast:funding tags will be generated. URLs should be https."
+msgstr "可選。留空則不產生 podcast:funding 標籤。URL 建議使用 https。"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Required for each entry. Use https."
+msgstr "每筆必填。請使用 https。"
+
+msgid "Label"
+msgstr "顯示文字"
+
+msgid "Optional display text (max 128 chars recommended)."
+msgstr "可選顯示文字（建議不超過 128 個字元）。"
+
+msgid "Generator (optional)"
+msgstr "Generator（可選）"
+
+msgid "Optional. If empty, generator tag will not be included."
+msgstr "可選。留空則不包含 generator 標籤。"
+
+msgid "Optional. Apple Podcasts: overrides the episode title for <itunes:title>."
+msgstr "可選。Apple Podcasts：覆寫此集的 <itunes:title> 標題。"
+
+msgid "Chapters (Podcasting 2.0)"
+msgstr "章節（Podcasting 2.0）"
+
+msgid "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
+msgstr "可選。為 <podcast:chapters> 提供章節 JSON 的 URL/檔案。"
+
+msgid "Add Chapters File"
+msgstr "新增章節檔案"
+
+msgid "Chapters MIME Type"
+msgstr "章節 MIME 類型"
+
+msgid "Optional. Defaults to application/json+chapters."
+msgstr "可選。預設 application/json+chapters。"
+
+msgid "Soundbites (Podcasting 2.0)"
+msgstr "精華片段（Podcasting 2.0）"
+
+msgid "Optional. Adds one or more <podcast:soundbite> tags."
+msgstr "可選。產生一個或多個 <podcast:soundbite> 標籤。"
+
+msgid "Soundbite {#}"
+msgstr "片段 {#}"
+
+msgid "Add Soundbite"
+msgstr "新增片段"
+
+msgid "Remove Soundbite"
+msgstr "移除片段"
+
+msgid "Start Time (seconds)"
+msgstr "開始時間（秒）"
+
+msgid "Duration (seconds)"
+msgstr "時長（秒）"
+
+msgid "Title (optional)"
+msgstr "標題（可選）"

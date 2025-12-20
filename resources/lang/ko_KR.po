@@ -1004,123 +1004,123 @@ msgstr ""
 
 #: app/PostTypes/Podcast.php:172
 msgid "Audio Length (bytes)"
-msgstr ""
+msgstr "오디오 크기(바이트)"
 
 #: app/PostTypes/Podcast.php:186
 msgid "Audio MIME Type"
-msgstr ""
+msgstr "오디오 MIME 유형"
 
 #: app/PostTypes/Podcast.php:197
 msgid "Explicit"
-msgstr ""
+msgstr "노골적(Explicit)"
 
 #: app/PostTypes/Podcast.php:202
 msgid "clean"
-msgstr ""
+msgstr "clean"
 
 #: app/PostTypes/Podcast.php:214
 msgid "Episode Type"
-msgstr ""
+msgstr "에피소드 유형"
 
 #: app/PostTypes/Podcast.php:219
 msgid "full"
-msgstr ""
+msgstr "full"
 
 #: app/PostTypes/Podcast.php:220
 msgid "trailer"
-msgstr ""
+msgstr "trailer"
 
 #: app/PostTypes/Podcast.php:221
 msgid "bonus"
-msgstr ""
+msgstr "bonus"
 
 #: app/PostTypes/Podcast.php:232
 msgid "Episode Number"
-msgstr ""
+msgstr "에피소드 번호"
 
 #: app/PostTypes/Podcast.php:233
 msgid "Optional but recommended. Integer."
-msgstr ""
+msgstr "선택 사항이지만 권장. 정수."
 
 #: app/PostTypes/Podcast.php:246
 msgid "Season Number"
-msgstr ""
+msgstr "시즌 번호"
 
 #: app/PostTypes/Podcast.php:247
 msgid "Optional. Integer."
-msgstr ""
+msgstr "선택 사항. 정수."
 
 #: app/PostTypes/Podcast.php:260
 msgid "Episode Author (override)"
-msgstr ""
+msgstr "에피소드 작성자(재정의)"
 
 #: app/PostTypes/Podcast.php:261
 msgid "Optional. Overrides channel author for this episode."
-msgstr ""
+msgstr "선택 사항. 이 에피소드에서 채널 작성자를 재정의합니다."
 
 #: app/PostTypes/Podcast.php:267
 msgid "Episode Cover (square)"
-msgstr ""
+msgstr "에피소드 커버(정사각형)"
 
 #: app/PostTypes/Podcast.php:268
 msgid "Optional. Square 1400–3000px. Overrides channel cover."
-msgstr ""
+msgstr "선택 사항. 정사각형 1400–3000px. 채널 커버를 재정의합니다."
 
 #: app/PostTypes/Podcast.php:290
 msgid "Subtitle"
-msgstr ""
+msgstr "부제"
 
 #: app/PostTypes/Podcast.php:291
 msgid "Optional. Short subtitle for iTunes."
-msgstr ""
+msgstr "선택 사항. iTunes용 짧은 부제."
 
 #: app/PostTypes/Podcast.php:297
 msgid "Summary"
-msgstr ""
+msgstr "요약"
 
 #: app/PostTypes/Podcast.php:298
 msgid "Optional. Plain text summary for iTunes."
-msgstr ""
+msgstr "선택 사항. iTunes용 일반 텍스트 요약."
 
 #: app/PostTypes/Podcast.php:304
 msgid "Custom GUID (optional)"
-msgstr ""
+msgstr "사용자 지정 GUID(선택 사항)"
 
 #: app/PostTypes/Podcast.php:305
 msgid "Optional. If empty, feed uses WP permalink as GUID."
-msgstr ""
+msgstr "선택 사항. 비어 있으면 피드는 WP 고정 링크를 GUID로 사용합니다."
 
 #: app/PostTypes/Podcast.php:311
 msgid "iTunes Block"
-msgstr ""
+msgstr "iTunes 차단"
 
 #: app/PostTypes/Podcast.php:312
 msgid "Optional. yes = hide this episode in Apple Podcasts."
-msgstr ""
+msgstr "선택 사항. yes = Apple Podcasts에서 이 에피소드를 숨깁니다."
 
 #: app/PostTypes/Podcast.php:317
 msgid "yes"
-msgstr ""
+msgstr "yes"
 
 #: app/PostTypes/Podcast.php:534
 msgid "Audio File is required."
-msgstr ""
+msgstr "오디오 파일은 필수입니다."
 
 #: app/PostTypes/Podcast.php:572
 msgid "Audio File must be a valid URL (https recommended)."
-msgstr ""
+msgstr "오디오 파일은 유효한 URL이어야 합니다(https 권장)."
 
 #: app/PostTypes/Podcast.php:589
 msgid "Explicit must be clean or explicit."
-msgstr ""
+msgstr "Explicit은 clean 또는 explicit이어야 합니다."
 
 #: app/PostTypes/Podcast.php:593
 msgid "Episode Type must be full, trailer, or bonus."
-msgstr ""
+msgstr "에피소드 유형은 full, trailer 또는 bonus여야 합니다."
 
 #: app/PostTypes/Podcast.php:599
 msgid "Podcast validation failed"
-msgstr ""
+msgstr "팟캐스트 유효성 검사에 실패했습니다"
 
 #: app/widgets.php:254
 msgid "Select Banner Image"
@@ -1155,35 +1155,35 @@ msgstr ""
 #: app/PostTypes/Podcast.php:173
 #: app/PostTypes/Podcast.php:187
 msgid "Auto detected from \"Audio File\" on save."
-msgstr ""
+msgstr "저장 시 \"Audio File\"에서 자동으로 감지됩니다."
 
 #: app/PostTypes/Podcast.php:277
 msgid "Transcript (optional)"
-msgstr ""
+msgstr "대본(선택 사항)"
 
 #: app/PostTypes/Podcast.php:278
 msgid "Optional. Upload a transcript file (vtt/srt/txt/pdf) or enter a transcript URL (https)."
-msgstr ""
+msgstr "선택 사항. 대본 파일(vtt/srt/txt/pdf)을 업로드하거나 대본 URL(https)을 입력하세요."
 
 #: app/PostTypes/Podcast.php:285
 msgid "Add Transcript"
-msgstr ""
+msgstr "대본 추가"
 
 #: app/PostTypes/Podcast.php:576
 msgid "Duration (seconds) could not be auto detected from Audio File."
-msgstr ""
+msgstr "Audio File에서 재생 시간(초)을 자동으로 감지할 수 없습니다."
 
 #: app/PostTypes/Podcast.php:580
 msgid "Audio Length (bytes) could not be auto detected from Audio File."
-msgstr ""
+msgstr "Audio File에서 오디오 크기(바이트)를 자동으로 감지할 수 없습니다."
 
 #: app/PostTypes/Podcast.php:584
 msgid "Audio MIME Type could not be auto detected from Audio File."
-msgstr ""
+msgstr "Audio File에서 오디오 MIME 유형을 자동으로 감지할 수 없습니다."
 
 #: app/PostTypes/Podcast.php:1000
 msgid "Episode transcript URL"
-msgstr ""
+msgstr "에피소드 대본 URL"
 
 #: app/ThemeOptions/General.php:57
 msgid "Upload a logo image (220px × 32px). You will be able to crop the image after upload."
@@ -1262,41 +1262,41 @@ msgstr ""
 
 #: app/ThemeOptions/Podcast.php:112
 msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple recommends keeping the file under 512KB. Will be validated on save."
-msgstr ""
+msgstr "필수. <itunes:image>용 1400–3000px 정사각형 JPG/PNG. Apple은 파일을 512KB 미만으로 유지할 것을 권장합니다. 저장 시 검증됩니다."
 
 #: app/ThemeOptions/Podcast.php:479
 msgid "Podcast Cover validation failed:"
-msgstr ""
+msgstr "팟캐스트 커버 검증 실패:"
 
 #: app/ThemeOptions/Podcast.php:516
 msgid "Podcast Cover URL is invalid."
-msgstr ""
+msgstr "팟캐스트 커버 URL이 올바르지 않습니다."
 
 #: app/ThemeOptions/Podcast.php:595
 #: app/ThemeOptions/Podcast.php:641
 #, php-format
 msgid "Podcast Cover file is too large (%1$s). Please compress it to under %2$s."
-msgstr ""
+msgstr "팟캐스트 커버 파일이 너무 큽니다(%1$s). %2$s 미만으로 압축하세요."
 
 #: app/ThemeOptions/Podcast.php:656
 #, php-format
 msgid "Could not download Podcast Cover for validation: %s"
-msgstr ""
+msgstr "검증을 위해 팟캐스트 커버를 다운로드할 수 없습니다: %s"
 
 #: app/ThemeOptions/Podcast.php:702
 #, php-format
 msgid "Podcast Cover must be square. Current dimensions: %1$d × %2$d px."
-msgstr ""
+msgstr "팟캐스트 커버는 정사각형이어야 합니다. 현재 크기: %1$d × %2$d px."
 
 #: app/ThemeOptions/Podcast.php:714
 #, php-format
 msgid "Podcast Cover resolution is too small. Minimum: %1$d × %1$d px. Current: %2$d × %2$d px."
-msgstr ""
+msgstr "팟캐스트 커버 해상도가 너무 낮습니다. 최소: %1$d × %1$d px. 현재: %2$d × %2$d px."
 
 #: app/ThemeOptions/Podcast.php:726
 #, php-format
 msgid "Podcast Cover resolution is too large. Maximum: %1$d × %1$d px. Current: %2$d × %2$d px."
-msgstr ""
+msgstr "팟캐스트 커버 해상도가 너무 높습니다. 최대: %1$d × %1$d px. 현재: %2$d × %2$d px."
 
 #: resources/views/partials/entry-meta.blade.php:26
 msgid "views"
@@ -1415,3 +1415,120 @@ msgstr ""
 msgctxt "Font size name"
 msgid "2xl"
 msgstr ""
+
+msgid "iTunes Type (itunes:type)"
+msgstr "iTunes 유형(itunes:type)"
+
+msgid "(not set)"
+msgstr "(설정 안 함)"
+
+msgid "episodic"
+msgstr "episodic"
+
+msgid "serial"
+msgstr "serial"
+
+msgid "Optional. Apple Podcasts: episodic or serial."
+msgstr "선택 사항. Apple Podcasts: episodic 또는 serial."
+
+msgid "iTunes Title (optional)"
+msgstr "iTunes 제목(선택)"
+
+msgid "Optional. Use only if you need a separate Apple-facing title."
+msgstr "선택 사항. Apple용 별도 제목이 필요할 때만 사용하세요."
+
+msgid "iTunes Block (itunes:block)"
+msgstr "iTunes 차단(itunes:block)"
+
+msgid "Optional. yes = hide this show in Apple Podcasts."
+msgstr "선택 사항. yes = Apple Podcasts에서 이 쇼를 숨깁니다."
+
+msgid "iTunes Complete (itunes:complete)"
+msgstr "iTunes 완료(itunes:complete)"
+
+msgid "Optional. yes = this show is complete (no more episodes)."
+msgstr "선택 사항. yes = 쇼가 완료됨(더 이상 에피소드 없음)."
+
+msgid "iTunes New Feed URL (itunes:new-feed-url)"
+msgstr "iTunes 새 피드 URL(itunes:new-feed-url)"
+
+msgid "Optional. Only for moving your show to a new RSS feed URL."
+msgstr "선택 사항. 새로운 RSS 피드 URL로 이동할 때만 사용합니다."
+
+msgid "podcast:locked owner (optional)"
+msgstr "podcast:locked owner(선택)"
+
+msgid "Optional. Podcasting 2.0: email used to verify ownership during moves."
+msgstr "선택 사항. Podcasting 2.0: 이동 시 소유권 확인에 사용할 이메일."
+
+msgid "Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
+msgstr "Apple Podcasts 확인 코드(podcast:txt purpose=\"applepodcastsverify\")"
+
+msgid "Optional. Used by Apple Podcasts to verify feed ownership."
+msgstr "선택 사항. Apple Podcasts에서 피드 소유권을 확인하는 데 사용합니다."
+
+msgid "Podcasting 2.0 Funding Links (podcast:funding)"
+msgstr "Podcasting 2.0 후원 링크(podcast:funding)"
+
+msgid "Optional. If empty, no podcast:funding tags will be generated. URLs should be https."
+msgstr "선택 사항. 비어 있으면 podcast:funding 태그가 생성되지 않습니다. URL은 https를 권장합니다."
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Required for each entry. Use https."
+msgstr "각 항목에 필수. https를 사용하세요."
+
+msgid "Label"
+msgstr "라벨"
+
+msgid "Optional display text (max 128 chars recommended)."
+msgstr "선택 표시 텍스트(권장 최대 128자)."
+
+msgid "Generator (optional)"
+msgstr "Generator(선택)"
+
+msgid "Optional. If empty, generator tag will not be included."
+msgstr "선택 사항. 비어 있으면 generator 태그가 포함되지 않습니다."
+
+msgid "Optional. Apple Podcasts: overrides the episode title for <itunes:title>."
+msgstr "선택 사항. Apple Podcasts: <itunes:title>용 에피소드 제목을 덮어씁니다."
+
+msgid "Chapters (Podcasting 2.0)"
+msgstr "챕터(Podcasting 2.0)"
+
+msgid "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
+msgstr "선택 사항. <podcast:chapters>용 챕터 JSON URL/파일을 제공합니다."
+
+msgid "Add Chapters File"
+msgstr "챕터 파일 추가"
+
+msgid "Chapters MIME Type"
+msgstr "챕터 MIME 유형"
+
+msgid "Optional. Defaults to application/json+chapters."
+msgstr "선택 사항. 기본값은 application/json+chapters 입니다."
+
+msgid "Soundbites (Podcasting 2.0)"
+msgstr "사운드바이트(Podcasting 2.0)"
+
+msgid "Optional. Adds one or more <podcast:soundbite> tags."
+msgstr "선택 사항. 하나 이상의 <podcast:soundbite> 태그를 추가합니다."
+
+msgid "Soundbite {#}"
+msgstr "사운드바이트 {#}"
+
+msgid "Add Soundbite"
+msgstr "사운드바이트 추가"
+
+msgid "Remove Soundbite"
+msgstr "사운드바이트 제거"
+
+msgid "Start Time (seconds)"
+msgstr "시작 시간(초)"
+
+msgid "Duration (seconds)"
+msgstr "지속 시간(초)"
+
+msgid "Title (optional)"
+msgstr "제목(선택)"

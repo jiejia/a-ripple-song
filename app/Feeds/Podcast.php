@@ -186,7 +186,17 @@ class Podcast
      */
     private function getCanonicalFeedUrl(): string
     {
+        $permalink_structure = get_option('permalink_structure');
+
+        if (empty($permalink_structure)) {
+            return add_query_arg('feed', 'podcast', home_url('/'));
+        }
+
         if ($this->prettyPodcastFeedIsRegistered()) {
+            if (is_string($permalink_structure) && strpos($permalink_structure, '/index.php/') === 0) {
+                return home_url('/index.php/feed/podcast/');
+            }
+
             return home_url('/feed/podcast/');
         }
 
@@ -461,11 +471,12 @@ class Podcast
             return;
         }
 
-        if (!$this->prettyPodcastFeedIsRegistered()) {
+        $canonical = $this->getCanonicalFeedUrl();
+        if (strpos($canonical, 'feed=podcast') !== false) {
             return;
         }
 
-        wp_safe_redirect(home_url('/feed/podcast/'), 301);
+        wp_safe_redirect($canonical, 301);
         exit;
     }
 
@@ -586,7 +597,16 @@ class Podcast
         $channel_category_secondary = carbon_get_theme_option('crb_podcast_category_secondary') ?: '';
         $channel_copyright = carbon_get_theme_option('crb_podcast_copyright') ?: '';
         $podcast_locked = carbon_get_theme_option('crb_podcast_locked') ?: 'yes';
+        $podcast_locked_owner = carbon_get_theme_option('crb_podcast_locked_owner') ?: '';
         $podcast_guid = carbon_get_theme_option('crb_podcast_guid') ?: $site_url;
+        $itunes_type = carbon_get_theme_option('crb_podcast_itunes_type') ?: '';
+        $itunes_title = carbon_get_theme_option('crb_podcast_itunes_title') ?: '';
+        $itunes_block = carbon_get_theme_option('crb_podcast_itunes_block') ?: 'no';
+        $itunes_complete = carbon_get_theme_option('crb_podcast_itunes_complete') ?: 'no';
+        $itunes_new_feed_url = carbon_get_theme_option('crb_podcast_itunes_new_feed_url') ?: '';
+        $generator = carbon_get_theme_option('crb_podcast_generator') ?: '';
+        $apple_verify_code = carbon_get_theme_option('crb_podcast_apple_verify') ?: '';
+        $podcast_funding = carbon_get_theme_option('crb_podcast_funding') ?: [];
 
         $query = new \WP_Query([
             'post_type' => 'podcast',
@@ -621,6 +641,9 @@ class Podcast
         <?php if ($channel_subtitle) : ?>
         <itunes:subtitle><?php echo esc_html($channel_subtitle); ?></itunes:subtitle>
         <?php endif; ?>
+        <?php if ($itunes_title) : ?>
+        <itunes:title><?php echo esc_html($itunes_title); ?></itunes:title>
+        <?php endif; ?>
         <itunes:author><?php echo esc_html($channel_author); ?></itunes:author>
         <itunes:summary><![CDATA[<?php echo $this->escapeCdata((string) $channel_description); ?>]]></itunes:summary>
         <itunes:explicit><?php echo esc_html($channel_explicit ?: 'false'); ?></itunes:explicit>
@@ -649,8 +672,53 @@ class Podcast
             }
         }
         ?>
-        <podcast:locked><?php echo esc_html($podcast_locked); ?></podcast:locked>
+        <?php
+            $locked_owner_attr = '';
+            $locked_owner = trim((string) $podcast_locked_owner);
+            if ($locked_owner !== '' && is_email($locked_owner)) {
+                $locked_owner_attr = ' owner="' . esc_attr($locked_owner) . '"';
+            }
+        ?>
+        <podcast:locked<?php echo $locked_owner_attr; ?>><?php echo esc_html($podcast_locked); ?></podcast:locked>
         <podcast:guid><?php echo esc_html($podcast_guid); ?></podcast:guid>
+        <?php if ($itunes_type) : ?>
+        <itunes:type><?php echo esc_html($itunes_type); ?></itunes:type>
+        <?php endif; ?>
+        <?php if ($itunes_new_feed_url && preg_match('~^https?://~i', $itunes_new_feed_url)) : ?>
+        <itunes:new-feed-url><?php echo esc_url($itunes_new_feed_url); ?></itunes:new-feed-url>
+        <?php endif; ?>
+        <?php if ($itunes_block === 'yes') : ?>
+        <itunes:block>yes</itunes:block>
+        <?php endif; ?>
+        <?php if ($itunes_complete === 'yes') : ?>
+        <itunes:complete>yes</itunes:complete>
+        <?php endif; ?>
+        <?php if ($generator) : ?>
+        <generator><?php echo esc_html($generator); ?></generator>
+        <?php endif; ?>
+        <?php if ($apple_verify_code) : ?>
+        <podcast:txt purpose="applepodcastsverify"><?php echo esc_html($apple_verify_code); ?></podcast:txt>
+        <?php endif; ?>
+        <?php
+            if (is_array($podcast_funding) && !empty($podcast_funding)) :
+                foreach ($podcast_funding as $funding) :
+                    if (!is_array($funding)) {
+                        continue;
+                    }
+                    $funding_url = trim((string) ($funding['url'] ?? ''));
+                    $funding_label = trim((string) ($funding['label'] ?? ''));
+                    if ($funding_url === '') {
+                        continue;
+                    }
+                    if (!preg_match('~^https://~i', $funding_url) && !preg_match('~^https?://localhost(?::\\d+)?/~i', $funding_url)) {
+                        continue;
+                    }
+        ?>
+        <podcast:funding url="<?php echo esc_url($funding_url); ?>"><?php echo esc_html($funding_label); ?></podcast:funding>
+                <?php
+                endforeach;
+            endif;
+        ?>
         <lastBuildDate><?php echo esc_html($last_build_date); ?></lastBuildDate>
         <?php
         if ($query->have_posts()) :
@@ -693,7 +761,11 @@ class Podcast
                 $episode_block = get_post_meta($post_id, 'episode_block', true) ?: 'no';
                 $episode_permalink = get_permalink();
                 $episode_guid = get_post_meta($post_id, 'episode_guid', true) ?: $episode_permalink;
+                $episode_itunes_title = get_post_meta($post_id, 'itunes_title', true);
                 $episode_people = $this->getEpisodePeople($post_id);
+                $episode_chapters_url = $this->encodeUrlPathForRss($this->resolveMediaUrl($post_id, 'episode_chapters'));
+                $episode_chapters_type = get_post_meta($post_id, 'episode_chapters_type', true) ?: 'application/json+chapters';
+                $episode_soundbites = get_post_meta($post_id, 'episode_soundbites', true);
 
                 $item_summary = $episode_summary ?: get_the_excerpt();
                 $item_summary = $this->sanitizeRssSummary((string) $item_summary);
@@ -717,6 +789,9 @@ class Podcast
             <?php endif; ?>
             <itunes:explicit><?php echo esc_html($episode_explicit ?: $channel_explicit ?: 'false'); ?></itunes:explicit>
             <itunes:author><?php echo esc_html($episode_author); ?></itunes:author>
+            <?php if (!empty($episode_itunes_title)) : ?>
+            <itunes:title><?php echo esc_html((string) $episode_itunes_title); ?></itunes:title>
+            <?php endif; ?>
             <?php if ($episode_subtitle) : ?>
             <itunes:subtitle><?php echo esc_html($episode_subtitle); ?></itunes:subtitle>
             <?php endif; ?>
@@ -743,6 +818,31 @@ class Podcast
             <?php if ($transcript_url) : ?>
             <podcast:transcript url="<?php echo esc_url($transcript_url); ?>" type="<?php echo esc_attr($this->guessTranscriptType($transcript_url)); ?>" />
             <?php endif; ?>
+            <?php if ($episode_chapters_url && (preg_match('~^https://~i', $episode_chapters_url) || preg_match('~^https?://localhost(?::\\d+)?/~i', $episode_chapters_url))) : ?>
+            <podcast:chapters url="<?php echo esc_url($episode_chapters_url); ?>" type="<?php echo esc_attr((string) $episode_chapters_type); ?>" />
+            <?php endif; ?>
+            <?php
+                if (is_array($episode_soundbites) && !empty($episode_soundbites)) :
+                    foreach ($episode_soundbites as $soundbite) :
+                        if (!is_array($soundbite)) {
+                            continue;
+                        }
+                        $start = isset($soundbite['start_time']) ? (float) $soundbite['start_time'] : null;
+                        $duration = isset($soundbite['duration']) ? (float) $soundbite['duration'] : null;
+                        if ($start === null || $duration === null || $start < 0 || $duration <= 0) {
+                            continue;
+                        }
+                        $sb_title = trim((string) ($soundbite['title'] ?? ''));
+            ?>
+            <?php if ($sb_title !== '') : ?>
+            <podcast:soundbite startTime="<?php echo esc_attr($start); ?>" duration="<?php echo esc_attr($duration); ?>"><?php echo esc_html($sb_title); ?></podcast:soundbite>
+            <?php else : ?>
+            <podcast:soundbite startTime="<?php echo esc_attr($start); ?>" duration="<?php echo esc_attr($duration); ?>" />
+            <?php endif; ?>
+            <?php
+                    endforeach;
+                endif;
+            ?>
             <?php if (!empty($episode_number)) : ?>
             <itunes:episode><?php echo esc_html((int) $episode_number); ?></itunes:episode>
             <?php endif; ?>

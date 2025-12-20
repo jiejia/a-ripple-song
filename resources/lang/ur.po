@@ -1006,123 +1006,123 @@ msgstr ""
 
 #: app/PostTypes/Podcast.php:172
 msgid "Audio Length (bytes)"
-msgstr ""
+msgstr "آڈیو سائز (بائٹس)"
 
 #: app/PostTypes/Podcast.php:186
 msgid "Audio MIME Type"
-msgstr ""
+msgstr "آڈیو MIME قسم"
 
 #: app/PostTypes/Podcast.php:197
 msgid "Explicit"
-msgstr ""
+msgstr "واضح مواد"
 
 #: app/PostTypes/Podcast.php:202
 msgid "clean"
-msgstr ""
+msgstr "clean"
 
 #: app/PostTypes/Podcast.php:214
 msgid "Episode Type"
-msgstr ""
+msgstr "قسط کی قسم"
 
 #: app/PostTypes/Podcast.php:219
 msgid "full"
-msgstr ""
+msgstr "full"
 
 #: app/PostTypes/Podcast.php:220
 msgid "trailer"
-msgstr ""
+msgstr "trailer"
 
 #: app/PostTypes/Podcast.php:221
 msgid "bonus"
-msgstr ""
+msgstr "bonus"
 
 #: app/PostTypes/Podcast.php:232
 msgid "Episode Number"
-msgstr ""
+msgstr "قسط نمبر"
 
 #: app/PostTypes/Podcast.php:233
 msgid "Optional but recommended. Integer."
-msgstr ""
+msgstr "اختیاری مگر تجویز کردہ۔ عددِ صحیح۔"
 
 #: app/PostTypes/Podcast.php:246
 msgid "Season Number"
-msgstr ""
+msgstr "سیزن نمبر"
 
 #: app/PostTypes/Podcast.php:247
 msgid "Optional. Integer."
-msgstr ""
+msgstr "اختیاری۔ عددِ صحیح۔"
 
 #: app/PostTypes/Podcast.php:260
 msgid "Episode Author (override)"
-msgstr ""
+msgstr "قسط کا مصنف (اوور رائیڈ)"
 
 #: app/PostTypes/Podcast.php:261
 msgid "Optional. Overrides channel author for this episode."
-msgstr ""
+msgstr "اختیاری۔ اس قسط کے لیے چینل کے مصنف کو اوور رائیڈ کرتا ہے۔"
 
 #: app/PostTypes/Podcast.php:267
 msgid "Episode Cover (square)"
-msgstr ""
+msgstr "قسط کا کور (مربع)"
 
 #: app/PostTypes/Podcast.php:268
 msgid "Optional. Square 1400–3000px. Overrides channel cover."
-msgstr ""
+msgstr "اختیاری۔ مربع 1400–3000px۔ چینل کور کو اوور رائیڈ کرتا ہے۔"
 
 #: app/PostTypes/Podcast.php:290
 msgid "Subtitle"
-msgstr ""
+msgstr "ذیلی عنوان"
 
 #: app/PostTypes/Podcast.php:291
 msgid "Optional. Short subtitle for iTunes."
-msgstr ""
+msgstr "اختیاری۔ iTunes کے لیے مختصر ذیلی عنوان۔"
 
 #: app/PostTypes/Podcast.php:297
 msgid "Summary"
-msgstr ""
+msgstr "خلاصہ"
 
 #: app/PostTypes/Podcast.php:298
 msgid "Optional. Plain text summary for iTunes."
-msgstr ""
+msgstr "اختیاری۔ iTunes کے لیے سادہ متن میں خلاصہ۔"
 
 #: app/PostTypes/Podcast.php:304
 msgid "Custom GUID (optional)"
-msgstr ""
+msgstr "کسٹم GUID (اختیاری)"
 
 #: app/PostTypes/Podcast.php:305
 msgid "Optional. If empty, feed uses WP permalink as GUID."
-msgstr ""
+msgstr "اختیاری۔ خالی ہونے پر فیڈ WP پرمالنک کو GUID کے طور پر استعمال کرے گی۔"
 
 #: app/PostTypes/Podcast.php:311
 msgid "iTunes Block"
-msgstr ""
+msgstr "iTunes بلاک"
 
 #: app/PostTypes/Podcast.php:312
 msgid "Optional. yes = hide this episode in Apple Podcasts."
-msgstr ""
+msgstr "اختیاری۔ yes = Apple Podcasts میں اس قسط کو چھپائیں۔"
 
 #: app/PostTypes/Podcast.php:317
 msgid "yes"
-msgstr ""
+msgstr "yes"
 
 #: app/PostTypes/Podcast.php:534
 msgid "Audio File is required."
-msgstr ""
+msgstr "آڈیو فائل ضروری ہے۔"
 
 #: app/PostTypes/Podcast.php:572
 msgid "Audio File must be a valid URL (https recommended)."
-msgstr ""
+msgstr "آڈیو فائل ایک درست URL ہونی چاہیے (https تجویز کردہ)۔"
 
 #: app/PostTypes/Podcast.php:589
 msgid "Explicit must be clean or explicit."
-msgstr ""
+msgstr "Explicit کی قدر clean یا explicit ہونی چاہیے۔"
 
 #: app/PostTypes/Podcast.php:593
 msgid "Episode Type must be full, trailer, or bonus."
-msgstr ""
+msgstr "قسط کی قسم full، trailer یا bonus ہونی چاہیے۔"
 
 #: app/PostTypes/Podcast.php:599
 msgid "Podcast validation failed"
-msgstr ""
+msgstr "پوڈکاسٹ کی توثیق ناکام ہوگئی"
 
 #: app/widgets.php:254
 msgid "Select Banner Image"
@@ -1157,35 +1157,35 @@ msgstr ""
 #: app/PostTypes/Podcast.php:173
 #: app/PostTypes/Podcast.php:187
 msgid "Auto detected from \"Audio File\" on save."
-msgstr ""
+msgstr "محفوظ کرنے پر \"Audio File\" سے خودکار طور پر معلوم کیا جاتا ہے۔"
 
 #: app/PostTypes/Podcast.php:277
 msgid "Transcript (optional)"
-msgstr ""
+msgstr "ٹرانسکرپٹ (اختیاری)"
 
 #: app/PostTypes/Podcast.php:278
 msgid "Optional. Upload a transcript file (vtt/srt/txt/pdf) or enter a transcript URL (https)."
-msgstr ""
+msgstr "اختیاری۔ ٹرانسکرپٹ فائل (vtt/srt/txt/pdf) اپ لوڈ کریں یا ٹرانسکرپٹ URL (https) درج کریں۔"
 
 #: app/PostTypes/Podcast.php:285
 msgid "Add Transcript"
-msgstr ""
+msgstr "ٹرانسکرپٹ شامل کریں"
 
 #: app/PostTypes/Podcast.php:576
 msgid "Duration (seconds) could not be auto detected from Audio File."
-msgstr ""
+msgstr "Audio File سے دورانیہ (سیکنڈ) خودکار طور پر معلوم نہیں ہو سکا۔"
 
 #: app/PostTypes/Podcast.php:580
 msgid "Audio Length (bytes) could not be auto detected from Audio File."
-msgstr ""
+msgstr "Audio File سے آڈیو سائز (بائٹس) خودکار طور پر معلوم نہیں ہو سکا۔"
 
 #: app/PostTypes/Podcast.php:584
 msgid "Audio MIME Type could not be auto detected from Audio File."
-msgstr ""
+msgstr "Audio File سے آڈیو MIME قسم خودکار طور پر معلوم نہیں ہو سکی۔"
 
 #: app/PostTypes/Podcast.php:1000
 msgid "Episode transcript URL"
-msgstr ""
+msgstr "قسط کا ٹرانسکرپٹ URL"
 
 #: app/ThemeOptions/General.php:57
 msgid "Upload a logo image (220px × 32px). You will be able to crop the image after upload."
@@ -1264,41 +1264,41 @@ msgstr ""
 
 #: app/ThemeOptions/Podcast.php:112
 msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple recommends keeping the file under 512KB. Will be validated on save."
-msgstr ""
+msgstr "ضروری۔ <itunes:image> کے لیے 1400–3000px کا مربع JPG/PNG۔ Apple فائل کو 512KB سے کم رکھنے کی سفارش کرتا ہے۔ محفوظ کرنے پر توثیق ہوگی۔"
 
 #: app/ThemeOptions/Podcast.php:479
 msgid "Podcast Cover validation failed:"
-msgstr ""
+msgstr "پوڈکاسٹ کور کی توثیق ناکام:"
 
 #: app/ThemeOptions/Podcast.php:516
 msgid "Podcast Cover URL is invalid."
-msgstr ""
+msgstr "پوڈکاسٹ کور URL غلط ہے۔"
 
 #: app/ThemeOptions/Podcast.php:595
 #: app/ThemeOptions/Podcast.php:641
 #, php-format
 msgid "Podcast Cover file is too large (%1$s). Please compress it to under %2$s."
-msgstr ""
+msgstr "پوڈکاسٹ کور فائل بہت بڑی ہے (%1$s)۔ براہ کرم اسے %2$s سے کم تک کمپریس کریں۔"
 
 #: app/ThemeOptions/Podcast.php:656
 #, php-format
 msgid "Could not download Podcast Cover for validation: %s"
-msgstr ""
+msgstr "توثیق کے لیے پوڈکاسٹ کور ڈاؤن لوڈ نہیں ہو سکا: %s"
 
 #: app/ThemeOptions/Podcast.php:702
 #, php-format
 msgid "Podcast Cover must be square. Current dimensions: %1$d × %2$d px."
-msgstr ""
+msgstr "پوڈکاسٹ کور مربع ہونا چاہیے۔ موجودہ ابعاد: %1$d × %2$d px۔"
 
 #: app/ThemeOptions/Podcast.php:714
 #, php-format
 msgid "Podcast Cover resolution is too small. Minimum: %1$d × %1$d px. Current: %2$d × %2$d px."
-msgstr ""
+msgstr "پوڈکاسٹ کور کی ریزولوشن بہت چھوٹی ہے۔ کم از کم: %1$d × %1$d px۔ موجودہ: %2$d × %2$d px۔"
 
 #: app/ThemeOptions/Podcast.php:726
 #, php-format
 msgid "Podcast Cover resolution is too large. Maximum: %1$d × %1$d px. Current: %2$d × %2$d px."
-msgstr ""
+msgstr "پوڈکاسٹ کور کی ریزولوشن بہت بڑی ہے۔ زیادہ سے زیادہ: %1$d × %1$d px۔ موجودہ: %2$d × %2$d px۔"
 
 #: resources/views/partials/entry-meta.blade.php:26
 msgid "views"
@@ -1417,3 +1417,120 @@ msgstr ""
 msgctxt "Font size name"
 msgid "2xl"
 msgstr ""
+
+msgid "iTunes Type (itunes:type)"
+msgstr "iTunes قسم (itunes:type)"
+
+msgid "(not set)"
+msgstr "(سیٹ نہیں)"
+
+msgid "episodic"
+msgstr "episodic"
+
+msgid "serial"
+msgstr "serial"
+
+msgid "Optional. Apple Podcasts: episodic or serial."
+msgstr "اختیاری۔ Apple Podcasts: episodic یا serial۔"
+
+msgid "iTunes Title (optional)"
+msgstr "iTunes عنوان (اختیاری)"
+
+msgid "Optional. Use only if you need a separate Apple-facing title."
+msgstr "اختیاری۔ صرف تب استعمال کریں جب Apple کے لیے الگ عنوان درکار ہو۔"
+
+msgid "iTunes Block (itunes:block)"
+msgstr "iTunes بلاک (itunes:block)"
+
+msgid "Optional. yes = hide this show in Apple Podcasts."
+msgstr "اختیاری۔ yes = Apple Podcasts میں اس شو کو چھپائیں۔"
+
+msgid "iTunes Complete (itunes:complete)"
+msgstr "iTunes مکمل (itunes:complete)"
+
+msgid "Optional. yes = this show is complete (no more episodes)."
+msgstr "اختیاری۔ yes = یہ شو مکمل ہے (مزید اقساط نہیں)۔"
+
+msgid "iTunes New Feed URL (itunes:new-feed-url)"
+msgstr "iTunes نیا فیڈ URL (itunes:new-feed-url)"
+
+msgid "Optional. Only for moving your show to a new RSS feed URL."
+msgstr "اختیاری۔ صرف شو کو نئے RSS فیڈ URL پر منتقل کرنے کے لیے۔"
+
+msgid "podcast:locked owner (optional)"
+msgstr "podcast:locked owner (اختیاری)"
+
+msgid "Optional. Podcasting 2.0: email used to verify ownership during moves."
+msgstr "اختیاری۔ Podcasting 2.0: منتقلی کے دوران ملکیت کی تصدیق کے لیے ای میل۔"
+
+msgid "Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
+msgstr "Apple Podcasts تصدیقی کوڈ (podcast:txt purpose=\"applepodcastsverify\")"
+
+msgid "Optional. Used by Apple Podcasts to verify feed ownership."
+msgstr "اختیاری۔ Apple Podcasts فیڈ کی ملکیت کی تصدیق کے لیے استعمال کرتا ہے۔"
+
+msgid "Podcasting 2.0 Funding Links (podcast:funding)"
+msgstr "Podcasting 2.0 فنڈنگ لنکس (podcast:funding)"
+
+msgid "Optional. If empty, no podcast:funding tags will be generated. URLs should be https."
+msgstr "اختیاری۔ خالی ہونے پر podcast:funding ٹیگز نہیں بنیں گے۔ URL https ہونا چاہیے۔"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Required for each entry. Use https."
+msgstr "ہر اندراج کے لیے لازمی۔ https استعمال کریں۔"
+
+msgid "Label"
+msgstr "لیبل"
+
+msgid "Optional display text (max 128 chars recommended)."
+msgstr "اختیاری ڈسپلے متن (زیادہ سے زیادہ 128 حروف تجویز کردہ)۔"
+
+msgid "Generator (optional)"
+msgstr "Generator (اختیاری)"
+
+msgid "Optional. If empty, generator tag will not be included."
+msgstr "اختیاری۔ خالی ہونے پر generator ٹیگ شامل نہیں ہوگا۔"
+
+msgid "Optional. Apple Podcasts: overrides the episode title for <itunes:title>."
+msgstr "اختیاری۔ Apple Podcasts: <itunes:title> کے لیے قسط کے عنوان کو اووررائیڈ کرتا ہے۔"
+
+msgid "Chapters (Podcasting 2.0)"
+msgstr "ابواب (Podcasting 2.0)"
+
+msgid "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
+msgstr "اختیاری۔ <podcast:chapters> کے لیے ابواب JSON URL/فائل فراہم کریں۔"
+
+msgid "Add Chapters File"
+msgstr "ابواب فائل شامل کریں"
+
+msgid "Chapters MIME Type"
+msgstr "ابواب MIME قسم"
+
+msgid "Optional. Defaults to application/json+chapters."
+msgstr "اختیاری۔ ڈیفالٹ: application/json+chapters۔"
+
+msgid "Soundbites (Podcasting 2.0)"
+msgstr "Soundbites (Podcasting 2.0)"
+
+msgid "Optional. Adds one or more <podcast:soundbite> tags."
+msgstr "اختیاری۔ ایک یا زیادہ <podcast:soundbite> ٹیگز شامل کرتا ہے۔"
+
+msgid "Soundbite {#}"
+msgstr "Soundbite {#}"
+
+msgid "Add Soundbite"
+msgstr "Soundbite شامل کریں"
+
+msgid "Remove Soundbite"
+msgstr "Soundbite ہٹائیں"
+
+msgid "Start Time (seconds)"
+msgstr "شروع وقت (سیکنڈ)"
+
+msgid "Duration (seconds)"
+msgstr "دورانیہ (سیکنڈ)"
+
+msgid "Title (optional)"
+msgstr "عنوان (اختیاری)"

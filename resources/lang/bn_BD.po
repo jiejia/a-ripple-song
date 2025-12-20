@@ -1006,123 +1006,123 @@ msgstr ""
 
 #: app/PostTypes/Podcast.php:172
 msgid "Audio Length (bytes)"
-msgstr ""
+msgstr "অডিও আকার (বাইট)"
 
 #: app/PostTypes/Podcast.php:186
 msgid "Audio MIME Type"
-msgstr ""
+msgstr "অডিও MIME ধরন"
 
 #: app/PostTypes/Podcast.php:197
 msgid "Explicit"
-msgstr ""
+msgstr "Explicit (প্রাপ্তবয়স্ক)"
 
 #: app/PostTypes/Podcast.php:202
 msgid "clean"
-msgstr ""
+msgstr "clean"
 
 #: app/PostTypes/Podcast.php:214
 msgid "Episode Type"
-msgstr ""
+msgstr "এপিসোড ধরন"
 
 #: app/PostTypes/Podcast.php:219
 msgid "full"
-msgstr ""
+msgstr "full"
 
 #: app/PostTypes/Podcast.php:220
 msgid "trailer"
-msgstr ""
+msgstr "trailer"
 
 #: app/PostTypes/Podcast.php:221
 msgid "bonus"
-msgstr ""
+msgstr "bonus"
 
 #: app/PostTypes/Podcast.php:232
 msgid "Episode Number"
-msgstr ""
+msgstr "এপিসোড নম্বর"
 
 #: app/PostTypes/Podcast.php:233
 msgid "Optional but recommended. Integer."
-msgstr ""
+msgstr "ঐচ্ছিক তবে প্রস্তাবিত। পূর্ণসংখ্যা।"
 
 #: app/PostTypes/Podcast.php:246
 msgid "Season Number"
-msgstr ""
+msgstr "সিজন নম্বর"
 
 #: app/PostTypes/Podcast.php:247
 msgid "Optional. Integer."
-msgstr ""
+msgstr "ঐচ্ছিক। পূর্ণসংখ্যা।"
 
 #: app/PostTypes/Podcast.php:260
 msgid "Episode Author (override)"
-msgstr ""
+msgstr "এপিসোড লেখক (ওভাররাইড)"
 
 #: app/PostTypes/Podcast.php:261
 msgid "Optional. Overrides channel author for this episode."
-msgstr ""
+msgstr "ঐচ্ছিক। এই এপিসোডের জন্য চ্যানেল লেখককে ওভাররাইড করে।"
 
 #: app/PostTypes/Podcast.php:267
 msgid "Episode Cover (square)"
-msgstr ""
+msgstr "এপিসোড কভার (বর্গাকার)"
 
 #: app/PostTypes/Podcast.php:268
 msgid "Optional. Square 1400–3000px. Overrides channel cover."
-msgstr ""
+msgstr "ঐচ্ছিক। বর্গাকার 1400–3000px। চ্যানেল কভারকে ওভাররাইড করে।"
 
 #: app/PostTypes/Podcast.php:290
 msgid "Subtitle"
-msgstr ""
+msgstr "উপশিরোনাম"
 
 #: app/PostTypes/Podcast.php:291
 msgid "Optional. Short subtitle for iTunes."
-msgstr ""
+msgstr "ঐচ্ছিক। iTunes-এর জন্য ছোট উপশিরোনাম।"
 
 #: app/PostTypes/Podcast.php:297
 msgid "Summary"
-msgstr ""
+msgstr "সারাংশ"
 
 #: app/PostTypes/Podcast.php:298
 msgid "Optional. Plain text summary for iTunes."
-msgstr ""
+msgstr "ঐচ্ছিক। iTunes-এর জন্য সাদামাটা টেক্সট সারাংশ।"
 
 #: app/PostTypes/Podcast.php:304
 msgid "Custom GUID (optional)"
-msgstr ""
+msgstr "কাস্টম GUID (ঐচ্ছিক)"
 
 #: app/PostTypes/Podcast.php:305
 msgid "Optional. If empty, feed uses WP permalink as GUID."
-msgstr ""
+msgstr "ঐচ্ছিক। খালি থাকলে ফিড WP পারমালিঙ্ককে GUID হিসেবে ব্যবহার করবে।"
 
 #: app/PostTypes/Podcast.php:311
 msgid "iTunes Block"
-msgstr ""
+msgstr "iTunes ব্লক"
 
 #: app/PostTypes/Podcast.php:312
 msgid "Optional. yes = hide this episode in Apple Podcasts."
-msgstr ""
+msgstr "ঐচ্ছিক। yes = Apple Podcasts-এ এই এপিসোড লুকান।"
 
 #: app/PostTypes/Podcast.php:317
 msgid "yes"
-msgstr ""
+msgstr "yes"
 
 #: app/PostTypes/Podcast.php:534
 msgid "Audio File is required."
-msgstr ""
+msgstr "অডিও ফাইল আবশ্যক।"
 
 #: app/PostTypes/Podcast.php:572
 msgid "Audio File must be a valid URL (https recommended)."
-msgstr ""
+msgstr "অডিও ফাইলটি একটি বৈধ URL হতে হবে (https প্রস্তাবিত)।"
 
 #: app/PostTypes/Podcast.php:589
 msgid "Explicit must be clean or explicit."
-msgstr ""
+msgstr "Explicit অবশ্যই clean বা explicit হতে হবে।"
 
 #: app/PostTypes/Podcast.php:593
 msgid "Episode Type must be full, trailer, or bonus."
-msgstr ""
+msgstr "এপিসোড ধরন অবশ্যই full, trailer বা bonus হতে হবে।"
 
 #: app/PostTypes/Podcast.php:599
 msgid "Podcast validation failed"
-msgstr ""
+msgstr "পডকাস্ট যাচাইকরণ ব্যর্থ"
 
 #: app/widgets.php:254
 msgid "Select Banner Image"
@@ -1157,35 +1157,35 @@ msgstr ""
 #: app/PostTypes/Podcast.php:173
 #: app/PostTypes/Podcast.php:187
 msgid "Auto detected from \"Audio File\" on save."
-msgstr ""
+msgstr "সেভ করার সময় \"Audio File\" থেকে স্বয়ংক্রিয়ভাবে সনাক্ত হয়।"
 
 #: app/PostTypes/Podcast.php:277
 msgid "Transcript (optional)"
-msgstr ""
+msgstr "ট্রান্সক্রিপ্ট (ঐচ্ছিক)"
 
 #: app/PostTypes/Podcast.php:278
 msgid "Optional. Upload a transcript file (vtt/srt/txt/pdf) or enter a transcript URL (https)."
-msgstr ""
+msgstr "ঐচ্ছিক। ট্রান্সক্রিপ্ট ফাইল (vtt/srt/txt/pdf) আপলোড করুন অথবা ট্রান্সক্রিপ্ট URL (https) দিন।"
 
 #: app/PostTypes/Podcast.php:285
 msgid "Add Transcript"
-msgstr ""
+msgstr "ট্রান্সক্রিপ্ট যোগ করুন"
 
 #: app/PostTypes/Podcast.php:576
 msgid "Duration (seconds) could not be auto detected from Audio File."
-msgstr ""
+msgstr "\"Audio File\" থেকে সময়কাল (সেকেন্ড) স্বয়ংক্রিয়ভাবে সনাক্ত করা যায়নি।"
 
 #: app/PostTypes/Podcast.php:580
 msgid "Audio Length (bytes) could not be auto detected from Audio File."
-msgstr ""
+msgstr "\"Audio File\" থেকে অডিও আকার (বাইট) স্বয়ংক্রিয়ভাবে সনাক্ত করা যায়নি।"
 
 #: app/PostTypes/Podcast.php:584
 msgid "Audio MIME Type could not be auto detected from Audio File."
-msgstr ""
+msgstr "\"Audio File\" থেকে অডিও MIME ধরন স্বয়ংক্রিয়ভাবে সনাক্ত করা যায়নি।"
 
 #: app/PostTypes/Podcast.php:1000
 msgid "Episode transcript URL"
-msgstr ""
+msgstr "এপিসোড ট্রান্সক্রিপ্ট URL"
 
 #: app/ThemeOptions/General.php:57
 msgid "Upload a logo image (220px × 32px). You will be able to crop the image after upload."
@@ -1264,41 +1264,41 @@ msgstr ""
 
 #: app/ThemeOptions/Podcast.php:112
 msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple recommends keeping the file under 512KB. Will be validated on save."
-msgstr ""
+msgstr "আবশ্যক। <itunes:image> এর জন্য 1400–3000px বর্গাকার JPG/PNG। Apple ফাইলটি 512KB-এর নিচে রাখতে সুপারিশ করে। সেভ করার সময় যাচাই হবে।"
 
 #: app/ThemeOptions/Podcast.php:479
 msgid "Podcast Cover validation failed:"
-msgstr ""
+msgstr "পডকাস্ট কভার যাচাইকরণ ব্যর্থ:"
 
 #: app/ThemeOptions/Podcast.php:516
 msgid "Podcast Cover URL is invalid."
-msgstr ""
+msgstr "পডকাস্ট কভার URL অবৈধ।"
 
 #: app/ThemeOptions/Podcast.php:595
 #: app/ThemeOptions/Podcast.php:641
 #, php-format
 msgid "Podcast Cover file is too large (%1$s). Please compress it to under %2$s."
-msgstr ""
+msgstr "পডকাস্ট কভার ফাইলটি খুব বড় (%1$s)। অনুগ্রহ করে %2$s-এর নিচে কমপ্রেস করুন।"
 
 #: app/ThemeOptions/Podcast.php:656
 #, php-format
 msgid "Could not download Podcast Cover for validation: %s"
-msgstr ""
+msgstr "যাচাইয়ের জন্য পডকাস্ট কভার ডাউনলোড করা যায়নি: %s"
 
 #: app/ThemeOptions/Podcast.php:702
 #, php-format
 msgid "Podcast Cover must be square. Current dimensions: %1$d × %2$d px."
-msgstr ""
+msgstr "পডকাস্ট কভার বর্গাকার হতে হবে। বর্তমান মাত্রা: %1$d × %2$d px।"
 
 #: app/ThemeOptions/Podcast.php:714
 #, php-format
 msgid "Podcast Cover resolution is too small. Minimum: %1$d × %1$d px. Current: %2$d × %2$d px."
-msgstr ""
+msgstr "পডকাস্ট কভারের রেজোলিউশন খুব ছোট। ন্যূনতম: %1$d × %1$d px। বর্তমান: %2$d × %2$d px।"
 
 #: app/ThemeOptions/Podcast.php:726
 #, php-format
 msgid "Podcast Cover resolution is too large. Maximum: %1$d × %1$d px. Current: %2$d × %2$d px."
-msgstr ""
+msgstr "পডকাস্ট কভারের রেজোলিউশন খুব বড়। সর্বোচ্চ: %1$d × %1$d px। বর্তমান: %2$d × %2$d px।"
 
 #: resources/views/partials/entry-meta.blade.php:26
 msgid "views"
@@ -1417,3 +1417,120 @@ msgstr ""
 msgctxt "Font size name"
 msgid "2xl"
 msgstr ""
+
+msgid "iTunes Type (itunes:type)"
+msgstr "iTunes ধরন (itunes:type)"
+
+msgid "(not set)"
+msgstr "(সেট করা নেই)"
+
+msgid "episodic"
+msgstr "episodic"
+
+msgid "serial"
+msgstr "serial"
+
+msgid "Optional. Apple Podcasts: episodic or serial."
+msgstr "ঐচ্ছিক। Apple Podcasts: episodic অথবা serial।"
+
+msgid "iTunes Title (optional)"
+msgstr "iTunes শিরোনাম (ঐচ্ছিক)"
+
+msgid "Optional. Use only if you need a separate Apple-facing title."
+msgstr "ঐচ্ছিক। Apple-এর জন্য আলাদা শিরোনাম দরকার হলে তবেই ব্যবহার করুন।"
+
+msgid "iTunes Block (itunes:block)"
+msgstr "iTunes ব্লক (itunes:block)"
+
+msgid "Optional. yes = hide this show in Apple Podcasts."
+msgstr "ঐচ্ছিক। yes = Apple Podcasts-এ এই শোটি লুকান।"
+
+msgid "iTunes Complete (itunes:complete)"
+msgstr "iTunes সম্পূর্ণ (itunes:complete)"
+
+msgid "Optional. yes = this show is complete (no more episodes)."
+msgstr "ঐচ্ছিক। yes = এই শোটি সম্পূর্ণ (আর কোনো এপিসোড নেই)।"
+
+msgid "iTunes New Feed URL (itunes:new-feed-url)"
+msgstr "iTunes নতুন ফিড URL (itunes:new-feed-url)"
+
+msgid "Optional. Only for moving your show to a new RSS feed URL."
+msgstr "ঐচ্ছিক। শুধুমাত্র নতুন RSS ফিড URL-এ শো স্থানান্তরের জন্য।"
+
+msgid "podcast:locked owner (optional)"
+msgstr "podcast:locked owner (ঐচ্ছিক)"
+
+msgid "Optional. Podcasting 2.0: email used to verify ownership during moves."
+msgstr "ঐচ্ছিক। Podcasting 2.0: স্থানান্তরের সময় মালিকানা যাচাইয়ের জন্য ইমেইল।"
+
+msgid "Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
+msgstr "Apple Podcasts যাচাইকরণ কোড (podcast:txt purpose=\"applepodcastsverify\")"
+
+msgid "Optional. Used by Apple Podcasts to verify feed ownership."
+msgstr "ঐচ্ছিক। Apple Podcasts ফিডের মালিকানা যাচাই করতে ব্যবহার করে।"
+
+msgid "Podcasting 2.0 Funding Links (podcast:funding)"
+msgstr "Podcasting 2.0 ফান্ডিং লিংক (podcast:funding)"
+
+msgid "Optional. If empty, no podcast:funding tags will be generated. URLs should be https."
+msgstr "ঐচ্ছিক। খালি থাকলে podcast:funding ট্যাগ তৈরি হবে না। URL https হওয়া উচিত।"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Required for each entry. Use https."
+msgstr "প্রতিটি এন্ট্রির জন্য আবশ্যক। https ব্যবহার করুন।"
+
+msgid "Label"
+msgstr "লেবেল"
+
+msgid "Optional display text (max 128 chars recommended)."
+msgstr "ঐচ্ছিক প্রদর্শন টেক্সট (সর্বোচ্চ 128 অক্ষর সুপারিশকৃত)।"
+
+msgid "Generator (optional)"
+msgstr "Generator (ঐচ্ছিক)"
+
+msgid "Optional. If empty, generator tag will not be included."
+msgstr "ঐচ্ছিক। খালি থাকলে generator ট্যাগ যোগ করা হবে না।"
+
+msgid "Optional. Apple Podcasts: overrides the episode title for <itunes:title>."
+msgstr "ঐচ্ছিক। Apple Podcasts: <itunes:title> এর জন্য এপিসোড শিরোনাম ওভাররাইড করে।"
+
+msgid "Chapters (Podcasting 2.0)"
+msgstr "অধ্যায় (Podcasting 2.0)"
+
+msgid "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
+msgstr "ঐচ্ছিক। <podcast:chapters> এর জন্য অধ্যায় JSON URL/ফাইল দিন।"
+
+msgid "Add Chapters File"
+msgstr "অধ্যায় ফাইল যোগ করুন"
+
+msgid "Chapters MIME Type"
+msgstr "অধ্যায় MIME ধরন"
+
+msgid "Optional. Defaults to application/json+chapters."
+msgstr "ঐচ্ছিক। ডিফল্ট: application/json+chapters।"
+
+msgid "Soundbites (Podcasting 2.0)"
+msgstr "সাউন্ডবাইট (Podcasting 2.0)"
+
+msgid "Optional. Adds one or more <podcast:soundbite> tags."
+msgstr "ঐচ্ছিক। এক বা একাধিক <podcast:soundbite> ট্যাগ যোগ করে।"
+
+msgid "Soundbite {#}"
+msgstr "সাউন্ডবাইট {#}"
+
+msgid "Add Soundbite"
+msgstr "সাউন্ডবাইট যোগ করুন"
+
+msgid "Remove Soundbite"
+msgstr "সাউন্ডবাইট সরান"
+
+msgid "Start Time (seconds)"
+msgstr "শুরুর সময় (সেকেন্ড)"
+
+msgid "Duration (seconds)"
+msgstr "সময়কাল (সেকেন্ড)"
+
+msgid "Title (optional)"
+msgstr "শিরোনাম (ঐচ্ছিক)"

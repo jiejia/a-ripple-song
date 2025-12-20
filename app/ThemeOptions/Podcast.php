@@ -133,6 +133,32 @@ class PodcastOptions
                 ->set_help_text(__('Optional second category.', 'sage')),
             Field::make('text', 'crb_podcast_copyright', __('Copyright (optional)', 'sage'))
                 ->set_help_text(__('Example: © 2025 Your Studio. Plain text.', 'sage')),
+            Field::make('select', 'crb_podcast_itunes_type', __('iTunes Type (itunes:type)', 'sage'))
+                ->set_options([
+                    '' => __('(not set)', 'sage'),
+                    'episodic' => __('episodic', 'sage'),
+                    'serial' => __('serial', 'sage'),
+                ])
+                ->set_default_value('')
+                ->set_help_text(__('Optional. Apple Podcasts: episodic or serial.', 'sage')),
+            Field::make('text', 'crb_podcast_itunes_title', __('iTunes Title (optional)', 'sage'))
+                ->set_help_text(__('Optional. Use only if you need a separate Apple-facing title.', 'sage')),
+            Field::make('select', 'crb_podcast_itunes_block', __('iTunes Block (itunes:block)', 'sage'))
+                ->set_options([
+                    'no' => __('no', 'sage'),
+                    'yes' => __('yes', 'sage'),
+                ])
+                ->set_default_value('no')
+                ->set_help_text(__('Optional. yes = hide this show in Apple Podcasts.', 'sage')),
+            Field::make('select', 'crb_podcast_itunes_complete', __('iTunes Complete (itunes:complete)', 'sage'))
+                ->set_options([
+                    'no' => __('no', 'sage'),
+                    'yes' => __('yes', 'sage'),
+                ])
+                ->set_default_value('no')
+                ->set_help_text(__('Optional. yes = this show is complete (no more episodes).', 'sage')),
+            Field::make('text', 'crb_podcast_itunes_new_feed_url', __('iTunes New Feed URL (itunes:new-feed-url)', 'sage'))
+                ->set_help_text(__('Optional. Only for moving your show to a new RSS feed URL.', 'sage')),
             Field::make('select', 'crb_podcast_locked', __('podcast:locked', 'sage'))
                 ->set_options([
                     'yes' => __('yes (recommended, prevents unauthorized moves)', 'sage'),
@@ -140,8 +166,24 @@ class PodcastOptions
                 ])
                 ->set_default_value('yes')
                 ->set_help_text(__('Podcasting 2.0: lock feed to this publisher.', 'sage')),
+            Field::make('text', 'crb_podcast_locked_owner', __('podcast:locked owner (optional)', 'sage'))
+                ->set_attribute('type', 'email')
+                ->set_attribute('pattern', '[^@\\s]+@[^@\\s]+\\.[^@\\s]+')
+                ->set_help_text(__('Optional. Podcasting 2.0: email used to verify ownership during moves.', 'sage')),
             Field::make('text', 'crb_podcast_guid', __('podcast:guid (optional)', 'sage'))
                 ->set_help_text(__('Podcasting 2.0 GUID. If empty, feed will use site URL as fallback.', 'sage')),
+            Field::make('text', 'crb_podcast_apple_verify', __('Apple Podcasts Verify Code (podcast:txt purpose="applepodcastsverify")', 'sage'))
+                ->set_help_text(__('Optional. Used by Apple Podcasts to verify feed ownership.', 'sage')),
+            Field::make('complex', 'crb_podcast_funding', __('Podcasting 2.0 Funding Links (podcast:funding)', 'sage'))
+                ->set_help_text(__('Optional. If empty, no podcast:funding tags will be generated. URLs should be https.', 'sage'))
+                ->add_fields([
+                    Field::make('text', 'url', __('URL', 'sage'))
+                        ->set_help_text(__('Required for each entry. Use https.', 'sage')),
+                    Field::make('text', 'label', __('Label', 'sage'))
+                        ->set_help_text(__('Optional display text (max 128 chars recommended).', 'sage')),
+                ]),
+            Field::make('text', 'crb_podcast_generator', __('Generator (optional)', 'sage'))
+                ->set_help_text(__('Optional. If empty, generator tag will not be included.', 'sage')),
         ]);
     }
 

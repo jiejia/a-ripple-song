@@ -1008,123 +1008,123 @@ msgstr ""
 
 #: app/PostTypes/Podcast.php:172
 msgid "Audio Length (bytes)"
-msgstr ""
+msgstr "Размер аудио (байт)"
 
 #: app/PostTypes/Podcast.php:186
 msgid "Audio MIME Type"
-msgstr ""
+msgstr "MIME-тип аудио"
 
 #: app/PostTypes/Podcast.php:197
 msgid "Explicit"
-msgstr ""
+msgstr "Явный контент"
 
 #: app/PostTypes/Podcast.php:202
 msgid "clean"
-msgstr ""
+msgstr "clean"
 
 #: app/PostTypes/Podcast.php:214
 msgid "Episode Type"
-msgstr ""
+msgstr "Тип эпизода"
 
 #: app/PostTypes/Podcast.php:219
 msgid "full"
-msgstr ""
+msgstr "full"
 
 #: app/PostTypes/Podcast.php:220
 msgid "trailer"
-msgstr ""
+msgstr "trailer"
 
 #: app/PostTypes/Podcast.php:221
 msgid "bonus"
-msgstr ""
+msgstr "bonus"
 
 #: app/PostTypes/Podcast.php:232
 msgid "Episode Number"
-msgstr ""
+msgstr "Номер эпизода"
 
 #: app/PostTypes/Podcast.php:233
 msgid "Optional but recommended. Integer."
-msgstr ""
+msgstr "Необязательно, но рекомендуется. Целое число."
 
 #: app/PostTypes/Podcast.php:246
 msgid "Season Number"
-msgstr ""
+msgstr "Номер сезона"
 
 #: app/PostTypes/Podcast.php:247
 msgid "Optional. Integer."
-msgstr ""
+msgstr "Необязательно. Целое число."
 
 #: app/PostTypes/Podcast.php:260
 msgid "Episode Author (override)"
-msgstr ""
+msgstr "Автор эпизода (переопределить)"
 
 #: app/PostTypes/Podcast.php:261
 msgid "Optional. Overrides channel author for this episode."
-msgstr ""
+msgstr "Необязательно. Переопределяет автора канала для этого эпизода."
 
 #: app/PostTypes/Podcast.php:267
 msgid "Episode Cover (square)"
-msgstr ""
+msgstr "Обложка эпизода (квадратная)"
 
 #: app/PostTypes/Podcast.php:268
 msgid "Optional. Square 1400–3000px. Overrides channel cover."
-msgstr ""
+msgstr "Необязательно. Квадрат 1400–3000 px. Переопределяет обложку канала."
 
 #: app/PostTypes/Podcast.php:290
 msgid "Subtitle"
-msgstr ""
+msgstr "Подзаголовок"
 
 #: app/PostTypes/Podcast.php:291
 msgid "Optional. Short subtitle for iTunes."
-msgstr ""
+msgstr "Необязательно. Короткий подзаголовок для iTunes."
 
 #: app/PostTypes/Podcast.php:297
 msgid "Summary"
-msgstr ""
+msgstr "Краткое описание"
 
 #: app/PostTypes/Podcast.php:298
 msgid "Optional. Plain text summary for iTunes."
-msgstr ""
+msgstr "Необязательно. Описание в виде простого текста для iTunes."
 
 #: app/PostTypes/Podcast.php:304
 msgid "Custom GUID (optional)"
-msgstr ""
+msgstr "Пользовательский GUID (необязательно)"
 
 #: app/PostTypes/Podcast.php:305
 msgid "Optional. If empty, feed uses WP permalink as GUID."
-msgstr ""
+msgstr "Необязательно. Если пусто, в качестве GUID используется постоянная ссылка WP."
 
 #: app/PostTypes/Podcast.php:311
 msgid "iTunes Block"
-msgstr ""
+msgstr "Блокировка iTunes"
 
 #: app/PostTypes/Podcast.php:312
 msgid "Optional. yes = hide this episode in Apple Podcasts."
-msgstr ""
+msgstr "Необязательно. yes = скрыть этот эпизод в Apple Podcasts."
 
 #: app/PostTypes/Podcast.php:317
 msgid "yes"
-msgstr ""
+msgstr "yes"
 
 #: app/PostTypes/Podcast.php:534
 msgid "Audio File is required."
-msgstr ""
+msgstr "Аудиофайл обязателен."
 
 #: app/PostTypes/Podcast.php:572
 msgid "Audio File must be a valid URL (https recommended)."
-msgstr ""
+msgstr "Аудиофайл должен быть корректным URL (рекомендуется https)."
 
 #: app/PostTypes/Podcast.php:589
 msgid "Explicit must be clean or explicit."
-msgstr ""
+msgstr "Поле «Явный контент» должно быть clean или explicit."
 
 #: app/PostTypes/Podcast.php:593
 msgid "Episode Type must be full, trailer, or bonus."
-msgstr ""
+msgstr "Тип эпизода должен быть full, trailer или bonus."
 
 #: app/PostTypes/Podcast.php:599
 msgid "Podcast validation failed"
-msgstr ""
+msgstr "Проверка подкаста не удалась"
 
 #: app/widgets.php:254
 msgid "Select Banner Image"
@@ -1159,35 +1159,35 @@ msgstr ""
 #: app/PostTypes/Podcast.php:173
 #: app/PostTypes/Podcast.php:187
 msgid "Auto detected from \"Audio File\" on save."
-msgstr ""
+msgstr "Автоматически определяется из «Audio File» при сохранении."
 
 #: app/PostTypes/Podcast.php:277
 msgid "Transcript (optional)"
-msgstr ""
+msgstr "Транскрипт (необязательно)"
 
 #: app/PostTypes/Podcast.php:278
 msgid "Optional. Upload a transcript file (vtt/srt/txt/pdf) or enter a transcript URL (https)."
-msgstr ""
+msgstr "Необязательно. Загрузите файл транскрипта (vtt/srt/txt/pdf) или укажите URL транскрипта (https)."
 
 #: app/PostTypes/Podcast.php:285
 msgid "Add Transcript"
-msgstr ""
+msgstr "Добавить транскрипт"
 
 #: app/PostTypes/Podcast.php:576
 msgid "Duration (seconds) could not be auto detected from Audio File."
-msgstr ""
+msgstr "Длительность (секунды) не удалось автоматически определить из Audio File."
 
 #: app/PostTypes/Podcast.php:580
 msgid "Audio Length (bytes) could not be auto detected from Audio File."
-msgstr ""
+msgstr "Размер аудио (байт) не удалось автоматически определить из Audio File."
 
 #: app/PostTypes/Podcast.php:584
 msgid "Audio MIME Type could not be auto detected from Audio File."
-msgstr ""
+msgstr "MIME-тип аудио не удалось автоматически определить из Audio File."
 
 #: app/PostTypes/Podcast.php:1000
 msgid "Episode transcript URL"
-msgstr ""
+msgstr "URL транскрипта эпизода"
 
 #: app/ThemeOptions/General.php:57
 msgid "Upload a logo image (220px × 32px). You will be able to crop the image after upload."
@@ -1266,41 +1266,41 @@ msgstr ""
 
 #: app/ThemeOptions/Podcast.php:112
 msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple recommends keeping the file under 512KB. Will be validated on save."
-msgstr ""
+msgstr "Обязательно. Квадратный JPG/PNG 1400–3000 px для <itunes:image>. Apple рекомендует держать файл меньше 512 КБ. Проверяется при сохранении."
 
 #: app/ThemeOptions/Podcast.php:479
 msgid "Podcast Cover validation failed:"
-msgstr ""
+msgstr "Проверка обложки подкаста не удалась:"
 
 #: app/ThemeOptions/Podcast.php:516
 msgid "Podcast Cover URL is invalid."
-msgstr ""
+msgstr "URL обложки подкаста недействителен."
 
 #: app/ThemeOptions/Podcast.php:595
 #: app/ThemeOptions/Podcast.php:641
 #, php-format
 msgid "Podcast Cover file is too large (%1$s). Please compress it to under %2$s."
-msgstr ""
+msgstr "Файл обложки подкаста слишком большой (%1$s). Сожмите его до размера меньше %2$s."
 
 #: app/ThemeOptions/Podcast.php:656
 #, php-format
 msgid "Could not download Podcast Cover for validation: %s"
-msgstr ""
+msgstr "Не удалось скачать обложку подкаста для проверки: %s"
 
 #: app/ThemeOptions/Podcast.php:702
 #, php-format
 msgid "Podcast Cover must be square. Current dimensions: %1$d × %2$d px."
-msgstr ""
+msgstr "Обложка подкаста должна быть квадратной. Текущие размеры: %1$d × %2$d px."
 
 #: app/ThemeOptions/Podcast.php:714
 #, php-format
 msgid "Podcast Cover resolution is too small. Minimum: %1$d × %1$d px. Current: %2$d × %2$d px."
-msgstr ""
+msgstr "Разрешение обложки подкаста слишком маленькое. Минимум: %1$d × %1$d px. Текущее: %2$d × %2$d px."
 
 #: app/ThemeOptions/Podcast.php:726
 #, php-format
 msgid "Podcast Cover resolution is too large. Maximum: %1$d × %1$d px. Current: %2$d × %2$d px."
-msgstr ""
+msgstr "Разрешение обложки подкаста слишком большое. Максимум: %1$d × %1$d px. Текущее: %2$d × %2$d px."
 
 #: resources/views/partials/entry-meta.blade.php:26
 msgid "views"
@@ -1419,3 +1419,120 @@ msgstr ""
 msgctxt "Font size name"
 msgid "2xl"
 msgstr ""
+
+msgid "iTunes Type (itunes:type)"
+msgstr "Тип iTunes (itunes:type)"
+
+msgid "(not set)"
+msgstr "(не задано)"
+
+msgid "episodic"
+msgstr "episodic"
+
+msgid "serial"
+msgstr "serial"
+
+msgid "Optional. Apple Podcasts: episodic or serial."
+msgstr "Необязательно. Apple Podcasts: episodic или serial."
+
+msgid "iTunes Title (optional)"
+msgstr "Название iTunes (необязательно)"
+
+msgid "Optional. Use only if you need a separate Apple-facing title."
+msgstr "Необязательно. Используйте только если нужен отдельный заголовок для Apple."
+
+msgid "iTunes Block (itunes:block)"
+msgstr "Блокировка iTunes (itunes:block)"
+
+msgid "Optional. yes = hide this show in Apple Podcasts."
+msgstr "Необязательно. yes = скрыть это шоу в Apple Podcasts."
+
+msgid "iTunes Complete (itunes:complete)"
+msgstr "iTunes Завершено (itunes:complete)"
+
+msgid "Optional. yes = this show is complete (no more episodes)."
+msgstr "Необязательно. yes = шоу завершено (новых эпизодов не будет)."
+
+msgid "iTunes New Feed URL (itunes:new-feed-url)"
+msgstr "Новый URL фида iTunes (itunes:new-feed-url)"
+
+msgid "Optional. Only for moving your show to a new RSS feed URL."
+msgstr "Необязательно. Только при переносе шоу на новый RSS URL."
+
+msgid "podcast:locked owner (optional)"
+msgstr "podcast:locked owner (необязательно)"
+
+msgid "Optional. Podcasting 2.0: email used to verify ownership during moves."
+msgstr "Необязательно. Podcasting 2.0: e-mail для подтверждения владения при переносах."
+
+msgid "Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
+msgstr "Код проверки Apple Podcasts (podcast:txt purpose=\"applepodcastsverify\")"
+
+msgid "Optional. Used by Apple Podcasts to verify feed ownership."
+msgstr "Необязательно. Используется Apple Podcasts для подтверждения владения фидом."
+
+msgid "Podcasting 2.0 Funding Links (podcast:funding)"
+msgstr "Ссылки поддержки Podcasting 2.0 (podcast:funding)"
+
+msgid "Optional. If empty, no podcast:funding tags will be generated. URLs should be https."
+msgstr "Необязательно. Если пусто, теги podcast:funding не будут сгенерированы. URL должен быть https."
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Required for each entry. Use https."
+msgstr "Обязательно для каждой записи. Используйте https."
+
+msgid "Label"
+msgstr "Метка"
+
+msgid "Optional display text (max 128 chars recommended)."
+msgstr "Необязательный текст отображения (рекомендуется до 128 символов)."
+
+msgid "Generator (optional)"
+msgstr "Generator (необязательно)"
+
+msgid "Optional. If empty, generator tag will not be included."
+msgstr "Необязательно. Если пусто, тег generator не будет добавлен."
+
+msgid "Optional. Apple Podcasts: overrides the episode title for <itunes:title>."
+msgstr "Необязательно. Apple Podcasts: переопределяет заголовок эпизода для <itunes:title>."
+
+msgid "Chapters (Podcasting 2.0)"
+msgstr "Главы (Podcasting 2.0)"
+
+msgid "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
+msgstr "Необязательно. Укажите URL/файл JSON глав для <podcast:chapters>."
+
+msgid "Add Chapters File"
+msgstr "Добавить файл глав"
+
+msgid "Chapters MIME Type"
+msgstr "MIME-тип глав"
+
+msgid "Optional. Defaults to application/json+chapters."
+msgstr "Необязательно. По умолчанию: application/json+chapters."
+
+msgid "Soundbites (Podcasting 2.0)"
+msgstr "Фрагменты (Podcasting 2.0)"
+
+msgid "Optional. Adds one or more <podcast:soundbite> tags."
+msgstr "Необязательно. Добавляет один или несколько тегов <podcast:soundbite>."
+
+msgid "Soundbite {#}"
+msgstr "Фрагмент {#}"
+
+msgid "Add Soundbite"
+msgstr "Добавить фрагмент"
+
+msgid "Remove Soundbite"
+msgstr "Удалить фрагмент"
+
+msgid "Start Time (seconds)"
+msgstr "Время начала (секунды)"
+
+msgid "Duration (seconds)"
+msgstr "Длительность (секунды)"
+
+msgid "Title (optional)"
+msgstr "Заголовок (необязательно)"
