@@ -26,6 +26,10 @@ class Podcast_List_Widget extends WP_Widget {
             'post_type' => 'podcast',
             'posts_per_page' => $posts_per_page,
             'post_status' => 'publish',
+            'no_found_rows' => true,
+            'ignore_sticky_posts' => true,
+            'update_post_meta_cache' => false,
+            'update_post_term_cache' => false,
             'orderby' => 'date',
             'order' => 'DESC'
         ]);
@@ -35,6 +39,10 @@ class Podcast_List_Widget extends WP_Widget {
             'post_type' => 'podcast',
             'posts_per_page' => $posts_per_page,
             'post_status' => 'publish',
+            'no_found_rows' => true,
+            'ignore_sticky_posts' => true,
+            'update_post_meta_cache' => false,
+            'update_post_term_cache' => false,
             'orderby' => 'comment_count',
             'order' => 'DESC'
         ]);
@@ -44,6 +52,10 @@ class Podcast_List_Widget extends WP_Widget {
             'post_type' => 'podcast',
             'posts_per_page' => $posts_per_page,
             'post_status' => 'publish',
+            'no_found_rows' => true,
+            'ignore_sticky_posts' => true,
+            'update_post_meta_cache' => false,
+            'update_post_term_cache' => false,
             'orderby' => 'rand'
         ]);
         
