@@ -1534,3 +1534,18 @@ msgstr "دورانیہ (سیکنڈ)"
 
 msgid "Title (optional)"
 msgstr "عنوان (اختیاری)"
+
+msgid "Invalid request."
+msgstr "غیر درست درخواست۔"
+
+msgid "Invalid attachment ID."
+msgstr "اٹیچمنٹ آئی ڈی درست نہیں ہے۔"
+
+msgid "You do not have permission to edit this attachment."
+msgstr "آپ کو اس اٹیچمنٹ میں ترمیم کی اجازت نہیں ہے۔"
+
+msgid "Invalid crop details."
+msgstr "کراپ کی تفصیلات درست نہیں ہیں۔"
+
+msgid "Unable to determine attachment URL."
+msgstr "اٹیچمنٹ کا URL معلوم نہیں ہو سکا۔"

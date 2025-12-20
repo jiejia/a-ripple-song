@@ -1534,3 +1534,18 @@ msgstr "Durée (secondes)"
 
 msgid "Title (optional)"
 msgstr "Titre (optionnel)"
+
+msgid "Invalid request."
+msgstr "Requête invalide."
+
+msgid "Invalid attachment ID."
+msgstr "ID de pièce jointe invalide."
+
+msgid "You do not have permission to edit this attachment."
+msgstr "Vous n’avez pas l’autorisation de modifier cette pièce jointe."
+
+msgid "Invalid crop details."
+msgstr "Détails de recadrage invalides."
+
+msgid "Unable to determine attachment URL."
+msgstr "Impossible de déterminer l’URL de la pièce jointe."

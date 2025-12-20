@@ -1536,3 +1536,18 @@ msgstr "Длительность (секунды)"
 
 msgid "Title (optional)"
 msgstr "Заголовок (необязательно)"
+
+msgid "Invalid request."
+msgstr "Недопустимый запрос."
+
+msgid "Invalid attachment ID."
+msgstr "Недопустимый идентификатор вложения."
+
+msgid "You do not have permission to edit this attachment."
+msgstr "У вас нет прав на редактирование этого вложения."
+
+msgid "Invalid crop details."
+msgstr "Недопустимые параметры обрезки."
+
+msgid "Unable to determine attachment URL."
+msgstr "Не удалось определить URL вложения."

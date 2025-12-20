@@ -199,7 +199,7 @@ class GeneralOptions
         }
 
         if (isset($_POST['_crb_site_logo'])) {
-            $logo_url = sanitize_text_field(wp_unslash($_POST['_crb_site_logo']));
+            $logo_url = esc_url_raw(wp_unslash($_POST['_crb_site_logo']));
             carbon_set_theme_option('crb_site_logo', $logo_url);
         }
     }
@@ -1690,8 +1690,7 @@ function crb_output_logo_uploader_assets(): void
 
                             cropBtn.prop('disabled', true).text('<?php echo esc_js(__('Cropping...', 'sage')); ?>');
 
-                            // Generate nonce for this specific attachment
-                            const nonce = wp.media.view.settings.post.nonce || '';
+                            const nonce = '<?php echo esc_js(wp_create_nonce('crb_crop_logo')); ?>';
 
                             // Send AJAX request to crop image
                             $.ajax({
@@ -1699,6 +1698,7 @@ function crb_output_logo_uploader_assets(): void
                                 type: 'POST',
                                 data: {
                                     action: 'crb_crop_logo',
+                                    nonce: nonce,
                                     id: attachment.id,
                                     cropDetails: {
                                         x1: selection.x1,
@@ -1816,47 +1816,81 @@ function crb_output_logo_uploader_assets(): void
  */
 function crb_handle_crop_logo_ajax(): void
 {
+    $nonce = isset($_POST['nonce']) ? sanitize_text_field(wp_unslash($_POST['nonce'])) : '';
+    if (!$nonce || !wp_verify_nonce($nonce, 'crb_crop_logo')) {
+        wp_send_json_error(['message' => __('Invalid request.', 'sage')], 403);
+    }
+
     // Check user permissions
     if (!current_user_can('upload_files')) {
-        wp_send_json_error(['message' => __('You do not have permission to upload files.', 'sage')]);
+        wp_send_json_error(['message' => __('You do not have permission to upload files.', 'sage')], 403);
     }
 
     // Verify required parameters
     if (!isset($_POST['id'])) {
-        wp_send_json_error(['message' => __('Missing attachment ID.', 'sage')]);
+        wp_send_json_error(['message' => __('Missing attachment ID.', 'sage')], 400);
     }
 
     if (!isset($_POST['cropDetails'])) {
-        wp_send_json_error(['message' => __('Missing crop details.', 'sage')]);
+        wp_send_json_error(['message' => __('Missing crop details.', 'sage')], 400);
     }
 
     $attachment_id = absint($_POST['id']);
 
-    $crop_details = $_POST['cropDetails'];
+    if (!$attachment_id) {
+        wp_send_json_error(['message' => __('Invalid attachment ID.', 'sage')], 400);
+    }
+
+    if (!current_user_can('edit_post', $attachment_id)) {
+        wp_send_json_error(['message' => __('You do not have permission to edit this attachment.', 'sage')], 403);
+    }
+
+    $crop_details = wp_unslash($_POST['cropDetails']);
+    if (!is_array($crop_details)) {
+        wp_send_json_error(['message' => __('Invalid crop details.', 'sage')], 400);
+    }
+
+    $required_keys = ['x1', 'y1', 'width', 'height', 'dst_width', 'dst_height'];
+    foreach ($required_keys as $required_key) {
+        if (!array_key_exists($required_key, $crop_details)) {
+            wp_send_json_error(['message' => __('Missing crop details.', 'sage')], 400);
+        }
+    }
+
+    $x1 = max(0, (int) $crop_details['x1']);
+    $y1 = max(0, (int) $crop_details['y1']);
+    $width = max(1, (int) $crop_details['width']);
+    $height = max(1, (int) $crop_details['height']);
+    $dst_width = max(1, (int) $crop_details['dst_width']);
+    $dst_height = max(1, (int) $crop_details['dst_height']);
 
     // Get the original image path
     $original_path = get_attached_file($attachment_id);
     if (!$original_path || !file_exists($original_path)) {
-        wp_send_json_error(['message' => __('Original image not found.', 'sage')]);
+        wp_send_json_error(['message' => __('Original image not found.', 'sage')], 404);
     }
 
     // Perform the crop
     $cropped = wp_crop_image(
         $attachment_id,
-        (int) $crop_details['x1'],
-        (int) $crop_details['y1'],
-        (int) $crop_details['width'],
-        (int) $crop_details['height'],
-        (int) $crop_details['dst_width'],
-        (int) $crop_details['dst_height']
+        $x1,
+        $y1,
+        $width,
+        $height,
+        $dst_width,
+        $dst_height
     );
 
     if (is_wp_error($cropped)) {
-        wp_send_json_error(['message' => $cropped->get_error_message()]);
+        wp_send_json_error(['message' => $cropped->get_error_message()], 500);
     }
 
     // Get the parent URL and construct the cropped image URL
     $parent_url = wp_get_attachment_url($attachment_id);
+    if (!$parent_url) {
+        @unlink($cropped);
+        wp_send_json_error(['message' => __('Unable to determine attachment URL.', 'sage')], 500);
+    }
     $url = str_replace(basename($parent_url), basename($cropped), $parent_url);
 
     // Get image info
@@ -1876,7 +1910,7 @@ function crb_handle_crop_logo_ajax(): void
 
     if (is_wp_error($cropped_id)) {
         @unlink($cropped);
-        wp_send_json_error(['message' => $cropped_id->get_error_message()]);
+        wp_send_json_error(['message' => $cropped_id->get_error_message()], 500);
     }
 
     // Generate metadata
@@ -1886,7 +1920,7 @@ function crb_handle_crop_logo_ajax(): void
     wp_send_json_success([
         'url' => $url,
         'attachment_id' => $cropped_id,
-        'width' => isset($metadata['width']) ? $metadata['width'] : $crop_details['dst_width'],
-        'height' => isset($metadata['height']) ? $metadata['height'] : $crop_details['dst_height']
+        'width' => isset($metadata['width']) ? $metadata['width'] : $dst_width,
+        'height' => isset($metadata['height']) ? $metadata['height'] : $dst_height
     ]);
 }

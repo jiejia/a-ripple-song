@@ -1534,3 +1534,18 @@ msgstr "अवधि (सेकंड)"
 
 msgid "Title (optional)"
 msgstr "शीर्षक (वैकल्पिक)"
+
+msgid "Invalid request."
+msgstr "अमान्य अनुरोध।"
+
+msgid "Invalid attachment ID."
+msgstr "अमान्य अटैचमेंट ID।"
+
+msgid "You do not have permission to edit this attachment."
+msgstr "आपके पास इस अटैचमेंट को संपादित करने की अनुमति नहीं है।"
+
+msgid "Invalid crop details."
+msgstr "अमान्य क्रॉप विवरण।"
+
+msgid "Unable to determine attachment URL."
+msgstr "अटैचमेंट URL निर्धारित नहीं किया जा सका।"

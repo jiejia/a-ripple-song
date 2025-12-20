@@ -1542,3 +1542,18 @@ msgstr "المدة (ثوانٍ)"
 
 msgid "Title (optional)"
 msgstr "العنوان (اختياري)"
+
+msgid "Invalid request."
+msgstr "طلب غير صالح."
+
+msgid "Invalid attachment ID."
+msgstr "معرّف المرفق غير صالح."
+
+msgid "You do not have permission to edit this attachment."
+msgstr "ليس لديك إذن لتعديل هذا المرفق."
+
+msgid "Invalid crop details."
+msgstr "تفاصيل القص غير صالحة."
+
+msgid "Unable to determine attachment URL."
+msgstr "تعذر تحديد رابط المرفق."

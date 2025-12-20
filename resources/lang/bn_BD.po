@@ -1534,3 +1534,18 @@ msgstr "সময়কাল (সেকেন্ড)"
 
 msgid "Title (optional)"
 msgstr "শিরোনাম (ঐচ্ছিক)"
+
+msgid "Invalid request."
+msgstr "অবৈধ অনুরোধ।"
+
+msgid "Invalid attachment ID."
+msgstr "অবৈধ সংযুক্তি আইডি।"
+
+msgid "You do not have permission to edit this attachment."
+msgstr "এই সংযুক্তি সম্পাদনা করার অনুমতি আপনার নেই।"
+
+msgid "Invalid crop details."
+msgstr "অবৈধ ক্রপ বিবরণ।"
+
+msgid "Unable to determine attachment URL."
+msgstr "সংযুক্তির URL নির্ধারণ করা যায়নি।"

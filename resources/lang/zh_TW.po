@@ -1532,3 +1532,18 @@ msgstr "時長（秒）"
 
 msgid "Title (optional)"
 msgstr "標題（可選）"
+
+msgid "Invalid request."
+msgstr "無效的請求。"
+
+msgid "Invalid attachment ID."
+msgstr "無效的附件 ID。"
+
+msgid "You do not have permission to edit this attachment."
+msgstr "您沒有權限編輯此附件。"
+
+msgid "Invalid crop details."
+msgstr "無效的裁剪參數。"
+
+msgid "Unable to determine attachment URL."
+msgstr "無法判斷附件 URL。"

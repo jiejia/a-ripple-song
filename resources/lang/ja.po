@@ -1532,3 +1532,18 @@ msgstr "長さ（秒）"
 
 msgid "Title (optional)"
 msgstr "タイトル（任意）"
+
+msgid "Invalid request."
+msgstr "無効なリクエストです。"
+
+msgid "Invalid attachment ID."
+msgstr "添付ファイル ID が無効です。"
+
+msgid "You do not have permission to edit this attachment."
+msgstr "この添付ファイルを編集する権限がありません。"
+
+msgid "Invalid crop details."
+msgstr "トリミングの詳細が無効です。"
+
+msgid "Unable to determine attachment URL."
+msgstr "添付ファイルの URL を特定できません。"

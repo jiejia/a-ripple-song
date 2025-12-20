@@ -1534,3 +1534,18 @@ msgstr "Duração (segundos)"
 
 msgid "Title (optional)"
 msgstr "Título (opcional)"
+
+msgid "Invalid request."
+msgstr "Solicitação inválida."
+
+msgid "Invalid attachment ID."
+msgstr "ID de anexo inválido."
+
+msgid "You do not have permission to edit this attachment."
+msgstr "Você não tem permissão para editar este anexo."
+
+msgid "Invalid crop details."
+msgstr "Detalhes de recorte inválidos."
+
+msgid "Unable to determine attachment URL."
+msgstr "Não foi possível determinar a URL do anexo."

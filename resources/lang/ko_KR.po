@@ -1532,3 +1532,18 @@ msgstr "지속 시간(초)"
 
 msgid "Title (optional)"
 msgstr "제목(선택)"
+
+msgid "Invalid request."
+msgstr "유효하지 않은 요청입니다."
+
+msgid "Invalid attachment ID."
+msgstr "첨부 파일 ID가 올바르지 않습니다."
+
+msgid "You do not have permission to edit this attachment."
+msgstr "이 첨부 파일을 편집할 권한이 없습니다."
+
+msgid "Invalid crop details."
+msgstr "자르기 정보가 올바르지 않습니다."
+
+msgid "Unable to determine attachment URL."
+msgstr "첨부 파일 URL을 확인할 수 없습니다."
