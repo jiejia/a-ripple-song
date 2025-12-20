@@ -220,30 +220,111 @@ function get_post_all_authors($post_id) {
     // If it's a podcast, also get members and guests
     $post_type = get_post_type($post_id);
     if ($post_type === 'podcast') {
-        // Get members field
         $members = get_post_meta($post_id, 'members', true);
-        if (!empty($members) && is_array($members)) {
-            foreach ($members as $member_id) {
-                $member_id = (int)$member_id;
-                if ($member_id && !in_array($member_id, $authors, true)) {
-                    $authors[] = $member_id;
-                }
-            }
-        }
-        
-        // Get guests field
         $guests = get_post_meta($post_id, 'guests', true);
-        if (!empty($guests) && is_array($guests)) {
-            foreach ($guests as $guest_id) {
-                $guest_id = (int)$guest_id;
-                if ($guest_id && !in_array($guest_id, $authors, true)) {
-                    $authors[] = $guest_id;
-                }
-            }
-        }
+
+        $authors = array_merge(
+            $authors,
+            aripplesong_extract_multicheck_user_ids($members),
+            aripplesong_extract_multicheck_user_ids($guests)
+        );
     }
     
+    $authors = array_values(array_unique(array_filter(array_map('absint', $authors))));
+
     return $authors;
+}
+
+/**
+ * Extract user IDs from a CMB2 multicheck value.
+ *
+ * CMB2 multicheck typically stores selected values as an associative array of
+ * "id" => "on". Some installs may store a simple numeric array instead.
+ *
+ * @param mixed $value
+ * @return int[]
+ */
+function aripplesong_extract_multicheck_user_ids($value): array
+{
+    if (!is_array($value) || empty($value)) {
+        return [];
+    }
+
+    $ids = [];
+
+    foreach ($value as $key => $item) {
+        if ($item === 'on' && is_numeric($key)) {
+            $ids[] = (int) $key;
+            continue;
+        }
+
+        if (is_numeric($item)) {
+            $ids[] = (int) $item;
+        }
+    }
+
+    return array_values(array_unique(array_filter(array_map('absint', $ids))));
+}
+
+/**
+ * Get published podcast IDs where the user is listed as a member or guest.
+ *
+ * @param int $user_id
+ * @return int[]
+ */
+function aripplesong_get_participated_podcast_ids(int $user_id): array
+{
+    static $cache = [];
+
+    $user_id = absint($user_id);
+    if (!$user_id) {
+        return [];
+    }
+
+    if (isset($cache[$user_id])) {
+        return $cache[$user_id];
+    }
+
+    $needle_string = '"' . $user_id . '"';
+    $needle_int = 'i:' . $user_id . ';';
+
+    $ids = get_posts([
+        'post_type' => 'podcast',
+        'post_status' => 'publish',
+        'posts_per_page' => -1,
+        'fields' => 'ids',
+        'author__not_in' => [$user_id],
+        'no_found_rows' => true,
+        'update_post_meta_cache' => false,
+        'update_post_term_cache' => false,
+        'meta_query' => [
+            'relation' => 'OR',
+            [
+                'key' => 'members',
+                'value' => $needle_string,
+                'compare' => 'LIKE',
+            ],
+            [
+                'key' => 'guests',
+                'value' => $needle_string,
+                'compare' => 'LIKE',
+            ],
+            [
+                'key' => 'members',
+                'value' => $needle_int,
+                'compare' => 'LIKE',
+            ],
+            [
+                'key' => 'guests',
+                'value' => $needle_int,
+                'compare' => 'LIKE',
+            ],
+        ],
+    ]);
+
+    $cache[$user_id] = array_values(array_unique(array_filter(array_map('absint', $ids))));
+
+    return $cache[$user_id];
 }
 
 /**
@@ -257,6 +338,11 @@ function get_post_all_authors($post_id) {
  * @return array Array of post IDs
  */
 function get_user_all_post_ids($user_id) {
+    $user_id = absint($user_id);
+    if (!$user_id) {
+        return [];
+    }
+
     $post_ids = [];
     
     // Get posts authored by the user (both 'post' and 'podcast' types)
@@ -270,39 +356,9 @@ function get_user_all_post_ids($user_id) {
     
     $post_ids = array_merge($post_ids, $authored_posts);
     
-    // Get all podcasts where user is in members or guests (but not author)
-    $all_podcasts = get_posts([
-        'post_type' => 'podcast',
-        'posts_per_page' => -1,
-        'post_status' => 'publish',
-        'fields' => 'ids',
-    ]);
-    
-    foreach ($all_podcasts as $podcast_id) {
-        // Skip if already in the list (user is author)
-        if (in_array($podcast_id, $post_ids)) {
-            continue;
-        }
-        
-        // Check members field
-        $members = get_post_meta($podcast_id, 'members', true);
-        if (!empty($members) && is_array($members)) {
-            if (in_array($user_id, $members, false) || in_array((string)$user_id, $members, false)) {
-                $post_ids[] = $podcast_id;
-                continue;
-            }
-        }
-        
-        // Check guests field
-        $guests = get_post_meta($podcast_id, 'guests', true);
-        if (!empty($guests) && is_array($guests)) {
-            if (in_array($user_id, $guests, false) || in_array((string)$user_id, $guests, false)) {
-                $post_ids[] = $podcast_id;
-            }
-        }
-    }
-    
-    return $post_ids;
+    $post_ids = array_merge($post_ids, aripplesong_get_participated_podcast_ids($user_id));
+
+    return array_values(array_unique(array_filter(array_map('absint', $post_ids))));
 }
 
 /**
@@ -316,56 +372,18 @@ function get_user_all_post_ids($user_id) {
  * @return int Total post count
  */
 function calculate_user_post_count($user_id) {
+    $user_id = absint($user_id);
+    if (!$user_id) {
+        return 0;
+    }
+
     // Base count: all posts published by the user
     // count_user_posts() only counts 'post' type by default, so we need to count 'podcast' separately
     $regular_posts_count = count_user_posts($user_id, 'post');
     $podcast_posts_count = count_user_posts($user_id, 'podcast');
     $base_count = $regular_posts_count + $podcast_posts_count;
-    
-    // Query ALL published podcast posts
-    $all_podcasts = get_posts([
-        'post_type' => 'podcast',
-        'posts_per_page' => -1,
-        'post_status' => 'publish',
-        'fields' => 'ids',
-    ]);
-    
-    $additional_podcast_count = 0;
-    foreach ($all_podcasts as $podcast_id) {
-        // Get the podcast author
-        $podcast_author = get_post_field('post_author', $podcast_id);
-        
-        // Skip if this user is the author (already counted in base_count)
-        if ($podcast_author == $user_id) {
-            continue;
-        }
-        
-        $found = false;
-        
-        // Check members field
-        // CMB2 multicheck stores as a simple array of user IDs: [1, 2, 3]
-        $members = get_post_meta($podcast_id, 'members', true);
-        if (!empty($members) && is_array($members)) {
-            // Check if user_id is in the array (both as integer and string)
-            if (in_array($user_id, $members, false) || in_array((string)$user_id, $members, false)) {
-                $additional_podcast_count++;
-                $found = true;
-            }
-        }
-        
-        // If not found in members, check guests field
-        if (!$found) {
-            $guests = get_post_meta($podcast_id, 'guests', true);
-            if (!empty($guests) && is_array($guests)) {
-                // Check if user_id is in the array (both as integer and string)
-                if (in_array($user_id, $guests, false) || in_array((string)$user_id, $guests, false)) {
-                    $additional_podcast_count++;
-                }
-            }
-        }
-    }
-    
-    return $base_count + $additional_podcast_count;
+
+    return $base_count + count(aripplesong_get_participated_podcast_ids($user_id));
 }
 
 /**
