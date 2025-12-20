@@ -285,6 +285,14 @@ function aripplesong_get_participated_podcast_ids(int $user_id): array
         return $cache[$user_id];
     }
 
+    $cache_version = (int) get_option('aripplesong_participation_cache_version', 1);
+    $transient_key = 'aripplesong_participated_podcasts_v' . $cache_version . '_' . $user_id;
+    $cached = get_transient($transient_key);
+    if (is_array($cached)) {
+        $cache[$user_id] = array_values(array_unique(array_filter(array_map('absint', $cached))));
+        return $cache[$user_id];
+    }
+
     $needle_string = '"' . $user_id . '"';
     $needle_int = 'i:' . $user_id . ';';
 
@@ -323,8 +331,18 @@ function aripplesong_get_participated_podcast_ids(int $user_id): array
     ]);
 
     $cache[$user_id] = array_values(array_unique(array_filter(array_map('absint', $ids))));
+    set_transient($transient_key, $cache[$user_id], HOUR_IN_SECONDS);
 
     return $cache[$user_id];
+}
+
+/**
+ * Bump the participation cache version (invalidates user participation transients).
+ */
+function aripplesong_bump_participation_cache_version(): void
+{
+    $current = (int) get_option('aripplesong_participation_cache_version', 1);
+    update_option('aripplesong_participation_cache_version', $current + 1, 'no');
 }
 
 /**

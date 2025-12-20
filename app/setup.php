@@ -439,6 +439,29 @@ add_action('after_setup_theme', function () {
 });
 
 /**
+ * Invalidate cached podcast participation results when podcasts change.
+ */
+add_action('save_post_podcast', function ($post_id, $post, $update) {
+    if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id)) {
+        return;
+    }
+
+    if (function_exists('aripplesong_bump_participation_cache_version')) {
+        \aripplesong_bump_participation_cache_version();
+    }
+}, 10, 3);
+
+add_action('deleted_post', function ($post_id) {
+    if (get_post_type($post_id) !== 'podcast') {
+        return;
+    }
+
+    if (function_exists('aripplesong_bump_participation_cache_version')) {
+        \aripplesong_bump_participation_cache_version();
+    }
+});
+
+/**
  * Allow additional file types to be uploaded.
  *
  * @param array $mimes Existing allowed mime types.
@@ -490,4 +513,3 @@ add_filter('wp_check_filetype_and_ext', function ($data, $file, $filename, $mime
     
     return $data;
 }, 10, 4);
-
