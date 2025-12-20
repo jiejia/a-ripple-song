@@ -857,9 +857,29 @@ class Podcast
         }
 
         if (!file_exists($file_path)) {
-            $parsed_url = parse_url($audio_url);
-            if (isset($parsed_url['path'])) {
-                $file_path = ABSPATH . ltrim(rawurldecode((string) $parsed_url['path']), '/');
+            // Site-relative URLs can be mapped to local uploads paths, but should never escape the uploads directory.
+            $uploads_basedir = isset($upload_dir['basedir']) ? (string) $upload_dir['basedir'] : '';
+            $uploads_basedir_real = $uploads_basedir !== '' ? realpath($uploads_basedir) : false;
+            $uploads_basedir_real = $uploads_basedir_real !== false ? wp_normalize_path($uploads_basedir_real) : false;
+
+            $url_path = '';
+
+            if (filter_var($audio_url, FILTER_VALIDATE_URL)) {
+                $parsed_url = parse_url($audio_url);
+                $url_path = isset($parsed_url['path']) ? (string) $parsed_url['path'] : '';
+            } elseif (is_string($audio_url) && strpos($audio_url, '/') === 0) {
+                $url_path = $audio_url;
+            }
+
+            if ($uploads_basedir_real && $url_path !== '') {
+                $candidate = ABSPATH . ltrim(rawurldecode($url_path), '/');
+                $candidate_real = realpath($candidate);
+                if ($candidate_real !== false) {
+                    $candidate_real = wp_normalize_path($candidate_real);
+                    if (strpos($candidate_real, $uploads_basedir_real . '/') === 0 || $candidate_real === $uploads_basedir_real) {
+                        $file_path = $candidate_real;
+                    }
+                }
             }
         }
 
