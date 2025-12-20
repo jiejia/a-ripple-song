@@ -1551,3 +1551,12 @@ msgstr "Недопустимые параметры обрезки."
 
 msgid "Unable to determine attachment URL."
 msgstr "Не удалось определить URL вложения."
+
+msgid "Invalid post ID."
+msgstr "Недопустимый ID записи."
+
+msgid "Invalid podcast post."
+msgstr "Недопустимая запись подкаста."
+
+msgid "No post IDs provided."
+msgstr "Не переданы ID записей."

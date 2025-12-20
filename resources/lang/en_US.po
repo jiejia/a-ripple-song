@@ -1549,3 +1549,12 @@ msgstr "Invalid crop details."
 
 msgid "Unable to determine attachment URL."
 msgstr "Unable to determine attachment URL."
+
+msgid "Invalid post ID."
+msgstr "Invalid post ID."
+
+msgid "Invalid podcast post."
+msgstr "Invalid podcast post."
+
+msgid "No post IDs provided."
+msgstr "No post IDs provided."

@@ -1549,3 +1549,12 @@ msgstr "অবৈধ ক্রপ বিবরণ।"
 
 msgid "Unable to determine attachment URL."
 msgstr "সংযুক্তির URL নির্ধারণ করা যায়নি।"
+
+msgid "Invalid post ID."
+msgstr "অবৈধ পোস্ট আইডি।"
+
+msgid "Invalid podcast post."
+msgstr "অবৈধ পডকাস্ট পোস্ট।"
+
+msgid "No post IDs provided."
+msgstr "কোনও পোস্ট আইডি দেওয়া হয়নি।"

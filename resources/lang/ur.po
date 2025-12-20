@@ -1549,3 +1549,12 @@ msgstr "کراپ کی تفصیلات درست نہیں ہیں۔"
 
 msgid "Unable to determine attachment URL."
 msgstr "اٹیچمنٹ کا URL معلوم نہیں ہو سکا۔"
+
+msgid "Invalid post ID."
+msgstr "پوسٹ آئی ڈی درست نہیں ہے۔"
+
+msgid "Invalid podcast post."
+msgstr "پوڈکاسٹ پوسٹ درست نہیں ہے۔"
+
+msgid "No post IDs provided."
+msgstr "کوئی پوسٹ آئی ڈی فراہم نہیں کی گئی۔"

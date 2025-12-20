@@ -1549,3 +1549,12 @@ msgstr "Détails de recadrage invalides."
 
 msgid "Unable to determine attachment URL."
 msgstr "Impossible de déterminer l’URL de la pièce jointe."
+
+msgid "Invalid post ID."
+msgstr "ID d’article invalide."
+
+msgid "Invalid podcast post."
+msgstr "Article de podcast invalide."
+
+msgid "No post IDs provided."
+msgstr "Aucun ID d’article fourni."

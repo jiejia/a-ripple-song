@@ -78,17 +78,29 @@ class Post
     }
 
     /**
+     * Whether the current user can read a post for metrics purposes.
+     */
+    private function canReadPost(\WP_Post $post): bool
+    {
+        if ($post->post_status === 'publish') {
+            return true;
+        }
+
+        return current_user_can('read_post', $post->ID);
+    }
+
+    /**
      * Handle AJAX view increment for any post type.
      */
     public function incrementViewCount(): void
     {
         check_ajax_referer('aripplesong-ajax');
 
-        $post_id = isset($_POST['post_id']) ? absint($_POST['post_id']) : 0;
+        $post_id = isset($_POST['post_id']) ? absint(wp_unslash($_POST['post_id'])) : 0;
         $post    = $post_id ? get_post($post_id) : null;
 
-        if (!$post) {
-            wp_send_json_error(['message' => 'Invalid post ID'], 400);
+        if (!$post || !$this->canReadPost($post)) {
+            wp_send_json_error(['message' => __('Invalid post ID.', 'sage')], 400);
         }
 
         $count = (int) get_post_meta($post_id, '_views_count', true);
@@ -106,11 +118,11 @@ class Post
     {
         check_ajax_referer('aripplesong-ajax');
 
-        $post_id = isset($_POST['post_id']) ? absint($_POST['post_id']) : 0;
+        $post_id = isset($_POST['post_id']) ? absint(wp_unslash($_POST['post_id'])) : 0;
         $post    = $post_id ? get_post($post_id) : null;
 
-        if (!$post || $post->post_type !== 'podcast') {
-            wp_send_json_error(['message' => 'Invalid podcast post'], 400);
+        if (!$post || $post->post_type !== 'podcast' || !$this->canReadPost($post)) {
+            wp_send_json_error(['message' => __('Invalid podcast post.', 'sage')], 400);
         }
 
         $count = (int) get_post_meta($post_id, '_play_count', true);
@@ -129,10 +141,13 @@ class Post
         check_ajax_referer('aripplesong-ajax');
 
         $ids = isset($_POST['post_ids']) ? (array) $_POST['post_ids'] : [];
-        $ids = array_filter(array_map('absint', $ids));
+        $ids = array_map(static function ($id): int {
+            return absint(wp_unslash($id));
+        }, $ids);
+        $ids = array_filter($ids);
 
         if (empty($ids)) {
-            wp_send_json_error(['message' => 'No post IDs provided'], 400);
+            wp_send_json_error(['message' => __('No post IDs provided.', 'sage')], 400);
         }
 
         $data = [];
@@ -140,7 +155,7 @@ class Post
         foreach ($ids as $post_id) {
             $post = get_post($post_id);
 
-            if (!$post) {
+            if (!$post || !$this->canReadPost($post)) {
                 continue;
             }
 
@@ -161,4 +176,3 @@ class Post
 }
 
 (new Post())->register();
-

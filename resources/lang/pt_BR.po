@@ -1549,3 +1549,12 @@ msgstr "Detalhes de recorte inválidos."
 
 msgid "Unable to determine attachment URL."
 msgstr "Não foi possível determinar a URL do anexo."
+
+msgid "Invalid post ID."
+msgstr "ID do post inválido."
+
+msgid "Invalid podcast post."
+msgstr "Post de podcast inválido."
+
+msgid "No post IDs provided."
+msgstr "Nenhum ID de post fornecido."

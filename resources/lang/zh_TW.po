@@ -1547,3 +1547,12 @@ msgstr "無效的裁剪參數。"
 
 msgid "Unable to determine attachment URL."
 msgstr "無法判斷附件 URL。"
+
+msgid "Invalid post ID."
+msgstr "無效的文章 ID。"
+
+msgid "Invalid podcast post."
+msgstr "無效的播客文章。"
+
+msgid "No post IDs provided."
+msgstr "未提供文章 ID。"

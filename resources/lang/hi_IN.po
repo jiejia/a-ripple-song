@@ -1549,3 +1549,12 @@ msgstr "अमान्य क्रॉप विवरण।"
 
 msgid "Unable to determine attachment URL."
 msgstr "अटैचमेंट URL निर्धारित नहीं किया जा सका।"
+
+msgid "Invalid post ID."
+msgstr "अमान्य पोस्ट ID।"
+
+msgid "Invalid podcast post."
+msgstr "अमान्य पॉडकास्ट पोस्ट।"
+
+msgid "No post IDs provided."
+msgstr "कोई पोस्ट ID प्रदान नहीं किया गया।"

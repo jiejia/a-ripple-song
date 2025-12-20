@@ -1557,3 +1557,12 @@ msgstr "تفاصيل القص غير صالحة."
 
 msgid "Unable to determine attachment URL."
 msgstr "تعذر تحديد رابط المرفق."
+
+msgid "Invalid post ID."
+msgstr "معرّف المقالة غير صالح."
+
+msgid "Invalid podcast post."
+msgstr "منشور بودكاست غير صالح."
+
+msgid "No post IDs provided."
+msgstr "لم يتم تقديم معرّفات المقالات."
