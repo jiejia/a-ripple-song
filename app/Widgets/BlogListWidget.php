@@ -2,7 +2,7 @@
 
 /**
  * Blog List Widget
- * 显示博客文章列表
+ * Display a list of latest blog posts.
  */
 class Blog_List_Widget extends WP_Widget {
     
@@ -22,7 +22,7 @@ class Blog_List_Widget extends WP_Widget {
         $show_see_all = !empty($instance['show_see_all']) ? $instance['show_see_all'] : true;
         $columns = !empty($instance['columns']) ? absint($instance['columns']) : 3;
         
-        // 查询博客文章
+        // Query blog posts.
         $posts = new WP_Query([
             'post_type' => 'post',
             'posts_per_page' => $posts_per_page,
@@ -38,7 +38,7 @@ class Blog_List_Widget extends WP_Widget {
                 </h2>
                 <?php if ($show_see_all): ?>
                 <span class="text-xs text-base-content/70">
-                    <a href="<?php echo get_permalink(get_page_by_path('blog')); ?>"><?php _e('See all', 'sage'); ?></a>
+                    <a href="<?php echo esc_url(get_permalink(get_page_by_path('blog'))); ?>"><?php _e('See all', 'sage'); ?></a>
                 </span>
                 <?php endif; ?>
             </div>
@@ -47,24 +47,24 @@ class Blog_List_Widget extends WP_Widget {
                     <?php while ($posts->have_posts()): $posts->the_post(); ?>
                         <li class="bg-base-200/50 rounded-lg p-4 hover:bg-base-200">
                             <h3 class="text-md font-bold">
-                                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                                <a href="<?php echo esc_url(get_permalink()); ?>"><?php echo esc_html(get_the_title()); ?></a>
                             </h3>
                             <div class="grid grid-flow-row gap-1 mt-2">
                                 <?php
-                                // 保留分类标签展示
+                                // Keep the category label display.
                                 $categories = get_the_category();
                                 if (!empty($categories)):
                                 ?>
                                     <span class="text-xs text-base-content">
                                         <span>
-                                            <a href="<?php echo get_category_link($categories[0]->term_id); ?>">
+                                            <a href="<?php echo esc_url(get_category_link($categories[0]->term_id)); ?>">
                                                 <?php echo esc_html($categories[0]->name); ?>
                                             </a>
                                         </span>
                                     </span>
                                 <?php endif; ?>
                                 <?php
-                                // 复用 entry-meta 模板以统一日期与计数展示
+                                // Reuse the entry-meta partial for consistent date and counters.
                                 echo \Roots\view('partials.entry-meta', ['post_id' => get_the_ID()])->render();
                                 ?>
                             </div>
@@ -138,4 +138,3 @@ class Blog_List_Widget extends WP_Widget {
         return $instance;
     }
 }
-

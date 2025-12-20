@@ -2,7 +2,7 @@
 
 /**
  * Podcast List Widget
- * 显示播客列表
+ * Display podcast lists.
  */
 class Podcast_List_Widget extends WP_Widget {
     
@@ -21,7 +21,7 @@ class Podcast_List_Widget extends WP_Widget {
         $posts_per_page = !empty($instance['posts_per_page']) ? absint($instance['posts_per_page']) : 3;
         $show_see_all = !empty($instance['show_see_all']) ? $instance['show_see_all'] : true;
         
-        // 查询最新播客 (Recent)
+        // Query latest podcasts (recent).
         $recent_podcasts = new WP_Query([
             'post_type' => 'podcast',
             'posts_per_page' => $posts_per_page,
@@ -30,7 +30,7 @@ class Podcast_List_Widget extends WP_Widget {
             'order' => 'DESC'
         ]);
         
-        // 查询热门播客 (Popular - 按评论数排序)
+        // Query popular podcasts (by comment count).
         $popular_podcasts = new WP_Query([
             'post_type' => 'podcast',
             'posts_per_page' => $posts_per_page,
@@ -39,7 +39,7 @@ class Podcast_List_Widget extends WP_Widget {
             'order' => 'DESC'
         ]);
         
-        // 查询随机播客 (Random)
+        // Query random podcasts.
         $random_podcasts = new WP_Query([
             'post_type' => 'podcast',
             'posts_per_page' => $posts_per_page,
@@ -47,7 +47,7 @@ class Podcast_List_Widget extends WP_Widget {
             'orderby' => 'rand'
         ]);
         
-        // 准备三种类型的播客数据
+        // Prepare the podcast data for the three tabs.
         $podcast_data = [
             'recent' => $this->prepare_podcast_list($recent_podcasts),
             'popular' => $this->prepare_podcast_list($popular_podcasts),
@@ -67,7 +67,7 @@ class Podcast_List_Widget extends WP_Widget {
                 </h2>
                 <?php if ($show_see_all): ?>
                 <span class="text-xs text-base-content/70">
-                    <a href="<?php echo get_permalink(get_page_by_path('podcast')); ?>"><?php _e('See all', 'sage'); ?></a>
+                    <a href="<?php echo esc_url(get_permalink(get_page_by_path('podcast'))); ?>"><?php _e('See all', 'sage'); ?></a>
                 </span>
                 <?php endif; ?>
             </div>
@@ -167,7 +167,7 @@ class Podcast_List_Widget extends WP_Widget {
     }
     
     /**
-     * 准备播客列表数据
+     * Prepare podcast list data.
      */
     private function prepare_podcast_list($query) {
         $podcasts = [];
@@ -234,4 +234,3 @@ class Podcast_List_Widget extends WP_Widget {
         return $instance;
     }
 }
-

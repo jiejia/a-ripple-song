@@ -2,7 +2,7 @@
 
 /**
  * Subscribe Links Widget
- * 显示订阅链接按钮
+ * Display subscription platform links.
  */
 class Subscribe_Links_Widget extends WP_Widget {
     
@@ -22,11 +22,11 @@ class Subscribe_Links_Widget extends WP_Widget {
         $spotify_url = !empty($instance['spotify_url']) ? $instance['spotify_url'] : '';
         $youtube_music_url = !empty($instance['youtube_music_url']) ? $instance['youtube_music_url'] : '';
         
-        // 检查是否至少有一个链接
+        // Require at least one link to render.
         $has_links = !empty($apple_podcast_url) || !empty($spotify_url) || !empty($youtube_music_url);
         
         if (!$has_links) {
-            // 没有配置任何链接时不显示
+            // Hide when nothing is configured.
             echo $args['after_widget'];
             return;
         }
@@ -137,4 +137,3 @@ class Subscribe_Links_Widget extends WP_Widget {
         return $instance;
     }
 }
-

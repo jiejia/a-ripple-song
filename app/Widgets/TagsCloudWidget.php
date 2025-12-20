@@ -2,7 +2,7 @@
 
 /**
  * Tags Cloud Widget
- * 显示标签云
+ * Display a tag cloud.
  */
 class Tags_Cloud_Widget extends WP_Widget {
     
@@ -22,7 +22,7 @@ class Tags_Cloud_Widget extends WP_Widget {
         $orderby = !empty($instance['orderby']) ? $instance['orderby'] : 'count';
         $order = !empty($instance['order']) ? $instance['order'] : 'DESC';
         
-        // 获取标签
+        // Fetch tags.
         $tags = get_tags([
             'number' => $number,
             'orderby' => $orderby,
@@ -31,7 +31,7 @@ class Tags_Cloud_Widget extends WP_Widget {
         ]);
         
         if (empty($tags)) {
-            // 没有标签时显示占位提示
+            // Render placeholders when no tags exist.
             ?>
             <div class="card bg-base-100 w-full mt-4">
                 <div class="card-body p-4">
@@ -56,9 +56,9 @@ class Tags_Cloud_Widget extends WP_Widget {
                     <ul class="mt-0 flex flex-wrap gap-2 text-xs text-base-content/75">
                         <?php foreach ($tags as $tag): ?>
                             <li>
-                                <a href="<?php echo get_tag_link($tag->term_id); ?>" 
+                                <a href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>" 
                                    class="bg-base-200/50 hover:bg-base-200 rounded-full py-0.5 px-2 transition-colors"
-                                   title="<?php printf(_n('%d post', '%d posts', $tag->count, 'sage'), $tag->count); ?>">
+                                   title="<?php echo esc_attr(sprintf(_n('%d post', '%d posts', $tag->count, 'sage'), $tag->count)); ?>">
                                     # <?php echo esc_html($tag->name); ?>
                                 </a>
                             </li>
@@ -137,4 +137,3 @@ class Tags_Cloud_Widget extends WP_Widget {
         return $instance;
     }
 }
-

@@ -2,7 +2,7 @@
 
 /**
  * Banner Carousel Widget
- * 显示图片轮播横幅
+ * Display a banner carousel.
  */
 class Banner_Carousel_Widget extends WP_Widget {
     
@@ -142,7 +142,7 @@ class Banner_Carousel_Widget extends WP_Widget {
                     continue;
                 }
                 
-                // 只保存有图片地址的幻灯片
+                // Only store slides with an image URL.
                 if (!empty($slide['image'])) {
                     $slides[] = [
                         'image' => esc_url_raw($slide['image']),
@@ -158,4 +158,3 @@ class Banner_Carousel_Widget extends WP_Widget {
         return $instance;
     }
 }
-

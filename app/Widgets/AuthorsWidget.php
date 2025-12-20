@@ -2,7 +2,7 @@
 
 /**
  * Authors Widget
- * 显示作者列表（成员和访客）
+ * Display the authors list (members and guests).
  */
 class Authors_Widget extends WP_Widget {
     
@@ -22,14 +22,14 @@ class Authors_Widget extends WP_Widget {
         $show_members = isset($instance['show_members']) ? $instance['show_members'] : true;
         $show_guests = isset($instance['show_guests']) ? $instance['show_guests'] : true;
         
-        // 获取成员（管理员、编辑、作者）
+        // Members (administrators, editors, authors).
         $members = get_users([
             'role__in' => ['administrator', 'editor', 'author'],
             'orderby' => 'display_name',
             'order' => 'ASC',
         ]);
         
-        // 获取访客（投稿者）
+        // Guests (contributors).
         $contributors = get_users([
             'role' => 'contributor',
             'orderby' => 'display_name',
@@ -47,7 +47,7 @@ class Authors_Widget extends WP_Widget {
                         ? calculate_user_post_count($user->ID) 
                         : count_user_posts($user->ID, 'post') + count_user_posts($user->ID, 'podcast');
                     ?>
-                    <a href="<?php echo get_author_posts_url($user->ID); ?>" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
+                    <a href="<?php echo esc_url(get_author_posts_url($user->ID)); ?>" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
                         <div class="avatar">
                             <div class="ring-base-content/50 ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
                                 <img src="<?php echo esc_url($avatar_url); ?>" alt="<?php echo esc_attr($user->display_name); ?>" />
@@ -70,7 +70,7 @@ class Authors_Widget extends WP_Widget {
                         ? calculate_user_post_count($user->ID) 
                         : count_user_posts($user->ID, 'post') + count_user_posts($user->ID, 'podcast');
                     ?>
-                    <a href="<?php echo get_author_posts_url($user->ID); ?>" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
+                    <a href="<?php echo esc_url(get_author_posts_url($user->ID)); ?>" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
                         <div class="avatar">
                             <div class="ring-base-content/50 ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
                                 <img src="<?php echo esc_url($avatar_url); ?>" alt="<?php echo esc_attr($user->display_name); ?>" />
@@ -153,4 +153,3 @@ class Authors_Widget extends WP_Widget {
         return $instance;
     }
 }
-
