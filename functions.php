@@ -370,6 +370,9 @@ function get_user_all_post_ids($user_id) {
         'posts_per_page' => -1,
         'post_status' => 'publish',
         'fields' => 'ids',
+        'no_found_rows' => true,
+        'update_post_meta_cache' => false,
+        'update_post_term_cache' => false,
     ]);
     
     $post_ids = array_merge($post_ids, $authored_posts);
