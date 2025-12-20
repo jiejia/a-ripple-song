@@ -3,7 +3,7 @@
   @if ($responses())
   <h2 class="text-base font-bold mb-4 flex items-center gap-2">
     <i data-lucide="message-circle" class="w-4 h-4"></i>
-    {!! $title !!}
+    {{ $title }}
   </h2>
 
   <ol class="comment-list space-y-4">

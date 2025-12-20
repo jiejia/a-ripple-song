@@ -1,12 +1,12 @@
 {{--
-  播客节目卡片组件
-  
-  参数:
-  - $post_id: 文章ID
-  - $audio_file: 音频文件URL
-  - $episode_data: 节目数据（JSON格式）
-  - $title: 标题
-  - $show_link: 是否显示标题链接（默认 true）
+  Podcast episode card component
+
+  Params:
+  - $post_id: Post ID
+  - $audio_file: Audio file URL
+  - $episode_data: Episode data (JSON)
+  - $title: Title
+  - $show_link: Whether to show title link (default true)
 --}}
 
 @php
@@ -34,9 +34,9 @@
         <div class="grid grid-flow-row gap-1 overflow-hidden">
             <h4 class="text-md font-bold line-clamp-2">
                 @if($show_link)
-                    <a href="{{ get_permalink($post_id) }}">{!! $title !!}</a>
+                    <a href="{{ get_permalink($post_id) }}">{{ $title }}</a>
                 @else
-                    {!! $title !!}
+                    {{ $title }}
                 @endif
             </h4>
             @include('partials.entry-meta', ['post_id' => $post_id])
@@ -69,4 +69,3 @@
         </div>
     </div>
 </div>
-

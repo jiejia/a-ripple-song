@@ -1,7 +1,7 @@
 <div class="rounded-lg bg-base-100 p-4">
     <div class="grid grid-cols-[1fr_auto] items-center">
         <h2 class="text-lg font-bold">
-            {!! $title !!}
+            {!! wp_kses_post($title) !!}
         </h2>
         @php
         global $wp_query;
