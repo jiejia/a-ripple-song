@@ -537,9 +537,10 @@ class Podcast
                 true
             );
             wp_enqueue_script('podcast-editor-guard');
+            $audio_required_message = esc_js(__('Audio File is required.', 'sage'));
             wp_add_inline_script(
                 'podcast-editor-guard',
-                "(function(wp){if(!wp||!wp.data||!wp.data.dispatch||!wp.data.select){return;}var lockKey='podcast-audio-required';var editor=wp.data.dispatch('core/editor');var notices=wp.data.dispatch('core/notices');var selectNotices=wp.data.select('core/notices');var locked=null;function getAudioValue(){var el=document.querySelector('#audio_file')||document.querySelector('input[name=\"audio_file\"]');if(!el){return '';}return (el.value||'').trim();}function setLocked(shouldLock){if(locked===shouldLock){return;}locked=shouldLock;if(shouldLock){editor.lockPostSaving(lockKey);if(!selectNotices.getNotice(lockKey)){notices.createNotice('error','Audio File 不能为空，填写后才能保存。',{id:lockKey,isDismissible:false});}}else{editor.unlockPostSaving(lockKey);notices.removeNotice(lockKey);}}function apply(){setLocked(getAudioValue()==='');}wp.domReady(function(){apply();setInterval(apply,500);});})(window.wp);"
+                "(function(wp){if(!wp||!wp.data||!wp.data.dispatch||!wp.data.select){return;}var lockKey='podcast-audio-required';var editor=wp.data.dispatch('core/editor');var notices=wp.data.dispatch('core/notices');var selectNotices=wp.data.select('core/notices');var locked=null;function getAudioValue(){var el=document.querySelector('#audio_file')||document.querySelector('input[name=\"audio_file\"]');if(!el){return '';}return (el.value||'').trim();}function setLocked(shouldLock){if(locked===shouldLock){return;}locked=shouldLock;if(shouldLock){editor.lockPostSaving(lockKey);if(!selectNotices.getNotice(lockKey)){notices.createNotice('error','{$audio_required_message}',{id:lockKey,isDismissible:false});}}else{editor.unlockPostSaving(lockKey);notices.removeNotice(lockKey);}}function apply(){setLocked(getAudioValue()==='');}wp.domReady(function(){apply();setInterval(apply,500);});})(window.wp);"
             );
         }
     }
