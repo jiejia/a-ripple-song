@@ -20,16 +20,15 @@ $wp_query = new WP_Query([
 
 @include('partials.page-header')
 
-@while($wp_query->have_posts()) @php($wp_query->the_post())
-@includeFirst(['partials.content-podcast'])
+@while(have_posts())
+  @php(the_post())
+  @includeFirst(['partials.content-podcast'])
 @endwhile
 
 {!! the_posts_pagination() !!}
 
-@php
-wp_reset_postdata();
-$wp_query = $original_query;
-@endphp
+@php(wp_reset_postdata())
+@php($wp_query = $original_query)
 
 @endsection
 
