@@ -1529,9 +1529,6 @@ msgstr "Remove Soundbite"
 msgid "Start Time (seconds)"
 msgstr "Start Time (seconds)"
 
-msgid "Duration (seconds)"
-msgstr "Duration (seconds)"
-
 msgid "Title (optional)"
 msgstr "Title (optional)"
 
@@ -1558,3 +1555,9 @@ msgstr "Invalid podcast post."
 
 msgid "No post IDs provided."
 msgstr "No post IDs provided."
+
+msgid "Pitch preserved"
+msgstr "Pitch preserved"
+
+msgid "Speed (pitch preserved)"
+msgstr "Speed (pitch preserved)"

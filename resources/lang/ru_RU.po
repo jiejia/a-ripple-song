@@ -1531,9 +1531,6 @@ msgstr "Удалить фрагмент"
 msgid "Start Time (seconds)"
 msgstr "Время начала (секунды)"
 
-msgid "Duration (seconds)"
-msgstr "Длительность (секунды)"
-
 msgid "Title (optional)"
 msgstr "Заголовок (необязательно)"
 
@@ -1560,3 +1557,9 @@ msgstr "Недопустимая запись подкаста."
 
 msgid "No post IDs provided."
 msgstr "Не переданы ID записей."
+
+msgid "Pitch preserved"
+msgstr "Тон сохранён"
+
+msgid "Speed (pitch preserved)"
+msgstr "Скорость (тон сохранён)"

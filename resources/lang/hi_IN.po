@@ -1529,9 +1529,6 @@ msgstr "साउंडबाइट हटाएँ"
 msgid "Start Time (seconds)"
 msgstr "आरंभ समय (सेकंड)"
 
-msgid "Duration (seconds)"
-msgstr "अवधि (सेकंड)"
-
 msgid "Title (optional)"
 msgstr "शीर्षक (वैकल्पिक)"
 
@@ -1558,3 +1555,9 @@ msgstr "अमान्य पॉडकास्ट पोस्ट।"
 
 msgid "No post IDs provided."
 msgstr "कोई पोस्ट ID प्रदान नहीं किया गया।"
+
+msgid "Pitch preserved"
+msgstr "पिच संरक्षित"
+
+msgid "Speed (pitch preserved)"
+msgstr "गति (पिच संरक्षित)"

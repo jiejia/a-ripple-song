@@ -1529,9 +1529,6 @@ msgstr "Remover trecho"
 msgid "Start Time (seconds)"
 msgstr "Tempo inicial (segundos)"
 
-msgid "Duration (seconds)"
-msgstr "Duração (segundos)"
-
 msgid "Title (optional)"
 msgstr "Título (opcional)"
 
@@ -1558,3 +1555,9 @@ msgstr "Post de podcast inválido."
 
 msgid "No post IDs provided."
 msgstr "Nenhum ID de post fornecido."
+
+msgid "Pitch preserved"
+msgstr "Tom preservado"
+
+msgid "Speed (pitch preserved)"
+msgstr "Velocidade (tom preservado)"

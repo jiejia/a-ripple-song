@@ -10,6 +10,7 @@ import SwupFormsPlugin from '@swup/forms-plugin';
 import SwupScriptsPlugin from '@swup/scripts-plugin';
 import Alpine from 'alpinejs'
 import { DateTime } from 'luxon';
+import * as Tone from 'tone';
 
 // WordPress i18n
 const { __ } = wp.i18n;
@@ -486,6 +487,10 @@ Alpine.store('player', {
   currentSound: null,
   soundId: null,
   audioMotion: null,
+  audioContext: null,
+  audioSourceNode: null,
+  pitchShiftNode: null,
+  toneContextReady: false,
   isPlaying: false,
   isLoading: false, // 音频加载状态
   currentTime: 0,
@@ -797,6 +802,16 @@ Alpine.store('player', {
       this.volumeGainNode = null;
     }
 
+    // 清理 Tone pitch shift
+    if (this.pitchShiftNode) {
+      this.pitchShiftNode.dispose();
+      this.pitchShiftNode = null;
+    }
+
+    this.audioContext = null;
+    this.audioSourceNode = null;
+    this.toneContextReady = false;
+
     // ⭐ 设置加载状态为 true
     this.isLoading = true;
 
@@ -831,6 +846,19 @@ Alpine.store('player', {
   play() {
     if (!this.currentSound) {
       return;
+    }
+
+    if (Howler?.ctx) {
+      try {
+        if (!this.toneContextReady) {
+          Tone.setContext(Howler.ctx);
+          this.toneContextReady = true;
+        }
+
+        Tone.start().catch(() => null);
+      } catch (error) {
+        console.warn('[aripplesong] Tone.js initialization failed', error);
+      }
     }
     
     // 如果弹窗正在显示，直接关闭弹窗（用户通过其他方式触发了播放）
@@ -955,11 +983,92 @@ Alpine.store('player', {
     if (this.currentSound && this.soundId !== null) {
       this.currentSound.rate(rate, this.soundId);
     }
+
+    this.applyPitchCompensation();
+
     // 设置后关闭面板
     this.playbackRatePanelOpen = false;
     
     // 保存播放速度到 localStorage
     this.savePlaybackRate();
+  },
+  getPitchCompensationSemitones(rate) {
+    if (!rate || rate === 1) return 0;
+    return -12 * Math.log2(rate);
+  },
+  applyPitchCompensation() {
+    if (!this.pitchShiftNode) {
+      return;
+    }
+
+    const shouldPitchCompensate = this.playbackRate !== 1;
+    this.pitchShiftNode.wet.value = shouldPitchCompensate ? 1 : 0;
+    this.pitchShiftNode.pitch = shouldPitchCompensate ? this.getPitchCompensationSemitones(this.playbackRate) : 0;
+  },
+  setupAudioGraph() {
+    if (!this.audioContext || !this.audioSourceNode || !this.volumeGainNode) {
+      return;
+    }
+
+    const canReconnect = typeof this.audioSourceNode.disconnect === 'function' && typeof this.audioSourceNode.connect === 'function';
+    if (!canReconnect) {
+      return;
+    }
+
+    const audioContext = this.audioContext;
+    const sourceNode = this.audioSourceNode;
+
+    try {
+      if (!this.toneContextReady) {
+        Tone.setContext(audioContext);
+        this.toneContextReady = true;
+      }
+
+      if (!this.pitchShiftNode) {
+        this.pitchShiftNode = new Tone.PitchShift({
+          pitch: 0,
+          wet: 0,
+        });
+      }
+
+      try {
+        this.pitchShiftNode.disconnect();
+      } catch (_) {
+        // ignore
+      }
+
+      try {
+        this.volumeGainNode.disconnect();
+      } catch (_) {
+        // ignore
+      }
+
+      sourceNode.disconnect();
+      Tone.connect(sourceNode, this.pitchShiftNode);
+
+      this.pitchShiftNode.connect(this.volumeGainNode);
+      this.volumeGainNode.gain.value = this.volume;
+      this.volumeGainNode.connect(audioContext.destination);
+
+      this.applyPitchCompensation();
+    } catch (error) {
+      console.warn('[aripplesong] Failed to setup Tone.js audio graph; falling back to direct connection', error);
+      try {
+        sourceNode.disconnect();
+      } catch (_) {
+        // ignore
+      }
+
+      try {
+        this.volumeGainNode.disconnect();
+      } catch (_) {
+        // ignore
+      }
+
+      sourceNode.connect(this.volumeGainNode);
+      this.volumeGainNode.gain.value = this.volume;
+      this.volumeGainNode.connect(audioContext.destination);
+    }
   },
   initAudioMotion() {
     if (!this.audioMotion && this.currentSound) {
@@ -972,12 +1081,10 @@ Alpine.store('player', {
         this.volumeGainNode = audioContext.createGain();
         this.volumeGainNode.gain.value = this.volume;
 
-        // 断开原有连接
-        sourceNode.disconnect();
+        this.audioContext = audioContext;
+        this.audioSourceNode = sourceNode;
 
-        // 创建新的音频路径：source -> volumeGainNode -> destination
-        sourceNode.connect(this.volumeGainNode);
-        this.volumeGainNode.connect(audioContext.destination);
+        this.setupAudioGraph();
 
         // AudioMotion 分析原始的 sourceNode（音量控制之前）
         this.audioMotion = new AudioMotionAnalyzer(container, {
@@ -1227,12 +1334,21 @@ Alpine.store('player', {
       this.volumeGainNode = null;
     }
 
+    // 清理 Tone pitch shift
+    if (this.pitchShiftNode) {
+      this.pitchShiftNode.dispose();
+      this.pitchShiftNode = null;
+    }
+
     // 重置所有播放状态
     this.soundId = null;
     this.isPlaying = false;
     this.currentTime = 0;
     this.duration = 0;
     this.currentEpisode = null;
+    this.audioContext = null;
+    this.audioSourceNode = null;
+    this.toneContextReady = false;
     
     // 清除保存的播放状态
     this.clearPlaybackState();

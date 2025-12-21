@@ -1527,9 +1527,6 @@ msgstr "サウンドバイトを削除"
 msgid "Start Time (seconds)"
 msgstr "開始時間（秒）"
 
-msgid "Duration (seconds)"
-msgstr "長さ（秒）"
-
 msgid "Title (optional)"
 msgstr "タイトル（任意）"
 
@@ -1556,3 +1553,9 @@ msgstr "無効なポッドキャスト投稿です。"
 
 msgid "No post IDs provided."
 msgstr "投稿 ID が指定されていません。"
+
+msgid "Pitch preserved"
+msgstr "音程維持"
+
+msgid "Speed (pitch preserved)"
+msgstr "速度（音程維持）"

@@ -1527,9 +1527,6 @@ msgstr "사운드바이트 제거"
 msgid "Start Time (seconds)"
 msgstr "시작 시간(초)"
 
-msgid "Duration (seconds)"
-msgstr "지속 시간(초)"
-
 msgid "Title (optional)"
 msgstr "제목(선택)"
 
@@ -1556,3 +1553,9 @@ msgstr "유효하지 않은 팟캐스트 게시물입니다."
 
 msgid "No post IDs provided."
 msgstr "게시물 ID가 제공되지 않았습니다."
+
+msgid "Pitch preserved"
+msgstr "음정 유지"
+
+msgid "Speed (pitch preserved)"
+msgstr "속도 (음정 유지)"

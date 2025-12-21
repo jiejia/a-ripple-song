@@ -1529,9 +1529,6 @@ msgstr "Soundbite ہٹائیں"
 msgid "Start Time (seconds)"
 msgstr "شروع وقت (سیکنڈ)"
 
-msgid "Duration (seconds)"
-msgstr "دورانیہ (سیکنڈ)"
-
 msgid "Title (optional)"
 msgstr "عنوان (اختیاری)"
 
@@ -1558,3 +1555,9 @@ msgstr "پوڈکاسٹ پوسٹ درست نہیں ہے۔"
 
 msgid "No post IDs provided."
 msgstr "کوئی پوسٹ آئی ڈی فراہم نہیں کی گئی۔"
+
+msgid "Pitch preserved"
+msgstr "پچ محفوظ"
+
+msgid "Speed (pitch preserved)"
+msgstr "رفتار (پچ محفوظ)"

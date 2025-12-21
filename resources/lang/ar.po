@@ -1537,9 +1537,6 @@ msgstr "إزالة مقطع"
 msgid "Start Time (seconds)"
 msgstr "وقت البدء (ثوانٍ)"
 
-msgid "Duration (seconds)"
-msgstr "المدة (ثوانٍ)"
-
 msgid "Title (optional)"
 msgstr "العنوان (اختياري)"
 
@@ -1566,3 +1563,9 @@ msgstr "منشور بودكاست غير صالح."
 
 msgid "No post IDs provided."
 msgstr "لم يتم تقديم معرّفات المقالات."
+
+msgid "Pitch preserved"
+msgstr "النغمة محفوظة"
+
+msgid "Speed (pitch preserved)"
+msgstr "السرعة (النغمة محفوظة)"

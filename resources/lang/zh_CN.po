@@ -1527,9 +1527,6 @@ msgstr "移除片段"
 msgid "Start Time (seconds)"
 msgstr "开始时间（秒）"
 
-msgid "Duration (seconds)"
-msgstr "时长（秒）"
-
 msgid "Title (optional)"
 msgstr "标题（可选）"
 
@@ -1556,3 +1553,9 @@ msgstr "无效的播客文章。"
 
 msgid "No post IDs provided."
 msgstr "未提供文章 ID。"
+
+msgid "Pitch preserved"
+msgstr "保持音高"
+
+msgid "Speed (pitch preserved)"
+msgstr "速度（保持音高）"

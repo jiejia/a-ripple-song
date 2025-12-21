@@ -1529,9 +1529,6 @@ msgstr "Eliminar fragmento"
 msgid "Start Time (seconds)"
 msgstr "Tiempo de inicio (segundos)"
 
-msgid "Duration (seconds)"
-msgstr "Duración (segundos)"
-
 msgid "Title (optional)"
 msgstr "Título (opcional)"
 
@@ -1558,3 +1555,9 @@ msgstr "Entrada de podcast no válida."
 
 msgid "No post IDs provided."
 msgstr "No se proporcionaron ID de entradas."
+
+msgid "Pitch preserved"
+msgstr "Tono conservado"
+
+msgid "Speed (pitch preserved)"
+msgstr "Velocidad (tono conservado)"

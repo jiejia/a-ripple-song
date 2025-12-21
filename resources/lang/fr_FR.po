@@ -1529,9 +1529,6 @@ msgstr "Supprimer l’extrait"
 msgid "Start Time (seconds)"
 msgstr "Temps de début (secondes)"
 
-msgid "Duration (seconds)"
-msgstr "Durée (secondes)"
-
 msgid "Title (optional)"
 msgstr "Titre (optionnel)"
 
@@ -1558,3 +1555,9 @@ msgstr "Article de podcast invalide."
 
 msgid "No post IDs provided."
 msgstr "Aucun ID d’article fourni."
+
+msgid "Pitch preserved"
+msgstr "Hauteur préservée"
+
+msgid "Speed (pitch preserved)"
+msgstr "Vitesse (hauteur préservée)"

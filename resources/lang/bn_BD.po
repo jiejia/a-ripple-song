@@ -1529,9 +1529,6 @@ msgstr "সাউন্ডবাইট সরান"
 msgid "Start Time (seconds)"
 msgstr "শুরুর সময় (সেকেন্ড)"
 
-msgid "Duration (seconds)"
-msgstr "সময়কাল (সেকেন্ড)"
-
 msgid "Title (optional)"
 msgstr "শিরোনাম (ঐচ্ছিক)"
 
@@ -1558,3 +1555,9 @@ msgstr "অবৈধ পডকাস্ট পোস্ট।"
 
 msgid "No post IDs provided."
 msgstr "কোনও পোস্ট আইডি দেওয়া হয়নি।"
+
+msgid "Pitch preserved"
+msgstr "পিচ সংরক্ষিত"
+
+msgid "Speed (pitch preserved)"
+msgstr "গতি (পিচ সংরক্ষিত)"
