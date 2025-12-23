@@ -41,7 +41,15 @@
             <div class="mt-0 w-full">
                 <div class="grid grid-cols-[30px_1fr_30px] gap-2 items-center text-xs">
                     <span x-text="$store.player.currentTimeText">00:00</span>
-                    <input type="range" min="0" :max="$store.player.duration" :value="$store.player.currentTime" :style="$store.player.progressRangeStyle" x-on:input="$store.player.seek($event.target.value)" class="range range-xs w-full aripplesong-progress-range text-base-content/20 [--range-bg:orange] [--range-thumb:blue] [--range-fill:0]" />
+                    <div class="relative w-full">
+                        {{-- Heatmap background layer with fade-in effect --}}
+                        <div 
+                            class="absolute inset-0 rounded-full transition-opacity duration-500 ease-out pointer-events-none"
+                            :class="$store.player.progressHeatmapReady ? 'opacity-100' : 'opacity-0'"
+                            :style="{ background: $store.player.progressHeatmapGradient }"
+                        ></div>
+                        <input type="range" min="0" :max="$store.player.duration" :value="$store.player.currentTime" x-on:input="$store.player.seek($event.target.value)" class="range range-xs w-full aripplesong-progress-range relative z-10 text-base-content/20 [--range-bg:transparent] [--range-thumb:blue] [--range-fill:0]" />
+                    </div>
                     <span class="justify-self-end" x-text="$store.player.durationText">00:00</span>
                 </div>
             </div>

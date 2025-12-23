@@ -633,6 +633,7 @@ Alpine.store('player', {
 
   // progress heatmap (per-second intensity -> orange shades)
   progressHeatmapGradient: '',
+  progressHeatmapReady: false, // for fade-in effect
   progressHeatmapStepSeconds: 10,
   progressHeatmapSmoothingRadius: 1,
   _progressHeatmapNonce: 0,
@@ -925,6 +926,7 @@ Alpine.store('player', {
     this._progressHeatmapNonce++;
     const heatmapNonce = this._progressHeatmapNonce;
     this.progressHeatmapGradient = '';
+    this.progressHeatmapReady = false;
 
     // 停止当前播放
     if (this.currentSound) {
@@ -1000,6 +1002,12 @@ Alpine.store('player', {
     const cached = progressHeatmapCache.get(cacheKey);
     if (cached) {
       this.progressHeatmapGradient = cached;
+      // Trigger fade-in effect after a brief delay
+      setTimeout(() => {
+        if (expectedNonce === this._progressHeatmapNonce) {
+          this.progressHeatmapReady = true;
+        }
+      }, 50);
       return;
     }
 
@@ -1061,6 +1069,12 @@ Alpine.store('player', {
 
       progressHeatmapCache.set(cacheKey, gradient);
       this.progressHeatmapGradient = gradient;
+      // Trigger fade-in effect after a brief delay
+      setTimeout(() => {
+        if (nonce === this._progressHeatmapNonce) {
+          this.progressHeatmapReady = true;
+        }
+      }, 50);
     } catch (error) {
       console.warn('[aripplesong] Failed to generate progress heatmap', error);
     } finally {
