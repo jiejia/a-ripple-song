@@ -656,6 +656,7 @@ Alpine.store('player', {
   currentEpisode: null,
   storageKey: 'aripplesong-playlist',
   currentIndexKey: 'aripplesong-current-index',
+  latestSignatureKey: 'aripplesong-latest-playlist-signature',
   volumeKey: 'aripplesong-volume',
   currentTimeKey: 'aripplesong-current-time',
   isPlayingKey: 'aripplesong-is-playing',
@@ -685,8 +686,8 @@ Alpine.store('player', {
   },
 
   /**
-   * 从 WordPress REST API 获取最新5条播客并添加到播放列表
-   * @param {boolean} autoPlay - 是否自动播放第一条（默认不播放）
+   * Fetch latest 10 podcast episodes from WordPress REST API and append to playlist.
+   * @param {boolean} autoPlay Whether to autoplay the first new episode (default: false).
    */
   async fetchLatestPodcast(autoPlay = false) {
     try {
@@ -696,11 +697,11 @@ Alpine.store('player', {
       // 构建 API URL，处理不同的 REST URL 格式
       // 如果 restUrl 已经包含 ?（如 /index.php?rest_route=/），则用 & 连接参数
       // 否则使用标准的 ? 连接参数
-      const queryParams = 'per_page=5&orderby=date&order=desc&_embed';
+      const queryParams = 'per_page=10&orderby=date&order=desc&_embed';
       const separator = restUrl.includes('?') ? '&' : '?';
       const apiUrl = `${restUrl}wp/v2/podcast${separator}${queryParams}`;
       
-      // 调用 WordPress REST API 获取最新的5条播客
+      // Fetch latest podcast episodes via WordPress REST API.
       const response = await fetch(apiUrl);
 
       if (!response.ok) {
@@ -799,10 +800,73 @@ Alpine.store('player', {
     }
   },
 
+  getLatestPlaylistSignatureFromServer() {
+    const signature = window.aripplesongData?.latestPlaylistSignature;
+    return typeof signature === 'string' ? signature : '';
+  },
+
+  getLatestPlaylistEpisodesFromServer() {
+    const episodes = window.aripplesongData?.latestPlaylistEpisodes;
+    return Array.isArray(episodes) ? episodes : [];
+  },
+
+  persistLatestPlaylistSignature(signature) {
+    const s = typeof signature === 'string' ? signature : '';
+    if (!s) return;
+    safeLocalStorage.setItem(this.latestSignatureKey, s);
+  },
+
+  async maybeRebuildPlaylistOnNewPodcasts() {
+    const latestSignature = this.getLatestPlaylistSignatureFromServer();
+    const latestEpisodes = this.getLatestPlaylistEpisodesFromServer();
+
+    if (!latestSignature || latestEpisodes.length === 0) {
+      return false;
+    }
+
+    const storedSignature = safeLocalStorage.getItem(this.latestSignatureKey) || '';
+
+    // If this is the first time we see a signature, only seed it (avoid rebuilding on upgrade).
+    if (!storedSignature) {
+      if (this.playlist.length === 0) {
+        this.rebuildPlaylistFromEpisodes(latestEpisodes, latestSignature);
+        return true;
+      }
+
+      this.persistLatestPlaylistSignature(latestSignature);
+      return false;
+    }
+
+    if (storedSignature !== latestSignature) {
+      this.rebuildPlaylistFromEpisodes(latestEpisodes, latestSignature);
+      return true;
+    }
+
+    return false;
+  },
+
+  rebuildPlaylistFromEpisodes(episodes, signature) {
+    const nextEpisodes = Array.isArray(episodes) ? episodes.slice(0, 10) : [];
+
+    this.stopAndClear();
+    this.playlist = nextEpisodes;
+    this.currentIndex = 0;
+    this.currentEpisode = this.playlist[0] || null;
+    this.savePlaylist();
+    this.persistLatestPlaylistSignature(signature);
+
+    if (this.currentEpisode?.audioUrl) {
+      this.loadTrack(this.currentEpisode.audioUrl);
+    }
+  },
+
   // ========== 初始化 ==========
   async init() {
     // 从本地存储加载播放列表
     this.loadPlaylist();
+
+    // Only rebuild the playlist when the "latest podcasts" signature changes (new podcast published).
+    await this.maybeRebuildPlaylistOnNewPodcasts();
 
     // 从本地存储加载音量设置
     this.loadVolume();
@@ -816,6 +880,11 @@ Alpine.store('player', {
     // 如果播放列表为空，则获取最新播客
     if (this.playlist.length == 0) {
       await this.fetchLatestPodcast(true);
+      // Baseline the latest signature so we only rebuild on future changes.
+      const latestSignature = this.getLatestPlaylistSignatureFromServer();
+      if (latestSignature) {
+        this.persistLatestPlaylistSignature(latestSignature);
+      }
       return; // 如果是新加载的播客，fetchLatestPodcast 会自动播放
     }
 
@@ -830,8 +899,10 @@ Alpine.store('player', {
       return;
     }
 
-    this.currentEpisode = episode;
-    this.loadTrack(episode.audioUrl);
+    if (!this.currentSound || this.currentEpisode?.audioUrl !== episode.audioUrl) {
+      this.currentEpisode = episode;
+      this.loadTrack(episode.audioUrl);
+    }
 
     // 恢复播放进度
     if (playbackState.currentTime > 0) {
@@ -1002,7 +1073,7 @@ Alpine.store('player', {
     const cached = progressHeatmapCache.get(cacheKey);
     if (cached) {
       this.progressHeatmapGradient = cached;
-      // Trigger fade-in effect after a brief delay
+      // Trigger fade-in effect after a brief delay.
       setTimeout(() => {
         if (expectedNonce === this._progressHeatmapNonce) {
           this.progressHeatmapReady = true;
@@ -1069,7 +1140,7 @@ Alpine.store('player', {
 
       progressHeatmapCache.set(cacheKey, gradient);
       this.progressHeatmapGradient = gradient;
-      // Trigger fade-in effect after a brief delay
+      // Trigger fade-in effect after a brief delay.
       setTimeout(() => {
         if (nonce === this._progressHeatmapNonce) {
           this.progressHeatmapReady = true;

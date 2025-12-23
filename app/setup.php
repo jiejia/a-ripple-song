@@ -414,12 +414,18 @@ add_action('wp_enqueue_scripts', function () {
                 $palette_map = function_exists('\App\ThemeOptions\crb_get_daisyui_theme_palette') ? \App\ThemeOptions\crb_get_daisyui_theme_palette($palette_slugs) : [];
                 $current_post_id = is_singular() ? get_queried_object_id() : 0;
                 $current_post_type = $current_post_id ? get_post_type($current_post_id) : '';
+                $latest_playlist_data = function_exists('aripplesong_get_latest_playlist_data') ? \aripplesong_get_latest_playlist_data(10) : [
+                    'episodes' => [],
+                    'signature' => '',
+                ];
 
                 // Localize script with REST API URL and theme options
                 wp_localize_script('aripplesong-app', 'aripplesongData', [
                     'restUrl' => esc_url_raw(rest_url()),
                     'restNonce' => wp_create_nonce('wp_rest'),
                     'siteUrl' => esc_url_raw(home_url('/')),
+                    'latestPlaylistSignature' => $latest_playlist_data['signature'] ?? '',
+                    'latestPlaylistEpisodes' => $latest_playlist_data['episodes'] ?? [],
                     'ajax' => [
                         'url' => esc_url_raw(admin_url('admin-ajax.php')),
                         'nonce' => wp_create_nonce('aripplesong-ajax'),

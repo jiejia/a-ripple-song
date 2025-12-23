@@ -577,6 +577,58 @@ function get_episode_data($post_id = null) {
 }
 
 /**
+ * Get latest podcast episodes for hydrating the default player playlist.
+ *
+ * Returns a signature based on the ordered post IDs so clients can detect
+ * whether the "latest" list has changed since the last visit.
+ *
+ * @param int $limit Number of episodes to return.
+ * @return array{episodes: array<int, array>, signature: string}
+ */
+function aripplesong_get_latest_playlist_data($limit = 10) {
+    $limit = absint($limit) ?: 10;
+
+    $episodes = [];
+    $ids = [];
+
+    $query = new \WP_Query([
+        'post_type' => 'podcast',
+        'posts_per_page' => max($limit * 2, $limit),
+        'post_status' => 'publish',
+        'no_found_rows' => true,
+        'ignore_sticky_posts' => true,
+        'update_post_meta_cache' => true,
+        'update_post_term_cache' => false,
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'fields' => 'ids',
+    ]);
+
+    if (!empty($query->posts)) {
+        foreach ($query->posts as $post_id) {
+            if (count($episodes) >= $limit) {
+                break;
+            }
+
+            $episode = get_episode_data($post_id);
+            if (empty($episode['audioUrl'])) {
+                continue;
+            }
+
+            $episodes[] = $episode;
+            $ids[] = (int) $post_id;
+        }
+    }
+
+    wp_reset_postdata();
+
+    return [
+        'episodes' => $episodes,
+        'signature' => implode(',', $ids),
+    ];
+}
+
+/**
  * Custom comment callback with DaisyUI styling
  * 
  * @param object $comment Comment object
