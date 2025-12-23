@@ -126,8 +126,8 @@ function buildOrangeHeatGradient(values, options = {}) {
   // Generate color using HSL to maintain consistent orange hue
   const levelToColor = (level) => {
     const t = levels <= 1 ? 0 : level / (levels - 1);
-    // Higher level (higher intensity) = brighter orange
-    const lightness = minLightness + t * (maxLightness - minLightness);
+    // Higher level (higher intensity) = darker orange, lower level = lighter orange
+    const lightness = maxLightness - t * (maxLightness - minLightness);
     return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
   };
 
