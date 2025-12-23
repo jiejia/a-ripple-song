@@ -917,6 +917,7 @@ Alpine.store('player', {
   loadTrack(audioUrl) {
     // Invalidate any previous analysis and clear the heatmap while loading.
     this._progressHeatmapNonce++;
+    const heatmapNonce = this._progressHeatmapNonce;
     this.progressHeatmapGradient = '';
 
     // 停止当前播放
@@ -968,7 +969,7 @@ Alpine.store('player', {
         this.duration = this.currentSound.duration();
         // ⭐ 音频加载完成，设置加载状态为 false
         this.isLoading = false;
-        this.generateProgressHeatmap(audioUrl);
+        this.generateProgressHeatmap(audioUrl, heatmapNonce);
         // console.log('duration', this.durationText);
       },
       onloaderror: (id, error) => {
@@ -982,9 +983,12 @@ Alpine.store('player', {
     });
   },
 
-  async generateProgressHeatmap(audioUrl) {
+  async generateProgressHeatmap(audioUrl, nonceFromLoad) {
     const url = typeof audioUrl === 'string' ? audioUrl : '';
     if (!url) return;
+
+    const expectedNonce = Number.isFinite(nonceFromLoad) ? nonceFromLoad : this._progressHeatmapNonce;
+    if (expectedNonce !== this._progressHeatmapNonce) return;
 
     const cacheKey = `${url}::step=${this.progressHeatmapStepSeconds}`;
     const cached = progressHeatmapCache.get(cacheKey);
@@ -993,7 +997,7 @@ Alpine.store('player', {
       return;
     }
 
-    const nonce = this._progressHeatmapNonce;
+    const nonce = expectedNonce;
 
     if (!document.body) {
       await new Promise(resolve => {
