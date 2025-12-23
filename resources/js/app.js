@@ -90,7 +90,7 @@ function smoothValues(values, radius = 1) {
 function buildOrangeHeatGradient(values, options = {}) {
   const levels = Math.max(4, Math.floor(options.levels || 24));
   const gamma = typeof options.gamma === 'number' ? options.gamma : 0.6;
-  
+
   // Use HSL color space to maintain orange hue consistently
   // Orange hue is around 30-40 degrees (35 is a nice orange-yellow)
   const hue = typeof options.hue === 'number' ? options.hue : 35;
@@ -464,27 +464,27 @@ const ensureThemeStylesInjected = (() => {
  */
 window.formatLocalizedDate = function(timestamp, format = 'relative') {
   if (!timestamp || isNaN(timestamp)) return '-';
-  
+
   // Get WordPress locale from HTML lang attribute or document.documentElement.lang
   const wpLocale = document.documentElement.lang || 'en-US';
   // Convert WordPress locale format (e.g., 'zh-CN', 'en-US') to Luxon format
   const luxonLocale = wpLocale.replace('_', '-');
-  
+
   // Create DateTime from Unix timestamp (seconds)
   const date = DateTime.fromSeconds(parseInt(timestamp)).setLocale(luxonLocale);
   const now = DateTime.now();
-  
+
   if (format === 'relative') {
     // Smart relative time: show relative for recent posts, absolute for older ones
     const diffInDays = now.diff(date, 'days').days;
-    
+
     if (diffInDays < 7) {
       // Recent: use relative time (e.g., "30 minutes ago", "2 days ago")
       return date.toRelative() || date.toLocaleString(DateTime.DATE_MED);
     } else {
       // Older: use absolute date format based on locale
       const baseLocale = luxonLocale.split('-')[0];
-      
+
       if (['zh', 'ja'].includes(baseLocale)) {
         // Chinese/Japanese: 2025年11月4日
         return date.toFormat('yyyy年M月d日');
@@ -498,7 +498,7 @@ window.formatLocalizedDate = function(timestamp, format = 'relative') {
     }
   } else if (format === 'short') {
     const baseLocale = luxonLocale.split('-')[0];
-    
+
     if (['zh', 'ja'].includes(baseLocale)) {
       return date.toFormat('yyyy年M月d日');
     } else if (baseLocale === 'ko') {
@@ -508,7 +508,7 @@ window.formatLocalizedDate = function(timestamp, format = 'relative') {
     }
   } else if (format === 'long') {
     const baseLocale = luxonLocale.split('-')[0];
-    
+
     if (['zh', 'ja'].includes(baseLocale)) {
       return date.toFormat('yyyy年M月d日');
     } else if (baseLocale === 'ko') {
@@ -517,7 +517,7 @@ window.formatLocalizedDate = function(timestamp, format = 'relative') {
       return date.toLocaleString(DateTime.DATE_FULL);
     }
   }
-  
+
   return date.toLocaleString(DateTime.DATE_MED);
 };
 
@@ -530,7 +530,7 @@ Alpine.store('theme', {
   lightTheme: resolveTheme(window.aripplesongData?.theme?.lightTheme, LIGHT_THEMES, FALLBACK_LIGHT_THEME),
   darkTheme: resolveTheme(window.aripplesongData?.theme?.darkTheme, DARK_THEMES, FALLBACK_DARK_THEME),
   mediaQuery: null,
-  
+
   init() {
     ensureThemeStylesInjected();
 
@@ -539,7 +539,7 @@ Alpine.store('theme', {
     if (savedMode && ['light', 'dark', 'auto'].includes(savedMode)) {
       this.mode = savedMode;
     }
-    
+
     // 监听系统主题变化
     this.mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     this.mediaQuery.addEventListener('change', () => {
@@ -547,11 +547,11 @@ Alpine.store('theme', {
         this.applyTheme();
       }
     });
-    
+
     // 应用初始主题
     this.applyTheme();
   },
-  
+
   toggle() {
     // 循环切换：light -> dark -> auto -> light
     if (this.mode === 'light') {
@@ -561,11 +561,11 @@ Alpine.store('theme', {
     } else {
       this.mode = 'light';
     }
-    
+
     safeLocalStorage.setItem(this.storageKey, this.mode);
     this.applyTheme();
   },
-  
+
   setMode(mode) {
     // 直接设置主题模式
     if (['light', 'dark', 'auto'].includes(mode)) {
@@ -574,7 +574,7 @@ Alpine.store('theme', {
       this.applyTheme();
     }
   },
-  
+
   applyTheme() {
     ensureThemeStylesInjected();
     let theme;
@@ -586,25 +586,25 @@ Alpine.store('theme', {
     } else {
       theme = this.lightTheme;
     }
-    
+
     const root = document.documentElement;
     const isDarkTheme = DARK_THEME_SET.has(theme);
     root.setAttribute('data-theme', theme);
     root.style.setProperty('--aripplesong-color-scheme', isDarkTheme ? 'dark' : 'light');
     root.style.colorScheme = isDarkTheme ? 'dark' : 'light';
   },
-  
+
   get isDark() {
     if (this.mode === 'auto') {
       return this.mediaQuery ? this.mediaQuery.matches : false;
     }
     return this.mode === 'dark';
   },
-  
+
   get isLight() {
     return this.mode === 'light';
   },
-  
+
   get isAuto() {
     return this.mode === 'auto';
   }
@@ -633,11 +633,10 @@ Alpine.store('player', {
 
   // progress heatmap (per-second intensity -> orange shades)
   progressHeatmapGradient: '',
-  progressHeatmapReady: false, // for fade-in effect
   progressHeatmapStepSeconds: 10,
   progressHeatmapSmoothingRadius: 1,
   _progressHeatmapNonce: 0,
-  
+
   // playback rate
   playbackRate: 1.0,
   availableRates: [0.5, 0.75, 1, 1.25, 1.5, 2],
@@ -656,7 +655,6 @@ Alpine.store('player', {
   currentEpisode: null,
   storageKey: 'aripplesong-playlist',
   currentIndexKey: 'aripplesong-current-index',
-  latestSignatureKey: 'aripplesong-latest-playlist-signature',
   volumeKey: 'aripplesong-volume',
   currentTimeKey: 'aripplesong-current-time',
   isPlayingKey: 'aripplesong-is-playing',
@@ -686,22 +684,22 @@ Alpine.store('player', {
   },
 
   /**
-   * Fetch latest 10 podcast episodes from WordPress REST API and append to playlist.
-   * @param {boolean} autoPlay Whether to autoplay the first new episode (default: false).
+   * 从 WordPress REST API 获取最新5条播客并添加到播放列表
+   * @param {boolean} autoPlay - 是否自动播放第一条（默认不播放）
    */
   async fetchLatestPodcast(autoPlay = false) {
     try {
       // 使用 PHP 传递的 REST API URL
       const restUrl = window.aripplesongData?.restUrl || '/wp-json/';
-      
+
       // 构建 API URL，处理不同的 REST URL 格式
       // 如果 restUrl 已经包含 ?（如 /index.php?rest_route=/），则用 & 连接参数
       // 否则使用标准的 ? 连接参数
-      const queryParams = 'per_page=10&orderby=date&order=desc&_embed';
+      const queryParams = 'per_page=5&orderby=date&order=desc&_embed';
       const separator = restUrl.includes('?') ? '&' : '?';
       const apiUrl = `${restUrl}wp/v2/podcast${separator}${queryParams}`;
-      
-      // Fetch latest podcast episodes via WordPress REST API.
+
+      // 调用 WordPress REST API 获取最新的5条播客
       const response = await fetch(apiUrl);
 
       if (!response.ok) {
@@ -800,73 +798,10 @@ Alpine.store('player', {
     }
   },
 
-  getLatestPlaylistSignatureFromServer() {
-    const signature = window.aripplesongData?.latestPlaylistSignature;
-    return typeof signature === 'string' ? signature : '';
-  },
-
-  getLatestPlaylistEpisodesFromServer() {
-    const episodes = window.aripplesongData?.latestPlaylistEpisodes;
-    return Array.isArray(episodes) ? episodes : [];
-  },
-
-  persistLatestPlaylistSignature(signature) {
-    const s = typeof signature === 'string' ? signature : '';
-    if (!s) return;
-    safeLocalStorage.setItem(this.latestSignatureKey, s);
-  },
-
-  async maybeRebuildPlaylistOnNewPodcasts() {
-    const latestSignature = this.getLatestPlaylistSignatureFromServer();
-    const latestEpisodes = this.getLatestPlaylistEpisodesFromServer();
-
-    if (!latestSignature || latestEpisodes.length === 0) {
-      return false;
-    }
-
-    const storedSignature = safeLocalStorage.getItem(this.latestSignatureKey) || '';
-
-    // If this is the first time we see a signature, only seed it (avoid rebuilding on upgrade).
-    if (!storedSignature) {
-      if (this.playlist.length === 0) {
-        this.rebuildPlaylistFromEpisodes(latestEpisodes, latestSignature);
-        return true;
-      }
-
-      this.persistLatestPlaylistSignature(latestSignature);
-      return false;
-    }
-
-    if (storedSignature !== latestSignature) {
-      this.rebuildPlaylistFromEpisodes(latestEpisodes, latestSignature);
-      return true;
-    }
-
-    return false;
-  },
-
-  rebuildPlaylistFromEpisodes(episodes, signature) {
-    const nextEpisodes = Array.isArray(episodes) ? episodes.slice(0, 10) : [];
-
-    this.stopAndClear();
-    this.playlist = nextEpisodes;
-    this.currentIndex = 0;
-    this.currentEpisode = this.playlist[0] || null;
-    this.savePlaylist();
-    this.persistLatestPlaylistSignature(signature);
-
-    if (this.currentEpisode?.audioUrl) {
-      this.loadTrack(this.currentEpisode.audioUrl);
-    }
-  },
-
   // ========== 初始化 ==========
   async init() {
     // 从本地存储加载播放列表
     this.loadPlaylist();
-
-    // Only rebuild the playlist when the "latest podcasts" signature changes (new podcast published).
-    await this.maybeRebuildPlaylistOnNewPodcasts();
 
     // 从本地存储加载音量设置
     this.loadVolume();
@@ -880,11 +815,6 @@ Alpine.store('player', {
     // 如果播放列表为空，则获取最新播客
     if (this.playlist.length == 0) {
       await this.fetchLatestPodcast(true);
-      // Baseline the latest signature so we only rebuild on future changes.
-      const latestSignature = this.getLatestPlaylistSignatureFromServer();
-      if (latestSignature) {
-        this.persistLatestPlaylistSignature(latestSignature);
-      }
       return; // 如果是新加载的播客，fetchLatestPodcast 会自动播放
     }
 
@@ -899,21 +829,19 @@ Alpine.store('player', {
       return;
     }
 
-    if (!this.currentSound || this.currentEpisode?.audioUrl !== episode.audioUrl) {
-      this.currentEpisode = episode;
-      this.loadTrack(episode.audioUrl);
-    }
+    this.currentEpisode = episode;
+    this.loadTrack(episode.audioUrl);
 
     // 恢复播放进度
     if (playbackState.currentTime > 0) {
       // ⭐ 立即更新 UI 中的进度显示（即使音频还在加载）
       this.currentTime = playbackState.currentTime;
-      
+
       // 等待音频加载完成后再跳转到保存的位置
       this.currentSound.once('load', () => {
         this.seek(playbackState.currentTime);
         console.log(__('Playback progress restored:', 'sage'), playbackState.currentTime);
-        
+
         // 根据保存的状态决定是否自动播放
         // ⭐ 由于浏览器自动播放策略，需要用户交互后才能播放
         // 显示确认提示栏让用户决定是否继续播放
@@ -935,12 +863,12 @@ Alpine.store('player', {
     this.pendingAutoplay = true;
     this.showAutoplayConfirm = true;
     this.autoplayCountdown = 10; // 重置倒计时
-    
+
     // 重新初始化图标
     setTimeout(() => {
       createIcons({ icons });
     }, 10);
-    
+
     // 每秒更新倒计时
     this.autoplayCountdownTimer = setInterval(() => {
       this.autoplayCountdown--;
@@ -949,7 +877,7 @@ Alpine.store('player', {
         console.log(__('Autoplay confirm dialog auto-closed', 'sage'));
       }
     }, 1000);
-    
+
     console.log(__('Showing autoplay confirm dialog', 'sage'));
   },
 
@@ -997,7 +925,6 @@ Alpine.store('player', {
     this._progressHeatmapNonce++;
     const heatmapNonce = this._progressHeatmapNonce;
     this.progressHeatmapGradient = '';
-    this.progressHeatmapReady = false;
 
     // 停止当前播放
     if (this.currentSound) {
@@ -1073,12 +1000,6 @@ Alpine.store('player', {
     const cached = progressHeatmapCache.get(cacheKey);
     if (cached) {
       this.progressHeatmapGradient = cached;
-      // Trigger fade-in effect after a brief delay.
-      setTimeout(() => {
-        if (expectedNonce === this._progressHeatmapNonce) {
-          this.progressHeatmapReady = true;
-        }
-      }, 50);
       return;
     }
 
@@ -1140,12 +1061,6 @@ Alpine.store('player', {
 
       progressHeatmapCache.set(cacheKey, gradient);
       this.progressHeatmapGradient = gradient;
-      // Trigger fade-in effect after a brief delay.
-      setTimeout(() => {
-        if (nonce === this._progressHeatmapNonce) {
-          this.progressHeatmapReady = true;
-        }
-      }, 50);
     } catch (error) {
       console.warn('[aripplesong] Failed to generate progress heatmap', error);
     } finally {
@@ -1179,14 +1094,14 @@ Alpine.store('player', {
         console.warn('[aripplesong] Tone.js initialization failed', error);
       }
     }
-    
+
     // 如果弹窗正在显示，直接关闭弹窗（用户通过其他方式触发了播放）
     if (this.showAutoplayConfirm) {
       this.clearAutoplayTimers();
       this.showAutoplayConfirm = false;
       this.pendingAutoplay = false;
     }
-    
+
     if (this.soundId === null) {
       if (this.currentEpisode?.id) {
         bumpPlayCountDom(this.currentEpisode.id);
@@ -1202,7 +1117,7 @@ Alpine.store('player', {
     this.isPlaying = true;
 
     this.startProgressTimer();
-    
+
     // 保存播放状态
     this.savePlaybackState();
   },
@@ -1212,7 +1127,7 @@ Alpine.store('player', {
     this.currentSound.pause(this.soundId);
     this.isPlaying = false;
     this.stopProgressTimer();
-    
+
     // 保存播放状态
     this.savePlaybackState();
   },
@@ -1235,7 +1150,7 @@ Alpine.store('player', {
     if (!this.currentSound) return;
     this.currentSound.seek(parseFloat(position));
     this.currentTime = parseFloat(position);
-    
+
     // 保存播放进度
     this.savePlaybackState();
   },
@@ -1307,7 +1222,7 @@ Alpine.store('player', {
 
     // 设置后关闭面板
     this.playbackRatePanelOpen = false;
-    
+
     // 保存播放速度到 localStorage
     this.savePlaybackRate();
   },
@@ -1444,7 +1359,7 @@ Alpine.store('player', {
     this.timer = setInterval(() => {
       if (this.currentSound && this.isPlaying) {
         this.currentTime = this.currentSound.seek(this.soundId) || 0;
-        
+
         // 每10次（约1秒）保存一次播放状态，避免频繁写入
         saveCounter++;
         if (saveCounter >= 10) {
@@ -1534,7 +1449,7 @@ Alpine.store('player', {
   loadPlaybackState() {
     const savedTime = safeLocalStorage.getItem(this.currentTimeKey);
     const savedIsPlaying = safeLocalStorage.getItem(this.isPlayingKey);
-    
+
     return {
       currentTime: savedTime ? parseFloat(savedTime) : 0,
       isPlaying: savedIsPlaying === 'true'
@@ -1579,7 +1494,7 @@ Alpine.store('player', {
     // 加载并播放
     this.loadTrack(episode.audioUrl);
     this.play();
-    
+
     // 新节目从头播放
     this.currentTime = 0;
     this.savePlaybackState();
@@ -1610,12 +1525,12 @@ Alpine.store('player', {
     if (this.currentIndex >= this.playlist.length) {
       this.currentIndex = Math.max(0, this.playlist.length - 1);
     }
-    
+
     // 如果播放列表为空，停止播放并清空状态
     if (this.playlist.length === 0) {
       this.stopAndClear();
     }
-    
+
     this.savePlaylist();
   },
 
@@ -1668,7 +1583,7 @@ Alpine.store('player', {
     this.audioContext = null;
     this.audioSourceNode = null;
     this.toneContextReady = false;
-    
+
     // 清除保存的播放状态
     this.clearPlaybackState();
   },
@@ -1737,35 +1652,35 @@ function initImageLightbox() {
   const contentImages = document.querySelectorAll('#content img');
   const modal = document.getElementById('image-lightbox-modal');
   const lightboxImage = document.getElementById('lightbox-image');
-  
+
   if (!modal || !lightboxImage) return;
-  
+
   contentImages.forEach(img => {
     // Skip if image is already inside a link
     if (img.closest('a')) return;
-    
+
     // Remove any existing click listeners
     img.replaceWith(img.cloneNode(true));
     const newImg = img.parentNode ? img : document.querySelector(`#content img[src="${img.src}"]`);
-    
+
     if (!newImg) return;
-    
+
     newImg.addEventListener('click', function(e) {
       e.preventDefault();
-      
+
       // Get the full-size image URL (WordPress responsive images)
       const fullSizeUrl = this.dataset.fullUrl || this.src;
       const imgAlt = this.alt || '';
-      
+
       // Set lightbox image
       lightboxImage.src = fullSizeUrl;
       lightboxImage.alt = imgAlt;
-      
+
       // Show modal
       modal.showModal();
     });
   });
-  
+
   // Close modal on ESC key
   modal.addEventListener('close', () => {
     lightboxImage.src = '';
@@ -1783,7 +1698,7 @@ const swup = new Swup({
 function init() {
   // 重新初始化 Lucide 图标
   createIcons({ icons });
-  
+
   // 初始化图片灯箱
   initImageLightbox();
 
