@@ -96,8 +96,8 @@ function buildOrangeHeatGradient(values, options = {}) {
   const hue = typeof options.hue === 'number' ? options.hue : 35;
   const saturation = typeof options.saturation === 'number' ? options.saturation : 100;
   // Lightness range: high intensity = darker orange, low intensity = lighter orange
-  const minLightness = typeof options.minLightness === 'number' ? options.minLightness : 40;
-  const maxLightness = typeof options.maxLightness === 'number' ? options.maxLightness : 70;
+  const minLightness = typeof options.minLightness === 'number' ? options.minLightness : 50;
+  const maxLightness = typeof options.maxLightness === 'number' ? options.maxLightness : 80;
 
   if (!Array.isArray(values) || values.length === 0) {
     return '';
