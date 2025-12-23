@@ -89,12 +89,15 @@ function smoothValues(values, radius = 1) {
 
 function buildOrangeHeatGradient(values, options = {}) {
   const levels = Math.max(4, Math.floor(options.levels || 24));
-  const baseR = typeof options.baseR === 'number' ? options.baseR : 255;
-  const baseG = typeof options.baseG === 'number' ? options.baseG : 165;
-  const baseB = typeof options.baseB === 'number' ? options.baseB : 0;
-  const minFactor = typeof options.minFactor === 'number' ? options.minFactor : 0.5; // darkest shade multiplier
-  const maxFactor = typeof options.maxFactor === 'number' ? options.maxFactor : 1.0; // lightest/base shade multiplier
   const gamma = typeof options.gamma === 'number' ? options.gamma : 0.6;
+  
+  // Use HSL color space to maintain orange hue consistently
+  // Orange hue is around 30-40 degrees (35 is a nice orange-yellow)
+  const hue = typeof options.hue === 'number' ? options.hue : 35;
+  const saturation = typeof options.saturation === 'number' ? options.saturation : 100;
+  // Lightness range: low intensity = darker orange, high intensity = brighter orange
+  const minLightness = typeof options.minLightness === 'number' ? options.minLightness : 25;
+  const maxLightness = typeof options.maxLightness === 'number' ? options.maxLightness : 55;
 
   if (!Array.isArray(values) || values.length === 0) {
     return '';
@@ -120,13 +123,12 @@ function buildOrangeHeatGradient(values, options = {}) {
     return Math.min(levels - 1, Math.max(0, Math.round(curved * (levels - 1))));
   });
 
+  // Generate color using HSL to maintain consistent orange hue
   const levelToColor = (level) => {
     const t = levels <= 1 ? 0 : level / (levels - 1);
-    const factor = maxFactor - (maxFactor - minFactor) * t;
-    const r = Math.max(0, Math.min(255, Math.round(baseR * factor)));
-    const g = Math.max(0, Math.min(255, Math.round(baseG * factor)));
-    const b = Math.max(0, Math.min(255, Math.round(baseB * factor)));
-    return `rgb(${r} ${g} ${b})`;
+    // Higher level (higher intensity) = brighter orange
+    const lightness = minLightness + t * (maxLightness - minLightness);
+    return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
   };
 
   // Run-length encode to keep the gradient string small.
@@ -631,7 +633,7 @@ Alpine.store('player', {
 
   // progress heatmap (per-second intensity -> orange shades)
   progressHeatmapGradient: '',
-  progressHeatmapStepSeconds: 5,
+  progressHeatmapStepSeconds: 10,
   progressHeatmapSmoothingRadius: 1,
   _progressHeatmapNonce: 0,
   
