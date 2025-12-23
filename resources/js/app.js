@@ -11,6 +11,7 @@ import SwupScriptsPlugin from '@swup/scripts-plugin';
 import Alpine from 'alpinejs'
 import { DateTime } from 'luxon';
 import * as Tone from 'tone';
+import WaveSurfer from 'wavesurfer.js';
 
 // WordPress i18n
 const { __ } = wp.i18n;
@@ -21,6 +22,128 @@ const METRIC_ACTIONS = {
 };
 
 let lastViewMetricKey = null;
+
+const progressHeatmapCache = new Map();
+
+function computeRmsBySecond(audioBuffer, stepSeconds = 1) {
+  const step = Math.max(1, Number(stepSeconds) || 1);
+  const seconds = Math.max(1, Math.ceil(audioBuffer.duration / step));
+  const sampleRate = audioBuffer.sampleRate;
+  const channels = Math.max(1, audioBuffer.numberOfChannels || 1);
+  const channelData = Array.from({ length: channels }, (_, i) => audioBuffer.getChannelData(i));
+
+  const values = new Array(seconds).fill(0);
+
+  for (let secondIndex = 0; secondIndex < seconds; secondIndex++) {
+    const startTime = secondIndex * step;
+    const endTime = Math.min((secondIndex + 1) * step, audioBuffer.duration);
+
+    const startSample = Math.max(0, Math.floor(startTime * sampleRate));
+    const endSample = Math.min(audioBuffer.length, Math.floor(endTime * sampleRate));
+    const windowSamples = Math.max(0, endSample - startSample);
+
+    if (windowSamples <= 0) {
+      values[secondIndex] = 0;
+      continue;
+    }
+
+    // Stride to keep the per-second analysis fast on long files.
+    const stride = Math.max(1, Math.floor(windowSamples / 2048));
+    let sumSq = 0;
+    let count = 0;
+
+    for (let i = startSample; i < endSample; i += stride) {
+      let mixed = 0;
+      for (let ch = 0; ch < channels; ch++) {
+        mixed += channelData[ch][i] || 0;
+      }
+      mixed /= channels;
+
+      sumSq += mixed * mixed;
+      count++;
+    }
+
+    values[secondIndex] = count > 0 ? Math.sqrt(sumSq / count) : 0;
+  }
+
+  return values;
+}
+
+function smoothValues(values, radius = 1) {
+  const r = Math.max(0, Math.floor(radius));
+  if (r === 0) return values.slice();
+
+  const smoothed = new Array(values.length).fill(0);
+  for (let i = 0; i < values.length; i++) {
+    let sum = 0;
+    let count = 0;
+    for (let j = i - r; j <= i + r; j++) {
+      if (j < 0 || j >= values.length) continue;
+      sum += values[j];
+      count++;
+    }
+    smoothed[i] = count ? sum / count : values[i];
+  }
+  return smoothed;
+}
+
+function buildOrangeHeatGradient(values, options = {}) {
+  const levels = Math.max(4, Math.floor(options.levels || 24));
+  const hue = typeof options.hue === 'number' ? options.hue : 38; // close to CSS "orange"
+  const saturation = typeof options.saturation === 'number' ? options.saturation : 100;
+  const lightMax = typeof options.lightMax === 'number' ? options.lightMax : 65;
+  const lightMin = typeof options.lightMin === 'number' ? options.lightMin : 40;
+  const gamma = typeof options.gamma === 'number' ? options.gamma : 0.6;
+
+  if (!Array.isArray(values) || values.length === 0) {
+    return '';
+  }
+
+  let min = Infinity;
+  let max = -Infinity;
+  values.forEach(v => {
+    const n = Number.isFinite(v) ? v : 0;
+    if (n < min) min = n;
+    if (n > max) max = n;
+  });
+
+  const range = max - min;
+  if (!Number.isFinite(range) || range <= 1e-8) {
+    return '';
+  }
+
+  const normalizedLevels = values.map(v => {
+    const n = Number.isFinite(v) ? v : 0;
+    const t = Math.min(1, Math.max(0, (n - min) / range));
+    const curved = Math.pow(t, gamma);
+    return Math.min(levels - 1, Math.max(0, Math.round(curved * (levels - 1))));
+  });
+
+  const levelToColor = (level) => {
+    const t = levels <= 1 ? 0 : level / (levels - 1);
+    const lightness = lightMax - (lightMax - lightMin) * t;
+    return `hsl(${hue} ${saturation}% ${lightness.toFixed(1)}%)`;
+  };
+
+  // Run-length encode to keep the gradient string small.
+  const n = normalizedLevels.length;
+  const stops = [];
+  let i = 0;
+  while (i < n) {
+    const level = normalizedLevels[i];
+    let j = i + 1;
+    while (j < n && normalizedLevels[j] === level) j++;
+
+    const startPct = ((i / n) * 100).toFixed(3);
+    const endPct = ((j / n) * 100).toFixed(3);
+    const color = levelToColor(level);
+
+    stops.push(`${color} ${startPct}%`, `${color} ${endPct}%`);
+    i = j;
+  }
+
+  return `linear-gradient(to right, ${stops.join(', ')})`;
+}
 
 function bumpPlayCountDom(postId) {
   if (!postId) return;
@@ -501,6 +624,12 @@ Alpine.store('player', {
   volumePanelOpen: false,
   timer: null,
   volumeGainNode: null, // 用于独立控制输出音量的 GainNode
+
+  // progress heatmap (per-second intensity -> orange shades)
+  progressHeatmapGradient: '',
+  progressHeatmapStepSeconds: 1,
+  progressHeatmapSmoothingRadius: 1,
+  _progressHeatmapNonce: 0,
   
   // playback rate
   playbackRate: 1.0,
@@ -536,6 +665,11 @@ Alpine.store('player', {
 
   get playbackRateText() {
     return this.playbackRate === 1 ? '1x' : `${this.playbackRate}x`;
+  },
+
+  get progressRangeStyle() {
+    if (!this.progressHeatmapGradient) return {};
+    return { '--aripplesong-progress-gradient': this.progressHeatmapGradient };
   },
 
   get currentEpisodePublishDate() {
@@ -781,6 +915,10 @@ Alpine.store('player', {
 
   // ========== 播放器核心方法 ==========
   loadTrack(audioUrl) {
+    // Invalidate any previous analysis and clear the heatmap while loading.
+    this._progressHeatmapNonce++;
+    this.progressHeatmapGradient = '';
+
     // 停止当前播放
     if (this.currentSound) {
       this.currentSound.stop();
@@ -830,6 +968,7 @@ Alpine.store('player', {
         this.duration = this.currentSound.duration();
         // ⭐ 音频加载完成，设置加载状态为 false
         this.isLoading = false;
+        this.generateProgressHeatmap(audioUrl);
         // console.log('duration', this.durationText);
       },
       onloaderror: (id, error) => {
@@ -841,6 +980,91 @@ Alpine.store('player', {
         this.playNext();
       }
     });
+  },
+
+  async generateProgressHeatmap(audioUrl) {
+    const url = typeof audioUrl === 'string' ? audioUrl : '';
+    if (!url) return;
+
+    const cacheKey = `${url}::step=${this.progressHeatmapStepSeconds}`;
+    const cached = progressHeatmapCache.get(cacheKey);
+    if (cached) {
+      this.progressHeatmapGradient = cached;
+      return;
+    }
+
+    const nonce = this._progressHeatmapNonce;
+
+    if (!document.body) {
+      await new Promise(resolve => {
+        document.addEventListener('DOMContentLoaded', resolve, { once: true });
+      });
+    }
+
+    let ws = null;
+    let container = null;
+
+    try {
+      // Create a hidden, offscreen WaveSurfer instance to decode audio.
+      container = document.createElement('div');
+      container.style.position = 'absolute';
+      container.style.left = '-9999px';
+      container.style.top = '-9999px';
+      container.style.width = '1000px';
+      container.style.height = '1px';
+      container.style.overflow = 'hidden';
+      document.body.appendChild(container);
+
+      ws = WaveSurfer.create({
+        container,
+        height: 1,
+        interact: false,
+        cursorWidth: 0,
+        waveColor: 'transparent',
+        progressColor: 'transparent',
+        crossOrigin: 'anonymous',
+      });
+
+      const ready = new Promise((resolve, reject) => {
+        ws.once('ready', resolve);
+        ws.once('error', reject);
+      });
+
+      ws.load(url);
+      await ready;
+
+      const decoded = ws.getDecodedData?.();
+      ws.destroy();
+      ws = null;
+      container.remove();
+      container = null;
+
+      if (!decoded) return;
+      if (nonce !== this._progressHeatmapNonce) return;
+
+      const rms = computeRmsBySecond(decoded, this.progressHeatmapStepSeconds);
+      const smoothed = smoothValues(rms, this.progressHeatmapSmoothingRadius);
+      const gradient = buildOrangeHeatGradient(smoothed);
+
+      if (!gradient) return;
+      if (nonce !== this._progressHeatmapNonce) return;
+
+      progressHeatmapCache.set(cacheKey, gradient);
+      this.progressHeatmapGradient = gradient;
+    } catch (error) {
+      console.warn('[aripplesong] Failed to generate progress heatmap', error);
+    } finally {
+      try {
+        ws?.destroy?.();
+      } catch (_) {
+        // ignore
+      }
+      try {
+        container?.remove?.();
+      } catch (_) {
+        // ignore
+      }
+    }
   },
 
   play() {

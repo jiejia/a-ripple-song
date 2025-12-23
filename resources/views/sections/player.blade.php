@@ -41,7 +41,7 @@
             <div class="mt-0 w-full">
                 <div class="grid grid-cols-[30px_1fr_30px] gap-2 items-center text-xs">
                     <span x-text="$store.player.currentTimeText">00:00</span>
-                    <input type="range" min="0" :max="$store.player.duration" :value="$store.player.currentTime" x-on:input="$store.player.seek($event.target.value)" class="range range-xs w-full text-base-content/20 [--range-bg:orange] [--range-thumb:blue] [--range-fill:0.5] " />
+                    <input type="range" min="0" :max="$store.player.duration" :value="$store.player.currentTime" :style="$store.player.progressRangeStyle" x-on:input="$store.player.seek($event.target.value)" class="range range-xs w-full aripplesong-progress-range text-base-content/20 [--range-bg:orange] [--range-thumb:blue] [--range-fill:0]" />
                     <span class="justify-self-end" x-text="$store.player.durationText">00:00</span>
                 </div>
             </div>

@@ -78,3 +78,13 @@ a {
 #cancel-comment-reply-link {
     margin-left: 0.5rem;
 }
+
+@layer components {
+    input[type="range"].aripplesong-progress-range::-webkit-slider-runnable-track {
+        background: var(--aripplesong-progress-gradient, var(--range-bg));
+    }
+
+    input[type="range"].aripplesong-progress-range::-moz-range-track {
+        background: var(--aripplesong-progress-gradient, var(--range-bg));
+    }
+}
