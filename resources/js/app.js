@@ -95,9 +95,9 @@ function buildOrangeHeatGradient(values, options = {}) {
   // Orange hue is around 30-40 degrees (35 is a nice orange-yellow)
   const hue = typeof options.hue === 'number' ? options.hue : 35;
   const saturation = typeof options.saturation === 'number' ? options.saturation : 100;
-  // Lightness range: low intensity = darker orange, high intensity = brighter orange
-  const minLightness = typeof options.minLightness === 'number' ? options.minLightness : 25;
-  const maxLightness = typeof options.maxLightness === 'number' ? options.maxLightness : 55;
+  // Lightness range: high intensity = darker orange, low intensity = lighter orange
+  const minLightness = typeof options.minLightness === 'number' ? options.minLightness : 40;
+  const maxLightness = typeof options.maxLightness === 'number' ? options.maxLightness : 70;
 
   if (!Array.isArray(values) || values.length === 0) {
     return '';
