@@ -81,10 +81,16 @@ a {
 
 @layer components {
     input[type="range"].aripplesong-progress-range::-webkit-slider-runnable-track {
-        background: var(--aripplesong-progress-gradient, var(--range-bg));
+        background-color: var(--range-bg);
+        background-image: var(--aripplesong-progress-gradient, none);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
     }
 
     input[type="range"].aripplesong-progress-range::-moz-range-track {
-        background: var(--aripplesong-progress-gradient, var(--range-bg));
+        background-color: var(--range-bg);
+        background-image: var(--aripplesong-progress-gradient, none);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
     }
 }

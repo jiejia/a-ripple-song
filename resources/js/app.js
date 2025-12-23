@@ -89,10 +89,8 @@ function smoothValues(values, radius = 1) {
 
 function buildOrangeHeatGradient(values, options = {}) {
   const levels = Math.max(4, Math.floor(options.levels || 24));
-  const hue = typeof options.hue === 'number' ? options.hue : 38; // close to CSS "orange"
-  const saturation = typeof options.saturation === 'number' ? options.saturation : 100;
-  const lightMax = typeof options.lightMax === 'number' ? options.lightMax : 65;
-  const lightMin = typeof options.lightMin === 'number' ? options.lightMin : 40;
+  const alphaMin = typeof options.alphaMin === 'number' ? options.alphaMin : 0.0; // 0 => pure orange (no darkening)
+  const alphaMax = typeof options.alphaMax === 'number' ? options.alphaMax : 0.55; // max darkening with black overlay
   const gamma = typeof options.gamma === 'number' ? options.gamma : 0.6;
 
   if (!Array.isArray(values) || values.length === 0) {
@@ -121,8 +119,9 @@ function buildOrangeHeatGradient(values, options = {}) {
 
   const levelToColor = (level) => {
     const t = levels <= 1 ? 0 : level / (levels - 1);
-    const lightness = lightMax - (lightMax - lightMin) * t;
-    return `hsl(${hue} ${saturation}% ${lightness.toFixed(1)}%)`;
+    const alpha = alphaMin + (alphaMax - alphaMin) * t;
+    // Use only black alpha overlay so the underlying track stays the same orange hue.
+    return `rgba(0, 0, 0, ${alpha.toFixed(3)})`;
   };
 
   // Run-length encode to keep the gradient string small.
@@ -142,6 +141,7 @@ function buildOrangeHeatGradient(values, options = {}) {
     i = j;
   }
 
+  // This gradient is used as a background-image overlay on top of the base orange track color.
   return `linear-gradient(to right, ${stops.join(', ')})`;
 }
 
