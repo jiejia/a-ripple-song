@@ -633,7 +633,7 @@ Alpine.store('player', {
 
   // progress heatmap (per-second intensity -> orange shades)
   progressHeatmapGradient: '',
-  progressHeatmapStepSeconds: 10,
+  progressHeatmapStepSeconds: 5,
   progressHeatmapSmoothingRadius: 1,
   _progressHeatmapNonce: 0,
   
