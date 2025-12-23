@@ -89,8 +89,11 @@ function smoothValues(values, radius = 1) {
 
 function buildOrangeHeatGradient(values, options = {}) {
   const levels = Math.max(4, Math.floor(options.levels || 24));
-  const alphaMin = typeof options.alphaMin === 'number' ? options.alphaMin : 0.0; // 0 => pure orange (no darkening)
-  const alphaMax = typeof options.alphaMax === 'number' ? options.alphaMax : 0.55; // max darkening with black overlay
+  const baseR = typeof options.baseR === 'number' ? options.baseR : 255;
+  const baseG = typeof options.baseG === 'number' ? options.baseG : 165;
+  const baseB = typeof options.baseB === 'number' ? options.baseB : 0;
+  const minFactor = typeof options.minFactor === 'number' ? options.minFactor : 0.5; // darkest shade multiplier
+  const maxFactor = typeof options.maxFactor === 'number' ? options.maxFactor : 1.0; // lightest/base shade multiplier
   const gamma = typeof options.gamma === 'number' ? options.gamma : 0.6;
 
   if (!Array.isArray(values) || values.length === 0) {
@@ -119,9 +122,11 @@ function buildOrangeHeatGradient(values, options = {}) {
 
   const levelToColor = (level) => {
     const t = levels <= 1 ? 0 : level / (levels - 1);
-    const alpha = alphaMin + (alphaMax - alphaMin) * t;
-    // Use only black alpha overlay so the underlying track stays the same orange hue.
-    return `rgba(0, 0, 0, ${alpha.toFixed(3)})`;
+    const factor = maxFactor - (maxFactor - minFactor) * t;
+    const r = Math.max(0, Math.min(255, Math.round(baseR * factor)));
+    const g = Math.max(0, Math.min(255, Math.round(baseG * factor)));
+    const b = Math.max(0, Math.min(255, Math.round(baseB * factor)));
+    return `rgb(${r} ${g} ${b})`;
   };
 
   // Run-length encode to keep the gradient string small.
@@ -141,7 +146,6 @@ function buildOrangeHeatGradient(values, options = {}) {
     i = j;
   }
 
-  // This gradient is used as a background-image overlay on top of the base orange track color.
   return `linear-gradient(to right, ${stops.join(', ')})`;
 }
 
@@ -627,7 +631,7 @@ Alpine.store('player', {
 
   // progress heatmap (per-second intensity -> orange shades)
   progressHeatmapGradient: '',
-  progressHeatmapStepSeconds: 1,
+  progressHeatmapStepSeconds: 5,
   progressHeatmapSmoothingRadius: 1,
   _progressHeatmapNonce: 0,
   
@@ -990,7 +994,7 @@ Alpine.store('player', {
     const expectedNonce = Number.isFinite(nonceFromLoad) ? nonceFromLoad : this._progressHeatmapNonce;
     if (expectedNonce !== this._progressHeatmapNonce) return;
 
-    const cacheKey = `${url}::step=${this.progressHeatmapStepSeconds}`;
+    const cacheKey = `${url}::step=${this.progressHeatmapStepSeconds}::v=rgb-orange-1`;
     const cached = progressHeatmapCache.get(cacheKey);
     if (cached) {
       this.progressHeatmapGradient = cached;
