@@ -991,20 +991,20 @@ msgstr "URL вашей RSS-ленты подкаста. Нажмите, чтоб
 #: app/ThemeOptions/General.php:62
 #: app/ThemeOptions/General.php:66
 msgid "Light Theme"
-msgstr ""
+msgstr "Светлая тема"
 
 #: app/ThemeOptions/General.php:71
 msgid "Light Theme (fallback)"
-msgstr ""
+msgstr "Светлая тема (резервная)"
 
 #: app/ThemeOptions/General.php:77
 #: app/ThemeOptions/General.php:81
 msgid "Dark Theme"
-msgstr ""
+msgstr "Тёмная тема"
 
 #: app/ThemeOptions/General.php:86
 msgid "Dark Theme (fallback)"
-msgstr ""
+msgstr "Тёмная тема (резервная)"
 
 #: app/PostTypes/Podcast.php:172
 msgid "Audio Length (bytes)"
@@ -1128,32 +1128,32 @@ msgstr "Проверка подкаста не удалась"
 
 #: app/widgets.php:254
 msgid "Select Banner Image"
-msgstr ""
+msgstr "Выбрать изображение баннера"
 
 #: app/widgets.php:256
 msgid "Use This Image"
-msgstr ""
+msgstr "Использовать это изображение"
 
 #: resources/views/partials/content-single-attachment.blade.php:13
 msgid "Download"
-msgstr ""
+msgstr "Скачать"
 
 #: resources/views/sections/header.blade.php:30
 msgid "Toggle Theme"
-msgstr ""
+msgstr "Переключить тему"
 
 #: resources/views/widgets/banner-carousel.blade.php:55
 msgid "Previous slide"
-msgstr ""
+msgstr "Предыдущий слайд"
 
 #: resources/views/widgets/banner-carousel.blade.php:63
 msgid "Next slide"
-msgstr ""
+msgstr "Следующий слайд"
 
 #: resources/views/widgets/banner-carousel.blade.php:79
 #, php-format
 msgid "Go to slide %d"
-msgstr ""
+msgstr "Перейти к слайду %d"
 
 #: app/PostTypes/Podcast.php:158
 #: app/PostTypes/Podcast.php:173
@@ -1191,15 +1191,15 @@ msgstr "URL транскрипта эпизода"
 
 #: app/ThemeOptions/General.php:57
 msgid "Upload a logo image (220px × 32px). You will be able to crop the image after upload."
-msgstr ""
+msgstr "Загрузите изображение логотипа (220px × 32px). После загрузки вы сможете обрезать изображение."
 
 #: app/ThemeOptions/General.php:92
 msgid "Footer Copyright"
-msgstr ""
+msgstr "Авторские права в подвале"
 
 #: app/ThemeOptions/General.php:94
 msgid "Powered by A Ripple Song Theme"
-msgstr ""
+msgstr "Работает на теме A Ripple Song"
 
 #: app/ThemeOptions/General.php:95
 msgid "Overrides the footer copyright line. Leave empty to use the default."
@@ -1250,19 +1250,19 @@ msgstr "Ошибка обрезки изображения. Пожалуйста
 
 #: app/ThemeOptions/General.php:1821
 msgid "You do not have permission to upload files."
-msgstr ""
+msgstr "У вас нет разрешения на загрузку файлов."
 
 #: app/ThemeOptions/General.php:1826
 msgid "Missing attachment ID."
-msgstr ""
+msgstr "Отсутствует ID вложения."
 
 #: app/ThemeOptions/General.php:1830
 msgid "Missing crop details."
-msgstr ""
+msgstr "Отсутствуют данные обрезки."
 
 #: app/ThemeOptions/General.php:1840
 msgid "Original image not found."
-msgstr ""
+msgstr "Исходное изображение не найдено."
 
 #: app/ThemeOptions/Podcast.php:112
 msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple recommends keeping the file under 512KB. Will be validated on save."
@@ -1304,262 +1304,196 @@ msgstr "Разрешение обложки подкаста слишком бо
 
 #: resources/views/partials/entry-meta.blade.php:26
 msgid "views"
-msgstr ""
+msgstr "просмотров"
 
 #: resources/views/partials/entry-meta.blade.php:29
 msgid "plays"
-msgstr ""
+msgstr "воспроизведений"
 
 #: resources/views/sections/footer.blade.php:5
 #, php-format
 msgid "Powered by %s"
-msgstr ""
+msgstr "Работает на %s"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Red (50)"
-msgstr ""
+msgstr "Красный (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Red (400)"
-msgstr ""
+msgstr "Красный (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (50)"
-msgstr ""
+msgstr "Жёлтый (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (300)"
-msgstr ""
+msgstr "Жёлтый (300)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (400)"
-msgstr ""
+msgstr "Жёлтый (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (50)"
-msgstr ""
+msgstr "Зелёный (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (400)"
-msgstr ""
+msgstr "Зелёный (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (500)"
-msgstr ""
+msgstr "Зелёный (500)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Indigo (50)"
-msgstr ""
+msgstr "Индиго (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Indigo (400)"
-msgstr ""
+msgstr "Индиго (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Gray (600)"
-msgstr ""
+msgstr "Серый (600)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Gray (800)"
-msgstr ""
+msgstr "Серый (800)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Black"
-msgstr ""
+msgstr "Чёрный"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "White"
-msgstr ""
+msgstr "Белый"
 
 #: public/build/assets/theme.json
 msgctxt "Font family name"
 msgid "sans"
-msgstr ""
+msgstr "sans"
 
 #: public/build/assets/theme.json
 msgctxt "Font family name"
 msgid "mono"
-msgstr ""
+msgstr "mono"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "xs"
-msgstr ""
+msgstr "xs"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "sm"
-msgstr ""
+msgstr "sm"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "base"
-msgstr ""
+msgstr "base"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "lg"
-msgstr ""
+msgstr "lg"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "2xl"
-msgstr ""
+msgstr "2xl"
 
-msgid "iTunes Type (itunes:type)"
-msgstr "Тип iTunes (itunes:type)"
+#: resources/js/app.js:558
+#, js-format
+msgid "Fetched %d podcasts"
+msgstr "Получено %d подкастов"
 
-msgid "(not set)"
-msgstr "(не задано)"
+#: resources/js/app.js:574
+msgid "Podcast has no audio file, skipping:"
+msgstr "Подкаст не имеет аудиофайла, пропускаем:"
 
-msgid "episodic"
-msgstr "episodic"
+#: resources/js/app.js:608
+msgid "Added:"
+msgstr "Добавлено:"
 
-msgid "serial"
-msgstr "serial"
+#: resources/js/app.js:610
+msgid "Already exists, skipping:"
+msgstr "Уже существует, пропускаем:"
 
-msgid "Optional. Apple Podcasts: episodic or serial."
-msgstr "Необязательно. Apple Podcasts: episodic или serial."
+#: resources/js/app.js:615
+#, js-format
+msgid "Successfully added %d new podcasts to playlist"
+msgstr "Успешно добавлено %d новых подкастов в плейлист"
 
-msgid "iTunes Title (optional)"
-msgstr "Название iTunes (необязательно)"
+#: resources/js/app.js:632
+msgid "No new podcasts to add"
+msgstr "Нет новых подкастов для добавления"
 
-msgid "Optional. Use only if you need a separate Apple-facing title."
-msgstr "Необязательно. Используйте только если нужен отдельный заголовок для Apple."
+#: resources/js/app.js:638
+msgid "Failed to fetch latest podcasts:"
+msgstr "Не удалось получить последние подкасты:"
 
-msgid "iTunes Block (itunes:block)"
-msgstr "Блокировка iTunes (itunes:block)"
+#: resources/js/app.js:670
+msgid "No episode available to play"
+msgstr "Нет доступного эпизода для воспроизведения"
 
-msgid "Optional. yes = hide this show in Apple Podcasts."
-msgstr "Необязательно. yes = скрыть это шоу в Apple Podcasts."
+#: resources/js/app.js:685
+msgid "Playback progress restored:"
+msgstr "Прогресс воспроизведения восстановлен:"
 
-msgid "iTunes Complete (itunes:complete)"
-msgstr "iTunes Завершено (itunes:complete)"
+#: resources/js/app.js:719
+msgid "Autoplay confirm dialog auto-closed"
+msgstr "Диалог подтверждения автовоспроизведения автоматически закрыт"
 
-msgid "Optional. yes = this show is complete (no more episodes)."
-msgstr "Необязательно. yes = шоу завершено (новых эпизодов не будет)."
+#: resources/js/app.js:723
+msgid "Showing autoplay confirm dialog"
+msgstr "Показ диалога подтверждения автовоспроизведения"
 
-msgid "iTunes New Feed URL (itunes:new-feed-url)"
-msgstr "Новый URL фида iTunes (itunes:new-feed-url)"
+#: resources/js/app.js:748
+msgid "User confirmed autoplay"
+msgstr "Пользователь подтвердил автовоспроизведение"
 
-msgid "Optional. Only for moving your show to a new RSS feed URL."
-msgstr "Необязательно. Только при переносе шоу на новый RSS URL."
+#: resources/js/app.js:761
+msgid "User cancelled autoplay"
+msgstr "Пользователь отменил автовоспроизведение"
 
-msgid "podcast:locked owner (optional)"
-msgstr "podcast:locked owner (необязательно)"
+#: resources/js/app.js:810
+msgid "Audio load error:"
+msgstr "Ошибка загрузки аудио:"
 
-msgid "Optional. Podcasting 2.0: email used to verify ownership during moves."
-msgstr "Необязательно. Podcasting 2.0: e-mail для подтверждения владения при переносах."
+#: resources/js/app.js:1052
+msgid "Volume settings loaded:"
+msgstr "Настройки громкости загружены:"
 
-msgid "Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
-msgstr "Код проверки Apple Podcasts (podcast:txt purpose=\"applepodcastsverify\")"
+#: resources/js/app.js:1078
+msgid "Playback rate loaded:"
+msgstr "Скорость воспроизведения загружена:"
 
-msgid "Optional. Used by Apple Podcasts to verify feed ownership."
-msgstr "Необязательно. Используется Apple Podcasts для подтверждения владения фидом."
+#: resources/js/app.js:1130
+msgid "Switched to existing episode:"
+msgstr "Переключено на существующий эпизод:"
 
-msgid "Podcasting 2.0 Funding Links (podcast:funding)"
-msgstr "Ссылки поддержки Podcasting 2.0 (podcast:funding)"
+#: resources/js/app.js:1148
+msgid "Added to playlist:"
+msgstr "Добавлено в плейлист:"
 
-msgid "Optional. If empty, no podcast:funding tags will be generated. URLs should be https."
-msgstr "Необязательно. Если пусто, теги podcast:funding не будут сгенерированы. URL должен быть https."
-
-msgid "URL"
-msgstr "URL"
-
-msgid "Required for each entry. Use https."
-msgstr "Обязательно для каждой записи. Используйте https."
-
-msgid "Label"
-msgstr "Метка"
-
-msgid "Optional display text (max 128 chars recommended)."
-msgstr "Необязательный текст отображения (рекомендуется до 128 символов)."
-
-msgid "Generator (optional)"
-msgstr "Generator (необязательно)"
-
-msgid "Optional. If empty, generator tag will not be included."
-msgstr "Необязательно. Если пусто, тег generator не будет добавлен."
-
-msgid "Optional. Apple Podcasts: overrides the episode title for <itunes:title>."
-msgstr "Необязательно. Apple Podcasts: переопределяет заголовок эпизода для <itunes:title>."
-
-msgid "Chapters (Podcasting 2.0)"
-msgstr "Главы (Podcasting 2.0)"
-
-msgid "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
-msgstr "Необязательно. Укажите URL/файл JSON глав для <podcast:chapters>."
-
-msgid "Add Chapters File"
-msgstr "Добавить файл глав"
-
-msgid "Chapters MIME Type"
-msgstr "MIME-тип глав"
-
-msgid "Optional. Defaults to application/json+chapters."
-msgstr "Необязательно. По умолчанию: application/json+chapters."
-
-msgid "Soundbites (Podcasting 2.0)"
-msgstr "Фрагменты (Podcasting 2.0)"
-
-msgid "Optional. Adds one or more <podcast:soundbite> tags."
-msgstr "Необязательно. Добавляет один или несколько тегов <podcast:soundbite>."
-
-msgid "Soundbite {#}"
-msgstr "Фрагмент {#}"
-
-msgid "Add Soundbite"
-msgstr "Добавить фрагмент"
-
-msgid "Remove Soundbite"
-msgstr "Удалить фрагмент"
-
-msgid "Start Time (seconds)"
-msgstr "Время начала (секунды)"
-
-msgid "Title (optional)"
-msgstr "Заголовок (необязательно)"
-
-msgid "Invalid request."
-msgstr "Недопустимый запрос."
-
-msgid "Invalid attachment ID."
-msgstr "Недопустимый идентификатор вложения."
-
-msgid "You do not have permission to edit this attachment."
-msgstr "У вас нет прав на редактирование этого вложения."
-
-msgid "Invalid crop details."
-msgstr "Недопустимые параметры обрезки."
-
-msgid "Unable to determine attachment URL."
-msgstr "Не удалось определить URL вложения."
-
-msgid "Invalid post ID."
-msgstr "Недопустимый ID записи."
-
-msgid "Invalid podcast post."
-msgstr "Недопустимая запись подкаста."
-
-msgid "No post IDs provided."
-msgstr "Не переданы ID записей."
-
-msgid "Pitch preserved"
-msgstr "Тон сохранён"
-
-msgid "Speed (pitch preserved)"
-msgstr "Скорость (тон сохранён)"
+#: resources/js/app.js:1159
+msgid "Episode already exists:"
+msgstr "Эпизод уже существует:"
