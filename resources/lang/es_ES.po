@@ -989,20 +989,20 @@ msgstr "URL del feed RSS de tu podcast. Haz clic para seleccionar y copiar."
 #: app/ThemeOptions/General.php:62
 #: app/ThemeOptions/General.php:66
 msgid "Light Theme"
-msgstr ""
+msgstr "Tema claro"
 
 #: app/ThemeOptions/General.php:71
 msgid "Light Theme (fallback)"
-msgstr ""
+msgstr "Tema claro (alternativo)"
 
 #: app/ThemeOptions/General.php:77
 #: app/ThemeOptions/General.php:81
 msgid "Dark Theme"
-msgstr ""
+msgstr "Tema oscuro"
 
 #: app/ThemeOptions/General.php:86
 msgid "Dark Theme (fallback)"
-msgstr ""
+msgstr "Tema oscuro (alternativo)"
 
 #: app/PostTypes/Podcast.php:172
 msgid "Audio Length (bytes)"
@@ -1126,32 +1126,32 @@ msgstr "La validación del podcast falló"
 
 #: app/widgets.php:254
 msgid "Select Banner Image"
-msgstr ""
+msgstr "Seleccionar imagen de banner"
 
 #: app/widgets.php:256
 msgid "Use This Image"
-msgstr ""
+msgstr "Usar esta imagen"
 
 #: resources/views/partials/content-single-attachment.blade.php:13
 msgid "Download"
-msgstr ""
+msgstr "Descargar"
 
 #: resources/views/sections/header.blade.php:30
 msgid "Toggle Theme"
-msgstr ""
+msgstr "Cambiar tema"
 
 #: resources/views/widgets/banner-carousel.blade.php:55
 msgid "Previous slide"
-msgstr ""
+msgstr "Diapositiva anterior"
 
 #: resources/views/widgets/banner-carousel.blade.php:63
 msgid "Next slide"
-msgstr ""
+msgstr "Siguiente diapositiva"
 
 #: resources/views/widgets/banner-carousel.blade.php:79
 #, php-format
 msgid "Go to slide %d"
-msgstr ""
+msgstr "Ir a diapositiva %d"
 
 #: app/PostTypes/Podcast.php:158
 #: app/PostTypes/Podcast.php:173
@@ -1189,15 +1189,15 @@ msgstr "URL de transcripción del episodio"
 
 #: app/ThemeOptions/General.php:57
 msgid "Upload a logo image (220px × 32px). You will be able to crop the image after upload."
-msgstr ""
+msgstr "Sube una imagen de logo (220px × 32px). Podrás recortar la imagen después de subirla."
 
 #: app/ThemeOptions/General.php:92
 msgid "Footer Copyright"
-msgstr ""
+msgstr "Copyright del pie de página"
 
 #: app/ThemeOptions/General.php:94
 msgid "Powered by A Ripple Song Theme"
-msgstr ""
+msgstr "Desarrollado con el tema A Ripple Song"
 
 #: app/ThemeOptions/General.php:95
 msgid "Overrides the footer copyright line. Leave empty to use the default."
@@ -1248,19 +1248,19 @@ msgstr "Error al recortar la imagen. Por favor, inténtelo de nuevo."
 
 #: app/ThemeOptions/General.php:1821
 msgid "You do not have permission to upload files."
-msgstr ""
+msgstr "No tienes permiso para subir archivos."
 
 #: app/ThemeOptions/General.php:1826
 msgid "Missing attachment ID."
-msgstr ""
+msgstr "Falta el ID del archivo adjunto."
 
 #: app/ThemeOptions/General.php:1830
 msgid "Missing crop details."
-msgstr ""
+msgstr "Faltan los detalles de recorte."
 
 #: app/ThemeOptions/General.php:1840
 msgid "Original image not found."
-msgstr ""
+msgstr "Imagen original no encontrada."
 
 #: app/ThemeOptions/Podcast.php:112
 msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple recommends keeping the file under 512KB. Will be validated on save."
@@ -1302,262 +1302,345 @@ msgstr "La resolución de la portada del podcast es demasiado alta. Máximo: %1$
 
 #: resources/views/partials/entry-meta.blade.php:26
 msgid "views"
-msgstr ""
+msgstr "vistas"
 
 #: resources/views/partials/entry-meta.blade.php:29
 msgid "plays"
-msgstr ""
+msgstr "reproducciones"
 
 #: resources/views/sections/footer.blade.php:5
 #, php-format
 msgid "Powered by %s"
-msgstr ""
+msgstr "Desarrollado con %s"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Red (50)"
-msgstr ""
+msgstr "Rojo (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Red (400)"
-msgstr ""
+msgstr "Rojo (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (50)"
-msgstr ""
+msgstr "Amarillo (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (300)"
-msgstr ""
+msgstr "Amarillo (300)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (400)"
-msgstr ""
+msgstr "Amarillo (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (50)"
-msgstr ""
+msgstr "Verde (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (400)"
-msgstr ""
+msgstr "Verde (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (500)"
-msgstr ""
+msgstr "Verde (500)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Indigo (50)"
-msgstr ""
+msgstr "Índigo (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Indigo (400)"
-msgstr ""
+msgstr "Índigo (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Gray (600)"
-msgstr ""
+msgstr "Gris (600)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Gray (800)"
-msgstr ""
+msgstr "Gris (800)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Black"
-msgstr ""
+msgstr "Negro"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "White"
-msgstr ""
+msgstr "Blanco"
 
 #: public/build/assets/theme.json
 msgctxt "Font family name"
 msgid "sans"
-msgstr ""
+msgstr "sans"
 
 #: public/build/assets/theme.json
 msgctxt "Font family name"
 msgid "mono"
-msgstr ""
+msgstr "mono"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "xs"
-msgstr ""
+msgstr "xs"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "sm"
-msgstr ""
+msgstr "sm"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "base"
-msgstr ""
+msgstr "base"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "lg"
-msgstr ""
+msgstr "lg"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "2xl"
-msgstr ""
+msgstr "2xl"
 
+#: resources/js/app.js:558
+#, js-format
+msgid "Fetched %d podcasts"
+msgstr "Se obtuvieron %d podcasts"
+
+#: resources/js/app.js:574
+msgid "Podcast has no audio file, skipping:"
+msgstr "El podcast no tiene archivo de audio, omitiendo:"
+
+#: resources/js/app.js:608
+msgid "Added:"
+msgstr "Añadido:"
+
+#: resources/js/app.js:610
+msgid "Already exists, skipping:"
+msgstr "Ya existe, omitiendo:"
+
+#: resources/js/app.js:615
+#, js-format
+msgid "Successfully added %d new podcasts to playlist"
+msgstr "Se añadieron exitosamente %d podcasts nuevos a la lista de reproducción"
+
+#: resources/js/app.js:632
+msgid "No new podcasts to add"
+msgstr "No hay podcasts nuevos para añadir"
+
+#: resources/js/app.js:638
+msgid "Failed to fetch latest podcasts:"
+msgstr "Error al obtener los últimos podcasts:"
+
+#: resources/js/app.js:670
+msgid "No episode available to play"
+msgstr "No hay episodio disponible para reproducir"
+
+#: resources/js/app.js:685
+msgid "Playback progress restored:"
+msgstr "Progreso de reproducción restaurado:"
+
+#: resources/js/app.js:719
+msgid "Autoplay confirm dialog auto-closed"
+msgstr "Diálogo de confirmación de reproducción automática cerrado automáticamente"
+
+#: resources/js/app.js:723
+msgid "Showing autoplay confirm dialog"
+msgstr "Mostrando diálogo de confirmación de reproducción automática"
+
+#: resources/js/app.js:748
+msgid "User confirmed autoplay"
+msgstr "Usuario confirmó reproducción automática"
+
+#: resources/js/app.js:761
+msgid "User cancelled autoplay"
+msgstr "Usuario canceló reproducción automática"
+
+#: resources/js/app.js:810
+msgid "Audio load error:"
+msgstr "Error al cargar audio:"
+
+#: resources/js/app.js:1052
+msgid "Volume settings loaded:"
+msgstr "Configuración de volumen cargada:"
+
+#: resources/js/app.js:1078
+msgid "Playback rate loaded:"
+msgstr "Velocidad de reproducción cargada:"
+
+#: resources/js/app.js:1130
+msgid "Switched to existing episode:"
+msgstr "Cambiado a episodio existente:"
+
+#: resources/js/app.js:1148
+msgid "Added to playlist:"
+msgstr "Añadido a la lista de reproducción:"
+
+#: resources/js/app.js:1159
+msgid "Episode already exists:"
+msgstr "El episodio ya existe:"
+
+#: app/ThemeOptions/Podcast.php:136
 msgid "iTunes Type (itunes:type)"
-msgstr "Tipo de iTunes (itunes:type)"
+msgstr "Tipo iTunes (itunes:type)"
 
+#: app/ThemeOptions/Podcast.php:138
 msgid "(not set)"
-msgstr "(sin configurar)"
+msgstr "(no establecido)"
 
+#: app/ThemeOptions/Podcast.php:139
 msgid "episodic"
-msgstr "episodic"
+msgstr "episódico"
 
+#: app/ThemeOptions/Podcast.php:140
 msgid "serial"
 msgstr "serial"
 
+#: app/ThemeOptions/Podcast.php:143
 msgid "Optional. Apple Podcasts: episodic or serial."
-msgstr "Opcional. Apple Podcasts: episodic o serial."
+msgstr "Opcional. Apple Podcasts: episódico o serial."
 
+#: app/ThemeOptions/Podcast.php:144
 msgid "iTunes Title (optional)"
-msgstr "Título de iTunes (opcional)"
+msgstr "Título iTunes (opcional)"
 
+#: app/ThemeOptions/Podcast.php:145
 msgid "Optional. Use only if you need a separate Apple-facing title."
-msgstr "Opcional. Úsalo solo si necesitas un título distinto para Apple."
+msgstr "Opcional. Usar solo si necesitas un título separado para Apple."
 
+#: app/ThemeOptions/Podcast.php:146
 msgid "iTunes Block (itunes:block)"
-msgstr "Bloqueo de iTunes (itunes:block)"
+msgstr "Bloqueo iTunes (itunes:block)"
 
+#: app/ThemeOptions/Podcast.php:152
 msgid "Optional. yes = hide this show in Apple Podcasts."
 msgstr "Opcional. yes = ocultar este programa en Apple Podcasts."
 
+#: app/ThemeOptions/Podcast.php:153
 msgid "iTunes Complete (itunes:complete)"
 msgstr "iTunes Completo (itunes:complete)"
 
+#: app/ThemeOptions/Podcast.php:159
 msgid "Optional. yes = this show is complete (no more episodes)."
-msgstr "Opcional. yes = este programa está completo (no habrá más episodios)."
+msgstr "Opcional. yes = este programa está completo (no más episodios)."
 
+#: app/ThemeOptions/Podcast.php:160
 msgid "iTunes New Feed URL (itunes:new-feed-url)"
-msgstr "Nueva URL del feed de iTunes (itunes:new-feed-url)"
+msgstr "Nueva URL de Feed iTunes (itunes:new-feed-url)"
 
+#: app/ThemeOptions/Podcast.php:161
 msgid "Optional. Only for moving your show to a new RSS feed URL."
-msgstr "Opcional. Solo para mover tu programa a una nueva URL de RSS."
+msgstr "Opcional. Solo para mover tu programa a una nueva URL de feed RSS."
 
+#: app/ThemeOptions/Podcast.php:169
 msgid "podcast:locked owner (optional)"
-msgstr "owner de podcast:locked (opcional)"
+msgstr "propietario podcast:locked (opcional)"
 
+#: app/ThemeOptions/Podcast.php:172
 msgid "Optional. Podcasting 2.0: email used to verify ownership during moves."
-msgstr "Opcional. Podcasting 2.0: correo para verificar la propiedad durante migraciones."
+msgstr "Opcional. Podcasting 2.0: email usado para verificar propiedad durante traslados."
 
+#: app/ThemeOptions/Podcast.php:175
 msgid "Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
-msgstr "Código de verificación de Apple Podcasts (podcast:txt purpose=\"applepodcastsverify\")"
+msgstr "Código de verificación Apple Podcasts (podcast:txt purpose=\"applepodcastsverify\")"
 
+#: app/ThemeOptions/Podcast.php:176
 msgid "Optional. Used by Apple Podcasts to verify feed ownership."
 msgstr "Opcional. Usado por Apple Podcasts para verificar la propiedad del feed."
 
+#: app/ThemeOptions/Podcast.php:177
 msgid "Podcasting 2.0 Funding Links (podcast:funding)"
-msgstr "Enlaces de financiación de Podcasting 2.0 (podcast:funding)"
+msgstr "Enlaces de financiación Podcasting 2.0 (podcast:funding)"
 
+#: app/ThemeOptions/Podcast.php:178
 msgid "Optional. If empty, no podcast:funding tags will be generated. URLs should be https."
-msgstr "Opcional. Si está vacío, no se generarán etiquetas podcast:funding. Las URL deberían ser https."
+msgstr "Opcional. Si está vacío, no se generarán etiquetas podcast:funding. Las URLs deben ser https."
 
+#: app/ThemeOptions/Podcast.php:180
 msgid "URL"
 msgstr "URL"
 
+#: app/ThemeOptions/Podcast.php:181
 msgid "Required for each entry. Use https."
-msgstr "Obligatorio en cada entrada. Usa https."
+msgstr "Requerido para cada entrada. Usa https."
 
+#: app/ThemeOptions/Podcast.php:182
 msgid "Label"
 msgstr "Etiqueta"
 
+#: app/ThemeOptions/Podcast.php:183
 msgid "Optional display text (max 128 chars recommended)."
-msgstr "Texto opcional (se recomienda máximo 128 caracteres)."
+msgstr "Texto de visualización opcional (máx. 128 caracteres recomendado)."
 
+#: app/ThemeOptions/Podcast.php:185
 msgid "Generator (optional)"
-msgstr "Generator (opcional)"
+msgstr "Generador (opcional)"
 
+#: app/ThemeOptions/Podcast.php:186
 msgid "Optional. If empty, generator tag will not be included."
-msgstr "Opcional. Si está vacío, no se incluirá la etiqueta generator."
+msgstr "Opcional. Si está vacío, la etiqueta generator no se incluirá."
 
-msgid "Optional. Apple Podcasts: overrides the episode title for <itunes:title>."
-msgstr "Opcional. Apple Podcasts: sobrescribe el título del episodio para <itunes:title>."
-
+#: app/PostTypes/Podcast.php
 msgid "Chapters (Podcasting 2.0)"
 msgstr "Capítulos (Podcasting 2.0)"
 
+#: app/PostTypes/Podcast.php
 msgid "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
-msgstr "Opcional. Proporciona una URL/archivo JSON para <podcast:chapters>."
+msgstr "Opcional. Proporciona un URL/archivo JSON de capítulos para <podcast:chapters>."
 
+#: app/PostTypes/Podcast.php
 msgid "Add Chapters File"
 msgstr "Añadir archivo de capítulos"
 
+#: app/PostTypes/Podcast.php
 msgid "Chapters MIME Type"
 msgstr "Tipo MIME de capítulos"
 
+#: app/PostTypes/Podcast.php
 msgid "Optional. Defaults to application/json+chapters."
-msgstr "Opcional. Por defecto: application/json+chapters."
+msgstr "Opcional. Por defecto application/json+chapters."
 
+#: app/PostTypes/Podcast.php
 msgid "Soundbites (Podcasting 2.0)"
-msgstr "Fragmentos (Podcasting 2.0)"
+msgstr "Fragmentos de sonido (Podcasting 2.0)"
 
+#: app/PostTypes/Podcast.php
 msgid "Optional. Adds one or more <podcast:soundbite> tags."
 msgstr "Opcional. Añade una o más etiquetas <podcast:soundbite>."
 
+#: app/PostTypes/Podcast.php
 msgid "Soundbite {#}"
-msgstr "Fragmento {#}"
+msgstr "Fragmento de sonido {#}"
 
-msgid "Add Soundbite"
-msgstr "Añadir fragmento"
-
-msgid "Remove Soundbite"
-msgstr "Eliminar fragmento"
-
+#: app/PostTypes/Podcast.php
 msgid "Start Time (seconds)"
 msgstr "Tiempo de inicio (segundos)"
 
+#: app/PostTypes/Podcast.php
 msgid "Title (optional)"
 msgstr "Título (opcional)"
 
-msgid "Invalid request."
-msgstr "Solicitud no válida."
+#: app/PostTypes/Podcast.php
+msgid "Add Soundbite"
+msgstr "Añadir fragmento de sonido"
 
-msgid "Invalid attachment ID."
-msgstr "ID de adjunto no válido."
+#: app/PostTypes/Podcast.php
+msgid "Remove Soundbite"
+msgstr "Eliminar fragmento de sonido"
 
-msgid "You do not have permission to edit this attachment."
-msgstr "No tienes permiso para editar este adjunto."
-
-msgid "Invalid crop details."
-msgstr "Detalles de recorte no válidos."
-
-msgid "Unable to determine attachment URL."
-msgstr "No se pudo determinar la URL del adjunto."
-
-msgid "Invalid post ID."
-msgstr "ID de entrada no válido."
-
-msgid "Invalid podcast post."
-msgstr "Entrada de podcast no válida."
-
-msgid "No post IDs provided."
-msgstr "No se proporcionaron ID de entradas."
-
-msgid "Pitch preserved"
-msgstr "Tono conservado"
-
-msgid "Speed (pitch preserved)"
-msgstr "Velocidad (tono conservado)"

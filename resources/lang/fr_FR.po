@@ -1495,3 +1495,152 @@ msgstr "Ajouté à la liste de lecture :"
 #: resources/js/app.js:1159
 msgid "Episode already exists:"
 msgstr "L'épisode existe déjà :"
+
+#: app/ThemeOptions/Podcast.php:136
+msgid "iTunes Type (itunes:type)"
+msgstr "Type iTunes (itunes:type)"
+
+#: app/ThemeOptions/Podcast.php:138
+msgid "(not set)"
+msgstr "(non défini)"
+
+#: app/ThemeOptions/Podcast.php:139
+msgid "episodic"
+msgstr "épisodique"
+
+#: app/ThemeOptions/Podcast.php:140
+msgid "serial"
+msgstr "feuilleton"
+
+#: app/ThemeOptions/Podcast.php:143
+msgid "Optional. Apple Podcasts: episodic or serial."
+msgstr "Optionnel. Apple Podcasts : épisodique ou feuilleton."
+
+#: app/ThemeOptions/Podcast.php:144
+msgid "iTunes Title (optional)"
+msgstr "Titre iTunes (optionnel)"
+
+#: app/ThemeOptions/Podcast.php:145
+msgid "Optional. Use only if you need a separate Apple-facing title."
+msgstr "Optionnel. À utiliser uniquement si vous avez besoin d'un titre spécifique pour Apple."
+
+#: app/ThemeOptions/Podcast.php:146
+msgid "iTunes Block (itunes:block)"
+msgstr "Blocage iTunes (itunes:block)"
+
+#: app/ThemeOptions/Podcast.php:152
+msgid "Optional. yes = hide this show in Apple Podcasts."
+msgstr "Optionnel. yes = masquer ce programme dans Apple Podcasts."
+
+#: app/ThemeOptions/Podcast.php:153
+msgid "iTunes Complete (itunes:complete)"
+msgstr "iTunes Terminé (itunes:complete)"
+
+#: app/ThemeOptions/Podcast.php:159
+msgid "Optional. yes = this show is complete (no more episodes)."
+msgstr "Optionnel. yes = ce programme est terminé (plus d'épisodes)."
+
+#: app/ThemeOptions/Podcast.php:160
+msgid "iTunes New Feed URL (itunes:new-feed-url)"
+msgstr "Nouvelle URL du flux iTunes (itunes:new-feed-url)"
+
+#: app/ThemeOptions/Podcast.php:161
+msgid "Optional. Only for moving your show to a new RSS feed URL."
+msgstr "Optionnel. Uniquement pour déplacer votre programme vers une nouvelle URL de flux RSS."
+
+#: app/ThemeOptions/Podcast.php:169
+msgid "podcast:locked owner (optional)"
+msgstr "propriétaire podcast:locked (optionnel)"
+
+#: app/ThemeOptions/Podcast.php:172
+msgid "Optional. Podcasting 2.0: email used to verify ownership during moves."
+msgstr "Optionnel. Podcasting 2.0 : email utilisé pour vérifier la propriété lors des déplacements."
+
+#: app/ThemeOptions/Podcast.php:175
+msgid "Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
+msgstr "Code de vérification Apple Podcasts (podcast:txt purpose=\"applepodcastsverify\")"
+
+#: app/ThemeOptions/Podcast.php:176
+msgid "Optional. Used by Apple Podcasts to verify feed ownership."
+msgstr "Optionnel. Utilisé par Apple Podcasts pour vérifier la propriété du flux."
+
+#: app/ThemeOptions/Podcast.php:177
+msgid "Podcasting 2.0 Funding Links (podcast:funding)"
+msgstr "Liens de financement Podcasting 2.0 (podcast:funding)"
+
+#: app/ThemeOptions/Podcast.php:178
+msgid "Optional. If empty, no podcast:funding tags will be generated. URLs should be https."
+msgstr "Optionnel. Si vide, aucune balise podcast:funding ne sera générée. Les URLs doivent être en https."
+
+#: app/ThemeOptions/Podcast.php:180
+msgid "URL"
+msgstr "URL"
+
+#: app/ThemeOptions/Podcast.php:181
+msgid "Required for each entry. Use https."
+msgstr "Requis pour chaque entrée. Utilisez https."
+
+#: app/ThemeOptions/Podcast.php:182
+msgid "Label"
+msgstr "Libellé"
+
+#: app/ThemeOptions/Podcast.php:183
+msgid "Optional display text (max 128 chars recommended)."
+msgstr "Texte d'affichage optionnel (128 caractères max recommandé)."
+
+#: app/ThemeOptions/Podcast.php:185
+msgid "Generator (optional)"
+msgstr "Générateur (optionnel)"
+
+#: app/ThemeOptions/Podcast.php:186
+msgid "Optional. If empty, generator tag will not be included."
+msgstr "Optionnel. Si vide, la balise generator ne sera pas incluse."
+
+#: app/PostTypes/Podcast.php
+msgid "Chapters (Podcasting 2.0)"
+msgstr "Chapitres (Podcasting 2.0)"
+
+#: app/PostTypes/Podcast.php
+msgid "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
+msgstr "Optionnel. Fournir une URL/fichier JSON de chapitres pour <podcast:chapters>."
+
+#: app/PostTypes/Podcast.php
+msgid "Add Chapters File"
+msgstr "Ajouter un fichier de chapitres"
+
+#: app/PostTypes/Podcast.php
+msgid "Chapters MIME Type"
+msgstr "Type MIME des chapitres"
+
+#: app/PostTypes/Podcast.php
+msgid "Optional. Defaults to application/json+chapters."
+msgstr "Optionnel. Par défaut application/json+chapters."
+
+#: app/PostTypes/Podcast.php
+msgid "Soundbites (Podcasting 2.0)"
+msgstr "Extraits sonores (Podcasting 2.0)"
+
+#: app/PostTypes/Podcast.php
+msgid "Optional. Adds one or more <podcast:soundbite> tags."
+msgstr "Optionnel. Ajoute une ou plusieurs balises <podcast:soundbite>."
+
+#: app/PostTypes/Podcast.php
+msgid "Soundbite {#}"
+msgstr "Extrait sonore {#}"
+
+#: app/PostTypes/Podcast.php
+msgid "Start Time (seconds)"
+msgstr "Temps de début (secondes)"
+
+#: app/PostTypes/Podcast.php
+msgid "Title (optional)"
+msgstr "Titre (optionnel)"
+
+#: app/PostTypes/Podcast.php
+msgid "Add Soundbite"
+msgstr "Ajouter un extrait sonore"
+
+#: app/PostTypes/Podcast.php
+msgid "Remove Soundbite"
+msgstr "Supprimer l'extrait sonore"
+

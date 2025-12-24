@@ -987,20 +987,20 @@ msgstr "ポッドキャストRSSフィードのURLです。クリックして選
 #: app/ThemeOptions/General.php:62
 #: app/ThemeOptions/General.php:66
 msgid "Light Theme"
-msgstr ""
+msgstr "ライトテーマ"
 
 #: app/ThemeOptions/General.php:71
 msgid "Light Theme (fallback)"
-msgstr ""
+msgstr "ライトテーマ（代替）"
 
 #: app/ThemeOptions/General.php:77
 #: app/ThemeOptions/General.php:81
 msgid "Dark Theme"
-msgstr ""
+msgstr "ダークテーマ"
 
 #: app/ThemeOptions/General.php:86
 msgid "Dark Theme (fallback)"
-msgstr ""
+msgstr "ダークテーマ（代替）"
 
 #: app/PostTypes/Podcast.php:172
 msgid "Audio Length (bytes)"
@@ -1124,32 +1124,32 @@ msgstr "ポッドキャストの検証に失敗しました"
 
 #: app/widgets.php:254
 msgid "Select Banner Image"
-msgstr ""
+msgstr "バナー画像を選択"
 
 #: app/widgets.php:256
 msgid "Use This Image"
-msgstr ""
+msgstr "この画像を使用"
 
 #: resources/views/partials/content-single-attachment.blade.php:13
 msgid "Download"
-msgstr ""
+msgstr "ダウンロード"
 
 #: resources/views/sections/header.blade.php:30
 msgid "Toggle Theme"
-msgstr ""
+msgstr "テーマ切替"
 
 #: resources/views/widgets/banner-carousel.blade.php:55
 msgid "Previous slide"
-msgstr ""
+msgstr "前のスライド"
 
 #: resources/views/widgets/banner-carousel.blade.php:63
 msgid "Next slide"
-msgstr ""
+msgstr "次のスライド"
 
 #: resources/views/widgets/banner-carousel.blade.php:79
 #, php-format
 msgid "Go to slide %d"
-msgstr ""
+msgstr "スライド %d へ"
 
 #: app/PostTypes/Podcast.php:158
 #: app/PostTypes/Podcast.php:173
@@ -1187,15 +1187,15 @@ msgstr "エピソード文字起こしURL"
 
 #: app/ThemeOptions/General.php:57
 msgid "Upload a logo image (220px × 32px). You will be able to crop the image after upload."
-msgstr ""
+msgstr "ロゴ画像をアップロード（220px × 32px）。アップロード後に画像を切り抜くことができます。"
 
 #: app/ThemeOptions/General.php:92
 msgid "Footer Copyright"
-msgstr ""
+msgstr "フッター著作権"
 
 #: app/ThemeOptions/General.php:94
 msgid "Powered by A Ripple Song Theme"
-msgstr ""
+msgstr "A Ripple Song テーマで構築"
 
 #: app/ThemeOptions/General.php:95
 msgid "Overrides the footer copyright line. Leave empty to use the default."
@@ -1246,19 +1246,19 @@ msgstr "画像のトリミングに失敗しました。もう一度お試しく
 
 #: app/ThemeOptions/General.php:1821
 msgid "You do not have permission to upload files."
-msgstr ""
+msgstr "ファイルをアップロードする権限がありません。"
 
 #: app/ThemeOptions/General.php:1826
 msgid "Missing attachment ID."
-msgstr ""
+msgstr "添付ファイルIDがありません。"
 
 #: app/ThemeOptions/General.php:1830
 msgid "Missing crop details."
-msgstr ""
+msgstr "切り抜き詳細がありません。"
 
 #: app/ThemeOptions/General.php:1840
 msgid "Original image not found."
-msgstr ""
+msgstr "元の画像が見つかりません。"
 
 #: app/ThemeOptions/Podcast.php:112
 msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple recommends keeping the file under 512KB. Will be validated on save."
@@ -1300,262 +1300,345 @@ msgstr "ポッドキャストカバーの解像度が大きすぎます。最大
 
 #: resources/views/partials/entry-meta.blade.php:26
 msgid "views"
-msgstr ""
+msgstr "回閲覧"
 
 #: resources/views/partials/entry-meta.blade.php:29
 msgid "plays"
-msgstr ""
+msgstr "回再生"
 
 #: resources/views/sections/footer.blade.php:5
 #, php-format
 msgid "Powered by %s"
-msgstr ""
+msgstr "%s で構築"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Red (50)"
-msgstr ""
+msgstr "赤 (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Red (400)"
-msgstr ""
+msgstr "赤 (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (50)"
-msgstr ""
+msgstr "黄 (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (300)"
-msgstr ""
+msgstr "黄 (300)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (400)"
-msgstr ""
+msgstr "黄 (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (50)"
-msgstr ""
+msgstr "緑 (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (400)"
-msgstr ""
+msgstr "緑 (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (500)"
-msgstr ""
+msgstr "緑 (500)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Indigo (50)"
-msgstr ""
+msgstr "藍 (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Indigo (400)"
-msgstr ""
+msgstr "藍 (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Gray (600)"
-msgstr ""
+msgstr "灰 (600)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Gray (800)"
-msgstr ""
+msgstr "灰 (800)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Black"
-msgstr ""
+msgstr "黒"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "White"
-msgstr ""
+msgstr "白"
 
 #: public/build/assets/theme.json
 msgctxt "Font family name"
 msgid "sans"
-msgstr ""
+msgstr "サンセリフ"
 
 #: public/build/assets/theme.json
 msgctxt "Font family name"
 msgid "mono"
-msgstr ""
+msgstr "等幅"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "xs"
-msgstr ""
+msgstr "極小"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "sm"
-msgstr ""
+msgstr "小"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "base"
-msgstr ""
+msgstr "基本"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "lg"
-msgstr ""
+msgstr "大"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "2xl"
-msgstr ""
+msgstr "特大"
 
+#: resources/js/app.js:558
+#, js-format
+msgid "Fetched %d podcasts"
+msgstr "%d 件のポッドキャストを取得しました"
+
+#: resources/js/app.js:574
+msgid "Podcast has no audio file, skipping:"
+msgstr "ポッドキャストに音声ファイルがありません。スキップします："
+
+#: resources/js/app.js:608
+msgid "Added:"
+msgstr "追加しました："
+
+#: resources/js/app.js:610
+msgid "Already exists, skipping:"
+msgstr "既に存在します。スキップします："
+
+#: resources/js/app.js:615
+#, js-format
+msgid "Successfully added %d new podcasts to playlist"
+msgstr "%d 件の新しいポッドキャストをプレイリストに追加しました"
+
+#: resources/js/app.js:632
+msgid "No new podcasts to add"
+msgstr "追加する新しいポッドキャストがありません"
+
+#: resources/js/app.js:638
+msgid "Failed to fetch latest podcasts:"
+msgstr "最新のポッドキャストの取得に失敗しました："
+
+#: resources/js/app.js:670
+msgid "No episode available to play"
+msgstr "再生可能なエピソードがありません"
+
+#: resources/js/app.js:685
+msgid "Playback progress restored:"
+msgstr "再生進行状況を復元しました："
+
+#: resources/js/app.js:719
+msgid "Autoplay confirm dialog auto-closed"
+msgstr "自動再生確認ダイアログが自動的に閉じられました"
+
+#: resources/js/app.js:723
+msgid "Showing autoplay confirm dialog"
+msgstr "自動再生確認ダイアログを表示しています"
+
+#: resources/js/app.js:748
+msgid "User confirmed autoplay"
+msgstr "ユーザーが自動再生を確認しました"
+
+#: resources/js/app.js:761
+msgid "User cancelled autoplay"
+msgstr "ユーザーが自動再生をキャンセルしました"
+
+#: resources/js/app.js:810
+msgid "Audio load error:"
+msgstr "音声読み込みエラー："
+
+#: resources/js/app.js:1052
+msgid "Volume settings loaded:"
+msgstr "音量設定を読み込みました："
+
+#: resources/js/app.js:1078
+msgid "Playback rate loaded:"
+msgstr "再生速度を読み込みました："
+
+#: resources/js/app.js:1130
+msgid "Switched to existing episode:"
+msgstr "既存のエピソードに切り替えました："
+
+#: resources/js/app.js:1148
+msgid "Added to playlist:"
+msgstr "プレイリストに追加しました："
+
+#: resources/js/app.js:1159
+msgid "Episode already exists:"
+msgstr "エピソードは既に存在します："
+
+#: app/ThemeOptions/Podcast.php:136
 msgid "iTunes Type (itunes:type)"
-msgstr "iTunes タイプ（itunes:type）"
+msgstr "iTunes タイプ (itunes:type)"
 
+#: app/ThemeOptions/Podcast.php:138
 msgid "(not set)"
 msgstr "（未設定）"
 
+#: app/ThemeOptions/Podcast.php:139
 msgid "episodic"
-msgstr "episodic"
+msgstr "エピソード型"
 
+#: app/ThemeOptions/Podcast.php:140
 msgid "serial"
-msgstr "serial"
+msgstr "シリアル型"
 
+#: app/ThemeOptions/Podcast.php:143
 msgid "Optional. Apple Podcasts: episodic or serial."
-msgstr "任意。Apple Podcasts：episodic または serial。"
+msgstr "オプション。Apple Podcasts：エピソード型またはシリアル型。"
 
+#: app/ThemeOptions/Podcast.php:144
 msgid "iTunes Title (optional)"
-msgstr "iTunes タイトル（任意）"
+msgstr "iTunes タイトル（オプション）"
 
+#: app/ThemeOptions/Podcast.php:145
 msgid "Optional. Use only if you need a separate Apple-facing title."
-msgstr "任意。Apple 向けに別タイトルが必要な場合のみ入力してください。"
+msgstr "オプション。Apple 向けに別のタイトルが必要な場合のみ使用。"
 
+#: app/ThemeOptions/Podcast.php:146
 msgid "iTunes Block (itunes:block)"
-msgstr "iTunes ブロック（itunes:block）"
+msgstr "iTunes ブロック (itunes:block)"
 
+#: app/ThemeOptions/Podcast.php:152
 msgid "Optional. yes = hide this show in Apple Podcasts."
-msgstr "任意。yes = Apple Podcasts で番組を非表示にします。"
+msgstr "オプション。yes = Apple Podcasts でこの番組を非表示にする。"
 
+#: app/ThemeOptions/Podcast.php:153
 msgid "iTunes Complete (itunes:complete)"
-msgstr "iTunes 完結（itunes:complete）"
+msgstr "iTunes 完結 (itunes:complete)"
 
+#: app/ThemeOptions/Podcast.php:159
 msgid "Optional. yes = this show is complete (no more episodes)."
-msgstr "任意。yes = 番組は完結（新しいエピソードなし）。"
+msgstr "オプション。yes = この番組は完結（これ以上エピソードなし）。"
 
+#: app/ThemeOptions/Podcast.php:160
 msgid "iTunes New Feed URL (itunes:new-feed-url)"
-msgstr "iTunes 新しいフィードURL（itunes:new-feed-url）"
+msgstr "iTunes 新しいフィード URL (itunes:new-feed-url)"
 
+#: app/ThemeOptions/Podcast.php:161
 msgid "Optional. Only for moving your show to a new RSS feed URL."
-msgstr "任意。RSS フィードURLの移行時のみ使用します。"
+msgstr "オプション。番組を新しい RSS フィード URL に移動する場合のみ使用。"
 
+#: app/ThemeOptions/Podcast.php:169
 msgid "podcast:locked owner (optional)"
-msgstr "podcast:locked owner（任意）"
+msgstr "podcast:locked オーナー（オプション）"
 
+#: app/ThemeOptions/Podcast.php:172
 msgid "Optional. Podcasting 2.0: email used to verify ownership during moves."
-msgstr "任意。Podcasting 2.0：移行時の所有者確認に使うメール。"
+msgstr "オプション。Podcasting 2.0：移動時の所有権確認に使用するメールアドレス。"
 
+#: app/ThemeOptions/Podcast.php:175
 msgid "Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
-msgstr "Apple Podcasts 検証コード（podcast:txt purpose=\"applepodcastsverify\"）"
+msgstr "Apple Podcasts 認証コード (podcast:txt purpose=\"applepodcastsverify\")"
 
+#: app/ThemeOptions/Podcast.php:176
 msgid "Optional. Used by Apple Podcasts to verify feed ownership."
-msgstr "任意。Apple Podcasts のフィード所有権確認に使用します。"
+msgstr "オプション。Apple Podcasts がフィードの所有権を確認するために使用。"
 
+#: app/ThemeOptions/Podcast.php:177
 msgid "Podcasting 2.0 Funding Links (podcast:funding)"
-msgstr "Podcasting 2.0 支援リンク（podcast:funding）"
+msgstr "Podcasting 2.0 資金提供リンク (podcast:funding)"
 
+#: app/ThemeOptions/Podcast.php:178
 msgid "Optional. If empty, no podcast:funding tags will be generated. URLs should be https."
-msgstr "任意。空の場合は podcast:funding を出力しません。URL は https 推奨。"
+msgstr "オプション。空の場合、podcast:funding タグは生成されません。URL は https を使用してください。"
 
+#: app/ThemeOptions/Podcast.php:180
 msgid "URL"
 msgstr "URL"
 
+#: app/ThemeOptions/Podcast.php:181
 msgid "Required for each entry. Use https."
-msgstr "各項目で必須。https を使用してください。"
+msgstr "各エントリに必須。https を使用。"
 
+#: app/ThemeOptions/Podcast.php:182
 msgid "Label"
-msgstr "表示ラベル"
+msgstr "ラベル"
 
+#: app/ThemeOptions/Podcast.php:183
 msgid "Optional display text (max 128 chars recommended)."
-msgstr "任意の表示テキスト（推奨 128 文字以内）。"
+msgstr "オプションの表示テキスト（最大 128 文字推奨）。"
 
+#: app/ThemeOptions/Podcast.php:185
 msgid "Generator (optional)"
-msgstr "Generator（任意）"
+msgstr "ジェネレーター（オプション）"
 
+#: app/ThemeOptions/Podcast.php:186
 msgid "Optional. If empty, generator tag will not be included."
-msgstr "任意。空の場合は generator タグを出力しません。"
+msgstr "オプション。空の場合、generator タグは含まれません。"
 
-msgid "Optional. Apple Podcasts: overrides the episode title for <itunes:title>."
-msgstr "任意。Apple Podcasts：このエピソードの <itunes:title> を上書きします。"
-
+#: app/PostTypes/Podcast.php
 msgid "Chapters (Podcasting 2.0)"
-msgstr "チャプター（Podcasting 2.0）"
+msgstr "チャプター (Podcasting 2.0)"
 
+#: app/PostTypes/Podcast.php
 msgid "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
-msgstr "任意。<podcast:chapters> 用のチャプター JSON のURL/ファイル。"
+msgstr "オプション。<podcast:chapters> 用のチャプター JSON URL/ファイルを提供。"
 
+#: app/PostTypes/Podcast.php
 msgid "Add Chapters File"
 msgstr "チャプターファイルを追加"
 
+#: app/PostTypes/Podcast.php
 msgid "Chapters MIME Type"
 msgstr "チャプター MIME タイプ"
 
+#: app/PostTypes/Podcast.php
 msgid "Optional. Defaults to application/json+chapters."
-msgstr "任意。既定は application/json+chapters。"
+msgstr "オプション。デフォルトは application/json+chapters。"
 
+#: app/PostTypes/Podcast.php
 msgid "Soundbites (Podcasting 2.0)"
-msgstr "サウンドバイト（Podcasting 2.0）"
+msgstr "サウンドバイト (Podcasting 2.0)"
 
+#: app/PostTypes/Podcast.php
 msgid "Optional. Adds one or more <podcast:soundbite> tags."
-msgstr "任意。<podcast:soundbite> を1つ以上出力します。"
+msgstr "オプション。1つ以上の <podcast:soundbite> タグを追加。"
 
+#: app/PostTypes/Podcast.php
 msgid "Soundbite {#}"
 msgstr "サウンドバイト {#}"
 
-msgid "Add Soundbite"
-msgstr "サウンドバイトを追加"
-
-msgid "Remove Soundbite"
-msgstr "サウンドバイトを削除"
-
+#: app/PostTypes/Podcast.php
 msgid "Start Time (seconds)"
 msgstr "開始時間（秒）"
 
+#: app/PostTypes/Podcast.php
 msgid "Title (optional)"
-msgstr "タイトル（任意）"
+msgstr "タイトル（オプション）"
 
-msgid "Invalid request."
-msgstr "無効なリクエストです。"
+#: app/PostTypes/Podcast.php
+msgid "Add Soundbite"
+msgstr "サウンドバイトを追加"
 
-msgid "Invalid attachment ID."
-msgstr "添付ファイル ID が無効です。"
+#: app/PostTypes/Podcast.php
+msgid "Remove Soundbite"
+msgstr "サウンドバイトを削除"
 
-msgid "You do not have permission to edit this attachment."
-msgstr "この添付ファイルを編集する権限がありません。"
-
-msgid "Invalid crop details."
-msgstr "トリミングの詳細が無効です。"
-
-msgid "Unable to determine attachment URL."
-msgstr "添付ファイルの URL を特定できません。"
-
-msgid "Invalid post ID."
-msgstr "投稿 ID が無効です。"
-
-msgid "Invalid podcast post."
-msgstr "無効なポッドキャスト投稿です。"
-
-msgid "No post IDs provided."
-msgstr "投稿 ID が指定されていません。"
-
-msgid "Pitch preserved"
-msgstr "音程維持"
-
-msgid "Speed (pitch preserved)"
-msgstr "速度（音程維持）"

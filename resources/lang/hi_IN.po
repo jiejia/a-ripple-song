@@ -989,20 +989,20 @@ msgstr "आपके पॉडकास्ट का RSS फ़ीड URL। च
 #: app/ThemeOptions/General.php:62
 #: app/ThemeOptions/General.php:66
 msgid "Light Theme"
-msgstr ""
+msgstr "लाइट थीम"
 
 #: app/ThemeOptions/General.php:71
 msgid "Light Theme (fallback)"
-msgstr ""
+msgstr "लाइट थीम (वैकल्पिक)"
 
 #: app/ThemeOptions/General.php:77
 #: app/ThemeOptions/General.php:81
 msgid "Dark Theme"
-msgstr ""
+msgstr "डार्क थीम"
 
 #: app/ThemeOptions/General.php:86
 msgid "Dark Theme (fallback)"
-msgstr ""
+msgstr "डार्क थीम (वैकल्पिक)"
 
 #: app/PostTypes/Podcast.php:172
 msgid "Audio Length (bytes)"
@@ -1126,32 +1126,32 @@ msgstr "पॉडकास्ट सत्यापन विफल"
 
 #: app/widgets.php:254
 msgid "Select Banner Image"
-msgstr ""
+msgstr "बैनर छवि चुनें"
 
 #: app/widgets.php:256
 msgid "Use This Image"
-msgstr ""
+msgstr "इस छवि का उपयोग करें"
 
 #: resources/views/partials/content-single-attachment.blade.php:13
 msgid "Download"
-msgstr ""
+msgstr "डाउनलोड"
 
 #: resources/views/sections/header.blade.php:30
 msgid "Toggle Theme"
-msgstr ""
+msgstr "थीम बदलें"
 
 #: resources/views/widgets/banner-carousel.blade.php:55
 msgid "Previous slide"
-msgstr ""
+msgstr "पिछली स्लाइड"
 
 #: resources/views/widgets/banner-carousel.blade.php:63
 msgid "Next slide"
-msgstr ""
+msgstr "अगली स्लाइड"
 
 #: resources/views/widgets/banner-carousel.blade.php:79
 #, php-format
 msgid "Go to slide %d"
-msgstr ""
+msgstr "स्लाइड %d पर जाएं"
 
 #: app/PostTypes/Podcast.php:158
 #: app/PostTypes/Podcast.php:173
@@ -1189,15 +1189,15 @@ msgstr "एपिसोड ट्रांसक्रिप्ट URL"
 
 #: app/ThemeOptions/General.php:57
 msgid "Upload a logo image (220px × 32px). You will be able to crop the image after upload."
-msgstr ""
+msgstr "लोगो छवि अपलोड करें (220px × 32px)। अपलोड के बाद आप छवि को क्रॉप कर सकेंगे।"
 
 #: app/ThemeOptions/General.php:92
 msgid "Footer Copyright"
-msgstr ""
+msgstr "फुटर कॉपीराइट"
 
 #: app/ThemeOptions/General.php:94
 msgid "Powered by A Ripple Song Theme"
-msgstr ""
+msgstr "A Ripple Song थीम द्वारा संचालित"
 
 #: app/ThemeOptions/General.php:95
 msgid "Overrides the footer copyright line. Leave empty to use the default."
@@ -1248,19 +1248,19 @@ msgstr "छवि क्रॉप करने में त्रुटि। �
 
 #: app/ThemeOptions/General.php:1821
 msgid "You do not have permission to upload files."
-msgstr ""
+msgstr "आपको फ़ाइलें अपलोड करने की अनुमति नहीं है।"
 
 #: app/ThemeOptions/General.php:1826
 msgid "Missing attachment ID."
-msgstr ""
+msgstr "अटैचमेंट आईडी गायब है।"
 
 #: app/ThemeOptions/General.php:1830
 msgid "Missing crop details."
-msgstr ""
+msgstr "क्रॉप विवरण गायब है।"
 
 #: app/ThemeOptions/General.php:1840
 msgid "Original image not found."
-msgstr ""
+msgstr "मूल छवि नहीं मिली।"
 
 #: app/ThemeOptions/Podcast.php:112
 msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple recommends keeping the file under 512KB. Will be validated on save."
@@ -1302,262 +1302,345 @@ msgstr "पॉडकास्ट कवर का रेज़ोल्यूश
 
 #: resources/views/partials/entry-meta.blade.php:26
 msgid "views"
-msgstr ""
+msgstr "बार देखा गया"
 
 #: resources/views/partials/entry-meta.blade.php:29
 msgid "plays"
-msgstr ""
+msgstr "बार चलाया गया"
 
 #: resources/views/sections/footer.blade.php:5
 #, php-format
 msgid "Powered by %s"
-msgstr ""
+msgstr "%s द्वारा संचालित"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Red (50)"
-msgstr ""
+msgstr "लाल (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Red (400)"
-msgstr ""
+msgstr "लाल (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (50)"
-msgstr ""
+msgstr "पीला (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (300)"
-msgstr ""
+msgstr "पीला (300)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (400)"
-msgstr ""
+msgstr "पीला (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (50)"
-msgstr ""
+msgstr "हरा (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (400)"
-msgstr ""
+msgstr "हरा (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (500)"
-msgstr ""
+msgstr "हरा (500)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Indigo (50)"
-msgstr ""
+msgstr "नीलम (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Indigo (400)"
-msgstr ""
+msgstr "नीलम (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Gray (600)"
-msgstr ""
+msgstr "धूसर (600)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Gray (800)"
-msgstr ""
+msgstr "धूसर (800)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Black"
-msgstr ""
+msgstr "काला"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "White"
-msgstr ""
+msgstr "सफ़ेद"
 
 #: public/build/assets/theme.json
 msgctxt "Font family name"
 msgid "sans"
-msgstr ""
+msgstr "sans"
 
 #: public/build/assets/theme.json
 msgctxt "Font family name"
 msgid "mono"
-msgstr ""
+msgstr "mono"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "xs"
-msgstr ""
+msgstr "अतिलघु"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "sm"
-msgstr ""
+msgstr "लघु"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "base"
-msgstr ""
+msgstr "आधार"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "lg"
-msgstr ""
+msgstr "बड़ा"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "2xl"
-msgstr ""
+msgstr "अतिबड़ा"
 
+#: resources/js/app.js:558
+#, js-format
+msgid "Fetched %d podcasts"
+msgstr "%d पॉडकास्ट प्राप्त किए"
+
+#: resources/js/app.js:574
+msgid "Podcast has no audio file, skipping:"
+msgstr "पॉडकास्ट में कोई ऑडियो फ़ाइल नहीं है, छोड़ रहे हैं:"
+
+#: resources/js/app.js:608
+msgid "Added:"
+msgstr "जोड़ा गया:"
+
+#: resources/js/app.js:610
+msgid "Already exists, skipping:"
+msgstr "पहले से मौजूद है, छोड़ रहे हैं:"
+
+#: resources/js/app.js:615
+#, js-format
+msgid "Successfully added %d new podcasts to playlist"
+msgstr "प्लेलिस्ट में %d नए पॉडकास्ट सफलतापूर्वक जोड़े गए"
+
+#: resources/js/app.js:632
+msgid "No new podcasts to add"
+msgstr "जोड़ने के लिए कोई नया पॉडकास्ट नहीं"
+
+#: resources/js/app.js:638
+msgid "Failed to fetch latest podcasts:"
+msgstr "नवीनतम पॉडकास्ट प्राप्त करने में विफल:"
+
+#: resources/js/app.js:670
+msgid "No episode available to play"
+msgstr "चलाने के लिए कोई एपिसोड उपलब्ध नहीं"
+
+#: resources/js/app.js:685
+msgid "Playback progress restored:"
+msgstr "प्लेबैक प्रगति बहाल की गई:"
+
+#: resources/js/app.js:719
+msgid "Autoplay confirm dialog auto-closed"
+msgstr "ऑटोप्ले पुष्टि संवाद स्वचालित रूप से बंद हो गया"
+
+#: resources/js/app.js:723
+msgid "Showing autoplay confirm dialog"
+msgstr "ऑटोप्ले पुष्टि संवाद दिखा रहे हैं"
+
+#: resources/js/app.js:748
+msgid "User confirmed autoplay"
+msgstr "उपयोगकर्ता ने ऑटोप्ले की पुष्टि की"
+
+#: resources/js/app.js:761
+msgid "User cancelled autoplay"
+msgstr "उपयोगकर्ता ने ऑटोप्ले रद्द किया"
+
+#: resources/js/app.js:810
+msgid "Audio load error:"
+msgstr "ऑडियो लोड त्रुटि:"
+
+#: resources/js/app.js:1052
+msgid "Volume settings loaded:"
+msgstr "वॉल्यूम सेटिंग्स लोड हुईं:"
+
+#: resources/js/app.js:1078
+msgid "Playback rate loaded:"
+msgstr "प्लेबैक गति लोड हुई:"
+
+#: resources/js/app.js:1130
+msgid "Switched to existing episode:"
+msgstr "मौजूदा एपिसोड पर स्विच किया गया:"
+
+#: resources/js/app.js:1148
+msgid "Added to playlist:"
+msgstr "प्लेलिस्ट में जोड़ा गया:"
+
+#: resources/js/app.js:1159
+msgid "Episode already exists:"
+msgstr "एपिसोड पहले से मौजूद है:"
+
+#: app/ThemeOptions/Podcast.php:136
 msgid "iTunes Type (itunes:type)"
 msgstr "iTunes प्रकार (itunes:type)"
 
+#: app/ThemeOptions/Podcast.php:138
 msgid "(not set)"
 msgstr "(सेट नहीं)"
 
+#: app/ThemeOptions/Podcast.php:139
 msgid "episodic"
-msgstr "episodic"
+msgstr "एपिसोडिक"
 
+#: app/ThemeOptions/Podcast.php:140
 msgid "serial"
-msgstr "serial"
+msgstr "सीरियल"
 
+#: app/ThemeOptions/Podcast.php:143
 msgid "Optional. Apple Podcasts: episodic or serial."
-msgstr "वैकल्पिक। Apple Podcasts: episodic या serial।"
+msgstr "वैकल्पिक। Apple Podcasts: एपिसोडिक या सीरियल।"
 
+#: app/ThemeOptions/Podcast.php:144
 msgid "iTunes Title (optional)"
 msgstr "iTunes शीर्षक (वैकल्पिक)"
 
+#: app/ThemeOptions/Podcast.php:145
 msgid "Optional. Use only if you need a separate Apple-facing title."
-msgstr "वैकल्पिक। केवल तब उपयोग करें जब Apple के लिए अलग शीर्षक चाहिए।"
+msgstr "वैकल्पिक। केवल तभी उपयोग करें जब Apple के लिए अलग शीर्षक की आवश्यकता हो।"
 
+#: app/ThemeOptions/Podcast.php:146
 msgid "iTunes Block (itunes:block)"
 msgstr "iTunes ब्लॉक (itunes:block)"
 
+#: app/ThemeOptions/Podcast.php:152
 msgid "Optional. yes = hide this show in Apple Podcasts."
-msgstr "वैकल्पिक। yes = Apple Podcasts में इस शो को छिपाएँ।"
+msgstr "वैकल्पिक। yes = Apple Podcasts में इस शो को छिपाएं।"
 
+#: app/ThemeOptions/Podcast.php:153
 msgid "iTunes Complete (itunes:complete)"
 msgstr "iTunes पूर्ण (itunes:complete)"
 
+#: app/ThemeOptions/Podcast.php:159
 msgid "Optional. yes = this show is complete (no more episodes)."
-msgstr "वैकल्पिक। yes = यह शो पूरा है (और एपिसोड नहीं)।"
+msgstr "वैकल्पिक। yes = यह शो पूर्ण है (कोई और एपिसोड नहीं)।"
 
+#: app/ThemeOptions/Podcast.php:160
 msgid "iTunes New Feed URL (itunes:new-feed-url)"
 msgstr "iTunes नया फ़ीड URL (itunes:new-feed-url)"
 
+#: app/ThemeOptions/Podcast.php:161
 msgid "Optional. Only for moving your show to a new RSS feed URL."
-msgstr "वैकल्पिक। केवल शो को नए RSS फ़ीड URL पर ले जाते समय।"
+msgstr "वैकल्पिक। केवल अपने शो को नए RSS फ़ीड URL पर ले जाने के लिए।"
 
+#: app/ThemeOptions/Podcast.php:169
 msgid "podcast:locked owner (optional)"
-msgstr "podcast:locked owner (वैकल्पिक)"
+msgstr "podcast:locked मालिक (वैकल्पिक)"
 
+#: app/ThemeOptions/Podcast.php:172
 msgid "Optional. Podcasting 2.0: email used to verify ownership during moves."
-msgstr "वैकल्पिक। Podcasting 2.0: स्थानांतरण के दौरान स्वामित्व सत्यापित करने हेतु ईमेल।"
+msgstr "वैकल्पिक। Podcasting 2.0: स्थानांतरण के दौरान स्वामित्व सत्यापित करने के लिए ईमेल।"
 
+#: app/ThemeOptions/Podcast.php:175
 msgid "Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
 msgstr "Apple Podcasts सत्यापन कोड (podcast:txt purpose=\"applepodcastsverify\")"
 
+#: app/ThemeOptions/Podcast.php:176
 msgid "Optional. Used by Apple Podcasts to verify feed ownership."
-msgstr "वैकल्पिक। Apple Podcasts द्वारा फ़ीड स्वामित्व सत्यापित करने के लिए।"
+msgstr "वैकल्पिक। फ़ीड स्वामित्व सत्यापित करने के लिए Apple Podcasts द्वारा उपयोग।"
 
+#: app/ThemeOptions/Podcast.php:177
 msgid "Podcasting 2.0 Funding Links (podcast:funding)"
 msgstr "Podcasting 2.0 फंडिंग लिंक (podcast:funding)"
 
+#: app/ThemeOptions/Podcast.php:178
 msgid "Optional. If empty, no podcast:funding tags will be generated. URLs should be https."
-msgstr "वैकल्पिक। खाली होने पर podcast:funding टैग नहीं बनेगा। URL https होना चाहिए।"
+msgstr "वैकल्पिक। खाली होने पर, कोई podcast:funding टैग नहीं बनेगा। URL https होना चाहिए।"
 
+#: app/ThemeOptions/Podcast.php:180
 msgid "URL"
 msgstr "URL"
 
+#: app/ThemeOptions/Podcast.php:181
 msgid "Required for each entry. Use https."
-msgstr "हर प्रविष्टि के लिए आवश्यक। https उपयोग करें।"
+msgstr "प्रत्येक प्रविष्टि के लिए आवश्यक। https उपयोग करें।"
 
+#: app/ThemeOptions/Podcast.php:182
 msgid "Label"
 msgstr "लेबल"
 
+#: app/ThemeOptions/Podcast.php:183
 msgid "Optional display text (max 128 chars recommended)."
-msgstr "वैकल्पिक प्रदर्शित पाठ (अधिकतम 128 वर्ण अनुशंसित)।"
+msgstr "वैकल्पिक प्रदर्शन टेक्स्ट (अधिकतम 128 अक्षर अनुशंसित)।"
 
+#: app/ThemeOptions/Podcast.php:185
 msgid "Generator (optional)"
-msgstr "Generator (वैकल्पिक)"
+msgstr "जेनरेटर (वैकल्पिक)"
 
+#: app/ThemeOptions/Podcast.php:186
 msgid "Optional. If empty, generator tag will not be included."
-msgstr "वैकल्पिक। खाली होने पर generator टैग शामिल नहीं होगा।"
+msgstr "वैकल्पिक। खाली होने पर, generator टैग शामिल नहीं होगा।"
 
-msgid "Optional. Apple Podcasts: overrides the episode title for <itunes:title>."
-msgstr "वैकल्पिक। Apple Podcasts: <itunes:title> के लिए एपिसोड शीर्षक ओवरराइड करता है।"
-
+#: app/PostTypes/Podcast.php
 msgid "Chapters (Podcasting 2.0)"
-msgstr "चैप्टर (Podcasting 2.0)"
+msgstr "अध्याय (Podcasting 2.0)"
 
+#: app/PostTypes/Podcast.php
 msgid "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
-msgstr "वैकल्पिक। <podcast:chapters> के लिए चैप्टर JSON URL/फ़ाइल दें।"
+msgstr "वैकल्पिक। <podcast:chapters> के लिए अध्याय JSON URL/फ़ाइल प्रदान करें।"
 
+#: app/PostTypes/Podcast.php
 msgid "Add Chapters File"
-msgstr "चैप्टर फ़ाइल जोड़ें"
+msgstr "अध्याय फ़ाइल जोड़ें"
 
+#: app/PostTypes/Podcast.php
 msgid "Chapters MIME Type"
-msgstr "चैप्टर MIME प्रकार"
+msgstr "अध्याय MIME प्रकार"
 
+#: app/PostTypes/Podcast.php
 msgid "Optional. Defaults to application/json+chapters."
-msgstr "वैकल्पिक। डिफ़ॉल्ट: application/json+chapters।"
+msgstr "वैकल्पिक। डिफ़ॉल्ट application/json+chapters है।"
 
+#: app/PostTypes/Podcast.php
 msgid "Soundbites (Podcasting 2.0)"
 msgstr "साउंडबाइट्स (Podcasting 2.0)"
 
+#: app/PostTypes/Podcast.php
 msgid "Optional. Adds one or more <podcast:soundbite> tags."
 msgstr "वैकल्पिक। एक या अधिक <podcast:soundbite> टैग जोड़ता है।"
 
+#: app/PostTypes/Podcast.php
 msgid "Soundbite {#}"
 msgstr "साउंडबाइट {#}"
 
-msgid "Add Soundbite"
-msgstr "साउंडबाइट जोड़ें"
-
-msgid "Remove Soundbite"
-msgstr "साउंडबाइट हटाएँ"
-
+#: app/PostTypes/Podcast.php
 msgid "Start Time (seconds)"
-msgstr "आरंभ समय (सेकंड)"
+msgstr "प्रारंभ समय (सेकंड)"
 
+#: app/PostTypes/Podcast.php
 msgid "Title (optional)"
 msgstr "शीर्षक (वैकल्पिक)"
 
-msgid "Invalid request."
-msgstr "अमान्य अनुरोध।"
+#: app/PostTypes/Podcast.php
+msgid "Add Soundbite"
+msgstr "साउंडबाइट जोड़ें"
 
-msgid "Invalid attachment ID."
-msgstr "अमान्य अटैचमेंट ID।"
+#: app/PostTypes/Podcast.php
+msgid "Remove Soundbite"
+msgstr "साउंडबाइट हटाएं"
 
-msgid "You do not have permission to edit this attachment."
-msgstr "आपके पास इस अटैचमेंट को संपादित करने की अनुमति नहीं है।"
-
-msgid "Invalid crop details."
-msgstr "अमान्य क्रॉप विवरण।"
-
-msgid "Unable to determine attachment URL."
-msgstr "अटैचमेंट URL निर्धारित नहीं किया जा सका।"
-
-msgid "Invalid post ID."
-msgstr "अमान्य पोस्ट ID।"
-
-msgid "Invalid podcast post."
-msgstr "अमान्य पॉडकास्ट पोस्ट।"
-
-msgid "No post IDs provided."
-msgstr "कोई पोस्ट ID प्रदान नहीं किया गया।"
-
-msgid "Pitch preserved"
-msgstr "पिच संरक्षित"
-
-msgid "Speed (pitch preserved)"
-msgstr "गति (पिच संरक्षित)"

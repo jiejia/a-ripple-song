@@ -996,11 +996,11 @@ msgstr "您的播客 RSS 订阅地址。点击选择并复制。"
 
 #: app/ThemeOptions/General.php:71
 msgid "Light Theme (fallback)"
-msgstr ""
+msgstr "浅色主题（备选）"
 
 #: app/ThemeOptions/General.php:86
 msgid "Dark Theme (fallback)"
-msgstr ""
+msgstr "深色主题（备选）"
 
 #: app/PostTypes/Podcast.php:172
 msgid "Audio Length (bytes)"
@@ -1124,32 +1124,32 @@ msgstr "播客校验失败"
 
 #: app/widgets.php:254
 msgid "Select Banner Image"
-msgstr ""
+msgstr "选择横幅图片"
 
 #: app/widgets.php:256
 msgid "Use This Image"
-msgstr ""
+msgstr "使用此图片"
 
 #: resources/views/partials/content-single-attachment.blade.php:13
 msgid "Download"
-msgstr ""
+msgstr "下载"
 
 #: resources/views/sections/header.blade.php:30
 msgid "Toggle Theme"
-msgstr ""
+msgstr "切换主题"
 
 #: resources/views/widgets/banner-carousel.blade.php:55
 msgid "Previous slide"
-msgstr ""
+msgstr "上一张"
 
 #: resources/views/widgets/banner-carousel.blade.php:63
 msgid "Next slide"
-msgstr ""
+msgstr "下一张"
 
 #: resources/views/widgets/banner-carousel.blade.php:79
 #, php-format
 msgid "Go to slide %d"
-msgstr ""
+msgstr "跳转到第 %d 张"
 
 #: app/PostTypes/Podcast.php:158
 #: app/PostTypes/Podcast.php:173
@@ -1187,15 +1187,15 @@ msgstr "文字稿 URL"
 
 #: app/ThemeOptions/General.php:57
 msgid "Upload a logo image (220px × 32px). You will be able to crop the image after upload."
-msgstr ""
+msgstr "上传 Logo 图片（220px × 32px）。上传后可以裁剪图片。"
 
 #: app/ThemeOptions/General.php:92
 msgid "Footer Copyright"
-msgstr ""
+msgstr "页脚版权"
 
 #: app/ThemeOptions/General.php:94
 msgid "Powered by A Ripple Song Theme"
-msgstr ""
+msgstr "由 A Ripple Song 主题驱动"
 
 #: app/ThemeOptions/General.php:95
 msgid "Overrides the footer copyright line. Leave empty to use the default."
@@ -1246,19 +1246,19 @@ msgstr "裁剪图片出错。请重试。"
 
 #: app/ThemeOptions/General.php:1821
 msgid "You do not have permission to upload files."
-msgstr ""
+msgstr "您没有上传文件的权限。"
 
 #: app/ThemeOptions/General.php:1826
 msgid "Missing attachment ID."
-msgstr ""
+msgstr "缺少附件 ID。"
 
 #: app/ThemeOptions/General.php:1830
 msgid "Missing crop details."
-msgstr ""
+msgstr "缺少裁剪详情。"
 
 #: app/ThemeOptions/General.php:1840
 msgid "Original image not found."
-msgstr ""
+msgstr "未找到原始图片。"
 
 #: app/ThemeOptions/Podcast.php:112
 msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple recommends keeping the file under 512KB. Will be validated on save."
@@ -1300,262 +1300,345 @@ msgstr "播客封面分辨率过大。最大：%1$d × %1$d px。当前：%2$d �
 
 #: resources/views/partials/entry-meta.blade.php:26
 msgid "views"
-msgstr ""
+msgstr "次浏览"
 
 #: resources/views/partials/entry-meta.blade.php:29
 msgid "plays"
-msgstr ""
+msgstr "次播放"
 
 #: resources/views/sections/footer.blade.php:5
 #, php-format
 msgid "Powered by %s"
-msgstr ""
+msgstr "由 %s 驱动"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Red (50)"
-msgstr ""
+msgstr "红色 (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Red (400)"
-msgstr ""
+msgstr "红色 (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (50)"
-msgstr ""
+msgstr "黄色 (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (300)"
-msgstr ""
+msgstr "黄色 (300)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (400)"
-msgstr ""
+msgstr "黄色 (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (50)"
-msgstr ""
+msgstr "绿色 (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (400)"
-msgstr ""
+msgstr "绿色 (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (500)"
-msgstr ""
+msgstr "绿色 (500)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Indigo (50)"
-msgstr ""
+msgstr "靛蓝 (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Indigo (400)"
-msgstr ""
+msgstr "靛蓝 (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Gray (600)"
-msgstr ""
+msgstr "灰色 (600)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Gray (800)"
-msgstr ""
+msgstr "灰色 (800)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Black"
-msgstr ""
+msgstr "黑色"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "White"
-msgstr ""
+msgstr "白色"
 
 #: public/build/assets/theme.json
 msgctxt "Font family name"
 msgid "sans"
-msgstr ""
+msgstr "无衬线"
 
 #: public/build/assets/theme.json
 msgctxt "Font family name"
 msgid "mono"
-msgstr ""
+msgstr "等宽"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "xs"
-msgstr ""
+msgstr "超小"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "sm"
-msgstr ""
+msgstr "小"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "base"
-msgstr ""
+msgstr "基础"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "lg"
-msgstr ""
+msgstr "大"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "2xl"
-msgstr ""
+msgstr "超大"
 
+#: resources/js/app.js:558
+#, js-format
+msgid "Fetched %d podcasts"
+msgstr "获取了 %d 个播客"
+
+#: resources/js/app.js:574
+msgid "Podcast has no audio file, skipping:"
+msgstr "播客没有音频文件，跳过："
+
+#: resources/js/app.js:608
+msgid "Added:"
+msgstr "已添加："
+
+#: resources/js/app.js:610
+msgid "Already exists, skipping:"
+msgstr "已存在，跳过："
+
+#: resources/js/app.js:615
+#, js-format
+msgid "Successfully added %d new podcasts to playlist"
+msgstr "成功添加 %d 个新播客到播放列表"
+
+#: resources/js/app.js:632
+msgid "No new podcasts to add"
+msgstr "没有新播客可添加"
+
+#: resources/js/app.js:638
+msgid "Failed to fetch latest podcasts:"
+msgstr "获取最新播客失败："
+
+#: resources/js/app.js:670
+msgid "No episode available to play"
+msgstr "没有可播放的节目"
+
+#: resources/js/app.js:685
+msgid "Playback progress restored:"
+msgstr "播放进度已恢复："
+
+#: resources/js/app.js:719
+msgid "Autoplay confirm dialog auto-closed"
+msgstr "自动播放确认对话框已自动关闭"
+
+#: resources/js/app.js:723
+msgid "Showing autoplay confirm dialog"
+msgstr "显示自动播放确认对话框"
+
+#: resources/js/app.js:748
+msgid "User confirmed autoplay"
+msgstr "用户确认自动播放"
+
+#: resources/js/app.js:761
+msgid "User cancelled autoplay"
+msgstr "用户取消自动播放"
+
+#: resources/js/app.js:810
+msgid "Audio load error:"
+msgstr "音频加载错误："
+
+#: resources/js/app.js:1052
+msgid "Volume settings loaded:"
+msgstr "音量设置已加载："
+
+#: resources/js/app.js:1078
+msgid "Playback rate loaded:"
+msgstr "播放速度已加载："
+
+#: resources/js/app.js:1130
+msgid "Switched to existing episode:"
+msgstr "切换到已有节目："
+
+#: resources/js/app.js:1148
+msgid "Added to playlist:"
+msgstr "已添加到播放列表："
+
+#: resources/js/app.js:1159
+msgid "Episode already exists:"
+msgstr "节目已存在："
+
+#: app/ThemeOptions/Podcast.php:136
 msgid "iTunes Type (itunes:type)"
-msgstr "iTunes 类型（itunes:type）"
+msgstr "iTunes 类型 (itunes:type)"
 
+#: app/ThemeOptions/Podcast.php:138
 msgid "(not set)"
 msgstr "（未设置）"
 
+#: app/ThemeOptions/Podcast.php:139
 msgid "episodic"
-msgstr "episodic（按集）"
+msgstr "单集型"
 
+#: app/ThemeOptions/Podcast.php:140
 msgid "serial"
-msgstr "serial（连载）"
+msgstr "连续剧型"
 
+#: app/ThemeOptions/Podcast.php:143
 msgid "Optional. Apple Podcasts: episodic or serial."
-msgstr "可选。Apple Podcasts：episodic 或 serial。"
+msgstr "可选。Apple Podcasts：单集型或连续剧型。"
 
+#: app/ThemeOptions/Podcast.php:144
 msgid "iTunes Title (optional)"
 msgstr "iTunes 标题（可选）"
 
+#: app/ThemeOptions/Podcast.php:145
 msgid "Optional. Use only if you need a separate Apple-facing title."
-msgstr "可选。仅在需要单独提供 Apple 展示标题时填写。"
+msgstr "可选。仅在需要单独的 Apple 展示标题时使用。"
 
+#: app/ThemeOptions/Podcast.php:146
 msgid "iTunes Block (itunes:block)"
-msgstr "iTunes 屏蔽（itunes:block）"
+msgstr "iTunes 屏蔽 (itunes:block)"
 
+#: app/ThemeOptions/Podcast.php:152
 msgid "Optional. yes = hide this show in Apple Podcasts."
-msgstr "可选。yes = 在 Apple Podcasts 中隐藏该节目。"
+msgstr "可选。yes = 在 Apple Podcasts 中隐藏此节目。"
 
+#: app/ThemeOptions/Podcast.php:153
 msgid "iTunes Complete (itunes:complete)"
-msgstr "iTunes 完结（itunes:complete）"
+msgstr "iTunes 完结 (itunes:complete)"
 
+#: app/ThemeOptions/Podcast.php:159
 msgid "Optional. yes = this show is complete (no more episodes)."
-msgstr "可选。yes = 节目已完结（不再更新）。"
+msgstr "可选。yes = 此节目已完结（不再更新）。"
 
+#: app/ThemeOptions/Podcast.php:160
 msgid "iTunes New Feed URL (itunes:new-feed-url)"
-msgstr "iTunes 新订阅地址（itunes:new-feed-url）"
+msgstr "iTunes 新订阅源 URL (itunes:new-feed-url)"
 
+#: app/ThemeOptions/Podcast.php:161
 msgid "Optional. Only for moving your show to a new RSS feed URL."
-msgstr "可选。仅在迁移到新的 RSS 地址时填写。"
+msgstr "可选。仅在将节目迁移到新的 RSS 订阅源时使用。"
 
+#: app/ThemeOptions/Podcast.php:169
 msgid "podcast:locked owner (optional)"
-msgstr "podcast:locked owner（可选）"
+msgstr "podcast:locked 所有者（可选）"
 
+#: app/ThemeOptions/Podcast.php:172
 msgid "Optional. Podcasting 2.0: email used to verify ownership during moves."
-msgstr "可选。Podcasting 2.0：迁移/导入时用于验证所有权的邮箱。"
+msgstr "可选。Podcasting 2.0：迁移时用于验证所有权的邮箱。"
 
+#: app/ThemeOptions/Podcast.php:175
 msgid "Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
-msgstr "Apple Podcasts 验证码（podcast:txt purpose=\"applepodcastsverify\"）"
+msgstr "Apple Podcasts 验证码 (podcast:txt purpose=\"applepodcastsverify\")"
 
+#: app/ThemeOptions/Podcast.php:176
 msgid "Optional. Used by Apple Podcasts to verify feed ownership."
-msgstr "可选。用于 Apple Podcasts 验证订阅源所有权。"
+msgstr "可选。Apple Podcasts 用于验证订阅源所有权。"
 
+#: app/ThemeOptions/Podcast.php:177
 msgid "Podcasting 2.0 Funding Links (podcast:funding)"
-msgstr "Podcasting 2.0 赞助链接（podcast:funding）"
+msgstr "Podcasting 2.0 赞助链接 (podcast:funding)"
 
+#: app/ThemeOptions/Podcast.php:178
 msgid "Optional. If empty, no podcast:funding tags will be generated. URLs should be https."
-msgstr "可选。留空则不生成 podcast:funding 标签。URL 建议使用 https。"
+msgstr "可选。如果为空，则不会生成 podcast:funding 标签。URL 应使用 https。"
 
+#: app/ThemeOptions/Podcast.php:180
 msgid "URL"
-msgstr "URL"
+msgstr "链接"
 
+#: app/ThemeOptions/Podcast.php:181
 msgid "Required for each entry. Use https."
-msgstr "每条必填。请使用 https。"
+msgstr "每个条目必填。请使用 https。"
 
+#: app/ThemeOptions/Podcast.php:182
 msgid "Label"
-msgstr "显示文字"
+msgstr "标签"
 
+#: app/ThemeOptions/Podcast.php:183
 msgid "Optional display text (max 128 chars recommended)."
-msgstr "可选显示文字（建议不超过 128 个字符）。"
+msgstr "可选的显示文本（建议最多 128 个字符）。"
 
+#: app/ThemeOptions/Podcast.php:185
 msgid "Generator (optional)"
-msgstr "Generator（可选）"
+msgstr "生成器（可选）"
 
+#: app/ThemeOptions/Podcast.php:186
 msgid "Optional. If empty, generator tag will not be included."
-msgstr "可选。留空则不包含 generator 标签。"
+msgstr "可选。如果为空，则不会包含生成器标签。"
 
-msgid "Optional. Apple Podcasts: overrides the episode title for <itunes:title>."
-msgstr "可选。Apple Podcasts：覆盖该集的 <itunes:title> 标题。"
-
+#: app/PostTypes/Podcast.php
 msgid "Chapters (Podcasting 2.0)"
-msgstr "章节（Podcasting 2.0）"
+msgstr "章节 (Podcasting 2.0)"
 
+#: app/PostTypes/Podcast.php
 msgid "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
-msgstr "可选。为 <podcast:chapters> 提供章节 JSON 的 URL/文件。"
+msgstr "可选。提供 <podcast:chapters> 的章节 JSON URL/文件。"
 
+#: app/PostTypes/Podcast.php
 msgid "Add Chapters File"
 msgstr "添加章节文件"
 
+#: app/PostTypes/Podcast.php
 msgid "Chapters MIME Type"
 msgstr "章节 MIME 类型"
 
+#: app/PostTypes/Podcast.php
 msgid "Optional. Defaults to application/json+chapters."
-msgstr "可选。默认 application/json+chapters。"
+msgstr "可选。默认为 application/json+chapters。"
 
+#: app/PostTypes/Podcast.php
 msgid "Soundbites (Podcasting 2.0)"
-msgstr "片段（Podcasting 2.0）"
+msgstr "声音片段 (Podcasting 2.0)"
 
+#: app/PostTypes/Podcast.php
 msgid "Optional. Adds one or more <podcast:soundbite> tags."
-msgstr "可选。生成一个或多个 <podcast:soundbite> 标签。"
+msgstr "可选。添加一个或多个 <podcast:soundbite> 标签。"
 
+#: app/PostTypes/Podcast.php
 msgid "Soundbite {#}"
-msgstr "片段 {#}"
+msgstr "声音片段 {#}"
 
-msgid "Add Soundbite"
-msgstr "添加片段"
-
-msgid "Remove Soundbite"
-msgstr "移除片段"
-
+#: app/PostTypes/Podcast.php
 msgid "Start Time (seconds)"
 msgstr "开始时间（秒）"
 
+#: app/PostTypes/Podcast.php
 msgid "Title (optional)"
 msgstr "标题（可选）"
 
-msgid "Invalid request."
-msgstr "无效的请求。"
+#: app/PostTypes/Podcast.php
+msgid "Add Soundbite"
+msgstr "添加声音片段"
 
-msgid "Invalid attachment ID."
-msgstr "无效的附件 ID。"
+#: app/PostTypes/Podcast.php
+msgid "Remove Soundbite"
+msgstr "移除声音片段"
 
-msgid "You do not have permission to edit this attachment."
-msgstr "您没有权限编辑此附件。"
-
-msgid "Invalid crop details."
-msgstr "无效的裁剪参数。"
-
-msgid "Unable to determine attachment URL."
-msgstr "无法确定附件 URL。"
-
-msgid "Invalid post ID."
-msgstr "无效的文章 ID。"
-
-msgid "Invalid podcast post."
-msgstr "无效的播客文章。"
-
-msgid "No post IDs provided."
-msgstr "未提供文章 ID。"
-
-msgid "Pitch preserved"
-msgstr "保持音高"
-
-msgid "Speed (pitch preserved)"
-msgstr "速度（保持音高）"

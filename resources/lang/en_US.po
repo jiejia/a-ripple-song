@@ -1418,146 +1418,80 @@ msgctxt "Font size name"
 msgid "2xl"
 msgstr ""
 
-msgid "iTunes Type (itunes:type)"
-msgstr "iTunes Type (itunes:type)"
+#: resources/js/app.js:558
+#, js-format
+msgid "Fetched %d podcasts"
+msgstr ""
 
-msgid "(not set)"
-msgstr "(not set)"
+#: resources/js/app.js:574
+msgid "Podcast has no audio file, skipping:"
+msgstr ""
 
-msgid "episodic"
-msgstr "episodic"
+#: resources/js/app.js:608
+msgid "Added:"
+msgstr ""
 
-msgid "serial"
-msgstr "serial"
+#: resources/js/app.js:610
+msgid "Already exists, skipping:"
+msgstr ""
 
-msgid "Optional. Apple Podcasts: episodic or serial."
-msgstr "Optional. Apple Podcasts: episodic or serial."
+#: resources/js/app.js:615
+#, js-format
+msgid "Successfully added %d new podcasts to playlist"
+msgstr ""
 
-msgid "iTunes Title (optional)"
-msgstr "iTunes Title (optional)"
+#: resources/js/app.js:632
+msgid "No new podcasts to add"
+msgstr ""
 
-msgid "Optional. Use only if you need a separate Apple-facing title."
-msgstr "Optional. Use only if you need a separate Apple-facing title."
+#: resources/js/app.js:638
+msgid "Failed to fetch latest podcasts:"
+msgstr ""
 
-msgid "iTunes Block (itunes:block)"
-msgstr "iTunes Block (itunes:block)"
+#: resources/js/app.js:670
+msgid "No episode available to play"
+msgstr ""
 
-msgid "Optional. yes = hide this show in Apple Podcasts."
-msgstr "Optional. yes = hide this show in Apple Podcasts."
+#: resources/js/app.js:685
+msgid "Playback progress restored:"
+msgstr ""
 
-msgid "iTunes Complete (itunes:complete)"
-msgstr "iTunes Complete (itunes:complete)"
+#: resources/js/app.js:719
+msgid "Autoplay confirm dialog auto-closed"
+msgstr ""
 
-msgid "Optional. yes = this show is complete (no more episodes)."
-msgstr "Optional. yes = this show is complete (no more episodes)."
+#: resources/js/app.js:723
+msgid "Showing autoplay confirm dialog"
+msgstr ""
 
-msgid "iTunes New Feed URL (itunes:new-feed-url)"
-msgstr "iTunes New Feed URL (itunes:new-feed-url)"
+#: resources/js/app.js:748
+msgid "User confirmed autoplay"
+msgstr ""
 
-msgid "Optional. Only for moving your show to a new RSS feed URL."
-msgstr "Optional. Only for moving your show to a new RSS feed URL."
+#: resources/js/app.js:761
+msgid "User cancelled autoplay"
+msgstr ""
 
-msgid "podcast:locked owner (optional)"
-msgstr "podcast:locked owner (optional)"
+#: resources/js/app.js:810
+msgid "Audio load error:"
+msgstr ""
 
-msgid "Optional. Podcasting 2.0: email used to verify ownership during moves."
-msgstr "Optional. Podcasting 2.0: email used to verify ownership during moves."
+#: resources/js/app.js:1052
+msgid "Volume settings loaded:"
+msgstr ""
 
-msgid "Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
-msgstr "Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
+#: resources/js/app.js:1078
+msgid "Playback rate loaded:"
+msgstr ""
 
-msgid "Optional. Used by Apple Podcasts to verify feed ownership."
-msgstr "Optional. Used by Apple Podcasts to verify feed ownership."
+#: resources/js/app.js:1130
+msgid "Switched to existing episode:"
+msgstr ""
 
-msgid "Podcasting 2.0 Funding Links (podcast:funding)"
-msgstr "Podcasting 2.0 Funding Links (podcast:funding)"
+#: resources/js/app.js:1148
+msgid "Added to playlist:"
+msgstr ""
 
-msgid "Optional. If empty, no podcast:funding tags will be generated. URLs should be https."
-msgstr "Optional. If empty, no podcast:funding tags will be generated. URLs should be https."
-
-msgid "URL"
-msgstr "URL"
-
-msgid "Required for each entry. Use https."
-msgstr "Required for each entry. Use https."
-
-msgid "Label"
-msgstr "Label"
-
-msgid "Optional display text (max 128 chars recommended)."
-msgstr "Optional display text (max 128 chars recommended)."
-
-msgid "Generator (optional)"
-msgstr "Generator (optional)"
-
-msgid "Optional. If empty, generator tag will not be included."
-msgstr "Optional. If empty, generator tag will not be included."
-
-msgid "Optional. Apple Podcasts: overrides the episode title for <itunes:title>."
-msgstr "Optional. Apple Podcasts: overrides the episode title for <itunes:title>."
-
-msgid "Chapters (Podcasting 2.0)"
-msgstr "Chapters (Podcasting 2.0)"
-
-msgid "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
-msgstr "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
-
-msgid "Add Chapters File"
-msgstr "Add Chapters File"
-
-msgid "Chapters MIME Type"
-msgstr "Chapters MIME Type"
-
-msgid "Optional. Defaults to application/json+chapters."
-msgstr "Optional. Defaults to application/json+chapters."
-
-msgid "Soundbites (Podcasting 2.0)"
-msgstr "Soundbites (Podcasting 2.0)"
-
-msgid "Optional. Adds one or more <podcast:soundbite> tags."
-msgstr "Optional. Adds one or more <podcast:soundbite> tags."
-
-msgid "Soundbite {#}"
-msgstr "Soundbite {#}"
-
-msgid "Add Soundbite"
-msgstr "Add Soundbite"
-
-msgid "Remove Soundbite"
-msgstr "Remove Soundbite"
-
-msgid "Start Time (seconds)"
-msgstr "Start Time (seconds)"
-
-msgid "Title (optional)"
-msgstr "Title (optional)"
-
-msgid "Invalid request."
-msgstr "Invalid request."
-
-msgid "Invalid attachment ID."
-msgstr "Invalid attachment ID."
-
-msgid "You do not have permission to edit this attachment."
-msgstr "You do not have permission to edit this attachment."
-
-msgid "Invalid crop details."
-msgstr "Invalid crop details."
-
-msgid "Unable to determine attachment URL."
-msgstr "Unable to determine attachment URL."
-
-msgid "Invalid post ID."
-msgstr "Invalid post ID."
-
-msgid "Invalid podcast post."
-msgstr "Invalid podcast post."
-
-msgid "No post IDs provided."
-msgstr "No post IDs provided."
-
-msgid "Pitch preserved"
-msgstr "Pitch preserved"
-
-msgid "Speed (pitch preserved)"
-msgstr "Speed (pitch preserved)"
+#: resources/js/app.js:1159
+msgid "Episode already exists:"
+msgstr ""
