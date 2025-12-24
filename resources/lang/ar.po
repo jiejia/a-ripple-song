@@ -1209,50 +1209,50 @@ msgstr ""
 
 #: app/ThemeOptions/General.php:95
 msgid "Overrides the footer copyright line. Leave empty to use the default."
-msgstr ""
+msgstr "يتجاوز سطر حقوق النشر في التذييل. اتركه فارغًا لاستخدام القيمة الافتراضية."
 
 #: app/ThemeOptions/General.php:242
 msgid "Upload / Change Logo"
-msgstr ""
+msgstr "تحميل / تغيير الشعار"
 
 #: app/ThemeOptions/General.php:244
 msgid "Remove Logo"
-msgstr ""
+msgstr "إزالة الشعار"
 
 #: app/ThemeOptions/General.php:1609
 msgid "Choose Logo Image"
-msgstr ""
+msgstr "اختر صورة الشعار"
 
 #: app/ThemeOptions/General.php:1611
 msgid "Crop Image"
-msgstr ""
+msgstr "قص الصورة"
 
 #: app/ThemeOptions/General.php:1624
 #, php-format
 msgid "Image is too small. Minimum size: %1$dpx × %2$dpx"
-msgstr ""
+msgstr "الصورة صغيرة جدًا. الحد الأدنى للحجم: %1$dpx × %2$dpx"
 
 #: app/ThemeOptions/General.php:1652
 #: app/ThemeOptions/General.php:1744
 #: app/ThemeOptions/General.php:1750
 msgid "Crop and Save"
-msgstr ""
+msgstr "قص وحفظ"
 
 #: app/ThemeOptions/General.php:1687
 msgid "Please select a crop area."
-msgstr ""
+msgstr "يرجى تحديد منطقة القص."
 
 #: app/ThemeOptions/General.php:1691
 msgid "Cropping..."
-msgstr ""
+msgstr "جاري القص..."
 
 #: app/ThemeOptions/General.php:1743
 msgid "Error cropping image:"
-msgstr ""
+msgstr "خطأ في قص الصورة:"
 
 #: app/ThemeOptions/General.php:1749
 msgid "Error cropping image. Please try again."
-msgstr ""
+msgstr "خطأ في قص الصورة. يرجى المحاولة مرة أخرى."
 
 #: app/ThemeOptions/General.php:1821
 msgid "You do not have permission to upload files."

@@ -1199,50 +1199,50 @@ msgstr ""
 
 #: app/ThemeOptions/General.php:95
 msgid "Overrides the footer copyright line. Leave empty to use the default."
-msgstr ""
+msgstr "覆蓋頁尾版權行。留空以使用預設值。"
 
 #: app/ThemeOptions/General.php:242
 msgid "Upload / Change Logo"
-msgstr ""
+msgstr "上傳 / 更換 Logo"
 
 #: app/ThemeOptions/General.php:244
 msgid "Remove Logo"
-msgstr ""
+msgstr "移除 Logo"
 
 #: app/ThemeOptions/General.php:1609
 msgid "Choose Logo Image"
-msgstr ""
+msgstr "選擇 Logo 圖片"
 
 #: app/ThemeOptions/General.php:1611
 msgid "Crop Image"
-msgstr ""
+msgstr "裁剪圖片"
 
 #: app/ThemeOptions/General.php:1624
 #, php-format
 msgid "Image is too small. Minimum size: %1$dpx × %2$dpx"
-msgstr ""
+msgstr "圖片太小。最小尺寸：%1$dpx × %2$dpx"
 
 #: app/ThemeOptions/General.php:1652
 #: app/ThemeOptions/General.php:1744
 #: app/ThemeOptions/General.php:1750
 msgid "Crop and Save"
-msgstr ""
+msgstr "裁剪並儲存"
 
 #: app/ThemeOptions/General.php:1687
 msgid "Please select a crop area."
-msgstr ""
+msgstr "請選擇裁剪區域。"
 
 #: app/ThemeOptions/General.php:1691
 msgid "Cropping..."
-msgstr ""
+msgstr "正在裁剪..."
 
 #: app/ThemeOptions/General.php:1743
 msgid "Error cropping image:"
-msgstr ""
+msgstr "裁剪圖片出錯："
 
 #: app/ThemeOptions/General.php:1749
 msgid "Error cropping image. Please try again."
-msgstr ""
+msgstr "裁剪圖片出錯。請重試。"
 
 #: app/ThemeOptions/General.php:1821
 msgid "You do not have permission to upload files."

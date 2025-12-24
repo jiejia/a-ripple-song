@@ -1203,50 +1203,50 @@ msgstr ""
 
 #: app/ThemeOptions/General.php:95
 msgid "Overrides the footer copyright line. Leave empty to use the default."
-msgstr ""
+msgstr "Переопределяет строку авторских прав в подвале. Оставьте пустым для использования значения по умолчанию."
 
 #: app/ThemeOptions/General.php:242
 msgid "Upload / Change Logo"
-msgstr ""
+msgstr "Загрузить / Изменить логотип"
 
 #: app/ThemeOptions/General.php:244
 msgid "Remove Logo"
-msgstr ""
+msgstr "Удалить логотип"
 
 #: app/ThemeOptions/General.php:1609
 msgid "Choose Logo Image"
-msgstr ""
+msgstr "Выберите изображение логотипа"
 
 #: app/ThemeOptions/General.php:1611
 msgid "Crop Image"
-msgstr ""
+msgstr "Обрезать изображение"
 
 #: app/ThemeOptions/General.php:1624
 #, php-format
 msgid "Image is too small. Minimum size: %1$dpx × %2$dpx"
-msgstr ""
+msgstr "Изображение слишком маленькое. Минимальный размер: %1$dpx × %2$dpx"
 
 #: app/ThemeOptions/General.php:1652
 #: app/ThemeOptions/General.php:1744
 #: app/ThemeOptions/General.php:1750
 msgid "Crop and Save"
-msgstr ""
+msgstr "Обрезать и сохранить"
 
 #: app/ThemeOptions/General.php:1687
 msgid "Please select a crop area."
-msgstr ""
+msgstr "Пожалуйста, выберите область обрезки."
 
 #: app/ThemeOptions/General.php:1691
 msgid "Cropping..."
-msgstr ""
+msgstr "Обрезка..."
 
 #: app/ThemeOptions/General.php:1743
 msgid "Error cropping image:"
-msgstr ""
+msgstr "Ошибка обрезки изображения:"
 
 #: app/ThemeOptions/General.php:1749
 msgid "Error cropping image. Please try again."
-msgstr ""
+msgstr "Ошибка обрезки изображения. Пожалуйста, попробуйте снова."
 
 #: app/ThemeOptions/General.php:1821
 msgid "You do not have permission to upload files."

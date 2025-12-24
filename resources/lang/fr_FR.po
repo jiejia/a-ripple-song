@@ -1201,50 +1201,50 @@ msgstr ""
 
 #: app/ThemeOptions/General.php:95
 msgid "Overrides the footer copyright line. Leave empty to use the default."
-msgstr ""
+msgstr "Remplace la ligne de copyright du pied de page. Laissez vide pour utiliser la valeur par défaut."
 
 #: app/ThemeOptions/General.php:242
 msgid "Upload / Change Logo"
-msgstr ""
+msgstr "Télécharger / Modifier le Logo"
 
 #: app/ThemeOptions/General.php:244
 msgid "Remove Logo"
-msgstr ""
+msgstr "Supprimer le Logo"
 
 #: app/ThemeOptions/General.php:1609
 msgid "Choose Logo Image"
-msgstr ""
+msgstr "Choisir l'image du Logo"
 
 #: app/ThemeOptions/General.php:1611
 msgid "Crop Image"
-msgstr ""
+msgstr "Recadrer l'image"
 
 #: app/ThemeOptions/General.php:1624
 #, php-format
 msgid "Image is too small. Minimum size: %1$dpx × %2$dpx"
-msgstr ""
+msgstr "L'image est trop petite. Taille minimale : %1$dpx × %2$dpx"
 
 #: app/ThemeOptions/General.php:1652
 #: app/ThemeOptions/General.php:1744
 #: app/ThemeOptions/General.php:1750
 msgid "Crop and Save"
-msgstr ""
+msgstr "Recadrer et enregistrer"
 
 #: app/ThemeOptions/General.php:1687
 msgid "Please select a crop area."
-msgstr ""
+msgstr "Veuillez sélectionner une zone de recadrage."
 
 #: app/ThemeOptions/General.php:1691
 msgid "Cropping..."
-msgstr ""
+msgstr "Recadrage en cours..."
 
 #: app/ThemeOptions/General.php:1743
 msgid "Error cropping image:"
-msgstr ""
+msgstr "Erreur lors du recadrage de l'image :"
 
 #: app/ThemeOptions/General.php:1749
 msgid "Error cropping image. Please try again."
-msgstr ""
+msgstr "Erreur lors du recadrage de l'image. Veuillez réessayer."
 
 #: app/ThemeOptions/General.php:1821
 msgid "You do not have permission to upload files."
