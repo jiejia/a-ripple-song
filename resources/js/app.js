@@ -462,7 +462,7 @@ const ensureThemeStylesInjected = (() => {
  * @param {string} format - 'relative' (default), 'short', 'long'
  * @returns {string} Formatted date string
  */
-window.formatLocalizedDate = function(timestamp, format = 'relative') {
+window.formatLocalizedDate = function (timestamp, format = 'relative') {
   if (!timestamp || isNaN(timestamp)) return '-';
 
   // Get WordPress locale from HTML lang attribute or document.documentElement.lang
@@ -633,6 +633,7 @@ Alpine.store('player', {
 
   // progress heatmap (per-second intensity -> orange shades)
   progressHeatmapGradient: '',
+  progressHeatmapReady: false,
   progressHeatmapStepSeconds: 10,
   progressHeatmapSmoothingRadius: 1,
   _progressHeatmapNonce: 0,
@@ -925,6 +926,7 @@ Alpine.store('player', {
     this._progressHeatmapNonce++;
     const heatmapNonce = this._progressHeatmapNonce;
     this.progressHeatmapGradient = '';
+    this.progressHeatmapReady = false;
 
     // 停止当前播放
     if (this.currentSound) {
@@ -1061,6 +1063,7 @@ Alpine.store('player', {
 
       progressHeatmapCache.set(cacheKey, gradient);
       this.progressHeatmapGradient = gradient;
+      this.progressHeatmapReady = true;
     } catch (error) {
       console.warn('[aripplesong] Failed to generate progress heatmap', error);
     } finally {
@@ -1665,7 +1668,7 @@ function initImageLightbox() {
 
     if (!newImg) return;
 
-    newImg.addEventListener('click', function(e) {
+    newImg.addEventListener('click', function (e) {
       e.preventDefault();
 
       // Get the full-size image URL (WordPress responsive images)
