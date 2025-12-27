@@ -1,4 +1,9 @@
 <p align="center">
+  <a href="./README.md">English</a> •
+  <a href="./README.zh-CN.md">简体中文</a>
+</p>
+
+<p align="center">
   <img alt="A Ripple Song" src="https://img.shields.io/badge/A%20Ripple%20Song-beta-6366f1?style=for-the-badge&logo=wordpress&logoColor=white" height="40">
 </p>
 
