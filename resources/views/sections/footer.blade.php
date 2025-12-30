@@ -4,9 +4,9 @@
     @php($footerCopyright = carbon_get_theme_option('crb_footer_copyright'))
     @php($defaultCopyright = sprintf(__('Powered by %s', 'sage'), '<a href="https://github.com/jiejia/a-ripple-song" target="_blank" class="text-primary">A Ripple Song</a> Theme'))
     @php($copyrightYear = sprintf('© %s', date_i18n('Y')))
-    @if(is_active_sidebar('footer-links'))
+    @if(is_active_sidebar(\App\Theme::SIDEBAR_FOOTER_LINKS))
       <div class="grid md:[grid-template-columns:repeat(auto-fit,minmax(calc(25%-0.75rem),1fr))] grid-cols-2 justify-items-stretch gap-4 mb-4">
-        @php(dynamic_sidebar('footer-links'))
+        @php(dynamic_sidebar(\App\Theme::SIDEBAR_FOOTER_LINKS))
       </div>
     @endif
 

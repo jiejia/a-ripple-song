@@ -171,7 +171,7 @@ add_action('widgets_init', function () {
 
     register_sidebar([
         'name' => __('Footer Links', 'sage'),
-        'id' => 'footer-links',
+        'id' => Theme::SIDEBAR_FOOTER_LINKS,
         'description' => __('Footer links area for displaying link columns', 'sage'),
         'before_widget' => '',
         'after_widget' => '',
@@ -181,7 +181,7 @@ add_action('widgets_init', function () {
 
     register_sidebar([
         'name' => __('Home Main', 'sage'),
-        'id' => 'home-main',
+        'id' => Theme::SIDEBAR_HOME_MAIN,
         'description' => __('Main area of the homepage for displaying various content modules', 'sage'),
         'before_widget' => '<div class="widget %1$s %2$s mb-4">',
         'after_widget' => '</div>',
@@ -190,7 +190,7 @@ add_action('widgets_init', function () {
     ]);
     register_sidebar([
         'name' => __('Sidebar Primary', 'sage'),
-        'id' => 'sidebar-primary',
+        'id' => Theme::SIDEBAR_PRIMARY,
         'description' => __('Primary sidebar area for displaying various content modules', 'sage'),
         'before_widget' => '<div class="widget %1$s %2$s mb-4">',
         'after_widget' => '</div>',
@@ -199,7 +199,7 @@ add_action('widgets_init', function () {
     ]);
     register_sidebar([
         'name' => __('Leftbar Primary', 'sage'),
-        'id' => 'leftbar-primary',
+        'id' => Theme::SIDEBAR_LEFTBAR,
         'description' => __('Primary left sidebar area for displaying various content modules', 'sage'),
         'before_widget' => '<div class="widget %1$s %2$s mb-4">',
         'after_widget' => '</div>',

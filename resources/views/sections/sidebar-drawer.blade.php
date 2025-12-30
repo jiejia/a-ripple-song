@@ -15,8 +15,8 @@
       {{-- Sidebar Content --}}
       <div class="p-4">
         @php(get_search_form())
-        @if(is_active_sidebar('sidebar-primary'))
-          @php(dynamic_sidebar('sidebar-primary'))
+        @if(is_active_sidebar(\App\Theme::SIDEBAR_PRIMARY))
+          @php(dynamic_sidebar(\App\Theme::SIDEBAR_PRIMARY))
         @else
           <div class="rounded-lg bg-base-200 p-4 text-center text-base-content/50">
             <p>{!! __('Please add widgets to "Sidebar" area in Appearance > Widgets in the admin panel.', 'sage') !!}</p>

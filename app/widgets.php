@@ -50,7 +50,7 @@ function set_default_home_widgets() {
     $sidebars_widgets = get_option('sidebars_widgets', []);
     
     // 检查 home-main 是否已经有 widgets
-    if (isset($sidebars_widgets['home-main']) && !empty($sidebars_widgets['home-main'])) {
+    if (isset($sidebars_widgets[\App\Theme::SIDEBAR_HOME_MAIN]) && !empty($sidebars_widgets[\App\Theme::SIDEBAR_HOME_MAIN])) {
         return; // 已经有 widgets 了，不覆盖
     }
     
@@ -87,7 +87,7 @@ function set_default_home_widgets() {
     update_option($blog_widget->option_name, $blog_options);
     
     // 将 widgets 添加到 home-main 侧边栏
-    $sidebars_widgets['home-main'] = [
+    $sidebars_widgets[\App\Theme::SIDEBAR_HOME_MAIN] = [
         'banner_carousel_widget-' . $banner_instance_id,
         'podcast_list_widget-' . $podcast_instance_id,
         'blog_list_widget-' . $blog_instance_id
