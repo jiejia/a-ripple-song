@@ -9,6 +9,16 @@ namespace App;
 use Illuminate\Support\Facades\Vite;
 
 /**
+ * Load TGM Plugin Activation library.
+ * 
+ * This is loaded manually (not via Composer autoload) because TGMPA
+ * calls WordPress functions at load time which fails in non-WP contexts.
+ */
+if (function_exists('add_action')) {
+    require_once __DIR__ . '/TGMPA/tgmpa-config.php';
+}
+
+/**
  * Inject styles into the block editor.
  *
  * @return array

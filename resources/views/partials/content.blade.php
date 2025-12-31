@@ -1,4 +1,4 @@
-<article class="mt-4 rounded-lg bg-base-100 p-4">
+<article class="mb-4 rounded-lg bg-base-100 p-4">
   <div class="grid grid-flow-row gap-2">
     <div class="grid grid-flow-row gap-1">
       <h4 class="text-md font-bold"><a href="{{ get_permalink() }}">{{ $title }}</a></h4>

@@ -4,7 +4,7 @@ $audio_file = get_post_meta($post_id, 'audio_file', true);
 $episode_data = get_episode_data($post_id);
 @endphp
 
-<div class="mt-4 rounded-lg bg-base-100 p-4" x-data="{ episode: @js($episode_data) }">
+<div class="mb-4 rounded-lg bg-base-100 p-4" x-data="{ episode: @js($episode_data) }">
     <div class="grid grid-flow-row gap-2">
         @include('partials.podcast-episode-card', [
         'post_id' => $post_id,
