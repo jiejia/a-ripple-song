@@ -1,4 +1,4 @@
-<div class="card md:bg-base-100 bg-base-300/90 md:static fixed bottom-0 left-0 right-0 z-100" x-data>
+<div class="card md:bg-base-100 bg-base-300/90 md:static md:mt-5 fixed bottom-0 left-0 right-0 z-100" x-data>
     <div class="card-body md:p-4 py-2 px-4">
         <h2 class="md:text-lg text-md font-bold">{!! __('NOW PLAYING', 'sage') !!}</h2>
         <div
