@@ -72,26 +72,27 @@ collect(['setup', 'filters', 'PostTypes/Podcast', 'Feeds/Podcast', 'widgets', 'T
         }
     });
 
+
 /**
  * Get localized date using Carbon library
- * 
+ *
  * @param int|null $post_id Optional post ID. Defaults to current post.
  * @param string $format Optional format. Use 'relative' for human diff (default), 'long' for full date, 'short' for abbreviated, or custom PHP date format
  * @return string Formatted date string appropriate for current locale
  */
 function get_localized_date($post_id = null, $format = 'relative') {
     $timestamp = get_post_time('U', false, $post_id);
-    
+
     // Get WordPress locale (e.g., 'zh_CN', 'en_US', 'ja')
     $wp_locale = get_locale();
-    
+
     // Convert WordPress locale to Carbon locale format
     // WordPress uses underscore (zh_CN), Carbon uses hyphen (zh-CN)
     $carbon_locale = str_replace('_', '-', $wp_locale);
-    
+
     // Create Carbon instance and set locale
     $date = \Carbon\Carbon::createFromTimestamp($timestamp);
-    
+
     try {
         $date->locale($carbon_locale);
     } catch (\Exception $e) {
@@ -105,16 +106,16 @@ function get_localized_date($post_id = null, $format = 'relative') {
             $date->locale('en');
         }
     }
-    
+
     // Define locale-specific formats
     $base_locale = explode('-', $carbon_locale)[0];
-    
+
     if ($format === 'relative') {
         // Smart relative time: show "30 minutes ago", "1 day ago" for recent posts
         // But show absolute date for posts older than 7 days
         $now = \Carbon\Carbon::now();
         $diff_in_days = $now->diffInDays($date);
-        
+
         if ($diff_in_days < 7) {
             // Recent: use relative time (e.g., "30 minutes ago", "2 days ago")
             return $date->diffForHumans();
@@ -150,21 +151,21 @@ function get_localized_date($post_id = null, $format = 'relative') {
 
 /**
  * Get localized comment date using Carbon library
- * 
+ *
  * @param object $comment Comment object
  * @param bool $include_time Whether to include time in the output
  * @return string Formatted date string appropriate for current locale
  */
 function get_localized_comment_date($comment, $include_time = true) {
     $timestamp = strtotime($comment->comment_date);
-    
+
     // Get WordPress locale
     $wp_locale = get_locale();
     $carbon_locale = str_replace('_', '-', $wp_locale);
-    
+
     // Create Carbon instance and set locale
     $date = \Carbon\Carbon::createFromTimestamp($timestamp);
-    
+
     try {
         $date->locale($carbon_locale);
     } catch (\Exception $e) {
@@ -175,10 +176,10 @@ function get_localized_comment_date($comment, $include_time = true) {
             $date->locale('en');
         }
     }
-    
+
     // Get base locale for format selection
     $base_locale = explode('-', $carbon_locale)[0];
-    
+
     // Format based on locale
     if (in_array($base_locale, ['zh', 'ja'])) {
         // Chinese/Japanese
@@ -200,7 +201,7 @@ function get_localized_comment_date($comment, $include_time = true) {
 
 /**
  * Get all authors/participants for a post.
- * 
+ *
  * This includes:
  * - The post author
  * - For podcasts: users listed in members and guests fields
@@ -210,13 +211,13 @@ function get_localized_comment_date($comment, $include_time = true) {
  */
 function get_post_all_authors($post_id) {
     $authors = [];
-    
+
     // Get the post author
     $author_id = get_post_field('post_author', $post_id);
     if ($author_id) {
         $authors[] = (int)$author_id;
     }
-    
+
     // If it's a podcast, also get members and guests
     $post_type = get_post_type($post_id);
     if ($post_type === 'podcast') {
@@ -229,7 +230,7 @@ function get_post_all_authors($post_id) {
             aripplesong_extract_multicheck_user_ids($guests)
         );
     }
-    
+
     $authors = array_values(array_unique(array_filter(array_map('absint', $authors))));
 
     return $authors;
@@ -347,7 +348,7 @@ function aripplesong_bump_participation_cache_version(): void
 
 /**
  * Get all post IDs for a user including podcasts they participated in.
- * 
+ *
  * This includes:
  * - All posts published by the user (including podcasts)
  * - Podcasts where the user is listed in members or guests fields (excluding podcasts authored by the user)
@@ -362,7 +363,7 @@ function get_user_all_post_ids($user_id) {
     }
 
     $post_ids = [];
-    
+
     // Get posts authored by the user (both 'post' and 'podcast' types)
     $authored_posts = get_posts([
         'author' => $user_id,
@@ -374,9 +375,9 @@ function get_user_all_post_ids($user_id) {
         'update_post_meta_cache' => false,
         'update_post_term_cache' => false,
     ]);
-    
+
     $post_ids = array_merge($post_ids, $authored_posts);
-    
+
     $post_ids = array_merge($post_ids, aripplesong_get_participated_podcast_ids($user_id));
 
     return array_values(array_unique(array_filter(array_map('absint', $post_ids))));
@@ -384,7 +385,7 @@ function get_user_all_post_ids($user_id) {
 
 /**
  * Calculate total post count for a user.
- * 
+ *
  * This includes:
  * - All posts published by the user (including podcasts)
  * - Podcasts where the user is listed in members or guests fields (excluding podcasts authored by the user)
@@ -409,7 +410,7 @@ function calculate_user_post_count($user_id) {
 
 /**
  * Modify author archive query to include posts where user is a member or guest
- * 
+ *
  * @param WP_Query $query
  * @return void
  */
@@ -427,7 +428,7 @@ function modify_author_archive_query($query) {
                 }
             }
         }
-        
+
         // IMPORTANT: Store the author object in the query before we clear the author vars
         // This allows templates to access the author via get_queried_object()
         if ($author_id) {
@@ -437,15 +438,15 @@ function modify_author_archive_query($query) {
                 $query->queried_object_id = $author_id;
             }
         }
-        
+
         // Debug log
         if (defined('WP_DEBUG') && WP_DEBUG) {
             error_log("Author Archive Query - Author ID: " . $author_id);
         }
-        
+
         // Get all post IDs for this author (including podcasts they participated in)
         $post_ids = get_user_all_post_ids($author_id);
-        
+
         // Modify query to use our post IDs
         if (!empty($post_ids)) {
             // Reset query vars to prevent conflicts
@@ -455,7 +456,7 @@ function modify_author_archive_query($query) {
             $query->set('post_type', ['post', 'podcast']); // Include both post types
             $query->set('orderby', 'date');
             $query->set('order', 'DESC');
-            
+
             // Important: don't let WordPress limit by author
             unset($query->query_vars['author']);
         } else {
@@ -468,23 +469,23 @@ add_action('pre_get_posts', 'modify_author_archive_query');
 
 /**
  * Get primary navigation menu items with parent-child relationship structure
- * 
+ *
  * @param string $location Menu location name, defaults to 'primary_navigation'
  * @return array Returns an array containing top-level menu items and their child menu items mapping
  */
 function get_primary_navigation_menu_items($location = 'primary_navigation') {
     $menu_locations = get_nav_menu_locations();
     $menu_items = [];
-    
+
     if (isset($menu_locations[$location])) {
         $menu_id = $menu_locations[$location];
         $menu_items = wp_get_nav_menu_items($menu_id);
     }
-    
+
     if (!$menu_items) {
         return [];
     }
-    
+
     // Build hierarchical menu structure (up to 3 levels)
     $menu_items_by_id = [];
     foreach ($menu_items as $item) {
@@ -493,14 +494,14 @@ function get_primary_navigation_menu_items($location = 'primary_navigation') {
             'children' => []
         ];
     }
-    
+
     // Build parent-child relationships recursively
     foreach ($menu_items as $item) {
         if ($item->menu_item_parent != 0 && isset($menu_items_by_id[$item->menu_item_parent])) {
             $menu_items_by_id[$item->menu_item_parent]['children'][] = &$menu_items_by_id[$item->ID];
         }
     }
-    
+
     // Return only top-level menu items (with their nested children)
     $top_level_items = [];
     foreach ($menu_items as $item) {
@@ -508,13 +509,13 @@ function get_primary_navigation_menu_items($location = 'primary_navigation') {
             $top_level_items[] = $menu_items_by_id[$item->ID];
         }
     }
-    
+
     return $top_level_items;
 }
 
 /**
  * Check if a menu item is active (current page or has active child/grandchild)
- * 
+ *
  * @param object $item The menu item object
  * @param array $children Array of child menu items (with nested structure)
  * @param string $current_url The current page URL
@@ -524,22 +525,22 @@ function is_menu_item_active($item, $children = [], $current_url = '') {
     if (empty($current_url)) {
         $current_url = home_url($_SERVER['REQUEST_URI']);
     }
-    
+
     // Check if current item is active
     $is_current = ($item->url === $current_url);
-    
+
     // Recursively check if any descendant item is active
     $has_active_descendant = false;
     if (!empty($children)) {
         foreach ($children as $child_data) {
             $child = is_array($child_data) ? $child_data['item'] : $child_data;
             $grandchildren = is_array($child_data) && isset($child_data['children']) ? $child_data['children'] : [];
-            
+
             if ($child->url === $current_url) {
                 $has_active_descendant = true;
                 break;
             }
-            
+
             // Check grandchildren recursively
             if (!empty($grandchildren) && is_menu_item_active($child, $grandchildren, $current_url)) {
                 $has_active_descendant = true;
@@ -547,13 +548,13 @@ function is_menu_item_active($item, $children = [], $current_url = '') {
             }
         }
     }
-    
+
     return $is_current || $has_active_descendant;
 }
 
 /**
  * Get episode data for a podcast post
- * 
+ *
  * @param int|null $post_id Post ID (defaults to current post)
  * @return array Episode data array with id, audioUrl, title, description, publishDate (timestamp), featuredImage, link
  */
@@ -561,10 +562,10 @@ function get_episode_data($post_id = null) {
     if (!$post_id) {
         $post_id = get_the_ID();
     }
-    
+
     $audio_file = get_post_meta($post_id, 'audio_file', true);
     $featured_image = get_the_post_thumbnail_url($post_id, 'medium');
-    
+
     return [
         'id' => $post_id,
         'audioUrl' => $audio_file,
@@ -630,7 +631,7 @@ function aripplesong_get_latest_playlist_data($limit = 10) {
 
 /**
  * Custom comment callback with DaisyUI styling
- * 
+ *
  * @param object $comment Comment object
  * @param array $args Comment arguments
  * @param int $depth Comment depth level
@@ -638,7 +639,7 @@ function aripplesong_get_latest_playlist_data($limit = 10) {
 function sage_custom_comment($comment, $args, $depth) {
     // All comments use bg-base-100 regardless of depth
     $bg_class = 'bg-base-200/50';
-    
+
     // Get comment type class
     $comment_type = get_comment_type($comment->comment_ID);
     ?>
@@ -655,34 +656,34 @@ function sage_custom_comment($comment, $args, $depth) {
                         </div>
                     <?php endif; ?>
                 </div>
-                
+
                 <!-- Comment Content -->
                 <div class="flex-1 min-w-0">
                     <div class="flex items-center gap-2 mb-2 flex-wrap">
                         <span class="font-bold text-sm">
                             <?php echo get_comment_author_link($comment); ?>
                         </span>
-                        
+
                         <?php if ($comment->user_id === get_post()->post_author): ?>
                             <span class="badge badge-primary badge-sm"><?php _e('Author', 'sage'); ?></span>
                         <?php endif; ?>
-                        
+
                         <span class="text-xs text-base-content/60 flex items-center gap-1">
                             <i data-lucide="clock" class="w-4 h-4"></i>
                             <?php echo get_localized_comment_date($comment); ?>
                         </span>
-                        
+
                         <?php if ($comment->comment_approved == '0'): ?>
                             <span class="badge badge-warning badge-sm"><?php _e('Pending Approval', 'sage'); ?></span>
                         <?php endif; ?>
                     </div>
-                    
+
                     <div class="text-sm text-base-content/80 mb-3 leading-relaxed">
                         <?php comment_text(); ?>
                     </div>
-                    
+
                     <div class="flex items-center gap-3">
-                        <?php 
+                        <?php
                         comment_reply_link(array_merge($args, [
                             'add_below' => 'comment',
                             'depth' => $depth,
@@ -692,7 +693,7 @@ function sage_custom_comment($comment, $args, $depth) {
                             'reply_text' => '<i data-lucide="reply" class="w-4 h-4"></i> ' . __('Reply', 'sage')
                         ]));
                         ?>
-                        
+
                         <?php edit_comment_link(
                             '<i data-lucide="pencil" class="w-4 h-4"></i> ' . __('Edit', 'sage'),
                             '<button class="btn btn-ghost btn-sm gap-1 text-sm">',
@@ -719,13 +720,13 @@ add_filter('comment_form_defaults', function($defaults) {
     $defaults['cancel_reply_link'] = '<button type="button" class="btn btn-ghost btn-sm gap-1 text-sm"><i data-lucide="x" class="w-4 h-4"></i> %s</button>';
     $defaults['comment_notes_before'] = '<p class="comment-notes text-sm text-base-content/60">' . __('Your email address will not be published.', 'sage') . '</p>';
     $defaults['comment_notes_after'] = '';
-    $defaults['logged_in_as'] = '<p class="logged-in-as text-sm text-base-content/60">' . 
-        sprintf(__('Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>', 'sage'), 
-            get_edit_user_link(), 
-            wp_get_current_user()->display_name, 
-            wp_logout_url(apply_filters('the_permalink', get_permalink()))) . 
+    $defaults['logged_in_as'] = '<p class="logged-in-as text-sm text-base-content/60">' .
+        sprintf(__('Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>', 'sage'),
+            get_edit_user_link(),
+            wp_get_current_user()->display_name,
+            wp_logout_url(apply_filters('the_permalink', get_permalink()))) .
         '</p>';
-    
+
     return $defaults;
 });
 
@@ -735,13 +736,13 @@ add_filter('comment_form_defaults', function($defaults) {
 add_filter('comment_form_default_fields', function($fields) {
     // Keep interactive controls at >=16px to stop Chrome/Android auto-zoom.
     $fields['author'] = '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Name', 'sage') . ' <span class="text-error">*</span></span></label><input type="text" id="author" name="author" class="input input-bordered w-full text-sm" required /></div>';
-    
+
     $fields['email'] = '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Email', 'sage') . ' <span class="text-error">*</span></span></label><input type="email" id="email" name="email" class="input input-bordered w-full text-sm" required /></div>';
-    
+
     $fields['url'] = '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Website', 'sage') . '</span></label><input type="url" id="url" name="url" class="input input-bordered w-full text-sm" /></div>';
-    
+
     $fields['cookies'] = '<div class="form-control"><label class="comment-form-cookies-consent"><input type="checkbox" id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" value="yes" class="checkbox" /><span class="label-text text-sm leading-relaxed">' . __('Save my name, email, and website in this browser for the next time I comment.', 'sage') . '</span></label></div>';
-    
+
     return $fields;
 });
 

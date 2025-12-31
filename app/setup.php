@@ -170,7 +170,7 @@ add_action('widgets_init', function () {
     // ] + $config);
 
     register_sidebar([
-        'name' => __('Footer Links', 'sage'),
+        'name' => '[' . Theme::PREFIX . '] ' . __('Footer Links', 'sage'),
         'id' => Theme::SIDEBAR_FOOTER_LINKS,
         'description' => __('Footer links area for displaying link columns', 'sage'),
         'before_widget' => '',
@@ -180,7 +180,7 @@ add_action('widgets_init', function () {
     ]);
 
     register_sidebar([
-        'name' => __('Home Main', 'sage'),
+        'name' => '[' . Theme::PREFIX . '] ' . __('Home Main', 'sage'),
         'id' => Theme::SIDEBAR_HOME_MAIN,
         'description' => __('Main area of the homepage for displaying various content modules', 'sage'),
         'before_widget' => '<div class="widget %1$s %2$s mb-4">',
@@ -189,7 +189,7 @@ add_action('widgets_init', function () {
         'after_title' => '</h2>',
     ]);
     register_sidebar([
-        'name' => __('Sidebar Primary', 'sage'),
+        'name' => '[' . Theme::PREFIX . '] ' . __('Sidebar Primary', 'sage'),
         'id' => Theme::SIDEBAR_PRIMARY,
         'description' => __('Primary sidebar area for displaying various content modules', 'sage'),
         'before_widget' => '<div class="widget %1$s %2$s mb-4">',
@@ -198,7 +198,7 @@ add_action('widgets_init', function () {
         'after_title' => '</h2>',
     ]);
     register_sidebar([
-        'name' => __('Leftbar Primary', 'sage'),
+        'name' => '[' . Theme::PREFIX . '] ' . __('Leftbar Primary', 'sage'),
         'id' => Theme::SIDEBAR_LEFTBAR,
         'description' => __('Primary left sidebar area for displaying various content modules', 'sage'),
         'before_widget' => '<div class="widget %1$s %2$s mb-4">',
@@ -207,6 +207,15 @@ add_action('widgets_init', function () {
         'after_title' => '</h2>',
     ]);
 });
+
+/**
+ * Prevent WordPress from auto-mapping default widgets into the theme primary sidebar on first activation.
+ *
+ * We move any mapped widgets to "Inactive Widgets" instead of deleting them to avoid data loss.
+ */
+add_action('after_switch_theme', function () {
+    \aripplesong_maybe_empty_primary_sidebar_on_first_activation();
+}, 5);
 
 /**
  * Customize posts pagination to use DaisyUI join structure with Lucide icons.
