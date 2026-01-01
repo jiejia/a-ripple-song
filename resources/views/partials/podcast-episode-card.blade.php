@@ -34,9 +34,9 @@
         <div class="grid grid-flow-row gap-1 overflow-hidden">
             <h4 class="text-md font-bold line-clamp-2">
                 @if($show_link)
-                    <a href="{{ get_permalink($post_id) }}">{{ $title }}</a>
+                    <a href="{{ get_permalink($post_id) }}">{{ html_entity_decode($title) }}</a>
                 @else
-                    {{ $title }}
+                    {{ html_entity_decode($title) }}
                 @endif
             </h4>
             @include('partials.entry-meta', ['post_id' => $post_id])
