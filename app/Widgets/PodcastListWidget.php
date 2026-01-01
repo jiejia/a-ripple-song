@@ -34,18 +34,44 @@ class Podcast_List_Widget extends WP_Widget {
             'order' => 'DESC'
         ]);
         
-        // Query popular podcasts (by comment count).
-        $popular_podcasts = new WP_Query([
+        // Query popular podcasts (by views + plays weighted score).
+        // Fetch more posts to ensure we get the most popular ones after sorting.
+        $popular_query = new WP_Query([
             'post_type' => 'podcast',
-            'posts_per_page' => $posts_per_page,
+            'posts_per_page' => max($posts_per_page * 3, 20), // Fetch more to sort properly
             'post_status' => 'publish',
             'no_found_rows' => true,
             'ignore_sticky_posts' => true,
-            'update_post_meta_cache' => false,
             'update_post_term_cache' => false,
-            'orderby' => 'comment_count',
+            'orderby' => 'date',
             'order' => 'DESC'
         ]);
+        
+        // Calculate weighted score and sort.
+        $popular_posts_with_score = [];
+        if ($popular_query->have_posts()) {
+            while ($popular_query->have_posts()) {
+                $popular_query->the_post();
+                $pid = get_the_ID();
+                $views = (int) get_post_meta($pid, '_views_count', true);
+                $plays = (int) get_post_meta($pid, '_play_count', true);
+                // Weighted score: views + plays (can adjust weights if needed)
+                $score = $views + $plays;
+                $popular_posts_with_score[] = [
+                    'post' => get_post($pid),
+                    'score' => $score
+                ];
+            }
+            wp_reset_postdata();
+        }
+        
+        // Sort by score descending.
+        usort($popular_posts_with_score, function($a, $b) {
+            return $b['score'] - $a['score'];
+        });
+        
+        // Get top N posts.
+        $popular_posts_with_score = array_slice($popular_posts_with_score, 0, $posts_per_page);
         
         // Query random podcasts.
         $random_podcasts = new WP_Query([
@@ -62,7 +88,7 @@ class Podcast_List_Widget extends WP_Widget {
         // Prepare the podcast data for the three tabs.
         $podcast_data = [
             'recent' => $this->prepare_podcast_list($recent_podcasts),
-            'popular' => $this->prepare_podcast_list($popular_podcasts),
+            'popular' => $this->prepare_podcast_list_from_posts($popular_posts_with_score),
             'random' => $this->prepare_podcast_list($random_podcasts)
         ];
         
@@ -79,7 +105,7 @@ class Podcast_List_Widget extends WP_Widget {
                 </h2>
                 <?php if ($show_see_all): ?>
                 <span class="text-xs text-base-content/70">
-                    <a href="<?php echo esc_url(get_permalink(get_page_by_path('podcast'))); ?>"><?php _e('See all', 'sage'); ?></a>
+                    <a href="<?php echo esc_url(get_permalink(get_page_by_path('podcasts'))); ?>"><?php _e('See all', 'sage'); ?></a>
                 </span>
                 <?php endif; ?>
             </div>
@@ -198,6 +224,29 @@ class Podcast_List_Widget extends WP_Widget {
                     'title' => get_the_title()
                 ];
             }
+        }
+        
+        return $podcasts;
+    }
+    
+    /**
+     * Prepare podcast list data from pre-sorted posts array.
+     */
+    private function prepare_podcast_list_from_posts($posts_with_score) {
+        $podcasts = [];
+        
+        foreach ($posts_with_score as $item) {
+            $post = $item['post'];
+            $post_id = $post->ID;
+            $audio_file = get_post_meta($post_id, 'audio_file', true);
+            $episode_data = get_episode_data($post_id);
+            
+            $podcasts[] = [
+                'post_id' => $post_id,
+                'audio_file' => $audio_file,
+                'episode_data' => $episode_data,
+                'title' => $post->post_title
+            ];
         }
         
         return $podcasts;

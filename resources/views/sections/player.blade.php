@@ -74,7 +74,7 @@
 
                         <div x-show="$store.player.playbackRatePanelOpen"
                             @click.outside="$store.player.playbackRatePanelOpen = false"
-                            class="absolute bottom-full left-0 mb-2 bg-base-100 rounded-lg shadow-lg p-2 min-w-[80px]">
+                            class="absolute bottom-full left-0 mb-2 bg-base-100 rounded-lg shadow-lg p-2 min-w-[80px] z-20">
                             <template x-for="rate in $store.player.availableRates" :key="rate">
                                 <button x-on:click="$store.player.setPlaybackRate(rate)"
                                     class="w-full text-left px-3 py-2 text-xs rounded transition-colors"
@@ -104,7 +104,7 @@
                         x-on:click="$store.player.toggleVolumePanel()"></i>
 
                     <div x-show="$store.player.volumePanelOpen" @click.outside="$store.player.volumePanelOpen = false"
-                        class="absolute bottom-full right-[-8px] mb-2 bg-base-100 rounded-full shadow-lg p-2 w-10 h-32">
+                        class="absolute bottom-full right-[-8px] mb-2 bg-base-100 rounded-full shadow-lg p-2 w-10 h-32 z-20">
                         <input type="range" min="0" max="1" step="0.01" :value="$store.player.volume"
                             x-on:input="$store.player.setVolume($event.target.value)"
                             class="w-22 absolute left-[-23px] bottom-[70px] range range-xs range-success transform -rotate-90" />
