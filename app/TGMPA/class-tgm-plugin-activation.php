@@ -3638,12 +3638,14 @@ if ( ! function_exists( 'tgmpa_load_bulk_installer' ) ) {
 					 * @since 2.2.0
 					 *
 					 * @param string $title Unused in this implementation.
+					 * @param string $action The action being performed (for WP 6.9+ compatibility).
+					 * @param bool   $status Result of the action (for WP 6.9+ compatibility).
 					 */
-					public function after( $title = '' ) {
+					public function after( $title = '', $action = '', $status = true ) {
 						if ( empty( $title ) ) {
 							$title = esc_html( $this->plugin_names[ $this->i ] );
 						}
-						parent::after( $title );
+						parent::after( $title, $action, $status );
 
 						$this->i++;
 					}
