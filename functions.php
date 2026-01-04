@@ -62,7 +62,7 @@ Application::configure()
 |
 */
 
-collect(['setup', 'filters', 'PostTypes/Podcast', 'Feeds/Podcast', 'widgets', 'ThemeOptions/General', 'ThemeOptions/Podcast', 'Metrics/Post'])
+collect(['setup', 'filters', 'PostTypes/Podcast', 'Feeds/Podcast', 'widgets', 'ThemeOptions/General', 'ThemeOptions/Podcast', 'Metrics/Post', 'DemoImport'])
     ->each(function ($file) {
         if (! locate_template($file = "app/{$file}.php", true, true)) {
             wp_die(
