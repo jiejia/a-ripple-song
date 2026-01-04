@@ -17,8 +17,8 @@ add_filter('ocdi/import_files', function () {
     return [
         [
             'import_file_name'           => 'A Ripple Song Demo',
-            'import_file_url'            => get_template_directory_uri() . '/data/demo-data.xml',
-            'import_widget_file_url'     => get_template_directory_uri() . '/data/demo-widgets.wie',
+            'local_import_file'          => get_template_directory() . '/data/demo-data.xml',
+            'local_import_widget_file'   => get_template_directory() . '/data/demo-widgets.wie',
             'import_preview_image_url'   => get_template_directory_uri() . '/screenshot.png',
             'preview_url'                => 'https://demo.aripplesong.com/',
             'import_notice'              => __('After importing this demo, please wait for all images and media to be downloaded. This may take a few minutes depending on your server speed.', 'sage'),
