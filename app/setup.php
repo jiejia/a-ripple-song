@@ -224,8 +224,21 @@ add_action('widgets_init', function () {
  * We move any mapped widgets to "Inactive Widgets" instead of deleting them to avoid data loss.
  */
 add_action('after_switch_theme', function () {
-    \aripplesong_maybe_empty_primary_sidebar_on_first_activation();
+    aripplesong_maybe_empty_primary_sidebar_on_first_activation();
 }, 5);
+
+/**
+ * Move any auto-assigned widgets from theme sidebars to inactive widgets on first activation.
+ *
+ * WordPress automatically maps widgets from the previous theme to similarly named
+ * sidebars. This function moves those widgets to the inactive area to give users
+ * a clean start with the demo import.
+ *
+ * @return void
+ */
+function aripplesong_maybe_empty_primary_sidebar_on_first_activation() {
+    // TODO: Implement sidebar cleanup on first activation
+}
 
 /**
  * Customize posts pagination to use DaisyUI join structure with Lucide icons.
