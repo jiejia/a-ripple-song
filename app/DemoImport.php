@@ -27,12 +27,75 @@ add_filter('ocdi/import_files', function () {
 });
 
 /**
- * Clear all theme sidebars before importing demo content.
- * This ensures a clean slate without default WordPress widgets.
+ * Before importing demo content:
+ * 1. Backup existing pages/menus that conflict with demo data
+ * 2. Clear all theme sidebars
  */
 add_action('ocdi/before_content_import', function () {
+    aripplesong_backup_conflicting_content();
     aripplesong_clear_theme_sidebars();
 });
+
+/**
+ * Backup pages and menus that would conflict with demo import.
+ * Renames existing content with '-bak' suffix to avoid ID/slug conflicts.
+ */
+function aripplesong_backup_conflicting_content() {
+    // Pages expected from demo import (by slug)
+    $demo_page_slugs = ['home', 'podcasts', 'blog'];
+    
+    // Menus expected from demo import (by name/slug)
+    $demo_menu_names = ['Menu 1', 'menu-1'];
+    
+    // Backup conflicting pages
+    foreach ($demo_page_slugs as $slug) {
+        $page = get_page_by_path($slug);
+        if ($page) {
+            aripplesong_backup_page($page);
+        }
+    }
+    
+    // Backup conflicting menus
+    foreach ($demo_menu_names as $menu_name) {
+        $menu = wp_get_nav_menu_object($menu_name);
+        if ($menu) {
+            aripplesong_backup_menu($menu);
+        }
+    }
+}
+
+/**
+ * Backup a page by renaming its slug and title with -bak suffix
+ *
+ * @param WP_Post $page The page to backup
+ */
+function aripplesong_backup_page($page) {
+    $timestamp = date('Ymd-His');
+    $new_slug = $page->post_name . '-bak-' . $timestamp;
+    $new_title = $page->post_title . ' (backup ' . $timestamp . ')';
+    
+    wp_update_post([
+        'ID' => $page->ID,
+        'post_name' => $new_slug,
+        'post_title' => $new_title,
+    ]);
+}
+
+/**
+ * Backup a menu by renaming it with -bak suffix
+ *
+ * @param WP_Term $menu The menu term object to backup
+ */
+function aripplesong_backup_menu($menu) {
+    $timestamp = date('Ymd-His');
+    $new_name = $menu->name . ' (backup ' . $timestamp . ')';
+    $new_slug = $menu->slug . '-bak-' . $timestamp;
+    
+    wp_update_term($menu->term_id, 'nav_menu', [
+        'name' => $new_name,
+        'slug' => $new_slug,
+    ]);
+}
 
 /**
  * Clear all widgets from theme-registered sidebars.
