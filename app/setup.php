@@ -497,7 +497,7 @@ add_filter('script_loader_tag', function ($tag, $handle, $src) {
 
 add_action('after_setup_theme', function () {
     load_theme_textdomain('sage', get_template_directory() . '/resources/lang');
-});
+}, 1); // Priority 1: Load translations before Carbon Fields (priority 10) to ensure admin labels are translated
 
 /**
  * Invalidate cached podcast participation results when podcasts change.
