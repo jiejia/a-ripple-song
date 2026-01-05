@@ -16,7 +16,7 @@
 <!-- 7. WordPress will then import each of the posts, pages, comments, categories, etc. -->
 <!--    contained in this file into your site. -->
 
-	<!-- generator="WordPress/6.9" created="2026-01-04 03:09" -->
+	<!-- generator="WordPress/6.9" created="2026-01-05 02:46" -->
 <rss version="2.0"
 	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 	xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -29,7 +29,7 @@
 	<title>A Ripple Song</title>
 	<link>http://localhost:8000</link>
 	<description></description>
-	<pubDate>Sun, 04 Jan 2026 03:09:55 +0000</pubDate>
+	<pubDate>Mon, 05 Jan 2026 02:46:44 +0000</pubDate>
 	<language>en-US</language>
 	<wp:wxr_version>1.2</wp:wxr_version>
 	<wp:base_site_url>http://localhost:8000</wp:base_site_url>
@@ -691,120 +691,6 @@
 		</wp:postmeta>
 							</item>
 					<item>
-		<title><![CDATA[Andor_Season_2_Political_Thriller_Masterclass]]></title>
-		<link>http://localhost:8000/index.php/podcasts/andor-season-2-political-thriller-masterclass/andor_season_2_political_thriller_masterclass/</link>
-		<pubDate>Thu, 01 Jan 2026 04:37:10 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/Andor_Season_2_Political_Thriller_Masterclass.m4a</guid>
-		<description></description>
-		<content:encoded><![CDATA["Andor_Season_2_Political_Thriller_Masterclass".]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>52</wp:post_id>
-		<wp:post_date><![CDATA[2026-01-01 12:37:10]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-01-01 04:37:10]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-01-01 12:37:29]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-01-01 04:37:29]]></wp:post_modified_gmt>
-		<wp:comment_status><![CDATA[open]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[andor_season_2_political_thriller_masterclass]]></wp:post_name>
-		<wp:status><![CDATA[inherit]]></wp:status>
-		<wp:post_parent>51</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01043710/Andor_Season_2_Political_Thriller_Masterclass.m4a]]></wp:attachment_url>
-											<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2026/01/Andor_Season_2_Political_Thriller_Masterclass.m4a]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_object_version]]></wp:meta_key>
-		<wp:meta_value><![CDATA[01043710]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_path]]></wp:meta_key>
-		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/01043710/]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_offloaded]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_offloaded_at]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1767242241]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_provider]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Cloudflare R2]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_bucket]]></wp:meta_key>
-		<wp:meta_value><![CDATA[aripplesong]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:17:{s:10:"dataformat";s:3:"mp4";s:5:"codec";s:19:"ISO/IEC 14496-3 AAC";s:11:"sample_rate";d:44100;s:8:"channels";i:2;s:15:"bits_per_sample";i:16;s:8:"lossless";b:0;s:11:"channelmode";s:6:"stereo";s:7:"bitrate";d:1068.8245370294867;s:17:"compression_ratio";d:0.0007573870018632984;s:10:"fileformat";s:3:"mp4";s:8:"filesize";i:22911830;s:9:"mime_type";s:9:"audio/mp4";s:6:"length";i:712;s:16:"length_formatted";s:5:"11:52";s:17:"created_timestamp";i:1767239543;s:6:"artist";s:0:"";s:5:"album";s:0:"";}]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
-		<title><![CDATA[White_Lotus_France_New_Sound_New_Legacy]]></title>
-		<link>http://localhost:8000/index.php/podcasts/white-lotus-france-new-sound-new-legacy/white_lotus_france_new_sound_new_legacy/</link>
-		<pubDate>Thu, 01 Jan 2026 04:47:22 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/White_Lotus_France_New_Sound_New_Legacy.m4a</guid>
-		<description></description>
-		<content:encoded><![CDATA["White_Lotus_France_New_Sound_New_Legacy".]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>54</wp:post_id>
-		<wp:post_date><![CDATA[2026-01-01 12:47:22]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-01-01 04:47:22]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-01-01 12:48:46]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-01-01 04:48:46]]></wp:post_modified_gmt>
-		<wp:comment_status><![CDATA[open]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[white_lotus_france_new_sound_new_legacy]]></wp:post_name>
-		<wp:status><![CDATA[inherit]]></wp:status>
-		<wp:post_parent>53</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01044722/White_Lotus_France_New_Sound_New_Legacy.m4a]]></wp:attachment_url>
-											<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2026/01/White_Lotus_France_New_Sound_New_Legacy.m4a]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_object_version]]></wp:meta_key>
-		<wp:meta_value><![CDATA[01044722]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_path]]></wp:meta_key>
-		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/01044722/]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_offloaded]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_offloaded_at]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1767242897]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_provider]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Cloudflare R2]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_bucket]]></wp:meta_key>
-		<wp:meta_value><![CDATA[aripplesong]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:17:{s:10:"dataformat";s:3:"mp4";s:5:"codec";s:19:"ISO/IEC 14496-3 AAC";s:11:"sample_rate";d:44100;s:8:"channels";i:2;s:15:"bits_per_sample";i:16;s:8:"lossless";b:0;s:11:"channelmode";s:6:"stereo";s:7:"bitrate";d:2392.650784911119;s:17:"compression_ratio";d:0.0016954724949767;s:10:"fileformat";s:3:"mp4";s:8:"filesize";i:28545726;s:9:"mime_type";s:9:"audio/mp4";s:6:"length";i:887;s:16:"length_formatted";s:5:"14:47";s:17:"created_timestamp";i:1767239607;s:6:"artist";s:0:"";s:5:"album";s:0:"";}]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
 		<title><![CDATA[MV5BN2MyZGJjNzYtMjA0OS00ODYxLWIzYjgtNDliZmMwOGVhMDM5XkEyXkFqcGc@._V1_]]></title>
 		<link>http://localhost:8000/index.php/podcasts/white-lotus-france-new-sound-new-legacy/mv5bn2myzgjjnzytmja0os00odyxlwizyjgtndlizmmwogvhmdm5xkeyxkfqcgc-_v1_/</link>
 		<pubDate>Thu, 01 Jan 2026 04:51:18 +0000</pubDate>
@@ -862,63 +748,6 @@
 		</wp:postmeta>
 							</item>
 					<item>
-		<title><![CDATA[Gi-hun_s_Sacrifice_and_the_US_Squid_Game_Setup]]></title>
-		<link>http://localhost:8000/index.php/podcasts/gi-huns-sacrifice-and-the-us-squid-game-setup/gi-hun_s_sacrifice_and_the_us_squid_game_setup/</link>
-		<pubDate>Thu, 01 Jan 2026 04:53:58 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/Gi-hun_s_Sacrifice_and_the_US_Squid_Game_Setup.m4a</guid>
-		<description></description>
-		<content:encoded><![CDATA["Gi-hun_s_Sacrifice_and_the_US_Squid_Game_Setup".]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>57</wp:post_id>
-		<wp:post_date><![CDATA[2026-01-01 12:53:58]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-01-01 04:53:58]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-01-01 12:54:27]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-01-01 04:54:27]]></wp:post_modified_gmt>
-		<wp:comment_status><![CDATA[open]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[gi-hun_s_sacrifice_and_the_us_squid_game_setup]]></wp:post_name>
-		<wp:status><![CDATA[inherit]]></wp:status>
-		<wp:post_parent>56</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01045358/Gi-hun_s_Sacrifice_and_the_US_Squid_Game_Setup.m4a]]></wp:attachment_url>
-											<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2026/01/Gi-hun_s_Sacrifice_and_the_US_Squid_Game_Setup.m4a]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_object_version]]></wp:meta_key>
-		<wp:meta_value><![CDATA[01045358]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_path]]></wp:meta_key>
-		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/01045358/]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_offloaded]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_offloaded_at]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1767243251]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_provider]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Cloudflare R2]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_bucket]]></wp:meta_key>
-		<wp:meta_value><![CDATA[aripplesong]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:17:{s:10:"dataformat";s:3:"mp4";s:5:"codec";s:19:"ISO/IEC 14496-3 AAC";s:11:"sample_rate";d:44100;s:8:"channels";i:2;s:15:"bits_per_sample";i:16;s:8:"lossless";b:0;s:11:"channelmode";s:6:"stereo";s:7:"bitrate";d:106.59167150961072;s:17:"compression_ratio";d:7.553264704479217E-5;s:10:"fileformat";s:3:"mp4";s:8:"filesize";i:21539804;s:9:"mime_type";s:9:"audio/mp4";s:6:"length";i:669;s:16:"length_formatted";s:5:"11:09";s:17:"created_timestamp";i:1767239554;s:6:"artist";s:0:"";s:5:"album";s:0:"";}]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
 		<title><![CDATA[MV5BYTU3ZDVhNmMtMDVlNC00MDc0LTgwNDMtYWE5MTI2ZGI4YWIwXkEyXkFqcGc@._V1_]]></title>
 		<link>http://localhost:8000/index.php/podcasts/gi-huns-sacrifice-and-the-us-squid-game-setup/mv5bytu3zdvhnmmtmdvlnc00mdc0ltgwndmtywe5mti2zgi4ywiwxkeyxkfqcgc-_v1_/</link>
 		<pubDate>Thu, 01 Jan 2026 04:56:15 +0000</pubDate>
@@ -973,63 +802,6 @@
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_bucket]]></wp:meta_key>
 		<wp:meta_value><![CDATA[aripplesong]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
-		<title><![CDATA[Black_Mirror_Season_7_Recap_and_Lore]]></title>
-		<link>http://localhost:8000/index.php/podcasts/black-mirror-season-7-recap-and-lore/black_mirror_season_7_recap_and_lore/</link>
-		<pubDate>Thu, 01 Jan 2026 07:16:05 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/Black_Mirror_Season_7_Recap_and_Lore.m4a</guid>
-		<description></description>
-		<content:encoded><![CDATA["Black_Mirror_Season_7_Recap_and_Lore".]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>60</wp:post_id>
-		<wp:post_date><![CDATA[2026-01-01 15:16:05]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-01-01 07:16:05]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-01-01 15:17:18]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-01-01 07:17:18]]></wp:post_modified_gmt>
-		<wp:comment_status><![CDATA[open]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[black_mirror_season_7_recap_and_lore]]></wp:post_name>
-		<wp:status><![CDATA[inherit]]></wp:status>
-		<wp:post_parent>59</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01071605/Black_Mirror_Season_7_Recap_and_Lore.m4a]]></wp:attachment_url>
-											<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2026/01/Black_Mirror_Season_7_Recap_and_Lore.m4a]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_object_version]]></wp:meta_key>
-		<wp:meta_value><![CDATA[01071605]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_path]]></wp:meta_key>
-		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/01071605/]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_offloaded]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_offloaded_at]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1767251777]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_provider]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Cloudflare R2]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_bucket]]></wp:meta_key>
-		<wp:meta_value><![CDATA[aripplesong]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:17:{s:10:"dataformat";s:3:"mp4";s:5:"codec";s:19:"ISO/IEC 14496-3 AAC";s:11:"sample_rate";d:44100;s:8:"channels";i:2;s:15:"bits_per_sample";i:16;s:8:"lossless";b:0;s:11:"channelmode";s:6:"stereo";s:7:"bitrate";d:956.8988012032374;s:17:"compression_ratio";d:0.000678074547337895;s:10:"fileformat";s:3:"mp4";s:8:"filesize";i:24191971;s:9:"mime_type";s:9:"audio/mp4";s:6:"length";i:752;s:16:"length_formatted";s:5:"12:32";s:17:"created_timestamp";i:1767239471;s:6:"artist";s:0:"";s:5:"album";s:0:"";}]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
@@ -1147,63 +919,6 @@
 		</wp:postmeta>
 							</item>
 					<item>
-		<title><![CDATA[Dept_Q_Success_and_Season_Two_Changes]]></title>
-		<link>http://localhost:8000/index.php/podcasts/dept-q-success-and-season-two-changes/dept_q_success_and_season_two_changes-2/</link>
-		<pubDate>Thu, 01 Jan 2026 07:19:48 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/Dept_Q_Success_and_Season_Two_Changes-1.m4a</guid>
-		<description></description>
-		<content:encoded><![CDATA["Dept_Q_Success_and_Season_Two_Changes".]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>64</wp:post_id>
-		<wp:post_date><![CDATA[2026-01-01 15:19:48]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-01-01 07:19:48]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-01-01 15:20:03]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-01-01 07:20:03]]></wp:post_modified_gmt>
-		<wp:comment_status><![CDATA[open]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[dept_q_success_and_season_two_changes-2]]></wp:post_name>
-		<wp:status><![CDATA[inherit]]></wp:status>
-		<wp:post_parent>62</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01071948/Dept_Q_Success_and_Season_Two_Changes-1.m4a]]></wp:attachment_url>
-											<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2026/01/Dept_Q_Success_and_Season_Two_Changes-1.m4a]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_object_version]]></wp:meta_key>
-		<wp:meta_value><![CDATA[01071948]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_path]]></wp:meta_key>
-		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/01071948/]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_offloaded]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_offloaded_at]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1767252000]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_provider]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Cloudflare R2]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_bucket]]></wp:meta_key>
-		<wp:meta_value><![CDATA[aripplesong]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:17:{s:10:"dataformat";s:3:"mp4";s:5:"codec";s:19:"ISO/IEC 14496-3 AAC";s:11:"sample_rate";d:44100;s:8:"channels";i:2;s:15:"bits_per_sample";i:16;s:8:"lossless";b:0;s:11:"channelmode";s:6:"stereo";s:7:"bitrate";d:1460.1496743486973;s:17:"compression_ratio";d:0.0010346865606212425;s:10:"fileformat";s:3:"mp4";s:8:"filesize";i:24239782;s:9:"mime_type";s:9:"audio/mp4";s:6:"length";i:753;s:16:"length_formatted";s:5:"12:33";s:17:"created_timestamp";i:1767239481;s:6:"artist";s:0:"";s:5:"album";s:0:"";}]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
 		<title><![CDATA[MV5BYjVmMjA4MGMtZGJiOS00NmRlLTkwNTgtMjFiNzIzZTUyZmU1XkEyXkFqcGc@._V1_]]></title>
 		<link>http://localhost:8000/index.php/podcasts/dept-q-success-and-season-two-changes/mv5byjvmmja4mgmtzgjios00nmrlltkwntgtmjfinzizztuyzmu1xkeyxkfqcgc-_v1_/</link>
 		<pubDate>Thu, 01 Jan 2026 07:20:53 +0000</pubDate>
@@ -1258,63 +973,6 @@
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_bucket]]></wp:meta_key>
 		<wp:meta_value><![CDATA[aripplesong]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
-		<title><![CDATA[Dexter_Merger_Killing_Prequel_Resurrects_Sequel]]></title>
-		<link>http://localhost:8000/index.php/podcasts/dexter-merger-killing-prequel-resurrects-sequel/dexter_merger_killing_prequel_resurrects_sequel/</link>
-		<pubDate>Thu, 01 Jan 2026 07:23:32 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/Dexter_Merger_Killing_Prequel_Resurrects_Sequel.m4a</guid>
-		<description></description>
-		<content:encoded><![CDATA["Dexter_Merger_Killing_Prequel_Resurrects_Sequel".]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>67</wp:post_id>
-		<wp:post_date><![CDATA[2026-01-01 15:23:32]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-01-01 07:23:32]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-01-01 15:24:14]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-01-01 07:24:14]]></wp:post_modified_gmt>
-		<wp:comment_status><![CDATA[open]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[dexter_merger_killing_prequel_resurrects_sequel]]></wp:post_name>
-		<wp:status><![CDATA[inherit]]></wp:status>
-		<wp:post_parent>66</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01072332/Dexter_Merger_Killing_Prequel_Resurrects_Sequel.m4a]]></wp:attachment_url>
-											<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2026/01/Dexter_Merger_Killing_Prequel_Resurrects_Sequel.m4a]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_object_version]]></wp:meta_key>
-		<wp:meta_value><![CDATA[01072332]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_path]]></wp:meta_key>
-		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/01072332/]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_offloaded]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_offloaded_at]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1767252230]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_provider]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Cloudflare R2]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_bucket]]></wp:meta_key>
-		<wp:meta_value><![CDATA[aripplesong]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:17:{s:10:"dataformat";s:3:"mp4";s:5:"codec";s:19:"ISO/IEC 14496-3 AAC";s:11:"sample_rate";d:44100;s:8:"channels";i:2;s:15:"bits_per_sample";i:16;s:8:"lossless";b:0;s:11:"channelmode";s:6:"stereo";s:7:"bitrate";d:2996.0996801947563;s:17:"compression_ratio";d:0.0021230865080745153;s:10:"fileformat";s:3:"mp4";s:8:"filesize";i:24712026;s:9:"mime_type";s:9:"audio/mp4";s:6:"length";i:768;s:16:"length_formatted";s:5:"12:48";s:17:"created_timestamp";i:1767239415;s:6:"artist";s:0:"";s:5:"album";s:0:"";}]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
@@ -1432,63 +1090,6 @@
 		</wp:postmeta>
 							</item>
 					<item>
-		<title><![CDATA[Three_Monsters_Netflix_Anime_Film]]></title>
-		<link>http://localhost:8000/index.php/podcasts/three-monsters-netflix-anime-film/three_monsters_netflix_anime_film/</link>
-		<pubDate>Thu, 01 Jan 2026 07:27:21 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/Three_Monsters_Netflix_Anime_Film.m4a</guid>
-		<description></description>
-		<content:encoded><![CDATA["Three_Monsters_Netflix_Anime_Film".]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>71</wp:post_id>
-		<wp:post_date><![CDATA[2026-01-01 15:27:21]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-01-01 07:27:21]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-01-01 15:28:00]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-01-01 07:28:00]]></wp:post_modified_gmt>
-		<wp:comment_status><![CDATA[open]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[three_monsters_netflix_anime_film]]></wp:post_name>
-		<wp:status><![CDATA[inherit]]></wp:status>
-		<wp:post_parent>69</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01072721/Three_Monsters_Netflix_Anime_Film.m4a]]></wp:attachment_url>
-											<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2026/01/Three_Monsters_Netflix_Anime_Film.m4a]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_object_version]]></wp:meta_key>
-		<wp:meta_value><![CDATA[01072721]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_path]]></wp:meta_key>
-		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/01072721/]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_offloaded]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_offloaded_at]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1767252470]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_provider]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Cloudflare R2]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_bucket]]></wp:meta_key>
-		<wp:meta_value><![CDATA[aripplesong]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:17:{s:10:"dataformat";s:3:"mp4";s:5:"codec";s:19:"ISO/IEC 14496-3 AAC";s:11:"sample_rate";d:44100;s:8:"channels";i:2;s:15:"bits_per_sample";i:16;s:8:"lossless";b:0;s:11:"channelmode";s:6:"stereo";s:7:"bitrate";d:571.1746987951807;s:17:"compression_ratio";d:0.00040474397590361443;s:10:"fileformat";s:3:"mp4";s:8:"filesize";i:25121635;s:9:"mime_type";s:9:"audio/mp4";s:6:"length";i:781;s:16:"length_formatted";s:5:"13:01";s:17:"created_timestamp";i:1767239622;s:6:"artist";s:0:"";s:5:"album";s:0:"";}]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
 		<title><![CDATA[MV5BZDI5YzJhODQtMzQyNy00YWNmLWIxMjUtNDBjNjA5YWRjMzExXkEyXkFqcGc@._V1_]]></title>
 		<link>http://localhost:8000/index.php/podcasts/decoded-lumons-cult-marks-choice/mv5bzdi5yzjhodqtmzqyny00ywnmlwixmjutndbjnja5ywrjmzexxkeyxkfqcgc-_v1_/</link>
 		<pubDate>Thu, 01 Jan 2026 07:29:15 +0000</pubDate>
@@ -1543,6 +1144,405 @@
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_bucket]]></wp:meta_key>
 		<wp:meta_value><![CDATA[aripplesong]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[Decoded_Lumon_s_Cult_Mark_s_Choice]]></title>
+		<link>http://localhost:8000/index.php/podcasts/decoded-lumons-cult-marks-choice/decoded_lumon_s_cult_mark_s_choice/</link>
+		<pubDate>Thu, 01 Jan 2026 07:29:41 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/Decoded_Lumon_s_Cult_Mark_s_Choice.m4a</guid>
+		<description></description>
+		<content:encoded><![CDATA["Decoded_Lumon_s_Cult_Mark_s_Choice".]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>74</wp:post_id>
+		<wp:post_date><![CDATA[2026-01-01 15:29:41]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-01-01 07:29:41]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2026-01-01 15:30:09]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-01-01 07:30:09]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[decoded_lumon_s_cult_mark_s_choice]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>72</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01072941/Decoded_Lumon_s_Cult_Mark_s_Choice.m4a]]></wp:attachment_url>
+											<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2026/01/Decoded_Lumon_s_Cult_Mark_s_Choice.m4a]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_object_version]]></wp:meta_key>
+		<wp:meta_value><![CDATA[01072941]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_path]]></wp:meta_key>
+		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/01072941/]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_offloaded]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_offloaded_at]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1767252609]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_provider]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Cloudflare R2]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_bucket]]></wp:meta_key>
+		<wp:meta_value><![CDATA[aripplesong]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:17:{s:10:"dataformat";s:3:"mp4";s:5:"codec";s:19:"ISO/IEC 14496-3 AAC";s:11:"sample_rate";d:44100;s:8:"channels";i:2;s:15:"bits_per_sample";i:16;s:8:"lossless";b:0;s:11:"channelmode";s:6:"stereo";s:7:"bitrate";d:308.61028876686953;s:17:"compression_ratio";d:0.0002186864291148452;s:10:"fileformat";s:3:"mp4";s:8:"filesize";i:25417579;s:9:"mime_type";s:9:"audio/mp4";s:6:"length";i:790;s:16:"length_formatted";s:5:"13:10";s:17:"created_timestamp";i:1767239576;s:6:"artist";s:0:"";s:5:"album";s:0:"";}]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[MV5BODE3OGFmNzgtNDhmYi00MzAwLWE5NzQtYjA2NmFkMmM1ZDhlXkEyXkFqcGc@._V1_]]></title>
+		<link>http://localhost:8000/index.php/podcasts/druckmann-leaves-last-of-us-season-3/mv5bode3ogfmnzgtndhmyi00mzawlwe5nzqtyja2nmfkmmm1zdhlxkeyxkfqcgc-_v1_/</link>
+		<pubDate>Thu, 01 Jan 2026 07:50:37 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/MV5BODE3OGFmNzgtNDhmYi00MzAwLWE5NzQtYjA2NmFkMmM1ZDhlXkEyXkFqcGc@._V1_.jpg</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>77</wp:post_id>
+		<wp:post_date><![CDATA[2026-01-01 15:50:37]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-01-01 07:50:37]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2026-01-01 15:50:37]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-01-01 07:50:37]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[mv5bode3ogfmnzgtndhmyi00mzawlwe5nzqtyja2nmfkmmm1zdhlxkeyxkfqcgc-_v1_]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>76</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01075037/MV5BODE3OGFmNzgtNDhmYi00MzAwLWE5NzQtYjA2NmFkMmM1ZDhlXkEyXkFqcGc@._V1_.jpg]]></wp:attachment_url>
+											<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2026/01/MV5BODE3OGFmNzgtNDhmYi00MzAwLWE5NzQtYjA2NmFkMmM1ZDhlXkEyXkFqcGc@._V1_.jpg]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:6:{s:5:"width";i:1080;s:6:"height";i:1620;s:4:"file";s:81:"2026/01/MV5BODE3OGFmNzgtNDhmYi00MzAwLWE5NzQtYjA2NmFkMmM1ZDhlXkEyXkFqcGc@._V1_.jpg";s:8:"filesize";i:519164;s:5:"sizes";a:5:{s:6:"medium";a:5:{s:4:"file";s:81:"MV5BODE3OGFmNzgtNDhmYi00MzAwLWE5NzQtYjA2NmFkMmM1ZDhlXkEyXkFqcGc@._V1_-200x300.jpg";s:5:"width";i:200;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:15714;}s:5:"large";a:5:{s:4:"file";s:82:"MV5BODE3OGFmNzgtNDhmYi00MzAwLWE5NzQtYjA2NmFkMmM1ZDhlXkEyXkFqcGc@._V1_-683x1024.jpg";s:5:"width";i:683;s:6:"height";i:1024;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:125894;}s:9:"thumbnail";a:5:{s:4:"file";s:81:"MV5BODE3OGFmNzgtNDhmYi00MzAwLWE5NzQtYjA2NmFkMmM1ZDhlXkEyXkFqcGc@._V1_-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:7788;}s:12:"medium_large";a:5:{s:4:"file";s:82:"MV5BODE3OGFmNzgtNDhmYi00MzAwLWE5NzQtYjA2NmFkMmM1ZDhlXkEyXkFqcGc@._V1_-768x1152.jpg";s:5:"width";i:768;s:6:"height";i:1152;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:152932;}s:9:"1536x1536";a:5:{s:4:"file";s:83:"MV5BODE3OGFmNzgtNDhmYi00MzAwLWE5NzQtYjA2NmFkMmM1ZDhlXkEyXkFqcGc@._V1_-1024x1536.jpg";s:5:"width";i:1024;s:6:"height";i:1536;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:245391;}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_object_version]]></wp:meta_key>
+		<wp:meta_value><![CDATA[01075037]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_path]]></wp:meta_key>
+		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/01075037/]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_offloaded]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_offloaded_at]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1767253851]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_provider]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Cloudflare R2]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_bucket]]></wp:meta_key>
+		<wp:meta_value><![CDATA[aripplesong]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[MV5BMDE1NjNmZjgtZTg0OC00NjkxLWEzYzItMDNkMTc3YjgxZWQyXkEyXkFqcGc@._V1_]]></title>
+		<link>http://localhost:8000/index.php/podcasts/wednesday-season-2-lore-and-long-wait/mv5bmde1njnmzjgtztg0oc00njkxlwezyzitmdnkmtc3yjgxzwqyxkeyxkfqcgc-_v1_/</link>
+		<pubDate>Thu, 01 Jan 2026 07:53:49 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/MV5BMDE1NjNmZjgtZTg0OC00NjkxLWEzYzItMDNkMTc3YjgxZWQyXkEyXkFqcGc@._V1_.jpg</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>80</wp:post_id>
+		<wp:post_date><![CDATA[2026-01-01 15:53:49]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-01-01 07:53:49]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2026-01-01 15:53:49]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-01-01 07:53:49]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[mv5bmde1njnmzjgtztg0oc00njkxlwezyzitmdnkmtc3yjgxzwqyxkeyxkfqcgc-_v1_]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>79</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01075349/MV5BMDE1NjNmZjgtZTg0OC00NjkxLWEzYzItMDNkMTc3YjgxZWQyXkEyXkFqcGc@._V1_.jpg]]></wp:attachment_url>
+											<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2026/01/MV5BMDE1NjNmZjgtZTg0OC00NjkxLWEzYzItMDNkMTc3YjgxZWQyXkEyXkFqcGc@._V1_.jpg]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:6:{s:5:"width";i:1500;s:6:"height";i:2222;s:4:"file";s:81:"2026/01/MV5BMDE1NjNmZjgtZTg0OC00NjkxLWEzYzItMDNkMTc3YjgxZWQyXkEyXkFqcGc@._V1_.jpg";s:8:"filesize";i:1882394;s:5:"sizes";a:6:{s:6:"medium";a:5:{s:4:"file";s:81:"MV5BMDE1NjNmZjgtZTg0OC00NjkxLWEzYzItMDNkMTc3YjgxZWQyXkEyXkFqcGc@._V1_-203x300.jpg";s:5:"width";i:203;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:12854;}s:5:"large";a:5:{s:4:"file";s:82:"MV5BMDE1NjNmZjgtZTg0OC00NjkxLWEzYzItMDNkMTc3YjgxZWQyXkEyXkFqcGc@._V1_-691x1024.jpg";s:5:"width";i:691;s:6:"height";i:1024;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:92259;}s:9:"thumbnail";a:5:{s:4:"file";s:81:"MV5BMDE1NjNmZjgtZTg0OC00NjkxLWEzYzItMDNkMTc3YjgxZWQyXkEyXkFqcGc@._V1_-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:5807;}s:12:"medium_large";a:5:{s:4:"file";s:82:"MV5BMDE1NjNmZjgtZTg0OC00NjkxLWEzYzItMDNkMTc3YjgxZWQyXkEyXkFqcGc@._V1_-768x1138.jpg";s:5:"width";i:768;s:6:"height";i:1138;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:108553;}s:9:"1536x1536";a:5:{s:4:"file";s:83:"MV5BMDE1NjNmZjgtZTg0OC00NjkxLWEzYzItMDNkMTc3YjgxZWQyXkEyXkFqcGc@._V1_-1037x1536.jpg";s:5:"width";i:1037;s:6:"height";i:1536;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:179465;}s:9:"2048x2048";a:5:{s:4:"file";s:83:"MV5BMDE1NjNmZjgtZTg0OC00NjkxLWEzYzItMDNkMTc3YjgxZWQyXkEyXkFqcGc@._V1_-1383x2048.jpg";s:5:"width";i:1383;s:6:"height";i:2048;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:288892;}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_object_version]]></wp:meta_key>
+		<wp:meta_value><![CDATA[01075349]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_path]]></wp:meta_key>
+		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/01075349/]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_offloaded]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_offloaded_at]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1767254047]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_provider]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Cloudflare R2]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_bucket]]></wp:meta_key>
+		<wp:meta_value><![CDATA[aripplesong]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[MV5BZDI5YzJhODQtMzQyNy00YWNmLWIxMjUtNDBjNjA5YWRjMzExXkEyXkFqcGc@._V1_]]></title>
+		<link>http://localhost:8000/index.php/podcasts/decoded-lumons-cult-marks-choice/mv5bzdi5yzjhodqtmzqyny00ywnmlwixmjutndbjnja5ywrjmzexxkeyxkfqcgc-_v1_-2/</link>
+		<pubDate>Thu, 01 Jan 2026 08:29:22 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/MV5BZDI5YzJhODQtMzQyNy00YWNmLWIxMjUtNDBjNjA5YWRjMzExXkEyXkFqcGc@._V1_-1.jpg</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>82</wp:post_id>
+		<wp:post_date><![CDATA[2026-01-01 16:29:22]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-01-01 08:29:22]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2026-01-01 16:29:22]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-01-01 08:29:22]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[mv5bzdi5yzjhodqtmzqyny00ywnmlwixmjutndbjnja5ywrjmzexxkeyxkfqcgc-_v1_-2]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>72</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01082923/MV5BZDI5YzJhODQtMzQyNy00YWNmLWIxMjUtNDBjNjA5YWRjMzExXkEyXkFqcGc@._V1_-1-scaled.jpg]]></wp:attachment_url>
+											<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2026/01/MV5BZDI5YzJhODQtMzQyNy00YWNmLWIxMjUtNDBjNjA5YWRjMzExXkEyXkFqcGc@._V1_-1-scaled.jpg]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:7:{s:5:"width";i:1707;s:6:"height";i:2560;s:4:"file";s:90:"2026/01/MV5BZDI5YzJhODQtMzQyNy00YWNmLWIxMjUtNDBjNjA5YWRjMzExXkEyXkFqcGc@._V1_-1-scaled.jpg";s:8:"filesize";i:491018;s:5:"sizes";a:6:{s:6:"medium";a:5:{s:4:"file";s:83:"MV5BZDI5YzJhODQtMzQyNy00YWNmLWIxMjUtNDBjNjA5YWRjMzExXkEyXkFqcGc@._V1_-1-200x300.jpg";s:5:"width";i:200;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:9968;}s:5:"large";a:5:{s:4:"file";s:84:"MV5BZDI5YzJhODQtMzQyNy00YWNmLWIxMjUtNDBjNjA5YWRjMzExXkEyXkFqcGc@._V1_-1-683x1024.jpg";s:5:"width";i:683;s:6:"height";i:1024;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:72164;}s:9:"thumbnail";a:5:{s:4:"file";s:83:"MV5BZDI5YzJhODQtMzQyNy00YWNmLWIxMjUtNDBjNjA5YWRjMzExXkEyXkFqcGc@._V1_-1-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:4247;}s:12:"medium_large";a:5:{s:4:"file";s:84:"MV5BZDI5YzJhODQtMzQyNy00YWNmLWIxMjUtNDBjNjA5YWRjMzExXkEyXkFqcGc@._V1_-1-768x1152.jpg";s:5:"width";i:768;s:6:"height";i:1152;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:89380;}s:9:"1536x1536";a:5:{s:4:"file";s:85:"MV5BZDI5YzJhODQtMzQyNy00YWNmLWIxMjUtNDBjNjA5YWRjMzExXkEyXkFqcGc@._V1_-1-1024x1536.jpg";s:5:"width";i:1024;s:6:"height";i:1536;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:162832;}s:9:"2048x2048";a:5:{s:4:"file";s:85:"MV5BZDI5YzJhODQtMzQyNy00YWNmLWIxMjUtNDBjNjA5YWRjMzExXkEyXkFqcGc@._V1_-1-1365x2048.jpg";s:5:"width";i:1365;s:6:"height";i:2048;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:303988;}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}s:14:"original_image";s:75:"MV5BZDI5YzJhODQtMzQyNy00YWNmLWIxMjUtNDBjNjA5YWRjMzExXkEyXkFqcGc@._V1_-1.jpg";}]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_object_version]]></wp:meta_key>
+		<wp:meta_value><![CDATA[01082923]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_path]]></wp:meta_key>
+		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/01082923/]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_offloaded]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_offloaded_at]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1767256174]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_provider]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Cloudflare R2]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_bucket]]></wp:meta_key>
+		<wp:meta_value><![CDATA[aripplesong]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[Andor_s_Emmy_Wins_Political_Conclusion]]></title>
+		<link>http://localhost:8000/index.php/podcasts/andor-season-2-political-thriller-masterclass/andor_s_emmy_wins_political_conclusion/</link>
+		<pubDate>Mon, 05 Jan 2026 02:26:47 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/Andor_s_Emmy_Wins_Political_Conclusion.m4a</guid>
+		<description></description>
+		<content:encoded><![CDATA["Andor_s_Emmy_Wins_Political_Conclusion".]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>89</wp:post_id>
+		<wp:post_date><![CDATA[2026-01-05 10:26:47]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-01-05 02:26:47]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2026-01-05 10:26:51]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-01-05 02:26:51]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[andor_s_emmy_wins_political_conclusion]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>51</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/05022647/Andor_s_Emmy_Wins_Political_Conclusion.m4a]]></wp:attachment_url>
+											<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2026/01/Andor_s_Emmy_Wins_Political_Conclusion.m4a]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_object_version]]></wp:meta_key>
+		<wp:meta_value><![CDATA[05022647]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_path]]></wp:meta_key>
+		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/05022647/]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_offloaded]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_offloaded_at]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1767580009]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_provider]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Cloudflare R2]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_bucket]]></wp:meta_key>
+		<wp:meta_value><![CDATA[aripplesong]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:17:{s:10:"dataformat";s:3:"mp4";s:5:"codec";s:19:"ISO/IEC 14496-3 AAC";s:11:"sample_rate";d:44100;s:8:"channels";i:2;s:15:"bits_per_sample";i:16;s:8:"lossless";b:0;s:11:"channelmode";s:6:"stereo";s:7:"bitrate";d:13414.27866368756;s:17:"compression_ratio";d:0.00950558295329334;s:10:"fileformat";s:3:"mp4";s:8:"filesize";i:3052836;s:9:"mime_type";s:9:"audio/mp4";s:6:"length";i:95;s:16:"length_formatted";s:4:"1:35";s:17:"created_timestamp";i:1767579277;s:6:"artist";s:0:"";s:5:"album";s:0:"";}]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[France_New_Cast_No_White_Lotus_Theme]]></title>
+		<link>http://localhost:8000/index.php/podcasts/white-lotus-france-new-sound-new-legacy/france_new_cast_no_white_lotus_theme/</link>
+		<pubDate>Mon, 05 Jan 2026 02:27:26 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/France_New_Cast_No_White_Lotus_Theme.m4a</guid>
+		<description></description>
+		<content:encoded><![CDATA["France_New_Cast_No_White_Lotus_Theme".]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>90</wp:post_id>
+		<wp:post_date><![CDATA[2026-01-05 10:27:26]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-01-05 02:27:26]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2026-01-05 10:27:30]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-01-05 02:27:30]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[france_new_cast_no_white_lotus_theme]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>53</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/05022726/France_New_Cast_No_White_Lotus_Theme.m4a]]></wp:attachment_url>
+											<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2026/01/France_New_Cast_No_White_Lotus_Theme.m4a]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_object_version]]></wp:meta_key>
+		<wp:meta_value><![CDATA[05022726]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_path]]></wp:meta_key>
+		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/05022726/]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_offloaded]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_offloaded_at]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1767580049]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_provider]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Cloudflare R2]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_bucket]]></wp:meta_key>
+		<wp:meta_value><![CDATA[aripplesong]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:17:{s:10:"dataformat";s:3:"mp4";s:5:"codec";s:19:"ISO/IEC 14496-3 AAC";s:11:"sample_rate";d:44100;s:8:"channels";i:2;s:15:"bits_per_sample";i:16;s:8:"lossless";b:0;s:11:"channelmode";s:6:"stereo";s:7:"bitrate";d:23579.886059976245;s:17:"compression_ratio";d:0.016709102933656635;s:10:"fileformat";s:3:"mp4";s:8:"filesize";i:2832344;s:9:"mime_type";s:9:"audio/mp4";s:6:"length";i:88;s:16:"length_formatted";s:4:"1:28";s:17:"created_timestamp";i:1767579293;s:6:"artist";s:0:"";s:5:"album";s:0:"";}]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[Gi-hun_Dies_Cate_Blanchett_Recruits]]></title>
+		<link>http://localhost:8000/index.php/podcasts/gi-huns-sacrifice-and-the-us-squid-game-setup/gi-hun_dies_cate_blanchett_recruits/</link>
+		<pubDate>Mon, 05 Jan 2026 02:28:55 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/Gi-hun_Dies_Cate_Blanchett_Recruits.m4a</guid>
+		<description></description>
+		<content:encoded><![CDATA["Gi-hun_Dies_Cate_Blanchett_Recruits".]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>91</wp:post_id>
+		<wp:post_date><![CDATA[2026-01-05 10:28:55]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-01-05 02:28:55]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2026-01-05 10:28:59]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-01-05 02:28:59]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[gi-hun_dies_cate_blanchett_recruits]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>56</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/05022855/Gi-hun_Dies_Cate_Blanchett_Recruits.m4a]]></wp:attachment_url>
+											<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2026/01/Gi-hun_Dies_Cate_Blanchett_Recruits.m4a]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_object_version]]></wp:meta_key>
+		<wp:meta_value><![CDATA[05022855]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_path]]></wp:meta_key>
+		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/05022855/]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_offloaded]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_offloaded_at]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1767580137]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_provider]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Cloudflare R2]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_bucket]]></wp:meta_key>
+		<wp:meta_value><![CDATA[aripplesong]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:17:{s:10:"dataformat";s:3:"mp4";s:5:"codec";s:19:"ISO/IEC 14496-3 AAC";s:11:"sample_rate";d:44100;s:8:"channels";i:2;s:15:"bits_per_sample";i:16;s:8:"lossless";b:0;s:11:"channelmode";s:6:"stereo";s:7:"bitrate";d:3956.5545399255866;s:17:"compression_ratio";d:0.002803680938155886;s:10:"fileformat";s:3:"mp4";s:8:"filesize";i:3917508;s:9:"mime_type";s:9:"audio/mp4";s:6:"length";i:122;s:16:"length_formatted";s:4:"2:02";s:17:"created_timestamp";i:1767579405;s:6:"artist";s:0:"";s:5:"album";s:0:"";}]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
@@ -1832,7 +1832,7 @@
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
 		<wp:meta_key><![CDATA[_views_count]]></wp:meta_key>
-		<wp:meta_value><![CDATA[185]]></wp:meta_value>
+		<wp:meta_value><![CDATA[198]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
@@ -1922,8 +1922,8 @@
 		<wp:post_id>51</wp:post_id>
 		<wp:post_date><![CDATA[2026-01-01 12:38:50]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2026-01-01 04:38:50]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-01-01 12:38:50]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-01-01 04:38:50]]></wp:post_modified_gmt>
+		<wp:post_modified><![CDATA[2026-01-05 10:26:53]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-01-05 02:26:53]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[open]]></wp:comment_status>
 		<wp:ping_status><![CDATA[open]]></wp:ping_status>
 		<wp:post_name><![CDATA[andor-season-2-political-thriller-masterclass]]></wp:post_name>
@@ -1958,19 +1958,19 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_file_id]]></wp:meta_key>
-		<wp:meta_value><![CDATA[52]]></wp:meta_value>
+		<wp:meta_value><![CDATA[89]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01043710/Andor_Season_2_Political_Thriller_Masterclass.m4a]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/05022647/Andor_s_Emmy_Wins_Political_Conclusion.m4a]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[duration]]></wp:meta_key>
-		<wp:meta_value><![CDATA[712]]></wp:meta_value>
+		<wp:meta_value><![CDATA[95]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_length]]></wp:meta_key>
-		<wp:meta_value><![CDATA[22911830]]></wp:meta_value>
+		<wp:meta_value><![CDATA[3052836]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_mime]]></wp:meta_key>
@@ -2027,8 +2027,8 @@
 		<wp:post_id>53</wp:post_id>
 		<wp:post_date><![CDATA[2026-01-01 12:51:52]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2026-01-01 04:51:52]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-01-01 12:51:52]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-01-01 04:51:52]]></wp:post_modified_gmt>
+		<wp:post_modified><![CDATA[2026-01-05 10:27:31]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-01-05 02:27:31]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[open]]></wp:comment_status>
 		<wp:ping_status><![CDATA[open]]></wp:ping_status>
 		<wp:post_name><![CDATA[white-lotus-france-new-sound-new-legacy]]></wp:post_name>
@@ -2063,19 +2063,19 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_file_id]]></wp:meta_key>
-		<wp:meta_value><![CDATA[54]]></wp:meta_value>
+		<wp:meta_value><![CDATA[90]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01044722/White_Lotus_France_New_Sound_New_Legacy.m4a]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/05022726/France_New_Cast_No_White_Lotus_Theme.m4a]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[duration]]></wp:meta_key>
-		<wp:meta_value><![CDATA[887]]></wp:meta_value>
+		<wp:meta_value><![CDATA[88]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_length]]></wp:meta_key>
-		<wp:meta_value><![CDATA[28545726]]></wp:meta_value>
+		<wp:meta_value><![CDATA[2832344]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_mime]]></wp:meta_key>
@@ -2136,8 +2136,8 @@
 		<wp:post_id>56</wp:post_id>
 		<wp:post_date><![CDATA[2026-01-01 12:56:37]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2026-01-01 04:56:37]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-01-01 12:57:27]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-01-01 04:57:27]]></wp:post_modified_gmt>
+		<wp:post_modified><![CDATA[2026-01-05 10:29:00]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-01-05 02:29:00]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[open]]></wp:comment_status>
 		<wp:ping_status><![CDATA[open]]></wp:ping_status>
 		<wp:post_name><![CDATA[gi-huns-sacrifice-and-the-us-squid-game-setup]]></wp:post_name>
@@ -2172,19 +2172,19 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_file_id]]></wp:meta_key>
-		<wp:meta_value><![CDATA[57]]></wp:meta_value>
+		<wp:meta_value><![CDATA[91]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01045358/Gi-hun_s_Sacrifice_and_the_US_Squid_Game_Setup.m4a]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/05022855/Gi-hun_Dies_Cate_Blanchett_Recruits.m4a]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[duration]]></wp:meta_key>
-		<wp:meta_value><![CDATA[669]]></wp:meta_value>
+		<wp:meta_value><![CDATA[122]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_length]]></wp:meta_key>
-		<wp:meta_value><![CDATA[21539804]]></wp:meta_value>
+		<wp:meta_value><![CDATA[3917508]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_mime]]></wp:meta_key>
@@ -2241,8 +2241,8 @@
 		<wp:post_id>59</wp:post_id>
 		<wp:post_date><![CDATA[2026-01-01 15:18:12]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2026-01-01 07:18:12]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-01-01 15:18:12]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-01-01 07:18:12]]></wp:post_modified_gmt>
+		<wp:post_modified><![CDATA[2026-01-05 10:34:03]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-01-05 02:34:03]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[open]]></wp:comment_status>
 		<wp:ping_status><![CDATA[open]]></wp:ping_status>
 		<wp:post_name><![CDATA[black-mirror-season-7-recap-and-lore]]></wp:post_name>
@@ -2277,19 +2277,19 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_file_id]]></wp:meta_key>
-		<wp:meta_value><![CDATA[60]]></wp:meta_value>
+		<wp:meta_value><![CDATA[98]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01071605/Black_Mirror_Season_7_Recap_and_Lore.m4a]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/05023356/USS_Callister_Sequel_and_Brain_Tech.m4a]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[duration]]></wp:meta_key>
-		<wp:meta_value><![CDATA[752]]></wp:meta_value>
+		<wp:meta_value><![CDATA[95]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_length]]></wp:meta_key>
-		<wp:meta_value><![CDATA[24191971]]></wp:meta_value>
+		<wp:meta_value><![CDATA[3070765]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_mime]]></wp:meta_key>
@@ -2346,8 +2346,8 @@
 		<wp:post_id>62</wp:post_id>
 		<wp:post_date><![CDATA[2026-01-01 15:22:20]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2026-01-01 07:22:20]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-01-01 15:22:20]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-01-01 07:22:20]]></wp:post_modified_gmt>
+		<wp:post_modified><![CDATA[2026-01-05 10:30:28]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-01-05 02:30:28]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[open]]></wp:comment_status>
 		<wp:ping_status><![CDATA[open]]></wp:ping_status>
 		<wp:post_name><![CDATA[dept-q-success-and-season-two-changes]]></wp:post_name>
@@ -2382,19 +2382,19 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_file_id]]></wp:meta_key>
-		<wp:meta_value><![CDATA[64]]></wp:meta_value>
+		<wp:meta_value><![CDATA[92]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01071948/Dept_Q_Success_and_Season_Two_Changes-1.m4a]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/05023022/Dept_Q_Uncovers_Elite_School_Secrets.m4a]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[duration]]></wp:meta_key>
-		<wp:meta_value><![CDATA[753]]></wp:meta_value>
+		<wp:meta_value><![CDATA[91]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_length]]></wp:meta_key>
-		<wp:meta_value><![CDATA[24239782]]></wp:meta_value>
+		<wp:meta_value><![CDATA[2925092]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_mime]]></wp:meta_key>
@@ -2430,145 +2430,104 @@
 		</wp:postmeta>
 							</item>
 					<item>
-		<title><![CDATA[Dexter Merger Killing Prequel Resurrects Sequel]]></title>
-		<link>http://localhost:8000/index.php/podcasts/dexter-merger-killing-prequel-resurrects-sequel/</link>
-		<pubDate>Thu, 01 Jan 2026 07:24:54 +0000</pubDate>
+		<title><![CDATA[]]></title>
+		<link>http://localhost:8000/?p=88</link>
+		<pubDate></pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost:8000/?post_type=podcast&#038;p=66</guid>
+		<guid isPermaLink="false">http://localhost:8000/?p=88</guid>
 		<description></description>
-		<content:encoded><![CDATA[<!-- wp:paragraph -->
-<p>"Welcome back to 'The Dark Passenger,' your essential audio companion for deep dives into the <em>Dexter</em> universe. In today’s episode, we are sharpening our knives to dissect the monumental impact of <em>Dexter: Resurrection</em> and the shocking direction the franchise has taken. We are still reeling from the Season 1 finale, 'And Justice for All,' which delivered perhaps the most devastating twist in the series' twenty-year history: the tragic death of fan-favorite Angel Batista at the hands of billionaire Leon Prater. We will analyze how this loss dismantles the last bridge to Dexter’s past life in Miami and discuss Dexter's brutal retaliation that left Prater dead and his vault of secrets exposed.</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>We also break down the evolving dynamic between Dexter and Harrison in New York City. From Harrison's dark urges leading to the murder of Ryan Foster to his complex reconciliation with his father, the Morgan legacy has never been more precarious. Furthermore, we address the major industry news: Paramount has officially canceled the prequel <em>Dexter: Original Sin</em> to focus entirely on Michael C. Hall’s return, cementing this sequel as the true future of the franchise.</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>Looking ahead, we have exciting updates for the confirmed Season 2. Showrunner Clyde Phillips has announced that filming begins in April 2026, aiming for an October release to celebrate the show's 20th anniversary. We will speculate on the confirmed 'Big Bad' for the upcoming season: the elusive New York Ripper, identified in the finale as Don Framt. How will Dexter and Detective Claudette Wallace handle a villain who has haunted the city for decades? Join us as we explore the theories, the kill counts, and the future of the code."</p>
-<!-- /wp:paragraph -->]]></content:encoded>
+		<content:encoded><![CDATA[ ]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>66</wp:post_id>
-		<wp:post_date><![CDATA[2026-01-01 15:24:54]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-01-01 07:24:54]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-01-01 15:24:54]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-01-01 07:24:54]]></wp:post_modified_gmt>
-		<wp:comment_status><![CDATA[open]]></wp:comment_status>
-		<wp:ping_status><![CDATA[open]]></wp:ping_status>
-		<wp:post_name><![CDATA[dexter-merger-killing-prequel-resurrects-sequel]]></wp:post_name>
-		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_id>88</wp:post_id>
+		<wp:post_date><![CDATA[2026-01-04 12:16:40]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[0000-00-00 00:00:00]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2026-01-04 12:16:40]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[0000-00-00 00:00:00]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[]]></wp:post_name>
+		<wp:status><![CDATA[draft]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[podcast]]></wp:post_type>
+		<wp:menu_order>1</wp:menu_order>
+		<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
-										<category domain="post_tag" nicename="crime-drama"><![CDATA[Crime Drama]]></category>
-		<category domain="post_tag" nicename="dexter-resurrection"><![CDATA[Dexter Resurrection]]></category>
-		<category domain="post_tag" nicename="michael-c-hall"><![CDATA[Michael C Hall]]></category>
-		<category domain="post_tag" nicename="new-york-city"><![CDATA[New York City]]></category>
-		<category domain="post_tag" nicename="paramount-plus"><![CDATA[Paramount Plus]]></category>
-		<category domain="post_tag" nicename="serial-killer-mystery"><![CDATA[Serial Killer Mystery]]></category>
-		<category domain="podcast_category" nicename="tv-series"><![CDATA[TV Series]]></category>
-						<wp:postmeta>
+														<wp:postmeta>
 		<wp:meta_key><![CDATA[_views_count]]></wp:meta_key>
 		<wp:meta_value><![CDATA[0]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
-		<wp:meta_key><![CDATA[_play_count]]></wp:meta_key>
-		<wp:meta_value><![CDATA[5]]></wp:meta_value>
+		<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+		<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
-		<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
-		<wp:meta_value><![CDATA[68]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[audio_file_id]]></wp:meta_key>
-		<wp:meta_value><![CDATA[67]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[audio_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01072332/Dexter_Merger_Killing_Prequel_Resurrects_Sequel.m4a]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[duration]]></wp:meta_key>
-		<wp:meta_value><![CDATA[768]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[audio_length]]></wp:meta_key>
-		<wp:meta_value><![CDATA[24712026]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[audio_mime]]></wp:meta_key>
-		<wp:meta_value><![CDATA[audio/mp4]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[episode_explicit]]></wp:meta_key>
-		<wp:meta_value><![CDATA[clean]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[episode_type]]></wp:meta_key>
-		<wp:meta_value><![CDATA[full]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[episode_number]]></wp:meta_key>
+		<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
 		<wp:meta_value><![CDATA[0]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
-		<wp:meta_key><![CDATA[season_number]]></wp:meta_key>
-		<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+		<wp:meta_value><![CDATA[27]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
-		<wp:meta_key><![CDATA[episode_chapters_type]]></wp:meta_key>
-		<wp:meta_value><![CDATA[application/json+chapters]]></wp:meta_value>
+		<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+		<wp:meta_value><![CDATA[page]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
-		<wp:meta_key><![CDATA[episode_block]]></wp:meta_key>
-		<wp:meta_value><![CDATA[no]]></wp:meta_value>
+		<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
-		<wp:meta_key><![CDATA[members]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:1:{i:0;s:1:"1";}]]></wp:meta_value>
+		<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_orphaned]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1767500200]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
-		<title><![CDATA[Decoded_Lumon_s_Cult_Mark_s_Choice]]></title>
-		<link>http://localhost:8000/index.php/podcasts/decoded-lumons-cult-marks-choice/decoded_lumon_s_cult_mark_s_choice/</link>
-		<pubDate>Thu, 01 Jan 2026 07:29:41 +0000</pubDate>
+		<title><![CDATA[Dept_Q_Uncovers_Elite_School_Secrets]]></title>
+		<link>http://localhost:8000/index.php/podcasts/dept-q-success-and-season-two-changes/dept_q_uncovers_elite_school_secrets/</link>
+		<pubDate>Mon, 05 Jan 2026 02:30:22 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/Decoded_Lumon_s_Cult_Mark_s_Choice.m4a</guid>
+		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/Dept_Q_Uncovers_Elite_School_Secrets.m4a</guid>
 		<description></description>
-		<content:encoded><![CDATA["Decoded_Lumon_s_Cult_Mark_s_Choice".]]></content:encoded>
+		<content:encoded><![CDATA["Dept_Q_Uncovers_Elite_School_Secrets".]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>74</wp:post_id>
-		<wp:post_date><![CDATA[2026-01-01 15:29:41]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-01-01 07:29:41]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-01-01 15:30:09]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-01-01 07:30:09]]></wp:post_modified_gmt>
+		<wp:post_id>92</wp:post_id>
+		<wp:post_date><![CDATA[2026-01-05 10:30:22]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-01-05 02:30:22]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2026-01-05 10:30:27]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-01-05 02:30:27]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[open]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[decoded_lumon_s_cult_mark_s_choice]]></wp:post_name>
+		<wp:post_name><![CDATA[dept_q_uncovers_elite_school_secrets]]></wp:post_name>
 		<wp:status><![CDATA[inherit]]></wp:status>
-		<wp:post_parent>72</wp:post_parent>
+		<wp:post_parent>62</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
 		<wp:post_type><![CDATA[attachment]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01072941/Decoded_Lumon_s_Cult_Mark_s_Choice.m4a]]></wp:attachment_url>
+						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/05023022/Dept_Q_Uncovers_Elite_School_Secrets.m4a]]></wp:attachment_url>
 											<wp:postmeta>
 		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2026/01/Decoded_Lumon_s_Cult_Mark_s_Choice.m4a]]></wp:meta_value>
+		<wp:meta_value><![CDATA[2026/01/Dept_Q_Uncovers_Elite_School_Secrets.m4a]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_object_version]]></wp:meta_key>
-		<wp:meta_value><![CDATA[01072941]]></wp:meta_value>
+		<wp:meta_value><![CDATA[05023022]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_path]]></wp:meta_key>
-		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/01072941/]]></wp:meta_value>
+		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/05023022/]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_offloaded]]></wp:meta_key>
@@ -2576,7 +2535,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_offloaded_at]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1767252609]]></wp:meta_value>
+		<wp:meta_value><![CDATA[1767580226]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_provider]]></wp:meta_key>
@@ -2588,44 +2547,44 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:17:{s:10:"dataformat";s:3:"mp4";s:5:"codec";s:19:"ISO/IEC 14496-3 AAC";s:11:"sample_rate";d:44100;s:8:"channels";i:2;s:15:"bits_per_sample";i:16;s:8:"lossless";b:0;s:11:"channelmode";s:6:"stereo";s:7:"bitrate";d:308.61028876686953;s:17:"compression_ratio";d:0.0002186864291148452;s:10:"fileformat";s:3:"mp4";s:8:"filesize";i:25417579;s:9:"mime_type";s:9:"audio/mp4";s:6:"length";i:790;s:16:"length_formatted";s:5:"13:10";s:17:"created_timestamp";i:1767239576;s:6:"artist";s:0:"";s:5:"album";s:0:"";}]]></wp:meta_value>
+		<wp:meta_value><![CDATA[a:17:{s:10:"dataformat";s:3:"mp4";s:5:"codec";s:19:"ISO/IEC 14496-3 AAC";s:11:"sample_rate";d:44100;s:8:"channels";i:2;s:15:"bits_per_sample";i:16;s:8:"lossless";b:0;s:11:"channelmode";s:6:"stereo";s:7:"bitrate";d:2813.1289132379247;s:17:"compression_ratio";d:0.001993430352351137;s:10:"fileformat";s:3:"mp4";s:8:"filesize";i:2925092;s:9:"mime_type";s:9:"audio/mp4";s:6:"length";i:91;s:16:"length_formatted";s:4:"1:31";s:17:"created_timestamp";i:1767579305;s:6:"artist";s:0:"";s:5:"album";s:0:"";}]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
-		<title><![CDATA[Decoded_Lumon_s_Cult_Mark_s_Choice]]></title>
-		<link>http://localhost:8000/index.php/podcasts/decoded-lumons-cult-marks-choice/decoded_lumon_s_cult_mark_s_choice-2/</link>
-		<pubDate>Thu, 01 Jan 2026 07:31:07 +0000</pubDate>
+		<title><![CDATA[Paramount_Axes_Dexter_Prequel_For_Hall]]></title>
+		<link>http://localhost:8000/index.php/podcasts/dexter-merger-killing-prequel-resurrects-sequel/paramount_axes_dexter_prequel_for_hall/</link>
+		<pubDate>Mon, 05 Jan 2026 02:31:00 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/Decoded_Lumon_s_Cult_Mark_s_Choice-1.m4a</guid>
+		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/Paramount_Axes_Dexter_Prequel_For_Hall.m4a</guid>
 		<description></description>
-		<content:encoded><![CDATA["Decoded_Lumon_s_Cult_Mark_s_Choice".]]></content:encoded>
+		<content:encoded><![CDATA["Paramount_Axes_Dexter_Prequel_For_Hall".]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>75</wp:post_id>
-		<wp:post_date><![CDATA[2026-01-01 15:31:07]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-01-01 07:31:07]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-01-01 15:31:48]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-01-01 07:31:48]]></wp:post_modified_gmt>
+		<wp:post_id>93</wp:post_id>
+		<wp:post_date><![CDATA[2026-01-05 10:31:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-01-05 02:31:00]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2026-01-05 10:31:04]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-01-05 02:31:04]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[open]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[decoded_lumon_s_cult_mark_s_choice-2]]></wp:post_name>
+		<wp:post_name><![CDATA[paramount_axes_dexter_prequel_for_hall]]></wp:post_name>
 		<wp:status><![CDATA[inherit]]></wp:status>
-		<wp:post_parent>72</wp:post_parent>
+		<wp:post_parent>66</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
 		<wp:post_type><![CDATA[attachment]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01073107/Decoded_Lumon_s_Cult_Mark_s_Choice-1.m4a]]></wp:attachment_url>
+						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/05023100/Paramount_Axes_Dexter_Prequel_For_Hall.m4a]]></wp:attachment_url>
 											<wp:postmeta>
 		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2026/01/Decoded_Lumon_s_Cult_Mark_s_Choice-1.m4a]]></wp:meta_value>
+		<wp:meta_value><![CDATA[2026/01/Paramount_Axes_Dexter_Prequel_For_Hall.m4a]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_object_version]]></wp:meta_key>
-		<wp:meta_value><![CDATA[01073107]]></wp:meta_value>
+		<wp:meta_value><![CDATA[05023100]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_path]]></wp:meta_key>
-		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/01073107/]]></wp:meta_value>
+		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/05023100/]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_offloaded]]></wp:meta_key>
@@ -2633,7 +2592,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_offloaded_at]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1767252703]]></wp:meta_value>
+		<wp:meta_value><![CDATA[1767580263]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_provider]]></wp:meta_key>
@@ -2645,48 +2604,158 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:17:{s:10:"dataformat";s:3:"mp4";s:5:"codec";s:19:"ISO/IEC 14496-3 AAC";s:11:"sample_rate";d:44100;s:8:"channels";i:2;s:15:"bits_per_sample";i:16;s:8:"lossless";b:0;s:11:"channelmode";s:6:"stereo";s:7:"bitrate";d:308.61028876686953;s:17:"compression_ratio";d:0.0002186864291148452;s:10:"fileformat";s:3:"mp4";s:8:"filesize";i:25417579;s:9:"mime_type";s:9:"audio/mp4";s:6:"length";i:790;s:16:"length_formatted";s:5:"13:10";s:17:"created_timestamp";i:1767239576;s:6:"artist";s:0:"";s:5:"album";s:0:"";}]]></wp:meta_value>
+		<wp:meta_value><![CDATA[a:17:{s:10:"dataformat";s:3:"mp4";s:5:"codec";s:19:"ISO/IEC 14496-3 AAC";s:11:"sample_rate";d:44100;s:8:"channels";i:2;s:15:"bits_per_sample";i:16;s:8:"lossless";b:0;s:11:"channelmode";s:6:"stereo";s:7:"bitrate";d:3058.823170381434;s:17:"compression_ratio";d:0.0021675334257238053;s:10:"fileformat";s:3:"mp4";s:8:"filesize";i:3253158;s:9:"mime_type";s:9:"audio/mp4";s:6:"length";i:101;s:16:"length_formatted";s:4:"1:41";s:17:"created_timestamp";i:1767579331;s:6:"artist";s:0:"";s:5:"album";s:0:"";}]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
-		<title><![CDATA[MV5BODE3OGFmNzgtNDhmYi00MzAwLWE5NzQtYjA2NmFkMmM1ZDhlXkEyXkFqcGc@._V1_]]></title>
-		<link>http://localhost:8000/index.php/podcasts/druckmann-leaves-last-of-us-season-3/mv5bode3ogfmnzgtndhmyi00mzawlwe5nzqtyja2nmfkmmm1zdhlxkeyxkfqcgc-_v1_/</link>
-		<pubDate>Thu, 01 Jan 2026 07:50:37 +0000</pubDate>
+		<title><![CDATA[True_Crime_Drama_Anime_The_Monster_Brief]]></title>
+		<link>http://localhost:8000/index.php/podcasts/three-monsters-netflix-anime-film/true_crime_drama_anime_the_monster_brief/</link>
+		<pubDate>Mon, 05 Jan 2026 02:31:36 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/MV5BODE3OGFmNzgtNDhmYi00MzAwLWE5NzQtYjA2NmFkMmM1ZDhlXkEyXkFqcGc@._V1_.jpg</guid>
+		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/True_Crime_Drama_Anime_The_Monster_Brief.m4a</guid>
 		<description></description>
-		<content:encoded><![CDATA[]]></content:encoded>
+		<content:encoded><![CDATA["True_Crime_Drama_Anime_The_Monster_Brief".]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>77</wp:post_id>
-		<wp:post_date><![CDATA[2026-01-01 15:50:37]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-01-01 07:50:37]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-01-01 15:50:37]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-01-01 07:50:37]]></wp:post_modified_gmt>
+		<wp:post_id>94</wp:post_id>
+		<wp:post_date><![CDATA[2026-01-05 10:31:36]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-01-05 02:31:36]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2026-01-05 10:31:42]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-01-05 02:31:42]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[open]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[mv5bode3ogfmnzgtndhmyi00mzawlwe5nzqtyja2nmfkmmm1zdhlxkeyxkfqcgc-_v1_]]></wp:post_name>
+		<wp:post_name><![CDATA[true_crime_drama_anime_the_monster_brief]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>69</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/05023136/True_Crime_Drama_Anime_The_Monster_Brief.m4a]]></wp:attachment_url>
+											<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2026/01/True_Crime_Drama_Anime_The_Monster_Brief.m4a]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_object_version]]></wp:meta_key>
+		<wp:meta_value><![CDATA[05023136]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_path]]></wp:meta_key>
+		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/05023136/]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_offloaded]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_offloaded_at]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1767580301]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_provider]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Cloudflare R2]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_bucket]]></wp:meta_key>
+		<wp:meta_value><![CDATA[aripplesong]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:17:{s:10:"dataformat";s:3:"mp4";s:5:"codec";s:19:"ISO/IEC 14496-3 AAC";s:11:"sample_rate";d:44100;s:8:"channels";i:2;s:15:"bits_per_sample";i:16;s:8:"lossless";b:0;s:11:"channelmode";s:6:"stereo";s:7:"bitrate";d:647.7943114719527;s:17:"compression_ratio";d:0.00045903791912695063;s:10:"fileformat";s:3:"mp4";s:8:"filesize";i:3544575;s:9:"mime_type";s:9:"audio/mp4";s:6:"length";i:110;s:16:"length_formatted";s:4:"1:50";s:17:"created_timestamp";i:1767579340;s:6:"artist";s:0:"";s:5:"album";s:0:"";}]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[Gemma_s_Secret_and_the_Soul_Refiners]]></title>
+		<link>http://localhost:8000/index.php/podcasts/decoded-lumons-cult-marks-choice/gemma_s_secret_and_the_soul_refiners/</link>
+		<pubDate>Mon, 05 Jan 2026 02:32:19 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/Gemma_s_Secret_and_the_Soul_Refiners.m4a</guid>
+		<description></description>
+		<content:encoded><![CDATA["Gemma_s_Secret_and_the_Soul_Refiners".]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>95</wp:post_id>
+		<wp:post_date><![CDATA[2026-01-05 10:32:19]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-01-05 02:32:19]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2026-01-05 10:32:24]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-01-05 02:32:24]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[gemma_s_secret_and_the_soul_refiners]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>72</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/05023219/Gemma_s_Secret_and_the_Soul_Refiners.m4a]]></wp:attachment_url>
+											<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2026/01/Gemma_s_Secret_and_the_Soul_Refiners.m4a]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_object_version]]></wp:meta_key>
+		<wp:meta_value><![CDATA[05023219]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_path]]></wp:meta_key>
+		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/05023219/]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_offloaded]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_offloaded_at]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1767580343]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_provider]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Cloudflare R2]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[advmo_bucket]]></wp:meta_key>
+		<wp:meta_value><![CDATA[aripplesong]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:17:{s:10:"dataformat";s:3:"mp4";s:5:"codec";s:19:"ISO/IEC 14496-3 AAC";s:11:"sample_rate";d:44100;s:8:"channels";i:2;s:15:"bits_per_sample";i:16;s:8:"lossless";b:0;s:11:"channelmode";s:6:"stereo";s:7:"bitrate";d:11135.86991782007;s:17:"compression_ratio";d:0.00789106428416955;s:10:"fileformat";s:3:"mp4";s:8:"filesize";i:3024448;s:9:"mime_type";s:9:"audio/mp4";s:6:"length";i:94;s:16:"length_formatted";s:4:"1:34";s:17:"created_timestamp";i:1767579246;s:6:"artist";s:0:"";s:5:"album";s:0:"";}]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[Mazin_Confirms_Last_of_Us_Season_Four_War]]></title>
+		<link>http://localhost:8000/index.php/podcasts/druckmann-leaves-last-of-us-season-3/mazin_confirms_last_of_us_season_four_war/</link>
+		<pubDate>Mon, 05 Jan 2026 02:32:51 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/Mazin_Confirms_Last_of_Us_Season_Four_War.m4a</guid>
+		<description></description>
+		<content:encoded><![CDATA["Mazin_Confirms_Last_of_Us_Season_Four_War".]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>96</wp:post_id>
+		<wp:post_date><![CDATA[2026-01-05 10:32:51]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-01-05 02:32:51]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2026-01-05 10:32:55]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-01-05 02:32:55]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[mazin_confirms_last_of_us_season_four_war]]></wp:post_name>
 		<wp:status><![CDATA[inherit]]></wp:status>
 		<wp:post_parent>76</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
 		<wp:post_type><![CDATA[attachment]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01075037/MV5BODE3OGFmNzgtNDhmYi00MzAwLWE5NzQtYjA2NmFkMmM1ZDhlXkEyXkFqcGc@._V1_.jpg]]></wp:attachment_url>
+						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/05023251/Mazin_Confirms_Last_of_Us_Season_Four_War.m4a]]></wp:attachment_url>
 											<wp:postmeta>
 		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2026/01/MV5BODE3OGFmNzgtNDhmYi00MzAwLWE5NzQtYjA2NmFkMmM1ZDhlXkEyXkFqcGc@._V1_.jpg]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:6:{s:5:"width";i:1080;s:6:"height";i:1620;s:4:"file";s:81:"2026/01/MV5BODE3OGFmNzgtNDhmYi00MzAwLWE5NzQtYjA2NmFkMmM1ZDhlXkEyXkFqcGc@._V1_.jpg";s:8:"filesize";i:519164;s:5:"sizes";a:5:{s:6:"medium";a:5:{s:4:"file";s:81:"MV5BODE3OGFmNzgtNDhmYi00MzAwLWE5NzQtYjA2NmFkMmM1ZDhlXkEyXkFqcGc@._V1_-200x300.jpg";s:5:"width";i:200;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:15714;}s:5:"large";a:5:{s:4:"file";s:82:"MV5BODE3OGFmNzgtNDhmYi00MzAwLWE5NzQtYjA2NmFkMmM1ZDhlXkEyXkFqcGc@._V1_-683x1024.jpg";s:5:"width";i:683;s:6:"height";i:1024;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:125894;}s:9:"thumbnail";a:5:{s:4:"file";s:81:"MV5BODE3OGFmNzgtNDhmYi00MzAwLWE5NzQtYjA2NmFkMmM1ZDhlXkEyXkFqcGc@._V1_-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:7788;}s:12:"medium_large";a:5:{s:4:"file";s:82:"MV5BODE3OGFmNzgtNDhmYi00MzAwLWE5NzQtYjA2NmFkMmM1ZDhlXkEyXkFqcGc@._V1_-768x1152.jpg";s:5:"width";i:768;s:6:"height";i:1152;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:152932;}s:9:"1536x1536";a:5:{s:4:"file";s:83:"MV5BODE3OGFmNzgtNDhmYi00MzAwLWE5NzQtYjA2NmFkMmM1ZDhlXkEyXkFqcGc@._V1_-1024x1536.jpg";s:5:"width";i:1024;s:6:"height";i:1536;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:245391;}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+		<wp:meta_value><![CDATA[2026/01/Mazin_Confirms_Last_of_Us_Season_Four_War.m4a]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_object_version]]></wp:meta_key>
-		<wp:meta_value><![CDATA[01075037]]></wp:meta_value>
+		<wp:meta_value><![CDATA[05023251]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_path]]></wp:meta_key>
-		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/01075037/]]></wp:meta_value>
+		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/05023251/]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_offloaded]]></wp:meta_key>
@@ -2694,60 +2763,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_offloaded_at]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1767253851]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_provider]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Cloudflare R2]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_bucket]]></wp:meta_key>
-		<wp:meta_value><![CDATA[aripplesong]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
-		<title><![CDATA[Druckmann_leaves_Last_of_Us_Season_3 (1)]]></title>
-		<link>http://localhost:8000/index.php/podcasts/druckmann-leaves-last-of-us-season-3/druckmann_leaves_last_of_us_season_3-1/</link>
-		<pubDate>Thu, 01 Jan 2026 07:51:09 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/Druckmann_leaves_Last_of_Us_Season_3-1.m4a</guid>
-		<description></description>
-		<content:encoded><![CDATA["Druckmann_leaves_Last_of_Us_Season_3 (1)".]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>78</wp:post_id>
-		<wp:post_date><![CDATA[2026-01-01 15:51:09]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-01-01 07:51:09]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-01-01 15:51:29]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-01-01 07:51:29]]></wp:post_modified_gmt>
-		<wp:comment_status><![CDATA[open]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[druckmann_leaves_last_of_us_season_3-1]]></wp:post_name>
-		<wp:status><![CDATA[inherit]]></wp:status>
-		<wp:post_parent>76</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01075109/Druckmann_leaves_Last_of_Us_Season_3-1.m4a]]></wp:attachment_url>
-											<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2026/01/Druckmann_leaves_Last_of_Us_Season_3-1.m4a]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_object_version]]></wp:meta_key>
-		<wp:meta_value><![CDATA[01075109]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_path]]></wp:meta_key>
-		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/01075109/]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_offloaded]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_offloaded_at]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1767253887]]></wp:meta_value>
+		<wp:meta_value><![CDATA[1767580374]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_provider]]></wp:meta_key>
@@ -2759,48 +2775,44 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:17:{s:10:"dataformat";s:3:"mp4";s:5:"codec";s:19:"ISO/IEC 14496-3 AAC";s:11:"sample_rate";d:44100;s:8:"channels";i:2;s:15:"bits_per_sample";i:16;s:8:"lossless";b:0;s:11:"channelmode";s:6:"stereo";s:7:"bitrate";d:3221.755571170822;s:17:"compression_ratio";d:0.00228299005893624;s:10:"fileformat";s:3:"mp4";s:8:"filesize";i:25059515;s:9:"mime_type";s:9:"audio/mp4";s:6:"length";i:779;s:16:"length_formatted";s:5:"12:59";s:17:"created_timestamp";i:1767239509;s:6:"artist";s:0:"";s:5:"album";s:0:"";}]]></wp:meta_value>
+		<wp:meta_value><![CDATA[a:17:{s:10:"dataformat";s:3:"mp4";s:5:"codec";s:19:"ISO/IEC 14496-3 AAC";s:11:"sample_rate";d:44100;s:8:"channels";i:2;s:15:"bits_per_sample";i:16;s:8:"lossless";b:0;s:11:"channelmode";s:6:"stereo";s:7:"bitrate";d:5604.77990830253;s:17:"compression_ratio";d:0.003971641091484219;s:10:"fileformat";s:3:"mp4";s:8:"filesize";i:2629149;s:9:"mime_type";s:9:"audio/mp4";s:6:"length";i:82;s:16:"length_formatted";s:4:"1:22";s:17:"created_timestamp";i:1767579354;s:6:"artist";s:0:"";s:5:"album";s:0:"";}]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
-		<title><![CDATA[MV5BMDE1NjNmZjgtZTg0OC00NjkxLWEzYzItMDNkMTc3YjgxZWQyXkEyXkFqcGc@._V1_]]></title>
-		<link>http://localhost:8000/index.php/podcasts/wednesday-season-2-lore-and-long-wait/mv5bmde1njnmzjgtztg0oc00njkxlwezyzitmdnkmtc3yjgxzwqyxkeyxkfqcgc-_v1_/</link>
-		<pubDate>Thu, 01 Jan 2026 07:53:49 +0000</pubDate>
+		<title><![CDATA[Wednesday_Creators_Start_Rival_Addams_Universe]]></title>
+		<link>http://localhost:8000/index.php/podcasts/wednesday-season-2-lore-and-long-wait/wednesday_creators_start_rival_addams_universe/</link>
+		<pubDate>Mon, 05 Jan 2026 02:33:25 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/MV5BMDE1NjNmZjgtZTg0OC00NjkxLWEzYzItMDNkMTc3YjgxZWQyXkEyXkFqcGc@._V1_.jpg</guid>
+		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/Wednesday_Creators_Start_Rival_Addams_Universe.m4a</guid>
 		<description></description>
-		<content:encoded><![CDATA[]]></content:encoded>
+		<content:encoded><![CDATA["Wednesday_Creators_Start_Rival_Addams_Universe".]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>80</wp:post_id>
-		<wp:post_date><![CDATA[2026-01-01 15:53:49]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-01-01 07:53:49]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-01-01 15:53:49]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-01-01 07:53:49]]></wp:post_modified_gmt>
+		<wp:post_id>97</wp:post_id>
+		<wp:post_date><![CDATA[2026-01-05 10:33:25]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-01-05 02:33:25]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2026-01-05 10:33:28]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-01-05 02:33:28]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[open]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[mv5bmde1njnmzjgtztg0oc00njkxlwezyzitmdnkmtc3yjgxzwqyxkeyxkfqcgc-_v1_]]></wp:post_name>
+		<wp:post_name><![CDATA[wednesday_creators_start_rival_addams_universe]]></wp:post_name>
 		<wp:status><![CDATA[inherit]]></wp:status>
 		<wp:post_parent>79</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
 		<wp:post_type><![CDATA[attachment]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01075349/MV5BMDE1NjNmZjgtZTg0OC00NjkxLWEzYzItMDNkMTc3YjgxZWQyXkEyXkFqcGc@._V1_.jpg]]></wp:attachment_url>
+						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/05023325/Wednesday_Creators_Start_Rival_Addams_Universe.m4a]]></wp:attachment_url>
 											<wp:postmeta>
 		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2026/01/MV5BMDE1NjNmZjgtZTg0OC00NjkxLWEzYzItMDNkMTc3YjgxZWQyXkEyXkFqcGc@._V1_.jpg]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:6:{s:5:"width";i:1500;s:6:"height";i:2222;s:4:"file";s:81:"2026/01/MV5BMDE1NjNmZjgtZTg0OC00NjkxLWEzYzItMDNkMTc3YjgxZWQyXkEyXkFqcGc@._V1_.jpg";s:8:"filesize";i:1882394;s:5:"sizes";a:6:{s:6:"medium";a:5:{s:4:"file";s:81:"MV5BMDE1NjNmZjgtZTg0OC00NjkxLWEzYzItMDNkMTc3YjgxZWQyXkEyXkFqcGc@._V1_-203x300.jpg";s:5:"width";i:203;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:12854;}s:5:"large";a:5:{s:4:"file";s:82:"MV5BMDE1NjNmZjgtZTg0OC00NjkxLWEzYzItMDNkMTc3YjgxZWQyXkEyXkFqcGc@._V1_-691x1024.jpg";s:5:"width";i:691;s:6:"height";i:1024;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:92259;}s:9:"thumbnail";a:5:{s:4:"file";s:81:"MV5BMDE1NjNmZjgtZTg0OC00NjkxLWEzYzItMDNkMTc3YjgxZWQyXkEyXkFqcGc@._V1_-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:5807;}s:12:"medium_large";a:5:{s:4:"file";s:82:"MV5BMDE1NjNmZjgtZTg0OC00NjkxLWEzYzItMDNkMTc3YjgxZWQyXkEyXkFqcGc@._V1_-768x1138.jpg";s:5:"width";i:768;s:6:"height";i:1138;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:108553;}s:9:"1536x1536";a:5:{s:4:"file";s:83:"MV5BMDE1NjNmZjgtZTg0OC00NjkxLWEzYzItMDNkMTc3YjgxZWQyXkEyXkFqcGc@._V1_-1037x1536.jpg";s:5:"width";i:1037;s:6:"height";i:1536;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:179465;}s:9:"2048x2048";a:5:{s:4:"file";s:83:"MV5BMDE1NjNmZjgtZTg0OC00NjkxLWEzYzItMDNkMTc3YjgxZWQyXkEyXkFqcGc@._V1_-1383x2048.jpg";s:5:"width";i:1383;s:6:"height";i:2048;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:288892;}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+		<wp:meta_value><![CDATA[2026/01/Wednesday_Creators_Start_Rival_Addams_Universe.m4a]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_object_version]]></wp:meta_key>
-		<wp:meta_value><![CDATA[01075349]]></wp:meta_value>
+		<wp:meta_value><![CDATA[05023325]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_path]]></wp:meta_key>
-		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/01075349/]]></wp:meta_value>
+		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/05023325/]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_offloaded]]></wp:meta_key>
@@ -2808,7 +2820,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_offloaded_at]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1767254047]]></wp:meta_value>
+		<wp:meta_value><![CDATA[1767580407]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_provider]]></wp:meta_key>
@@ -2818,42 +2830,46 @@
 		<wp:meta_key><![CDATA[advmo_bucket]]></wp:meta_key>
 		<wp:meta_value><![CDATA[aripplesong]]></wp:meta_value>
 		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:17:{s:10:"dataformat";s:3:"mp4";s:5:"codec";s:19:"ISO/IEC 14496-3 AAC";s:11:"sample_rate";d:44100;s:8:"channels";i:2;s:15:"bits_per_sample";i:16;s:8:"lossless";b:0;s:11:"channelmode";s:6:"stereo";s:7:"bitrate";d:10893.563288594754;s:17:"compression_ratio";d:0.007719361740784265;s:10:"fileformat";s:3:"mp4";s:8:"filesize";i:3021460;s:9:"mime_type";s:9:"audio/mp4";s:6:"length";i:94;s:16:"length_formatted";s:4:"1:34";s:17:"created_timestamp";i:1767579372;s:6:"artist";s:0:"";s:5:"album";s:0:"";}]]></wp:meta_value>
+		</wp:postmeta>
 							</item>
 					<item>
-		<title><![CDATA[Wednesday_Season_2_Lore_and_Long_Wait]]></title>
-		<link>http://localhost:8000/index.php/podcasts/wednesday-season-2-lore-and-long-wait/wednesday_season_2_lore_and_long_wait/</link>
-		<pubDate>Thu, 01 Jan 2026 07:54:19 +0000</pubDate>
+		<title><![CDATA[USS_Callister_Sequel_and_Brain_Tech]]></title>
+		<link>http://localhost:8000/index.php/podcasts/black-mirror-season-7-recap-and-lore/uss_callister_sequel_and_brain_tech/</link>
+		<pubDate>Mon, 05 Jan 2026 02:33:56 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/Wednesday_Season_2_Lore_and_Long_Wait.m4a</guid>
+		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/USS_Callister_Sequel_and_Brain_Tech.m4a</guid>
 		<description></description>
-		<content:encoded><![CDATA["Wednesday_Season_2_Lore_and_Long_Wait".]]></content:encoded>
+		<content:encoded><![CDATA["USS_Callister_Sequel_and_Brain_Tech".]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>81</wp:post_id>
-		<wp:post_date><![CDATA[2026-01-01 15:54:19]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-01-01 07:54:19]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-01-01 15:54:47]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-01-01 07:54:47]]></wp:post_modified_gmt>
+		<wp:post_id>98</wp:post_id>
+		<wp:post_date><![CDATA[2026-01-05 10:33:56]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-01-05 02:33:56]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2026-01-05 10:34:02]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-01-05 02:34:02]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[open]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[wednesday_season_2_lore_and_long_wait]]></wp:post_name>
+		<wp:post_name><![CDATA[uss_callister_sequel_and_brain_tech]]></wp:post_name>
 		<wp:status><![CDATA[inherit]]></wp:status>
-		<wp:post_parent>79</wp:post_parent>
+		<wp:post_parent>59</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
 		<wp:post_type><![CDATA[attachment]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01075419/Wednesday_Season_2_Lore_and_Long_Wait.m4a]]></wp:attachment_url>
+						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/05023356/USS_Callister_Sequel_and_Brain_Tech.m4a]]></wp:attachment_url>
 											<wp:postmeta>
 		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2026/01/Wednesday_Season_2_Lore_and_Long_Wait.m4a]]></wp:meta_value>
+		<wp:meta_value><![CDATA[2026/01/USS_Callister_Sequel_and_Brain_Tech.m4a]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_object_version]]></wp:meta_key>
-		<wp:meta_value><![CDATA[01075419]]></wp:meta_value>
+		<wp:meta_value><![CDATA[05023356]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_path]]></wp:meta_key>
-		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/01075419/]]></wp:meta_value>
+		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/05023356/]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_offloaded]]></wp:meta_key>
@@ -2861,7 +2877,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_offloaded_at]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1767254085]]></wp:meta_value>
+		<wp:meta_value><![CDATA[1767580441]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[advmo_provider]]></wp:meta_key>
@@ -2873,64 +2889,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:17:{s:10:"dataformat";s:3:"mp4";s:5:"codec";s:19:"ISO/IEC 14496-3 AAC";s:11:"sample_rate";d:44100;s:8:"channels";i:2;s:15:"bits_per_sample";i:16;s:8:"lossless";b:0;s:11:"channelmode";s:6:"stereo";s:7:"bitrate";d:2249.8190102290737;s:17:"compression_ratio";d:0.0015942595027133458;s:10:"fileformat";s:3:"mp4";s:8:"filesize";i:31123190;s:9:"mime_type";s:9:"audio/mp4";s:6:"length";i:967;s:16:"length_formatted";s:5:"16:07";s:17:"created_timestamp";i:1767239754;s:6:"artist";s:0:"";s:5:"album";s:0:"";}]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
-		<title><![CDATA[MV5BZDI5YzJhODQtMzQyNy00YWNmLWIxMjUtNDBjNjA5YWRjMzExXkEyXkFqcGc@._V1_]]></title>
-		<link>http://localhost:8000/index.php/podcasts/decoded-lumons-cult-marks-choice/mv5bzdi5yzjhodqtmzqyny00ywnmlwixmjutndbjnja5ywrjmzexxkeyxkfqcgc-_v1_-2/</link>
-		<pubDate>Thu, 01 Jan 2026 08:29:22 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost:8000/wp-content/uploads/2026/01/MV5BZDI5YzJhODQtMzQyNy00YWNmLWIxMjUtNDBjNjA5YWRjMzExXkEyXkFqcGc@._V1_-1.jpg</guid>
-		<description></description>
-		<content:encoded><![CDATA[]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>82</wp:post_id>
-		<wp:post_date><![CDATA[2026-01-01 16:29:22]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-01-01 08:29:22]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-01-01 16:29:22]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-01-01 08:29:22]]></wp:post_modified_gmt>
-		<wp:comment_status><![CDATA[open]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[mv5bzdi5yzjhodqtmzqyny00ywnmlwixmjutndbjnja5ywrjmzexxkeyxkfqcgc-_v1_-2]]></wp:post_name>
-		<wp:status><![CDATA[inherit]]></wp:status>
-		<wp:post_parent>72</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01082923/MV5BZDI5YzJhODQtMzQyNy00YWNmLWIxMjUtNDBjNjA5YWRjMzExXkEyXkFqcGc@._V1_-1-scaled.jpg]]></wp:attachment_url>
-											<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2026/01/MV5BZDI5YzJhODQtMzQyNy00YWNmLWIxMjUtNDBjNjA5YWRjMzExXkEyXkFqcGc@._V1_-1-scaled.jpg]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:7:{s:5:"width";i:1707;s:6:"height";i:2560;s:4:"file";s:90:"2026/01/MV5BZDI5YzJhODQtMzQyNy00YWNmLWIxMjUtNDBjNjA5YWRjMzExXkEyXkFqcGc@._V1_-1-scaled.jpg";s:8:"filesize";i:491018;s:5:"sizes";a:6:{s:6:"medium";a:5:{s:4:"file";s:83:"MV5BZDI5YzJhODQtMzQyNy00YWNmLWIxMjUtNDBjNjA5YWRjMzExXkEyXkFqcGc@._V1_-1-200x300.jpg";s:5:"width";i:200;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:9968;}s:5:"large";a:5:{s:4:"file";s:84:"MV5BZDI5YzJhODQtMzQyNy00YWNmLWIxMjUtNDBjNjA5YWRjMzExXkEyXkFqcGc@._V1_-1-683x1024.jpg";s:5:"width";i:683;s:6:"height";i:1024;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:72164;}s:9:"thumbnail";a:5:{s:4:"file";s:83:"MV5BZDI5YzJhODQtMzQyNy00YWNmLWIxMjUtNDBjNjA5YWRjMzExXkEyXkFqcGc@._V1_-1-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:4247;}s:12:"medium_large";a:5:{s:4:"file";s:84:"MV5BZDI5YzJhODQtMzQyNy00YWNmLWIxMjUtNDBjNjA5YWRjMzExXkEyXkFqcGc@._V1_-1-768x1152.jpg";s:5:"width";i:768;s:6:"height";i:1152;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:89380;}s:9:"1536x1536";a:5:{s:4:"file";s:85:"MV5BZDI5YzJhODQtMzQyNy00YWNmLWIxMjUtNDBjNjA5YWRjMzExXkEyXkFqcGc@._V1_-1-1024x1536.jpg";s:5:"width";i:1024;s:6:"height";i:1536;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:162832;}s:9:"2048x2048";a:5:{s:4:"file";s:85:"MV5BZDI5YzJhODQtMzQyNy00YWNmLWIxMjUtNDBjNjA5YWRjMzExXkEyXkFqcGc@._V1_-1-1365x2048.jpg";s:5:"width";i:1365;s:6:"height";i:2048;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:303988;}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}s:14:"original_image";s:75:"MV5BZDI5YzJhODQtMzQyNy00YWNmLWIxMjUtNDBjNjA5YWRjMzExXkEyXkFqcGc@._V1_-1.jpg";}]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_object_version]]></wp:meta_key>
-		<wp:meta_value><![CDATA[01082923]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_path]]></wp:meta_key>
-		<wp:meta_value><![CDATA[wp-content/uploads/2026/01/01082923/]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_offloaded]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_offloaded_at]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1767256174]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_provider]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Cloudflare R2]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[advmo_bucket]]></wp:meta_key>
-		<wp:meta_value><![CDATA[aripplesong]]></wp:meta_value>
+		<wp:meta_value><![CDATA[a:17:{s:10:"dataformat";s:3:"mp4";s:5:"codec";s:19:"ISO/IEC 14496-3 AAC";s:11:"sample_rate";d:44100;s:8:"channels";i:2;s:15:"bits_per_sample";i:16;s:8:"lossless";b:0;s:11:"channelmode";s:6:"stereo";s:7:"bitrate";d:14831.533554953749;s:17:"compression_ratio";d:0.01050987355084591;s:10:"fileformat";s:3:"mp4";s:8:"filesize";i:3070765;s:9:"mime_type";s:9:"audio/mp4";s:6:"length";i:95;s:16:"length_formatted";s:4:"1:35";s:17:"created_timestamp";i:1767580296;s:6:"artist";s:0:"";s:5:"album";s:0:"";}]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
@@ -3012,6 +2971,111 @@
 										<category domain="wp_theme" nicename="twentytwentyfour"><![CDATA[twentytwentyfour]]></category>
 						</item>
 					<item>
+		<title><![CDATA[Dexter Merger Killing Prequel Resurrects Sequel]]></title>
+		<link>http://localhost:8000/index.php/podcasts/dexter-merger-killing-prequel-resurrects-sequel/</link>
+		<pubDate>Thu, 01 Jan 2026 07:24:54 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost:8000/?post_type=podcast&#038;p=66</guid>
+		<description></description>
+		<content:encoded><![CDATA[<!-- wp:paragraph -->
+<p>"Welcome back to 'The Dark Passenger,' your essential audio companion for deep dives into the <em>Dexter</em> universe. In today’s episode, we are sharpening our knives to dissect the monumental impact of <em>Dexter: Resurrection</em> and the shocking direction the franchise has taken. We are still reeling from the Season 1 finale, 'And Justice for All,' which delivered perhaps the most devastating twist in the series' twenty-year history: the tragic death of fan-favorite Angel Batista at the hands of billionaire Leon Prater. We will analyze how this loss dismantles the last bridge to Dexter’s past life in Miami and discuss Dexter's brutal retaliation that left Prater dead and his vault of secrets exposed.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>We also break down the evolving dynamic between Dexter and Harrison in New York City. From Harrison's dark urges leading to the murder of Ryan Foster to his complex reconciliation with his father, the Morgan legacy has never been more precarious. Furthermore, we address the major industry news: Paramount has officially canceled the prequel <em>Dexter: Original Sin</em> to focus entirely on Michael C. Hall’s return, cementing this sequel as the true future of the franchise.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Looking ahead, we have exciting updates for the confirmed Season 2. Showrunner Clyde Phillips has announced that filming begins in April 2026, aiming for an October release to celebrate the show's 20th anniversary. We will speculate on the confirmed 'Big Bad' for the upcoming season: the elusive New York Ripper, identified in the finale as Don Framt. How will Dexter and Detective Claudette Wallace handle a villain who has haunted the city for decades? Join us as we explore the theories, the kill counts, and the future of the code."</p>
+<!-- /wp:paragraph -->]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>66</wp:post_id>
+		<wp:post_date><![CDATA[2026-01-01 15:24:54]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-01-01 07:24:54]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2026-01-05 10:31:05]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-01-05 02:31:05]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[open]]></wp:ping_status>
+		<wp:post_name><![CDATA[dexter-merger-killing-prequel-resurrects-sequel]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[podcast]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+										<category domain="post_tag" nicename="crime-drama"><![CDATA[Crime Drama]]></category>
+		<category domain="post_tag" nicename="dexter-resurrection"><![CDATA[Dexter Resurrection]]></category>
+		<category domain="post_tag" nicename="michael-c-hall"><![CDATA[Michael C Hall]]></category>
+		<category domain="post_tag" nicename="new-york-city"><![CDATA[New York City]]></category>
+		<category domain="post_tag" nicename="paramount-plus"><![CDATA[Paramount Plus]]></category>
+		<category domain="post_tag" nicename="serial-killer-mystery"><![CDATA[Serial Killer Mystery]]></category>
+		<category domain="podcast_category" nicename="tv-series"><![CDATA[TV Series]]></category>
+						<wp:postmeta>
+		<wp:meta_key><![CDATA[_views_count]]></wp:meta_key>
+		<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_play_count]]></wp:meta_key>
+		<wp:meta_value><![CDATA[5]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+		<wp:meta_value><![CDATA[68]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[audio_file_id]]></wp:meta_key>
+		<wp:meta_value><![CDATA[93]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[audio_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/05023100/Paramount_Axes_Dexter_Prequel_For_Hall.m4a]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[duration]]></wp:meta_key>
+		<wp:meta_value><![CDATA[101]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[audio_length]]></wp:meta_key>
+		<wp:meta_value><![CDATA[3253158]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[audio_mime]]></wp:meta_key>
+		<wp:meta_value><![CDATA[audio/mp4]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[episode_explicit]]></wp:meta_key>
+		<wp:meta_value><![CDATA[clean]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[episode_type]]></wp:meta_key>
+		<wp:meta_value><![CDATA[full]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[episode_number]]></wp:meta_key>
+		<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[season_number]]></wp:meta_key>
+		<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[episode_chapters_type]]></wp:meta_key>
+		<wp:meta_value><![CDATA[application/json+chapters]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[episode_block]]></wp:meta_key>
+		<wp:meta_value><![CDATA[no]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[members]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:1:{i:0;s:1:"1";}]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
 		<title><![CDATA[Three Monsters Netflix Anime Film]]></title>
 		<link>http://localhost:8000/index.php/podcasts/three-monsters-netflix-anime-film/</link>
 		<pubDate>Thu, 01 Jan 2026 07:28:29 +0000</pubDate>
@@ -3033,8 +3097,8 @@
 		<wp:post_id>69</wp:post_id>
 		<wp:post_date><![CDATA[2026-01-01 15:28:29]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2026-01-01 07:28:29]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-01-01 15:28:29]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-01-01 07:28:29]]></wp:post_modified_gmt>
+		<wp:post_modified><![CDATA[2026-01-05 10:31:43]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-01-05 02:31:43]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[open]]></wp:comment_status>
 		<wp:ping_status><![CDATA[open]]></wp:ping_status>
 		<wp:post_name><![CDATA[three-monsters-netflix-anime-film]]></wp:post_name>
@@ -3069,19 +3133,19 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_file_id]]></wp:meta_key>
-		<wp:meta_value><![CDATA[71]]></wp:meta_value>
+		<wp:meta_value><![CDATA[94]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01072721/Three_Monsters_Netflix_Anime_Film.m4a]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/05023136/True_Crime_Drama_Anime_The_Monster_Brief.m4a]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[duration]]></wp:meta_key>
-		<wp:meta_value><![CDATA[781]]></wp:meta_value>
+		<wp:meta_value><![CDATA[110]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_length]]></wp:meta_key>
-		<wp:meta_value><![CDATA[25121635]]></wp:meta_value>
+		<wp:meta_value><![CDATA[3544575]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_mime]]></wp:meta_key>
@@ -3138,8 +3202,8 @@
 		<wp:post_id>72</wp:post_id>
 		<wp:post_date><![CDATA[2026-01-01 15:32:26]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2026-01-01 07:32:26]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-01-01 16:29:37]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-01-01 08:29:37]]></wp:post_modified_gmt>
+		<wp:post_modified><![CDATA[2026-01-05 10:32:25]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-01-05 02:32:25]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[open]]></wp:comment_status>
 		<wp:ping_status><![CDATA[open]]></wp:ping_status>
 		<wp:post_name><![CDATA[decoded-lumons-cult-marks-choice]]></wp:post_name>
@@ -3170,11 +3234,11 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[duration]]></wp:meta_key>
-		<wp:meta_value><![CDATA[790]]></wp:meta_value>
+		<wp:meta_value><![CDATA[94]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_length]]></wp:meta_key>
-		<wp:meta_value><![CDATA[25417579]]></wp:meta_value>
+		<wp:meta_value><![CDATA[3024448]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_mime]]></wp:meta_key>
@@ -3210,11 +3274,11 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_file_id]]></wp:meta_key>
-		<wp:meta_value><![CDATA[75]]></wp:meta_value>
+		<wp:meta_value><![CDATA[95]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01073107/Decoded_Lumon_s_Cult_Mark_s_Choice-1.m4a]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/05023219/Gemma_s_Secret_and_the_Soul_Refiners.m4a]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
@@ -3247,8 +3311,8 @@
 		<wp:post_id>76</wp:post_id>
 		<wp:post_date><![CDATA[2026-01-01 15:52:07]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2026-01-01 07:52:07]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-01-01 15:52:07]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-01-01 07:52:07]]></wp:post_modified_gmt>
+		<wp:post_modified><![CDATA[2026-01-05 10:32:56]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-01-05 02:32:56]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[open]]></wp:comment_status>
 		<wp:ping_status><![CDATA[open]]></wp:ping_status>
 		<wp:post_name><![CDATA[druckmann-leaves-last-of-us-season-3]]></wp:post_name>
@@ -3283,19 +3347,19 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_file_id]]></wp:meta_key>
-		<wp:meta_value><![CDATA[78]]></wp:meta_value>
+		<wp:meta_value><![CDATA[96]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01075109/Druckmann_leaves_Last_of_Us_Season_3-1.m4a]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/05023251/Mazin_Confirms_Last_of_Us_Season_Four_War.m4a]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[duration]]></wp:meta_key>
-		<wp:meta_value><![CDATA[779]]></wp:meta_value>
+		<wp:meta_value><![CDATA[82]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_length]]></wp:meta_key>
-		<wp:meta_value><![CDATA[25059515]]></wp:meta_value>
+		<wp:meta_value><![CDATA[2629149]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_mime]]></wp:meta_key>
@@ -3348,8 +3412,8 @@
 		<wp:post_id>79</wp:post_id>
 		<wp:post_date><![CDATA[2026-01-01 15:55:17]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2026-01-01 07:55:17]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-01-01 15:55:17]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-01-01 07:55:17]]></wp:post_modified_gmt>
+		<wp:post_modified><![CDATA[2026-01-05 10:33:29]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-01-05 02:33:29]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[open]]></wp:comment_status>
 		<wp:ping_status><![CDATA[open]]></wp:ping_status>
 		<wp:post_name><![CDATA[wednesday-season-2-lore-and-long-wait]]></wp:post_name>
@@ -3372,7 +3436,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_play_count]]></wp:meta_key>
-		<wp:meta_value><![CDATA[4]]></wp:meta_value>
+		<wp:meta_value><![CDATA[7]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
@@ -3384,19 +3448,19 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_file_id]]></wp:meta_key>
-		<wp:meta_value><![CDATA[81]]></wp:meta_value>
+		<wp:meta_value><![CDATA[97]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/01075419/Wednesday_Season_2_Lore_and_Long_Wait.m4a]]></wp:meta_value>
+		<wp:meta_value><![CDATA[https://pub-705281646947462fbf6e5906afe11018.r2.dev/wp-content/uploads/2026/01/05023325/Wednesday_Creators_Start_Rival_Addams_Universe.m4a]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[duration]]></wp:meta_key>
-		<wp:meta_value><![CDATA[967]]></wp:meta_value>
+		<wp:meta_value><![CDATA[94]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_length]]></wp:meta_key>
-		<wp:meta_value><![CDATA[31123190]]></wp:meta_value>
+		<wp:meta_value><![CDATA[3021460]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[audio_mime]]></wp:meta_key>

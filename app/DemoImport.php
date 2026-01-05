@@ -27,6 +27,53 @@ add_filter('ocdi/import_files', function () {
 });
 
 /**
+ * Clear all theme sidebars before importing demo content.
+ * This ensures a clean slate without default WordPress widgets.
+ */
+add_action('ocdi/before_content_import', function () {
+    aripplesong_clear_theme_sidebars();
+});
+
+/**
+ * Clear all widgets from theme-registered sidebars.
+ * Moves existing widgets to inactive widgets area to avoid data loss.
+ */
+function aripplesong_clear_theme_sidebars() {
+    // Get current sidebar widgets
+    $sidebars_widgets = get_option('sidebars_widgets', []);
+    
+    // Define our theme's sidebars that should be cleared
+    $theme_sidebars = [
+        \App\Theme::SIDEBAR_PRIMARY,
+        \App\Theme::SIDEBAR_LEFTBAR,
+        \App\Theme::SIDEBAR_HOME_MAIN,
+        \App\Theme::SIDEBAR_FOOTER_LINKS,
+    ];
+
+    // Get inactive widgets (where we'll move the existing ones)
+    $inactive_widgets = isset($sidebars_widgets['wp_inactive_widgets']) 
+        ? $sidebars_widgets['wp_inactive_widgets'] 
+        : [];
+
+    $moved_any = false;
+
+    foreach ($theme_sidebars as $sidebar_id) {
+        if (!empty($sidebars_widgets[$sidebar_id]) && is_array($sidebars_widgets[$sidebar_id])) {
+            // Move widgets to inactive area
+            $inactive_widgets = array_merge($inactive_widgets, $sidebars_widgets[$sidebar_id]);
+            // Clear the sidebar
+            $sidebars_widgets[$sidebar_id] = [];
+            $moved_any = true;
+        }
+    }
+
+    if ($moved_any) {
+        $sidebars_widgets['wp_inactive_widgets'] = $inactive_widgets;
+        update_option('sidebars_widgets', $sidebars_widgets);
+    }
+}
+
+/**
  * Actions to perform after demo import is complete
  *
  * @param array $selected_import Selected demo import data
