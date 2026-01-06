@@ -4,11 +4,11 @@
 !/public/.gitkeep
 .env
 npm-debug.log
-.idea
-.cursor
-.vscode
+/.idea
+/.cursor
+/.vscode
 .DS_Store
-.agent
-AGENTS.md
-CLAUDE.md
+/.agent
+/AGENTS.md
+/CLAUDE.md
 .editorconfig
