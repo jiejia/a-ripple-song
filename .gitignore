@@ -11,3 +11,4 @@ npm-debug.log
 .agent
 AGENTS.md
 CLAUDE.md
+.editorconfig
