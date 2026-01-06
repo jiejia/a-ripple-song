@@ -17,17 +17,17 @@ msgstr ""
 #. Theme Name of the theme
 #: style.css
 msgid "Sage Starter Theme"
-msgstr "Sage स्टार्टर थीम"
+msgstr "लहरों का गीत"
 
 #. Theme URI of the theme
 #: style.css
 msgid "https://roots.io/sage/"
-msgstr "https://roots.io/sage/"
+msgstr "https://doc-podcast.aripplesong.me/"
 
 #. Description of the theme
 #: style.css
 msgid "Sage is a WordPress starter theme."
-msgstr "Sage एक WordPress स्टार्टर थीम है।"
+msgstr "WordPress के लिए ऑल-इन-वन पॉडकास्ट थीम"
 
 #. Author of the theme
 #: style.css
@@ -1643,4 +1643,3 @@ msgstr "साउंडबाइट जोड़ें"
 #: app/PostTypes/Podcast.php
 msgid "Remove Soundbite"
 msgstr "साउंडबाइट हटाएं"
-
