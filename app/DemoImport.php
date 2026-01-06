@@ -1,40 +1,12 @@
 <?php
 /**
- * One Click Demo Import Configuration
+ * One Click Demo Import Helpers
  *
- * Configures the One Click Demo Import plugin to import theme demo content,
- * including automatic setup of menus and homepage after import.
+ * Helper functions used by One Click Demo Import (OCDI) hooks registered in
+ * `app/setup.php`.
  *
  * @package ARippleSong
  */
-
-/**
- * Define demo import files
- *
- * @return array Demo import configuration
- */
-add_filter('ocdi/import_files', function () {
-    return [
-        [
-            'import_file_name'           => 'A Ripple Song Demo',
-            'local_import_file'          => get_template_directory() . '/data/demo-data.xml',
-            'local_import_widget_file'   => get_template_directory() . '/data/demo-widgets.wie',
-            'import_preview_image_url'   => get_template_directory_uri() . '/screenshot.png',
-            'preview_url'                => 'https://demo.aripplesong.com/',
-            'import_notice'              => __('After importing this demo, please wait for all images and media to be downloaded. This may take a few minutes depending on your server speed.', 'sage'),
-        ],
-    ];
-});
-
-/**
- * Before importing demo content:
- * 1. Backup existing pages/menus that conflict with demo data
- * 2. Clear all theme sidebars
- */
-add_action('ocdi/before_content_import', function () {
-    aripplesong_backup_conflicting_content();
-    aripplesong_clear_theme_sidebars();
-});
 
 /**
  * Backup pages and menus that would conflict with demo import.
@@ -49,31 +21,17 @@ function aripplesong_backup_conflicting_content() {
     
     // Pages expected from demo import (by slug)
     $demo_page_slugs = ['home', 'podcasts', 'blog'];
+    $demo_page_titles = ['home', 'podcasts', 'blog'];
     
     // Menus expected from demo import (by name/slug)
     $demo_menu_names = ['Menu 1', 'menu-1'];
     
-    // Backup conflicting pages (including trashed ones with __trashed suffix)
-    foreach ($demo_page_slugs as $slug) {
-        // Query for pages where post_name equals slug OR starts with slug__trashed
-        // WordPress adds __trashed suffix when moving to trash
-        $sql = $wpdb->prepare(
-            "SELECT ID FROM {$wpdb->posts} 
-             WHERE post_type = 'page' 
-             AND (post_name = %s OR post_name LIKE %s)",
-            $slug,
-            $slug . '__%'  // Matches home__trashed, home__trashed2, etc.
-        );
-        
-        $page_ids = $wpdb->get_col($sql);
-        
-        if (!empty($page_ids)) {
-            foreach ($page_ids as $page_id) {
-                $page = get_post($page_id);
-                if ($page) {
-                    aripplesong_backup_page($page);
-                }
-            }
+    // Backup conflicting pages (includes trash + title-based conflicts).
+    $conflicting_page_ids = aripplesong_find_conflicting_page_ids($demo_page_slugs, $demo_page_titles);
+    foreach ($conflicting_page_ids as $page_id) {
+        $page = get_post($page_id);
+        if ($page) {
+            aripplesong_backup_page($page);
         }
     }
     
@@ -87,14 +45,88 @@ function aripplesong_backup_conflicting_content() {
 }
 
 /**
- * Backup a page by renaming its slug and title with -bak suffix
+ * Find pages that would conflict with demo import.
+ *
+ * We check:
+ * - Slug conflicts: exact slug match and "__trashed" variants
+ * - Title conflicts: case-insensitive match (some import flows treat titles as unique)
+ *
+ * @param array $slugs  Expected demo page slugs (without "__trashed").
+ * @param array $titles Expected demo page titles (case-insensitive).
+ * @return int[] List of post IDs.
+ */
+function aripplesong_find_conflicting_page_ids($slugs, $titles) {
+    global $wpdb;
+
+    $ids = [];
+
+    $slugs = array_values(array_filter(array_map('strval', (array) $slugs)));
+    $titles = array_values(array_filter(array_map('strval', (array) $titles)));
+
+    if (!empty($slugs)) {
+        $slug_placeholders = implode(',', array_fill(0, count($slugs), '%s'));
+
+        // Exact slug matches.
+        $sql = $wpdb->prepare(
+            "SELECT ID FROM {$wpdb->posts}
+             WHERE post_type = 'page'
+             AND post_name IN ($slug_placeholders)",
+            ...$slugs
+        );
+        $ids = array_merge($ids, (array) $wpdb->get_col($sql));
+
+        // Trash variants: WordPress appends "__trashed" (and sometimes increments).
+        foreach ($slugs as $slug) {
+            $like = $wpdb->esc_like($slug) . '__%';
+            $sql = $wpdb->prepare(
+                "SELECT ID FROM {$wpdb->posts}
+                 WHERE post_type = 'page'
+                 AND post_name LIKE %s",
+                $like
+            );
+            $ids = array_merge($ids, (array) $wpdb->get_col($sql));
+        }
+    }
+
+    if (!empty($titles)) {
+        $titles_lower = array_values(array_unique(array_map('strtolower', $titles)));
+        $title_placeholders = implode(',', array_fill(0, count($titles_lower), '%s'));
+
+        $sql = $wpdb->prepare(
+            "SELECT ID FROM {$wpdb->posts}
+             WHERE post_type = 'page'
+             AND LOWER(post_title) IN ($title_placeholders)",
+            ...$titles_lower
+        );
+        $ids = array_merge($ids, (array) $wpdb->get_col($sql));
+    }
+
+    $ids = array_values(array_unique(array_map('intval', $ids)));
+
+    return array_values(array_filter($ids));
+}
+
+/**
+ * Backup a page by renaming its slug and title with a "-bak-YYYYmmdd-HHMMSS" suffix.
  *
  * @param WP_Post $page The page to backup
  */
 function aripplesong_backup_page($page) {
-    $timestamp = date('Ymd-His');
-    $new_slug = $page->post_name . '-bak-' . $timestamp;
-    $new_title = $page->post_title . ' (backup ' . $timestamp . ')';
+    if (! $page instanceof WP_Post) {
+        return;
+    }
+
+    // Avoid repeatedly backing up the same content across multiple imports.
+    if (preg_match('/-bak-\\d{8}-\\d{6}$/', (string) $page->post_name)) {
+        return;
+    }
+    if (preg_match('/\\s-bak-\\d{8}-\\d{6}$/', (string) $page->post_title)) {
+        return;
+    }
+
+    $timestamp = current_time('Ymd-His');
+    $new_slug = (string) $page->post_name . '-bak-' . $timestamp;
+    $new_title = (string) $page->post_title . ' -bak-' . $timestamp;
     
     wp_update_post([
         'ID' => $page->ID,
@@ -159,22 +191,6 @@ function aripplesong_clear_theme_sidebars() {
 }
 
 /**
- * Actions to perform after demo import is complete
- *
- * @param array $selected_import Selected demo import data
- */
-add_action('ocdi/after_import', function ($selected_import) {
-    // Assign "Menu 1" to the primary_navigation location
-    aripplesong_assign_menu_to_location();
-    
-    // Set the homepage to the imported "home" page
-    aripplesong_set_static_homepage();
-    
-    // Flush rewrite rules to ensure permalinks work properly
-    flush_rewrite_rules();
-});
-
-/**
  * Assign the imported menu to the primary navigation location
  */
 function aripplesong_assign_menu_to_location() {
@@ -228,28 +244,3 @@ function aripplesong_set_static_homepage() {
         update_option('page_for_posts', $blog_page->ID);
     }
 }
-
-/**
- * Disable the intro guide modal for One Click Demo Import
- */
-add_filter('ocdi/register_plugins', function ($plugins) {
-    return $plugins;
-});
-
-/**
- * Change "One Click Demo Import" plugin page location to under Appearance menu
- */
-add_filter('ocdi/plugin_page_setup', function ($default_settings) {
-    $default_settings['parent_slug'] = 'themes.php';
-    $default_settings['page_title']  = __('Import Demo Data', 'sage');
-    $default_settings['menu_title']  = __('Import Demo', 'sage');
-    $default_settings['capability']  = 'import';
-    $default_settings['menu_slug']   = 'one-click-demo-import';
-    
-    return $default_settings;
-});
-
-/**
- * Recommended way to disable branding popup
- */
-add_filter('ocdi/disable_pt_branding', '__return_true');

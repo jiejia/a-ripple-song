@@ -574,3 +574,65 @@ add_filter('wp_check_filetype_and_ext', function ($data, $file, $filename, $mime
     
     return $data;
 }, 10, 4);
+
+/**
+ * One Click Demo Import (OCDI) configuration.
+ */
+add_filter('ocdi/import_files', function () {
+    return [
+        [
+            'import_file_name'           => 'A Ripple Song Demo',
+            'local_import_file'          => get_template_directory() . '/data/demo-data.xml',
+            'local_import_widget_file'   => get_template_directory() . '/data/demo-widgets.wie',
+            'import_preview_image_url'   => get_template_directory_uri() . '/screenshot.png',
+            'preview_url'                => 'https://demo.aripplesong.com/',
+            'import_notice'              => __('After importing this demo, please wait for all images and media to be downloaded. This may take a few minutes depending on your server speed.', 'sage'),
+        ],
+    ];
+});
+
+/**
+ * Before importing demo content:
+ * 1. Backup existing pages/menus that conflict with demo data
+ * 2. Clear all theme sidebars
+ */
+add_action('ocdi/before_content_import', function () {
+    \aripplesong_backup_conflicting_content();
+    \aripplesong_clear_theme_sidebars();
+});
+
+/**
+ * Actions to perform after demo import is complete.
+ *
+ * @param array $selected_import Selected demo import data.
+ */
+add_action('ocdi/after_import', function ($selected_import) {
+    \aripplesong_assign_menu_to_location();
+    \aripplesong_set_static_homepage();
+    flush_rewrite_rules();
+});
+
+/**
+ * Disable the intro guide modal for One Click Demo Import.
+ */
+add_filter('ocdi/register_plugins', function ($plugins) {
+    return $plugins;
+});
+
+/**
+ * Change "One Click Demo Import" plugin page location to under Appearance menu.
+ */
+add_filter('ocdi/plugin_page_setup', function ($default_settings) {
+    $default_settings['parent_slug'] = 'themes.php';
+    $default_settings['page_title']  = __('Import Demo Data', 'sage');
+    $default_settings['menu_title']  = __('Import Demo', 'sage');
+    $default_settings['capability']  = 'import';
+    $default_settings['menu_slug']   = 'one-click-demo-import';
+
+    return $default_settings;
+});
+
+/**
+ * Recommended way to disable branding popup.
+ */
+add_filter('ocdi/disable_pt_branding', '__return_true');
