@@ -1,1 +1,0 @@
-./.cursor/CLAUDE.mdc
