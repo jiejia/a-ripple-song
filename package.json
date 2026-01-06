@@ -1,6 +1,9 @@
 {
-  "name": "sage",
+  "name": "a-ripple-song",
+  "version": "0.7.0",
   "private": true,
+  "description": "All-in-one podcast theme for WordPress",
+  "homepage": "https://doc-podcast.aripplesong.me/",
   "engines": {
     "node": ">=20.0.0"
   },
