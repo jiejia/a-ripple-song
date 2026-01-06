@@ -127,12 +127,31 @@ function aripplesong_backup_page($page) {
     $timestamp = current_time('Ymd-His');
     $new_slug = (string) $page->post_name . '-bak-' . $timestamp;
     $new_title = (string) $page->post_title . ' -bak-' . $timestamp;
-    
-    wp_update_post([
+
+    $result = wp_update_post([
         'ID' => $page->ID,
         'post_name' => $new_slug,
         'post_title' => $new_title,
-    ]);
+    ], true);
+
+    if (is_wp_error($result)) {
+        return;
+    }
+
+    $updated_slug = (string) get_post_field('post_name', $page->ID);
+    if ($updated_slug !== $new_slug) {
+        global $wpdb;
+
+        $wpdb->update(
+            $wpdb->posts,
+            ['post_name' => $new_slug],
+            ['ID' => $page->ID],
+            ['%s'],
+            ['%d']
+        );
+
+        clean_post_cache($page->ID);
+    }
 }
 
 /**
