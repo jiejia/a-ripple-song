@@ -39,6 +39,7 @@ add_action('ocdi/before_content_import', function () {
 /**
  * Backup pages and menus that would conflict with demo import.
  * Renames existing content with '-bak' suffix to avoid ID/slug conflicts.
+ * Checks ALL post statuses including trash to ensure clean import.
  */
 function aripplesong_backup_conflicting_content() {
     // Pages expected from demo import (by slug)
@@ -47,12 +48,24 @@ function aripplesong_backup_conflicting_content() {
     // Menus expected from demo import (by name/slug)
     $demo_menu_names = ['Menu 1', 'menu-1'];
     
-    // Backup conflicting pages
+    // Backup conflicting pages (including trashed ones)
     foreach ($demo_page_slugs as $slug) {
-        $page = get_page_by_path($slug);
-        if ($page) {
-            aripplesong_backup_page($page);
+        // Use WP_Query to find pages with any status (publish, draft, trash, etc.)
+        $query = new \WP_Query([
+            'post_type'      => 'page',
+            'post_status'    => 'any',  // Include all statuses including trash
+            'name'           => $slug,
+            'posts_per_page' => -1,     // Get all matching pages
+            'no_found_rows'  => true,   // Improve performance
+        ]);
+        
+        if ($query->have_posts()) {
+            foreach ($query->posts as $page) {
+                aripplesong_backup_page($page);
+            }
         }
+        
+        wp_reset_postdata();
     }
     
     // Backup conflicting menus
