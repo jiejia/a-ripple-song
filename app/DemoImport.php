@@ -116,42 +116,88 @@ function aripplesong_backup_page($page) {
         return;
     }
 
-    // Avoid repeatedly backing up the same content across multiple imports.
-    if (preg_match('/-bak-\\d{8}-\\d{6}$/', (string) $page->post_name)) {
-        return;
-    }
-    if (preg_match('/\\s-bak-\\d{8}-\\d{6}$/', (string) $page->post_title)) {
-        return;
-    }
-
     $timestamp = current_time('Ymd-His');
-    $new_slug = (string) $page->post_name . '-bak-' . $timestamp;
-    $new_title = (string) $page->post_title . ' -bak-' . $timestamp;
+    $slug_suffix = '-bak-' . $timestamp;
+    $title_suffix = ' -bak-' . $timestamp;
+    $guid_suffix = '#bak-' . $timestamp;
 
-    $result = wp_update_post([
+    $current_slug = (string) $page->post_name;
+    $current_title = (string) $page->post_title;
+    $current_guid = (string) $page->guid;
+
+    $slug_already_backed_up = (bool) preg_match('/-bak-\\d{8}-\\d{6}$/', $current_slug);
+    $title_already_backed_up = (bool) preg_match('/\\s-bak-\\d{8}-\\d{6}$/', $current_title);
+    $guid_already_backed_up = (bool) preg_match('/#bak-\\d{8}-\\d{6}$/', $current_guid);
+
+    $post_update = [
         'ID' => $page->ID,
-        'post_name' => $new_slug,
-        'post_title' => $new_title,
-    ], true);
+    ];
+
+    if (! $slug_already_backed_up) {
+        $post_update['post_name'] = $current_slug . $slug_suffix;
+    }
+    if (! $title_already_backed_up) {
+        $post_update['post_title'] = $current_title . $title_suffix;
+    }
+    if (! $guid_already_backed_up && $current_guid !== '') {
+        $post_update['guid'] = $current_guid . $guid_suffix;
+    }
+
+    if (count($post_update) === 1) {
+        return;
+    }
+
+    $result = wp_update_post($post_update, true);
 
     if (is_wp_error($result)) {
         return;
     }
 
-    $updated_slug = (string) get_post_field('post_name', $page->ID);
-    if ($updated_slug !== $new_slug) {
-        global $wpdb;
+    global $wpdb;
 
-        $wpdb->update(
-            $wpdb->posts,
-            ['post_name' => $new_slug],
-            ['ID' => $page->ID],
-            ['%s'],
-            ['%d']
-        );
-
-        clean_post_cache($page->ID);
+    if (isset($post_update['post_name'])) {
+        $updated_slug = (string) get_post_field('post_name', $page->ID);
+        if ($updated_slug !== $post_update['post_name']) {
+            $wpdb->update(
+                $wpdb->posts,
+                ['post_name' => $post_update['post_name']],
+                ['ID' => $page->ID],
+                ['%s'],
+                ['%d']
+            );
+        }
     }
+
+    if (isset($post_update['post_title'])) {
+        $updated_title = (string) get_post_field('post_title', $page->ID);
+        if ($updated_title !== $post_update['post_title']) {
+            $wpdb->update(
+                $wpdb->posts,
+                ['post_title' => $post_update['post_title']],
+                ['ID' => $page->ID],
+                ['%s'],
+                ['%d']
+            );
+        }
+    }
+
+    if (isset($post_update['guid'])) {
+        $updated_guid = (string) get_post_field('guid', $page->ID);
+        if ($updated_guid !== $post_update['guid']) {
+            $wpdb->update(
+                $wpdb->posts,
+                ['guid' => $post_update['guid']],
+                ['ID' => $page->ID],
+                ['%s'],
+                ['%d']
+            );
+        }
+    }
+
+    // Prevent restoring the original slug on untrash, which could reintroduce conflicts.
+    delete_post_meta($page->ID, '_wp_desired_post_slug');
+
+    clean_post_cache($page->ID);
 }
 
 /**
