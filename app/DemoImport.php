@@ -16,7 +16,7 @@
  * Note: WordPress appends '__trashed' to slugs when posts are trashed,
  * so we use direct database queries to find all variations.
  */
-function aripplesong_backup_conflicting_content() {
+function aripplesong_backup_conflicting_content($selected_import = null) {
     global $wpdb;
     
     // Pages expected from demo import (by slug)
@@ -34,6 +34,17 @@ function aripplesong_backup_conflicting_content() {
             aripplesong_backup_page($page);
         }
     }
+
+    // Backup conflicting nav menu items by GUID (OCDI importer dedupes by GUID).
+    $import_file_path = null;
+    if (is_array($selected_import) && !empty($selected_import['local_import_file'])) {
+        $import_file_path = $selected_import['local_import_file'];
+    }
+    if (!$import_file_path) {
+        $import_file_path = get_template_directory() . '/data/demo-data.xml';
+    }
+
+    aripplesong_backup_conflicting_nav_menu_items_by_guid($import_file_path);
     
     // Backup conflicting menus
     foreach ($demo_menu_names as $menu_name) {
@@ -42,6 +53,113 @@ function aripplesong_backup_conflicting_content() {
             aripplesong_backup_menu($menu);
         }
     }
+}
+
+/**
+ * Backup existing nav_menu_item posts that would be skipped by the importer due to GUID collisions.
+ *
+ * OCDI's WXR importer v2 can prefill existing posts by GUID (across all post types),
+ * which can cause menu items to be treated as already existing and thus skipped.
+ *
+ * @param string $import_file_path The local demo XML path.
+ * @return void
+ */
+function aripplesong_backup_conflicting_nav_menu_items_by_guid($import_file_path) {
+    if (!is_string($import_file_path) || $import_file_path === '' || !file_exists($import_file_path)) {
+        return;
+    }
+
+    $demo_guids = aripplesong_get_demo_item_guids_by_post_type($import_file_path, ['nav_menu_item']);
+    if (empty($demo_guids)) {
+        return;
+    }
+
+    global $wpdb;
+
+    $placeholders = implode(',', array_fill(0, count($demo_guids), '%s'));
+    $sql = $wpdb->prepare(
+        "SELECT ID FROM {$wpdb->posts}
+         WHERE post_type = 'nav_menu_item'
+         AND guid IN ($placeholders)",
+        ...$demo_guids
+    );
+
+    $menu_item_ids = array_values(array_filter(array_map('intval', (array) $wpdb->get_col($sql))));
+    if (empty($menu_item_ids)) {
+        return;
+    }
+
+    foreach ($menu_item_ids as $menu_item_id) {
+        $menu_item = get_post($menu_item_id);
+        if ($menu_item) {
+            aripplesong_backup_page($menu_item);
+        }
+    }
+}
+
+/**
+ * Extract GUIDs from the demo WXR file for specific post types.
+ *
+ * @param string $import_file_path The local demo XML path.
+ * @param array $post_types Post types to include.
+ * @return string[] List of GUIDs.
+ */
+function aripplesong_get_demo_item_guids_by_post_type($import_file_path, $post_types) {
+    $post_types = array_values(array_filter(array_map('strval', (array) $post_types)));
+    if (empty($post_types)) {
+        return [];
+    }
+
+    if (!class_exists('XMLReader')) {
+        return [];
+    }
+
+    $reader = new XMLReader();
+    if (!$reader->open($import_file_path)) {
+        return [];
+    }
+
+    $guids = [];
+    $in_item = false;
+    $current_post_type = null;
+    $current_guid = null;
+
+    while ($reader->read()) {
+        if ($reader->nodeType === XMLReader::ELEMENT && $reader->name === 'item') {
+            $in_item = true;
+            $current_post_type = null;
+            $current_guid = null;
+            continue;
+        }
+
+        if ($in_item && $reader->nodeType === XMLReader::END_ELEMENT && $reader->name === 'item') {
+            if ($current_post_type && in_array($current_post_type, $post_types, true) && $current_guid) {
+                $guids[] = $current_guid;
+            }
+            $in_item = false;
+            $current_post_type = null;
+            $current_guid = null;
+            continue;
+        }
+
+        if (!$in_item || $reader->nodeType !== XMLReader::ELEMENT) {
+            continue;
+        }
+
+        if ($reader->name === 'wp:post_type') {
+            $current_post_type = trim((string) $reader->readString());
+            continue;
+        }
+
+        if ($reader->name === 'guid') {
+            $current_guid = trim((string) $reader->readString());
+            continue;
+        }
+    }
+
+    $reader->close();
+
+    return array_values(array_filter(array_unique($guids)));
 }
 
 /**

@@ -596,8 +596,8 @@ add_filter('ocdi/import_files', function () {
  * 1. Backup existing pages/menus that conflict with demo data
  * 2. Clear all theme sidebars
  */
-add_action('ocdi/before_content_import', function () {
-    \aripplesong_backup_conflicting_content();
+add_action('ocdi/before_content_import', function ($selected_import) {
+    \aripplesong_backup_conflicting_content($selected_import);
     \aripplesong_clear_theme_sidebars();
 });
 
