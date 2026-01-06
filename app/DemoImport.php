@@ -40,32 +40,41 @@ add_action('ocdi/before_content_import', function () {
  * Backup pages and menus that would conflict with demo import.
  * Renames existing content with '-bak' suffix to avoid ID/slug conflicts.
  * Checks ALL post statuses including trash to ensure clean import.
+ * 
+ * Note: WordPress appends '__trashed' to slugs when posts are trashed,
+ * so we use direct database queries to find all variations.
  */
 function aripplesong_backup_conflicting_content() {
+    global $wpdb;
+    
     // Pages expected from demo import (by slug)
     $demo_page_slugs = ['home', 'podcasts', 'blog'];
     
     // Menus expected from demo import (by name/slug)
     $demo_menu_names = ['Menu 1', 'menu-1'];
     
-    // Backup conflicting pages (including trashed ones)
+    // Backup conflicting pages (including trashed ones with __trashed suffix)
     foreach ($demo_page_slugs as $slug) {
-        // Use WP_Query to find pages with any status (publish, draft, trash, etc.)
-        $query = new \WP_Query([
-            'post_type'      => 'page',
-            'post_status'    => 'any',  // Include all statuses including trash
-            'name'           => $slug,
-            'posts_per_page' => -1,     // Get all matching pages
-            'no_found_rows'  => true,   // Improve performance
-        ]);
+        // Query for pages where post_name equals slug OR starts with slug__trashed
+        // WordPress adds __trashed suffix when moving to trash
+        $sql = $wpdb->prepare(
+            "SELECT ID FROM {$wpdb->posts} 
+             WHERE post_type = 'page' 
+             AND (post_name = %s OR post_name LIKE %s)",
+            $slug,
+            $slug . '__%'  // Matches home__trashed, home__trashed2, etc.
+        );
         
-        if ($query->have_posts()) {
-            foreach ($query->posts as $page) {
-                aripplesong_backup_page($page);
+        $page_ids = $wpdb->get_col($sql);
+        
+        if (!empty($page_ids)) {
+            foreach ($page_ids as $page_id) {
+                $page = get_post($page_id);
+                if ($page) {
+                    aripplesong_backup_page($page);
+                }
             }
         }
-        
-        wp_reset_postdata();
     }
     
     // Backup conflicting menus
