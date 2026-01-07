@@ -1,0 +1,112 @@
+name: Build WordPress theme package
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag to build (e.g. v0.6.0-beta)"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resolve tag
+        id: vars
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "${{ github.event_name }}" == "release" ]]; then
+            TAG="${{ github.event.release.tag_name }}"
+          else
+            TAG="${{ inputs.tag }}"
+          fi
+
+          if [[ -z "$TAG" ]]; then
+            echo "Tag is required." >&2
+            exit 1
+          fi
+
+          VERSION="${TAG#v}"
+          THEME_SLUG="a-ripple-song"
+          ARCHIVE_NAME="${THEME_SLUG}-${VERSION}.zip"
+
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "theme_slug=$THEME_SLUG" >> "$GITHUB_OUTPUT"
+          echo "archive_name=$ARCHIVE_NAME" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout tag
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.vars.outputs.tag }}
+          fetch-depth: 0
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          tools: composer:v2
+          extensions: mbstring, dom, curl, zip
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install Composer dependencies (production)
+        run: composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction --no-progress
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Build assets
+        run: npm run build
+
+      - name: Create release package
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          THEME_SLUG="${{ steps.vars.outputs.theme_slug }}"
+          ARCHIVE_NAME="${{ steps.vars.outputs.archive_name }}"
+
+          rm -rf dist
+          mkdir -p "dist/${THEME_SLUG}"
+
+          # Build a minimal, installable WordPress theme package.
+          # Includes: PHP/theme files, Blade views, translations, built assets, demo data and vendor dependencies.
+          rsync -a --prune-empty-dirs \
+            --include="app/***" \
+            --include="data/***" \
+            --include="public/***" \
+            --exclude="public/hot" \
+            --include="resources/views/***" \
+            --include="resources/lang/***" \
+            --include="resources/images/***" \
+            --include="resources/fonts/***" \
+            --include="vendor/***" \
+            --include="functions.php" \
+            --include="index.php" \
+            --include="style.css" \
+            --include="screenshot.png" \
+            --include="theme.json" \
+            --exclude="*" \
+            ./ "dist/${THEME_SLUG}/"
+
+          find "dist/${THEME_SLUG}" -name ".DS_Store" -delete
+
+          (cd dist && zip -r "../${ARCHIVE_NAME}" "${THEME_SLUG}" -x "**/.DS_Store")
+
+      - name: Upload package to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.vars.outputs.tag }}
+          files: ${{ steps.vars.outputs.archive_name }}
