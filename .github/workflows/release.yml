@@ -93,6 +93,8 @@ jobs:
             --include="resources/images/***" \
             --include="resources/fonts/***" \
             --include="vendor/***" \
+            --include="composer.json" \
+            --include="composer.lock" \
             --include="functions.php" \
             --include="index.php" \
             --include="style.css" \
