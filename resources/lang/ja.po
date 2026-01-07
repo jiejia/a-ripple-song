@@ -14,21 +14,6 @@ msgstr ""
 "X-Domain: sage\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. Theme Name of the theme
-#: style.css
-msgid "Sage Starter Theme"
-msgstr "さざ波の歌"
-
-#. Theme URI of the theme
-#: style.css
-msgid "https://roots.io/sage/"
-msgstr "https://doc-podcast.aripplesong.me/"
-
-#. Description of the theme
-#: style.css
-msgid "Sage is a WordPress starter theme."
-msgstr "WordPress 用のオールインワン・ポッドキャストテーマ"
-
 #. Author of the theme
 #: style.css
 msgid "Roots"
@@ -1494,150 +1479,17 @@ msgstr "プレイリストに追加しました："
 msgid "Episode already exists:"
 msgstr "エピソードは既に存在します："
 
-#: app/ThemeOptions/Podcast.php:136
-msgid "iTunes Type (itunes:type)"
-msgstr "iTunes タイプ (itunes:type)"
+#. Theme Name of the theme
+#: style.css
+msgid "Sage Starter Theme"
+msgstr ""
 
-#: app/ThemeOptions/Podcast.php:138
-msgid "(not set)"
-msgstr "（未設定）"
+#. Theme URI of the theme
+#: style.css
+msgid "https://roots.io/sage/"
+msgstr ""
 
-#: app/ThemeOptions/Podcast.php:139
-msgid "episodic"
-msgstr "エピソード型"
-
-#: app/ThemeOptions/Podcast.php:140
-msgid "serial"
-msgstr "シリアル型"
-
-#: app/ThemeOptions/Podcast.php:143
-msgid "Optional. Apple Podcasts: episodic or serial."
-msgstr "オプション。Apple Podcasts：エピソード型またはシリアル型。"
-
-#: app/ThemeOptions/Podcast.php:144
-msgid "iTunes Title (optional)"
-msgstr "iTunes タイトル（オプション）"
-
-#: app/ThemeOptions/Podcast.php:145
-msgid "Optional. Use only if you need a separate Apple-facing title."
-msgstr "オプション。Apple 向けに別のタイトルが必要な場合のみ使用。"
-
-#: app/ThemeOptions/Podcast.php:146
-msgid "iTunes Block (itunes:block)"
-msgstr "iTunes ブロック (itunes:block)"
-
-#: app/ThemeOptions/Podcast.php:152
-msgid "Optional. yes = hide this show in Apple Podcasts."
-msgstr "オプション。yes = Apple Podcasts でこの番組を非表示にする。"
-
-#: app/ThemeOptions/Podcast.php:153
-msgid "iTunes Complete (itunes:complete)"
-msgstr "iTunes 完結 (itunes:complete)"
-
-#: app/ThemeOptions/Podcast.php:159
-msgid "Optional. yes = this show is complete (no more episodes)."
-msgstr "オプション。yes = この番組は完結（これ以上エピソードなし）。"
-
-#: app/ThemeOptions/Podcast.php:160
-msgid "iTunes New Feed URL (itunes:new-feed-url)"
-msgstr "iTunes 新しいフィード URL (itunes:new-feed-url)"
-
-#: app/ThemeOptions/Podcast.php:161
-msgid "Optional. Only for moving your show to a new RSS feed URL."
-msgstr "オプション。番組を新しい RSS フィード URL に移動する場合のみ使用。"
-
-#: app/ThemeOptions/Podcast.php:169
-msgid "podcast:locked owner (optional)"
-msgstr "podcast:locked オーナー（オプション）"
-
-#: app/ThemeOptions/Podcast.php:172
-msgid "Optional. Podcasting 2.0: email used to verify ownership during moves."
-msgstr "オプション。Podcasting 2.0：移動時の所有権確認に使用するメールアドレス。"
-
-#: app/ThemeOptions/Podcast.php:175
-msgid "Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
-msgstr "Apple Podcasts 認証コード (podcast:txt purpose=\"applepodcastsverify\")"
-
-#: app/ThemeOptions/Podcast.php:176
-msgid "Optional. Used by Apple Podcasts to verify feed ownership."
-msgstr "オプション。Apple Podcasts がフィードの所有権を確認するために使用。"
-
-#: app/ThemeOptions/Podcast.php:177
-msgid "Podcasting 2.0 Funding Links (podcast:funding)"
-msgstr "Podcasting 2.0 資金提供リンク (podcast:funding)"
-
-#: app/ThemeOptions/Podcast.php:178
-msgid "Optional. If empty, no podcast:funding tags will be generated. URLs should be https."
-msgstr "オプション。空の場合、podcast:funding タグは生成されません。URL は https を使用してください。"
-
-#: app/ThemeOptions/Podcast.php:180
-msgid "URL"
-msgstr "URL"
-
-#: app/ThemeOptions/Podcast.php:181
-msgid "Required for each entry. Use https."
-msgstr "各エントリに必須。https を使用。"
-
-#: app/ThemeOptions/Podcast.php:182
-msgid "Label"
-msgstr "ラベル"
-
-#: app/ThemeOptions/Podcast.php:183
-msgid "Optional display text (max 128 chars recommended)."
-msgstr "オプションの表示テキスト（最大 128 文字推奨）。"
-
-#: app/ThemeOptions/Podcast.php:185
-msgid "Generator (optional)"
-msgstr "ジェネレーター（オプション）"
-
-#: app/ThemeOptions/Podcast.php:186
-msgid "Optional. If empty, generator tag will not be included."
-msgstr "オプション。空の場合、generator タグは含まれません。"
-
-#: app/PostTypes/Podcast.php
-msgid "Chapters (Podcasting 2.0)"
-msgstr "チャプター (Podcasting 2.0)"
-
-#: app/PostTypes/Podcast.php
-msgid "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
-msgstr "オプション。<podcast:chapters> 用のチャプター JSON URL/ファイルを提供。"
-
-#: app/PostTypes/Podcast.php
-msgid "Add Chapters File"
-msgstr "チャプターファイルを追加"
-
-#: app/PostTypes/Podcast.php
-msgid "Chapters MIME Type"
-msgstr "チャプター MIME タイプ"
-
-#: app/PostTypes/Podcast.php
-msgid "Optional. Defaults to application/json+chapters."
-msgstr "オプション。デフォルトは application/json+chapters。"
-
-#: app/PostTypes/Podcast.php
-msgid "Soundbites (Podcasting 2.0)"
-msgstr "サウンドバイト (Podcasting 2.0)"
-
-#: app/PostTypes/Podcast.php
-msgid "Optional. Adds one or more <podcast:soundbite> tags."
-msgstr "オプション。1つ以上の <podcast:soundbite> タグを追加。"
-
-#: app/PostTypes/Podcast.php
-msgid "Soundbite {#}"
-msgstr "サウンドバイト {#}"
-
-#: app/PostTypes/Podcast.php
-msgid "Start Time (seconds)"
-msgstr "開始時間（秒）"
-
-#: app/PostTypes/Podcast.php
-msgid "Title (optional)"
-msgstr "タイトル（オプション）"
-
-#: app/PostTypes/Podcast.php
-msgid "Add Soundbite"
-msgstr "サウンドバイトを追加"
-
-#: app/PostTypes/Podcast.php
-msgid "Remove Soundbite"
-msgstr "サウンドバイトを削除"
+#. Description of the theme
+#: style.css
+msgid "Sage is a WordPress starter theme."
+msgstr ""

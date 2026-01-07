@@ -14,21 +14,6 @@ msgstr ""
 "X-Domain: sage\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. Theme Name of the theme
-#: style.css
-msgid "Sage Starter Theme"
-msgstr "脈動之音"
-
-#. Theme URI of the theme
-#: style.css
-msgid "https://roots.io/sage/"
-msgstr "https://doc-podcast.aripplesong.me/"
-
-#. Description of the theme
-#: style.css
-msgid "Sage is a WordPress starter theme."
-msgstr "適用於 WordPress 的一體化 Podcast 佈景主題"
-
 #. Author of the theme
 #: style.css
 msgid "Roots"
@@ -1494,150 +1479,17 @@ msgstr "已新增到播放清單："
 msgid "Episode already exists:"
 msgstr "節目已存在："
 
-#: app/ThemeOptions/Podcast.php:136
-msgid "iTunes Type (itunes:type)"
-msgstr "iTunes 類型 (itunes:type)"
+#. Theme Name of the theme
+#: style.css
+msgid "Sage Starter Theme"
+msgstr ""
 
-#: app/ThemeOptions/Podcast.php:138
-msgid "(not set)"
-msgstr "（未設置）"
+#. Theme URI of the theme
+#: style.css
+msgid "https://roots.io/sage/"
+msgstr ""
 
-#: app/ThemeOptions/Podcast.php:139
-msgid "episodic"
-msgstr "單集型"
-
-#: app/ThemeOptions/Podcast.php:140
-msgid "serial"
-msgstr "連續劇型"
-
-#: app/ThemeOptions/Podcast.php:143
-msgid "Optional. Apple Podcasts: episodic or serial."
-msgstr "可選。Apple Podcasts：單集型或連續劇型。"
-
-#: app/ThemeOptions/Podcast.php:144
-msgid "iTunes Title (optional)"
-msgstr "iTunes 標題（可選）"
-
-#: app/ThemeOptions/Podcast.php:145
-msgid "Optional. Use only if you need a separate Apple-facing title."
-msgstr "可選。僅在需要單獨的 Apple 展示標題時使用。"
-
-#: app/ThemeOptions/Podcast.php:146
-msgid "iTunes Block (itunes:block)"
-msgstr "iTunes 屏蔽 (itunes:block)"
-
-#: app/ThemeOptions/Podcast.php:152
-msgid "Optional. yes = hide this show in Apple Podcasts."
-msgstr "可選。yes = 在 Apple Podcasts 中隱藏此節目。"
-
-#: app/ThemeOptions/Podcast.php:153
-msgid "iTunes Complete (itunes:complete)"
-msgstr "iTunes 完結 (itunes:complete)"
-
-#: app/ThemeOptions/Podcast.php:159
-msgid "Optional. yes = this show is complete (no more episodes)."
-msgstr "可選。yes = 此節目已完結（不再更新）。"
-
-#: app/ThemeOptions/Podcast.php:160
-msgid "iTunes New Feed URL (itunes:new-feed-url)"
-msgstr "iTunes 新訂閱源 URL (itunes:new-feed-url)"
-
-#: app/ThemeOptions/Podcast.php:161
-msgid "Optional. Only for moving your show to a new RSS feed URL."
-msgstr "可選。僅在將節目遷移到新的 RSS 訂閱源時使用。"
-
-#: app/ThemeOptions/Podcast.php:169
-msgid "podcast:locked owner (optional)"
-msgstr "podcast:locked 擁有者（可選）"
-
-#: app/ThemeOptions/Podcast.php:172
-msgid "Optional. Podcasting 2.0: email used to verify ownership during moves."
-msgstr "可選。Podcasting 2.0：遷移時用於驗證所有權的郵箱。"
-
-#: app/ThemeOptions/Podcast.php:175
-msgid "Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
-msgstr "Apple Podcasts 驗證碼 (podcast:txt purpose=\"applepodcastsverify\")"
-
-#: app/ThemeOptions/Podcast.php:176
-msgid "Optional. Used by Apple Podcasts to verify feed ownership."
-msgstr "可選。Apple Podcasts 用於驗證訂閱源所有權。"
-
-#: app/ThemeOptions/Podcast.php:177
-msgid "Podcasting 2.0 Funding Links (podcast:funding)"
-msgstr "Podcasting 2.0 贊助連結 (podcast:funding)"
-
-#: app/ThemeOptions/Podcast.php:178
-msgid "Optional. If empty, no podcast:funding tags will be generated. URLs should be https."
-msgstr "可選。如果為空，則不會生成 podcast:funding 標籤。URL 應使用 https。"
-
-#: app/ThemeOptions/Podcast.php:180
-msgid "URL"
-msgstr "連結"
-
-#: app/ThemeOptions/Podcast.php:181
-msgid "Required for each entry. Use https."
-msgstr "每個條目必填。請使用 https。"
-
-#: app/ThemeOptions/Podcast.php:182
-msgid "Label"
-msgstr "標籤"
-
-#: app/ThemeOptions/Podcast.php:183
-msgid "Optional display text (max 128 chars recommended)."
-msgstr "可選的顯示文字（建議最多 128 個字元）。"
-
-#: app/ThemeOptions/Podcast.php:185
-msgid "Generator (optional)"
-msgstr "生成器（可選）"
-
-#: app/ThemeOptions/Podcast.php:186
-msgid "Optional. If empty, generator tag will not be included."
-msgstr "可選。如果為空，則不會包含生成器標籤。"
-
-#: app/PostTypes/Podcast.php
-msgid "Chapters (Podcasting 2.0)"
-msgstr "章節 (Podcasting 2.0)"
-
-#: app/PostTypes/Podcast.php
-msgid "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
-msgstr "可選。提供 <podcast:chapters> 的章節 JSON URL/檔案。"
-
-#: app/PostTypes/Podcast.php
-msgid "Add Chapters File"
-msgstr "新增章節檔案"
-
-#: app/PostTypes/Podcast.php
-msgid "Chapters MIME Type"
-msgstr "章節 MIME 類型"
-
-#: app/PostTypes/Podcast.php
-msgid "Optional. Defaults to application/json+chapters."
-msgstr "可選。預設為 application/json+chapters。"
-
-#: app/PostTypes/Podcast.php
-msgid "Soundbites (Podcasting 2.0)"
-msgstr "聲音片段 (Podcasting 2.0)"
-
-#: app/PostTypes/Podcast.php
-msgid "Optional. Adds one or more <podcast:soundbite> tags."
-msgstr "可選。新增一個或多個 <podcast:soundbite> 標籤。"
-
-#: app/PostTypes/Podcast.php
-msgid "Soundbite {#}"
-msgstr "聲音片段 {#}"
-
-#: app/PostTypes/Podcast.php
-msgid "Start Time (seconds)"
-msgstr "開始時間（秒）"
-
-#: app/PostTypes/Podcast.php
-msgid "Title (optional)"
-msgstr "標題（可選）"
-
-#: app/PostTypes/Podcast.php
-msgid "Add Soundbite"
-msgstr "新增聲音片段"
-
-#: app/PostTypes/Podcast.php
-msgid "Remove Soundbite"
-msgstr "移除聲音片段"
+#. Description of the theme
+#: style.css
+msgid "Sage is a WordPress starter theme."
+msgstr ""

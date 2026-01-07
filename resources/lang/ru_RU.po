@@ -14,21 +14,6 @@ msgstr ""
 "X-Domain: sage\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#. Theme Name of the theme
-#: style.css
-msgid "Sage Starter Theme"
-msgstr "Пульсирующая песня"
-
-#. Theme URI of the theme
-#: style.css
-msgid "https://roots.io/sage/"
-msgstr "https://doc-podcast.aripplesong.me/"
-
-#. Description of the theme
-#: style.css
-msgid "Sage is a WordPress starter theme."
-msgstr "Универсальная тема для подкастов на WordPress"
-
 #. Author of the theme
 #: style.css
 msgid "Roots"
@@ -1498,150 +1483,17 @@ msgstr "Добавлено в плейлист:"
 msgid "Episode already exists:"
 msgstr "Эпизод уже существует:"
 
-#: app/ThemeOptions/Podcast.php:136
-msgid "iTunes Type (itunes:type)"
-msgstr "Тип iTunes (itunes:type)"
+#. Theme Name of the theme
+#: style.css
+msgid "Sage Starter Theme"
+msgstr ""
 
-#: app/ThemeOptions/Podcast.php:138
-msgid "(not set)"
-msgstr "(не задано)"
+#. Theme URI of the theme
+#: style.css
+msgid "https://roots.io/sage/"
+msgstr ""
 
-#: app/ThemeOptions/Podcast.php:139
-msgid "episodic"
-msgstr "эпизодический"
-
-#: app/ThemeOptions/Podcast.php:140
-msgid "serial"
-msgstr "сериал"
-
-#: app/ThemeOptions/Podcast.php:143
-msgid "Optional. Apple Podcasts: episodic or serial."
-msgstr "Необязательно. Apple Podcasts: эпизодический или сериал."
-
-#: app/ThemeOptions/Podcast.php:144
-msgid "iTunes Title (optional)"
-msgstr "Название iTunes (необязательно)"
-
-#: app/ThemeOptions/Podcast.php:145
-msgid "Optional. Use only if you need a separate Apple-facing title."
-msgstr "Необязательно. Используйте только если нужно отдельное название для Apple."
-
-#: app/ThemeOptions/Podcast.php:146
-msgid "iTunes Block (itunes:block)"
-msgstr "Блокировка iTunes (itunes:block)"
-
-#: app/ThemeOptions/Podcast.php:152
-msgid "Optional. yes = hide this show in Apple Podcasts."
-msgstr "Необязательно. yes = скрыть это шоу в Apple Podcasts."
-
-#: app/ThemeOptions/Podcast.php:153
-msgid "iTunes Complete (itunes:complete)"
-msgstr "iTunes Завершено (itunes:complete)"
-
-#: app/ThemeOptions/Podcast.php:159
-msgid "Optional. yes = this show is complete (no more episodes)."
-msgstr "Необязательно. yes = это шоу завершено (больше нет эпизодов)."
-
-#: app/ThemeOptions/Podcast.php:160
-msgid "iTunes New Feed URL (itunes:new-feed-url)"
-msgstr "Новый URL ленты iTunes (itunes:new-feed-url)"
-
-#: app/ThemeOptions/Podcast.php:161
-msgid "Optional. Only for moving your show to a new RSS feed URL."
-msgstr "Необязательно. Только для переноса шоу на новый URL RSS-ленты."
-
-#: app/ThemeOptions/Podcast.php:169
-msgid "podcast:locked owner (optional)"
-msgstr "владелец podcast:locked (необязательно)"
-
-#: app/ThemeOptions/Podcast.php:172
-msgid "Optional. Podcasting 2.0: email used to verify ownership during moves."
-msgstr "Необязательно. Podcasting 2.0: email для подтверждения владения при переносе."
-
-#: app/ThemeOptions/Podcast.php:175
-msgid "Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
-msgstr "Код проверки Apple Podcasts (podcast:txt purpose=\"applepodcastsverify\")"
-
-#: app/ThemeOptions/Podcast.php:176
-msgid "Optional. Used by Apple Podcasts to verify feed ownership."
-msgstr "Необязательно. Используется Apple Podcasts для проверки владения лентой."
-
-#: app/ThemeOptions/Podcast.php:177
-msgid "Podcasting 2.0 Funding Links (podcast:funding)"
-msgstr "Ссылки финансирования Podcasting 2.0 (podcast:funding)"
-
-#: app/ThemeOptions/Podcast.php:178
-msgid "Optional. If empty, no podcast:funding tags will be generated. URLs should be https."
-msgstr "Необязательно. Если пусто, теги podcast:funding не будут созданы. URL должны быть https."
-
-#: app/ThemeOptions/Podcast.php:180
-msgid "URL"
-msgstr "URL"
-
-#: app/ThemeOptions/Podcast.php:181
-msgid "Required for each entry. Use https."
-msgstr "Обязательно для каждой записи. Используйте https."
-
-#: app/ThemeOptions/Podcast.php:182
-msgid "Label"
-msgstr "Метка"
-
-#: app/ThemeOptions/Podcast.php:183
-msgid "Optional display text (max 128 chars recommended)."
-msgstr "Необязательный текст отображения (рекомендуется макс. 128 символов)."
-
-#: app/ThemeOptions/Podcast.php:185
-msgid "Generator (optional)"
-msgstr "Генератор (необязательно)"
-
-#: app/ThemeOptions/Podcast.php:186
-msgid "Optional. If empty, generator tag will not be included."
-msgstr "Необязательно. Если пусто, тег generator не будет включён."
-
-#: app/PostTypes/Podcast.php
-msgid "Chapters (Podcasting 2.0)"
-msgstr "Главы (Podcasting 2.0)"
-
-#: app/PostTypes/Podcast.php
-msgid "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
-msgstr "Необязательно. Предоставьте URL/файл JSON глав для <podcast:chapters>."
-
-#: app/PostTypes/Podcast.php
-msgid "Add Chapters File"
-msgstr "Добавить файл глав"
-
-#: app/PostTypes/Podcast.php
-msgid "Chapters MIME Type"
-msgstr "MIME-тип глав"
-
-#: app/PostTypes/Podcast.php
-msgid "Optional. Defaults to application/json+chapters."
-msgstr "Необязательно. По умолчанию application/json+chapters."
-
-#: app/PostTypes/Podcast.php
-msgid "Soundbites (Podcasting 2.0)"
-msgstr "Звуковые фрагменты (Podcasting 2.0)"
-
-#: app/PostTypes/Podcast.php
-msgid "Optional. Adds one or more <podcast:soundbite> tags."
-msgstr "Необязательно. Добавляет один или несколько тегов <podcast:soundbite>."
-
-#: app/PostTypes/Podcast.php
-msgid "Soundbite {#}"
-msgstr "Звуковой фрагмент {#}"
-
-#: app/PostTypes/Podcast.php
-msgid "Start Time (seconds)"
-msgstr "Время начала (секунды)"
-
-#: app/PostTypes/Podcast.php
-msgid "Title (optional)"
-msgstr "Название (необязательно)"
-
-#: app/PostTypes/Podcast.php
-msgid "Add Soundbite"
-msgstr "Добавить звуковой фрагмент"
-
-#: app/PostTypes/Podcast.php
-msgid "Remove Soundbite"
-msgstr "Удалить звуковой фрагмент"
+#. Description of the theme
+#: style.css
+msgid "Sage is a WordPress starter theme."
+msgstr ""

@@ -14,21 +14,6 @@ msgstr ""
 "X-Domain: sage\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. Theme Name of the theme
-#: style.css
-msgid "Sage Starter Theme"
-msgstr "لہر کی دھن"
-
-#. Theme URI of the theme
-#: style.css
-msgid "https://roots.io/sage/"
-msgstr "https://doc-podcast.aripplesong.me/"
-
-#. Description of the theme
-#: style.css
-msgid "Sage is a WordPress starter theme."
-msgstr "ورڈپریس کے لیے آل اِن وَن پوڈکاسٹ تھیم"
-
 #. Author of the theme
 #: style.css
 msgid "Roots"
@@ -1496,150 +1481,17 @@ msgstr "پلے لسٹ میں شامل کیا گیا:"
 msgid "Episode already exists:"
 msgstr "ایپیسوڈ پہلے سے موجود ہے:"
 
-#: app/ThemeOptions/Podcast.php:136
-msgid "iTunes Type (itunes:type)"
-msgstr "iTunes قسم (itunes:type)"
+#. Theme Name of the theme
+#: style.css
+msgid "Sage Starter Theme"
+msgstr ""
 
-#: app/ThemeOptions/Podcast.php:138
-msgid "(not set)"
-msgstr "(سیٹ نہیں)"
+#. Theme URI of the theme
+#: style.css
+msgid "https://roots.io/sage/"
+msgstr ""
 
-#: app/ThemeOptions/Podcast.php:139
-msgid "episodic"
-msgstr "ایپیسوڈک"
-
-#: app/ThemeOptions/Podcast.php:140
-msgid "serial"
-msgstr "سیریل"
-
-#: app/ThemeOptions/Podcast.php:143
-msgid "Optional. Apple Podcasts: episodic or serial."
-msgstr "اختیاری۔ Apple Podcasts: ایپیسوڈک یا سیریل۔"
-
-#: app/ThemeOptions/Podcast.php:144
-msgid "iTunes Title (optional)"
-msgstr "iTunes عنوان (اختیاری)"
-
-#: app/ThemeOptions/Podcast.php:145
-msgid "Optional. Use only if you need a separate Apple-facing title."
-msgstr "اختیاری۔ صرف اس وقت استعمال کریں جب Apple کے لیے الگ عنوان درکار ہو۔"
-
-#: app/ThemeOptions/Podcast.php:146
-msgid "iTunes Block (itunes:block)"
-msgstr "iTunes بلاک (itunes:block)"
-
-#: app/ThemeOptions/Podcast.php:152
-msgid "Optional. yes = hide this show in Apple Podcasts."
-msgstr "اختیاری۔ yes = Apple Podcasts میں اس شو کو چھپائیں۔"
-
-#: app/ThemeOptions/Podcast.php:153
-msgid "iTunes Complete (itunes:complete)"
-msgstr "iTunes مکمل (itunes:complete)"
-
-#: app/ThemeOptions/Podcast.php:159
-msgid "Optional. yes = this show is complete (no more episodes)."
-msgstr "اختیاری۔ yes = یہ شو مکمل ہے (مزید ایپیسوڈ نہیں)۔"
-
-#: app/ThemeOptions/Podcast.php:160
-msgid "iTunes New Feed URL (itunes:new-feed-url)"
-msgstr "iTunes نیا فیڈ URL (itunes:new-feed-url)"
-
-#: app/ThemeOptions/Podcast.php:161
-msgid "Optional. Only for moving your show to a new RSS feed URL."
-msgstr "اختیاری۔ صرف اپنے شو کو نئے RSS فیڈ URL پر منتقل کرنے کے لیے۔"
-
-#: app/ThemeOptions/Podcast.php:169
-msgid "podcast:locked owner (optional)"
-msgstr "podcast:locked مالک (اختیاری)"
-
-#: app/ThemeOptions/Podcast.php:172
-msgid "Optional. Podcasting 2.0: email used to verify ownership during moves."
-msgstr "اختیاری۔ Podcasting 2.0: منتقلی کے دوران ملکیت کی تصدیق کے لیے ای میل۔"
-
-#: app/ThemeOptions/Podcast.php:175
-msgid "Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
-msgstr "Apple Podcasts تصدیقی کوڈ (podcast:txt purpose=\"applepodcastsverify\")"
-
-#: app/ThemeOptions/Podcast.php:176
-msgid "Optional. Used by Apple Podcasts to verify feed ownership."
-msgstr "اختیاری۔ فیڈ کی ملکیت کی تصدیق کے لیے Apple Podcasts استعمال کرتا ہے۔"
-
-#: app/ThemeOptions/Podcast.php:177
-msgid "Podcasting 2.0 Funding Links (podcast:funding)"
-msgstr "Podcasting 2.0 فنڈنگ لنکس (podcast:funding)"
-
-#: app/ThemeOptions/Podcast.php:178
-msgid "Optional. If empty, no podcast:funding tags will be generated. URLs should be https."
-msgstr "اختیاری۔ خالی ہونے پر، کوئی podcast:funding ٹیگ نہیں بنے گا۔ URLs https ہونے چاہییں۔"
-
-#: app/ThemeOptions/Podcast.php:180
-msgid "URL"
-msgstr "URL"
-
-#: app/ThemeOptions/Podcast.php:181
-msgid "Required for each entry. Use https."
-msgstr "ہر اندراج کے لیے ضروری۔ https استعمال کریں۔"
-
-#: app/ThemeOptions/Podcast.php:182
-msgid "Label"
-msgstr "لیبل"
-
-#: app/ThemeOptions/Podcast.php:183
-msgid "Optional display text (max 128 chars recommended)."
-msgstr "اختیاری ڈسپلے ٹیکسٹ (زیادہ سے زیادہ 128 حروف تجویز کردہ)۔"
-
-#: app/ThemeOptions/Podcast.php:185
-msgid "Generator (optional)"
-msgstr "جنریٹر (اختیاری)"
-
-#: app/ThemeOptions/Podcast.php:186
-msgid "Optional. If empty, generator tag will not be included."
-msgstr "اختیاری۔ خالی ہونے پر، generator ٹیگ شامل نہیں ہوگا۔"
-
-#: app/PostTypes/Podcast.php
-msgid "Chapters (Podcasting 2.0)"
-msgstr "ابواب (Podcasting 2.0)"
-
-#: app/PostTypes/Podcast.php
-msgid "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
-msgstr "اختیاری۔ <podcast:chapters> کے لیے ابواب JSON URL/فائل فراہم کریں۔"
-
-#: app/PostTypes/Podcast.php
-msgid "Add Chapters File"
-msgstr "ابواب فائل شامل کریں"
-
-#: app/PostTypes/Podcast.php
-msgid "Chapters MIME Type"
-msgstr "ابواب MIME قسم"
-
-#: app/PostTypes/Podcast.php
-msgid "Optional. Defaults to application/json+chapters."
-msgstr "اختیاری۔ پہلے سے طے شدہ application/json+chapters ہے۔"
-
-#: app/PostTypes/Podcast.php
-msgid "Soundbites (Podcasting 2.0)"
-msgstr "آواز کے ٹکڑے (Podcasting 2.0)"
-
-#: app/PostTypes/Podcast.php
-msgid "Optional. Adds one or more <podcast:soundbite> tags."
-msgstr "اختیاری۔ ایک یا زیادہ <podcast:soundbite> ٹیگز شامل کرتا ہے۔"
-
-#: app/PostTypes/Podcast.php
-msgid "Soundbite {#}"
-msgstr "آواز کا ٹکڑا {#}"
-
-#: app/PostTypes/Podcast.php
-msgid "Start Time (seconds)"
-msgstr "شروع کا وقت (سیکنڈ)"
-
-#: app/PostTypes/Podcast.php
-msgid "Title (optional)"
-msgstr "عنوان (اختیاری)"
-
-#: app/PostTypes/Podcast.php
-msgid "Add Soundbite"
-msgstr "آواز کا ٹکڑا شامل کریں"
-
-#: app/PostTypes/Podcast.php
-msgid "Remove Soundbite"
-msgstr "آواز کا ٹکڑا ہٹائیں"
+#. Description of the theme
+#: style.css
+msgid "Sage is a WordPress starter theme."
+msgstr ""

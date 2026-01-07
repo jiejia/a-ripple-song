@@ -14,21 +14,6 @@ msgstr ""
 "X-Domain: sage\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. Theme Name of the theme
-#: style.css
-msgid "Sage Starter Theme"
-msgstr "잔물결의 노래"
-
-#. Theme URI of the theme
-#: style.css
-msgid "https://roots.io/sage/"
-msgstr "https://doc-podcast.aripplesong.me/"
-
-#. Description of the theme
-#: style.css
-msgid "Sage is a WordPress starter theme."
-msgstr "워드프레스를 위한 올인원 팟캐스트 테마"
-
 #. Author of the theme
 #: style.css
 msgid "Roots"
@@ -1494,150 +1479,17 @@ msgstr "재생 목록에 추가됨:"
 msgid "Episode already exists:"
 msgstr "에피소드가 이미 존재합니다:"
 
-#: app/ThemeOptions/Podcast.php:136
-msgid "iTunes Type (itunes:type)"
-msgstr "iTunes 유형 (itunes:type)"
+#. Theme Name of the theme
+#: style.css
+msgid "Sage Starter Theme"
+msgstr ""
 
-#: app/ThemeOptions/Podcast.php:138
-msgid "(not set)"
-msgstr "(설정 안 함)"
+#. Theme URI of the theme
+#: style.css
+msgid "https://roots.io/sage/"
+msgstr ""
 
-#: app/ThemeOptions/Podcast.php:139
-msgid "episodic"
-msgstr "에피소드형"
-
-#: app/ThemeOptions/Podcast.php:140
-msgid "serial"
-msgstr "시리얼형"
-
-#: app/ThemeOptions/Podcast.php:143
-msgid "Optional. Apple Podcasts: episodic or serial."
-msgstr "선택 사항. Apple Podcasts: 에피소드형 또는 시리얼형."
-
-#: app/ThemeOptions/Podcast.php:144
-msgid "iTunes Title (optional)"
-msgstr "iTunes 제목 (선택 사항)"
-
-#: app/ThemeOptions/Podcast.php:145
-msgid "Optional. Use only if you need a separate Apple-facing title."
-msgstr "선택 사항. Apple용 별도 제목이 필요한 경우에만 사용."
-
-#: app/ThemeOptions/Podcast.php:146
-msgid "iTunes Block (itunes:block)"
-msgstr "iTunes 차단 (itunes:block)"
-
-#: app/ThemeOptions/Podcast.php:152
-msgid "Optional. yes = hide this show in Apple Podcasts."
-msgstr "선택 사항. yes = Apple Podcasts에서 이 프로그램 숨기기."
-
-#: app/ThemeOptions/Podcast.php:153
-msgid "iTunes Complete (itunes:complete)"
-msgstr "iTunes 완료 (itunes:complete)"
-
-#: app/ThemeOptions/Podcast.php:159
-msgid "Optional. yes = this show is complete (no more episodes)."
-msgstr "선택 사항. yes = 이 프로그램 완결 (더 이상 에피소드 없음)."
-
-#: app/ThemeOptions/Podcast.php:160
-msgid "iTunes New Feed URL (itunes:new-feed-url)"
-msgstr "iTunes 새 피드 URL (itunes:new-feed-url)"
-
-#: app/ThemeOptions/Podcast.php:161
-msgid "Optional. Only for moving your show to a new RSS feed URL."
-msgstr "선택 사항. 프로그램을 새 RSS 피드 URL로 이동할 때만 사용."
-
-#: app/ThemeOptions/Podcast.php:169
-msgid "podcast:locked owner (optional)"
-msgstr "podcast:locked 소유자 (선택 사항)"
-
-#: app/ThemeOptions/Podcast.php:172
-msgid "Optional. Podcasting 2.0: email used to verify ownership during moves."
-msgstr "선택 사항. Podcasting 2.0: 이동 시 소유권 확인에 사용되는 이메일."
-
-#: app/ThemeOptions/Podcast.php:175
-msgid "Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
-msgstr "Apple Podcasts 확인 코드 (podcast:txt purpose=\"applepodcastsverify\")"
-
-#: app/ThemeOptions/Podcast.php:176
-msgid "Optional. Used by Apple Podcasts to verify feed ownership."
-msgstr "선택 사항. Apple Podcasts가 피드 소유권을 확인하는 데 사용."
-
-#: app/ThemeOptions/Podcast.php:177
-msgid "Podcasting 2.0 Funding Links (podcast:funding)"
-msgstr "Podcasting 2.0 후원 링크 (podcast:funding)"
-
-#: app/ThemeOptions/Podcast.php:178
-msgid "Optional. If empty, no podcast:funding tags will be generated. URLs should be https."
-msgstr "선택 사항. 비어 있으면 podcast:funding 태그가 생성되지 않습니다. URL은 https를 사용하세요."
-
-#: app/ThemeOptions/Podcast.php:180
-msgid "URL"
-msgstr "URL"
-
-#: app/ThemeOptions/Podcast.php:181
-msgid "Required for each entry. Use https."
-msgstr "각 항목에 필수. https 사용."
-
-#: app/ThemeOptions/Podcast.php:182
-msgid "Label"
-msgstr "라벨"
-
-#: app/ThemeOptions/Podcast.php:183
-msgid "Optional display text (max 128 chars recommended)."
-msgstr "선택적 표시 텍스트 (최대 128자 권장)."
-
-#: app/ThemeOptions/Podcast.php:185
-msgid "Generator (optional)"
-msgstr "생성기 (선택 사항)"
-
-#: app/ThemeOptions/Podcast.php:186
-msgid "Optional. If empty, generator tag will not be included."
-msgstr "선택 사항. 비어 있으면 generator 태그가 포함되지 않습니다."
-
-#: app/PostTypes/Podcast.php
-msgid "Chapters (Podcasting 2.0)"
-msgstr "챕터 (Podcasting 2.0)"
-
-#: app/PostTypes/Podcast.php
-msgid "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
-msgstr "선택 사항. <podcast:chapters>용 챕터 JSON URL/파일 제공."
-
-#: app/PostTypes/Podcast.php
-msgid "Add Chapters File"
-msgstr "챕터 파일 추가"
-
-#: app/PostTypes/Podcast.php
-msgid "Chapters MIME Type"
-msgstr "챕터 MIME 유형"
-
-#: app/PostTypes/Podcast.php
-msgid "Optional. Defaults to application/json+chapters."
-msgstr "선택 사항. 기본값은 application/json+chapters."
-
-#: app/PostTypes/Podcast.php
-msgid "Soundbites (Podcasting 2.0)"
-msgstr "사운드바이트 (Podcasting 2.0)"
-
-#: app/PostTypes/Podcast.php
-msgid "Optional. Adds one or more <podcast:soundbite> tags."
-msgstr "선택 사항. 하나 이상의 <podcast:soundbite> 태그 추가."
-
-#: app/PostTypes/Podcast.php
-msgid "Soundbite {#}"
-msgstr "사운드바이트 {#}"
-
-#: app/PostTypes/Podcast.php
-msgid "Start Time (seconds)"
-msgstr "시작 시간 (초)"
-
-#: app/PostTypes/Podcast.php
-msgid "Title (optional)"
-msgstr "제목 (선택 사항)"
-
-#: app/PostTypes/Podcast.php
-msgid "Add Soundbite"
-msgstr "사운드바이트 추가"
-
-#: app/PostTypes/Podcast.php
-msgid "Remove Soundbite"
-msgstr "사운드바이트 삭제"
+#. Description of the theme
+#: style.css
+msgid "Sage is a WordPress starter theme."
+msgstr ""

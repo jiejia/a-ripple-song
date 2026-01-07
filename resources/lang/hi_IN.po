@@ -14,21 +14,6 @@ msgstr ""
 "X-Domain: sage\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. Theme Name of the theme
-#: style.css
-msgid "Sage Starter Theme"
-msgstr "लहरों का गीत"
-
-#. Theme URI of the theme
-#: style.css
-msgid "https://roots.io/sage/"
-msgstr "https://doc-podcast.aripplesong.me/"
-
-#. Description of the theme
-#: style.css
-msgid "Sage is a WordPress starter theme."
-msgstr "WordPress के लिए ऑल-इन-वन पॉडकास्ट थीम"
-
 #. Author of the theme
 #: style.css
 msgid "Roots"
@@ -1496,150 +1481,17 @@ msgstr "प्लेलिस्ट में जोड़ा गया:"
 msgid "Episode already exists:"
 msgstr "एपिसोड पहले से मौजूद है:"
 
-#: app/ThemeOptions/Podcast.php:136
-msgid "iTunes Type (itunes:type)"
-msgstr "iTunes प्रकार (itunes:type)"
+#. Theme Name of the theme
+#: style.css
+msgid "Sage Starter Theme"
+msgstr ""
 
-#: app/ThemeOptions/Podcast.php:138
-msgid "(not set)"
-msgstr "(सेट नहीं)"
+#. Theme URI of the theme
+#: style.css
+msgid "https://roots.io/sage/"
+msgstr ""
 
-#: app/ThemeOptions/Podcast.php:139
-msgid "episodic"
-msgstr "एपिसोडिक"
-
-#: app/ThemeOptions/Podcast.php:140
-msgid "serial"
-msgstr "सीरियल"
-
-#: app/ThemeOptions/Podcast.php:143
-msgid "Optional. Apple Podcasts: episodic or serial."
-msgstr "वैकल्पिक। Apple Podcasts: एपिसोडिक या सीरियल।"
-
-#: app/ThemeOptions/Podcast.php:144
-msgid "iTunes Title (optional)"
-msgstr "iTunes शीर्षक (वैकल्पिक)"
-
-#: app/ThemeOptions/Podcast.php:145
-msgid "Optional. Use only if you need a separate Apple-facing title."
-msgstr "वैकल्पिक। केवल तभी उपयोग करें जब Apple के लिए अलग शीर्षक की आवश्यकता हो।"
-
-#: app/ThemeOptions/Podcast.php:146
-msgid "iTunes Block (itunes:block)"
-msgstr "iTunes ब्लॉक (itunes:block)"
-
-#: app/ThemeOptions/Podcast.php:152
-msgid "Optional. yes = hide this show in Apple Podcasts."
-msgstr "वैकल्पिक। yes = Apple Podcasts में इस शो को छिपाएं।"
-
-#: app/ThemeOptions/Podcast.php:153
-msgid "iTunes Complete (itunes:complete)"
-msgstr "iTunes पूर्ण (itunes:complete)"
-
-#: app/ThemeOptions/Podcast.php:159
-msgid "Optional. yes = this show is complete (no more episodes)."
-msgstr "वैकल्पिक। yes = यह शो पूर्ण है (कोई और एपिसोड नहीं)।"
-
-#: app/ThemeOptions/Podcast.php:160
-msgid "iTunes New Feed URL (itunes:new-feed-url)"
-msgstr "iTunes नया फ़ीड URL (itunes:new-feed-url)"
-
-#: app/ThemeOptions/Podcast.php:161
-msgid "Optional. Only for moving your show to a new RSS feed URL."
-msgstr "वैकल्पिक। केवल अपने शो को नए RSS फ़ीड URL पर ले जाने के लिए।"
-
-#: app/ThemeOptions/Podcast.php:169
-msgid "podcast:locked owner (optional)"
-msgstr "podcast:locked मालिक (वैकल्पिक)"
-
-#: app/ThemeOptions/Podcast.php:172
-msgid "Optional. Podcasting 2.0: email used to verify ownership during moves."
-msgstr "वैकल्पिक। Podcasting 2.0: स्थानांतरण के दौरान स्वामित्व सत्यापित करने के लिए ईमेल।"
-
-#: app/ThemeOptions/Podcast.php:175
-msgid "Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
-msgstr "Apple Podcasts सत्यापन कोड (podcast:txt purpose=\"applepodcastsverify\")"
-
-#: app/ThemeOptions/Podcast.php:176
-msgid "Optional. Used by Apple Podcasts to verify feed ownership."
-msgstr "वैकल्पिक। फ़ीड स्वामित्व सत्यापित करने के लिए Apple Podcasts द्वारा उपयोग।"
-
-#: app/ThemeOptions/Podcast.php:177
-msgid "Podcasting 2.0 Funding Links (podcast:funding)"
-msgstr "Podcasting 2.0 फंडिंग लिंक (podcast:funding)"
-
-#: app/ThemeOptions/Podcast.php:178
-msgid "Optional. If empty, no podcast:funding tags will be generated. URLs should be https."
-msgstr "वैकल्पिक। खाली होने पर, कोई podcast:funding टैग नहीं बनेगा। URL https होना चाहिए।"
-
-#: app/ThemeOptions/Podcast.php:180
-msgid "URL"
-msgstr "URL"
-
-#: app/ThemeOptions/Podcast.php:181
-msgid "Required for each entry. Use https."
-msgstr "प्रत्येक प्रविष्टि के लिए आवश्यक। https उपयोग करें।"
-
-#: app/ThemeOptions/Podcast.php:182
-msgid "Label"
-msgstr "लेबल"
-
-#: app/ThemeOptions/Podcast.php:183
-msgid "Optional display text (max 128 chars recommended)."
-msgstr "वैकल्पिक प्रदर्शन टेक्स्ट (अधिकतम 128 अक्षर अनुशंसित)।"
-
-#: app/ThemeOptions/Podcast.php:185
-msgid "Generator (optional)"
-msgstr "जेनरेटर (वैकल्पिक)"
-
-#: app/ThemeOptions/Podcast.php:186
-msgid "Optional. If empty, generator tag will not be included."
-msgstr "वैकल्पिक। खाली होने पर, generator टैग शामिल नहीं होगा।"
-
-#: app/PostTypes/Podcast.php
-msgid "Chapters (Podcasting 2.0)"
-msgstr "अध्याय (Podcasting 2.0)"
-
-#: app/PostTypes/Podcast.php
-msgid "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
-msgstr "वैकल्पिक। <podcast:chapters> के लिए अध्याय JSON URL/फ़ाइल प्रदान करें।"
-
-#: app/PostTypes/Podcast.php
-msgid "Add Chapters File"
-msgstr "अध्याय फ़ाइल जोड़ें"
-
-#: app/PostTypes/Podcast.php
-msgid "Chapters MIME Type"
-msgstr "अध्याय MIME प्रकार"
-
-#: app/PostTypes/Podcast.php
-msgid "Optional. Defaults to application/json+chapters."
-msgstr "वैकल्पिक। डिफ़ॉल्ट application/json+chapters है।"
-
-#: app/PostTypes/Podcast.php
-msgid "Soundbites (Podcasting 2.0)"
-msgstr "साउंडबाइट्स (Podcasting 2.0)"
-
-#: app/PostTypes/Podcast.php
-msgid "Optional. Adds one or more <podcast:soundbite> tags."
-msgstr "वैकल्पिक। एक या अधिक <podcast:soundbite> टैग जोड़ता है।"
-
-#: app/PostTypes/Podcast.php
-msgid "Soundbite {#}"
-msgstr "साउंडबाइट {#}"
-
-#: app/PostTypes/Podcast.php
-msgid "Start Time (seconds)"
-msgstr "प्रारंभ समय (सेकंड)"
-
-#: app/PostTypes/Podcast.php
-msgid "Title (optional)"
-msgstr "शीर्षक (वैकल्पिक)"
-
-#: app/PostTypes/Podcast.php
-msgid "Add Soundbite"
-msgstr "साउंडबाइट जोड़ें"
-
-#: app/PostTypes/Podcast.php
-msgid "Remove Soundbite"
-msgstr "साउंडबाइट हटाएं"
+#. Description of the theme
+#: style.css
+msgid "Sage is a WordPress starter theme."
+msgstr ""
