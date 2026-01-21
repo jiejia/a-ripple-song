@@ -44,7 +44,8 @@
 </head>
 
 <body @php(body_class('bg-base-200'))>
-  <div class="mb-[190px] md:mb-0">
+  @php($podcast_enabled = function_exists('aripplesong_podcast_features_enabled') && aripplesong_podcast_features_enabled())
+  <div class="{{ $podcast_enabled ? 'mb-[190px] md:mb-0' : 'md:mb-0' }}">
     <div class="max-w-screen-xl mx-auto">
       @php(wp_body_open())
       <div id="app" class="p-4 gap-4">
@@ -69,9 +70,13 @@
   </div>
   @include('sections.mobile-menu')
   @include('sections.search-modal')
-  @include('sections.playlist-drawer')
+  @if($podcast_enabled)
+    @include('sections.playlist-drawer')
+  @endif
   @include('partials.image-lightbox')
-  @include('sections.autoplay-confirm')
+  @if($podcast_enabled)
+    @include('sections.autoplay-confirm')
+  @endif
   @include('sections.leftbar-drawer')
   @include('sections.sidebar-drawer')
 

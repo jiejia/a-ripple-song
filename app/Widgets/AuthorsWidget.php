@@ -40,6 +40,7 @@ class Authors_Widget extends WP_Widget {
         $post_counts_by_user = [];
         $podcast_counts_by_user = [];
         if (function_exists('count_many_users_posts')) {
+            $podcast_post_type = function_exists('aripplesong_get_podcast_post_type') ? aripplesong_get_podcast_post_type() : null;
             $all_users = array_merge($members ?: [], $contributors ?: []);
             $user_ids = array_values(array_unique(array_map(static function ($user) {
                 return (int) $user->ID;
@@ -47,7 +48,7 @@ class Authors_Widget extends WP_Widget {
 
             if (!empty($user_ids)) {
                 $post_counts_by_user = count_many_users_posts($user_ids, 'post', true);
-                $podcast_counts_by_user = count_many_users_posts($user_ids, 'podcast', true);
+                $podcast_counts_by_user = $podcast_post_type ? count_many_users_posts($user_ids, $podcast_post_type, true) : [];
             }
         }
         ?>

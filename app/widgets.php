@@ -5,16 +5,22 @@
  * 加载和注册所有自定义 Widgets
  */
 
+// Podcast widgets are only available when the companion plugin is active.
+$podcast_enabled = function_exists('aripplesong_podcast_features_enabled') && aripplesong_podcast_features_enabled();
+
 // 自动加载所有 Widget 类文件
 $widget_files = [
     __DIR__ . '/Widgets/BannerCarouselWidget.php',
-    __DIR__ . '/Widgets/PodcastListWidget.php',
     __DIR__ . '/Widgets/BlogListWidget.php',
-    __DIR__ . '/Widgets/SubscribeLinksWidget.php',
     __DIR__ . '/Widgets/TagsCloudWidget.php',
     __DIR__ . '/Widgets/AuthorsWidget.php',
     __DIR__ . '/Widgets/FooterLinksWidget.php',
 ];
+
+if ($podcast_enabled) {
+    $widget_files[] = __DIR__ . '/Widgets/PodcastListWidget.php';
+    $widget_files[] = __DIR__ . '/Widgets/SubscribeLinksWidget.php';
+}
 
 foreach ($widget_files as $file) {
     if (file_exists($file)) {
@@ -27,12 +33,19 @@ foreach ($widget_files as $file) {
  */
 add_action('widgets_init', function() {
     register_widget('Banner_Carousel_Widget');
-    register_widget('Podcast_List_Widget');
     register_widget('Blog_List_Widget');
-    register_widget('Subscribe_Links_Widget');
     register_widget('Tags_Cloud_Widget');
     register_widget('Authors_Widget');
     register_widget('Footer_Links_Widget');
+
+    if (function_exists('aripplesong_podcast_features_enabled') && aripplesong_podcast_features_enabled()) {
+        if (class_exists('Podcast_List_Widget')) {
+            register_widget('Podcast_List_Widget');
+        }
+        if (class_exists('Subscribe_Links_Widget')) {
+            register_widget('Subscribe_Links_Widget');
+        }
+    }
 });
 
 /**
@@ -62,17 +75,20 @@ function set_default_home_widgets() {
         'slides' => [] // 空数组，将显示占位提示
     ];
     update_option($banner_widget->option_name, $banner_options);
-    
-    // 创建 Podcast Widget 实例
-    $podcast_widget = new Podcast_List_Widget();
-    $podcast_options = get_option($podcast_widget->option_name, []);
-    $podcast_instance_id = count($podcast_options) + 1;
-    $podcast_options[$podcast_instance_id] = [
-        'title' => 'PODCAST',
-        'posts_per_page' => 3,
-        'show_see_all' => 1
-    ];
-    update_option($podcast_widget->option_name, $podcast_options);
+
+    $podcast_instance_id = null;
+    if (function_exists('aripplesong_podcast_features_enabled') && aripplesong_podcast_features_enabled() && class_exists('Podcast_List_Widget')) {
+        // 创建 Podcast Widget 实例
+        $podcast_widget = new Podcast_List_Widget();
+        $podcast_options = get_option($podcast_widget->option_name, []);
+        $podcast_instance_id = count($podcast_options) + 1;
+        $podcast_options[$podcast_instance_id] = [
+            'title' => 'PODCAST',
+            'posts_per_page' => 3,
+            'show_see_all' => 1
+        ];
+        update_option($podcast_widget->option_name, $podcast_options);
+    }
     
     // 创建 Blog Widget 实例
     $blog_widget = new Blog_List_Widget();
@@ -87,11 +103,16 @@ function set_default_home_widgets() {
     update_option($blog_widget->option_name, $blog_options);
     
     // 将 widgets 添加到 home-main 侧边栏
-    $sidebars_widgets[\App\Theme::SIDEBAR_HOME_MAIN] = [
+    $home_widgets = [
         'banner_carousel_widget-' . $banner_instance_id,
-        'podcast_list_widget-' . $podcast_instance_id,
         'blog_list_widget-' . $blog_instance_id
     ];
+
+    if (!empty($podcast_instance_id)) {
+        array_splice($home_widgets, 1, 0, ['podcast_list_widget-' . $podcast_instance_id]);
+    }
+
+    $sidebars_widgets[\App\Theme::SIDEBAR_HOME_MAIN] = $home_widgets;
     
     // 更新侧边栏 widgets
     update_option('sidebars_widgets', $sidebars_widgets);

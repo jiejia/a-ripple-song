@@ -16,6 +16,12 @@ class Podcast_List_Widget extends WP_Widget {
     
     public function widget($args, $instance) {
         echo $args['before_widget'];
+
+        $episode_post_type = function_exists('aripplesong_get_podcast_post_type') ? aripplesong_get_podcast_post_type() : null;
+        if (!$episode_post_type) {
+            echo $args['after_widget'];
+            return;
+        }
         
         $title = !empty($instance['title']) ? $instance['title'] : 'PODCAST';
         $posts_per_page = !empty($instance['posts_per_page']) ? absint($instance['posts_per_page']) : 3;
@@ -23,7 +29,7 @@ class Podcast_List_Widget extends WP_Widget {
         
         // Query latest podcasts (recent).
         $recent_podcasts = new WP_Query([
-            'post_type' => 'podcast',
+            'post_type' => $episode_post_type,
             'posts_per_page' => $posts_per_page,
             'post_status' => 'publish',
             'no_found_rows' => true,
@@ -37,7 +43,7 @@ class Podcast_List_Widget extends WP_Widget {
         // Query popular podcasts (by views + plays weighted score).
         // Fetch more posts to ensure we get the most popular ones after sorting.
         $popular_query = new WP_Query([
-            'post_type' => 'podcast',
+            'post_type' => $episode_post_type,
             'posts_per_page' => max($posts_per_page * 3, 20), // Fetch more to sort properly
             'post_status' => 'publish',
             'no_found_rows' => true,
@@ -75,7 +81,7 @@ class Podcast_List_Widget extends WP_Widget {
         
         // Query random podcasts.
         $random_podcasts = new WP_Query([
-            'post_type' => 'podcast',
+            'post_type' => $episode_post_type,
             'posts_per_page' => $posts_per_page,
             'post_status' => 'publish',
             'no_found_rows' => true,

@@ -42,7 +42,7 @@
             @include('partials.entry-meta', ['post_id' => $post_id])
         </div>
         <div class="flex gap-2">
-            @if($audio_file)
+            @if($audio_file && function_exists('aripplesong_podcast_features_enabled') && aripplesong_podcast_features_enabled())
                 <button type="button"
                     @click="
                         if ($store.player.currentEpisode && $store.player.currentEpisode.id === episode.id) {

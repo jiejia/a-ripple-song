@@ -50,6 +50,62 @@ Application::configure()
     ])
     ->boot();
 
+/**
+ * Podcast plugin detection and post type helpers.
+ *
+ * The theme's built-in podcast CPT/feed/options have been removed.
+ * Podcast UI (widgets/player) is available only when the companion plugin
+ * `a-ripple-song-podcast` is active, which registers the `ars_episode` post type.
+ */
+if (!function_exists('aripplesong_is_podcast_plugin_active')) {
+    function aripplesong_is_podcast_plugin_active(): bool
+    {
+        $prefix = 'a-ripple-song-podcast/';
+
+        $active = (array) get_option('active_plugins', []);
+        foreach ($active as $plugin) {
+            if (is_string($plugin) && strpos($plugin, $prefix) === 0) {
+                return true;
+            }
+        }
+
+        if (function_exists('is_multisite') && is_multisite()) {
+            $sitewide = (array) get_site_option('active_sitewide_plugins', []);
+            foreach (array_keys($sitewide) as $plugin) {
+                if (is_string($plugin) && strpos($plugin, $prefix) === 0) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+}
+
+if (!function_exists('aripplesong_get_podcast_post_type')) {
+    function aripplesong_get_podcast_post_type(): ?string
+    {
+        $post_type = 'ars_episode';
+
+        if (function_exists('post_type_exists') && post_type_exists($post_type)) {
+            return $post_type;
+        }
+
+        if (function_exists('aripplesong_is_podcast_plugin_active') && aripplesong_is_podcast_plugin_active()) {
+            return $post_type;
+        }
+
+        return null;
+    }
+}
+
+if (!function_exists('aripplesong_podcast_features_enabled')) {
+    function aripplesong_podcast_features_enabled(): bool
+    {
+        return (bool) aripplesong_get_podcast_post_type();
+    }
+}
+
 /*
 |--------------------------------------------------------------------------
 | Register Sage Theme Files
@@ -62,7 +118,7 @@ Application::configure()
 |
 */
 
-collect(['setup', 'filters', 'PostTypes/Podcast', 'Feeds/Podcast', 'widgets', 'ThemeOptions/General', 'ThemeOptions/Podcast', 'Metrics/Post', 'DemoImport'])
+collect(['setup', 'filters', 'widgets', 'ThemeOptions/General', 'Metrics/Post', 'DemoImport'])
     ->each(function ($file) {
         if (! locate_template($file = "app/{$file}.php", true, true)) {
             wp_die(
@@ -220,7 +276,8 @@ function get_post_all_authors($post_id) {
 
     // If it's a podcast, also get members and guests
     $post_type = get_post_type($post_id);
-    if ($post_type === 'podcast') {
+    $podcast_post_type = function_exists('aripplesong_get_podcast_post_type') ? aripplesong_get_podcast_post_type() : null;
+    if ($podcast_post_type && $post_type === $podcast_post_type) {
         $members = get_post_meta($post_id, 'members', true);
         $guests = get_post_meta($post_id, 'guests', true);
 
@@ -282,6 +339,11 @@ function aripplesong_get_participated_podcast_ids(int $user_id): array
         return [];
     }
 
+    $podcast_post_type = function_exists('aripplesong_get_podcast_post_type') ? aripplesong_get_podcast_post_type() : null;
+    if (!$podcast_post_type) {
+        return [];
+    }
+
     if (isset($cache[$user_id])) {
         return $cache[$user_id];
     }
@@ -298,7 +360,7 @@ function aripplesong_get_participated_podcast_ids(int $user_id): array
     $needle_int = 'i:' . $user_id . ';';
 
     $ids = get_posts([
-        'post_type' => 'podcast',
+        'post_type' => $podcast_post_type,
         'post_status' => 'publish',
         'posts_per_page' => -1,
         'fields' => 'ids',
@@ -363,11 +425,16 @@ function get_user_all_post_ids($user_id) {
     }
 
     $post_ids = [];
+    $podcast_post_type = function_exists('aripplesong_get_podcast_post_type') ? aripplesong_get_podcast_post_type() : null;
+    $post_types = ['post'];
+    if ($podcast_post_type) {
+        $post_types[] = $podcast_post_type;
+    }
 
     // Get posts authored by the user (both 'post' and 'podcast' types)
     $authored_posts = get_posts([
         'author' => $user_id,
-        'post_type' => ['post', 'podcast'],
+        'post_type' => $post_types,
         'posts_per_page' => -1,
         'post_status' => 'publish',
         'fields' => 'ids',
@@ -402,8 +469,9 @@ function calculate_user_post_count($user_id) {
     // Base count: all posts published by the user
     // count_user_posts() only counts 'post' type by default, so we need to count 'podcast' separately
     $regular_posts_count = count_user_posts($user_id, 'post');
-    $podcast_posts_count = count_user_posts($user_id, 'podcast');
-    $base_count = $regular_posts_count + $podcast_posts_count;
+    $podcast_post_type = function_exists('aripplesong_get_podcast_post_type') ? aripplesong_get_podcast_post_type() : null;
+    $podcast_posts_count = $podcast_post_type ? count_user_posts($user_id, $podcast_post_type) : 0;
+    $base_count = $regular_posts_count + (int) $podcast_posts_count;
 
     return $base_count + count(aripplesong_get_participated_podcast_ids($user_id));
 }
@@ -449,11 +517,17 @@ function modify_author_archive_query($query) {
 
         // Modify query to use our post IDs
         if (!empty($post_ids)) {
+            $podcast_post_type = function_exists('aripplesong_get_podcast_post_type') ? aripplesong_get_podcast_post_type() : null;
+            $post_types = ['post'];
+            if ($podcast_post_type) {
+                $post_types[] = $podcast_post_type;
+            }
+
             // Reset query vars to prevent conflicts
             $query->set('post__in', $post_ids);
             $query->set('author', 0); // Set to 0 instead of empty string
             $query->set('author_name', ''); // Clear author_name too
-            $query->set('post_type', ['post', 'podcast']); // Include both post types
+            $query->set('post_type', $post_types); // Include both post types
             $query->set('orderby', 'date');
             $query->set('order', 'DESC');
 
@@ -591,9 +665,16 @@ function aripplesong_get_latest_playlist_data($limit = 10) {
 
     $episodes = [];
     $ids = [];
+    $podcast_post_type = function_exists('aripplesong_get_podcast_post_type') ? aripplesong_get_podcast_post_type() : null;
+    if (!$podcast_post_type) {
+        return [
+            'episodes' => [],
+            'signature' => '',
+        ];
+    }
 
     $query = new \WP_Query([
-        'post_type' => 'podcast',
+        'post_type' => $podcast_post_type,
         'posts_per_page' => max($limit * 2, $limit),
         'post_status' => 'publish',
         'no_found_rows' => true,

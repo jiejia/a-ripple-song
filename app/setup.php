@@ -379,18 +379,19 @@ function custom_paginate_links_output($output, $args) {
 add_filter('paginate_links_output', __NAMESPACE__ . '\\custom_paginate_links_output', 10, 2);
 
 /**
- * Modify tag archive query to include both post and podcast types.
+ * Modify tag archive query to include both post and episode types.
  *
  * By default, WordPress tag archives only query 'post' type.
- * This filter ensures that both 'post' and 'podcast' types are included.
- *
- * @param WP_Query $query The WordPress query object.
- * @return void
  */
 add_action('pre_get_posts', function ($query) {
     // Only modify the main query on tag archive pages
     if (!is_admin() && $query->is_main_query() && $query->is_tag()) {
-        $query->set('post_type', ['post', 'podcast']);
+        $podcast_post_type = function_exists('aripplesong_get_podcast_post_type') ? \aripplesong_get_podcast_post_type() : null;
+        $post_types = ['post'];
+        if ($podcast_post_type) {
+            $post_types[] = $podcast_post_type;
+        }
+        $query->set('post_type', $post_types);
     }
 });
 
@@ -446,6 +447,8 @@ add_action('wp_enqueue_scripts', function () {
                 $palette_map = function_exists('\App\ThemeOptions\crb_get_daisyui_theme_palette') ? \App\ThemeOptions\crb_get_daisyui_theme_palette($palette_slugs) : [];
                 $current_post_id = is_singular() ? get_queried_object_id() : 0;
                 $current_post_type = $current_post_id ? get_post_type($current_post_id) : '';
+                $podcast_post_type = function_exists('aripplesong_get_podcast_post_type') ? \aripplesong_get_podcast_post_type() : '';
+                $podcast_enabled = !empty($podcast_post_type);
                 $latest_playlist_data = function_exists('aripplesong_get_latest_playlist_data') ? \aripplesong_get_latest_playlist_data(10) : [
                     'episodes' => [],
                     'signature' => '',
@@ -456,6 +459,8 @@ add_action('wp_enqueue_scripts', function () {
                     'restUrl' => esc_url_raw(rest_url()),
                     'restNonce' => wp_create_nonce('wp_rest'),
                     'siteUrl' => esc_url_raw(home_url('/')),
+                    'podcastEnabled' => $podcast_enabled,
+                    'podcastPostType' => $podcast_post_type ?: '',
                     'latestPlaylistSignature' => $latest_playlist_data['signature'] ?? '',
                     'latestPlaylistEpisodes' => $latest_playlist_data['episodes'] ?? [],
                     'ajax' => [
@@ -502,8 +507,13 @@ add_action('after_setup_theme', function () {
 /**
  * Invalidate cached podcast participation results when podcasts change.
  */
-add_action('save_post_podcast', function ($post_id, $post, $update) {
+add_action('save_post', function ($post_id, $post, $update) {
     if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id)) {
+        return;
+    }
+
+    $podcast_post_type = function_exists('aripplesong_get_podcast_post_type') ? \aripplesong_get_podcast_post_type() : null;
+    if (!$podcast_post_type || get_post_type($post_id) !== $podcast_post_type) {
         return;
     }
 
@@ -513,7 +523,8 @@ add_action('save_post_podcast', function ($post_id, $post, $update) {
 }, 10, 3);
 
 add_action('deleted_post', function ($post_id) {
-    if (get_post_type($post_id) !== 'podcast') {
+    $podcast_post_type = function_exists('aripplesong_get_podcast_post_type') ? \aripplesong_get_podcast_post_type() : null;
+    if (!$podcast_post_type || get_post_type($post_id) !== $podcast_post_type) {
         return;
     }
 

@@ -690,6 +690,11 @@ Alpine.store('player', {
    */
   async fetchLatestPodcast(autoPlay = false) {
     try {
+      const podcastPostType = window.aripplesongData?.podcastPostType;
+      if (!podcastPostType) {
+        return [];
+      }
+
       // 使用 PHP 传递的 REST API URL
       const restUrl = window.aripplesongData?.restUrl || '/wp-json/';
 
@@ -698,7 +703,7 @@ Alpine.store('player', {
       // 否则使用标准的 ? 连接参数
       const queryParams = 'per_page=5&orderby=date&order=desc&_embed';
       const separator = restUrl.includes('?') ? '&' : '?';
-      const apiUrl = `${restUrl}wp/v2/podcast${separator}${queryParams}`;
+      const apiUrl = `${restUrl}wp/v2/${podcastPostType}${separator}${queryParams}`;
 
       // 调用 WordPress REST API 获取最新的5条播客
       const response = await fetch(apiUrl);
@@ -812,6 +817,10 @@ Alpine.store('player', {
 
     // 从本地存储加载播放状态
     const playbackState = this.loadPlaybackState();
+
+    if (!window.aripplesongData?.podcastPostType) {
+      return;
+    }
 
     // 如果播放列表为空，则获取最新播客
     if (this.playlist.length == 0) {

@@ -10,6 +10,8 @@
         @endif
     </div>
 
-    @include('sections.player')
+    @if(function_exists('aripplesong_podcast_features_enabled') && aripplesong_podcast_features_enabled())
+        @include('sections.player')
+    @endif
 
 </aside>

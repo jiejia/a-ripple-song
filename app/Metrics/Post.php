@@ -44,15 +44,18 @@ class Post
             ]);
         }
 
-        register_post_meta('podcast', '_play_count', [
-            'type' => 'integer',
-            'single' => true,
-            'default' => 0,
-            'show_in_rest' => false,
-            'auth_callback' => function ($allowed, $meta_key, $post_id) {
-                return current_user_can('edit_post', $post_id);
-            },
-        ]);
+        $podcast_post_type = \function_exists('aripplesong_get_podcast_post_type') ? \aripplesong_get_podcast_post_type() : null;
+        if ($podcast_post_type) {
+            register_post_meta($podcast_post_type, '_play_count', [
+                'type' => 'integer',
+                'single' => true,
+                'default' => 0,
+                'show_in_rest' => false,
+                'auth_callback' => function ($allowed, $meta_key, $post_id) {
+                    return current_user_can('edit_post', $post_id);
+                },
+            ]);
+        }
     }
 
     /**
@@ -72,7 +75,8 @@ class Post
             update_post_meta($post_id, '_views_count', 0);
         }
 
-        if ($post->post_type === 'podcast' && !metadata_exists('post', $post_id, '_play_count')) {
+        $podcast_post_type = \function_exists('aripplesong_get_podcast_post_type') ? \aripplesong_get_podcast_post_type() : null;
+        if ($podcast_post_type && $post->post_type === $podcast_post_type && !metadata_exists('post', $post_id, '_play_count')) {
             update_post_meta($post_id, '_play_count', 0);
         }
     }
@@ -121,7 +125,8 @@ class Post
         $post_id = isset($_POST['post_id']) ? absint(wp_unslash($_POST['post_id'])) : 0;
         $post    = $post_id ? get_post($post_id) : null;
 
-        if (!$post || $post->post_type !== 'podcast' || !$this->canReadPost($post)) {
+        $podcast_post_type = \function_exists('aripplesong_get_podcast_post_type') ? \aripplesong_get_podcast_post_type() : null;
+        if (!$post || !$podcast_post_type || $post->post_type !== $podcast_post_type || !$this->canReadPost($post)) {
             wp_send_json_error(['message' => __('Invalid podcast post.', 'sage')], 400);
         }
 
@@ -160,7 +165,8 @@ class Post
             }
 
             $views = (int) get_post_meta($post_id, '_views_count', true);
-            $plays = $post->post_type === 'podcast'
+            $podcast_post_type = \function_exists('aripplesong_get_podcast_post_type') ? \aripplesong_get_podcast_post_type() : null;
+            $plays = ($podcast_post_type && $post->post_type === $podcast_post_type)
                 ? (int) get_post_meta($post_id, '_play_count', true)
                 : null;
 

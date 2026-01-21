@@ -29,9 +29,10 @@
       {{ get_localized_date($meta_post_id) }}
     </time>
     @php $meta_post_type = get_post_type($meta_post_id); @endphp
+    @php $podcast_post_type = function_exists('aripplesong_get_podcast_post_type') ? aripplesong_get_podcast_post_type() : null; @endphp
     <span class="ml-2">
       · <span class="js-views-count" data-post-id="{{ $meta_post_id }}" data-post-type="{{ $meta_post_type }}">--</span> {{ __('views', 'sage') }}
-      @if ($meta_post_type === 'podcast')
+      @if ($podcast_post_type && $meta_post_type === $podcast_post_type)
         · <span class="js-play-count" data-post-id="{{ $meta_post_id }}">--</span> {{ __('plays', 'sage') }}
       @endif
     </span>
