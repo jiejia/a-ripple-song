@@ -505,6 +505,63 @@ add_action('after_setup_theme', function () {
 }, 1); // Priority 1: Load translations before Carbon Fields (priority 10) to ensure admin labels are translated
 
 /**
+ * Expose podcast episode meta to the REST API.
+ */
+add_action('rest_api_init', function () {
+    $podcast_post_type = function_exists('aripplesong_get_podcast_post_type') ? \aripplesong_get_podcast_post_type() : null;
+    if (!$podcast_post_type) {
+        return;
+    }
+
+    register_rest_field($podcast_post_type, 'audio_file', [
+        'get_callback' => function ($object) {
+            $post_id = is_array($object) ? (int) ($object['id'] ?? 0) : 0;
+            if ($post_id <= 0) {
+                return '';
+            }
+
+            $value = get_post_meta($post_id, 'audio_file', true);
+            return is_string($value) ? $value : '';
+        },
+        'schema' => [
+            'description' => __('Audio file URL', 'sage'),
+            'type' => 'string',
+        ],
+    ]);
+
+    register_rest_field($podcast_post_type, 'duration', [
+        'get_callback' => function ($object) {
+            $post_id = is_array($object) ? (int) ($object['id'] ?? 0) : 0;
+            if ($post_id <= 0) {
+                return 0;
+            }
+
+            return (int) get_post_meta($post_id, 'duration', true);
+        },
+        'schema' => [
+            'description' => __('Audio duration (seconds)', 'sage'),
+            'type' => 'integer',
+        ],
+    ]);
+
+    register_rest_field($podcast_post_type, 'episode_transcript', [
+        'get_callback' => function ($object) {
+            $post_id = is_array($object) ? (int) ($object['id'] ?? 0) : 0;
+            if ($post_id <= 0) {
+                return '';
+            }
+
+            $value = get_post_meta($post_id, 'episode_transcript', true);
+            return is_string($value) ? $value : '';
+        },
+        'schema' => [
+            'description' => __('Episode transcript URL', 'sage'),
+            'type' => 'string',
+        ],
+    ]);
+});
+
+/**
  * Invalidate cached podcast participation results when podcasts change.
  */
 add_action('save_post', function ($post_id, $post, $update) {

@@ -16,6 +16,19 @@ import WaveSurfer from 'wavesurfer.js';
 // WordPress i18n
 const { __ } = wp.i18n;
 
+function decodeWpRenderedText(value) {
+  if (typeof value !== 'string' || value === '') return '';
+
+  if (typeof DOMParser !== 'undefined') {
+    const doc = new DOMParser().parseFromString(value, 'text/html');
+    return (doc.body?.textContent || '').trim();
+  }
+
+  const textarea = document.createElement('textarea');
+  textarea.innerHTML = value;
+  return textarea.value.trim();
+}
+
 const METRIC_ACTIONS = {
   view: 'aripplesong_increment_view',
   play: 'aripplesong_increment_play',
@@ -726,6 +739,7 @@ Alpine.store('player', {
 
       // 遍历所有播客
       for (const post of podcasts) {
+        const postTitle = decodeWpRenderedText(post?.title?.rendered || '');
         // 获取音频文件 URL（从自定义字段）
         let audioUrl = post.audio_file || '';
 
@@ -735,7 +749,7 @@ Alpine.store('player', {
         }
 
         if (!audioUrl) {
-          console.warn(__('Podcast has no audio file, skipping:', 'sage'), post.title.rendered);
+          console.warn(__('Podcast has no audio file, skipping:', 'sage'), postTitle);
           continue;
         }
 
@@ -749,8 +763,8 @@ Alpine.store('player', {
         const episode = {
           id: post.id,
           audioUrl: audioUrl,
-          title: post.title.rendered,
-          description: post.excerpt.rendered.replace(/<[^>]*>/g, ''), // 移除 HTML 标签
+          title: postTitle,
+          description: decodeWpRenderedText(post?.excerpt?.rendered || ''),
           publishDate: Math.floor(new Date(post.date).getTime() / 1000), // Store Unix timestamp (seconds)
           featuredImage: featuredImage,
           link: post.link
@@ -1391,6 +1405,11 @@ Alpine.store('player', {
   loadPlaylist() {
     const data = safeLocalStorage.getItem(this.storageKey);
     this.playlist = data ? JSON.parse(data) : [];
+    this.playlist = this.playlist.map((episode) => ({
+      ...episode,
+      title: decodeWpRenderedText(episode?.title || ''),
+      description: decodeWpRenderedText(episode?.description || ''),
+    }));
     const index = safeLocalStorage.getItem(this.currentIndexKey);
     this.currentIndex = index ? parseInt(index) : 0;
   },
@@ -1481,6 +1500,12 @@ Alpine.store('player', {
    * @param {Object} episode - 节目对象
    */
   addEpisode(episode) {
+    episode = {
+      ...episode,
+      title: decodeWpRenderedText(episode?.title || ''),
+      description: decodeWpRenderedText(episode?.description || ''),
+    };
+
     const existingIndex = this.playlist.findIndex(item => item.id === episode.id);
 
     if (existingIndex !== -1) {
@@ -1519,6 +1544,12 @@ Alpine.store('player', {
    * @param {Object} episode - 节目对象
    */
   addEpisodeToPlaylist(episode) {
+    episode = {
+      ...episode,
+      title: decodeWpRenderedText(episode?.title || ''),
+      description: decodeWpRenderedText(episode?.description || ''),
+    };
+
     const existingIndex = this.playlist.findIndex(item => item.id === episode.id);
 
     if (existingIndex !== -1) {

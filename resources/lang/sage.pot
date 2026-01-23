@@ -1,46 +1,58 @@
-# Copyright (C) 2025 Roots
+# Copyright (C) 2026 Jiejia
 # This file is distributed under the MIT License.
 msgid ""
 msgstr ""
-"Project-Id-Version: Sage Starter Theme 11.0.1\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/aripplesong\n"
+"Project-Id-Version: A Ripple Song 0.6.0-beta\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/a-ripple-song\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-12-18T04:23:07+00:00\n"
+"POT-Creation-Date: 2026-01-21T02:47:28+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: sage\n"
 
 #. Theme Name of the theme
 #: style.css
-msgid "Sage Starter Theme"
+msgid "A Ripple Song"
 msgstr ""
 
 #. Theme URI of the theme
 #: style.css
-msgid "https://roots.io/sage/"
+msgid "https://doc-podcast.aripplesong.me/"
 msgstr ""
 
 #. Description of the theme
 #: style.css
-msgid "Sage is a WordPress starter theme."
+msgid "A Ripple Song is an all-in-one podcast theme for WordPress built on Sage. Publish podcasts and articles with dedicated templates, powerful theme options, and a flexible widget system for lists, members, subscriptions, banners, tags and footer links. Enjoy a modern audio player with playlist, speed control, waveform/spectrum visuals and uninterrupted playback across seamless Swup page transitions. Mobile-first responsive layout supports touch, keyboard navigation and screen readers. Includes RSS feed support, episode metadata, built-in post metrics, demo import and custom fields out of the box. Tailwind CSS + daisyUI styling and a Vite build pipeline keep it fast and easy to customize for creators and teams."
 msgstr ""
 
 #. Author of the theme
 #: style.css
-msgid "Roots"
+msgid "Jiejia"
 msgstr ""
 
 #. Author URI of the theme
 #: style.css
-msgid "https://roots.io/"
+msgid "https://github.com/jiejia/"
 msgstr ""
 
 #: app/filters.php:15
 msgid "Continued"
+msgstr ""
+
+#: app/Metrics/Post.php:107
+msgid "Invalid post ID."
+msgstr ""
+
+#: app/Metrics/Post.php:130
+msgid "Invalid podcast post."
+msgstr ""
+
+#: app/Metrics/Post.php:155
+msgid "No post IDs provided."
 msgstr ""
 
 #: app/PostTypes/Podcast.php:37
@@ -79,7 +91,7 @@ msgid "Search Podcasts"
 msgstr ""
 
 #: app/PostTypes/Podcast.php:46
-#: resources/js/app.js:554
+#: resources/js/app.js:718
 msgid "No podcasts found"
 msgstr ""
 
@@ -149,6 +161,7 @@ msgid "Add Audio File"
 msgstr ""
 
 #: app/PostTypes/Podcast.php:157
+#: app/PostTypes/Podcast.php:342
 msgid "Duration (seconds)"
 msgstr ""
 
@@ -248,344 +261,444 @@ msgid "Add Transcript"
 msgstr ""
 
 #: app/PostTypes/Podcast.php:290
-msgid "Subtitle"
+#: app/ThemeOptions/Podcast.php:144
+msgid "iTunes Title (optional)"
 msgstr ""
 
 #: app/PostTypes/Podcast.php:291
-msgid "Optional. Short subtitle for iTunes."
+msgid "Optional. Apple Podcasts: overrides the episode title for <itunes:title>."
 msgstr ""
 
 #: app/PostTypes/Podcast.php:297
-msgid "Summary"
+msgid "Chapters (Podcasting 2.0)"
 msgstr ""
 
 #: app/PostTypes/Podcast.php:298
-msgid "Optional. Plain text summary for iTunes."
-msgstr ""
-
-#: app/PostTypes/Podcast.php:304
-msgid "Custom GUID (optional)"
+msgid "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
 msgstr ""
 
 #: app/PostTypes/Podcast.php:305
-msgid "Optional. If empty, feed uses WP permalink as GUID."
+msgid "Add Chapters File"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:310
+msgid "Chapters MIME Type"
 msgstr ""
 
 #: app/PostTypes/Podcast.php:311
-msgid "iTunes Block"
+msgid "Optional. Defaults to application/json+chapters."
 msgstr ""
 
-#: app/PostTypes/Podcast.php:312
-msgid "Optional. yes = hide this episode in Apple Podcasts."
+#: app/PostTypes/Podcast.php:320
+msgid "Soundbites (Podcasting 2.0)"
 msgstr ""
 
-#: app/PostTypes/Podcast.php:316
-#: app/ThemeOptions/Podcast.php:139
-msgid "no"
-msgstr ""
-
-#: app/PostTypes/Podcast.php:317
-msgid "yes"
+#: app/PostTypes/Podcast.php:321
+msgid "Optional. Adds one or more <podcast:soundbite> tags."
 msgstr ""
 
 #: app/PostTypes/Podcast.php:323
-msgid "Members"
+msgid "Soundbite {#}"
 msgstr ""
 
 #: app/PostTypes/Podcast.php:324
+msgid "Add Soundbite"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:325
+msgid "Remove Soundbite"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:331
+msgid "Start Time (seconds)"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:353
+msgid "Title (optional)"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:359
+msgid "Subtitle"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:360
+msgid "Optional. Short subtitle for iTunes."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:366
+msgid "Summary"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:367
+msgid "Optional. Plain text summary for iTunes."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:373
+msgid "Custom GUID (optional)"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:374
+msgid "Optional. If empty, feed uses WP permalink as GUID."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:380
+msgid "iTunes Block"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:381
+msgid "Optional. yes = hide this episode in Apple Podcasts."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:385
+#: app/ThemeOptions/Podcast.php:148
+#: app/ThemeOptions/Podcast.php:155
+#: app/ThemeOptions/Podcast.php:165
+msgid "no"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:386
+#: app/ThemeOptions/Podcast.php:149
+#: app/ThemeOptions/Podcast.php:156
+msgid "yes"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:392
+msgid "Members"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:393
 msgid "Select podcast members (only administrators, authors, or editors, multiple selection allowed)"
 msgstr ""
 
-#: app/PostTypes/Podcast.php:332
+#: app/PostTypes/Podcast.php:401
 msgid "Guests"
 msgstr ""
 
-#: app/PostTypes/Podcast.php:333
+#: app/PostTypes/Podcast.php:402
 msgid "Select podcast guests (only contributors, multiple selection allowed)"
 msgstr ""
 
-#: app/PostTypes/Podcast.php:534
+#: app/PostTypes/Podcast.php:540
+#: app/PostTypes/Podcast.php:604
 msgid "Audio File is required."
 msgstr ""
 
-#: app/PostTypes/Podcast.php:572
+#: app/PostTypes/Podcast.php:642
 msgid "Audio File must be a valid URL (https recommended)."
 msgstr ""
 
-#: app/PostTypes/Podcast.php:576
+#: app/PostTypes/Podcast.php:646
 msgid "Duration (seconds) could not be auto detected from Audio File."
 msgstr ""
 
-#: app/PostTypes/Podcast.php:580
+#: app/PostTypes/Podcast.php:650
 msgid "Audio Length (bytes) could not be auto detected from Audio File."
 msgstr ""
 
-#: app/PostTypes/Podcast.php:584
+#: app/PostTypes/Podcast.php:654
 msgid "Audio MIME Type could not be auto detected from Audio File."
 msgstr ""
 
-#: app/PostTypes/Podcast.php:589
+#: app/PostTypes/Podcast.php:659
 msgid "Explicit must be clean or explicit."
 msgstr ""
 
-#: app/PostTypes/Podcast.php:593
+#: app/PostTypes/Podcast.php:663
 msgid "Episode Type must be full, trailer, or bonus."
 msgstr ""
 
-#: app/PostTypes/Podcast.php:599
+#: app/PostTypes/Podcast.php:669
 msgid "Podcast validation failed"
 msgstr ""
 
-#: app/PostTypes/Podcast.php:980
+#: app/PostTypes/Podcast.php:1070
 msgid "Audio file URL"
 msgstr ""
 
-#: app/PostTypes/Podcast.php:990
+#: app/PostTypes/Podcast.php:1080
 msgid "Audio duration (seconds)"
 msgstr ""
 
-#: app/PostTypes/Podcast.php:1000
+#: app/PostTypes/Podcast.php:1090
 msgid "Episode transcript URL"
 msgstr ""
 
-#: app/setup.php:72
+#: app/setup.php:82
 msgid "Primary Navigation"
 msgstr ""
 
-#: app/setup.php:150
+#: app/setup.php:183
 msgid "Footer Links"
 msgstr ""
 
-#: app/setup.php:152
+#: app/setup.php:185
 msgid "Footer links area for displaying link columns"
 msgstr ""
 
-#: app/setup.php:160
+#: app/setup.php:193
 msgid "Home Main"
 msgstr ""
 
-#: app/setup.php:162
+#: app/setup.php:195
 msgid "Main area of the homepage for displaying various content modules"
 msgstr ""
 
-#: app/setup.php:169
+#: app/setup.php:202
 msgid "Sidebar Primary"
 msgstr ""
 
-#: app/setup.php:171
+#: app/setup.php:204
 msgid "Primary sidebar area for displaying various content modules"
 msgstr ""
 
-#: app/setup.php:178
+#: app/setup.php:211
 msgid "Leftbar Primary"
 msgstr ""
 
-#: app/setup.php:180
+#: app/setup.php:213
 msgid "Primary left sidebar area for displaying various content modules"
 msgstr ""
 
-#: app/ThemeOptions/General.php:51
-#: app/ThemeOptions/General.php:197
-msgid "Theme Settings"
+#: app/setup.php:600
+msgid "After importing this demo, please wait for all images and media to be downloaded. This may take a few minutes depending on your server speed."
+msgstr ""
+
+#: app/setup.php:638
+msgid "Import Demo Data"
+msgstr ""
+
+#: app/setup.php:639
+msgid "Import Demo"
+msgstr ""
+
+#: app/ThemeOptions/General.php:54
+#: app/ThemeOptions/General.php:138
+#: app/ThemeOptions/General.php:139
+msgid "General"
 msgstr ""
 
 #: app/ThemeOptions/General.php:55
-#: app/ThemeOptions/General.php:227
-#: app/ThemeOptions/General.php:1584
+msgid "Theme Settings"
+msgstr ""
+
+#: app/ThemeOptions/General.php:59
+#: app/ThemeOptions/General.php:259
+#: app/ThemeOptions/General.php:1616
 msgid "Site Logo"
 msgstr ""
 
-#: app/ThemeOptions/General.php:57
+#: app/ThemeOptions/General.php:61
 msgid "Upload a logo image (220px × 32px). You will be able to crop the image after upload."
 msgstr ""
 
-#: app/ThemeOptions/General.php:62
 #: app/ThemeOptions/General.php:66
+#: app/ThemeOptions/General.php:70
 msgid "Light Theme"
 msgstr ""
 
-#: app/ThemeOptions/General.php:70
+#: app/ThemeOptions/General.php:74
 msgid "Click any card to choose the light theme."
 msgstr ""
 
-#: app/ThemeOptions/General.php:71
+#: app/ThemeOptions/General.php:75
 msgid "Light Theme (fallback)"
 msgstr ""
 
-#: app/ThemeOptions/General.php:74
+#: app/ThemeOptions/General.php:78
 msgid "If the card picker is unavailable, use this dropdown (default: retro)."
 msgstr ""
 
-#: app/ThemeOptions/General.php:77
 #: app/ThemeOptions/General.php:81
+#: app/ThemeOptions/General.php:85
 msgid "Dark Theme"
 msgstr ""
 
-#: app/ThemeOptions/General.php:85
+#: app/ThemeOptions/General.php:89
 msgid "Click any card to choose the dark theme."
 msgstr ""
 
-#: app/ThemeOptions/General.php:86
+#: app/ThemeOptions/General.php:90
 msgid "Dark Theme (fallback)"
 msgstr ""
 
-#: app/ThemeOptions/General.php:89
+#: app/ThemeOptions/General.php:93
 msgid "If the card picker is unavailable, use this dropdown (default: dim)."
 msgstr ""
 
-#: app/ThemeOptions/General.php:92
+#: app/ThemeOptions/General.php:96
 msgid "Footer Copyright"
 msgstr ""
 
-#: app/ThemeOptions/General.php:94
+#: app/ThemeOptions/General.php:98
 msgid "Powered by A Ripple Song Theme"
 msgstr ""
 
-#: app/ThemeOptions/General.php:95
+#: app/ThemeOptions/General.php:99
 msgid "Overrides the footer copyright line. Leave empty to use the default."
 msgstr ""
 
-#: app/ThemeOptions/General.php:96
+#: app/ThemeOptions/General.php:100
 msgid "Header Scripts"
 msgstr ""
 
-#: app/ThemeOptions/General.php:97
+#: app/ThemeOptions/General.php:101
 msgid "Scripts to be added in the <head> section. You can include complete <script> tags for services like Google Analytics."
 msgstr ""
 
-#: app/ThemeOptions/General.php:98
+#: app/ThemeOptions/General.php:102
 msgid "Footer Scripts"
 msgstr ""
 
-#: app/ThemeOptions/General.php:99
+#: app/ThemeOptions/General.php:103
 msgid "Scripts to be added before </body>. You can include complete <script> tags."
 msgstr ""
 
-#: app/ThemeOptions/General.php:107
+#: app/ThemeOptions/General.php:111
 msgid "Social Links"
 msgstr ""
 
-#: app/ThemeOptions/General.php:242
+#: app/ThemeOptions/General.php:274
 msgid "Upload / Change Logo"
 msgstr ""
 
-#: app/ThemeOptions/General.php:244
+#: app/ThemeOptions/General.php:276
 msgid "Remove Logo"
 msgstr ""
 
-#: app/ThemeOptions/General.php:260
+#: app/ThemeOptions/General.php:292
 #: app/ThemeOptions/SocialLinks.php:28
 msgid "Facebook"
 msgstr ""
 
-#: app/ThemeOptions/General.php:264
+#: app/ThemeOptions/General.php:296
 #: app/ThemeOptions/SocialLinks.php:32
 msgid "Twitter / X"
 msgstr ""
 
-#: app/ThemeOptions/General.php:268
+#: app/ThemeOptions/General.php:300
 #: app/ThemeOptions/SocialLinks.php:36
 msgid "Instagram"
 msgstr ""
 
-#: app/ThemeOptions/General.php:272
+#: app/ThemeOptions/General.php:304
 #: app/ThemeOptions/SocialLinks.php:40
 msgid "LinkedIn"
 msgstr ""
 
-#: app/ThemeOptions/General.php:276
+#: app/ThemeOptions/General.php:308
 #: app/ThemeOptions/SocialLinks.php:44
 msgid "YouTube"
 msgstr ""
 
-#: app/ThemeOptions/General.php:280
+#: app/ThemeOptions/General.php:312
 #: app/ThemeOptions/SocialLinks.php:48
 msgid "TikTok"
 msgstr ""
 
-#: app/ThemeOptions/General.php:284
+#: app/ThemeOptions/General.php:316
 #: app/ThemeOptions/SocialLinks.php:52
 msgid "Pinterest"
 msgstr ""
 
-#: app/ThemeOptions/General.php:288
+#: app/ThemeOptions/General.php:320
 #: app/ThemeOptions/SocialLinks.php:56
 msgid "Threads"
 msgstr ""
 
-#: app/ThemeOptions/General.php:292
+#: app/ThemeOptions/General.php:324
 #: app/ThemeOptions/SocialLinks.php:60
 msgid "Weibo"
 msgstr ""
 
-#: app/ThemeOptions/General.php:296
+#: app/ThemeOptions/General.php:328
 #: app/ThemeOptions/SocialLinks.php:64
 msgid "WeChat"
 msgstr ""
 
-#: app/ThemeOptions/General.php:300
+#: app/ThemeOptions/General.php:332
 #: app/ThemeOptions/SocialLinks.php:68
 msgid "RSS Feed"
 msgstr ""
 
-#: app/ThemeOptions/General.php:309
+#: app/ThemeOptions/General.php:341
 msgid "Configure your social media links. Leave empty to hide a platform."
 msgstr ""
 
-#: app/ThemeOptions/General.php:1609
+#: app/ThemeOptions/General.php:1641
 msgid "Choose Logo Image"
 msgstr ""
 
-#: app/ThemeOptions/General.php:1611
+#: app/ThemeOptions/General.php:1643
 msgid "Crop Image"
 msgstr ""
 
-#: app/ThemeOptions/General.php:1624
+#: app/ThemeOptions/General.php:1656
 #, php-format
 msgid "Image is too small. Minimum size: %1$dpx × %2$dpx"
 msgstr ""
 
-#: app/ThemeOptions/General.php:1652
-#: app/ThemeOptions/General.php:1744
-#: app/ThemeOptions/General.php:1750
+#: app/ThemeOptions/General.php:1684
+#: app/ThemeOptions/General.php:1776
+#: app/ThemeOptions/General.php:1782
 msgid "Crop and Save"
 msgstr ""
 
-#: app/ThemeOptions/General.php:1653
+#: app/ThemeOptions/General.php:1685
 #: resources/views/sections/autoplay-confirm.blade.php:42
 msgid "Cancel"
 msgstr ""
 
-#: app/ThemeOptions/General.php:1687
+#: app/ThemeOptions/General.php:1719
 msgid "Please select a crop area."
 msgstr ""
 
-#: app/ThemeOptions/General.php:1691
+#: app/ThemeOptions/General.php:1723
 msgid "Cropping..."
 msgstr ""
 
-#: app/ThemeOptions/General.php:1743
+#: app/ThemeOptions/General.php:1775
 msgid "Error cropping image:"
 msgstr ""
 
-#: app/ThemeOptions/General.php:1749
+#: app/ThemeOptions/General.php:1781
 msgid "Error cropping image. Please try again."
 msgstr ""
 
-#: app/ThemeOptions/General.php:1821
+#: app/ThemeOptions/General.php:1853
+msgid "Invalid request."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1858
 msgid "You do not have permission to upload files."
 msgstr ""
 
-#: app/ThemeOptions/General.php:1826
+#: app/ThemeOptions/General.php:1863
 msgid "Missing attachment ID."
 msgstr ""
 
-#: app/ThemeOptions/General.php:1830
+#: app/ThemeOptions/General.php:1867
+#: app/ThemeOptions/General.php:1888
 msgid "Missing crop details."
 msgstr ""
 
-#: app/ThemeOptions/General.php:1840
+#: app/ThemeOptions/General.php:1873
+msgid "Invalid attachment ID."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1877
+msgid "You do not have permission to edit this attachment."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1882
+msgid "Invalid crop details."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1902
 msgid "Original image not found."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1924
+msgid "Unable to determine attachment URL."
 msgstr ""
 
 #: app/ThemeOptions/Podcast.php:76
@@ -706,63 +819,160 @@ msgid "Example: © 2025 Your Studio. Plain text."
 msgstr ""
 
 #: app/ThemeOptions/Podcast.php:136
-msgid "podcast:locked"
+msgid "iTunes Type (itunes:type)"
 msgstr ""
 
 #: app/ThemeOptions/Podcast.php:138
-msgid "yes (recommended, prevents unauthorized moves)"
+msgid "(not set)"
 msgstr ""
 
-#: app/ThemeOptions/Podcast.php:142
-msgid "Podcasting 2.0: lock feed to this publisher."
+#: app/ThemeOptions/Podcast.php:139
+msgid "episodic"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:140
+msgid "serial"
 msgstr ""
 
 #: app/ThemeOptions/Podcast.php:143
+msgid "Optional. Apple Podcasts: episodic or serial."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:145
+msgid "Optional. Use only if you need a separate Apple-facing title."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:146
+msgid "iTunes Block (itunes:block)"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:152
+msgid "Optional. yes = hide this show in Apple Podcasts."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:153
+msgid "iTunes Complete (itunes:complete)"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:159
+msgid "Optional. yes = this show is complete (no more episodes)."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:160
+msgid "iTunes New Feed URL (itunes:new-feed-url)"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:161
+msgid "Optional. Only for moving your show to a new RSS feed URL."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:162
+msgid "podcast:locked"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:164
+msgid "yes (recommended, prevents unauthorized moves)"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:168
+msgid "Podcasting 2.0: lock feed to this publisher."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:169
+msgid "podcast:locked owner (optional)"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:172
+msgid "Optional. Podcasting 2.0: email used to verify ownership during moves."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:173
 msgid "podcast:guid (optional)"
 msgstr ""
 
-#: app/ThemeOptions/Podcast.php:144
+#: app/ThemeOptions/Podcast.php:174
 msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
 msgstr ""
 
-#: app/ThemeOptions/Podcast.php:479
+#: app/ThemeOptions/Podcast.php:175
+msgid "Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:176
+msgid "Optional. Used by Apple Podcasts to verify feed ownership."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:177
+msgid "Podcasting 2.0 Funding Links (podcast:funding)"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:178
+msgid "Optional. If empty, no podcast:funding tags will be generated. URLs should be https."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:180
+msgid "URL"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:181
+msgid "Required for each entry. Use https."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:182
+msgid "Label"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:183
+msgid "Optional display text (max 128 chars recommended)."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:185
+msgid "Generator (optional)"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:186
+msgid "Optional. If empty, generator tag will not be included."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:521
 msgid "Podcast Cover validation failed:"
 msgstr ""
 
-#: app/ThemeOptions/Podcast.php:516
+#: app/ThemeOptions/Podcast.php:558
+#: app/ThemeOptions/Podcast.php:672
 msgid "Podcast Cover URL is invalid."
 msgstr ""
 
-#: app/ThemeOptions/Podcast.php:595
-#: app/ThemeOptions/Podcast.php:641
+#: app/ThemeOptions/Podcast.php:638
+#: app/ThemeOptions/Podcast.php:688
 #, php-format
 msgid "Podcast Cover file is too large (%1$s). Please compress it to under %2$s."
 msgstr ""
 
-#: app/ThemeOptions/Podcast.php:605
+#: app/ThemeOptions/Podcast.php:648
 msgid "Podcast Cover is not a valid image."
 msgstr ""
 
-#: app/ThemeOptions/Podcast.php:656
+#: app/ThemeOptions/Podcast.php:703
 #, php-format
 msgid "Could not download Podcast Cover for validation: %s"
 msgstr ""
 
-#: app/ThemeOptions/Podcast.php:693
+#: app/ThemeOptions/Podcast.php:740
 msgid "Podcast Cover must be JPG or PNG."
 msgstr ""
 
-#: app/ThemeOptions/Podcast.php:702
+#: app/ThemeOptions/Podcast.php:749
 #, php-format
 msgid "Podcast Cover must be square. Current dimensions: %1$d × %2$d px."
 msgstr ""
 
-#: app/ThemeOptions/Podcast.php:714
+#: app/ThemeOptions/Podcast.php:761
 #, php-format
 msgid "Podcast Cover resolution is too small. Minimum: %1$d × %1$d px. Current: %2$d × %2$d px."
 msgstr ""
 
-#: app/ThemeOptions/Podcast.php:726
+#: app/ThemeOptions/Podcast.php:773
 #, php-format
 msgid "Podcast Cover resolution is too large. Maximum: %1$d × %1$d px. Current: %2$d × %2$d px."
 msgstr ""
@@ -807,82 +1017,82 @@ msgstr ""
 msgid "Pages:"
 msgstr ""
 
-#: app/widgets.php:185
+#: app/widgets.php:206
 #: app/Widgets/BannerCarouselWidget.php:62
 msgid "Image URL:"
 msgstr ""
 
-#: app/widgets.php:187
+#: app/widgets.php:208
 #: app/Widgets/BannerCarouselWidget.php:69
 msgid "Image URL"
 msgstr ""
 
-#: app/widgets.php:188
+#: app/widgets.php:209
 #: app/Widgets/BannerCarouselWidget.php:74
 msgid "Select Image"
 msgstr ""
 
-#: app/widgets.php:192
+#: app/widgets.php:213
 #: app/Widgets/BannerCarouselWidget.php:85
 msgid "Link URL (optional):"
 msgstr ""
 
-#: app/widgets.php:196
+#: app/widgets.php:217
 #: app/Widgets/BannerCarouselWidget.php:95
 msgid "Link Target:"
 msgstr ""
 
-#: app/widgets.php:198
+#: app/widgets.php:219
 #: app/Widgets/BannerCarouselWidget.php:100
 msgid "Current Page"
 msgstr ""
 
-#: app/widgets.php:199
+#: app/widgets.php:220
 #: app/Widgets/BannerCarouselWidget.php:103
 msgid "New Tab"
 msgstr ""
 
-#: app/widgets.php:203
+#: app/widgets.php:224
 #: app/Widgets/BannerCarouselWidget.php:109
 msgid "Description:"
 msgstr ""
 
-#: app/widgets.php:204
+#: app/widgets.php:225
 #: app/Widgets/BannerCarouselWidget.php:115
 msgid "Image description"
 msgstr ""
 
-#: app/widgets.php:207
-#: app/widgets.php:373
+#: app/widgets.php:228
+#: app/widgets.php:394
 #: app/Widgets/BannerCarouselWidget.php:119
 #: app/Widgets/FooterLinksWidget.php:91
 msgid "Delete"
 msgstr ""
 
-#: app/widgets.php:254
+#: app/widgets.php:275
 msgid "Select Banner Image"
 msgstr ""
 
-#: app/widgets.php:256
+#: app/widgets.php:277
 msgid "Use This Image"
 msgstr ""
 
-#: app/widgets.php:360
+#: app/widgets.php:381
 #: app/Widgets/FooterLinksWidget.php:65
 msgid "Text:"
 msgstr ""
 
-#: app/widgets.php:361
+#: app/widgets.php:382
 #: app/Widgets/FooterLinksWidget.php:70
 msgid "Display text"
 msgstr ""
 
-#: app/widgets.php:364
+#: app/widgets.php:385
 #: app/Widgets/FooterLinksWidget.php:73
 msgid "URL (optional - leave empty for plain text):"
 msgstr ""
 
-#: app/widgets.php:369
+#: app/widgets.php:390
 #: app/Widgets/FooterLinksWidget.php:87
 msgid "Open in new tab"
 msgstr ""
@@ -895,27 +1105,27 @@ msgstr ""
 msgid "Display members and guest authors list"
 msgstr ""
 
-#: app/Widgets/AuthorsWidget.php:92
+#: app/Widgets/AuthorsWidget.php:112
 msgid "No authors yet"
 msgstr ""
 
-#: app/Widgets/AuthorsWidget.php:93
+#: app/Widgets/AuthorsWidget.php:113
 msgid "Authors will appear here after adding users"
 msgstr ""
 
-#: app/Widgets/AuthorsWidget.php:110
+#: app/Widgets/AuthorsWidget.php:130
 msgid "Members Title:"
 msgstr ""
 
-#: app/Widgets/AuthorsWidget.php:124
+#: app/Widgets/AuthorsWidget.php:144
 msgid "Show Members (Administrators, Editors, Authors)"
 msgstr ""
 
-#: app/Widgets/AuthorsWidget.php:128
+#: app/Widgets/AuthorsWidget.php:148
 msgid "Guests Title:"
 msgstr ""
 
-#: app/Widgets/AuthorsWidget.php:142
+#: app/Widgets/AuthorsWidget.php:162
 msgid "Show Guests (Contributors)"
 msgstr ""
 
@@ -947,34 +1157,34 @@ msgstr ""
 msgid "Display latest blog posts list"
 msgstr ""
 
-#: app/Widgets/BlogListWidget.php:41
-#: app/Widgets/PodcastListWidget.php:70
+#: app/Widgets/BlogListWidget.php:45
+#: app/Widgets/PodcastListWidget.php:114
 msgid "See all"
 msgstr ""
 
-#: app/Widgets/BlogListWidget.php:75
+#: app/Widgets/BlogListWidget.php:79
 msgid "No blog posts yet"
 msgstr ""
 
-#: app/Widgets/BlogListWidget.php:91
+#: app/Widgets/BlogListWidget.php:95
 #: app/Widgets/FooterLinksWidget.php:50
-#: app/Widgets/PodcastListWidget.php:200
+#: app/Widgets/PodcastListWidget.php:267
 #: app/Widgets/SubscribeLinksWidget.php:81
 #: app/Widgets/TagsCloudWidget.php:82
 msgid "Title:"
 msgstr ""
 
-#: app/Widgets/BlogListWidget.php:99
-#: app/Widgets/PodcastListWidget.php:208
+#: app/Widgets/BlogListWidget.php:103
+#: app/Widgets/PodcastListWidget.php:275
 msgid "Number of posts:"
 msgstr ""
 
-#: app/Widgets/BlogListWidget.php:110
+#: app/Widgets/BlogListWidget.php:114
 msgid "Number of columns:"
 msgstr ""
 
-#: app/Widgets/BlogListWidget.php:127
-#: app/Widgets/PodcastListWidget.php:224
+#: app/Widgets/BlogListWidget.php:131
+#: app/Widgets/PodcastListWidget.php:291
 msgid "Show \"See all\" link"
 msgstr ""
 
@@ -1006,22 +1216,22 @@ msgstr ""
 msgid "Display latest podcast list"
 msgstr ""
 
-#: app/Widgets/PodcastListWidget.php:80
+#: app/Widgets/PodcastListWidget.php:124
 msgid "Recent"
 msgstr ""
 
-#: app/Widgets/PodcastListWidget.php:88
+#: app/Widgets/PodcastListWidget.php:132
 msgid "Popular"
 msgstr ""
 
-#: app/Widgets/PodcastListWidget.php:96
+#: app/Widgets/PodcastListWidget.php:140
 #: app/Widgets/TagsCloudWidget.php:111
 msgid "Random"
 msgstr ""
 
-#: app/Widgets/PodcastListWidget.php:118
-#: app/Widgets/PodcastListWidget.php:139
-#: app/Widgets/PodcastListWidget.php:160
+#: app/Widgets/PodcastListWidget.php:162
+#: app/Widgets/PodcastListWidget.php:183
+#: app/Widgets/PodcastListWidget.php:204
 msgid "No podcast content"
 msgstr ""
 
@@ -1119,6 +1329,10 @@ msgid "Custom Template"
 msgstr ""
 
 #. Template Name of the theme
+msgid "Home Template"
+msgstr ""
+
+#. Template Name of the theme
 msgid "Podcast Template"
 msgstr ""
 
@@ -1140,15 +1354,11 @@ msgctxt "placeholder"
 msgid "Search &hellip;"
 msgstr ""
 
-#: resources/views/index.blade.php:9
-msgid "Please add widgets to \"Home Main\" area in Appearance > Widgets in the admin panel."
-msgstr ""
-
-#: resources/views/layouts/app.blade.php:87
+#: resources/views/layouts/app.blade.php:92
 msgid "Open Left Sidebar"
 msgstr ""
 
-#: resources/views/layouts/app.blade.php:101
+#: resources/views/layouts/app.blade.php:106
 msgid "Open Right Sidebar"
 msgstr ""
 
@@ -1168,11 +1378,11 @@ msgstr ""
 msgid "By"
 msgstr ""
 
-#: resources/views/partials/entry-meta.blade.php:26
+#: resources/views/partials/entry-meta.blade.php:37
 msgid "views"
 msgstr ""
 
-#: resources/views/partials/entry-meta.blade.php:29
+#: resources/views/partials/entry-meta.blade.php:40
 msgid "plays"
 msgstr ""
 
@@ -1231,15 +1441,15 @@ msgstr ""
 msgid "NOW PLAYING"
 msgstr ""
 
-#: resources/views/sections/player.blade.php:24
+#: resources/views/sections/player.blade.php:26
 msgid "No Episode Playing"
 msgstr ""
 
-#: resources/views/sections/player.blade.php:24
+#: resources/views/sections/player.blade.php:27
 msgid "Podcast Episode"
 msgstr ""
 
-#: resources/views/sections/player.blade.php:38
+#: resources/views/sections/player.blade.php:47
 msgid "Loading audio"
 msgstr ""
 
@@ -1292,6 +1502,14 @@ msgstr ""
 msgid "Please add widgets to \"Sidebar\" area in Appearance > Widgets in the admin panel."
 msgstr ""
 
+#: resources/views/template-home.blade.php:13
+msgid "Please add widgets to \"Home Main\" area in Appearance > Widgets in the admin panel."
+msgstr ""
+
+#: resources/views/template-podcast.blade.php:37
+msgid "Podcast plugin is not active. Install/activate a-ripple-song-podcast to show episodes."
+msgstr ""
+
 #: resources/views/widgets/banner-carousel.blade.php:17
 msgid "No banner yet"
 msgstr ""
@@ -1313,81 +1531,81 @@ msgstr ""
 msgid "Go to slide %d"
 msgstr ""
 
-#: resources/js/app.js:558
+#: resources/js/app.js:722
 #, js-format
 msgid "Fetched %d podcasts"
 msgstr ""
 
-#: resources/js/app.js:574
+#: resources/js/app.js:738
 msgid "Podcast has no audio file, skipping:"
 msgstr ""
 
-#: resources/js/app.js:608
+#: resources/js/app.js:772
 msgid "Added:"
 msgstr ""
 
-#: resources/js/app.js:610
+#: resources/js/app.js:774
 msgid "Already exists, skipping:"
 msgstr ""
 
-#: resources/js/app.js:615
+#: resources/js/app.js:779
 #, js-format
 msgid "Successfully added %d new podcasts to playlist"
 msgstr ""
 
-#: resources/js/app.js:632
+#: resources/js/app.js:796
 msgid "No new podcasts to add"
 msgstr ""
 
-#: resources/js/app.js:638
+#: resources/js/app.js:802
 msgid "Failed to fetch latest podcasts:"
 msgstr ""
 
-#: resources/js/app.js:670
+#: resources/js/app.js:838
 msgid "No episode available to play"
 msgstr ""
 
-#: resources/js/app.js:685
+#: resources/js/app.js:853
 msgid "Playback progress restored:"
 msgstr ""
 
-#: resources/js/app.js:719
+#: resources/js/app.js:887
 msgid "Autoplay confirm dialog auto-closed"
 msgstr ""
 
-#: resources/js/app.js:723
+#: resources/js/app.js:891
 msgid "Showing autoplay confirm dialog"
 msgstr ""
 
-#: resources/js/app.js:748
+#: resources/js/app.js:916
 msgid "User confirmed autoplay"
 msgstr ""
 
-#: resources/js/app.js:761
+#: resources/js/app.js:929
 msgid "User cancelled autoplay"
 msgstr ""
 
-#: resources/js/app.js:810
+#: resources/js/app.js:995
 msgid "Audio load error:"
 msgstr ""
 
-#: resources/js/app.js:1052
+#: resources/js/app.js:1418
 msgid "Volume settings loaded:"
 msgstr ""
 
-#: resources/js/app.js:1078
+#: resources/js/app.js:1444
 msgid "Playback rate loaded:"
 msgstr ""
 
-#: resources/js/app.js:1130
+#: resources/js/app.js:1496
 msgid "Switched to existing episode:"
 msgstr ""
 
-#: resources/js/app.js:1148
+#: resources/js/app.js:1514
 msgid "Added to playlist:"
 msgstr ""
 
-#: resources/js/app.js:1159
+#: resources/js/app.js:1525
 msgid "Episode already exists:"
 msgstr ""
 

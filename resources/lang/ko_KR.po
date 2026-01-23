@@ -14,16 +14,6 @@ msgstr ""
 "X-Domain: sage\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. Author of the theme
-#: style.css
-msgid "Roots"
-msgstr "Roots"
-
-#. Author URI of the theme
-#: style.css
-msgid "https://roots.io/"
-msgstr "https://roots.io/"
-
 #: app/filters.php:15
 msgid "Continued"
 msgstr "계속 읽기"
@@ -64,7 +54,7 @@ msgid "Search Podcasts"
 msgstr "팟캐스트 검색"
 
 #: app/PostTypes/Podcast.php:46
-#: resources/js/app.js:554
+#: resources/js/app.js:718
 msgid "No podcasts found"
 msgstr "팟캐스트를 찾을 수 없습니다"
 
@@ -130,58 +120,59 @@ msgid "Add Audio File"
 msgstr "오디오 파일 추가"
 
 #: app/PostTypes/Podcast.php:157
+#: app/PostTypes/Podcast.php:342
 msgid "Duration (seconds)"
 msgstr "재생 시간(초)"
 
-#: app/PostTypes/Podcast.php:323
+#: app/PostTypes/Podcast.php:392
 msgid "Members"
 msgstr "멤버"
 
-#: app/PostTypes/Podcast.php:324
+#: app/PostTypes/Podcast.php:393
 msgid "Select podcast members (only administrators, authors, or editors, multiple selection allowed)"
 msgstr "팟캐스트 멤버를 선택하세요(관리자, 작성자 또는 편집자만, 다중 선택 가능)"
 
-#: app/PostTypes/Podcast.php:332
+#: app/PostTypes/Podcast.php:401
 msgid "Guests"
 msgstr "게스트"
 
-#: app/PostTypes/Podcast.php:333
+#: app/PostTypes/Podcast.php:402
 msgid "Select podcast guests (only contributors, multiple selection allowed)"
 msgstr "팟캐스트 게스트를 선택하세요(기여자만, 다중 선택 가능)"
 
-#: app/PostTypes/Podcast.php:980
+#: app/PostTypes/Podcast.php:1070
 msgid "Audio file URL"
 msgstr "오디오 파일 URL"
 
-#: app/PostTypes/Podcast.php:990
+#: app/PostTypes/Podcast.php:1080
 msgid "Audio duration (seconds)"
 msgstr "오디오 재생 시간(초)"
 
-#: app/setup.php:72
+#: app/setup.php:82
 msgid "Primary Navigation"
 msgstr "주요 내비게이션"
 
-#: app/setup.php:160
+#: app/setup.php:193
 msgid "Home Main"
 msgstr "홈 메인"
 
-#: app/setup.php:162
+#: app/setup.php:195
 msgid "Main area of the homepage for displaying various content modules"
 msgstr "다양한 콘텐츠 모듈을 표시하기 위한 홈페이지의 주요 영역"
 
-#: app/setup.php:169
+#: app/setup.php:202
 msgid "Sidebar Primary"
 msgstr "주요 사이드바"
 
-#: app/setup.php:171
+#: app/setup.php:204
 msgid "Primary sidebar area for displaying various content modules"
 msgstr "다양한 콘텐츠 모듈을 표시하기 위한 주요 사이드바 영역"
 
-#: app/setup.php:178
+#: app/setup.php:211
 msgid "Leftbar Primary"
 msgstr "주요 왼쪽 바"
 
-#: app/setup.php:180
+#: app/setup.php:213
 msgid "Primary left sidebar area for displaying various content modules"
 msgstr "다양한 콘텐츠 모듈을 표시하기 위한 주요 왼쪽 사이드바 영역"
 
@@ -232,27 +223,27 @@ msgstr "aripplesong - 작성자 목록"
 msgid "Display members and guest authors list"
 msgstr "멤버 및 게스트 작성자 목록 표시"
 
-#: app/Widgets/AuthorsWidget.php:92
+#: app/Widgets/AuthorsWidget.php:112
 msgid "No authors yet"
 msgstr "아직 작성자가 없습니다"
 
-#: app/Widgets/AuthorsWidget.php:93
+#: app/Widgets/AuthorsWidget.php:113
 msgid "Authors will appear here after adding users"
 msgstr "사용자를 추가한 후 작성자가 여기에 표시됩니다"
 
-#: app/Widgets/AuthorsWidget.php:110
+#: app/Widgets/AuthorsWidget.php:130
 msgid "Members Title:"
 msgstr "멤버 제목:"
 
-#: app/Widgets/AuthorsWidget.php:124
+#: app/Widgets/AuthorsWidget.php:144
 msgid "Show Members (Administrators, Editors, Authors)"
 msgstr "멤버 표시(관리자, 편집자, 작성자)"
 
-#: app/Widgets/AuthorsWidget.php:128
+#: app/Widgets/AuthorsWidget.php:148
 msgid "Guests Title:"
 msgstr "게스트 제목:"
 
-#: app/Widgets/AuthorsWidget.php:142
+#: app/Widgets/AuthorsWidget.php:162
 msgid "Show Guests (Contributors)"
 msgstr "게스트 표시(기여자)"
 
@@ -276,22 +267,22 @@ msgstr "관리 패널에서 배너 콘텐츠를 추가하세요"
 msgid "Banner Slides:"
 msgstr "배너 슬라이드:"
 
-#: app/widgets.php:185
+#: app/widgets.php:206
 #: app/Widgets/BannerCarouselWidget.php:62
 msgid "Image URL:"
 msgstr "이미지 URL:"
 
-#: app/widgets.php:187
+#: app/widgets.php:208
 #: app/Widgets/BannerCarouselWidget.php:69
 msgid "Image URL"
 msgstr "이미지 URL"
 
-#: app/widgets.php:188
+#: app/widgets.php:209
 #: app/Widgets/BannerCarouselWidget.php:74
 msgid "Select Image"
 msgstr "이미지 선택"
 
-#: app/widgets.php:192
+#: app/widgets.php:213
 #: app/Widgets/BannerCarouselWidget.php:85
 msgid "Link URL (optional):"
 msgstr "링크 URL(선택 사항):"
@@ -300,33 +291,33 @@ msgstr "링크 URL(선택 사항):"
 msgid "https://example.com"
 msgstr "https://example.com"
 
-#: app/widgets.php:196
+#: app/widgets.php:217
 #: app/Widgets/BannerCarouselWidget.php:95
 msgid "Link Target:"
 msgstr "링크 대상:"
 
-#: app/widgets.php:198
+#: app/widgets.php:219
 #: app/Widgets/BannerCarouselWidget.php:100
 msgid "Current Page"
 msgstr "현재 페이지"
 
-#: app/widgets.php:199
+#: app/widgets.php:220
 #: app/Widgets/BannerCarouselWidget.php:103
 msgid "New Tab"
 msgstr "새 탭"
 
-#: app/widgets.php:203
+#: app/widgets.php:224
 #: app/Widgets/BannerCarouselWidget.php:109
 msgid "Description:"
 msgstr "설명:"
 
-#: app/widgets.php:204
+#: app/widgets.php:225
 #: app/Widgets/BannerCarouselWidget.php:115
 msgid "Image description"
 msgstr "이미지 설명"
 
-#: app/widgets.php:207
-#: app/widgets.php:373
+#: app/widgets.php:228
+#: app/widgets.php:394
 #: app/Widgets/BannerCarouselWidget.php:119
 #: app/Widgets/FooterLinksWidget.php:91
 msgid "Delete"
@@ -344,29 +335,29 @@ msgstr "aripplesong - 블로그 목록"
 msgid "Display latest blog posts list"
 msgstr "최신 블로그 게시물 목록 표시"
 
-#: app/Widgets/BlogListWidget.php:75
+#: app/Widgets/BlogListWidget.php:79
 msgid "No blog posts yet"
 msgstr "아직 블로그 게시물이 없습니다"
 
-#: app/Widgets/BlogListWidget.php:91
+#: app/Widgets/BlogListWidget.php:95
 #: app/Widgets/FooterLinksWidget.php:50
-#: app/Widgets/PodcastListWidget.php:200
+#: app/Widgets/PodcastListWidget.php:267
 #: app/Widgets/SubscribeLinksWidget.php:81
 #: app/Widgets/TagsCloudWidget.php:82
 msgid "Title:"
 msgstr "제목:"
 
-#: app/Widgets/BlogListWidget.php:99
-#: app/Widgets/PodcastListWidget.php:208
+#: app/Widgets/BlogListWidget.php:103
+#: app/Widgets/PodcastListWidget.php:275
 msgid "Number of posts:"
 msgstr "게시물 수:"
 
-#: app/Widgets/BlogListWidget.php:110
+#: app/Widgets/BlogListWidget.php:114
 msgid "Number of columns:"
 msgstr "열 수:"
 
-#: app/Widgets/BlogListWidget.php:127
-#: app/Widgets/PodcastListWidget.php:224
+#: app/Widgets/BlogListWidget.php:131
+#: app/Widgets/PodcastListWidget.php:291
 msgid "Show \"See all\" link"
 msgstr "\"모두 보기\" 링크 표시"
 
@@ -378,9 +369,9 @@ msgstr "aripplesong - 팟캐스트 목록"
 msgid "Display latest podcast list"
 msgstr "최신 팟캐스트 목록 표시"
 
-#: app/Widgets/PodcastListWidget.php:118
-#: app/Widgets/PodcastListWidget.php:139
-#: app/Widgets/PodcastListWidget.php:160
+#: app/Widgets/PodcastListWidget.php:162
+#: app/Widgets/PodcastListWidget.php:183
+#: app/Widgets/PodcastListWidget.php:204
 msgid "No podcast content"
 msgstr "팟캐스트 콘텐츠 없음"
 
@@ -456,21 +447,21 @@ msgstr "태그 이름"
 msgid "Tag ID"
 msgstr "태그 ID"
 
-#: app/Widgets/PodcastListWidget.php:96
+#: app/Widgets/PodcastListWidget.php:140
 #: app/Widgets/TagsCloudWidget.php:111
 msgid "Random"
 msgstr "무작위"
 
-#: app/Widgets/BlogListWidget.php:41
-#: app/Widgets/PodcastListWidget.php:70
+#: app/Widgets/BlogListWidget.php:45
+#: app/Widgets/PodcastListWidget.php:114
 msgid "See all"
 msgstr "모두 보기"
 
-#: app/Widgets/PodcastListWidget.php:80
+#: app/Widgets/PodcastListWidget.php:124
 msgid "Recent"
 msgstr "최신"
 
-#: app/Widgets/PodcastListWidget.php:88
+#: app/Widgets/PodcastListWidget.php:132
 msgid "Popular"
 msgstr "인기"
 
@@ -502,22 +493,22 @@ msgstr "예: 연락처, 탐색, 지원"
 msgid "Items:"
 msgstr "항목:"
 
-#: app/widgets.php:360
+#: app/widgets.php:381
 #: app/Widgets/FooterLinksWidget.php:65
 msgid "Text:"
 msgstr "텍스트:"
 
-#: app/widgets.php:361
+#: app/widgets.php:382
 #: app/Widgets/FooterLinksWidget.php:70
 msgid "Display text"
 msgstr "표시 텍스트"
 
-#: app/widgets.php:364
+#: app/widgets.php:385
 #: app/Widgets/FooterLinksWidget.php:73
 msgid "URL (optional - leave empty for plain text):"
 msgstr "URL (선택 사항 - 일반 텍스트는 비워 두세요):"
 
-#: app/widgets.php:369
+#: app/widgets.php:390
 #: app/Widgets/FooterLinksWidget.php:87
 msgid "Open in new tab"
 msgstr "새 탭에서 열기"
@@ -526,11 +517,11 @@ msgstr "새 탭에서 열기"
 msgid "+ Add Item"
 msgstr "+ 항목 추가"
 
-#: app/setup.php:150
+#: app/setup.php:183
 msgid "Footer Links"
 msgstr "푸터 링크"
 
-#: app/setup.php:152
+#: app/setup.php:185
 msgid "Footer links area for displaying link columns"
 msgstr "링크 열을 표시하기 위한 푸터 링크 영역"
 
@@ -568,7 +559,7 @@ msgstr "댓글이 닫혔습니다."
 msgid "By"
 msgstr "작성자"
 
-#: resources/views/index.blade.php:9
+#: resources/views/template-home.blade.php:13
 msgid "Please add widgets to \"Home Main\" area in Appearance > Widgets in the admin panel."
 msgstr "관리 패널의 외관 > 위젯에서 \"홈 메인\" 영역에 위젯을 추가하세요."
 
@@ -623,11 +614,11 @@ msgstr "시스템 따르기"
 msgid "NOW PLAYING"
 msgstr "재생 중"
 
-#: resources/views/sections/player.blade.php:24
+#: resources/views/sections/player.blade.php:26
 msgid "No Episode Playing"
 msgstr "재생 중인 에피소드 없음"
 
-#: resources/views/sections/player.blade.php:24
+#: resources/views/sections/player.blade.php:27
 msgid "Podcast Episode"
 msgstr "팟캐스트 에피소드"
 
@@ -675,95 +666,90 @@ msgstr "계속 재생하시겠습니까?"
 msgid "Unknown episode"
 msgstr "알 수 없는 에피소드"
 
-#: app/ThemeOptions/General.php:1653
+#: app/ThemeOptions/General.php:1685
 #: resources/views/sections/autoplay-confirm.blade.php:42
 msgid "Cancel"
 msgstr "취소"
 
-#: resources/views/sections/player.blade.php:38
+#: resources/views/sections/player.blade.php:47
 msgid "Loading audio"
 msgstr "오디오 로딩 중"
 
-#: app/ThemeOptions/General.php:51
-#: app/ThemeOptions/General.php:197
-msgid "Theme Settings"
-msgstr "테마 설정"
-
-#: app/ThemeOptions/General.php:107
+#: app/ThemeOptions/General.php:111
 msgid "Social Links"
 msgstr "소셜 링크"
 
-#: app/ThemeOptions/General.php:96
+#: app/ThemeOptions/General.php:100
 msgid "Header Scripts"
 msgstr "헤더 스크립트"
 
-#: app/ThemeOptions/General.php:97
+#: app/ThemeOptions/General.php:101
 msgid "Scripts to be added in the <head> section. You can include complete <script> tags for services like Google Analytics."
 msgstr "<head> 섹션에 추가될 스크립트입니다. Google Analytics와 같은 서비스의 완전한 <script> 태그를 포함할 수 있습니다."
 
-#: app/ThemeOptions/General.php:98
+#: app/ThemeOptions/General.php:102
 msgid "Footer Scripts"
 msgstr "푸터 스크립트"
 
-#: app/ThemeOptions/General.php:99
+#: app/ThemeOptions/General.php:103
 msgid "Scripts to be added before </body>. You can include complete <script> tags."
 msgstr "</body> 앞에 추가될 스크립트입니다. 완전한 <script> 태그를 포함할 수 있습니다."
 
-#: app/ThemeOptions/General.php:309
+#: app/ThemeOptions/General.php:341
 msgid "Configure your social media links. Leave empty to hide a platform."
 msgstr "소셜 미디어 링크를 구성합니다. 플랫폼을 숨기려면 비워두세요."
 
-#: app/ThemeOptions/General.php:260
+#: app/ThemeOptions/General.php:292
 #: app/ThemeOptions/SocialLinks.php:28
 msgid "Facebook"
 msgstr "페이스북"
 
-#: app/ThemeOptions/General.php:264
+#: app/ThemeOptions/General.php:296
 #: app/ThemeOptions/SocialLinks.php:32
 msgid "Twitter / X"
 msgstr "트위터 / X"
 
-#: app/ThemeOptions/General.php:268
+#: app/ThemeOptions/General.php:300
 #: app/ThemeOptions/SocialLinks.php:36
 msgid "Instagram"
 msgstr "인스타그램"
 
-#: app/ThemeOptions/General.php:272
+#: app/ThemeOptions/General.php:304
 #: app/ThemeOptions/SocialLinks.php:40
 msgid "LinkedIn"
 msgstr "링크드인"
 
-#: app/ThemeOptions/General.php:276
+#: app/ThemeOptions/General.php:308
 #: app/ThemeOptions/SocialLinks.php:44
 msgid "YouTube"
 msgstr "유튜브"
 
-#: app/ThemeOptions/General.php:280
+#: app/ThemeOptions/General.php:312
 #: app/ThemeOptions/SocialLinks.php:48
 msgid "TikTok"
 msgstr "틱톡"
 
-#: app/ThemeOptions/General.php:284
+#: app/ThemeOptions/General.php:316
 #: app/ThemeOptions/SocialLinks.php:52
 msgid "Pinterest"
 msgstr "핀터레스트"
 
-#: app/ThemeOptions/General.php:288
+#: app/ThemeOptions/General.php:320
 #: app/ThemeOptions/SocialLinks.php:56
 msgid "Threads"
 msgstr "스레드"
 
-#: app/ThemeOptions/General.php:292
+#: app/ThemeOptions/General.php:324
 #: app/ThemeOptions/SocialLinks.php:60
 msgid "Weibo"
 msgstr "웨이보"
 
-#: app/ThemeOptions/General.php:296
+#: app/ThemeOptions/General.php:328
 #: app/ThemeOptions/SocialLinks.php:64
 msgid "WeChat"
 msgstr "위챗"
 
-#: app/ThemeOptions/General.php:300
+#: app/ThemeOptions/General.php:332
 #: app/ThemeOptions/SocialLinks.php:68
 msgid "RSS Feed"
 msgstr "RSS 피드"
@@ -776,41 +762,41 @@ msgstr "왼쪽 사이드바"
 msgid "Right Sidebar"
 msgstr "오른쪽 사이드바"
 
-#: resources/views/layouts/app.blade.php:87
+#: resources/views/layouts/app.blade.php:92
 msgid "Open Left Sidebar"
 msgstr "왼쪽 사이드바 열기"
 
-#: resources/views/layouts/app.blade.php:101
+#: resources/views/layouts/app.blade.php:106
 msgid "Open Right Sidebar"
 msgstr "오른쪽 사이드바 열기"
 
-#: app/ThemeOptions/General.php:55
-#: app/ThemeOptions/General.php:227
-#: app/ThemeOptions/General.php:1584
+#: app/ThemeOptions/General.php:59
+#: app/ThemeOptions/General.php:259
+#: app/ThemeOptions/General.php:1616
 msgid "Site Logo"
 msgstr "사이트 로고"
 
-#: app/ThemeOptions/General.php:70
+#: app/ThemeOptions/General.php:74
 msgid "Click any card to choose the light theme."
 msgstr "아무 카드나 클릭해 라이트 테마를 선택하세요."
 
-#: app/ThemeOptions/General.php:85
+#: app/ThemeOptions/General.php:89
 msgid "Click any card to choose the dark theme."
 msgstr "아무 카드나 클릭해 다크 테마를 선택하세요."
 
-#: app/ThemeOptions/General.php:74
+#: app/ThemeOptions/General.php:78
 msgid "If the card picker is unavailable, use this dropdown (default: retro)."
 msgstr "카드 선택기를 사용할 수 없으면 이 드롭다운을 사용하세요(기본값: retro)."
 
-#: app/ThemeOptions/General.php:89
+#: app/ThemeOptions/General.php:93
 msgid "If the card picker is unavailable, use this dropdown (default: dim)."
 msgstr "카드 선택기를 사용할 수 없으면 이 드롭다운을 사용하세요(기본값: dim)."
 
-#: app/ThemeOptions/Podcast.php:605
+#: app/ThemeOptions/Podcast.php:648
 msgid "Podcast Cover is not a valid image."
 msgstr "팟캐스트 커버가 유효한 이미지가 아닙니다."
 
-#: app/ThemeOptions/Podcast.php:693
+#: app/ThemeOptions/Podcast.php:740
 msgid "Podcast Cover must be JPG or PNG."
 msgstr "팟캐스트 커버는 JPG 또는 PNG여야 합니다."
 
@@ -919,28 +905,30 @@ msgstr "저작권(선택)"
 msgid "Example: © 2025 Your Studio. Plain text."
 msgstr "예: © 2025 Your Studio. 일반 텍스트."
 
-#: app/ThemeOptions/Podcast.php:136
+#: app/ThemeOptions/Podcast.php:162
 msgid "podcast:locked"
 msgstr "podcast:locked"
 
-#: app/ThemeOptions/Podcast.php:138
+#: app/ThemeOptions/Podcast.php:164
 msgid "yes (recommended, prevents unauthorized moves)"
 msgstr "yes(권장, 무단 이동을 방지)"
 
-#: app/PostTypes/Podcast.php:316
-#: app/ThemeOptions/Podcast.php:139
+#: app/PostTypes/Podcast.php:385
+#: app/ThemeOptions/Podcast.php:148
+#: app/ThemeOptions/Podcast.php:155
+#: app/ThemeOptions/Podcast.php:165
 msgid "no"
 msgstr "no"
 
-#: app/ThemeOptions/Podcast.php:142
+#: app/ThemeOptions/Podcast.php:168
 msgid "Podcasting 2.0: lock feed to this publisher."
 msgstr "Podcasting 2.0: 피드를 이 퍼블리셔로 잠급니다."
 
-#: app/ThemeOptions/Podcast.php:143
+#: app/ThemeOptions/Podcast.php:173
 msgid "podcast:guid (optional)"
 msgstr "podcast:guid(선택)"
 
-#: app/ThemeOptions/Podcast.php:144
+#: app/ThemeOptions/Podcast.php:174
 msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
 msgstr "Podcasting 2.0 GUID. 비워두면 사이트 URL이 사용됩니다."
 
@@ -969,21 +957,21 @@ msgstr "피드 열기"
 msgid "Your podcast RSS feed URL. Click to select and copy."
 msgstr "팟캐스트 RSS 피드 URL입니다. 클릭하여 선택하고 복사하세요."
 
-#: app/ThemeOptions/General.php:62
 #: app/ThemeOptions/General.php:66
+#: app/ThemeOptions/General.php:70
 msgid "Light Theme"
 msgstr "라이트 테마"
 
-#: app/ThemeOptions/General.php:71
+#: app/ThemeOptions/General.php:75
 msgid "Light Theme (fallback)"
 msgstr "라이트 테마 (대체)"
 
-#: app/ThemeOptions/General.php:77
 #: app/ThemeOptions/General.php:81
+#: app/ThemeOptions/General.php:85
 msgid "Dark Theme"
 msgstr "다크 테마"
 
-#: app/ThemeOptions/General.php:86
+#: app/ThemeOptions/General.php:90
 msgid "Dark Theme (fallback)"
 msgstr "다크 테마 (대체)"
 
@@ -1051,67 +1039,70 @@ msgstr "에피소드 커버(정사각형)"
 msgid "Optional. Square 1400–3000px. Overrides channel cover."
 msgstr "선택 사항. 정사각형 1400–3000px. 채널 커버를 재정의합니다."
 
-#: app/PostTypes/Podcast.php:290
+#: app/PostTypes/Podcast.php:359
 msgid "Subtitle"
 msgstr "부제"
 
-#: app/PostTypes/Podcast.php:291
+#: app/PostTypes/Podcast.php:360
 msgid "Optional. Short subtitle for iTunes."
 msgstr "선택 사항. iTunes용 짧은 부제."
 
-#: app/PostTypes/Podcast.php:297
+#: app/PostTypes/Podcast.php:366
 msgid "Summary"
 msgstr "요약"
 
-#: app/PostTypes/Podcast.php:298
+#: app/PostTypes/Podcast.php:367
 msgid "Optional. Plain text summary for iTunes."
 msgstr "선택 사항. iTunes용 일반 텍스트 요약."
 
-#: app/PostTypes/Podcast.php:304
+#: app/PostTypes/Podcast.php:373
 msgid "Custom GUID (optional)"
 msgstr "사용자 지정 GUID(선택 사항)"
 
-#: app/PostTypes/Podcast.php:305
+#: app/PostTypes/Podcast.php:374
 msgid "Optional. If empty, feed uses WP permalink as GUID."
 msgstr "선택 사항. 비어 있으면 피드는 WP 고정 링크를 GUID로 사용합니다."
 
-#: app/PostTypes/Podcast.php:311
+#: app/PostTypes/Podcast.php:380
 msgid "iTunes Block"
 msgstr "iTunes 차단"
 
-#: app/PostTypes/Podcast.php:312
+#: app/PostTypes/Podcast.php:381
 msgid "Optional. yes = hide this episode in Apple Podcasts."
 msgstr "선택 사항. yes = Apple Podcasts에서 이 에피소드를 숨깁니다."
 
-#: app/PostTypes/Podcast.php:317
+#: app/PostTypes/Podcast.php:386
+#: app/ThemeOptions/Podcast.php:149
+#: app/ThemeOptions/Podcast.php:156
 msgid "yes"
 msgstr "yes"
 
-#: app/PostTypes/Podcast.php:534
+#: app/PostTypes/Podcast.php:540
+#: app/PostTypes/Podcast.php:604
 msgid "Audio File is required."
 msgstr "오디오 파일은 필수입니다."
 
-#: app/PostTypes/Podcast.php:572
+#: app/PostTypes/Podcast.php:642
 msgid "Audio File must be a valid URL (https recommended)."
 msgstr "오디오 파일은 유효한 URL이어야 합니다(https 권장)."
 
-#: app/PostTypes/Podcast.php:589
+#: app/PostTypes/Podcast.php:659
 msgid "Explicit must be clean or explicit."
 msgstr "Explicit은 clean 또는 explicit이어야 합니다."
 
-#: app/PostTypes/Podcast.php:593
+#: app/PostTypes/Podcast.php:663
 msgid "Episode Type must be full, trailer, or bonus."
 msgstr "에피소드 유형은 full, trailer 또는 bonus여야 합니다."
 
-#: app/PostTypes/Podcast.php:599
+#: app/PostTypes/Podcast.php:669
 msgid "Podcast validation failed"
 msgstr "팟캐스트 유효성 검사에 실패했습니다"
 
-#: app/widgets.php:254
+#: app/widgets.php:275
 msgid "Select Banner Image"
 msgstr "배너 이미지 선택"
 
-#: app/widgets.php:256
+#: app/widgets.php:277
 msgid "Use This Image"
 msgstr "이 이미지 사용"
 
@@ -1154,94 +1145,95 @@ msgstr "선택 사항. 대본 파일(vtt/srt/txt/pdf)을 업로드하거나 대�
 msgid "Add Transcript"
 msgstr "대본 추가"
 
-#: app/PostTypes/Podcast.php:576
+#: app/PostTypes/Podcast.php:646
 msgid "Duration (seconds) could not be auto detected from Audio File."
 msgstr "Audio File에서 재생 시간(초)을 자동으로 감지할 수 없습니다."
 
-#: app/PostTypes/Podcast.php:580
+#: app/PostTypes/Podcast.php:650
 msgid "Audio Length (bytes) could not be auto detected from Audio File."
 msgstr "Audio File에서 오디오 크기(바이트)를 자동으로 감지할 수 없습니다."
 
-#: app/PostTypes/Podcast.php:584
+#: app/PostTypes/Podcast.php:654
 msgid "Audio MIME Type could not be auto detected from Audio File."
 msgstr "Audio File에서 오디오 MIME 유형을 자동으로 감지할 수 없습니다."
 
-#: app/PostTypes/Podcast.php:1000
+#: app/PostTypes/Podcast.php:1090
 msgid "Episode transcript URL"
 msgstr "에피소드 대본 URL"
 
-#: app/ThemeOptions/General.php:57
+#: app/ThemeOptions/General.php:61
 msgid "Upload a logo image (220px × 32px). You will be able to crop the image after upload."
 msgstr "로고 이미지 업로드 (220px × 32px). 업로드 후 이미지를 자를 수 있습니다."
 
-#: app/ThemeOptions/General.php:92
+#: app/ThemeOptions/General.php:96
 msgid "Footer Copyright"
 msgstr "푸터 저작권"
 
-#: app/ThemeOptions/General.php:94
+#: app/ThemeOptions/General.php:98
 msgid "Powered by A Ripple Song Theme"
 msgstr "A Ripple Song 테마로 제작"
 
-#: app/ThemeOptions/General.php:95
+#: app/ThemeOptions/General.php:99
 msgid "Overrides the footer copyright line. Leave empty to use the default."
 msgstr "바닥글 저작권 줄을 재정의합니다. 기본값을 사용하려면 비워 두세요."
 
-#: app/ThemeOptions/General.php:242
+#: app/ThemeOptions/General.php:274
 msgid "Upload / Change Logo"
 msgstr "로고 업로드 / 변경"
 
-#: app/ThemeOptions/General.php:244
+#: app/ThemeOptions/General.php:276
 msgid "Remove Logo"
 msgstr "로고 제거"
 
-#: app/ThemeOptions/General.php:1609
+#: app/ThemeOptions/General.php:1641
 msgid "Choose Logo Image"
 msgstr "로고 이미지 선택"
 
-#: app/ThemeOptions/General.php:1611
+#: app/ThemeOptions/General.php:1643
 msgid "Crop Image"
 msgstr "이미지 자르기"
 
-#: app/ThemeOptions/General.php:1624
+#: app/ThemeOptions/General.php:1656
 #, php-format
 msgid "Image is too small. Minimum size: %1$dpx × %2$dpx"
 msgstr "이미지가 너무 작습니다. 최소 크기: %1$dpx × %2$dpx"
 
-#: app/ThemeOptions/General.php:1652
-#: app/ThemeOptions/General.php:1744
-#: app/ThemeOptions/General.php:1750
+#: app/ThemeOptions/General.php:1684
+#: app/ThemeOptions/General.php:1776
+#: app/ThemeOptions/General.php:1782
 msgid "Crop and Save"
 msgstr "자르기 및 저장"
 
-#: app/ThemeOptions/General.php:1687
+#: app/ThemeOptions/General.php:1719
 msgid "Please select a crop area."
 msgstr "자를 영역을 선택하세요."
 
-#: app/ThemeOptions/General.php:1691
+#: app/ThemeOptions/General.php:1723
 msgid "Cropping..."
 msgstr "자르는 중..."
 
-#: app/ThemeOptions/General.php:1743
+#: app/ThemeOptions/General.php:1775
 msgid "Error cropping image:"
 msgstr "이미지 자르기 오류:"
 
-#: app/ThemeOptions/General.php:1749
+#: app/ThemeOptions/General.php:1781
 msgid "Error cropping image. Please try again."
 msgstr "이미지 자르기 오류가 발생했습니다. 다시 시도해 주세요."
 
-#: app/ThemeOptions/General.php:1821
+#: app/ThemeOptions/General.php:1858
 msgid "You do not have permission to upload files."
 msgstr "파일을 업로드할 권한이 없습니다."
 
-#: app/ThemeOptions/General.php:1826
+#: app/ThemeOptions/General.php:1863
 msgid "Missing attachment ID."
 msgstr "첨부 파일 ID가 없습니다."
 
-#: app/ThemeOptions/General.php:1830
+#: app/ThemeOptions/General.php:1867
+#: app/ThemeOptions/General.php:1888
 msgid "Missing crop details."
 msgstr "자르기 세부 정보가 없습니다."
 
-#: app/ThemeOptions/General.php:1840
+#: app/ThemeOptions/General.php:1902
 msgid "Original image not found."
 msgstr "원본 이미지를 찾을 수 없습니다."
 
@@ -1249,45 +1241,46 @@ msgstr "원본 이미지를 찾을 수 없습니다."
 msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple recommends keeping the file under 512KB. Will be validated on save."
 msgstr "필수. <itunes:image>용 1400–3000px 정사각형 JPG/PNG. Apple은 파일을 512KB 미만으로 유지할 것을 권장합니다. 저장 시 검증됩니다."
 
-#: app/ThemeOptions/Podcast.php:479
+#: app/ThemeOptions/Podcast.php:521
 msgid "Podcast Cover validation failed:"
 msgstr "팟캐스트 커버 검증 실패:"
 
-#: app/ThemeOptions/Podcast.php:516
+#: app/ThemeOptions/Podcast.php:558
+#: app/ThemeOptions/Podcast.php:672
 msgid "Podcast Cover URL is invalid."
 msgstr "팟캐스트 커버 URL이 올바르지 않습니다."
 
-#: app/ThemeOptions/Podcast.php:595
-#: app/ThemeOptions/Podcast.php:641
+#: app/ThemeOptions/Podcast.php:638
+#: app/ThemeOptions/Podcast.php:688
 #, php-format
 msgid "Podcast Cover file is too large (%1$s). Please compress it to under %2$s."
 msgstr "팟캐스트 커버 파일이 너무 큽니다(%1$s). %2$s 미만으로 압축하세요."
 
-#: app/ThemeOptions/Podcast.php:656
+#: app/ThemeOptions/Podcast.php:703
 #, php-format
 msgid "Could not download Podcast Cover for validation: %s"
 msgstr "검증을 위해 팟캐스트 커버를 다운로드할 수 없습니다: %s"
 
-#: app/ThemeOptions/Podcast.php:702
+#: app/ThemeOptions/Podcast.php:749
 #, php-format
 msgid "Podcast Cover must be square. Current dimensions: %1$d × %2$d px."
 msgstr "팟캐스트 커버는 정사각형이어야 합니다. 현재 크기: %1$d × %2$d px."
 
-#: app/ThemeOptions/Podcast.php:714
+#: app/ThemeOptions/Podcast.php:761
 #, php-format
 msgid "Podcast Cover resolution is too small. Minimum: %1$d × %1$d px. Current: %2$d × %2$d px."
 msgstr "팟캐스트 커버 해상도가 너무 낮습니다. 최소: %1$d × %1$d px. 현재: %2$d × %2$d px."
 
-#: app/ThemeOptions/Podcast.php:726
+#: app/ThemeOptions/Podcast.php:773
 #, php-format
 msgid "Podcast Cover resolution is too large. Maximum: %1$d × %1$d px. Current: %2$d × %2$d px."
 msgstr "팟캐스트 커버 해상도가 너무 높습니다. 최대: %1$d × %1$d px. 현재: %2$d × %2$d px."
 
-#: resources/views/partials/entry-meta.blade.php:26
+#: resources/views/partials/entry-meta.blade.php:37
 msgid "views"
 msgstr "회 조회"
 
-#: resources/views/partials/entry-meta.blade.php:29
+#: resources/views/partials/entry-meta.blade.php:40
 msgid "plays"
 msgstr "회 재생"
 
@@ -1401,95 +1394,320 @@ msgctxt "Font size name"
 msgid "2xl"
 msgstr "아주 크게"
 
-#: resources/js/app.js:558
+#: resources/js/app.js:722
 #, js-format
 msgid "Fetched %d podcasts"
 msgstr "%d개의 팟캐스트를 가져왔습니다"
 
-#: resources/js/app.js:574
+#: resources/js/app.js:738
 msgid "Podcast has no audio file, skipping:"
 msgstr "팟캐스트에 오디오 파일이 없습니다. 건너뜁니다:"
 
-#: resources/js/app.js:608
+#: resources/js/app.js:772
 msgid "Added:"
 msgstr "추가됨:"
 
-#: resources/js/app.js:610
+#: resources/js/app.js:774
 msgid "Already exists, skipping:"
 msgstr "이미 존재합니다. 건너뜁니다:"
 
-#: resources/js/app.js:615
+#: resources/js/app.js:779
 #, js-format
 msgid "Successfully added %d new podcasts to playlist"
 msgstr "재생 목록에 %d개의 새 팟캐스트를 추가했습니다"
 
-#: resources/js/app.js:632
+#: resources/js/app.js:796
 msgid "No new podcasts to add"
 msgstr "추가할 새 팟캐스트가 없습니다"
 
-#: resources/js/app.js:638
+#: resources/js/app.js:802
 msgid "Failed to fetch latest podcasts:"
 msgstr "최신 팟캐스트를 가져오지 못했습니다:"
 
-#: resources/js/app.js:670
+#: resources/js/app.js:838
 msgid "No episode available to play"
 msgstr "재생할 에피소드가 없습니다"
 
-#: resources/js/app.js:685
+#: resources/js/app.js:853
 msgid "Playback progress restored:"
 msgstr "재생 진행 상태가 복원되었습니다:"
 
-#: resources/js/app.js:719
+#: resources/js/app.js:887
 msgid "Autoplay confirm dialog auto-closed"
 msgstr "자동 재생 확인 대화 상자가 자동으로 닫혔습니다"
 
-#: resources/js/app.js:723
+#: resources/js/app.js:891
 msgid "Showing autoplay confirm dialog"
 msgstr "자동 재생 확인 대화 상자 표시 중"
 
-#: resources/js/app.js:748
+#: resources/js/app.js:916
 msgid "User confirmed autoplay"
 msgstr "사용자가 자동 재생을 확인했습니다"
 
-#: resources/js/app.js:761
+#: resources/js/app.js:929
 msgid "User cancelled autoplay"
 msgstr "사용자가 자동 재생을 취소했습니다"
 
-#: resources/js/app.js:810
+#: resources/js/app.js:995
 msgid "Audio load error:"
 msgstr "오디오 로드 오류:"
 
-#: resources/js/app.js:1052
+#: resources/js/app.js:1418
 msgid "Volume settings loaded:"
 msgstr "볼륨 설정이 로드되었습니다:"
 
-#: resources/js/app.js:1078
+#: resources/js/app.js:1444
 msgid "Playback rate loaded:"
 msgstr "재생 속도가 로드되었습니다:"
 
-#: resources/js/app.js:1130
+#: resources/js/app.js:1496
 msgid "Switched to existing episode:"
 msgstr "기존 에피소드로 전환했습니다:"
 
-#: resources/js/app.js:1148
+#: resources/js/app.js:1514
 msgid "Added to playlist:"
 msgstr "재생 목록에 추가됨:"
 
-#: resources/js/app.js:1159
+#: resources/js/app.js:1525
 msgid "Episode already exists:"
 msgstr "에피소드가 이미 존재합니다:"
 
 #. Theme Name of the theme
 #: style.css
-msgid "Sage Starter Theme"
+msgid "A Ripple Song"
 msgstr ""
 
 #. Theme URI of the theme
 #: style.css
-msgid "https://roots.io/sage/"
+msgid "https://doc-podcast.aripplesong.me/"
 msgstr ""
 
 #. Description of the theme
 #: style.css
-msgid "Sage is a WordPress starter theme."
+msgid "A Ripple Song is an all-in-one podcast theme for WordPress built on Sage. Publish podcasts and articles with dedicated templates, powerful theme options, and a flexible widget system for lists, members, subscriptions, banners, tags and footer links. Enjoy a modern audio player with playlist, speed control, waveform/spectrum visuals and uninterrupted playback across seamless Swup page transitions. Mobile-first responsive layout supports touch, keyboard navigation and screen readers. Includes RSS feed support, episode metadata, built-in post metrics, demo import and custom fields out of the box. Tailwind CSS + daisyUI styling and a Vite build pipeline keep it fast and easy to customize for creators and teams."
 msgstr ""
+
+#. Author of the theme
+#: style.css
+msgid "Jiejia"
+msgstr ""
+
+#. Author URI of the theme
+#: style.css
+msgid "https://github.com/jiejia/"
+msgstr ""
+
+#: app/Metrics/Post.php:107
+msgid "Invalid post ID."
+msgstr ""
+
+#: app/Metrics/Post.php:130
+msgid "Invalid podcast post."
+msgstr ""
+
+#: app/Metrics/Post.php:155
+msgid "No post IDs provided."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:290
+#: app/ThemeOptions/Podcast.php:144
+msgid "iTunes Title (optional)"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:291
+msgid "Optional. Apple Podcasts: overrides the episode title for <itunes:title>."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:297
+msgid "Chapters (Podcasting 2.0)"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:298
+msgid "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:305
+msgid "Add Chapters File"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:310
+msgid "Chapters MIME Type"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:311
+msgid "Optional. Defaults to application/json+chapters."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:320
+msgid "Soundbites (Podcasting 2.0)"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:321
+msgid "Optional. Adds one or more <podcast:soundbite> tags."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:323
+msgid "Soundbite {#}"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:324
+msgid "Add Soundbite"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:325
+msgid "Remove Soundbite"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:331
+msgid "Start Time (seconds)"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:353
+msgid "Title (optional)"
+msgstr ""
+
+#: app/setup.php:600
+msgid "After importing this demo, please wait for all images and media to be downloaded. This may take a few minutes depending on your server speed."
+msgstr ""
+
+#: app/setup.php:638
+msgid "Import Demo Data"
+msgstr ""
+
+#: app/setup.php:639
+msgid "Import Demo"
+msgstr ""
+
+#: app/ThemeOptions/General.php:54
+#: app/ThemeOptions/General.php:138
+#: app/ThemeOptions/General.php:139
+msgid "General"
+msgstr "일반"
+
+#: app/ThemeOptions/General.php:1853
+msgid "Invalid request."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1873
+msgid "Invalid attachment ID."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1877
+msgid "You do not have permission to edit this attachment."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1882
+msgid "Invalid crop details."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1924
+msgid "Unable to determine attachment URL."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:136
+msgid "iTunes Type (itunes:type)"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:138
+msgid "(not set)"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:139
+msgid "episodic"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:140
+msgid "serial"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:143
+msgid "Optional. Apple Podcasts: episodic or serial."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:145
+msgid "Optional. Use only if you need a separate Apple-facing title."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:146
+msgid "iTunes Block (itunes:block)"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:152
+msgid "Optional. yes = hide this show in Apple Podcasts."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:153
+msgid "iTunes Complete (itunes:complete)"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:159
+msgid "Optional. yes = this show is complete (no more episodes)."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:160
+msgid "iTunes New Feed URL (itunes:new-feed-url)"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:161
+msgid "Optional. Only for moving your show to a new RSS feed URL."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:169
+msgid "podcast:locked owner (optional)"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:172
+msgid "Optional. Podcasting 2.0: email used to verify ownership during moves."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:175
+msgid "Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:176
+msgid "Optional. Used by Apple Podcasts to verify feed ownership."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:177
+msgid "Podcasting 2.0 Funding Links (podcast:funding)"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:178
+msgid "Optional. If empty, no podcast:funding tags will be generated. URLs should be https."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:180
+msgid "URL"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:181
+msgid "Required for each entry. Use https."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:182
+msgid "Label"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:183
+msgid "Optional display text (max 128 chars recommended)."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:185
+msgid "Generator (optional)"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:186
+msgid "Optional. If empty, generator tag will not be included."
+msgstr ""
+
+#. Template Name of the theme
+msgid "Home Template"
+msgstr ""
+
+#: resources/views/template-podcast.blade.php:37
+msgid "Podcast plugin is not active. Install/activate a-ripple-song-podcast to show episodes."
+msgstr ""
+
+#: app/ThemeOptions/General.php:55
+msgid "Theme Settings"
+msgstr "테마 설정"

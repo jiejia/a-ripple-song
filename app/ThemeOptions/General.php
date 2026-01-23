@@ -15,8 +15,10 @@ use Carbon_Fields\Carbon_Fields;
 
 class GeneralOptions
 {
+    protected const THEME_CONTAINER_ID = 'carbon_fields_container_theme_settings';
+
     /**
-     * Hold the main Theme Settings container instance for child pages.
+     * Hold the main General container instance for child pages.
      *
      * @var \Carbon_Fields\Container\Container|null
      */
@@ -29,6 +31,7 @@ class GeneralOptions
     {
         add_action('after_setup_theme', [static::class, 'bootCarbon']);
         add_action('carbon_fields_register_fields', [static::class, 'registerFields']);
+        add_action('admin_menu', [static::class, 'adjustAdminMenu'], 20);
         add_action('admin_head', [static::class, 'outputPickerAssets']);
         add_action('admin_head', [static::class, 'outputLogoAssets']);
         add_action('wp_ajax_crb_crop_logo', [static::class, 'handleCropLogoAjax']);
@@ -44,11 +47,12 @@ class GeneralOptions
     }
 
     /**
-     * Register Theme Settings and Social Links pages.
+     * Register General and Social Links pages.
      */
     public static function registerFields(): void
     {
-        $theme_settings = Container::make('theme_options', __('Theme Settings', 'sage'))
+        $theme_settings = Container::make('theme_options', static::THEME_CONTAINER_ID, __('General', 'sage'))
+            ->set_page_menu_title(__('Theme Settings', 'sage'))
             ->set_icon('dashicons-admin-settings')
             ->set_page_menu_position(60)
             ->add_fields([
@@ -109,8 +113,36 @@ class GeneralOptions
             ->add_fields(static::getSocialLinksFields());
     }
 
+    public static function adjustAdminMenu(): void
+    {
+        $menuSlug = 'crb_carbon_fields_container_theme_settings.php';
+
+        if (static::$themeContainer && method_exists(static::$themeContainer, 'get_page_file')) {
+            $resolved = static::$themeContainer->get_page_file();
+            if (is_string($resolved) && $resolved !== '') {
+                $menuSlug = $resolved;
+            }
+        }
+
+        global $submenu;
+
+        if (!is_array($submenu) || !isset($submenu[$menuSlug]) || !is_array($submenu[$menuSlug])) {
+            return;
+        }
+
+        foreach ($submenu[$menuSlug] as $index => $item) {
+            if (!is_array($item) || !isset($item[2]) || $item[2] !== $menuSlug) {
+                continue;
+            }
+
+            $submenu[$menuSlug][$index][0] = __('General', 'sage');
+            $submenu[$menuSlug][$index][3] = __('General', 'sage');
+            break;
+        }
+    }
+
     /**
-     * Expose Theme Settings container for child pages.
+     * Expose General container for child pages.
      */
     public static function getThemeContainer()
     {
@@ -186,15 +218,15 @@ class GeneralOptions
     }
 
     /**
-     * Sync custom logo value back into Carbon Fields when Theme Settings save.
+     * Sync custom logo value back into Carbon Fields when General page saves.
      */
     public static function syncLogoOption($container): void
     {
-        if (!is_object($container) || !method_exists($container, 'get_title')) {
+        if (!is_object($container) || !method_exists($container, 'get_id')) {
             return;
         }
 
-        if ($container->get_title() !== __('Theme Settings', 'sage')) {
+        if ($container->get_id() !== static::THEME_CONTAINER_ID) {
             return;
         }
 

@@ -14,16 +14,6 @@ msgstr ""
 "X-Domain: sage\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5);\n"
 
-#. Author of the theme
-#: style.css
-msgid "Roots"
-msgstr "Roots"
-
-#. Author URI of the theme
-#: style.css
-msgid "https://roots.io/"
-msgstr "https://roots.io/"
-
 #: app/filters.php:15
 msgid "Continued"
 msgstr "متابعة القراءة"
@@ -64,7 +54,7 @@ msgid "Search Podcasts"
 msgstr "بحث في البودكاست"
 
 #: app/PostTypes/Podcast.php:46
-#: resources/js/app.js:554
+#: resources/js/app.js:718
 msgid "No podcasts found"
 msgstr "لم يتم العثور على بودكاست"
 
@@ -130,58 +120,59 @@ msgid "Add Audio File"
 msgstr "إضافة ملف صوتي"
 
 #: app/PostTypes/Podcast.php:157
+#: app/PostTypes/Podcast.php:342
 msgid "Duration (seconds)"
 msgstr "المدة (ثواني)"
 
-#: app/PostTypes/Podcast.php:323
+#: app/PostTypes/Podcast.php:392
 msgid "Members"
 msgstr "الأعضاء"
 
-#: app/PostTypes/Podcast.php:324
+#: app/PostTypes/Podcast.php:393
 msgid "Select podcast members (only administrators, authors, or editors, multiple selection allowed)"
 msgstr "اختر أعضاء البودكاست (المشرفون والمؤلفون والمحررون فقط، يُسمح بالاختيار المتعدد)"
 
-#: app/PostTypes/Podcast.php:332
+#: app/PostTypes/Podcast.php:401
 msgid "Guests"
 msgstr "الضيوف"
 
-#: app/PostTypes/Podcast.php:333
+#: app/PostTypes/Podcast.php:402
 msgid "Select podcast guests (only contributors, multiple selection allowed)"
 msgstr "اختر ضيوف البودكاست (المساهمون فقط، يُسمح بالاختيار المتعدد)"
 
-#: app/PostTypes/Podcast.php:980
+#: app/PostTypes/Podcast.php:1070
 msgid "Audio file URL"
 msgstr "رابط الملف الصوتي"
 
-#: app/PostTypes/Podcast.php:990
+#: app/PostTypes/Podcast.php:1080
 msgid "Audio duration (seconds)"
 msgstr "مدة الصوت (ثواني)"
 
-#: app/setup.php:72
+#: app/setup.php:82
 msgid "Primary Navigation"
 msgstr "التنقل الرئيسي"
 
-#: app/setup.php:160
+#: app/setup.php:193
 msgid "Home Main"
 msgstr "الرئيسية الرئيسي"
 
-#: app/setup.php:162
+#: app/setup.php:195
 msgid "Main area of the homepage for displaying various content modules"
 msgstr "المنطقة الرئيسية للصفحة الرئيسية لعرض وحدات المحتوى المختلفة"
 
-#: app/setup.php:169
+#: app/setup.php:202
 msgid "Sidebar Primary"
 msgstr "الشريط الجانبي الرئيسي"
 
-#: app/setup.php:171
+#: app/setup.php:204
 msgid "Primary sidebar area for displaying various content modules"
 msgstr "منطقة الشريط الجانبي الرئيسية لعرض وحدات المحتوى المختلفة"
 
-#: app/setup.php:178
+#: app/setup.php:211
 msgid "Leftbar Primary"
 msgstr "الشريط الأيسر الرئيسي"
 
-#: app/setup.php:180
+#: app/setup.php:213
 msgid "Primary left sidebar area for displaying various content modules"
 msgstr "منطقة الشريط الجانبي الأيسر الرئيسية لعرض وحدات المحتوى المختلفة"
 
@@ -237,27 +228,27 @@ msgstr "aripplesong - قائمة المؤلفين"
 msgid "Display members and guest authors list"
 msgstr "عرض قائمة الأعضاء والمؤلفين الضيوف"
 
-#: app/Widgets/AuthorsWidget.php:92
+#: app/Widgets/AuthorsWidget.php:112
 msgid "No authors yet"
 msgstr "لا يوجد مؤلفون بعد"
 
-#: app/Widgets/AuthorsWidget.php:93
+#: app/Widgets/AuthorsWidget.php:113
 msgid "Authors will appear here after adding users"
 msgstr "سيظهر المؤلفون هنا بعد إضافة المستخدمين"
 
-#: app/Widgets/AuthorsWidget.php:110
+#: app/Widgets/AuthorsWidget.php:130
 msgid "Members Title:"
 msgstr "عنوان الأعضاء:"
 
-#: app/Widgets/AuthorsWidget.php:124
+#: app/Widgets/AuthorsWidget.php:144
 msgid "Show Members (Administrators, Editors, Authors)"
 msgstr "عرض الأعضاء (المشرفون، المحررون، المؤلفون)"
 
-#: app/Widgets/AuthorsWidget.php:128
+#: app/Widgets/AuthorsWidget.php:148
 msgid "Guests Title:"
 msgstr "عنوان الضيوف:"
 
-#: app/Widgets/AuthorsWidget.php:142
+#: app/Widgets/AuthorsWidget.php:162
 msgid "Show Guests (Contributors)"
 msgstr "عرض الضيوف (المساهمون)"
 
@@ -281,22 +272,22 @@ msgstr "يرجى إضافة محتوى البانر في لوحة الإدارة
 msgid "Banner Slides:"
 msgstr "شرائح البانر:"
 
-#: app/widgets.php:185
+#: app/widgets.php:206
 #: app/Widgets/BannerCarouselWidget.php:62
 msgid "Image URL:"
 msgstr "رابط الصورة:"
 
-#: app/widgets.php:187
+#: app/widgets.php:208
 #: app/Widgets/BannerCarouselWidget.php:69
 msgid "Image URL"
 msgstr "رابط الصورة"
 
-#: app/widgets.php:188
+#: app/widgets.php:209
 #: app/Widgets/BannerCarouselWidget.php:74
 msgid "Select Image"
 msgstr "اختر صورة"
 
-#: app/widgets.php:192
+#: app/widgets.php:213
 #: app/Widgets/BannerCarouselWidget.php:85
 msgid "Link URL (optional):"
 msgstr "رابط URL (اختياري):"
@@ -305,33 +296,33 @@ msgstr "رابط URL (اختياري):"
 msgid "https://example.com"
 msgstr "https://example.com"
 
-#: app/widgets.php:196
+#: app/widgets.php:217
 #: app/Widgets/BannerCarouselWidget.php:95
 msgid "Link Target:"
 msgstr "هدف الرابط:"
 
-#: app/widgets.php:198
+#: app/widgets.php:219
 #: app/Widgets/BannerCarouselWidget.php:100
 msgid "Current Page"
 msgstr "الصفحة الحالية"
 
-#: app/widgets.php:199
+#: app/widgets.php:220
 #: app/Widgets/BannerCarouselWidget.php:103
 msgid "New Tab"
 msgstr "تبويب جديد"
 
-#: app/widgets.php:203
+#: app/widgets.php:224
 #: app/Widgets/BannerCarouselWidget.php:109
 msgid "Description:"
 msgstr "الوصف:"
 
-#: app/widgets.php:204
+#: app/widgets.php:225
 #: app/Widgets/BannerCarouselWidget.php:115
 msgid "Image description"
 msgstr "وصف الصورة"
 
-#: app/widgets.php:207
-#: app/widgets.php:373
+#: app/widgets.php:228
+#: app/widgets.php:394
 #: app/Widgets/BannerCarouselWidget.php:119
 #: app/Widgets/FooterLinksWidget.php:91
 msgid "Delete"
@@ -349,29 +340,29 @@ msgstr "aripplesong - قائمة المدونة"
 msgid "Display latest blog posts list"
 msgstr "عرض قائمة أحدث مقالات المدونة"
 
-#: app/Widgets/BlogListWidget.php:75
+#: app/Widgets/BlogListWidget.php:79
 msgid "No blog posts yet"
 msgstr "لا توجد مقالات بعد"
 
-#: app/Widgets/BlogListWidget.php:91
+#: app/Widgets/BlogListWidget.php:95
 #: app/Widgets/FooterLinksWidget.php:50
-#: app/Widgets/PodcastListWidget.php:200
+#: app/Widgets/PodcastListWidget.php:267
 #: app/Widgets/SubscribeLinksWidget.php:81
 #: app/Widgets/TagsCloudWidget.php:82
 msgid "Title:"
 msgstr "العنوان:"
 
-#: app/Widgets/BlogListWidget.php:99
-#: app/Widgets/PodcastListWidget.php:208
+#: app/Widgets/BlogListWidget.php:103
+#: app/Widgets/PodcastListWidget.php:275
 msgid "Number of posts:"
 msgstr "عدد المقالات:"
 
-#: app/Widgets/BlogListWidget.php:110
+#: app/Widgets/BlogListWidget.php:114
 msgid "Number of columns:"
 msgstr "عدد الأعمدة:"
 
-#: app/Widgets/BlogListWidget.php:127
-#: app/Widgets/PodcastListWidget.php:224
+#: app/Widgets/BlogListWidget.php:131
+#: app/Widgets/PodcastListWidget.php:291
 msgid "Show \"See all\" link"
 msgstr "عرض رابط \"مشاهدة الكل\""
 
@@ -383,9 +374,9 @@ msgstr "aripplesong - قائمة البودكاست"
 msgid "Display latest podcast list"
 msgstr "عرض قائمة أحدث البودكاست"
 
-#: app/Widgets/PodcastListWidget.php:118
-#: app/Widgets/PodcastListWidget.php:139
-#: app/Widgets/PodcastListWidget.php:160
+#: app/Widgets/PodcastListWidget.php:162
+#: app/Widgets/PodcastListWidget.php:183
+#: app/Widgets/PodcastListWidget.php:204
 msgid "No podcast content"
 msgstr "لا يوجد محتوى بودكاست"
 
@@ -466,21 +457,21 @@ msgstr "اسم الوسم"
 msgid "Tag ID"
 msgstr "معرف الوسم"
 
-#: app/Widgets/PodcastListWidget.php:96
+#: app/Widgets/PodcastListWidget.php:140
 #: app/Widgets/TagsCloudWidget.php:111
 msgid "Random"
 msgstr "عشوائي"
 
-#: app/Widgets/BlogListWidget.php:41
-#: app/Widgets/PodcastListWidget.php:70
+#: app/Widgets/BlogListWidget.php:45
+#: app/Widgets/PodcastListWidget.php:114
 msgid "See all"
 msgstr "مشاهدة الكل"
 
-#: app/Widgets/PodcastListWidget.php:80
+#: app/Widgets/PodcastListWidget.php:124
 msgid "Recent"
 msgstr "الأحدث"
 
-#: app/Widgets/PodcastListWidget.php:88
+#: app/Widgets/PodcastListWidget.php:132
 msgid "Popular"
 msgstr "الأكثر شعبية"
 
@@ -512,22 +503,22 @@ msgstr "مثال: اتصل، تصفح، الدعم"
 msgid "Items:"
 msgstr "العناصر:"
 
-#: app/widgets.php:360
+#: app/widgets.php:381
 #: app/Widgets/FooterLinksWidget.php:65
 msgid "Text:"
 msgstr "النص:"
 
-#: app/widgets.php:361
+#: app/widgets.php:382
 #: app/Widgets/FooterLinksWidget.php:70
 msgid "Display text"
 msgstr "نص العرض"
 
-#: app/widgets.php:364
+#: app/widgets.php:385
 #: app/Widgets/FooterLinksWidget.php:73
 msgid "URL (optional - leave empty for plain text):"
 msgstr "الرابط (اختياري - اتركه فارغًا للنص العادي):"
 
-#: app/widgets.php:369
+#: app/widgets.php:390
 #: app/Widgets/FooterLinksWidget.php:87
 msgid "Open in new tab"
 msgstr "فتح في علامة تبويب جديدة"
@@ -536,11 +527,11 @@ msgstr "فتح في علامة تبويب جديدة"
 msgid "+ Add Item"
 msgstr "+ إضافة عنصر"
 
-#: app/setup.php:150
+#: app/setup.php:183
 msgid "Footer Links"
 msgstr "روابط التذييل"
 
-#: app/setup.php:152
+#: app/setup.php:185
 msgid "Footer links area for displaying link columns"
 msgstr "منطقة روابط التذييل لعرض أعمدة الروابط"
 
@@ -578,7 +569,7 @@ msgstr "التعليقات مغلقة."
 msgid "By"
 msgstr "بواسطة"
 
-#: resources/views/index.blade.php:9
+#: resources/views/template-home.blade.php:13
 msgid "Please add widgets to \"Home Main\" area in Appearance > Widgets in the admin panel."
 msgstr "يرجى إضافة ودجات إلى منطقة \"الرئيسية الرئيسي\" في المظهر > الودجات في لوحة الإدارة."
 
@@ -633,11 +624,11 @@ msgstr "اتباع النظام"
 msgid "NOW PLAYING"
 msgstr "يتم التشغيل الآن"
 
-#: resources/views/sections/player.blade.php:24
+#: resources/views/sections/player.blade.php:26
 msgid "No Episode Playing"
 msgstr "لا توجد حلقة قيد التشغيل"
 
-#: resources/views/sections/player.blade.php:24
+#: resources/views/sections/player.blade.php:27
 msgid "Podcast Episode"
 msgstr "حلقة البودكاست"
 
@@ -685,95 +676,90 @@ msgstr "هل تريد متابعة التشغيل؟"
 msgid "Unknown episode"
 msgstr "حلقة غير معروفة"
 
-#: app/ThemeOptions/General.php:1653
+#: app/ThemeOptions/General.php:1685
 #: resources/views/sections/autoplay-confirm.blade.php:42
 msgid "Cancel"
 msgstr "إلغاء"
 
-#: resources/views/sections/player.blade.php:38
+#: resources/views/sections/player.blade.php:47
 msgid "Loading audio"
 msgstr "جارٍ تحميل الصوت"
 
-#: app/ThemeOptions/General.php:51
-#: app/ThemeOptions/General.php:197
-msgid "Theme Settings"
-msgstr "إعدادات القالب"
-
-#: app/ThemeOptions/General.php:107
+#: app/ThemeOptions/General.php:111
 msgid "Social Links"
 msgstr "روابط التواصل الاجتماعي"
 
-#: app/ThemeOptions/General.php:96
+#: app/ThemeOptions/General.php:100
 msgid "Header Scripts"
 msgstr "سكربتات الرأس"
 
-#: app/ThemeOptions/General.php:97
+#: app/ThemeOptions/General.php:101
 msgid "Scripts to be added in the <head> section. You can include complete <script> tags for services like Google Analytics."
 msgstr "السكربتات المراد إضافتها في قسم <head>. يمكنك تضمين وسوم <script> كاملة لخدمات مثل Google Analytics."
 
-#: app/ThemeOptions/General.php:98
+#: app/ThemeOptions/General.php:102
 msgid "Footer Scripts"
 msgstr "سكربتات التذييل"
 
-#: app/ThemeOptions/General.php:99
+#: app/ThemeOptions/General.php:103
 msgid "Scripts to be added before </body>. You can include complete <script> tags."
 msgstr "السكربتات المراد إضافتها قبل </body>. يمكنك تضمين وسوم <script> كاملة."
 
-#: app/ThemeOptions/General.php:309
+#: app/ThemeOptions/General.php:341
 msgid "Configure your social media links. Leave empty to hide a platform."
 msgstr "قم بتكوين روابط وسائل التواصل الاجتماعي. اتركه فارغاً لإخفاء المنصة."
 
-#: app/ThemeOptions/General.php:260
+#: app/ThemeOptions/General.php:292
 #: app/ThemeOptions/SocialLinks.php:28
 msgid "Facebook"
 msgstr "فيسبوك"
 
-#: app/ThemeOptions/General.php:264
+#: app/ThemeOptions/General.php:296
 #: app/ThemeOptions/SocialLinks.php:32
 msgid "Twitter / X"
 msgstr "تويتر / X"
 
-#: app/ThemeOptions/General.php:268
+#: app/ThemeOptions/General.php:300
 #: app/ThemeOptions/SocialLinks.php:36
 msgid "Instagram"
 msgstr "إنستغرام"
 
-#: app/ThemeOptions/General.php:272
+#: app/ThemeOptions/General.php:304
 #: app/ThemeOptions/SocialLinks.php:40
 msgid "LinkedIn"
 msgstr "لينكد إن"
 
-#: app/ThemeOptions/General.php:276
+#: app/ThemeOptions/General.php:308
 #: app/ThemeOptions/SocialLinks.php:44
 msgid "YouTube"
 msgstr "يوتيوب"
 
-#: app/ThemeOptions/General.php:280
+#: app/ThemeOptions/General.php:312
 #: app/ThemeOptions/SocialLinks.php:48
 msgid "TikTok"
 msgstr "تيك توك"
 
-#: app/ThemeOptions/General.php:284
+#: app/ThemeOptions/General.php:316
 #: app/ThemeOptions/SocialLinks.php:52
 msgid "Pinterest"
 msgstr "بنترست"
 
-#: app/ThemeOptions/General.php:288
+#: app/ThemeOptions/General.php:320
 #: app/ThemeOptions/SocialLinks.php:56
 msgid "Threads"
 msgstr "ثريدز"
 
-#: app/ThemeOptions/General.php:292
+#: app/ThemeOptions/General.php:324
 #: app/ThemeOptions/SocialLinks.php:60
 msgid "Weibo"
 msgstr "ويبو"
 
-#: app/ThemeOptions/General.php:296
+#: app/ThemeOptions/General.php:328
 #: app/ThemeOptions/SocialLinks.php:64
 msgid "WeChat"
 msgstr "وي شات"
 
-#: app/ThemeOptions/General.php:300
+#: app/ThemeOptions/General.php:332
 #: app/ThemeOptions/SocialLinks.php:68
 msgid "RSS Feed"
 msgstr "خلاصة RSS"
@@ -786,41 +772,41 @@ msgstr "الشريط الجانبي الأيسر"
 msgid "Right Sidebar"
 msgstr "الشريط الجانبي الأيمن"
 
-#: resources/views/layouts/app.blade.php:87
+#: resources/views/layouts/app.blade.php:92
 msgid "Open Left Sidebar"
 msgstr "فتح الشريط الجانبي الأيسر"
 
-#: resources/views/layouts/app.blade.php:101
+#: resources/views/layouts/app.blade.php:106
 msgid "Open Right Sidebar"
 msgstr "فتح الشريط الجانبي الأيمن"
 
-#: app/ThemeOptions/General.php:55
-#: app/ThemeOptions/General.php:227
-#: app/ThemeOptions/General.php:1584
+#: app/ThemeOptions/General.php:59
+#: app/ThemeOptions/General.php:259
+#: app/ThemeOptions/General.php:1616
 msgid "Site Logo"
 msgstr "شعار الموقع"
 
-#: app/ThemeOptions/General.php:70
+#: app/ThemeOptions/General.php:74
 msgid "Click any card to choose the light theme."
 msgstr "انقر أي بطاقة لاختيار الوضع الفاتح."
 
-#: app/ThemeOptions/General.php:85
+#: app/ThemeOptions/General.php:89
 msgid "Click any card to choose the dark theme."
 msgstr "انقر أي بطاقة لاختيار الوضع الداكن."
 
-#: app/ThemeOptions/General.php:74
+#: app/ThemeOptions/General.php:78
 msgid "If the card picker is unavailable, use this dropdown (default: retro)."
 msgstr "إذا كان منتقي البطاقات غير متاح، استخدم هذه القائمة المنسدلة (الافتراضي: retro)."
 
-#: app/ThemeOptions/General.php:89
+#: app/ThemeOptions/General.php:93
 msgid "If the card picker is unavailable, use this dropdown (default: dim)."
 msgstr "إذا كان منتقي البطاقات غير متاح، استخدم هذه القائمة المنسدلة (الافتراضي: dim)."
 
-#: app/ThemeOptions/Podcast.php:605
+#: app/ThemeOptions/Podcast.php:648
 msgid "Podcast Cover is not a valid image."
 msgstr "غلاف البودكاست ليس صورة صالحة."
 
-#: app/ThemeOptions/Podcast.php:693
+#: app/ThemeOptions/Podcast.php:740
 msgid "Podcast Cover must be JPG or PNG."
 msgstr "يجب أن يكون غلاف البودكاست بصيغة JPG أو PNG."
 
@@ -929,28 +915,30 @@ msgstr "حقوق النشر (اختياري)"
 msgid "Example: © 2025 Your Studio. Plain text."
 msgstr "مثال: © 2025 Your Studio. نص عادي."
 
-#: app/ThemeOptions/Podcast.php:136
+#: app/ThemeOptions/Podcast.php:162
 msgid "podcast:locked"
 msgstr "podcast:locked"
 
-#: app/ThemeOptions/Podcast.php:138
+#: app/ThemeOptions/Podcast.php:164
 msgid "yes (recommended, prevents unauthorized moves)"
 msgstr "yes (موصى به، يمنع النقل غير المصرح)"
 
-#: app/PostTypes/Podcast.php:316
-#: app/ThemeOptions/Podcast.php:139
+#: app/PostTypes/Podcast.php:385
+#: app/ThemeOptions/Podcast.php:148
+#: app/ThemeOptions/Podcast.php:155
+#: app/ThemeOptions/Podcast.php:165
 msgid "no"
 msgstr "no"
 
-#: app/ThemeOptions/Podcast.php:142
+#: app/ThemeOptions/Podcast.php:168
 msgid "Podcasting 2.0: lock feed to this publisher."
 msgstr "Podcasting 2.0: قفل الخلاصة لهذا الناشر."
 
-#: app/ThemeOptions/Podcast.php:143
+#: app/ThemeOptions/Podcast.php:173
 msgid "podcast:guid (optional)"
 msgstr "podcast:guid (اختياري)"
 
-#: app/ThemeOptions/Podcast.php:144
+#: app/ThemeOptions/Podcast.php:174
 msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
 msgstr "معرّف Podcasting 2.0. إذا تُرك فارغاً ستستخدم الخلاصة رابط الموقع كبديل."
 
@@ -979,21 +967,21 @@ msgstr "فتح الخلاصة"
 msgid "Your podcast RSS feed URL. Click to select and copy."
 msgstr "عنوان URL لخلاصة RSS للبودكاست الخاص بك. انقر للتحديد والنسخ."
 
-#: app/ThemeOptions/General.php:62
 #: app/ThemeOptions/General.php:66
+#: app/ThemeOptions/General.php:70
 msgid "Light Theme"
 msgstr "المظهر الفاتح"
 
-#: app/ThemeOptions/General.php:71
+#: app/ThemeOptions/General.php:75
 msgid "Light Theme (fallback)"
 msgstr "المظهر الفاتح (بديل)"
 
-#: app/ThemeOptions/General.php:77
 #: app/ThemeOptions/General.php:81
+#: app/ThemeOptions/General.php:85
 msgid "Dark Theme"
 msgstr "المظهر الداكن"
 
-#: app/ThemeOptions/General.php:86
+#: app/ThemeOptions/General.php:90
 msgid "Dark Theme (fallback)"
 msgstr "المظهر الداكن (بديل)"
 
@@ -1061,67 +1049,70 @@ msgstr "غلاف الحلقة (مربع)"
 msgid "Optional. Square 1400–3000px. Overrides channel cover."
 msgstr "اختياري. مربع 1400–3000px. يتجاوز غلاف القناة."
 
-#: app/PostTypes/Podcast.php:290
+#: app/PostTypes/Podcast.php:359
 msgid "Subtitle"
 msgstr "عنوان فرعي"
 
-#: app/PostTypes/Podcast.php:291
+#: app/PostTypes/Podcast.php:360
 msgid "Optional. Short subtitle for iTunes."
 msgstr "اختياري. عنوان فرعي قصير لـ iTunes."
 
-#: app/PostTypes/Podcast.php:297
+#: app/PostTypes/Podcast.php:366
 msgid "Summary"
 msgstr "ملخص"
 
-#: app/PostTypes/Podcast.php:298
+#: app/PostTypes/Podcast.php:367
 msgid "Optional. Plain text summary for iTunes."
 msgstr "اختياري. ملخص نصي بسيط لـ iTunes."
 
-#: app/PostTypes/Podcast.php:304
+#: app/PostTypes/Podcast.php:373
 msgid "Custom GUID (optional)"
 msgstr "GUID مخصص (اختياري)"
 
-#: app/PostTypes/Podcast.php:305
+#: app/PostTypes/Podcast.php:374
 msgid "Optional. If empty, feed uses WP permalink as GUID."
 msgstr "اختياري. إذا كان فارغًا، يستخدم الموجز الرابط الدائم في ووردبريس كـ GUID."
 
-#: app/PostTypes/Podcast.php:311
+#: app/PostTypes/Podcast.php:380
 msgid "iTunes Block"
 msgstr "حظر iTunes"
 
-#: app/PostTypes/Podcast.php:312
+#: app/PostTypes/Podcast.php:381
 msgid "Optional. yes = hide this episode in Apple Podcasts."
 msgstr "اختياري. yes = إخفاء هذه الحلقة في Apple Podcasts."
 
-#: app/PostTypes/Podcast.php:317
+#: app/PostTypes/Podcast.php:386
+#: app/ThemeOptions/Podcast.php:149
+#: app/ThemeOptions/Podcast.php:156
 msgid "yes"
 msgstr "yes"
 
-#: app/PostTypes/Podcast.php:534
+#: app/PostTypes/Podcast.php:540
+#: app/PostTypes/Podcast.php:604
 msgid "Audio File is required."
 msgstr "ملف الصوت مطلوب."
 
-#: app/PostTypes/Podcast.php:572
+#: app/PostTypes/Podcast.php:642
 msgid "Audio File must be a valid URL (https recommended)."
 msgstr "يجب أن يكون ملف الصوت رابطًا صالحًا (يوصى بـ https)."
 
-#: app/PostTypes/Podcast.php:589
+#: app/PostTypes/Podcast.php:659
 msgid "Explicit must be clean or explicit."
 msgstr "يجب أن تكون Explicit إما clean أو explicit."
 
-#: app/PostTypes/Podcast.php:593
+#: app/PostTypes/Podcast.php:663
 msgid "Episode Type must be full, trailer, or bonus."
 msgstr "يجب أن يكون نوع الحلقة full أو trailer أو bonus."
 
-#: app/PostTypes/Podcast.php:599
+#: app/PostTypes/Podcast.php:669
 msgid "Podcast validation failed"
 msgstr "فشل التحقق من البودكاست"
 
-#: app/widgets.php:254
+#: app/widgets.php:275
 msgid "Select Banner Image"
 msgstr "اختر صورة البانر"
 
-#: app/widgets.php:256
+#: app/widgets.php:277
 msgid "Use This Image"
 msgstr "استخدم هذه الصورة"
 
@@ -1164,94 +1155,95 @@ msgstr "اختياري. ارفع ملف تفريغ (vtt/srt/txt/pdf) أو أدخ
 msgid "Add Transcript"
 msgstr "إضافة تفريغ"
 
-#: app/PostTypes/Podcast.php:576
+#: app/PostTypes/Podcast.php:646
 msgid "Duration (seconds) could not be auto detected from Audio File."
 msgstr "تعذر الكشف التلقائي عن المدة (بالثواني) من Audio File."
 
-#: app/PostTypes/Podcast.php:580
+#: app/PostTypes/Podcast.php:650
 msgid "Audio Length (bytes) could not be auto detected from Audio File."
 msgstr "تعذر الكشف التلقائي عن حجم الصوت (بايت) من Audio File."
 
-#: app/PostTypes/Podcast.php:584
+#: app/PostTypes/Podcast.php:654
 msgid "Audio MIME Type could not be auto detected from Audio File."
 msgstr "تعذر الكشف التلقائي عن نوع MIME للصوت من Audio File."
 
-#: app/PostTypes/Podcast.php:1000
+#: app/PostTypes/Podcast.php:1090
 msgid "Episode transcript URL"
 msgstr "رابط تفريغ الحلقة"
 
-#: app/ThemeOptions/General.php:57
+#: app/ThemeOptions/General.php:61
 msgid "Upload a logo image (220px × 32px). You will be able to crop the image after upload."
 msgstr "ارفع صورة الشعار (220 بكسل × 32 بكسل). ستتمكن من قص الصورة بعد الرفع."
 
-#: app/ThemeOptions/General.php:92
+#: app/ThemeOptions/General.php:96
 msgid "Footer Copyright"
 msgstr "حقوق النشر في التذييل"
 
-#: app/ThemeOptions/General.php:94
+#: app/ThemeOptions/General.php:98
 msgid "Powered by A Ripple Song Theme"
 msgstr "مدعوم بقالب A Ripple Song"
 
-#: app/ThemeOptions/General.php:95
+#: app/ThemeOptions/General.php:99
 msgid "Overrides the footer copyright line. Leave empty to use the default."
 msgstr "يتجاوز سطر حقوق النشر في التذييل. اتركه فارغًا لاستخدام القيمة الافتراضية."
 
-#: app/ThemeOptions/General.php:242
+#: app/ThemeOptions/General.php:274
 msgid "Upload / Change Logo"
 msgstr "تحميل / تغيير الشعار"
 
-#: app/ThemeOptions/General.php:244
+#: app/ThemeOptions/General.php:276
 msgid "Remove Logo"
 msgstr "إزالة الشعار"
 
-#: app/ThemeOptions/General.php:1609
+#: app/ThemeOptions/General.php:1641
 msgid "Choose Logo Image"
 msgstr "اختر صورة الشعار"
 
-#: app/ThemeOptions/General.php:1611
+#: app/ThemeOptions/General.php:1643
 msgid "Crop Image"
 msgstr "قص الصورة"
 
-#: app/ThemeOptions/General.php:1624
+#: app/ThemeOptions/General.php:1656
 #, php-format
 msgid "Image is too small. Minimum size: %1$dpx × %2$dpx"
 msgstr "الصورة صغيرة جدًا. الحد الأدنى للحجم: %1$dpx × %2$dpx"
 
-#: app/ThemeOptions/General.php:1652
-#: app/ThemeOptions/General.php:1744
-#: app/ThemeOptions/General.php:1750
+#: app/ThemeOptions/General.php:1684
+#: app/ThemeOptions/General.php:1776
+#: app/ThemeOptions/General.php:1782
 msgid "Crop and Save"
 msgstr "قص وحفظ"
 
-#: app/ThemeOptions/General.php:1687
+#: app/ThemeOptions/General.php:1719
 msgid "Please select a crop area."
 msgstr "يرجى تحديد منطقة القص."
 
-#: app/ThemeOptions/General.php:1691
+#: app/ThemeOptions/General.php:1723
 msgid "Cropping..."
 msgstr "جاري القص..."
 
-#: app/ThemeOptions/General.php:1743
+#: app/ThemeOptions/General.php:1775
 msgid "Error cropping image:"
 msgstr "خطأ في قص الصورة:"
 
-#: app/ThemeOptions/General.php:1749
+#: app/ThemeOptions/General.php:1781
 msgid "Error cropping image. Please try again."
 msgstr "خطأ في قص الصورة. يرجى المحاولة مرة أخرى."
 
-#: app/ThemeOptions/General.php:1821
+#: app/ThemeOptions/General.php:1858
 msgid "You do not have permission to upload files."
 msgstr "ليس لديك صلاحية لرفع الملفات."
 
-#: app/ThemeOptions/General.php:1826
+#: app/ThemeOptions/General.php:1863
 msgid "Missing attachment ID."
 msgstr "معرف المرفق مفقود."
 
-#: app/ThemeOptions/General.php:1830
+#: app/ThemeOptions/General.php:1867
+#: app/ThemeOptions/General.php:1888
 msgid "Missing crop details."
 msgstr "تفاصيل القص مفقودة."
 
-#: app/ThemeOptions/General.php:1840
+#: app/ThemeOptions/General.php:1902
 msgid "Original image not found."
 msgstr "الصورة الأصلية غير موجودة."
 
@@ -1259,45 +1251,46 @@ msgstr "الصورة الأصلية غير موجودة."
 msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple recommends keeping the file under 512KB. Will be validated on save."
 msgstr "مطلوب. صورة JPG/PNG مربعة بين 1400–3000px لـ <itunes:image>. توصي Apple بأن يكون الملف أقل من 512KB. سيتم التحقق عند الحفظ."
 
-#: app/ThemeOptions/Podcast.php:479
+#: app/ThemeOptions/Podcast.php:521
 msgid "Podcast Cover validation failed:"
 msgstr "فشل التحقق من غلاف البودكاست:"
 
-#: app/ThemeOptions/Podcast.php:516
+#: app/ThemeOptions/Podcast.php:558
+#: app/ThemeOptions/Podcast.php:672
 msgid "Podcast Cover URL is invalid."
 msgstr "رابط غلاف البودكاست غير صالح."
 
-#: app/ThemeOptions/Podcast.php:595
-#: app/ThemeOptions/Podcast.php:641
+#: app/ThemeOptions/Podcast.php:638
+#: app/ThemeOptions/Podcast.php:688
 #, php-format
 msgid "Podcast Cover file is too large (%1$s). Please compress it to under %2$s."
 msgstr "ملف غلاف البودكاست كبير جدًا (%1$s). يرجى ضغطه ليصبح أقل من %2$s."
 
-#: app/ThemeOptions/Podcast.php:656
+#: app/ThemeOptions/Podcast.php:703
 #, php-format
 msgid "Could not download Podcast Cover for validation: %s"
 msgstr "تعذر تنزيل غلاف البودكاست للتحقق: %s"
 
-#: app/ThemeOptions/Podcast.php:702
+#: app/ThemeOptions/Podcast.php:749
 #, php-format
 msgid "Podcast Cover must be square. Current dimensions: %1$d × %2$d px."
 msgstr "يجب أن يكون غلاف البودكاست مربعًا. الأبعاد الحالية: %1$d × %2$d px."
 
-#: app/ThemeOptions/Podcast.php:714
+#: app/ThemeOptions/Podcast.php:761
 #, php-format
 msgid "Podcast Cover resolution is too small. Minimum: %1$d × %1$d px. Current: %2$d × %2$d px."
 msgstr "دقة غلاف البودكاست صغيرة جدًا. الحد الأدنى: %1$d × %1$d px. الحالية: %2$d × %2$d px."
 
-#: app/ThemeOptions/Podcast.php:726
+#: app/ThemeOptions/Podcast.php:773
 #, php-format
 msgid "Podcast Cover resolution is too large. Maximum: %1$d × %1$d px. Current: %2$d × %2$d px."
 msgstr "دقة غلاف البودكاست كبيرة جدًا. الحد الأقصى: %1$d × %1$d px. الحالية: %2$d × %2$d px."
 
-#: resources/views/partials/entry-meta.blade.php:26
+#: resources/views/partials/entry-meta.blade.php:37
 msgid "views"
 msgstr "مشاهدة"
 
-#: resources/views/partials/entry-meta.blade.php:29
+#: resources/views/partials/entry-meta.blade.php:40
 msgid "plays"
 msgstr "تشغيل"
 
@@ -1411,95 +1404,320 @@ msgctxt "Font size name"
 msgid "2xl"
 msgstr "2xl"
 
-#: resources/js/app.js:558
+#: resources/js/app.js:722
 #, js-format
 msgid "Fetched %d podcasts"
 msgstr "تم جلب %d بودكاست"
 
-#: resources/js/app.js:574
+#: resources/js/app.js:738
 msgid "Podcast has no audio file, skipping:"
 msgstr "البودكاست لا يحتوي على ملف صوتي، جاري التخطي:"
 
-#: resources/js/app.js:608
+#: resources/js/app.js:772
 msgid "Added:"
 msgstr "تمت الإضافة:"
 
-#: resources/js/app.js:610
+#: resources/js/app.js:774
 msgid "Already exists, skipping:"
 msgstr "موجود بالفعل، جاري التخطي:"
 
-#: resources/js/app.js:615
+#: resources/js/app.js:779
 #, js-format
 msgid "Successfully added %d new podcasts to playlist"
 msgstr "تمت إضافة %d بودكاست جديد إلى قائمة التشغيل بنجاح"
 
-#: resources/js/app.js:632
+#: resources/js/app.js:796
 msgid "No new podcasts to add"
 msgstr "لا توجد بودكاست جديدة للإضافة"
 
-#: resources/js/app.js:638
+#: resources/js/app.js:802
 msgid "Failed to fetch latest podcasts:"
 msgstr "فشل في جلب أحدث البودكاست:"
 
-#: resources/js/app.js:670
+#: resources/js/app.js:838
 msgid "No episode available to play"
 msgstr "لا توجد حلقة متاحة للتشغيل"
 
-#: resources/js/app.js:685
+#: resources/js/app.js:853
 msgid "Playback progress restored:"
 msgstr "تم استعادة موضع التشغيل:"
 
-#: resources/js/app.js:719
+#: resources/js/app.js:887
 msgid "Autoplay confirm dialog auto-closed"
 msgstr "تم إغلاق مربع حوار تأكيد التشغيل التلقائي"
 
-#: resources/js/app.js:723
+#: resources/js/app.js:891
 msgid "Showing autoplay confirm dialog"
 msgstr "عرض مربع حوار تأكيد التشغيل التلقائي"
 
-#: resources/js/app.js:748
+#: resources/js/app.js:916
 msgid "User confirmed autoplay"
 msgstr "أكد المستخدم التشغيل التلقائي"
 
-#: resources/js/app.js:761
+#: resources/js/app.js:929
 msgid "User cancelled autoplay"
 msgstr "ألغى المستخدم التشغيل التلقائي"
 
-#: resources/js/app.js:810
+#: resources/js/app.js:995
 msgid "Audio load error:"
 msgstr "خطأ في تحميل الصوت:"
 
-#: resources/js/app.js:1052
+#: resources/js/app.js:1418
 msgid "Volume settings loaded:"
 msgstr "تم تحميل إعدادات مستوى الصوت:"
 
-#: resources/js/app.js:1078
+#: resources/js/app.js:1444
 msgid "Playback rate loaded:"
 msgstr "تم تحميل سرعة التشغيل:"
 
-#: resources/js/app.js:1130
+#: resources/js/app.js:1496
 msgid "Switched to existing episode:"
 msgstr "تم التبديل إلى الحلقة الموجودة:"
 
-#: resources/js/app.js:1148
+#: resources/js/app.js:1514
 msgid "Added to playlist:"
 msgstr "تمت الإضافة إلى قائمة التشغيل:"
 
-#: resources/js/app.js:1159
+#: resources/js/app.js:1525
 msgid "Episode already exists:"
 msgstr "الحلقة موجودة بالفعل:"
 
 #. Theme Name of the theme
 #: style.css
-msgid "Sage Starter Theme"
+msgid "A Ripple Song"
 msgstr ""
 
 #. Theme URI of the theme
 #: style.css
-msgid "https://roots.io/sage/"
+msgid "https://doc-podcast.aripplesong.me/"
 msgstr ""
 
 #. Description of the theme
 #: style.css
-msgid "Sage is a WordPress starter theme."
+msgid "A Ripple Song is an all-in-one podcast theme for WordPress built on Sage. Publish podcasts and articles with dedicated templates, powerful theme options, and a flexible widget system for lists, members, subscriptions, banners, tags and footer links. Enjoy a modern audio player with playlist, speed control, waveform/spectrum visuals and uninterrupted playback across seamless Swup page transitions. Mobile-first responsive layout supports touch, keyboard navigation and screen readers. Includes RSS feed support, episode metadata, built-in post metrics, demo import and custom fields out of the box. Tailwind CSS + daisyUI styling and a Vite build pipeline keep it fast and easy to customize for creators and teams."
 msgstr ""
+
+#. Author of the theme
+#: style.css
+msgid "Jiejia"
+msgstr ""
+
+#. Author URI of the theme
+#: style.css
+msgid "https://github.com/jiejia/"
+msgstr ""
+
+#: app/Metrics/Post.php:107
+msgid "Invalid post ID."
+msgstr ""
+
+#: app/Metrics/Post.php:130
+msgid "Invalid podcast post."
+msgstr ""
+
+#: app/Metrics/Post.php:155
+msgid "No post IDs provided."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:290
+#: app/ThemeOptions/Podcast.php:144
+msgid "iTunes Title (optional)"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:291
+msgid "Optional. Apple Podcasts: overrides the episode title for <itunes:title>."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:297
+msgid "Chapters (Podcasting 2.0)"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:298
+msgid "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:305
+msgid "Add Chapters File"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:310
+msgid "Chapters MIME Type"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:311
+msgid "Optional. Defaults to application/json+chapters."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:320
+msgid "Soundbites (Podcasting 2.0)"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:321
+msgid "Optional. Adds one or more <podcast:soundbite> tags."
+msgstr ""
+
+#: app/PostTypes/Podcast.php:323
+msgid "Soundbite {#}"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:324
+msgid "Add Soundbite"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:325
+msgid "Remove Soundbite"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:331
+msgid "Start Time (seconds)"
+msgstr ""
+
+#: app/PostTypes/Podcast.php:353
+msgid "Title (optional)"
+msgstr ""
+
+#: app/setup.php:600
+msgid "After importing this demo, please wait for all images and media to be downloaded. This may take a few minutes depending on your server speed."
+msgstr ""
+
+#: app/setup.php:638
+msgid "Import Demo Data"
+msgstr ""
+
+#: app/setup.php:639
+msgid "Import Demo"
+msgstr ""
+
+#: app/ThemeOptions/General.php:54
+#: app/ThemeOptions/General.php:138
+#: app/ThemeOptions/General.php:139
+msgid "General"
+msgstr "عام"
+
+#: app/ThemeOptions/General.php:1853
+msgid "Invalid request."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1873
+msgid "Invalid attachment ID."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1877
+msgid "You do not have permission to edit this attachment."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1882
+msgid "Invalid crop details."
+msgstr ""
+
+#: app/ThemeOptions/General.php:1924
+msgid "Unable to determine attachment URL."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:136
+msgid "iTunes Type (itunes:type)"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:138
+msgid "(not set)"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:139
+msgid "episodic"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:140
+msgid "serial"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:143
+msgid "Optional. Apple Podcasts: episodic or serial."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:145
+msgid "Optional. Use only if you need a separate Apple-facing title."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:146
+msgid "iTunes Block (itunes:block)"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:152
+msgid "Optional. yes = hide this show in Apple Podcasts."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:153
+msgid "iTunes Complete (itunes:complete)"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:159
+msgid "Optional. yes = this show is complete (no more episodes)."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:160
+msgid "iTunes New Feed URL (itunes:new-feed-url)"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:161
+msgid "Optional. Only for moving your show to a new RSS feed URL."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:169
+msgid "podcast:locked owner (optional)"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:172
+msgid "Optional. Podcasting 2.0: email used to verify ownership during moves."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:175
+msgid "Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:176
+msgid "Optional. Used by Apple Podcasts to verify feed ownership."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:177
+msgid "Podcasting 2.0 Funding Links (podcast:funding)"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:178
+msgid "Optional. If empty, no podcast:funding tags will be generated. URLs should be https."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:180
+msgid "URL"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:181
+msgid "Required for each entry. Use https."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:182
+msgid "Label"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:183
+msgid "Optional display text (max 128 chars recommended)."
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:185
+msgid "Generator (optional)"
+msgstr ""
+
+#: app/ThemeOptions/Podcast.php:186
+msgid "Optional. If empty, generator tag will not be included."
+msgstr ""
+
+#. Template Name of the theme
+msgid "Home Template"
+msgstr ""
+
+#: resources/views/template-podcast.blade.php:37
+msgid "Podcast plugin is not active. Install/activate a-ripple-song-podcast to show episodes."
+msgstr ""
+
+#: app/ThemeOptions/General.php:55
+msgid "Theme Settings"
+msgstr "إعدادات القالب"
