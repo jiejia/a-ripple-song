@@ -26,7 +26,7 @@ $wp_query = $episode_post_type
 @if($wp_query)
   @while(have_posts())
     @php(the_post())
-    @includeFirst(['partials.content-podcast'])
+    @includeFirst(['partials.content-' . $episode_post_type, 'partials.content'])
   @endwhile
 
   {!! the_posts_pagination() !!}

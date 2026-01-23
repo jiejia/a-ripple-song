@@ -112,8 +112,12 @@ class Podcast_List_Widget extends WP_Widget {
                 <?php if ($show_see_all): ?>
                 <span class="text-xs text-base-content/70">
                     <?php
-                        $see_all_page = get_page_by_path('ars-episodes');
-                        $see_all_url = $see_all_page ? get_permalink($see_all_page) : home_url('/ars-episodes/');
+                        $see_all_page = get_page_by_path('episodes');
+                        $see_all_url = $see_all_page ? get_permalink($see_all_page) : '';
+                        if (!$see_all_url) {
+                            $archive_url = get_post_type_archive_link($episode_post_type);
+                            $see_all_url = $archive_url ?: home_url('/episodes/');
+                        }
                     ?>
                     <a href="<?php echo esc_url($see_all_url); ?>"><?php _e('See all', 'sage'); ?></a>
                 </span>
@@ -224,7 +228,9 @@ class Podcast_List_Widget extends WP_Widget {
             while ($query->have_posts()) {
                 $query->the_post();
                 $post_id = get_the_ID();
-                $audio_file = get_post_meta($post_id, 'audio_file', true);
+                $audio_file = function_exists('aripplesong_get_episode_meta')
+                    ? aripplesong_get_episode_meta($post_id, 'audio_file', '')
+                    : get_post_meta($post_id, 'audio_file', true);
                 $episode_data = get_episode_data($post_id);
                 
                 $podcasts[] = [
@@ -248,7 +254,9 @@ class Podcast_List_Widget extends WP_Widget {
         foreach ($posts_with_score as $item) {
             $post = $item['post'];
             $post_id = $post->ID;
-            $audio_file = get_post_meta($post_id, 'audio_file', true);
+            $audio_file = function_exists('aripplesong_get_episode_meta')
+                ? aripplesong_get_episode_meta($post_id, 'audio_file', '')
+                : get_post_meta($post_id, 'audio_file', true);
             $episode_data = get_episode_data($post_id);
             
             $podcasts[] = [

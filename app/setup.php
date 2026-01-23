@@ -157,6 +157,36 @@ add_action('init', function () {
 });
 
 /**
+ * Align podcast episode URLs to /episodes/ instead of /podcasts/.
+ */
+add_filter('register_post_type_args', function ($args, $post_type) {
+    if ($post_type !== 'ars_episode') {
+        return $args;
+    }
+
+    $rewrite = is_array($args['rewrite'] ?? null) ? $args['rewrite'] : [];
+    $rewrite['slug'] = 'episodes';
+    $args['rewrite'] = $rewrite;
+    $args['has_archive'] = 'episodes';
+
+    return $args;
+}, 10, 2);
+
+add_action('init', function () {
+    if (!is_admin() || !current_user_can('manage_options')) {
+        return;
+    }
+
+    $flag = 'aripplesong_episodes_rewrite_flushed';
+    if (get_option($flag)) {
+        return;
+    }
+
+    flush_rewrite_rules(false);
+    update_option($flag, '1', 'no');
+}, 20);
+
+/**
  * Register the theme sidebars.
  *
  * @return void
@@ -520,7 +550,9 @@ add_action('rest_api_init', function () {
                 return '';
             }
 
-            $value = get_post_meta($post_id, 'audio_file', true);
+            $value = function_exists('aripplesong_get_episode_meta')
+                ? \aripplesong_get_episode_meta($post_id, 'audio_file', '')
+                : get_post_meta($post_id, 'audio_file', true);
             return is_string($value) ? $value : '';
         },
         'schema' => [
@@ -536,7 +568,10 @@ add_action('rest_api_init', function () {
                 return 0;
             }
 
-            return (int) get_post_meta($post_id, 'duration', true);
+            $value = function_exists('aripplesong_get_episode_meta')
+                ? \aripplesong_get_episode_meta($post_id, 'duration', 0)
+                : get_post_meta($post_id, 'duration', true);
+            return (int) $value;
         },
         'schema' => [
             'description' => __('Audio duration (seconds)', 'sage'),
@@ -551,7 +586,9 @@ add_action('rest_api_init', function () {
                 return '';
             }
 
-            $value = get_post_meta($post_id, 'episode_transcript', true);
+            $value = function_exists('aripplesong_get_episode_meta')
+                ? \aripplesong_get_episode_meta($post_id, 'episode_transcript', '')
+                : get_post_meta($post_id, 'episode_transcript', true);
             return is_string($value) ? $value : '';
         },
         'schema' => [

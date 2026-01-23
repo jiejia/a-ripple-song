@@ -1,6 +1,8 @@
 @php
 $post_id = get_the_ID();
-$audio_file = get_post_meta($post_id, 'audio_file', true);
+$audio_file = function_exists('aripplesong_get_episode_meta')
+  ? aripplesong_get_episode_meta($post_id, 'audio_file', '')
+  : get_post_meta($post_id, 'audio_file', true);
 $episode_data = get_episode_data($post_id);
 @endphp
 

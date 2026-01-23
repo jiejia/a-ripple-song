@@ -670,12 +670,40 @@ function is_menu_item_active($item, $children = [], $current_url = '') {
  * @param int|null $post_id Post ID (defaults to current post)
  * @return array Episode data array with id, audioUrl, title, description, publishDate (timestamp), featuredImage, link
  */
+if (!function_exists('aripplesong_get_episode_meta')) {
+    function aripplesong_get_episode_meta(int $post_id, string $key, $default = '')
+    {
+        if ($post_id <= 0 || $key === '') {
+            return $default;
+        }
+
+        if (function_exists('carbon_get_post_meta')) {
+            $value = carbon_get_post_meta($post_id, $key);
+            if (!is_array($value) && $value !== null && $value !== '') {
+                return $value;
+            }
+        }
+
+        $value = get_post_meta($post_id, $key, true);
+        if ($value !== '' && $value !== null) {
+            return $value;
+        }
+
+        $value = get_post_meta($post_id, '_' . ltrim($key, '_'), true);
+        if ($value !== '' && $value !== null) {
+            return $value;
+        }
+
+        return $default;
+    }
+}
+
 function get_episode_data($post_id = null) {
     if (!$post_id) {
         $post_id = get_the_ID();
     }
 
-    $audio_file = get_post_meta($post_id, 'audio_file', true);
+    $audio_file = aripplesong_get_episode_meta($post_id, 'audio_file', '');
     $featured_image = get_the_post_thumbnail_url($post_id, 'medium');
 
     return [
