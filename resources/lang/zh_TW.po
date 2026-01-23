@@ -1706,7 +1706,7 @@ msgstr ""
 
 #: resources/views/template-podcast.blade.php:37
 msgid "Podcast plugin is not active. Install/activate a-ripple-song-podcast to show episodes."
-msgstr ""
+msgstr "播客外掛未啟用。請安裝／啟用 a-ripple-song-podcast 以顯示節目。"
 
 #: app/ThemeOptions/General.php:55
 msgid "Theme Settings"
