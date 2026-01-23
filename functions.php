@@ -99,6 +99,23 @@ if (!function_exists('aripplesong_get_podcast_post_type')) {
     }
 }
 
+if (!function_exists('aripplesong_get_podcast_category_taxonomy')) {
+    function aripplesong_get_podcast_category_taxonomy(): ?string
+    {
+        $taxonomy = 'ars_episode_category';
+
+        if (function_exists('taxonomy_exists') && taxonomy_exists($taxonomy)) {
+            return $taxonomy;
+        }
+
+        if (function_exists('aripplesong_is_podcast_plugin_active') && aripplesong_is_podcast_plugin_active()) {
+            return $taxonomy;
+        }
+
+        return null;
+    }
+}
+
 if (!function_exists('aripplesong_podcast_features_enabled')) {
     function aripplesong_podcast_features_enabled(): bool
     {
@@ -318,6 +335,27 @@ function aripplesong_extract_multicheck_user_ids($value): array
 
         if (is_numeric($item)) {
             $ids[] = (int) $item;
+            continue;
+        }
+
+        if (is_string($item)) {
+            // Carbon Fields association can store strings like "user:user:123".
+            if (preg_match('~(?:^|:)user:.*:(\\d+)$~', $item, $m)) {
+                $ids[] = (int) $m[1];
+                continue;
+            }
+            if (preg_match('~(\\d+)$~', $item, $m)) {
+                $ids[] = (int) $m[1];
+                continue;
+            }
+        }
+
+        if (is_array($item)) {
+            // Carbon Fields association stores items like ['type' => 'user', 'id' => 123, ...].
+            if (isset($item['id']) && is_numeric($item['id'])) {
+                $ids[] = (int) $item['id'];
+                continue;
+            }
         }
     }
 

@@ -660,11 +660,24 @@ add_filter('ocdi/import_files', function () {
 });
 
 /**
+ * OCDI importer options.
+ *
+ * The bundled demo XML references remote media URLs that may not be available.
+ * Skip fetching attachments to avoid hard failures during import; demo assets
+ * are normalized in `ocdi/after_import`.
+ */
+add_filter('ocdi/importer_options', function (array $options): array {
+    $options['fetch_attachments'] = false;
+    return $options;
+});
+
+/**
  * Before importing demo content:
  * 1. Backup existing pages/menus that conflict with demo data
  * 2. Clear all theme sidebars
  */
 add_action('ocdi/before_content_import', function ($selected_import) {
+    \aripplesong_register_legacy_podcast_import_types();
     \aripplesong_backup_conflicting_content($selected_import);
     \aripplesong_clear_theme_sidebars();
 });
@@ -675,6 +688,8 @@ add_action('ocdi/before_content_import', function ($selected_import) {
  * @param array $selected_import Selected demo import data.
  */
 add_action('ocdi/after_import', function ($selected_import) {
+    \aripplesong_migrate_imported_podcast_content();
+    \aripplesong_normalize_demo_asset_urls();
     \aripplesong_assign_menu_to_location();
     \aripplesong_set_static_homepage();
     flush_rewrite_rules();

@@ -427,3 +427,176 @@ function aripplesong_set_static_homepage() {
         update_option('page_for_posts', $blog_page->ID);
     }
 }
+
+/**
+ * Register legacy podcast CPT/taxonomy used by the bundled demo XML.
+ *
+ * The demo WXR was generated from an older version where:
+ * - post type: `podcast`
+ * - taxonomy:  `podcast_category`
+ *
+ * During import, WordPress only imports terms for registered taxonomies.
+ * We register hidden legacy keys so OCDI can import without warnings, then
+ * migrate to the plugin keys in `aripplesong_migrate_imported_podcast_content()`.
+ */
+function aripplesong_register_legacy_podcast_import_types(): void
+{
+    if (!function_exists('register_post_type') || !function_exists('register_taxonomy')) {
+        return;
+    }
+
+    if (!post_type_exists('podcast')) {
+        register_post_type('podcast', [
+            'label' => 'Podcast',
+            'public' => false,
+            'show_ui' => false,
+            'show_in_menu' => false,
+            'show_in_rest' => false,
+            'exclude_from_search' => true,
+            'publicly_queryable' => false,
+            'has_archive' => false,
+            'rewrite' => false,
+            'supports' => ['title', 'editor', 'excerpt', 'thumbnail', 'author', 'comments', 'custom-fields', 'revisions'],
+        ]);
+    }
+
+    if (!taxonomy_exists('podcast_category')) {
+        register_taxonomy('podcast_category', ['podcast'], [
+            'label' => 'Podcast Categories',
+            'public' => false,
+            'show_ui' => false,
+            'show_in_menu' => false,
+            'show_in_rest' => false,
+            'show_admin_column' => false,
+            'show_in_nav_menus' => false,
+            'rewrite' => false,
+            'hierarchical' => true,
+        ]);
+    }
+}
+
+/**
+ * Migrate imported demo content to the companion podcast plugin slugs.
+ *
+ * Plugin keys:
+ * - post type: `ars_episode`
+ * - taxonomy:  `ars_episode_category`
+ */
+function aripplesong_migrate_imported_podcast_content(): void
+{
+    $new_post_type = function_exists('aripplesong_get_podcast_post_type') ? \aripplesong_get_podcast_post_type() : null;
+    $new_taxonomy = function_exists('aripplesong_get_podcast_category_taxonomy') ? \aripplesong_get_podcast_category_taxonomy() : null;
+
+    if (!$new_post_type && !$new_taxonomy) {
+        return;
+    }
+
+    global $wpdb;
+
+    if ($new_post_type) {
+        $wpdb->query(
+            $wpdb->prepare(
+                "UPDATE {$wpdb->posts} SET post_type = %s WHERE post_type = %s",
+                $new_post_type,
+                'podcast'
+            )
+        );
+    }
+
+    if ($new_taxonomy) {
+        $wpdb->query(
+            $wpdb->prepare(
+                "UPDATE {$wpdb->term_taxonomy} SET taxonomy = %s WHERE taxonomy = %s",
+                $new_taxonomy,
+                'podcast_category'
+            )
+        );
+
+        // Refresh term counts for the new taxonomy.
+        if (function_exists('get_terms') && function_exists('wp_update_term_count_now')) {
+            $term_ids = get_terms([
+                'taxonomy' => $new_taxonomy,
+                'hide_empty' => false,
+                'fields' => 'ids',
+            ]);
+            if (is_array($term_ids) && !empty($term_ids)) {
+                wp_update_term_count_now($term_ids, $new_taxonomy);
+            }
+        }
+    }
+}
+
+/**
+ * Replace broken remote demo asset URLs (R2) with stable placeholders.
+ *
+ * The demo XML/widgets reference `*.r2.dev` URLs which may be removed over time.
+ * We normalize them so demo sites don't end up with broken banner images/audio.
+ */
+function aripplesong_normalize_demo_asset_urls(): void
+{
+    $broken_prefix = 'https://pub-705281646947462fbf6e5906afe11018.r2.dev/';
+
+    $placeholder_image = function_exists('get_theme_file_uri')
+        ? (string) get_theme_file_uri('screenshot.png')
+        : '';
+    $placeholder_audio = 'https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3';
+
+    // Update Banner Carousel widget slides.
+    $widget_option_key = 'widget_banner_carousel_widget';
+    $widgets = get_option($widget_option_key, []);
+    $changed = false;
+
+    if (is_array($widgets)) {
+        foreach ($widgets as $instance_id => $instance) {
+            if (!is_array($instance) || empty($instance['slides']) || !is_array($instance['slides'])) {
+                continue;
+            }
+
+            foreach ($instance['slides'] as $idx => $slide) {
+                if (!is_array($slide)) {
+                    continue;
+                }
+                $image = isset($slide['image']) ? (string) $slide['image'] : '';
+                if ($image !== '' && strpos($image, $broken_prefix) === 0 && $placeholder_image) {
+                    $widgets[$instance_id]['slides'][$idx]['image'] = $placeholder_image;
+                    $changed = true;
+                }
+            }
+        }
+    }
+
+    if ($changed) {
+        update_option($widget_option_key, $widgets);
+    }
+
+    // Update imported episode audio_file meta.
+    $episode_post_type = function_exists('aripplesong_get_podcast_post_type') ? \aripplesong_get_podcast_post_type() : 'podcast';
+    if (!$episode_post_type) {
+        $episode_post_type = 'podcast';
+    }
+
+    $episode_ids = get_posts([
+        'post_type' => $episode_post_type,
+        'post_status' => 'any',
+        'posts_per_page' => -1,
+        'fields' => 'ids',
+        'no_found_rows' => true,
+        'update_post_meta_cache' => false,
+        'update_post_term_cache' => false,
+    ]);
+
+    foreach ($episode_ids as $post_id) {
+        $post_id = (int) $post_id;
+        $audio_url = (string) get_post_meta($post_id, 'audio_file', true);
+        if ($audio_url !== '' && strpos($audio_url, $broken_prefix) === 0) {
+            update_post_meta($post_id, 'audio_file', $placeholder_audio);
+            update_post_meta($post_id, 'audio_mime', 'audio/mpeg');
+            delete_post_meta($post_id, 'audio_file_id');
+        }
+
+        $episode_image = (string) get_post_meta($post_id, 'episode_image', true);
+        if ($episode_image !== '' && strpos($episode_image, $broken_prefix) === 0 && $placeholder_image) {
+            update_post_meta($post_id, 'episode_image', $placeholder_image);
+        }
+    }
+}

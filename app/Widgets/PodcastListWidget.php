@@ -111,7 +111,11 @@ class Podcast_List_Widget extends WP_Widget {
                 </h2>
                 <?php if ($show_see_all): ?>
                 <span class="text-xs text-base-content/70">
-                    <a href="<?php echo esc_url(get_permalink(get_page_by_path('podcasts'))); ?>"><?php _e('See all', 'sage'); ?></a>
+                    <?php
+                        $see_all_page = get_page_by_path('ars-episodes');
+                        $see_all_url = $see_all_page ? get_permalink($see_all_page) : home_url('/ars-episodes/');
+                    ?>
+                    <a href="<?php echo esc_url($see_all_url); ?>"><?php _e('See all', 'sage'); ?></a>
                 </span>
                 <?php endif; ?>
             </div>
