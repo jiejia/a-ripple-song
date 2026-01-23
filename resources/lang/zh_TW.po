@@ -561,7 +561,7 @@ msgstr "作者"
 
 #: resources/views/template-home.blade.php:13
 msgid "Please add widgets to \"Home Main\" area in Appearance > Widgets in the admin panel."
-msgstr "請在管理後台的外觀 > 小工具中，將小工具新增至「首頁主要區域」。"
+msgstr "請在管理後台的外觀 > 小工具中，將小工具新增至【首頁主要區域】。"
 
 #: resources/views/author.blade.php:9
 msgid "Author:"
@@ -583,12 +583,12 @@ msgstr "播放"
 #: resources/views/sections/leftbar-drawer.blade.php:21
 #: resources/views/sections/leftbar.blade.php:6
 msgid "Please add widgets to \"Leftbar\" area in Appearance > Widgets in the admin panel."
-msgstr "請在管理後台的外觀 > 小工具中，將小工具新增至「左側欄」區域。"
+msgstr "請在管理後台的外觀 > 小工具中，將小工具新增至【左側欄】區域。"
 
 #: resources/views/sections/sidebar-drawer.blade.php:22
 #: resources/views/sections/sidebar.blade.php:8
 msgid "Please add widgets to \"Sidebar\" area in Appearance > Widgets in the admin panel."
-msgstr "請在管理後台的外觀 > 小工具中，將小工具新增至「側邊欄」區域。"
+msgstr "請在管理後台的外觀 > 小工具中，將小工具新增至【側邊欄】區域。"
 
 #: resources/views/sections/mobile-menu.blade.php:7
 msgid "Menu"

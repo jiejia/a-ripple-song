@@ -563,7 +563,7 @@ msgstr "بذریعہ"
 
 #: resources/views/template-home.blade.php:13
 msgid "Please add widgets to \"Home Main\" area in Appearance > Widgets in the admin panel."
-msgstr "براہ کرم ایڈمن پینل میں Appearance > Widgets میں \"Home Main\" علاقے میں widgets شامل کریں۔"
+msgstr "براہ کرم ایڈمن پینل میں Appearance > Widgets میں 【Home Main】 علاقے میں widgets شامل کریں۔"
 
 #: resources/views/author.blade.php:9
 msgid "Author:"
@@ -585,12 +585,12 @@ msgstr "چلائیں"
 #: resources/views/sections/leftbar-drawer.blade.php:21
 #: resources/views/sections/leftbar.blade.php:6
 msgid "Please add widgets to \"Leftbar\" area in Appearance > Widgets in the admin panel."
-msgstr "براہ کرم ایڈمن پینل میں Appearance > Widgets میں \"Leftbar\" علاقے میں widgets شامل کریں۔"
+msgstr "براہ کرم ایڈمن پینل میں Appearance > Widgets میں 【Leftbar】 علاقے میں widgets شامل کریں۔"
 
 #: resources/views/sections/sidebar-drawer.blade.php:22
 #: resources/views/sections/sidebar.blade.php:8
 msgid "Please add widgets to \"Sidebar\" area in Appearance > Widgets in the admin panel."
-msgstr "براہ کرم ایڈمن پینل میں Appearance > Widgets میں \"Sidebar\" علاقے میں widgets شامل کریں۔"
+msgstr "براہ کرم ایڈمن پینل میں Appearance > Widgets میں 【Sidebar】 علاقے میں widgets شامل کریں۔"
 
 #: resources/views/sections/mobile-menu.blade.php:7
 msgid "Menu"

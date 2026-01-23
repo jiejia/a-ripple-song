@@ -563,7 +563,7 @@ msgstr "Por"
 
 #: resources/views/template-home.blade.php:13
 msgid "Please add widgets to \"Home Main\" area in Appearance > Widgets in the admin panel."
-msgstr "Por favor, adicione widgets à área \"Página inicial principal\" em Aparência > Widgets no painel de administração."
+msgstr "Por favor, adicione widgets à área 【Página inicial principal】 em Aparência > Widgets no painel de administração."
 
 #: resources/views/author.blade.php:9
 msgid "Author:"
@@ -585,12 +585,12 @@ msgstr "Reproduzir"
 #: resources/views/sections/leftbar-drawer.blade.php:21
 #: resources/views/sections/leftbar.blade.php:6
 msgid "Please add widgets to \"Leftbar\" area in Appearance > Widgets in the admin panel."
-msgstr "Por favor, adicione widgets à área \"Barra esquerda\" em Aparência > Widgets no painel de administração."
+msgstr "Por favor, adicione widgets à área 【Barra esquerda】 em Aparência > Widgets no painel de administração."
 
 #: resources/views/sections/sidebar-drawer.blade.php:22
 #: resources/views/sections/sidebar.blade.php:8
 msgid "Please add widgets to \"Sidebar\" area in Appearance > Widgets in the admin panel."
-msgstr "Por favor, adicione widgets à área \"Barra lateral\" em Aparência > Widgets no painel de administração."
+msgstr "Por favor, adicione widgets à área 【Barra lateral】 em Aparência > Widgets no painel de administração."
 
 #: resources/views/sections/mobile-menu.blade.php:7
 msgid "Menu"

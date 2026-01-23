@@ -563,7 +563,7 @@ msgstr "দ্বারা"
 
 #: resources/views/template-home.blade.php:13
 msgid "Please add widgets to \"Home Main\" area in Appearance > Widgets in the admin panel."
-msgstr "অনুগ্রহ করে অ্যাডমিন প্যানেলে চেহারা > উইজেট এ \"হোম মেইন\" এলাকায় উইজেট যোগ করুন।"
+msgstr "অনুগ্রহ করে অ্যাডমিন প্যানেলে চেহারা > উইজেট এ 【হোম মেইন】 এলাকায় উইজেট যোগ করুন।"
 
 #: resources/views/author.blade.php:9
 msgid "Author:"
@@ -585,12 +585,12 @@ msgstr "চালান"
 #: resources/views/sections/leftbar-drawer.blade.php:21
 #: resources/views/sections/leftbar.blade.php:6
 msgid "Please add widgets to \"Leftbar\" area in Appearance > Widgets in the admin panel."
-msgstr "অনুগ্রহ করে অ্যাডমিন প্যানেলে চেহারা > উইজেট এ \"লেফ্টবার\" এলাকায় উইজেট যোগ করুন।"
+msgstr "অনুগ্রহ করে অ্যাডমিন প্যানেলে চেহারা > উইজেট এ 【লেফ্টবার】 এলাকায় উইজেট যোগ করুন।"
 
 #: resources/views/sections/sidebar-drawer.blade.php:22
 #: resources/views/sections/sidebar.blade.php:8
 msgid "Please add widgets to \"Sidebar\" area in Appearance > Widgets in the admin panel."
-msgstr "অনুগ্রহ করে অ্যাডমিন প্যানেলে চেহারা > উইজেট এ \"সাইডবার\" এলাকায় উইজেট যোগ করুন।"
+msgstr "অনুগ্রহ করে অ্যাডমিন প্যানেলে চেহারা > উইজেট এ 【সাইডবার】 এলাকায় উইজেট যোগ করুন।"
 
 #: resources/views/sections/mobile-menu.blade.php:7
 msgid "Menu"
