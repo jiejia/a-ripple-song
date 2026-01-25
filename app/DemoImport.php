@@ -527,19 +527,46 @@ function aripplesong_migrate_imported_podcast_content(): void
 }
 
 /**
- * Replace broken remote demo asset URLs (R2) with stable placeholders.
+ * Reconcile demo asset URLs after import.
  *
- * The demo XML/widgets reference `*.r2.dev` URLs which may be removed over time.
- * We normalize them so demo sites don't end up with broken banner images/audio.
+ * The demo XML/widgets reference remote `*.r2.dev` URLs. When attachments are
+ * fetched during import, we prefer using the locally imported attachment URL.
+ * If we can't resolve a local attachment, we leave the remote URL as-is.
  */
 function aripplesong_normalize_demo_asset_urls(): void
 {
-    $broken_prefix = 'https://pub-705281646947462fbf6e5906afe11018.r2.dev/';
+    $demo_prefix = 'https://pub-705281646947462fbf6e5906afe11018.r2.dev/';
 
-    $placeholder_image = function_exists('get_theme_file_uri')
-        ? (string) get_theme_file_uri('screenshot.png')
-        : '';
-    $placeholder_audio = 'https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3';
+    $find_local_attachment_url = static function (string $remote_url): ?string {
+        $basename = wp_basename($remote_url);
+        if ($basename === '') {
+            return null;
+        }
+
+        global $wpdb;
+
+        $like = '%' . $wpdb->esc_like('/' . $basename);
+        $attachment_id = (int) $wpdb->get_var(
+            $wpdb->prepare(
+                "SELECT p.ID
+                FROM {$wpdb->posts} p
+                INNER JOIN {$wpdb->postmeta} pm ON pm.post_id = p.ID
+                WHERE p.post_type = 'attachment'
+                  AND pm.meta_key = '_wp_attached_file'
+                  AND pm.meta_value LIKE %s
+                ORDER BY p.ID DESC
+                LIMIT 1",
+                $like
+            )
+        );
+
+        if ($attachment_id > 0) {
+            $local_url = wp_get_attachment_url($attachment_id);
+            return $local_url ? (string) $local_url : null;
+        }
+
+        return null;
+    };
 
     // Update Banner Carousel widget slides.
     $widget_option_key = 'widget_banner_carousel_widget';
@@ -557,9 +584,12 @@ function aripplesong_normalize_demo_asset_urls(): void
                     continue;
                 }
                 $image = isset($slide['image']) ? (string) $slide['image'] : '';
-                if ($image !== '' && strpos($image, $broken_prefix) === 0 && $placeholder_image) {
-                    $widgets[$instance_id]['slides'][$idx]['image'] = $placeholder_image;
-                    $changed = true;
+                if ($image !== '' && strpos($image, $demo_prefix) === 0) {
+                    $local_url = $find_local_attachment_url($image);
+                    if ($local_url) {
+                        $widgets[$instance_id]['slides'][$idx]['image'] = $local_url;
+                        $changed = true;
+                    }
                 }
             }
         }
@@ -569,7 +599,7 @@ function aripplesong_normalize_demo_asset_urls(): void
         update_option($widget_option_key, $widgets);
     }
 
-    // Update imported episode audio_file meta.
+    // Prefer local audio attachments for imported episodes when available.
     $episode_post_type = function_exists('aripplesong_get_podcast_post_type') ? \aripplesong_get_podcast_post_type() : 'podcast';
     if (!$episode_post_type) {
         $episode_post_type = 'podcast';
@@ -587,16 +617,12 @@ function aripplesong_normalize_demo_asset_urls(): void
 
     foreach ($episode_ids as $post_id) {
         $post_id = (int) $post_id;
-        $audio_url = (string) get_post_meta($post_id, 'audio_file', true);
-        if ($audio_url !== '' && strpos($audio_url, $broken_prefix) === 0) {
-            update_post_meta($post_id, 'audio_file', $placeholder_audio);
-            update_post_meta($post_id, 'audio_mime', 'audio/mpeg');
-            delete_post_meta($post_id, 'audio_file_id');
-        }
-
-        $episode_image = (string) get_post_meta($post_id, 'episode_image', true);
-        if ($episode_image !== '' && strpos($episode_image, $broken_prefix) === 0 && $placeholder_image) {
-            update_post_meta($post_id, 'episode_image', $placeholder_image);
+        $audio_url = (string) get_post_meta($post_id, '_audio_file', true);
+        if ($audio_url !== '' && strpos($audio_url, $demo_prefix) === 0) {
+            $local_url = $find_local_attachment_url($audio_url);
+            if ($local_url) {
+                update_post_meta($post_id, '_audio_file', $local_url);
+            }
         }
     }
 }

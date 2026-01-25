@@ -699,12 +699,13 @@ add_filter('ocdi/import_files', function () {
 /**
  * OCDI importer options.
  *
- * The bundled demo XML references remote media URLs that may not be available.
- * Skip fetching attachments to avoid hard failures during import; demo assets
- * are normalized in `ocdi/after_import`.
+ * Ensure demo attachments are fetched so featured images and media are imported.
+ *
+ * Note: If the remote host is unavailable, WordPress will still import content,
+ * but missing attachments will not be downloaded.
  */
 add_filter('ocdi/importer_options', function (array $options): array {
-    $options['fetch_attachments'] = false;
+    $options['fetch_attachments'] = true;
     return $options;
 });
 
