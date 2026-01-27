@@ -6,7 +6,7 @@
         $author_name = $author->display_name ?? '';
     @endphp
 
-    @include('partials.page-header', ['title' => __('Author:', 'sage') . ' ' . $author_name])
+    @include('partials.page-header', ['title' => __('Author:', 'a-ripple-song') . ' ' . $author_name])
 
     {{-- Use the main query which has been modified via pre_get_posts hook --}}
     @if(have_posts())
@@ -18,7 +18,7 @@
         {!! the_posts_pagination() !!}
     @else
         <x-alert type="warning">
-            {!! __('Sorry, no results were found.', 'sage') !!}
+            {!! __('Sorry, no results were found.', 'a-ripple-song') !!}
         </x-alert>
     @endif
 

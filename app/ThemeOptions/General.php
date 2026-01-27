@@ -51,56 +51,56 @@ class GeneralOptions
      */
     public static function registerFields(): void
     {
-        $theme_settings = Container::make('theme_options', static::THEME_CONTAINER_ID, __('General', 'sage'))
-            ->set_page_menu_title(__('Theme Settings', 'sage'))
+        $theme_settings = Container::make('theme_options', static::THEME_CONTAINER_ID, __('General', 'a-ripple-song'))
+            ->set_page_menu_title(__('Theme Settings', 'a-ripple-song'))
             ->set_icon('dashicons-admin-settings')
             ->set_page_menu_position(60)
             ->add_fields([
-                Field::make('html', 'crb_site_logo_uploader', __('Site Logo', 'sage'))
+                Field::make('html', 'crb_site_logo_uploader', __('Site Logo', 'a-ripple-song'))
                     ->set_html(static::renderLogoUploader())
-                    ->set_help_text(__('Upload a logo image (220px × 32px). You will be able to crop the image after upload.', 'sage')),
+                    ->set_help_text(__('Upload a logo image (220px × 32px). You will be able to crop the image after upload.', 'a-ripple-song')),
                 Field::make('text', 'crb_site_logo', '')
                     ->set_attribute('type', 'hidden')
                     ->set_attribute('data-logo-field', 'true')
                     ->set_classes('crb-logo-carbon-field'),
-                Field::make('html', 'crb_light_theme_picker', __('Light Theme', 'sage'))
+                Field::make('html', 'crb_light_theme_picker', __('Light Theme', 'a-ripple-song'))
                     ->set_html(
                         sprintf(
                             '<div class="crb-theme-heading">%s</div>%s',
-                            esc_html__('Light Theme', 'sage'),
+                            esc_html__('Light Theme', 'a-ripple-song'),
                             static::renderDaisyUiThemePicker('light')
                         )
                     )
-                    ->set_help_text(__('Click any card to choose the light theme.', 'sage')),
-                Field::make('select', 'crb_light_theme', __('Light Theme (fallback)', 'sage'))
+                    ->set_help_text(__('Click any card to choose the light theme.', 'a-ripple-song')),
+                Field::make('select', 'crb_light_theme', __('Light Theme (fallback)', 'a-ripple-song'))
                     ->set_options(static::getDaisyUiLightThemes())
                     ->set_default_value('retro')
-                    ->set_help_text(__('If the card picker is unavailable, use this dropdown (default: retro).', 'sage'))
+                    ->set_help_text(__('If the card picker is unavailable, use this dropdown (default: retro).', 'a-ripple-song'))
                     ->set_classes('crb-theme-select')
                     ->set_attribute('data-theme-target', 'light'),
-                Field::make('html', 'crb_dark_theme_picker', __('Dark Theme', 'sage'))
+                Field::make('html', 'crb_dark_theme_picker', __('Dark Theme', 'a-ripple-song'))
                     ->set_html(
                         sprintf(
                             '<div class="crb-theme-heading">%s</div>%s',
-                            esc_html__('Dark Theme', 'sage'),
+                            esc_html__('Dark Theme', 'a-ripple-song'),
                             static::renderDaisyUiThemePicker('dark')
                         )
                     )
-                    ->set_help_text(__('Click any card to choose the dark theme.', 'sage')),
-                Field::make('select', 'crb_dark_theme', __('Dark Theme (fallback)', 'sage'))
+                    ->set_help_text(__('Click any card to choose the dark theme.', 'a-ripple-song')),
+                Field::make('select', 'crb_dark_theme', __('Dark Theme (fallback)', 'a-ripple-song'))
                     ->set_options(static::getDaisyUiDarkThemes())
                     ->set_default_value('dim')
-                    ->set_help_text(__('If the card picker is unavailable, use this dropdown (default: dim).', 'sage'))
+                    ->set_help_text(__('If the card picker is unavailable, use this dropdown (default: dim).', 'a-ripple-song'))
                     ->set_classes('crb-theme-select')
                     ->set_attribute('data-theme-target', 'dark'),
-                Field::make('textarea', 'crb_footer_copyright', __('Footer Copyright', 'sage'))
+                Field::make('textarea', 'crb_footer_copyright', __('Footer Copyright', 'a-ripple-song'))
                     ->set_rows(2)
-                    ->set_attribute('placeholder', __('Powered by A Ripple Song Theme', 'sage'))
-                    ->set_help_text(__('Overrides the footer copyright line. Leave empty to use the default.', 'sage')),
-                Field::make('header_scripts', 'crb_header_scripts', __('Header Scripts', 'sage'))
-                    ->set_help_text(esc_html__('Scripts to be added in the <head> section. You can include complete <script> tags for services like Google Analytics.', 'sage')),
-                Field::make('footer_scripts', 'crb_footer_scripts', __('Footer Scripts', 'sage'))
-                    ->set_help_text(esc_html__('Scripts to be added before </body>. You can include complete <script> tags.', 'sage')),
+                    ->set_attribute('placeholder', __('Powered by A Ripple Song Theme', 'a-ripple-song'))
+                    ->set_help_text(__('Overrides the footer copyright line. Leave empty to use the default.', 'a-ripple-song')),
+                Field::make('header_scripts', 'crb_header_scripts', __('Header Scripts', 'a-ripple-song'))
+                    ->set_help_text(esc_html__('Scripts to be added in the <head> section. You can include complete <script> tags for services like Google Analytics.', 'a-ripple-song')),
+                Field::make('footer_scripts', 'crb_footer_scripts', __('Footer Scripts', 'a-ripple-song'))
+                    ->set_help_text(esc_html__('Scripts to be added before </body>. You can include complete <script> tags.', 'a-ripple-song')),
             ]);
 
         static::$themeContainer = $theme_settings;
@@ -108,7 +108,7 @@ class GeneralOptions
         // Backward compatibility for other files.
         $GLOBALS['crb_theme_settings_container'] = $theme_settings;
 
-        Container::make('theme_options', __('Social Links', 'sage'))
+        Container::make('theme_options', __('Social Links', 'a-ripple-song'))
             ->set_page_parent($theme_settings)
             ->add_fields(static::getSocialLinksFields());
     }
@@ -135,8 +135,8 @@ class GeneralOptions
                 continue;
             }
 
-            $submenu[$menuSlug][$index][0] = __('General', 'sage');
-            $submenu[$menuSlug][$index][3] = __('General', 'sage');
+            $submenu[$menuSlug][$index][0] = __('General', 'a-ripple-song');
+            $submenu[$menuSlug][$index][3] = __('General', 'a-ripple-song');
             break;
         }
     }
@@ -256,7 +256,7 @@ function crb_render_logo_uploader(): string
                 <img src="%s" alt="%s" style="max-width: 220px; height: auto; border: 1px solid #ddd; padding: 8px; background: #f9f9f9;">
             </div>',
             esc_url($current_logo),
-            esc_attr__('Site Logo', 'sage')
+            esc_attr__('Site Logo', 'a-ripple-song')
         );
     }
 
@@ -271,9 +271,9 @@ function crb_render_logo_uploader(): string
             <input type="hidden" name="_crb_site_logo" class="crb-site-logo-input" id="crb_site_logo_field" value="%s" data-current-value="%s">
             %s
         </div>',
-        esc_html__('Upload / Change Logo', 'sage'),
+        esc_html__('Upload / Change Logo', 'a-ripple-song'),
         empty($current_logo) ? 'display: none;' : '',
-        esc_html__('Remove Logo', 'sage'),
+        esc_html__('Remove Logo', 'a-ripple-song'),
         esc_attr($current_logo),
         esc_attr($current_logo),
         $preview_html
@@ -289,47 +289,47 @@ function crb_get_social_links_fields()
 {
     $platforms = [
         'facebook' => [
-            'label' => __('Facebook', 'sage'),
+            'label' => __('Facebook', 'a-ripple-song'),
             'placeholder' => 'https://facebook.com/yourpage',
         ],
         'twitter' => [
-            'label' => __('Twitter / X', 'sage'),
+            'label' => __('Twitter / X', 'a-ripple-song'),
             'placeholder' => 'https://twitter.com/yourhandle',
         ],
         'instagram' => [
-            'label' => __('Instagram', 'sage'),
+            'label' => __('Instagram', 'a-ripple-song'),
             'placeholder' => 'https://instagram.com/yourhandle',
         ],
         'linkedin' => [
-            'label' => __('LinkedIn', 'sage'),
+            'label' => __('LinkedIn', 'a-ripple-song'),
             'placeholder' => 'https://linkedin.com/in/yourprofile',
         ],
         'youtube' => [
-            'label' => __('YouTube', 'sage'),
+            'label' => __('YouTube', 'a-ripple-song'),
             'placeholder' => 'https://youtube.com/@yourchannel',
         ],
         'tiktok' => [
-            'label' => __('TikTok', 'sage'),
+            'label' => __('TikTok', 'a-ripple-song'),
             'placeholder' => 'https://tiktok.com/@yourhandle',
         ],
         'pinterest' => [
-            'label' => __('Pinterest', 'sage'),
+            'label' => __('Pinterest', 'a-ripple-song'),
             'placeholder' => 'https://pinterest.com/yourhandle',
         ],
         'threads' => [
-            'label' => __('Threads', 'sage'),
+            'label' => __('Threads', 'a-ripple-song'),
             'placeholder' => 'https://threads.net/@yourhandle',
         ],
         'weibo' => [
-            'label' => __('Weibo', 'sage'),
+            'label' => __('Weibo', 'a-ripple-song'),
             'placeholder' => 'https://weibo.com/yourpage',
         ],
         'wechat' => [
-            'label' => __('WeChat', 'sage'),
+            'label' => __('WeChat', 'a-ripple-song'),
             'placeholder' => 'WeChat ID or QR code link',
         ],
         'rss' => [
-            'label' => __('RSS Feed', 'sage'),
+            'label' => __('RSS Feed', 'a-ripple-song'),
             'placeholder' => '/feed/',
         ],
     ];
@@ -338,7 +338,7 @@ function crb_get_social_links_fields()
         Field::make('html', 'crb_social_links_info')
             ->set_html(sprintf(
                 '<p>%s</p>',
-                __('Configure your social media links. Leave empty to hide a platform.', 'sage')
+                __('Configure your social media links. Leave empty to hide a platform.', 'a-ripple-song')
             )),
     ];
 
@@ -1613,7 +1613,7 @@ function crb_output_logo_uploader_assets(): void
                     const newPreview = document.createElement('div');
                     newPreview.className = 'crb-logo-preview';
                     newPreview.style.marginTop = '12px';
-                    newPreview.innerHTML = '<img src="' + url + '" alt="<?php echo esc_js(__('Site Logo', 'sage')); ?>" style="max-width: 220px; height: auto; border: 1px solid #ddd; padding: 8px; background: #f9f9f9;">';
+                    newPreview.innerHTML = '<img src="' + url + '" alt="<?php echo esc_js(__('Site Logo', 'a-ripple-song')); ?>" style="max-width: 220px; height: auto; border: 1px solid #ddd; padding: 8px; background: #f9f9f9;">';
                     newUploadBtn.parentElement.appendChild(newPreview);
                 };
 
@@ -1638,9 +1638,9 @@ function crb_output_logo_uploader_assets(): void
 
                     // Create media frame for selecting image
                     logoCropperFrame = wp.media({
-                        title: '<?php echo esc_js(__('Choose Logo Image', 'sage')); ?>',
+                        title: '<?php echo esc_js(__('Choose Logo Image', 'a-ripple-song')); ?>',
                         button: {
-                            text: '<?php echo esc_js(__('Crop Image', 'sage')); ?>'
+                            text: '<?php echo esc_js(__('Crop Image', 'a-ripple-song')); ?>'
                         },
                         multiple: false,
                         library: {
@@ -1653,7 +1653,7 @@ function crb_output_logo_uploader_assets(): void
                         console.log('Image selected:', attachment);
 
                         if (attachment.width < logoWidth || attachment.height < logoHeight) {
-                            alert('<?php echo esc_js(sprintf(__('Image is too small. Minimum size: %1$dpx × %2$dpx', 'sage'), 220, 32)); ?>');
+                            alert('<?php echo esc_js(sprintf(__('Image is too small. Minimum size: %1$dpx × %2$dpx', 'a-ripple-song'), 220, 32)); ?>');
                             return;
                         }
 
@@ -1681,8 +1681,8 @@ function crb_output_logo_uploader_assets(): void
                         const container = $('<div style="background: white; padding: 20px; border-radius: 8px; max-width: 90%; max-height: 90%; overflow: auto;"></div>');
                         const img = $('<img src="' + attachment.url + '" style="max-width: 100%; display: block;">');
                         const btnContainer = $('<div style="margin-top: 15px; text-align: right;"></div>');
-                        const cropBtn = $('<button class="button button-primary" style="margin-right: 10px;"><?php echo esc_js(__('Crop and Save', 'sage')); ?></button>');
-                        const cancelBtn = $('<button class="button"><?php echo esc_js(__('Cancel', 'sage')); ?></button>');
+                        const cropBtn = $('<button class="button button-primary" style="margin-right: 10px;"><?php echo esc_js(__('Crop and Save', 'a-ripple-song')); ?></button>');
+                        const cancelBtn = $('<button class="button"><?php echo esc_js(__('Cancel', 'a-ripple-song')); ?></button>');
 
                         btnContainer.append(cropBtn).append(cancelBtn);
                         container.append(img).append(btnContainer);
@@ -1716,11 +1716,11 @@ function crb_output_logo_uploader_assets(): void
                             console.log('Crop selection:', selection);
 
                             if (!selection.width || !selection.height) {
-                                alert('<?php echo esc_js(__('Please select a crop area.', 'sage')); ?>');
+                                alert('<?php echo esc_js(__('Please select a crop area.', 'a-ripple-song')); ?>');
                                 return;
                             }
 
-                            cropBtn.prop('disabled', true).text('<?php echo esc_js(__('Cropping...', 'sage')); ?>');
+                            cropBtn.prop('disabled', true).text('<?php echo esc_js(__('Cropping...', 'a-ripple-song')); ?>');
 
                             const nonce = '<?php echo esc_js(wp_create_nonce('crb_crop_logo')); ?>';
 
@@ -1772,14 +1772,14 @@ function crb_output_logo_uploader_assets(): void
                                         ias.remove();
                                         modal.remove();
                                     } else {
-                                        alert('<?php echo esc_js(__('Error cropping image:', 'sage')); ?> ' + (response.data.message || ''));
-                                        cropBtn.prop('disabled', false).text('<?php echo esc_js(__('Crop and Save', 'sage')); ?>');
+                                        alert('<?php echo esc_js(__('Error cropping image:', 'a-ripple-song')); ?> ' + (response.data.message || ''));
+                                        cropBtn.prop('disabled', false).text('<?php echo esc_js(__('Crop and Save', 'a-ripple-song')); ?>');
                                     }
                                 },
                                 error: function(xhr, status, error) {
                                     console.error('AJAX error:', xhr, status, error);
-                                    alert('<?php echo esc_js(__('Error cropping image. Please try again.', 'sage')); ?>');
-                                    cropBtn.prop('disabled', false).text('<?php echo esc_js(__('Crop and Save', 'sage')); ?>');
+                                    alert('<?php echo esc_js(__('Error cropping image. Please try again.', 'a-ripple-song')); ?>');
+                                    cropBtn.prop('disabled', false).text('<?php echo esc_js(__('Crop and Save', 'a-ripple-song')); ?>');
                                 }
                             });
                         });
@@ -1850,42 +1850,42 @@ function crb_handle_crop_logo_ajax(): void
 {
     $nonce = isset($_POST['nonce']) ? sanitize_text_field(wp_unslash($_POST['nonce'])) : '';
     if (!$nonce || !wp_verify_nonce($nonce, 'crb_crop_logo')) {
-        wp_send_json_error(['message' => __('Invalid request.', 'sage')], 403);
+        wp_send_json_error(['message' => __('Invalid request.', 'a-ripple-song')], 403);
     }
 
     // Check user permissions
     if (!current_user_can('upload_files')) {
-        wp_send_json_error(['message' => __('You do not have permission to upload files.', 'sage')], 403);
+        wp_send_json_error(['message' => __('You do not have permission to upload files.', 'a-ripple-song')], 403);
     }
 
     // Verify required parameters
     if (!isset($_POST['id'])) {
-        wp_send_json_error(['message' => __('Missing attachment ID.', 'sage')], 400);
+        wp_send_json_error(['message' => __('Missing attachment ID.', 'a-ripple-song')], 400);
     }
 
     if (!isset($_POST['cropDetails'])) {
-        wp_send_json_error(['message' => __('Missing crop details.', 'sage')], 400);
+        wp_send_json_error(['message' => __('Missing crop details.', 'a-ripple-song')], 400);
     }
 
     $attachment_id = absint($_POST['id']);
 
     if (!$attachment_id) {
-        wp_send_json_error(['message' => __('Invalid attachment ID.', 'sage')], 400);
+        wp_send_json_error(['message' => __('Invalid attachment ID.', 'a-ripple-song')], 400);
     }
 
     if (!current_user_can('edit_post', $attachment_id)) {
-        wp_send_json_error(['message' => __('You do not have permission to edit this attachment.', 'sage')], 403);
+        wp_send_json_error(['message' => __('You do not have permission to edit this attachment.', 'a-ripple-song')], 403);
     }
 
     $crop_details = wp_unslash($_POST['cropDetails']);
     if (!is_array($crop_details)) {
-        wp_send_json_error(['message' => __('Invalid crop details.', 'sage')], 400);
+        wp_send_json_error(['message' => __('Invalid crop details.', 'a-ripple-song')], 400);
     }
 
     $required_keys = ['x1', 'y1', 'width', 'height', 'dst_width', 'dst_height'];
     foreach ($required_keys as $required_key) {
         if (!array_key_exists($required_key, $crop_details)) {
-            wp_send_json_error(['message' => __('Missing crop details.', 'sage')], 400);
+            wp_send_json_error(['message' => __('Missing crop details.', 'a-ripple-song')], 400);
         }
     }
 
@@ -1899,7 +1899,7 @@ function crb_handle_crop_logo_ajax(): void
     // Get the original image path
     $original_path = get_attached_file($attachment_id);
     if (!$original_path || !file_exists($original_path)) {
-        wp_send_json_error(['message' => __('Original image not found.', 'sage')], 404);
+        wp_send_json_error(['message' => __('Original image not found.', 'a-ripple-song')], 404);
     }
 
     // Perform the crop
@@ -1921,7 +1921,7 @@ function crb_handle_crop_logo_ajax(): void
     $parent_url = wp_get_attachment_url($attachment_id);
     if (!$parent_url) {
         @unlink($cropped);
-        wp_send_json_error(['message' => __('Unable to determine attachment URL.', 'sage')], 500);
+        wp_send_json_error(['message' => __('Unable to determine attachment URL.', 'a-ripple-song')], 500);
     }
     $url = str_replace(basename($parent_url), basename($cropped), $parent_url);
 

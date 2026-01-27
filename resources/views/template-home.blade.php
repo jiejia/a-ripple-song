@@ -10,7 +10,7 @@
     @php dynamic_sidebar(\App\Theme::SIDEBAR_HOME_MAIN) @endphp
   @else
     <div class="rounded-lg bg-base-100 p-8 text-center text-base-content/50">
-      <p>{!! __('Please add widgets to "Home Main" area in Appearance > Widgets in the admin panel.', 'sage') !!}</p>
+      <p>{!! __('Please add widgets to "Home Main" area in Appearance > Widgets in the admin panel.', 'a-ripple-song') !!}</p>
     </div>
   @endif
 </div>

@@ -9,8 +9,8 @@ class Podcast_List_Widget extends WP_Widget {
     public function __construct() {
         parent::__construct(
             'podcast_list_widget',
-            __('aripplesong - Podcast List', 'sage'),
-            ['description' => __('Display latest podcast list', 'sage')]
+            __('aripplesong - Podcast List', 'a-ripple-song'),
+            ['description' => __('Display latest podcast list', 'a-ripple-song')]
         );
     }
     
@@ -119,7 +119,7 @@ class Podcast_List_Widget extends WP_Widget {
                             $see_all_url = $archive_url ?: home_url('/episodes/');
                         }
                     ?>
-                    <a href="<?php echo esc_url($see_all_url); ?>"><?php _e('See all', 'sage'); ?></a>
+                    <a href="<?php echo esc_url($see_all_url); ?>"><?php _e('See all', 'a-ripple-song'); ?></a>
                 </span>
                 <?php endif; ?>
             </div>
@@ -129,7 +129,7 @@ class Podcast_List_Widget extends WP_Widget {
                         @click="activeTab = 'recent'" 
                         :class="activeTab === 'recent' ? 'bg-base-200' : 'bg-base-100'"
                         class="btn rounded-full btn-sm">
-                        <?php _e('Recent', 'sage'); ?>
+                        <?php _e('Recent', 'a-ripple-song'); ?>
                     </button>
                 </li>
                 <li>
@@ -137,7 +137,7 @@ class Podcast_List_Widget extends WP_Widget {
                         @click="activeTab = 'popular'" 
                         :class="activeTab === 'popular' ? 'bg-base-200' : 'bg-base-100'"
                         class="btn rounded-full btn-sm">
-                        <?php _e('Popular', 'sage'); ?>
+                        <?php _e('Popular', 'a-ripple-song'); ?>
                     </button>
                 </li>
                 <li>
@@ -145,7 +145,7 @@ class Podcast_List_Widget extends WP_Widget {
                         @click="activeTab = 'random'" 
                         :class="activeTab === 'random' ? 'bg-base-200' : 'bg-base-100'"
                         class="btn rounded-full btn-sm">
-                        <?php _e('Random', 'sage'); ?>
+                        <?php _e('Random', 'a-ripple-song'); ?>
                     </button>
                 </li>
             </ul>
@@ -167,7 +167,7 @@ class Podcast_List_Widget extends WP_Widget {
                         </li>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <li class="text-center text-base-content/50 py-8"><?php _e('No podcast content', 'sage'); ?></li>
+                    <li class="text-center text-base-content/50 py-8"><?php _e('No podcast content', 'a-ripple-song'); ?></li>
                 <?php endif; ?>
             </ul>
             
@@ -188,7 +188,7 @@ class Podcast_List_Widget extends WP_Widget {
                         </li>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <li class="text-center text-base-content/50 py-8"><?php _e('No podcast content', 'sage'); ?></li>
+                    <li class="text-center text-base-content/50 py-8"><?php _e('No podcast content', 'a-ripple-song'); ?></li>
                 <?php endif; ?>
             </ul>
             
@@ -209,7 +209,7 @@ class Podcast_List_Widget extends WP_Widget {
                         </li>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <li class="text-center text-base-content/50 py-8"><?php _e('No podcast content', 'sage'); ?></li>
+                    <li class="text-center text-base-content/50 py-8"><?php _e('No podcast content', 'a-ripple-song'); ?></li>
                 <?php endif; ?>
             </ul>
         </div>
@@ -276,7 +276,7 @@ class Podcast_List_Widget extends WP_Widget {
         $show_see_all = isset($instance['show_see_all']) ? $instance['show_see_all'] : true;
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'sage'); ?></label>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'a-ripple-song'); ?></label>
             <input class="widefat" 
                    id="<?php echo $this->get_field_id('title'); ?>" 
                    name="<?php echo $this->get_field_name('title'); ?>" 
@@ -284,7 +284,7 @@ class Podcast_List_Widget extends WP_Widget {
                    value="<?php echo esc_attr($title); ?>">
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('posts_per_page'); ?>"><?php _e('Number of posts:', 'sage'); ?></label>
+            <label for="<?php echo $this->get_field_id('posts_per_page'); ?>"><?php _e('Number of posts:', 'a-ripple-song'); ?></label>
             <input class="tiny-text" 
                    id="<?php echo $this->get_field_id('posts_per_page'); ?>" 
                    name="<?php echo $this->get_field_name('posts_per_page'); ?>" 
@@ -300,7 +300,7 @@ class Podcast_List_Widget extends WP_Widget {
                    <?php checked($show_see_all); ?> 
                    id="<?php echo $this->get_field_id('show_see_all'); ?>" 
                    name="<?php echo $this->get_field_name('show_see_all'); ?>">
-            <label for="<?php echo $this->get_field_id('show_see_all'); ?>"><?php _e('Show "See all" link', 'sage'); ?></label>
+            <label for="<?php echo $this->get_field_id('show_see_all'); ?>"><?php _e('Show "See all" link', 'a-ripple-song'); ?></label>
         </p>
         <?php
     }

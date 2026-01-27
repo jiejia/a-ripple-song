@@ -203,29 +203,29 @@ add_action('admin_enqueue_scripts', function($hook) {
                 
                 var slideHtml = '<div class=\"banner-slide-item\" style=\"margin-bottom: 15px; padding: 10px; border: 1px solid #ddd; border-radius: 4px; background: #f9f9f9;\">' +
                     '<div style=\"margin-bottom: 8px;\">' +
-                        '<label style=\"display: block; margin-bottom: 4px; font-weight: 600;\">" . esc_js(__('Image URL:', 'sage')) . "</label>' +
+                        '<label style=\"display: block; margin-bottom: 4px; font-weight: 600;\">" . esc_js(__('Image URL:', 'a-ripple-song')) . "</label>' +
                         '<div style=\"display: flex; gap: 5px;\">' +
-                            '<input type=\"text\" class=\"widefat banner-image-url\" name=\"' + fieldNamePrefix + '[' + slideCount + '][image]\" placeholder=\"" . esc_js(__('Image URL', 'sage')) . "\" style=\"flex: 1;\">' +
-                            '<button type=\"button\" class=\"button banner-select-image\" style=\"flex-shrink: 0;\">" . esc_js(__('Select Image', 'sage')) . "</button>' +
+                            '<input type=\"text\" class=\"widefat banner-image-url\" name=\"' + fieldNamePrefix + '[' + slideCount + '][image]\" placeholder=\"" . esc_js(__('Image URL', 'a-ripple-song')) . "\" style=\"flex: 1;\">' +
+                            '<button type=\"button\" class=\"button banner-select-image\" style=\"flex-shrink: 0;\">" . esc_js(__('Select Image', 'a-ripple-song')) . "</button>' +
                         '</div>' +
                     '</div>' +
                     '<div style=\"margin-bottom: 8px;\">' +
-                        '<label style=\"display: block; margin-bottom: 4px; font-weight: 600;\">" . esc_js(__('Link URL (optional):', 'sage')) . "</label>' +
+                        '<label style=\"display: block; margin-bottom: 4px; font-weight: 600;\">" . esc_js(__('Link URL (optional):', 'a-ripple-song')) . "</label>' +
                         '<input type=\"url\" class=\"widefat banner-link-url\" name=\"' + fieldNamePrefix + '[' + slideCount + '][link]\" placeholder=\"https://example.com\">' +
                     '</div>' +
                     '<div style=\"margin-bottom: 8px;\">' +
-                        '<label style=\"display: block; margin-bottom: 4px; font-weight: 600;\">" . esc_js(__('Link Target:', 'sage')) . "</label>' +
+                        '<label style=\"display: block; margin-bottom: 4px; font-weight: 600;\">" . esc_js(__('Link Target:', 'a-ripple-song')) . "</label>' +
                         '<select class=\"widefat banner-link-target\" name=\"' + fieldNamePrefix + '[' + slideCount + '][link_target]\">' +
-                            '<option value=\"_self\">" . esc_js(__('Current Page', 'sage')) . "</option>' +
-                            '<option value=\"_blank\">" . esc_js(__('New Tab', 'sage')) . "</option>' +
+                            '<option value=\"_self\">" . esc_js(__('Current Page', 'a-ripple-song')) . "</option>' +
+                            '<option value=\"_blank\">" . esc_js(__('New Tab', 'a-ripple-song')) . "</option>' +
                         '</select>' +
                     '</div>' +
                     '<div style=\"margin-bottom: 8px;\">' +
-                        '<label style=\"display: block; margin-bottom: 4px; font-weight: 600;\">" . esc_js(__('Description:', 'sage')) . "</label>' +
-                        '<input type=\"text\" class=\"widefat banner-description\" name=\"' + fieldNamePrefix + '[' + slideCount + '][description]\" placeholder=\"" . esc_js(__('Image description', 'sage')) . "\">' +
+                        '<label style=\"display: block; margin-bottom: 4px; font-weight: 600;\">" . esc_js(__('Description:', 'a-ripple-song')) . "</label>' +
+                        '<input type=\"text\" class=\"widefat banner-description\" name=\"' + fieldNamePrefix + '[' + slideCount + '][description]\" placeholder=\"" . esc_js(__('Image description', 'a-ripple-song')) . "\">' +
                     '</div>' +
                     '<div style=\"text-align: right;\">' +
-                        '<button type=\"button\" class=\"button button-link button-link-delete banner-remove-slide\" style=\"color: #b32d2e;\">" . esc_js(__('Delete', 'sage')) . "</button>' +
+                        '<button type=\"button\" class=\"button button-link button-link-delete banner-remove-slide\" style=\"color: #b32d2e;\">" . esc_js(__('Delete', 'a-ripple-song')) . "</button>' +
                     '</div>' +
                 '</div>';
                 
@@ -272,9 +272,9 @@ add_action('admin_enqueue_scripts', function($hook) {
                 // 如果已经存在实例，重用它
                 if (typeof wp.media.frames.bannerImageUploader === 'undefined') {
                     mediaUploader = wp.media({
-                        title: '" . esc_js(__('Select Banner Image', 'sage')) . "',
+                        title: '" . esc_js(__('Select Banner Image', 'a-ripple-song')) . "',
                         button: {
-                            text: '" . esc_js(__('Use This Image', 'sage')) . "'
+                            text: '" . esc_js(__('Use This Image', 'a-ripple-song')) . "'
                         },
                         multiple: false
                     });
@@ -378,20 +378,20 @@ add_action('admin_enqueue_scripts', function($hook) {
                 
                 var linkHtml = '<div class=\"footer-link-item\" style=\"margin-bottom: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 4px; background: #f9f9f9;\">' +
                     '<div style=\"margin-bottom: 8px;\">' +
-                        '<label style=\"display: block; margin-bottom: 4px; font-weight: 600;\">" . esc_js(__('Text:', 'sage')) . "</label>' +
-                        '<input type=\"text\" class=\"widefat footer-link-text\" name=\"' + fieldNamePrefix + '[' + linkCount + '][text]\" placeholder=\"" . esc_js(__('Display text', 'sage')) . "\">' +
+                        '<label style=\"display: block; margin-bottom: 4px; font-weight: 600;\">" . esc_js(__('Text:', 'a-ripple-song')) . "</label>' +
+                        '<input type=\"text\" class=\"widefat footer-link-text\" name=\"' + fieldNamePrefix + '[' + linkCount + '][text]\" placeholder=\"" . esc_js(__('Display text', 'a-ripple-song')) . "\">' +
                     '</div>' +
                     '<div style=\"margin-bottom: 8px;\">' +
-                        '<label style=\"display: block; margin-bottom: 4px; font-weight: 600;\">" . esc_js(__('URL (optional - leave empty for plain text):', 'sage')) . "</label>' +
+                        '<label style=\"display: block; margin-bottom: 4px; font-weight: 600;\">" . esc_js(__('URL (optional - leave empty for plain text):', 'a-ripple-song')) . "</label>' +
                         '<input type=\"url\" class=\"widefat footer-link-url\" name=\"' + fieldNamePrefix + '[' + linkCount + '][url]\" placeholder=\"https://example.com\">' +
                     '</div>' +
                     '<div style=\"margin-bottom: 8px;\">' +
                         '<label>' +
-                            '<input type=\"checkbox\" class=\"footer-link-new-tab\" name=\"' + fieldNamePrefix + '[' + linkCount + '][new_tab]\" value=\"1\"> " . esc_js(__('Open in new tab', 'sage')) . "' +
+                            '<input type=\"checkbox\" class=\"footer-link-new-tab\" name=\"' + fieldNamePrefix + '[' + linkCount + '][new_tab]\" value=\"1\"> " . esc_js(__('Open in new tab', 'a-ripple-song')) . "' +
                         '</label>' +
                     '</div>' +
                     '<div style=\"text-align: right;\">' +
-                        '<button type=\"button\" class=\"button button-link button-link-delete footer-remove-link\" style=\"color: #b32d2e;\">" . esc_js(__('Delete', 'sage')) . "</button>' +
+                        '<button type=\"button\" class=\"button button-link button-link-delete footer-remove-link\" style=\"color: #b32d2e;\">" . esc_js(__('Delete', 'a-ripple-song')) . "</button>' +
                     '</div>' +
                 '</div>';
                 

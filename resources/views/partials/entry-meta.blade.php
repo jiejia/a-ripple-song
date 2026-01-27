@@ -3,7 +3,7 @@
 </time>
 
 <p>
-  <span>{{ __('By', 'sage') }}</span>
+  <span>{{ __('By', 'a-ripple-song') }}</span>
   <a href="{{ get_author_posts_url(get_the_author_meta('ID')) }}" class="p-author h-card">
     {{ get_the_author() }}
   </a>
@@ -31,9 +31,9 @@
     @php $meta_post_type = get_post_type($meta_post_id); @endphp
     @php $podcast_post_type = function_exists('aripplesong_get_podcast_post_type') ? aripplesong_get_podcast_post_type() : null; @endphp
     <span class="ml-2">
-      · <span class="js-views-count" data-post-id="{{ $meta_post_id }}" data-post-type="{{ $meta_post_type }}">--</span> {{ __('views', 'sage') }}
+      · <span class="js-views-count" data-post-id="{{ $meta_post_id }}" data-post-type="{{ $meta_post_type }}">--</span> {{ __('views', 'a-ripple-song') }}
       @if ($podcast_post_type && $meta_post_type === $podcast_post_type)
-        · <span class="js-play-count" data-post-id="{{ $meta_post_id }}">--</span> {{ __('plays', 'sage') }}
+        · <span class="js-play-count" data-post-id="{{ $meta_post_id }}">--</span> {{ __('plays', 'a-ripple-song') }}
       @endif
     </span>
   </p>

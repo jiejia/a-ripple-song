@@ -3,178 +3,178 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/aripplesong\n"
 "Last-Translator: aripplesong\n"
-"Language-Team: Chinese (Taiwan)\n"
+"Language-Team: Russian (Russia)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-11-17T01:57:30+00:00\n"
-"PO-Revision-Date: 2025-01-27 12:00+0800\n"
-"Language: zh_TW: Sage Starter Theme 11.0.1\n"
+"PO-Revision-Date: 2025-01-27 12:00+0300\n"
+"Language: ru_RU: Sage Starter Theme 11.0.1\n"
 "X-Generator: Manual Translation\n"
-"X-Domain: sage\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Domain: a-ripple-song\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: app/filters.php:15
 msgid "Continued"
-msgstr "繼續閱讀"
+msgstr "Продолжение"
 
 #: app/PostTypes/Podcast.php:37
 #: app/PostTypes/Podcast.php:49
 msgid "Podcasts"
-msgstr "播客"
+msgstr "Подкасты"
 
 #: app/PostTypes/Podcast.php:38
 #: resources/views/sections/player.blade.php:10
 msgid "Podcast"
-msgstr "播客"
+msgstr "Подкаст"
 
 #: app/PostTypes/Podcast.php:39
 #: app/PostTypes/Podcast.php:40
 msgid "Add New Podcast"
-msgstr "新增播客"
+msgstr "Добавить новый подкаст"
 
 #: app/PostTypes/Podcast.php:41
 msgid "Edit Podcast"
-msgstr "編輯播客"
+msgstr "Редактировать подкаст"
 
 #: app/PostTypes/Podcast.php:42
 msgid "New Podcast"
-msgstr "新播客"
+msgstr "Новый подкаст"
 
 #: app/PostTypes/Podcast.php:43
 msgid "View Podcast"
-msgstr "檢視播客"
+msgstr "Просмотреть подкаст"
 
 #: app/PostTypes/Podcast.php:44
 msgid "View Podcasts"
-msgstr "檢視播客"
+msgstr "Просмотреть подкасты"
 
 #: app/PostTypes/Podcast.php:45
 msgid "Search Podcasts"
-msgstr "搜尋播客"
+msgstr "Поиск подкастов"
 
 #: app/PostTypes/Podcast.php:46
 #: resources/js/app.js:718
 msgid "No podcasts found"
-msgstr "找不到播客"
+msgstr "Подкасты не найдены"
 
 #: app/PostTypes/Podcast.php:47
 msgid "No podcasts found in Trash"
-msgstr "垃圾桶中沒有播客"
+msgstr "В корзине подкастов не найдено"
 
 #: app/PostTypes/Podcast.php:48
 msgid "All Podcasts"
-msgstr "所有播客"
+msgstr "Все подкасты"
 
 #: app/PostTypes/Podcast.php:91
 #: app/PostTypes/Podcast.php:101
 msgid "Podcast Categories"
-msgstr "播客分類"
+msgstr "Категории подкастов"
 
 #: app/PostTypes/Podcast.php:92
 msgid "Podcast Category"
-msgstr "播客分類"
+msgstr "Категория подкаста"
 
 #: app/PostTypes/Podcast.php:93
 msgid "Search Podcast Categories"
-msgstr "搜尋播客分類"
+msgstr "Поиск категорий подкастов"
 
 #: app/PostTypes/Podcast.php:94
 msgid "All Podcast Categories"
-msgstr "所有播客分類"
+msgstr "Все категории подкастов"
 
 #: app/PostTypes/Podcast.php:95
 msgid "Parent Podcast Category"
-msgstr "上層播客分類"
+msgstr "Родительская категория подкаста"
 
 #: app/PostTypes/Podcast.php:96
 msgid "Parent Podcast Category:"
-msgstr "上層播客分類："
+msgstr "Родительская категория подкаста:"
 
 #: app/PostTypes/Podcast.php:97
 msgid "Edit Podcast Category"
-msgstr "編輯播客分類"
+msgstr "Редактировать категорию подкаста"
 
 #: app/PostTypes/Podcast.php:98
 msgid "Update Podcast Category"
-msgstr "更新播客分類"
+msgstr "Обновить категорию подкаста"
 
 #: app/PostTypes/Podcast.php:99
 msgid "Add New Podcast Category"
-msgstr "新增播客分類"
+msgstr "Добавить новую категорию подкаста"
 
 #: app/PostTypes/Podcast.php:100
 msgid "New Podcast Category Name"
-msgstr "新播客分類名稱"
+msgstr "Название новой категории подкаста"
 
 #: app/PostTypes/Podcast.php:122
 msgid "Podcast Details"
-msgstr "播客詳情"
+msgstr "Детали подкаста"
 
 #: app/PostTypes/Podcast.php:130
 msgid "Audio File"
-msgstr "音訊檔案"
+msgstr "Аудиофайл"
 
 #: app/PostTypes/Podcast.php:143
 msgid "Add Audio File"
-msgstr "新增音訊檔案"
+msgstr "Добавить аудиофайл"
 
 #: app/PostTypes/Podcast.php:157
 #: app/PostTypes/Podcast.php:342
 msgid "Duration (seconds)"
-msgstr "時長（秒）"
+msgstr "Длительность (секунды)"
 
 #: app/PostTypes/Podcast.php:392
 msgid "Members"
-msgstr "成員"
+msgstr "Участники"
 
 #: app/PostTypes/Podcast.php:393
 msgid "Select podcast members (only administrators, authors, or editors, multiple selection allowed)"
-msgstr "選擇播客成員（僅限管理員、作者或編輯，可多選）"
+msgstr "Выберите участников подкаста (только администраторы, авторы или редакторы, разрешён множественный выбор)"
 
 #: app/PostTypes/Podcast.php:401
 msgid "Guests"
-msgstr "來賓"
+msgstr "Гости"
 
 #: app/PostTypes/Podcast.php:402
 msgid "Select podcast guests (only contributors, multiple selection allowed)"
-msgstr "選擇播客來賓（僅限投稿者，可多選）"
+msgstr "Выберите гостей подкаста (только участники, разрешён множественный выбор)"
 
 #: app/PostTypes/Podcast.php:1070
 msgid "Audio file URL"
-msgstr "音訊檔案網址"
+msgstr "URL аудиофайла"
 
 #: app/PostTypes/Podcast.php:1080
 msgid "Audio duration (seconds)"
-msgstr "音訊時長（秒）"
+msgstr "Длительность аудио (секунды)"
 
 #: app/setup.php:82
 msgid "Primary Navigation"
-msgstr "主要導覽"
+msgstr "Основная навигация"
 
 #: app/setup.php:193
 msgid "Home Main"
-msgstr "首頁主要區域"
+msgstr "Главная страница"
 
 #: app/setup.php:195
 msgid "Main area of the homepage for displaying various content modules"
-msgstr "首頁的主要區域，用於顯示各種內容模組"
+msgstr "Основная область главной страницы для отображения различных модулей контента"
 
 #: app/setup.php:202
 msgid "Sidebar Primary"
-msgstr "主要側邊欄"
+msgstr "Основная боковая панель"
 
 #: app/setup.php:204
 msgid "Primary sidebar area for displaying various content modules"
-msgstr "主要側邊欄區域，用於顯示各種內容模組"
+msgstr "Основная область боковой панели для отображения различных модулей контента"
 
 #: app/setup.php:211
 msgid "Leftbar Primary"
-msgstr "主要左側欄"
+msgstr "Основная левая панель"
 
 #: app/setup.php:213
 msgid "Primary left sidebar area for displaying various content modules"
-msgstr "主要左側欄區域，用於顯示各種內容模組"
+msgstr "Основная область левой боковой панели для отображения различных модулей контента"
 
 #. translators: %1$s is replaced with the number of comments and %2$s with the post title
 #: app/View/Composers/Comments.php:25
@@ -182,110 +182,112 @@ msgstr "主要左側欄區域，用於顯示各種內容模組"
 msgctxt "comments title"
 msgid "%1$s response to &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s responses to &ldquo;%2$s&rdquo;"
-msgstr[0] "%1$s 則對 &ldquo;%2$s&rdquo; 的回應"
+msgstr[0] "%1$s ответ на &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s ответа на &ldquo;%2$s&rdquo;"
+msgstr[2] "%1$s ответов на &ldquo;%2$s&rdquo;"
 
 #: app/View/Composers/Comments.php:26
 msgctxt "comments title"
 msgid "One"
-msgstr "一"
+msgstr "Один"
 
 #: app/View/Composers/Comments.php:59
 msgid "&larr; Older comments"
-msgstr "&larr; 較舊的留言"
+msgstr "&larr; Старые комментарии"
 
 #: app/View/Composers/Comments.php:73
 msgid "Newer comments &rarr;"
-msgstr "較新的留言 &rarr;"
+msgstr "Новые комментарии &rarr;"
 
 #: app/View/Composers/Post.php:34
 msgid "Latest Posts"
-msgstr "最新文章"
+msgstr "Последние записи"
 
 #. translators: %s is replaced with the search query
 #: app/View/Composers/Post.php:44
 #, php-format
 msgid "Search Results for %s"
-msgstr "%s 的搜尋結果"
+msgstr "Результаты поиска для %s"
 
 #: app/View/Composers/Post.php:50
 msgid "Not Found"
-msgstr "找不到"
+msgstr "Не найдено"
 
 #: app/View/Composers/Post.php:63
 msgid "Pages:"
-msgstr "頁面："
+msgstr "Страницы:"
 
 #: app/Widgets/AuthorsWidget.php:12
 msgid "aripplesong - Authors List"
-msgstr "aripplesong - 作者列表"
+msgstr "aripplesong - Список авторов"
 
 #: app/Widgets/AuthorsWidget.php:13
 msgid "Display members and guest authors list"
-msgstr "顯示成員和來賓作者列表"
+msgstr "Отобразить список участников и гостевых авторов"
 
 #: app/Widgets/AuthorsWidget.php:112
 msgid "No authors yet"
-msgstr "尚無作者"
+msgstr "Авторов пока нет"
 
 #: app/Widgets/AuthorsWidget.php:113
 msgid "Authors will appear here after adding users"
-msgstr "新增使用者後，作者將顯示於此"
+msgstr "Авторы появятся здесь после добавления пользователей"
 
 #: app/Widgets/AuthorsWidget.php:130
 msgid "Members Title:"
-msgstr "成員標題："
+msgstr "Заголовок участников:"
 
 #: app/Widgets/AuthorsWidget.php:144
 msgid "Show Members (Administrators, Editors, Authors)"
-msgstr "顯示成員（管理員、編輯、作者）"
+msgstr "Показать участников (Администраторы, Редакторы, Авторы)"
 
 #: app/Widgets/AuthorsWidget.php:148
 msgid "Guests Title:"
-msgstr "來賓標題："
+msgstr "Заголовок гостей:"
 
 #: app/Widgets/AuthorsWidget.php:162
 msgid "Show Guests (Contributors)"
-msgstr "顯示來賓（投稿者）"
+msgstr "Показать гостей (Участники)"
 
 #: app/Widgets/BannerCarouselWidget.php:12
 msgid "aripplesong - Banner Carousel"
-msgstr "aripplesong - 橫幅輪播"
+msgstr "aripplesong - Карусель баннеров"
 
 #: app/Widgets/BannerCarouselWidget.php:13
 msgid "Display banner carousel with images"
-msgstr "顯示帶有圖片的橫幅輪播"
+msgstr "Отобразить карусель баннеров с изображениями"
 
 #: resources/views/widgets/banner-carousel.blade.php:17
 msgid "No banner yet"
-msgstr "尚無橫幅"
+msgstr "Баннеров пока нет"
 
 #: resources/views/widgets/banner-carousel.blade.php:18
 msgid "Please add banner content in the admin panel"
-msgstr "請在管理後台新增橫幅內容"
+msgstr "Пожалуйста, добавьте содержимое баннера в панели администратора"
 
 #: app/Widgets/BannerCarouselWidget.php:49
 msgid "Banner Slides:"
-msgstr "橫幅投影片："
+msgstr "Слайды баннера:"
 
 #: app/widgets.php:206
 #: app/Widgets/BannerCarouselWidget.php:62
 msgid "Image URL:"
-msgstr "圖片網址："
+msgstr "URL изображения:"
 
 #: app/widgets.php:208
 #: app/Widgets/BannerCarouselWidget.php:69
 msgid "Image URL"
-msgstr "圖片網址"
+msgstr "URL изображения"
 
 #: app/widgets.php:209
 #: app/Widgets/BannerCarouselWidget.php:74
 msgid "Select Image"
-msgstr "選擇圖片"
+msgstr "Выбрать изображение"
 
 #: app/widgets.php:213
 #: app/Widgets/BannerCarouselWidget.php:85
 msgid "Link URL (optional):"
-msgstr "連結網址（選填）："
+msgstr "URL ссылки (необязательно):"
 
 #: app/Widgets/BannerCarouselWidget.php:91
 msgid "https://example.com"
@@ -294,50 +296,50 @@ msgstr "https://example.com"
 #: app/widgets.php:217
 #: app/Widgets/BannerCarouselWidget.php:95
 msgid "Link Target:"
-msgstr "連結目標："
+msgstr "Цель ссылки:"
 
 #: app/widgets.php:219
 #: app/Widgets/BannerCarouselWidget.php:100
 msgid "Current Page"
-msgstr "目前頁面"
+msgstr "Текущая страница"
 
 #: app/widgets.php:220
 #: app/Widgets/BannerCarouselWidget.php:103
 msgid "New Tab"
-msgstr "新分頁"
+msgstr "Новая вкладка"
 
 #: app/widgets.php:224
 #: app/Widgets/BannerCarouselWidget.php:109
 msgid "Description:"
-msgstr "描述："
+msgstr "Описание:"
 
 #: app/widgets.php:225
 #: app/Widgets/BannerCarouselWidget.php:115
 msgid "Image description"
-msgstr "圖片描述"
+msgstr "Описание изображения"
 
 #: app/widgets.php:228
 #: app/widgets.php:394
 #: app/Widgets/BannerCarouselWidget.php:119
 #: app/Widgets/FooterLinksWidget.php:91
 msgid "Delete"
-msgstr "刪除"
+msgstr "Удалить"
 
 #: app/Widgets/BannerCarouselWidget.php:128
 msgid "+ Add Banner"
-msgstr "+ 新增橫幅"
+msgstr "+ Добавить баннер"
 
 #: app/Widgets/BlogListWidget.php:12
 msgid "aripplesong - Blog List"
-msgstr "aripplesong - 網誌列表"
+msgstr "aripplesong - Список блогов"
 
 #: app/Widgets/BlogListWidget.php:13
 msgid "Display latest blog posts list"
-msgstr "顯示最新網誌文章列表"
+msgstr "Отобразить список последних записей блога"
 
 #: app/Widgets/BlogListWidget.php:79
 msgid "No blog posts yet"
-msgstr "尚無網誌文章"
+msgstr "Записей блога пока нет"
 
 #: app/Widgets/BlogListWidget.php:95
 #: app/Widgets/FooterLinksWidget.php:50
@@ -345,359 +347,361 @@ msgstr "尚無網誌文章"
 #: app/Widgets/SubscribeLinksWidget.php:81
 #: app/Widgets/TagsCloudWidget.php:82
 msgid "Title:"
-msgstr "標題："
+msgstr "Заголовок:"
 
 #: app/Widgets/BlogListWidget.php:103
 #: app/Widgets/PodcastListWidget.php:275
 msgid "Number of posts:"
-msgstr "文章數量："
+msgstr "Количество записей:"
 
 #: app/Widgets/BlogListWidget.php:114
 msgid "Number of columns:"
-msgstr "欄數："
+msgstr "Количество столбцов:"
 
 #: app/Widgets/BlogListWidget.php:131
 #: app/Widgets/PodcastListWidget.php:291
 msgid "Show \"See all\" link"
-msgstr "顯示「查看全部」連結"
+msgstr "Показать ссылку \"Смотреть всё\""
 
 #: app/Widgets/PodcastListWidget.php:12
 msgid "aripplesong - Podcast List"
-msgstr "aripplesong - 播客列表"
+msgstr "aripplesong - Список подкастов"
 
 #: app/Widgets/PodcastListWidget.php:13
 msgid "Display latest podcast list"
-msgstr "顯示最新播客列表"
+msgstr "Отобразить список последних подкастов"
 
 #: app/Widgets/PodcastListWidget.php:162
 #: app/Widgets/PodcastListWidget.php:183
 #: app/Widgets/PodcastListWidget.php:204
 msgid "No podcast content"
-msgstr "無播客內容"
+msgstr "Нет содержимого подкаста"
 
 #: app/Widgets/SubscribeLinksWidget.php:12
 msgid "aripplesong - Subscribe Links"
-msgstr "aripplesong - 訂閱連結"
+msgstr "aripplesong - Ссылки подписки"
 
 #: app/Widgets/SubscribeLinksWidget.php:13
 msgid "Display podcast subscription platform links"
-msgstr "顯示播客訂閱平台連結"
+msgstr "Отобразить ссылки на платформы подписки на подкасты"
 
 #: app/Widgets/SubscribeLinksWidget.php:92
 msgid "Apple Podcast Link:"
-msgstr "Apple Podcast 連結："
+msgstr "Ссылка Apple Podcast:"
 
 #: app/Widgets/SubscribeLinksWidget.php:100
 #: app/Widgets/SubscribeLinksWidget.php:113
 #: app/Widgets/SubscribeLinksWidget.php:126
 msgid "Leave blank to hide this button"
-msgstr "留空以隱藏此按鈕"
+msgstr "Оставьте пустым, чтобы скрыть эту кнопку"
 
 #: app/Widgets/SubscribeLinksWidget.php:105
 msgid "Spotify Link:"
-msgstr "Spotify 連結："
+msgstr "Ссылка Spotify:"
 
 #: app/Widgets/SubscribeLinksWidget.php:118
 msgid "Youtube Music Link:"
-msgstr "YouTube Music 連結："
+msgstr "Ссылка YouTube Music:"
 
 #: app/Widgets/TagsCloudWidget.php:12
 msgid "aripplesong - Tags Cloud"
-msgstr "aripplesong - 標籤雲"
+msgstr "aripplesong - Облако тегов"
 
 #: app/Widgets/TagsCloudWidget.php:13
 msgid "Display article tags cloud"
-msgstr "顯示文章標籤雲"
+msgstr "Отобразить облако тегов статей"
 
 #: app/Widgets/TagsCloudWidget.php:44
 msgid "No tags yet"
-msgstr "尚無標籤"
+msgstr "Тегов пока нет"
 
 #: app/Widgets/TagsCloudWidget.php:45
 msgid "Tags will appear here after publishing articles with tags"
-msgstr "發布帶有標籤的文章後，標籤將顯示於此"
+msgstr "Теги появятся здесь после публикации статей с тегами"
 
 #: app/Widgets/TagsCloudWidget.php:61
 #, php-format
 msgid "%d post"
 msgid_plural "%d posts"
-msgstr[0] "%d 篇文章"
+msgstr[0] "%d запись"
+msgstr[1] "%d записи"
+msgstr[2] "%d записей"
 
 #: app/Widgets/TagsCloudWidget.php:91
 msgid "Number of tags:"
-msgstr "標籤數量："
+msgstr "Количество тегов:"
 
 #: app/Widgets/TagsCloudWidget.php:100
 msgid "Maximum number of tags to display"
-msgstr "要顯示的標籤最大數量"
+msgstr "Максимальное количество отображаемых тегов"
 
 #: app/Widgets/TagsCloudWidget.php:104
 msgid "Order by:"
-msgstr "排序依據："
+msgstr "Сортировать по:"
 
 #: app/Widgets/TagsCloudWidget.php:108
 msgid "Post Count"
-msgstr "文章數量"
+msgstr "Количество записей"
 
 #: app/Widgets/TagsCloudWidget.php:109
 msgid "Tag Name"
-msgstr "標籤名稱"
+msgstr "Название тега"
 
 #: app/Widgets/TagsCloudWidget.php:110
 msgid "Tag ID"
-msgstr "標籤 ID"
+msgstr "ID тега"
 
 #: app/Widgets/PodcastListWidget.php:140
 #: app/Widgets/TagsCloudWidget.php:111
 msgid "Random"
-msgstr "隨機"
+msgstr "Случайно"
 
 #: app/Widgets/BlogListWidget.php:45
 #: app/Widgets/PodcastListWidget.php:114
 msgid "See all"
-msgstr "查看全部"
+msgstr "Смотреть всё"
 
 #: app/Widgets/PodcastListWidget.php:124
 msgid "Recent"
-msgstr "最新"
+msgstr "Недавние"
 
 #: app/Widgets/PodcastListWidget.php:132
 msgid "Popular"
-msgstr "熱門"
+msgstr "Популярные"
 
 #: app/Widgets/TagsCloudWidget.php:116
 msgid "Sort order:"
-msgstr "排序順序："
+msgstr "Порядок сортировки:"
 
 #: app/Widgets/TagsCloudWidget.php:120
 msgid "Descending (High to Low/Z to A)"
-msgstr "遞減（高到低/Z 到 A）"
+msgstr "По убыванию (От высокого к низкому/От Я к А)"
 
 #: app/Widgets/TagsCloudWidget.php:121
 msgid "Ascending (Low to High/A to Z)"
-msgstr "遞增（低到高/A 到 Z）"
+msgstr "По возрастанию (От низкого к высокому/От А к Я)"
 
 #: app/Widgets/FooterLinksWidget.php:12
 msgid "aripplesong - Footer Links"
-msgstr "aripplesong - 頁腳連結"
+msgstr "aripplesong - Ссылки подвала"
 
 #: app/Widgets/FooterLinksWidget.php:13
 msgid "Display a list of links or text items in the footer"
-msgstr "在頁腳顯示連結或文字項目列表"
+msgstr "Отображение списка ссылок или текстовых элементов в подвале"
 
 #: app/Widgets/FooterLinksWidget.php:56
 msgid "e.g., Contact, Navigate, Support"
-msgstr "例如：聯繫、導覽、支援"
+msgstr "напр., Контакты, Навигация, Поддержка"
 
 #: app/Widgets/FooterLinksWidget.php:59
 msgid "Items:"
-msgstr "項目："
+msgstr "Элементы:"
 
 #: app/widgets.php:381
 #: app/Widgets/FooterLinksWidget.php:65
 msgid "Text:"
-msgstr "文字："
+msgstr "Текст:"
 
 #: app/widgets.php:382
 #: app/Widgets/FooterLinksWidget.php:70
 msgid "Display text"
-msgstr "顯示文字"
+msgstr "Отображаемый текст"
 
 #: app/widgets.php:385
 #: app/Widgets/FooterLinksWidget.php:73
 msgid "URL (optional - leave empty for plain text):"
-msgstr "連結（可選 - 留空則顯示純文字）："
+msgstr "URL (необязательно - оставьте пустым для простого текста):"
 
 #: app/widgets.php:390
 #: app/Widgets/FooterLinksWidget.php:87
 msgid "Open in new tab"
-msgstr "在新分頁開啟"
+msgstr "Открыть в новой вкладке"
 
 #: app/Widgets/FooterLinksWidget.php:102
 msgid "+ Add Item"
-msgstr "+ 新增項目"
+msgstr "+ Добавить элемент"
 
 #: app/setup.php:183
 msgid "Footer Links"
-msgstr "頁腳連結"
+msgstr "Ссылки подвала"
 
 #: app/setup.php:185
 msgid "Footer links area for displaying link columns"
-msgstr "頁腳連結區域，用於顯示連結欄"
+msgstr "Область ссылок подвала для отображения колонок ссылок"
 
 #. Template Name of the theme
 msgid "Blog Template"
-msgstr "網誌範本"
+msgstr "Шаблон блога"
 
 #. Template Name of the theme
 msgid "Custom Template"
-msgstr "自訂範本"
+msgstr "Пользовательский шаблон"
 
 #. Template Name of the theme
 msgid "Podcast Template"
-msgstr "播客範本"
+msgstr "Шаблон подкаста"
 
 #: resources/views/404.blade.php:8
 msgid "Sorry, but the page you are trying to view does not exist."
-msgstr "抱歉，您嘗試檢視的頁面不存在。"
+msgstr "Извините, но страница, которую вы пытаетесь просмотреть, не существует."
 
 #: resources/views/author.blade.php:22
 #: resources/views/search.blade.php:7
 msgid "Sorry, no results were found."
-msgstr "抱歉，找不到結果。"
+msgstr "Извините, результаты не найдены."
 
 #: resources/views/forms/search.blade.php:15
 msgctxt "placeholder"
 msgid "Search &hellip;"
-msgstr "搜尋 &hellip;"
+msgstr "Поиск &hellip;"
 
 #: resources/views/partials/comments.blade.php:45
 msgid "Comments are closed."
-msgstr "留言功能已關閉。"
+msgstr "Комментарии закрыты."
 
 #: resources/views/partials/entry-meta.blade.php:7
 msgid "By"
-msgstr "作者"
+msgstr "Автор"
 
 #: resources/views/template-home.blade.php:13
 msgid "Please add widgets to \"Home Main\" area in Appearance > Widgets in the admin panel."
-msgstr "請在管理後台的外觀 > 小工具中，將小工具新增至【首頁主要區域】。"
+msgstr "Пожалуйста, добавьте виджеты в область 【Главная страница】 в разделе Внешний вид > Виджеты в панели администратора."
 
 #: resources/views/author.blade.php:9
 msgid "Author:"
-msgstr "作者："
+msgstr "Автор:"
 
 #: resources/views/partials/comments.blade.php:52
 msgid "Leave a Comment"
-msgstr "發表留言"
+msgstr "Оставить комментарий"
 
 #: resources/views/partials/podcast-episode-card.blade.php:60
 msgid "Pause"
-msgstr "暫停"
+msgstr "Пауза"
 
 #: resources/views/partials/podcast-episode-card.blade.php:60
 #: resources/views/sections/autoplay-confirm.blade.php:34
 msgid "Play"
-msgstr "播放"
+msgstr "Воспроизвести"
 
 #: resources/views/sections/leftbar-drawer.blade.php:21
 #: resources/views/sections/leftbar.blade.php:6
 msgid "Please add widgets to \"Leftbar\" area in Appearance > Widgets in the admin panel."
-msgstr "請在管理後台的外觀 > 小工具中，將小工具新增至【左側欄】區域。"
+msgstr "Пожалуйста, добавьте виджеты в область 【Левая панель】 в разделе Внешний вид > Виджеты в панели администратора."
 
 #: resources/views/sections/sidebar-drawer.blade.php:22
 #: resources/views/sections/sidebar.blade.php:8
 msgid "Please add widgets to \"Sidebar\" area in Appearance > Widgets in the admin panel."
-msgstr "請在管理後台的外觀 > 小工具中，將小工具新增至【側邊欄】區域。"
+msgstr "Пожалуйста, добавьте виджеты в область 【Боковая панель】 в разделе Внешний вид > Виджеты в панели администратора."
 
 #: resources/views/sections/mobile-menu.blade.php:7
 msgid "Menu"
-msgstr "選單"
+msgstr "Меню"
 
 #: resources/views/sections/search-modal.blade.php:6
 msgid "Close"
-msgstr "關閉"
+msgstr "Закрыть"
 
 #: resources/views/sections/header.blade.php:26
 msgid "Light Mode"
-msgstr "淺色模式"
+msgstr "Светлый режим"
 
 #: resources/views/sections/header.blade.php:26
 msgid "Dark Mode"
-msgstr "深色模式"
+msgstr "Тёмный режим"
 
 #: resources/views/sections/header.blade.php:26
 msgid "Follow System"
-msgstr "跟隨系統"
+msgstr "Следовать системе"
 
 #: resources/views/sections/player.blade.php:3
 msgid "NOW PLAYING"
-msgstr "正在播放"
+msgstr "СЕЙЧАС ИГРАЕТ"
 
 #: resources/views/sections/player.blade.php:26
 msgid "No Episode Playing"
-msgstr "沒有正在播放的集數"
+msgstr "Эпизод не воспроизводится"
 
 #: resources/views/sections/player.blade.php:27
 msgid "Podcast Episode"
-msgstr "播客集數"
+msgstr "Эпизод подкаста"
 
 #: resources/views/sections/playlist-drawer.blade.php:8
 msgid "Playlist"
-msgstr "播放清單"
+msgstr "Плейлист"
 
 #: resources/views/sections/playlist-drawer.blade.php:15
 msgid "Total"
-msgstr "總計"
+msgstr "Всего"
 
 #: resources/views/sections/playlist-drawer.blade.php:15
 msgid "episodes"
-msgstr "集數"
+msgstr "эпизодов"
 
 #: resources/views/sections/playlist-drawer.blade.php:17
 msgid "Are you sure you want to clear the playlist?"
-msgstr "您確定要清除播放清單嗎？"
+msgstr "Вы уверены, что хотите очистить плейлист?"
 
 #: resources/views/sections/playlist-drawer.blade.php:19
 msgid "Clear Playlist"
-msgstr "清除播放清單"
+msgstr "Очистить плейлист"
 
 #: resources/views/sections/playlist-drawer.blade.php:21
 msgid "Clear"
-msgstr "清除"
+msgstr "Очистить"
 
 #: resources/views/sections/playlist-drawer.blade.php:32
 msgid "Playlist is empty"
-msgstr "播放清單是空的"
+msgstr "Плейлист пуст"
 
 #: resources/views/sections/playlist-drawer.blade.php:33
 msgid "Add some episodes to start listening"
-msgstr "新增一些集數以開始收聽"
+msgstr "Добавьте несколько эпизодов, чтобы начать прослушивание"
 
 #: resources/views/sections/playlist-drawer.blade.php:83
 msgid "Remove"
-msgstr "移除"
+msgstr "Удалить"
 
 #: resources/views/sections/autoplay-confirm.blade.php:22
 msgid "Continue playing?"
-msgstr "繼續播放？"
+msgstr "Продолжить воспроизведение?"
 
 #: resources/views/sections/autoplay-confirm.blade.php:25
 msgid "Unknown episode"
-msgstr "未知節目"
+msgstr "Неизвестный эпизод"
 
 #: app/ThemeOptions/General.php:1685
 #: resources/views/sections/autoplay-confirm.blade.php:42
 msgid "Cancel"
-msgstr "取消"
+msgstr "Отмена"
 
 #: resources/views/sections/player.blade.php:47
 msgid "Loading audio"
-msgstr "正在載入音訊"
+msgstr "Загрузка аудио"
 
 #: app/ThemeOptions/General.php:111
 msgid "Social Links"
-msgstr "社交連結"
+msgstr "Социальные ссылки"
 
 #: app/ThemeOptions/General.php:100
 msgid "Header Scripts"
-msgstr "頁首指令碼"
+msgstr "Скрипты в заголовке"
 
 #: app/ThemeOptions/General.php:101
 msgid "Scripts to be added in the <head> section. You can include complete <script> tags for services like Google Analytics."
-msgstr "將添加到 <head> 區域的指令碼。可以包含完整的 <script> 標籤，例如 Google Analytics 代碼。"
+msgstr "Скрипты для добавления в секцию <head>. Можно включать полные теги <script> для сервисов вроде Google Analytics."
 
 #: app/ThemeOptions/General.php:102
 msgid "Footer Scripts"
-msgstr "頁尾指令碼"
+msgstr "Скрипты в подвале"
 
 #: app/ThemeOptions/General.php:103
 msgid "Scripts to be added before </body>. You can include complete <script> tags."
-msgstr "將添加到 </body> 之前的指令碼。可以包含完整的 <script> 標籤。"
+msgstr "Скрипты для добавления перед </body>. Можно включать полные теги <script>."
 
 #: app/ThemeOptions/General.php:341
 msgid "Configure your social media links. Leave empty to hide a platform."
-msgstr "配置您的社交媒體連結。留空則隱藏該平台。"
+msgstr "Настройте ссылки на социальные сети. Оставьте пустым, чтобы скрыть платформу."
 
 #: app/ThemeOptions/General.php:292
 #: app/ThemeOptions/SocialLinks.php:28
@@ -717,7 +721,7 @@ msgstr "Instagram"
 #: app/ThemeOptions/General.php:304
 #: app/ThemeOptions/SocialLinks.php:40
 msgid "LinkedIn"
-msgstr "領英"
+msgstr "LinkedIn"
 
 #: app/ThemeOptions/General.php:308
 #: app/ThemeOptions/SocialLinks.php:44
@@ -742,137 +746,127 @@ msgstr "Threads"
 #: app/ThemeOptions/General.php:324
 #: app/ThemeOptions/SocialLinks.php:60
 msgid "Weibo"
-msgstr "微博"
+msgstr "Weibo"
 
 #: app/ThemeOptions/General.php:328
 #: app/ThemeOptions/SocialLinks.php:64
 msgid "WeChat"
-msgstr "微信"
+msgstr "WeChat"
 
 #: app/ThemeOptions/General.php:332
 #: app/ThemeOptions/SocialLinks.php:68
 msgid "RSS Feed"
-msgstr "RSS 訂閱"
+msgstr "RSS-лента"
 
 #: resources/views/sections/leftbar-drawer.blade.php:9
 msgid "Left Sidebar"
-msgstr "左側邊欄"
+msgstr "Левая боковая панель"
 
 #: resources/views/sections/sidebar-drawer.blade.php:9
 msgid "Right Sidebar"
-msgstr "右側邊欄"
+msgstr "Правая боковая панель"
 
 #: resources/views/layouts/app.blade.php:92
 msgid "Open Left Sidebar"
-msgstr "開啟左側邊欄"
+msgstr "Открыть левую боковую панель"
 
 #: resources/views/layouts/app.blade.php:106
 msgid "Open Right Sidebar"
-msgstr "開啟右側邊欄"
+msgstr "Открыть правую боковую панель"
 
 #: app/ThemeOptions/General.php:59
 #: app/ThemeOptions/General.php:259
 #: app/ThemeOptions/General.php:1616
 msgid "Site Logo"
-msgstr "網站 Logo"
+msgstr "Логотип сайта"
 
 #: app/ThemeOptions/General.php:74
 msgid "Click any card to choose the light theme."
-msgstr "點擊任意卡片選擇淺色主題。"
+msgstr "Щёлкните любую карточку, чтобы выбрать светлую тему."
 
 #: app/ThemeOptions/General.php:89
 msgid "Click any card to choose the dark theme."
-msgstr "點擊任意卡片選擇深色主題。"
+msgstr "Щёлкните любую карточку, чтобы выбрать тёмную тему."
 
 #: app/ThemeOptions/General.php:78
 msgid "If the card picker is unavailable, use this dropdown (default: retro)."
-msgstr "如果卡片控制不可用，請使用此下拉選單（預設：retro）。"
+msgstr "Если выбор карточек недоступен, используйте этот список (по умолчанию: retro)."
 
 #: app/ThemeOptions/General.php:93
 msgid "If the card picker is unavailable, use this dropdown (default: dim)."
-msgstr "如果卡片控制不可用，請使用此下拉選單（預設：dim）。"
-
-#: app/ThemeOptions/General.php:66
-#: app/ThemeOptions/General.php:70
-msgid "Light Theme"
-msgstr "淺色主題"
-
-#: app/ThemeOptions/General.php:81
-#: app/ThemeOptions/General.php:85
-msgid "Dark Theme"
-msgstr "深色主題"
+msgstr "Если выбор карточек недоступен, используйте этот список (по умолчанию: dim)."
 
 #: app/ThemeOptions/Podcast.php:648
 msgid "Podcast Cover is not a valid image."
-msgstr "播客封面不是有效的圖片。"
+msgstr "Обложка подкаста не является допустимым изображением."
 
 #: app/ThemeOptions/Podcast.php:740
 msgid "Podcast Cover must be JPG or PNG."
-msgstr "播客封面必須為 JPG 或 PNG。"
+msgstr "Обложка подкаста должна быть JPG или PNG."
 
 #: app/ThemeOptions/Podcast.php:76
 msgid "Podcast Settings"
-msgstr "播客設定"
+msgstr "Настройки подкаста"
 
 #: app/ThemeOptions/Podcast.php:91
 msgid "Podcast Title"
-msgstr "播客標題"
+msgstr "Название подкаста"
 
 #: app/ThemeOptions/Podcast.php:92
 msgid "Required. If empty, falls back to site title."
-msgstr "必填。若留空，將使用網站標題。"
+msgstr "Обязательно. Если пусто, будет использовано название сайта."
 
 #: app/ThemeOptions/Podcast.php:94
 msgid "Podcast Subtitle"
-msgstr "播客副標題"
+msgstr "Подзаголовок подкаста"
 
 #: app/ThemeOptions/Podcast.php:95
 msgid "Short tagline shown in some apps."
-msgstr "在部分應用中顯示的簡短標語。"
+msgstr "Короткий слоган, отображается в некоторых приложениях."
 
 #: app/ThemeOptions/Podcast.php:96
 msgid "Podcast Description"
-msgstr "播客描述"
+msgstr "Описание подкаста"
 
 #: app/ThemeOptions/Podcast.php:97
 msgid "Required. Plain text description of the show."
-msgstr "必填。節目的純文字描述。"
+msgstr "Обязательно. Описание шоу в виде простого текста."
 
 #: app/ThemeOptions/Podcast.php:99
 msgid "Podcast Author (itunes:author)"
-msgstr "播客作者 (itunes:author)"
+msgstr "Автор подкаста (itunes:author)"
 
 #: app/ThemeOptions/Podcast.php:100
 msgid "Required. Displayed as show author in directories."
-msgstr "必填。會在目錄中顯示為節目作者。"
+msgstr "Обязательно. Отображается как автор шоу в каталогах."
 
 #: app/ThemeOptions/Podcast.php:102
 msgid "Owner Name"
-msgstr "擁有者姓名"
+msgstr "Имя владельца"
 
 #: app/ThemeOptions/Podcast.php:103
 msgid "Required. For <itunes:owner><itunes:name>."
-msgstr "必填，用於 <itunes:owner><itunes:name>。"
+msgstr "Обязательно для <itunes:owner><itunes:name>."
 
 #: app/ThemeOptions/Podcast.php:105
 msgid "Owner Email"
-msgstr "擁有者郵箱"
+msgstr "Email владельца"
 
 #: app/ThemeOptions/Podcast.php:108
 msgid "Required. For <itunes:owner><itunes:email>. Use a monitored inbox."
-msgstr "必填，用於 <itunes:owner><itunes:email>。請使用有人監控的郵箱。"
+msgstr "Обязательно для <itunes:owner><itunes:email>. Используйте контролируемый ящик."
 
 #: app/ThemeOptions/Podcast.php:110
 msgid "Podcast Cover (1400–3000px square)"
-msgstr "播客封面（1400–3000px 正方形）"
+msgstr "Обложка подкаста (квадрат 1400–3000 px)"
 
 #: app/ThemeOptions/Podcast.php:114
 msgid "Default Explicit Flag"
-msgstr "預設露骨標記"
+msgstr "Флаг Explicit по умолчанию"
 
 #: app/ThemeOptions/Podcast.php:116
 msgid "clean (no explicit content)"
-msgstr "clean（無露骨內容）"
+msgstr "clean (без откровенного контента)"
 
 #: app/PostTypes/Podcast.php:203
 #: app/ThemeOptions/Podcast.php:117
@@ -881,39 +875,39 @@ msgstr "explicit"
 
 #: app/ThemeOptions/Podcast.php:120
 msgid "Required. Single-episode value can override."
-msgstr "必填。可被單集值覆寫。"
+msgstr "Обязательно. Значение отдельного эпизода может переопределить."
 
 #: app/ThemeOptions/Podcast.php:122
 msgid "Language (RSS <language>)"
-msgstr "語言（RSS <language>）"
+msgstr "Язык (RSS <language>)"
 
 #: app/ThemeOptions/Podcast.php:125
 msgid "RFC 5646 language tag, e.g. en-US, zh-CN."
-msgstr "RFC 5646 語言標籤，例如 en-US、zh-CN。"
+msgstr "Языковой тег RFC 5646, например en-US, zh-CN."
 
 #: app/ThemeOptions/Podcast.php:127
 msgid "Primary Category"
-msgstr "主要分類"
+msgstr "Основная категория"
 
 #: app/ThemeOptions/Podcast.php:129
 msgid "Required. Use Apple’s category list."
-msgstr "必填。使用 Apple 的分類列表。"
+msgstr "Обязательно. Используйте список категорий Apple."
 
 #: app/ThemeOptions/Podcast.php:131
 msgid "Secondary Category (optional)"
-msgstr "次要分類（可選）"
+msgstr "Вторичная категория (опционально)"
 
 #: app/ThemeOptions/Podcast.php:133
 msgid "Optional second category."
-msgstr "可選的第二分類。"
+msgstr "Необязательная вторая категория."
 
 #: app/ThemeOptions/Podcast.php:134
 msgid "Copyright (optional)"
-msgstr "版權（可選）"
+msgstr "Авторское право (опционально)"
 
 #: app/ThemeOptions/Podcast.php:135
 msgid "Example: © 2025 Your Studio. Plain text."
-msgstr "示例：© 2025 Your Studio。純文字。"
+msgstr "Пример: © 2025 Your Studio. Простой текст."
 
 #: app/ThemeOptions/Podcast.php:162
 msgid "podcast:locked"
@@ -921,7 +915,7 @@ msgstr "podcast:locked"
 
 #: app/ThemeOptions/Podcast.php:164
 msgid "yes (recommended, prevents unauthorized moves)"
-msgstr "yes（建議，可防止未授權移動）"
+msgstr "yes (рекомендуется, предотвращает несанкционированные переносы)"
 
 #: app/PostTypes/Podcast.php:385
 #: app/ThemeOptions/Podcast.php:148
@@ -932,60 +926,70 @@ msgstr "no"
 
 #: app/ThemeOptions/Podcast.php:168
 msgid "Podcasting 2.0: lock feed to this publisher."
-msgstr "Podcasting 2.0：將摘要鎖定到此發布者。"
+msgstr "Podcasting 2.0: закрепить ленту за этим издателем."
 
 #: app/ThemeOptions/Podcast.php:173
 msgid "podcast:guid (optional)"
-msgstr "podcast:guid（可選）"
+msgstr "podcast:guid (опционально)"
 
 #: app/ThemeOptions/Podcast.php:174
 msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
-msgstr "Podcasting 2.0 GUID。如留空，摘要將用網站 URL 作後備。"
+msgstr "GUID Podcasting 2.0. Если пусто, лента использует URL сайта как запасной."
 
 #: app/PostTypes/Podcast.php:131
 msgid "Required. Upload an audio file or enter audio file URL (https)."
-msgstr "必填。上傳音訊檔案或輸入音訊檔案 URL（https）。"
+msgstr "Обязательно. Загрузите аудиофайл или введите URL файла (https)."
 
 #: app/PostTypes/Podcast.php:198
 msgid "Required. clean / explicit."
-msgstr "必填。clean / explicit。"
+msgstr "Обязательно. clean / explicit."
 
 #: app/PostTypes/Podcast.php:215
 msgid "Required. full / trailer / bonus"
-msgstr "必填。full / trailer / bonus"
+msgstr "Обязательно. full / trailer / bonus"
 
 #: app/ThemeOptions/Podcast.php:83
 #: app/ThemeOptions/Podcast.php:88
 msgid "Podcast RSS URL"
-msgstr "播客 RSS 位址"
+msgstr "RSS-адрес подкаста"
 
 #: app/ThemeOptions/Podcast.php:87
 msgid "Open feed"
-msgstr "開啟訂閱源"
+msgstr "Открыть ленту"
 
 #: app/ThemeOptions/Podcast.php:89
 msgid "Your podcast RSS feed URL. Click to select and copy."
-msgstr "您的播客 RSS 訂閱地址。點擊選擇並複製。"
+msgstr "URL вашей RSS-ленты подкаста. Нажмите, чтобы выбрать и скопировать."
+
+#: app/ThemeOptions/General.php:66
+#: app/ThemeOptions/General.php:70
+msgid "Light Theme"
+msgstr "Светлая тема"
 
 #: app/ThemeOptions/General.php:75
 msgid "Light Theme (fallback)"
-msgstr "淺色主題（備選）"
+msgstr "Светлая тема (резервная)"
+
+#: app/ThemeOptions/General.php:81
+#: app/ThemeOptions/General.php:85
+msgid "Dark Theme"
+msgstr "Тёмная тема"
 
 #: app/ThemeOptions/General.php:90
 msgid "Dark Theme (fallback)"
-msgstr "深色主題（備選）"
+msgstr "Тёмная тема (резервная)"
 
 #: app/PostTypes/Podcast.php:172
 msgid "Audio Length (bytes)"
-msgstr "音訊大小（位元組）"
+msgstr "Размер аудио (байт)"
 
 #: app/PostTypes/Podcast.php:186
 msgid "Audio MIME Type"
-msgstr "音訊 MIME 類型"
+msgstr "MIME-тип аудио"
 
 #: app/PostTypes/Podcast.php:197
 msgid "Explicit"
-msgstr "內容分級"
+msgstr "Явный контент"
 
 #: app/PostTypes/Podcast.php:202
 msgid "clean"
@@ -993,7 +997,7 @@ msgstr "clean"
 
 #: app/PostTypes/Podcast.php:214
 msgid "Episode Type"
-msgstr "單集類型"
+msgstr "Тип эпизода"
 
 #: app/PostTypes/Podcast.php:219
 msgid "full"
@@ -1009,67 +1013,67 @@ msgstr "bonus"
 
 #: app/PostTypes/Podcast.php:232
 msgid "Episode Number"
-msgstr "集數"
+msgstr "Номер эпизода"
 
 #: app/PostTypes/Podcast.php:233
 msgid "Optional but recommended. Integer."
-msgstr "可選但建議填寫。整數。"
+msgstr "Необязательно, но рекомендуется. Целое число."
 
 #: app/PostTypes/Podcast.php:246
 msgid "Season Number"
-msgstr "季數"
+msgstr "Номер сезона"
 
 #: app/PostTypes/Podcast.php:247
 msgid "Optional. Integer."
-msgstr "可選。整數。"
+msgstr "Необязательно. Целое число."
 
 #: app/PostTypes/Podcast.php:260
 msgid "Episode Author (override)"
-msgstr "單集作者（覆寫）"
+msgstr "Автор эпизода (переопределить)"
 
 #: app/PostTypes/Podcast.php:261
 msgid "Optional. Overrides channel author for this episode."
-msgstr "可選。覆寫此單集的頻道作者。"
+msgstr "Необязательно. Переопределяет автора канала для этого эпизода."
 
 #: app/PostTypes/Podcast.php:267
 msgid "Episode Cover (square)"
-msgstr "單集封面（正方形）"
+msgstr "Обложка эпизода (квадратная)"
 
 #: app/PostTypes/Podcast.php:268
 msgid "Optional. Square 1400–3000px. Overrides channel cover."
-msgstr "可選。正方形 1400–3000px。覆寫頻道封面。"
+msgstr "Необязательно. Квадрат 1400–3000 px. Переопределяет обложку канала."
 
 #: app/PostTypes/Podcast.php:359
 msgid "Subtitle"
-msgstr "副標題"
+msgstr "Подзаголовок"
 
 #: app/PostTypes/Podcast.php:360
 msgid "Optional. Short subtitle for iTunes."
-msgstr "可選。iTunes 的短副標題。"
+msgstr "Необязательно. Короткий подзаголовок для iTunes."
 
 #: app/PostTypes/Podcast.php:366
 msgid "Summary"
-msgstr "摘要"
+msgstr "Краткое описание"
 
 #: app/PostTypes/Podcast.php:367
 msgid "Optional. Plain text summary for iTunes."
-msgstr "可選。iTunes 純文字摘要。"
+msgstr "Необязательно. Описание в виде простого текста для iTunes."
 
 #: app/PostTypes/Podcast.php:373
 msgid "Custom GUID (optional)"
-msgstr "自訂 GUID（可選）"
+msgstr "Пользовательский GUID (необязательно)"
 
 #: app/PostTypes/Podcast.php:374
 msgid "Optional. If empty, feed uses WP permalink as GUID."
-msgstr "可選。留空則使用 WP 固定連結作為 GUID。"
+msgstr "Необязательно. Если пусто, в качестве GUID используется постоянная ссылка WP."
 
 #: app/PostTypes/Podcast.php:380
 msgid "iTunes Block"
-msgstr "iTunes 屏蔽"
+msgstr "Блокировка iTunes"
 
 #: app/PostTypes/Podcast.php:381
 msgid "Optional. yes = hide this episode in Apple Podcasts."
-msgstr "可選。yes = 在 Apple Podcasts 中隱藏此單集。"
+msgstr "Необязательно. yes = скрыть этот эпизод в Apple Podcasts."
 
 #: app/PostTypes/Podcast.php:386
 #: app/ThemeOptions/Podcast.php:149
@@ -1080,397 +1084,397 @@ msgstr "yes"
 #: app/PostTypes/Podcast.php:540
 #: app/PostTypes/Podcast.php:604
 msgid "Audio File is required."
-msgstr "音訊檔案為必填。"
+msgstr "Аудиофайл обязателен."
 
 #: app/PostTypes/Podcast.php:642
 msgid "Audio File must be a valid URL (https recommended)."
-msgstr "音訊檔案必須是有效的 URL（建議 https）。"
+msgstr "Аудиофайл должен быть корректным URL (рекомендуется https)."
 
 #: app/PostTypes/Podcast.php:659
 msgid "Explicit must be clean or explicit."
-msgstr "內容分級必須為 clean 或 explicit。"
+msgstr "Поле «Явный контент» должно быть clean или explicit."
 
 #: app/PostTypes/Podcast.php:663
 msgid "Episode Type must be full, trailer, or bonus."
-msgstr "單集類型必須為 full、trailer 或 bonus。"
+msgstr "Тип эпизода должен быть full, trailer или bonus."
 
 #: app/PostTypes/Podcast.php:669
 msgid "Podcast validation failed"
-msgstr "播客驗證失敗"
+msgstr "Проверка подкаста не удалась"
 
 #: app/widgets.php:275
 msgid "Select Banner Image"
-msgstr "選擇橫幅圖片"
+msgstr "Выбрать изображение баннера"
 
 #: app/widgets.php:277
 msgid "Use This Image"
-msgstr "使用此圖片"
+msgstr "Использовать это изображение"
 
 #: resources/views/partials/content-single-attachment.blade.php:13
 msgid "Download"
-msgstr "下載"
+msgstr "Скачать"
 
 #: resources/views/sections/header.blade.php:30
 msgid "Toggle Theme"
-msgstr "切換主題"
+msgstr "Переключить тему"
 
 #: resources/views/widgets/banner-carousel.blade.php:55
 msgid "Previous slide"
-msgstr "上一張"
+msgstr "Предыдущий слайд"
 
 #: resources/views/widgets/banner-carousel.blade.php:63
 msgid "Next slide"
-msgstr "下一張"
+msgstr "Следующий слайд"
 
 #: resources/views/widgets/banner-carousel.blade.php:79
 #, php-format
 msgid "Go to slide %d"
-msgstr "跳至第 %d 張"
+msgstr "Перейти к слайду %d"
 
 #: app/PostTypes/Podcast.php:158
 #: app/PostTypes/Podcast.php:173
 #: app/PostTypes/Podcast.php:187
 msgid "Auto detected from \"Audio File\" on save."
-msgstr "儲存時從「音訊檔案」自動識別。"
+msgstr "Автоматически определяется из «Audio File» при сохранении."
 
 #: app/PostTypes/Podcast.php:277
 msgid "Transcript (optional)"
-msgstr "文字稿（可選）"
+msgstr "Транскрипт (необязательно)"
 
 #: app/PostTypes/Podcast.php:278
 msgid "Optional. Upload a transcript file (vtt/srt/txt/pdf) or enter a transcript URL (https)."
-msgstr "可選。上傳文字稿檔案（vtt/srt/txt/pdf）或填寫文字稿 URL（https）。"
+msgstr "Необязательно. Загрузите файл транскрипта (vtt/srt/txt/pdf) или укажите URL транскрипта (https)."
 
 #: app/PostTypes/Podcast.php:285
 msgid "Add Transcript"
-msgstr "新增文字稿"
+msgstr "Добавить транскрипт"
 
 #: app/PostTypes/Podcast.php:646
 msgid "Duration (seconds) could not be auto detected from Audio File."
-msgstr "無法從「音訊檔案」自動識別時長（秒）。"
+msgstr "Длительность (секунды) не удалось автоматически определить из Audio File."
 
 #: app/PostTypes/Podcast.php:650
 msgid "Audio Length (bytes) could not be auto detected from Audio File."
-msgstr "無法從「音訊檔案」自動識別音訊大小（位元組）。"
+msgstr "Размер аудио (байт) не удалось автоматически определить из Audio File."
 
 #: app/PostTypes/Podcast.php:654
 msgid "Audio MIME Type could not be auto detected from Audio File."
-msgstr "無法從「音訊檔案」自動識別音訊 MIME 類型。"
+msgstr "MIME-тип аудио не удалось автоматически определить из Audio File."
 
 #: app/PostTypes/Podcast.php:1090
 msgid "Episode transcript URL"
-msgstr "單集文字稿 URL"
+msgstr "URL транскрипта эпизода"
 
 #: app/ThemeOptions/General.php:61
 msgid "Upload a logo image (220px × 32px). You will be able to crop the image after upload."
-msgstr "上傳 Logo 圖片（220px × 32px）。上傳後可以裁剪圖片。"
+msgstr "Загрузите изображение логотипа (220px × 32px). После загрузки вы сможете обрезать изображение."
 
 #: app/ThemeOptions/General.php:96
 msgid "Footer Copyright"
-msgstr "頁尾版權"
+msgstr "Авторские права в подвале"
 
 #: app/ThemeOptions/General.php:98
 msgid "Powered by A Ripple Song Theme"
-msgstr "由 A Ripple Song 主題驅動"
+msgstr "Работает на теме A Ripple Song"
 
 #: app/ThemeOptions/General.php:99
 msgid "Overrides the footer copyright line. Leave empty to use the default."
-msgstr "覆蓋頁尾版權行。留空以使用預設值。"
+msgstr "Переопределяет строку авторских прав в подвале. Оставьте пустым для использования значения по умолчанию."
 
 #: app/ThemeOptions/General.php:274
 msgid "Upload / Change Logo"
-msgstr "上傳 / 更換 Logo"
+msgstr "Загрузить / Изменить логотип"
 
 #: app/ThemeOptions/General.php:276
 msgid "Remove Logo"
-msgstr "移除 Logo"
+msgstr "Удалить логотип"
 
 #: app/ThemeOptions/General.php:1641
 msgid "Choose Logo Image"
-msgstr "選擇 Logo 圖片"
+msgstr "Выберите изображение логотипа"
 
 #: app/ThemeOptions/General.php:1643
 msgid "Crop Image"
-msgstr "裁剪圖片"
+msgstr "Обрезать изображение"
 
 #: app/ThemeOptions/General.php:1656
 #, php-format
 msgid "Image is too small. Minimum size: %1$dpx × %2$dpx"
-msgstr "圖片太小。最小尺寸：%1$dpx × %2$dpx"
+msgstr "Изображение слишком маленькое. Минимальный размер: %1$dpx × %2$dpx"
 
 #: app/ThemeOptions/General.php:1684
 #: app/ThemeOptions/General.php:1776
 #: app/ThemeOptions/General.php:1782
 msgid "Crop and Save"
-msgstr "裁剪並儲存"
+msgstr "Обрезать и сохранить"
 
 #: app/ThemeOptions/General.php:1719
 msgid "Please select a crop area."
-msgstr "請選擇裁剪區域。"
+msgstr "Пожалуйста, выберите область обрезки."
 
 #: app/ThemeOptions/General.php:1723
 msgid "Cropping..."
-msgstr "正在裁剪..."
+msgstr "Обрезка..."
 
 #: app/ThemeOptions/General.php:1775
 msgid "Error cropping image:"
-msgstr "裁剪圖片出錯："
+msgstr "Ошибка обрезки изображения:"
 
 #: app/ThemeOptions/General.php:1781
 msgid "Error cropping image. Please try again."
-msgstr "裁剪圖片出錯。請重試。"
+msgstr "Ошибка обрезки изображения. Пожалуйста, попробуйте снова."
 
 #: app/ThemeOptions/General.php:1858
 msgid "You do not have permission to upload files."
-msgstr "您沒有上傳檔案的權限。"
+msgstr "У вас нет разрешения на загрузку файлов."
 
 #: app/ThemeOptions/General.php:1863
 msgid "Missing attachment ID."
-msgstr "缺少附件 ID。"
+msgstr "Отсутствует ID вложения."
 
 #: app/ThemeOptions/General.php:1867
 #: app/ThemeOptions/General.php:1888
 msgid "Missing crop details."
-msgstr "缺少裁剪詳情。"
+msgstr "Отсутствуют данные обрезки."
 
 #: app/ThemeOptions/General.php:1902
 msgid "Original image not found."
-msgstr "找不到原始圖片。"
+msgstr "Исходное изображение не найдено."
 
 #: app/ThemeOptions/Podcast.php:112
 msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple recommends keeping the file under 512KB. Will be validated on save."
-msgstr "必填。用於 <itunes:image> 的正方形 JPG/PNG（1400–3000px）。Apple 建議檔案小於 512KB。儲存時會進行驗證。"
+msgstr "Обязательно. Квадратный JPG/PNG 1400–3000 px для <itunes:image>. Apple рекомендует держать файл меньше 512 КБ. Проверяется при сохранении."
 
 #: app/ThemeOptions/Podcast.php:521
 msgid "Podcast Cover validation failed:"
-msgstr "播客封面驗證失敗："
+msgstr "Проверка обложки подкаста не удалась:"
 
 #: app/ThemeOptions/Podcast.php:558
 #: app/ThemeOptions/Podcast.php:672
 msgid "Podcast Cover URL is invalid."
-msgstr "播客封面 URL 無效。"
+msgstr "URL обложки подкаста недействителен."
 
 #: app/ThemeOptions/Podcast.php:638
 #: app/ThemeOptions/Podcast.php:688
 #, php-format
 msgid "Podcast Cover file is too large (%1$s). Please compress it to under %2$s."
-msgstr "播客封面檔案過大（%1$s）。請壓縮至小於 %2$s。"
+msgstr "Файл обложки подкаста слишком большой (%1$s). Сожмите его до размера меньше %2$s."
 
 #: app/ThemeOptions/Podcast.php:703
 #, php-format
 msgid "Could not download Podcast Cover for validation: %s"
-msgstr "無法下載播客封面以進行驗證：%s"
+msgstr "Не удалось скачать обложку подкаста для проверки: %s"
 
 #: app/ThemeOptions/Podcast.php:749
 #, php-format
 msgid "Podcast Cover must be square. Current dimensions: %1$d × %2$d px."
-msgstr "播客封面必須為正方形。目前尺寸：%1$d × %2$d px。"
+msgstr "Обложка подкаста должна быть квадратной. Текущие размеры: %1$d × %2$d px."
 
 #: app/ThemeOptions/Podcast.php:761
 #, php-format
 msgid "Podcast Cover resolution is too small. Minimum: %1$d × %1$d px. Current: %2$d × %2$d px."
-msgstr "播客封面解析度過低。最小：%1$d × %1$d px。目前：%2$d × %2$d px。"
+msgstr "Разрешение обложки подкаста слишком маленькое. Минимум: %1$d × %1$d px. Текущее: %2$d × %2$d px."
 
 #: app/ThemeOptions/Podcast.php:773
 #, php-format
 msgid "Podcast Cover resolution is too large. Maximum: %1$d × %1$d px. Current: %2$d × %2$d px."
-msgstr "播客封面解析度過高。最大：%1$d × %1$d px。目前：%2$d × %2$d px。"
+msgstr "Разрешение обложки подкаста слишком большое. Максимум: %1$d × %1$d px. Текущее: %2$d × %2$d px."
 
 #: resources/views/partials/entry-meta.blade.php:37
 msgid "views"
-msgstr "次瀏覽"
+msgstr "просмотров"
 
 #: resources/views/partials/entry-meta.blade.php:40
 msgid "plays"
-msgstr "次播放"
+msgstr "воспроизведений"
 
 #: resources/views/sections/footer.blade.php:5
 #, php-format
 msgid "Powered by %s"
-msgstr "由 %s 驅動"
+msgstr "Работает на %s"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Red (50)"
-msgstr "紅色 (50)"
+msgstr "Красный (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Red (400)"
-msgstr "紅色 (400)"
+msgstr "Красный (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (50)"
-msgstr "黃色 (50)"
+msgstr "Жёлтый (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (300)"
-msgstr "黃色 (300)"
+msgstr "Жёлтый (300)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (400)"
-msgstr "黃色 (400)"
+msgstr "Жёлтый (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (50)"
-msgstr "綠色 (50)"
+msgstr "Зелёный (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (400)"
-msgstr "綠色 (400)"
+msgstr "Зелёный (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (500)"
-msgstr "綠色 (500)"
+msgstr "Зелёный (500)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Indigo (50)"
-msgstr "靛藍 (50)"
+msgstr "Индиго (50)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Indigo (400)"
-msgstr "靛藍 (400)"
+msgstr "Индиго (400)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Gray (600)"
-msgstr "灰色 (600)"
+msgstr "Серый (600)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Gray (800)"
-msgstr "灰色 (800)"
+msgstr "Серый (800)"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Black"
-msgstr "黑色"
+msgstr "Чёрный"
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "White"
-msgstr "白色"
+msgstr "Белый"
 
 #: public/build/assets/theme.json
 msgctxt "Font family name"
 msgid "sans"
-msgstr "無襯線"
+msgstr "sans"
 
 #: public/build/assets/theme.json
 msgctxt "Font family name"
 msgid "mono"
-msgstr "等寬"
+msgstr "mono"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "xs"
-msgstr "超小"
+msgstr "xs"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "sm"
-msgstr "小"
+msgstr "sm"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "base"
-msgstr "基礎"
+msgstr "base"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "lg"
-msgstr "大"
+msgstr "lg"
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "2xl"
-msgstr "超大"
+msgstr "2xl"
 
 #: resources/js/app.js:722
 #, js-format
 msgid "Fetched %d podcasts"
-msgstr "已取得 %d 個播客"
+msgstr "Получено %d подкастов"
 
 #: resources/js/app.js:738
 msgid "Podcast has no audio file, skipping:"
-msgstr "播客沒有音訊檔案，跳過："
+msgstr "Подкаст не имеет аудиофайла, пропускаем:"
 
 #: resources/js/app.js:772
 msgid "Added:"
-msgstr "已新增："
+msgstr "Добавлено:"
 
 #: resources/js/app.js:774
 msgid "Already exists, skipping:"
-msgstr "已存在，跳過："
+msgstr "Уже существует, пропускаем:"
 
 #: resources/js/app.js:779
 #, js-format
 msgid "Successfully added %d new podcasts to playlist"
-msgstr "成功新增 %d 個播客到播放清單"
+msgstr "Успешно добавлено %d новых подкастов в плейлист"
 
 #: resources/js/app.js:796
 msgid "No new podcasts to add"
-msgstr "沒有新播客可新增"
+msgstr "Нет новых подкастов для добавления"
 
 #: resources/js/app.js:802
 msgid "Failed to fetch latest podcasts:"
-msgstr "取得最新播客失敗："
+msgstr "Не удалось получить последние подкасты:"
 
 #: resources/js/app.js:838
 msgid "No episode available to play"
-msgstr "沒有可播放的節目"
+msgstr "Нет доступного эпизода для воспроизведения"
 
 #: resources/js/app.js:853
 msgid "Playback progress restored:"
-msgstr "播放進度已恢復："
+msgstr "Прогресс воспроизведения восстановлен:"
 
 #: resources/js/app.js:887
 msgid "Autoplay confirm dialog auto-closed"
-msgstr "自動播放確認對話框已自動關閉"
+msgstr "Диалог подтверждения автовоспроизведения автоматически закрыт"
 
 #: resources/js/app.js:891
 msgid "Showing autoplay confirm dialog"
-msgstr "顯示自動播放確認對話框"
+msgstr "Показ диалога подтверждения автовоспроизведения"
 
 #: resources/js/app.js:916
 msgid "User confirmed autoplay"
-msgstr "使用者確認自動播放"
+msgstr "Пользователь подтвердил автовоспроизведение"
 
 #: resources/js/app.js:929
 msgid "User cancelled autoplay"
-msgstr "使用者取消自動播放"
+msgstr "Пользователь отменил автовоспроизведение"
 
 #: resources/js/app.js:995
 msgid "Audio load error:"
-msgstr "音訊載入錯誤："
+msgstr "Ошибка загрузки аудио:"
 
 #: resources/js/app.js:1418
 msgid "Volume settings loaded:"
-msgstr "音量設定已載入："
+msgstr "Настройки громкости загружены:"
 
 #: resources/js/app.js:1444
 msgid "Playback rate loaded:"
-msgstr "播放速度已載入："
+msgstr "Скорость воспроизведения загружена:"
 
 #: resources/js/app.js:1496
 msgid "Switched to existing episode:"
-msgstr "切換到已有節目："
+msgstr "Переключено на существующий эпизод:"
 
 #: resources/js/app.js:1514
 msgid "Added to playlist:"
-msgstr "已新增到播放清單："
+msgstr "Добавлено в плейлист:"
 
 #: resources/js/app.js:1525
 msgid "Episode already exists:"
-msgstr "節目已存在："
+msgstr "Эпизод уже существует:"
 
 #. Theme Name of the theme
 #: style.css
@@ -1582,7 +1586,7 @@ msgstr ""
 #: app/ThemeOptions/General.php:138
 #: app/ThemeOptions/General.php:139
 msgid "General"
-msgstr "一般"
+msgstr "Общие"
 
 #: app/ThemeOptions/General.php:1853
 msgid "Invalid request."
@@ -1706,8 +1710,8 @@ msgstr ""
 
 #: resources/views/template-podcast.blade.php:37
 msgid "Podcast plugin is not active. Install/activate a-ripple-song-podcast to show episodes."
-msgstr "播客外掛未啟用。請安裝／啟用 a-ripple-song-podcast 以顯示節目。"
+msgstr ""
 
 #: app/ThemeOptions/General.php:55
 msgid "Theme Settings"
-msgstr "主題設定"
+msgstr "Настройки темы"

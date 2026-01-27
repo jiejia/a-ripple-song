@@ -2,7 +2,9 @@
   <div class="max-w-screen-xl mx-auto p-4 pt-0">
     <!-- @php(dynamic_sidebar('sidebar-footer')) -->
     @php($footerCopyright = carbon_get_theme_option('crb_footer_copyright'))
-    @php($defaultCopyright = sprintf(__('Powered by %s', 'sage'), '<a href="https://github.com/jiejia/a-ripple-song" target="_blank" class="text-primary">A Ripple Song</a> Theme'))
+    @php($themeName = esc_html__('A Ripple Song', 'a-ripple-song'))
+    @php($themeLink = sprintf('<a href="%s" target="_blank" rel="noopener" class="text-primary">%s</a>', esc_url('https://github.com/jiejia/a-ripple-song'), $themeName))
+    @php($defaultCopyright = sprintf(__('Powered by %s', 'a-ripple-song'), $themeLink))
     @php($copyrightYear = sprintf('© %s', date_i18n('Y')))
     @if(is_active_sidebar(\App\Theme::SIDEBAR_FOOTER_LINKS))
       <div class="grid md:[grid-template-columns:repeat(auto-fit,minmax(calc(25%-0.75rem),1fr))] grid-cols-2 justify-items-stretch gap-4 mb-4">

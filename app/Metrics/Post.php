@@ -104,7 +104,7 @@ class Post
         $post    = $post_id ? get_post($post_id) : null;
 
         if (!$post || !$this->canReadPost($post)) {
-            wp_send_json_error(['message' => __('Invalid post ID.', 'sage')], 400);
+            wp_send_json_error(['message' => __('Invalid post ID.', 'a-ripple-song')], 400);
         }
 
         $count = (int) get_post_meta($post_id, '_views_count', true);
@@ -127,7 +127,7 @@ class Post
 
         $podcast_post_type = \function_exists('aripplesong_get_podcast_post_type') ? \aripplesong_get_podcast_post_type() : null;
         if (!$post || !$podcast_post_type || $post->post_type !== $podcast_post_type || !$this->canReadPost($post)) {
-            wp_send_json_error(['message' => __('Invalid podcast post.', 'sage')], 400);
+            wp_send_json_error(['message' => __('Invalid podcast post.', 'a-ripple-song')], 400);
         }
 
         $count = (int) get_post_meta($post_id, '_play_count', true);
@@ -152,7 +152,7 @@ class Post
         $ids = array_filter($ids);
 
         if (empty($ids)) {
-            wp_send_json_error(['message' => __('No post IDs provided.', 'sage')], 400);
+            wp_send_json_error(['message' => __('No post IDs provided.', 'a-ripple-song')], 400);
         }
 
         $data = [];

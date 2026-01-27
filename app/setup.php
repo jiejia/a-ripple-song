@@ -9,16 +9,6 @@ namespace App;
 use Illuminate\Support\Facades\Vite;
 
 /**
- * Load TGM Plugin Activation library.
- * 
- * This is loaded manually (not via Composer autoload) because TGMPA
- * calls WordPress functions at load time which fails in non-WP contexts.
- */
-if (function_exists('add_action')) {
-    require_once __DIR__ . '/TGMPA/tgmpa-config.php';
-}
-
-/**
  * Inject styles into the block editor.
  *
  * @return array
@@ -65,7 +55,7 @@ if (function_exists('add_action')) {
  *
  * @return void
  */
-add_action('after_setup_theme', function () {
+	add_action('after_setup_theme', function () {
     /**
      * Disable full-site editing support.
      *
@@ -79,7 +69,7 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
      */
     register_nav_menus([
-        'primary_navigation' => __('Primary Navigation', 'sage'),
+        'primary_navigation' => __('Primary Navigation', 'a-ripple-song'),
     ]);
 
     /**
@@ -89,25 +79,57 @@ add_action('after_setup_theme', function () {
      */
     remove_theme_support('core-block-patterns');
 
-    /**
-     * Enable plugins to manage the document title.
-     *
-     * @link https://developer.wordpress.org/reference/functions/add_theme_support/#title-tag
-     */
-    add_theme_support('title-tag');
+	    /**
+	     * Enable plugins to manage the document title.
+	     *
+	     * @link https://developer.wordpress.org/reference/functions/add_theme_support/#title-tag
+	     */
+	    add_theme_support('title-tag');
 
-    /**
-     * Enable post thumbnail support.
-     *
-     * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-     */
-    add_theme_support('post-thumbnails');
+	    /**
+	     * Add default posts and comments RSS feed links to head.
+	     *
+	     * @link https://developer.wordpress.org/reference/functions/add_theme_support/#automatic-feed-links
+	     */
+	    add_theme_support('automatic-feed-links');
 
-    /**
-     * Enable responsive embed support.
-     *
-     * @link https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-support/#responsive-embedded-content
-     */
+	    /**
+	     * Enable post thumbnail support.
+	     *
+	     * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+	     */
+	    add_theme_support('post-thumbnails');
+
+	    /**
+	     * Block editor supports (recommended for classic themes).
+	     */
+	    add_theme_support('wp-block-styles');
+	    add_theme_support('align-wide');
+	    add_theme_support('editor-styles');
+	    add_editor_style('editor-style.css');
+
+	    /**
+	     * Customizer supports (recommended when using logos/headers/backgrounds).
+	     */
+	    add_theme_support('custom-logo', [
+	        'height'      => 100,
+	        'width'       => 400,
+	        'flex-height' => true,
+	        'flex-width'  => true,
+	    ]);
+	    add_theme_support('custom-header', [
+	        'width'       => 2000,
+	        'height'      => 1200,
+	        'flex-width'  => true,
+	        'flex-height' => true,
+	    ]);
+	    add_theme_support('custom-background');
+
+	    /**
+	     * Enable responsive embed support.
+	     *
+	     * @link https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-support/#responsive-embedded-content
+	     */
     add_theme_support('responsive-embeds');
 
     /**
@@ -157,6 +179,27 @@ add_action('init', function () {
 });
 
 /**
+ * Register a small set of block styles and patterns (recommended for classic themes).
+ */
+add_action('init', function () {
+    if (function_exists('register_block_style')) {
+        register_block_style('core/button', [
+            'name' => 'ars-pill',
+            'label' => __('Pill', 'a-ripple-song'),
+            'inline_style' => '.is-style-ars-pill .wp-block-button__link{border-radius:9999px; padding-left:1.25em; padding-right:1.25em;}',
+        ]);
+    }
+
+    if (function_exists('register_block_pattern')) {
+        register_block_pattern('a-ripple-song/simple-cta', [
+            'title' => __('Simple Call to Action', 'a-ripple-song'),
+            'categories' => ['text', 'buttons'],
+            'content' => '<!-- wp:group {"layout":{"type":"constrained"}} --><div class="wp-block-group"><!-- wp:heading {"level":3} --><h3>' . esc_html__('Listen to the latest episode', 'a-ripple-song') . '</h3><!-- /wp:heading --><!-- wp:paragraph --><p>' . esc_html__('Subscribe and never miss an update.', 'a-ripple-song') . '</p><!-- /wp:paragraph --><!-- wp:buttons --><div class="wp-block-buttons"><!-- wp:button {"className":"is-style-ars-pill"} --><div class="wp-block-button is-style-ars-pill"><a class="wp-block-button__link wp-element-button" href="' . esc_url(home_url('/')) . '">' . esc_html__('Explore episodes', 'a-ripple-song') . '</a></div><!-- /wp:button --></div><!-- /wp:buttons --></div><!-- /wp:group -->',
+        ]);
+    }
+}, 15);
+
+/**
  * Align podcast episode URLs to /episodes/ instead of /podcasts/.
  */
 add_filter('register_post_type_args', function ($args, $post_type) {
@@ -200,19 +243,19 @@ add_action('widgets_init', function () {
     ];
 
     // register_sidebar([
-    //     'name' => __('Primary', 'sage'),
+    //     'name' => __('Primary', 'a-ripple-song'),
     //     'id' => 'sidebar',
     // ] + $config);
 
     // register_sidebar([
-    //     'name' => __('Footer', 'sage'),
+    //     'name' => __('Footer', 'a-ripple-song'),
     //     'id' => 'sidebar-footer',
     // ] + $config);
 
     register_sidebar([
-        'name' => '[' . Theme::PREFIX . '] ' . __('Footer Links', 'sage'),
+        'name' => '[' . Theme::PREFIX . '] ' . __('Footer Links', 'a-ripple-song'),
         'id' => Theme::SIDEBAR_FOOTER_LINKS,
-        'description' => __('Footer links area for displaying link columns', 'sage'),
+        'description' => __('Footer links area for displaying link columns', 'a-ripple-song'),
         'before_widget' => '',
         'after_widget' => '',
         'before_title' => '',
@@ -220,27 +263,27 @@ add_action('widgets_init', function () {
     ]);
 
     register_sidebar([
-        'name' => '[' . Theme::PREFIX . '] ' . __('Home Main', 'sage'),
+        'name' => '[' . Theme::PREFIX . '] ' . __('Home Main', 'a-ripple-song'),
         'id' => Theme::SIDEBAR_HOME_MAIN,
-        'description' => __('Main area of the homepage for displaying various content modules', 'sage'),
+        'description' => __('Main area of the homepage for displaying various content modules', 'a-ripple-song'),
         'before_widget' => '<div class="widget %1$s %2$s mb-4">',
         'after_widget' => '</div>',
         'before_title' => '<h2 class="widget-title text-lg font-bold mb-2">',
         'after_title' => '</h2>',
     ]);
     register_sidebar([
-        'name' => '[' . Theme::PREFIX . '] ' . __('Sidebar Primary', 'sage'),
+        'name' => '[' . Theme::PREFIX . '] ' . __('Sidebar Primary', 'a-ripple-song'),
         'id' => Theme::SIDEBAR_PRIMARY,
-        'description' => __('Primary sidebar area for displaying various content modules', 'sage'),
+        'description' => __('Primary sidebar area for displaying various content modules', 'a-ripple-song'),
         'before_widget' => '<div class="widget %1$s %2$s mb-4">',
         'after_widget' => '</div>',
         'before_title' => '<h2 class="widget-title text-lg font-bold mb-2">',
         'after_title' => '</h2>',
     ]);
     register_sidebar([
-        'name' => '[' . Theme::PREFIX . '] ' . __('Leftbar Primary', 'sage'),
+        'name' => '[' . Theme::PREFIX . '] ' . __('Leftbar Primary', 'a-ripple-song'),
         'id' => Theme::SIDEBAR_LEFTBAR,
-        'description' => __('Primary left sidebar area for displaying various content modules', 'sage'),
+        'description' => __('Primary left sidebar area for displaying various content modules', 'a-ripple-song'),
         'before_widget' => '<div class="widget %1$s %2$s mb-4">',
         'after_widget' => '</div>',
         'before_title' => '<h2 class="widget-title text-lg font-bold mb-2">',
@@ -433,10 +476,14 @@ add_action('pre_get_posts', function ($query) {
  *
  * @return void
  */
-add_action('wp_enqueue_scripts', function () {
-    if (!class_exists('\Illuminate\Support\Facades\Vite')) {
-        return;
-    }
+	add_action('wp_enqueue_scripts', function () {
+	    if (is_singular() && comments_open() && get_option('thread_comments')) {
+	        wp_enqueue_script('comment-reply');
+	    }
+
+	    if (!class_exists('\Illuminate\Support\Facades\Vite')) {
+	        return;
+	    }
     
     try {
         // Check if this is a widget preview in admin
@@ -467,7 +514,7 @@ add_action('wp_enqueue_scripts', function () {
             if ($js_url) {
                 wp_enqueue_script('aripplesong-app', $js_url, ['wp-i18n'], null, true);
                 // Set script translations for JavaScript i18n
-                wp_set_script_translations('aripplesong-app', 'sage', get_template_directory() . '/resources/lang');
+                wp_set_script_translations('aripplesong-app', 'a-ripple-song', get_template_directory() . '/resources/lang');
 
                 $light_theme = function_exists('\carbon_get_theme_option') ? \carbon_get_theme_option('crb_light_theme') : null;
                 $dark_theme = function_exists('\carbon_get_theme_option') ? \carbon_get_theme_option('crb_dark_theme') : null;
@@ -531,7 +578,7 @@ add_filter('script_loader_tag', function ($tag, $handle, $src) {
 
 
 add_action('after_setup_theme', function () {
-    load_theme_textdomain('sage', get_template_directory() . '/resources/lang');
+    load_theme_textdomain('a-ripple-song', get_template_directory() . '/resources/lang');
 }, 1); // Priority 1: Load translations before Carbon Fields (priority 10) to ensure admin labels are translated
 
 /**
@@ -556,7 +603,7 @@ add_action('rest_api_init', function () {
             return is_string($value) ? $value : '';
         },
         'schema' => [
-            'description' => __('Audio file URL', 'sage'),
+            'description' => __('Audio file URL', 'a-ripple-song'),
             'type' => 'string',
         ],
     ]);
@@ -574,7 +621,7 @@ add_action('rest_api_init', function () {
             return (int) $value;
         },
         'schema' => [
-            'description' => __('Audio duration (seconds)', 'sage'),
+            'description' => __('Audio duration (seconds)', 'a-ripple-song'),
             'type' => 'integer',
         ],
     ]);
@@ -592,7 +639,7 @@ add_action('rest_api_init', function () {
             return is_string($value) ? $value : '';
         },
         'schema' => [
-            'description' => __('Episode transcript URL', 'sage'),
+            'description' => __('Episode transcript URL', 'a-ripple-song'),
             'type' => 'string',
         ],
     ]);
@@ -626,160 +673,3 @@ add_action('deleted_post', function ($post_id) {
         \aripplesong_bump_participation_cache_version();
     }
 });
-
-/**
- * Allow additional file types to be uploaded.
- *
- * @param array $mimes Existing allowed mime types.
- * @return array Modified mime types.
- */
-add_filter('upload_mimes', function ($mimes) {
-    // Audio files
-    $mimes['mp3'] = 'audio/mpeg';
-    $mimes['m4a'] = 'audio/x-m4a';
-    
-    // eBook files
-    $mimes['epub'] = 'application/epub+zip';
-    
-    // Image files
-    $mimes['webp'] = 'image/webp';
-    
-    return $mimes;
-});
-
-/**
- * Fix file type detection for custom mime types.
- *
- * WordPress performs additional security checks on file uploads that can
- * incorrectly reject valid files. This filter ensures our allowed types pass validation.
- *
- * @param array  $data File data array containing 'ext', 'type', 'proper_filename'.
- * @param string $file Full path to the file.
- * @param string $filename The name of the file.
- * @param array  $mimes Array of mime types keyed by their file extension.
- * @return array Modified file data.
- */
-add_filter('wp_check_filetype_and_ext', function ($data, $file, $filename, $mimes) {
-    // Get the file extension
-    $ext = pathinfo($filename, PATHINFO_EXTENSION);
-    
-    // Define our custom mime types
-    $custom_mimes = [
-        'mp3'  => 'audio/mpeg',
-        'm4a'  => 'audio/x-m4a',
-        'epub' => 'application/epub+zip',
-        'webp' => 'image/webp',
-    ];
-    
-    // If this is one of our custom types and WordPress couldn't identify it
-    if (isset($custom_mimes[$ext]) && (empty($data['type']) || empty($data['ext']))) {
-        $data['ext'] = $ext;
-        $data['type'] = $custom_mimes[$ext];
-    }
-    
-    return $data;
-}, 10, 4);
-
-/**
- * Prevent importing Advanced Media Offloader meta during OCDI demo imports.
- *
- * The demo WXR includes `advmo_*` meta keys from the source site. When the
- * Advanced Media Offloader plugin is active, it will offload newly imported
- * attachments and write its own `advmo_*` meta. Importing the demo values
- * afterwards can overwrite the correct values and break attachment URLs (most
- * visibly: featured images).
- */
-add_filter('import_post_meta_key', function ($key, $post_id, $post) {
-    if (!is_string($key) || strpos($key, 'advmo_') !== 0) {
-        return $key;
-    }
-
-    if (!defined('DOING_AJAX') || !DOING_AJAX) {
-        return $key;
-    }
-
-    $action = isset($_REQUEST['action']) ? (string) $_REQUEST['action'] : '';
-    if ($action === '' || strpos($action, 'ocdi_') !== 0) {
-        return $key;
-    }
-
-    return false;
-}, 10, 3);
-
-/**
- * One Click Demo Import (OCDI) configuration.
- */
-add_filter('ocdi/import_files', function () {
-    return [
-        [
-            'import_file_name'           => 'A Ripple Song Demo',
-            'local_import_file'          => get_template_directory() . '/data/demo-data.xml',
-            'local_import_widget_file'   => get_template_directory() . '/data/demo-widgets.wie',
-            'import_preview_image_url'   => get_template_directory_uri() . '/screenshot.png',
-            'preview_url'                => 'https://demo.aripplesong.com/',
-            'import_notice'              => __('After importing this demo, please wait for all images and media to be downloaded. This may take a few minutes depending on your server speed.', 'sage'),
-        ],
-    ];
-});
-
-/**
- * OCDI importer options.
- *
- * Ensure demo attachments are fetched so featured images and media are imported.
- *
- * Note: If the remote host is unavailable, WordPress will still import content,
- * but missing attachments will not be downloaded.
- */
-add_filter('ocdi/importer_options', function (array $options): array {
-    $options['fetch_attachments'] = true;
-    return $options;
-});
-
-/**
- * Before importing demo content:
- * 1. Backup existing pages/menus that conflict with demo data
- * 2. Clear all theme sidebars
- */
-add_action('ocdi/before_content_import', function ($selected_import) {
-    \aripplesong_register_legacy_podcast_import_types();
-    \aripplesong_backup_conflicting_content($selected_import);
-    \aripplesong_clear_theme_sidebars();
-});
-
-/**
- * Actions to perform after demo import is complete.
- *
- * @param array $selected_import Selected demo import data.
- */
-add_action('ocdi/after_import', function ($selected_import) {
-    \aripplesong_migrate_imported_podcast_content();
-    \aripplesong_normalize_demo_asset_urls();
-    \aripplesong_assign_menu_to_location();
-    \aripplesong_set_static_homepage();
-    flush_rewrite_rules();
-});
-
-/**
- * Disable the intro guide modal for One Click Demo Import.
- */
-add_filter('ocdi/register_plugins', function ($plugins) {
-    return $plugins;
-});
-
-/**
- * Change "One Click Demo Import" plugin page location to under Appearance menu.
- */
-add_filter('ocdi/plugin_page_setup', function ($default_settings) {
-    $default_settings['parent_slug'] = 'themes.php';
-    $default_settings['page_title']  = __('Import Demo Data', 'sage');
-    $default_settings['menu_title']  = __('Import Demo', 'sage');
-    $default_settings['capability']  = 'import';
-    $default_settings['menu_slug']   = 'one-click-demo-import';
-
-    return $default_settings;
-});
-
-/**
- * Recommended way to disable branding popup.
- */
-add_filter('ocdi/disable_pt_branding', '__return_true');

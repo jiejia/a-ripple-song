@@ -11,7 +11,7 @@ msgstr ""
 "PO-Revision-Date: 2025-11-17 10:00+0800\n"
 "Language: fr_FR: Sage Starter Theme 11.0.1\n"
 "X-Generator: WP-CLI 2.12.0\n"
-"X-Domain: sage\n"
+"X-Domain: a-ripple-song\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: app/filters.php:15

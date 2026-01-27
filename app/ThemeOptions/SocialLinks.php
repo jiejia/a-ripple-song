@@ -25,47 +25,47 @@ class SocialLinks
     {
         return [
             'facebook' => [
-                'label' => __('Facebook', 'sage'),
+                'label' => __('Facebook', 'a-ripple-song'),
                 'icon'  => 'facebook',
             ],
             'twitter' => [
-                'label' => __('Twitter / X', 'sage'),
+                'label' => __('Twitter / X', 'a-ripple-song'),
                 'icon'  => 'twitter',
             ],
             'instagram' => [
-                'label' => __('Instagram', 'sage'),
+                'label' => __('Instagram', 'a-ripple-song'),
                 'icon'  => 'instagram',
             ],
             'linkedin' => [
-                'label' => __('LinkedIn', 'sage'),
+                'label' => __('LinkedIn', 'a-ripple-song'),
                 'icon'  => 'linkedin',
             ],
             'youtube' => [
-                'label' => __('YouTube', 'sage'),
+                'label' => __('YouTube', 'a-ripple-song'),
                 'icon'  => 'youtube',
             ],
             'tiktok' => [
-                'label' => __('TikTok', 'sage'),
+                'label' => __('TikTok', 'a-ripple-song'),
                 'icon'  => 'music-2',
             ],
             'pinterest' => [
-                'label' => __('Pinterest', 'sage'),
+                'label' => __('Pinterest', 'a-ripple-song'),
                 'icon'  => 'pin',
             ],
             'threads' => [
-                'label' => __('Threads', 'sage'),
+                'label' => __('Threads', 'a-ripple-song'),
                 'icon'  => 'at-sign',
             ],
             'weibo' => [
-                'label' => __('Weibo', 'sage'),
+                'label' => __('Weibo', 'a-ripple-song'),
                 'icon'  => 'message-circle',
             ],
             'wechat' => [
-                'label' => __('WeChat', 'sage'),
+                'label' => __('WeChat', 'a-ripple-song'),
                 'icon'  => 'message-square',
             ],
             'rss' => [
-                'label' => __('RSS Feed', 'sage'),
+                'label' => __('RSS Feed', 'a-ripple-song'),
                 'icon'  => 'rss',
             ],
         ];

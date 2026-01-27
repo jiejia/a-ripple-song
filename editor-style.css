@@ -1,0 +1,10 @@
+/*
+ * Minimal editor stylesheet for Theme Check compatibility.
+ *
+ * The frontend is styled via Vite/Tailwind builds.
+ */
+
+.editor-styles-wrapper {
+  font-family: inherit;
+}
+

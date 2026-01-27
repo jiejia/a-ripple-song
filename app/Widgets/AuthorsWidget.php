@@ -9,8 +9,8 @@ class Authors_Widget extends WP_Widget {
     public function __construct() {
         parent::__construct(
             'authors_widget',
-            __('aripplesong - Authors List', 'sage'),
-            ['description' => __('Display members and guest authors list', 'sage')]
+            __('aripplesong - Authors List', 'a-ripple-song'),
+            ['description' => __('Display members and guest authors list', 'a-ripple-song')]
         );
     }
     
@@ -109,8 +109,8 @@ class Authors_Widget extends WP_Widget {
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                     </svg>
-                    <p class="text-sm font-medium"><?php _e('No authors yet', 'sage'); ?></p>
-                    <p class="text-xs mt-1"><?php _e('Authors will appear here after adding users', 'sage'); ?></p>
+                    <p class="text-sm font-medium"><?php _e('No authors yet', 'a-ripple-song'); ?></p>
+                    <p class="text-xs mt-1"><?php _e('Authors will appear here after adding users', 'a-ripple-song'); ?></p>
                 </div>
             </div>
             <?php endif; ?>
@@ -127,7 +127,7 @@ class Authors_Widget extends WP_Widget {
         $show_guests = isset($instance['show_guests']) ? $instance['show_guests'] : true;
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id('members_title'); ?>"><?php _e('Members Title:', 'sage'); ?></label>
+            <label for="<?php echo $this->get_field_id('members_title'); ?>"><?php _e('Members Title:', 'a-ripple-song'); ?></label>
             <input class="widefat" 
                    id="<?php echo $this->get_field_id('members_title'); ?>" 
                    name="<?php echo $this->get_field_name('members_title'); ?>" 
@@ -141,11 +141,11 @@ class Authors_Widget extends WP_Widget {
                    <?php checked($show_members); ?> 
                    id="<?php echo $this->get_field_id('show_members'); ?>" 
                    name="<?php echo $this->get_field_name('show_members'); ?>">
-            <label for="<?php echo $this->get_field_id('show_members'); ?>"><?php _e('Show Members (Administrators, Editors, Authors)', 'sage'); ?></label>
+            <label for="<?php echo $this->get_field_id('show_members'); ?>"><?php _e('Show Members (Administrators, Editors, Authors)', 'a-ripple-song'); ?></label>
         </p>
         
         <p>
-            <label for="<?php echo $this->get_field_id('guests_title'); ?>"><?php _e('Guests Title:', 'sage'); ?></label>
+            <label for="<?php echo $this->get_field_id('guests_title'); ?>"><?php _e('Guests Title:', 'a-ripple-song'); ?></label>
             <input class="widefat" 
                    id="<?php echo $this->get_field_id('guests_title'); ?>" 
                    name="<?php echo $this->get_field_name('guests_title'); ?>" 
@@ -159,7 +159,7 @@ class Authors_Widget extends WP_Widget {
                    <?php checked($show_guests); ?> 
                    id="<?php echo $this->get_field_id('show_guests'); ?>" 
                    name="<?php echo $this->get_field_name('show_guests'); ?>">
-            <label for="<?php echo $this->get_field_id('show_guests'); ?>"><?php _e('Show Guests (Contributors)', 'sage'); ?></label>
+            <label for="<?php echo $this->get_field_id('show_guests'); ?>"><?php _e('Show Guests (Contributors)', 'a-ripple-song'); ?></label>
         </p>
         <?php
     }

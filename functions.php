@@ -14,7 +14,7 @@ use Roots\Acorn\Application;
 */
 
 if (! file_exists($composer = __DIR__.'/vendor/autoload.php')) {
-    wp_die(__('Error locating autoloader. Please run <code>composer install</code>.', 'sage'));
+    wp_die(__('Error locating autoloader. Please run <code>composer install</code>.', 'a-ripple-song'));
 }
 
 require $composer;
@@ -135,12 +135,12 @@ if (!function_exists('aripplesong_podcast_features_enabled')) {
 |
 */
 
-collect(['setup', 'filters', 'widgets', 'ThemeOptions/General', 'Metrics/Post', 'DemoImport'])
+collect(['setup', 'filters', 'widgets', 'ThemeOptions/General', 'Metrics/Post'])
     ->each(function ($file) {
         if (! locate_template($file = "app/{$file}.php", true, true)) {
             wp_die(
                 /* translators: %s is replaced with the relative file path */
-                sprintf(__('Error locating <code>%s</code> for inclusion.', 'sage'), $file)
+                sprintf(__('Error locating <code>%s</code> for inclusion.', 'a-ripple-song'), $file)
             );
         }
     });
@@ -812,7 +812,7 @@ function sage_custom_comment($comment, $args, $depth) {
                         </span>
 
                         <?php if ($comment->user_id === get_post()->post_author): ?>
-                            <span class="badge badge-primary badge-sm"><?php _e('Author', 'sage'); ?></span>
+                            <span class="badge badge-primary badge-sm"><?php _e('Author', 'a-ripple-song'); ?></span>
                         <?php endif; ?>
 
                         <span class="text-xs text-base-content/60 flex items-center gap-1">
@@ -821,7 +821,7 @@ function sage_custom_comment($comment, $args, $depth) {
                         </span>
 
                         <?php if ($comment->comment_approved == '0'): ?>
-                            <span class="badge badge-warning badge-sm"><?php _e('Pending Approval', 'sage'); ?></span>
+                            <span class="badge badge-warning badge-sm"><?php _e('Pending Approval', 'a-ripple-song'); ?></span>
                         <?php endif; ?>
                     </div>
 
@@ -837,12 +837,12 @@ function sage_custom_comment($comment, $args, $depth) {
                             'max_depth' => $args['max_depth'],
                             'before' => '<button class="btn btn-ghost btn-sm gap-1 text-sm">',
                             'after' => '</button>',
-                            'reply_text' => '<i data-lucide="reply" class="w-4 h-4"></i> ' . __('Reply', 'sage')
+                            'reply_text' => '<i data-lucide="reply" class="w-4 h-4"></i> ' . __('Reply', 'a-ripple-song')
                         ]));
                         ?>
 
                         <?php edit_comment_link(
-                            '<i data-lucide="pencil" class="w-4 h-4"></i> ' . __('Edit', 'sage'),
+                            '<i data-lucide="pencil" class="w-4 h-4"></i> ' . __('Edit', 'a-ripple-song'),
                             '<button class="btn btn-ghost btn-sm gap-1 text-sm">',
                             '</button>'
                         ); ?>
@@ -865,10 +865,10 @@ add_filter('comment_form_defaults', function($defaults) {
     $defaults['cancel_reply_before'] = '<div class="text-sm">';
     $defaults['cancel_reply_after'] = '</div>';
     $defaults['cancel_reply_link'] = '<button type="button" class="btn btn-ghost btn-sm gap-1 text-sm"><i data-lucide="x" class="w-4 h-4"></i> %s</button>';
-    $defaults['comment_notes_before'] = '<p class="comment-notes text-sm text-base-content/60">' . __('Your email address will not be published.', 'sage') . '</p>';
+    $defaults['comment_notes_before'] = '<p class="comment-notes text-sm text-base-content/60">' . __('Your email address will not be published.', 'a-ripple-song') . '</p>';
     $defaults['comment_notes_after'] = '';
     $defaults['logged_in_as'] = '<p class="logged-in-as text-sm text-base-content/60">' .
-        sprintf(__('Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>', 'sage'),
+        sprintf(__('Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>', 'a-ripple-song'),
             get_edit_user_link(),
             wp_get_current_user()->display_name,
             wp_logout_url(apply_filters('the_permalink', get_permalink()))) .
@@ -882,13 +882,13 @@ add_filter('comment_form_defaults', function($defaults) {
  */
 add_filter('comment_form_default_fields', function($fields) {
     // Keep interactive controls at >=16px to stop Chrome/Android auto-zoom.
-    $fields['author'] = '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Name', 'sage') . ' <span class="text-error">*</span></span></label><input type="text" id="author" name="author" class="input input-bordered w-full text-sm" required /></div>';
+    $fields['author'] = '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Name', 'a-ripple-song') . ' <span class="text-error">*</span></span></label><input type="text" id="author" name="author" class="input input-bordered w-full text-sm" required /></div>';
 
-    $fields['email'] = '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Email', 'sage') . ' <span class="text-error">*</span></span></label><input type="email" id="email" name="email" class="input input-bordered w-full text-sm" required /></div>';
+    $fields['email'] = '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Email', 'a-ripple-song') . ' <span class="text-error">*</span></span></label><input type="email" id="email" name="email" class="input input-bordered w-full text-sm" required /></div>';
 
-    $fields['url'] = '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Website', 'sage') . '</span></label><input type="url" id="url" name="url" class="input input-bordered w-full text-sm" /></div>';
+    $fields['url'] = '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Website', 'a-ripple-song') . '</span></label><input type="url" id="url" name="url" class="input input-bordered w-full text-sm" /></div>';
 
-    $fields['cookies'] = '<div class="form-control"><label class="comment-form-cookies-consent"><input type="checkbox" id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" value="yes" class="checkbox" /><span class="label-text text-sm leading-relaxed">' . __('Save my name, email, and website in this browser for the next time I comment.', 'sage') . '</span></label></div>';
+    $fields['cookies'] = '<div class="form-control"><label class="comment-form-cookies-consent"><input type="checkbox" id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" value="yes" class="checkbox" /><span class="label-text text-sm leading-relaxed">' . __('Save my name, email, and website in this browser for the next time I comment.', 'a-ripple-song') . '</span></label></div>';
 
     return $fields;
 });
@@ -897,5 +897,5 @@ add_filter('comment_form_default_fields', function($fields) {
  * Customize comment textarea field with DaisyUI styling
  */
 add_filter('comment_form_field_comment', function($field) {
-    return '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Comment', 'sage') . ' <span class="text-error">*</span></span></label><textarea id="comment" name="comment" rows="6" class="textarea textarea-bordered w-full text-sm" required></textarea></div>';
+    return '<div class="form-control"><label class="label"><span class="label-text text-sm">' . __('Comment', 'a-ripple-song') . ' <span class="text-error">*</span></span></label><textarea id="comment" name="comment" rows="6" class="textarea textarea-bordered w-full text-sm" required></textarea></div>';
 });

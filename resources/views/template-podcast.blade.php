@@ -33,7 +33,7 @@ $wp_query = $episode_post_type
 @else
   @if(is_user_logged_in() && current_user_can('manage_options'))
     <div class="rounded-lg bg-base-100 p-4 text-sm text-base-content/70">
-      {{ __('Podcast plugin is not active. Install/activate a-ripple-song-podcast to show episodes.', 'sage') }}
+      {{ __('Podcast plugin is not active. Install/activate a-ripple-song-podcast to show episodes.', 'a-ripple-song') }}
     </div>
   @endif
 @endif

@@ -728,11 +728,11 @@ Alpine.store('player', {
       const podcasts = await response.json();
 
       if (podcasts.length === 0) {
-        console.log(__('No podcasts found', 'sage'));
+        console.log(__('No podcasts found', 'a-ripple-song'));
         return [];
       }
 
-      console.log(__('Fetched %d podcasts', 'sage').replace('%d', podcasts.length));
+      console.log(__('Fetched %d podcasts', 'a-ripple-song').replace('%d', podcasts.length));
 
       const addedEpisodes = [];
       let firstNewEpisode = null;
@@ -749,7 +749,7 @@ Alpine.store('player', {
         }
 
         if (!audioUrl) {
-          console.warn(__('Podcast has no audio file, skipping:', 'sage'), postTitle);
+          console.warn(__('Podcast has no audio file, skipping:', 'a-ripple-song'), postTitle);
           continue;
         }
 
@@ -783,14 +783,14 @@ Alpine.store('player', {
             firstNewEpisode = episode;
           }
 
-          console.log(__('Added:', 'sage'), episode.title);
+          console.log(__('Added:', 'a-ripple-song'), episode.title);
         } else {
-          console.log(__('Already exists, skipping:', 'sage'), episode.title);
+          console.log(__('Already exists, skipping:', 'a-ripple-song'), episode.title);
         }
       }
 
       if (addedEpisodes.length > 0) {
-        console.log(__('Successfully added %d new podcasts to playlist', 'sage').replace('%d', addedEpisodes.length));
+        console.log(__('Successfully added %d new podcasts to playlist', 'a-ripple-song').replace('%d', addedEpisodes.length));
 
         // 如果需要自动播放且有新节目
         if (autoPlay && firstNewEpisode) {
@@ -807,13 +807,13 @@ Alpine.store('player', {
           }
         }
       } else {
-        console.log(__('No new podcasts to add', 'sage'));
+        console.log(__('No new podcasts to add', 'a-ripple-song'));
       }
 
       return addedEpisodes;
 
     } catch (error) {
-      console.error(__('Failed to fetch latest podcasts:', 'sage'), error);
+      console.error(__('Failed to fetch latest podcasts:', 'a-ripple-song'), error);
       return [];
     }
   },
@@ -849,7 +849,7 @@ Alpine.store('player', {
 
     // 检查 episode 是否存在
     if (!episode) {
-      console.log(__('No episode available to play', 'sage'));
+      console.log(__('No episode available to play', 'a-ripple-song'));
       return;
     }
 
@@ -864,7 +864,7 @@ Alpine.store('player', {
       // 等待音频加载完成后再跳转到保存的位置
       this.currentSound.once('load', () => {
         this.seek(playbackState.currentTime);
-        console.log(__('Playback progress restored:', 'sage'), playbackState.currentTime);
+        console.log(__('Playback progress restored:', 'a-ripple-song'), playbackState.currentTime);
 
         // 根据保存的状态决定是否自动播放
         // ⭐ 由于浏览器自动播放策略，需要用户交互后才能播放
@@ -898,11 +898,11 @@ Alpine.store('player', {
       this.autoplayCountdown--;
       if (this.autoplayCountdown <= 0) {
         this.cancelAutoplay();
-        console.log(__('Autoplay confirm dialog auto-closed', 'sage'));
+        console.log(__('Autoplay confirm dialog auto-closed', 'a-ripple-song'));
       }
     }, 1000);
 
-    console.log(__('Showing autoplay confirm dialog', 'sage'));
+    console.log(__('Showing autoplay confirm dialog', 'a-ripple-song'));
   },
 
   /**
@@ -927,7 +927,7 @@ Alpine.store('player', {
     this.showAutoplayConfirm = false;
     this.pendingAutoplay = false;
     this.play();
-    console.log(__('User confirmed autoplay', 'sage'));
+    console.log(__('User confirmed autoplay', 'a-ripple-song'));
   },
 
   /**
@@ -940,7 +940,7 @@ Alpine.store('player', {
     // 更新保存的状态为暂停
     this.isPlaying = false;
     this.savePlaybackState();
-    console.log(__('User cancelled autoplay', 'sage'));
+    console.log(__('User cancelled autoplay', 'a-ripple-song'));
   },
 
   // ========== 播放器核心方法 ==========
@@ -1006,7 +1006,7 @@ Alpine.store('player', {
       onloaderror: (id, error) => {
         // ⭐ 加载失败也要重置加载状态
         this.isLoading = false;
-        console.error(__('Audio load error:', 'sage'), error);
+        console.error(__('Audio load error:', 'a-ripple-song'), error);
       },
       onend: () => {
         this.playNext();
@@ -1434,7 +1434,7 @@ Alpine.store('player', {
       this.volume = volume;
       this.lastVolume = volume > 0 ? volume : this.lastVolume;
       this.isMuted = volume === 0;
-      console.log(__('Volume settings loaded:', 'sage'), volume);
+      console.log(__('Volume settings loaded:', 'a-ripple-song'), volume);
     }
   },
 
@@ -1460,7 +1460,7 @@ Alpine.store('player', {
       // 确保速率在可用范围内
       if (this.availableRates.includes(rate)) {
         this.playbackRate = rate;
-        console.log(__('Playback rate loaded:', 'sage'), rate);
+        console.log(__('Playback rate loaded:', 'a-ripple-song'), rate);
       }
     }
   },
@@ -1518,7 +1518,7 @@ Alpine.store('player', {
       // 切换曲目后重置进度为0
       this.currentTime = 0;
       this.savePlaybackState();
-      console.log(__('Switched to existing episode:', 'sage'), episode.title);
+      console.log(__('Switched to existing episode:', 'a-ripple-song'), episode.title);
       return;
     }
 
@@ -1536,7 +1536,7 @@ Alpine.store('player', {
     this.currentTime = 0;
     this.savePlaybackState();
 
-    console.log(__('Added to playlist:', 'sage'), episode.title);
+    console.log(__('Added to playlist:', 'a-ripple-song'), episode.title);
   },
 
   /**
@@ -1553,7 +1553,7 @@ Alpine.store('player', {
     const existingIndex = this.playlist.findIndex(item => item.id === episode.id);
 
     if (existingIndex !== -1) {
-      console.log(__('Episode already exists:', 'sage'), episode.title);
+      console.log(__('Episode already exists:', 'a-ripple-song'), episode.title);
       return false;
     }
 

@@ -19,10 +19,10 @@
             </div>
             <div class="flex-1 min-w-0">
                 <div class="flex items-center justify-between">
-                    <h4 class="font-semibold text-sm text-base-content">{{ __('Continue playing?', 'sage') }}</h4>
+                    <h4 class="font-semibold text-sm text-base-content">{{ __('Continue playing?', 'a-ripple-song') }}</h4>
                     <span class="text-xs text-base-content/40" x-text="$store.player.autoplayCountdown + 's'"></span>
                 </div>
-                <p class="text-xs text-base-content/60 truncate" x-text="$store.player.currentEpisode?.title || '{{ __('Unknown episode', 'sage') }}'"></p>
+                <p class="text-xs text-base-content/60 truncate" x-text="$store.player.currentEpisode?.title || '{{ __('Unknown episode', 'a-ripple-song') }}'"></p>
             </div>
         </div>
         <div class="flex gap-2">
@@ -31,14 +31,14 @@
                 class="btn btn-primary btn-sm flex-1"
             >
                 <i data-lucide="play" class="w-4 h-4"></i>
-                {{ __('Play', 'sage') }}
+                {{ __('Play', 'a-ripple-song') }}
             </button>
             <button 
                 @click="$store.player.cancelAutoplay()" 
                 class="btn btn-sm flex-1"
             >
                 <i data-lucide="x" class="w-4 h-4"></i>
-                {{ __('Cancel', 'sage') }}
+                {{ __('Cancel', 'a-ripple-song') }}
             </button>
         </div>
     </div>

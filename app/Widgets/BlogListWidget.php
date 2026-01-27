@@ -9,8 +9,8 @@ class Blog_List_Widget extends WP_Widget {
     public function __construct() {
         parent::__construct(
             'blog_list_widget',
-            __('aripplesong - Blog List', 'sage'),
-            ['description' => __('Display latest blog posts list', 'sage')]
+            __('aripplesong - Blog List', 'a-ripple-song'),
+            ['description' => __('Display latest blog posts list', 'a-ripple-song')]
         );
     }
     
@@ -46,7 +46,7 @@ class Blog_List_Widget extends WP_Widget {
                         $see_all_page = get_page_by_path('blog');
                         $see_all_url = $see_all_page ? get_permalink($see_all_page) : home_url('/blog/');
                     ?>
-                    <a href="<?php echo esc_url($see_all_url); ?>"><?php _e('See all', 'sage'); ?></a>
+                    <a href="<?php echo esc_url($see_all_url); ?>"><?php _e('See all', 'a-ripple-song'); ?></a>
                 </span>
                 <?php endif; ?>
             </div>
@@ -80,7 +80,7 @@ class Blog_List_Widget extends WP_Widget {
                     <?php endwhile; ?>
                     <?php wp_reset_postdata(); ?>
                 <?php else: ?>
-                    <li class="col-span-<?php echo esc_attr($columns); ?> text-center text-base-content/50 py-8"><?php _e('No blog posts yet', 'sage'); ?></li>
+                    <li class="col-span-<?php echo esc_attr($columns); ?> text-center text-base-content/50 py-8"><?php _e('No blog posts yet', 'a-ripple-song'); ?></li>
                 <?php endif; ?>
             </ul>
         </div>
@@ -96,7 +96,7 @@ class Blog_List_Widget extends WP_Widget {
         $columns = !empty($instance['columns']) ? absint($instance['columns']) : 3;
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'sage'); ?></label>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'a-ripple-song'); ?></label>
             <input class="widefat" 
                    id="<?php echo $this->get_field_id('title'); ?>" 
                    name="<?php echo $this->get_field_name('title'); ?>" 
@@ -104,7 +104,7 @@ class Blog_List_Widget extends WP_Widget {
                    value="<?php echo esc_attr($title); ?>">
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('posts_per_page'); ?>"><?php _e('Number of posts:', 'sage'); ?></label>
+            <label for="<?php echo $this->get_field_id('posts_per_page'); ?>"><?php _e('Number of posts:', 'a-ripple-song'); ?></label>
             <input class="tiny-text" 
                    id="<?php echo $this->get_field_id('posts_per_page'); ?>" 
                    name="<?php echo $this->get_field_name('posts_per_page'); ?>" 
@@ -115,7 +115,7 @@ class Blog_List_Widget extends WP_Widget {
                    size="3">
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('columns'); ?>"><?php _e('Number of columns:', 'sage'); ?></label>
+            <label for="<?php echo $this->get_field_id('columns'); ?>"><?php _e('Number of columns:', 'a-ripple-song'); ?></label>
             <input class="tiny-text" 
                    id="<?php echo $this->get_field_id('columns'); ?>" 
                    name="<?php echo $this->get_field_name('columns'); ?>" 
@@ -132,7 +132,7 @@ class Blog_List_Widget extends WP_Widget {
                    <?php checked($show_see_all); ?> 
                    id="<?php echo $this->get_field_id('show_see_all'); ?>" 
                    name="<?php echo $this->get_field_name('show_see_all'); ?>">
-            <label for="<?php echo $this->get_field_id('show_see_all'); ?>"><?php _e('Show "See all" link', 'sage'); ?></label>
+            <label for="<?php echo $this->get_field_id('show_see_all'); ?>"><?php _e('Show "See all" link', 'a-ripple-song'); ?></label>
         </p>
         <?php
     }

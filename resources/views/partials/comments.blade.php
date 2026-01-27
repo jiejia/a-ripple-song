@@ -38,14 +38,14 @@
   @if ($closed())
   <div class="alert alert-warning rounded-lg mb-6 text-sm">
     <i data-lucide="lock" class="w-4 h-4"></i>
-    <span>{!! __('Comments are closed.', 'sage') !!}</span>
+    <span>{!! __('Comments are closed.', 'a-ripple-song') !!}</span>
   </div>
   @endif
 
   <div class="bg-base-200/50 rounded-lg p-4">
     <h3 class="text-base font-bold mb-4 flex items-center gap-2">
       <i data-lucide="pen-line" class="w-4 h-4"></i>
-      {!! __('Leave a Comment', 'sage') !!}
+      {!! __('Leave a Comment', 'a-ripple-song') !!}
     </h3>
     @php(comment_form())
   </div>
