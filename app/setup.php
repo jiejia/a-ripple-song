@@ -681,6 +681,32 @@ add_filter('wp_check_filetype_and_ext', function ($data, $file, $filename, $mime
 }, 10, 4);
 
 /**
+ * Prevent importing Advanced Media Offloader meta during OCDI demo imports.
+ *
+ * The demo WXR includes `advmo_*` meta keys from the source site. When the
+ * Advanced Media Offloader plugin is active, it will offload newly imported
+ * attachments and write its own `advmo_*` meta. Importing the demo values
+ * afterwards can overwrite the correct values and break attachment URLs (most
+ * visibly: featured images).
+ */
+add_filter('import_post_meta_key', function ($key, $post_id, $post) {
+    if (!is_string($key) || strpos($key, 'advmo_') !== 0) {
+        return $key;
+    }
+
+    if (!defined('DOING_AJAX') || !DOING_AJAX) {
+        return $key;
+    }
+
+    $action = isset($_REQUEST['action']) ? (string) $_REQUEST['action'] : '';
+    if ($action === '' || strpos($action, 'ocdi_') !== 0) {
+        return $key;
+    }
+
+    return false;
+}, 10, 3);
+
+/**
  * One Click Demo Import (OCDI) configuration.
  */
 add_filter('ocdi/import_files', function () {
