@@ -1,18 +1,18 @@
 <p align="center">
-  <a href="./README.md">English</a> •
-  <a href="./docs/README.zh-CN.md">简体中文</a> •
-  <a href="./docs/README.zh-TW.md">繁體中文</a> •
-  <a href="./docs/README.zh-HK.md">繁體中文（香港）</a> •
-  <a href="./docs/README.ja.md">日本語</a> •
-  <a href="./docs/README.ko-KR.md">한국어</a> •
-  <a href="./docs/README.fr-FR.md">Français</a> •
-  <a href="./docs/README.es-ES.md">Español</a> •
-  <a href="./docs/README.pt-BR.md">Português (Brasil)</a> •
-  <a href="./docs/README.ru-RU.md">Русский</a> •
-  <a href="./docs/README.hi-IN.md">हिन्दी</a> •
-  <a href="./docs/README.bn-BD.md">বাংলা</a> •
-  <a href="./docs/README.ar.md">العربية</a> •
-  <a href="./docs/README.ur.md">اردو</a>
+  <a href="README.md">English</a> •
+  <a href="README.zh-CN.md">简体中文</a> •
+  <a href="README.zh-TW.md">繁體中文</a> •
+  <a href="README.zh-HK.md">繁體中文（香港）</a> •
+  <a href="README.ja.md">日本語</a> •
+  <a href="README.ko-KR.md">한국어</a> •
+  <a href="README.fr-FR.md">Français</a> •
+  <a href="README.es-ES.md">Español</a> •
+  <a href="README.pt-BR.md">Português (Brasil)</a> •
+  <a href="README.ru-RU.md">Русский</a> •
+  <a href="README.hi-IN.md">हिन्दी</a> •
+  <a href="README.bn-BD.md">বাংলা</a> •
+  <a href="README.ar.md">العربية</a> •
+  <a href="README.ur.md">اردو</a>
 </p>
 
 <p align="center">
@@ -169,7 +169,7 @@ npm run translate:compile # Compile .po to .mo
 
 ## 📝 License
 
-Licensed under the [MIT License](LICENSE.md).
+Licensed under the [MIT License](../LICENSE.md).
 
 ---
 
@@ -185,3 +185,4 @@ Licensed under the [MIT License](LICENSE.md).
   Made with ❤️ for podcasters<br>
   Built on <a href="https://roots.io/sage/">Roots Sage</a>
 </p>
+

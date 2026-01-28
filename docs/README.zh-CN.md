@@ -1,13 +1,25 @@
 <p align="center">
-  <a href="./README.md">English</a> •
-  <a href="./README.zh-CN.md">简体中文</a>
+  <a href="README.md">English</a> •
+  <a href="README.zh-CN.md">简体中文</a> •
+  <a href="README.zh-TW.md">繁體中文</a> •
+  <a href="README.zh-HK.md">繁體中文（香港）</a> •
+  <a href="README.ja.md">日本語</a> •
+  <a href="README.ko-KR.md">한국어</a> •
+  <a href="README.fr-FR.md">Français</a> •
+  <a href="README.es-ES.md">Español</a> •
+  <a href="README.pt-BR.md">Português (Brasil)</a> •
+  <a href="README.ru-RU.md">Русский</a> •
+  <a href="README.hi-IN.md">हिन्दी</a> •
+  <a href="README.bn-BD.md">বাংলা</a> •
+  <a href="README.ar.md">العربية</a> •
+  <a href="README.ur.md">اردو</a>
 </p>
 
 <p align="center">
   <img alt="A Ripple Song" src="https://img.shields.io/badge/A%20Ripple%20Song-beta-6366f1?style=for-the-badge&logo=wordpress&logoColor=white" height="40">
 </p>
 
-<h3 align="center">一站式 WordPress 播客主题</h3>
+<h3 align="center">适用于播客与博客的现代 WordPress 主题</h3>
 
 <p align="center">
   <a href="https://doc-podcast.aripplesong.me/docs/intro">📖 使用教程</a> •
@@ -25,18 +37,18 @@
 
 # A Ripple Song
 
-> **一款现代化播客主题，为速度而生。**  
-> CMS、播放器、小工具、国际化、数据分析，以及丝滑流畅的页面导航 — 一切都经过精心打磨。
+> **一款现代化主题，为速度而生。**  
+> 播放器、小工具、国际化、数据分析，以及丝滑流畅的页面导航 — 一切都经过精心打磨。
 
 ## ✨ 功能一览
 
 | 功能 | 描述 |
 |------|------|
-| 🎙️ **专业播客管理** | 自定义文章类型，完善的元数据支持，团队管理，自动音频解析 |
+| 🎙️ **播客友好 UI** | 节目模板、小工具与播放器界面（需要搭配插件） |
 | 🎵 **沉浸式音频体验** | 持久播放器，波形可视化，播放列表，播放控制 |
 | 🎨 **56 款精美主题配色** | 基于 DaisyUI 的主题系统，可视化选择器，支持明暗模式 |
 | ⚡ **现代技术栈** | Laravel Blade、Tailwind CSS v4、Vite、Alpine.js |
-| 🌐 **完善的国际化支持** | 完整 i18n 支持，内置中英文翻译 |
+| 🌐 **完善的国际化支持** | UI 文案已翻译（见 `resources/lang/`） |
 | 📊 **数据追踪与分析** | 内置指标统计和数据分析支持 |
 | 🧩 **灵活的小工具系统** | 可定制的作者、节目、轮播图等小工具 |
 | 📱 **移动优先响应式设计** | 自适应布局，完美适配各种设备 |
@@ -44,19 +56,15 @@
 
 ---
 
-## 🎙️ 播客功能
+## 🎙️ 播客支持（需要搭配插件）
 
-### 节目管理
-- **自定义文章类型**：专属 `podcast` 文章类型，支持丰富的元数据
-- **节目字段**：音频文件、时长、文字稿、季/集编号、内容分级标识
-- **团队归属**：为节目分配主持人（成员）和嘉宾
-- **自动音频解析**：通过 getID3 自动提取时长、文件大小和 MIME 类型
+本主题**不会**注册自定义文章类型（CPT）或分类法（taxonomy）。
 
-### RSS 订阅源 (Podcasting 2.0)
-- **Apple Podcasts 兼容**：完全符合 Apple Podcasts 规范
-- **多平台支持**：支持 Spotify、YouTube Music 及所有主流平台
-- **Podcasting 2.0 支持**：人物标签、文字稿链接、章节元数据
-- **订阅源地址**：`/feed/podcast/`
+如果你要搭建播客站点，请安装配套插件 `a-ripple-song-podcast`（会注册 `ars_episode` 文章类型）。启用后，主题将提供：
+
+- 节目列表小工具与节目模板
+- 节目音频的播放器整合
+- 标签页同时包含节目内容（如可用）
 
 ---
 
@@ -72,28 +80,29 @@
 
 ## 📦 环境要求
 
-- PHP 8.2+
-- WordPress 6.6+
-- Node.js 20+
-- Composer
+- 运行环境：PHP 8.2+、WordPress 6.6+
+- 开发环境：Node.js 20+、Composer
 
 ## 🚀 快速开始
 
-```bash
-# 1. 克隆到主题目录
-cd wp-content/themes/
-git clone https://github.com/jiejia/a-ripple-song.git aripplesong
-cd aripplesong
+### 安装（普通用户）
 
-# 2. 安装依赖
+1. 下载/安装主题（外观 → 主题）。
+2. 激活主题。
+3. 可选：安装播客插件 `a-ripple-song-podcast` 以启用节目功能。
+
+### 开发（贡献者）
+
+```bash
+cd wp-content/themes/
+git clone https://github.com/jiejia/a-ripple-song.git a-ripple-song
+cd a-ripple-song
+
 composer install
 npm install
 
-# 3. 构建资源
 npm run build    # 生产环境
 npm run dev      # 开发环境（支持热更新）
-
-# 4. 在 WordPress 后台激活主题
 ```
 
 📖 **详细安装说明，请访问 [使用教程](https://doc-podcast.aripplesong.me/docs/intro)**
@@ -102,38 +111,21 @@ npm run dev      # 开发环境（支持热更新）
 
 ## ⚙️ 配置说明
 
-### 主题设置
-
 在 WordPress 后台导航至 **主题设置**：
 
 | 选项卡 | 设置项 |
 |--------|--------|
 | **常规** | 站点 Logo、页脚版权、DaisyUI 主题选择器 |
-| **播客** | 订阅源元数据、封面图片、分类、语言 |
 | **社交链接** | 页脚社交媒体链接 |
-
-### 播客订阅源设置
-
-| 设置项 | 描述 |
-|--------|------|
-| 播客标题 | RSS 订阅源中显示的节目名称 |
-| 描述 | 播客简介 |
-| 封面图片 | 正方形图片（1400×1400 至 3000×3000 像素） |
-| 分类 | Apple Podcasts 分类（最多 3 个） |
-| 语言 | 订阅源语言代码 |
-| 内容分级 | 内容分级标识 |
-| 作者/所有者 | 目录平台的联系信息 |
 
 ---
 
 ## 📁 项目结构
 
 ```
-aripplesong/
+a-ripple-song/
 ├── app/
-│   ├── Feeds/          # RSS 订阅源生成
 │   ├── Metrics/        # 数据分析追踪
-│   ├── PostTypes/      # 自定义文章类型
 │   ├── Providers/      # 服务提供者
 │   ├── ThemeOptions/   # Carbon Fields 设置
 │   ├── View/           # Blade 视图组合器
@@ -157,7 +149,7 @@ aripplesong/
 | **作者** | 团队成员信息，包含头像和角色 |
 | **轮播横幅** | 可管理的主页轮播图 |
 | **博客列表** | 最新文章展示 |
-| **播客列表** | 节目网格，带播放按钮 |
+| **播客列表** | 节目网格，带播放按钮（需要插件） |
 | **订阅链接** | 各平台订阅按钮 |
 | **页脚链接** | 可自定义的页脚栏目 |
 | **标签云** | 标签可视化展示 |
@@ -194,7 +186,7 @@ npm run translate:compile # 编译 .po 为 .mo 文件
 
 ## 📝 开源许可
 
-基于 [MIT 许可证](LICENSE.md) 开源。
+基于 [MIT 许可证](../LICENSE.md) 开源。
 
 ---
 
