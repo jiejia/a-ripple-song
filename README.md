@@ -1,7 +1,7 @@
 <p align="center">
   <a href="./README.md">English</a> •
   <a href="./docs/README.zh-CN.md">简体中文</a> •
-  <a href="./docs/README.zh-TW.md">繁體中文</a> •
+  <a href="./docs/README.zh-Hant.md">繁體中文</a> •
   <a href="./docs/README.ja.md">日本語</a> •
   <a href="./docs/README.ko-KR.md">한국어</a> •
   <a href="./docs/README.fr-FR.md">Français</a> •
