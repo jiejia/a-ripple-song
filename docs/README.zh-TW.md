@@ -2,7 +2,6 @@
   <a href="README.md">English</a> •
   <a href="README.zh-CN.md">简体中文</a> •
   <a href="README.zh-TW.md">繁體中文</a> •
-  <a href="README.zh-HK.md">繁體中文（香港）</a> •
   <a href="README.ja.md">日本語</a> •
   <a href="README.ko-KR.md">한국어</a> •
   <a href="README.fr-FR.md">Français</a> •
@@ -185,4 +184,3 @@ npm run translate:compile # 編譯 .po 為 .mo
   為播客創作者用 ❤️ 打造<br>
   基於 <a href="https://roots.io/sage/">Roots Sage</a>
 </p>
-
