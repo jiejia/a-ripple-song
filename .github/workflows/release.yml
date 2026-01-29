@@ -1,12 +1,13 @@
 name: Build WordPress theme package
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - "v*"
   workflow_dispatch:
     inputs:
       tag:
-        description: "Tag to build (e.g. v0.6.0-beta)"
+        description: "Tag to build (e.g. v0.5.0-beta)"
         required: true
         type: string
 
@@ -22,8 +23,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if [[ "${{ github.event_name }}" == "release" ]]; then
-            TAG="${{ github.event.release.tag_name }}"
+          if [[ "${{ github.event_name }}" == "push" ]]; then
+            TAG="${{ github.ref_name }}"
           else
             TAG="${{ inputs.tag }}"
           fi
@@ -37,10 +38,16 @@ jobs:
           THEME_SLUG="a-ripple-song"
           ARCHIVE_NAME="${THEME_SLUG}-${VERSION}.zip"
 
+          PRERELEASE=false
+          if [[ "$VERSION" == *"-"* ]]; then
+            PRERELEASE=true
+          fi
+
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
           echo "theme_slug=$THEME_SLUG" >> "$GITHUB_OUTPUT"
           echo "archive_name=$ARCHIVE_NAME" >> "$GITHUB_OUTPUT"
+          echo "prerelease=$PRERELEASE" >> "$GITHUB_OUTPUT"
 
       - name: Checkout tag
         uses: actions/checkout@v4
@@ -82,7 +89,7 @@ jobs:
           mkdir -p "dist/${THEME_SLUG}"
 
           # Build a minimal, installable WordPress theme package.
-          # Includes: PHP/theme files, Blade views, translations, built assets, demo data and vendor dependencies.
+          # Includes: PHP/theme files, Blade views, translations, built assets and vendor dependencies.
           rsync -a --prune-empty-dirs \
             --include="app/***" \
             --include="data/***" \
@@ -96,11 +103,16 @@ jobs:
             --include="vendor/***" \
             --include="composer.json" \
             --include="composer.lock" \
+            --include="readme.txt" \
+            --include="LICENSE" \
             --include="functions.php" \
             --include="index.php" \
+            --include="searchform.php" \
+            --include="editor-style.css" \
             --include="style.css" \
             --include="screenshot.png" \
             --include="theme.json" \
+            --include="docs/***" \
             --exclude="*" \
             ./ "dist/${THEME_SLUG}/"
 
@@ -108,35 +120,67 @@ jobs:
 
           (cd dist && zip -r "../${ARCHIVE_NAME}" "${THEME_SLUG}" -x "**/.DS_Store")
 
-      - name: Delete existing asset (if any)
+      - name: Ensure GitHub Release
+        id: release
         uses: actions/github-script@v7
         env:
           TAG: ${{ steps.vars.outputs.tag }}
-          ASSET_NAME: ${{ steps.vars.outputs.archive_name }}
+          PRERELEASE: ${{ steps.vars.outputs.prerelease }}
         with:
           script: |
             const tag = process.env.TAG;
-            const assetName = process.env.ASSET_NAME;
+            const prerelease = process.env.PRERELEASE === 'true';
 
             let release;
-            if (context.eventName === 'release') {
-              release = context.payload.release;
-            } else {
+            try {
               const res = await github.rest.repos.getReleaseByTag({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 tag,
               });
               release = res.data;
+              core.info(`Found existing release for ${tag} (id: ${release.id}).`);
+            } catch (error) {
+              if (error.status !== 404) throw error;
+              core.info(`No release found for ${tag}. Creating one...`);
+              const created = await github.rest.repos.createRelease({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                tag_name: tag,
+                name: tag,
+                draft: false,
+                prerelease,
+                generate_release_notes: true,
+              });
+              release = created.data;
+              core.info(`Created release for ${tag} (id: ${release.id}).`);
             }
 
-            const existing = (release.assets || []).find(a => a.name === assetName);
+            core.setOutput('id', release.id.toString());
+
+      - name: Delete existing asset (if any)
+        uses: actions/github-script@v7
+        env:
+          RELEASE_ID: ${{ steps.release.outputs.id }}
+          ASSET_NAME: ${{ steps.vars.outputs.archive_name }}
+        with:
+          script: |
+            const releaseId = Number(process.env.RELEASE_ID);
+            const assetName = process.env.ASSET_NAME;
+
+            const assetsRes = await github.rest.repos.listReleaseAssets({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              release_id: releaseId,
+            });
+
+            const existing = (assetsRes.data || []).find(a => a.name === assetName);
             if (!existing) {
-              core.info(`No existing asset named "${assetName}" on ${tag}.`);
+              core.info(`No existing asset named "${assetName}" on release ${releaseId}.`);
               return;
             }
 
-            core.info(`Deleting existing asset "${assetName}" (id: ${existing.id}) on ${tag}...`);
+            core.info(`Deleting existing asset "${assetName}" (id: ${existing.id}) on release ${releaseId}...`);
             await github.rest.repos.deleteReleaseAsset({
               owner: context.repo.owner,
               repo: context.repo.repo,
