@@ -82,7 +82,7 @@ class SocialLinks
         $platforms = self::getPlatforms();
 
         foreach ($platforms as $key => $platform) {
-            $url = carbon_get_theme_option(self::SETTING_PREFIX . $key);
+            $url = ThemeSettings::getOptionString(self::SETTING_PREFIX . $key, '');
             
             if (!empty(trim($url))) {
                 $configured[$key] = [
@@ -106,4 +106,3 @@ class SocialLinks
         return !empty(self::getConfiguredLinks());
     }
 }
-

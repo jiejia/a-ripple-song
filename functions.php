@@ -135,7 +135,7 @@ if (!function_exists('aripplesong_podcast_features_enabled')) {
 |
 */
 
-collect(['setup', 'filters', 'widgets', 'ThemeOptions/General', 'Metrics/Post'])
+collect(['setup', 'filters', 'widgets', 'ThemeOptions/ThemeSettings', 'Metrics/Post'])
     ->each(function ($file) {
         if (! locate_template($file = "app/{$file}.php", true, true)) {
             wp_die(
