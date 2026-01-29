@@ -4,9 +4,9 @@ Tags: podcast, audio, blog
 Requires at least: 6.6
 Tested up to: 6.6
 Requires PHP: 8.2
-Stable tag: 0.6.0-beta
-License: MIT
-License URI: https://opensource.org/licenses/MIT
+Stable tag: 0.5.0-beta
+License: GPL-3.0
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 An all-in-one podcast theme for WordPress with a modern audio player and flexible widgets.
 
@@ -30,4 +30,3 @@ No. Podcast post types/taxonomies should be provided by a companion plugin.
 
 = 0.6.0-beta =
 * Initial public release.
-

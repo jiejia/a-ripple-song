@@ -15,7 +15,7 @@
 </p>
 
 <p align="center">
-  <img alt="A Ripple Song" src="https://img.shields.io/badge/A%20Ripple%20Song-beta-6366f1?style=for-the-badge&logo=wordpress&logoColor=white" height="40">
+  <img alt="A Ripple Song" src="https://img.shields.io/badge/A%20Ripple%20Song-0.5.0--BETA-6366f1?style=for-the-badge&logo=wordpress&logoColor=white" height="40">
 </p>
 
 <h3 align="center">Tema WordPress moderno para podcasts e blogs</h3>
@@ -29,7 +29,7 @@
 <p align="center">
   <img alt="PHP" src="https://img.shields.io/badge/PHP-8.2+-777BB4?style=flat-square&logo=php&logoColor=white">
   <img alt="WordPress" src="https://img.shields.io/badge/WordPress-6.6+-21759B?style=flat-square&logo=wordpress&logoColor=white">
-  <img alt="License" src="https://img.shields.io/badge/License-MIT-green?style=flat-square">
+  <img alt="License" src="https://img.shields.io/badge/License-GPL--3.0-blue?style=flat-square">
 </p>
 
 ---
@@ -146,7 +146,7 @@ npm run translate:compile # .po → .mo
 
 ## 📝 Licença
 
-Sob [MIT License](../LICENSE.md).
+Sob [GPL-3.0](../LICENSE).
 
 ---
 

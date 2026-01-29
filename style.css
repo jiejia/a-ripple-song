@@ -2,12 +2,12 @@
 Theme Name:         A Ripple Song
 Theme URI:          https://doc-podcast.aripplesong.me/
 Description:        A Ripple Song is an all-in-one podcast theme for WordPress built on Sage. Publish podcasts and articles with dedicated templates, powerful theme options, and a flexible widget system for lists, members, subscriptions, banners, tags and footer links. Enjoy a modern audio player with playlist, speed control, waveform/spectrum visuals and uninterrupted playback across seamless Swup page transitions. Mobile-first responsive layout supports touch, keyboard navigation and screen readers. Includes RSS feed support, episode metadata, and built-in post metrics. Tailwind CSS + daisyUI styling and a Vite build pipeline keep it fast and easy to customize for creators and teams.
-Version:            0.6.0-beta
+Version:            0.5.0-beta
 Author:             Jiejia
 Author URI:         https://github.com/jiejia/
 Text Domain:        a-ripple-song
-License:            MIT License
-License URI:        https://opensource.org/licenses/MIT
+License:            GPL-3.0
+License URI:        https://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP:       8.2
 Requires at least:  6.6
 Tested up to:       6.6
