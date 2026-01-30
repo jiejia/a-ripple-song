@@ -4,7 +4,7 @@ Tags: podcast, audio, blog
 Requires at least: 6.6
 Tested up to: 6.6
 Requires PHP: 8.2
-Stable tag: 0.5.0-beta
+Stable tag: 0.5.0
 License: GPL-3.0
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -28,5 +28,5 @@ No. Podcast post types/taxonomies should be provided by a companion plugin.
 
 == Changelog ==
 
-= 0.6.0-beta =
+= 0.5.0 =
 * Initial public release.

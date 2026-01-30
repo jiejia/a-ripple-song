@@ -15,7 +15,7 @@
 </p>
 
 <p align="center">
-  <img alt="A Ripple Song" src="https://img.shields.io/badge/A%20Ripple%20Song-0.5.0--BETA-6366f1?style=for-the-badge&logo=wordpress&logoColor=white" height="40">
+  <img alt="A Ripple Song" src="https://img.shields.io/badge/A%20Ripple%20Song-0.5.0-6366f1?style=for-the-badge&logo=wordpress&logoColor=white" height="40">
 </p>
 
 <h3 align="center">Tema WordPress moderno para podcasts e blogs</h3>
