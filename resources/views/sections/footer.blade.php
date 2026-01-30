@@ -5,7 +5,7 @@
     @php($themeName = esc_html__('A Ripple Song', 'a-ripple-song'))
     @php($themeLink = sprintf('<a href="%s" target="_blank" rel="noopener" class="text-primary">%s</a>', esc_url('https://github.com/jiejia/a-ripple-song'), $themeName))
     @php($defaultCopyright = sprintf(__('Powered by %s', 'a-ripple-song'), $themeLink))
-    @php($copyrightYear = sprintf('© %s', date_i18n('Y')))
+    @php($copyrightYear = sprintf('© %s', wp_date('Y')))
     @if(is_active_sidebar(\App\Theme::SIDEBAR_FOOTER_LINKS))
       <div class="grid md:[grid-template-columns:repeat(auto-fit,minmax(calc(25%-0.75rem),1fr))] grid-cols-2 justify-items-stretch gap-4 mb-4">
         @php(dynamic_sidebar(\App\Theme::SIDEBAR_FOOTER_LINKS))

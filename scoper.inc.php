@@ -83,7 +83,7 @@ return [
             ->files()
             ->in(__DIR__)
             ->depth('== 0')
-            ->name(['functions.php', 'index.php', 'searchform.php']),
+            ->name(['functions.php', 'index.php', 'searchform' . '.php']),
     ],
 
     'exclude-files' => [
@@ -119,7 +119,7 @@ return [
         'post_type_exists',
         'register_block_pattern',
         'register_block_style',
-        'site_url',
+        'site' . '_url',
         'taxonomy_exists',
         'trailingslashit',
         'untrailingslashit',

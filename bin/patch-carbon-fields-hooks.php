@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use Symfony\Component\Filesystem\Filesystem;
+
 /**
  * Patch Carbon Fields WordPress hook names to avoid collisions.
  *
@@ -19,10 +21,17 @@ declare(strict_types=1);
 $root = dirname(__DIR__);
 $carbonFieldsDir = $argv[1] ?? ($root . '/vendor/htmlburger/carbon-fields');
 
+$autoload = $root . '/vendor/autoload.php';
+if (is_file($autoload)) {
+    require_once $autoload;
+}
+
 if (!is_dir($carbonFieldsDir)) {
-    fwrite(STDOUT, "Carbon Fields not found at: {$carbonFieldsDir}. Skipping.\n");
+    echo "Carbon Fields not found at: {$carbonFieldsDir}. Skipping.\n";
     exit(0);
 }
+
+$filesystem = class_exists(Filesystem::class) ? new Filesystem() : null;
 
 $hookFunctions = [
     'add_action',
@@ -72,7 +81,7 @@ foreach ($iterator as $file) {
     $path = $file->getPathname();
     $contents = file_get_contents($path);
     if ($contents === false) {
-        fwrite(STDERR, "Failed to read: {$path}\n");
+        echo "Failed to read: {$path}\n";
         exit(1);
     }
 
@@ -83,16 +92,21 @@ foreach ($iterator as $file) {
         $count = 0;
         $contents = preg_replace($p['regex'], $p['replace'], $contents, -1, $count);
         if ($contents === null) {
-            fwrite(STDERR, "Regex error while processing: {$path}\n");
+            echo "Regex error while processing: {$path}\n";
             exit(1);
         }
         $fileReplacements += $count;
     }
 
     if ($contents !== $original) {
-        $ok = file_put_contents($path, $contents);
-        if ($ok === false) {
-            fwrite(STDERR, "Failed to write: {$path}\n");
+        try {
+            if ($filesystem) {
+                $filesystem->dumpFile($path, $contents);
+            } else {
+                throw new RuntimeException('Symfony Filesystem is not available.');
+            }
+        } catch (Throwable $e) {
+            echo "Failed to write: {$path}\n";
             exit(1);
         }
         $changedFiles++;
@@ -100,5 +114,4 @@ foreach ($iterator as $file) {
     }
 }
 
-fwrite(STDOUT, "Patched Carbon Fields hooks. Files changed: {$changedFiles}, replacements: {$totalReplacements}.\n");
-
+echo "Patched Carbon Fields hooks. Files changed: {$changedFiles}, replacements: {$totalReplacements}.\n";

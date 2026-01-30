@@ -6,9 +6,15 @@ THEME_SLUG="${1:-a-ripple-song}"
 ARCHIVE_NAME="${2:-${THEME_SLUG}.zip}"
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-WORKDIR="${ROOT_DIR}/build/scoper-workdir"
+BUILD_ROOT="$(mktemp -d -t "${THEME_SLUG}" 2>/dev/null || mktemp -d -t "${THEME_SLUG}.XXXXXX")"
+WORKDIR="${BUILD_ROOT}/workdir"
 SCOPED_DIR="${WORKDIR}/build/scoped"
-DIST_DIR="${ROOT_DIR}/dist/${THEME_SLUG}"
+DIST_DIR="${BUILD_ROOT}/dist/${THEME_SLUG}"
+
+cleanup() {
+  rm -rf "${BUILD_ROOT}"
+}
+trap cleanup EXIT
 
 if [[ ! -d "${ROOT_DIR}/public/build" ]]; then
   echo "Missing public/build. Run \`npm run build\` first." >&2
@@ -47,7 +53,6 @@ php "${ROOT_DIR}/bin/patch-carbon-fields-hooks.php" "${WORKDIR}/vendor/htmlburge
   php -d error_reporting=8191 "${ROOT_DIR}/vendor/bin/php-scoper" add-prefix --config scoper.inc.php
 )
 
-rm -rf "${ROOT_DIR}/dist"
 mkdir -p "${DIST_DIR}"
 
 rsync -a --prune-empty-dirs \
@@ -87,6 +92,6 @@ cp "${ROOT_DIR}/bin/scoper-autoload.php" "${DIST_DIR}/vendor/scoper-autoload.php
 find "${DIST_DIR}" -name ".DS_Store" -delete
 
 rm -f "${ROOT_DIR}/${ARCHIVE_NAME}"
-(cd "${ROOT_DIR}/dist" && zip -r "${ROOT_DIR}/${ARCHIVE_NAME}" "${THEME_SLUG}" -x "**/.DS_Store")
+(cd "${BUILD_ROOT}/dist" && zip -r "${ROOT_DIR}/${ARCHIVE_NAME}" "${THEME_SLUG}" -x "**/.DS_Store")
 
 echo "Built ${ARCHIVE_NAME}"
