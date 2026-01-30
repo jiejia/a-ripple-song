@@ -30,12 +30,12 @@ class GeneralOptions
     public static function boot(): void
     {
         add_action('after_setup_theme', [static::class, 'bootCarbon']);
-        add_action('carbon_fields_register_fields', [static::class, 'registerFields']);
+        add_action(\aripplesong_cf_hook('carbon_fields_register_fields'), [static::class, 'registerFields']);
         add_action('admin_menu', [static::class, 'adjustAdminMenu'], 20);
         add_action('admin_head', [static::class, 'outputPickerAssets']);
         add_action('admin_head', [static::class, 'outputLogoAssets']);
         add_action('wp_ajax_crb_crop_logo', [static::class, 'handleCropLogoAjax']);
-        add_action('carbon_fields_theme_options_container_saved', [static::class, 'syncLogoOption'], 10, 1);
+        add_action(\aripplesong_cf_hook('carbon_fields_theme_options_container_saved'), [static::class, 'syncLogoOption'], 10, 1);
     }
 
     /**

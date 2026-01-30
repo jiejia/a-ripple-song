@@ -13,11 +13,53 @@ use Roots\Acorn\Application;
 |
 */
 
-if (! file_exists($composer = __DIR__.'/vendor/autoload.php')) {
+$scoper_autoload = __DIR__ . '/vendor/scoper-autoload.php';
+$composer_autoload = __DIR__ . '/vendor/autoload.php';
+
+if (file_exists($scoper_autoload)) {
+    require $scoper_autoload;
+} elseif (file_exists($composer_autoload)) {
+    require $composer_autoload;
+} else {
     wp_die(__('Error locating autoloader. Please run <code>composer install</code>.', 'a-ripple-song'));
 }
 
-require $composer;
+/*
+|--------------------------------------------------------------------------
+| Carbon Fields Hook Isolation
+|--------------------------------------------------------------------------
+|
+| Carbon Fields uses a set of WordPress hooks prefixed with `carbon_fields_`.
+| If multiple Carbon Fields instances (e.g. from another plugin) are loaded,
+| those hooks can collide and cause fatal type errors.
+|
+| We isolate the theme's Carbon Fields hooks by prefixing them with a dedicated
+| string. Vendor code is patched during build/install to call aripplesong_cf_hook().
+|
+*/
+
+if (! defined('ARIPPLESONG_CARBON_FIELDS_HOOK_PREFIX')) {
+    define('ARIPPLESONG_CARBON_FIELDS_HOOK_PREFIX', 'a_ripple_song_');
+}
+
+if (! function_exists('aripplesong_cf_hook')) {
+    function aripplesong_cf_hook(string $hook): string
+    {
+        $carbonPrefix = 'carbon_fields_';
+        $prefix = ARIPPLESONG_CARBON_FIELDS_HOOK_PREFIX;
+
+        $alreadyPrefixed = $prefix . $carbonPrefix;
+        if (strncmp($hook, $alreadyPrefixed, strlen($alreadyPrefixed)) === 0) {
+            return $hook;
+        }
+
+        if (strncmp($hook, $carbonPrefix, strlen($carbonPrefix)) === 0) {
+            return $prefix . $hook;
+        }
+
+        return $hook;
+    }
+}
 
 /*
 |--------------------------------------------------------------------------

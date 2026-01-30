@@ -30,6 +30,7 @@
     "roots/acorn": "^5.0"
   },
   "require-dev": {
+    "humbug/php-scoper": "^0.18",
     "laravel/pint": "^1.20"
   },
   "suggest": {
@@ -44,7 +45,8 @@
   "prefer-stable": true,
   "scripts": {
     "post-autoload-dump": [
-      "Roots\\Acorn\\ComposerScripts::postAutoloadDump"
+      "Roots\\Acorn\\ComposerScripts::postAutoloadDump",
+      "@php bin/patch-carbon-fields-hooks.php"
     ]
   }
 }
