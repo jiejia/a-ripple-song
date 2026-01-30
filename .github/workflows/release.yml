@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: "Tag to build (e.g. v0.5.0-beta)"
+        description: "Tag to build (e.g. v0.5.0)"
         required: true
         type: string
 
@@ -82,8 +82,8 @@ jobs:
         run: |
           set -euo pipefail
 
-          chmod +x bin/build-release.sh
-          bin/build-release.sh "${{ steps.vars.outputs.theme_slug }}" "${{ steps.vars.outputs.archive_name }}"
+          chmod +x bin/build-release
+          bin/build-release "${{ steps.vars.outputs.theme_slug }}" "${{ steps.vars.outputs.archive_name }}"
 
       - name: Ensure GitHub Release
         id: release
