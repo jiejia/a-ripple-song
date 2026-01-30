@@ -25,6 +25,7 @@
   "require": {
     "php": ">=8.2",
     "cmb2/cmb2": "^2.11",
+    "htmlburger/carbon-fields": "^3.6",
     "james-heinrich/getid3": "^1.9",
     "roots/acorn": "^5.0"
   },

@@ -3,12 +3,7 @@
     <div class="px-6 py-3">
       <div class="grid xl:grid-cols-[220px_1fr_300px] grid-cols-[220px_1fr] gap-4">
         @php
-          $customLogoId = (int) get_theme_mod('custom_logo');
-          $siteLogo = $customLogoId ? wp_get_attachment_image_url($customLogoId, 'full') : '';
-
-          if (!$siteLogo) {
-            $siteLogo = \App\ThemeOptions\ThemeSettings::getOptionString('crb_site_logo', '');
-          }
+          $siteLogo = carbon_get_theme_option('crb_site_logo');
         @endphp
         <h1 class="text-2xl font-bold text-center">
           <a href="{{ home_url('/') }}" class="flex items-center gap-2">

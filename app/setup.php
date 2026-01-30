@@ -516,12 +516,12 @@ add_action('pre_get_posts', function ($query) {
                 // Set script translations for JavaScript i18n
                 wp_set_script_translations('aripplesong-app', 'a-ripple-song', get_template_directory() . '/resources/lang');
 
-                $light_theme = \App\ThemeOptions\ThemeSettings::getLightTheme();
-                $dark_theme = \App\ThemeOptions\ThemeSettings::getDarkTheme();
-                $light_themes = array_keys(\App\ThemeOptions\ThemeSettings::getDaisyUiLightThemes());
-                $dark_themes = array_keys(\App\ThemeOptions\ThemeSettings::getDaisyUiDarkThemes());
+                $light_theme = function_exists('\carbon_get_theme_option') ? \carbon_get_theme_option('crb_light_theme') : null;
+                $dark_theme = function_exists('\carbon_get_theme_option') ? \carbon_get_theme_option('crb_dark_theme') : null;
+                $light_themes = function_exists('\App\ThemeOptions\crb_get_daisyui_light_themes') ? array_keys(\App\ThemeOptions\crb_get_daisyui_light_themes()) : [];
+                $dark_themes = function_exists('\App\ThemeOptions\crb_get_daisyui_dark_themes') ? array_keys(\App\ThemeOptions\crb_get_daisyui_dark_themes()) : [];
                 $palette_slugs = array_unique(array_merge($light_themes, $dark_themes));
-                $palette_map = \App\ThemeOptions\ThemeSettings::getDaisyUiThemePalette($palette_slugs);
+                $palette_map = function_exists('\App\ThemeOptions\crb_get_daisyui_theme_palette') ? \App\ThemeOptions\crb_get_daisyui_theme_palette($palette_slugs) : [];
                 $current_post_id = is_singular() ? get_queried_object_id() : 0;
                 $current_post_type = $current_post_id ? get_post_type($current_post_id) : '';
                 $podcast_post_type = function_exists('aripplesong_get_podcast_post_type') ? \aripplesong_get_podcast_post_type() : '';

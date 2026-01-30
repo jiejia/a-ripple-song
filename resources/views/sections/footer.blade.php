@@ -1,7 +1,7 @@
 <footer class="text-center text-base-content/70 text-xs">
   <div class="max-w-screen-xl mx-auto p-4 pt-0">
     <!-- @php(dynamic_sidebar('sidebar-footer')) -->
-    @php($footerCopyright = \App\ThemeOptions\ThemeSettings::getOptionString('crb_footer_copyright'))
+    @php($footerCopyright = carbon_get_theme_option('crb_footer_copyright'))
     @php($themeName = esc_html__('A Ripple Song', 'a-ripple-song'))
     @php($themeLink = sprintf('<a href="%s" target="_blank" rel="noopener" class="text-primary">%s</a>', esc_url('https://github.com/jiejia/a-ripple-song'), $themeName))
     @php($defaultCopyright = sprintf(__('Powered by %s', 'a-ripple-song'), $themeLink))
