@@ -153,7 +153,49 @@ jobs:
             });
 
       - name: Upload package to GitHub Release
-        uses: softprops/action-gh-release@v2
+        uses: actions/github-script@v7
+        env:
+          RELEASE_ID: ${{ steps.release.outputs.id }}
+          ASSET_NAME: ${{ steps.vars.outputs.archive_name }}
+          ASSET_PATH: ${{ steps.vars.outputs.archive_name }}
         with:
-          tag_name: ${{ steps.vars.outputs.tag }}
-          files: ${{ steps.vars.outputs.archive_name }}
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+
+            const releaseId = Number(process.env.RELEASE_ID);
+            const assetName = process.env.ASSET_NAME;
+            const assetPath = process.env.ASSET_PATH;
+
+            const workspace = process.env.GITHUB_WORKSPACE || process.cwd();
+            const fullPath = path.isAbsolute(assetPath) ? assetPath : path.join(workspace, assetPath);
+
+            if (!fs.existsSync(fullPath)) {
+              throw new Error(`Release asset not found: ${fullPath}`);
+            }
+
+            const data = fs.readFileSync(fullPath);
+
+            const maxRetries = 5;
+            for (let attempt = 1; attempt <= maxRetries; attempt++) {
+              try {
+                core.info(`Uploading "${assetName}" (attempt ${attempt}/${maxRetries})...`);
+                await github.rest.repos.uploadReleaseAsset({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  release_id: releaseId,
+                  name: assetName,
+                  data,
+                  headers: {
+                    'content-type': 'application/zip',
+                    'content-length': data.length,
+                  },
+                });
+                core.info(`Uploaded "${assetName}" to release ${releaseId}.`);
+                return;
+              } catch (error) {
+                core.warning(`Upload failed (attempt ${attempt}/${maxRetries}): ${error.message || error}`);
+                if (attempt === maxRetries) throw error;
+                await new Promise(resolve => setTimeout(resolve, attempt * 5000));
+              }
+            }
