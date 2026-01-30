@@ -36,7 +36,7 @@ jobs:
 
           VERSION="${TAG#v}"
           THEME_SLUG="a-ripple-song"
-          ARCHIVE_NAME="${THEME_SLUG}-${VERSION}.zip"
+          ARCHIVE_NAME="${THEME_SLUG}.zip"
 
           PRERELEASE=false
           if [[ "$VERSION" == *"-"* ]]; then

@@ -55,6 +55,22 @@ return [
     // The base output directory for the prefixed files.
     'output-dir' =>  __DIR__ . '/build/scoped',
 
+    'patchers' => [
+        /**
+         * PHP-Scoper may add `class_alias()` calls to expose prefixed classes back into the global namespace.
+         *
+         * This theme intentionally avoids exposing prefixed symbols to prevent collisions with other
+         * Composer-based plugins/themes. Keep the scoped build quiet by stripping those aliases.
+         */
+        static function (string $filePath, string $prefix, string $contents): string {
+            $prefixQuoted = preg_quote($prefix, '~');
+            $pattern = "~^\\s*\\\\?class_alias\\(\\s*'{$prefixQuoted}\\\\[^']+'\\s*,\\s*'[^']+'\\s*,\\s*\\\\?false\\s*\\);\\s*$~m";
+
+            $patched = preg_replace($pattern, '', $contents);
+            return is_string($patched) ? $patched : $contents;
+        },
+    ],
+
     'finders' => [
         // Scope the entire vendor tree, including non-PHP assets (Carbon Fields admin UI).
         $finder::create()

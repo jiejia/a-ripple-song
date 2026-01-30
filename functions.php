@@ -63,15 +63,35 @@ if (! function_exists('aripplesong_cf_hook')) {
 
 /*
 |--------------------------------------------------------------------------
-| Initialize CMB2
+| Acorn Storage Isolation
 |--------------------------------------------------------------------------
 |
-| Load CMB2 for custom metaboxes and fields.
+| Acorn stores compiled configuration and package manifests in a storage
+| directory under `wp-content/cache/acorn`. Since this theme may ship with a
+| scoped vendor, we isolate the storage path by theme + build variant to avoid
+| collisions with other Acorn apps and stale cached provider manifests.
 |
 */
 
-if (file_exists(__DIR__ . '/vendor/cmb2/cmb2/init.php')) {
-    require_once __DIR__ . '/vendor/cmb2/cmb2/init.php';
+if (defined('WP_CONTENT_DIR') && ! defined('ACORN_STORAGE_PATH')) {
+    $themeSlug = function_exists('get_stylesheet') ? get_stylesheet() : 'a-ripple-song';
+    if (! is_string($themeSlug) || $themeSlug === '') {
+        $themeSlug = 'a-ripple-song';
+    }
+
+    $buildVariant = file_exists($scoper_autoload) ? 'scoped' : 'dev';
+    define('ACORN_STORAGE_PATH', rtrim(WP_CONTENT_DIR, '/\\') . "/cache/acorn/{$themeSlug}/{$buildVariant}");
+}
+
+if (defined('ACORN_STORAGE_PATH') && function_exists('wp_mkdir_p')) {
+    foreach ([
+        'framework/cache/data',
+        'framework/views',
+        'framework/sessions',
+        'logs',
+    ] as $directory) {
+        wp_mkdir_p(rtrim(ACORN_STORAGE_PATH, '/\\') . "/{$directory}");
+    }
 }
 
 /*
@@ -353,9 +373,9 @@ function get_post_all_authors($post_id) {
 }
 
 /**
- * Extract user IDs from a CMB2 multicheck value.
+ * Extract user IDs from a multicheck field value.
  *
- * CMB2 multicheck typically stores selected values as an associative array of
+ * Some multicheck implementations store selected values as an associative array of
  * "id" => "on". Some installs may store a simple numeric array instead.
  *
  * @param mixed $value

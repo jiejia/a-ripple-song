@@ -179,7 +179,6 @@ npm run translate:compile # 编译 .po 为 .mo 文件
 | [Howler.js](https://howlerjs.com/) | 音频播放 |
 | [WaveSurfer.js](https://wavesurfer-js.org/) | 波形显示 |
 | [Carbon Fields](https://carbonfields.net/) | 主题选项 |
-| [CMB2](https://cmb2.io/) | 元数据框 |
 
 ---
 
