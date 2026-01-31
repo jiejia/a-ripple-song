@@ -1757,3 +1757,23 @@ msgstr "Install"
 #: app/admin.php:137
 msgid "Activate"
 msgstr "Activate"
+
+#: app/ThemeOptions/General.php:318
+msgid "Installed"
+msgstr "Installed"
+
+#: app/ThemeOptions/General.php:321
+msgid "Not installed"
+msgstr "Not installed"
+
+#: app/ThemeOptions/General.php:363
+msgid "Plugin"
+msgstr "Plugin"
+
+#: app/ThemeOptions/General.php:364
+msgid "Slug"
+msgstr "Slug"
+
+#: app/ThemeOptions/General.php:365
+msgid "Status"
+msgstr "Status"

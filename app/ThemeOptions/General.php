@@ -56,6 +56,8 @@ class GeneralOptions
             ->set_icon('dashicons-admin-settings')
             ->set_page_menu_position(60)
             ->add_fields([
+                Field::make('html', 'crb_recommended_plugins', __('Optional plugins', 'a-ripple-song'))
+                    ->set_html(crb_render_recommended_plugins_table()),
                 Field::make('html', 'crb_site_logo_uploader', __('Site Logo', 'a-ripple-song'))
                     ->set_html(static::renderLogoUploader())
                     ->set_help_text(__('Upload a logo image (220px × 32px). You will be able to crop the image after upload.', 'a-ripple-song')),
@@ -277,6 +279,94 @@ function crb_render_logo_uploader(): string
         esc_attr($current_logo),
         esc_attr($current_logo),
         $preview_html
+    );
+}
+
+function crb_render_recommended_plugins_table(): string
+{
+    if (! is_admin()) {
+        return '';
+    }
+
+    if (! function_exists('\\App\\aripplesong_get_recommended_plugins')) {
+        return '';
+    }
+
+    $plugins = \App\aripplesong_get_recommended_plugins();
+    if (! is_array($plugins) || $plugins === []) {
+        return '';
+    }
+
+    $rows = '';
+
+    foreach ($plugins as $plugin) {
+        if (! is_array($plugin)) {
+            continue;
+        }
+
+        $name = $plugin['name'] ?? '';
+        $slug = $plugin['slug'] ?? '';
+        $installed = (bool) ($plugin['installed'] ?? false);
+        $active = (bool) ($plugin['active'] ?? false);
+        $action = is_string($plugin['action'] ?? null) ? $plugin['action'] : '';
+
+        if (! is_string($name) || $name === '' || ! is_string($slug) || $slug === '') {
+            continue;
+        }
+
+        if ($active) {
+            $statusLabel = __('Active', 'a-ripple-song');
+            $statusClass = 'active';
+        } elseif ($installed) {
+            $statusLabel = __('Installed', 'a-ripple-song');
+            $statusClass = 'installed';
+        } else {
+            $statusLabel = __('Not installed', 'a-ripple-song');
+            $statusClass = 'not-installed';
+        }
+
+        $statusHtml = sprintf(
+            '<span class="aripplesong-plugin-status aripplesong-plugin-status--%1$s">%2$s</span>%3$s',
+            esc_attr($statusClass),
+            esc_html($statusLabel),
+            $action !== '' ? ' ' . $action : ''
+        );
+
+        $rows .= sprintf(
+            '<tr><td><strong>%1$s</strong></td><td><code>%2$s</code></td><td>%3$s</td></tr>',
+            esc_html($name),
+            esc_html($slug),
+            $statusHtml
+        );
+    }
+
+    if ($rows === '') {
+        return '';
+    }
+
+    return sprintf(
+        '<style>
+        .aripplesong-plugin-status{display:inline-block;padding:2px 8px;border-radius:12px;font-size:12px;line-height:1.6;}
+        .aripplesong-plugin-status--active{background:#d1e7dd;color:#0f5132;}
+        .aripplesong-plugin-status--installed{background:#cff4fc;color:#055160;}
+        .aripplesong-plugin-status--not-installed{background:#f8d7da;color:#842029;}
+        </style>
+        <p style="margin:0 0 8px 0;">%1$s</p>
+        <table class="widefat striped">
+            <thead>
+                <tr>
+                    <th scope="col">%2$s</th>
+                    <th scope="col">%3$s</th>
+                    <th scope="col">%4$s</th>
+                </tr>
+            </thead>
+            <tbody>%5$s</tbody>
+        </table>',
+        esc_html__('For the full A Ripple Song experience (podcast features and demo import), we recommend installing the following free plugins from WordPress.org:', 'a-ripple-song'),
+        esc_html__('Plugin', 'a-ripple-song'),
+        esc_html__('Slug', 'a-ripple-song'),
+        esc_html__('Status', 'a-ripple-song'),
+        $rows
     );
 }
 
