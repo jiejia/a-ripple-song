@@ -306,12 +306,17 @@ function crb_render_recommended_plugins_table(): string
 
         $name = $plugin['name'] ?? '';
         $slug = $plugin['slug'] ?? '';
+        $description = $plugin['description'] ?? '';
         $installed = (bool) ($plugin['installed'] ?? false);
         $active = (bool) ($plugin['active'] ?? false);
         $action = is_string($plugin['action'] ?? null) ? $plugin['action'] : '';
 
         if (! is_string($name) || $name === '' || ! is_string($slug) || $slug === '') {
             continue;
+        }
+
+        if (! is_string($description)) {
+            $description = '';
         }
 
         if ($active) {
@@ -326,17 +331,23 @@ function crb_render_recommended_plugins_table(): string
         }
 
         $statusHtml = sprintf(
-            '<span class="aripplesong-plugin-status aripplesong-plugin-status--%1$s">%2$s</span>%3$s',
+            '<span class="aripplesong-plugin-status aripplesong-plugin-status--%1$s">%2$s</span>',
             esc_attr($statusClass),
-            esc_html($statusLabel),
-            $action !== '' ? ' ' . $action : ''
+            esc_html($statusLabel)
         );
 
+        if ($action === '' && $active && $slug === 'one-click-demo-import' && current_user_can('import')) {
+            $importUrl = admin_url('themes.php?page=one-click-demo-import');
+            $action = '<a class="button button-secondary" href="' . esc_url($importUrl) . '">' . esc_html__('One-click import', 'a-ripple-song') . '</a>';
+        }
+
         $rows .= sprintf(
-            '<tr><td><strong>%1$s</strong></td><td><code>%2$s</code></td><td>%3$s</td></tr>',
+            '<tr><td><strong>%1$s</strong></td><td><code>%2$s</code></td><td>%3$s</td><td>%4$s</td><td>%5$s</td></tr>',
             esc_html($name),
             esc_html($slug),
-            $statusHtml
+            esc_html($description),
+            $statusHtml,
+            $action !== '' ? $action : '&mdash;'
         );
     }
 
@@ -358,14 +369,18 @@ function crb_render_recommended_plugins_table(): string
                     <th scope="col">%2$s</th>
                     <th scope="col">%3$s</th>
                     <th scope="col">%4$s</th>
+                    <th scope="col">%5$s</th>
+                    <th scope="col">%6$s</th>
                 </tr>
             </thead>
-            <tbody>%5$s</tbody>
+            <tbody>%7$s</tbody>
         </table>',
         esc_html__('For the full A Ripple Song experience (podcast features and demo import), we recommend installing the following free plugins from WordPress.org:', 'a-ripple-song'),
         esc_html__('Plugin', 'a-ripple-song'),
         esc_html__('Slug', 'a-ripple-song'),
+        esc_html__('Description', 'a-ripple-song'),
         esc_html__('Status', 'a-ripple-song'),
+        esc_html__('Action', 'a-ripple-song'),
         $rows
     );
 }

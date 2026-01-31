@@ -1758,22 +1758,34 @@ msgstr "Install"
 msgid "Activate"
 msgstr "Activate"
 
-#: app/ThemeOptions/General.php:318
+#: app/ThemeOptions/General.php:326
 msgid "Installed"
 msgstr "Installed"
 
-#: app/ThemeOptions/General.php:321
+#: app/ThemeOptions/General.php:329
 msgid "Not installed"
 msgstr "Not installed"
 
-#: app/ThemeOptions/General.php:363
+#: app/ThemeOptions/General.php:379
 msgid "Plugin"
 msgstr "Plugin"
 
-#: app/ThemeOptions/General.php:364
+#: app/ThemeOptions/General.php:380
 msgid "Slug"
 msgstr "Slug"
 
-#: app/ThemeOptions/General.php:365
+#: app/ThemeOptions/General.php:381
+msgid "Description"
+msgstr "Description"
+
+#: app/ThemeOptions/General.php:382
 msgid "Status"
 msgstr "Status"
+
+#: app/ThemeOptions/General.php:383
+msgid "Action"
+msgstr "Action"
+
+#: app/ThemeOptions/General.php:341
+msgid "One-click import"
+msgstr "One-click import"
