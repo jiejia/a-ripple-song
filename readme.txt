@@ -8,7 +8,7 @@ Stable tag: 0.5.0
 License: GPL-3.0
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-An all-in-one podcast theme for WordPress with a modern audio player and flexible widgets.
+A podcast-focused theme for WordPress with a modern audio player and flexible widgets.
 
 == Description ==
 
