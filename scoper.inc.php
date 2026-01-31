@@ -63,6 +63,16 @@ return [
          * Composer-based plugins/themes. Keep the scoped build quiet by stripping those aliases.
          */
         static function (string $filePath, string $prefix, string $contents): string {
+            $normalizedPath = str_replace('\\', '/', $filePath);
+
+            // Acorn ships global helper functions (`view()`, `asset()`) that proxy to
+            // the namespaced Roots helpers. In a scoped build, those Roots helpers
+            // are prefixed, so we need to rewrite the proxy target accordingly.
+            if (str_ends_with($normalizedPath, '/roots/acorn/src/Roots/globals.php')) {
+                $contents = str_replace('Roots\\asset', $prefix . '\\Roots\\asset', $contents);
+                $contents = str_replace('Roots\\view', $prefix . '\\Roots\\view', $contents);
+            }
+
             $prefixQuoted = preg_quote($prefix, '~');
             $pattern = "~^\\s*\\\\?class_alias\\(\\s*'{$prefixQuoted}\\\\[^']+'\\s*,\\s*'[^']+'\\s*,\\s*\\\\?false\\s*\\);\\s*$~m";
 
