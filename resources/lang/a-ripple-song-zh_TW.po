@@ -1711,3 +1711,47 @@ msgstr "播客外掛未啟用。請安裝／啟用 a-ripple-song-podcast 以顯�
 #: app/ThemeOptions/General.php:55
 msgid "Theme Settings"
 msgstr "主題設定"
+
+#: app/admin.php:69
+msgid "Optional plugins"
+msgstr "可選外掛"
+
+#: app/admin.php:70
+msgid "For the full A Ripple Song experience (podcast features and demo import), we recommend installing the following free plugins from WordPress.org:"
+msgstr "若想獲得 A Ripple Song 的完整體驗（播客功能與示範資料匯入），建議從 WordPress.org 安裝以下免費外掛："
+
+#: app/admin.php:80
+msgid "Active"
+msgstr "已啟用"
+
+#: app/admin.php:88
+msgid "Dismiss"
+msgstr "不再提示"
+
+#: app/admin.php:90
+msgid "You can keep using the theme without these plugins."
+msgstr "不安裝這些外掛也可以繼續使用主題。"
+
+#: app/admin.php:102
+msgid "A Ripple Song Podcast"
+msgstr "A Ripple Song Podcast"
+
+#: app/admin.php:103
+msgid "Adds the episode post type and podcast RSS feed used by this theme."
+msgstr "為本主題提供播客單集文章類型與播客 RSS 訂閱源。"
+
+#: app/admin.php:108
+msgid "One Click Demo Import"
+msgstr "One Click Demo Import"
+
+#: app/admin.php:109
+msgid "Imports demo content and widgets (Appearance → Import Demo Data)."
+msgstr "匯入示範內容與小工具（外觀 → 匯入示範資料）。"
+
+#: app/admin.php:130
+msgid "Install"
+msgstr "安裝"
+
+#: app/admin.php:137
+msgid "Activate"
+msgstr "啟用"

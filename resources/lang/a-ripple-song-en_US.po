@@ -1713,3 +1713,47 @@ msgstr ""
 #: app/ThemeOptions/General.php:55
 msgid "Theme Settings"
 msgstr "Theme Settings"
+
+#: app/admin.php:69
+msgid "Optional plugins"
+msgstr "Optional plugins"
+
+#: app/admin.php:70
+msgid "For the full A Ripple Song experience (podcast features and demo import), we recommend installing the following free plugins from WordPress.org:"
+msgstr "For the full A Ripple Song experience (podcast features and demo import), we recommend installing the following free plugins from WordPress.org:"
+
+#: app/admin.php:80
+msgid "Active"
+msgstr "Active"
+
+#: app/admin.php:88
+msgid "Dismiss"
+msgstr "Dismiss"
+
+#: app/admin.php:90
+msgid "You can keep using the theme without these plugins."
+msgstr "You can keep using the theme without these plugins."
+
+#: app/admin.php:102
+msgid "A Ripple Song Podcast"
+msgstr "A Ripple Song Podcast"
+
+#: app/admin.php:103
+msgid "Adds the episode post type and podcast RSS feed used by this theme."
+msgstr "Adds the episode post type and podcast RSS feed used by this theme."
+
+#: app/admin.php:108
+msgid "One Click Demo Import"
+msgstr "One Click Demo Import"
+
+#: app/admin.php:109
+msgid "Imports demo content and widgets (Appearance → Import Demo Data)."
+msgstr "Imports demo content and widgets (Appearance → Import Demo Data)."
+
+#: app/admin.php:130
+msgid "Install"
+msgstr "Install"
+
+#: app/admin.php:137
+msgid "Activate"
+msgstr "Activate"

@@ -1711,3 +1711,47 @@ msgstr "播客插件未启用。请安装/启用 a-ripple-song-podcast 以显示
 #: app/ThemeOptions/General.php:55
 msgid "Theme Settings"
 msgstr "主题设置"
+
+#: app/admin.php:69
+msgid "Optional plugins"
+msgstr "可选插件"
+
+#: app/admin.php:70
+msgid "For the full A Ripple Song experience (podcast features and demo import), we recommend installing the following free plugins from WordPress.org:"
+msgstr "如需获得 A Ripple Song 的完整体验（播客功能与演示数据导入），建议从 WordPress.org 安装以下免费插件："
+
+#: app/admin.php:80
+msgid "Active"
+msgstr "已启用"
+
+#: app/admin.php:88
+msgid "Dismiss"
+msgstr "不再提示"
+
+#: app/admin.php:90
+msgid "You can keep using the theme without these plugins."
+msgstr "不安装这些插件也可以继续使用主题。"
+
+#: app/admin.php:102
+msgid "A Ripple Song Podcast"
+msgstr "A Ripple Song Podcast"
+
+#: app/admin.php:103
+msgid "Adds the episode post type and podcast RSS feed used by this theme."
+msgstr "为本主题提供播客单集文章类型与播客 RSS 订阅源。"
+
+#: app/admin.php:108
+msgid "One Click Demo Import"
+msgstr "One Click Demo Import"
+
+#: app/admin.php:109
+msgid "Imports demo content and widgets (Appearance → Import Demo Data)."
+msgstr "导入演示内容与小工具（外观 → 导入演示数据）。"
+
+#: app/admin.php:130
+msgid "Install"
+msgstr "安装"
+
+#: app/admin.php:137
+msgid "Activate"
+msgstr "启用"
