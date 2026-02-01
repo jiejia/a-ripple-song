@@ -89,9 +89,13 @@ rsync -a "${SCOPED_DIR}/vendor/" "${DIST_DIR}/vendor/"
 
 cp "${ROOT_DIR}/bin/scoper-autoload.php" "${DIST_DIR}/vendor/scoper-autoload.php"
 
+# Prune files not needed at runtime to keep the release archive small.
+# - getID3 ships optional helper binaries (Windows/Cygwin) that are not used by the theme.
+rm -rf "${DIST_DIR}/vendor/james-heinrich/getid3/helperapps" || true
+
 find "${DIST_DIR}" -name ".DS_Store" -delete
 
 rm -f "${ROOT_DIR}/${ARCHIVE_NAME}"
-(cd "${BUILD_ROOT}/dist" && zip -r "${ROOT_DIR}/${ARCHIVE_NAME}" "${THEME_SLUG}" -x "**/.DS_Store")
+(cd "${BUILD_ROOT}/dist" && zip -r -9 "${ROOT_DIR}/${ARCHIVE_NAME}" "${THEME_SLUG}" -x "**/.DS_Store")
 
 echo "Built ${ARCHIVE_NAME}"
