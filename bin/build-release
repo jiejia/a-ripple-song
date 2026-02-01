@@ -114,6 +114,22 @@ rm -f "${DIST_DIR}/vendor/htmlburger/carbon-fields/ISSUE_TEMPLATE.md" || true
 rm -rf "${DIST_DIR}/vendor/htmlburger/carbon-fields/languages" || true
 # - Keep only minified Carbon Fields assets to reduce package size.
 find "${DIST_DIR}/vendor/htmlburger/carbon-fields/build" -type f \( -name "*.js" -o -name "*.css" \) ! -name "*.min.js" ! -name "*.min.css" -delete || true
+# - Ensure Carbon Fields always loads minified assets (we remove the unminified ones above).
+CARBON_LOADER_PATH="${DIST_DIR}/vendor/htmlburger/carbon-fields/core/Loader/Loader.php"
+if [[ -f "${CARBON_LOADER_PATH}" ]]; then
+  php -r '
+    $path = $argv[1] ?? null;
+    if (!is_string($path) || $path === "" || !is_file($path)) { exit(0); }
+    $contents = file_get_contents($path);
+    if ($contents === false) { exit(0); }
+    $needle = "return defined( \\'SCRIPT_DEBUG\\' ) && SCRIPT_DEBUG ? \\'\\' : \\'\\.min\\';";
+    $replacement = "return \\'\\.min\\';";
+    $patched = str_replace($needle, $replacement, $contents);
+    if ($patched !== $contents) {
+      file_put_contents($path, $patched);
+    }
+  ' "${CARBON_LOADER_PATH}" || true
+fi
 # - Remove source translation files from the release (runtime uses .mo/.json).
 find "${DIST_DIR}/resources/lang" -maxdepth 1 -type f \( -name "*.po" -o -name "*.pot" \) -delete || true
 # - Remove dev docs from getID3.
