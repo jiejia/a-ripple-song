@@ -92,8 +92,7 @@ cp "${ROOT_DIR}/bin/scoper-autoload.php" "${DIST_DIR}/vendor/scoper-autoload.php
 # Prune files not needed at runtime to keep the release archive small.
 # - getID3 ships optional helper binaries (Windows/Cygwin) that are not used by the theme.
 rm -rf "${DIST_DIR}/vendor/james-heinrich/getid3/helperapps" || true
-# - Composer metadata not required for runtime autoloading.
-rm -f "${DIST_DIR}/vendor/composer/installed.json" || true
+# - Keep Composer metadata needed by Acorn package discovery.
 # - Carbon Fields ships front-end tooling files (Node/Webpack) that are not used by the theme at runtime.
 rm -rf "${DIST_DIR}/vendor/htmlburger/carbon-fields/bin" || true
 rm -rf "${DIST_DIR}/vendor/htmlburger/carbon-fields/.phpstorm.meta.php" || true
@@ -141,7 +140,6 @@ rm -f "${DIST_DIR}/vendor/james-heinrich/getid3/structure.txt" || true
 # - Remove theme build metadata and docs (not required to run the theme).
 rm -rf "${DIST_DIR}/docs" || true
 rm -rf "${DIST_DIR}/data" || true
-rm -f "${DIST_DIR}/composer.json" || true
 rm -f "${DIST_DIR}/composer.lock" || true
 # - Remove vendor documentation/metadata and CI tooling.
 find "${DIST_DIR}/vendor" -type d \( -name ".github" -o -name ".circleci" -o -name ".gitlab" -o -name "CI" -o -name "docs" -o -name "doc" -o -name "tests" -o -name "test" \) -prune -exec rm -rf {} + 2>/dev/null || true
