@@ -1,0 +1,20 @@
+{
+  "assets/src/editor.js": {
+    "file": "assets/editor-BIa5S67u.js",
+    "name": "editor",
+    "src": "assets/src/editor.js",
+    "isEntry": true,
+    "css": [
+      "assets/editor-BkyIPxY2.css"
+    ]
+  },
+  "assets/src/main.js": {
+    "file": "assets/main-DxCtmADF.js",
+    "name": "main",
+    "src": "assets/src/main.js",
+    "isEntry": true,
+    "css": [
+      "assets/main-DEMwCuSk.css"
+    ]
+  }
+}
