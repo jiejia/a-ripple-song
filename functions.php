@@ -63,11 +63,41 @@ function vite_dev_server_running() {
 }
 
 // Enqueue modules directly from the Vite dev server during local development.
-function enqueue_vite_dev_entry($handle_prefix, $entry) {
-    $server = vite_dev_server();
+// function enqueue_vite_dev_entry($handle_prefix, $entry) {
+//     $server = vite_dev_server();
 
-    \wp_enqueue_script_module($handle_prefix . '-vite-client', $server . '/@vite/client', array(), null);
-    \wp_enqueue_script_module($handle_prefix . '-entry', $server . '/' . \ltrim($entry, '/'), array(), null);
+//     \wp_enqueue_script_module($handle_prefix . '-vite-client', $server . '/@vite/client', array(), null);
+//     \wp_enqueue_script_module($handle_prefix . '-entry', $server . '/' . \ltrim($entry, '/'), array(), null);
+// }
+
+//   // Enqueue CSS and JS directly from the Vite dev server during local development.
+  function enqueue_vite_dev_entry($handle_prefix, $entry) {
+    $server = vite_dev_server();
+    $entry_path = \ltrim($entry, '/');
+    $css_entry = preg_replace('/\.js$/', '.css', $entry_path);
+
+    if ($css_entry) {
+        \wp_enqueue_style(
+            $handle_prefix . '-style',
+            $server . '/' . $css_entry,
+            array(),
+            null
+        );
+    }
+
+    \wp_enqueue_script_module(
+        $handle_prefix . '-vite-client',
+        $server . '/@vite/client',
+        array(),
+        null
+    );
+
+    \wp_enqueue_script_module(
+        $handle_prefix . '-entry',
+        $server . '/' . $entry_path,
+        array(),
+        null
+    );
 }
 
 // Enqueue built files from the Vite manifest when the dev server is unavailable.
@@ -132,3 +162,26 @@ function enqueue_editor_assets() {
 
 // Hook editor asset loading into the block editor request lifecycle.
 \add_action('enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_editor_assets');
+
+
+  // Add DaisyUI background class to the frontend body element.
+  function filter_body_classes($classes) {
+    $classes[] = 'bg-base-200';
+    return $classes;
+}
+
+// Hook custom classes into the body_class output.
+\add_filter('body_class', __NAMESPACE__ . '\\filter_body_classes');
+
+
+  // Add a DaisyUI theme attribute to the frontend html element.
+  function filter_language_attributes($output, $doctype) {
+    if (!\is_admin()) {
+        $output .= ' data-theme="retro"';
+    }
+
+    return $output;
+}
+
+// Hook custom attributes into the html tag output.
+\add_filter('language_attributes', __NAMESPACE__ . '\\filter_language_attributes', 10, 2);
