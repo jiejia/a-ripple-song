@@ -12,7 +12,8 @@ if (!\defined('ARIPPLESONG_VITE_DEV_SERVER')) {
 }
 
 // Return the configured Vite dev server URL without a trailing slash.
-function vite_dev_server() {
+function vite_dev_server()
+{
     if (\defined('ARIPPLESONG_VITE_DEV_SERVER')) {
         return \untrailingslashit(ARIPPLESONG_VITE_DEV_SERVER);
     }
@@ -21,12 +22,14 @@ function vite_dev_server() {
 }
 
 // Return the absolute path to the generated Vite manifest file.
-function vite_manifest_path() {
+function vite_manifest_path()
+{
     return \get_theme_file_path('assets/dist/.vite/manifest.json');
 }
 
 // Load and cache the Vite manifest so it is parsed only once per request.
-function vite_manifest() {
+function vite_manifest()
+{
     static $manifest = null;
 
     if ($manifest !== null) {
@@ -48,7 +51,8 @@ function vite_manifest() {
 }
 
 // Check whether the Vite dev server is reachable by requesting the HMR client.
-function vite_dev_server_running() {
+function vite_dev_server_running()
+{
     $url = vite_dev_server() . '/@vite/client';
 
     $response = \wp_remote_get(
@@ -71,7 +75,8 @@ function vite_dev_server_running() {
 // }
 
 //   // Enqueue CSS and JS directly from the Vite dev server during local development.
-  function enqueue_vite_dev_entry($handle_prefix, $entry) {
+function enqueue_vite_dev_entry($handle_prefix, $entry)
+{
     $server = vite_dev_server();
     $entry_path = \ltrim($entry, '/');
     $css_entry = preg_replace('/\.js$/', '.css', $entry_path);
@@ -101,7 +106,8 @@ function vite_dev_server_running() {
 }
 
 // Enqueue built files from the Vite manifest when the dev server is unavailable.
-function enqueue_vite_manifest_entry($handle_prefix, $entry) {
+function enqueue_vite_manifest_entry($handle_prefix, $entry)
+{
     $manifest = vite_manifest();
 
     if (!$manifest || empty($manifest[$entry])) {
@@ -134,7 +140,8 @@ function enqueue_vite_manifest_entry($handle_prefix, $entry) {
 }
 
 // Load the main frontend theme entry, preferring the dev server in development.
-function enqueue_frontend_assets() {
+function enqueue_frontend_assets()
+{
     $entry = 'assets/src/main.js';
 
     if (vite_dev_server_running()) {
@@ -149,7 +156,8 @@ function enqueue_frontend_assets() {
 \add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_frontend_assets');
 
 // Load the block editor entry so editor-specific assets stay separate from the frontend.
-function enqueue_editor_assets() {
+function enqueue_editor_assets()
+{
     $entry = 'assets/src/editor.js';
 
     if (vite_dev_server_running()) {
@@ -164,8 +172,9 @@ function enqueue_editor_assets() {
 \add_action('enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_editor_assets');
 
 
-  // Add DaisyUI background class to the frontend body element.
-  function filter_body_classes($classes) {
+// Add DaisyUI background class to the frontend body element.
+function filter_body_classes($classes)
+{
     $classes[] = 'bg-base-200';
     return $classes;
 }
@@ -174,8 +183,9 @@ function enqueue_editor_assets() {
 \add_filter('body_class', __NAMESPACE__ . '\\filter_body_classes');
 
 
-  // Add a DaisyUI theme attribute to the frontend html element.
-  function filter_language_attributes($output, $doctype) {
+// Add a DaisyUI theme attribute to the frontend html element.
+function filter_language_attributes($output, $doctype)
+{
     if (!\is_admin()) {
         $output .= ' data-theme="retro"';
     }
