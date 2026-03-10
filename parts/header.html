@@ -1,30 +1,111 @@
-<!-- wp:group {"layout":{"inherit":"true"}} -->
-<div class="wp-block-group header-aaa">
-	<!-- wp:group {"align":"full","layout":{"type":"flex","justifyContent":"space-between"},"style":{"spacing":{"padding":{"bottom":"30px","top":"30px"}}}} -->
-	<div class="wp-block-group alignfull" style="padding-bottom:30px;padding-top:30px">
-	
-		<!-- wp:group {"layout":{"type":"flex"}} -->
-		<div class="wp-block-group">
-			<!-- wp:site-logo {"width":64} /-->
-	
-			<!-- wp:group -->
-			<div class="wp-block-group">
-				<!-- wp:site-title /-->
-				<!-- wp:site-tagline /-->
-			</div>
-			<!-- /wp:group -->
-		</div>
-		<!-- /wp:group -->
-	
-		<!-- wp:navigation {"layout":{"type":"flex","setCascadingProperties":true,"justifyContent":"right","orientation":"horizontal"},"style":{"spacing":{"margin":{"top":"0"}}}} /-->
-	
-	</div>
-	<!-- /wp:group -->
+<header class="fixed top-0 h-[55px] left-0 right-0 z-100 bg-base-100/75 transition-fade" id="swup-header">
+    <div class="max-w-screen-xl mx-auto h-full">
+        <div class="px-6 py-3">
+            <div class="grid xl:grid-cols-[220px_1fr_300px] grid-cols-[220px_1fr] gap-4">
+                <h1 class="text-2xl font-bold text-center">
+                    <a href="https://podcast.aripplesong.me/" class="flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" data-lucide="podcast" class="lucide lucide-podcast w-6 h-6">
+                            <path d="M13 17a1 1 0 1 0-2 0l.5 4.5a0.5 0.5 0 0 0 1 0z" fill="currentColor"></path>
+                            <path d="M16.85 18.58a9 9 0 1 0-9.7 0"></path>
+                            <path d="M8 14a5 5 0 1 1 8 0"></path>
+                            <circle cx="12" cy="11" r="1" fill="currentColor"></circle>
+                        </svg>
+                        <span
+                            class="text-2xl bg-gradient-to-r from-base-content/40 via-base-content/70 to-base-content bg-clip-text text-transparent transition-all duration-500 ease-in-out hover:from-base-content hover:via-base-content/70 hover:to-base-content/40">A
+                            Ripple Song</span>
+                    </a>
+                </h1>
+                <ul class="xl:grid hidden grid-flow-col gap-2 text-md justify-center" id="menu-1">
 
-</div>
-<!-- /wp:group -->
+                    <li>
+                        <a href="https://podcast.aripplesong.me/"
+                            class="grid place-items-center h-full w-full text-center px-4 rounded-lg text-base-content font-semibold bg-base-200/50"
+                            data-pjax="">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://podcast.aripplesong.me/episodes/"
+                            class="grid place-items-center h-full w-full text-center px-4 rounded-lg text-base-content/80 hover:text-base-content"
+                            data-pjax="">
+                            Episodes
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://podcast.aripplesong.me/blog/"
+                            class="grid place-items-center h-full w-full text-center px-4 rounded-lg text-base-content/80 hover:text-base-content"
+                            data-pjax="">
+                            Blog
+                        </a>
+                    </li>
+                </ul>
+                <div class="grid grid-flow-col justify-end gap-2 place-items-center">
+                    <label for="search-modal" class="md:hidden block">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" data-lucide="search"
+                            class="lucide lucide-search w-5 h-5 cursor-pointer">
+                            <path d="m21 21-4.34-4.34"></path>
+                            <circle cx="11" cy="11" r="8"></circle>
+                        </svg>
+                    </label>
+                    <!-- 主题循环切换按钮 -->
+                    <button type="button" class="btn btn-ghost btn-sm btn-circle" @click="$store.theme.toggle()"
+                        :title="$store.theme.mode === 'light' ? 'Light Mode' : ($store.theme.mode === 'dark' ? 'Dark Mode' : 'Follow System')"
+                        title="Dark Mode">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" data-lucide="sun" class="lucide lucide-sun w-5 h-5"
+                            x-show="$store.theme.isLight" style="display: none;">
+                            <circle cx="12" cy="12" r="4"></circle>
+                            <path d="M12 2v2"></path>
+                            <path d="M12 20v2"></path>
+                            <path d="m4.93 4.93 1.41 1.41"></path>
+                            <path d="m17.66 17.66 1.41 1.41"></path>
+                            <path d="M2 12h2"></path>
+                            <path d="M20 12h2"></path>
+                            <path d="m6.34 17.66-1.41 1.41"></path>
+                            <path d="m19.07 4.93-1.41 1.41"></path>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" data-lucide="moon" class="lucide lucide-moon w-5 h-5"
+                            x-show="$store.theme.isDark &amp;&amp; !$store.theme.isAuto">
+                            <path
+                                d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401">
+                            </path>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" data-lucide="sun-moon"
+                            class="lucide lucide-sun-moon w-5 h-5" x-show="$store.theme.isAuto"
+                            style="display: none;">
+                            <path d="M12 2v2"></path>
+                            <path
+                                d="M14.837 16.385a6 6 0 1 1-7.223-7.222c.624-.147.97.66.715 1.248a4 4 0 0 0 5.26 5.259c.589-.255 1.396.09 1.248.715">
+                            </path>
+                            <path d="M16 12a4 4 0 0 0-4-4"></path>
+                            <path d="m19 5-1.256 1.256"></path>
+                            <path d="M20 12h2"></path>
+                        </svg>
+                        <span class="sr-only">Toggle Theme</span>
+                    </button>
 
-<!-- wp:spacer {"height":50} -->
-<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
-<!-- /wp:spacer -->
- 
+                    <label for="mobile-menu" class="xl:hidden block">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" data-lucide="menu"
+                            class="lucide lucide-menu w-5 h-5 cursor-pointer">
+                            <path d="M4 5h16"></path>
+                            <path d="M4 12h16"></path>
+                            <path d="M4 19h16"></path>
+                        </svg>
+                    </label>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
