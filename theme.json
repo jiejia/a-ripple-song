@@ -2,7 +2,10 @@
 	"$schema": "https://schemas.wp.org/wp/6.9/theme.json",
 	"settings": {
 		"appearanceTools": true,
-
+		"layout": {
+			"contentSize": "80em",
+			"wideSize": "80em"
+		},
 		"spacing": {
 			"units": [
 				"%",
@@ -32,6 +35,18 @@
 		{
 			"area": "footer",
 			"name": "footer"
+		},
+		{
+			"area": "leftbar",
+			"name": "leftbar"
+		},
+		{
+			"area": "rightbar",
+			"name": "rightbar"
+		},
+		{
+			"area": "main",
+			"name": "main"
 		}
 	],
 	"version": 3
