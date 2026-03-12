@@ -1,0 +1,316 @@
+<!-- wp:group {"layout":{"type":"default"}} -->
+<div class="hidden md:block lg:block">
+    <form role="search" method="get" class="search-form" action="https://podcast.aripplesong.me/" data-swup-form=""
+        data-swup-animation="overlay">
+        <div class="grid grid-cols-[1fr_auto] gap-2">
+            <label class="input w-full">
+                <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
+                        stroke="currentColor">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.3-4.3"></path>
+                    </g>
+                </svg>
+                <input type="search" placeholder="Search …" value="" name="s">
+            </label>
+            <a class="btn btn-square bg-base-100" href="https://podcast.aripplesong.me/feed/" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    data-lucide="Rss" class="lucide lucide-Rss w-4 h-4">
+                    <path d="M4 11a9 9 0 0 1 9 9"></path>
+                    <path d="M4 4a16 16 0 0 1 16 16"></path>
+                    <circle cx="5" cy="19" r="1"></circle>
+                </svg>
+            </a>
+        </div>
+    </form>
+    <div class="widget subscribe_links_widget-7 widget_subscribe_links_widget mb-4">
+        <div class="card bg-base-100 w-full mt-4">
+            <div class="card-body p-4">
+                <h2 class="text-lg font-bold">SUBSCRIBE</h2>
+
+                <a href="https://podcasts.apple.com/" target="_blank" rel="noopener noreferrer"
+                    class="btn bg-gradient-to-r from-gray-600 via-gray-800 to-black btn-sm text-white border-black transition-all duration-500 ease-in-out hover:from-black hover:via-gray-800 hover:to-gray-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        data-lucide="podcast" class="lucide lucide-podcast w-4 h-4">
+                        <path d="M13 17a1 1 0 1 0-2 0l.5 4.5a0.5 0.5 0 0 0 1 0z" fill="currentColor">
+                        </path>
+                        <path d="M16.85 18.58a9 9 0 1 0-9.7 0"></path>
+                        <path d="M8 14a5 5 0 1 1 8 0"></path>
+                        <circle cx="12" cy="11" r="1" fill="currentColor"></circle>
+                    </svg>
+                    Apple Podcast
+                </a>
+
+                <a href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer"
+                    class="btn bg-gradient-to-r from-green-400 via-green-500 to-[#03C755] btn-sm text-white border-[#00b544] transition-all duration-500 ease-in-out hover:from-[#03C755] hover:via-green-500 hover:to-green-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        data-lucide="music" class="lucide lucide-music w-4 h-4">
+                        <path d="M9 18V5l12-2v13"></path>
+                        <circle cx="6" cy="18" r="3"></circle>
+                        <circle cx="18" cy="16" r="3"></circle>
+                    </svg>
+                    Spotify
+                </a>
+
+                <a href="https://music.youtube.com/" target="_blank" rel="noopener noreferrer"
+                    class="btn bg-gradient-to-r from-yellow-300 via-yellow-400 to-[#FEE502] btn-sm text-[#181600] border-[#f1d800] transition-all duration-500 ease-in-out hover:from-[#FEE502] hover:via-yellow-400 hover:to-yellow-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        data-lucide="youtube" class="lucide lucide-youtube w-4 h-4">
+                        <path
+                            d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17">
+                        </path>
+                        <path d="m10 15 5-3-5-3z"></path>
+                    </svg>
+                    Youtube Music
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card md:bg-base-100 bg-base-300/90 md:static md:mt-5 fixed bottom-0 left-0 right-0 z-100" x-data="">
+    <div class="card-body md:p-4 py-2 px-4">
+        <h2 class="md:text-lg text-md font-bold">NOW PLAYING</h2>
+        <div
+            class="grid grid-cols-[60px_1fr] gap-4 items-center md:bg-base-300/50 bg-base-100/75 md:p-4 py-2 px-4 rounded-lg">
+            <div class="md:w-15 md:h-15 w-10 h-10">
+                <template x-if="$store.player.currentEpisode?.featuredImage">
+                    <div class="relative md:w-15 md:h-15 w-10 h-10">
+                        <img :src="$store.player.currentEpisode?.featuredImage"
+                            :alt="$store.player.currentEpisode?.title || 'Podcast'"
+                            class="md:w-15 md:h-15 w-10 h-10 rounded-md object-cover">
+                        <div
+                            class="pointer-events-none absolute inset-0 bg-base-900/30 flex items-center justify-center rounded-md">
+                            <i data-lucide="podcast" class="w-6 h-6 text-base-100"></i>
+                        </div>
+                    </div>
+                </template>
+                <div class="relative md:w-15 md:h-15 w-10 h-10">
+                    <img :src="$store.player.currentEpisode?.featuredImage"
+                        :alt="$store.player.currentEpisode?.title || 'Podcast'"
+                        class="md:w-15 md:h-15 w-10 h-10 rounded-md object-cover"
+                        src="https://pub-33b8ff9693c046fa9dde3f0b2e484f0c.r2.dev/wp-content/uploads/2026/01/27020316/MV5BNGI2MTJjMjUtMTJhOC00YTY2LTg1NjUtMTdmMjg4YTk2YjM5XkEyXkFqcGc@._V1_.jpg"
+                        alt="Andor’s Emmy Wins Political Conclusion">
+                    <div
+                        class="pointer-events-none absolute inset-0 bg-base-900/30 flex items-center justify-center rounded-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            data-lucide="podcast" class="lucide lucide-podcast w-6 h-6 text-base-100">
+                            <path d="M13 17a1 1 0 1 0-2 0l.5 4.5a0.5 0.5 0 0 0 1 0z" fill="currentColor">
+                            </path>
+                            <path d="M16.85 18.58a9 9 0 1 0-9.7 0"></path>
+                            <path d="M8 14a5 5 0 1 1 8 0"></path>
+                            <circle cx="12" cy="11" r="1" fill="currentColor"></circle>
+                        </svg>
+                    </div>
+                </div>
+                <template x-if="!$store.player.currentEpisode?.featuredImage">
+                    <div class="md:w-15 md:h-15 w-10 h-10 rounded-md bg-base-300/60 flex items-center justify-center">
+                        <i data-lucide="podcast" class="w-6 h-6 text-base-content/70"></i>
+                    </div>
+                </template>
+            </div>
+            <div>
+                <h4 class="text-md font-bold line-clamp-2"
+                    x-text="$store.player.currentEpisode?.title || 'No Episode Playing'">Andor’s Emmy
+                    Wins Political Conclusion</h4>
+                <p class="text-xs text-base-content/80">
+                    <span x-text="$store.player.currentEpisodePublishDate">Jan 24, 2026</span>
+                </p>
+                <!-- <p class="text-xs text-base-content/50" x-show="$store.player.currentEpisode?.description">
+          <span x-text="$store.player.currentEpisode?.description" class="line-clamp-1">142k views</span>
+      </p> -->
+            </div>
+        </div>
+        <div>
+            <div class="h-[40px] relative" id="wave">
+
+                <div x-show="$store.player.isLoading" x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                    x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100"
+                    x-transition:leave-end="opacity-0"
+                    class="absolute inset-0 flex items-center justify-center gap-2 text-base-content/60"
+                    style="display: none;">
+                    <span class="loading loading-ring loading-lg text-base-content"></span>
+                    <span class="text-xs text-base-content/75">Loading audio</span>
+                </div>
+                <canvas style="max-width: 100%;" width="536" height="80"></canvas>
+            </div>
+            <div class="mt-0 w-full">
+                <div class="grid grid-cols-[30px_1fr_30px] gap-2 items-center text-xs">
+                    <span x-text="$store.player.currentTimeText">00:09</span>
+                    <div class="relative w-full">
+
+                        <div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-1 rounded-full transition-opacity duration-500 ease-out pointer-events-none opacity-100"
+                            :class="$store.player.progressHeatmapReady ? 'opacity-100' : 'opacity-0'"
+                            :style="{ background: $store.player.progressHeatmapGradient }"
+                            style="background: linear-gradient(to right, rgb(255, 213, 153) 0%, rgb(255, 213, 153) 10%, rgb(255, 207, 140) 10%, rgb(255, 207, 140) 20%, rgb(255, 188, 93) 20%, rgb(255, 188, 93) 40%, rgb(255, 179, 73) 40%, rgb(255, 179, 73) 50%, rgb(255, 168, 47) 50%, rgb(255, 168, 47) 60%, rgb(255, 165, 40) 60%, rgb(255, 165, 40) 70%, rgb(255, 149, 0) 70%, rgb(255, 149, 0) 80%, rgb(255, 157, 20) 80%, rgb(255, 157, 20) 90%, rgb(255, 152, 7) 90%, rgb(255, 152, 7) 100%);">
+                        </div>
+                        <input type="range" min="0" :max="$store.player.duration" :value="$store.player.currentTime"
+                            x-on:input="$store.player.seek($event.target.value)"
+                            class="range range-xs w-full aripplesong-progress-range relative z-10 text-base-content/20 [--range-bg:orange] [--range-thumb:blue] [--range-fill:0]"
+                            max="94.83029166666667">
+                    </div>
+                    <span class="justify-self-end" x-text="$store.player.durationText">01:34</span>
+                </div>
+            </div>
+            <div class="mt-1 md:mt-2 grid grid-cols-[1fr_1fr_1fr] gap-4 items-center w-full">
+                <div class="flex items-center gap-2">
+                    <label for="playlist-drawer" class="cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            data-lucide="list-music" class="lucide lucide-list-music w-4 h-4">
+                            <path d="M16 5H3"></path>
+                            <path d="M11 12H3"></path>
+                            <path d="M11 19H3"></path>
+                            <path d="M21 16V5"></path>
+                            <circle cx="18" cy="16" r="3"></circle>
+                        </svg>
+                    </label>
+                    <div class="relative">
+                        <label
+                            class="cursor-pointer text-xs font-semibold px-2 py-1 rounded transition-colors flex items-center gap-1 hover:opacity-70"
+                            x-text="$store.player.playbackRateText"
+                            x-on:click="$store.player.togglePlaybackRatePanel()">1x</label>
+
+                        <div x-show="$store.player.playbackRatePanelOpen"
+                            @click.outside="$store.player.playbackRatePanelOpen = false"
+                            class="absolute bottom-full left-0 mb-2 bg-base-100 rounded-lg shadow-lg p-2 min-w-[80px] z-20"
+                            style="display: none;">
+                            <template x-for="rate in $store.player.availableRates" :key="rate">
+                                <button x-on:click="$store.player.setPlaybackRate(rate)"
+                                    class="w-full text-left px-3 py-2 text-xs rounded transition-colors"
+                                    :class="{ 'bg-primary text-primary-content': $store.player.playbackRate === rate }">
+                                    <span x-text="rate === 1 ? '1x' : rate + 'x'"></span>
+                                </button>
+                            </template>
+                            <button x-on:click="$store.player.setPlaybackRate(rate)"
+                                class="w-full text-left px-3 py-2 text-xs rounded transition-colors"
+                                :class="{ 'bg-primary text-primary-content': $store.player.playbackRate === rate }">
+                                <span x-text="rate === 1 ? '1x' : rate + 'x'">0.5x</span>
+                            </button>
+                            <button x-on:click="$store.player.setPlaybackRate(rate)"
+                                class="w-full text-left px-3 py-2 text-xs rounded transition-colors"
+                                :class="{ 'bg-primary text-primary-content': $store.player.playbackRate === rate }">
+                                <span x-text="rate === 1 ? '1x' : rate + 'x'">0.75x</span>
+                            </button>
+                            <button x-on:click="$store.player.setPlaybackRate(rate)"
+                                class="w-full text-left px-3 py-2 text-xs rounded transition-colors bg-primary text-primary-content"
+                                :class="{ 'bg-primary text-primary-content': $store.player.playbackRate === rate }">
+                                <span x-text="rate === 1 ? '1x' : rate + 'x'">1x</span>
+                            </button>
+                            <button x-on:click="$store.player.setPlaybackRate(rate)"
+                                class="w-full text-left px-3 py-2 text-xs rounded transition-colors"
+                                :class="{ 'bg-primary text-primary-content': $store.player.playbackRate === rate }">
+                                <span x-text="rate === 1 ? '1x' : rate + 'x'">1.25x</span>
+                            </button>
+                            <button x-on:click="$store.player.setPlaybackRate(rate)"
+                                class="w-full text-left px-3 py-2 text-xs rounded transition-colors"
+                                :class="{ 'bg-primary text-primary-content': $store.player.playbackRate === rate }">
+                                <span x-text="rate === 1 ? '1x' : rate + 'x'">1.5x</span>
+                            </button>
+                            <button x-on:click="$store.player.setPlaybackRate(rate)"
+                                class="w-full text-left px-3 py-2 text-xs rounded transition-colors"
+                                :class="{ 'bg-primary text-primary-content': $store.player.playbackRate === rate }">
+                                <span x-text="rate === 1 ? '1x' : rate + 'x'">2x</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center gap-4 items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        data-lucide="skip-back" class="lucide lucide-skip-back cursor-pointer w-4 h-4"
+                        x-on:click="$store.player.playPrevious()">
+                        <path
+                            d="M17.971 4.285A2 2 0 0 1 21 6v12a2 2 0 0 1-3.029 1.715l-9.997-5.998a2 2 0 0 1-.003-3.432z">
+                        </path>
+                        <path d="M3 20V4"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        data-lucide="play" x-show="!$store.player.isPlaying"
+                        class="lucide lucide-play cursor-pointer w-4 h-4 bg-success-500 rounded-full"
+                        x-on:click="$store.player.togglePlay()">
+                        <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z">
+                        </path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        data-lucide="pause" x-show="$store.player.isPlaying"
+                        class="lucide lucide-pause cursor-pointer w-4 h-4 bg-success-500 rounded-full"
+                        x-on:click="$store.player.togglePlay()" style="display: none;">
+                        <rect x="14" y="3" width="5" height="18" rx="1"></rect>
+                        <rect x="5" y="3" width="5" height="18" rx="1"></rect>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        data-lucide="skip-forward" class="lucide lucide-skip-forward cursor-pointer w-4 h-4"
+                        x-on:click="$store.player.playNext()">
+                        <path d="M21 4v16"></path>
+                        <path d="M6.029 4.285A2 2 0 0 0 3 6v12a2 2 0 0 0 3.029 1.715l9.997-5.998a2 2 0 0 0 .003-3.432z">
+                        </path>
+                    </svg>
+                </div>
+                <div class="justify-self-end relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        data-lucide="volume" x-show="!$store.player.isMuted"
+                        class="lucide lucide-volume cursor-pointer w-4 h-4"
+                        x-on:click="$store.player.toggleVolumePanel()">
+                        <path
+                            d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z">
+                        </path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        data-lucide="volume-x" x-show="$store.player.isMuted"
+                        class="lucide lucide-volume-x cursor-pointer w-4 h-4"
+                        x-on:click="$store.player.toggleVolumePanel()" style="display: none;">
+                        <path
+                            d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z">
+                        </path>
+                        <line x1="22" x2="16" y1="9" y2="15"></line>
+                        <line x1="16" x2="22" y1="9" y2="15"></line>
+                    </svg>
+
+                    <div x-show="$store.player.volumePanelOpen" @click.outside="$store.player.volumePanelOpen = false"
+                        class="absolute bottom-full right-[-8px] mb-2 bg-base-100 rounded-full shadow-lg p-2 w-10 h-32 z-20"
+                        style="display: none;">
+                        <input type="range" min="0" max="1" step="0.01" :value="$store.player.volume"
+                            x-on:input="$store.player.setVolume($event.target.value)"
+                            class="w-22 absolute left-[-23px] bottom-[70px] range range-xs range-success transform -rotate-90">
+                        <label class="swap absolute bottom-3 left-3 cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" data-lucide="volume-2" x-show="!$store.player.isMuted"
+                                class="lucide lucide-volume-2 w-4 h-4" x-on:click="$store.player.toggleMute()">
+                                <path
+                                    d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z">
+                                </path>
+                                <path d="M16 9a5 5 0 0 1 0 6"></path>
+                                <path d="M19.364 18.364a9 9 0 0 0 0-12.728"></path>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" data-lucide="volume-x" x-show="$store.player.isMuted"
+                                class="lucide lucide-volume-x w-4 h-4" x-on:click="$store.player.toggleMute()"
+                                style="display: none;">
+                                <path
+                                    d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z">
+                                </path>
+                                <line x1="22" x2="16" y1="9" y2="15"></line>
+                                <line x1="16" x2="22" y1="9" y2="15"></line>
+                            </svg>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /wp:group -->
