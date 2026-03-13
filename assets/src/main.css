@@ -13,3 +13,17 @@
 a {
     text-decoration: none;
 }
+
+body.admin-bar #swup-header {
+    top: 32px;
+}
+
+@media screen and (max-width: 782px) {
+    body.admin-bar #swup-header {
+        top: 46px;
+    }
+}
+
+body.admin-bar aside {
+    top: 102px;
+}
