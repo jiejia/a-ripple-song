@@ -24,6 +24,18 @@ class A_Ripple_Song_Podcast_Episodes {
 	public const TAXONOMY = 'ars_episode_category';
 
 	/**
+	 * Enable featured image support for the episode post type from the plugin.
+	 *
+	 * WordPress requires thumbnail theme support in addition to CPT support, so
+	 * the plugin registers it here for its own post type only.
+	 *
+	 * @return void
+	 */
+	public function enable_thumbnail_theme_support() {
+		add_theme_support( 'post-thumbnails', array( self::POST_TYPE ) );
+	}
+
+	/**
 	 * Register custom post type.
 	 */
 	public function register_post_type() {

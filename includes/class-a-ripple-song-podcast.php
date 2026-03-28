@@ -214,6 +214,7 @@ class A_Ripple_Song_Podcast {
 		$this->loader->add_filter( 'carbon_fields_config', $carbon_ui_i18n, 'filter_carbon_fields_config' );
 
 		$episodes = new A_Ripple_Song_Podcast_Episodes();
+		$this->loader->add_action( 'after_setup_theme', $episodes, 'enable_thumbnail_theme_support' );
 		$this->loader->add_action( 'init', $episodes, 'register_post_type' );
 		$this->loader->add_action( 'init', $episodes, 'register_tags' );
 		$this->loader->add_action( 'init', $episodes, 'register_category_taxonomy' );
