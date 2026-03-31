@@ -80,6 +80,53 @@ class A_Ripple_Song_Podcast_Episodes {
 	}
 
 	/**
+	 * Register metric meta fields for views and plays.
+	 *
+	 * Views are available on every public post type, while play counts are
+	 * limited to podcast episodes.
+	 *
+	 * @return void
+	 */
+	public function register_metric_meta_fields() {
+		$post_types = get_post_types(
+			array(
+				'public' => true,
+			),
+			'names'
+		);
+
+		foreach ( $post_types as $post_type ) {
+			register_post_meta(
+				$post_type,
+				'_views_count',
+				array(
+					'type'         => 'integer',
+					'single'       => true,
+					'default'      => 0,
+					'show_in_rest' => false,
+					'auth_callback' => static function ( $allowed, $meta_key, $post_id ) {
+						return current_user_can( 'edit_post', $post_id );
+					},
+				)
+			);
+		}
+
+		register_post_meta(
+			self::POST_TYPE,
+			'_play_count',
+			array(
+				'type'         => 'integer',
+				'single'       => true,
+				'default'      => 0,
+				'show_in_rest' => false,
+				'auth_callback' => static function ( $allowed, $meta_key, $post_id ) {
+					return current_user_can( 'edit_post', $post_id );
+				},
+			)
+		);
+	}
+
+	/**
 	 * One-time migration from the old CPT key (`ars_episodes`) to the new key (`ars_episode`).
 	 */
 	private function maybe_migrate_post_type_key() {
@@ -156,6 +203,31 @@ class A_Ripple_Song_Podcast_Episodes {
 	 */
 	public function register_tags() {
 		register_taxonomy_for_object_type( 'post_tag', self::POST_TYPE );
+	}
+
+	/**
+	 * Ensure metric defaults exist after a post is saved.
+	 *
+	 * @param int     $post_id Post ID.
+	 * @param \WP_Post $post   Saved post object.
+	 * @return void
+	 */
+	public function ensure_metric_defaults( $post_id, $post ) {
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return;
+		}
+
+		if ( ! current_user_can( 'edit_post', $post_id ) ) {
+			return;
+		}
+
+		if ( ! metadata_exists( 'post', $post_id, '_views_count' ) ) {
+			update_post_meta( $post_id, '_views_count', 0 );
+		}
+
+		if ( $post->post_type === self::POST_TYPE && ! metadata_exists( 'post', $post_id, '_play_count' ) ) {
+			update_post_meta( $post_id, '_play_count', 0 );
+		}
 	}
 
 	/**

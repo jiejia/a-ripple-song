@@ -216,8 +216,10 @@ class A_Ripple_Song_Podcast {
 		$episodes = new A_Ripple_Song_Podcast_Episodes();
 		$this->loader->add_action( 'after_setup_theme', $episodes, 'enable_thumbnail_theme_support' );
 		$this->loader->add_action( 'init', $episodes, 'register_post_type' );
+		$this->loader->add_action( 'init', $episodes, 'register_metric_meta_fields' );
 		$this->loader->add_action( 'init', $episodes, 'register_tags' );
 		$this->loader->add_action( 'init', $episodes, 'register_category_taxonomy' );
+		$this->loader->add_action( 'save_post', $episodes, 'ensure_metric_defaults', 10, 2 );
 		$this->loader->add_filter( 'wp_insert_post_data', $episodes, 'set_default_comment_status', 10, 2 );
 
 		$rest = new A_Ripple_Song_Podcast_REST();
