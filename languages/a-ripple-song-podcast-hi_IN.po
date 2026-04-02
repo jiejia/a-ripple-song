@@ -3,8 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: A Ripple Song Podcast 0.5.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/a-ripple-song-"
-"podcast\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/a-ripple-song-podcast\n"
 "POT-Creation-Date: 2026-01-21T01:26:36+00:00\n"
 "PO-Revision-Date: 2026-01-21T01:26:36+00:00\n"
 "Last-Translator: Automatically generated\n"
@@ -13,8 +12,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: a-ripple-song-podcast\n"
+"X-Generator: WP-CLI 2.12.0\n"
 
 #. Plugin Name of the plugin
 #: a-ripple-song-podcast.php
@@ -321,25 +320,25 @@ msgstr ""
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:45
 msgid "Use the submenu to configure Podcast Settings."
-msgstr ""
+msgstr "पॉडकास्ट सेटिंग्स कॉन्फ़िगर करने के लिए सबमेनू का उपयोग करें।"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:64
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:66
 msgid "Podcast Settings"
-msgstr ""
+msgstr "पॉडकास्ट सेटिंग्स"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:74
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:80
 msgid "Podcast RSS URL"
-msgstr ""
+msgstr "पॉडकास्ट RSS URL"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:79
 msgid "Open feed"
-msgstr ""
+msgstr "फ़ीड खोलें"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:81
 msgid "Your podcast RSS feed URL. Click to select and copy."
-msgstr ""
+msgstr "आपके पॉडकास्ट RSS फ़ीड का URL। चुनने और कॉपी करने के लिए क्लिक करें।"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:84
 msgid "Podcast Title"
@@ -522,8 +521,7 @@ msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
 msgstr ""
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:178
-msgid ""
-"Apple Podcasts Verify Code (podcast:txt purpose=\\\"applepodcastsverify\\\")"
+msgid "Apple Podcasts Verify Code (podcast:txt purpose=\\\"applepodcastsverify\\\")"
 msgstr ""
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:179
@@ -717,3 +715,49 @@ msgstr ""
 #: includes/class-a-ripple-song-podcast-episodes.php:79
 msgid "New Episode Category Name"
 msgstr ""
+
+msgid "ARS Themes"
+msgstr "ARS थीम"
+
+msgid "Themes recommended for the A Ripple Song Podcast plugin."
+msgstr "A Ripple Song Podcast प्लगइन के लिए अनुशंसित थीमें।"
+
+msgid ""
+"A theme that provides a complete podcast presentation and playback interface"
+" for the A Ripple Song Podcast plugin."
+msgstr ""
+"एक थीम जो A Ripple Song Podcast प्लगइन के लिए पॉडकास्ट प्रदर्शन और प्लेबैक "
+"का पूरा इंटरफ़ेस प्रदान करती है।"
+
+msgid "This theme will be installable after it is published on WordPress.org."
+msgstr "यह थीम WordPress.org पर प्रकाशित होने के बाद इंस्टॉल की जा सकेगी।"
+
+msgid "You are not allowed to manage themes on this site."
+msgstr "आपको इस साइट पर थीम प्रबंधित करने की अनुमति नहीं है।"
+
+msgid "You are not allowed to switch themes on this site."
+msgstr "आपको इस साइट पर थीम बदलने की अनुमति नहीं है।"
+
+msgid "You are not allowed to install themes on this site."
+msgstr "आपको इस साइट पर थीम इंस्टॉल करने की अनुमति नहीं है।"
+
+msgid "The requested recommended theme could not be found."
+msgstr "मांगी गई अनुशंसित थीम नहीं मिली।"
+
+msgid "The selected theme is not installed on this site."
+msgstr "चयनित थीम इस साइट पर इंस्टॉल नहीं है।"
+
+msgid "The theme could not be activated."
+msgstr "थीम सक्रिय नहीं की जा सकी।"
+
+msgid "The theme was activated successfully."
+msgstr "थीम सफलतापूर्वक सक्रिय कर दी गई।"
+
+msgid "The theme is not yet available for installation from WordPress.org."
+msgstr "यह थीम अभी WordPress.org से इंस्टॉल करने के लिए उपलब्ध नहीं है।"
+
+msgid "The theme could not be installed."
+msgstr "थीम इंस्टॉल नहीं की जा सकी।"
+
+msgid "The theme was installed successfully. You can activate it now."
+msgstr "थीम सफलतापूर्वक इंस्टॉल हो गई। अब आप इसे सक्रिय कर सकते हैं।"

@@ -3,8 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: A Ripple Song Podcast 0.5.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/a-ripple-song-"
-"podcast\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/a-ripple-song-podcast\n"
 "POT-Creation-Date: 2026-01-21T01:26:36+00:00\n"
 "PO-Revision-Date: 2026-01-21T01:26:36+00:00\n"
 "Last-Translator: Automatically generated\n"
@@ -13,9 +12,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: WP-CLI 2.12.0\n"
-"X-Domain: a-ripple-song-podcast\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Domain: a-ripple-song-podcast\n"
+"X-Generator: WP-CLI 2.12.0\n"
 
 #. Plugin Name of the plugin
 #: a-ripple-song-podcast.php
@@ -322,25 +321,25 @@ msgstr ""
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:45
 msgid "Use the submenu to configure Podcast Settings."
-msgstr ""
+msgstr "サブメニューからポッドキャスト設定を行ってください。"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:64
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:66
 msgid "Podcast Settings"
-msgstr ""
+msgstr "ポッドキャスト設定"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:74
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:80
 msgid "Podcast RSS URL"
-msgstr ""
+msgstr "ポッドキャスト RSS URL"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:79
 msgid "Open feed"
-msgstr ""
+msgstr "フィードを開く"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:81
 msgid "Your podcast RSS feed URL. Click to select and copy."
-msgstr ""
+msgstr "ポッドキャスト RSS フィードの URL です。クリックして選択し、コピーできます。"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:84
 msgid "Podcast Title"
@@ -523,8 +522,7 @@ msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
 msgstr ""
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:178
-msgid ""
-"Apple Podcasts Verify Code (podcast:txt purpose=\\\"applepodcastsverify\\\")"
+msgid "Apple Podcasts Verify Code (podcast:txt purpose=\\\"applepodcastsverify\\\")"
 msgstr ""
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:179
@@ -718,3 +716,47 @@ msgstr ""
 #: includes/class-a-ripple-song-podcast-episodes.php:79
 msgid "New Episode Category Name"
 msgstr ""
+
+msgid "ARS Themes"
+msgstr "ARS テーマ"
+
+msgid "Themes recommended for the A Ripple Song Podcast plugin."
+msgstr "A Ripple Song Podcast プラグインに推奨されるテーマです。"
+
+msgid ""
+"A theme that provides a complete podcast presentation and playback interface"
+" for the A Ripple Song Podcast plugin."
+msgstr "A Ripple Song Podcast プラグインに完全なポッドキャスト表示と再生インターフェースを提供するテーマです。"
+
+msgid "This theme will be installable after it is published on WordPress.org."
+msgstr "このテーマは WordPress.org に公開された後にインストールできるようになります。"
+
+msgid "You are not allowed to manage themes on this site."
+msgstr "このサイトでテーマを管理する権限がありません。"
+
+msgid "You are not allowed to switch themes on this site."
+msgstr "このサイトでテーマを切り替える権限がありません。"
+
+msgid "You are not allowed to install themes on this site."
+msgstr "このサイトでテーマをインストールする権限がありません。"
+
+msgid "The requested recommended theme could not be found."
+msgstr "要求された推奨テーマが見つかりませんでした。"
+
+msgid "The selected theme is not installed on this site."
+msgstr "選択したテーマはこのサイトにインストールされていません。"
+
+msgid "The theme could not be activated."
+msgstr "テーマを有効化できませんでした。"
+
+msgid "The theme was activated successfully."
+msgstr "テーマを有効化しました。"
+
+msgid "The theme is not yet available for installation from WordPress.org."
+msgstr "このテーマはまだ WordPress.org からインストールできません。"
+
+msgid "The theme could not be installed."
+msgstr "テーマをインストールできませんでした。"
+
+msgid "The theme was installed successfully. You can activate it now."
+msgstr "テーマのインストールに成功しました。今すぐ有効化できます。"

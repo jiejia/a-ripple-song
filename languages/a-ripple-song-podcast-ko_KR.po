@@ -3,8 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: A Ripple Song Podcast 0.5.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/a-ripple-song-"
-"podcast\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/a-ripple-song-podcast\n"
 "POT-Creation-Date: 2026-01-21T01:26:36+00:00\n"
 "PO-Revision-Date: 2026-01-21T01:26:36+00:00\n"
 "Last-Translator: Automatically generated\n"
@@ -13,9 +12,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: WP-CLI 2.12.0\n"
-"X-Domain: a-ripple-song-podcast\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Domain: a-ripple-song-podcast\n"
+"X-Generator: WP-CLI 2.12.0\n"
 
 #. Plugin Name of the plugin
 #: a-ripple-song-podcast.php
@@ -322,25 +321,25 @@ msgstr ""
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:45
 msgid "Use the submenu to configure Podcast Settings."
-msgstr ""
+msgstr "하위 메뉴에서 팟캐스트 설정을 구성하세요."
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:64
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:66
 msgid "Podcast Settings"
-msgstr ""
+msgstr "팟캐스트 설정"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:74
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:80
 msgid "Podcast RSS URL"
-msgstr ""
+msgstr "팟캐스트 RSS URL"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:79
 msgid "Open feed"
-msgstr ""
+msgstr "피드 열기"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:81
 msgid "Your podcast RSS feed URL. Click to select and copy."
-msgstr ""
+msgstr "팟캐스트 RSS 피드 URL입니다. 클릭하여 선택하고 복사하세요."
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:84
 msgid "Podcast Title"
@@ -523,8 +522,7 @@ msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
 msgstr ""
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:178
-msgid ""
-"Apple Podcasts Verify Code (podcast:txt purpose=\\\"applepodcastsverify\\\")"
+msgid "Apple Podcasts Verify Code (podcast:txt purpose=\\\"applepodcastsverify\\\")"
 msgstr ""
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:179
@@ -718,3 +716,47 @@ msgstr ""
 #: includes/class-a-ripple-song-podcast-episodes.php:79
 msgid "New Episode Category Name"
 msgstr ""
+
+msgid "ARS Themes"
+msgstr "ARS 테마"
+
+msgid "Themes recommended for the A Ripple Song Podcast plugin."
+msgstr "A Ripple Song Podcast 플러그인에 권장되는 테마입니다."
+
+msgid ""
+"A theme that provides a complete podcast presentation and playback interface"
+" for the A Ripple Song Podcast plugin."
+msgstr "A Ripple Song Podcast 플러그인에 완전한 팟캐스트 표시 및 재생 인터페이스를 제공하는 테마입니다."
+
+msgid "This theme will be installable after it is published on WordPress.org."
+msgstr "이 테마는 WordPress.org에 게시된 후 설치할 수 있습니다."
+
+msgid "You are not allowed to manage themes on this site."
+msgstr "이 사이트에서 테마를 관리할 권한이 없습니다."
+
+msgid "You are not allowed to switch themes on this site."
+msgstr "이 사이트에서 테마를 전환할 권한이 없습니다."
+
+msgid "You are not allowed to install themes on this site."
+msgstr "이 사이트에서 테마를 설치할 권한이 없습니다."
+
+msgid "The requested recommended theme could not be found."
+msgstr "요청한 추천 테마를 찾을 수 없습니다."
+
+msgid "The selected theme is not installed on this site."
+msgstr "선택한 테마가 이 사이트에 설치되어 있지 않습니다."
+
+msgid "The theme could not be activated."
+msgstr "테마를 활성화할 수 없습니다."
+
+msgid "The theme was activated successfully."
+msgstr "테마가 성공적으로 활성화되었습니다."
+
+msgid "The theme is not yet available for installation from WordPress.org."
+msgstr "이 테마는 아직 WordPress.org에서 설치할 수 없습니다."
+
+msgid "The theme could not be installed."
+msgstr "테마를 설치할 수 없습니다."
+
+msgid "The theme was installed successfully. You can activate it now."
+msgstr "테마가 성공적으로 설치되었습니다. 지금 활성화할 수 있습니다."

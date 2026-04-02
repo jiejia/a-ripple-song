@@ -3,8 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: A Ripple Song Podcast 0.5.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/a-ripple-song-"
-"podcast\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/a-ripple-song-podcast\n"
 "POT-Creation-Date: 2026-01-21T01:26:36+00:00\n"
 "PO-Revision-Date: 2026-01-21T01:26:36+00:00\n"
 "Last-Translator: Automatically generated\n"
@@ -13,8 +12,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: a-ripple-song-podcast\n"
+"X-Generator: WP-CLI 2.12.0\n"
 
 #. Plugin Name of the plugin
 #: a-ripple-song-podcast.php
@@ -321,25 +320,25 @@ msgstr ""
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:45
 msgid "Use the submenu to configure Podcast Settings."
-msgstr ""
+msgstr "استخدم القائمة الفرعية لإعداد إعدادات البودكاست."
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:64
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:66
 msgid "Podcast Settings"
-msgstr ""
+msgstr "إعدادات البودكاست"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:74
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:80
 msgid "Podcast RSS URL"
-msgstr ""
+msgstr "رابط RSS للبودكاست"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:79
 msgid "Open feed"
-msgstr ""
+msgstr "فتح الخلاصة"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:81
 msgid "Your podcast RSS feed URL. Click to select and copy."
-msgstr ""
+msgstr "رابط موجز RSS للبودكاست الخاص بك. انقر للتحديد والنسخ."
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:84
 msgid "Podcast Title"
@@ -522,8 +521,7 @@ msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
 msgstr ""
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:178
-msgid ""
-"Apple Podcasts Verify Code (podcast:txt purpose=\\\"applepodcastsverify\\\")"
+msgid "Apple Podcasts Verify Code (podcast:txt purpose=\\\"applepodcastsverify\\\")"
 msgstr ""
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:179
@@ -717,3 +715,48 @@ msgstr ""
 #: includes/class-a-ripple-song-podcast-episodes.php:79
 msgid "New Episode Category Name"
 msgstr ""
+
+msgid "ARS Themes"
+msgstr "قوالب ARS"
+
+msgid "Themes recommended for the A Ripple Song Podcast plugin."
+msgstr "القوالب الموصى بها لإضافة A Ripple Song Podcast."
+
+msgid ""
+"A theme that provides a complete podcast presentation and playback interface"
+" for the A Ripple Song Podcast plugin."
+msgstr ""
+"قالب يوفر واجهة كاملة لعرض البودكاست وتشغيله لإضافة A Ripple Song Podcast."
+
+msgid "This theme will be installable after it is published on WordPress.org."
+msgstr "سيكون هذا القالب قابلاً للتثبيت بعد نشره على WordPress.org."
+
+msgid "You are not allowed to manage themes on this site."
+msgstr "لا تملك صلاحية إدارة القوالب على هذا الموقع."
+
+msgid "You are not allowed to switch themes on this site."
+msgstr "لا تملك صلاحية تبديل القوالب على هذا الموقع."
+
+msgid "You are not allowed to install themes on this site."
+msgstr "لا تملك صلاحية تثبيت القوالب على هذا الموقع."
+
+msgid "The requested recommended theme could not be found."
+msgstr "تعذر العثور على القالب الموصى به المطلوب."
+
+msgid "The selected theme is not installed on this site."
+msgstr "القالب المحدد غير مثبت على هذا الموقع."
+
+msgid "The theme could not be activated."
+msgstr "تعذر تفعيل القالب."
+
+msgid "The theme was activated successfully."
+msgstr "تم تفعيل القالب بنجاح."
+
+msgid "The theme is not yet available for installation from WordPress.org."
+msgstr "هذا القالب غير متاح بعد للتثبيت من WordPress.org."
+
+msgid "The theme could not be installed."
+msgstr "تعذر تثبيت القالب."
+
+msgid "The theme was installed successfully. You can activate it now."
+msgstr "تم تثبيت القالب بنجاح. يمكنك تفعيله الآن."

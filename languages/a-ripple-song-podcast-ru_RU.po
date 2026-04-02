@@ -3,8 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: A Ripple Song Podcast 0.5.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/a-ripple-song-"
-"podcast\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/a-ripple-song-podcast\n"
 "POT-Creation-Date: 2026-01-21T01:26:36+00:00\n"
 "PO-Revision-Date: 2026-01-21T01:26:36+00:00\n"
 "Last-Translator: Automatically generated\n"
@@ -13,10 +12,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: WP-CLI 2.12.0\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Domain: a-ripple-song-podcast\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: WP-CLI 2.12.0\n"
 
 #. Plugin Name of the plugin
 #: a-ripple-song-podcast.php
@@ -323,25 +321,25 @@ msgstr ""
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:45
 msgid "Use the submenu to configure Podcast Settings."
-msgstr ""
+msgstr "Используйте подменю для настройки параметров подкаста."
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:64
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:66
 msgid "Podcast Settings"
-msgstr ""
+msgstr "Настройки подкаста"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:74
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:80
 msgid "Podcast RSS URL"
-msgstr ""
+msgstr "RSS URL подкаста"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:79
 msgid "Open feed"
-msgstr ""
+msgstr "Открыть ленту"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:81
 msgid "Your podcast RSS feed URL. Click to select and copy."
-msgstr ""
+msgstr "URL RSS-ленты вашего подкаста. Нажмите, чтобы выделить и скопировать."
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:84
 msgid "Podcast Title"
@@ -524,8 +522,7 @@ msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
 msgstr ""
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:178
-msgid ""
-"Apple Podcasts Verify Code (podcast:txt purpose=\\\"applepodcastsverify\\\")"
+msgid "Apple Podcasts Verify Code (podcast:txt purpose=\\\"applepodcastsverify\\\")"
 msgstr ""
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:179
@@ -719,3 +716,49 @@ msgstr ""
 #: includes/class-a-ripple-song-podcast-episodes.php:79
 msgid "New Episode Category Name"
 msgstr ""
+
+msgid "ARS Themes"
+msgstr "Темы ARS"
+
+msgid "Themes recommended for the A Ripple Song Podcast plugin."
+msgstr "Темы, рекомендуемые для плагина A Ripple Song Podcast."
+
+msgid ""
+"A theme that provides a complete podcast presentation and playback interface"
+" for the A Ripple Song Podcast plugin."
+msgstr ""
+"Тема, предоставляющая полноценный интерфейс показа и воспроизведения "
+"подкастов для плагина A Ripple Song Podcast."
+
+msgid "This theme will be installable after it is published on WordPress.org."
+msgstr "Этот шаблон можно будет установить после публикации на WordPress.org."
+
+msgid "You are not allowed to manage themes on this site."
+msgstr "У вас нет прав на управление темами на этом сайте."
+
+msgid "You are not allowed to switch themes on this site."
+msgstr "У вас нет прав на переключение тем на этом сайте."
+
+msgid "You are not allowed to install themes on this site."
+msgstr "У вас нет прав на установку тем на этом сайте."
+
+msgid "The requested recommended theme could not be found."
+msgstr "Запрошенная рекомендуемая тема не найдена."
+
+msgid "The selected theme is not installed on this site."
+msgstr "Выбранная тема не установлена на этом сайте."
+
+msgid "The theme could not be activated."
+msgstr "Не удалось активировать тему."
+
+msgid "The theme was activated successfully."
+msgstr "Тема успешно активирована."
+
+msgid "The theme is not yet available for installation from WordPress.org."
+msgstr "Эта тема пока недоступна для установки с WordPress.org."
+
+msgid "The theme could not be installed."
+msgstr "Не удалось установить тему."
+
+msgid "The theme was installed successfully. You can activate it now."
+msgstr "Тема успешно установлена. Теперь её можно активировать."

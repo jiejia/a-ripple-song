@@ -1,8 +1,8 @@
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: A Ripple Song Podcast 0.5.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/a-ripple-song-"
-"podcast\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/a-ripple-song-podcast\n"
 "POT-Creation-Date: 2026-01-21T01:26:36+00:00\n"
 "PO-Revision-Date: 2026-01-20 00:00+0000\n"
 "Last-Translator: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Codex CLI\n"
 "X-Domain: a-ripple-song-podcast\n"
+"X-Generator: Codex CLI\n"
 
 #. Plugin Name of the plugin
 #: a-ripple-song-podcast.php
@@ -330,15 +330,15 @@ msgstr "播客設定"
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:74
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:80
 msgid "Podcast RSS URL"
-msgstr "播客 RSS 位址"
+msgstr "播客 RSS URL"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:79
 msgid "Open feed"
-msgstr "開啟訂閱源"
+msgstr "開啟 Feed"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:81
 msgid "Your podcast RSS feed URL. Click to select and copy."
-msgstr "您的播客 RSS 訂閱地址。點擊選擇並複製。"
+msgstr "你的播客 RSS Feed URL。點擊以選取並複製。"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:84
 msgid "Podcast Title"
@@ -397,8 +397,7 @@ msgid ""
 "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple "
 "recommends keeping the file under 512KB. Will be validated on save."
 msgstr ""
-"必填。用於 <itunes:image> 的正方形 JPG/PNG（1400–3000px）。Apple 建議檔案小"
-"於 512KB。儲存時會進行驗證。"
+"必填。用於 <itunes:image> 的正方形 JPG/PNG（1400–3000px）。Apple 建議檔案小於 512KB。儲存時會進行驗證。"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:107
 msgid "Default Explicit Flag"
@@ -523,8 +522,7 @@ msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
 msgstr "Podcasting 2.0 GUID。如留空，摘要將用網站 URL 作後備。"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:178
-msgid ""
-"Apple Podcasts Verify Code (podcast:txt purpose=\\\"applepodcastsverify\\\")"
+msgid "Apple Podcasts Verify Code (podcast:txt purpose=\\\"applepodcastsverify\\\")"
 msgstr "Apple Podcasts 驗證碼（podcast:txt purpose=\"applepodcastsverify\"）"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:179
@@ -718,6 +716,50 @@ msgstr "新增劇集分類"
 #: includes/class-a-ripple-song-podcast-episodes.php:79
 msgid "New Episode Category Name"
 msgstr "新劇集分類名稱"
+
+msgid "ARS Themes"
+msgstr "ARS 主題"
+
+msgid "Themes recommended for the A Ripple Song Podcast plugin."
+msgstr "A Ripple Song Podcast 外掛推薦使用的主題。"
+
+msgid ""
+"A theme that provides a complete podcast presentation and playback interface"
+" for the A Ripple Song Podcast plugin."
+msgstr "為 A Ripple Song Podcast 外掛提供完整 Podcast 展示與播放介面的主題。"
+
+msgid "This theme will be installable after it is published on WordPress.org."
+msgstr "這個主題在發佈到 WordPress.org 後即可安裝。"
+
+msgid "You are not allowed to manage themes on this site."
+msgstr "你沒有在這個網站管理主題的權限。"
+
+msgid "You are not allowed to switch themes on this site."
+msgstr "你沒有在這個網站切換主題的權限。"
+
+msgid "You are not allowed to install themes on this site."
+msgstr "你沒有在這個網站安裝主題的權限。"
+
+msgid "The requested recommended theme could not be found."
+msgstr "找不到要求的推薦主題。"
+
+msgid "The selected theme is not installed on this site."
+msgstr "所選主題尚未安裝在這個網站。"
+
+msgid "The theme could not be activated."
+msgstr "無法啟用主題。"
+
+msgid "The theme was activated successfully."
+msgstr "主題已成功啟用。"
+
+msgid "The theme is not yet available for installation from WordPress.org."
+msgstr "這個主題目前尚未提供從 WordPress.org 安裝。"
+
+msgid "The theme could not be installed."
+msgstr "無法安裝主題。"
+
+msgid "The theme was installed successfully. You can activate it now."
+msgstr "主題已成功安裝，現在可以啟用。"
 
 #~ msgid "ARS Episode"
 #~ msgstr "ARS 劇集"
