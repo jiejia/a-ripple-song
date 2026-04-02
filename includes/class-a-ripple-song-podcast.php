@@ -153,6 +153,11 @@ class A_Ripple_Song_Podcast {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-a-ripple-song-podcast-podcast-settings.php';
 
 		/**
+		 * Recommended themes admin page.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-a-ripple-song-podcast-recommended-themes.php';
+
+		/**
 		 * REST API integration.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-a-ripple-song-podcast-rest.php';
@@ -262,6 +267,7 @@ class A_Ripple_Song_Podcast {
 
 		$plugin_admin = new A_Ripple_Song_Podcast_Admin( $this->get_plugin_name(), $this->get_version() );
 		$media_admin  = new A_Ripple_Song_Podcast_Media();
+		$recommended_themes = new A_Ripple_Song_Podcast_Recommended_Themes();
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		// Print as the very last stylesheet tag in admin HTML.
@@ -269,6 +275,10 @@ class A_Ripple_Song_Podcast {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_filter( 'upload_mimes', $media_admin, 'allow_upload_mimes' );
 		$this->loader->add_filter( 'wp_check_filetype_and_ext', $media_admin, 'fix_filetype_and_ext', 10, 4 );
+		$this->loader->add_action( 'admin_menu', $recommended_themes, 'register_page', 1100 );
+		$this->loader->add_action( 'admin_post_ars_activate_recommended_theme', $recommended_themes, 'handle_activate_action' );
+		$this->loader->add_action( 'admin_post_ars_install_recommended_theme', $recommended_themes, 'handle_install_action' );
+		$this->loader->add_action( 'admin_notices', $recommended_themes, 'render_admin_notice' );
 
 	}
 
