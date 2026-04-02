@@ -26,6 +26,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 class A_Ripple_Song_Podcast_Carbon_Fields_UI_I18n {
 
 	/**
+	 * Load Carbon Fields PHP translations from the plugin bundle.
+	 *
+	 * @return void
+	 */
+	public function load_php_textdomain() {
+		/**
+		 * Carbon Fields uses its own `carbon-fields` textdomain for PHP-rendered
+		 * labels such as the options-page "Actions" heading.
+		 */
+		$locale = is_admin() ? get_user_locale() : get_locale();
+		$locale = (string) $locale;
+		$mo_file = plugin_dir_path( dirname( __FILE__ ) ) . 'languages/carbon-fields-' . $locale . '.mo';
+
+		if ( file_exists( $mo_file ) ) {
+			load_textdomain( 'carbon-fields', $mo_file );
+		}
+	}
+
+	/**
 	 * Inject UI translations used by Carbon Fields JS.
 	 *
 	 * @param array $config
@@ -73,6 +92,11 @@ class A_Ripple_Song_Podcast_Carbon_Fields_UI_I18n {
 
 		// Normalize locales like zh_HK -> zh_HK, but also accept zh_CN etc.
 		switch ( $locale ) {
+			case 'ja':
+				return array(
+					'There are no entries yet.' => 'まだ項目はありません。',
+					'Add %s'                    => '%sを追加',
+				);
 			case 'zh_CN':
 				return array(
 					'There are no entries yet.' => '暂无条目。',
