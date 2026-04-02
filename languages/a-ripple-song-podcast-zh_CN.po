@@ -1,8 +1,8 @@
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: A Ripple Song Podcast 0.5.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/a-ripple-song-"
-"podcast\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/a-ripple-song-podcast\n"
 "POT-Creation-Date: 2026-01-21T01:26:36+00:00\n"
 "PO-Revision-Date: 2026-01-20 00:00+0000\n"
 "Last-Translator: \n"
@@ -12,8 +12,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Codex CLI\n"
 "X-Domain: a-ripple-song-podcast\n"
+"X-Generator: Codex CLI\n"
 
 #. Plugin Name of the plugin
 #: a-ripple-song-podcast.php
@@ -397,8 +397,7 @@ msgid ""
 "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple "
 "recommends keeping the file under 512KB. Will be validated on save."
 msgstr ""
-"必填。用于 <itunes:image> 的正方形 JPG/PNG，尺寸 1400–3000px。Apple 建议文件"
-"小于 512KB。保存时将校验。"
+"必填。用于 <itunes:image> 的正方形 JPG/PNG，尺寸 1400–3000px。Apple 建议文件小于 512KB。保存时将校验。"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:107
 msgid "Default Explicit Flag"
@@ -523,8 +522,7 @@ msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
 msgstr "Podcasting 2.0 GUID。如留空，源将使用站点 URL 作为后备。"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:178
-msgid ""
-"Apple Podcasts Verify Code (podcast:txt purpose=\\\"applepodcastsverify\\\")"
+msgid "Apple Podcasts Verify Code (podcast:txt purpose=\\\"applepodcastsverify\\\")"
 msgstr "Apple Podcasts 验证码（podcast:txt purpose=\"applepodcastsverify\"）"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:179
@@ -739,7 +737,7 @@ msgstr "名称"
 
 #: admin/class-a-ripple-song-podcast-recommended-themes.php:114
 msgid "Slug"
-msgstr "Slug"
+msgstr "别名"
 
 #: admin/class-a-ripple-song-podcast-recommended-themes.php:115
 msgid "Description"
@@ -774,7 +772,9 @@ msgid "You are not allowed to install themes on this site."
 msgstr "您无权在此站点安装主题。"
 
 #: admin/class-a-ripple-song-podcast-recommended-themes.php:348
-msgid "A theme that provides a complete podcast presentation and playback interface for the A Ripple Song Podcast plugin."
+msgid ""
+"A theme that provides a complete podcast presentation and playback interface"
+" for the A Ripple Song Podcast plugin."
 msgstr "为 A Ripple Song Podcast 插件提供整套播客展示和播放界面"
 
 #: admin/class-a-ripple-song-podcast-recommended-themes.php:116

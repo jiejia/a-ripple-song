@@ -66,11 +66,11 @@ msgstr ""
 
 #: admin/class-a-ripple-song-podcast-episode-fields.php:24
 msgid "Episode Details"
-msgstr ""
+msgstr "পর্বের বিবরণ"
 
 #: admin/class-a-ripple-song-podcast-episode-fields.php:30
 msgid "Audio File"
-msgstr ""
+msgstr "অডিও ফাইল"
 
 #: admin/class-a-ripple-song-podcast-episode-fields.php:31
 msgid "Required. Upload an audio file or enter audio file URL (https)."
@@ -342,7 +342,7 @@ msgstr "আপনার পডকাস্ট RSS ফিডের URL। নি�
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:84
 msgid "Podcast Title"
-msgstr ""
+msgstr "পডকাস্ট শিরোনাম"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:85
 msgid "Required. If empty, falls back to site title."
@@ -358,7 +358,7 @@ msgstr ""
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:89
 msgid "Podcast Description"
-msgstr ""
+msgstr "পডকাস্ট বিবরণ"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:90
 msgid "Required. Plain text description of the show."
@@ -620,7 +620,7 @@ msgstr "এপিসোড"
 
 #: includes/class-a-ripple-song-podcast-episodes.php:41
 msgid "ARS Episodes"
-msgstr ""
+msgstr "ARS পর্বসমূহ"
 
 #: includes/class-a-ripple-song-podcast-episodes.php:31
 #: includes/class-a-ripple-song-podcast-episodes.php:32
@@ -657,7 +657,7 @@ msgstr ""
 
 #: includes/class-a-ripple-song-podcast-episodes.php:40
 msgid "All Episodes"
-msgstr ""
+msgstr "সব পর্ব"
 
 #: includes/class-a-ripple-song-podcast-episodes.php:43
 msgid "Episode published."
@@ -678,7 +678,7 @@ msgstr ""
 #: includes/class-a-ripple-song-podcast-episodes.php:70
 #: includes/class-a-ripple-song-podcast-episodes.php:80
 msgid "Episode Categories"
-msgstr ""
+msgstr "পর্বের বিভাগসমূহ"
 
 #: includes/class-a-ripple-song-podcast-episodes.php:71
 msgid "Episode Category"
@@ -761,3 +761,42 @@ msgstr "থিম ইনস্টল করা যায়নি।"
 
 msgid "The theme was installed successfully. You can activate it now."
 msgstr "থিম সফলভাবে ইনস্টল হয়েছে। এখন আপনি এটি সক্রিয় করতে পারেন।"
+
+msgid "Name"
+msgstr "নাম"
+
+msgid "Slug"
+msgstr "স্লাগ"
+
+msgid "Description"
+msgstr "বিবরণ"
+
+msgid "ARS Official"
+msgstr "ARS অফিসিয়াল"
+
+msgid "Status"
+msgstr "অবস্থা"
+
+msgid "Option"
+msgstr "অপশন"
+
+msgid "Active"
+msgstr "সক্রিয়"
+
+msgid "Installed but Inactive"
+msgstr "ইনস্টল করা আছে কিন্তু নিষ্ক্রিয়"
+
+msgid "Not Installed"
+msgstr "ইনস্টল করা নেই"
+
+msgid "Activate"
+msgstr "সক্রিয় করুন"
+
+msgid "Install"
+msgstr "ইনস্টল করুন"
+
+msgid "Yes"
+msgstr "হ্যাঁ"
+
+msgid "No"
+msgstr "না"

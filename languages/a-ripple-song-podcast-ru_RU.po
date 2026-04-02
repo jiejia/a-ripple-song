@@ -67,11 +67,11 @@ msgstr ""
 
 #: admin/class-a-ripple-song-podcast-episode-fields.php:24
 msgid "Episode Details"
-msgstr ""
+msgstr "Сведения об эпизоде"
 
 #: admin/class-a-ripple-song-podcast-episode-fields.php:30
 msgid "Audio File"
-msgstr ""
+msgstr "Аудиофайл"
 
 #: admin/class-a-ripple-song-podcast-episode-fields.php:31
 msgid "Required. Upload an audio file or enter audio file URL (https)."
@@ -343,7 +343,7 @@ msgstr "URL RSS-ленты вашего подкаста. Нажмите, что
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:84
 msgid "Podcast Title"
-msgstr ""
+msgstr "Название подкаста"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:85
 msgid "Required. If empty, falls back to site title."
@@ -359,7 +359,7 @@ msgstr ""
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:89
 msgid "Podcast Description"
-msgstr ""
+msgstr "Описание подкаста"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:90
 msgid "Required. Plain text description of the show."
@@ -621,7 +621,7 @@ msgstr "Эпизод"
 
 #: includes/class-a-ripple-song-podcast-episodes.php:41
 msgid "ARS Episodes"
-msgstr ""
+msgstr "Эпизоды ARS"
 
 #: includes/class-a-ripple-song-podcast-episodes.php:31
 #: includes/class-a-ripple-song-podcast-episodes.php:32
@@ -658,7 +658,7 @@ msgstr ""
 
 #: includes/class-a-ripple-song-podcast-episodes.php:40
 msgid "All Episodes"
-msgstr ""
+msgstr "Все эпизоды"
 
 #: includes/class-a-ripple-song-podcast-episodes.php:43
 msgid "Episode published."
@@ -679,7 +679,7 @@ msgstr ""
 #: includes/class-a-ripple-song-podcast-episodes.php:70
 #: includes/class-a-ripple-song-podcast-episodes.php:80
 msgid "Episode Categories"
-msgstr ""
+msgstr "Категории эпизодов"
 
 #: includes/class-a-ripple-song-podcast-episodes.php:71
 msgid "Episode Category"
@@ -762,3 +762,42 @@ msgstr "Не удалось установить тему."
 
 msgid "The theme was installed successfully. You can activate it now."
 msgstr "Тема успешно установлена. Теперь её можно активировать."
+
+msgid "Name"
+msgstr "Название"
+
+msgid "Slug"
+msgstr "Слаг"
+
+msgid "Description"
+msgstr "Описание"
+
+msgid "ARS Official"
+msgstr "Официальный ARS"
+
+msgid "Status"
+msgstr "Статус"
+
+msgid "Option"
+msgstr "Действие"
+
+msgid "Active"
+msgstr "Активен"
+
+msgid "Installed but Inactive"
+msgstr "Установлен, но не активен"
+
+msgid "Not Installed"
+msgstr "Не установлен"
+
+msgid "Activate"
+msgstr "Активировать"
+
+msgid "Install"
+msgstr "Установить"
+
+msgid "Yes"
+msgstr "Да"
+
+msgid "No"
+msgstr "Нет"

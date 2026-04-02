@@ -67,11 +67,11 @@ msgstr ""
 
 #: admin/class-a-ripple-song-podcast-episode-fields.php:24
 msgid "Episode Details"
-msgstr ""
+msgstr "Détails de l’épisode"
 
 #: admin/class-a-ripple-song-podcast-episode-fields.php:30
 msgid "Audio File"
-msgstr ""
+msgstr "Fichier audio"
 
 #: admin/class-a-ripple-song-podcast-episode-fields.php:31
 msgid "Required. Upload an audio file or enter audio file URL (https)."
@@ -344,7 +344,7 @@ msgstr ""
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:84
 msgid "Podcast Title"
-msgstr ""
+msgstr "Titre du podcast"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:85
 msgid "Required. If empty, falls back to site title."
@@ -360,7 +360,7 @@ msgstr ""
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:89
 msgid "Podcast Description"
-msgstr ""
+msgstr "Description du podcast"
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:90
 msgid "Required. Plain text description of the show."
@@ -622,7 +622,7 @@ msgstr "Épisode"
 
 #: includes/class-a-ripple-song-podcast-episodes.php:41
 msgid "ARS Episodes"
-msgstr ""
+msgstr "Épisodes ARS"
 
 #: includes/class-a-ripple-song-podcast-episodes.php:31
 #: includes/class-a-ripple-song-podcast-episodes.php:32
@@ -659,7 +659,7 @@ msgstr ""
 
 #: includes/class-a-ripple-song-podcast-episodes.php:40
 msgid "All Episodes"
-msgstr ""
+msgstr "Tous les épisodes"
 
 #: includes/class-a-ripple-song-podcast-episodes.php:43
 msgid "Episode published."
@@ -680,7 +680,7 @@ msgstr ""
 #: includes/class-a-ripple-song-podcast-episodes.php:70
 #: includes/class-a-ripple-song-podcast-episodes.php:80
 msgid "Episode Categories"
-msgstr ""
+msgstr "Catégories d’épisodes"
 
 #: includes/class-a-ripple-song-podcast-episodes.php:71
 msgid "Episode Category"
@@ -765,3 +765,42 @@ msgstr "Le thème n’a pas pu être installé."
 msgid "The theme was installed successfully. You can activate it now."
 msgstr ""
 "Le thème a été installé avec succès. Vous pouvez l’activer maintenant."
+
+msgid "Name"
+msgstr "Nom"
+
+msgid "Slug"
+msgstr "Identifiant"
+
+msgid "Description"
+msgstr "Description"
+
+msgid "ARS Official"
+msgstr "ARS officiel"
+
+msgid "Status"
+msgstr "Statut"
+
+msgid "Option"
+msgstr "Action"
+
+msgid "Active"
+msgstr "Actif"
+
+msgid "Installed but Inactive"
+msgstr "Installé mais inactif"
+
+msgid "Not Installed"
+msgstr "Non installé"
+
+msgid "Activate"
+msgstr "Activer"
+
+msgid "Install"
+msgstr "Installer"
+
+msgid "Yes"
+msgstr "Oui"
+
+msgid "No"
+msgstr "Non"
