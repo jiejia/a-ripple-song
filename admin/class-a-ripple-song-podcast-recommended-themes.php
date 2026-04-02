@@ -74,7 +74,7 @@ class A_Ripple_Song_Podcast_Recommended_Themes {
 		?>
 		<div class="wrap">
 			<h1><?php echo esc_html__( 'ARS Themes', 'a-ripple-song-podcast' ); ?></h1>
-			<p><?php echo esc_html__( 'These themes are recommended for the A Ripple Song ecosystem.', 'a-ripple-song-podcast' ); ?></p>
+			<p><?php echo esc_html__( 'Themes recommended for the A Ripple Song Podcast plugin.', 'a-ripple-song-podcast' ); ?></p>
 			<style>
 				.ars-themes-table th,
 				.ars-themes-table td {
@@ -94,6 +94,14 @@ class A_Ripple_Song_Podcast_Recommended_Themes {
 					margin: 0;
 				}
 
+				.ars-themes-table code {
+					background: #eef2ff;
+					border-radius: 4px;
+					color: #3730a3;
+					display: inline-block;
+					padding: 2px 6px;
+				}
+
 				.ars-themes-table code,
 				.ars-themes-table td {
 					overflow-wrap: anywhere;
@@ -102,17 +110,19 @@ class A_Ripple_Song_Podcast_Recommended_Themes {
 			</style>
 			<table class="widefat striped ars-themes-table">
 				<colgroup>
-					<col style="width: 14%;">
-					<col style="width: 17%;">
-					<col style="width: 47%;">
+					<col style="width: 13%;">
+					<col style="width: 16%;">
+					<col style="width: 37%;">
 					<col style="width: 10%;">
-					<col style="width: 12%;">
+					<col style="width: 10%;">
+					<col style="width: 14%;">
 				</colgroup>
 				<thead>
 					<tr>
 						<th scope="col"><?php echo esc_html__( 'Name', 'a-ripple-song-podcast' ); ?></th>
 						<th scope="col"><?php echo esc_html__( 'Slug', 'a-ripple-song-podcast' ); ?></th>
 						<th scope="col"><?php echo esc_html__( 'Description', 'a-ripple-song-podcast' ); ?></th>
+						<th scope="col"><?php echo esc_html__( 'ARS Official', 'a-ripple-song-podcast' ); ?></th>
 						<th scope="col"><?php echo esc_html__( 'Status', 'a-ripple-song-podcast' ); ?></th>
 						<th scope="col"><?php echo esc_html__( 'Option', 'a-ripple-song-podcast' ); ?></th>
 					</tr>
@@ -122,7 +132,8 @@ class A_Ripple_Song_Podcast_Recommended_Themes {
 						<tr>
 							<td><?php echo esc_html( (string) $theme['name'] ); ?></td>
 							<td><code><?php echo esc_html( (string) $theme['slug'] ); ?></code></td>
-							<td><?php echo esc_html( (string) $theme['description'] ); ?></td>
+							<td class="ars-theme-description"><?php echo wp_kses( (string) $theme['description'], array( 'code' => array() ) ); ?></td>
+							<td><?php echo esc_html( (string) $theme['official_label'] ); ?></td>
 							<td><?php echo esc_html( (string) $theme['status_label'] ); ?></td>
 							<td>
 								<?php if ( 'inactive' === (string) $theme['status'] ) : ?>
@@ -313,7 +324,8 @@ class A_Ripple_Song_Podcast_Recommended_Themes {
 			$recommended_themes[] = array(
 				'slug'         => $theme_slug,
 				'name'         => $theme->exists() ? $theme->get( 'Name' ) : (string) $theme_definition['name'],
-				'description'  => (string) $theme_definition['description'],
+				'description'  => $this->format_description( (string) $theme_definition['description'] ),
+				'official_label' => $this->get_official_label( (bool) ( $theme_definition['is_official'] ?? false ) ),
 				'status'       => $theme_status,
 				'status_label' => $this->get_status_label( $theme_status ),
 				'can_install'  => 'missing' === $theme_status ? $this->can_install_from_wordpress_org( $theme_slug ) : false,
@@ -333,9 +345,20 @@ class A_Ripple_Song_Podcast_Recommended_Themes {
 			array(
 				'slug'        => 'a-ripple-song',
 				'name'        => 'A Ripple Song',
-				'description' => __( 'The official A Ripple Song WordPress theme.', 'a-ripple-song-podcast' ),
+				'description' => __( 'A theme that provides a complete podcast presentation and playback interface for the A Ripple Song Podcast plugin.', 'a-ripple-song-podcast' ),
+				'is_official' => true,
 			),
 		);
+	}
+
+	/**
+	 * Return the official label for a recommended theme row.
+	 *
+	 * @param bool $is_official Whether the item is an official ARS package.
+	 * @return string
+	 */
+	private function get_official_label( $is_official ) {
+		return $is_official ? __( 'Yes', 'a-ripple-song-podcast' ) : __( 'No', 'a-ripple-song-podcast' );
 	}
 
 	/**
@@ -354,6 +377,19 @@ class A_Ripple_Song_Podcast_Recommended_Themes {
 		}
 
 		return __( 'Not Installed', 'a-ripple-song-podcast' );
+	}
+
+	/**
+	 * Format the description markup for the recommended theme row.
+	 *
+	 * @param string $description Raw theme description text.
+	 * @return string
+	 */
+	private function format_description( $description ) {
+		/** @var string $plugin_name Plugin name that should be highlighted inside the description text. */
+		$plugin_name = 'A Ripple Song Podcast';
+
+		return str_replace( $plugin_name, '<code>' . esc_html( $plugin_name ) . '</code>', esc_html( $description ) );
 	}
 
 	/**

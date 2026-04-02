@@ -719,5 +719,115 @@ msgstr "添加新剧集分类"
 msgid "New Episode Category Name"
 msgstr "新剧集分类名称"
 
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:54
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:55
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:76
+msgid "ARS Themes"
+msgstr "ARS 主题"
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:69
+msgid "You are not allowed to manage themes on this site."
+msgstr "您无权在此站点管理主题。"
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:77
+msgid "Themes recommended for the A Ripple Song Podcast plugin."
+msgstr "A Ripple Song Podcast 插件推荐使用的主题"
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:113
+msgid "Name"
+msgstr "名称"
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:114
+msgid "Slug"
+msgstr "Slug"
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:115
+msgid "Description"
+msgstr "描述"
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:116
+msgid "Status"
+msgstr "状态"
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:117
+msgid "Option"
+msgstr "操作"
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:131
+msgid "Activate"
+msgstr "启用"
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:137
+msgid "Install"
+msgstr "安装"
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:143
+msgid "This theme will be installable after it is published on WordPress.org."
+msgstr "该主题发布到 WordPress.org 后即可安装。"
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:165
+msgid "You are not allowed to switch themes on this site."
+msgstr "您无权在此站点切换主题。"
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:200
+msgid "You are not allowed to install themes on this site."
+msgstr "您无权在此站点安装主题。"
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:348
+msgid "A theme that provides a complete podcast presentation and playback interface for the A Ripple Song Podcast plugin."
+msgstr "为 A Ripple Song Podcast 插件提供整套播客展示和播放界面"
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:116
+msgid "ARS Official"
+msgstr "ARS 官方"
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:350
+msgid "Yes"
+msgstr "是"
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:350
+msgid "No"
+msgstr "否"
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:349
+msgid "Active"
+msgstr "已启用"
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:353
+msgid "Installed but Inactive"
+msgstr "已安装但未启用"
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:356
+msgid "Not Installed"
+msgstr "未安装"
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:477
+msgid "The requested recommended theme could not be found."
+msgstr "找不到请求的推荐主题。"
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:478
+msgid "The selected theme is not installed on this site."
+msgstr "所选主题尚未安装到此站点。"
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:479
+msgid "The theme could not be activated."
+msgstr "无法启用该主题。"
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:480
+msgid "The theme was activated successfully."
+msgstr "主题已成功启用。"
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:481
+msgid "The theme is not yet available for installation from WordPress.org."
+msgstr "该主题暂时还不能从 WordPress.org 安装。"
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:482
+msgid "The theme could not be installed."
+msgstr "无法安装该主题。"
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:483
+msgid "The theme was installed successfully. You can activate it now."
+msgstr "主题已成功安装，现在可以启用了。"
+
 #~ msgid "ARS Episode"
 #~ msgstr "ARS 剧集"

@@ -701,3 +701,113 @@ msgstr ""
 #: includes/class-a-ripple-song-podcast-episodes.php:79
 msgid "New Episode Category Name"
 msgstr ""
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:54
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:55
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:76
+msgid "ARS Themes"
+msgstr ""
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:69
+msgid "You are not allowed to manage themes on this site."
+msgstr ""
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:77
+msgid "Themes recommended for the A Ripple Song Podcast plugin."
+msgstr ""
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:113
+msgid "Name"
+msgstr ""
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:114
+msgid "Slug"
+msgstr ""
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:115
+msgid "Description"
+msgstr ""
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:116
+msgid "Status"
+msgstr ""
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:117
+msgid "Option"
+msgstr ""
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:116
+msgid "ARS Official"
+msgstr ""
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:131
+msgid "Activate"
+msgstr ""
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:137
+msgid "Install"
+msgstr ""
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:143
+msgid "This theme will be installable after it is published on WordPress.org."
+msgstr ""
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:165
+msgid "You are not allowed to switch themes on this site."
+msgstr ""
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:200
+msgid "You are not allowed to install themes on this site."
+msgstr ""
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:348
+msgid "A theme that provides a complete podcast presentation and playback interface for the A Ripple Song Podcast plugin."
+msgstr ""
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:350
+msgid "Yes"
+msgstr ""
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:350
+msgid "No"
+msgstr ""
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:349
+msgid "Active"
+msgstr ""
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:353
+msgid "Installed but Inactive"
+msgstr ""
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:356
+msgid "Not Installed"
+msgstr ""
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:477
+msgid "The requested recommended theme could not be found."
+msgstr ""
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:478
+msgid "The selected theme is not installed on this site."
+msgstr ""
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:479
+msgid "The theme could not be activated."
+msgstr ""
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:480
+msgid "The theme was activated successfully."
+msgstr ""
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:481
+msgid "The theme is not yet available for installation from WordPress.org."
+msgstr ""
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:482
+msgid "The theme could not be installed."
+msgstr ""
+
+#: admin/class-a-ripple-song-podcast-recommended-themes.php:483
+msgid "The theme was installed successfully. You can activate it now."
+msgstr ""

@@ -38,7 +38,21 @@ class A_Ripple_Song_Podcast_i18n {
 	 * @since    1.0.0
 	 */
 	public function load_plugin_textdomain() {
-		// Translations are loaded automatically by WordPress.org language packs since WP 4.6.
+		load_plugin_textdomain(
+			'a-ripple-song-podcast',
+			false,
+			dirname( plugin_basename( dirname( __FILE__ ) ) ) . '/languages/'
+		);
+
+		/** @var string $locale Active locale used to resolve the bundled MO file. */
+		$locale = function_exists( 'determine_locale' ) ? determine_locale() : get_locale();
+
+		/** @var string $mo_file Absolute path to the bundled MO translation file. */
+		$mo_file = plugin_dir_path( dirname( __FILE__ ) ) . 'languages/a-ripple-song-podcast-' . $locale . '.mo';
+
+		if ( file_exists( $mo_file ) ) {
+			load_textdomain( 'a-ripple-song-podcast', $mo_file );
+		}
 	}
 
 
