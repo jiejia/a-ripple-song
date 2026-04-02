@@ -762,3 +762,42 @@ msgstr "テーマをインストールできませんでした。"
 
 msgid "The theme was installed successfully. You can activate it now."
 msgstr "テーマのインストールに成功しました。今すぐ有効化できます。"
+
+msgid "Name"
+msgstr "名称"
+
+msgid "Slug"
+msgstr "スラッグ"
+
+msgid "Description"
+msgstr "説明"
+
+msgid "ARS Official"
+msgstr "ARS 公式"
+
+msgid "Status"
+msgstr "ステータス"
+
+msgid "Option"
+msgstr "操作"
+
+msgid "Active"
+msgstr "有効"
+
+msgid "Installed but Inactive"
+msgstr "インストール済みだが無効"
+
+msgid "Not Installed"
+msgstr "未インストール"
+
+msgid "Activate"
+msgstr "有効化"
+
+msgid "Install"
+msgstr "インストール"
+
+msgid "Yes"
+msgstr "はい"
+
+msgid "No"
+msgstr "いいえ"
