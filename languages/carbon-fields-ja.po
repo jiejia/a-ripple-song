@@ -10,3 +10,6 @@ msgstr ""
 
 msgid "Actions"
 msgstr "操作"
+
+msgid "Save Changes"
+msgstr "変更を保存"
