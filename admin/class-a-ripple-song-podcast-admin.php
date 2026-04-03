@@ -81,7 +81,7 @@ class A_Ripple_Song_Podcast_Admin {
 		wp_register_style(
 			$this->plugin_name,
 			plugin_dir_url( __FILE__ ) . 'css/a-ripple-song-podcast-admin.css',
-			array( 'carbon-fields-metaboxes' ),
+			wp_style_is( 'carbon-fields-metaboxes', 'registered' ) ? array( 'carbon-fields-metaboxes' ) : array(),
 			$this->version,
 			'all'
 		);
