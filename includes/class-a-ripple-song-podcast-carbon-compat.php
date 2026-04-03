@@ -25,7 +25,7 @@ class A_Ripple_Song_Podcast_Carbon_Compat {
 	 * @return void
 	 */
 	public static function boot_carbon_fields() {
-		$class = self::resolve_class( '\\Carbon_Fields\\Carbon_Fields', self::SHARED_PREFIX . 'Carbon_Fields\\Carbon_Fields', self::SCOPED_PREFIX . 'Carbon_Fields\\Carbon_Fields' );
+		$class = self::resolve_class( '\\Carbon_Fields\\Carbon_Fields', self::SCOPED_PREFIX . 'Carbon_Fields\\Carbon_Fields', self::SHARED_PREFIX . 'Carbon_Fields\\Carbon_Fields' );
 		if ( $class && method_exists( $class, 'boot' ) ) {
 			$class::boot();
 		}
@@ -37,7 +37,7 @@ class A_Ripple_Song_Podcast_Carbon_Compat {
 	 * @return string|null
 	 */
 	public static function container_class() {
-		return self::resolve_class( '\\Carbon_Fields\\Container', self::SHARED_PREFIX . 'Carbon_Fields\\Container', self::SCOPED_PREFIX . 'Carbon_Fields\\Container' );
+		return self::resolve_class( '\\Carbon_Fields\\Container', self::SCOPED_PREFIX . 'Carbon_Fields\\Container', self::SHARED_PREFIX . 'Carbon_Fields\\Container' );
 	}
 
 	/**
@@ -46,7 +46,7 @@ class A_Ripple_Song_Podcast_Carbon_Compat {
 	 * @return string|null
 	 */
 	public static function field_class() {
-		return self::resolve_class( '\\Carbon_Fields\\Field', self::SHARED_PREFIX . 'Carbon_Fields\\Field', self::SCOPED_PREFIX . 'Carbon_Fields\\Field' );
+		return self::resolve_class( '\\Carbon_Fields\\Field', self::SCOPED_PREFIX . 'Carbon_Fields\\Field', self::SHARED_PREFIX . 'Carbon_Fields\\Field' );
 	}
 
 	/**
@@ -55,7 +55,7 @@ class A_Ripple_Song_Podcast_Carbon_Compat {
 	 * @return string|null
 	 */
 	private static function helper_class() {
-		return self::resolve_class( '\\Carbon_Fields\\Helper\\Helper', self::SHARED_PREFIX . 'Carbon_Fields\\Helper\\Helper', self::SCOPED_PREFIX . 'Carbon_Fields\\Helper\\Helper' );
+		return self::resolve_class( '\\Carbon_Fields\\Helper\\Helper', self::SCOPED_PREFIX . 'Carbon_Fields\\Helper\\Helper', self::SHARED_PREFIX . 'Carbon_Fields\\Helper\\Helper' );
 	}
 
 	/**
