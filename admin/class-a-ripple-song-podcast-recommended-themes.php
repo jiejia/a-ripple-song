@@ -273,9 +273,11 @@ class A_Ripple_Song_Podcast_Recommended_Themes {
 		}
 
 		/** @var string $notice_key Notice message key provided by the redirect. */
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin notice state from our own redirect query args.
 		$notice_key = isset( $_GET[ self::NOTICE_QUERY_ARG ] ) ? sanitize_key( wp_unslash( (string) $_GET[ self::NOTICE_QUERY_ARG ] ) ) : '';
 
 		/** @var string $notice_type Notice type provided by the redirect. */
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin notice state from our own redirect query args.
 		$notice_type = isset( $_GET[ self::NOTICE_TYPE_QUERY_ARG ] ) ? sanitize_key( wp_unslash( (string) $_GET[ self::NOTICE_TYPE_QUERY_ARG ] ) ) : 'success';
 
 		if ( '' === $notice_key ) {
@@ -531,6 +533,7 @@ class A_Ripple_Song_Podcast_Recommended_Themes {
 		}
 
 		/** @var string $page Current admin page slug. */
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin page routing check.
 		$page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( (string) $_GET['page'] ) ) : '';
 
 		return self::PAGE_SLUG === $page;

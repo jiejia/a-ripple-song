@@ -38,12 +38,6 @@ class A_Ripple_Song_Podcast_i18n {
 	 * @since    1.0.0
 	 */
 	public function load_plugin_textdomain() {
-		load_plugin_textdomain(
-			'a-ripple-song-podcast',
-			false,
-			dirname( plugin_basename( dirname( __FILE__ ) ) ) . '/languages/'
-		);
-
 		/** @var string $locale Active locale used to resolve the bundled MO file. */
 		$locale = function_exists( 'determine_locale' ) ? determine_locale() : get_locale();
 
