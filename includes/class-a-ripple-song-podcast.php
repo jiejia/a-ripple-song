@@ -123,11 +123,6 @@ class A_Ripple_Song_Podcast {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-a-ripple-song-podcast-carbon.php';
 
 		/**
-		 * Carbon Fields compat (scoped/unscoped builds).
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-a-ripple-song-podcast-carbon-compat.php';
-
-		/**
 		 * Podcast Episodes custom post type and taxonomy.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-a-ripple-song-podcast-episodes.php';
@@ -214,6 +209,7 @@ class A_Ripple_Song_Podcast {
 
 		$carbon = new A_Ripple_Song_Podcast_Carbon();
 		$this->loader->add_action( 'after_setup_theme', $carbon, 'boot' );
+		$this->loader->add_action( 'init', $carbon, 'boot_if_needed', 0 );
 
 		$carbon_ui_i18n = new A_Ripple_Song_Podcast_Carbon_Fields_UI_I18n();
 		$this->loader->add_action( 'admin_init', $carbon_ui_i18n, 'load_php_textdomain' );
