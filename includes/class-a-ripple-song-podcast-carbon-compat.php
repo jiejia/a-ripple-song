@@ -126,12 +126,30 @@ class A_Ripple_Song_Podcast_Carbon_Compat {
 	/**
 	 * Resolve a class which may be present in unscoped or scoped builds.
 	 *
+	 * First prefer classes that are already loaded, then only autoload known scoped
+	 * candidates. This avoids probing unscoped Carbon Fields classes in a scoped build,
+	 * which can include the same file twice through different class names.
+	 *
 	 * @param string ...$candidates
 	 * @return string|null
 	 */
 	private static function resolve_class( ...$candidates ) {
 		foreach ( $candidates as $candidate ) {
-			if ( is_string( $candidate ) && $candidate !== '' && class_exists( $candidate ) ) {
+			if ( is_string( $candidate ) && $candidate !== '' && class_exists( $candidate, false ) ) {
+				return $candidate;
+			}
+		}
+
+		foreach ( $candidates as $candidate ) {
+			if ( ! is_string( $candidate ) || $candidate === '' ) {
+				continue;
+			}
+
+			if ( strpos( $candidate, '\\Carbon_Fields\\' ) === 0 ) {
+				continue;
+			}
+
+			if ( class_exists( $candidate ) ) {
 				return $candidate;
 			}
 		}
