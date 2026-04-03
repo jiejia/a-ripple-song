@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class A_Ripple_Song_Podcast_Carbon_Compat {
 
+	private const SHARED_PREFIX = '\\A_Ripple_Song_Theme\\Vendor\\';
 	private const SCOPED_PREFIX = '\\A_Ripple_Song_Podcast\\Vendor\\';
 
 	/**
@@ -24,7 +25,7 @@ class A_Ripple_Song_Podcast_Carbon_Compat {
 	 * @return void
 	 */
 	public static function boot_carbon_fields() {
-		$class = self::resolve_class( '\\Carbon_Fields\\Carbon_Fields', self::SCOPED_PREFIX . 'Carbon_Fields\\Carbon_Fields' );
+		$class = self::resolve_class( '\\Carbon_Fields\\Carbon_Fields', self::SHARED_PREFIX . 'Carbon_Fields\\Carbon_Fields', self::SCOPED_PREFIX . 'Carbon_Fields\\Carbon_Fields' );
 		if ( $class && method_exists( $class, 'boot' ) ) {
 			$class::boot();
 		}
@@ -36,7 +37,7 @@ class A_Ripple_Song_Podcast_Carbon_Compat {
 	 * @return string|null
 	 */
 	public static function container_class() {
-		return self::resolve_class( '\\Carbon_Fields\\Container', self::SCOPED_PREFIX . 'Carbon_Fields\\Container' );
+		return self::resolve_class( '\\Carbon_Fields\\Container', self::SHARED_PREFIX . 'Carbon_Fields\\Container', self::SCOPED_PREFIX . 'Carbon_Fields\\Container' );
 	}
 
 	/**
@@ -45,7 +46,7 @@ class A_Ripple_Song_Podcast_Carbon_Compat {
 	 * @return string|null
 	 */
 	public static function field_class() {
-		return self::resolve_class( '\\Carbon_Fields\\Field', self::SCOPED_PREFIX . 'Carbon_Fields\\Field' );
+		return self::resolve_class( '\\Carbon_Fields\\Field', self::SHARED_PREFIX . 'Carbon_Fields\\Field', self::SCOPED_PREFIX . 'Carbon_Fields\\Field' );
 	}
 
 	/**
@@ -54,7 +55,7 @@ class A_Ripple_Song_Podcast_Carbon_Compat {
 	 * @return string|null
 	 */
 	private static function helper_class() {
-		return self::resolve_class( '\\Carbon_Fields\\Helper\\Helper', self::SCOPED_PREFIX . 'Carbon_Fields\\Helper\\Helper' );
+		return self::resolve_class( '\\Carbon_Fields\\Helper\\Helper', self::SHARED_PREFIX . 'Carbon_Fields\\Helper\\Helper', self::SCOPED_PREFIX . 'Carbon_Fields\\Helper\\Helper' );
 	}
 
 	/**
@@ -123,19 +124,18 @@ class A_Ripple_Song_Podcast_Carbon_Compat {
 	}
 
 	/**
-	 * Resolve a class which may be present in scoped or unscoped builds.
+	 * Resolve a class which may be present in unscoped or scoped builds.
 	 *
-	 * @param string $unscoped
-	 * @param string $scoped
+	 * @param string ...$candidates
 	 * @return string|null
 	 */
-	private static function resolve_class( $unscoped, $scoped ) {
-		if ( is_string( $scoped ) && $scoped !== '' && class_exists( $scoped ) ) {
-			return $scoped;
+	private static function resolve_class( ...$candidates ) {
+		foreach ( $candidates as $candidate ) {
+			if ( is_string( $candidate ) && $candidate !== '' && class_exists( $candidate ) ) {
+				return $candidate;
+			}
 		}
-		if ( is_string( $unscoped ) && $unscoped !== '' && class_exists( $unscoped ) ) {
-			return $unscoped;
-		}
+
 		return null;
 	}
 }
