@@ -149,6 +149,14 @@ class A_Ripple_Song_Podcast_Carbon_Compat {
 			}
 
 			if ( strpos( $candidate, '\\Carbon_Fields\\' ) === 0 ) {
+				/**
+				 * Source checkouts use the Composer autoloaded unscoped Carbon Fields
+				 * classes. Only skip probing them after a scoped build has booted.
+				 */
+				if ( ! $shared_booted && ! $plugin_booted && class_exists( $candidate ) ) {
+					return $candidate;
+				}
+
 				continue;
 			}
 
