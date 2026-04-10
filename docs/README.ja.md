@@ -11,6 +11,12 @@ A Ripple Song Podcast は、WordPress サイトでポッドキャストの公開
 - RSS フィード生成を標準搭載し、主要なポッドキャストプラットフォームへ簡単に配信可能
 - 多言語対応
 
+## 技術スタック
+
+- [Carbon Fields](https://github.com/htmlburger/carbon-fields) - WordPress 用カスタムフィールドフレームワーク
+- [getID3](https://github.com/JamesHeinrich/getID3) - 音声メタデータ解析ライブラリ
+- [PHP-Scoper](https://github.com/humbug/php-scoper) - PHP 名前空間分離ツール
+
 ## リンク
 
 - [公式サイト](https://doc-podcast.aripplesong.me/)

@@ -11,6 +11,12 @@ A Ripple Song Podcast는 WordPress 사이트에서 팟캐스트를 발행하고 
 - RSS 피드 생성을 기본 제공해 주요 팟캐스트 플랫폼으로 손쉽게 배포 가능
 - 국제화 지원
 
+## 기술 스택
+
+- [Carbon Fields](https://github.com/htmlburger/carbon-fields) - WordPress 커스텀 필드 프레임워크
+- [getID3](https://github.com/JamesHeinrich/getID3) - 오디오 메타데이터 분석 라이브러리
+- [PHP-Scoper](https://github.com/humbug/php-scoper) - PHP 네임스페이스 격리 도구
+
 ## 링크
 
 - [공식 사이트](https://doc-podcast.aripplesong.me/)

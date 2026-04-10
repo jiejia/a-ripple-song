@@ -11,6 +11,12 @@ A Ripple Song Podcast — это плагин подкастов для WordPres
 - Встроенная генерация RSS для быстрой отправки на основные подкаст-платформы
 - Поддержка интернационализации
 
+## Технологический Стек
+
+- [Carbon Fields](https://github.com/htmlburger/carbon-fields) - Фреймворк пользовательских полей для WordPress
+- [getID3](https://github.com/JamesHeinrich/getID3) - Библиотека анализа аудиометаданных
+- [PHP-Scoper](https://github.com/humbug/php-scoper) - Инструмент изоляции пространств имен PHP
+
 ## Ссылки
 
 - [Официальный сайт](https://doc-podcast.aripplesong.me/)

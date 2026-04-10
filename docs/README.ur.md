@@ -11,6 +11,12 @@ A Ripple Song Podcast ایک WordPress پوڈکاسٹ پلگ ان ہے جو آپ
 - بڑے پوڈکاسٹ پلیٹ فارمز تک ایک کلک میں ترسیل کے لیے بلٹ اِن RSS جنریشن
 - بین الاقوامی زبانوں کی سپورٹ
 
+## ٹیکنالوجی اسٹیک
+
+- [Carbon Fields](https://github.com/htmlburger/carbon-fields) - WordPress کسٹم فیلڈ فریم ورک
+- [getID3](https://github.com/JamesHeinrich/getID3) - آڈیو میٹا ڈیٹا تجزیہ کی لائبریری
+- [PHP-Scoper](https://github.com/humbug/php-scoper) - PHP نیم اسپیس آئسولیشن ٹول
+
 ## روابط
 
 - [آفیشل ویب سائٹ](https://doc-podcast.aripplesong.me/)

@@ -11,6 +11,12 @@ A Ripple Song Podcast is a WordPress podcast plugin that adds podcast publishing
 - Built-in RSS feed generation for one-click distribution to major podcast platforms
 - Internationalization support
 
+## Tech Stack
+
+- [Carbon Fields](https://github.com/htmlburger/carbon-fields) - WordPress custom fields framework
+- [getID3](https://github.com/JamesHeinrich/getID3) - Audio metadata analysis library
+- [PHP-Scoper](https://github.com/humbug/php-scoper) - PHP namespace isolation tool
+
 ## Links
 
 - [Official website](https://doc-podcast.aripplesong.me/)

@@ -11,6 +11,11 @@ A Ripple Song Podcast 是一个 WordPress 播客插件，能够让您的 WordPre
 - 内置 RSS 源生成，一键分发到各大播客平台
 - 国际化支持
 
+## 技术栈
+- [Carbon Fields](https://github.com/htmlburger/carbon-fields) - WordPress 自定义字段框架
+- [getID3](https://github.com/JamesHeinrich/getID3) - 音频元数据分析库
+- [PHP-Scoper](https://github.com/humbug/php-scoper) - PHP 命名空间隔离工具
+
 ## 链接
 - [官网](https://doc-podcast.aripplesong.me/)
 

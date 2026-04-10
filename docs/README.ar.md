@@ -11,6 +11,12 @@ A Ripple Song Podcast هو إضافة بودكاست لووردبريس تتيح
 - إنشاء RSS مدمج للتوزيع بنقرة واحدة على أشهر منصات البودكاست
 - دعم التدويل
 
+## التقنيات المستخدمة
+
+- [Carbon Fields](https://github.com/htmlburger/carbon-fields) - إطار حقول مخصصة لـ WordPress
+- [getID3](https://github.com/JamesHeinrich/getID3) - مكتبة لتحليل البيانات الوصفية الصوتية
+- [PHP-Scoper](https://github.com/humbug/php-scoper) - أداة لعزل نطاقات أسماء PHP
+
 ## الروابط
 
 - [الموقع الرسمي](https://doc-podcast.aripplesong.me/)

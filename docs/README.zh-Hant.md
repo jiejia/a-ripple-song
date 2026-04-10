@@ -11,6 +11,12 @@ A Ripple Song Podcast 是一款 WordPress 播客外掛，可讓您的 WordPress 
 - 內建 RSS 來源生成，可一鍵分發到各大播客平台
 - 國際化支援
 
+## 技術棧
+
+- [Carbon Fields](https://github.com/htmlburger/carbon-fields) - WordPress 自訂欄位框架
+- [getID3](https://github.com/JamesHeinrich/getID3) - 音訊中繼資料分析函式庫
+- [PHP-Scoper](https://github.com/humbug/php-scoper) - PHP 命名空間隔離工具
+
 ## 連結
 
 - [官網](https://doc-podcast.aripplesong.me/)
