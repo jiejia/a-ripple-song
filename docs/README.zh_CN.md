@@ -1,7 +1,6 @@
 # A Ripple Song Podcast
 
-A Ripple Song Podcast 是一个 WordPress 播客插件，能够让您的 WordPress 拥有播客发布和管理，以及生成播客 RSS 同步到各大播客平台的功能。如果想体验完整功能，请使用本插件配套主题 [A Ripple ong](https://github.com/jiejia/a-ripple-song) 。
-
+A Ripple Song Podcast 是一个 WordPress 播客插件，能够让您的 WordPress 拥有播客发布和管理，以及生成播客 RSS 同步到各大播客平台的功能。
 <img width="" src="../screenshot.png"/>
 
 ## 特性

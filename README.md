@@ -1,6 +1,6 @@
 # A Ripple Song Podcast
 
-A Ripple Song Podcast is a WordPress podcast plugin that adds podcast publishing and management to your WordPress site, and can generate podcast RSS feeds for major podcast platforms. For the full experience, use it together with the companion theme [A Ripple Song](https://github.com/jiejia/a-ripple-song).
+A Ripple Song Podcast is a WordPress podcast plugin that adds podcast publishing and management to your WordPress site, and can generate podcast RSS feeds for major podcast platforms.
 
 <img width="" src="screenshot.png"/>
 

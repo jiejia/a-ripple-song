@@ -1,6 +1,6 @@
 # A Ripple Song Podcast
 
-A Ripple Song Podcast ایک WordPress پوڈکاسٹ پلگ ان ہے جو آپ کی WordPress سائٹ پر پوڈکاسٹ کی اشاعت اور مینجمنٹ کی سہولت دیتا ہے، اور بڑے پوڈکاسٹ پلیٹ فارمز کے لیے Podcast RSS بھی تیار کر سکتا ہے۔ مکمل تجربے کے لیے اسے اس کے معاون تھیم [A Ripple Song](https://github.com/jiejia/a-ripple-song) کے ساتھ استعمال کریں۔
+A Ripple Song Podcast ایک WordPress پوڈکاسٹ پلگ ان ہے جو آپ کی WordPress سائٹ پر پوڈکاسٹ کی اشاعت اور مینجمنٹ کی سہولت دیتا ہے، اور بڑے پوڈکاسٹ پلیٹ فارمز کے لیے Podcast RSS بھی تیار کر سکتا ہے۔
 
 <img width="" src="../screenshot.png"/>
 

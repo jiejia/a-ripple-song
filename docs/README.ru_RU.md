@@ -1,6 +1,6 @@
 # A Ripple Song Podcast
 
-A Ripple Song Podcast — это плагин подкастов для WordPress, который добавляет на сайт возможности публикации и управления подкастами, а также умеет генерировать Podcast RSS для крупных платформ. Для полного набора возможностей используйте его вместе с совместимой темой [A Ripple Song](https://github.com/jiejia/a-ripple-song).
+A Ripple Song Podcast — это плагин подкастов для WordPress, который добавляет на сайт возможности публикации и управления подкастами, а также умеет генерировать Podcast RSS для крупных платформ.
 
 <img width="" src="../screenshot.png"/>
 

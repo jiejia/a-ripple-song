@@ -1,6 +1,6 @@
 # A Ripple Song Podcast
 
-A Ripple Song Podcast は、WordPress サイトでポッドキャストの公開と管理を行い、主要なポッドキャストプラットフォーム向けの Podcast RSS を生成できる WordPress プラグインです。機能をフルに活用するには、対応テーマの [A Ripple Song](https://github.com/jiejia/a-ripple-song) とあわせてご利用ください。
+A Ripple Song Podcast は、WordPress サイトでポッドキャストの公開と管理を行い、主要なポッドキャストプラットフォーム向けの Podcast RSS を生成できる WordPress プラグインです。
 
 <img width="" src="../screenshot.png"/>
 

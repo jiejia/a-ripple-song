@@ -1,6 +1,6 @@
 # A Ripple Song Podcast
 
-A Ripple Song Podcast 是一款 WordPress 播客外掛，可讓您的 WordPress 網站具備播客的發佈與管理能力，並產生播客 RSS 同步到各大播客平台。若想體驗完整功能，請搭配本外掛的配套主題 [A Ripple Song](https://github.com/jiejia/a-ripple-song) 使用。
+A Ripple Song Podcast 是一款 WordPress 播客外掛，可讓您的 WordPress 網站具備播客的發佈與管理能力，並產生播客 RSS 同步到各大播客平台。
 
 <img width="" src="../screenshot.png"/>
 

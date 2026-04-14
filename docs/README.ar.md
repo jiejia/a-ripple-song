@@ -1,6 +1,6 @@
 # A Ripple Song Podcast
 
-A Ripple Song Podcast هو إضافة بودكاست لووردبريس تتيح لموقعك نشر البودكاست وإدارته، كما يمكنها إنشاء Podcast RSS للتزامن مع أبرز منصات البودكاست. وللحصول على التجربة الكاملة، استخدمها مع القالب المرافق [A Ripple Song](https://github.com/jiejia/a-ripple-song).
+A Ripple Song Podcast هو إضافة بودكاست لووردبريس تتيح لموقعك نشر البودكاست وإدارته، كما يمكنها إنشاء Podcast RSS للتزامن مع أبرز منصات البودكاست.
 
 <img width="" src="../screenshot.png"/>
 
