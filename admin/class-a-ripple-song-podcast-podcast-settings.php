@@ -187,7 +187,7 @@ class A_Ripple_Song_Podcast_Podcast_Settings {
 					->set_help_text( __( 'Optional. Podcasting 2.0: email used to verify ownership during moves.', 'a-ripple-song-podcast' ) ),
 				$field_class::make( 'text', 'crb_podcast_guid', __( 'podcast:guid (optional)', 'a-ripple-song-podcast' ) )
 					->set_help_text( __( 'Podcasting 2.0 GUID. If empty, feed will use site URL as fallback.', 'a-ripple-song-podcast' ) ),
-				$field_class::make( 'text', 'crb_podcast_apple_verify', __( 'Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")', 'a-ripple-song-podcast' ) )
+					$field_class::make( 'text', 'crb_podcast_apple_verify', __( 'Apple Podcasts Verify Code (podcast:txt purpose="applepodcastsverify")', 'a-ripple-song-podcast' ) )
 					->set_help_text( __( 'Optional. Used by Apple Podcasts to verify feed ownership.', 'a-ripple-song-podcast' ) ),
 				$field_class::make( 'complex', 'crb_podcast_funding', __( 'Podcasting 2.0 Funding Links (podcast:funding)', 'a-ripple-song-podcast' ) )
 					->set_help_text( __( 'Optional. If empty, no podcast:funding tags will be generated. URLs should be https.', 'a-ripple-song-podcast' ) )

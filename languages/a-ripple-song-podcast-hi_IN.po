@@ -521,7 +521,7 @@ msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
 msgstr ""
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:178
-msgid "Apple Podcasts Verify Code (podcast:txt purpose=\\\"applepodcastsverify\\\")"
+msgid "Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
 msgstr ""
 
 #: admin/class-a-ripple-song-podcast-podcast-settings.php:179
