@@ -10,7 +10,7 @@
  *
  * @link              https://github.com/jiejia/a-ripple-song-podcast
  * @since             0.5.0
- * @package           A_Ripple_Song_Podcast
+ * @package           ARippleSong\Podcast
  *
  * @wordpress-plugin
  * Plugin Name:       A Ripple Song Podcast
@@ -24,7 +24,7 @@
  * Requires at least: 6.6
  * Requires PHP:      8.2
  * Text Domain:       a-ripple-song-podcast
- * Domain Path:       /languages
+ * Domain Path:       /resources/lang
  */
 
 // If this file is called directly, abort.
@@ -78,55 +78,57 @@ if ( isset( $GLOBALS['wp_version'] ) && version_compare( $GLOBALS['wp_version'],
  * Rename this for your plugin and update it as you release new versions.
  */
 define( 'A_RIPPLE_SONG_PODCAST_VERSION', '0.5.0' );
+define( 'A_RIPPLE_SONG_PODCAST_FILE', __FILE__ );
+define( 'A_RIPPLE_SONG_PODCAST_PATH', plugin_dir_path( __FILE__ ) );
+define( 'A_RIPPLE_SONG_PODCAST_URL', plugin_dir_url( __FILE__ ) );
 
-$a_ripple_song_podcast_autoload        = __DIR__ . '/vendor/autoload.php';
-$a_ripple_song_podcast_scoper_autoload = __DIR__ . '/vendor/scoper-autoload.php';
-if ( file_exists( $a_ripple_song_podcast_scoper_autoload ) ) {
-	require_once $a_ripple_song_podcast_scoper_autoload;
-} elseif ( file_exists( $a_ripple_song_podcast_autoload ) ) {
-	require_once $a_ripple_song_podcast_autoload;
+$autoloadPath       = __DIR__ . '/vendor/autoload.php';
+$scoperAutoloadPath = __DIR__ . '/vendor/scoper-autoload.php';
+if ( file_exists( $scoperAutoloadPath ) ) {
+	require_once $scoperAutoloadPath;
+} elseif ( file_exists( $autoloadPath ) ) {
+	require_once $autoloadPath;
 }
 
 /**
- * The code that runs during plugin activation.
- * This action is documented in includes/class-a-ripple-song-podcast-activator.php
+ * Register the plugin source autoloader.
  */
-function a_ripple_song_podcast_activate() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-a-ripple-song-podcast-activator.php';
-	A_Ripple_Song_Podcast_Activator::activate();
-}
+spl_autoload_register(
+	static function ( $class ) {
+		$prefix = 'ARippleSong\\Podcast\\';
+
+		$class_map = array(
+			'ARippleSong\\Podcast\\Core\\CarbonCompat'        => A_RIPPLE_SONG_PODCAST_PATH . 'app/Core/Carbon.php',
+			'ARippleSong\\Podcast\\Core\\CarbonFieldsUiI18n' => A_RIPPLE_SONG_PODCAST_PATH . 'app/Core/Carbon.php',
+			'ARippleSong\\Podcast\\PostTypes\\EpisodeFields' => A_RIPPLE_SONG_PODCAST_PATH . 'app/PostTypes/Episode.php',
+			'ARippleSong\\Podcast\\PostTypes\\EpisodeSave'   => A_RIPPLE_SONG_PODCAST_PATH . 'app/PostTypes/Episode.php',
+			'ARippleSong\\Podcast\\PostTypes\\EpisodeRest'   => A_RIPPLE_SONG_PODCAST_PATH . 'app/PostTypes/Episode.php',
+			'ARippleSong\\Podcast\\PostTypes\\EpisodeMedia'  => A_RIPPLE_SONG_PODCAST_PATH . 'app/PostTypes/Episode.php',
+		);
+
+		if ( isset( $class_map[ $class ] ) ) {
+			require_once $class_map[ $class ];
+			return;
+		}
+
+		if ( strncmp( $prefix, $class, strlen( $prefix ) ) !== 0 ) {
+			return;
+		}
+
+		$relative_class = substr( $class, strlen( $prefix ) );
+		$file           = A_RIPPLE_SONG_PODCAST_PATH . 'app/' . str_replace( '\\', '/', $relative_class ) . '.php';
+
+		if ( file_exists( $file ) ) {
+			require_once $file;
+		}
+	}
+);
+
+register_activation_hook( __FILE__, array( 'ARippleSong\\Podcast\\Core\\Activator', 'activate' ) );
+register_deactivation_hook( __FILE__, array( 'ARippleSong\\Podcast\\Core\\Deactivator', 'deactivate' ) );
 
 /**
- * The code that runs during plugin deactivation.
- * This action is documented in includes/class-a-ripple-song-podcast-deactivator.php
+ * Start the plugin.
  */
-function a_ripple_song_podcast_deactivate() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-a-ripple-song-podcast-deactivator.php';
-	A_Ripple_Song_Podcast_Deactivator::deactivate();
-}
-
-register_activation_hook( __FILE__, 'a_ripple_song_podcast_activate' );
-register_deactivation_hook( __FILE__, 'a_ripple_song_podcast_deactivate' );
-
-/**
- * The core plugin class that is used to define internationalization,
- * admin-specific hooks, and public-facing site hooks.
- */
-require plugin_dir_path( __FILE__ ) . 'includes/class-a-ripple-song-podcast.php';
-
-/**
- * Begins execution of the plugin.
- *
- * Since everything within the plugin is registered via hooks,
- * then kicking off the plugin from this point in the file does
- * not affect the page life cycle.
- *
- * @since    1.0.0
- */
-function a_ripple_song_podcast_run() {
-
-	$plugin = new A_Ripple_Song_Podcast();
-	$plugin->run();
-
-}
-a_ripple_song_podcast_run();
+$plugin = new ARippleSong\Podcast\Core\Plugin();
+$plugin->run();

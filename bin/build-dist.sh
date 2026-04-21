@@ -48,7 +48,7 @@ cat > "${DIST_PLUGIN_DIR}/vendor/scoper-autoload.php" <<'PHP'
  * Autoload bridge for PHP-Scoper prefixed vendor.
  *
  * Composer's autoloader still maps the original vendor namespaces (e.g. Carbon_Fields\\),
- * while the PHP files themselves have been prefixed (e.g. A_Ripple_Song_Podcast\\Vendor\\Carbon_Fields\\).
+ * while the PHP files themselves have been prefixed (e.g. ARippleSong\\Podcast\\Vendor\\Carbon_Fields\\).
  *
  * This file registers an autoloader that maps the prefixed class back to its original
  * class name to locate the correct file, then lets the included file declare the
@@ -57,7 +57,7 @@ cat > "${DIST_PLUGIN_DIR}/vendor/scoper-autoload.php" <<'PHP'
 
 $loader = require __DIR__ . '/autoload.php';
 
-$prefix = 'A_Ripple_Song_Podcast\\Vendor\\';
+$prefix = 'ARippleSong\\Podcast\\Vendor\\';
 $prefix_len = strlen($prefix);
 
 spl_autoload_register(

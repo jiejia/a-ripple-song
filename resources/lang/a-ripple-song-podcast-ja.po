@@ -1,0 +1,803 @@
+# Copyright (C) 2026 jiejia
+# This file is distributed under the GPL-3.0.
+msgid ""
+msgstr ""
+"Project-Id-Version: A Ripple Song Podcast 0.5.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/a-ripple-song-podcast\n"
+"POT-Creation-Date: 2026-01-21T01:26:36+00:00\n"
+"PO-Revision-Date: 2026-01-21T01:26:36+00:00\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Domain: a-ripple-song-podcast\n"
+"X-Generator: WP-CLI 2.12.0\n"
+
+#. Plugin Name of the plugin
+#: a-ripple-song-podcast.php
+msgid "A Ripple Song Podcast"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: a-ripple-song-podcast.php
+msgid "https://github.com/jiejia/a-ripple-song-podcast"
+msgstr ""
+
+#. Description of the plugin
+#: a-ripple-song-podcast.php
+msgid "a WordPress podcast plugin for A Ripple Song theme"
+msgstr ""
+
+#. Author of the plugin
+#: a-ripple-song-podcast.php
+msgid "jiejia"
+msgstr ""
+
+#. Author URI of the plugin
+#: a-ripple-song-podcast.php
+msgid "https://github.com/jiejia/"
+msgstr ""
+
+#: app/Core/AdminAssets.php:134
+msgid "Upload"
+msgstr "アップロード"
+
+#: app/Core/AdminAssets.php:135
+msgid "Remove"
+msgstr "削除"
+
+#: app/Core/AdminAssets.php:136
+msgid "Download"
+msgstr "ダウンロード"
+
+#: app/Core/AdminAssets.php:137
+msgid "File:"
+msgstr "ファイル:"
+
+#: app/Core/AdminAssets.php:138
+msgid "Select file"
+msgstr "ファイルを選択"
+
+#: app/Core/AdminAssets.php:139
+msgid "Use this file"
+msgstr "このファイルを使う"
+
+#: app/PostTypes/Episode.php:24
+msgid "Episode Details"
+msgstr "エピソード詳細"
+
+#: app/PostTypes/Episode.php:30
+msgid "Audio File"
+msgstr "音声ファイル"
+
+#: app/PostTypes/Episode.php:31
+msgid "Required. Upload an audio file or enter audio file URL (https)."
+msgstr "必須です。音声ファイルをアップロードするか、音声ファイルの URL（https）を入力してください。"
+
+#: app/PostTypes/Episode.php:36
+#: app/PostTypes/Episode.php:110
+msgid "Duration (seconds)"
+msgstr "再生時間（秒）"
+
+#: app/PostTypes/Episode.php:37
+#: app/PostTypes/Episode.php:43
+#: app/PostTypes/Episode.php:48
+msgid "Auto detected from \"Audio File\" on save."
+msgstr "保存時に「音声ファイル」から自動検出されます。"
+
+#: app/PostTypes/Episode.php:42
+msgid "Audio Length (bytes)"
+msgstr "音声サイズ（バイト）"
+
+#: app/PostTypes/Episode.php:47
+msgid "Audio MIME Type"
+msgstr "音声 MIME タイプ"
+
+#: app/PostTypes/Episode.php:51
+msgid "Explicit"
+msgstr "成人向け"
+
+#: app/PostTypes/Episode.php:52
+msgid "Required. clean / explicit."
+msgstr "必須です。clean または explicit を選択してください。"
+
+#: app/PostTypes/Episode.php:55
+msgid "clean"
+msgstr "clean"
+
+#: app/PostTypes/Episode.php:56
+#: app/Settings/Podcast.php:111
+msgid "explicit"
+msgstr "explicit"
+
+#: app/PostTypes/Episode.php:61
+msgid "Episode Type"
+msgstr "エピソードタイプ"
+
+#: app/PostTypes/Episode.php:62
+msgid "Required. full / trailer / bonus"
+msgstr "必須です。full / trailer / bonus を選択してください。"
+
+#: app/PostTypes/Episode.php:65
+msgid "full"
+msgstr "full"
+
+#: app/PostTypes/Episode.php:66
+msgid "trailer"
+msgstr "trailer"
+
+#: app/PostTypes/Episode.php:67
+msgid "bonus"
+msgstr "bonus"
+
+#: app/PostTypes/Episode.php:72
+msgid "Episode Number"
+msgstr "エピソード番号"
+
+#: app/PostTypes/Episode.php:73
+msgid "Optional but recommended. Integer."
+msgstr "任意ですが推奨です。整数を入力してください。"
+
+#: app/PostTypes/Episode.php:77
+msgid "Season Number"
+msgstr "シーズン番号"
+
+#: app/PostTypes/Episode.php:78
+msgid "Optional. Integer."
+msgstr "任意です。整数を入力してください。"
+
+#: app/PostTypes/Episode.php:82
+msgid "Episode Author (override)"
+msgstr "エピソード作者（上書き）"
+
+#: app/PostTypes/Episode.php:83
+msgid "Optional. Overrides channel author for this episode."
+msgstr "任意です。このエピソードのチャンネル作者設定を上書きします。"
+
+#: app/PostTypes/Episode.php:84
+msgid "Episode Cover (square)"
+msgstr "エピソードカバー（正方形）"
+
+#: app/PostTypes/Episode.php:86
+msgid "Optional. Square 1400–3000px. Overrides channel cover."
+msgstr "任意です。1400〜3000px の正方形画像です。チャンネルカバーを上書きします。"
+
+#: app/PostTypes/Episode.php:87
+msgid "Transcript (optional)"
+msgstr "文字起こし（任意）"
+
+#: app/PostTypes/Episode.php:88
+msgid ""
+"Optional. Upload a transcript file (vtt/srt/txt/pdf) or enter a transcript "
+"URL (https)."
+msgstr "任意です。文字起こしファイル（vtt/srt/txt/pdf）をアップロードするか、文字起こし URL（https）を入力してください。"
+
+#: app/PostTypes/Episode.php:92
+#: app/Settings/Podcast.php:141
+msgid "iTunes Title (optional)"
+msgstr "iTunes タイトル（任意）"
+
+#: app/PostTypes/Episode.php:93
+msgid ""
+"Optional. Apple Podcasts: overrides the episode title for <itunes:title>."
+msgstr "任意です。Apple Podcasts の <itunes:title> 用にエピソードタイトルを上書きします。"
+
+#: app/PostTypes/Episode.php:94
+msgid "Chapters (Podcasting 2.0)"
+msgstr "チャプター（Podcasting 2.0）"
+
+#: app/PostTypes/Episode.php:95
+msgid "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
+msgstr "任意です。<podcast:chapters> 用のチャプター JSON の URL またはファイルを指定します。"
+
+#: app/PostTypes/Episode.php:99
+msgid "Chapters MIME Type"
+msgstr "チャプター MIME タイプ"
+
+#: app/PostTypes/Episode.php:100
+msgid "Optional. Defaults to application/json+chapters."
+msgstr "任意です。デフォルトは application/json+chapters です。"
+
+#: app/PostTypes/Episode.php:102
+msgid "Soundbites (Podcasting 2.0)"
+msgstr "サウンドバイト（Podcasting 2.0）"
+
+#: app/PostTypes/Episode.php:103
+msgid "Optional. Adds one or more <podcast:soundbite> tags."
+msgstr "任意です。1 つ以上の <podcast:soundbite> タグを追加します。"
+
+#: app/PostTypes/Episode.php:106
+msgid "Start Time (seconds)"
+msgstr "開始時間（秒）"
+
+#: app/PostTypes/Episode.php:114
+msgid "Title (optional)"
+msgstr "タイトル（任意）"
+
+#: app/PostTypes/Episode.php:117
+msgid "Subtitle"
+msgstr "サブタイトル"
+
+#: app/PostTypes/Episode.php:118
+msgid "Optional. Short subtitle for iTunes."
+msgstr "任意です。iTunes 用の短いサブタイトルです。"
+
+#: app/PostTypes/Episode.php:119
+msgid "Summary"
+msgstr "概要"
+
+#: app/PostTypes/Episode.php:120
+msgid "Optional. Plain text summary for iTunes."
+msgstr "任意です。iTunes 用のプレーンテキスト概要です。"
+
+#: app/PostTypes/Episode.php:121
+msgid "Custom GUID (optional)"
+msgstr "カスタム GUID（任意）"
+
+#: app/PostTypes/Episode.php:122
+msgid "Optional. If empty, feed uses WP permalink as GUID."
+msgstr "任意です。空欄の場合、フィードは WordPress のパーマリンクを GUID として使います。"
+
+#: app/PostTypes/Episode.php:123
+msgid "iTunes Block"
+msgstr "iTunes ブロック"
+
+#: app/PostTypes/Episode.php:124
+msgid "Optional. yes = hide this episode in Apple Podcasts."
+msgstr "任意です。yes にすると Apple Podcasts でこのエピソードを非表示にします。"
+
+#: app/PostTypes/Episode.php:127
+#: app/Settings/Podcast.php:146
+#: app/Settings/Podcast.php:155
+#: app/Settings/Podcast.php:167
+msgid "no"
+msgstr "no"
+
+#: app/PostTypes/Episode.php:128
+#: app/Settings/Podcast.php:147
+#: app/Settings/Podcast.php:156
+msgid "yes"
+msgstr "yes"
+
+#: app/PostTypes/Episode.php:132
+msgid "Members"
+msgstr "メンバー"
+
+#: app/PostTypes/Episode.php:133
+msgid "Select episode members (administrators, authors, editors)."
+msgstr "エピソードのメンバー（管理者、投稿者、編集者）を選択します。"
+
+#: app/PostTypes/Episode.php:142
+msgid "Guests"
+msgstr "ゲスト"
+
+#: app/PostTypes/Episode.php:143
+msgid "Select episode guests (contributors)."
+msgstr "エピソードのゲスト（寄稿者）を選択します。"
+
+#: app/PostTypes/Episode.php:304
+#, php-format
+msgid "Episode #%d: getID3 not available"
+msgstr ""
+
+#: app/PostTypes/Episode.php:307
+#, php-format
+msgid "Episode #%d: audio URL rejected by wp_http_validate_url"
+msgstr ""
+
+#: app/PostTypes/Episode.php:310
+#, php-format
+msgid "Episode #%d: audio download failed - %s"
+msgstr ""
+
+#: app/PostTypes/Episode.php:313
+#, php-format
+msgid ""
+"Episode #%d: getID3 did not return playtime_seconds for downloaded audio"
+msgstr ""
+
+#: app/PostTypes/Episode.php:316
+#, php-format
+msgid "Episode #%d: getID3 did not return playtime_seconds for local file"
+msgstr ""
+
+#: app/PostTypes/Episode.php:319
+#, php-format
+msgid "Episode #%d: audio file missing for duration/size/mime detection"
+msgstr ""
+
+#: app/PostTypes/Episode.php:322
+#, php-format
+msgid "Episode #%d: getID3 error - %s"
+msgstr ""
+
+#: app/Settings/Podcast.php:35
+#: app/Settings/Podcast.php:41
+msgid "A Ripple Song"
+msgstr ""
+
+#: app/Settings/Podcast.php:45
+msgid "Use the submenu to configure Podcast Settings."
+msgstr "サブメニューからポッドキャスト設定を行ってください。"
+
+#: app/Settings/Podcast.php:64
+#: app/Settings/Podcast.php:66
+msgid "Podcast Settings"
+msgstr "ポッドキャスト設定"
+
+#: app/Settings/Podcast.php:74
+#: app/Settings/Podcast.php:80
+msgid "Podcast RSS URL"
+msgstr "ポッドキャスト RSS URL"
+
+#: app/Settings/Podcast.php:79
+msgid "Open feed"
+msgstr "フィードを開く"
+
+#: app/Settings/Podcast.php:81
+msgid "Your podcast RSS feed URL. Click to select and copy."
+msgstr "ポッドキャスト RSS フィードの URL です。クリックして選択し、コピーできます。"
+
+#: app/Settings/Podcast.php:84
+msgid "Podcast Title"
+msgstr "ポッドキャストタイトル"
+
+#: app/Settings/Podcast.php:85
+msgid "Required. If empty, falls back to site title."
+msgstr "必須です。空欄の場合はサイトタイトルを使用します。"
+
+#: app/Settings/Podcast.php:87
+msgid "Podcast Subtitle"
+msgstr "ポッドキャストサブタイトル"
+
+#: app/Settings/Podcast.php:88
+msgid "Short tagline shown in some apps."
+msgstr "一部のアプリに表示される短いキャッチコピーです。"
+
+#: app/Settings/Podcast.php:89
+msgid "Podcast Description"
+msgstr "ポッドキャスト説明"
+
+#: app/Settings/Podcast.php:90
+msgid "Required. Plain text description of the show."
+msgstr "必須です。番組のプレーンテキスト説明です。"
+
+#: app/Settings/Podcast.php:92
+msgid "Podcast Author (itunes:author)"
+msgstr "ポッドキャスト作者（itunes:author）"
+
+#: app/Settings/Podcast.php:93
+msgid "Required. Displayed as show author in directories."
+msgstr "必須です。各ディレクトリで番組作者として表示されます。"
+
+#: app/Settings/Podcast.php:95
+msgid "Owner Name"
+msgstr "所有者名"
+
+#: app/Settings/Podcast.php:96
+msgid "Required. For <itunes:owner><itunes:name>."
+msgstr "必須です。<itunes:owner><itunes:name> 用です。"
+
+#: app/Settings/Podcast.php:98
+msgid "Owner Email"
+msgstr "所有者メールアドレス"
+
+#: app/Settings/Podcast.php:101
+msgid "Required. For <itunes:owner><itunes:email>. Use a monitored inbox."
+msgstr "必須です。<itunes:owner><itunes:email> 用です。確認できるメールボックスを使用してください。"
+
+#: app/Settings/Podcast.php:103
+msgid "Podcast Cover (1400–3000px square)"
+msgstr "ポッドキャストカバー（1400〜3000px の正方形）"
+
+#: app/Settings/Podcast.php:105
+msgid ""
+"Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple "
+"recommends keeping the file under 512KB. Will be validated on save."
+msgstr ""
+"必須です。<itunes:image> 用の 1400〜3000px の正方形 JPG/PNG を指定してください。Apple は 512KB "
+"未満を推奨しています。保存時に検証されます。"
+
+#: app/Settings/Podcast.php:107
+msgid "Default Explicit Flag"
+msgstr "デフォルトの成人向けフラグ"
+
+#: app/Settings/Podcast.php:110
+msgid "clean (no explicit content)"
+msgstr "clean（成人向けコンテンツなし）"
+
+#: app/Settings/Podcast.php:115
+msgid "Required. Single-episode value can override."
+msgstr "必須です。各エピソードの値で上書きできます。"
+
+#: app/Settings/Podcast.php:117
+msgid "Language (RFC 5646)"
+msgstr "言語（RFC 5646）"
+
+#: app/Settings/Podcast.php:120
+msgid "Required. Typically en-US, zh-CN, etc."
+msgstr "必須です。通常は en-US、zh-CN などを指定します。"
+
+#: app/Settings/Podcast.php:122
+msgid "Primary Category (Apple Podcasts)"
+msgstr "主カテゴリ（Apple Podcasts）"
+
+#: app/Settings/Podcast.php:123
+#: app/Settings/Podcast.php:127
+#: app/Settings/Podcast.php:134
+msgid "(not set)"
+msgstr "（未設定）"
+
+#: app/Settings/Podcast.php:124
+msgid "Required by Apple Podcasts. Choose at least a primary category."
+msgstr "Apple Podcasts で必須です。少なくとも主カテゴリを 1 つ選択してください。"
+
+#: app/Settings/Podcast.php:126
+msgid "Secondary Category (optional)"
+msgstr "副カテゴリ（任意）"
+
+#: app/Settings/Podcast.php:128
+msgid "Optional. Some directories support a second category."
+msgstr "任意です。一部のディレクトリでは副カテゴリに対応しています。"
+
+#: app/Settings/Podcast.php:129
+msgid "Copyright (optional)"
+msgstr "著作権表記（任意）"
+
+#: app/Settings/Podcast.php:130
+msgid "Optional. For <copyright>."
+msgstr "任意です。<copyright> 用です。"
+
+#: app/Settings/Podcast.php:131
+msgid "iTunes Type (itunes:type)"
+msgstr "iTunes タイプ（itunes:type）"
+
+#: app/Settings/Podcast.php:135
+msgid "episodic"
+msgstr "episodic"
+
+#: app/Settings/Podcast.php:136
+msgid "serial"
+msgstr "serial"
+
+#: app/Settings/Podcast.php:140
+msgid "Optional. Apple Podcasts: episodic or serial."
+msgstr "任意です。Apple Podcasts では episodic または serial を指定します。"
+
+#: app/Settings/Podcast.php:142
+msgid "Optional. Use only if you need a separate Apple-facing title."
+msgstr "任意です。Apple 向けに別タイトルが必要な場合のみ使用してください。"
+
+#: app/Settings/Podcast.php:143
+msgid "iTunes Block (itunes:block)"
+msgstr "iTunes ブロック（itunes:block）"
+
+#: app/Settings/Podcast.php:151
+msgid "Optional. yes = hide this show in Apple Podcasts."
+msgstr "任意です。yes にすると Apple Podcasts でこの番組を非表示にします。"
+
+#: app/Settings/Podcast.php:152
+msgid "iTunes Complete (itunes:complete)"
+msgstr "iTunes 完結（itunes:complete）"
+
+#: app/Settings/Podcast.php:160
+msgid "Optional. yes = this show is complete (no more episodes)."
+msgstr "任意です。yes にするとこの番組は完結済み（これ以上エピソードなし）になります。"
+
+#: app/Settings/Podcast.php:161
+msgid "iTunes New Feed URL (itunes:new-feed-url)"
+msgstr "iTunes 新しいフィード URL（itunes:new-feed-url）"
+
+#: app/Settings/Podcast.php:162
+msgid "Optional. Only for moving your show to a new RSS feed URL."
+msgstr "任意です。番組を新しい RSS フィード URL に移行する場合のみ使用してください。"
+
+#: app/Settings/Podcast.php:163
+msgid "podcast:locked"
+msgstr "podcast:locked"
+
+#: app/Settings/Podcast.php:166
+msgid "yes (recommended, prevents unauthorized moves)"
+msgstr "yes（推奨。無断移行を防ぎます）"
+
+#: app/Settings/Podcast.php:171
+msgid "Podcasting 2.0: lock feed to this publisher."
+msgstr "Podcasting 2.0: この発行者にフィードを固定します。"
+
+#: app/Settings/Podcast.php:172
+msgid "podcast:locked owner (optional)"
+msgstr "podcast:locked owner（任意）"
+
+#: app/Settings/Podcast.php:175
+msgid "Optional. Podcasting 2.0: email used to verify ownership during moves."
+msgstr "任意です。Podcasting 2.0 で移行時の所有権確認に使うメールアドレスです。"
+
+#: app/Settings/Podcast.php:176
+msgid "podcast:guid (optional)"
+msgstr "podcast:guid（任意）"
+
+#: app/Settings/Podcast.php:177
+msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
+msgstr "Podcasting 2.0 GUID です。空欄の場合、フィードはサイト URL を代替値として使用します。"
+
+#: app/Settings/Podcast.php:178
+msgid "Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
+msgstr "Apple Podcasts 確認コード（podcast:txt purpose=\"applepodcastsverify\"）"
+
+#: app/Settings/Podcast.php:179
+msgid "Optional. Used by Apple Podcasts to verify feed ownership."
+msgstr "任意です。Apple Podcasts がフィード所有権を確認するために使用します。"
+
+#: app/Settings/Podcast.php:180
+msgid "Podcasting 2.0 Funding Links (podcast:funding)"
+msgstr "Podcasting 2.0 支援リンク（podcast:funding）"
+
+#: app/Settings/Podcast.php:181
+msgid ""
+"Optional. If empty, no podcast:funding tags will be generated. URLs should "
+"be https."
+msgstr "任意です。空欄の場合、podcast:funding タグは生成されません。URL は https にしてください。"
+
+#: app/Settings/Podcast.php:184
+msgid "URL"
+msgstr "URL"
+
+#: app/Settings/Podcast.php:185
+msgid "Required for each entry. Use https."
+msgstr "各項目で必須です。https を使用してください。"
+
+#: app/Settings/Podcast.php:186
+msgid "Label"
+msgstr "ラベル"
+
+#: app/Settings/Podcast.php:187
+msgid "Optional display text (max 128 chars recommended)."
+msgstr "任意の表示テキストです（最大 128 文字推奨）。"
+
+#: app/Settings/Podcast.php:190
+msgid "Generator (optional)"
+msgstr "ジェネレーター（任意）"
+
+#: app/Settings/Podcast.php:191
+msgid "Optional. If empty, generator tag will not be included."
+msgstr "任意です。空欄の場合、generator タグは含まれません。"
+
+#: app/Settings/Podcast.php:374
+msgid "Podcast Cover validation failed:"
+msgstr "ポッドキャストカバーの検証に失敗しました:"
+
+#: app/Settings/Podcast.php:399
+#: app/Settings/Podcast.php:483
+msgid "Podcast Cover URL is invalid."
+msgstr "ポッドキャストカバーの URL が無効です。"
+
+#: app/Settings/Podcast.php:463
+#: app/Settings/Podcast.php:501
+#, php-format
+msgid ""
+"Podcast Cover file is too large (%1$s). Please compress it to under %2$s."
+msgstr "ポッドキャストカバーファイルが大きすぎます（%1$s）。%2$s 未満に圧縮してください。"
+
+#: app/Settings/Podcast.php:472
+msgid "Podcast Cover is not a valid image."
+msgstr "ポッドキャストカバーは有効な画像ではありません。"
+
+#: app/Settings/Podcast.php:514
+#, php-format
+msgid "Could not download Podcast Cover for validation: %s"
+msgstr "検証用にポッドキャストカバーをダウンロードできませんでした: %s"
+
+#: app/Settings/Podcast.php:541
+msgid "Podcast Cover must be JPG or PNG."
+msgstr "ポッドキャストカバーは JPG または PNG である必要があります。"
+
+#: app/Settings/Podcast.php:548
+#, php-format
+msgid "Podcast Cover must be square. Current dimensions: %1$d × %2$d px."
+msgstr "ポッドキャストカバーは正方形である必要があります。現在のサイズ: %1$d × %2$d px。"
+
+#: app/Settings/Podcast.php:559
+#, php-format
+msgid ""
+"Podcast Cover resolution is too small. Minimum: %1$d × %1$d px. Current: "
+"%2$d × %2$d px."
+msgstr "ポッドキャストカバーの解像度が小さすぎます。最小: %1$d × %1$d px。現在: %2$d × %2$d px。"
+
+#: app/Settings/Podcast.php:571
+#, php-format
+msgid ""
+"Podcast Cover resolution is too large. Maximum: %1$d × %1$d px. Current: "
+"%2$d × %2$d px."
+msgstr "ポッドキャストカバーの解像度が大きすぎます。最大: %1$d × %1$d px。現在: %2$d × %2$d px。"
+
+#: app/PostTypes/Episode.php:29
+msgid "Episodes"
+msgstr "エピソード"
+
+#: app/PostTypes/Episode.php:30
+msgid "Episode"
+msgstr "エピソード"
+
+#: app/PostTypes/Episode.php:41
+msgid "ARS Episodes"
+msgstr "ARS エピソード"
+
+#: app/PostTypes/Episode.php:31
+#: app/PostTypes/Episode.php:32
+msgid "Add New Episode"
+msgstr "新規エピソードを追加"
+
+#: app/PostTypes/Episode.php:33
+msgid "Edit Episode"
+msgstr "エピソードを編集"
+
+#: app/PostTypes/Episode.php:34
+msgid "New Episode"
+msgstr "新規エピソード"
+
+#: app/PostTypes/Episode.php:35
+msgid "View Episode"
+msgstr "エピソードを表示"
+
+#: app/PostTypes/Episode.php:36
+msgid "View Episodes"
+msgstr "エピソード一覧を表示"
+
+#: app/PostTypes/Episode.php:37
+msgid "Search Episodes"
+msgstr "エピソードを検索"
+
+#: app/PostTypes/Episode.php:38
+msgid "No episodes found"
+msgstr "エピソードが見つかりません。"
+
+#: app/PostTypes/Episode.php:39
+msgid "No episodes found in Trash"
+msgstr "ゴミ箱にエピソードはありません。"
+
+#: app/PostTypes/Episode.php:40
+msgid "All Episodes"
+msgstr "すべてのエピソード"
+
+#: app/PostTypes/Episode.php:43
+msgid "Episode published."
+msgstr "エピソードを公開しました。"
+
+#: app/PostTypes/Episode.php:44
+msgid "Episode updated."
+msgstr "エピソードを更新しました。"
+
+#: app/PostTypes/Episode.php:45
+msgid "Episode reverted to draft."
+msgstr "エピソードを下書きに戻しました。"
+
+#: app/PostTypes/Episode.php:46
+msgid "Episode scheduled."
+msgstr "エピソードを予約投稿しました。"
+
+#: app/PostTypes/Episode.php:70
+#: app/PostTypes/Episode.php:80
+msgid "Episode Categories"
+msgstr "エピソードカテゴリー"
+
+#: app/PostTypes/Episode.php:71
+msgid "Episode Category"
+msgstr "エピソードカテゴリー"
+
+#: app/PostTypes/Episode.php:72
+msgid "Search Episode Categories"
+msgstr "エピソードカテゴリーを検索"
+
+#: app/PostTypes/Episode.php:73
+msgid "All Episode Categories"
+msgstr "すべてのエピソードカテゴリー"
+
+#: app/PostTypes/Episode.php:74
+msgid "Parent Episode Category"
+msgstr "親エピソードカテゴリー"
+
+#: app/PostTypes/Episode.php:75
+msgid "Parent Episode Category:"
+msgstr "親エピソードカテゴリー:"
+
+#: app/PostTypes/Episode.php:76
+msgid "Edit Episode Category"
+msgstr "エピソードカテゴリーを編集"
+
+#: app/PostTypes/Episode.php:77
+msgid "Update Episode Category"
+msgstr "エピソードカテゴリーを更新"
+
+#: app/PostTypes/Episode.php:78
+msgid "Add New Episode Category"
+msgstr "新規エピソードカテゴリーを追加"
+
+#: app/PostTypes/Episode.php:79
+msgid "New Episode Category Name"
+msgstr "新しいエピソードカテゴリー名"
+
+msgid "ARS Themes"
+msgstr "ARS テーマ"
+
+msgid "Themes recommended for the A Ripple Song Podcast plugin."
+msgstr "A Ripple Song Podcast プラグインに推奨されるテーマです。"
+
+msgid ""
+"A theme that provides a complete podcast presentation and playback interface"
+" for the A Ripple Song Podcast plugin."
+msgstr "A Ripple Song Podcast プラグインに完全なポッドキャスト表示と再生インターフェースを提供するテーマです。"
+
+msgid "This theme will be installable after it is published on WordPress.org."
+msgstr "このテーマは WordPress.org に公開された後にインストールできるようになります。"
+
+msgid "You are not allowed to manage themes on this site."
+msgstr "このサイトでテーマを管理する権限がありません。"
+
+msgid "You are not allowed to switch themes on this site."
+msgstr "このサイトでテーマを切り替える権限がありません。"
+
+msgid "You are not allowed to install themes on this site."
+msgstr "このサイトでテーマをインストールする権限がありません。"
+
+msgid "The requested recommended theme could not be found."
+msgstr "要求された推奨テーマが見つかりませんでした。"
+
+msgid "The selected theme is not installed on this site."
+msgstr "選択したテーマはこのサイトにインストールされていません。"
+
+msgid "The theme could not be activated."
+msgstr "テーマを有効化できませんでした。"
+
+msgid "The theme was activated successfully."
+msgstr "テーマを有効化しました。"
+
+msgid "The theme is not yet available for installation from WordPress.org."
+msgstr "このテーマはまだ WordPress.org からインストールできません。"
+
+msgid "The theme could not be installed."
+msgstr "テーマをインストールできませんでした。"
+
+msgid "The theme was installed successfully. You can activate it now."
+msgstr "テーマのインストールに成功しました。今すぐ有効化できます。"
+
+msgid "Name"
+msgstr "名称"
+
+msgid "Slug"
+msgstr "スラッグ"
+
+msgid "Description"
+msgstr "説明"
+
+msgid "ARS Official"
+msgstr "ARS 公式"
+
+msgid "Status"
+msgstr "ステータス"
+
+msgid "Option"
+msgstr "操作"
+
+msgid "Active"
+msgstr "有効"
+
+msgid "Installed but Inactive"
+msgstr "インストール済みだが無効"
+
+msgid "Not Installed"
+msgstr "未インストール"
+
+msgid "Activate"
+msgstr "有効化"
+
+msgid "Install"
+msgstr "インストール"
+
+msgid "Yes"
+msgstr "はい"
+
+msgid "No"
+msgstr "いいえ"
