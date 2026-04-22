@@ -48,6 +48,12 @@
 	margin-bottom: 6px;
 }
 
+.ars-required-marker {
+	color: #d63638;
+	font-weight: 700;
+	margin-left: 3px;
+}
+
 .ars-admin-field .description,
 .ars-admin-section .description {
 	margin-top: 4px;

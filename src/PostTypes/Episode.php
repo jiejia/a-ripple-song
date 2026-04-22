@@ -243,7 +243,7 @@ class Episode {
 		<div id="ars-episode-details-form" class="ars-admin-form" data-ars-admin-form="episode">
 			<div class="ars-admin-section">
 				<h2><?php echo esc_html__( 'Media', 'a-ripple-song' ); ?></h2>
-				<?php $this->renderMediaField( 'audio_file', __( 'Audio File', 'a-ripple-song' ), $values['audio_file'], __( 'Required. Upload an audio file or enter audio file URL (https).', 'a-ripple-song' ), 'audio' ); ?>
+				<?php $this->renderMediaField( 'audio_file', __( 'Audio File', 'a-ripple-song' ), $values['audio_file'], __( 'Required. Upload an audio file or enter audio file URL (https).', 'a-ripple-song' ), 'audio', true ); ?>
 				<?php $this->renderReadonlyField( 'duration', __( 'Duration (seconds)', 'a-ripple-song' ), $values['duration'], __( 'Auto detected from "Audio File" on save.', 'a-ripple-song' ) ); ?>
 				<?php $this->renderReadonlyField( 'audio_length', __( 'Audio Length (bytes)', 'a-ripple-song' ), $values['audio_length'], __( 'Auto detected from "Audio File" on save.', 'a-ripple-song' ) ); ?>
 				<?php $this->renderReadonlyField( 'audio_mime', __( 'Audio MIME Type', 'a-ripple-song' ), $values['audio_mime'], __( 'Auto detected from "Audio File" on save.', 'a-ripple-song' ) ); ?>
@@ -251,8 +251,8 @@ class Episode {
 
 			<div class="ars-admin-section">
 				<h2><?php echo esc_html__( 'Episode Details', 'a-ripple-song' ); ?></h2>
-				<?php $this->renderSelectField( 'episode_explicit', __( 'Explicit', 'a-ripple-song' ), $values['episode_explicit'], array( 'clean' => __( 'clean', 'a-ripple-song' ), 'explicit' => __( 'explicit', 'a-ripple-song' ) ), __( 'Required. clean / explicit.', 'a-ripple-song' ) ); ?>
-				<?php $this->renderSelectField( 'episode_type', __( 'Episode Type', 'a-ripple-song' ), $values['episode_type'], array( 'full' => __( 'full', 'a-ripple-song' ), 'trailer' => __( 'trailer', 'a-ripple-song' ), 'bonus' => __( 'bonus', 'a-ripple-song' ) ), __( 'Required. full / trailer / bonus.', 'a-ripple-song' ) ); ?>
+				<?php $this->renderSelectField( 'episode_explicit', __( 'Explicit', 'a-ripple-song' ), $values['episode_explicit'], array( 'clean' => __( 'clean', 'a-ripple-song' ), 'explicit' => __( 'explicit', 'a-ripple-song' ) ), __( 'Required. clean / explicit.', 'a-ripple-song' ), true ); ?>
+				<?php $this->renderSelectField( 'episode_type', __( 'Episode Type', 'a-ripple-song' ), $values['episode_type'], array( 'full' => __( 'full', 'a-ripple-song' ), 'trailer' => __( 'trailer', 'a-ripple-song' ), 'bonus' => __( 'bonus', 'a-ripple-song' ) ), __( 'Required. full / trailer / bonus.', 'a-ripple-song' ), true ); ?>
 				<?php $this->renderNumberField( 'episode_number', __( 'Episode Number', 'a-ripple-song' ), $values['episode_number'], __( 'Optional but recommended. Integer.', 'a-ripple-song' ) ); ?>
 				<?php $this->renderNumberField( 'season_number', __( 'Season Number', 'a-ripple-song' ), $values['season_number'], __( 'Optional. Integer.', 'a-ripple-song' ) ); ?>
 				<?php $this->renderTextField( 'episode_author', __( 'Episode Author (override)', 'a-ripple-song' ), $values['episode_author'], __( 'Optional. Overrides channel author for this episode.', 'a-ripple-song' ) ); ?>
@@ -372,10 +372,10 @@ class Episode {
 	/**
 	 * Render a text field row.
 	 */
-	private function renderTextField( $key, $label, $value, $help = '' ) {
-		$this->renderFieldStart( $label, $help );
+	private function renderTextField( $key, $label, $value, $help = '', $required = false ) {
+		$this->renderFieldStart( $label, $help, $required );
 		?>
-		<input type="text" class="regular-text" name="ars_episode_details[<?php echo esc_attr( $key ); ?>]" value="<?php echo esc_attr( (string) $value ); ?>" />
+		<input type="text" class="regular-text" name="ars_episode_details[<?php echo esc_attr( $key ); ?>]" value="<?php echo esc_attr( (string) $value ); ?>" <?php echo $required ? 'required aria-required="true"' : ''; ?> />
 		<?php
 		$this->renderFieldEnd();
 	}
@@ -405,10 +405,10 @@ class Episode {
 	/**
 	 * Render a textarea field row.
 	 */
-	private function renderTextareaField( $key, $label, $value, $help = '' ) {
-		$this->renderFieldStart( $label, $help );
+	private function renderTextareaField( $key, $label, $value, $help = '', $required = false ) {
+		$this->renderFieldStart( $label, $help, $required );
 		?>
-		<textarea class="large-text" rows="4" name="ars_episode_details[<?php echo esc_attr( $key ); ?>]"><?php echo esc_textarea( (string) $value ); ?></textarea>
+		<textarea class="large-text" rows="4" name="ars_episode_details[<?php echo esc_attr( $key ); ?>]" <?php echo $required ? 'required aria-required="true"' : ''; ?>><?php echo esc_textarea( (string) $value ); ?></textarea>
 		<?php
 		$this->renderFieldEnd();
 	}
@@ -416,10 +416,10 @@ class Episode {
 	/**
 	 * Render a select field row.
 	 */
-	private function renderSelectField( $key, $label, $value, $options, $help = '' ) {
-		$this->renderFieldStart( $label, $help );
+	private function renderSelectField( $key, $label, $value, $options, $help = '', $required = false ) {
+		$this->renderFieldStart( $label, $help, $required );
 		?>
-		<select name="ars_episode_details[<?php echo esc_attr( $key ); ?>]">
+		<select name="ars_episode_details[<?php echo esc_attr( $key ); ?>]" <?php echo $required ? 'required aria-required="true"' : ''; ?>>
 			<?php foreach ( $options as $option_value => $option_label ) : ?>
 				<option value="<?php echo esc_attr( (string) $option_value ); ?>" <?php selected( (string) $value, (string) $option_value ); ?>><?php echo esc_html( (string) $option_label ); ?></option>
 			<?php endforeach; ?>
@@ -431,11 +431,11 @@ class Episode {
 	/**
 	 * Render a media URL field row.
 	 */
-	private function renderMediaField( $key, $label, $value, $help = '', $mode = 'transcript' ) {
-		$this->renderFieldStart( $label, $help );
+	private function renderMediaField( $key, $label, $value, $help = '', $mode = 'transcript', $required = false ) {
+		$this->renderFieldStart( $label, $help, $required );
 		?>
 		<div class="ars-media-field">
-			<input type="url" class="regular-text" name="ars_episode_details[<?php echo esc_attr( $key ); ?>]" value="<?php echo esc_attr( (string) $value ); ?>" placeholder="https://" data-ars-media-uploader="<?php echo esc_attr( $mode ); ?>" />
+			<input type="url" class="regular-text" name="ars_episode_details[<?php echo esc_attr( $key ); ?>]" value="<?php echo esc_attr( (string) $value ); ?>" placeholder="https://" data-ars-media-uploader="<?php echo esc_attr( $mode ); ?>" <?php echo $required ? 'required aria-required="true"' : ''; ?> />
 		</div>
 		<?php
 		$this->renderFieldEnd();
@@ -516,10 +516,15 @@ class Episode {
 	/**
 	 * Render a field wrapper start.
 	 */
-	private function renderFieldStart( $label, $help = '' ) {
+	private function renderFieldStart( $label, $help = '', $required = false ) {
 		?>
 		<div class="ars-admin-field">
-			<label class="ars-admin-field__label"><?php echo esc_html( (string) $label ); ?></label>
+			<label class="ars-admin-field__label">
+				<?php echo esc_html( (string) $label ); ?>
+				<?php if ( $required ) : ?>
+					<span class="ars-required-marker" aria-hidden="true">*</span>
+				<?php endif; ?>
+			</label>
 			<?php if ( $help !== '' ) : ?>
 				<p class="description"><?php echo esc_html( (string) $help ); ?></p>
 			<?php endif; ?>
