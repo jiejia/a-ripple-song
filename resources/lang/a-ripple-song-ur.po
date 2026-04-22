@@ -2,41 +2,41 @@
 # This file is distributed under the GPL-3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: A Ripple Song Podcast 0.5.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/a-ripple-song-podcast\n"
+"Project-Id-Version: A Ripple Song 0.5.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/a-ripple-song\n"
 "POT-Creation-Date: 2026-01-21T01:26:36+00:00\n"
 "PO-Revision-Date: 2026-01-21T01:26:36+00:00\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
-"Language: bn_BD\n"
+"Language: ur\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Domain: a-ripple-song-podcast\n"
+"X-Domain: a-ripple-song\n"
 "X-Generator: WP-CLI 2.12.0\n"
 
 #. Plugin Name of the plugin
-#: a-ripple-song-podcast.php
+#: a-ripple-song.php
 msgid "A Ripple Song Podcast"
 msgstr ""
 
 #. Plugin URI of the plugin
-#: a-ripple-song-podcast.php
-msgid "https://github.com/jiejia/a-ripple-song-podcast"
+#: a-ripple-song.php
+msgid "https://github.com/jiejia/a-ripple-song"
 msgstr ""
 
 #. Description of the plugin
-#: a-ripple-song-podcast.php
+#: a-ripple-song.php
 msgid "a WordPress podcast plugin for A Ripple Song theme"
 msgstr ""
 
 #. Author of the plugin
-#: a-ripple-song-podcast.php
+#: a-ripple-song.php
 msgid "jiejia"
 msgstr ""
 
 #. Author URI of the plugin
-#: a-ripple-song-podcast.php
+#: a-ripple-song.php
 msgid "https://github.com/jiejia/"
 msgstr ""
 
@@ -66,11 +66,11 @@ msgstr ""
 
 #: app/PostTypes/Episode.php:24
 msgid "Episode Details"
-msgstr "পর্বের বিবরণ"
+msgstr "قسط کی تفصیلات"
 
 #: app/PostTypes/Episode.php:30
 msgid "Audio File"
-msgstr "অডিও ফাইল"
+msgstr "آڈیو فائل"
 
 #: app/PostTypes/Episode.php:31
 msgid "Required. Upload an audio file or enter audio file URL (https)."
@@ -320,29 +320,29 @@ msgstr ""
 
 #: app/Settings/Podcast.php:45
 msgid "Use the submenu to configure Podcast Settings."
-msgstr "পডকাস্ট সেটিংস কনফিগার করতে সাবমেনু ব্যবহার করুন।"
+msgstr "پوڈکاسٹ سیٹنگز ترتیب دینے کے لیے ذیلی مینو استعمال کریں۔"
 
 #: app/Settings/Podcast.php:64
 #: app/Settings/Podcast.php:66
 msgid "Podcast Settings"
-msgstr "পডকাস্ট সেটিংস"
+msgstr "پوڈکاسٹ سیٹنگز"
 
 #: app/Settings/Podcast.php:74
 #: app/Settings/Podcast.php:80
 msgid "Podcast RSS URL"
-msgstr "পডকাস্ট RSS URL"
+msgstr "پوڈکاسٹ RSS URL"
 
 #: app/Settings/Podcast.php:79
 msgid "Open feed"
-msgstr "ফিড খুলুন"
+msgstr "فیڈ کھولیں"
 
 #: app/Settings/Podcast.php:81
 msgid "Your podcast RSS feed URL. Click to select and copy."
-msgstr "আপনার পডকাস্ট RSS ফিডের URL। নির্বাচন ও কপি করতে ক্লিক করুন।"
+msgstr "آپ کے پوڈکاسٹ RSS فیڈ کا URL۔ منتخب اور کاپی کرنے کے لیے کلک کریں۔"
 
 #: app/Settings/Podcast.php:84
 msgid "Podcast Title"
-msgstr "পডকাস্ট শিরোনাম"
+msgstr "پوڈکاسٹ عنوان"
 
 #: app/Settings/Podcast.php:85
 msgid "Required. If empty, falls back to site title."
@@ -358,7 +358,7 @@ msgstr ""
 
 #: app/Settings/Podcast.php:89
 msgid "Podcast Description"
-msgstr "পডকাস্ট বিবরণ"
+msgstr "پوڈکاسٹ تفصیل"
 
 #: app/Settings/Podcast.php:90
 msgid "Required. Plain text description of the show."
@@ -612,15 +612,15 @@ msgstr ""
 
 #: app/PostTypes/Episode.php:29
 msgid "Episodes"
-msgstr "এপিসোডসমূহ"
+msgstr "اقساط"
 
 #: app/PostTypes/Episode.php:30
 msgid "Episode"
-msgstr "এপিসোড"
+msgstr "قسط"
 
 #: app/PostTypes/Episode.php:41
 msgid "ARS Episodes"
-msgstr "ARS পর্বসমূহ"
+msgstr "ARS اقساط"
 
 #: app/PostTypes/Episode.php:31
 #: app/PostTypes/Episode.php:32
@@ -657,7 +657,7 @@ msgstr ""
 
 #: app/PostTypes/Episode.php:40
 msgid "All Episodes"
-msgstr "সব পর্ব"
+msgstr "تمام اقساط"
 
 #: app/PostTypes/Episode.php:43
 msgid "Episode published."
@@ -678,7 +678,7 @@ msgstr ""
 #: app/PostTypes/Episode.php:70
 #: app/PostTypes/Episode.php:80
 msgid "Episode Categories"
-msgstr "পর্বের বিভাগসমূহ"
+msgstr "اقساط کے زمرے"
 
 #: app/PostTypes/Episode.php:71
 msgid "Episode Category"
@@ -717,86 +717,86 @@ msgid "New Episode Category Name"
 msgstr ""
 
 msgid "ARS Themes"
-msgstr "ARS থিম"
+msgstr "ARS تھیمز"
 
-msgid "Themes recommended for the A Ripple Song Podcast plugin."
-msgstr "A Ripple Song Podcast প্লাগইনের জন্য প্রস্তাবিত থিমসমূহ।"
+msgid "Themes recommended for the A Ripple Song plugin."
+msgstr "A Ripple Song پلگ ان کے لیے تجویز کردہ تھیمز۔"
 
 msgid ""
 "A theme that provides a complete podcast presentation and playback interface"
-" for the A Ripple Song Podcast plugin."
+" for the A Ripple Song plugin."
 msgstr ""
-"এমন একটি থিম যা A Ripple Song Podcast প্লাগইনের জন্য পূর্ণাঙ্গ পডকাস্ট "
-"প্রদর্শন ও প্লেব্যাক ইন্টারফেস প্রদান করে।"
+"ایسا تھیم جو A Ripple Song پلگ ان کے لیے پوڈکاسٹ کی نمائش اور پلے "
+"بیک کا مکمل انٹرفیس فراہم کرتا ہے۔"
 
 msgid "This theme will be installable after it is published on WordPress.org."
-msgstr "WordPress.org-এ প্রকাশিত হওয়ার পর এই থিম ইনস্টল করা যাবে।"
+msgstr "یہ تھیم WordPress.org پر شائع ہونے کے بعد انسٹال کی جا سکے گی۔"
 
 msgid "You are not allowed to manage themes on this site."
-msgstr "এই সাইটে থিম পরিচালনার অনুমতি আপনার নেই।"
+msgstr "آپ کو اس سائٹ پر تھیمز منظم کرنے کی اجازت نہیں ہے۔"
 
 msgid "You are not allowed to switch themes on this site."
-msgstr "এই সাইটে থিম পরিবর্তনের অনুমতি আপনার নেই।"
+msgstr "آپ کو اس سائٹ پر تھیم تبدیل کرنے کی اجازت نہیں ہے۔"
 
 msgid "You are not allowed to install themes on this site."
-msgstr "এই সাইটে থিম ইনস্টল করার অনুমতি আপনার নেই।"
+msgstr "آپ کو اس سائٹ پر تھیم انسٹال کرنے کی اجازت نہیں ہے۔"
 
 msgid "The requested recommended theme could not be found."
-msgstr "অনুরোধ করা প্রস্তাবিত থিমটি খুঁজে পাওয়া যায়নি।"
+msgstr "درخواست کردہ تجویز کردہ تھیم نہیں مل سکی۔"
 
 msgid "The selected theme is not installed on this site."
-msgstr "নির্বাচিত থিমটি এই সাইটে ইনস্টল করা নেই।"
+msgstr "منتخب کردہ تھیم اس سائٹ پر انسٹال نہیں ہے۔"
 
 msgid "The theme could not be activated."
-msgstr "থিম সক্রিয় করা যায়নি।"
+msgstr "تھیم کو فعال نہیں کیا جا سکا۔"
 
 msgid "The theme was activated successfully."
-msgstr "থিম সফলভাবে সক্রিয় করা হয়েছে।"
+msgstr "تھیم کامیابی سے فعال کر دی گئی۔"
 
 msgid "The theme is not yet available for installation from WordPress.org."
-msgstr "এই থিমটি এখনও WordPress.org থেকে ইনস্টল করার জন্য উপলভ্য নয়।"
+msgstr "یہ تھیم ابھی WordPress.org سے انسٹال کرنے کے لیے دستیاب نہیں ہے۔"
 
 msgid "The theme could not be installed."
-msgstr "থিম ইনস্টল করা যায়নি।"
+msgstr "تھیم انسٹال نہیں کی جا سکی۔"
 
 msgid "The theme was installed successfully. You can activate it now."
-msgstr "থিম সফলভাবে ইনস্টল হয়েছে। এখন আপনি এটি সক্রিয় করতে পারেন।"
+msgstr "تھیم کامیابی سے انسٹال ہو گئی۔ اب آپ اسے فعال کر سکتے ہیں۔"
 
 msgid "Name"
-msgstr "নাম"
+msgstr "نام"
 
 msgid "Slug"
-msgstr "স্লাগ"
+msgstr "سلگ"
 
 msgid "Description"
-msgstr "বিবরণ"
+msgstr "تفصیل"
 
 msgid "ARS Official"
-msgstr "ARS অফিসিয়াল"
+msgstr "ARS آفیشل"
 
 msgid "Status"
-msgstr "অবস্থা"
+msgstr "حالت"
 
 msgid "Option"
-msgstr "অপশন"
+msgstr "عمل"
 
 msgid "Active"
-msgstr "সক্রিয়"
+msgstr "فعال"
 
 msgid "Installed but Inactive"
-msgstr "ইনস্টল করা আছে কিন্তু নিষ্ক্রিয়"
+msgstr "انسٹال شدہ مگر غیر فعال"
 
 msgid "Not Installed"
-msgstr "ইনস্টল করা নেই"
+msgstr "انسٹال نہیں"
 
 msgid "Activate"
-msgstr "সক্রিয় করুন"
+msgstr "فعال کریں"
 
 msgid "Install"
-msgstr "ইনস্টল করুন"
+msgstr "انسٹال کریں"
 
 msgid "Yes"
-msgstr "হ্যাঁ"
+msgstr "ہاں"
 
 msgid "No"
-msgstr "না"
+msgstr "نہیں"

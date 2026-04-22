@@ -2,41 +2,42 @@
 # This file is distributed under the GPL-3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: A Ripple Song Podcast 0.5.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/a-ripple-song-podcast\n"
+"Project-Id-Version: A Ripple Song 0.5.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/a-ripple-song\n"
 "POT-Creation-Date: 2026-01-21T01:26:36+00:00\n"
 "PO-Revision-Date: 2026-01-21T01:26:36+00:00\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
-"Language: hi\n"
+"Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Domain: a-ripple-song-podcast\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Domain: a-ripple-song\n"
 "X-Generator: WP-CLI 2.12.0\n"
 
 #. Plugin Name of the plugin
-#: a-ripple-song-podcast.php
+#: a-ripple-song.php
 msgid "A Ripple Song Podcast"
 msgstr ""
 
 #. Plugin URI of the plugin
-#: a-ripple-song-podcast.php
-msgid "https://github.com/jiejia/a-ripple-song-podcast"
+#: a-ripple-song.php
+msgid "https://github.com/jiejia/a-ripple-song"
 msgstr ""
 
 #. Description of the plugin
-#: a-ripple-song-podcast.php
+#: a-ripple-song.php
 msgid "a WordPress podcast plugin for A Ripple Song theme"
 msgstr ""
 
 #. Author of the plugin
-#: a-ripple-song-podcast.php
+#: a-ripple-song.php
 msgid "jiejia"
 msgstr ""
 
 #. Author URI of the plugin
-#: a-ripple-song-podcast.php
+#: a-ripple-song.php
 msgid "https://github.com/jiejia/"
 msgstr ""
 
@@ -66,11 +67,11 @@ msgstr ""
 
 #: app/PostTypes/Episode.php:24
 msgid "Episode Details"
-msgstr "एपिसोड विवरण"
+msgstr "에피소드 상세"
 
 #: app/PostTypes/Episode.php:30
 msgid "Audio File"
-msgstr "ऑडियो फ़ाइल"
+msgstr "오디오 파일"
 
 #: app/PostTypes/Episode.php:31
 msgid "Required. Upload an audio file or enter audio file URL (https)."
@@ -320,29 +321,29 @@ msgstr ""
 
 #: app/Settings/Podcast.php:45
 msgid "Use the submenu to configure Podcast Settings."
-msgstr "पॉडकास्ट सेटिंग्स कॉन्फ़िगर करने के लिए सबमेनू का उपयोग करें।"
+msgstr "하위 메뉴에서 팟캐스트 설정을 구성하세요."
 
 #: app/Settings/Podcast.php:64
 #: app/Settings/Podcast.php:66
 msgid "Podcast Settings"
-msgstr "पॉडकास्ट सेटिंग्स"
+msgstr "팟캐스트 설정"
 
 #: app/Settings/Podcast.php:74
 #: app/Settings/Podcast.php:80
 msgid "Podcast RSS URL"
-msgstr "पॉडकास्ट RSS URL"
+msgstr "팟캐스트 RSS URL"
 
 #: app/Settings/Podcast.php:79
 msgid "Open feed"
-msgstr "फ़ीड खोलें"
+msgstr "피드 열기"
 
 #: app/Settings/Podcast.php:81
 msgid "Your podcast RSS feed URL. Click to select and copy."
-msgstr "आपके पॉडकास्ट RSS फ़ीड का URL। चुनने और कॉपी करने के लिए क्लिक करें।"
+msgstr "팟캐스트 RSS 피드 URL입니다. 클릭하여 선택하고 복사하세요."
 
 #: app/Settings/Podcast.php:84
 msgid "Podcast Title"
-msgstr "पॉडकास्ट शीर्षक"
+msgstr "팟캐스트 제목"
 
 #: app/Settings/Podcast.php:85
 msgid "Required. If empty, falls back to site title."
@@ -358,7 +359,7 @@ msgstr ""
 
 #: app/Settings/Podcast.php:89
 msgid "Podcast Description"
-msgstr "पॉडकास्ट विवरण"
+msgstr "팟캐스트 설명"
 
 #: app/Settings/Podcast.php:90
 msgid "Required. Plain text description of the show."
@@ -612,15 +613,15 @@ msgstr ""
 
 #: app/PostTypes/Episode.php:29
 msgid "Episodes"
-msgstr "एपिसोड"
+msgstr "에피소드"
 
 #: app/PostTypes/Episode.php:30
 msgid "Episode"
-msgstr "एपिसोड"
+msgstr "에피소드"
 
 #: app/PostTypes/Episode.php:41
 msgid "ARS Episodes"
-msgstr "ARS एपिसोड"
+msgstr "ARS 에피소드"
 
 #: app/PostTypes/Episode.php:31
 #: app/PostTypes/Episode.php:32
@@ -657,7 +658,7 @@ msgstr ""
 
 #: app/PostTypes/Episode.php:40
 msgid "All Episodes"
-msgstr "सभी एपिसोड"
+msgstr "모든 에피소드"
 
 #: app/PostTypes/Episode.php:43
 msgid "Episode published."
@@ -678,7 +679,7 @@ msgstr ""
 #: app/PostTypes/Episode.php:70
 #: app/PostTypes/Episode.php:80
 msgid "Episode Categories"
-msgstr "एपिसोड श्रेणियाँ"
+msgstr "에피소드 카테고리"
 
 #: app/PostTypes/Episode.php:71
 msgid "Episode Category"
@@ -717,86 +718,84 @@ msgid "New Episode Category Name"
 msgstr ""
 
 msgid "ARS Themes"
-msgstr "ARS थीम"
+msgstr "ARS 테마"
 
-msgid "Themes recommended for the A Ripple Song Podcast plugin."
-msgstr "A Ripple Song Podcast प्लगइन के लिए अनुशंसित थीमें।"
+msgid "Themes recommended for the A Ripple Song plugin."
+msgstr "A Ripple Song 플러그인에 권장되는 테마입니다."
 
 msgid ""
 "A theme that provides a complete podcast presentation and playback interface"
-" for the A Ripple Song Podcast plugin."
-msgstr ""
-"एक थीम जो A Ripple Song Podcast प्लगइन के लिए पॉडकास्ट प्रदर्शन और प्लेबैक "
-"का पूरा इंटरफ़ेस प्रदान करती है।"
+" for the A Ripple Song plugin."
+msgstr "A Ripple Song 플러그인에 완전한 팟캐스트 표시 및 재생 인터페이스를 제공하는 테마입니다."
 
 msgid "This theme will be installable after it is published on WordPress.org."
-msgstr "यह थीम WordPress.org पर प्रकाशित होने के बाद इंस्टॉल की जा सकेगी।"
+msgstr "이 테마는 WordPress.org에 게시된 후 설치할 수 있습니다."
 
 msgid "You are not allowed to manage themes on this site."
-msgstr "आपको इस साइट पर थीम प्रबंधित करने की अनुमति नहीं है।"
+msgstr "이 사이트에서 테마를 관리할 권한이 없습니다."
 
 msgid "You are not allowed to switch themes on this site."
-msgstr "आपको इस साइट पर थीम बदलने की अनुमति नहीं है।"
+msgstr "이 사이트에서 테마를 전환할 권한이 없습니다."
 
 msgid "You are not allowed to install themes on this site."
-msgstr "आपको इस साइट पर थीम इंस्टॉल करने की अनुमति नहीं है।"
+msgstr "이 사이트에서 테마를 설치할 권한이 없습니다."
 
 msgid "The requested recommended theme could not be found."
-msgstr "मांगी गई अनुशंसित थीम नहीं मिली।"
+msgstr "요청한 추천 테마를 찾을 수 없습니다."
 
 msgid "The selected theme is not installed on this site."
-msgstr "चयनित थीम इस साइट पर इंस्टॉल नहीं है।"
+msgstr "선택한 테마가 이 사이트에 설치되어 있지 않습니다."
 
 msgid "The theme could not be activated."
-msgstr "थीम सक्रिय नहीं की जा सकी।"
+msgstr "테마를 활성화할 수 없습니다."
 
 msgid "The theme was activated successfully."
-msgstr "थीम सफलतापूर्वक सक्रिय कर दी गई।"
+msgstr "테마가 성공적으로 활성화되었습니다."
 
 msgid "The theme is not yet available for installation from WordPress.org."
-msgstr "यह थीम अभी WordPress.org से इंस्टॉल करने के लिए उपलब्ध नहीं है।"
+msgstr "이 테마는 아직 WordPress.org에서 설치할 수 없습니다."
 
 msgid "The theme could not be installed."
-msgstr "थीम इंस्टॉल नहीं की जा सकी।"
+msgstr "테마를 설치할 수 없습니다."
 
 msgid "The theme was installed successfully. You can activate it now."
-msgstr "थीम सफलतापूर्वक इंस्टॉल हो गई। अब आप इसे सक्रिय कर सकते हैं।"
+msgstr "테마가 성공적으로 설치되었습니다. 지금 활성화할 수 있습니다."
 
 msgid "Name"
-msgstr "नाम"
+msgstr "이름"
 
 msgid "Slug"
-msgstr "स्लग"
+msgstr "슬러그"
 
 msgid "Description"
-msgstr "विवरण"
+msgstr "설명"
 
 msgid "ARS Official"
-msgstr "ARS आधिकारिक"
+msgstr "ARS 공식"
 
 msgid "Status"
-msgstr "स्थिति"
+msgstr "상태"
 
 msgid "Option"
-msgstr "क्रिया"
+msgstr "작업"
 
 msgid "Active"
-msgstr "सक्रिय"
+msgstr "활성"
 
 msgid "Installed but Inactive"
-msgstr "इंस्टॉल है लेकिन निष्क्रिय"
+msgstr "설치됨, 비활성"
 
 msgid "Not Installed"
-msgstr "इंस्टॉल नहीं है"
+msgstr "설치되지 않음"
 
 msgid "Activate"
-msgstr "सक्रिय करें"
+msgstr "활성화"
 
 msgid "Install"
-msgstr "इंस्टॉल करें"
+msgstr "설치"
 
 msgid "Yes"
-msgstr "हाँ"
+msgstr "예"
 
 msgid "No"
-msgstr "नहीं"
+msgstr "아니오"

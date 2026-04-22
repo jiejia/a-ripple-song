@@ -2,42 +2,40 @@
 # This file is distributed under the GPL-3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: A Ripple Song Podcast 0.5.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/a-ripple-song-podcast\n"
-"POT-Creation-Date: 2026-01-21T01:26:36+00:00\n"
-"PO-Revision-Date: 2026-01-21T01:26:36+00:00\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: pt_BR\n"
+"Project-Id-Version: A Ripple Song 0.5.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/a-ripple-song\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Domain: a-ripple-song-podcast\n"
+"POT-Creation-Date: 2026-01-21T01:26:36+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: a-ripple-song\n"
 
 #. Plugin Name of the plugin
-#: a-ripple-song-podcast.php
+#: a-ripple-song.php
 msgid "A Ripple Song Podcast"
 msgstr ""
 
 #. Plugin URI of the plugin
-#: a-ripple-song-podcast.php
-msgid "https://github.com/jiejia/a-ripple-song-podcast"
+#: a-ripple-song.php
+msgid "https://github.com/jiejia/a-ripple-song"
 msgstr ""
 
 #. Description of the plugin
-#: a-ripple-song-podcast.php
+#: a-ripple-song.php
 msgid "a WordPress podcast plugin for A Ripple Song theme"
 msgstr ""
 
 #. Author of the plugin
-#: a-ripple-song-podcast.php
+#: a-ripple-song.php
 msgid "jiejia"
 msgstr ""
 
 #. Author URI of the plugin
-#: a-ripple-song-podcast.php
+#: a-ripple-song.php
 msgid "https://github.com/jiejia/"
 msgstr ""
 
@@ -67,11 +65,11 @@ msgstr ""
 
 #: app/PostTypes/Episode.php:24
 msgid "Episode Details"
-msgstr "Detalhes do episódio"
+msgstr ""
 
 #: app/PostTypes/Episode.php:30
 msgid "Audio File"
-msgstr "Arquivo de áudio"
+msgstr ""
 
 #: app/PostTypes/Episode.php:31
 msgid "Required. Upload an audio file or enter audio file URL (https)."
@@ -170,9 +168,7 @@ msgid "Transcript (optional)"
 msgstr ""
 
 #: app/PostTypes/Episode.php:88
-msgid ""
-"Optional. Upload a transcript file (vtt/srt/txt/pdf) or enter a transcript "
-"URL (https)."
+msgid "Optional. Upload a transcript file (vtt/srt/txt/pdf) or enter a transcript URL (https)."
 msgstr ""
 
 #: app/PostTypes/Episode.php:92
@@ -181,8 +177,7 @@ msgid "iTunes Title (optional)"
 msgstr ""
 
 #: app/PostTypes/Episode.php:93
-msgid ""
-"Optional. Apple Podcasts: overrides the episode title for <itunes:title>."
+msgid "Optional. Apple Podcasts: overrides the episode title for <itunes:title>."
 msgstr ""
 
 #: app/PostTypes/Episode.php:94
@@ -295,8 +290,7 @@ msgstr ""
 
 #: app/PostTypes/Episode.php:313
 #, php-format
-msgid ""
-"Episode #%d: getID3 did not return playtime_seconds for downloaded audio"
+msgid "Episode #%d: getID3 did not return playtime_seconds for downloaded audio"
 msgstr ""
 
 #: app/PostTypes/Episode.php:316
@@ -321,29 +315,29 @@ msgstr ""
 
 #: app/Settings/Podcast.php:45
 msgid "Use the submenu to configure Podcast Settings."
-msgstr "Use o submenu para configurar as definições do podcast."
+msgstr ""
 
 #: app/Settings/Podcast.php:64
 #: app/Settings/Podcast.php:66
 msgid "Podcast Settings"
-msgstr "Configurações do podcast"
+msgstr ""
 
 #: app/Settings/Podcast.php:74
 #: app/Settings/Podcast.php:80
 msgid "Podcast RSS URL"
-msgstr "URL RSS do podcast"
+msgstr ""
 
 #: app/Settings/Podcast.php:79
 msgid "Open feed"
-msgstr "Abrir feed"
+msgstr ""
 
 #: app/Settings/Podcast.php:81
 msgid "Your podcast RSS feed URL. Click to select and copy."
-msgstr "URL do feed RSS do seu podcast. Clique para selecionar e copiar."
+msgstr ""
 
 #: app/Settings/Podcast.php:84
 msgid "Podcast Title"
-msgstr "Título do podcast"
+msgstr ""
 
 #: app/Settings/Podcast.php:85
 msgid "Required. If empty, falls back to site title."
@@ -359,7 +353,7 @@ msgstr ""
 
 #: app/Settings/Podcast.php:89
 msgid "Podcast Description"
-msgstr "Descrição do podcast"
+msgstr ""
 
 #: app/Settings/Podcast.php:90
 msgid "Required. Plain text description of the show."
@@ -394,9 +388,7 @@ msgid "Podcast Cover (1400–3000px square)"
 msgstr ""
 
 #: app/Settings/Podcast.php:105
-msgid ""
-"Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple "
-"recommends keeping the file under 512KB. Will be validated on save."
+msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple recommends keeping the file under 512KB. Will be validated on save."
 msgstr ""
 
 #: app/Settings/Podcast.php:107
@@ -534,9 +526,7 @@ msgid "Podcasting 2.0 Funding Links (podcast:funding)"
 msgstr ""
 
 #: app/Settings/Podcast.php:181
-msgid ""
-"Optional. If empty, no podcast:funding tags will be generated. URLs should "
-"be https."
+msgid "Optional. If empty, no podcast:funding tags will be generated. URLs should be https."
 msgstr ""
 
 #: app/Settings/Podcast.php:184
@@ -575,8 +565,7 @@ msgstr ""
 #: app/Settings/Podcast.php:463
 #: app/Settings/Podcast.php:501
 #, php-format
-msgid ""
-"Podcast Cover file is too large (%1$s). Please compress it to under %2$s."
+msgid "Podcast Cover file is too large (%1$s). Please compress it to under %2$s."
 msgstr ""
 
 #: app/Settings/Podcast.php:472
@@ -599,29 +588,25 @@ msgstr ""
 
 #: app/Settings/Podcast.php:559
 #, php-format
-msgid ""
-"Podcast Cover resolution is too small. Minimum: %1$d × %1$d px. Current: "
-"%2$d × %2$d px."
+msgid "Podcast Cover resolution is too small. Minimum: %1$d × %1$d px. Current: %2$d × %2$d px."
 msgstr ""
 
 #: app/Settings/Podcast.php:571
 #, php-format
-msgid ""
-"Podcast Cover resolution is too large. Maximum: %1$d × %1$d px. Current: "
-"%2$d × %2$d px."
+msgid "Podcast Cover resolution is too large. Maximum: %1$d × %1$d px. Current: %2$d × %2$d px."
 msgstr ""
 
 #: app/PostTypes/Episode.php:29
 msgid "Episodes"
-msgstr "Episódios"
+msgstr ""
 
 #: app/PostTypes/Episode.php:30
 msgid "Episode"
-msgstr "Episódio"
+msgstr ""
 
 #: app/PostTypes/Episode.php:41
 msgid "ARS Episodes"
-msgstr "Episódios ARS"
+msgstr ""
 
 #: app/PostTypes/Episode.php:31
 #: app/PostTypes/Episode.php:32
@@ -658,7 +643,7 @@ msgstr ""
 
 #: app/PostTypes/Episode.php:40
 msgid "All Episodes"
-msgstr "Todos os episódios"
+msgstr ""
 
 #: app/PostTypes/Episode.php:43
 msgid "Episode published."
@@ -679,7 +664,7 @@ msgstr ""
 #: app/PostTypes/Episode.php:70
 #: app/PostTypes/Episode.php:80
 msgid "Episode Categories"
-msgstr "Categorias de episódios"
+msgstr ""
 
 #: app/PostTypes/Episode.php:71
 msgid "Episode Category"
@@ -718,87 +703,82 @@ msgid "New Episode Category Name"
 msgstr ""
 
 msgid "ARS Themes"
-msgstr "Temas ARS"
-
-msgid "Themes recommended for the A Ripple Song Podcast plugin."
-msgstr "Temas recomendados para o plugin A Ripple Song Podcast."
-
-msgid ""
-"A theme that provides a complete podcast presentation and playback interface"
-" for the A Ripple Song Podcast plugin."
 msgstr ""
-"Um tema que fornece uma interface completa de exibição e reprodução de "
-"podcasts para o plugin A Ripple Song Podcast."
+
+msgid "You are not allowed to manage themes on this site."
+msgstr ""
+
+msgid "Themes recommended for the A Ripple Song plugin."
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Slug"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+msgid "Option"
+msgstr ""
+
+msgid "ARS Official"
+msgstr ""
+
+msgid "Activate"
+msgstr ""
+
+msgid "Install"
+msgstr ""
 
 msgid "This theme will be installable after it is published on WordPress.org."
 msgstr ""
-"Este tema poderá ser instalado depois de ser publicado no WordPress.org."
-
-msgid "You are not allowed to manage themes on this site."
-msgstr "Você não tem permissão para gerenciar temas neste site."
 
 msgid "You are not allowed to switch themes on this site."
-msgstr "Você não tem permissão para trocar temas neste site."
+msgstr ""
 
 msgid "You are not allowed to install themes on this site."
-msgstr "Você não tem permissão para instalar temas neste site."
+msgstr ""
 
-msgid "The requested recommended theme could not be found."
-msgstr "O tema recomendado solicitado não pôde ser encontrado."
-
-msgid "The selected theme is not installed on this site."
-msgstr "O tema selecionado não está instalado neste site."
-
-msgid "The theme could not be activated."
-msgstr "Não foi possível ativar o tema."
-
-msgid "The theme was activated successfully."
-msgstr "O tema foi ativado com sucesso."
-
-msgid "The theme is not yet available for installation from WordPress.org."
-msgstr "O tema ainda não está disponível para instalação pelo WordPress.org."
-
-msgid "The theme could not be installed."
-msgstr "Não foi possível instalar o tema."
-
-msgid "The theme was installed successfully. You can activate it now."
-msgstr "O tema foi instalado com sucesso. Agora você pode ativá-lo."
-
-msgid "Name"
-msgstr "Nome"
-
-msgid "Slug"
-msgstr "Identificador"
-
-msgid "Description"
-msgstr "Descrição"
-
-msgid "ARS Official"
-msgstr "ARS oficial"
-
-msgid "Status"
-msgstr "Status"
-
-msgid "Option"
-msgstr "Ação"
-
-msgid "Active"
-msgstr "Ativo"
-
-msgid "Installed but Inactive"
-msgstr "Instalado, mas inativo"
-
-msgid "Not Installed"
-msgstr "Não instalado"
-
-msgid "Activate"
-msgstr "Ativar"
-
-msgid "Install"
-msgstr "Instalar"
+msgid "A theme that provides a complete podcast presentation and playback interface for the A Ripple Song plugin."
+msgstr ""
 
 msgid "Yes"
-msgstr "Sim"
+msgstr ""
 
 msgid "No"
-msgstr "Não"
+msgstr ""
+
+msgid "Active"
+msgstr ""
+
+msgid "Installed but Inactive"
+msgstr ""
+
+msgid "Not Installed"
+msgstr ""
+
+msgid "The requested recommended theme could not be found."
+msgstr ""
+
+msgid "The selected theme is not installed on this site."
+msgstr ""
+
+msgid "The theme could not be activated."
+msgstr ""
+
+msgid "The theme was activated successfully."
+msgstr ""
+
+msgid "The theme is not yet available for installation from WordPress.org."
+msgstr ""
+
+msgid "The theme could not be installed."
+msgstr ""
+
+msgid "The theme was installed successfully. You can activate it now."
+msgstr ""
