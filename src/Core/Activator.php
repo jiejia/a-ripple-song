@@ -1,10 +1,10 @@
 <?php
 
-namespace ARippleSong\Podcast\Core;
+namespace ARippleSong\Core;
 
-use ARippleSong\Podcast\Feed\Podcast as PodcastFeed;
-use ARippleSong\Podcast\PostTypes\Episode;
-use ARippleSong\Podcast\Taxonomies\EpisodeCategory;
+use ARippleSong\Feed\Podcast as PodcastFeed;
+use ARippleSong\PostTypes\Episode;
+use ARippleSong\Taxonomies\EpisodeCategory;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -16,8 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * This class defines all code necessary to run during the plugin's activation.
  *
  * @since      1.0.0
- * @package    ARippleSong\Podcast
- * @subpackage ARippleSong\Podcast/includes
+ * @package    ARippleSong
+ * @subpackage ARippleSong/includes
  * @author     jiejia <jiejia2009@gmail.com>
  */
 class Activator {

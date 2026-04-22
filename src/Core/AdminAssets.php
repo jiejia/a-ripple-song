@@ -1,8 +1,8 @@
 <?php
 
-namespace ARippleSong\Podcast\Core;
+namespace ARippleSong\Core;
 
-use ARippleSong\Podcast\PostTypes\Episode;
+use ARippleSong\PostTypes\Episode;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -14,8 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    ARippleSong\Podcast
- * @subpackage ARippleSong\Podcast/admin
+ * @package    ARippleSong
+ * @subpackage ARippleSong/admin
  * @author     jiejia <jiejia2009@gmail.com>
  */
 class AdminAssets {

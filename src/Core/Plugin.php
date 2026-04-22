@@ -1,15 +1,15 @@
 <?php
 
-namespace ARippleSong\Podcast\Core;
+namespace ARippleSong\Core;
 
-use ARippleSong\Podcast\Feed\Podcast as PodcastFeed;
-use ARippleSong\Podcast\PostTypes\Episode;
-use ARippleSong\Podcast\PostTypes\EpisodeFields;
-use ARippleSong\Podcast\PostTypes\EpisodeMedia;
-use ARippleSong\Podcast\PostTypes\EpisodeRest;
-use ARippleSong\Podcast\PostTypes\EpisodeSave;
-use ARippleSong\Podcast\Settings\Podcast as PodcastSettings;
-use ARippleSong\Podcast\Taxonomies\EpisodeCategory;
+use ARippleSong\Feed\Podcast as PodcastFeed;
+use ARippleSong\PostTypes\Episode;
+use ARippleSong\PostTypes\EpisodeFields;
+use ARippleSong\PostTypes\EpisodeMedia;
+use ARippleSong\PostTypes\EpisodeRest;
+use ARippleSong\PostTypes\EpisodeSave;
+use ARippleSong\Settings\Podcast as PodcastSettings;
+use ARippleSong\Taxonomies\EpisodeCategory;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

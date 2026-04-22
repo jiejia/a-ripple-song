@@ -1,9 +1,9 @@
 <?php
 
-namespace ARippleSong\Podcast\Feed;
+namespace ARippleSong\Feed;
 
-use ARippleSong\Podcast\Core\CarbonCompat;
-use ARippleSong\Podcast\PostTypes\Episode;
+use ARippleSong\Core\CarbonCompat;
+use ARippleSong\PostTypes\Episode;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -14,8 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * Ported from the previous theme implementation and adapted for this plugin.
  *
- * @package    ARippleSong\Podcast
- * @subpackage ARippleSong\Podcast/includes
+ * @package    ARippleSong
+ * @subpackage ARippleSong/includes
  */
 class Podcast {
 

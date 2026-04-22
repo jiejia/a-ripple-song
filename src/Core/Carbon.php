@@ -1,6 +1,6 @@
 <?php
 
-namespace ARippleSong\Podcast\Core;
+namespace ARippleSong\Core;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -12,13 +12,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  * When building a release, vendor dependencies may be prefixed with PHP-Scoper.
  * This class resolves Carbon Fields classes at runtime in either scenario.
  *
- * @package    ARippleSong\Podcast
- * @subpackage ARippleSong\Podcast/includes
+ * @package    ARippleSong
+ * @subpackage ARippleSong/includes
  */
 class CarbonCompat {
 
 	private const SHARED_PREFIX = '\\A_Ripple_Song_Theme\\Vendor\\';
-	private const SCOPED_PREFIX = '\\ARippleSong\\Podcast\\Vendor\\';
+	private const SCOPED_PREFIX = '\\ARippleSong\\Vendor\\';
 
 	/**
 	 * Boot Carbon Fields (scoped or unscoped).
@@ -142,7 +142,7 @@ class CarbonCompat {
 		}
 
 		$shared_booted = did_action( 'carbon_fields_loaded' ) && class_exists( '\\A_Ripple_Song_Theme\\Vendor\\Carbon_Fields\\Carbon_Fields', false );
-		$plugin_booted = did_action( 'carbon_fields_loaded' ) && class_exists( '\\ARippleSong\\Podcast\\Vendor\\Carbon_Fields\\Carbon_Fields', false );
+		$plugin_booted = did_action( 'carbon_fields_loaded' ) && class_exists( '\\ARippleSong\\Vendor\\Carbon_Fields\\Carbon_Fields', false );
 
 		foreach ( $candidates as $candidate ) {
 			if ( ! is_string( $candidate ) || $candidate === '' ) {
@@ -181,8 +181,8 @@ class CarbonCompat {
 /**
  * Carbon Fields bootstrap.
  *
- * @package    ARippleSong\Podcast
- * @subpackage ARippleSong\Podcast/includes
+ * @package    ARippleSong
+ * @subpackage ARippleSong/includes
  */
 class Carbon {
 
@@ -231,8 +231,8 @@ class Carbon {
  * We inject missing locale strings via `carbon_fields_config` so the UI always
  * reflects the current admin language without modifying Carbon Fields itself.
  *
- * @package    ARippleSong\Podcast
- * @subpackage ARippleSong\Podcast/admin
+ * @package    ARippleSong
+ * @subpackage ARippleSong/admin
  */
 class CarbonFieldsUiI18n {
 

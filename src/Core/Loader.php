@@ -1,6 +1,6 @@
 <?php
 
-namespace ARippleSong\Podcast\Core;
+namespace ARippleSong\Core;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -13,8 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    ARippleSong\Podcast
- * @subpackage ARippleSong\Podcast/includes
+ * @package    ARippleSong
+ * @subpackage ARippleSong/includes
  * @author     jiejia <jiejia2009@gmail.com>
  */
 class Loader {

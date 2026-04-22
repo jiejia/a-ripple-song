@@ -1,8 +1,8 @@
 <?php
 
-namespace ARippleSong\Podcast\PostTypes;
+namespace ARippleSong\PostTypes;
 
-use ARippleSong\Podcast\Core\CarbonCompat;
+use ARippleSong\Core\CarbonCompat;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -11,8 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Podcast Episodes (CPT) and taxonomy registration.
  *
- * @package    ARippleSong\Podcast
- * @subpackage ARippleSong\Podcast/includes
+ * @package    ARippleSong
+ * @subpackage ARippleSong/includes
  */
 class Episode {
 
@@ -214,8 +214,8 @@ class Episode {
 /**
  * Episode meta fields (Carbon Fields post meta).
  *
- * @package    ARippleSong\Podcast
- * @subpackage ARippleSong\Podcast/includes
+ * @package    ARippleSong
+ * @subpackage ARippleSong/includes
  */
 class EpisodeFields {
 
@@ -402,8 +402,8 @@ class EpisodeFields {
 /**
  * Episode save hooks (auto-fill audio meta, defaults, admin notices).
  *
- * @package    ARippleSong\Podcast
- * @subpackage ARippleSong\Podcast/includes
+ * @package    ARippleSong
+ * @subpackage ARippleSong/includes
  */
 class EpisodeSave {
 
@@ -883,8 +883,8 @@ class EpisodeSave {
  * WordPress REST endpoints only include custom fields under `meta` when those
  * meta keys are registered with `show_in_rest`.
  *
- * @package    ARippleSong\Podcast
- * @subpackage ARippleSong\Podcast/includes
+ * @package    ARippleSong
+ * @subpackage ARippleSong/includes
  */
 class EpisodeRest {
 
@@ -1110,8 +1110,8 @@ class EpisodeRest {
  *
  * Ported from the previous theme implementation.
  *
- * @package    ARippleSong\Podcast
- * @subpackage ARippleSong\Podcast/admin
+ * @package    ARippleSong
+ * @subpackage ARippleSong/admin
  */
 class EpisodeMedia {
 

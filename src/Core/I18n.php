@@ -1,6 +1,6 @@
 <?php
 
-namespace ARippleSong\Podcast\Core;
+namespace ARippleSong\Core;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -13,8 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    ARippleSong\Podcast
- * @subpackage ARippleSong\Podcast/includes
+ * @package    ARippleSong
+ * @subpackage ARippleSong/includes
  * @author     jiejia <jiejia2009@gmail.com>
  */
 class I18n {
@@ -30,10 +30,10 @@ class I18n {
 		$locale = function_exists( 'determine_locale' ) ? determine_locale() : get_locale();
 
 		/** @var string $mo_file Absolute path to the bundled MO translation file. */
-		$mo_file = A_RIPPLE_SONG_PODCAST_PATH . 'resources/lang/a-ripple-song-podcast-' . $locale . '.mo';
+		$mo_file = A_RIPPLE_SONG_PATH . 'resources/lang/a-ripple-song-' . $locale . '.mo';
 
 		if ( file_exists( $mo_file ) ) {
-			load_textdomain( 'a-ripple-song-podcast', $mo_file );
+			load_textdomain( 'a-ripple-song', $mo_file );
 		}
 	}
 

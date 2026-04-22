@@ -22,7 +22,7 @@
  * @link       https://github.com/jiejia
  * @since      1.0.0
  *
- * @package    ARippleSong\Podcast
+ * @package    ARippleSong
  */
 
 // If uninstall not called from WordPress, then exit.

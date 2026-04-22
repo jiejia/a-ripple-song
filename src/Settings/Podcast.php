@@ -1,8 +1,8 @@
 <?php
 
-namespace ARippleSong\Podcast\Settings;
+namespace ARippleSong\Settings;
 
-use ARippleSong\Podcast\Core\CarbonCompat;
+use ARippleSong\Core\CarbonCompat;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -11,8 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Podcast Settings page (Carbon Fields theme options).
  *
- * @package    ARippleSong\Podcast
- * @subpackage ARippleSong\Podcast/includes
+ * @package    ARippleSong
+ * @subpackage ARippleSong/includes
  */
 class Podcast {
 

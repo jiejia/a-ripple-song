@@ -1,6 +1,6 @@
 {
-  "name": "jiejia/a-ripple-song-podcast",
-  "description": "Podcast publishing features for the A Ripple Song WordPress theme.",
+  "name": "jiejia/a-ripple-song",
+  "description": "A WordPress podcast plugin",
   "license": "GPL-3.0-only",
   "type": "wordpress-plugin",
   "require": {
@@ -12,7 +12,7 @@
   },
   "autoload": {
     "psr-4": {
-      "ARippleSong\\Podcast\\": "app/"
+      "ARippleSong\\": "src/"
     }
   },
   "config": {

@@ -1,8 +1,8 @@
 <?php
 
-namespace ARippleSong\Podcast\Taxonomies;
+namespace ARippleSong\Taxonomies;
 
-use ARippleSong\Podcast\PostTypes\Episode;
+use ARippleSong\PostTypes\Episode;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
