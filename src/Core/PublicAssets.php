@@ -69,7 +69,7 @@ class PublicAssets {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->pluginName, A_RIPPLE_SONG_PODCAST_URL . 'resources/css/public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->pluginName, A_RIPPLE_SONG_URL . 'resources/css/public.css', array(), $this->version, 'all' );
 
 	}
 
@@ -92,7 +92,7 @@ class PublicAssets {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->pluginName, A_RIPPLE_SONG_PODCAST_URL . 'resources/js/public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->pluginName, A_RIPPLE_SONG_URL . 'resources/js/public.js', array( 'jquery' ), $this->version, false );
 
 	}
 

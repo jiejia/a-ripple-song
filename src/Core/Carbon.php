@@ -248,7 +248,7 @@ class CarbonFieldsUiI18n {
 		 */
 		$locale = is_admin() ? get_user_locale() : get_locale();
 		$locale = (string) $locale;
-		$mo_file = A_RIPPLE_SONG_PODCAST_PATH . 'resources/lang/carbon-fields-' . $locale . '.mo';
+		$mo_file = A_RIPPLE_SONG_PATH . 'resources/lang/carbon-fields-' . $locale . '.mo';
 
 		if ( file_exists( $mo_file ) ) {
 			load_textdomain( 'carbon-fields', $mo_file );

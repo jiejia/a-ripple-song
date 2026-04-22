@@ -73,7 +73,7 @@ class AdminAssets {
 
 		wp_register_style(
 			$this->pluginName,
-			A_RIPPLE_SONG_PODCAST_URL . 'resources/css/admin.css',
+			A_RIPPLE_SONG_URL . 'resources/css/admin.css',
 			wp_style_is( 'carbon-fields-metaboxes', 'registered' ) ? array( 'carbon-fields-metaboxes' ) : array(),
 			$this->version,
 			'all'
@@ -122,19 +122,19 @@ class AdminAssets {
 			wp_enqueue_media();
 		}
 
-		wp_enqueue_script( $this->pluginName, A_RIPPLE_SONG_PODCAST_URL . 'resources/js/admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->pluginName, A_RIPPLE_SONG_URL . 'resources/js/admin.js', array( 'jquery' ), $this->version, false );
 
 		wp_localize_script(
 			$this->pluginName,
 			'arsPodcastAdmin',
 			array(
 					'i18n'       => array(
-						'upload'     => __( 'Upload', 'a-ripple-song-podcast' ),
-						'remove'     => __( 'Remove', 'a-ripple-song-podcast' ),
-						'download'   => __( 'Download', 'a-ripple-song-podcast' ),
-						'fileLabel'  => __( 'File:', 'a-ripple-song-podcast' ),
-						'selectFile' => __( 'Select file', 'a-ripple-song-podcast' ),
-						'useFile'    => __( 'Use this file', 'a-ripple-song-podcast' ),
+						'upload'     => __( 'Upload', 'a-ripple-song' ),
+						'remove'     => __( 'Remove', 'a-ripple-song' ),
+						'download'   => __( 'Download', 'a-ripple-song' ),
+						'fileLabel'  => __( 'File:', 'a-ripple-song' ),
+						'selectFile' => __( 'Select file', 'a-ripple-song' ),
+						'useFile'    => __( 'Use this file', 'a-ripple-song' ),
 					),
 				'mediaTypes' => array(
 					'audio'      => 'audio',
