@@ -800,3 +800,7 @@ msgstr "हाँ"
 
 msgid "No"
 msgstr "नहीं"
+
+#: src/PostTypes/Episode.php:467
+msgid "Clear selection"
+msgstr "चयन साफ़ करें"

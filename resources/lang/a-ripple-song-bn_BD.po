@@ -800,3 +800,7 @@ msgstr "হ্যাঁ"
 
 msgid "No"
 msgstr "না"
+
+#: src/PostTypes/Episode.php:467
+msgid "Clear selection"
+msgstr "নির্বাচন মুছুন"

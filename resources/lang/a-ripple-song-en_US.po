@@ -754,3 +754,7 @@ msgstr "Yes"
 
 msgid "No"
 msgstr "No"
+
+#: src/PostTypes/Episode.php:467
+msgid "Clear selection"
+msgstr "Clear selection"

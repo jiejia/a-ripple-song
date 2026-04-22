@@ -292,6 +292,38 @@
 		} );
 	}
 
+	/**
+	 * Clear native multi-select user controls without requiring keyboard modifiers.
+	 */
+	function arsEnhanceUserMultiSelects( root ) {
+		if ( ! root ) {
+			return;
+		}
+
+		root.querySelectorAll( '[data-ars-user-multiselect-clear]' ).forEach( function( button ) {
+			if ( button.dataset.arsUserMultiselectClearEnhanced === '1' ) {
+				return;
+			}
+
+			button.addEventListener( 'click', function( e ) {
+				var field = button.closest( '.ars-user-multiselect-field' );
+				var select = field ? field.querySelector( '[data-ars-user-multiselect]' ) : null;
+
+				if ( select ) {
+					Array.prototype.forEach.call( select.options, function( option ) {
+						option.selected = false;
+					} );
+
+					select.dispatchEvent( new Event( 'change', { bubbles: true } ) );
+				}
+
+				e.preventDefault();
+			} );
+
+			button.dataset.arsUserMultiselectClearEnhanced = '1';
+		} );
+	}
+
 	function arsEnhanceAdminForms() {
 		var config = arsGetAdminConfig();
 		var roots = document.querySelectorAll( '[data-ars-admin-form]' );
@@ -299,6 +331,7 @@
 		roots.forEach( function( root ) {
 			arsEnhanceMediaFields( root, config );
 			arsEnhanceRepeatables( root );
+			arsEnhanceUserMultiSelects( root );
 		} );
 	}
 

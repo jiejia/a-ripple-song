@@ -95,7 +95,10 @@ class AdminAssets {
 			wp_enqueue_media();
 		}
 
-		wp_enqueue_script( $this->pluginName, A_RIPPLE_SONG_URL . 'resources/js/admin.js', array( 'jquery' ), $this->version, false );
+		$scriptPath    = A_RIPPLE_SONG_PATH . 'resources/js/admin.js';
+		$scriptVersion = file_exists( $scriptPath ) ? (string) filemtime( $scriptPath ) : $this->version;
+
+		wp_enqueue_script( $this->pluginName, A_RIPPLE_SONG_URL . 'resources/js/admin.js', array( 'jquery' ), $scriptVersion, false );
 
 		wp_localize_script(
 			$this->pluginName,

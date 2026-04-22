@@ -799,3 +799,7 @@ msgstr "نعم"
 
 msgid "No"
 msgstr "لا"
+
+#: src/PostTypes/Episode.php:467
+msgid "Clear selection"
+msgstr "مسح التحديد"

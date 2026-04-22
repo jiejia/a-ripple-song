@@ -802,3 +802,7 @@ msgstr "主题已成功安装，现在可以启用了。"
 
 #~ msgid "ARS Episode"
 #~ msgstr "ARS 剧集"
+
+#: src/PostTypes/Episode.php:467
+msgid "Clear selection"
+msgstr "清空选择"

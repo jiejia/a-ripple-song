@@ -802,3 +802,7 @@ msgstr "Sim"
 
 msgid "No"
 msgstr "Não"
+
+#: src/PostTypes/Episode.php:467
+msgid "Clear selection"
+msgstr "Limpar seleção"

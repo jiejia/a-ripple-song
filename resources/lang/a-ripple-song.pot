@@ -782,3 +782,7 @@ msgstr ""
 
 msgid "The theme was installed successfully. You can activate it now."
 msgstr ""
+
+#: src/PostTypes/Episode.php:467
+msgid "Clear selection"
+msgstr ""

@@ -457,12 +457,15 @@ class Episode {
 		);
 		$selected_ids = array_map( 'intval', (array) $selected_ids );
 		?>
-		<select multiple="multiple" size="6" name="ars_episode_details[<?php echo esc_attr( $key ); ?>][]">
-			<?php foreach ( $users as $user ) : ?>
-				<?php $label_text = $user->display_name ? $user->display_name : $user->user_login; ?>
-				<option value="<?php echo esc_attr( (string) $user->ID ); ?>" <?php selected( in_array( (int) $user->ID, $selected_ids, true ) ); ?>><?php echo esc_html( $label_text ); ?></option>
-			<?php endforeach; ?>
-		</select>
+		<div class="ars-user-multiselect-field">
+			<select multiple="multiple" size="6" name="ars_episode_details[<?php echo esc_attr( $key ); ?>][]" data-ars-user-multiselect>
+				<?php foreach ( $users as $user ) : ?>
+					<?php $label_text = $user->display_name ? $user->display_name : $user->user_login; ?>
+					<option value="<?php echo esc_attr( (string) $user->ID ); ?>" <?php selected( in_array( (int) $user->ID, $selected_ids, true ) ); ?>><?php echo esc_html( $label_text ); ?></option>
+				<?php endforeach; ?>
+			</select>
+			<button type="button" class="button ars-user-multiselect-field__clear" data-ars-user-multiselect-clear><?php echo esc_html__( 'Clear selection', 'a-ripple-song' ); ?></button>
+		</div>
 		<?php
 		$this->renderFieldEnd();
 	}

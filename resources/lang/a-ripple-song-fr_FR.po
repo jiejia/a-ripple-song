@@ -804,3 +804,7 @@ msgstr "Oui"
 
 msgid "No"
 msgstr "Non"
+
+#: src/PostTypes/Episode.php:467
+msgid "Clear selection"
+msgstr "Effacer la sélection"

@@ -110,6 +110,18 @@
 	opacity: 0.5;
 }
 
+.ars-user-multiselect-field {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	align-items: flex-start;
+}
+
+.ars-user-multiselect-field select {
+	min-width: 240px;
+	max-width: 100%;
+}
+
 .ars-repeatable-field {
 	margin-top: 8px;
 }

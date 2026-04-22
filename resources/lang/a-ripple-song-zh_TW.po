@@ -802,3 +802,7 @@ msgstr "否"
 
 #~ msgid "ARS Episode"
 #~ msgstr "ARS 劇集"
+
+#: src/PostTypes/Episode.php:467
+msgid "Clear selection"
+msgstr "清除選擇"
