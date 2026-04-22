@@ -16,32 +16,32 @@ class Podcast {
 	/**
 	 * Top-level menu slug.
 	 */
-	private const MENU_SLUG = 'a-ripple-song-podcast';
+	private const MENU_SLUG = 'a-ripple-song';
 
 	/**
 	 * Settings page slug.
 	 */
-	private const PAGE_SLUG = 'a-ripple-song-podcast-settings';
+	private const PAGE_SLUG = 'a-ripple-song-settings';
 
 	/**
 	 * Form action slug.
 	 */
-	private const SAVE_ACTION = 'a_ripple_song_podcast_save';
+	private const SAVE_ACTION = 'a_ripple_song_save';
 
 	/**
 	 * Nonce action.
 	 */
-	private const NONCE_ACTION = 'a_ripple_song_podcast_save';
+	private const NONCE_ACTION = 'a_ripple_song_save';
 
 	/**
 	 * Nonce field name.
 	 */
-	private const NONCE_FIELD = 'a_ripple_song_podcast_nonce';
+	private const NONCE_FIELD = 'a_ripple_song_nonce';
 
 	/**
 	 * Transient prefix for save notices.
 	 */
-	private const NOTICE_PREFIX = 'a_ripple_song_podcast_notices_';
+	private const NOTICE_PREFIX = 'a_ripple_song_notices_';
 
 	/**
 	 * Register the admin menu.
