@@ -3,6 +3,7 @@
 namespace ARippleSong\PostTypes;
 
 use ARippleSong\Core\LegacyMeta;
+use ARippleSong\Constants\PodcastConstant;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -19,12 +20,12 @@ class Episode {
 	/**
 	 * Custom post type key.
 	 */
-	public const POST_TYPE = 'ars_episode';
+	public const POST_TYPE = PodcastConstant::POST_TYPE;
 
 	/**
 	 * Taxonomy key.
 	 */
-	public const TAXONOMY = 'ars_episode_category';
+	public const TAXONOMY = PodcastConstant::TAXONOMY_SLUG;
 
 	/**
 	 * Enable featured image support for the episode post type from the plugin.
