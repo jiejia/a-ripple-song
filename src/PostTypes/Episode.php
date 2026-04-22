@@ -48,24 +48,24 @@ class Episode {
 			self::POST_TYPE,
 			array(
 				'labels'             => array(
-					'name'                  => __( 'Episodes', 'a-ripple-song-podcast' ),
-					'singular_name'         => __( 'Episode', 'a-ripple-song-podcast' ),
-					'add_new'               => __( 'Add New Episode', 'a-ripple-song-podcast' ),
-					'add_new_item'          => __( 'Add New Episode', 'a-ripple-song-podcast' ),
-					'edit_item'             => __( 'Edit Episode', 'a-ripple-song-podcast' ),
-					'new_item'              => __( 'New Episode', 'a-ripple-song-podcast' ),
-					'view_item'             => __( 'View Episode', 'a-ripple-song-podcast' ),
-					'view_items'            => __( 'View Episodes', 'a-ripple-song-podcast' ),
-					'search_items'          => __( 'Search Episodes', 'a-ripple-song-podcast' ),
-					'not_found'             => __( 'No episodes found', 'a-ripple-song-podcast' ),
-					'not_found_in_trash'    => __( 'No episodes found in Trash', 'a-ripple-song-podcast' ),
-					'all_items'             => __( 'All Episodes', 'a-ripple-song-podcast' ),
-					'menu_name'             => __( 'ARS Episodes', 'a-ripple-song-podcast' ),
-					'name_admin_bar'        => __( 'Episode', 'a-ripple-song-podcast' ),
-					'item_published'        => __( 'Episode published.', 'a-ripple-song-podcast' ),
-					'item_updated'          => __( 'Episode updated.', 'a-ripple-song-podcast' ),
-					'item_reverted_to_draft' => __( 'Episode reverted to draft.', 'a-ripple-song-podcast' ),
-					'item_scheduled'        => __( 'Episode scheduled.', 'a-ripple-song-podcast' ),
+					'name'                  => __( 'Episodes', 'a-ripple-song' ),
+					'singular_name'         => __( 'Episode', 'a-ripple-song' ),
+					'add_new'               => __( 'Add New Episode', 'a-ripple-song' ),
+					'add_new_item'          => __( 'Add New Episode', 'a-ripple-song' ),
+					'edit_item'             => __( 'Edit Episode', 'a-ripple-song' ),
+					'new_item'              => __( 'New Episode', 'a-ripple-song' ),
+					'view_item'             => __( 'View Episode', 'a-ripple-song' ),
+					'view_items'            => __( 'View Episodes', 'a-ripple-song' ),
+					'search_items'          => __( 'Search Episodes', 'a-ripple-song' ),
+					'not_found'             => __( 'No episodes found', 'a-ripple-song' ),
+					'not_found_in_trash'    => __( 'No episodes found in Trash', 'a-ripple-song' ),
+					'all_items'             => __( 'All Episodes', 'a-ripple-song' ),
+					'menu_name'             => __( 'ARS Episodes', 'a-ripple-song' ),
+					'name_admin_bar'        => __( 'Episode', 'a-ripple-song' ),
+					'item_published'        => __( 'Episode published.', 'a-ripple-song' ),
+					'item_updated'          => __( 'Episode updated.', 'a-ripple-song' ),
+					'item_reverted_to_draft' => __( 'Episode reverted to draft.', 'a-ripple-song' ),
+					'item_scheduled'        => __( 'Episode scheduled.', 'a-ripple-song' ),
 				),
 				'public'             => true,
 				'has_archive'        => true,
@@ -236,122 +236,122 @@ class EpisodeFields {
 
 		$default_members = $this->getDefaultMembersValue();
 
-		$container_class::make( 'post_meta', 'ars_episode_details', __( 'Episode Details', 'a-ripple-song-podcast' ) )
+		$container_class::make( 'post_meta', 'ars_episode_details', __( 'Episode Details', 'a-ripple-song' ) )
 			->where( 'post_type', '=', Episode::POST_TYPE )
 			->set_context( 'normal' )
 			->set_priority( 'high' )
 			->add_fields(
 				array(
-					$field_class::make( 'text', 'audio_file', __( 'Audio File', 'a-ripple-song-podcast' ) )
-						->set_help_text( __( 'Required. Upload an audio file or enter audio file URL (https).', 'a-ripple-song-podcast' ) )
+					$field_class::make( 'text', 'audio_file', __( 'Audio File', 'a-ripple-song' ) )
+						->set_help_text( __( 'Required. Upload an audio file or enter audio file URL (https).', 'a-ripple-song' ) )
 						->set_required( true )
 						->set_attribute( 'type', 'url' )
 						->set_attribute( 'placeholder', 'https://' )
 						->set_attribute( 'data-ars-media-uploader', 'audio' ),
-					$field_class::make( 'text', 'duration', __( 'Duration (seconds)', 'a-ripple-song-podcast' ) )
-						->set_help_text( __( 'Auto detected from "Audio File" on save.', 'a-ripple-song-podcast' ) )
+					$field_class::make( 'text', 'duration', __( 'Duration (seconds)', 'a-ripple-song' ) )
+						->set_help_text( __( 'Auto detected from "Audio File" on save.', 'a-ripple-song' ) )
 						->set_attribute( 'type', 'number' )
 						->set_attribute( 'min', '0' )
 						->set_attribute( 'step', '1' )
 						->set_attribute( 'readOnly', 'readOnly' ),
-					$field_class::make( 'text', 'audio_length', __( 'Audio Length (bytes)', 'a-ripple-song-podcast' ) )
-						->set_help_text( __( 'Auto detected from "Audio File" on save.', 'a-ripple-song-podcast' ) )
+					$field_class::make( 'text', 'audio_length', __( 'Audio Length (bytes)', 'a-ripple-song' ) )
+						->set_help_text( __( 'Auto detected from "Audio File" on save.', 'a-ripple-song' ) )
 						->set_attribute( 'type', 'number' )
 						->set_attribute( 'min', '1' )
 						->set_attribute( 'readOnly', 'readOnly' ),
-					$field_class::make( 'text', 'audio_mime', __( 'Audio MIME Type', 'a-ripple-song-podcast' ) )
-						->set_help_text( __( 'Auto detected from "Audio File" on save.', 'a-ripple-song-podcast' ) )
+					$field_class::make( 'text', 'audio_mime', __( 'Audio MIME Type', 'a-ripple-song' ) )
+						->set_help_text( __( 'Auto detected from "Audio File" on save.', 'a-ripple-song' ) )
 						->set_default_value( 'audio/mpeg' )
 						->set_attribute( 'readOnly', 'readOnly' ),
-					$field_class::make( 'radio', 'episode_explicit', __( 'Explicit', 'a-ripple-song-podcast' ) )
-						->set_help_text( __( 'Required. clean / explicit.', 'a-ripple-song-podcast' ) )
+					$field_class::make( 'radio', 'episode_explicit', __( 'Explicit', 'a-ripple-song' ) )
+						->set_help_text( __( 'Required. clean / explicit.', 'a-ripple-song' ) )
 						->set_options(
 							array(
-								'clean'    => __( 'clean', 'a-ripple-song-podcast' ),
-								'explicit' => __( 'explicit', 'a-ripple-song-podcast' ),
+								'clean'    => __( 'clean', 'a-ripple-song' ),
+								'explicit' => __( 'explicit', 'a-ripple-song' ),
 							)
 						)
 						->set_default_value( 'clean' )
 						->set_required( true ),
-					$field_class::make( 'select', 'episode_type', __( 'Episode Type', 'a-ripple-song-podcast' ) )
-						->set_help_text( __( 'Required. full / trailer / bonus', 'a-ripple-song-podcast' ) )
+					$field_class::make( 'select', 'episode_type', __( 'Episode Type', 'a-ripple-song' ) )
+						->set_help_text( __( 'Required. full / trailer / bonus', 'a-ripple-song' ) )
 						->set_options(
 							array(
-								'full'    => __( 'full', 'a-ripple-song-podcast' ),
-								'trailer' => __( 'trailer', 'a-ripple-song-podcast' ),
-								'bonus'   => __( 'bonus', 'a-ripple-song-podcast' ),
+								'full'    => __( 'full', 'a-ripple-song' ),
+								'trailer' => __( 'trailer', 'a-ripple-song' ),
+								'bonus'   => __( 'bonus', 'a-ripple-song' ),
 							)
 						)
 						->set_default_value( 'full' )
 						->set_required( true ),
-					$field_class::make( 'text', 'episode_number', __( 'Episode Number', 'a-ripple-song-podcast' ) )
-						->set_help_text( __( 'Optional but recommended. Integer.', 'a-ripple-song-podcast' ) )
+					$field_class::make( 'text', 'episode_number', __( 'Episode Number', 'a-ripple-song' ) )
+						->set_help_text( __( 'Optional but recommended. Integer.', 'a-ripple-song' ) )
 						->set_attribute( 'type', 'number' )
 						->set_attribute( 'min', '0' )
 						->set_attribute( 'step', '1' ),
-					$field_class::make( 'text', 'season_number', __( 'Season Number', 'a-ripple-song-podcast' ) )
-						->set_help_text( __( 'Optional. Integer.', 'a-ripple-song-podcast' ) )
+					$field_class::make( 'text', 'season_number', __( 'Season Number', 'a-ripple-song' ) )
+						->set_help_text( __( 'Optional. Integer.', 'a-ripple-song' ) )
 						->set_attribute( 'type', 'number' )
 						->set_attribute( 'min', '0' )
 						->set_attribute( 'step', '1' ),
-					$field_class::make( 'text', 'episode_author', __( 'Episode Author (override)', 'a-ripple-song-podcast' ) )
-						->set_help_text( __( 'Optional. Overrides channel author for this episode.', 'a-ripple-song-podcast' ) ),
-					$field_class::make( 'image', 'episode_image', __( 'Episode Cover (square)', 'a-ripple-song-podcast' ) )
+					$field_class::make( 'text', 'episode_author', __( 'Episode Author (override)', 'a-ripple-song' ) )
+						->set_help_text( __( 'Optional. Overrides channel author for this episode.', 'a-ripple-song' ) ),
+					$field_class::make( 'image', 'episode_image', __( 'Episode Cover (square)', 'a-ripple-song' ) )
 						->set_value_type( 'url' )
-						->set_help_text( __( 'Optional. Square 1400–3000px. Overrides channel cover.', 'a-ripple-song-podcast' ) ),
-					$field_class::make( 'text', 'episode_transcript', __( 'Transcript (optional)', 'a-ripple-song-podcast' ) )
-						->set_help_text( __( 'Optional. Upload a transcript file (vtt/srt/txt/pdf) or enter a transcript URL (https).', 'a-ripple-song-podcast' ) )
+						->set_help_text( __( 'Optional. Square 1400–3000px. Overrides channel cover.', 'a-ripple-song' ) ),
+					$field_class::make( 'text', 'episode_transcript', __( 'Transcript (optional)', 'a-ripple-song' ) )
+						->set_help_text( __( 'Optional. Upload a transcript file (vtt/srt/txt/pdf) or enter a transcript URL (https).', 'a-ripple-song' ) )
 						->set_attribute( 'type', 'url' )
 						->set_attribute( 'placeholder', 'https://' )
 						->set_attribute( 'data-ars-media-uploader', 'transcript' ),
-					$field_class::make( 'text', 'itunes_title', __( 'iTunes Title (optional)', 'a-ripple-song-podcast' ) )
-						->set_help_text( __( 'Optional. Apple Podcasts: overrides the episode title for <itunes:title>.', 'a-ripple-song-podcast' ) ),
-					$field_class::make( 'text', 'episode_chapters', __( 'Chapters (Podcasting 2.0)', 'a-ripple-song-podcast' ) )
-						->set_help_text( __( 'Optional. Provide a chapters JSON URL/file for <podcast:chapters>.', 'a-ripple-song-podcast' ) )
+					$field_class::make( 'text', 'itunes_title', __( 'iTunes Title (optional)', 'a-ripple-song' ) )
+						->set_help_text( __( 'Optional. Apple Podcasts: overrides the episode title for <itunes:title>.', 'a-ripple-song' ) ),
+					$field_class::make( 'text', 'episode_chapters', __( 'Chapters (Podcasting 2.0)', 'a-ripple-song' ) )
+						->set_help_text( __( 'Optional. Provide a chapters JSON URL/file for <podcast:chapters>.', 'a-ripple-song' ) )
 						->set_attribute( 'type', 'url' )
 						->set_attribute( 'placeholder', 'https://' )
 						->set_attribute( 'data-ars-media-uploader', 'chapters' ),
-					$field_class::make( 'text', 'episode_chapters_type', __( 'Chapters MIME Type', 'a-ripple-song-podcast' ) )
-						->set_help_text( __( 'Optional. Defaults to application/json+chapters.', 'a-ripple-song-podcast' ) )
+					$field_class::make( 'text', 'episode_chapters_type', __( 'Chapters MIME Type', 'a-ripple-song' ) )
+						->set_help_text( __( 'Optional. Defaults to application/json+chapters.', 'a-ripple-song' ) )
 						->set_default_value( 'application/json+chapters' ),
-					$field_class::make( 'complex', 'episode_soundbites', __( 'Soundbites (Podcasting 2.0)', 'a-ripple-song-podcast' ) )
-						->set_help_text( __( 'Optional. Adds one or more <podcast:soundbite> tags.', 'a-ripple-song-podcast' ) )
+					$field_class::make( 'complex', 'episode_soundbites', __( 'Soundbites (Podcasting 2.0)', 'a-ripple-song' ) )
+						->set_help_text( __( 'Optional. Adds one or more <podcast:soundbite> tags.', 'a-ripple-song' ) )
 						->setup_labels(
 							array(
-								'singular_name' => __( 'Soundbite', 'a-ripple-song-podcast' ),
-								'plural_name'   => __( 'Soundbites', 'a-ripple-song-podcast' ),
+								'singular_name' => __( 'Soundbite', 'a-ripple-song' ),
+								'plural_name'   => __( 'Soundbites', 'a-ripple-song' ),
 							)
 						)
 						->add_fields(
 							array(
-								$field_class::make( 'text', 'start_time', __( 'Start Time (seconds)', 'a-ripple-song-podcast' ) )
+								$field_class::make( 'text', 'start_time', __( 'Start Time (seconds)', 'a-ripple-song' ) )
 									->set_attribute( 'type', 'number' )
 									->set_attribute( 'min', '0' )
 									->set_attribute( 'step', '0.01' ),
-								$field_class::make( 'text', 'duration', __( 'Duration (seconds)', 'a-ripple-song-podcast' ) )
+								$field_class::make( 'text', 'duration', __( 'Duration (seconds)', 'a-ripple-song' ) )
 									->set_attribute( 'type', 'number' )
 									->set_attribute( 'min', '0.01' )
 									->set_attribute( 'step', '0.01' ),
-								$field_class::make( 'text', 'title', __( 'Title (optional)', 'a-ripple-song-podcast' ) ),
+								$field_class::make( 'text', 'title', __( 'Title (optional)', 'a-ripple-song' ) ),
 							)
 						),
-					$field_class::make( 'text', 'episode_subtitle', __( 'Subtitle', 'a-ripple-song-podcast' ) )
-						->set_help_text( __( 'Optional. Short subtitle for iTunes.', 'a-ripple-song-podcast' ) ),
-					$field_class::make( 'textarea', 'episode_summary', __( 'Summary', 'a-ripple-song-podcast' ) )
-						->set_help_text( __( 'Optional. Plain text summary for iTunes.', 'a-ripple-song-podcast' ) ),
-					$field_class::make( 'text', 'episode_guid', __( 'Custom GUID (optional)', 'a-ripple-song-podcast' ) )
-						->set_help_text( __( 'Optional. If empty, feed uses WP permalink as GUID.', 'a-ripple-song-podcast' ) ),
-					$field_class::make( 'radio', 'episode_block', __( 'iTunes Block', 'a-ripple-song-podcast' ) )
-						->set_help_text( __( 'Optional. yes = hide this episode in Apple Podcasts.', 'a-ripple-song-podcast' ) )
+					$field_class::make( 'text', 'episode_subtitle', __( 'Subtitle', 'a-ripple-song' ) )
+						->set_help_text( __( 'Optional. Short subtitle for iTunes.', 'a-ripple-song' ) ),
+					$field_class::make( 'textarea', 'episode_summary', __( 'Summary', 'a-ripple-song' ) )
+						->set_help_text( __( 'Optional. Plain text summary for iTunes.', 'a-ripple-song' ) ),
+					$field_class::make( 'text', 'episode_guid', __( 'Custom GUID (optional)', 'a-ripple-song' ) )
+						->set_help_text( __( 'Optional. If empty, feed uses WP permalink as GUID.', 'a-ripple-song' ) ),
+					$field_class::make( 'radio', 'episode_block', __( 'iTunes Block', 'a-ripple-song' ) )
+						->set_help_text( __( 'Optional. yes = hide this episode in Apple Podcasts.', 'a-ripple-song' ) )
 						->set_options(
 							array(
-								'no'  => __( 'no', 'a-ripple-song-podcast' ),
-								'yes' => __( 'yes', 'a-ripple-song-podcast' ),
+								'no'  => __( 'no', 'a-ripple-song' ),
+								'yes' => __( 'yes', 'a-ripple-song' ),
 							)
 						)
 						->set_default_value( 'no' ),
-					$field_class::make( 'association', 'members', __( 'Members', 'a-ripple-song-podcast' ) )
-						->set_help_text( __( 'Select episode members (administrators, authors, editors).', 'a-ripple-song-podcast' ) )
+					$field_class::make( 'association', 'members', __( 'Members', 'a-ripple-song' ) )
+						->set_help_text( __( 'Select episode members (administrators, authors, editors).', 'a-ripple-song' ) )
 						->set_types(
 							array(
 								array(
@@ -360,8 +360,8 @@ class EpisodeFields {
 							)
 						)
 						->set_default_value( $default_members ),
-					$field_class::make( 'association', 'guests', __( 'Guests', 'a-ripple-song-podcast' ) )
-						->set_help_text( __( 'Select episode guests (contributors).', 'a-ripple-song-podcast' ) )
+					$field_class::make( 'association', 'guests', __( 'Guests', 'a-ripple-song' ) )
+						->set_help_text( __( 'Select episode guests (contributors).', 'a-ripple-song' ) )
 						->set_types(
 							array(
 								array(
@@ -770,31 +770,31 @@ class EpisodeSave {
 				switch ( $code ) {
 					case 'getid3_missing':
 						/* translators: %d: episode post ID */
-						$message = sprintf( __( 'Episode #%d: getID3 not available', 'a-ripple-song-podcast' ), $post_id );
+						$message = sprintf( __( 'Episode #%d: getID3 not available', 'a-ripple-song' ), $post_id );
 						break;
 					case 'audio_url_rejected':
 						/* translators: %d: episode post ID */
-						$message = sprintf( __( 'Episode #%d: audio URL rejected by wp_http_validate_url', 'a-ripple-song-podcast' ), $post_id );
+						$message = sprintf( __( 'Episode #%d: audio URL rejected by wp_http_validate_url', 'a-ripple-song' ), $post_id );
 						break;
 					case 'audio_download_failed':
 						/* translators: 1: episode post ID, 2: error message */
-						$message = sprintf( __( 'Episode #%1$d: audio download failed - %2$s', 'a-ripple-song-podcast' ), $post_id, $detail );
+						$message = sprintf( __( 'Episode #%1$d: audio download failed - %2$s', 'a-ripple-song' ), $post_id, $detail );
 						break;
 					case 'getid3_no_playtime_download':
 						/* translators: %d: episode post ID */
-						$message = sprintf( __( 'Episode #%d: getID3 did not return playtime_seconds for downloaded audio', 'a-ripple-song-podcast' ), $post_id );
+						$message = sprintf( __( 'Episode #%d: getID3 did not return playtime_seconds for downloaded audio', 'a-ripple-song' ), $post_id );
 						break;
 					case 'getid3_no_playtime_local':
 						/* translators: %d: episode post ID */
-						$message = sprintf( __( 'Episode #%d: getID3 did not return playtime_seconds for local file', 'a-ripple-song-podcast' ), $post_id );
+						$message = sprintf( __( 'Episode #%d: getID3 did not return playtime_seconds for local file', 'a-ripple-song' ), $post_id );
 						break;
 					case 'audio_file_missing':
 						/* translators: %d: episode post ID */
-						$message = sprintf( __( 'Episode #%d: audio file missing for duration/size/mime detection', 'a-ripple-song-podcast' ), $post_id );
+						$message = sprintf( __( 'Episode #%d: audio file missing for duration/size/mime detection', 'a-ripple-song' ), $post_id );
 						break;
 					case 'getid3_error':
 						/* translators: 1: episode post ID, 2: error message */
-						$message = sprintf( __( 'Episode #%1$d: getID3 error - %2$s', 'a-ripple-song-podcast' ), $post_id, $detail );
+						$message = sprintf( __( 'Episode #%1$d: getID3 error - %2$s', 'a-ripple-song' ), $post_id, $detail );
 						break;
 					default:
 						$message = $detail;
@@ -954,7 +954,7 @@ class EpisodeRest {
 					return wp_strip_all_tags( $title, true );
 				},
 				'schema'       => array(
-					'description' => __( 'Episode title (plain text)', 'a-ripple-song-podcast' ),
+					'description' => __( 'Episode title (plain text)', 'a-ripple-song' ),
 					'type'        => 'string',
 				),
 			)
@@ -968,7 +968,7 @@ class EpisodeRest {
 					return (string) EpisodeRest::getEpisodeValue( (int) $post['id'], 'audio_file', '' );
 				},
 				'schema'       => array(
-					'description' => __( 'Audio file URL', 'a-ripple-song-podcast' ),
+					'description' => __( 'Audio file URL', 'a-ripple-song' ),
 					'type'        => 'string',
 				),
 			)
@@ -982,7 +982,7 @@ class EpisodeRest {
 					return (int) EpisodeRest::getEpisodeValue( (int) $post['id'], 'duration', 0 );
 				},
 				'schema'       => array(
-					'description' => __( 'Audio duration (seconds)', 'a-ripple-song-podcast' ),
+					'description' => __( 'Audio duration (seconds)', 'a-ripple-song' ),
 					'type'        => 'integer',
 				),
 			)
@@ -996,7 +996,7 @@ class EpisodeRest {
 					return (string) EpisodeRest::getEpisodeValue( (int) $post['id'], 'episode_transcript', '' );
 				},
 				'schema'       => array(
-					'description' => __( 'Episode transcript URL', 'a-ripple-song-podcast' ),
+					'description' => __( 'Episode transcript URL', 'a-ripple-song' ),
 					'type'        => 'string',
 				),
 			)

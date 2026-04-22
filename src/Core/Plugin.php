@@ -46,7 +46,7 @@ class Plugin {
 	 */
 	public function __construct() {
 		$this->version    = defined( 'A_RIPPLE_SONG_PODCAST_VERSION' ) ? A_RIPPLE_SONG_PODCAST_VERSION : '1.0.0';
-		$this->pluginName = 'a-ripple-song-podcast';
+		$this->pluginName = 'a-ripple-song';
 		$this->loader     = new Loader();
 
 		$this->setLocale();

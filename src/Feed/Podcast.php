@@ -685,14 +685,14 @@ class Podcast {
 			}
 			if ( $author !== '' ) {
 				/* translators: %s: host/author name */
-				$addon_parts[] = sprintf( __( 'Hosted by %s.', 'a-ripple-song-podcast' ), $author );
+				$addon_parts[] = sprintf( __( 'Hosted by %s.', 'a-ripple-song' ), $author );
 			}
 			if ( $feed_url !== '' ) {
 				/* translators: %s: podcast feed URL */
-				$addon_parts[] = sprintf( __( 'Subscribe: %s', 'a-ripple-song-podcast' ), $feed_url );
+				$addon_parts[] = sprintf( __( 'Subscribe: %s', 'a-ripple-song' ), $feed_url );
 			} elseif ( $site_url !== '' ) {
 				/* translators: %s: site URL */
-				$addon_parts[] = sprintf( __( 'Website: %s', 'a-ripple-song-podcast' ), $site_url );
+				$addon_parts[] = sprintf( __( 'Website: %s', 'a-ripple-song' ), $site_url );
 			}
 
 		$addon = trim( implode( ' ', $addon_parts ) );

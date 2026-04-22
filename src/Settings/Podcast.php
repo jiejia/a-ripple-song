@@ -52,7 +52,7 @@ class Podcast {
 			return $this->menu_container;
 		}
 
-		$this->menu_container = $container_class::make( 'theme_options', __( 'A Ripple Song', 'a-ripple-song-podcast' ) )
+		$this->menu_container = $container_class::make( 'theme_options', __( 'A Ripple Song', 'a-ripple-song' ) )
 			->set_icon( 'dashicons-admin-settings' )
 			->set_page_menu_position( 60 )
 			->set_page_file( self::SETTINGS_PAGE_FILE );
@@ -76,9 +76,9 @@ class Podcast {
 
 		$parent = $this->registerMenuContainer();
 
-		$podcast = $container_class::make( 'theme_options', __( 'Podcast Settings', 'a-ripple-song-podcast' ) )
+		$podcast = $container_class::make( 'theme_options', __( 'Podcast Settings', 'a-ripple-song' ) )
 			->set_page_file( self::PODCAST_SETTINGS_PAGE_FILE )
-			->set_page_menu_title( __( 'Podcast Settings', 'a-ripple-song-podcast' ) );
+			->set_page_menu_title( __( 'Podcast Settings', 'a-ripple-song' ) );
 
 		if ( $parent ) {
 			$podcast->set_page_parent( $parent );
@@ -86,124 +86,124 @@ class Podcast {
 
 		$podcast->add_fields(
 			array(
-				$field_class::make( 'html', 'crb_podcast_rss_url', __( 'Podcast RSS URL', 'a-ripple-song-podcast' ) )
+				$field_class::make( 'html', 'crb_podcast_rss_url', __( 'Podcast RSS URL', 'a-ripple-song' ) )
 					->set_html(
 						sprintf(
 							'<div class="carbon-label"><label style="font-weight: 600; display: block; margin-bottom: 8px;">%3$s</label></div><p><input type="text" class="regular-text" readonly value="%1$s" onclick="this.select();" style="max-width: 520px;" /></p><p class="description">%4$s</p><p><a href="%1$s" target="_blank" rel="noopener noreferrer">%2$s</a></p>',
 							esc_url( $this->getPodcastFeedUrl() ),
-							esc_html__( 'Open feed', 'a-ripple-song-podcast' ),
-							esc_html__( 'Podcast RSS URL', 'a-ripple-song-podcast' ),
-							esc_html__( 'Your podcast RSS feed URL. Click to select and copy.', 'a-ripple-song-podcast' )
+							esc_html__( 'Open feed', 'a-ripple-song' ),
+							esc_html__( 'Podcast RSS URL', 'a-ripple-song' ),
+							esc_html__( 'Your podcast RSS feed URL. Click to select and copy.', 'a-ripple-song' )
 						)
 					),
-				$field_class::make( 'text', 'crb_podcast_title', __( 'Podcast Title', 'a-ripple-song-podcast' ) )
-					->set_help_text( __( 'Required. If empty, falls back to site title.', 'a-ripple-song-podcast' ) )
+				$field_class::make( 'text', 'crb_podcast_title', __( 'Podcast Title', 'a-ripple-song' ) )
+					->set_help_text( __( 'Required. If empty, falls back to site title.', 'a-ripple-song' ) )
 					->set_required( true ),
-				$field_class::make( 'text', 'crb_podcast_subtitle', __( 'Podcast Subtitle', 'a-ripple-song-podcast' ) )
-					->set_help_text( __( 'Short tagline shown in some apps.', 'a-ripple-song-podcast' ) ),
-				$field_class::make( 'textarea', 'crb_podcast_description', __( 'Podcast Description', 'a-ripple-song-podcast' ) )
-					->set_help_text( __( 'Required. Plain text description of the show.', 'a-ripple-song-podcast' ) )
+				$field_class::make( 'text', 'crb_podcast_subtitle', __( 'Podcast Subtitle', 'a-ripple-song' ) )
+					->set_help_text( __( 'Short tagline shown in some apps.', 'a-ripple-song' ) ),
+				$field_class::make( 'textarea', 'crb_podcast_description', __( 'Podcast Description', 'a-ripple-song' ) )
+					->set_help_text( __( 'Required. Plain text description of the show.', 'a-ripple-song' ) )
 					->set_required( true ),
-				$field_class::make( 'text', 'crb_podcast_author', __( 'Podcast Author (itunes:author)', 'a-ripple-song-podcast' ) )
-					->set_help_text( __( 'Required. Displayed as show author in directories.', 'a-ripple-song-podcast' ) )
+				$field_class::make( 'text', 'crb_podcast_author', __( 'Podcast Author (itunes:author)', 'a-ripple-song' ) )
+					->set_help_text( __( 'Required. Displayed as show author in directories.', 'a-ripple-song' ) )
 					->set_required( true ),
-				$field_class::make( 'text', 'crb_podcast_owner_name', __( 'Owner Name', 'a-ripple-song-podcast' ) )
-					->set_help_text( __( 'Required. For <itunes:owner><itunes:name>.', 'a-ripple-song-podcast' ) )
+				$field_class::make( 'text', 'crb_podcast_owner_name', __( 'Owner Name', 'a-ripple-song' ) )
+					->set_help_text( __( 'Required. For <itunes:owner><itunes:name>.', 'a-ripple-song' ) )
 					->set_required( true ),
-				$field_class::make( 'text', 'crb_podcast_owner_email', __( 'Owner Email', 'a-ripple-song-podcast' ) )
+				$field_class::make( 'text', 'crb_podcast_owner_email', __( 'Owner Email', 'a-ripple-song' ) )
 					->set_attribute( 'type', 'email' )
 					->set_attribute( 'pattern', '[^@\\s]+@[^@\\s]+\\.[^@\\s]+' )
-					->set_help_text( __( 'Required. For <itunes:owner><itunes:email>. Use a monitored inbox.', 'a-ripple-song-podcast' ) )
+					->set_help_text( __( 'Required. For <itunes:owner><itunes:email>. Use a monitored inbox.', 'a-ripple-song' ) )
 					->set_required( true ),
-				$field_class::make( 'image', 'crb_podcast_cover', __( 'Podcast Cover (1400–3000px square)', 'a-ripple-song-podcast' ) )
+				$field_class::make( 'image', 'crb_podcast_cover', __( 'Podcast Cover (1400–3000px square)', 'a-ripple-song' ) )
 					->set_value_type( 'url' )
-					->set_help_text( __( 'Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple recommends keeping the file under 512KB. Will be validated on save.', 'a-ripple-song-podcast' ) )
+					->set_help_text( __( 'Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple recommends keeping the file under 512KB. Will be validated on save.', 'a-ripple-song' ) )
 					->set_required( true ),
-				$field_class::make( 'select', 'crb_podcast_explicit', __( 'Default Explicit Flag', 'a-ripple-song-podcast' ) )
+				$field_class::make( 'select', 'crb_podcast_explicit', __( 'Default Explicit Flag', 'a-ripple-song' ) )
 					->set_options(
 						array(
-							'clean'    => __( 'clean (no explicit content)', 'a-ripple-song-podcast' ),
-							'explicit' => __( 'explicit', 'a-ripple-song-podcast' ),
+							'clean'    => __( 'clean (no explicit content)', 'a-ripple-song' ),
+							'explicit' => __( 'explicit', 'a-ripple-song' ),
 						)
 					)
 					->set_default_value( 'clean' )
-					->set_help_text( __( 'Required. Single-episode value can override.', 'a-ripple-song-podcast' ) )
+					->set_help_text( __( 'Required. Single-episode value can override.', 'a-ripple-song' ) )
 					->set_required( true ),
-				$field_class::make( 'select', 'crb_podcast_language', __( 'Language (RFC 5646)', 'a-ripple-song-podcast' ) )
+				$field_class::make( 'select', 'crb_podcast_language', __( 'Language (RFC 5646)', 'a-ripple-song' ) )
 					->set_options( $this->getPodcastLanguageOptions() )
 					->set_default_value( get_bloginfo( 'language' ) ?: 'en-US' )
-					->set_help_text( __( 'Required. Typically en-US, zh-CN, etc.', 'a-ripple-song-podcast' ) )
+					->set_help_text( __( 'Required. Typically en-US, zh-CN, etc.', 'a-ripple-song' ) )
 					->set_required( true ),
-				$field_class::make( 'select', 'crb_podcast_category_primary', __( 'Primary Category (Apple Podcasts)', 'a-ripple-song-podcast' ) )
-					->set_options( array_merge( array( '' => __( '(not set)', 'a-ripple-song-podcast' ) ), $this->getItunesCategories() ) )
-					->set_help_text( __( 'Required by Apple Podcasts. Choose at least a primary category.', 'a-ripple-song-podcast' ) )
+				$field_class::make( 'select', 'crb_podcast_category_primary', __( 'Primary Category (Apple Podcasts)', 'a-ripple-song' ) )
+					->set_options( array_merge( array( '' => __( '(not set)', 'a-ripple-song' ) ), $this->getItunesCategories() ) )
+					->set_help_text( __( 'Required by Apple Podcasts. Choose at least a primary category.', 'a-ripple-song' ) )
 					->set_required( true ),
-				$field_class::make( 'select', 'crb_podcast_category_secondary', __( 'Secondary Category (optional)', 'a-ripple-song-podcast' ) )
-					->set_options( array_merge( array( '' => __( '(not set)', 'a-ripple-song-podcast' ) ), $this->getItunesCategories() ) )
-					->set_help_text( __( 'Optional. Some directories support a second category.', 'a-ripple-song-podcast' ) ),
-				$field_class::make( 'text', 'crb_podcast_copyright', __( 'Copyright (optional)', 'a-ripple-song-podcast' ) )
-					->set_help_text( __( 'Optional. For <copyright>.', 'a-ripple-song-podcast' ) ),
-				$field_class::make( 'select', 'crb_podcast_itunes_type', __( 'iTunes Type (itunes:type)', 'a-ripple-song-podcast' ) )
+				$field_class::make( 'select', 'crb_podcast_category_secondary', __( 'Secondary Category (optional)', 'a-ripple-song' ) )
+					->set_options( array_merge( array( '' => __( '(not set)', 'a-ripple-song' ) ), $this->getItunesCategories() ) )
+					->set_help_text( __( 'Optional. Some directories support a second category.', 'a-ripple-song' ) ),
+				$field_class::make( 'text', 'crb_podcast_copyright', __( 'Copyright (optional)', 'a-ripple-song' ) )
+					->set_help_text( __( 'Optional. For <copyright>.', 'a-ripple-song' ) ),
+				$field_class::make( 'select', 'crb_podcast_itunes_type', __( 'iTunes Type (itunes:type)', 'a-ripple-song' ) )
 					->set_options(
 						array(
-							''         => __( '(not set)', 'a-ripple-song-podcast' ),
-							'episodic' => __( 'episodic', 'a-ripple-song-podcast' ),
-							'serial'   => __( 'serial', 'a-ripple-song-podcast' ),
+							''         => __( '(not set)', 'a-ripple-song' ),
+							'episodic' => __( 'episodic', 'a-ripple-song' ),
+							'serial'   => __( 'serial', 'a-ripple-song' ),
 						)
 					)
 					->set_default_value( '' )
-					->set_help_text( __( 'Optional. Apple Podcasts: episodic or serial.', 'a-ripple-song-podcast' ) ),
-				$field_class::make( 'text', 'crb_podcast_itunes_title', __( 'iTunes Title (optional)', 'a-ripple-song-podcast' ) )
-					->set_help_text( __( 'Optional. Use only if you need a separate Apple-facing title.', 'a-ripple-song-podcast' ) ),
-				$field_class::make( 'select', 'crb_podcast_itunes_block', __( 'iTunes Block (itunes:block)', 'a-ripple-song-podcast' ) )
+					->set_help_text( __( 'Optional. Apple Podcasts: episodic or serial.', 'a-ripple-song' ) ),
+				$field_class::make( 'text', 'crb_podcast_itunes_title', __( 'iTunes Title (optional)', 'a-ripple-song' ) )
+					->set_help_text( __( 'Optional. Use only if you need a separate Apple-facing title.', 'a-ripple-song' ) ),
+				$field_class::make( 'select', 'crb_podcast_itunes_block', __( 'iTunes Block (itunes:block)', 'a-ripple-song' ) )
 					->set_options(
 						array(
-							'no'  => __( 'no', 'a-ripple-song-podcast' ),
-							'yes' => __( 'yes', 'a-ripple-song-podcast' ),
+							'no'  => __( 'no', 'a-ripple-song' ),
+							'yes' => __( 'yes', 'a-ripple-song' ),
 						)
 					)
 					->set_default_value( 'no' )
-					->set_help_text( __( 'Optional. yes = hide this show in Apple Podcasts.', 'a-ripple-song-podcast' ) ),
-				$field_class::make( 'select', 'crb_podcast_itunes_complete', __( 'iTunes Complete (itunes:complete)', 'a-ripple-song-podcast' ) )
+					->set_help_text( __( 'Optional. yes = hide this show in Apple Podcasts.', 'a-ripple-song' ) ),
+				$field_class::make( 'select', 'crb_podcast_itunes_complete', __( 'iTunes Complete (itunes:complete)', 'a-ripple-song' ) )
 					->set_options(
 						array(
-							'no'  => __( 'no', 'a-ripple-song-podcast' ),
-							'yes' => __( 'yes', 'a-ripple-song-podcast' ),
+							'no'  => __( 'no', 'a-ripple-song' ),
+							'yes' => __( 'yes', 'a-ripple-song' ),
 						)
 					)
 					->set_default_value( 'no' )
-					->set_help_text( __( 'Optional. yes = this show is complete (no more episodes).', 'a-ripple-song-podcast' ) ),
-				$field_class::make( 'text', 'crb_podcast_itunes_new_feed_url', __( 'iTunes New Feed URL (itunes:new-feed-url)', 'a-ripple-song-podcast' ) )
-					->set_help_text( __( 'Optional. Only for moving your show to a new RSS feed URL.', 'a-ripple-song-podcast' ) ),
-				$field_class::make( 'select', 'crb_podcast_locked', __( 'podcast:locked', 'a-ripple-song-podcast' ) )
+					->set_help_text( __( 'Optional. yes = this show is complete (no more episodes).', 'a-ripple-song' ) ),
+				$field_class::make( 'text', 'crb_podcast_itunes_new_feed_url', __( 'iTunes New Feed URL (itunes:new-feed-url)', 'a-ripple-song' ) )
+					->set_help_text( __( 'Optional. Only for moving your show to a new RSS feed URL.', 'a-ripple-song' ) ),
+				$field_class::make( 'select', 'crb_podcast_locked', __( 'podcast:locked', 'a-ripple-song' ) )
 					->set_options(
 						array(
-							'yes' => __( 'yes (recommended, prevents unauthorized moves)', 'a-ripple-song-podcast' ),
-							'no'  => __( 'no', 'a-ripple-song-podcast' ),
+							'yes' => __( 'yes (recommended, prevents unauthorized moves)', 'a-ripple-song' ),
+							'no'  => __( 'no', 'a-ripple-song' ),
 						)
 					)
 					->set_default_value( 'yes' )
-					->set_help_text( __( 'Podcasting 2.0: lock feed to this publisher.', 'a-ripple-song-podcast' ) ),
-				$field_class::make( 'text', 'crb_podcast_locked_owner', __( 'podcast:locked owner (optional)', 'a-ripple-song-podcast' ) )
+					->set_help_text( __( 'Podcasting 2.0: lock feed to this publisher.', 'a-ripple-song' ) ),
+				$field_class::make( 'text', 'crb_podcast_locked_owner', __( 'podcast:locked owner (optional)', 'a-ripple-song' ) )
 					->set_attribute( 'type', 'email' )
 					->set_attribute( 'pattern', '[^@\\s]+@[^@\\s]+\\.[^@\\s]+' )
-					->set_help_text( __( 'Optional. Podcasting 2.0: email used to verify ownership during moves.', 'a-ripple-song-podcast' ) ),
-				$field_class::make( 'text', 'crb_podcast_guid', __( 'podcast:guid (optional)', 'a-ripple-song-podcast' ) )
-					->set_help_text( __( 'Podcasting 2.0 GUID. If empty, feed will use site URL as fallback.', 'a-ripple-song-podcast' ) ),
-					$field_class::make( 'text', 'crb_podcast_apple_verify', __( 'Apple Podcasts Verify Code (podcast:txt purpose="applepodcastsverify")', 'a-ripple-song-podcast' ) )
-					->set_help_text( __( 'Optional. Used by Apple Podcasts to verify feed ownership.', 'a-ripple-song-podcast' ) ),
-				$field_class::make( 'complex', 'crb_podcast_funding', __( 'Podcasting 2.0 Funding Links (podcast:funding)', 'a-ripple-song-podcast' ) )
-					->set_help_text( __( 'Optional. If empty, no podcast:funding tags will be generated. URLs should be https.', 'a-ripple-song-podcast' ) )
+					->set_help_text( __( 'Optional. Podcasting 2.0: email used to verify ownership during moves.', 'a-ripple-song' ) ),
+				$field_class::make( 'text', 'crb_podcast_guid', __( 'podcast:guid (optional)', 'a-ripple-song' ) )
+					->set_help_text( __( 'Podcasting 2.0 GUID. If empty, feed will use site URL as fallback.', 'a-ripple-song' ) ),
+					$field_class::make( 'text', 'crb_podcast_apple_verify', __( 'Apple Podcasts Verify Code (podcast:txt purpose="applepodcastsverify")', 'a-ripple-song' ) )
+					->set_help_text( __( 'Optional. Used by Apple Podcasts to verify feed ownership.', 'a-ripple-song' ) ),
+				$field_class::make( 'complex', 'crb_podcast_funding', __( 'Podcasting 2.0 Funding Links (podcast:funding)', 'a-ripple-song' ) )
+					->set_help_text( __( 'Optional. If empty, no podcast:funding tags will be generated. URLs should be https.', 'a-ripple-song' ) )
 					->add_fields(
 						array(
-							$field_class::make( 'text', 'url', __( 'URL', 'a-ripple-song-podcast' ) )
-								->set_help_text( __( 'Required for each entry. Use https.', 'a-ripple-song-podcast' ) ),
-							$field_class::make( 'text', 'label', __( 'Label', 'a-ripple-song-podcast' ) )
-								->set_help_text( __( 'Optional display text (max 128 chars recommended).', 'a-ripple-song-podcast' ) ),
+							$field_class::make( 'text', 'url', __( 'URL', 'a-ripple-song' ) )
+								->set_help_text( __( 'Required for each entry. Use https.', 'a-ripple-song' ) ),
+							$field_class::make( 'text', 'label', __( 'Label', 'a-ripple-song' ) )
+								->set_help_text( __( 'Optional display text (max 128 chars recommended).', 'a-ripple-song' ) ),
 						)
 					),
-				$field_class::make( 'text', 'crb_podcast_generator', __( 'Generator (optional)', 'a-ripple-song-podcast' ) )
-					->set_help_text( __( 'Optional. If empty, generator tag will not be included.', 'a-ripple-song-podcast' ) ),
+				$field_class::make( 'text', 'crb_podcast_generator', __( 'Generator (optional)', 'a-ripple-song' ) )
+					->set_help_text( __( 'Optional. If empty, generator tag will not be included.', 'a-ripple-song' ) ),
 			)
 		);
 	}
@@ -419,7 +419,7 @@ class Podcast {
 
 		printf(
 			'<div class="notice notice-error is-dismissible"><p><strong>%s</strong> %s</p></div>',
-			esc_html__( 'Podcast Cover validation failed:', 'a-ripple-song-podcast' ),
+			esc_html__( 'Podcast Cover validation failed:', 'a-ripple-song' ),
 			esc_html( $error )
 		);
 
@@ -435,7 +435,7 @@ class Podcast {
 	public function validateCoverImage( $url ) {
 		$url = $this->normalizeCoverUrlFromValue( $url );
 		if ( null === $url ) {
-			return new \WP_Error( 'invalid_url', __( 'Podcast Cover URL is invalid.', 'a-ripple-song-podcast' ) );
+			return new \WP_Error( 'invalid_url', __( 'Podcast Cover URL is invalid.', 'a-ripple-song' ) );
 		}
 
 		$max_bytes      = 512 * 1024;
@@ -449,7 +449,7 @@ class Podcast {
 		}
 
 		if ( ! preg_match( '~^https?://~i', $url ) ) {
-			return new \WP_Error( 'invalid_url', __( 'Podcast Cover URL is invalid.', 'a-ripple-song-podcast' ) );
+			return new \WP_Error( 'invalid_url', __( 'Podcast Cover URL is invalid.', 'a-ripple-song' ) );
 		}
 
 		return $this->validateRemoteCoverUrl( $url, $max_bytes, $min_dimension, $max_dimension, $allowed_mimes );
@@ -597,7 +597,7 @@ class Podcast {
 					'file_too_large',
 					sprintf(
 						/* translators: 1: file size, 2: maximum allowed size */
-						__( 'Podcast Cover file is too large (%1$s). Please compress it to under %2$s.', 'a-ripple-song-podcast' ),
+						__( 'Podcast Cover file is too large (%1$s). Please compress it to under %2$s.', 'a-ripple-song' ),
 						size_format( $file_size ),
 						size_format( $max_bytes )
 					)
@@ -606,7 +606,7 @@ class Podcast {
 
 		$image_info = @getimagesize( $file_path );
 		if ( ! $image_info ) {
-			return new \WP_Error( 'invalid_image', __( 'Podcast Cover is not a valid image.', 'a-ripple-song-podcast' ) );
+			return new \WP_Error( 'invalid_image', __( 'Podcast Cover is not a valid image.', 'a-ripple-song' ) );
 		}
 
 		return $this->validateImageDimensions( $image_info, $min_dimension, $max_dimension, $allowed_mimes );
@@ -617,7 +617,7 @@ class Podcast {
 	 */
 		private function validateRemoteCoverUrl( $url, $max_bytes, $min_dimension, $max_dimension, $allowed_mimes ) {
 			if ( function_exists( 'wp_http_validate_url' ) && ! wp_http_validate_url( $url ) ) {
-				return new \WP_Error( 'invalid_url', __( 'Podcast Cover URL is invalid.', 'a-ripple-song-podcast' ) );
+				return new \WP_Error( 'invalid_url', __( 'Podcast Cover URL is invalid.', 'a-ripple-song' ) );
 			}
 
 		$head_fn       = function_exists( 'wp_safe_remote_head' ) ? 'wp_safe_remote_head' : 'wp_remote_head';
@@ -636,7 +636,7 @@ class Podcast {
 						'file_too_large',
 						sprintf(
 							/* translators: 1: file size, 2: maximum allowed size */
-							__( 'Podcast Cover file is too large (%1$s). Please compress it to under %2$s.', 'a-ripple-song-podcast' ),
+							__( 'Podcast Cover file is too large (%1$s). Please compress it to under %2$s.', 'a-ripple-song' ),
 							size_format( (int) $content_length ),
 							size_format( $max_bytes )
 						)
@@ -650,7 +650,7 @@ class Podcast {
 					'download_failed',
 					sprintf(
 						/* translators: %s: error message */
-						__( 'Could not download Podcast Cover for validation: %s', 'a-ripple-song-podcast' ),
+						__( 'Could not download Podcast Cover for validation: %s', 'a-ripple-song' ),
 						$temp_file->get_error_message()
 					)
 				);
@@ -677,7 +677,7 @@ class Podcast {
 		$mime   = isset( $image_info['mime'] ) ? $image_info['mime'] : '';
 
 		if ( ! in_array( $mime, $allowed_mimes, true ) ) {
-			return new \WP_Error( 'invalid_format', __( 'Podcast Cover must be JPG or PNG.', 'a-ripple-song-podcast' ) );
+			return new \WP_Error( 'invalid_format', __( 'Podcast Cover must be JPG or PNG.', 'a-ripple-song' ) );
 		}
 
 			if ( $width !== $height ) {
@@ -685,7 +685,7 @@ class Podcast {
 					'not_square',
 					sprintf(
 						/* translators: 1: image width in pixels, 2: image height in pixels */
-						__( 'Podcast Cover must be square. Current dimensions: %1$d × %2$d px.', 'a-ripple-song-podcast' ),
+						__( 'Podcast Cover must be square. Current dimensions: %1$d × %2$d px.', 'a-ripple-song' ),
 						$width,
 						$height
 					)
@@ -697,7 +697,7 @@ class Podcast {
 					'too_small',
 					sprintf(
 						/* translators: 1: minimum required dimension in pixels, 2: image width in pixels, 3: image height in pixels */
-						__( 'Podcast Cover resolution is too small. Minimum: %1$d × %1$d px. Current: %2$d × %3$d px.', 'a-ripple-song-podcast' ),
+						__( 'Podcast Cover resolution is too small. Minimum: %1$d × %1$d px. Current: %2$d × %3$d px.', 'a-ripple-song' ),
 						$min_dimension,
 						$width,
 						$height
@@ -710,7 +710,7 @@ class Podcast {
 					'too_large',
 					sprintf(
 						/* translators: 1: maximum allowed dimension in pixels, 2: image width in pixels, 3: image height in pixels */
-						__( 'Podcast Cover resolution is too large. Maximum: %1$d × %1$d px. Current: %2$d × %3$d px.', 'a-ripple-song-podcast' ),
+						__( 'Podcast Cover resolution is too large. Maximum: %1$d × %1$d px. Current: %2$d × %3$d px.', 'a-ripple-song' ),
 						$max_dimension,
 						$width,
 						$height
