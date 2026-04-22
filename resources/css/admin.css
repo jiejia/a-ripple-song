@@ -32,7 +32,7 @@
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
 }
 
-.ars-admin-section h2 {
+#poststuff .ars-admin-section > h2 {
 	display: block;
 	margin: 0 0 36px;
 	background: #f6f7f7;
@@ -43,8 +43,8 @@
 	text-indent: 0;
 }
 
-.ars-admin-section h2 + .ars-admin-field,
-.ars-admin-section h2 + .ars-repeatable-field {
+#poststuff .ars-admin-section > h2 + .ars-admin-field,
+#poststuff .ars-admin-section > h2 + .ars-repeatable-field {
 	margin-top: 0;
 }
 
