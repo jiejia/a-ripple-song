@@ -91,23 +91,11 @@ if ( file_exists( $scoperAutoloadPath ) ) {
 }
 
 /**
- * Register compatibility mappings for multi-class source files.
+ * Register source fallback autoloading when Composer autoload is unavailable.
  */
 spl_autoload_register(
 	static function ( $class ) {
 		$prefix = 'ARippleSong\\';
-
-		$class_map = array(
-			'ARippleSong\\PostTypes\\EpisodeMetaBox' => A_RIPPLE_SONG_PATH . 'src/PostTypes/Episode.php',
-			'ARippleSong\\PostTypes\\EpisodeSave'   => A_RIPPLE_SONG_PATH . 'src/PostTypes/Episode.php',
-			'ARippleSong\\PostTypes\\EpisodeRest'   => A_RIPPLE_SONG_PATH . 'src/PostTypes/Episode.php',
-			'ARippleSong\\PostTypes\\EpisodeMedia'  => A_RIPPLE_SONG_PATH . 'src/PostTypes/Episode.php',
-		);
-
-		if ( isset( $class_map[ $class ] ) ) {
-			require_once $class_map[ $class ];
-			return;
-		}
 
 		if ( strncmp( $prefix, $class, strlen( $prefix ) ) !== 0 ) {
 			return;

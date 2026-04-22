@@ -4,10 +4,6 @@ namespace ARippleSong\Core;
 
 use ARippleSong\Feed\Podcast as PodcastFeed;
 use ARippleSong\PostTypes\Episode;
-use ARippleSong\PostTypes\EpisodeMedia;
-use ARippleSong\PostTypes\EpisodeRest;
-use ARippleSong\PostTypes\EpisodeSave;
-use ARippleSong\PostTypes\EpisodeMetaBox;
 use ARippleSong\Settings\Podcast;
 use ARippleSong\Taxonomies\EpisodeCategory;
 
@@ -79,21 +75,18 @@ class Plugin {
 		$this->loader->addAction( 'init', $episodeCategory, 'registerTags' );
 		$this->loader->addAction( 'init', $episodeCategory, 'register' );
 
-		$episodeRest = new EpisodeRest();
-		$this->loader->addAction( 'init', $episodeRest, 'registerEpisodeMeta' );
-		$this->loader->addAction( 'rest_api_init', $episodeRest, 'registerEpisodeRestFields' );
+		$this->loader->addAction( 'init', $episode, 'registerEpisodeMeta' );
+		$this->loader->addAction( 'rest_api_init', $episode, 'registerEpisodeRestFields' );
 
-		$episodeFields = new EpisodeMetaBox();
-		$this->loader->addAction( 'add_meta_boxes', $episodeFields, 'registerMetaBox' );
-		$this->loader->addAction( 'save_post_' . Episode::POST_TYPE, $episodeFields, 'saveMetaBox', 10 );
+		$this->loader->addAction( 'add_meta_boxes', $episode, 'registerMetaBox' );
+		$this->loader->addAction( 'save_post_' . Episode::POST_TYPE, $episode, 'saveMetaBox', 10 );
 
 		$podcastSettings = new Podcast();
 		$this->loader->addAction( 'admin_menu', $podcastSettings, 'registerMenuPage' );
 		$this->loader->addAction( 'admin_post_' . 'a_ripple_song_podcast_save', $podcastSettings, 'handleSave' );
 
-		$episodeSave = new EpisodeSave();
-		$this->loader->addAction( 'save_post_' . Episode::POST_TYPE, $episodeSave, 'onPostMetaSaved', 20, 2 );
-		$this->loader->addAction( 'admin_notices', $episodeSave, 'showAudioMetaErrorNotice' );
+		$this->loader->addAction( 'save_post_' . Episode::POST_TYPE, $episode, 'onPostMetaSaved', 20, 2 );
+		$this->loader->addAction( 'admin_notices', $episode, 'showAudioMetaErrorNotice' );
 
 		$feed = new PodcastFeed();
 		$this->loader->addAction( 'init', $feed, 'registerFeed', 20 );
@@ -109,13 +102,13 @@ class Plugin {
 	 */
 	private function defineAdminHooks() {
 		$adminAssets  = new AdminAssets( $this->getPluginName(), $this->getVersion() );
-		$episodeMedia = new EpisodeMedia();
+		$episode      = new Episode();
 
 		$this->loader->addAction( 'admin_enqueue_scripts', $adminAssets, 'enqueueStyles' );
 		$this->loader->addAction( 'admin_print_footer_scripts', $adminAssets, 'printStyles', 9999 );
 		$this->loader->addAction( 'admin_enqueue_scripts', $adminAssets, 'enqueueScripts' );
-		$this->loader->addFilter( 'upload_mimes', $episodeMedia, 'allowUploadMimes' );
-		$this->loader->addFilter( 'wp_check_filetype_and_ext', $episodeMedia, 'fixFiletypeAndExt', 10, 4 );
+		$this->loader->addFilter( 'upload_mimes', $episode, 'allowUploadMimes' );
+		$this->loader->addFilter( 'wp_check_filetype_and_ext', $episode, 'fixFiletypeAndExt', 10, 4 );
 	}
 
 	/**

@@ -209,12 +209,6 @@ class Episode {
 
 		return $data;
 	}
-}
-
-/**
- * Native episode meta box implementation.
- */
-class EpisodeMetaBox {
 
 	/**
 	 * Meta box ID.
@@ -645,15 +639,6 @@ class EpisodeMetaBox {
 
 		return array( (int) $current_user_id );
 	}
-}
-
-/**
- * Episode save hooks (auto-fill audio meta, defaults, admin notices).
- *
- * @package    ARippleSong
- * @subpackage ARippleSong/includes
- */
-class EpisodeSave {
 
 	/**
 	 * Meta key used for storing last audio meta extraction error.
@@ -1117,18 +1102,6 @@ class EpisodeSave {
 
 		return $scheme . '://' . $auth . $host . $port . $path . $query . $fragment;
 	}
-}
-
-/**
- * REST API integration (expose episode meta).
- *
- * WordPress REST endpoints only include custom fields under `meta` when those
- * meta keys are registered with `show_in_rest`.
- *
- * @package    ARippleSong
- * @subpackage ARippleSong/includes
- */
-class EpisodeRest {
 
 	/**
 	 * Register Episode Details meta keys for REST output.
@@ -1232,7 +1205,7 @@ class EpisodeRest {
 			'audio_file',
 			array(
 				'get_callback' => static function ( $post, $field_name, $request ) {
-					return (string) EpisodeRest::getEpisodeValue( (int) $post['id'], 'audio_file', '' );
+					return (string) self::getEpisodeValue( (int) $post['id'], 'audio_file', '' );
 				},
 				'schema'       => array(
 					'description' => __( 'Audio file URL', 'a-ripple-song' ),
@@ -1246,7 +1219,7 @@ class EpisodeRest {
 			'duration',
 			array(
 				'get_callback' => static function ( $post, $field_name, $request ) {
-					return (int) EpisodeRest::getEpisodeValue( (int) $post['id'], 'duration', 0 );
+					return (int) self::getEpisodeValue( (int) $post['id'], 'duration', 0 );
 				},
 				'schema'       => array(
 					'description' => __( 'Audio duration (seconds)', 'a-ripple-song' ),
@@ -1260,7 +1233,7 @@ class EpisodeRest {
 			'episode_transcript',
 			array(
 				'get_callback' => static function ( $post, $field_name, $request ) {
-					return (string) EpisodeRest::getEpisodeValue( (int) $post['id'], 'episode_transcript', '' );
+					return (string) self::getEpisodeValue( (int) $post['id'], 'episode_transcript', '' );
 				},
 				'schema'       => array(
 					'description' => __( 'Episode transcript URL', 'a-ripple-song' ),
@@ -1345,17 +1318,6 @@ class EpisodeRest {
 			)
 		);
 	}
-}
-
-/**
- * Admin upload MIME support for podcast-related media.
- *
- * Ported from the previous theme implementation.
- *
- * @package    ARippleSong
- * @subpackage ARippleSong/admin
- */
-class EpisodeMedia {
 
 	/**
 	 * Allow additional audio file types to be uploaded.
