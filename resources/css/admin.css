@@ -4,6 +4,23 @@
 
 .ars-admin-form {
 	max-width: 1120px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.post-type-ars_episode #poststuff {
+	max-width: 1280px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.post-type-ars_episode #post-body.columns-2 {
+	margin-right: 300px;
+}
+
+.post-type-ars_episode #post-body.columns-2 #postbox-container-1 {
+	margin-right: -300px;
+	width: 280px;
 }
 
 .ars-admin-section {
@@ -114,6 +131,19 @@
 }
 
 @media (max-width: 782px) {
+	.post-type-ars_episode #poststuff {
+		max-width: none;
+	}
+
+	.post-type-ars_episode #post-body.columns-2 {
+		margin-right: 0;
+	}
+
+	.post-type-ars_episode #post-body.columns-2 #postbox-container-1 {
+		margin-right: 0;
+		width: auto;
+	}
+
 	.ars-repeatable-field__grid {
 		grid-template-columns: 1fr;
 	}

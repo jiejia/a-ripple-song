@@ -43,7 +43,7 @@ class EpisodeMetaBox {
 
 		wp_nonce_field( 'ars_episode_details_save', 'ars_episode_details_nonce' );
 		?>
-		<div id="<?php echo esc_attr( self::META_BOX_ID ); ?>" class="ars-admin-form" data-ars-admin-form="episode">
+		<div id="ars-episode-details-form" class="ars-admin-form" data-ars-admin-form="episode">
 			<div class="ars-admin-section">
 				<h2><?php echo esc_html__( 'Media', 'a-ripple-song' ); ?></h2>
 				<?php $this->renderMediaField( 'audio_file', __( 'Audio File', 'a-ripple-song' ), $values['audio_file'], __( 'Required. Upload an audio file or enter audio file URL (https).', 'a-ripple-song' ), 'audio' ); ?>
