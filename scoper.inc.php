@@ -75,7 +75,7 @@ return [
     // For more see: https://github.com/humbug/php-scoper/blob/master/docs/configuration.md#prefix
     // Prefix all bundled vendor dependencies under a dedicated namespace so they never collide
     // with other Composer-based plugins.
-    'prefix' => 'ARippleSong\\Podcast\\Vendor',
+    'prefix' => 'ARippleSong\\Vendor',
 
     // The base output directory for the prefixed files.
     // This will be overridden by the 'output-dir' command line option if present.
