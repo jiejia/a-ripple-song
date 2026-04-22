@@ -41,7 +41,7 @@ class Plugin {
 	 * Initialize plugin services and hooks.
 	 */
 	public function __construct() {
-		$this->version    = defined( 'A_RIPPLE_SONG_PODCAST_VERSION' ) ? A_RIPPLE_SONG_PODCAST_VERSION : '1.0.0';
+		$this->version    = defined( 'A_RIPPLE_SONG_VERSION' ) ? A_RIPPLE_SONG_VERSION : '1.0.0';
 		$this->pluginName = 'a-ripple-song';
 		$this->loader     = new Loader();
 

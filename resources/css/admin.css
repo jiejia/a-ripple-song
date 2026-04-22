@@ -33,14 +33,19 @@
 }
 
 .ars-admin-section h2 {
-	margin-top: 0;
-	margin-bottom: 28px;
+	display: block;
+	margin: 0 0 36px;
 	background: #f6f7f7;
 	border-radius: 8px;
 	padding: 10px 12px;
 	font-size: 1.1rem;
 	line-height: 1.35;
 	text-indent: 0;
+}
+
+.ars-admin-section h2 + .ars-admin-field,
+.ars-admin-section h2 + .ars-repeatable-field {
+	margin-top: 0;
 }
 
 .ars-admin-field {

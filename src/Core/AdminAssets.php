@@ -58,11 +58,14 @@ class AdminAssets {
 	 * @since    1.0.0
 	 */
 	public function enqueueStyles() {
+		$stylePath    = A_RIPPLE_SONG_PATH . 'resources/css/admin.css';
+		$styleVersion = file_exists( $stylePath ) ? (string) filemtime( $stylePath ) : $this->version;
+
 		wp_register_style(
 			$this->pluginName,
 			A_RIPPLE_SONG_URL . 'resources/css/admin.css',
 			array(),
-			$this->version,
+			$styleVersion,
 			'all'
 		);
 
