@@ -2,7 +2,7 @@
 
 namespace ARippleSong\Feed;
 
-use ARippleSong\Core\CarbonCompat;
+use ARippleSong\Core\LegacyMeta;
 use ARippleSong\PostTypes\Episode;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -269,35 +269,11 @@ class Podcast {
 	 * @return mixed
 	 */
 	private function getEpisodeMetaValue( $post_id, $key, $default ) {
-		if ( class_exists( CarbonCompat::class ) ) {
-			$value = CarbonCompat::getPostMeta( $post_id, $key );
-			if ( is_array( $value ) ) {
-				return empty( $value ) ? $default : $value;
-			}
-			if ( null !== $value && '' !== $value ) {
-				return $value;
-			}
-		} elseif ( function_exists( 'carbon_get_post_meta' ) ) {
-			$value = carbon_get_post_meta( $post_id, $key );
-			if ( is_array( $value ) ) {
-				return empty( $value ) ? $default : $value;
-			}
-			if ( null !== $value && '' !== $value ) {
-				return $value;
-			}
+		if ( in_array( (string) $key, array( 'members', 'guests', 'episode_soundbites' ), true ) ) {
+			return LegacyMeta::getPostMetaArray( $post_id, $key, is_array( $default ) ? $default : array() );
 		}
 
-		$underscored = get_post_meta( $post_id, '_' . ltrim( (string) $key, '_' ), true );
-		if ( '' !== $underscored && null !== $underscored ) {
-			return $underscored;
-		}
-
-		$unprefixed = get_post_meta( $post_id, ltrim( (string) $key, '_' ), true );
-		if ( '' !== $unprefixed && null !== $unprefixed ) {
-			return $unprefixed;
-		}
-
-		return $default;
+		return LegacyMeta::getPostMetaValue( $post_id, $key, $default );
 	}
 
 	/**
@@ -724,27 +700,7 @@ class Podcast {
 		$feed_url          = $this->getCanonicalFeedUrl();
 
 		$get_theme_option = static function ( $name, $default = null ) {
-			$value = null;
-
-			if ( class_exists( CarbonCompat::class ) ) {
-				$value = CarbonCompat::getThemeOption( (string) $name );
-			} elseif ( function_exists( 'carbon_get_theme_option' ) ) {
-				$value = carbon_get_theme_option( (string) $name );
-			}
-
-			if ( is_array( $value ) ) {
-				return is_array( $default ) ? $value : $default;
-			}
-
-			if ( null === $value ) {
-				return $default;
-			}
-
-			if ( is_string( $value ) && $value === '' ) {
-				return $default;
-			}
-
-			return $value;
+			return LegacyMeta::getOptionValue( (string) $name, $default );
 		};
 
 		$channel_title       = (string) $get_theme_option( 'crb_podcast_title', get_bloginfo( 'name' ) );

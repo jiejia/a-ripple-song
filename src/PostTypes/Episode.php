@@ -2,7 +2,7 @@
 
 namespace ARippleSong\PostTypes;
 
-use ARippleSong\Core\CarbonCompat;
+use ARippleSong\Core\LegacyMeta;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -220,157 +220,10 @@ class Episode {
 class EpisodeFields {
 
 	/**
-	 * Register the Carbon Fields container for episode meta.
+	 * Legacy compatibility hook for the old Carbon Fields implementation.
 	 */
 	public function registerFields() {
-		if ( ! class_exists( CarbonCompat::class ) ) {
-			return;
-		}
-
-		$container_class = CarbonCompat::containerClass();
-		$field_class     = CarbonCompat::fieldClass();
-
-		if ( ! $container_class || ! $field_class ) {
-			return;
-		}
-
-		$default_members = $this->getDefaultMembersValue();
-
-		$container_class::make( 'post_meta', 'ars_episode_details', __( 'Episode Details', 'a-ripple-song' ) )
-			->where( 'post_type', '=', Episode::POST_TYPE )
-			->set_context( 'normal' )
-			->set_priority( 'high' )
-			->add_fields(
-				array(
-					$field_class::make( 'text', 'audio_file', __( 'Audio File', 'a-ripple-song' ) )
-						->set_help_text( __( 'Required. Upload an audio file or enter audio file URL (https).', 'a-ripple-song' ) )
-						->set_required( true )
-						->set_attribute( 'type', 'url' )
-						->set_attribute( 'placeholder', 'https://' )
-						->set_attribute( 'data-ars-media-uploader', 'audio' ),
-					$field_class::make( 'text', 'duration', __( 'Duration (seconds)', 'a-ripple-song' ) )
-						->set_help_text( __( 'Auto detected from "Audio File" on save.', 'a-ripple-song' ) )
-						->set_attribute( 'type', 'number' )
-						->set_attribute( 'min', '0' )
-						->set_attribute( 'step', '1' )
-						->set_attribute( 'readOnly', 'readOnly' ),
-					$field_class::make( 'text', 'audio_length', __( 'Audio Length (bytes)', 'a-ripple-song' ) )
-						->set_help_text( __( 'Auto detected from "Audio File" on save.', 'a-ripple-song' ) )
-						->set_attribute( 'type', 'number' )
-						->set_attribute( 'min', '1' )
-						->set_attribute( 'readOnly', 'readOnly' ),
-					$field_class::make( 'text', 'audio_mime', __( 'Audio MIME Type', 'a-ripple-song' ) )
-						->set_help_text( __( 'Auto detected from "Audio File" on save.', 'a-ripple-song' ) )
-						->set_default_value( 'audio/mpeg' )
-						->set_attribute( 'readOnly', 'readOnly' ),
-					$field_class::make( 'radio', 'episode_explicit', __( 'Explicit', 'a-ripple-song' ) )
-						->set_help_text( __( 'Required. clean / explicit.', 'a-ripple-song' ) )
-						->set_options(
-							array(
-								'clean'    => __( 'clean', 'a-ripple-song' ),
-								'explicit' => __( 'explicit', 'a-ripple-song' ),
-							)
-						)
-						->set_default_value( 'clean' )
-						->set_required( true ),
-					$field_class::make( 'select', 'episode_type', __( 'Episode Type', 'a-ripple-song' ) )
-						->set_help_text( __( 'Required. full / trailer / bonus', 'a-ripple-song' ) )
-						->set_options(
-							array(
-								'full'    => __( 'full', 'a-ripple-song' ),
-								'trailer' => __( 'trailer', 'a-ripple-song' ),
-								'bonus'   => __( 'bonus', 'a-ripple-song' ),
-							)
-						)
-						->set_default_value( 'full' )
-						->set_required( true ),
-					$field_class::make( 'text', 'episode_number', __( 'Episode Number', 'a-ripple-song' ) )
-						->set_help_text( __( 'Optional but recommended. Integer.', 'a-ripple-song' ) )
-						->set_attribute( 'type', 'number' )
-						->set_attribute( 'min', '0' )
-						->set_attribute( 'step', '1' ),
-					$field_class::make( 'text', 'season_number', __( 'Season Number', 'a-ripple-song' ) )
-						->set_help_text( __( 'Optional. Integer.', 'a-ripple-song' ) )
-						->set_attribute( 'type', 'number' )
-						->set_attribute( 'min', '0' )
-						->set_attribute( 'step', '1' ),
-					$field_class::make( 'text', 'episode_author', __( 'Episode Author (override)', 'a-ripple-song' ) )
-						->set_help_text( __( 'Optional. Overrides channel author for this episode.', 'a-ripple-song' ) ),
-					$field_class::make( 'image', 'episode_image', __( 'Episode Cover (square)', 'a-ripple-song' ) )
-						->set_value_type( 'url' )
-						->set_help_text( __( 'Optional. Square 1400–3000px. Overrides channel cover.', 'a-ripple-song' ) ),
-					$field_class::make( 'text', 'episode_transcript', __( 'Transcript (optional)', 'a-ripple-song' ) )
-						->set_help_text( __( 'Optional. Upload a transcript file (vtt/srt/txt/pdf) or enter a transcript URL (https).', 'a-ripple-song' ) )
-						->set_attribute( 'type', 'url' )
-						->set_attribute( 'placeholder', 'https://' )
-						->set_attribute( 'data-ars-media-uploader', 'transcript' ),
-					$field_class::make( 'text', 'itunes_title', __( 'iTunes Title (optional)', 'a-ripple-song' ) )
-						->set_help_text( __( 'Optional. Apple Podcasts: overrides the episode title for <itunes:title>.', 'a-ripple-song' ) ),
-					$field_class::make( 'text', 'episode_chapters', __( 'Chapters (Podcasting 2.0)', 'a-ripple-song' ) )
-						->set_help_text( __( 'Optional. Provide a chapters JSON URL/file for <podcast:chapters>.', 'a-ripple-song' ) )
-						->set_attribute( 'type', 'url' )
-						->set_attribute( 'placeholder', 'https://' )
-						->set_attribute( 'data-ars-media-uploader', 'chapters' ),
-					$field_class::make( 'text', 'episode_chapters_type', __( 'Chapters MIME Type', 'a-ripple-song' ) )
-						->set_help_text( __( 'Optional. Defaults to application/json+chapters.', 'a-ripple-song' ) )
-						->set_default_value( 'application/json+chapters' ),
-					$field_class::make( 'complex', 'episode_soundbites', __( 'Soundbites (Podcasting 2.0)', 'a-ripple-song' ) )
-						->set_help_text( __( 'Optional. Adds one or more <podcast:soundbite> tags.', 'a-ripple-song' ) )
-						->setup_labels(
-							array(
-								'singular_name' => __( 'Soundbite', 'a-ripple-song' ),
-								'plural_name'   => __( 'Soundbites', 'a-ripple-song' ),
-							)
-						)
-						->add_fields(
-							array(
-								$field_class::make( 'text', 'start_time', __( 'Start Time (seconds)', 'a-ripple-song' ) )
-									->set_attribute( 'type', 'number' )
-									->set_attribute( 'min', '0' )
-									->set_attribute( 'step', '0.01' ),
-								$field_class::make( 'text', 'duration', __( 'Duration (seconds)', 'a-ripple-song' ) )
-									->set_attribute( 'type', 'number' )
-									->set_attribute( 'min', '0.01' )
-									->set_attribute( 'step', '0.01' ),
-								$field_class::make( 'text', 'title', __( 'Title (optional)', 'a-ripple-song' ) ),
-							)
-						),
-					$field_class::make( 'text', 'episode_subtitle', __( 'Subtitle', 'a-ripple-song' ) )
-						->set_help_text( __( 'Optional. Short subtitle for iTunes.', 'a-ripple-song' ) ),
-					$field_class::make( 'textarea', 'episode_summary', __( 'Summary', 'a-ripple-song' ) )
-						->set_help_text( __( 'Optional. Plain text summary for iTunes.', 'a-ripple-song' ) ),
-					$field_class::make( 'text', 'episode_guid', __( 'Custom GUID (optional)', 'a-ripple-song' ) )
-						->set_help_text( __( 'Optional. If empty, feed uses WP permalink as GUID.', 'a-ripple-song' ) ),
-					$field_class::make( 'radio', 'episode_block', __( 'iTunes Block', 'a-ripple-song' ) )
-						->set_help_text( __( 'Optional. yes = hide this episode in Apple Podcasts.', 'a-ripple-song' ) )
-						->set_options(
-							array(
-								'no'  => __( 'no', 'a-ripple-song' ),
-								'yes' => __( 'yes', 'a-ripple-song' ),
-							)
-						)
-						->set_default_value( 'no' ),
-					$field_class::make( 'association', 'members', __( 'Members', 'a-ripple-song' ) )
-						->set_help_text( __( 'Select episode members (administrators, authors, editors).', 'a-ripple-song' ) )
-						->set_types(
-							array(
-								array(
-									'type' => 'user',
-								),
-							)
-						)
-						->set_default_value( $default_members ),
-					$field_class::make( 'association', 'guests', __( 'Guests', 'a-ripple-song' ) )
-						->set_help_text( __( 'Select episode guests (contributors).', 'a-ripple-song' ) )
-						->set_types(
-							array(
-								array(
-									'type' => 'user',
-								),
-							)
-						),
-				)
-			);
+		return;
 	}
 
 	/**
@@ -489,10 +342,6 @@ class EpisodeSave {
 	 * @return void
 	 */
 	private function setEpisodeFieldValue( $post_id, $key, $value ) {
-		if ( class_exists( CarbonCompat::class ) && CarbonCompat::setPostMeta( $post_id, $key, $value ) ) {
-			return;
-		}
-
 		update_post_meta( $post_id, '_' . ltrim( (string) $key, '_' ), $value );
 	}
 
@@ -720,17 +569,15 @@ class EpisodeSave {
 	 * @return string
 	 */
 	private function getEpisodeFieldValue( $post_id, $key ) {
-		if ( class_exists( CarbonCompat::class ) ) {
-			$value = CarbonCompat::getPostMeta( $post_id, $key );
-			if ( is_string( $value ) ) {
-				return (string) $value;
-			}
-			if ( is_numeric( $value ) ) {
-				return (string) $value;
-			}
+		$value = LegacyMeta::getPostMetaValue( $post_id, $key, '' );
+		if ( is_string( $value ) ) {
+			return $value;
+		}
+		if ( is_numeric( $value ) ) {
+			return (string) $value;
 		}
 
-		return (string) get_post_meta( $post_id, '_' . ltrim( (string) $key, '_' ), true );
+		return '';
 	}
 
 	/**
@@ -894,9 +741,7 @@ class EpisodeRest {
 	public function registerEpisodeMeta() {
 		$post_type = Episode::POST_TYPE;
 
-		// Carbon Fields stores post meta as protected keys (leading underscore).
-		// Register only scalar fields here. Complex/association fields are exposed via register_rest_field.
-		$this->registerStringMeta( $post_type, '_audio_file', true, true );
+			$this->registerStringMeta( $post_type, '_audio_file', true, true );
 		$this->registerIntMeta( $post_type, '_duration' );
 		$this->registerIntMeta( $post_type, '_audio_length' );
 		$this->registerStringMeta( $post_type, '_audio_mime' );
@@ -913,11 +758,38 @@ class EpisodeRest {
 		$this->registerStringMeta( $post_type, '_episode_chapters', true, true );
 		$this->registerStringMeta( $post_type, '_episode_chapters_type' );
 
-		$this->registerStringMeta( $post_type, '_episode_subtitle' );
-		$this->registerStringMeta( $post_type, '_episode_summary' );
-		$this->registerStringMeta( $post_type, '_episode_guid' );
-		$this->registerStringMeta( $post_type, '_episode_block' );
-	}
+			$this->registerStringMeta( $post_type, '_episode_subtitle' );
+			$this->registerStringMeta( $post_type, '_episode_summary' );
+			$this->registerStringMeta( $post_type, '_episode_guid' );
+			$this->registerStringMeta( $post_type, '_episode_block' );
+
+			$this->registerArrayMeta(
+				$post_type,
+				'_members',
+				array(
+					'type' => 'integer',
+				)
+			);
+			$this->registerArrayMeta(
+				$post_type,
+				'_guests',
+				array(
+					'type' => 'integer',
+				)
+			);
+			$this->registerArrayMeta(
+				$post_type,
+				'_episode_soundbites',
+				array(
+					'type'       => 'object',
+					'properties' => array(
+						'start_time' => array( 'type' => 'number' ),
+						'duration'   => array( 'type' => 'number' ),
+						'title'      => array( 'type' => 'string' ),
+					),
+				)
+			);
+		}
 
 	/**
 	 * Expose selected Episode Details fields as top-level REST fields (theme parity).
@@ -1012,32 +884,7 @@ class EpisodeRest {
 	 * @return string|int
 	 */
 	private static function getEpisodeValue( $post_id, $key, $default ) {
-		if ( class_exists( CarbonCompat::class ) ) {
-			$value = CarbonCompat::getPostMeta( $post_id, $key );
-			if ( is_array( $value ) ) {
-				return $default;
-			}
-
-			if ( null !== $value && '' !== $value ) {
-				return $value;
-			}
-		} elseif ( function_exists( 'carbon_get_post_meta' ) ) {
-			$value = carbon_get_post_meta( $post_id, $key );
-			if ( is_array( $value ) ) {
-				return $default;
-			}
-
-			if ( null !== $value && '' !== $value ) {
-				return $value;
-			}
-		}
-
-		$raw = get_post_meta( $post_id, '_' . ltrim( (string) $key, '_' ), true );
-		if ( '' === $raw || null === $raw ) {
-			return $default;
-		}
-
-		return $raw;
+		return LegacyMeta::getPostMetaValue( $post_id, $key, $default );
 	}
 
 	private function registerStringMeta( $post_type, $key, $is_url = false, $public_read = false ) {

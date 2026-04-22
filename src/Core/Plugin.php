@@ -4,11 +4,11 @@ namespace ARippleSong\Core;
 
 use ARippleSong\Feed\Podcast as PodcastFeed;
 use ARippleSong\PostTypes\Episode;
-use ARippleSong\PostTypes\EpisodeFields;
 use ARippleSong\PostTypes\EpisodeMedia;
 use ARippleSong\PostTypes\EpisodeRest;
 use ARippleSong\PostTypes\EpisodeSave;
-use ARippleSong\Settings\Podcast as PodcastSettings;
+use ARippleSong\PostTypes\EpisodeMetaBox;
+use ARippleSong\Settings\PodcastAdmin;
 use ARippleSong\Taxonomies\EpisodeCategory;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -68,14 +68,6 @@ class Plugin {
 	 * Register podcast content, settings, REST, and feed hooks.
 	 */
 	private function definePodcastHooks() {
-		$carbon = new Carbon();
-		$this->loader->addAction( 'after_setup_theme', $carbon, 'boot' );
-		$this->loader->addAction( 'init', $carbon, 'bootIfNeeded', 0 );
-
-		$carbonUiI18n = new CarbonFieldsUiI18n();
-		$this->loader->addAction( 'admin_init', $carbonUiI18n, 'loadPhpTextdomain' );
-		$this->loader->addFilter( 'carbon_fields_config', $carbonUiI18n, 'filterCarbonFieldsConfig' );
-
 		$episode = new Episode();
 		$this->loader->addAction( 'after_setup_theme', $episode, 'enableThumbnailThemeSupport' );
 		$this->loader->addAction( 'init', $episode, 'registerPostType' );
@@ -91,20 +83,16 @@ class Plugin {
 		$this->loader->addAction( 'init', $episodeRest, 'registerEpisodeMeta' );
 		$this->loader->addAction( 'rest_api_init', $episodeRest, 'registerEpisodeRestFields' );
 
-		$episodeFields = new EpisodeFields();
-		$this->loader->addAction( 'carbon_fields_register_fields', $episodeFields, 'registerFields' );
+		$episodeFields = new EpisodeMetaBox();
+		$this->loader->addAction( 'add_meta_boxes', $episodeFields, 'registerMetaBox' );
+		$this->loader->addAction( 'save_post_' . Episode::POST_TYPE, $episodeFields, 'saveMetaBox', 10 );
 
-		$podcastSettings = new PodcastSettings();
-		$this->loader->addAction( 'carbon_fields_register_fields', $podcastSettings, 'registerFields' );
-		$this->loader->addFilter( 'carbon_fields_should_save_field_value', $podcastSettings, 'validateCoverFieldValue', 10, 3 );
-		$this->loader->addAction( 'admin_notices', $podcastSettings, 'displayCoverValidationErrors' );
-		$this->loader->addFilter( 'carbon_fields_attachment_not_found_metadata', $podcastSettings, 'previewExternalCoverUrl', 10, 3 );
-		$this->loader->addFilter( 'rest_pre_dispatch', $podcastSettings, 'validateCoverOnRestSave', 10, 3 );
-		$this->loader->addAction( 'admin_menu', $podcastSettings, 'removeLandingSubmenuItem', 999 );
-		$this->loader->addAction( 'admin_init', $podcastSettings, 'maybeRedirectSettingsLandingPage' );
+		$podcastSettings = new PodcastAdmin();
+		$this->loader->addAction( 'admin_menu', $podcastSettings, 'registerMenuPage' );
+		$this->loader->addAction( 'admin_post_' . 'a_ripple_song_podcast_save', $podcastSettings, 'handleSave' );
 
 		$episodeSave = new EpisodeSave();
-		$this->loader->addAction( 'carbon_fields_post_meta_container_saved', $episodeSave, 'onPostMetaSaved', 10, 2 );
+		$this->loader->addAction( 'save_post_' . Episode::POST_TYPE, $episodeSave, 'onPostMetaSaved', 20, 2 );
 		$this->loader->addAction( 'admin_notices', $episodeSave, 'showAudioMetaErrorNotice' );
 
 		$feed = new PodcastFeed();

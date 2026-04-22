@@ -1,10 +1,5 @@
-(function( $ ) {
+( function( $ ) {
 	'use strict';
-
-	/**
-	 * Enhance Carbon Fields URL inputs to behave like CMB2 "file" fields:
-	 * URL input + Upload + Remove + Download.
-	 */
 
 	function arsGetAdminConfig() {
 		if ( typeof window.arsPodcastAdmin === 'object' && window.arsPodcastAdmin ) {
@@ -22,75 +17,27 @@
 			},
 			mediaTypes: {
 				audio: 'audio',
+				image: 'image',
 				transcript: null,
 				chapters: 'application'
-			},
-			metaboxId: 'carbon_fields_container_ars_episode_details'
+			}
 		};
 	}
 
-	function arsSetReactInputValue( input, value ) {
+	function arsSetInputValue( input, value ) {
 		if ( ! input ) {
 			return;
 		}
 
-		var setter = Object.getOwnPropertyDescriptor( window.HTMLInputElement.prototype, 'value' );
-		if ( setter && typeof setter.set === 'function' ) {
-			setter.set.call( input, value );
+		var descriptor = Object.getOwnPropertyDescriptor( window.HTMLInputElement.prototype, 'value' );
+		if ( descriptor && typeof descriptor.set === 'function' ) {
+			descriptor.set.call( input, value );
 		} else {
 			input.value = value;
 		}
 
 		input.dispatchEvent( new Event( 'input', { bubbles: true } ) );
 		input.dispatchEvent( new Event( 'change', { bubbles: true } ) );
-	}
-
-	function arsUpdateMediaActionsState( input, actionsEl ) {
-		var url = ( input && input.value ? String( input.value ).trim() : '' );
-		var filelineEl = actionsEl;
-		var downloadEl = filelineEl ? filelineEl.querySelector( '.ars-media-url-fileline__download' ) : null;
-		var removeEl = filelineEl ? filelineEl.querySelector( '.ars-media-url-fileline__remove' ) : null;
-		var nameEl = filelineEl ? filelineEl.querySelector( '.ars-media-url-fileline__name' ) : null;
-
-		if ( filelineEl ) {
-			if ( url ) {
-				filelineEl.style.display = '';
-				if ( nameEl ) {
-					nameEl.textContent = arsFilenameFromUrl( url );
-				}
-			} else {
-				filelineEl.style.display = 'none';
-				if ( nameEl ) {
-					nameEl.textContent = '';
-				}
-			}
-		}
-
-		if ( downloadEl ) {
-			if ( url ) {
-				downloadEl.href = url;
-				downloadEl.classList.remove( 'is-disabled' );
-				downloadEl.removeAttribute( 'aria-disabled' );
-				downloadEl.removeAttribute( 'tabindex' );
-			} else {
-				downloadEl.href = '#';
-				downloadEl.classList.add( 'is-disabled' );
-				downloadEl.setAttribute( 'aria-disabled', 'true' );
-				downloadEl.setAttribute( 'tabindex', '-1' );
-			}
-		}
-
-		if ( removeEl ) {
-			if ( url ) {
-				removeEl.classList.remove( 'is-disabled' );
-				removeEl.removeAttribute( 'aria-disabled' );
-				removeEl.removeAttribute( 'tabindex' );
-			} else {
-				removeEl.classList.add( 'is-disabled' );
-				removeEl.setAttribute( 'aria-disabled', 'true' );
-				removeEl.setAttribute( 'tabindex', '-1' );
-			}
-		}
 	}
 
 	function arsFilenameFromUrl( url ) {
@@ -101,6 +48,7 @@
 
 		safe = safe.split( '#' )[ 0 ];
 		safe = safe.split( '?' )[ 0 ];
+
 		var parts = safe.split( '/' );
 		var last = parts.length ? parts[ parts.length - 1 ] : safe;
 
@@ -108,6 +56,48 @@
 			return decodeURIComponent( last );
 		} catch ( e ) {
 			return last;
+		}
+	}
+
+	function arsUpdateMediaState( input, state ) {
+		var url = input && input.value ? String( input.value ).trim() : '';
+		var fileline = state.fileline;
+		var downloadLink = state.downloadLink;
+		var removeLink = state.removeLink;
+		var nameNode = state.nameNode;
+
+		if ( fileline ) {
+			fileline.style.display = url ? '' : 'none';
+		}
+
+		if ( nameNode ) {
+			nameNode.textContent = url ? arsFilenameFromUrl( url ) : '';
+		}
+
+		if ( downloadLink ) {
+			if ( url ) {
+				downloadLink.href = url;
+				downloadLink.classList.remove( 'is-disabled' );
+				downloadLink.removeAttribute( 'aria-disabled' );
+				downloadLink.removeAttribute( 'tabindex' );
+			} else {
+				downloadLink.href = '#';
+				downloadLink.classList.add( 'is-disabled' );
+				downloadLink.setAttribute( 'aria-disabled', 'true' );
+				downloadLink.setAttribute( 'tabindex', '-1' );
+			}
+		}
+
+		if ( removeLink ) {
+			if ( url ) {
+				removeLink.classList.remove( 'is-disabled' );
+				removeLink.removeAttribute( 'aria-disabled' );
+				removeLink.removeAttribute( 'tabindex' );
+			} else {
+				removeLink.classList.add( 'is-disabled' );
+				removeLink.setAttribute( 'aria-disabled', 'true' );
+				removeLink.setAttribute( 'tabindex', '-1' );
+			}
 		}
 	}
 
@@ -119,7 +109,6 @@
 		uploadBtn.type = 'button';
 		uploadBtn.className = 'button ars-media-url-actions__upload';
 		uploadBtn.textContent = config.i18n.upload;
-
 		uploadActions.appendChild( uploadBtn );
 
 		var fileline = document.createElement( 'div' );
@@ -178,8 +167,13 @@
 				var selection = frame.state().get( 'selection' );
 				var attachment = selection && selection.first ? selection.first().toJSON() : null;
 				if ( attachment && attachment.url ) {
-					arsSetReactInputValue( input, attachment.url );
-					arsUpdateMediaActionsState( input, fileline );
+					arsSetInputValue( input, attachment.url );
+					arsUpdateMediaState( input, {
+						fileline: fileline,
+						downloadLink: downloadLink,
+						removeLink: removeLink,
+						nameNode: nameStrong
+					} );
 				}
 			} );
 			frame.open();
@@ -190,8 +184,13 @@
 			if ( removeLink.classList.contains( 'is-disabled' ) ) {
 				return;
 			}
-			arsSetReactInputValue( input, '' );
-			arsUpdateMediaActionsState( input, fileline );
+			arsSetInputValue( input, '' );
+			arsUpdateMediaState( input, {
+				fileline: fileline,
+				downloadLink: downloadLink,
+				removeLink: removeLink,
+				nameNode: nameStrong
+			} );
 		} );
 
 		downloadLink.addEventListener( 'click', function( e ) {
@@ -201,17 +200,28 @@
 		} );
 
 		input.addEventListener( 'input', function() {
-			arsUpdateMediaActionsState( input, fileline );
+			arsUpdateMediaState( input, {
+				fileline: fileline,
+				downloadLink: downloadLink,
+				removeLink: removeLink,
+				nameNode: nameStrong
+			} );
 		} );
 
-		arsUpdateMediaActionsState( input, fileline );
+		arsUpdateMediaState( input, {
+			fileline: fileline,
+			downloadLink: downloadLink,
+			removeLink: removeLink,
+			nameNode: nameStrong
+		} );
+
 		return {
 			uploadActions: uploadActions,
 			fileline: fileline
 		};
 	}
 
-	function arsEnhanceMediaUrlFields( root, config ) {
+	function arsEnhanceMediaFields( root, config ) {
 		if ( ! root ) {
 			return;
 		}
@@ -222,53 +232,78 @@
 				return;
 			}
 
-			var body = input.closest( '.cf-field__body' ) || input.parentElement;
+			var body = input.closest( '.ars-media-field' ) || input.parentElement;
 			if ( ! body ) {
 				return;
 			}
 
-			if ( body.querySelector( '.ars-media-url-actions' ) || body.querySelector( '.ars-media-url-fileline' ) ) {
+			var existingActions = body.querySelector( '.ars-media-url-actions' );
+			var existingFileline = body.querySelector( '.ars-media-url-fileline' );
+			if ( existingActions || existingFileline ) {
 				input.dataset.arsMediaEnhanced = '1';
 				return;
 			}
 
-			body.classList.add( 'ars-media-url-field' );
+			body.classList.add( 'ars-media-field--enhanced' );
 
 			var ui = arsBuildMediaUi( input, config );
 			body.appendChild( ui.uploadActions );
-
-			var helpEl = body.querySelector( '.cf-field__help' );
-			if ( helpEl && helpEl.parentNode ) {
-				helpEl.insertAdjacentElement( 'afterend', ui.fileline );
-			} else {
-				body.appendChild( ui.fileline );
-			}
-
+			body.appendChild( ui.fileline );
 			input.dataset.arsMediaEnhanced = '1';
 		} );
 	}
 
-	$( function() {
-		var config = arsGetAdminConfig();
-		var root = document.getElementById( config.metaboxId );
+	function arsEnhanceRepeatables( root ) {
 		if ( ! root ) {
 			return;
 		}
 
-		arsEnhanceMediaUrlFields( root, config );
-
-		var pending = null;
-		var observer = new MutationObserver( function() {
-			if ( pending ) {
-				window.clearTimeout( pending );
+		root.querySelectorAll( '[data-ars-repeatable-field]' ).forEach( function( field ) {
+			if ( field.dataset.arsRepeatableEnhanced === '1' ) {
+				return;
 			}
 
-			pending = window.setTimeout( function() {
-				arsEnhanceMediaUrlFields( root, config );
-			}, 50 );
-		} );
+			field.addEventListener( 'click', function( e ) {
+				var addButton = e.target.closest( '[data-ars-repeatable-add]' );
+				if ( addButton && field.contains( addButton ) ) {
+					var template = field.querySelector( 'template[data-ars-repeatable-template]' );
+					var rows = field.querySelector( '[data-ars-repeatable-rows]' );
+					if ( template && rows ) {
+						var fragment = template.content ? template.content.cloneNode( true ) : null;
+						if ( fragment ) {
+							rows.appendChild( fragment );
+						}
+					}
+					e.preventDefault();
+					return;
+				}
 
-		observer.observe( root, { subtree: true, childList: true } );
+				var removeButton = e.target.closest( '[data-ars-repeatable-remove]' );
+				if ( removeButton && field.contains( removeButton ) ) {
+					var row = removeButton.closest( '.ars-repeatable-field__row' );
+					if ( row && row.parentNode ) {
+						row.parentNode.removeChild( row );
+					}
+					e.preventDefault();
+				}
+			} );
+
+			field.dataset.arsRepeatableEnhanced = '1';
+		} );
+	}
+
+	function arsEnhanceAdminForms() {
+		var config = arsGetAdminConfig();
+		var roots = document.querySelectorAll( '[data-ars-admin-form]' );
+
+		roots.forEach( function( root ) {
+			arsEnhanceMediaFields( root, config );
+			arsEnhanceRepeatables( root );
+		} );
+	}
+
+	$( function() {
+		arsEnhanceAdminForms();
 	} );
 
-})( jQuery );
+} )( jQuery );

@@ -1,86 +1,125 @@
 /**
- * All of the CSS for your admin-specific functionality should be
- * included in this file.
+ * Admin styles for the native podcast forms.
  */
 
-/* Carbon Fields: make episode meta fields feel centered and padded. */
-body.post-type-ars_episode #carbon_fields_container_ars_episode_details .inside {
-	padding: 0;
+.ars-admin-form {
+	max-width: 1120px;
 }
 
-body.post-type-ars_episode #carbon_fields_container_ars_episode_details .container-carbon_fields_container_ars_episode_details {
-	box-sizing: border-box;
-	max-width: 980px;
-	margin: 0 auto;
-	padding: 0;
-}
-
-body.post-type-ars_episode #carbon_fields_container_ars_episode_details .container-carbon_fields_container_ars_episode_details .cf-container__fields {
-	box-sizing: border-box;
-	padding: 20px 24px;
-
-
+.ars-admin-section {
 	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 16px;
+	padding: 20px 24px;
+	margin: 24px 0;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
 }
 
-/* Carbon Fields: file URL inputs with Upload/Remove/Download actions. */
-body.post-type-ars_episode #carbon_fields_container_ars_episode_details .ars-media-url-field {
+.ars-admin-section h2 {
+	margin-top: 0;
+	margin-bottom: 12px;
+	font-size: 1.1rem;
+}
+
+.ars-admin-field {
+	margin-bottom: 18px;
+}
+
+.ars-admin-field__label {
+	display: block;
+	font-weight: 600;
+	margin-bottom: 6px;
+}
+
+.ars-admin-field .description,
+.ars-admin-section .description {
+	margin-top: 4px;
+	color: #646970;
+}
+
+.ars-media-field {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 8px;
 	align-items: center;
 }
 
-body.post-type-ars_episode #carbon_fields_container_ars_episode_details .ars-media-url-field input[data-ars-media-uploader] {
+.ars-media-field input[type="url"],
+.ars-media-field input[type="text"] {
 	flex: 1 1 420px;
 	min-width: 240px;
 }
 
-body.post-type-ars_episode #carbon_fields_container_ars_episode_details .ars-media-url-actions {
+.ars-media-field--enhanced .ars-media-url-actions {
 	display: flex;
 	gap: 6px;
 	align-items: center;
 }
 
-body.post-type-ars_episode #carbon_fields_container_ars_episode_details .ars-media-url-fileline {
+.ars-media-field--enhanced .ars-media-url-fileline {
 	flex: 0 0 100%;
 	margin-top: 4px;
 	color: #50575e;
 }
 
-body.post-type-ars_episode #carbon_fields_container_ars_episode_details .ars-media-url-fileline__name {
+.ars-media-field--enhanced .ars-media-url-fileline__name {
 	color: #1d2327;
 }
 
-body.post-type-ars_episode #carbon_fields_container_ars_episode_details .ars-media-url-fileline__download,
-body.post-type-ars_episode #carbon_fields_container_ars_episode_details .ars-media-url-fileline__remove {
+.ars-media-field--enhanced .ars-media-url-fileline__download,
+.ars-media-field--enhanced .ars-media-url-fileline__remove {
 	white-space: nowrap;
 }
 
-body.post-type-ars_episode #carbon_fields_container_ars_episode_details .ars-media-url-fileline__download.is-disabled,
-body.post-type-ars_episode #carbon_fields_container_ars_episode_details .ars-media-url-fileline__remove.is-disabled {
+.ars-media-field--enhanced .ars-media-url-fileline__download.is-disabled,
+.ars-media-field--enhanced .ars-media-url-fileline__remove.is-disabled {
 	pointer-events: none;
 	opacity: 0.5;
 }
 
-body.post-type-ars_episode #carbon_fields_container_ars_episode_details .ars-media-url-field .cf-field__help {
-	flex: 0 0 100%;
+.ars-repeatable-field {
+	margin-top: 8px;
 }
-.block-editor .cf-container__fields{
-	border:1px solid #e0e0e0;
-	margin-bottom:10px;
-	border-radius:4px;
-	padding:5px;
-}
-body.post-type-ars_episode #carbon_fields_container_ars_episode_details .container-carbon_fields_container_ars_episode_details .cf-container__fields{
-	padding:0px;
-	border-bottom:none;
-}
-.cf-container .cf-field{
-	border:none;
-	border-bottom:1px solid #e0e0e0;
-}
-.block-editor .cf-field{
-	padding:15px;
 
+.ars-repeatable-field__row {
+	border: 1px solid #dcdcde;
+	border-radius: 12px;
+	background: #f8fafc;
+	padding: 12px;
+	margin-top: 12px;
+}
+
+.ars-repeatable-field__grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 10px;
+	align-items: start;
+}
+
+.ars-repeatable-field__grid input {
+	width: 100%;
+}
+
+.ars-repeatable-field__row .button-link-delete {
+	margin-top: 10px;
+}
+
+.ars-repeatable-field__header h3 {
+	margin: 0 0 6px;
+	font-size: 1rem;
+}
+
+.ars-repeatable-field__header .description {
+	margin-top: 0;
+}
+
+@media (max-width: 782px) {
+	.ars-repeatable-field__grid {
+		grid-template-columns: 1fr;
+	}
+
+	.ars-media-field input[type="url"],
+	.ars-media-field input[type="text"] {
+		flex-basis: 100%;
+	}
 }

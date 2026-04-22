@@ -4,8 +4,7 @@
   "license": "GPL-3.0-only",
   "type": "wordpress-plugin",
   "require": {
-    "php": ">=8.2",
-    "htmlburger/carbon-fields": "^3.6"
+    "php": ">=8.2"
   },
   "require-dev": {
     "humbug/php-scoper": "^0.18.17"

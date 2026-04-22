@@ -98,12 +98,9 @@ spl_autoload_register(
 		$prefix = 'ARippleSong\\';
 
 		$class_map = array(
-			'ARippleSong\\Core\\CarbonCompat'        => A_RIPPLE_SONG_PATH . 'src/Core/Carbon.php',
-			'ARippleSong\\Core\\CarbonFieldsUiI18n'   => A_RIPPLE_SONG_PATH . 'src/Core/Carbon.php',
-			'ARippleSong\\PostTypes\\EpisodeFields'   => A_RIPPLE_SONG_PATH . 'src/PostTypes/Episode.php',
-			'ARippleSong\\PostTypes\\EpisodeSave'     => A_RIPPLE_SONG_PATH . 'src/PostTypes/Episode.php',
-			'ARippleSong\\PostTypes\\EpisodeRest'     => A_RIPPLE_SONG_PATH . 'src/PostTypes/Episode.php',
-			'ARippleSong\\PostTypes\\EpisodeMedia'    => A_RIPPLE_SONG_PATH . 'src/PostTypes/Episode.php',
+			'ARippleSong\\PostTypes\\EpisodeSave'   => A_RIPPLE_SONG_PATH . 'src/PostTypes/Episode.php',
+			'ARippleSong\\PostTypes\\EpisodeRest'   => A_RIPPLE_SONG_PATH . 'src/PostTypes/Episode.php',
+			'ARippleSong\\PostTypes\\EpisodeMedia'  => A_RIPPLE_SONG_PATH . 'src/PostTypes/Episode.php',
 		);
 
 		if ( isset( $class_map[ $class ] ) ) {

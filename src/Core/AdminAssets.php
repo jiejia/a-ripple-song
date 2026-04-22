@@ -58,23 +58,10 @@ class AdminAssets {
 	 * @since    1.0.0
 	 */
 	public function enqueueStyles() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
 		wp_register_style(
 			$this->pluginName,
 			A_RIPPLE_SONG_URL . 'resources/css/admin.css',
-			wp_style_is( 'carbon-fields-metaboxes', 'registered' ) ? array( 'carbon-fields-metaboxes' ) : array(),
+			array(),
 			$this->version,
 			'all'
 		);
@@ -83,12 +70,6 @@ class AdminAssets {
 
 	/**
 	 * Print plugin admin stylesheet as late as possible.
-	 *
-	 * WordPress prints "late styles" in admin via `_wp_footer_scripts()`. Carbon Fields
-	 * enqueues its styles late, so we print our stylesheet after everything else to
-	 * make overrides reliable.
-	 *
-	 * @since    1.0.0
 	 */
 	public function printStyles() {
 		if ( ! is_admin() ) {
@@ -104,21 +85,10 @@ class AdminAssets {
 	 * @since    1.0.0
 	 */
 	public function enqueueScripts() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
 		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
 		if ( $screen && $screen->base && $screen->post_type && $screen->post_type === Episode::POST_TYPE && in_array( $screen->base, array( 'post', 'post-new' ), true ) ) {
+			wp_enqueue_media();
+		} elseif ( $screen && is_string( $screen->id ) && strpos( $screen->id, 'a-ripple-song-podcast' ) !== false ) {
 			wp_enqueue_media();
 		}
 
@@ -128,20 +98,20 @@ class AdminAssets {
 			$this->pluginName,
 			'arsPodcastAdmin',
 			array(
-					'i18n'       => array(
-						'upload'     => __( 'Upload', 'a-ripple-song' ),
-						'remove'     => __( 'Remove', 'a-ripple-song' ),
-						'download'   => __( 'Download', 'a-ripple-song' ),
-						'fileLabel'  => __( 'File:', 'a-ripple-song' ),
-						'selectFile' => __( 'Select file', 'a-ripple-song' ),
-						'useFile'    => __( 'Use this file', 'a-ripple-song' ),
-					),
+				'i18n'       => array(
+					'upload'     => __( 'Upload', 'a-ripple-song' ),
+					'remove'     => __( 'Remove', 'a-ripple-song' ),
+					'download'   => __( 'Download', 'a-ripple-song' ),
+					'fileLabel'  => __( 'File:', 'a-ripple-song' ),
+					'selectFile' => __( 'Select file', 'a-ripple-song' ),
+					'useFile'    => __( 'Use this file', 'a-ripple-song' ),
+				),
 				'mediaTypes' => array(
 					'audio'      => 'audio',
+					'image'      => 'image',
 					'transcript' => null,
 					'chapters'   => 'application',
 				),
-				'metaboxId'  => 'carbon_fields_container_ars_episode_details',
 			)
 		);
 
