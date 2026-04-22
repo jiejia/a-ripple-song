@@ -366,8 +366,8 @@ class Episode {
 		$this->saveStringMeta( $post_id, 'episode_summary', $input['episode_summary'] ?? '' );
 		$this->saveStringMeta( $post_id, 'episode_guid', $input['episode_guid'] ?? '' );
 		$this->saveSelectMeta( $post_id, 'episode_block', $input['episode_block'] ?? 'no', array( 'no', 'yes' ), 'no' );
-		$this->saveUsersMeta( $post_id, 'members', $input['members'] ?? array(), array( 'administrator', 'author', 'editor' ) );
-		$this->saveUsersMeta( $post_id, 'guests', $input['guests'] ?? array(), array( 'administrator', 'author', 'editor', 'contributor', 'subscriber' ) );
+		$this->saveUsersMeta( $post_id, 'members', $input['members'] ?? array() );
+		$this->saveUsersMeta( $post_id, 'guests', $input['guests'] ?? array() );
 	}
 
 	/**
@@ -603,7 +603,7 @@ class Episode {
 	/**
 	 * Persist selected user IDs.
 	 */
-	private function saveUsersMeta( $post_id, $key, $values, $allowed_roles ) {
+	private function saveUsersMeta( $post_id, $key, $values ) {
 		$user_ids = array();
 		if ( is_array( $values ) ) {
 			foreach ( $values as $value ) {
@@ -614,7 +614,7 @@ class Episode {
 				if ( is_numeric( $value ) ) {
 					$user_id = (int) $value;
 					$user    = get_userdata( $user_id );
-					if ( $user && array_intersect( $allowed_roles, (array) $user->roles ) ) {
+					if ( $user ) {
 						$user_ids[] = $user_id;
 					}
 				}
