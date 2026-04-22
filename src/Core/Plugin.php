@@ -8,7 +8,7 @@ use ARippleSong\PostTypes\EpisodeMedia;
 use ARippleSong\PostTypes\EpisodeRest;
 use ARippleSong\PostTypes\EpisodeSave;
 use ARippleSong\PostTypes\EpisodeMetaBox;
-use ARippleSong\Settings\PodcastAdmin;
+use ARippleSong\Settings\Podcast;
 use ARippleSong\Taxonomies\EpisodeCategory;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -87,7 +87,7 @@ class Plugin {
 		$this->loader->addAction( 'add_meta_boxes', $episodeFields, 'registerMetaBox' );
 		$this->loader->addAction( 'save_post_' . Episode::POST_TYPE, $episodeFields, 'saveMetaBox', 10 );
 
-		$podcastSettings = new PodcastAdmin();
+		$podcastSettings = new Podcast();
 		$this->loader->addAction( 'admin_menu', $podcastSettings, 'registerMenuPage' );
 		$this->loader->addAction( 'admin_post_' . 'a_ripple_song_podcast_save', $podcastSettings, 'handleSave' );
 

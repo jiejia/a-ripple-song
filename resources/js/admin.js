@@ -2,8 +2,8 @@
 	'use strict';
 
 	function arsGetAdminConfig() {
-		if ( typeof window.arsPodcastAdmin === 'object' && window.arsPodcastAdmin ) {
-			return window.arsPodcastAdmin;
+		if ( typeof window.arsPodcastConfig === 'object' && window.arsPodcastConfig ) {
+			return window.arsPodcastConfig;
 		}
 
 		return {

@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Native podcast settings page.
  */
-class PodcastAdmin {
+class Podcast {
 
 	/**
 	 * Top-level menu slug.

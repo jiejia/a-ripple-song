@@ -96,7 +96,7 @@ class AdminAssets {
 
 		wp_localize_script(
 			$this->pluginName,
-			'arsPodcastAdmin',
+			'arsPodcastConfig',
 			array(
 				'i18n'       => array(
 					'upload'     => __( 'Upload', 'a-ripple-song' ),

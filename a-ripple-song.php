@@ -98,6 +98,7 @@ spl_autoload_register(
 		$prefix = 'ARippleSong\\';
 
 		$class_map = array(
+			'ARippleSong\\PostTypes\\EpisodeMetaBox' => A_RIPPLE_SONG_PATH . 'src/PostTypes/Episode.php',
 			'ARippleSong\\PostTypes\\EpisodeSave'   => A_RIPPLE_SONG_PATH . 'src/PostTypes/Episode.php',
 			'ARippleSong\\PostTypes\\EpisodeRest'   => A_RIPPLE_SONG_PATH . 'src/PostTypes/Episode.php',
 			'ARippleSong\\PostTypes\\EpisodeMedia'  => A_RIPPLE_SONG_PATH . 'src/PostTypes/Episode.php',
