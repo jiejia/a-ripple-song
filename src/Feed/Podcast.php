@@ -259,11 +259,9 @@ class Podcast {
 	}
 
 	/**
-	 * Get Episode Details values stored by Carbon Fields (preferred) with fallback to raw post meta.
+	 * Get Episode Details values from native post meta.
 	 *
-	 * Carbon Fields stores post meta as protected keys (leading underscore).
-	 *
-	 * @param int   $post_id
+	 * @param int    $post_id
 	 * @param string $key
 	 * @param mixed  $default
 	 * @return mixed

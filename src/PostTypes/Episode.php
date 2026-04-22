@@ -212,47 +212,6 @@ class Episode {
 }
 
 /**
- * Episode meta fields (Carbon Fields post meta).
- *
- * @package    ARippleSong
- * @subpackage ARippleSong/includes
- */
-class EpisodeFields {
-
-	/**
-	 * Legacy compatibility hook for the old Carbon Fields implementation.
-	 */
-	public function registerFields() {
-		return;
-	}
-
-	/**
-	 * Default selected member when creating a new episode.
-	 *
-	 * @return array<int,string>
-	 */
-	private function getDefaultMembersValue() {
-		$current_user_id = get_current_user_id();
-		if ( ! $current_user_id ) {
-			return array();
-		}
-
-		$current_user = get_userdata( $current_user_id );
-		if ( ! $current_user ) {
-			return array();
-		}
-
-		$allowed_roles = array( 'administrator', 'author', 'editor' );
-		if ( empty( array_intersect( $allowed_roles, (array) $current_user->roles ) ) ) {
-			return array();
-		}
-
-		// Association field values are stored as type:subtype:id strings (or as structured arrays).
-		return array( 'user:user:' . (int) $current_user_id );
-	}
-}
-
-/**
  * Episode save hooks (auto-fill audio meta, defaults, admin notices).
  *
  * @package    ARippleSong
@@ -334,11 +293,11 @@ class EpisodeSave {
 	}
 
 	/**
-	 * Persist an Episode Details field using Carbon Fields when available.
+	 * Persist an Episode Details field using native post meta.
 	 *
-	 * @param int          $post_id
-	 * @param string       $key
-	 * @param string|int   $value
+	 * @param int         $post_id
+	 * @param string      $key
+	 * @param string|int  $value
 	 * @return void
 	 */
 	private function setEpisodeFieldValue( $post_id, $key, $value ) {
@@ -562,7 +521,7 @@ class EpisodeSave {
 	}
 
 	/**
-	 * Read an Episode Details field using Carbon Fields when available.
+	 * Read an Episode Details field from native post meta.
 	 *
 	 * @param int    $post_id
 	 * @param string $key
@@ -876,11 +835,11 @@ class EpisodeRest {
 	}
 
 	/**
-	 * Read an episode field from Carbon Fields (preferred) or the underscored meta key fallback.
+	 * Read an episode field from native post meta.
 	 *
-	 * @param int          $post_id
-	 * @param string       $key
-	 * @param string|int   $default
+	 * @param int         $post_id
+	 * @param string      $key
+	 * @param string|int  $default
 	 * @return string|int
 	 */
 	private static function getEpisodeValue( $post_id, $key, $default ) {

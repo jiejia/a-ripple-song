@@ -84,10 +84,10 @@ class Activator {
 	}
 
 	/**
-	 * Migrate old CMB2-style member/guest meta to Carbon Fields association values.
+	 * Migrate old CMB2-style member/guest meta to association values.
 	 *
 	 * Old format (multicheck): [ user_id => 'on', ... ]
-	 * New format (association): [ 'user:user:123', ... ] (or structured arrays saved by Carbon Fields).
+	 * New format (association): [ 'user:user:123', ... ] (or structured arrays saved by the editor).
 	 */
 	private static function maybeMigrateMemberMeta() {
 		$post_ids = get_posts(
@@ -118,7 +118,7 @@ class Activator {
 	}
 
 	/**
-	 * Migrate one old member meta key to Carbon Fields association values.
+	 * Migrate one old member meta key to association values.
 	 *
 	 * @param int    $post_id  Episode post ID.
 	 * @param string $meta_key Meta key to migrate.
@@ -133,7 +133,7 @@ class Activator {
 
 		$first = reset( $value );
 		if ( is_array( $first ) && isset( $first['type'] ) && isset( $first['id'] ) ) {
-			// Already Carbon Fields association format.
+			// Already association format.
 			return;
 		}
 
