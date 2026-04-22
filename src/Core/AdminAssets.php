@@ -91,7 +91,7 @@ class AdminAssets {
 		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
 		if ( $screen && $screen->base && $screen->post_type && $screen->post_type === Episode::POST_TYPE && in_array( $screen->base, array( 'post', 'post-new' ), true ) ) {
 			wp_enqueue_media();
-		} elseif ( $screen && is_string( $screen->id ) && strpos( $screen->id, 'a-ripple-song-podcast' ) !== false ) {
+		} elseif ( $screen && is_string( $screen->id ) && strpos( $screen->id, 'a-ripple-song' ) !== false ) {
 			wp_enqueue_media();
 		}
 
