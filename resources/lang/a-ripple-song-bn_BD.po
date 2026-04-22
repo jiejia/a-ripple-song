@@ -804,3 +804,7 @@ msgstr "না"
 #: src/PostTypes/Episode.php:467
 msgid "Clear selection"
 msgstr "নির্বাচন মুছুন"
+
+#: src/Settings/Podcast.php:287
+msgid "Podcast Cover is required."
+msgstr "পডকাস্ট কভার প্রয়োজন।"

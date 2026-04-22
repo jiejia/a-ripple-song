@@ -806,3 +806,7 @@ msgstr "主题已成功安装，现在可以启用了。"
 #: src/PostTypes/Episode.php:467
 msgid "Clear selection"
 msgstr "清空选择"
+
+#: src/Settings/Podcast.php:287
+msgid "Podcast Cover is required."
+msgstr "Podcast 封面为必填项。"

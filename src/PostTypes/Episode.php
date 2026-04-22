@@ -434,9 +434,11 @@ class Episode {
 	 */
 	private function renderMediaField( $key, $label, $value, $help = '', $mode = 'transcript', $required = false ) {
 		$this->renderFieldStart( $label, $help, $required );
+		$input_type       = $mode === 'image' ? 'hidden' : 'url';
+		$required_markup  = $required && $input_type !== 'hidden' ? 'required aria-required="true"' : '';
 		?>
 		<div class="ars-media-field">
-			<input type="url" class="regular-text" name="ars_episode_details[<?php echo esc_attr( $key ); ?>]" value="<?php echo esc_attr( (string) $value ); ?>" placeholder="https://" data-ars-media-uploader="<?php echo esc_attr( $mode ); ?>" <?php echo $required ? 'required aria-required="true"' : ''; ?> />
+			<input type="<?php echo esc_attr( $input_type ); ?>" class="regular-text" name="ars_episode_details[<?php echo esc_attr( $key ); ?>]" value="<?php echo esc_attr( (string) $value ); ?>" placeholder="https://" data-ars-media-uploader="<?php echo esc_attr( $mode ); ?>" <?php echo $required_markup; ?> />
 		</div>
 		<?php
 		$this->renderFieldEnd();

@@ -805,3 +805,7 @@ msgstr "いいえ"
 #: src/PostTypes/Episode.php:467
 msgid "Clear selection"
 msgstr "選択をクリア"
+
+#: src/Settings/Podcast.php:287
+msgid "Podcast Cover is required."
+msgstr "Podcast カバーは必須です。"

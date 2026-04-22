@@ -803,3 +803,7 @@ msgstr "아니오"
 #: src/PostTypes/Episode.php:467
 msgid "Clear selection"
 msgstr "선택 지우기"
+
+#: src/Settings/Podcast.php:287
+msgid "Podcast Cover is required."
+msgstr "Podcast 커버는 필수입니다."

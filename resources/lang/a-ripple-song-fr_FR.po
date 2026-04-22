@@ -808,3 +808,7 @@ msgstr "Non"
 #: src/PostTypes/Episode.php:467
 msgid "Clear selection"
 msgstr "Effacer la sélection"
+
+#: src/Settings/Podcast.php:287
+msgid "Podcast Cover is required."
+msgstr "La couverture du podcast est obligatoire."

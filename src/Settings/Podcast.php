@@ -283,7 +283,9 @@ class Podcast {
 		$settings['crb_podcast_generator']    = sanitize_text_field( (string) ( $input['crb_podcast_generator'] ?? $current['crb_podcast_generator'] ) );
 		$settings['crb_podcast_funding']      = $this->sanitizeFundingRows( $input['crb_podcast_funding'] ?? array() );
 
-		if ( $settings['crb_podcast_cover'] !== '' ) {
+		if ( $settings['crb_podcast_cover'] === '' ) {
+			$errors[] = __( 'Podcast Cover is required.', 'a-ripple-song' );
+		} else {
 			$validation = $this->validateCoverImage( $settings['crb_podcast_cover'] );
 			if ( is_wp_error( $validation ) ) {
 				$errors[] = $validation->get_error_message();
@@ -399,9 +401,11 @@ class Podcast {
 	 */
 	private function renderMediaRow( $key, $label, $value, $help = '', $mode = 'transcript', $required = false ) {
 		$this->renderFieldRowStart( $label, $help, $required );
+		$input_type       = $mode === 'image' ? 'hidden' : 'url';
+		$required_markup  = $required && $input_type !== 'hidden' ? 'required aria-required="true"' : '';
 		?>
 		<div class="ars-media-field">
-			<input type="url" class="regular-text" name="a_ripple_song_podcast_settings[<?php echo esc_attr( $key ); ?>]" value="<?php echo esc_attr( (string) $value ); ?>" placeholder="https://" data-ars-media-uploader="<?php echo esc_attr( $mode ); ?>" <?php echo $required ? 'required aria-required="true"' : ''; ?> />
+			<input type="<?php echo esc_attr( $input_type ); ?>" class="regular-text" name="a_ripple_song_podcast_settings[<?php echo esc_attr( $key ); ?>]" value="<?php echo esc_attr( (string) $value ); ?>" placeholder="https://" data-ars-media-uploader="<?php echo esc_attr( $mode ); ?>" <?php echo $required_markup; ?> />
 		</div>
 		<?php
 		$this->renderFieldRowEnd();

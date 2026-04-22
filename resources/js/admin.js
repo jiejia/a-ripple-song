@@ -65,6 +65,7 @@
 		var downloadLink = state.downloadLink;
 		var removeLink = state.removeLink;
 		var nameNode = state.nameNode;
+		var imagePreview = state.imagePreview;
 
 		if ( fileline ) {
 			fileline.style.display = url ? '' : 'none';
@@ -99,9 +100,21 @@
 				removeLink.setAttribute( 'tabindex', '-1' );
 			}
 		}
+
+		if ( imagePreview ) {
+			imagePreview.innerHTML = '';
+			if ( url ) {
+				var image = document.createElement( 'img' );
+				image.src = url;
+				image.alt = '';
+				imagePreview.appendChild( image );
+			}
+		}
 	}
 
 	function arsBuildMediaUi( input, config ) {
+		var mode = input.getAttribute( 'data-ars-media-uploader' ) || 'transcript';
+		var isImage = mode === 'image';
 		var uploadActions = document.createElement( 'div' );
 		uploadActions.className = 'ars-media-url-actions';
 
@@ -143,6 +156,12 @@
 		fileline.appendChild( removeLink );
 		fileline.appendChild( document.createTextNode( ')' ) );
 
+		var imagePreview = null;
+		if ( isImage ) {
+			imagePreview = document.createElement( 'div' );
+			imagePreview.className = 'ars-media-image-preview';
+		}
+
 		uploadBtn.addEventListener( 'click', function( e ) {
 			e.preventDefault();
 
@@ -150,7 +169,6 @@
 				return;
 			}
 
-			var mode = input.getAttribute( 'data-ars-media-uploader' ) || 'transcript';
 			var libraryType = ( config.mediaTypes && Object.prototype.hasOwnProperty.call( config.mediaTypes, mode ) ) ? config.mediaTypes[ mode ] : null;
 			var mediaArgs = {
 				title: config.i18n.selectFile,
@@ -172,7 +190,8 @@
 						fileline: fileline,
 						downloadLink: downloadLink,
 						removeLink: removeLink,
-						nameNode: nameStrong
+						nameNode: nameStrong,
+						imagePreview: imagePreview
 					} );
 				}
 			} );
@@ -189,7 +208,8 @@
 				fileline: fileline,
 				downloadLink: downloadLink,
 				removeLink: removeLink,
-				nameNode: nameStrong
+				nameNode: nameStrong,
+				imagePreview: imagePreview
 			} );
 		} );
 
@@ -204,7 +224,8 @@
 				fileline: fileline,
 				downloadLink: downloadLink,
 				removeLink: removeLink,
-				nameNode: nameStrong
+				nameNode: nameStrong,
+				imagePreview: imagePreview
 			} );
 		} );
 
@@ -212,12 +233,14 @@
 			fileline: fileline,
 			downloadLink: downloadLink,
 			removeLink: removeLink,
-			nameNode: nameStrong
+			nameNode: nameStrong,
+			imagePreview: imagePreview
 		} );
 
 		return {
 			uploadActions: uploadActions,
-			fileline: fileline
+			fileline: fileline,
+			imagePreview: imagePreview
 		};
 	}
 
@@ -245,10 +268,16 @@
 			}
 
 			body.classList.add( 'ars-media-field--enhanced' );
+			if ( input.getAttribute( 'data-ars-media-uploader' ) === 'image' ) {
+				body.classList.add( 'ars-media-field--image' );
+			}
 
 			var ui = arsBuildMediaUi( input, config );
 			body.appendChild( ui.uploadActions );
 			body.appendChild( ui.fileline );
+			if ( ui.imagePreview ) {
+				body.appendChild( ui.imagePreview );
+			}
 			input.dataset.arsMediaEnhanced = '1';
 		} );
 	}

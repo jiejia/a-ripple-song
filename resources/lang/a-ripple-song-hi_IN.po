@@ -804,3 +804,7 @@ msgstr "नहीं"
 #: src/PostTypes/Episode.php:467
 msgid "Clear selection"
 msgstr "चयन साफ़ करें"
+
+#: src/Settings/Podcast.php:287
+msgid "Podcast Cover is required."
+msgstr "पॉडकास्ट कवर आवश्यक है।"

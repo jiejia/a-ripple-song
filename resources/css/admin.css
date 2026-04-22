@@ -110,6 +110,22 @@
 	opacity: 0.5;
 }
 
+.ars-media-field--image .ars-media-image-preview {
+	flex: 0 0 100%;
+}
+
+.ars-media-field--image .ars-media-image-preview img {
+	display: block;
+	width: 220px;
+	height: 220px;
+	max-width: 100%;
+	margin-top: 12px;
+	border: 1px solid #dcdcde;
+	padding: 8px;
+	background: #fff;
+	object-fit: contain;
+}
+
 .ars-user-multiselect-field {
 	display: flex;
 	flex-wrap: wrap;
