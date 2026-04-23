@@ -63,11 +63,7 @@ jobs:
 
               for (const asset of release.assets ?? []) {
                 if (asset.name === 'a-ripple-song.zip') continue;
-                if (
-                  asset.name === 'a-ripple-song-podcast.zip'
-                  || (asset.name.startsWith('a-ripple-song-') && asset.name.endsWith('.zip'))
-                  || (asset.name.startsWith('a-ripple-song-podcast-') && asset.name.endsWith('.zip'))
-                ) {
+                if (asset.name.startsWith('a-ripple-song-') && asset.name.endsWith('.zip')) {
                   core.info(`Deleting asset: ${asset.name}`);
                   await github.rest.repos.deleteReleaseAsset({ owner, repo, asset_id: asset.id });
                 }
@@ -134,22 +130,3 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh release upload "${RELEASE_TAG}" build/a-ripple-song.zip --clobber
-
-      - name: Remove obsolete release assets
-        uses: actions/github-script@v8
-        with:
-          script: |
-            const owner = context.repo.owner;
-            const repo = context.repo.repo;
-            const tag = process.env.RELEASE_TAG;
-            const { data: release } = await github.rest.repos.getReleaseByTag({ owner, repo, tag });
-
-            for (const asset of release.assets ?? []) {
-              if (
-                asset.name === 'a-ripple-song-podcast.zip'
-                || (asset.name.startsWith('a-ripple-song-podcast-') && asset.name.endsWith('.zip'))
-              ) {
-                core.info(`Deleting obsolete asset: ${asset.name}`);
-                await github.rest.repos.deleteReleaseAsset({ owner, repo, asset_id: asset.id });
-              }
-            }
