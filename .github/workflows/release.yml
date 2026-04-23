@@ -19,13 +19,13 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          # php-scoper (via fidry/filesystem) requires PHP >= 8.3
-          php-version: "8.3"
+          # Build tooling in composer.lock currently requires PHP >= 8.4.
+          php-version: "8.4"
           tools: composer
 
       - name: Install dependencies
@@ -43,7 +43,7 @@ jobs:
         run: ARS_DIST_ZIP_NAME="a-ripple-song-podcast.zip" composer run -n build:dist -- "${GITHUB_REF_NAME}"
 
       - name: Remove old versioned zips
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const owner = context.repo.owner;
@@ -65,7 +65,7 @@ jobs:
             }
 
       - name: Sync GitHub Release
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const owner = context.repo.owner;
