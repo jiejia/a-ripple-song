@@ -87,6 +87,7 @@ if [[ -z "${ZIP_NAME}" ]]; then
 fi
 
 ZIP_PATH="${BUILD_DIR}/${ZIP_NAME}"
+rm -f "${BUILD_DIR}/a-ripple-song-podcast.zip"
 rm -f "${ZIP_PATH}"
 
 (cd "${DIST_ROOT}" && zip -qr "${ZIP_PATH}" "a-ripple-song")
