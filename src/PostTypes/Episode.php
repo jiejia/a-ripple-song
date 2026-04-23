@@ -301,7 +301,12 @@ class Episode {
 			return;
 		}
 
-		$input = isset( $_POST['ars_episode_details'] ) && is_array( $_POST['ars_episode_details'] ) ? wp_unslash( $_POST['ars_episode_details'] ) : array();
+		$input = array();
+		if ( isset( $_POST['ars_episode_details'] ) ) {
+			$posted_details = map_deep( wp_unslash( $_POST['ars_episode_details'] ), 'sanitize_text_field' );
+			$input          = is_array( $posted_details ) ? $posted_details : array();
+		}
+
 		$this->saveFormValues( $post_id, $input );
 	}
 
@@ -434,11 +439,10 @@ class Episode {
 	 */
 	private function renderMediaField( $key, $label, $value, $help = '', $mode = 'transcript', $required = false ) {
 		$this->renderFieldStart( $label, $help, $required );
-		$input_type       = $mode === 'image' ? 'hidden' : 'url';
-		$required_markup  = $required && $input_type !== 'hidden' ? 'required aria-required="true"' : '';
+		$input_type = $mode === 'image' ? 'hidden' : 'url';
 		?>
 		<div class="ars-media-field">
-			<input type="<?php echo esc_attr( $input_type ); ?>" class="regular-text" name="ars_episode_details[<?php echo esc_attr( $key ); ?>]" value="<?php echo esc_attr( (string) $value ); ?>" placeholder="https://" data-ars-media-uploader="<?php echo esc_attr( $mode ); ?>" <?php echo $required_markup; ?> />
+			<input type="<?php echo esc_attr( $input_type ); ?>" class="regular-text" name="ars_episode_details[<?php echo esc_attr( $key ); ?>]" value="<?php echo esc_attr( (string) $value ); ?>" placeholder="https://" data-ars-media-uploader="<?php echo esc_attr( $mode ); ?>" <?php if ( $required && $input_type !== 'hidden' ) : ?>required aria-required="true"<?php endif; ?> />
 		</div>
 		<?php
 		$this->renderFieldEnd();

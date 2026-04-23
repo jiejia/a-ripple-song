@@ -40,6 +40,11 @@ class Podcast {
 	private const NONCE_FIELD = 'a_ripple_song_nonce';
 
 	/**
+	 * Notice nonce action.
+	 */
+	private const NOTICE_NONCE_ACTION = 'a_ripple_song_notice';
+
+	/**
 	 * Transient prefix for save notices.
 	 */
 	private const NOTICE_PREFIX = 'a_ripple_song_notices_';
@@ -96,7 +101,12 @@ class Podcast {
 
 		check_admin_referer( self::NONCE_ACTION, self::NONCE_FIELD );
 
-		$input = isset( $_POST['a_ripple_song_podcast_settings'] ) && is_array( $_POST['a_ripple_song_podcast_settings'] ) ? wp_unslash( $_POST['a_ripple_song_podcast_settings'] ) : array();
+		$input = array();
+		if ( isset( $_POST['a_ripple_song_podcast_settings'] ) ) {
+			$posted_settings = map_deep( wp_unslash( $_POST['a_ripple_song_podcast_settings'] ), 'sanitize_text_field' );
+			$input           = is_array( $posted_settings ) ? $posted_settings : array();
+		}
+
 		$result = $this->sanitizeSettings( $input );
 
 		foreach ( $result['settings'] as $key => $value ) {
@@ -110,8 +120,9 @@ class Podcast {
 		wp_safe_redirect(
 			add_query_arg(
 				array(
-					'page'                    => self::PAGE_SLUG,
-					'a_ripple_song_saved'     => '1',
+					'page'                         => self::PAGE_SLUG,
+					'a_ripple_song_saved'          => '1',
+					'a_ripple_song_notice_nonce'   => wp_create_nonce( self::NOTICE_NONCE_ACTION ),
 				),
 				admin_url( 'admin.php' )
 			)
@@ -127,7 +138,9 @@ class Podcast {
 			return;
 		}
 
-		if ( isset( $_GET['a_ripple_song_saved'] ) ) {
+		$saved_notice = isset( $_GET['a_ripple_song_saved'] ) ? sanitize_text_field( wp_unslash( $_GET['a_ripple_song_saved'] ) ) : '';
+		$notice_nonce = isset( $_GET['a_ripple_song_notice_nonce'] ) ? sanitize_text_field( wp_unslash( $_GET['a_ripple_song_notice_nonce'] ) ) : '';
+		if ( $saved_notice === '1' && wp_verify_nonce( $notice_nonce, self::NOTICE_NONCE_ACTION ) ) {
 			echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__( 'Podcast settings saved.', 'a-ripple-song' ) . '</p></div>';
 		}
 
@@ -402,11 +415,10 @@ class Podcast {
 	 */
 	private function renderMediaRow( $key, $label, $value, $help = '', $mode = 'transcript', $required = false ) {
 		$this->renderFieldRowStart( $label, $help, $required );
-		$input_type       = $mode === 'image' ? 'hidden' : 'url';
-		$required_markup  = $required && $input_type !== 'hidden' ? 'required aria-required="true"' : '';
+		$input_type = $mode === 'image' ? 'hidden' : 'url';
 		?>
 		<div class="ars-media-field">
-			<input type="<?php echo esc_attr( $input_type ); ?>" class="regular-text" name="a_ripple_song_podcast_settings[<?php echo esc_attr( $key ); ?>]" value="<?php echo esc_attr( (string) $value ); ?>" placeholder="https://" data-ars-media-uploader="<?php echo esc_attr( $mode ); ?>" <?php echo $required_markup; ?> />
+			<input type="<?php echo esc_attr( $input_type ); ?>" class="regular-text" name="a_ripple_song_podcast_settings[<?php echo esc_attr( $key ); ?>]" value="<?php echo esc_attr( (string) $value ); ?>" placeholder="https://" data-ars-media-uploader="<?php echo esc_attr( $mode ); ?>" <?php if ( $required && $input_type !== 'hidden' ) : ?>required aria-required="true"<?php endif; ?> />
 		</div>
 		<?php
 		$this->renderFieldRowEnd();
