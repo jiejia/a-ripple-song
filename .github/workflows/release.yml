@@ -36,8 +36,8 @@ jobs:
 
       - name: Lint PHP
         run: |
-          php -l a-ripple-song-podcast.php
-          find app -name '*.php' -print0 | xargs -0 -n1 php -l
+          php -l a-ripple-song.php
+          find src -name '*.php' -print0 | xargs -0 -n1 php -l
 
       - name: Build plugin zip
         run: ARS_DIST_ZIP_NAME="a-ripple-song-podcast.zip" composer run -n build:dist -- "${GITHUB_REF_NAME}"
