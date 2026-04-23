@@ -5,11 +5,19 @@ on:
     tags:
       # Trigger on any tag name (WordPress.org versions are typically numeric, e.g. 0.5.0).
       - "*"
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Release tag to publish or clean, e.g. v0.5.0."
+        required: false
+        type: string
 
 concurrency:
   group: plugin-release-${{ github.ref }}
   cancel-in-progress: false
+
+env:
+  RELEASE_TAG: ${{ inputs.release_tag || github.ref_name }}
 
 jobs:
   build:
@@ -40,7 +48,7 @@ jobs:
           find src -name '*.php' -print0 | xargs -0 -n1 php -l
 
       - name: Build plugin zip
-        run: ARS_DIST_ZIP_NAME="a-ripple-song.zip" composer run -n build:dist -- "${GITHUB_REF_NAME}"
+        run: ARS_DIST_ZIP_NAME="a-ripple-song.zip" composer run -n build:dist -- "${RELEASE_TAG}"
 
       - name: Remove old versioned zips
         uses: actions/github-script@v8
@@ -48,7 +56,7 @@ jobs:
           script: |
             const owner = context.repo.owner;
             const repo = context.repo.repo;
-            const tag = context.ref.replace('refs/tags/', '');
+            const tag = process.env.RELEASE_TAG;
 
             try {
               const { data: release } = await github.rest.repos.getReleaseByTag({ owner, repo, tag });
@@ -74,7 +82,7 @@ jobs:
           script: |
             const owner = context.repo.owner;
             const repo = context.repo.repo;
-            const tag = context.ref.replace('refs/tags/', '');
+            const tag = process.env.RELEASE_TAG;
             const prerelease = tag.includes('-');
 
             const releases = await github.paginate(github.rest.repos.listReleases, {
@@ -125,4 +133,23 @@ jobs:
       - name: Upload GitHub Release Asset
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release upload "${GITHUB_REF_NAME}" build/a-ripple-song.zip --clobber
+        run: gh release upload "${RELEASE_TAG}" build/a-ripple-song.zip --clobber
+
+      - name: Remove obsolete release assets
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const tag = process.env.RELEASE_TAG;
+            const { data: release } = await github.rest.repos.getReleaseByTag({ owner, repo, tag });
+
+            for (const asset of release.assets ?? []) {
+              if (
+                asset.name === 'a-ripple-song-podcast.zip'
+                || (asset.name.startsWith('a-ripple-song-podcast-') && asset.name.endsWith('.zip'))
+              ) {
+                core.info(`Deleting obsolete asset: ${asset.name}`);
+                await github.rest.repos.deleteReleaseAsset({ owner, repo, asset_id: asset.id });
+              }
+            }
