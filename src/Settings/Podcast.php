@@ -27,7 +27,7 @@ class Podcast {
 	/**
 	 * Form action slug.
 	 */
-	private const SAVE_ACTION = 'a_ripple_song_save';
+	private const SAVE_ACTION = 'a_ripple_song_podcast_save';
 
 	/**
 	 * Nonce action.
