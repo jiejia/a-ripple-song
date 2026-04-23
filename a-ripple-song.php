@@ -77,7 +77,7 @@ if ( isset( $GLOBALS['wp_version'] ) && version_compare( $GLOBALS['wp_version'],
  * Start at version 0.5.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'A_RIPPLE_SONG_VERSION', '0.5.0' );
+
 define( 'A_RIPPLE_SONG_FILE', __FILE__ );
 define( 'A_RIPPLE_SONG_PATH', plugin_dir_path( __FILE__ ) );
 define( 'A_RIPPLE_SONG_URL', plugin_dir_url( __FILE__ ) );

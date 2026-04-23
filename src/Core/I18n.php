@@ -2,6 +2,8 @@
 
 namespace ARippleSong\Core;
 
+use ARippleSong\Constants\BaseConstant;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -30,10 +32,10 @@ class I18n {
 		$locale = function_exists( 'determine_locale' ) ? determine_locale() : get_locale();
 
 		/** @var string $mo_file Absolute path to the bundled MO translation file. */
-		$mo_file = A_RIPPLE_SONG_PATH . 'resources/lang/a-ripple-song-' . $locale . '.mo';
+		$mo_file = A_RIPPLE_SONG_PATH . 'resources/lang/' . BaseConstant::PLUGIN_SLUG . '-' . $locale . '.mo';
 
 		if ( file_exists( $mo_file ) ) {
-			load_textdomain( 'a-ripple-song', $mo_file );
+			load_textdomain( BaseConstant::PLUGIN_SLUG, $mo_file );
 		}
 	}
 

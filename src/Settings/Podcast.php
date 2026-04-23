@@ -2,6 +2,7 @@
 
 namespace ARippleSong\Settings;
 
+use ARippleSong\Constants\BaseConstant;
 use ARippleSong\Core\LegacyMeta;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -16,12 +17,12 @@ class Podcast {
 	/**
 	 * Top-level menu slug.
 	 */
-	private const MENU_SLUG = 'a-ripple-song';
+	private const MENU_SLUG = BaseConstant::PLUGIN_SLUG;
 
 	/**
 	 * Settings page slug.
 	 */
-	private const PAGE_SLUG = 'a-ripple-song-settings';
+	private const PAGE_SLUG = BaseConstant::PLUGIN_SLUG . '-settings';
 
 	/**
 	 * Form action slug.

@@ -2,6 +2,7 @@
 
 namespace ARippleSong\Core;
 
+use ARippleSong\Constants\BaseConstant;
 use ARippleSong\Feed\Podcast as PodcastFeed;
 use ARippleSong\PostTypes\Episode;
 use ARippleSong\Settings\Podcast;
@@ -42,7 +43,7 @@ class Plugin {
 	 */
 	public function __construct() {
 		$this->version    = defined( 'A_RIPPLE_SONG_VERSION' ) ? A_RIPPLE_SONG_VERSION : '1.0.0';
-		$this->pluginName = 'a-ripple-song';
+		$this->pluginName = BaseConstant::PLUGIN_SLUG;
 		$this->loader     = new Loader();
 
 		$this->setLocale();

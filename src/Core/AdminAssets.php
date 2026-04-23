@@ -2,6 +2,7 @@
 
 namespace ARippleSong\Core;
 
+use ARippleSong\Constants\BaseConstant;
 use ARippleSong\PostTypes\Episode;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -91,7 +92,7 @@ class AdminAssets {
 		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
 		if ( $screen && $screen->base && $screen->post_type && $screen->post_type === Episode::POST_TYPE && in_array( $screen->base, array( 'post', 'post-new' ), true ) ) {
 			wp_enqueue_media();
-		} elseif ( $screen && is_string( $screen->id ) && strpos( $screen->id, 'a-ripple-song' ) !== false ) {
+		} elseif ( $screen && is_string( $screen->id ) && strpos( $screen->id, BaseConstant::PLUGIN_SLUG ) !== false ) {
 			wp_enqueue_media();
 		}
 
