@@ -4,22 +4,22 @@ A Ripple Song একটি WordPress পডকাস্ট প্লাগইন
 
 <img width="" src="../screenshot.png"/>
 
+## ডকুমেন্টেশন
+
+- [https://aripplesong.me/](https://aripplesong.me/)
+
 ## বৈশিষ্ট্য
 
-- পডকাস্ট কনটেন্ট যোগ ও ব্যবস্থাপনার জন্য পডকাস্ট পোস্ট টাইপ এবং ক্যাটেগরি
+- পডকাস্ট প্রকাশ ও ব্যবস্থাপনার জন্য পডকাস্ট পোস্ট টাইপ ও ক্যাটেগরি
 - অডিও মেটাডেটা (সময়কাল, ফাইল সাইজ, ফরম্যাট) স্বয়ংক্রিয়ভাবে বের করে, যা iTunes এবং Podcasting 2.0 মানদণ্ড অনুসরণ করে
 - বড় পডকাস্ট প্ল্যাটফর্মে এক-ক্লিক বিতরণের জন্য বিল্ট-ইন RSS জেনারেশন
 - আন্তর্জাতিকীকরণ সমর্থন
-- থিম সমর্থন
 
 ## প্রযুক্তি স্ট্যাক
 
+- [Carbon Fields](https://github.com/htmlburger/carbon-fields) - WordPress কাস্টম ফিল্ড ফ্রেমওয়ার্ক
 - [getID3](https://github.com/JamesHeinrich/getID3) - অডিও মেটাডেটা বিশ্লেষণ লাইব্রেরি
 - [PHP-Scoper](https://github.com/humbug/php-scoper) - PHP নেমস্পেস আইসোলেশন টুল
-
-## লিংক
-
-- [অফিশিয়াল ওয়েবসাইট](https://doc-podcast.aripplesong.me/)
 
 ## ভাষা
 

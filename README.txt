@@ -15,16 +15,18 @@ A WordPress podcast plugin for publishing and managing podcast episodes, with po
 
 A Ripple Song adds podcast publishing and management to WordPress. It provides podcast content types, episode metadata management, and a podcast RSS feed that can be submitted to major podcast platforms.
 
+Documentation: https://aripplesong.me/
+
 Key features:
 
-* Podcast post type and categories for adding and managing podcast content
+* Podcast post type and categories for podcast publishing and management
 * Automatic audio metadata extraction, including duration, file size, and format
 * Built-in podcast RSS feed generation for iTunes and Podcasting 2.0 compatible distribution
 * Internationalization support
-* Theme support for the A Ripple Song theme
 
 Technical stack:
 
+* Carbon Fields for WordPress custom fields
 * getID3 for audio metadata analysis
 * PHP-Scoper for PHP namespace isolation in release builds
 

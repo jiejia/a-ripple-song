@@ -4,22 +4,22 @@ A Ripple Song est un plugin WordPress dédié au podcast. Il ajoute la publicati
 
 <img width="" src="../screenshot.png"/>
 
+## Documentation
+
+- [https://aripplesong.me/](https://aripplesong.me/)
+
 ## Fonctionnalités
 
-- Types de contenu et catégories de podcast pour ajouter et gérer des contenus audio
+- Types de contenu et catégories de podcast pour publier et gérer vos podcasts
 - Extraction automatique des métadonnées audio (durée, taille du fichier, format), conforme aux standards iTunes et Podcasting 2.0
 - Génération RSS intégrée pour une diffusion en un clic vers les principales plateformes de podcast
 - Prise en charge de l'internationalisation
-- Prise en charge du thème
 
 ## Stack Technique
 
+- [Carbon Fields](https://github.com/htmlburger/carbon-fields) - Framework de champs personnalisés pour WordPress
 - [getID3](https://github.com/JamesHeinrich/getID3) - Bibliothèque d'analyse des métadonnées audio
 - [PHP-Scoper](https://github.com/humbug/php-scoper) - Outil d'isolation des espaces de noms PHP
-
-## Liens
-
-- [Site officiel](https://doc-podcast.aripplesong.me/)
 
 ## Langues
 
