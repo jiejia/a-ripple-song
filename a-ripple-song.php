@@ -82,12 +82,12 @@ define( 'A_RIPPLE_SONG_FILE', __FILE__ );
 define( 'A_RIPPLE_SONG_PATH', plugin_dir_path( __FILE__ ) );
 define( 'A_RIPPLE_SONG_URL', plugin_dir_url( __FILE__ ) );
 
-$a_ripple_song_autoload_path        = __DIR__ . '/vendor/autoload.php';
-$a_ripple_song_scoper_autoload_path = __DIR__ . '/vendor/scoper-autoload.php';
-if ( file_exists( $a_ripple_song_scoper_autoload_path ) ) {
-	require_once $a_ripple_song_scoper_autoload_path;
-} elseif ( file_exists( $a_ripple_song_autoload_path ) ) {
-	require_once $a_ripple_song_autoload_path;
+$autoload_path        = __DIR__ . '/vendor/autoload.php';
+$scoper_autoload_path = __DIR__ . '/vendor/scoper-autoload.php';
+if ( file_exists( $scoper_autoload_path ) ) {
+	require_once $scoper_autoload_path;
+} elseif ( file_exists( $autoload_path ) ) {
+	require_once $autoload_path;
 }
 
 /**

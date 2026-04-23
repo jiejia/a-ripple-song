@@ -2,8 +2,9 @@
 
 namespace ARippleSong\PostTypes;
 
+use ARippleSong\Constants\BaseConstant;
 use ARippleSong\Core\LegacyMeta;
-use ARippleSong\Constants\PodcastConstant;
+use ARippleSong\Constants\EpisodeConstant;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -20,12 +21,12 @@ class Episode {
 	/**
 	 * Custom post type key.
 	 */
-	public const POST_TYPE = PodcastConstant::POST_TYPE;
+	public const POST_TYPE = EpisodeConstant::POST_TYPE;
 
 	/**
 	 * Taxonomy key.
 	 */
-	public const TAXONOMY = PodcastConstant::TAXONOMY_SLUG;
+	public const TAXONOMY = EpisodeConstant::TAXONOMY_SLUG;
 
 	/**
 	 * Enable featured image support for the episode post type from the plugin.
@@ -836,7 +837,7 @@ class Episode {
 					require_once ABSPATH . 'wp-admin/includes/file.php';
 				}
 
-					$timeout = (int) apply_filters( 'a_ripple_song_podcast_episode_audio_meta_download_timeout', 300, $audio_url, $post_id );
+					$timeout = (int) apply_filters( BaseConstant::PREFIX . '_podcast_episode_audio_meta_download_timeout', 300, $audio_url, $post_id );
 					// Backward compatibility for the original hook name.
 					// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 					$timeout = (int) apply_filters( 'ars_episode_audio_meta_download_timeout', $timeout, $audio_url, $post_id );

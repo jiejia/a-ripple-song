@@ -3,7 +3,6 @@
 namespace ARippleSong\Settings;
 
 use ARippleSong\Constants\BaseConstant;
-use ARippleSong\Core\LegacyMeta;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -25,29 +24,44 @@ class Podcast {
 	private const PAGE_SLUG = BaseConstant::PLUGIN_SLUG . '-settings';
 
 	/**
+	 * Single option name used for all podcast settings.
+	 */
+	public const OPTION_NAME = BaseConstant::PREFIX . '_podcast_settings';
+
+	/**
 	 * Form action slug.
 	 */
-	private const SAVE_ACTION = 'a_ripple_song_podcast_save';
+	public const SAVE_ACTION = BaseConstant::PREFIX . '_podcast_save';
 
 	/**
 	 * Nonce action.
 	 */
-	private const NONCE_ACTION = 'a_ripple_song_save';
+	private const NONCE_ACTION = BaseConstant::PREFIX . '_save';
 
 	/**
 	 * Nonce field name.
 	 */
-	private const NONCE_FIELD = 'a_ripple_song_nonce';
+	private const NONCE_FIELD = BaseConstant::PREFIX . '_nonce';
 
 	/**
 	 * Notice nonce action.
 	 */
-	private const NOTICE_NONCE_ACTION = 'a_ripple_song_notice';
+	private const NOTICE_NONCE_ACTION = BaseConstant::PREFIX . '_notice';
 
 	/**
 	 * Transient prefix for save notices.
 	 */
-	private const NOTICE_PREFIX = 'a_ripple_song_notices_';
+	private const NOTICE_PREFIX = BaseConstant::PREFIX . '_notices_';
+
+	/**
+	 * Query argument used to identify a completed save.
+	 */
+	private const SAVED_QUERY_ARG = BaseConstant::PREFIX . '_saved';
+
+	/**
+	 * Query argument carrying the notice nonce.
+	 */
+	private const NOTICE_NONCE_QUERY_ARG = BaseConstant::PREFIX . '_notice_nonce';
 
 	/**
 	 * Register the admin menu.
@@ -102,16 +116,14 @@ class Podcast {
 		check_admin_referer( self::NONCE_ACTION, self::NONCE_FIELD );
 
 		$input = array();
-		if ( isset( $_POST['a_ripple_song_podcast_settings'] ) ) {
-			$posted_settings = map_deep( wp_unslash( $_POST['a_ripple_song_podcast_settings'] ), 'sanitize_text_field' );
+		if ( isset( $_POST[ self::OPTION_NAME ] ) ) {
+			$posted_settings = map_deep( wp_unslash( $_POST[ self::OPTION_NAME ] ), 'sanitize_text_field' );
 			$input           = is_array( $posted_settings ) ? $posted_settings : array();
 		}
 
 		$result = $this->sanitizeSettings( $input );
 
-		foreach ( $result['settings'] as $key => $value ) {
-			update_option( $key, $value, false );
-		}
+		update_option( self::OPTION_NAME, $result['settings'], false );
 
 		if ( ! empty( $result['errors'] ) ) {
 			set_transient( self::NOTICE_PREFIX . get_current_user_id(), $result['errors'], 60 );
@@ -120,9 +132,9 @@ class Podcast {
 		wp_safe_redirect(
 			add_query_arg(
 				array(
-					'page'                         => self::PAGE_SLUG,
-					'a_ripple_song_saved'          => '1',
-					'a_ripple_song_notice_nonce'   => wp_create_nonce( self::NOTICE_NONCE_ACTION ),
+					'page'                    => self::PAGE_SLUG,
+					self::SAVED_QUERY_ARG      => '1',
+					self::NOTICE_NONCE_QUERY_ARG => wp_create_nonce( self::NOTICE_NONCE_ACTION ),
 				),
 				admin_url( 'admin.php' )
 			)
@@ -138,8 +150,8 @@ class Podcast {
 			return;
 		}
 
-		$saved_notice = isset( $_GET['a_ripple_song_saved'] ) ? sanitize_text_field( wp_unslash( $_GET['a_ripple_song_saved'] ) ) : '';
-		$notice_nonce = isset( $_GET['a_ripple_song_notice_nonce'] ) ? sanitize_text_field( wp_unslash( $_GET['a_ripple_song_notice_nonce'] ) ) : '';
+		$saved_notice = isset( $_GET[ self::SAVED_QUERY_ARG ] ) ? sanitize_text_field( wp_unslash( $_GET[ self::SAVED_QUERY_ARG ] ) ) : '';
+		$notice_nonce = isset( $_GET[ self::NOTICE_NONCE_QUERY_ARG ] ) ? sanitize_text_field( wp_unslash( $_GET[ self::NOTICE_NONCE_QUERY_ARG ] ) ) : '';
 		if ( $saved_notice === '1' && wp_verify_nonce( $notice_nonce, self::NOTICE_NONCE_ACTION ) ) {
 			echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__( 'Podcast settings saved.', 'a-ripple-song' ) . '</p></div>';
 		}
@@ -177,29 +189,29 @@ class Podcast {
 				<table class="form-table" role="presentation">
 					<tbody>
 						<?php $this->renderReadonlyRow( __( 'Podcast RSS URL', 'a-ripple-song' ), $this->getPodcastFeedUrl(), __( 'Your podcast RSS feed URL. Click to select and copy.', 'a-ripple-song' ) ); ?>
-						<?php $this->renderTextRow( 'crb_podcast_title', __( 'Podcast Title', 'a-ripple-song' ), $values['crb_podcast_title'], __( 'Required. If empty, falls back to site title.', 'a-ripple-song' ), true ); ?>
-						<?php $this->renderTextRow( 'crb_podcast_subtitle', __( 'Podcast Subtitle', 'a-ripple-song' ), $values['crb_podcast_subtitle'], __( 'Short tagline shown in some apps.', 'a-ripple-song' ) ); ?>
-						<?php $this->renderTextareaRow( 'crb_podcast_description', __( 'Podcast Description', 'a-ripple-song' ), $values['crb_podcast_description'], __( 'Required. Plain text description of the show.', 'a-ripple-song' ), true ); ?>
-						<?php $this->renderTextRow( 'crb_podcast_author', __( 'Podcast Author (itunes:author)', 'a-ripple-song' ), $values['crb_podcast_author'], __( 'Required. Displayed as show author in directories.', 'a-ripple-song' ), true ); ?>
-						<?php $this->renderTextRow( 'crb_podcast_owner_name', __( 'Owner Name', 'a-ripple-song' ), $values['crb_podcast_owner_name'], __( 'Required. For <itunes:owner><itunes:name>.', 'a-ripple-song' ), true ); ?>
-						<?php $this->renderEmailRow( 'crb_podcast_owner_email', __( 'Owner Email', 'a-ripple-song' ), $values['crb_podcast_owner_email'], __( 'Required. For <itunes:owner><itunes:email>. Use a monitored inbox.', 'a-ripple-song' ), true ); ?>
-						<?php $this->renderMediaRow( 'crb_podcast_cover', __( 'Podcast Cover (1400–3000px square)', 'a-ripple-song' ), $values['crb_podcast_cover'], __( 'Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple recommends keeping the file under 512KB.', 'a-ripple-song' ), 'image', true ); ?>
-						<?php $this->renderSelectRow( 'crb_podcast_explicit', __( 'Default Explicit Flag', 'a-ripple-song' ), $values['crb_podcast_explicit'], array( 'clean' => __( 'clean (no explicit content)', 'a-ripple-song' ), 'explicit' => __( 'explicit', 'a-ripple-song' ) ), __( 'Required. Single-episode value can override.', 'a-ripple-song' ), true ); ?>
-						<?php $this->renderSelectRow( 'crb_podcast_language', __( 'Language (RFC 5646)', 'a-ripple-song' ), $values['crb_podcast_language'], $this->getPodcastLanguageOptions(), __( 'Required. Typically en-US, zh-CN, etc.', 'a-ripple-song' ), true ); ?>
-						<?php $this->renderSelectRow( 'crb_podcast_category_primary', __( 'Primary Category (Apple Podcasts)', 'a-ripple-song' ), $values['crb_podcast_category_primary'], array( '' => __( '(not set)', 'a-ripple-song' ) ) + $this->getItunesCategories(), __( 'Required by Apple Podcasts. Choose at least a primary category.', 'a-ripple-song' ), true ); ?>
-						<?php $this->renderSelectRow( 'crb_podcast_category_secondary', __( 'Secondary Category (optional)', 'a-ripple-song' ), $values['crb_podcast_category_secondary'], array( '' => __( '(not set)', 'a-ripple-song' ) ) + $this->getItunesCategories(), __( 'Optional. Some directories support a second category.', 'a-ripple-song' ) ); ?>
-						<?php $this->renderTextRow( 'crb_podcast_copyright', __( 'Copyright (optional)', 'a-ripple-song' ), $values['crb_podcast_copyright'], __( 'Optional. For <copyright>.', 'a-ripple-song' ) ); ?>
-						<?php $this->renderSelectRow( 'crb_podcast_itunes_type', __( 'iTunes Type (itunes:type)', 'a-ripple-song' ), $values['crb_podcast_itunes_type'], array( '' => __( '(not set)', 'a-ripple-song' ), 'episodic' => __( 'episodic', 'a-ripple-song' ), 'serial' => __( 'serial', 'a-ripple-song' ) ), __( 'Optional. Apple Podcasts: episodic or serial.', 'a-ripple-song' ) ); ?>
-						<?php $this->renderTextRow( 'crb_podcast_itunes_title', __( 'iTunes Title (optional)', 'a-ripple-song' ), $values['crb_podcast_itunes_title'], __( 'Optional. Use only if you need a separate Apple-facing title.', 'a-ripple-song' ) ); ?>
-						<?php $this->renderSelectRow( 'crb_podcast_itunes_block', __( 'iTunes Block (itunes:block)', 'a-ripple-song' ), $values['crb_podcast_itunes_block'], array( 'no' => __( 'no', 'a-ripple-song' ), 'yes' => __( 'yes', 'a-ripple-song' ) ), __( 'Optional. yes = hide this show in Apple Podcasts.', 'a-ripple-song' ) ); ?>
-						<?php $this->renderSelectRow( 'crb_podcast_itunes_complete', __( 'iTunes Complete (itunes:complete)', 'a-ripple-song' ), $values['crb_podcast_itunes_complete'], array( 'no' => __( 'no', 'a-ripple-song' ), 'yes' => __( 'yes', 'a-ripple-song' ) ), __( 'Optional. yes = this show is complete (no more episodes).', 'a-ripple-song' ) ); ?>
-						<?php $this->renderTextRow( 'crb_podcast_itunes_new_feed_url', __( 'iTunes New Feed URL (itunes:new-feed-url)', 'a-ripple-song' ), $values['crb_podcast_itunes_new_feed_url'], __( 'Optional. Only for moving your show to a new RSS feed URL.', 'a-ripple-song' ) ); ?>
-						<?php $this->renderSelectRow( 'crb_podcast_locked', __( 'podcast:locked', 'a-ripple-song' ), $values['crb_podcast_locked'], array( 'yes' => __( 'yes (recommended, prevents unauthorized moves)', 'a-ripple-song' ), 'no' => __( 'no', 'a-ripple-song' ) ), __( 'Podcasting 2.0: lock feed to this publisher.', 'a-ripple-song' ) ); ?>
-						<?php $this->renderEmailRow( 'crb_podcast_locked_owner', __( 'podcast:locked owner (optional)', 'a-ripple-song' ), $values['crb_podcast_locked_owner'], __( 'Optional. Podcasting 2.0: email used to verify ownership during moves.', 'a-ripple-song' ) ); ?>
-						<?php $this->renderTextRow( 'crb_podcast_guid', __( 'podcast:guid (optional)', 'a-ripple-song' ), $values['crb_podcast_guid'], __( 'Podcasting 2.0 GUID. If empty, feed will use site URL as fallback.', 'a-ripple-song' ) ); ?>
-						<?php $this->renderTextRow( 'crb_podcast_apple_verify', __( 'Apple Podcasts Verify Code (podcast:txt purpose="applepodcastsverify")', 'a-ripple-song' ), $values['crb_podcast_apple_verify'], __( 'Optional. Used by Apple Podcasts to verify feed ownership.', 'a-ripple-song' ) ); ?>
-						<?php $this->renderFundingField( $values['crb_podcast_funding'] ); ?>
-						<?php $this->renderTextRow( 'crb_podcast_generator', __( 'Generator (optional)', 'a-ripple-song' ), $values['crb_podcast_generator'], __( 'Optional. If empty, generator tag will not be included.', 'a-ripple-song' ) ); ?>
+						<?php $this->renderTextRow( 'title', __( 'Podcast Title', 'a-ripple-song' ), $values['title'], __( 'Required. If empty, falls back to site title.', 'a-ripple-song' ), true ); ?>
+						<?php $this->renderTextRow( 'subtitle', __( 'Podcast Subtitle', 'a-ripple-song' ), $values['subtitle'], __( 'Short tagline shown in some apps.', 'a-ripple-song' ) ); ?>
+						<?php $this->renderTextareaRow( 'description', __( 'Podcast Description', 'a-ripple-song' ), $values['description'], __( 'Required. Plain text description of the show.', 'a-ripple-song' ), true ); ?>
+						<?php $this->renderTextRow( 'author', __( 'Podcast Author (itunes:author)', 'a-ripple-song' ), $values['author'], __( 'Required. Displayed as show author in directories.', 'a-ripple-song' ), true ); ?>
+						<?php $this->renderTextRow( 'owner_name', __( 'Owner Name', 'a-ripple-song' ), $values['owner_name'], __( 'Required. For <itunes:owner><itunes:name>.', 'a-ripple-song' ), true ); ?>
+						<?php $this->renderEmailRow( 'owner_email', __( 'Owner Email', 'a-ripple-song' ), $values['owner_email'], __( 'Required. For <itunes:owner><itunes:email>. Use a monitored inbox.', 'a-ripple-song' ), true ); ?>
+						<?php $this->renderMediaRow( 'cover', __( 'Podcast Cover (1400–3000px square)', 'a-ripple-song' ), $values['cover'], __( 'Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple recommends keeping the file under 512KB.', 'a-ripple-song' ), 'image', true ); ?>
+						<?php $this->renderSelectRow( 'explicit', __( 'Default Explicit Flag', 'a-ripple-song' ), $values['explicit'], array( 'clean' => __( 'clean (no explicit content)', 'a-ripple-song' ), 'explicit' => __( 'explicit', 'a-ripple-song' ) ), __( 'Required. Single-episode value can override.', 'a-ripple-song' ), true ); ?>
+						<?php $this->renderSelectRow( 'language', __( 'Language (RFC 5646)', 'a-ripple-song' ), $values['language'], $this->getPodcastLanguageOptions(), __( 'Required. Typically en-US, zh-CN, etc.', 'a-ripple-song' ), true ); ?>
+						<?php $this->renderSelectRow( 'category_primary', __( 'Primary Category (Apple Podcasts)', 'a-ripple-song' ), $values['category_primary'], array( '' => __( '(not set)', 'a-ripple-song' ) ) + $this->getItunesCategories(), __( 'Required by Apple Podcasts. Choose at least a primary category.', 'a-ripple-song' ), true ); ?>
+						<?php $this->renderSelectRow( 'category_secondary', __( 'Secondary Category (optional)', 'a-ripple-song' ), $values['category_secondary'], array( '' => __( '(not set)', 'a-ripple-song' ) ) + $this->getItunesCategories(), __( 'Optional. Some directories support a second category.', 'a-ripple-song' ) ); ?>
+						<?php $this->renderTextRow( 'copyright', __( 'Copyright (optional)', 'a-ripple-song' ), $values['copyright'], __( 'Optional. For <copyright>.', 'a-ripple-song' ) ); ?>
+						<?php $this->renderSelectRow( 'itunes_type', __( 'iTunes Type (itunes:type)', 'a-ripple-song' ), $values['itunes_type'], array( '' => __( '(not set)', 'a-ripple-song' ), 'episodic' => __( 'episodic', 'a-ripple-song' ), 'serial' => __( 'serial', 'a-ripple-song' ) ), __( 'Optional. Apple Podcasts: episodic or serial.', 'a-ripple-song' ) ); ?>
+						<?php $this->renderTextRow( 'itunes_title', __( 'iTunes Title (optional)', 'a-ripple-song' ), $values['itunes_title'], __( 'Optional. Use only if you need a separate Apple-facing title.', 'a-ripple-song' ) ); ?>
+						<?php $this->renderSelectRow( 'itunes_block', __( 'iTunes Block (itunes:block)', 'a-ripple-song' ), $values['itunes_block'], array( 'no' => __( 'no', 'a-ripple-song' ), 'yes' => __( 'yes', 'a-ripple-song' ) ), __( 'Optional. yes = hide this show in Apple Podcasts.', 'a-ripple-song' ) ); ?>
+						<?php $this->renderSelectRow( 'itunes_complete', __( 'iTunes Complete (itunes:complete)', 'a-ripple-song' ), $values['itunes_complete'], array( 'no' => __( 'no', 'a-ripple-song' ), 'yes' => __( 'yes', 'a-ripple-song' ) ), __( 'Optional. yes = this show is complete (no more episodes).', 'a-ripple-song' ) ); ?>
+						<?php $this->renderTextRow( 'itunes_new_feed_url', __( 'iTunes New Feed URL (itunes:new-feed-url)', 'a-ripple-song' ), $values['itunes_new_feed_url'], __( 'Optional. Only for moving your show to a new RSS feed URL.', 'a-ripple-song' ) ); ?>
+						<?php $this->renderSelectRow( 'locked', __( 'podcast:locked', 'a-ripple-song' ), $values['locked'], array( 'yes' => __( 'yes (recommended, prevents unauthorized moves)', 'a-ripple-song' ), 'no' => __( 'no', 'a-ripple-song' ) ), __( 'Podcasting 2.0: lock feed to this publisher.', 'a-ripple-song' ) ); ?>
+						<?php $this->renderEmailRow( 'locked_owner', __( 'podcast:locked owner (optional)', 'a-ripple-song' ), $values['locked_owner'], __( 'Optional. Podcasting 2.0: email used to verify ownership during moves.', 'a-ripple-song' ) ); ?>
+						<?php $this->renderTextRow( 'guid', __( 'podcast:guid (optional)', 'a-ripple-song' ), $values['guid'], __( 'Podcasting 2.0 GUID. If empty, feed will use site URL as fallback.', 'a-ripple-song' ) ); ?>
+						<?php $this->renderTextRow( 'apple_verify', __( 'Apple Podcasts Verify Code (podcast:txt purpose="applepodcastsverify")', 'a-ripple-song' ), $values['apple_verify'], __( 'Optional. Used by Apple Podcasts to verify feed ownership.', 'a-ripple-song' ) ); ?>
+						<?php $this->renderFundingField( $values['funding'] ); ?>
+						<?php $this->renderTextRow( 'generator', __( 'Generator (optional)', 'a-ripple-song' ), $values['generator'], __( 'Optional. If empty, generator tag will not be included.', 'a-ripple-song' ) ); ?>
 					</tbody>
 				</table>
 
@@ -210,36 +222,72 @@ class Podcast {
 	}
 
 	/**
+	 * Return default podcast settings.
+	 *
+	 * @return array<string,mixed>
+	 */
+	private static function getDefaultSettings() {
+		return array(
+			'title'              => get_bloginfo( 'name' ),
+			'subtitle'           => '',
+			'description'        => get_bloginfo( 'description' ),
+			'author'             => get_bloginfo( 'name' ),
+			'owner_name'         => get_bloginfo( 'name' ),
+			'owner_email'        => get_bloginfo( 'admin_email' ),
+			'cover'              => '',
+			'explicit'           => 'clean',
+			'language'           => get_bloginfo( 'language' ) ?: 'en-US',
+			'category_primary'   => '',
+			'category_secondary' => '',
+			'copyright'          => '',
+			'itunes_type'        => '',
+			'itunes_title'       => '',
+			'itunes_block'       => 'no',
+			'itunes_complete'    => 'no',
+			'itunes_new_feed_url' => '',
+			'locked'             => 'yes',
+			'locked_owner'       => '',
+			'guid'               => home_url( '/' ),
+			'apple_verify'       => '',
+			'funding'            => array(),
+			'generator'          => '',
+		);
+	}
+
+	/**
+	 * Return the saved podcast settings merged with defaults.
+	 *
+	 * @return array<string,mixed>
+	 */
+	public static function getSettings() {
+		$settings = get_option( self::OPTION_NAME, array() );
+		if ( ! is_array( $settings ) ) {
+			$settings = array();
+		}
+
+		return array_merge( self::getDefaultSettings(), $settings );
+	}
+
+	/**
+	 * Return one podcast setting value.
+	 *
+	 * @param string $key Setting key without a plugin prefix.
+	 * @param mixed  $default Default value used when the setting does not exist.
+	 * @return mixed
+	 */
+	public static function getSetting( $key, $default = null ) {
+		$settings = self::getSettings();
+
+		return array_key_exists( (string) $key, $settings ) ? $settings[ (string) $key ] : $default;
+	}
+
+	/**
 	 * Collect current values for the settings form.
 	 *
 	 * @return array<string,mixed>
 	 */
 	private function getCurrentSettings() {
-		return array(
-			'crb_podcast_title'            => (string) LegacyMeta::getOptionValue( 'crb_podcast_title', get_bloginfo( 'name' ) ),
-			'crb_podcast_subtitle'         => (string) LegacyMeta::getOptionValue( 'crb_podcast_subtitle', '' ),
-			'crb_podcast_description'      => (string) LegacyMeta::getOptionValue( 'crb_podcast_description', get_bloginfo( 'description' ) ),
-			'crb_podcast_author'           => (string) LegacyMeta::getOptionValue( 'crb_podcast_author', get_bloginfo( 'name' ) ),
-			'crb_podcast_owner_name'       => (string) LegacyMeta::getOptionValue( 'crb_podcast_owner_name', get_bloginfo( 'name' ) ),
-			'crb_podcast_owner_email'      => (string) LegacyMeta::getOptionValue( 'crb_podcast_owner_email', get_bloginfo( 'admin_email' ) ),
-			'crb_podcast_cover'            => (string) LegacyMeta::getOptionValue( 'crb_podcast_cover', '' ),
-			'crb_podcast_explicit'         => (string) LegacyMeta::getOptionValue( 'crb_podcast_explicit', 'clean' ),
-			'crb_podcast_language'         => (string) LegacyMeta::getOptionValue( 'crb_podcast_language', get_bloginfo( 'language' ) ?: 'en-US' ),
-			'crb_podcast_category_primary' => (string) LegacyMeta::getOptionValue( 'crb_podcast_category_primary', '' ),
-			'crb_podcast_category_secondary' => (string) LegacyMeta::getOptionValue( 'crb_podcast_category_secondary', '' ),
-			'crb_podcast_copyright'        => (string) LegacyMeta::getOptionValue( 'crb_podcast_copyright', '' ),
-			'crb_podcast_itunes_type'      => (string) LegacyMeta::getOptionValue( 'crb_podcast_itunes_type', '' ),
-			'crb_podcast_itunes_title'     => (string) LegacyMeta::getOptionValue( 'crb_podcast_itunes_title', '' ),
-			'crb_podcast_itunes_block'     => (string) LegacyMeta::getOptionValue( 'crb_podcast_itunes_block', 'no' ),
-			'crb_podcast_itunes_complete'  => (string) LegacyMeta::getOptionValue( 'crb_podcast_itunes_complete', 'no' ),
-			'crb_podcast_itunes_new_feed_url' => (string) LegacyMeta::getOptionValue( 'crb_podcast_itunes_new_feed_url', '' ),
-			'crb_podcast_locked'           => (string) LegacyMeta::getOptionValue( 'crb_podcast_locked', 'yes' ),
-			'crb_podcast_locked_owner'     => (string) LegacyMeta::getOptionValue( 'crb_podcast_locked_owner', '' ),
-			'crb_podcast_guid'             => (string) LegacyMeta::getOptionValue( 'crb_podcast_guid', home_url( '/' ) ),
-			'crb_podcast_apple_verify'     => (string) LegacyMeta::getOptionValue( 'crb_podcast_apple_verify', '' ),
-			'crb_podcast_funding'          => LegacyMeta::getOptionValue( 'crb_podcast_funding', array() ),
-			'crb_podcast_generator'        => (string) LegacyMeta::getOptionValue( 'crb_podcast_generator', '' ),
-		);
+		return self::getSettings();
 	}
 
 	/**
@@ -253,63 +301,63 @@ class Podcast {
 		$settings = $current;
 		$errors   = array();
 
-		$settings['crb_podcast_title']       = sanitize_text_field( (string) ( $input['crb_podcast_title'] ?? $current['crb_podcast_title'] ) );
-		$settings['crb_podcast_subtitle']    = sanitize_text_field( (string) ( $input['crb_podcast_subtitle'] ?? $current['crb_podcast_subtitle'] ) );
-		$settings['crb_podcast_description']  = sanitize_textarea_field( (string) ( $input['crb_podcast_description'] ?? $current['crb_podcast_description'] ) );
-		$settings['crb_podcast_author']      = sanitize_text_field( (string) ( $input['crb_podcast_author'] ?? $current['crb_podcast_author'] ) );
-		$settings['crb_podcast_owner_name']  = sanitize_text_field( (string) ( $input['crb_podcast_owner_name'] ?? $current['crb_podcast_owner_name'] ) );
-		$settings['crb_podcast_owner_email'] = sanitize_email( (string) ( $input['crb_podcast_owner_email'] ?? $current['crb_podcast_owner_email'] ) );
-		$settings['crb_podcast_cover']       = sanitize_text_field( (string) ( $input['crb_podcast_cover'] ?? $current['crb_podcast_cover'] ) );
-		$explicit = (string) ( $input['crb_podcast_explicit'] ?? $current['crb_podcast_explicit'] );
+		$settings['title']       = sanitize_text_field( (string) ( $input['title'] ?? $current['title'] ) );
+		$settings['subtitle']    = sanitize_text_field( (string) ( $input['subtitle'] ?? $current['subtitle'] ) );
+		$settings['description'] = sanitize_textarea_field( (string) ( $input['description'] ?? $current['description'] ) );
+		$settings['author']      = sanitize_text_field( (string) ( $input['author'] ?? $current['author'] ) );
+		$settings['owner_name']  = sanitize_text_field( (string) ( $input['owner_name'] ?? $current['owner_name'] ) );
+		$settings['owner_email'] = sanitize_email( (string) ( $input['owner_email'] ?? $current['owner_email'] ) );
+		$settings['cover']       = sanitize_text_field( (string) ( $input['cover'] ?? $current['cover'] ) );
+		$explicit = (string) ( $input['explicit'] ?? $current['explicit'] );
 		if ( ! in_array( $explicit, array( 'clean', 'explicit' ), true ) ) {
 			$explicit = 'clean';
 		}
-		$settings['crb_podcast_explicit'] = $explicit;
-		$settings['crb_podcast_language']    = sanitize_text_field( (string) ( $input['crb_podcast_language'] ?? $current['crb_podcast_language'] ) );
-		$settings['crb_podcast_category_primary']    = sanitize_text_field( (string) ( $input['crb_podcast_category_primary'] ?? $current['crb_podcast_category_primary'] ) );
-		$settings['crb_podcast_category_secondary'] = sanitize_text_field( (string) ( $input['crb_podcast_category_secondary'] ?? $current['crb_podcast_category_secondary'] ) );
-		$settings['crb_podcast_copyright']          = sanitize_text_field( (string) ( $input['crb_podcast_copyright'] ?? $current['crb_podcast_copyright'] ) );
-		$itunes_type = (string) ( $input['crb_podcast_itunes_type'] ?? $current['crb_podcast_itunes_type'] );
+		$settings['explicit'] = $explicit;
+		$settings['language'] = sanitize_text_field( (string) ( $input['language'] ?? $current['language'] ) );
+		$settings['category_primary'] = sanitize_text_field( (string) ( $input['category_primary'] ?? $current['category_primary'] ) );
+		$settings['category_secondary'] = sanitize_text_field( (string) ( $input['category_secondary'] ?? $current['category_secondary'] ) );
+		$settings['copyright'] = sanitize_text_field( (string) ( $input['copyright'] ?? $current['copyright'] ) );
+		$itunes_type = (string) ( $input['itunes_type'] ?? $current['itunes_type'] );
 		if ( ! in_array( $itunes_type, array( '', 'episodic', 'serial' ), true ) ) {
 			$itunes_type = '';
 		}
-		$settings['crb_podcast_itunes_type'] = $itunes_type;
-		$settings['crb_podcast_itunes_title'] = sanitize_text_field( (string) ( $input['crb_podcast_itunes_title'] ?? $current['crb_podcast_itunes_title'] ) );
-		$itunes_block = (string) ( $input['crb_podcast_itunes_block'] ?? $current['crb_podcast_itunes_block'] );
+		$settings['itunes_type'] = $itunes_type;
+		$settings['itunes_title'] = sanitize_text_field( (string) ( $input['itunes_title'] ?? $current['itunes_title'] ) );
+		$itunes_block = (string) ( $input['itunes_block'] ?? $current['itunes_block'] );
 		if ( ! in_array( $itunes_block, array( 'no', 'yes' ), true ) ) {
 			$itunes_block = 'no';
 		}
-		$settings['crb_podcast_itunes_block'] = $itunes_block;
-		$itunes_complete = (string) ( $input['crb_podcast_itunes_complete'] ?? $current['crb_podcast_itunes_complete'] );
+		$settings['itunes_block'] = $itunes_block;
+		$itunes_complete = (string) ( $input['itunes_complete'] ?? $current['itunes_complete'] );
 		if ( ! in_array( $itunes_complete, array( 'no', 'yes' ), true ) ) {
 			$itunes_complete = 'no';
 		}
-		$settings['crb_podcast_itunes_complete'] = $itunes_complete;
-		$settings['crb_podcast_itunes_new_feed_url'] = esc_url_raw( (string) ( $input['crb_podcast_itunes_new_feed_url'] ?? $current['crb_podcast_itunes_new_feed_url'] ) );
-		$locked = (string) ( $input['crb_podcast_locked'] ?? $current['crb_podcast_locked'] );
+		$settings['itunes_complete'] = $itunes_complete;
+		$settings['itunes_new_feed_url'] = esc_url_raw( (string) ( $input['itunes_new_feed_url'] ?? $current['itunes_new_feed_url'] ) );
+		$locked = (string) ( $input['locked'] ?? $current['locked'] );
 		if ( ! in_array( $locked, array( 'yes', 'no' ), true ) ) {
 			$locked = 'yes';
 		}
-		$settings['crb_podcast_locked'] = $locked;
-		$settings['crb_podcast_locked_owner'] = sanitize_email( (string) ( $input['crb_podcast_locked_owner'] ?? $current['crb_podcast_locked_owner'] ) );
-		$settings['crb_podcast_guid']         = esc_url_raw( (string) ( $input['crb_podcast_guid'] ?? $current['crb_podcast_guid'] ) );
-		$settings['crb_podcast_apple_verify'] = sanitize_text_field( (string) ( $input['crb_podcast_apple_verify'] ?? $current['crb_podcast_apple_verify'] ) );
-		$settings['crb_podcast_generator']    = sanitize_text_field( (string) ( $input['crb_podcast_generator'] ?? $current['crb_podcast_generator'] ) );
-		$settings['crb_podcast_funding']      = $this->sanitizeFundingRows( $input['crb_podcast_funding'] ?? array() );
+		$settings['locked'] = $locked;
+		$settings['locked_owner'] = sanitize_email( (string) ( $input['locked_owner'] ?? $current['locked_owner'] ) );
+		$settings['guid']         = esc_url_raw( (string) ( $input['guid'] ?? $current['guid'] ) );
+		$settings['apple_verify'] = sanitize_text_field( (string) ( $input['apple_verify'] ?? $current['apple_verify'] ) );
+		$settings['generator']    = sanitize_text_field( (string) ( $input['generator'] ?? $current['generator'] ) );
+		$settings['funding']      = $this->sanitizeFundingRows( $input['funding'] ?? array() );
 
-		if ( $settings['crb_podcast_cover'] === '' ) {
+		if ( $settings['cover'] === '' ) {
 			$errors[] = __( 'Podcast Cover is required.', 'a-ripple-song' );
 		} else {
-			$validation = $this->validateCoverImage( $settings['crb_podcast_cover'] );
+			$validation = $this->validateCoverImage( $settings['cover'] );
 			if ( is_wp_error( $validation ) ) {
 				$errors[] = $validation->get_error_message();
-				$settings['crb_podcast_cover'] = (string) $current['crb_podcast_cover'];
+				$settings['cover'] = (string) $current['cover'];
 			}
 		}
 
-		if ( $settings['crb_podcast_owner_email'] === '' ) {
+		if ( $settings['owner_email'] === '' ) {
 			$errors[] = __( 'Owner Email is required.', 'a-ripple-song' );
-			$settings['crb_podcast_owner_email'] = (string) $current['crb_podcast_owner_email'];
+			$settings['owner_email'] = (string) $current['owner_email'];
 		}
 
 		return array(
@@ -368,7 +416,7 @@ class Podcast {
 	private function renderTextRow( $key, $label, $value, $help = '', $required = false ) {
 		$this->renderFieldRowStart( $label, $help, $required );
 		?>
-		<input type="text" class="regular-text" name="a_ripple_song_podcast_settings[<?php echo esc_attr( $key ); ?>]" value="<?php echo esc_attr( (string) $value ); ?>" <?php echo $required ? 'required aria-required="true"' : ''; ?> />
+		<input type="text" class="regular-text" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[<?php echo esc_attr( $key ); ?>]" value="<?php echo esc_attr( (string) $value ); ?>" <?php echo $required ? 'required aria-required="true"' : ''; ?> />
 		<?php
 		$this->renderFieldRowEnd();
 	}
@@ -379,7 +427,7 @@ class Podcast {
 	private function renderEmailRow( $key, $label, $value, $help = '', $required = false ) {
 		$this->renderFieldRowStart( $label, $help, $required );
 		?>
-		<input type="email" class="regular-text" name="a_ripple_song_podcast_settings[<?php echo esc_attr( $key ); ?>]" value="<?php echo esc_attr( (string) $value ); ?>" <?php echo $required ? 'required aria-required="true"' : ''; ?> />
+		<input type="email" class="regular-text" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[<?php echo esc_attr( $key ); ?>]" value="<?php echo esc_attr( (string) $value ); ?>" <?php echo $required ? 'required aria-required="true"' : ''; ?> />
 		<?php
 		$this->renderFieldRowEnd();
 	}
@@ -390,7 +438,7 @@ class Podcast {
 	private function renderTextareaRow( $key, $label, $value, $help = '', $required = false ) {
 		$this->renderFieldRowStart( $label, $help, $required );
 		?>
-		<textarea class="large-text" rows="4" name="a_ripple_song_podcast_settings[<?php echo esc_attr( $key ); ?>]" <?php echo $required ? 'required aria-required="true"' : ''; ?>><?php echo esc_textarea( (string) $value ); ?></textarea>
+		<textarea class="large-text" rows="4" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[<?php echo esc_attr( $key ); ?>]" <?php echo $required ? 'required aria-required="true"' : ''; ?>><?php echo esc_textarea( (string) $value ); ?></textarea>
 		<?php
 		$this->renderFieldRowEnd();
 	}
@@ -401,7 +449,7 @@ class Podcast {
 	private function renderSelectRow( $key, $label, $value, $options, $help = '', $required = false ) {
 		$this->renderFieldRowStart( $label, $help, $required );
 		?>
-		<select name="a_ripple_song_podcast_settings[<?php echo esc_attr( $key ); ?>]" <?php echo $required ? 'required aria-required="true"' : ''; ?>>
+		<select name="<?php echo esc_attr( self::OPTION_NAME ); ?>[<?php echo esc_attr( $key ); ?>]" <?php echo $required ? 'required aria-required="true"' : ''; ?>>
 			<?php foreach ( $options as $option_value => $option_label ) : ?>
 				<option value="<?php echo esc_attr( (string) $option_value ); ?>" <?php selected( (string) $value, (string) $option_value ); ?>><?php echo esc_html( (string) $option_label ); ?></option>
 			<?php endforeach; ?>
@@ -418,7 +466,7 @@ class Podcast {
 		$input_type = $mode === 'image' ? 'hidden' : 'url';
 		?>
 		<div class="ars-media-field">
-			<input type="<?php echo esc_attr( $input_type ); ?>" class="regular-text" name="a_ripple_song_podcast_settings[<?php echo esc_attr( $key ); ?>]" value="<?php echo esc_attr( (string) $value ); ?>" placeholder="https://" data-ars-media-uploader="<?php echo esc_attr( $mode ); ?>" <?php if ( $required && $input_type !== 'hidden' ) : ?>required aria-required="true"<?php endif; ?> />
+			<input type="<?php echo esc_attr( $input_type ); ?>" class="regular-text" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[<?php echo esc_attr( $key ); ?>]" value="<?php echo esc_attr( (string) $value ); ?>" placeholder="https://" data-ars-media-uploader="<?php echo esc_attr( $mode ); ?>" <?php if ( $required && $input_type !== 'hidden' ) : ?>required aria-required="true"<?php endif; ?> />
 		</div>
 		<?php
 		$this->renderFieldRowEnd();
@@ -449,8 +497,8 @@ class Podcast {
 						<?php foreach ( $rows as $row ) : ?>
 							<div class="ars-repeatable-field__row">
 								<div class="ars-repeatable-field__grid">
-									<input type="url" name="a_ripple_song_podcast_settings[crb_podcast_funding][][url]" value="<?php echo esc_attr( (string) ( $row['url'] ?? '' ) ); ?>" placeholder="<?php echo esc_attr__( 'URL', 'a-ripple-song' ); ?>" />
-									<input type="text" name="a_ripple_song_podcast_settings[crb_podcast_funding][][label]" value="<?php echo esc_attr( (string) ( $row['label'] ?? '' ) ); ?>" placeholder="<?php echo esc_attr__( 'Label', 'a-ripple-song' ); ?>" />
+									<input type="url" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[funding][][url]" value="<?php echo esc_attr( (string) ( $row['url'] ?? '' ) ); ?>" placeholder="<?php echo esc_attr__( 'URL', 'a-ripple-song' ); ?>" />
+									<input type="text" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[funding][][label]" value="<?php echo esc_attr( (string) ( $row['label'] ?? '' ) ); ?>" placeholder="<?php echo esc_attr__( 'Label', 'a-ripple-song' ); ?>" />
 								</div>
 								<button type="button" class="button-link-delete" data-ars-repeatable-remove><?php echo esc_html__( 'Delete', 'a-ripple-song' ); ?></button>
 							</div>
@@ -459,8 +507,8 @@ class Podcast {
 					<template data-ars-repeatable-template>
 						<div class="ars-repeatable-field__row">
 							<div class="ars-repeatable-field__grid">
-								<input type="url" name="a_ripple_song_podcast_settings[crb_podcast_funding][][url]" value="" placeholder="<?php echo esc_attr__( 'URL', 'a-ripple-song' ); ?>" />
-								<input type="text" name="a_ripple_song_podcast_settings[crb_podcast_funding][][label]" value="" placeholder="<?php echo esc_attr__( 'Label', 'a-ripple-song' ); ?>" />
+								<input type="url" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[funding][][url]" value="" placeholder="<?php echo esc_attr__( 'URL', 'a-ripple-song' ); ?>" />
+								<input type="text" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[funding][][label]" value="" placeholder="<?php echo esc_attr__( 'Label', 'a-ripple-song' ); ?>" />
 							</div>
 							<button type="button" class="button-link-delete" data-ars-repeatable-remove><?php echo esc_html__( 'Delete', 'a-ripple-song' ); ?></button>
 						</div>

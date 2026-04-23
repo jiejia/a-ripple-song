@@ -84,7 +84,7 @@ class Plugin {
 
 		$podcastSettings = new Podcast();
 		$this->loader->addAction( 'admin_menu', $podcastSettings, 'registerMenuPage' );
-		$this->loader->addAction( 'admin_post_' . 'a_ripple_song_podcast_save', $podcastSettings, 'handleSave' );
+		$this->loader->addAction( 'admin_post_' . Podcast::SAVE_ACTION, $podcastSettings, 'handleSave' );
 
 		$this->loader->addAction( 'save_post_' . Episode::POST_TYPE, $episode, 'onPostMetaSaved', 20, 2 );
 		$this->loader->addAction( 'admin_notices', $episode, 'showAudioMetaErrorNotice' );

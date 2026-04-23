@@ -3,6 +3,7 @@
 namespace ARippleSong\Taxonomies;
 
 use ARippleSong\PostTypes\Episode;
+use ARippleSong\Constants\EpisodeConstant;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -16,7 +17,7 @@ class EpisodeCategory {
 	/**
 	 * Taxonomy key.
 	 */
-	public const TAXONOMY = 'ars_episode_category';
+	public const TAXONOMY = EpisodeConstant::TAXONOMY_SLUG;
 
 	/**
 	 * Register taxonomy for episode categories.

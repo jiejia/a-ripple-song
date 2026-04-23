@@ -4,6 +4,7 @@ namespace ARippleSong\Feed;
 
 use ARippleSong\Core\LegacyMeta;
 use ARippleSong\PostTypes\Episode;
+use ARippleSong\Settings\Podcast as PodcastSettings;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -697,17 +698,15 @@ class Podcast {
 		$site_url          = home_url( '/' );
 		$feed_url          = $this->getCanonicalFeedUrl();
 
-		$get_theme_option = static function ( $name, $default = null ) {
-			return LegacyMeta::getOptionValue( (string) $name, $default );
-		};
+		$settings = PodcastSettings::getSettings();
 
-		$channel_title       = (string) $get_theme_option( 'crb_podcast_title', get_bloginfo( 'name' ) );
-		$channel_subtitle    = (string) $get_theme_option( 'crb_podcast_subtitle', '' );
-		$channel_description = (string) $get_theme_option( 'crb_podcast_description', get_bloginfo( 'description' ) );
-		$channel_author      = (string) $get_theme_option( 'crb_podcast_author', get_bloginfo( 'name' ) );
-		$channel_owner_name  = (string) $get_theme_option( 'crb_podcast_owner_name', $channel_author );
-		$channel_owner_email = (string) $get_theme_option( 'crb_podcast_owner_email', get_bloginfo( 'admin_email' ) );
-		$channel_cover       = $this->encodeUrlPathForRss( (string) $get_theme_option( 'crb_podcast_cover', '' ) );
+		$channel_title       = (string) $settings['title'];
+		$channel_subtitle    = (string) $settings['subtitle'];
+		$channel_description = (string) $settings['description'];
+		$channel_author      = (string) $settings['author'];
+		$channel_owner_name  = (string) $settings['owner_name'];
+		$channel_owner_email = (string) $settings['owner_email'];
+		$channel_cover       = $this->encodeUrlPathForRss( (string) $settings['cover'] );
 		$default_item_image  = $channel_cover;
 
 		$channel_description = $this->ensureMinChannelDescription(
@@ -726,23 +725,23 @@ class Podcast {
 			}
 		}
 
-		$channel_explicit          = $this->normalizeItunesExplicit( (string) $get_theme_option( 'crb_podcast_explicit', 'false' ), 'false' );
-		$channel_language_raw      = (string) $get_theme_option( 'crb_podcast_language', ( get_bloginfo( 'language' ) ?: 'en-US' ) );
+		$channel_explicit          = $this->normalizeItunesExplicit( (string) $settings['explicit'], 'false' );
+		$channel_language_raw      = (string) $settings['language'];
 		$channel_language          = $this->normalizeRssLanguageIso6391( $channel_language_raw, 'en' );
-		$channel_category_primary   = (string) $get_theme_option( 'crb_podcast_category_primary', '' );
-		$channel_category_secondary = (string) $get_theme_option( 'crb_podcast_category_secondary', '' );
-		$channel_copyright          = (string) $get_theme_option( 'crb_podcast_copyright', '' );
-		$podcast_locked             = (string) $get_theme_option( 'crb_podcast_locked', 'yes' );
-		$podcast_locked_owner       = (string) $get_theme_option( 'crb_podcast_locked_owner', '' );
-		$podcast_guid               = (string) $get_theme_option( 'crb_podcast_guid', $site_url );
-		$itunes_type                = (string) $get_theme_option( 'crb_podcast_itunes_type', '' );
-		$itunes_title               = (string) $get_theme_option( 'crb_podcast_itunes_title', '' );
-		$itunes_block               = (string) $get_theme_option( 'crb_podcast_itunes_block', 'no' );
-		$itunes_complete            = (string) $get_theme_option( 'crb_podcast_itunes_complete', 'no' );
-		$itunes_new_feed_url        = (string) $get_theme_option( 'crb_podcast_itunes_new_feed_url', '' );
-		$generator                  = (string) $get_theme_option( 'crb_podcast_generator', '' );
-		$apple_verify_code          = (string) $get_theme_option( 'crb_podcast_apple_verify', '' );
-		$podcast_funding            = (array) $get_theme_option( 'crb_podcast_funding', array() );
+		$channel_category_primary   = (string) $settings['category_primary'];
+		$channel_category_secondary = (string) $settings['category_secondary'];
+		$channel_copyright          = (string) $settings['copyright'];
+		$podcast_locked             = (string) $settings['locked'];
+		$podcast_locked_owner       = (string) $settings['locked_owner'];
+		$podcast_guid               = (string) $settings['guid'];
+		$itunes_type                = (string) $settings['itunes_type'];
+		$itunes_title               = (string) $settings['itunes_title'];
+		$itunes_block               = (string) $settings['itunes_block'];
+		$itunes_complete            = (string) $settings['itunes_complete'];
+		$itunes_new_feed_url        = (string) $settings['itunes_new_feed_url'];
+		$generator                  = (string) $settings['generator'];
+		$apple_verify_code          = (string) $settings['apple_verify'];
+		$podcast_funding            = (array) $settings['funding'];
 
 		$query = new \WP_Query(
 			array(
