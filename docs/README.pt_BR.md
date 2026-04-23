@@ -1,19 +1,19 @@
-# A Ripple Song Podcast
+# A Ripple Song
 
-A Ripple Song Podcast é um plugin de podcast para WordPress que permite publicar e gerenciar podcasts no seu site, além de gerar o RSS do podcast para as principais plataformas.
+A Ripple Song é um plugin de podcast para WordPress que adiciona publicação e gerenciamento de podcasts ao WordPress, além de gerar RSS de podcast para sincronizar com as principais plataformas.
 
 <img width="" src="../screenshot.png"/>
 
 ## Recursos
 
-- Tipos de post e categorias de podcast para publicação e gerenciamento de podcasts
+- Tipos de post e categorias de podcast para adicionar e gerenciar conteúdo de podcast
 - Extração automática de metadados de áudio (duração, tamanho do arquivo e formato), em conformidade com os padrões do iTunes e do Podcasting 2.0
 - Geração de RSS integrada para distribuição com um clique nas principais plataformas de podcast
 - Suporte à internacionalização
+- Suporte a temas
 
 ## Stack Técnico
 
-- [Carbon Fields](https://github.com/htmlburger/carbon-fields) - Framework de campos personalizados para WordPress
 - [getID3](https://github.com/JamesHeinrich/getID3) - Biblioteca de análise de metadados de áudio
 - [PHP-Scoper](https://github.com/humbug/php-scoper) - Ferramenta de isolamento de namespaces PHP
 
@@ -26,7 +26,6 @@ A Ripple Song Podcast é um plugin de podcast para WordPress que permite publica
 - [English](../README.md)
 - [简体中文](README.zh_CN.md)
 - [繁體中文](README.zh-Hant.md)
-- [日本語](README.ja.md)
 - [한국어](README.ko_KR.md)
 - [Français](README.fr_FR.md)
 - [Español](README.es_ES.md)

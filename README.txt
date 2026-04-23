@@ -1,4 +1,4 @@
-=== A Ripple Song Podcast ===
+=== A Ripple Song ===
 Contributors: jiejia
 Donate link: https://github.com/jiejia/
 Tags: podcast, rss, feed, itunes, podcasting2.0
@@ -9,71 +9,57 @@ Stable tag: 0.5.0
 License: GPL-3.0
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Podcast RSS feed (/feed/podcast) + Episode CPT for the A Ripple Song theme, with iTunes & Podcasting 2.0 support.
+A WordPress podcast plugin for publishing and managing podcast episodes, with podcast RSS generation for major podcast platforms.
 
 == Description ==
 
-This plugin adds podcast functionality for the “A Ripple Song” theme/site: manage episodes via a custom post type and generate a podcast RSS feed suitable for Apple Podcasts / Spotify and other directories.
+A Ripple Song adds podcast publishing and management to WordPress. It provides podcast content types, episode metadata management, and a podcast RSS feed that can be submitted to major podcast platforms.
 
 Key features:
 
-* Custom post type: Episode (`ars_episode`), archive slug defaults to `/podcasts/`
-* Taxonomy: Episode Categories (`ars_episode_category`), plus support for core tags (`post_tag`)
-* Podcast RSS feed: `/feed/podcast/` (or `?feed=podcast` if permalinks are disabled)
-* Channel-level settings page: Admin menu `A Ripple Song` → `Podcast Settings`
-  * Common fields: Title / Subtitle / Description / Author / Owner / Language / Cover / Categories
-  * iTunes: `itunes:type`, `itunes:block`, `itunes:complete`, `itunes:new-feed-url`, optional iTunes Title
-  * Podcasting 2.0: `podcast:locked`, `podcast:guid`, `podcast:txt` (Apple verify code), `podcast:funding`
-* Episode-level fields (Carbon Fields meta):
-  * Audio URL (Media Library picker or manual URL); on save auto-fills `duration/length/mime` (via getID3)
-  * clean/explicit, episodeType (full/trailer/bonus), episode/season number
-  * Episode cover, per-episode author override, iTunes Title, Subtitle, Summary, Custom GUID, iTunes Block
-  * Podcasting 2.0: Transcript (`podcast:transcript`), Chapters (`podcast:chapters`), Soundbites (`podcast:soundbite`)
-  * Members/Guests: outputs as `podcast:person` entries
-* REST API: registers/exposes selected episode meta for theme/front-end consumption
-* Upload support: allows `mp3` / `m4a` uploads; enhances URL fields with upload/download/remove UI
+* Podcast post type and categories for adding and managing podcast content
+* Automatic audio metadata extraction, including duration, file size, and format
+* Built-in podcast RSS feed generation for iTunes and Podcasting 2.0 compatible distribution
+* Internationalization support
+* Theme support for the A Ripple Song theme
 
-Notes:
+Technical stack:
 
-* Carbon Fields is bundled via Composer `vendor/` (no separate Carbon Fields plugin required).
-* The feed depends on rewrite rules; activation typically flushes rules, but if you get a 404, visit “Settings → Permalinks” and click “Save”.
+* getID3 for audio metadata analysis
+* PHP-Scoper for PHP namespace isolation in release builds
 
 == Installation ==
 
-1. Upload the `a-ripple-song-podcast` plugin folder to `/wp-content/plugins/` (or install the ZIP via WP Admin)
-2. Activate the plugin in WP Admin
-3. Go to `A Ripple Song` → `Podcast Settings` and fill in channel metadata (title, description, author, cover, etc.)
-4. Create an Episode: `ARS Episodes` → `Add New Episode`, then fill in the “Episode Details” meta box (audio + metadata)
-5. Open the feed at `/feed/podcast/` (or `?feed=podcast`) and submit it to podcast directories
+1. Upload the plugin folder to `/wp-content/plugins/`, or install the ZIP through WP Admin.
+2. Activate the plugin in WP Admin.
+3. Go to `A Ripple Song` -> `Podcast Settings` and fill in the podcast channel metadata.
+4. Create podcast episodes from `ARS Episodes` -> `Add New Episode`.
+5. Open `/feed/podcast/` and submit the RSS feed to podcast platforms.
 
 == Frequently Asked Questions ==
 
-= What is the RSS URL? =
+= What is the podcast RSS URL? =
 
-By default it’s `https://your-site.example/feed/podcast/`. If permalinks are disabled, use `https://your-site.example/?feed=podcast`.
+By default it is `https://your-site.example/feed/podcast/`. If permalinks are disabled, use `https://your-site.example/?feed=podcast`.
 
 = Why does /feed/podcast/ return 404 or redirect? =
 
-Usually rewrite rules haven’t been flushed. Go to “Settings → Permalinks” and click “Save”. The plugin also attempts a one-time admin-side flush.
+Usually rewrite rules have not been flushed. Go to `Settings` -> `Permalinks` and click `Save`. The plugin also attempts a one-time admin-side flush.
 
-= Why aren’t duration/size auto-filled? =
+= Why are duration or file size not filled automatically? =
 
-On Episode save, the plugin uses getID3 to analyze the audio. For remote URLs, it may download a temporary file first; ensure the URL is reachable by the server and allow enough time. Use the `ars_episode_audio_meta_download_timeout` filter to adjust the download timeout (default: 300 seconds).
-
-= Do I need to install the Carbon Fields plugin? =
-
-No. Carbon Fields is bundled via Composer and booted on `after_setup_theme`.
+The plugin uses getID3 to analyze audio when an episode is saved. For remote audio URLs, make sure the URL is reachable by the server and allow enough time for metadata detection.
 
 == Screenshots ==
 
-1. `A Ripple Song` → `Podcast Settings` (channel settings)
-2. “Episode Details” meta box on the `ARS Episodes` edit screen
-3. `/feed/podcast/` RSS output (includes iTunes / Podcasting 2.0 tags)
+1. `A Ripple Song` -> `Podcast Settings`
+2. Episode details on the `ARS Episodes` edit screen
+3. `/feed/podcast/` RSS output
 
 == Changelog ==
 
 = 0.5.0 =
-* Beta release: Episode CPT + Podcast RSS feed + admin settings and episode meta fields.
+* Beta release: podcast post type, podcast RSS feed, admin settings, and episode metadata.
 
 == Upgrade Notice ==
 
