@@ -40,7 +40,7 @@ jobs:
           find src -name '*.php' -print0 | xargs -0 -n1 php -l
 
       - name: Build plugin zip
-        run: ARS_DIST_ZIP_NAME="a-ripple-song-podcast.zip" composer run -n build:dist -- "${GITHUB_REF_NAME}"
+        run: ARS_DIST_ZIP_NAME="a-ripple-song.zip" composer run -n build:dist -- "${GITHUB_REF_NAME}"
 
       - name: Remove old versioned zips
         uses: actions/github-script@v8
@@ -54,8 +54,12 @@ jobs:
               const { data: release } = await github.rest.repos.getReleaseByTag({ owner, repo, tag });
 
               for (const asset of release.assets ?? []) {
-                if (asset.name === 'a-ripple-song-podcast.zip') continue;
-                if (asset.name.startsWith('a-ripple-song-podcast-') && asset.name.endsWith('.zip')) {
+                if (asset.name === 'a-ripple-song.zip') continue;
+                if (
+                  asset.name === 'a-ripple-song-podcast.zip'
+                  || (asset.name.startsWith('a-ripple-song-') && asset.name.endsWith('.zip'))
+                  || (asset.name.startsWith('a-ripple-song-podcast-') && asset.name.endsWith('.zip'))
+                ) {
                   core.info(`Deleting asset: ${asset.name}`);
                   await github.rest.repos.deleteReleaseAsset({ owner, repo, asset_id: asset.id });
                 }
@@ -121,4 +125,4 @@ jobs:
       - name: Upload GitHub Release Asset
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release upload "${GITHUB_REF_NAME}" build/a-ripple-song-podcast.zip --clobber
+        run: gh release upload "${GITHUB_REF_NAME}" build/a-ripple-song.zip --clobber

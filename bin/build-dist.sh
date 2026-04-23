@@ -15,7 +15,7 @@ fi
 BUILD_DIR="${ROOT_DIR}/build"
 SCOPE_DIR="${BUILD_DIR}/scoped"
 DIST_ROOT="${BUILD_DIR}/dist"
-DIST_PLUGIN_DIR="${DIST_ROOT}/a-ripple-song-podcast"
+DIST_PLUGIN_DIR="${DIST_ROOT}/a-ripple-song"
 
 rm -rf "${DIST_ROOT}"
 mkdir -p "${DIST_PLUGIN_DIR}"
@@ -83,12 +83,12 @@ PHP
 
 ZIP_NAME="${ARS_DIST_ZIP_NAME:-${2:-}}"
 if [[ -z "${ZIP_NAME}" ]]; then
-  ZIP_NAME="a-ripple-song-podcast-${VERSION}.zip"
+  ZIP_NAME="a-ripple-song-${VERSION}.zip"
 fi
 
 ZIP_PATH="${BUILD_DIR}/${ZIP_NAME}"
 rm -f "${ZIP_PATH}"
 
-(cd "${DIST_ROOT}" && zip -qr "${ZIP_PATH}" "a-ripple-song-podcast")
+(cd "${DIST_ROOT}" && zip -qr "${ZIP_PATH}" "a-ripple-song")
 
 echo "Built: ${ZIP_PATH}"
