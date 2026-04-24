@@ -2,7 +2,6 @@
 
 namespace ARippleSong\PostTypes;
 
-use ARippleSong\Constants\BaseConstant;
 use ARippleSong\Constants\EpisodeConstant;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -836,7 +835,7 @@ class Episode {
 					require_once ABSPATH . 'wp-admin/includes/file.php';
 				}
 
-					$timeout = (int) apply_filters( BaseConstant::PREFIX . '_podcast_episode_audio_meta_download_timeout', 300, $audio_url, $post_id );
+					$timeout = (int) apply_filters( 'a_ripple_song_podcast_episode_audio_meta_download_timeout', 300, $audio_url, $post_id );
 					// Backward compatibility for the original hook name.
 					// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 					$timeout = (int) apply_filters( 'ars_episode_audio_meta_download_timeout', $timeout, $audio_url, $post_id );
