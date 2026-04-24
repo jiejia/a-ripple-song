@@ -188,30 +188,7 @@ class Podcast {
 
 				<table class="form-table" role="presentation">
 					<tbody>
-						<?php $this->renderReadonlyRow( __( 'Podcast RSS URL', 'a-ripple-song' ), $this->getPodcastFeedUrl(), __( 'Your podcast RSS feed URL. Click to select and copy.', 'a-ripple-song' ) ); ?>
-						<?php $this->renderTextRow( 'title', __( 'Podcast Title', 'a-ripple-song' ), $values['title'], __( 'Required. If empty, falls back to site title.', 'a-ripple-song' ), true ); ?>
-						<?php $this->renderTextRow( 'subtitle', __( 'Podcast Subtitle', 'a-ripple-song' ), $values['subtitle'], __( 'Short tagline shown in some apps.', 'a-ripple-song' ) ); ?>
-						<?php $this->renderTextareaRow( 'description', __( 'Podcast Description', 'a-ripple-song' ), $values['description'], __( 'Required. Plain text description of the show.', 'a-ripple-song' ), true ); ?>
-						<?php $this->renderTextRow( 'author', __( 'Podcast Author (itunes:author)', 'a-ripple-song' ), $values['author'], __( 'Required. Displayed as show author in directories.', 'a-ripple-song' ), true ); ?>
-						<?php $this->renderTextRow( 'owner_name', __( 'Owner Name', 'a-ripple-song' ), $values['owner_name'], __( 'Required. For <itunes:owner><itunes:name>.', 'a-ripple-song' ), true ); ?>
-						<?php $this->renderEmailRow( 'owner_email', __( 'Owner Email', 'a-ripple-song' ), $values['owner_email'], __( 'Required. For <itunes:owner><itunes:email>. Use a monitored inbox.', 'a-ripple-song' ), true ); ?>
-						<?php $this->renderMediaRow( 'cover', __( 'Podcast Cover (1400–3000px square)', 'a-ripple-song' ), $values['cover'], __( 'Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple recommends keeping the file under 512KB.', 'a-ripple-song' ), 'image', true ); ?>
-						<?php $this->renderSelectRow( 'explicit', __( 'Default Explicit Flag', 'a-ripple-song' ), $values['explicit'], array( 'clean' => __( 'clean (no explicit content)', 'a-ripple-song' ), 'explicit' => __( 'explicit', 'a-ripple-song' ) ), __( 'Required. Single-episode value can override.', 'a-ripple-song' ), true ); ?>
-						<?php $this->renderSelectRow( 'language', __( 'Language (RFC 5646)', 'a-ripple-song' ), $values['language'], $this->getPodcastLanguageOptions(), __( 'Required. Typically en-US, zh-CN, etc.', 'a-ripple-song' ), true ); ?>
-						<?php $this->renderSelectRow( 'category_primary', __( 'Primary Category (Apple Podcasts)', 'a-ripple-song' ), $values['category_primary'], array( '' => __( '(not set)', 'a-ripple-song' ) ) + $this->getItunesCategories(), __( 'Required by Apple Podcasts. Choose at least a primary category.', 'a-ripple-song' ), true ); ?>
-						<?php $this->renderSelectRow( 'category_secondary', __( 'Secondary Category (optional)', 'a-ripple-song' ), $values['category_secondary'], array( '' => __( '(not set)', 'a-ripple-song' ) ) + $this->getItunesCategories(), __( 'Optional. Some directories support a second category.', 'a-ripple-song' ) ); ?>
-						<?php $this->renderTextRow( 'copyright', __( 'Copyright (optional)', 'a-ripple-song' ), $values['copyright'], __( 'Optional. For <copyright>.', 'a-ripple-song' ) ); ?>
-						<?php $this->renderSelectRow( 'itunes_type', __( 'iTunes Type (itunes:type)', 'a-ripple-song' ), $values['itunes_type'], array( '' => __( '(not set)', 'a-ripple-song' ), 'episodic' => __( 'episodic', 'a-ripple-song' ), 'serial' => __( 'serial', 'a-ripple-song' ) ), __( 'Optional. Apple Podcasts: episodic or serial.', 'a-ripple-song' ) ); ?>
-						<?php $this->renderTextRow( 'itunes_title', __( 'iTunes Title (optional)', 'a-ripple-song' ), $values['itunes_title'], __( 'Optional. Use only if you need a separate Apple-facing title.', 'a-ripple-song' ) ); ?>
-						<?php $this->renderSelectRow( 'itunes_block', __( 'iTunes Block (itunes:block)', 'a-ripple-song' ), $values['itunes_block'], array( 'no' => __( 'no', 'a-ripple-song' ), 'yes' => __( 'yes', 'a-ripple-song' ) ), __( 'Optional. yes = hide this show in Apple Podcasts.', 'a-ripple-song' ) ); ?>
-						<?php $this->renderSelectRow( 'itunes_complete', __( 'iTunes Complete (itunes:complete)', 'a-ripple-song' ), $values['itunes_complete'], array( 'no' => __( 'no', 'a-ripple-song' ), 'yes' => __( 'yes', 'a-ripple-song' ) ), __( 'Optional. yes = this show is complete (no more episodes).', 'a-ripple-song' ) ); ?>
-						<?php $this->renderTextRow( 'itunes_new_feed_url', __( 'iTunes New Feed URL (itunes:new-feed-url)', 'a-ripple-song' ), $values['itunes_new_feed_url'], __( 'Optional. Only for moving your show to a new RSS feed URL.', 'a-ripple-song' ) ); ?>
-						<?php $this->renderSelectRow( 'locked', __( 'podcast:locked', 'a-ripple-song' ), $values['locked'], array( 'yes' => __( 'yes (recommended, prevents unauthorized moves)', 'a-ripple-song' ), 'no' => __( 'no', 'a-ripple-song' ) ), __( 'Podcasting 2.0: lock feed to this publisher.', 'a-ripple-song' ) ); ?>
-						<?php $this->renderEmailRow( 'locked_owner', __( 'podcast:locked owner (optional)', 'a-ripple-song' ), $values['locked_owner'], __( 'Optional. Podcasting 2.0: email used to verify ownership during moves.', 'a-ripple-song' ) ); ?>
-						<?php $this->renderTextRow( 'guid', __( 'podcast:guid (optional)', 'a-ripple-song' ), $values['guid'], __( 'Podcasting 2.0 GUID. If empty, feed will use site URL as fallback.', 'a-ripple-song' ) ); ?>
-						<?php $this->renderTextRow( 'apple_verify', __( 'Apple Podcasts Verify Code (podcast:txt purpose="applepodcastsverify")', 'a-ripple-song' ), $values['apple_verify'], __( 'Optional. Used by Apple Podcasts to verify feed ownership.', 'a-ripple-song' ) ); ?>
-						<?php $this->renderFundingField( $values['funding'] ); ?>
-						<?php $this->renderTextRow( 'generator', __( 'Generator (optional)', 'a-ripple-song' ), $values['generator'], __( 'Optional. If empty, generator tag will not be included.', 'a-ripple-song' ) ); ?>
+						<?php $this->renderSettingsFields( $this->getSettingsFields( $values ) ); ?>
 					</tbody>
 				</table>
 
@@ -219,6 +196,214 @@ class Podcast {
 			</form>
 		</div>
 		<?php
+	}
+
+	/**
+	 * Return field definitions for the podcast settings page.
+	 *
+	 * @param array<string,mixed> $values Current setting values.
+	 * @return array<int,array<string,mixed>>
+	 */
+	private function getSettingsFields( $values ) {
+		$not_set_options = array( '' => __( '(not set)', 'a-ripple-song' ) );
+		$yes_no_options  = array(
+			'no'  => __( 'no', 'a-ripple-song' ),
+			'yes' => __( 'yes', 'a-ripple-song' ),
+		);
+
+		return array(
+			array(
+				'type'        => 'readonly',
+				'label'       => __( 'Podcast RSS URL', 'a-ripple-song' ),
+				'value'       => $this->getPodcastFeedUrl(),
+				'description' => __( 'Your podcast RSS feed URL. Click to select and copy.', 'a-ripple-song' ),
+			),
+			array(
+				'type'        => 'text',
+				'key'         => 'title',
+				'label'       => __( 'Podcast Title', 'a-ripple-song' ),
+				'value'       => $values['title'],
+				'description' => __( 'Required. If empty, falls back to site title.', 'a-ripple-song' ),
+				'required'    => true,
+			),
+			array(
+				'type'        => 'text',
+				'key'         => 'subtitle',
+				'label'       => __( 'Podcast Subtitle', 'a-ripple-song' ),
+				'value'       => $values['subtitle'],
+				'description' => __( 'Short tagline shown in some apps.', 'a-ripple-song' ),
+			),
+			array(
+				'type'        => 'textarea',
+				'key'         => 'description',
+				'label'       => __( 'Podcast Description', 'a-ripple-song' ),
+				'value'       => $values['description'],
+				'description' => __( 'Required. Plain text description of the show.', 'a-ripple-song' ),
+				'required'    => true,
+			),
+			array(
+				'type'        => 'text',
+				'key'         => 'author',
+				'label'       => __( 'Podcast Author (itunes:author)', 'a-ripple-song' ),
+				'value'       => $values['author'],
+				'description' => __( 'Required. Displayed as show author in directories.', 'a-ripple-song' ),
+				'required'    => true,
+			),
+			array(
+				'type'        => 'text',
+				'key'         => 'owner_name',
+				'label'       => __( 'Owner Name', 'a-ripple-song' ),
+				'value'       => $values['owner_name'],
+				'description' => __( 'Required. For <itunes:owner><itunes:name>.', 'a-ripple-song' ),
+				'required'    => true,
+			),
+			array(
+				'type'        => 'email',
+				'key'         => 'owner_email',
+				'label'       => __( 'Owner Email', 'a-ripple-song' ),
+				'value'       => $values['owner_email'],
+				'description' => __( 'Required. For <itunes:owner><itunes:email>. Use a monitored inbox.', 'a-ripple-song' ),
+				'required'    => true,
+			),
+			array(
+				'type'        => 'media',
+				'key'         => 'cover',
+				'label'       => __( 'Podcast Cover (1400–3000px square)', 'a-ripple-song' ),
+				'value'       => $values['cover'],
+				'description' => __( 'Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple recommends keeping the file under 512KB.', 'a-ripple-song' ),
+				'mode'        => 'image',
+				'required'    => true,
+			),
+			array(
+				'type'        => 'select',
+				'key'         => 'explicit',
+				'label'       => __( 'Default Explicit Flag', 'a-ripple-song' ),
+				'value'       => $values['explicit'],
+				'options'     => array(
+					'clean'    => __( 'clean (no explicit content)', 'a-ripple-song' ),
+					'explicit' => __( 'explicit', 'a-ripple-song' ),
+				),
+				'description' => __( 'Required. Single-episode value can override.', 'a-ripple-song' ),
+				'required'    => true,
+			),
+			array(
+				'type'        => 'select',
+				'key'         => 'language',
+				'label'       => __( 'Language (RFC 5646)', 'a-ripple-song' ),
+				'value'       => $values['language'],
+				'options'     => $this->getPodcastLanguageOptions(),
+				'description' => __( 'Required. Typically en-US, zh-CN, etc.', 'a-ripple-song' ),
+				'required'    => true,
+			),
+			array(
+				'type'        => 'select',
+				'key'         => 'category_primary',
+				'label'       => __( 'Primary Category (Apple Podcasts)', 'a-ripple-song' ),
+				'value'       => $values['category_primary'],
+				'options'     => $not_set_options + $this->getItunesCategories(),
+				'description' => __( 'Required by Apple Podcasts. Choose at least a primary category.', 'a-ripple-song' ),
+				'required'    => true,
+			),
+			array(
+				'type'        => 'select',
+				'key'         => 'category_secondary',
+				'label'       => __( 'Secondary Category (optional)', 'a-ripple-song' ),
+				'value'       => $values['category_secondary'],
+				'options'     => $not_set_options + $this->getItunesCategories(),
+				'description' => __( 'Optional. Some directories support a second category.', 'a-ripple-song' ),
+			),
+			array(
+				'type'        => 'text',
+				'key'         => 'copyright',
+				'label'       => __( 'Copyright (optional)', 'a-ripple-song' ),
+				'value'       => $values['copyright'],
+				'description' => __( 'Optional. For <copyright>.', 'a-ripple-song' ),
+			),
+			array(
+				'type'        => 'select',
+				'key'         => 'itunes_type',
+				'label'       => __( 'iTunes Type (itunes:type)', 'a-ripple-song' ),
+				'value'       => $values['itunes_type'],
+				'options'     => $not_set_options + array(
+					'episodic' => __( 'episodic', 'a-ripple-song' ),
+					'serial'   => __( 'serial', 'a-ripple-song' ),
+				),
+				'description' => __( 'Optional. Apple Podcasts: episodic or serial.', 'a-ripple-song' ),
+			),
+			array(
+				'type'        => 'text',
+				'key'         => 'itunes_title',
+				'label'       => __( 'iTunes Title (optional)', 'a-ripple-song' ),
+				'value'       => $values['itunes_title'],
+				'description' => __( 'Optional. Use only if you need a separate Apple-facing title.', 'a-ripple-song' ),
+			),
+			array(
+				'type'        => 'select',
+				'key'         => 'itunes_block',
+				'label'       => __( 'iTunes Block (itunes:block)', 'a-ripple-song' ),
+				'value'       => $values['itunes_block'],
+				'options'     => $yes_no_options,
+				'description' => __( 'Optional. yes = hide this show in Apple Podcasts.', 'a-ripple-song' ),
+			),
+			array(
+				'type'        => 'select',
+				'key'         => 'itunes_complete',
+				'label'       => __( 'iTunes Complete (itunes:complete)', 'a-ripple-song' ),
+				'value'       => $values['itunes_complete'],
+				'options'     => $yes_no_options,
+				'description' => __( 'Optional. yes = this show is complete (no more episodes).', 'a-ripple-song' ),
+			),
+			array(
+				'type'        => 'text',
+				'key'         => 'itunes_new_feed_url',
+				'label'       => __( 'iTunes New Feed URL (itunes:new-feed-url)', 'a-ripple-song' ),
+				'value'       => $values['itunes_new_feed_url'],
+				'description' => __( 'Optional. Only for moving your show to a new RSS feed URL.', 'a-ripple-song' ),
+			),
+			array(
+				'type'        => 'select',
+				'key'         => 'locked',
+				'label'       => __( 'podcast:locked', 'a-ripple-song' ),
+				'value'       => $values['locked'],
+				'options'     => array(
+					'yes' => __( 'yes (recommended, prevents unauthorized moves)', 'a-ripple-song' ),
+					'no'  => __( 'no', 'a-ripple-song' ),
+				),
+				'description' => __( 'Podcasting 2.0: lock feed to this publisher.', 'a-ripple-song' ),
+			),
+			array(
+				'type'        => 'email',
+				'key'         => 'locked_owner',
+				'label'       => __( 'podcast:locked owner (optional)', 'a-ripple-song' ),
+				'value'       => $values['locked_owner'],
+				'description' => __( 'Optional. Podcasting 2.0: email used to verify ownership during moves.', 'a-ripple-song' ),
+			),
+			array(
+				'type'        => 'text',
+				'key'         => 'guid',
+				'label'       => __( 'podcast:guid (optional)', 'a-ripple-song' ),
+				'value'       => $values['guid'],
+				'description' => __( 'Podcasting 2.0 GUID. If empty, feed will use site URL as fallback.', 'a-ripple-song' ),
+			),
+			array(
+				'type'        => 'text',
+				'key'         => 'apple_verify',
+				'label'       => __( 'Apple Podcasts Verify Code (podcast:txt purpose="applepodcastsverify")', 'a-ripple-song' ),
+				'value'       => $values['apple_verify'],
+				'description' => __( 'Optional. Used by Apple Podcasts to verify feed ownership.', 'a-ripple-song' ),
+			),
+			array(
+				'type'  => 'funding',
+				'value' => $values['funding'],
+			),
+			array(
+				'type'        => 'text',
+				'key'         => 'generator',
+				'label'       => __( 'Generator (optional)', 'a-ripple-song' ),
+				'value'       => $values['generator'],
+				'description' => __( 'Optional. If empty, generator tag will not be included.', 'a-ripple-song' ),
+			),
+		);
 	}
 
 	/**
@@ -301,49 +486,21 @@ class Podcast {
 		$settings = $current;
 		$errors   = array();
 
-		$settings['title']       = sanitize_text_field( (string) ( $input['title'] ?? $current['title'] ) );
-		$settings['subtitle']    = sanitize_text_field( (string) ( $input['subtitle'] ?? $current['subtitle'] ) );
-		$settings['description'] = sanitize_textarea_field( (string) ( $input['description'] ?? $current['description'] ) );
-		$settings['author']      = sanitize_text_field( (string) ( $input['author'] ?? $current['author'] ) );
-		$settings['owner_name']  = sanitize_text_field( (string) ( $input['owner_name'] ?? $current['owner_name'] ) );
-		$settings['owner_email'] = sanitize_email( (string) ( $input['owner_email'] ?? $current['owner_email'] ) );
-		$settings['cover']       = sanitize_text_field( (string) ( $input['cover'] ?? $current['cover'] ) );
-		$explicit = (string) ( $input['explicit'] ?? $current['explicit'] );
-		if ( ! in_array( $explicit, array( 'clean', 'explicit' ), true ) ) {
-			$explicit = 'clean';
+		foreach ( $this->getTextSettingKeys() as $key ) {
+			$settings[ $key ] = sanitize_text_field( $this->getScalarInputValue( $input, $current, $key ) );
 		}
-		$settings['explicit'] = $explicit;
-		$settings['language'] = sanitize_text_field( (string) ( $input['language'] ?? $current['language'] ) );
-		$settings['category_primary'] = sanitize_text_field( (string) ( $input['category_primary'] ?? $current['category_primary'] ) );
-		$settings['category_secondary'] = sanitize_text_field( (string) ( $input['category_secondary'] ?? $current['category_secondary'] ) );
-		$settings['copyright'] = sanitize_text_field( (string) ( $input['copyright'] ?? $current['copyright'] ) );
-		$itunes_type = (string) ( $input['itunes_type'] ?? $current['itunes_type'] );
-		if ( ! in_array( $itunes_type, array( '', 'episodic', 'serial' ), true ) ) {
-			$itunes_type = '';
-		}
-		$settings['itunes_type'] = $itunes_type;
-		$settings['itunes_title'] = sanitize_text_field( (string) ( $input['itunes_title'] ?? $current['itunes_title'] ) );
-		$itunes_block = (string) ( $input['itunes_block'] ?? $current['itunes_block'] );
-		if ( ! in_array( $itunes_block, array( 'no', 'yes' ), true ) ) {
-			$itunes_block = 'no';
-		}
-		$settings['itunes_block'] = $itunes_block;
-		$itunes_complete = (string) ( $input['itunes_complete'] ?? $current['itunes_complete'] );
-		if ( ! in_array( $itunes_complete, array( 'no', 'yes' ), true ) ) {
-			$itunes_complete = 'no';
-		}
-		$settings['itunes_complete'] = $itunes_complete;
-		$settings['itunes_new_feed_url'] = esc_url_raw( (string) ( $input['itunes_new_feed_url'] ?? $current['itunes_new_feed_url'] ) );
-		$locked = (string) ( $input['locked'] ?? $current['locked'] );
-		if ( ! in_array( $locked, array( 'yes', 'no' ), true ) ) {
-			$locked = 'yes';
-		}
-		$settings['locked'] = $locked;
-		$settings['locked_owner'] = sanitize_email( (string) ( $input['locked_owner'] ?? $current['locked_owner'] ) );
-		$settings['guid']         = esc_url_raw( (string) ( $input['guid'] ?? $current['guid'] ) );
-		$settings['apple_verify'] = sanitize_text_field( (string) ( $input['apple_verify'] ?? $current['apple_verify'] ) );
-		$settings['generator']    = sanitize_text_field( (string) ( $input['generator'] ?? $current['generator'] ) );
-		$settings['funding']      = $this->sanitizeFundingRows( $input['funding'] ?? array() );
+
+		$settings['description']         = sanitize_textarea_field( $this->getScalarInputValue( $input, $current, 'description' ) );
+		$settings['owner_email']         = sanitize_email( $this->getScalarInputValue( $input, $current, 'owner_email' ) );
+		$settings['locked_owner']        = sanitize_email( $this->getScalarInputValue( $input, $current, 'locked_owner' ) );
+		$settings['itunes_new_feed_url'] = esc_url_raw( $this->getScalarInputValue( $input, $current, 'itunes_new_feed_url' ) );
+		$settings['guid']                = esc_url_raw( $this->getScalarInputValue( $input, $current, 'guid' ) );
+		$settings['explicit']            = $this->sanitizeChoiceSetting( $input, $current, 'explicit', array( 'clean', 'explicit' ), 'clean' );
+		$settings['itunes_type']         = $this->sanitizeChoiceSetting( $input, $current, 'itunes_type', array( '', 'episodic', 'serial' ), '' );
+		$settings['itunes_block']        = $this->sanitizeChoiceSetting( $input, $current, 'itunes_block', array( 'no', 'yes' ), 'no' );
+		$settings['itunes_complete']     = $this->sanitizeChoiceSetting( $input, $current, 'itunes_complete', array( 'no', 'yes' ), 'no' );
+		$settings['locked']              = $this->sanitizeChoiceSetting( $input, $current, 'locked', array( 'yes', 'no' ), 'yes' );
+		$settings['funding']             = $this->sanitizeFundingRows( $input['funding'] ?? array() );
 
 		if ( $settings['cover'] === '' ) {
 			$errors[] = __( 'Podcast Cover is required.', 'a-ripple-song' );
@@ -364,6 +521,58 @@ class Podcast {
 			'settings' => $settings,
 			'errors'   => $errors,
 		);
+	}
+
+	/**
+	 * Return setting keys that can use text-field sanitization.
+	 *
+	 * @return array<int,string>
+	 */
+	private function getTextSettingKeys() {
+		return array(
+			'title',
+			'subtitle',
+			'author',
+			'owner_name',
+			'cover',
+			'language',
+			'category_primary',
+			'category_secondary',
+			'copyright',
+			'itunes_title',
+			'apple_verify',
+			'generator',
+		);
+	}
+
+	/**
+	 * Return a scalar submitted value with current value fallback.
+	 *
+	 * @param array<string,mixed> $input Submitted settings.
+	 * @param array<string,mixed> $current Current settings.
+	 * @param string $key Setting key.
+	 * @return string
+	 */
+	private function getScalarInputValue( $input, $current, $key ) {
+		$value = $input[ $key ] ?? $current[ $key ] ?? '';
+
+		return is_scalar( $value ) ? (string) $value : '';
+	}
+
+	/**
+	 * Sanitize a setting against an allowed value list.
+	 *
+	 * @param array<string,mixed> $input Submitted settings.
+	 * @param array<string,mixed> $current Current settings.
+	 * @param string $key Setting key.
+	 * @param array<int,string> $allowed_values Allowed values.
+	 * @param string $fallback Fallback value.
+	 * @return string
+	 */
+	private function sanitizeChoiceSetting( $input, $current, $key, $allowed_values, $fallback ) {
+		$value = $this->getScalarInputValue( $input, $current, $key );
+
+		return in_array( $value, $allowed_values, true ) ? $value : $fallback;
 	}
 
 	/**
@@ -397,6 +606,61 @@ class Podcast {
 		}
 
 		return $clean;
+	}
+
+	/**
+	 * Render setting rows from field definitions.
+	 *
+	 * @param array<int,array<string,mixed>> $fields Field definitions.
+	 */
+	private function renderSettingsFields( $fields ) {
+		foreach ( $fields as $field ) {
+			if ( ! is_array( $field ) ) {
+				continue;
+			}
+
+			$this->renderSettingsField( $field );
+		}
+	}
+
+	/**
+	 * Render one setting row from a field definition.
+	 *
+	 * @param array<string,mixed> $field Field definition.
+	 */
+	private function renderSettingsField( $field ) {
+		$type        = isset( $field['type'] ) ? (string) $field['type'] : '';
+		$key         = isset( $field['key'] ) ? (string) $field['key'] : '';
+		$label       = isset( $field['label'] ) ? (string) $field['label'] : '';
+		$value       = $field['value'] ?? '';
+		$help        = isset( $field['description'] ) ? (string) $field['description'] : '';
+		$required    = ! empty( $field['required'] );
+		$options     = isset( $field['options'] ) && is_array( $field['options'] ) ? $field['options'] : array();
+		$media_mode  = isset( $field['mode'] ) ? (string) $field['mode'] : 'transcript';
+
+		switch ( $type ) {
+			case 'readonly':
+				$this->renderReadonlyRow( $label, $value, $help );
+				break;
+			case 'textarea':
+				$this->renderTextareaRow( $key, $label, $value, $help, $required );
+				break;
+			case 'email':
+				$this->renderEmailRow( $key, $label, $value, $help, $required );
+				break;
+			case 'select':
+				$this->renderSelectRow( $key, $label, $value, $options, $help, $required );
+				break;
+			case 'media':
+				$this->renderMediaRow( $key, $label, $value, $help, $media_mode, $required );
+				break;
+			case 'funding':
+				$this->renderFundingField( $value );
+				break;
+			case 'text':
+				$this->renderTextRow( $key, $label, $value, $help, $required );
+				break;
+		}
 	}
 
 	/**

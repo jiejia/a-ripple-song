@@ -2,7 +2,6 @@
 
 namespace ARippleSong\Feed;
 
-use ARippleSong\Core\LegacyMeta;
 use ARippleSong\PostTypes\Episode;
 use ARippleSong\Settings\Podcast as PodcastSettings;
 
@@ -269,10 +268,14 @@ class Podcast {
 	 */
 	private function getEpisodeMetaValue( $post_id, $key, $default ) {
 		if ( in_array( (string) $key, array( 'members', 'guests', 'episode_soundbites' ), true ) ) {
-			return LegacyMeta::getPostMetaArray( $post_id, $key, is_array( $default ) ? $default : array() );
+			$value = get_post_meta( (int) $post_id, '_' . ltrim( (string) $key, '_' ), true );
+
+			return is_array( $value ) ? $value : ( is_array( $default ) ? $default : array() );
 		}
 
-		return LegacyMeta::getPostMetaValue( $post_id, $key, $default );
+		$value = get_post_meta( (int) $post_id, '_' . ltrim( (string) $key, '_' ), true );
+
+		return $value !== '' ? $value : $default;
 	}
 
 	/**

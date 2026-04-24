@@ -3,7 +3,6 @@
 namespace ARippleSong\PostTypes;
 
 use ARippleSong\Constants\BaseConstant;
-use ARippleSong\Core\LegacyMeta;
 use ARippleSong\Constants\EpisodeConstant;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -321,27 +320,27 @@ class Episode {
 		$default_members = $this->getDefaultMembersValue();
 
 		return array(
-			'audio_file'           => (string) LegacyMeta::getPostMetaValue( $post_id, 'audio_file', '' ),
-			'duration'             => (int) LegacyMeta::getPostMetaValue( $post_id, 'duration', 0 ),
-			'audio_length'         => (int) LegacyMeta::getPostMetaValue( $post_id, 'audio_length', 0 ),
-			'audio_mime'           => (string) LegacyMeta::getPostMetaValue( $post_id, 'audio_mime', 'audio/mpeg' ),
-			'episode_explicit'     => (string) LegacyMeta::getPostMetaValue( $post_id, 'episode_explicit', 'clean' ),
-			'episode_type'         => (string) LegacyMeta::getPostMetaValue( $post_id, 'episode_type', 'full' ),
-			'episode_number'       => (int) LegacyMeta::getPostMetaValue( $post_id, 'episode_number', 0 ),
-			'season_number'        => (int) LegacyMeta::getPostMetaValue( $post_id, 'season_number', 0 ),
-			'episode_author'       => (string) LegacyMeta::getPostMetaValue( $post_id, 'episode_author', '' ),
-			'episode_image'        => (string) LegacyMeta::getPostMetaValue( $post_id, 'episode_image', '' ),
-			'episode_transcript'    => (string) LegacyMeta::getPostMetaValue( $post_id, 'episode_transcript', '' ),
-			'itunes_title'         => (string) LegacyMeta::getPostMetaValue( $post_id, 'itunes_title', '' ),
-			'episode_chapters'     => (string) LegacyMeta::getPostMetaValue( $post_id, 'episode_chapters', '' ),
-			'episode_chapters_type' => (string) LegacyMeta::getPostMetaValue( $post_id, 'episode_chapters_type', 'application/json+chapters' ),
-			'episode_soundbites'   => LegacyMeta::getPostMetaArray( $post_id, 'episode_soundbites', array() ),
-			'episode_subtitle'     => (string) LegacyMeta::getPostMetaValue( $post_id, 'episode_subtitle', '' ),
-			'episode_summary'      => (string) LegacyMeta::getPostMetaValue( $post_id, 'episode_summary', '' ),
-			'episode_guid'         => (string) LegacyMeta::getPostMetaValue( $post_id, 'episode_guid', '' ),
-			'episode_block'        => (string) LegacyMeta::getPostMetaValue( $post_id, 'episode_block', 'no' ),
-			'members'              => LegacyMeta::getPostMetaArray( $post_id, 'members', $default_members ),
-			'guests'               => LegacyMeta::getPostMetaArray( $post_id, 'guests', array() ),
+			'audio_file'           => (string) self::getStoredPostMetaValue( $post_id, 'audio_file', '' ),
+			'duration'             => (int) self::getStoredPostMetaValue( $post_id, 'duration', 0 ),
+			'audio_length'         => (int) self::getStoredPostMetaValue( $post_id, 'audio_length', 0 ),
+			'audio_mime'           => (string) self::getStoredPostMetaValue( $post_id, 'audio_mime', 'audio/mpeg' ),
+			'episode_explicit'     => (string) self::getStoredPostMetaValue( $post_id, 'episode_explicit', 'clean' ),
+			'episode_type'         => (string) self::getStoredPostMetaValue( $post_id, 'episode_type', 'full' ),
+			'episode_number'       => (int) self::getStoredPostMetaValue( $post_id, 'episode_number', 0 ),
+			'season_number'        => (int) self::getStoredPostMetaValue( $post_id, 'season_number', 0 ),
+			'episode_author'       => (string) self::getStoredPostMetaValue( $post_id, 'episode_author', '' ),
+			'episode_image'        => (string) self::getStoredPostMetaValue( $post_id, 'episode_image', '' ),
+			'episode_transcript'    => (string) self::getStoredPostMetaValue( $post_id, 'episode_transcript', '' ),
+			'itunes_title'         => (string) self::getStoredPostMetaValue( $post_id, 'itunes_title', '' ),
+			'episode_chapters'     => (string) self::getStoredPostMetaValue( $post_id, 'episode_chapters', '' ),
+			'episode_chapters_type' => (string) self::getStoredPostMetaValue( $post_id, 'episode_chapters_type', 'application/json+chapters' ),
+			'episode_soundbites'   => self::getStoredPostMetaArray( $post_id, 'episode_soundbites', array() ),
+			'episode_subtitle'     => (string) self::getStoredPostMetaValue( $post_id, 'episode_subtitle', '' ),
+			'episode_summary'      => (string) self::getStoredPostMetaValue( $post_id, 'episode_summary', '' ),
+			'episode_guid'         => (string) self::getStoredPostMetaValue( $post_id, 'episode_guid', '' ),
+			'episode_block'        => (string) self::getStoredPostMetaValue( $post_id, 'episode_block', 'no' ),
+			'members'              => self::getStoredPostMetaArray( $post_id, 'members', $default_members ),
+			'guests'               => self::getStoredPostMetaArray( $post_id, 'guests', array() ),
 		);
 	}
 
@@ -965,7 +964,7 @@ class Episode {
 	 * @return string
 	 */
 	private function getEpisodeFieldValue( $post_id, $key ) {
-		$value = LegacyMeta::getPostMetaValue( $post_id, $key, '' );
+		$value = self::getStoredPostMetaValue( $post_id, $key, '' );
 		if ( is_string( $value ) ) {
 			return $value;
 		}
@@ -1268,7 +1267,35 @@ class Episode {
 	 * @return string|int
 	 */
 	private static function getEpisodeValue( $post_id, $key, $default ) {
-		return LegacyMeta::getPostMetaValue( $post_id, $key, $default );
+		return self::getStoredPostMetaValue( $post_id, $key, $default );
+	}
+
+	/**
+	 * Read one current-format Episode Details meta value.
+	 *
+	 * @param int    $post_id Post ID.
+	 * @param string $key Meta key without leading underscore.
+	 * @param mixed  $default Default value.
+	 * @return mixed
+	 */
+	private static function getStoredPostMetaValue( $post_id, $key, $default = null ) {
+		$value = get_post_meta( (int) $post_id, '_' . ltrim( (string) $key, '_' ), true );
+
+		return $value !== '' ? $value : $default;
+	}
+
+	/**
+	 * Read one current-format Episode Details array meta value.
+	 *
+	 * @param int    $post_id Post ID.
+	 * @param string $key Meta key without leading underscore.
+	 * @param array  $default Default value.
+	 * @return array
+	 */
+	private static function getStoredPostMetaArray( $post_id, $key, array $default = array() ) {
+		$value = get_post_meta( (int) $post_id, '_' . ltrim( (string) $key, '_' ), true );
+
+		return is_array( $value ) ? $value : $default;
 	}
 
 	private function registerStringMeta( $post_type, $key, $is_url = false, $public_read = false ) {
