@@ -9,14 +9,14 @@
  * plugin (custom post type + podcast RSS feed + admin settings).
  *
  * @link              https://github.com/jiejia/a-ripple-song
- * @since             0.5.0
+ * @since             0.5.1
  * @package           ARippleSong
  *
  * @wordpress-plugin
  * Plugin Name:       A Ripple Song
  * Plugin URI:        https://github.com/jiejia/a-ripple-song
  * Description:       Podcast features for the A Ripple Song theme: Episode CPT + /feed/podcast RSS (iTunes & Podcasting 2.0 tags).
- * Version:           0.5.0
+ * Version:           0.5.1
  * Author:            jiejia
  * Author URI:        https://github.com/jiejia/
  * License:           GPL-3.0
