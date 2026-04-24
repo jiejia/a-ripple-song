@@ -64,10 +64,6 @@ msgstr ""
 msgid "Use this file"
 msgstr ""
 
-#: app/PostTypes/Episode.php:24
-msgid "Episode Details"
-msgstr "Episode Details"
-
 #: app/PostTypes/Episode.php:30
 msgid "Audio File"
 msgstr "Audio File"
@@ -76,13 +72,15 @@ msgstr "Audio File"
 msgid "Required. Upload an audio file or enter audio file URL (https)."
 msgstr ""
 
-#: app/PostTypes/Episode.php:36
-#: app/PostTypes/Episode.php:110
+#: src/PostTypes/Episode.php:444 src/Settings/Podcast.php:733
+msgid "https://"
+msgstr ""
+
+#: app/PostTypes/Episode.php:36 app/PostTypes/Episode.php:110
 msgid "Duration (seconds)"
 msgstr ""
 
-#: app/PostTypes/Episode.php:37
-#: app/PostTypes/Episode.php:43
+#: app/PostTypes/Episode.php:37 app/PostTypes/Episode.php:43
 #: app/PostTypes/Episode.php:48
 msgid "Auto detected from \"Audio File\" on save."
 msgstr ""
@@ -107,8 +105,7 @@ msgstr ""
 msgid "clean"
 msgstr ""
 
-#: app/PostTypes/Episode.php:56
-#: app/Settings/Podcast.php:111
+#: app/PostTypes/Episode.php:56 app/Settings/Podcast.php:111
 msgid "explicit"
 msgstr ""
 
@@ -174,8 +171,7 @@ msgid ""
 "URL (https)."
 msgstr ""
 
-#: app/PostTypes/Episode.php:92
-#: app/Settings/Podcast.php:141
+#: app/PostTypes/Episode.php:92 app/Settings/Podcast.php:141
 msgid "iTunes Title (optional)"
 msgstr ""
 
@@ -198,10 +194,6 @@ msgstr ""
 
 #: app/PostTypes/Episode.php:100
 msgid "Optional. Defaults to application/json+chapters."
-msgstr ""
-
-#: app/PostTypes/Episode.php:102
-msgid "Soundbites (Podcasting 2.0)"
 msgstr ""
 
 #: app/PostTypes/Episode.php:103
@@ -248,15 +240,12 @@ msgstr ""
 msgid "Optional. yes = hide this episode in Apple Podcasts."
 msgstr ""
 
-#: app/PostTypes/Episode.php:127
-#: app/Settings/Podcast.php:146
-#: app/Settings/Podcast.php:155
-#: app/Settings/Podcast.php:167
+#: app/PostTypes/Episode.php:127 app/Settings/Podcast.php:146
+#: app/Settings/Podcast.php:155 app/Settings/Podcast.php:167
 msgid "no"
 msgstr ""
 
-#: app/PostTypes/Episode.php:128
-#: app/Settings/Podcast.php:147
+#: app/PostTypes/Episode.php:128 app/Settings/Podcast.php:147
 #: app/Settings/Podcast.php:156
 msgid "yes"
 msgstr ""
@@ -313,8 +302,7 @@ msgstr ""
 msgid "Episode #%d: getID3 error - %s"
 msgstr ""
 
-#: app/Settings/Podcast.php:35
-#: app/Settings/Podcast.php:41
+#: app/Settings/Podcast.php:35 app/Settings/Podcast.php:41
 msgid "A Ripple Song"
 msgstr ""
 
@@ -322,13 +310,15 @@ msgstr ""
 msgid "Use the submenu to configure Podcast Settings."
 msgstr ""
 
-#: app/Settings/Podcast.php:64
-#: app/Settings/Podcast.php:66
+#: app/Settings/Podcast.php:64 app/Settings/Podcast.php:66
 msgid "Podcast Settings"
 msgstr ""
 
-#: app/Settings/Podcast.php:74
-#: app/Settings/Podcast.php:80
+#: src/Settings/Podcast.php:183
+msgid "Configure the channel metadata and feed tags for /feed/podcast."
+msgstr ""
+
+#: app/Settings/Podcast.php:74 app/Settings/Podcast.php:80
 msgid "Podcast RSS URL"
 msgstr ""
 
@@ -422,8 +412,7 @@ msgstr ""
 msgid "Primary Category (Apple Podcasts)"
 msgstr ""
 
-#: app/Settings/Podcast.php:123
-#: app/Settings/Podcast.php:127
+#: app/Settings/Podcast.php:123 app/Settings/Podcast.php:127
 #: app/Settings/Podcast.php:134
 msgid "(not set)"
 msgstr ""
@@ -521,7 +510,8 @@ msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
 msgstr ""
 
 #: app/Settings/Podcast.php:178
-msgid "Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
+msgid ""
+"Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
 msgstr ""
 
 #: app/Settings/Podcast.php:179
@@ -566,13 +556,11 @@ msgstr ""
 msgid "Podcast Cover validation failed:"
 msgstr ""
 
-#: app/Settings/Podcast.php:399
-#: app/Settings/Podcast.php:483
+#: app/Settings/Podcast.php:399 app/Settings/Podcast.php:483
 msgid "Podcast Cover URL is invalid."
 msgstr ""
 
-#: app/Settings/Podcast.php:463
-#: app/Settings/Podcast.php:501
+#: app/Settings/Podcast.php:463 app/Settings/Podcast.php:501
 #, php-format
 msgid ""
 "Podcast Cover file is too large (%1$s). Please compress it to under %2$s."
@@ -622,8 +610,7 @@ msgstr "Episode"
 msgid "ARS Episodes"
 msgstr "ARS Episodes"
 
-#: app/PostTypes/Episode.php:31
-#: app/PostTypes/Episode.php:32
+#: app/PostTypes/Episode.php:31 app/PostTypes/Episode.php:32
 msgid "Add New Episode"
 msgstr ""
 
@@ -675,8 +662,7 @@ msgstr ""
 msgid "Episode scheduled."
 msgstr ""
 
-#: app/PostTypes/Episode.php:70
-#: app/PostTypes/Episode.php:80
+#: app/PostTypes/Episode.php:70 app/PostTypes/Episode.php:80
 msgid "Episode Categories"
 msgstr "Episode Categories"
 
@@ -716,6 +702,15 @@ msgstr ""
 msgid "New Episode Category Name"
 msgstr ""
 
+msgid "ARS Themes"
+msgstr ""
+
+msgid "You are not allowed to manage themes on this site."
+msgstr ""
+
+msgid "Themes recommended for the A Ripple Song plugin."
+msgstr ""
+
 msgid "Name"
 msgstr "Name"
 
@@ -725,14 +720,40 @@ msgstr "Slug"
 msgid "Description"
 msgstr "Description"
 
-msgid "ARS Official"
-msgstr "ARS Official"
-
 msgid "Status"
 msgstr "Status"
 
 msgid "Option"
 msgstr "Option"
+
+msgid "ARS Official"
+msgstr "ARS Official"
+
+msgid "Activate"
+msgstr "Activate"
+
+msgid "Install"
+msgstr "Install"
+
+msgid "This theme will be installable after it is published on WordPress.org."
+msgstr ""
+
+msgid "You are not allowed to switch themes on this site."
+msgstr ""
+
+msgid "You are not allowed to install themes on this site."
+msgstr ""
+
+msgid ""
+"A theme that provides a complete podcast presentation and playback interface "
+"for the A Ripple Song plugin."
+msgstr ""
+
+msgid "Yes"
+msgstr "Yes"
+
+msgid "No"
+msgstr "No"
 
 msgid "Active"
 msgstr "Active"
@@ -743,17 +764,26 @@ msgstr "Installed but Inactive"
 msgid "Not Installed"
 msgstr "Not Installed"
 
-msgid "Activate"
-msgstr "Activate"
+msgid "The requested recommended theme could not be found."
+msgstr ""
 
-msgid "Install"
-msgstr "Install"
+msgid "The selected theme is not installed on this site."
+msgstr ""
 
-msgid "Yes"
-msgstr "Yes"
+msgid "The theme could not be activated."
+msgstr ""
 
-msgid "No"
-msgstr "No"
+msgid "The theme was activated successfully."
+msgstr ""
+
+msgid "The theme is not yet available for installation from WordPress.org."
+msgstr ""
+
+msgid "The theme could not be installed."
+msgstr ""
+
+msgid "The theme was installed successfully. You can activate it now."
+msgstr ""
 
 #: src/PostTypes/Episode.php:467
 msgid "Clear selection"
@@ -762,3 +792,6 @@ msgstr "Clear selection"
 #: src/Settings/Podcast.php:287
 msgid "Podcast Cover is required."
 msgstr "Podcast Cover is required."
+
+#~ msgid "Episode Details"
+#~ msgstr "Episode Details"

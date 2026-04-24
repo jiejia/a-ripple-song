@@ -64,10 +64,6 @@ msgstr ""
 msgid "Use this file"
 msgstr ""
 
-#: app/PostTypes/Episode.php:24
-msgid "Episode Details"
-msgstr "एपिसोड विवरण"
-
 #: app/PostTypes/Episode.php:30
 msgid "Audio File"
 msgstr "ऑडियो फ़ाइल"
@@ -76,13 +72,15 @@ msgstr "ऑडियो फ़ाइल"
 msgid "Required. Upload an audio file or enter audio file URL (https)."
 msgstr ""
 
-#: app/PostTypes/Episode.php:36
-#: app/PostTypes/Episode.php:110
+#: src/PostTypes/Episode.php:444 src/Settings/Podcast.php:733
+msgid "https://"
+msgstr ""
+
+#: app/PostTypes/Episode.php:36 app/PostTypes/Episode.php:110
 msgid "Duration (seconds)"
 msgstr ""
 
-#: app/PostTypes/Episode.php:37
-#: app/PostTypes/Episode.php:43
+#: app/PostTypes/Episode.php:37 app/PostTypes/Episode.php:43
 #: app/PostTypes/Episode.php:48
 msgid "Auto detected from \"Audio File\" on save."
 msgstr ""
@@ -107,8 +105,7 @@ msgstr ""
 msgid "clean"
 msgstr ""
 
-#: app/PostTypes/Episode.php:56
-#: app/Settings/Podcast.php:111
+#: app/PostTypes/Episode.php:56 app/Settings/Podcast.php:111
 msgid "explicit"
 msgstr ""
 
@@ -174,8 +171,7 @@ msgid ""
 "URL (https)."
 msgstr ""
 
-#: app/PostTypes/Episode.php:92
-#: app/Settings/Podcast.php:141
+#: app/PostTypes/Episode.php:92 app/Settings/Podcast.php:141
 msgid "iTunes Title (optional)"
 msgstr ""
 
@@ -198,10 +194,6 @@ msgstr ""
 
 #: app/PostTypes/Episode.php:100
 msgid "Optional. Defaults to application/json+chapters."
-msgstr ""
-
-#: app/PostTypes/Episode.php:102
-msgid "Soundbites (Podcasting 2.0)"
 msgstr ""
 
 #: app/PostTypes/Episode.php:103
@@ -248,15 +240,12 @@ msgstr ""
 msgid "Optional. yes = hide this episode in Apple Podcasts."
 msgstr ""
 
-#: app/PostTypes/Episode.php:127
-#: app/Settings/Podcast.php:146
-#: app/Settings/Podcast.php:155
-#: app/Settings/Podcast.php:167
+#: app/PostTypes/Episode.php:127 app/Settings/Podcast.php:146
+#: app/Settings/Podcast.php:155 app/Settings/Podcast.php:167
 msgid "no"
 msgstr ""
 
-#: app/PostTypes/Episode.php:128
-#: app/Settings/Podcast.php:147
+#: app/PostTypes/Episode.php:128 app/Settings/Podcast.php:147
 #: app/Settings/Podcast.php:156
 msgid "yes"
 msgstr ""
@@ -313,8 +302,7 @@ msgstr ""
 msgid "Episode #%d: getID3 error - %s"
 msgstr ""
 
-#: app/Settings/Podcast.php:35
-#: app/Settings/Podcast.php:41
+#: app/Settings/Podcast.php:35 app/Settings/Podcast.php:41
 msgid "A Ripple Song"
 msgstr ""
 
@@ -322,13 +310,15 @@ msgstr ""
 msgid "Use the submenu to configure Podcast Settings."
 msgstr "पॉडकास्ट सेटिंग्स कॉन्फ़िगर करने के लिए सबमेनू का उपयोग करें।"
 
-#: app/Settings/Podcast.php:64
-#: app/Settings/Podcast.php:66
+#: app/Settings/Podcast.php:64 app/Settings/Podcast.php:66
 msgid "Podcast Settings"
 msgstr "पॉडकास्ट सेटिंग्स"
 
-#: app/Settings/Podcast.php:74
-#: app/Settings/Podcast.php:80
+#: src/Settings/Podcast.php:183
+msgid "Configure the channel metadata and feed tags for /feed/podcast."
+msgstr ""
+
+#: app/Settings/Podcast.php:74 app/Settings/Podcast.php:80
 msgid "Podcast RSS URL"
 msgstr "पॉडकास्ट RSS URL"
 
@@ -396,7 +386,7 @@ msgstr ""
 msgid ""
 "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple "
 "recommends keeping the file under 512KB. Will be validated on save."
-msgstr ""
+msgstr "आवश्यक। <itunes:image> के लिए 1400–3000px का चौकोर JPG/PNG। Apple फ़ाइल को 512KB से कम रखने की सलाह देता है। सेव करते समय सत्यापित किया जाएगा।"
 
 #: app/Settings/Podcast.php:107
 msgid "Default Explicit Flag"
@@ -422,8 +412,7 @@ msgstr ""
 msgid "Primary Category (Apple Podcasts)"
 msgstr ""
 
-#: app/Settings/Podcast.php:123
-#: app/Settings/Podcast.php:127
+#: app/Settings/Podcast.php:123 app/Settings/Podcast.php:127
 #: app/Settings/Podcast.php:134
 msgid "(not set)"
 msgstr ""
@@ -521,7 +510,8 @@ msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
 msgstr ""
 
 #: app/Settings/Podcast.php:178
-msgid "Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
+msgid ""
+"Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
 msgstr ""
 
 #: app/Settings/Podcast.php:179
@@ -566,13 +556,11 @@ msgstr ""
 msgid "Podcast Cover validation failed:"
 msgstr ""
 
-#: app/Settings/Podcast.php:399
-#: app/Settings/Podcast.php:483
+#: app/Settings/Podcast.php:399 app/Settings/Podcast.php:483
 msgid "Podcast Cover URL is invalid."
 msgstr ""
 
-#: app/Settings/Podcast.php:463
-#: app/Settings/Podcast.php:501
+#: app/Settings/Podcast.php:463 app/Settings/Podcast.php:501
 #, php-format
 msgid ""
 "Podcast Cover file is too large (%1$s). Please compress it to under %2$s."
@@ -622,8 +610,7 @@ msgstr "एपिसोड"
 msgid "ARS Episodes"
 msgstr "ARS एपिसोड"
 
-#: app/PostTypes/Episode.php:31
-#: app/PostTypes/Episode.php:32
+#: app/PostTypes/Episode.php:31 app/PostTypes/Episode.php:32
 msgid "Add New Episode"
 msgstr ""
 
@@ -675,8 +662,7 @@ msgstr ""
 msgid "Episode scheduled."
 msgstr ""
 
-#: app/PostTypes/Episode.php:70
-#: app/PostTypes/Episode.php:80
+#: app/PostTypes/Episode.php:70 app/PostTypes/Episode.php:80
 msgid "Episode Categories"
 msgstr "एपिसोड श्रेणियाँ"
 
@@ -719,27 +705,66 @@ msgstr ""
 msgid "ARS Themes"
 msgstr "ARS थीम"
 
+msgid "You are not allowed to manage themes on this site."
+msgstr "आपको इस साइट पर थीम प्रबंधित करने की अनुमति नहीं है।"
+
 msgid "Themes recommended for the A Ripple Song plugin."
 msgstr "A Ripple Song प्लगइन के लिए अनुशंसित थीमें।"
 
-msgid ""
-"A theme that provides a complete podcast presentation and playback interface"
-" for the A Ripple Song plugin."
-msgstr ""
-"एक थीम जो A Ripple Song प्लगइन के लिए पॉडकास्ट प्रदर्शन और प्लेबैक "
-"का पूरा इंटरफ़ेस प्रदान करती है।"
+msgid "Name"
+msgstr "नाम"
+
+msgid "Slug"
+msgstr "स्लग"
+
+msgid "Description"
+msgstr "विवरण"
+
+msgid "Status"
+msgstr "स्थिति"
+
+msgid "Option"
+msgstr "क्रिया"
+
+msgid "ARS Official"
+msgstr "ARS आधिकारिक"
+
+msgid "Activate"
+msgstr "सक्रिय करें"
+
+msgid "Install"
+msgstr "इंस्टॉल करें"
 
 msgid "This theme will be installable after it is published on WordPress.org."
 msgstr "यह थीम WordPress.org पर प्रकाशित होने के बाद इंस्टॉल की जा सकेगी।"
-
-msgid "You are not allowed to manage themes on this site."
-msgstr "आपको इस साइट पर थीम प्रबंधित करने की अनुमति नहीं है।"
 
 msgid "You are not allowed to switch themes on this site."
 msgstr "आपको इस साइट पर थीम बदलने की अनुमति नहीं है।"
 
 msgid "You are not allowed to install themes on this site."
 msgstr "आपको इस साइट पर थीम इंस्टॉल करने की अनुमति नहीं है।"
+
+msgid ""
+"A theme that provides a complete podcast presentation and playback interface "
+"for the A Ripple Song plugin."
+msgstr ""
+"एक थीम जो A Ripple Song प्लगइन के लिए पॉडकास्ट प्रदर्शन और प्लेबैक का पूरा इंटरफ़ेस "
+"प्रदान करती है।"
+
+msgid "Yes"
+msgstr "हाँ"
+
+msgid "No"
+msgstr "नहीं"
+
+msgid "Active"
+msgstr "सक्रिय"
+
+msgid "Installed but Inactive"
+msgstr "इंस्टॉल है लेकिन निष्क्रिय"
+
+msgid "Not Installed"
+msgstr "इंस्टॉल नहीं है"
 
 msgid "The requested recommended theme could not be found."
 msgstr "मांगी गई अनुशंसित थीम नहीं मिली।"
@@ -762,45 +787,6 @@ msgstr "थीम इंस्टॉल नहीं की जा सकी।"
 msgid "The theme was installed successfully. You can activate it now."
 msgstr "थीम सफलतापूर्वक इंस्टॉल हो गई। अब आप इसे सक्रिय कर सकते हैं।"
 
-msgid "Name"
-msgstr "नाम"
-
-msgid "Slug"
-msgstr "स्लग"
-
-msgid "Description"
-msgstr "विवरण"
-
-msgid "ARS Official"
-msgstr "ARS आधिकारिक"
-
-msgid "Status"
-msgstr "स्थिति"
-
-msgid "Option"
-msgstr "क्रिया"
-
-msgid "Active"
-msgstr "सक्रिय"
-
-msgid "Installed but Inactive"
-msgstr "इंस्टॉल है लेकिन निष्क्रिय"
-
-msgid "Not Installed"
-msgstr "इंस्टॉल नहीं है"
-
-msgid "Activate"
-msgstr "सक्रिय करें"
-
-msgid "Install"
-msgstr "इंस्टॉल करें"
-
-msgid "Yes"
-msgstr "हाँ"
-
-msgid "No"
-msgstr "नहीं"
-
 #: src/PostTypes/Episode.php:467
 msgid "Clear selection"
 msgstr "चयन साफ़ करें"
@@ -808,3 +794,6 @@ msgstr "चयन साफ़ करें"
 #: src/Settings/Podcast.php:287
 msgid "Podcast Cover is required."
 msgstr "पॉडकास्ट कवर आवश्यक है।"
+
+#~ msgid "Episode Details"
+#~ msgstr "एपिसोड विवरण"

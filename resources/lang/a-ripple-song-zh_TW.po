@@ -64,10 +64,6 @@ msgstr "選擇檔案"
 msgid "Use this file"
 msgstr "使用此檔案"
 
-#: app/PostTypes/Episode.php:24
-msgid "Episode Details"
-msgstr "集數詳情"
-
 #: app/PostTypes/Episode.php:30
 msgid "Audio File"
 msgstr "音訊檔案"
@@ -76,13 +72,15 @@ msgstr "音訊檔案"
 msgid "Required. Upload an audio file or enter audio file URL (https)."
 msgstr "必填。上傳音訊檔案或輸入音訊檔案 URL（https）。"
 
-#: app/PostTypes/Episode.php:36
-#: app/PostTypes/Episode.php:110
+#: src/PostTypes/Episode.php:444 src/Settings/Podcast.php:733
+msgid "https://"
+msgstr ""
+
+#: app/PostTypes/Episode.php:36 app/PostTypes/Episode.php:110
 msgid "Duration (seconds)"
 msgstr "時長（秒）"
 
-#: app/PostTypes/Episode.php:37
-#: app/PostTypes/Episode.php:43
+#: app/PostTypes/Episode.php:37 app/PostTypes/Episode.php:43
 #: app/PostTypes/Episode.php:48
 msgid "Auto detected from \"Audio File\" on save."
 msgstr "儲存時從「音訊檔案」自動識別。"
@@ -107,8 +105,7 @@ msgstr "必填。clean / explicit。"
 msgid "clean"
 msgstr "clean"
 
-#: app/PostTypes/Episode.php:56
-#: app/Settings/Podcast.php:111
+#: app/PostTypes/Episode.php:56 app/Settings/Podcast.php:111
 msgid "explicit"
 msgstr "explicit"
 
@@ -174,8 +171,7 @@ msgid ""
 "URL (https)."
 msgstr "可選。上傳文字稿檔案（vtt/srt/txt/pdf）或填寫文字稿 URL（https）。"
 
-#: app/PostTypes/Episode.php:92
-#: app/Settings/Podcast.php:141
+#: app/PostTypes/Episode.php:92 app/Settings/Podcast.php:141
 msgid "iTunes Title (optional)"
 msgstr "iTunes 標題（可選）"
 
@@ -199,10 +195,6 @@ msgstr "章節 MIME 類型"
 #: app/PostTypes/Episode.php:100
 msgid "Optional. Defaults to application/json+chapters."
 msgstr "可選。預設為 application/json+chapters。"
-
-#: app/PostTypes/Episode.php:102
-msgid "Soundbites (Podcasting 2.0)"
-msgstr "音訊片段（Podcasting 2.0）"
 
 #: app/PostTypes/Episode.php:103
 msgid "Optional. Adds one or more <podcast:soundbite> tags."
@@ -248,15 +240,12 @@ msgstr "iTunes 屏蔽"
 msgid "Optional. yes = hide this episode in Apple Podcasts."
 msgstr "可選。yes = 在 Apple Podcasts 中隱藏此劇集。"
 
-#: app/PostTypes/Episode.php:127
-#: app/Settings/Podcast.php:146
-#: app/Settings/Podcast.php:155
-#: app/Settings/Podcast.php:167
+#: app/PostTypes/Episode.php:127 app/Settings/Podcast.php:146
+#: app/Settings/Podcast.php:155 app/Settings/Podcast.php:167
 msgid "no"
 msgstr "no"
 
-#: app/PostTypes/Episode.php:128
-#: app/Settings/Podcast.php:147
+#: app/PostTypes/Episode.php:128 app/Settings/Podcast.php:147
 #: app/Settings/Podcast.php:156
 msgid "yes"
 msgstr "yes"
@@ -313,8 +302,7 @@ msgstr "劇集 #%d：音訊檔案不存在，無法辨識時長/大小/MIME"
 msgid "Episode #%d: getID3 error - %s"
 msgstr "劇集 #%d：getID3 錯誤 - %s"
 
-#: app/Settings/Podcast.php:35
-#: app/Settings/Podcast.php:41
+#: app/Settings/Podcast.php:35 app/Settings/Podcast.php:41
 msgid "A Ripple Song"
 msgstr "脈動之音"
 
@@ -322,13 +310,15 @@ msgstr "脈動之音"
 msgid "Use the submenu to configure Podcast Settings."
 msgstr "使用子選單設定播客設定。"
 
-#: app/Settings/Podcast.php:64
-#: app/Settings/Podcast.php:66
+#: app/Settings/Podcast.php:64 app/Settings/Podcast.php:66
 msgid "Podcast Settings"
 msgstr "播客設定"
 
-#: app/Settings/Podcast.php:74
-#: app/Settings/Podcast.php:80
+#: src/Settings/Podcast.php:183
+msgid "Configure the channel metadata and feed tags for /feed/podcast."
+msgstr "設定 /feed/podcast 的頻道中繼資料和 Feed 標籤。"
+
+#: app/Settings/Podcast.php:74 app/Settings/Podcast.php:80
 msgid "Podcast RSS URL"
 msgstr "播客 RSS URL"
 
@@ -397,7 +387,8 @@ msgid ""
 "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple "
 "recommends keeping the file under 512KB. Will be validated on save."
 msgstr ""
-"必填。用於 <itunes:image> 的正方形 JPG/PNG（1400–3000px）。Apple 建議檔案小於 512KB。儲存時會進行驗證。"
+"必填。用於 <itunes:image> 的正方形 JPG/PNG（1400–3000px）。Apple 建議檔案小"
+"於 512KB。儲存時會進行驗證。"
 
 #: app/Settings/Podcast.php:107
 msgid "Default Explicit Flag"
@@ -423,8 +414,7 @@ msgstr "必填。通常為 en-US、zh-CN 等。"
 msgid "Primary Category (Apple Podcasts)"
 msgstr "主要分類（Apple Podcasts）"
 
-#: app/Settings/Podcast.php:123
-#: app/Settings/Podcast.php:127
+#: app/Settings/Podcast.php:123 app/Settings/Podcast.php:127
 #: app/Settings/Podcast.php:134
 msgid "(not set)"
 msgstr "（未設定）"
@@ -522,7 +512,8 @@ msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
 msgstr "Podcasting 2.0 GUID。如留空，摘要將用網站 URL 作後備。"
 
 #: app/Settings/Podcast.php:178
-msgid "Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
+msgid ""
+"Apple Podcasts Verify Code (podcast:txt purpose=\"applepodcastsverify\")"
 msgstr "Apple Podcasts 驗證碼（podcast:txt purpose=\"applepodcastsverify\"）"
 
 #: app/Settings/Podcast.php:179
@@ -567,13 +558,11 @@ msgstr "可選。留空則不包含 generator 標籤。"
 msgid "Podcast Cover validation failed:"
 msgstr "播客封面驗證失敗："
 
-#: app/Settings/Podcast.php:399
-#: app/Settings/Podcast.php:483
+#: app/Settings/Podcast.php:399 app/Settings/Podcast.php:483
 msgid "Podcast Cover URL is invalid."
 msgstr "播客封面 URL 無效。"
 
-#: app/Settings/Podcast.php:463
-#: app/Settings/Podcast.php:501
+#: app/Settings/Podcast.php:463 app/Settings/Podcast.php:501
 #, php-format
 msgid ""
 "Podcast Cover file is too large (%1$s). Please compress it to under %2$s."
@@ -623,8 +612,7 @@ msgstr "劇集"
 msgid "ARS Episodes"
 msgstr "ARS 集數"
 
-#: app/PostTypes/Episode.php:31
-#: app/PostTypes/Episode.php:32
+#: app/PostTypes/Episode.php:31 app/PostTypes/Episode.php:32
 msgid "Add New Episode"
 msgstr "新增劇集"
 
@@ -676,8 +664,7 @@ msgstr "劇集已還原為草稿。"
 msgid "Episode scheduled."
 msgstr "劇集已排程。"
 
-#: app/PostTypes/Episode.php:70
-#: app/PostTypes/Episode.php:80
+#: app/PostTypes/Episode.php:70 app/PostTypes/Episode.php:80
 msgid "Episode Categories"
 msgstr "集數分類"
 
@@ -720,25 +707,64 @@ msgstr "新劇集分類名稱"
 msgid "ARS Themes"
 msgstr "ARS 主題"
 
+msgid "You are not allowed to manage themes on this site."
+msgstr "你沒有在這個網站管理主題的權限。"
+
 msgid "Themes recommended for the A Ripple Song plugin."
 msgstr "A Ripple Song 外掛推薦使用的主題。"
 
-msgid ""
-"A theme that provides a complete podcast presentation and playback interface"
-" for the A Ripple Song plugin."
-msgstr "為 A Ripple Song 外掛提供完整 Podcast 展示與播放介面的主題。"
+msgid "Name"
+msgstr "名稱"
+
+msgid "Slug"
+msgstr "別名"
+
+msgid "Description"
+msgstr "描述"
+
+msgid "Status"
+msgstr "狀態"
+
+msgid "Option"
+msgstr "操作"
+
+msgid "ARS Official"
+msgstr "ARS 官方"
+
+msgid "Activate"
+msgstr "啟用"
+
+msgid "Install"
+msgstr "安裝"
 
 msgid "This theme will be installable after it is published on WordPress.org."
 msgstr "這個主題在發佈到 WordPress.org 後即可安裝。"
-
-msgid "You are not allowed to manage themes on this site."
-msgstr "你沒有在這個網站管理主題的權限。"
 
 msgid "You are not allowed to switch themes on this site."
 msgstr "你沒有在這個網站切換主題的權限。"
 
 msgid "You are not allowed to install themes on this site."
 msgstr "你沒有在這個網站安裝主題的權限。"
+
+msgid ""
+"A theme that provides a complete podcast presentation and playback interface "
+"for the A Ripple Song plugin."
+msgstr "為 A Ripple Song 外掛提供完整 Podcast 展示與播放介面的主題。"
+
+msgid "Yes"
+msgstr "是"
+
+msgid "No"
+msgstr "否"
+
+msgid "Active"
+msgstr "已啟用"
+
+msgid "Installed but Inactive"
+msgstr "已安裝但未啟用"
+
+msgid "Not Installed"
+msgstr "未安裝"
 
 msgid "The requested recommended theme could not be found."
 msgstr "找不到要求的推薦主題。"
@@ -761,48 +787,6 @@ msgstr "無法安裝主題。"
 msgid "The theme was installed successfully. You can activate it now."
 msgstr "主題已成功安裝，現在可以啟用。"
 
-msgid "Name"
-msgstr "名稱"
-
-msgid "Slug"
-msgstr "別名"
-
-msgid "Description"
-msgstr "描述"
-
-msgid "ARS Official"
-msgstr "ARS 官方"
-
-msgid "Status"
-msgstr "狀態"
-
-msgid "Option"
-msgstr "操作"
-
-msgid "Active"
-msgstr "已啟用"
-
-msgid "Installed but Inactive"
-msgstr "已安裝但未啟用"
-
-msgid "Not Installed"
-msgstr "未安裝"
-
-msgid "Activate"
-msgstr "啟用"
-
-msgid "Install"
-msgstr "安裝"
-
-msgid "Yes"
-msgstr "是"
-
-msgid "No"
-msgstr "否"
-
-#~ msgid "ARS Episode"
-#~ msgstr "ARS 劇集"
-
 #: src/PostTypes/Episode.php:467
 msgid "Clear selection"
 msgstr "清除選擇"
@@ -810,3 +794,12 @@ msgstr "清除選擇"
 #: src/Settings/Podcast.php:287
 msgid "Podcast Cover is required."
 msgstr "Podcast 封面為必填項。"
+
+#~ msgid "Episode Details"
+#~ msgstr "集數詳情"
+
+#~ msgid "Soundbites (Podcasting 2.0)"
+#~ msgstr "音訊片段（Podcasting 2.0）"
+
+#~ msgid "ARS Episode"
+#~ msgstr "ARS 劇集"

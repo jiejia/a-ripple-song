@@ -63,16 +63,17 @@ msgstr ""
 msgid "Use this file"
 msgstr ""
 
-#: app/PostTypes/Episode.php:24
-msgid "Episode Details"
-msgstr ""
-
 #: app/PostTypes/Episode.php:30
 msgid "Audio File"
 msgstr ""
 
 #: app/PostTypes/Episode.php:31
 msgid "Required. Upload an audio file or enter audio file URL (https)."
+msgstr ""
+
+#: src/PostTypes/Episode.php:444
+#: src/Settings/Podcast.php:733
+msgid "https://"
 msgstr ""
 
 #: app/PostTypes/Episode.php:36
@@ -196,10 +197,6 @@ msgstr ""
 msgid "Optional. Defaults to application/json+chapters."
 msgstr ""
 
-#: app/PostTypes/Episode.php:102
-msgid "Soundbites (Podcasting 2.0)"
-msgstr ""
-
 #: app/PostTypes/Episode.php:103
 msgid "Optional. Adds one or more <podcast:soundbite> tags."
 msgstr ""
@@ -320,6 +317,10 @@ msgstr ""
 #: app/Settings/Podcast.php:64
 #: app/Settings/Podcast.php:66
 msgid "Podcast Settings"
+msgstr ""
+
+#: src/Settings/Podcast.php:183
+msgid "Configure the channel metadata and feed tags for /feed/podcast."
 msgstr ""
 
 #: app/Settings/Podcast.php:74

@@ -242,7 +242,6 @@ class Episode {
 		?>
 		<div id="ars-episode-details-form" class="ars-admin-form" data-ars-admin-form="episode">
 			<div class="ars-admin-section">
-				<h2><?php echo esc_html__( 'Media', 'a-ripple-song' ); ?></h2>
 				<?php $this->renderMediaField( 'audio_file', __( 'Audio File', 'a-ripple-song' ), $values['audio_file'], __( 'Required. Upload an audio file or enter audio file URL (https).', 'a-ripple-song' ), 'audio', true ); ?>
 				<?php $this->renderReadonlyField( 'duration', __( 'Duration (seconds)', 'a-ripple-song' ), $values['duration'], __( 'Auto detected from "Audio File" on save.', 'a-ripple-song' ) ); ?>
 				<?php $this->renderReadonlyField( 'audio_length', __( 'Audio Length (bytes)', 'a-ripple-song' ), $values['audio_length'], __( 'Auto detected from "Audio File" on save.', 'a-ripple-song' ) ); ?>
@@ -250,7 +249,6 @@ class Episode {
 			</div>
 
 			<div class="ars-admin-section">
-				<h2><?php echo esc_html__( 'Episode Details', 'a-ripple-song' ); ?></h2>
 				<?php $this->renderSelectField( 'episode_explicit', __( 'Explicit', 'a-ripple-song' ), $values['episode_explicit'], array( 'clean' => __( 'clean', 'a-ripple-song' ), 'explicit' => __( 'explicit', 'a-ripple-song' ) ), __( 'Required. clean / explicit.', 'a-ripple-song' ), true ); ?>
 				<?php $this->renderSelectField( 'episode_type', __( 'Episode Type', 'a-ripple-song' ), $values['episode_type'], array( 'full' => __( 'full', 'a-ripple-song' ), 'trailer' => __( 'trailer', 'a-ripple-song' ), 'bonus' => __( 'bonus', 'a-ripple-song' ) ), __( 'Required. full / trailer / bonus.', 'a-ripple-song' ), true ); ?>
 				<?php $this->renderNumberField( 'episode_number', __( 'Episode Number', 'a-ripple-song' ), $values['episode_number'], __( 'Optional but recommended. Integer.', 'a-ripple-song' ) ); ?>
@@ -269,7 +267,6 @@ class Episode {
 			</div>
 
 			<div class="ars-admin-section">
-				<h2><?php echo esc_html__( 'People', 'a-ripple-song' ); ?></h2>
 				<?php $this->renderUserMultiSelectField( 'members', __( 'Members', 'a-ripple-song' ), $values['members'], __( 'Select episode members (administrators, authors, editors).', 'a-ripple-song' ) ); ?>
 				<?php $this->renderUserMultiSelectField( 'guests', __( 'Guests', 'a-ripple-song' ), $values['guests'], __( 'Select episode guests (contributors).', 'a-ripple-song' ) ); ?>
 			</div>
@@ -441,7 +438,7 @@ class Episode {
 		$input_type = $mode === 'image' ? 'hidden' : 'url';
 		?>
 		<div class="ars-media-field">
-			<input type="<?php echo esc_attr( $input_type ); ?>" class="regular-text" name="ars_episode_details[<?php echo esc_attr( $key ); ?>]" value="<?php echo esc_attr( (string) $value ); ?>" placeholder="https://" data-ars-media-uploader="<?php echo esc_attr( $mode ); ?>" <?php if ( $required && $input_type !== 'hidden' ) : ?>required aria-required="true"<?php endif; ?> />
+			<input type="<?php echo esc_attr( $input_type ); ?>" class="regular-text" name="ars_episode_details[<?php echo esc_attr( $key ); ?>]" value="<?php echo esc_attr( (string) $value ); ?>" placeholder="<?php echo esc_attr__( 'https://', 'a-ripple-song' ); ?>" data-ars-media-uploader="<?php echo esc_attr( $mode ); ?>" <?php if ( $required && $input_type !== 'hidden' ) : ?>required aria-required="true"<?php endif; ?> />
 		</div>
 		<?php
 		$this->renderFieldEnd();
@@ -491,10 +488,7 @@ class Episode {
 		}
 		?>
 		<div class="ars-repeatable-field" data-ars-repeatable-field="soundbites">
-			<div class="ars-repeatable-field__header">
-				<h3><?php echo esc_html__( 'Soundbites (Podcasting 2.0)', 'a-ripple-song' ); ?></h3>
-				<p class="description"><?php echo esc_html__( 'Optional. Adds one or more <podcast:soundbite> tags.', 'a-ripple-song' ); ?></p>
-			</div>
+			<p class="description"><?php echo esc_html__( 'Optional. Adds one or more <podcast:soundbite> tags.', 'a-ripple-song' ); ?></p>
 			<div class="ars-repeatable-field__rows" data-ars-repeatable-rows>
 				<?php foreach ( $rows as $row ) : ?>
 					<div class="ars-repeatable-field__row">

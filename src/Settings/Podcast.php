@@ -730,7 +730,7 @@ class Podcast {
 		$input_type = $mode === 'image' ? 'hidden' : 'url';
 		?>
 		<div class="ars-media-field">
-			<input type="<?php echo esc_attr( $input_type ); ?>" class="regular-text" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[<?php echo esc_attr( $key ); ?>]" value="<?php echo esc_attr( (string) $value ); ?>" placeholder="https://" data-ars-media-uploader="<?php echo esc_attr( $mode ); ?>" <?php if ( $required && $input_type !== 'hidden' ) : ?>required aria-required="true"<?php endif; ?> />
+			<input type="<?php echo esc_attr( $input_type ); ?>" class="regular-text" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[<?php echo esc_attr( $key ); ?>]" value="<?php echo esc_attr( (string) $value ); ?>" placeholder="<?php echo esc_attr__( 'https://', 'a-ripple-song' ); ?>" data-ars-media-uploader="<?php echo esc_attr( $mode ); ?>" <?php if ( $required && $input_type !== 'hidden' ) : ?>required aria-required="true"<?php endif; ?> />
 		</div>
 		<?php
 		$this->renderFieldRowEnd();
