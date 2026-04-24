@@ -793,5 +793,6 @@ msgstr "انتخاب صاف کریں"
 msgid "Podcast Cover is required."
 msgstr "Podcast کور ضروری ہے۔"
 
-#~ msgid "Episode Details"
-#~ msgstr "قسط کی تفصیلات"
+#: src/PostTypes/Episode.php:224
+msgid "Episode Details"
+msgstr "قسط کی تفصیلات"

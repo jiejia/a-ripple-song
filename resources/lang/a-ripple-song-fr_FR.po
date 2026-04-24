@@ -795,5 +795,6 @@ msgstr "Effacer la sélection"
 msgid "Podcast Cover is required."
 msgstr "La couverture du podcast est obligatoire."
 
-#~ msgid "Episode Details"
-#~ msgstr "Détails de l’épisode"
+#: src/PostTypes/Episode.php:224
+msgid "Episode Details"
+msgstr "Détails de l’épisode"

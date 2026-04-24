@@ -795,5 +795,6 @@ msgstr "Очистить выбор"
 msgid "Podcast Cover is required."
 msgstr "Обложка подкаста обязательна."
 
-#~ msgid "Episode Details"
-#~ msgstr "Сведения об эпизоде"
+#: src/PostTypes/Episode.php:224
+msgid "Episode Details"
+msgstr "Сведения об эпизоде"

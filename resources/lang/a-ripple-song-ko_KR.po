@@ -794,5 +794,6 @@ msgstr "선택 지우기"
 msgid "Podcast Cover is required."
 msgstr "Podcast 커버는 필수입니다."
 
-#~ msgid "Episode Details"
-#~ msgstr "에피소드 상세"
+#: src/PostTypes/Episode.php:224
+msgid "Episode Details"
+msgstr "에피소드 상세"

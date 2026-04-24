@@ -793,5 +793,6 @@ msgstr "নির্বাচন মুছুন"
 msgid "Podcast Cover is required."
 msgstr "পডকাস্ট কভার প্রয়োজন।"
 
-#~ msgid "Episode Details"
-#~ msgstr "পর্বের বিবরণ"
+#: src/PostTypes/Episode.php:224
+msgid "Episode Details"
+msgstr "পর্বের বিবরণ"

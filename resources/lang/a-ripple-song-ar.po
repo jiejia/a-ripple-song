@@ -791,5 +791,6 @@ msgstr "مسح التحديد"
 msgid "Podcast Cover is required."
 msgstr "غلاف البودكاست مطلوب."
 
-#~ msgid "Episode Details"
-#~ msgstr "تفاصيل الحلقة"
+#: src/PostTypes/Episode.php:224
+msgid "Episode Details"
+msgstr "تفاصيل الحلقة"

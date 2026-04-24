@@ -795,5 +795,6 @@ msgstr "Borrar selección"
 msgid "Podcast Cover is required."
 msgstr "La portada del podcast es obligatoria."
 
-#~ msgid "Episode Details"
-#~ msgstr "Detalles del episodio"
+#: src/PostTypes/Episode.php:224
+msgid "Episode Details"
+msgstr "Detalles del episodio"

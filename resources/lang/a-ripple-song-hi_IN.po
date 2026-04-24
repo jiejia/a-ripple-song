@@ -793,5 +793,6 @@ msgstr "चयन साफ़ करें"
 msgid "Podcast Cover is required."
 msgstr "पॉडकास्ट कवर आवश्यक है।"
 
-#~ msgid "Episode Details"
-#~ msgstr "एपिसोड विवरण"
+#: src/PostTypes/Episode.php:224
+msgid "Episode Details"
+msgstr "एपिसोड विवरण"

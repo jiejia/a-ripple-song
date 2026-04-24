@@ -791,8 +791,9 @@ msgstr "清除選擇"
 msgid "Podcast Cover is required."
 msgstr "Podcast 封面為必填項。"
 
-#~ msgid "Episode Details"
-#~ msgstr "集數詳情"
+#: src/PostTypes/Episode.php:224
+msgid "Episode Details"
+msgstr "集數詳情"
 
 #~ msgid "Soundbites (Podcasting 2.0)"
 #~ msgstr "音訊片段（Podcasting 2.0）"

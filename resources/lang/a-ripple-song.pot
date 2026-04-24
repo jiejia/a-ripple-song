@@ -164,6 +164,10 @@ msgstr ""
 msgid "Optional. Square 1400–3000px. Overrides channel cover."
 msgstr ""
 
+#: src/PostTypes/Episode.php:224
+msgid "Episode Details"
+msgstr ""
+
 #: app/PostTypes/Episode.php:87
 msgid "Transcript (optional)"
 msgstr ""

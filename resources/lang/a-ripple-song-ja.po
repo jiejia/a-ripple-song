@@ -828,8 +828,9 @@ msgstr "選択をクリア"
 msgid "Podcast Cover is required."
 msgstr "Podcast カバーは必須です。"
 
-#~ msgid "Episode Details"
-#~ msgstr "エピソード詳細"
+#: src/PostTypes/Episode.php:224
+msgid "Episode Details"
+msgstr "エピソード詳細"
 
 #~ msgid "Soundbites (Podcasting 2.0)"
 #~ msgstr "サウンドバイト（Podcasting 2.0）"
