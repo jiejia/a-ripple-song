@@ -383,10 +383,8 @@ msgid "Podcast Cover (1400–3000px square)"
 msgstr ""
 
 #: app/Settings/Podcast.php:105
-msgid ""
-"Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple "
-"recommends keeping the file under 512KB. Will be validated on save."
-msgstr "প্রয়োজনীয়। <itunes:image>-এর জন্য 1400–3000px আকারের বর্গাকার JPG/PNG। Apple ফাইলটি 512KB-এর নিচে রাখার পরামর্শ দেয়। সংরক্ষণের সময় যাচাই করা হবে।"
+msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple recommends keeping the file under 512KB."
+msgstr "প্রয়োজনীয়। <itunes:image>-এর জন্য 1400–3000px আকারের বর্গাকার JPG/PNG। Apple ফাইলটি 512KB-এর নিচে রাখার পরামর্শ দেয়।"
 
 #: app/Settings/Podcast.php:107
 msgid "Default Explicit Flag"

@@ -399,12 +399,8 @@ msgid "Podcast Cover (1400–3000px square)"
 msgstr "ポッドキャストカバー（1400〜3000px の正方形）"
 
 #: app/Settings/Podcast.php:105
-msgid ""
-"Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple "
-"recommends keeping the file under 512KB. Will be validated on save."
-msgstr ""
-"必須です。<itunes:image> 用の 1400〜3000px の正方形 JPG/PNG を指定してくださ"
-"い。Apple は 512KB 未満を推奨しています。保存時に検証されます。"
+msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple recommends keeping the file under 512KB."
+msgstr "必須です。<itunes:image> 用の 1400〜3000px の正方形 JPG/PNG を指定してください。Apple はファイルを 512KB 未満に保つことを推奨しています。"
 
 #: app/Settings/Podcast.php:107
 msgid "Default Explicit Flag"

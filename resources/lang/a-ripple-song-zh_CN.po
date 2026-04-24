@@ -383,12 +383,8 @@ msgid "Podcast Cover (1400–3000px square)"
 msgstr "播客封面（1400–3000px 正方形）"
 
 #: app/Settings/Podcast.php:105
-msgid ""
-"Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple "
-"recommends keeping the file under 512KB. Will be validated on save."
-msgstr ""
-"必填。用于 <itunes:image> 的正方形 JPG/PNG，尺寸 1400–3000px。Apple 建议文件"
-"小于 512KB。保存时将校验。"
+msgid "Required. Square JPG/PNG between 1400–3000px for <itunes:image>. Apple recommends keeping the file under 512KB."
+msgstr "必填。用于 <itunes:image> 的正方形 JPG/PNG，尺寸 1400–3000px。Apple 建议文件小于 512KB。"
 
 #: app/Settings/Podcast.php:107
 msgid "Default Explicit Flag"
