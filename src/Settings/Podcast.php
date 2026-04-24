@@ -1147,7 +1147,6 @@ class Podcast {
 			'en-CA' => 'en-CA',
 			'zh-CN' => 'zh-CN',
 			'zh-TW' => 'zh-TW',
-			'ja-JP' => 'ja-JP',
 			'ko-KR' => 'ko-KR',
 			'fr-FR' => 'fr-FR',
 			'de-DE' => 'de-DE',
