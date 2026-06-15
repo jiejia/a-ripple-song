@@ -3,6 +3,12 @@
 use App\Providers\ThemeServiceProvider;
 use Roots\Acorn\Application;
 
+
+if (!defined('A_RIPPLE_SONG_THEME_DIR')) {
+    define('A_RIPPLE_SONG_THEME_DIR', get_stylesheet_directory());
+}
+
+
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader
