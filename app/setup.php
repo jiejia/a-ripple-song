@@ -161,3 +161,8 @@ add_action('widgets_init', function () {
         'id' => 'sidebar-footer',
     ] + $config);
 });
+
+
+add_action('after_setup_theme', function () {
+    load_textdomain( 'sage', get_template_directory() . '/resources/lang/' . determine_locale() . '.mo' );
+});

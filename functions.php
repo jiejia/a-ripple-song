@@ -1,6 +1,14 @@
 <?php
 
 use App\Providers\ThemeServiceProvider;
+use App\Providers\CarbonFieldsServiceProvider;
+use App\Providers\CustomPostTypeServiceProvider;
+use App\Providers\FeedServiceProvider;
+use App\Providers\MenuServiceProvider;
+use App\Providers\MetaServiceProvider;
+use App\Providers\RouteServiceProvider;
+use App\Providers\SettingServiceProvider;
+use App\Providers\TaxonomyServiceProvider;
 use Roots\Acorn\Application;
 
 
@@ -41,6 +49,14 @@ require $composer;
 Application::configure()
     ->withProviders([
         ThemeServiceProvider::class,
+        CarbonFieldsServiceProvider::class,
+        CustomPostTypeServiceProvider::class,
+        TaxonomyServiceProvider::class,
+        SettingServiceProvider::class,
+        FeedServiceProvider::class,
+        MetaServiceProvider::class,
+        RouteServiceProvider::class,
+        MenuServiceProvider::class,
     ])
     ->boot();
 
