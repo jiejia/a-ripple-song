@@ -2,13 +2,17 @@
 
 use App\Providers\ThemeServiceProvider;
 use App\Providers\CarbonFieldsServiceProvider;
+use App\Providers\CustomAreasServiceProvider;
+use App\Providers\CustomizerServiceProvider;
 use App\Providers\CustomPostTypeServiceProvider;
 use App\Providers\FeedServiceProvider;
 use App\Providers\MenuServiceProvider;
 use App\Providers\MetaServiceProvider;
+use App\Providers\NavigationServiceProvider;
 use App\Providers\RouteServiceProvider;
 use App\Providers\SettingServiceProvider;
 use App\Providers\TaxonomyServiceProvider;
+use App\Providers\WidgetServiceProvider;
 use Roots\Acorn\Application;
 
 
@@ -55,8 +59,12 @@ Application::configure()
         SettingServiceProvider::class,
         FeedServiceProvider::class,
         MetaServiceProvider::class,
+        CustomAreasServiceProvider::class,
+        CustomizerServiceProvider::class,
+        NavigationServiceProvider::class,
         RouteServiceProvider::class,
         MenuServiceProvider::class,
+        WidgetServiceProvider::class,
     ])
     ->boot();
 
@@ -72,7 +80,7 @@ Application::configure()
 |
 */
 
-collect(['setup', 'filters'])
+collect(['helpers', 'setup', 'filters'])
     ->each(function ($file) {
         if (! locate_template($file = "app/{$file}.php", true, true)) {
             wp_die(

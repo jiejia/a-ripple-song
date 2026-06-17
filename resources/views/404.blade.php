@@ -11,3 +11,8 @@
     {!! get_search_form(false) !!}
   @endif
 @endsection
+
+
+@section('sidebar')
+@include('sections.sidebar')
+@endsection

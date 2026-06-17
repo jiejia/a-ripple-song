@@ -1,4 +1,124 @@
-@import "tailwindcss" theme(static);
-@source "../../app/**/*.php";
-@source "../**/*.blade.php";
-@source "../**/*.js";
+@import "tailwindcss";
+@source "../views/";
+@source "../../app/";
+
+@plugin 'tailwind-scrollbar';
+
+@plugin "daisyui" {
+    themes: all;
+}
+
+@theme {
+    --link-decoration: none;
+}
+
+@layer base {
+    :root {
+        --aripplesong-color-scheme: light;
+    }
+
+    [data-theme] {
+        color-scheme: var(--aripplesong-color-scheme, light);
+    }
+}
+
+/* 防止移动端浏览器自动放大文字 */
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+/* Alpine.js x-cloak: 在 Alpine 初始化前隐藏元素，防止闪烁 */
+[x-cloak] {
+    display: none !important;
+}
+
+/* 全局移除所有链接的下划线 */
+a {
+    text-decoration: none;
+}
+
+/* 评论样式 */
+.comment-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.comment-list .children {
+    list-style: none;
+    padding-left: 2rem;
+    margin-top: 1rem;
+}
+
+@media (max-width: 640px) {
+    .comment-list .children {
+        padding-left: 1rem;
+    }
+}
+
+.comment-item {
+    margin-bottom: 0;
+}
+
+.comment-list > .comment-item {
+    margin-bottom: 1rem;
+}
+
+/* 评论表单样式 */
+.comment-form .form-control + .form-control {
+    margin-top: 1rem;
+}
+
+.comment-respond {
+    margin-top: 1rem;
+}
+
+/* 取消回复按钮样式 */
+#cancel-comment-reply-link {
+    margin-left: 0.5rem;
+}
+
+@layer components {
+    input[type="range"].aripplesong-progress-range::-webkit-slider-runnable-track {
+        background: var(--aripplesong-progress-gradient, var(--range-bg));
+    }
+
+    input[type="range"].aripplesong-progress-range::-moz-range-track {
+        background: var(--aripplesong-progress-gradient, var(--range-bg));
+    }
+}
+
+
+.widget {
+    @apply rounded-lg bg-base-100 p-4;
+}
+.drawer-side .widget {
+    @apply bg-base-200/50;
+}
+
+
+.drawer-side .widget .bg-base-100,.drawer-side .search-form {
+    @apply bg-base-300/25;
+}
+
+/* Prevent long unbroken titles from forcing horizontal page scrolling. */
+#swup-main h1,
+#swup-main h2,
+#swup-main h3,
+#swup-main h4,
+#swup-main h5,
+#swup-main h6,
+.widget h1,
+.widget h2,
+.widget h3,
+.widget h4,
+.widget h5,
+.widget h6,
+#swup-header h1,
+#swup-header h1 a,
+#swup-header h1 span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}

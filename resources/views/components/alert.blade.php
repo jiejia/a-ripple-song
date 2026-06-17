@@ -10,6 +10,6 @@
   default => 'text-indigo-50 bg-indigo-400',
 })
 
-<div {{ $attributes->merge(['class' => "px-2 py-1 {$class}"]) }}>
+<div {{ $attributes->merge(['class' => "p-4 rounded-lg bg-base-100 mt-4 mb-4"]) }}>
   {!! $message ?? $slot !!}
 </div>

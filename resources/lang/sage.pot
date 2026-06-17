@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-16T02:48:07+00:00\n"
+"POT-Creation-Date: 2026-06-16T03:59:17+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: sage\n"
@@ -85,6 +85,126 @@ msgstr ""
 #: app/Abstracts/CustomPostTypeAbstract.php:91
 #, php-format
 msgid "No %s found in Trash"
+msgstr ""
+
+#: app/CustomAreas/FooterLinks.php:29
+msgid "Footer Links"
+msgstr ""
+
+#: app/CustomAreas/FooterLinks.php:39
+msgid "Footer links area for displaying link columns"
+msgstr ""
+
+#: app/CustomAreas/HomeMain.php:29
+msgid "Home Main"
+msgstr ""
+
+#: app/CustomAreas/HomeMain.php:39
+msgid "Main area of the homepage for displaying various content modules"
+msgstr ""
+
+#: app/CustomAreas/LeftbarPrimary.php:29
+msgid "Leftbar Primary"
+msgstr ""
+
+#: app/CustomAreas/LeftbarPrimary.php:39
+msgid "Primary left sidebar area for displaying various content modules"
+msgstr ""
+
+#: app/CustomAreas/RightbarPrimary.php:29
+msgid "Rightbar Primary"
+msgstr ""
+
+#: app/CustomAreas/RightbarPrimary.php:39
+msgid "Primary right sidebar area for displaying various content modules"
+msgstr ""
+
+#: app/Customizers/Copyright.php:22
+msgid "Footer"
+msgstr ""
+
+#: app/Customizers/Copyright.php:34
+msgid "Footer Copyright"
+msgstr ""
+
+#: app/Customizers/Copyright.php:35
+msgid "Overrides the footer copyright line. Leave empty to use the default."
+msgstr ""
+
+#: app/Customizers/SocialLinks.php:23
+msgid "Facebook"
+msgstr ""
+
+#: app/Customizers/SocialLinks.php:27
+msgid "Twitter / X"
+msgstr ""
+
+#: app/Customizers/SocialLinks.php:31
+msgid "Instagram"
+msgstr ""
+
+#: app/Customizers/SocialLinks.php:35
+msgid "LinkedIn"
+msgstr ""
+
+#: app/Customizers/SocialLinks.php:39
+msgid "YouTube"
+msgstr ""
+
+#: app/Customizers/SocialLinks.php:43
+msgid "TikTok"
+msgstr ""
+
+#: app/Customizers/SocialLinks.php:47
+msgid "Pinterest"
+msgstr ""
+
+#: app/Customizers/SocialLinks.php:51
+msgid "Threads"
+msgstr ""
+
+#: app/Customizers/SocialLinks.php:55
+msgid "Weibo"
+msgstr ""
+
+#: app/Customizers/SocialLinks.php:59
+msgid "WeChat"
+msgstr ""
+
+#: app/Customizers/SocialLinks.php:63
+msgid "RSS Feed"
+msgstr ""
+
+#: app/Customizers/SocialLinks.php:111
+msgid "Social Links"
+msgstr ""
+
+#: app/Customizers/SocialLinks.php:125
+msgid "Optional. Enter a full URL."
+msgstr ""
+
+#: app/Customizers/SocialLinks.php:128
+msgid "Enter a full URL"
+msgstr ""
+
+#: app/Customizers/ThemeColor.php:140
+msgid "Theme Color"
+msgstr ""
+
+#: app/Customizers/ThemeColor.php:152
+msgid "Light Theme"
+msgstr ""
+
+#: app/Customizers/ThemeColor.php:153
+msgid "This is the default theme used when the site is in light mode."
+msgstr ""
+
+#: app/Customizers/ThemeColor.php:166
+msgid "Dark Theme"
+msgstr ""
+
+#: app/Customizers/ThemeColor.php:167
+msgid "This is the default theme used when the site is in dark mode."
 msgstr ""
 
 #: app/CustomPostTypes/Episode.php:41
@@ -392,6 +512,89 @@ msgstr ""
 
 #: app/Menus/Setting.php:20
 msgid "A Ripple Song"
+msgstr ""
+
+#: app/Navigations/PrimaryNavigation.php:29
+msgid "Primary Navigation"
+msgstr ""
+
+#: app/Providers/WidgetServiceProvider.php:312
+#: app/Widgets/BannerCarouselWidget.php:62
+msgid "Image URL:"
+msgstr ""
+
+#: app/Providers/WidgetServiceProvider.php:313
+#: app/Widgets/BannerCarouselWidget.php:69
+msgid "Image URL"
+msgstr ""
+
+#: app/Providers/WidgetServiceProvider.php:314
+#: app/Widgets/BannerCarouselWidget.php:74
+msgid "Select Image"
+msgstr ""
+
+#: app/Providers/WidgetServiceProvider.php:315
+#: app/Widgets/BannerCarouselWidget.php:85
+msgid "Link URL (optional):"
+msgstr ""
+
+#: app/Providers/WidgetServiceProvider.php:316
+#: app/Widgets/BannerCarouselWidget.php:95
+msgid "Link Target:"
+msgstr ""
+
+#: app/Providers/WidgetServiceProvider.php:317
+#: app/Widgets/BannerCarouselWidget.php:100
+msgid "Current Page"
+msgstr ""
+
+#: app/Providers/WidgetServiceProvider.php:318
+#: app/Widgets/BannerCarouselWidget.php:103
+msgid "New Tab"
+msgstr ""
+
+#: app/Providers/WidgetServiceProvider.php:319
+#: app/Widgets/BannerCarouselWidget.php:109
+msgid "Description:"
+msgstr ""
+
+#: app/Providers/WidgetServiceProvider.php:320
+#: app/Widgets/BannerCarouselWidget.php:115
+msgid "Image description"
+msgstr ""
+
+#: app/Providers/WidgetServiceProvider.php:321
+#: app/Widgets/BannerCarouselWidget.php:119
+#: app/Widgets/FooterLinksWidget.php:91
+msgid "Delete"
+msgstr ""
+
+#: app/Providers/WidgetServiceProvider.php:322
+msgid "Select Banner Image"
+msgstr ""
+
+#: app/Providers/WidgetServiceProvider.php:323
+msgid "Use This Image"
+msgstr ""
+
+#: app/Providers/WidgetServiceProvider.php:324
+#: app/Widgets/FooterLinksWidget.php:65
+msgid "Text:"
+msgstr ""
+
+#: app/Providers/WidgetServiceProvider.php:325
+#: app/Widgets/FooterLinksWidget.php:70
+msgid "Display text"
+msgstr ""
+
+#: app/Providers/WidgetServiceProvider.php:326
+#: app/Widgets/FooterLinksWidget.php:73
+msgid "URL (optional - leave empty for plain text):"
+msgstr ""
+
+#: app/Providers/WidgetServiceProvider.php:327
+#: app/Widgets/FooterLinksWidget.php:87
+msgid "Open in new tab"
 msgstr ""
 
 #: app/Settings/Podcast.php:41
@@ -1042,18 +1245,6 @@ msgstr ""
 msgid "TV & Film > TV Reviews"
 msgstr ""
 
-#: app/setup.php:87
-msgid "Primary Navigation"
-msgstr ""
-
-#: app/setup.php:155
-msgid "Primary"
-msgstr ""
-
-#: app/setup.php:160
-msgid "Footer"
-msgstr ""
-
 #: app/Taxonomies/EpisodeCategory.php:29
 #: app/Taxonomies/EpisodeCategory.php:42
 msgid "Episode Category"
@@ -1131,52 +1322,640 @@ msgstr ""
 msgid "Pages:"
 msgstr ""
 
-#: functions.php:31
-msgid "Error locating autoloader. Please run <code>composer install</code>."
+#: app/Widgets/AuthorsWidget.php:12
+msgid "aripplesong - Authors List"
 msgstr ""
 
-#. translators: %s is replaced with the relative file path
-#: functions.php:78
-#, php-format
-msgid "Error locating <code>%s</code> for inclusion."
+#: app/Widgets/AuthorsWidget.php:13
+msgid "Display members and guest authors list"
+msgstr ""
+
+#: app/Widgets/AuthorsWidget.php:75
+msgid "Members Title:"
+msgstr ""
+
+#: app/Widgets/AuthorsWidget.php:89
+msgid "Show Members (Administrators, Editors, Authors)"
+msgstr ""
+
+#: app/Widgets/AuthorsWidget.php:93
+msgid "Guests Title:"
+msgstr ""
+
+#: app/Widgets/AuthorsWidget.php:107
+msgid "Show Guests (Contributors)"
+msgstr ""
+
+#: app/Widgets/BannerCarouselWidget.php:12
+msgid "aripplesong - Banner Carousel"
+msgstr ""
+
+#: app/Widgets/BannerCarouselWidget.php:13
+msgid "Display banner carousel with images"
+msgstr ""
+
+#: app/Widgets/BannerCarouselWidget.php:49
+msgid "Banner Slides:"
+msgstr ""
+
+#: app/Widgets/BannerCarouselWidget.php:91
+msgid "https://example.com"
+msgstr ""
+
+#: app/Widgets/BannerCarouselWidget.php:128
+msgid "+ Add Banner"
+msgstr ""
+
+#: app/Widgets/BlogListWidget.php:12
+msgid "aripplesong - Blog List"
+msgstr ""
+
+#: app/Widgets/BlogListWidget.php:13
+msgid "Display latest blog posts list"
+msgstr ""
+
+#: app/Widgets/BlogListWidget.php:55
+#: app/Widgets/FooterLinksWidget.php:50
+#: app/Widgets/PodcastListWidget.php:160
+#: app/Widgets/SubscribeLinksWidget.php:51
+#: app/Widgets/TagsCloudWidget.php:48
+msgid "Title:"
+msgstr ""
+
+#: app/Widgets/BlogListWidget.php:63
+#: app/Widgets/PodcastListWidget.php:168
+msgid "Number of posts:"
+msgstr ""
+
+#: app/Widgets/BlogListWidget.php:74
+msgid "Number of columns:"
+msgstr ""
+
+#: app/Widgets/BlogListWidget.php:91
+#: app/Widgets/PodcastListWidget.php:184
+msgid "Show \"See all\" link"
+msgstr ""
+
+#: app/Widgets/FooterLinksWidget.php:12
+msgid "aripplesong - Footer Links"
+msgstr ""
+
+#: app/Widgets/FooterLinksWidget.php:13
+msgid "Display a list of links or text items in the footer"
+msgstr ""
+
+#: app/Widgets/FooterLinksWidget.php:56
+msgid "e.g., Contact, Navigate, Support"
+msgstr ""
+
+#: app/Widgets/FooterLinksWidget.php:59
+msgid "Items:"
+msgstr ""
+
+#: app/Widgets/FooterLinksWidget.php:102
+msgid "+ Add Item"
+msgstr ""
+
+#: app/Widgets/PodcastListWidget.php:12
+msgid "aripplesong - Podcast List"
+msgstr ""
+
+#: app/Widgets/PodcastListWidget.php:13
+msgid "Display latest podcast list"
+msgstr ""
+
+#: app/Widgets/SubscribeLinksWidget.php:12
+msgid "aripplesong - Subscribe Links"
+msgstr ""
+
+#: app/Widgets/SubscribeLinksWidget.php:13
+msgid "Display podcast subscription platform links"
+msgstr ""
+
+#: app/Widgets/SubscribeLinksWidget.php:62
+msgid "Apple Podcast Link:"
+msgstr ""
+
+#: app/Widgets/SubscribeLinksWidget.php:70
+#: app/Widgets/SubscribeLinksWidget.php:83
+#: app/Widgets/SubscribeLinksWidget.php:96
+msgid "Leave blank to hide this button"
+msgstr ""
+
+#: app/Widgets/SubscribeLinksWidget.php:75
+msgid "Spotify Link:"
+msgstr ""
+
+#: app/Widgets/SubscribeLinksWidget.php:88
+msgid "Youtube Music Link:"
+msgstr ""
+
+#: app/Widgets/TagsCloudWidget.php:12
+msgid "aripplesong - Tags Cloud"
+msgstr ""
+
+#: app/Widgets/TagsCloudWidget.php:13
+msgid "Display article tags cloud"
+msgstr ""
+
+#: app/Widgets/TagsCloudWidget.php:57
+msgid "Number of tags:"
+msgstr ""
+
+#: app/Widgets/TagsCloudWidget.php:66
+msgid "Maximum number of tags to display"
+msgstr ""
+
+#: app/Widgets/TagsCloudWidget.php:70
+msgid "Order by:"
+msgstr ""
+
+#: app/Widgets/TagsCloudWidget.php:74
+msgid "Post Count"
+msgstr ""
+
+#: app/Widgets/TagsCloudWidget.php:75
+msgid "Tag Name"
+msgstr ""
+
+#: app/Widgets/TagsCloudWidget.php:76
+msgid "Tag ID"
+msgstr ""
+
+#: app/Widgets/TagsCloudWidget.php:77
+#: resources/views/widgets/podcast-list.blade.php:49
+msgid "Random"
+msgstr ""
+
+#: app/Widgets/TagsCloudWidget.php:82
+msgid "Sort order:"
+msgstr ""
+
+#: app/Widgets/TagsCloudWidget.php:86
+msgid "Descending (High to Low/Z to A)"
+msgstr ""
+
+#: app/Widgets/TagsCloudWidget.php:87
+msgid "Ascending (Low to High/A to Z)"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Blog Template"
 msgstr ""
 
 #. Template Name of the theme
 msgid "Custom Template"
 msgstr ""
 
+#. Template Name of the theme
+msgid "Home Template"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Podcast Template"
+msgstr ""
+
 #: resources/views/404.blade.php:8
 msgid "Sorry, but the page you are trying to view does not exist."
 msgstr ""
 
-#: resources/views/forms/search.blade.php:4
-msgctxt "label"
-msgid "Search for:"
+#: resources/views/author.blade.php:9
+msgid "Author:"
 msgstr ""
 
-#: resources/views/forms/search.blade.php:10
+#: resources/views/author.blade.php:22
+#: resources/views/search.blade.php:7
+msgid "Sorry, no results were found."
+msgstr ""
+
+#: resources/views/forms/search.blade.php:15
 msgctxt "placeholder"
 msgid "Search &hellip;"
 msgstr ""
 
-#: resources/views/forms/search.blade.php:16
-msgctxt "submit button"
-msgid "Search"
+#: resources/views/layouts/app.blade.php:87
+msgid "Open Left Sidebar"
 msgstr ""
 
-#: resources/views/index.blade.php:8
-#: resources/views/search.blade.php:8
-msgid "Sorry, no results were found."
+#: resources/views/layouts/app.blade.php:101
+msgid "Open Right Sidebar"
 msgstr ""
 
-#: resources/views/layouts/app.blade.php:17
-msgid "Skip to content"
-msgstr ""
-
-#: resources/views/partials/comments.blade.php:37
+#: resources/views/partials/comments.blade.php:45
 msgid "Comments are closed."
+msgstr ""
+
+#: resources/views/partials/comments.blade.php:52
+msgid "Leave a Comment"
+msgstr ""
+
+#: resources/views/partials/content-single-attachment.blade.php:13
+msgid "Download"
 msgstr ""
 
 #: resources/views/partials/entry-meta.blade.php:7
 msgid "By"
+msgstr ""
+
+#: resources/views/partials/entry-meta.blade.php:36
+msgid "views"
+msgstr ""
+
+#: resources/views/partials/entry-meta.blade.php:39
+msgid "plays"
+msgstr ""
+
+#: resources/views/partials/podcast-episode-card.blade.php:60
+msgid "Pause"
+msgstr ""
+
+#: resources/views/partials/podcast-episode-card.blade.php:60
+#: resources/views/sections/autoplay-confirm.blade.php:34
+msgid "Play"
+msgstr ""
+
+#: resources/views/sections/autoplay-confirm.blade.php:22
+msgid "Continue playing?"
+msgstr ""
+
+#: resources/views/sections/autoplay-confirm.blade.php:25
+msgid "Unknown episode"
+msgstr ""
+
+#: resources/views/sections/autoplay-confirm.blade.php:42
+msgid "Cancel"
+msgstr ""
+
+#: resources/views/sections/footer.blade.php:8
+#, php-format
+msgid "Powered by %s"
+msgstr ""
+
+#: resources/views/sections/header.blade.php:26
+msgid "Light Mode"
+msgstr ""
+
+#: resources/views/sections/header.blade.php:26
+msgid "Dark Mode"
+msgstr ""
+
+#: resources/views/sections/header.blade.php:26
+msgid "Follow System"
+msgstr ""
+
+#: resources/views/sections/header.blade.php:30
+msgid "Toggle Theme"
+msgstr ""
+
+#: resources/views/sections/leftbar-drawer.blade.php:9
+msgid "Left Sidebar"
+msgstr ""
+
+#: resources/views/sections/leftbar-drawer.blade.php:21
+#: resources/views/sections/leftbar.blade.php:6
+msgid "Please add widgets to \"Leftbar\" area in Appearance > Widgets in the admin panel."
+msgstr ""
+
+#: resources/views/sections/mobile-menu.blade.php:7
+msgid "Menu"
+msgstr ""
+
+#: resources/views/sections/player.blade.php:3
+msgid "NOW PLAYING"
+msgstr ""
+
+#: resources/views/sections/player.blade.php:10
+msgid "Podcast"
+msgstr ""
+
+#: resources/views/sections/player.blade.php:26
+msgid "No Episode Playing"
+msgstr ""
+
+#: resources/views/sections/player.blade.php:27
+msgid "Podcast Episode"
+msgstr ""
+
+#: resources/views/sections/player.blade.php:47
+msgid "Loading audio"
+msgstr ""
+
+#: resources/views/sections/playlist-drawer.blade.php:8
+msgid "Playlist"
+msgstr ""
+
+#: resources/views/sections/playlist-drawer.blade.php:15
+msgid "Total"
+msgstr ""
+
+#: resources/views/sections/playlist-drawer.blade.php:15
+msgid "episodes"
+msgstr ""
+
+#: resources/views/sections/playlist-drawer.blade.php:17
+msgid "Are you sure you want to clear the playlist?"
+msgstr ""
+
+#: resources/views/sections/playlist-drawer.blade.php:19
+msgid "Clear Playlist"
+msgstr ""
+
+#: resources/views/sections/playlist-drawer.blade.php:21
+msgid "Clear"
+msgstr ""
+
+#: resources/views/sections/playlist-drawer.blade.php:32
+msgid "Playlist is empty"
+msgstr ""
+
+#: resources/views/sections/playlist-drawer.blade.php:33
+msgid "Add some episodes to start listening"
+msgstr ""
+
+#: resources/views/sections/playlist-drawer.blade.php:83
+msgid "Remove"
+msgstr ""
+
+#: resources/views/sections/search-modal.blade.php:6
+msgid "Close"
+msgstr ""
+
+#: resources/views/sections/sidebar-drawer.blade.php:9
+msgid "Right Sidebar"
+msgstr ""
+
+#: resources/views/sections/sidebar-drawer.blade.php:22
+#: resources/views/sections/sidebar.blade.php:8
+msgid "Please add widgets to \"Sidebar\" area in Appearance > Widgets in the admin panel."
+msgstr ""
+
+#: resources/views/template-home.blade.php:13
+msgid "Please add widgets to \"Home Main\" area in Appearance > Widgets in the admin panel."
+msgstr ""
+
+#: resources/views/widgets/authors.blade.php:68
+msgid "No authors yet"
+msgstr ""
+
+#: resources/views/widgets/authors.blade.php:69
+msgid "Authors will appear here after adding users"
+msgstr ""
+
+#: resources/views/widgets/banner-carousel.blade.php:17
+msgid "No banner yet"
+msgstr ""
+
+#: resources/views/widgets/banner-carousel.blade.php:18
+msgid "Please add banner content in the admin panel"
+msgstr ""
+
+#: resources/views/widgets/banner-carousel.blade.php:55
+msgid "Previous slide"
+msgstr ""
+
+#: resources/views/widgets/banner-carousel.blade.php:63
+msgid "Next slide"
+msgstr ""
+
+#: resources/views/widgets/banner-carousel.blade.php:79
+#, php-format
+msgid "Go to slide %d"
+msgstr ""
+
+#: resources/views/widgets/blog-list.blade.php:17
+#: resources/views/widgets/podcast-list.blade.php:20
+msgid "See all"
+msgstr ""
+
+#: resources/views/widgets/blog-list.blade.php:51
+msgid "No blog posts yet"
+msgstr ""
+
+#: resources/views/widgets/podcast-list.blade.php:31
+msgid "Recent"
+msgstr ""
+
+#: resources/views/widgets/podcast-list.blade.php:40
+msgid "Popular"
+msgstr ""
+
+#: resources/views/widgets/podcast-list.blade.php:73
+msgid "No podcast content"
+msgstr ""
+
+#: resources/views/widgets/tags-cloud.blade.php:17
+msgid "No tags yet"
+msgstr ""
+
+#: resources/views/widgets/tags-cloud.blade.php:18
+msgid "Tags will appear here after publishing articles with tags"
+msgstr ""
+
+#: resources/views/widgets/tags-cloud.blade.php:28
+#, php-format
+msgid "%d post"
+msgid_plural "%d posts"
+msgstr[0] ""
+msgstr[1] ""
+
+#: resources/js/app.js:713
+msgid "No podcasts found"
+msgstr ""
+
+#: resources/js/app.js:717
+#, js-format
+msgid "Fetched %d podcasts"
+msgstr ""
+
+#: resources/js/app.js:733
+msgid "Podcast has no audio file, skipping:"
+msgstr ""
+
+#: resources/js/app.js:767
+msgid "Added:"
+msgstr ""
+
+#: resources/js/app.js:769
+msgid "Already exists, skipping:"
+msgstr ""
+
+#: resources/js/app.js:774
+#, js-format
+msgid "Successfully added %d new podcasts to playlist"
+msgstr ""
+
+#: resources/js/app.js:791
+msgid "No new podcasts to add"
+msgstr ""
+
+#: resources/js/app.js:797
+msgid "Failed to fetch latest podcasts:"
+msgstr ""
+
+#: resources/js/app.js:829
+msgid "No episode available to play"
+msgstr ""
+
+#: resources/js/app.js:844
+msgid "Playback progress restored:"
+msgstr ""
+
+#: resources/js/app.js:878
+msgid "Autoplay confirm dialog auto-closed"
+msgstr ""
+
+#: resources/js/app.js:882
+msgid "Showing autoplay confirm dialog"
+msgstr ""
+
+#: resources/js/app.js:907
+msgid "User confirmed autoplay"
+msgstr ""
+
+#: resources/js/app.js:920
+msgid "User cancelled autoplay"
+msgstr ""
+
+#: resources/js/app.js:986
+msgid "Audio load error:"
+msgstr ""
+
+#: resources/js/app.js:1409
+msgid "Volume settings loaded:"
+msgstr ""
+
+#: resources/js/app.js:1435
+msgid "Playback rate loaded:"
+msgstr ""
+
+#: resources/js/app.js:1487
+msgid "Switched to existing episode:"
+msgstr ""
+
+#: resources/js/app.js:1505
+msgid "Added to playlist:"
+msgstr ""
+
+#: resources/js/app.js:1516
+msgid "Episode already exists:"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Red (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Red (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Yellow (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Yellow (300)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Yellow (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Green (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Green (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Green (500)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Indigo (50)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Indigo (400)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Gray (600)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Gray (800)"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "Black"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Color name"
+msgid "White"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font family name"
+msgid "sans"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font family name"
+msgid "mono"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "xs"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "sm"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "base"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "lg"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Font size name"
+msgid "2xl"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Border radius size name"
+msgid "md"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Border radius size name"
+msgid "lg"
+msgstr ""
+
+#: public/build/assets/theme.json
+msgctxt "Border radius size name"
+msgid "xl"
 msgstr ""

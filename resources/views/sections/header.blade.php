@@ -1,11 +1,43 @@
-<header class="banner">
-  <a class="brand" href="{{ home_url('/') }}">
-    {!! $siteName !!}
-  </a>
+<header class="fixed top-0 h-[55px] left-0 right-0 z-100 bg-base-100/75 transition-fade" id="swup-header">
+  <div class="max-w-screen-xl mx-auto h-full">
+    <div class="px-6 py-3">
+      <div class="grid xl:grid-cols-[220px_1fr_300px] grid-cols-[220px_1fr] gap-4">
+        @php($customLogoId = (int) get_theme_mod('custom_logo'))
+        <h1 class="text-2xl font-bold text-center">
+          <a href="{{ home_url('/') }}" class="flex items-center gap-2">
+            @if($customLogoId)
+              {!! wp_get_attachment_image($customLogoId, 'full', false, [
+                'class' => 'object-contain',
+                'alt' => $siteName,
+                'width' => 220,
+                'height' => 32,
+              ]) !!}
+            @else
+              <i data-lucide="podcast" class="w-6 h-6"></i>
+              <span
+                class="text-2xl bg-gradient-to-r from-base-content/40 via-base-content/70 to-base-content bg-clip-text text-transparent transition-all duration-500 ease-in-out hover:from-base-content hover:via-base-content/70 hover:to-base-content/40">{{ $siteName }}</span>
+            @endif
+          </a>
+        </h1>
+        @include('sections.primary-navigation')
+        <div class="grid grid-flow-col justify-end gap-2 place-items-center">
+          <label for="search-modal" class="md:hidden block"><i data-lucide="search"
+              class="w-5 h-5 cursor-pointer"></i></label>
+          <!-- 主题循环切换按钮 -->
+          <button type="button" class="btn btn-ghost btn-sm btn-circle"
+            @click="$store.theme.toggle()"
+            :title="$store.theme.mode === 'light' ? '{{ __('Light Mode', 'sage') }}' : ($store.theme.mode === 'dark' ? '{{ __('Dark Mode', 'sage') }}' : '{{ __('Follow System', 'sage') }}')">
+            <i data-lucide="sun" class="w-5 h-5" x-show="$store.theme.isLight"></i>
+            <i data-lucide="moon" class="w-5 h-5" x-show="$store.theme.isDark && !$store.theme.isAuto"></i>
+            <i data-lucide="sun-moon" class="w-5 h-5" x-show="$store.theme.isAuto"></i>
+            <span class="sr-only">{{ __('Toggle Theme', 'sage') }}</span>
+          </button>
 
-  @if (has_nav_menu('primary_navigation'))
-    <nav class="nav-primary" aria-label="{{ wp_get_nav_menu_name('primary_navigation') }}">
-      {!! wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'nav', 'echo' => false]) !!}
-    </nav>
-  @endif
+          <label for="mobile-menu" class="xl:hidden block"><i data-lucide="menu"
+              class="w-5 h-5 cursor-pointer"></i></label>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </header>

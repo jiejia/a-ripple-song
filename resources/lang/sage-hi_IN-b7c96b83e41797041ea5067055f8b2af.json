@@ -1,0 +1,18 @@
+{
+    "translation-revision-date": "2025-11-17 10:00+0800",
+    "generator": "WP-CLI\/2.12.0",
+    "source": "resources\/js\/app.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "hi_IN: Sage Starter Theme 11.0.1",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "No podcasts found": [
+                "\u0915\u094b\u0908 \u092a\u0949\u0921\u0915\u093e\u0938\u094d\u091f \u0928\u0939\u0940\u0902 \u092e\u093f\u0932\u093e"
+            ]
+        }
+    }
+}
