@@ -2,6 +2,8 @@
 
 use Carbon_Fields\Field;
 use Carbon_Fields\Widget;
+use App\CustomPostTypes\Episode;
+use App\Metas\PostViewCount;
 
 /**
  * Podcast List Widget
@@ -69,7 +71,7 @@ class PodcastListWidget extends Widget
 
         // Query latest podcasts (recent).
         $recent_podcasts = new WP_Query([
-            'post_type' => 'podcast',
+            'post_type' => Episode::slug(),
             'posts_per_page' => $posts_per_page,
             'post_status' => 'publish',
             'no_found_rows' => true,
@@ -83,7 +85,7 @@ class PodcastListWidget extends Widget
         // Query popular podcasts (by views + plays weighted score).
         // Fetch more posts to ensure we get the most popular ones after sorting.
         $popular_query = new WP_Query([
-            'post_type' => 'podcast',
+            'post_type' => Episode::slug(),
             'posts_per_page' => max($posts_per_page * 3, 20), // Fetch more to sort properly
             'post_status' => 'publish',
             'no_found_rows' => true,
@@ -99,8 +101,8 @@ class PodcastListWidget extends Widget
             while ($popular_query->have_posts()) {
                 $popular_query->the_post();
                 $pid = get_the_ID();
-                $views = (int) get_post_meta($pid, '_views_count', true);
-                $plays = (int) get_post_meta($pid, '_play_count', true);
+                $views = (int) get_post_meta($pid, PostViewCount::storedFieldKey('views_count'), true);
+                $plays = (int) get_post_meta($pid, Episode::storedFieldKey('play_count'), true);
                 // Weighted score: views + plays (can adjust weights if needed)
                 $score = $views + $plays;
                 $popular_posts_with_score[] = [
@@ -121,7 +123,7 @@ class PodcastListWidget extends Widget
 
         // Query random podcasts.
         $random_podcasts = new WP_Query([
-            'post_type' => 'podcast',
+            'post_type' => Episode::slug(),
             'posts_per_page' => $posts_per_page,
             'post_status' => 'publish',
             'no_found_rows' => true,
@@ -160,7 +162,7 @@ class PodcastListWidget extends Widget
             while ($query->have_posts()) {
                 $query->the_post();
                 $post_id = get_the_ID();
-                $audio_file = get_post_meta($post_id, 'audio_file', true);
+                $audio_file = aripplesong_get_episode_meta($post_id, 'audio_file');
                 $episode_data = get_episode_data($post_id);
 
                 $podcasts[] = [
@@ -185,7 +187,7 @@ class PodcastListWidget extends Widget
         foreach ($posts_with_score as $item) {
             $post = $item['post'];
             $post_id = $post->ID;
-            $audio_file = get_post_meta($post_id, 'audio_file', true);
+            $audio_file = aripplesong_get_episode_meta($post_id, 'audio_file');
             $episode_data = get_episode_data($post_id);
 
             $podcasts[] = [

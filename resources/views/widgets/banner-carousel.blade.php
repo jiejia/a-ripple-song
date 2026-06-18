@@ -6,7 +6,7 @@ Banner Carousel Widget Template
 
 @if(empty($slides))
   {{-- Empty state placeholder --}}
-  <div class="w-full rounded-lg bg-base-100 p-4 pb-2">
+  <div class="w-full">
     <div class="w-full h-48 rounded-lg bg-base-200 flex items-center justify-center">
       <div class="text-center text-base-content/50">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2 opacity-40" fill="none" viewBox="0 0 24 24"

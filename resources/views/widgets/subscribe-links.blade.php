@@ -6,8 +6,7 @@ Subscribe Links Widget Template
 @param string $youtube_music_url
 --}}
 
-<div class="card bg-base-100 w-full mt-4">
-  <div class="card-body p-4">
+<div>
     <h2 class="text-lg font-bold">{{ esc_html($title) }}</h2>
 
     @if(!empty($apple_podcast_url))
@@ -39,5 +38,4 @@ Subscribe Links Widget Template
         Youtube Music
       </a>
     @endif
-  </div>
 </div>

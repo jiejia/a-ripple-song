@@ -1,5 +1,7 @@
 <?php
 
+use App\CustomPostTypes\Episode;
+
 /**
  * Get localized date using Carbon library
  *
@@ -195,6 +197,43 @@ function aripplesong_extract_multicheck_user_ids($value): array
 }
 
 /**
+ * Return the registered podcast episode post type.
+ *
+ * @return string Podcast episode post type slug.
+ */
+function aripplesong_episode_post_type(): string
+{
+    return Episode::slug();
+}
+
+/**
+ * Return podcast episode meta from the new prefixed key with legacy fallback.
+ *
+ * @param int $post_id Episode post ID.
+ * @param string $key Raw episode meta key.
+ * @param mixed $default Fallback value when no meta exists.
+ * @return mixed Stored episode meta value.
+ */
+function aripplesong_get_episode_meta(int $post_id, string $key, $default = '')
+{
+    $post_id = absint($post_id);
+
+    if (!$post_id) {
+        return $default;
+    }
+
+    $value = get_post_meta($post_id, Episode::storedFieldKey($key), true);
+
+    if ($value !== '' && $value !== []) {
+        return $value;
+    }
+
+    $legacy_value = get_post_meta($post_id, $key, true);
+
+    return ($legacy_value !== '' && $legacy_value !== []) ? $legacy_value : $default;
+}
+
+/**
  * Get published podcast IDs where the user is listed as a member or guest.
  *
  * @param int $user_id
@@ -225,7 +264,7 @@ function aripplesong_get_participated_podcast_ids(int $user_id): array
     $needle_int = 'i:' . $user_id . ';';
 
     $ids = get_posts([
-        'post_type' => 'podcast',
+        'post_type' => aripplesong_episode_post_type(),
         'post_status' => 'publish',
         'posts_per_page' => -1,
         'fields' => 'ids',
@@ -294,7 +333,7 @@ function get_user_all_post_ids($user_id) {
     // Get posts authored by the user (both 'post' and 'podcast' types)
     $authored_posts = get_posts([
         'author' => $user_id,
-        'post_type' => ['post', 'podcast'],
+        'post_type' => ['post', aripplesong_episode_post_type()],
         'posts_per_page' => -1,
         'post_status' => 'publish',
         'fields' => 'ids',
@@ -329,7 +368,7 @@ function calculate_user_post_count($user_id) {
     // Base count: all posts published by the user
     // count_user_posts() only counts 'post' type by default, so we need to count 'podcast' separately
     $regular_posts_count = count_user_posts($user_id, 'post');
-    $podcast_posts_count = count_user_posts($user_id, 'podcast');
+    $podcast_posts_count = count_user_posts($user_id, aripplesong_episode_post_type());
     $base_count = $regular_posts_count + $podcast_posts_count;
 
     return $base_count + count(aripplesong_get_participated_podcast_ids($user_id));
@@ -380,7 +419,7 @@ function modify_author_archive_query($query) {
             $query->set('post__in', $post_ids);
             $query->set('author', 0); // Set to 0 instead of empty string
             $query->set('author_name', ''); // Clear author_name too
-            $query->set('post_type', ['post', 'podcast']); // Include both post types
+            $query->set('post_type', ['post', aripplesong_episode_post_type()]); // Include both post types
             $query->set('orderby', 'date');
             $query->set('order', 'DESC');
 
@@ -490,7 +529,7 @@ function get_episode_data($post_id = null) {
         $post_id = get_the_ID();
     }
 
-    $audio_file = get_post_meta($post_id, 'audio_file', true);
+    $audio_file = aripplesong_get_episode_meta((int) $post_id, 'audio_file');
     $featured_image = get_the_post_thumbnail_url($post_id, 'medium');
 
     return [
@@ -520,7 +559,7 @@ function aripplesong_get_latest_playlist_data($limit = 10) {
     $ids = [];
 
     $query = new \WP_Query([
-        'post_type' => 'podcast',
+        'post_type' => aripplesong_episode_post_type(),
         'posts_per_page' => max($limit * 2, $limit),
         'post_status' => 'publish',
         'no_found_rows' => true,

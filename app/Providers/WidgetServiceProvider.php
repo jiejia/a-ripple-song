@@ -52,6 +52,7 @@ class WidgetServiceProvider extends ServiceProvider
         add_action('after_switch_theme', [$this, 'setDefaultHomeWidgets']);
         add_action('widgets_init', [$this, 'maybeSetDefaultHomeWidgets'], 100);
         add_action('admin_print_footer_scripts', [$this, 'disableCarbonFieldsWidgetAutoInitialize'], 1);
+        add_filter('carbon_fields_config', [$this, 'configureLegacyWidgetCarbonFields']);
         add_action('rest_api_init', [$this, 'registerCarbonFieldsWidgetContainers'], 20);
         add_action('admin_enqueue_scripts', [$this, 'enqueueWidgetAdminAssets']);
         add_action('admin_footer', [$this, 'printWidgetAdminThemeScript']);
@@ -235,6 +236,33 @@ class WidgetServiceProvider extends ServiceProvider
     }
 
     /**
+     * Disable compact input on widget admin screens for legacy widget ids.
+     *
+     * Carbon Fields only skips compact input wrapping for widget-carbon_fields* field
+     * names. Our widgets keep legacy ids without that prefix, so submitted values
+     * never reach widget-$id in REST form_data and updates are silently ignored.
+     *
+     * @param  array<string,mixed>  $config  Carbon Fields JS config.
+     * @return array<string,mixed>
+     */
+    public function configureLegacyWidgetCarbonFields(array $config): array
+    {
+        if (! is_admin()) {
+            return $config;
+        }
+
+        $screen = function_exists('get_current_screen') ? get_current_screen() : null;
+
+        if (! $screen || ! in_array($screen->id, ['widgets', 'customize'], true)) {
+            return $config;
+        }
+
+        $config['config']['compactInput'] = false;
+
+        return $config;
+    }
+
+    /**
      * Disable Carbon Fields' eager widget initialization in the block widgets editor.
      */
     public function disableCarbonFieldsWidgetAutoInitialize(): void
@@ -328,7 +356,7 @@ class WidgetServiceProvider extends ServiceProvider
     {
         $screen = get_current_screen();
 
-        if (! $screen || $screen->id !== 'widgets') {
+        if (! $screen || ! in_array($screen->id, ['widgets', 'customize'], true)) {
             return;
         }
         ?>
@@ -336,6 +364,28 @@ class WidgetServiceProvider extends ServiceProvider
         (function() {
             var containerRoots = {};
             var mountTimer = null;
+            var legacyWidgetIdBases = <?php echo wp_json_encode([
+                'banner_carousel_widget',
+                'podcast_list_widget',
+                'blog_list_widget',
+                'subscribe_links_widget',
+                'tags_cloud_widget',
+                'authors_widget',
+                'footer_links_widget',
+            ]); ?>;
+
+            /**
+             * Return whether the given widget element belongs to this theme.
+             */
+            function isLegacyThemeWidgetElement(widgetElement) {
+                if (! widgetElement || ! widgetElement.id) {
+                    return false;
+                }
+
+                var widgetIdBase = widgetElement.id.replace(/-\d+$/, '');
+
+                return legacyWidgetIdBases.indexOf(widgetIdBase) !== -1;
+            }
 
             /**
              * Return whether Carbon Fields assets are ready for widget mounting.
@@ -510,7 +560,7 @@ class WidgetServiceProvider extends ServiceProvider
              * Mount Carbon Fields forms inside a legacy widget control element.
              */
             function mountWidgetControl(widgetElement) {
-                if (! widgetElement) {
+                if (! isLegacyThemeWidgetElement(widgetElement)) {
                     return;
                 }
 
@@ -528,7 +578,17 @@ class WidgetServiceProvider extends ServiceProvider
                 }
 
                 document.querySelectorAll('.wp-block-legacy-widget__edit-form fieldset[data-json]').forEach(function(fieldset) {
+                    var widgetElement = fieldset.closest('.widget');
+
+                    if (widgetElement && ! isLegacyThemeWidgetElement(widgetElement)) {
+                        return;
+                    }
+
                     mountWidgetFieldset(fieldset);
+                });
+
+                document.querySelectorAll('.widget[id]').forEach(function(widgetElement) {
+                    mountWidgetControl(widgetElement);
                 });
             }
 

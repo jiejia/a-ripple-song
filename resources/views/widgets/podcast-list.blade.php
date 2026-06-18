@@ -5,10 +5,10 @@ Podcast List Widget Template
 @param array $podcast_data
 --}}
 
-<div class="rounded-lg bg-base-100 p-4"
+<div
      x-data="{
        activeTab: 'recent',
-       podcastData: @json($podcast_data)
+       podcastData: @js($podcast_data)
      }">
   <div class="grid grid-cols-[1fr_auto] items-center">
     <h2 class="text-lg font-bold">
@@ -52,7 +52,7 @@ Podcast List Widget Template
     <ul class="grid grid-flow-row gap-y-4 mt-4" x-show="activeTab === '{{ $tab }}'" @if($tab !== 'recent') style="display: none;" @endif>
       @if(!empty($podcast_data[$tab]))
         @foreach($podcast_data[$tab] as $podcast)
-          <li x-data="{ episode: @json($podcast['episode_data']) }">
+          <li x-data="{ episode: @js($podcast['episode_data']) }">
             {!! \Roots\view('partials.podcast-episode-card', [
               'post_id' => $podcast['post_id'],
               'audio_file' => $podcast['audio_file'],

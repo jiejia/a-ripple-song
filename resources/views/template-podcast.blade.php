@@ -12,7 +12,7 @@ $original_query = $wp_query;
 $paged = max(1, (int) get_query_var('paged'));
 
 $wp_query = new WP_Query([
-  'post_type' => 'podcast',
+  'post_type' => aripplesong_episode_post_type(),
   'posts_per_page' => (int) get_option('posts_per_page'),
   'paged' => $paged,
 ]);
@@ -22,7 +22,7 @@ $wp_query = new WP_Query([
 
 @while(have_posts())
   @php(the_post())
-  @includeFirst(['partials.content-podcast'])
+  @includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
 @endwhile
 
 {!! the_posts_pagination() !!}

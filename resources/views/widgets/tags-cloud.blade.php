@@ -4,8 +4,7 @@ Tags Cloud Widget Template
 @param array $tags
 --}}
 
-<div class="card bg-base-100 w-full mt-4">
-  <div class="card-body p-4">
+<div>
     <h2 class="text-lg font-bold">{{ esc_html($title) }}</h2>
 
     @if(empty($tags))
@@ -31,5 +30,4 @@ Tags Cloud Widget Template
         @endforeach
       </ul>
     @endif
-  </div>
 </div>

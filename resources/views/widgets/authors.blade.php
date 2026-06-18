@@ -10,7 +10,7 @@ Authors Widget Template
 @param array $podcast_counts_by_user
 --}}
 
-<div class="bg-base-100 rounded-lg p-4">
+<div>
   @if($show_members && !empty($members))
     <h3 class="text-sm font-bold text-base-content/50">{{ esc_html($members_title) }}</h3>
     <div class="grid grid-flow-row gap-2 mt-4">
