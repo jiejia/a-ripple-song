@@ -375,14 +375,37 @@ class WidgetServiceProvider extends ServiceProvider
             ]); ?>;
 
             /**
+             * Return the WordPress widget id base from a legacy widget control.
+             */
+            function getLegacyWidgetIdBase(widgetElement) {
+                if (! widgetElement) {
+                    return '';
+                }
+
+                if (widgetElement.id) {
+                    return widgetElement.id.replace(/-\d+$/, '');
+                }
+
+                var idBaseInput = widgetElement.querySelector('input.id_base, input[name="id_base"]');
+
+                if (idBaseInput && idBaseInput.value) {
+                    return idBaseInput.value;
+                }
+
+                var widgetIdInput = widgetElement.querySelector('input.widget-id, input[name="widget-id"]');
+
+                if (widgetIdInput && widgetIdInput.value) {
+                    return widgetIdInput.value.replace(/-\d+$/, '');
+                }
+
+                return '';
+            }
+
+            /**
              * Return whether the given widget element belongs to this theme.
              */
             function isLegacyThemeWidgetElement(widgetElement) {
-                if (! widgetElement || ! widgetElement.id) {
-                    return false;
-                }
-
-                var widgetIdBase = widgetElement.id.replace(/-\d+$/, '');
+                var widgetIdBase = getLegacyWidgetIdBase(widgetElement);
 
                 return legacyWidgetIdBases.indexOf(widgetIdBase) !== -1;
             }
