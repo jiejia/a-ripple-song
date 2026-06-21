@@ -20,7 +20,7 @@ Banner Carousel Widget Template
     </div>
   </div>
 @else
-  <div class="w-full rounded-lg bg-base-100 p-4 pb-2">
+  <div class="w-full rounded-lg bg-base-100">
     <div class="relative">
       {{-- Carousel slides --}}
       <div id="{{ $carousel_id }}" class="carousel w-full rounded-lg snap-x snap-mandatory overflow-x-auto scroll-smooth">

@@ -1,148 +1,228 @@
 <?php
 
-use Carbon_Fields\Field;
-use Carbon_Fields\Widget;
-
 /**
  * Banner Carousel Widget
  * Display a banner carousel.
  */
-class BannerCarouselWidget extends Widget
+class BannerCarouselWidget extends WP_Widget
 {
     /**
-     * Keep the original WordPress widget id for existing widget instances.
-     *
-     * @var string
-     */
-    protected $widget_id_prefix = '';
-
-    /**
-     * Create the widget and its Carbon Fields admin form.
+     * Register widget with WordPress.
      */
     public function __construct()
     {
-        $this->setup(
+        parent::__construct(
             'banner_carousel_widget',
             __('aripplesong - Banner Carousel', 'sage'),
-            __('Display banner carousel with images', 'sage'),
-            [
-                Field::make('complex', 'banner_carousel_slides', __('Banner Slides:', 'sage'))
-                    ->add_fields([
-                        Field::make('image', 'image', __('Image URL:', 'sage'))
-                            ->set_value_type('url'),
-                        Field::make('text', 'link', __('Link URL (optional):', 'sage')),
-                        Field::make('select', 'link_target', __('Link Target:', 'sage'))
-                            ->add_options([
-                                '_self' => __('Current Page', 'sage'),
-                                '_blank' => __('New Tab', 'sage'),
-                            ])
-                            ->set_default_value('_self'),
-                        Field::make('text', 'description', __('Description:', 'sage')),
-                    ]),
-            ]
+            ['description' => __('Display banner carousel with images', 'sage')]
         );
     }
 
     /**
-     * Render the Carbon Fields form with legacy values mapped to unique keys.
-     *
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
-     */
-    public function form($instance)
-    {
-        parent::form($this->withLegacyAliases($instance, [
-            'banner_carousel_slides' => 'slides',
-        ]));
-    }
-
-    /**
-     * Render the widget with values normalized from legacy and Carbon Fields storage.
+     * Front-end display of widget.
      *
      * @param  array<string,mixed>  $args  Widget wrapper arguments.
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
+     * @param  array<string,mixed>  $instance  Saved widget option values.
      */
-    public function widget($args, $instance)
+    public function widget($args, $instance): void
     {
         echo $args['before_widget'];
 
-        $slides = $this->slidesValue($instance);
-        $carousel_id = 'banner-carousel-'.$this->id;
+        $slides = $this->getSanitizedSlides($instance['slides'] ?? []);
+        $carouselId = 'banner-carousel-'.$this->id;
 
         echo \Roots\view('widgets.banner-carousel', [
             'slides' => $slides,
-            'carousel_id' => $carousel_id,
+            'carousel_id' => $carouselId,
         ])->render();
 
         echo $args['after_widget'];
     }
 
     /**
-     * Return normalized slides for the front-end template.
+     * Back-end widget form displayed in the WordPress admin.
      *
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
-     * @return array<int,array<string,string>>
+     * @param  array<string,mixed>  $instance  Current widget settings.
      */
-    private function slidesValue(array $instance): array
+    public function form($instance): void
     {
-        $slides = [];
+        $slides = $this->getSanitizedSlides($instance['slides'] ?? []);
 
-        $storedSlides = $instance['banner_carousel_slides'] ?? $instance['slides'] ?? [];
-
-        if (empty($storedSlides) || ! is_array($storedSlides)) {
-            return $slides;
+        if (empty($slides)) {
+            $slides[] = $this->getEmptySlide();
         }
 
-        foreach ($storedSlides as $slide) {
-            if (! is_array($slide)) {
-                continue;
-            }
+        $widgetId = $this->get_field_id('slides');
+        $fieldPrefix = $this->get_field_name('slides');
+        ?>
+        <div class="banner-carousel-widget-form"
+             data-widget-id="<?php echo esc_attr($widgetId); ?>"
+             data-field-prefix="<?php echo esc_attr($fieldPrefix); ?>">
+            <p><strong><?php esc_html_e('Banner Slides:', 'sage'); ?></strong></p>
 
-            $image_url = $this->imageUrl($slide['image'] ?? '');
+            <div class="banner-slides-container" id="<?php echo esc_attr($widgetId); ?>_container">
+                <?php foreach ($slides as $index => $slide): ?>
+                    <div class="banner-slide-item" style="margin-bottom: 15px; padding: 10px; border: 1px solid #ddd; border-radius: 4px; background: #f9f9f9;">
+                        <div class="banner-image-url-row" style="margin-bottom: 8px;">
+                            <label style="display: block; margin-bottom: 4px; font-weight: 600;">
+                                <?php esc_html_e('Image URL:', 'sage'); ?>
+                            </label>
+                            <div style="display: flex; gap: 5px;">
+                                <input type="text"
+                                       class="widefat banner-image-url"
+                                       name="<?php echo esc_attr($this->get_field_name('slides')); ?>[<?php echo esc_attr((string) $index); ?>][image]"
+                                       value="<?php echo esc_attr($slide['image']); ?>"
+                                       placeholder="<?php echo esc_attr__('Image URL', 'sage'); ?>"
+                                       style="flex: 1;">
+                                <button type="button" class="button banner-select-image" style="flex-shrink: 0;">
+                                    <?php esc_html_e('Select Image', 'sage'); ?>
+                                </button>
+                            </div>
 
-            if ($image_url === '') {
-                continue;
-            }
+                            <?php if (! empty($slide['image'])): ?>
+                                <div class="banner-image-preview" style="margin-top: 8px;">
+                                    <img src="<?php echo esc_url($slide['image']); ?>" style="max-width: 100%; height: auto; max-height: 150px; border-radius: 4px;">
+                                </div>
+                            <?php endif; ?>
+                        </div>
 
-            $slides[] = [
-                'image' => $image_url,
-                'link' => ! empty($slide['link']) ? esc_url_raw($slide['link']) : '',
-                'description' => isset($slide['description']) ? sanitize_text_field($slide['description']) : '',
-                'link_target' => isset($slide['link_target']) && in_array($slide['link_target'], ['_self', '_blank'], true) ? $slide['link_target'] : '_self',
-            ];
-        }
+                        <div style="margin-bottom: 8px;">
+                            <label style="display: block; margin-bottom: 4px; font-weight: 600;">
+                                <?php esc_html_e('Link URL (optional):', 'sage'); ?>
+                            </label>
+                            <input type="url"
+                                   class="widefat banner-link-url"
+                                   name="<?php echo esc_attr($this->get_field_name('slides')); ?>[<?php echo esc_attr((string) $index); ?>][link]"
+                                   value="<?php echo esc_attr($slide['link']); ?>"
+                                   placeholder="https://example.com">
+                        </div>
 
-        return $slides;
+                        <div style="margin-bottom: 8px;">
+                            <label style="display: block; margin-bottom: 4px; font-weight: 600;">
+                                <?php esc_html_e('Link Target:', 'sage'); ?>
+                            </label>
+                            <select class="widefat banner-link-target"
+                                    name="<?php echo esc_attr($this->get_field_name('slides')); ?>[<?php echo esc_attr((string) $index); ?>][link_target]">
+                                <option value="_self" <?php selected($slide['link_target'], '_self'); ?>>
+                                    <?php esc_html_e('Current Page', 'sage'); ?>
+                                </option>
+                                <option value="_blank" <?php selected($slide['link_target'], '_blank'); ?>>
+                                    <?php esc_html_e('New Tab', 'sage'); ?>
+                                </option>
+                            </select>
+                        </div>
+
+                        <div style="margin-bottom: 8px;">
+                            <label style="display: block; margin-bottom: 4px; font-weight: 600;">
+                                <?php esc_html_e('Description:', 'sage'); ?>
+                            </label>
+                            <input type="text"
+                                   class="widefat banner-description"
+                                   name="<?php echo esc_attr($this->get_field_name('slides')); ?>[<?php echo esc_attr((string) $index); ?>][description]"
+                                   value="<?php echo esc_attr($slide['description']); ?>"
+                                   placeholder="<?php echo esc_attr__('Image description', 'sage'); ?>">
+                        </div>
+
+                        <div style="text-align: right;">
+                            <button type="button" class="button banner-remove-slide button-link-delete">
+                                <?php esc_html_e('Delete', 'sage'); ?>
+                            </button>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+
+            <input type="hidden" class="banner-slides-flag" name="<?php echo esc_attr($fieldPrefix); ?>[__flag]" value="1">
+
+            <p>
+                <button type="button" class="button banner-add-slide" data-widget-id="<?php echo esc_attr($widgetId); ?>">
+                    <?php esc_html_e('+ Add Banner', 'sage'); ?>
+                </button>
+            </p>
+        </div>
+        <?php
     }
 
     /**
-     * Return an image URL from a legacy URL or attachment id.
+     * Sanitize widget form values as they are saved.
+     *
+     * @param  array<string,mixed>  $newInstance  New widget settings submitted from the form.
+     * @param  array<string,mixed>  $oldInstance  Previous widget settings.
+     * @return array<string,mixed>
+     */
+    public function update($newInstance, $oldInstance): array
+    {
+        return [
+            'slides' => $this->getSanitizedSlides($newInstance['slides'] ?? []),
+        ];
+    }
+
+    /**
+     * Return the default empty slide structure.
+     *
+     * @return array<string,string>
+     */
+    protected function getEmptySlide(): array
+    {
+        return [
+            'image' => '',
+            'link' => '',
+            'description' => '',
+            'link_target' => '_self',
+        ];
+    }
+
+    /**
+     * Sanitize the repeatable slide array.
+     *
+     * @param  mixed  $slides  Raw slide configuration.
+     * @return array<int,array<string,string>>
+     */
+    protected function getSanitizedSlides($slides): array
+    {
+        $sanitizedSlides = [];
+
+        if (! is_array($slides)) {
+            return $sanitizedSlides;
+        }
+
+        foreach ($slides as $slideKey => $slide) {
+            if ($slideKey === '__flag' || ! is_array($slide)) {
+                continue;
+            }
+
+            $imageUrl = $this->resolveImageUrl($slide['image'] ?? '');
+
+            if ($imageUrl === '') {
+                continue;
+            }
+
+            $linkTarget = ! empty($slide['link_target']) && in_array($slide['link_target'], ['_self', '_blank'], true)
+                ? (string) $slide['link_target']
+                : '_self';
+
+            $sanitizedSlides[] = [
+                'image' => $imageUrl,
+                'link' => ! empty($slide['link']) ? esc_url_raw((string) $slide['link']) : '',
+                'description' => ! empty($slide['description']) ? sanitize_text_field((string) $slide['description']) : '',
+                'link_target' => $linkTarget,
+            ];
+        }
+
+        return $sanitizedSlides;
+    }
+
+    /**
+     * Return an image URL from a stored URL or attachment id.
      *
      * @param  mixed  $image  Stored image value.
      */
-    private function imageUrl($image): string
+    protected function resolveImageUrl($image): string
     {
         if (is_numeric($image)) {
             return wp_get_attachment_image_url((int) $image, 'full') ?: '';
         }
 
         return is_string($image) && $image !== '' ? esc_url_raw($image) : '';
-    }
-
-    /**
-     * Copy legacy instance values to unique Carbon Fields keys for editing.
-     *
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
-     * @param  array<string,string>  $aliases  New key to legacy key map.
-     * @return array<string,mixed>
-     */
-    private function withLegacyAliases(array $instance, array $aliases): array
-    {
-        foreach ($aliases as $newKey => $legacyKey) {
-            if (! array_key_exists($newKey, $instance) && array_key_exists($legacyKey, $instance)) {
-                $instance[$newKey] = $instance[$legacyKey];
-            }
-        }
-
-        return $instance;
     }
 }

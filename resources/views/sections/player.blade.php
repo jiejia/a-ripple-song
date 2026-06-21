@@ -56,7 +56,7 @@
                             :style="{ background: $store.player.progressHeatmapGradient }"></div>
                         <input type="range" min="0" :max="$store.player.duration" :value="$store.player.currentTime"
                             x-on:input="$store.player.seek($event.target.value)"
-                            class="range range-xs w-full aripplesong-progress-range relative z-10 text-base-content/20 [--range-bg:orange] [--range-thumb:blue] [--range-fill:0]" />
+                            class="range range-xs w-full aripplesong-progress-range relative z-10 text-base-content/20 [--range-bg:orange] [--range-thumb:pink] [--range-fill:0]" />
                     </div>
                     <span class="justify-self-end" x-text="$store.player.durationText">00:00</span>
                 </div>

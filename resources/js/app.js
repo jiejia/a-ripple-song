@@ -616,6 +616,9 @@ Alpine.store('player', {
   currentSound: null,
   soundId: null,
   audioMotion: null,
+  analyzerAudioContext: null,
+  analyzerSourceNode: null,
+  analyzerRebindTimer: null,
   audioContext: null,
   audioSourceNode: null,
   pitchShiftNode: null,
@@ -938,10 +941,7 @@ Alpine.store('player', {
     this.soundId = null;
 
     // 清理 AudioMotion
-    if (this.audioMotion) {
-      this.audioMotion.destroy();
-      this.audioMotion = null;
-    }
+    this.destroyAnalyzer();
 
     // 清理 volumeGainNode
     if (this.volumeGainNode) {
@@ -968,7 +968,12 @@ Alpine.store('player', {
       volume: 1, // 保持最大音量，音量控制将在 GainNode 中进行
       onplay: () => {
         this.isPlaying = true;
-        this.initAudioMotion();
+        this.ensureAudioGraph();
+        this.bindAnalyzer();
+      },
+      onseek: () => {
+        this.currentTime = Number(this.currentSound?.seek(this.soundId)) || 0;
+        this.scheduleAnalyzerRebind();
       },
       onpause: () => {
         this.isPlaying = false;
@@ -1307,55 +1312,184 @@ Alpine.store('player', {
       this.volumeGainNode.connect(audioContext.destination);
     }
   },
-  initAudioMotion() {
-    if (!this.audioMotion && this.currentSound) {
-      const container = document.getElementById('wave');
-      if (container) {
-        const audioContext = Howler.ctx;
-        const sourceNode = this.currentSound._sounds[0]._node;
+  /**
+   * Prepare the playback graph with independent volume and pitch compensation.
+   *
+   * @return {void}
+   */
+  ensureAudioGraph() {
+    if (!this.currentSound || this.volumeGainNode) {
+      return;
+    }
 
-        // 创建独立的 GainNode 用于音量控制
-        this.volumeGainNode = audioContext.createGain();
-        this.volumeGainNode.gain.value = this.volume;
+    const sound = this.currentSound?._sounds?.find((item) => item?._id === this.soundId)
+      || this.currentSound?._sounds?.[0]
+      || null;
+    const sourceNode = sound?._node || sound?._node?.bufferSource || null;
+    const audioContext = sourceNode?.context || Howler.ctx;
 
-        this.audioContext = audioContext;
-        this.audioSourceNode = sourceNode;
+    if (!sourceNode || !audioContext) {
+      return;
+    }
 
-        this.setupAudioGraph();
+    // Create a dedicated GainNode so volume changes do not affect the analyzer input.
+    this.volumeGainNode = audioContext.createGain();
+    this.volumeGainNode.gain.value = this.volume;
+    this.audioContext = audioContext;
+    this.audioSourceNode = sourceNode;
+    this.setupAudioGraph();
+  },
 
-        // AudioMotion 分析原始的 sourceNode（音量控制之前）
+  /**
+   * Attach the current Howler node to AudioMotion for visualization.
+   *
+   * @return {void}
+   */
+  bindAnalyzer() {
+    if (!this.currentSound) {
+      return;
+    }
+
+    const container = document.getElementById('wave');
+    const sound = this.currentSound?._sounds?.find((item) => item?._id === this.soundId)
+      || this.currentSound?._sounds?.[0]
+      || null;
+
+    /**
+     * Prefer the live buffer source so waveform analysis stays independent
+     * from the gain node that Howler uses for volume control.
+     */
+    const sourceNode = sound?._node || sound?._node?.bufferSource || null;
+    const sourceContext = sourceNode?.context || null;
+
+    if (!container || !sourceNode || !sourceContext || typeof sourceNode.connect !== 'function') {
+      return;
+    }
+
+    const shouldRecreateAnalyzer = !this.audioMotion
+      || this.audioMotion.isDestroyed
+      || this.audioMotion.canvas?.parentElement !== container
+      || this.analyzerAudioContext !== sourceContext;
+
+    if (!shouldRecreateAnalyzer && this.audioMotion && this.analyzerSourceNode === sourceNode) {
+      return;
+    }
+
+    if (shouldRecreateAnalyzer) {
+      this.destroyAnalyzer();
+      container.querySelectorAll('canvas').forEach((canvas) => {
+        canvas.remove();
+      });
+
+      try {
         this.audioMotion = new AudioMotionAnalyzer(container, {
-          source: sourceNode,
-          connectSpeakers: false, // 改为 false，因为我们手动管理连接
+          audioCtx: sourceContext,
+          connectSpeakers: false,
           mode: 4,
           alphaBars: false,
           ansiBands: false,
-          barSpace: .25,
+          barSpace: 0.25,
           channelLayout: 'single',
           colorMode: 'bar-level',
           frequencyScale: 'log',
           gradient: 'prism',
-          ledBars: false,
           linearAmplitude: true,
           linearBoost: 1.6,
-          lumiBars: false,
           maxFreq: 16000,
           minFreq: 30,
-          mirror: 0,
-          radial: false,
-          reflexRatio: .5,
+          reflexRatio: 0.5,
           reflexAlpha: 1,
           roundBars: true,
           showPeaks: false,
           showScaleX: false,
-          smoothing: .7,
+          smoothing: 0.7,
           weightingFilter: 'D',
           overlay: true,
           showBgColor: false,
-          maxDecibels: -30
+          maxDecibels: -30,
         });
+        this.analyzerAudioContext = sourceContext;
+      } catch {
+        this.audioMotion = null;
+        this.analyzerAudioContext = null;
+        this.analyzerSourceNode = null;
+        return;
+      }
+    } else {
+      try {
+        this.audioMotion.disconnectInput();
+      } catch {
+        // Ignore disconnect failures and try reconnecting anyway.
       }
     }
+
+    try {
+      this.audioMotion.connectInput(sourceNode);
+      this.analyzerSourceNode = sourceNode;
+    } catch {
+      this.destroyAnalyzer();
+      container.querySelectorAll('canvas').forEach((canvas) => {
+        canvas.remove();
+      });
+    }
+  },
+
+  /**
+   * Rebind the waveform analyzer after Howler replaces the active buffer source.
+   *
+   * Seeking while a track is playing recreates the underlying Web Audio node,
+   * so the visualizer must reconnect to the new source after that swap.
+   *
+   * @return {void}
+   */
+  scheduleAnalyzerRebind() {
+    if (this.analyzerRebindTimer) {
+      window.clearTimeout(this.analyzerRebindTimer);
+      this.analyzerRebindTimer = null;
+    }
+
+    if (!this.currentSound || !this.isPlaying) {
+      return;
+    }
+
+    this.analyzerRebindTimer = window.setTimeout(() => {
+      this.analyzerRebindTimer = null;
+      this.ensureAudioGraph();
+      this.bindAnalyzer();
+    }, 0);
+  },
+
+  /**
+   * Destroy the waveform analyzer.
+   *
+   * @return {void}
+   */
+  destroyAnalyzer() {
+    if (this.analyzerRebindTimer) {
+      window.clearTimeout(this.analyzerRebindTimer);
+      this.analyzerRebindTimer = null;
+    }
+
+    this.analyzerAudioContext = null;
+    this.analyzerSourceNode = null;
+
+    if (!this.audioMotion) {
+      return;
+    }
+
+    try {
+      this.audioMotion.disconnectInput();
+    } catch (error) {
+      // Ignore disconnect failures while tearing down the analyzer.
+    }
+
+    try {
+      this.audioMotion.destroy();
+    } catch (error) {
+      // Ignore destroy failures and continue clearing stale references.
+    }
+
+    this.audioMotion = null;
   },
   startProgressTimer() {
     let saveCounter = 0;
@@ -1560,10 +1694,7 @@ Alpine.store('player', {
     this.stopProgressTimer();
 
     // 清理 AudioMotion
-    if (this.audioMotion) {
-      this.audioMotion.destroy();
-      this.audioMotion = null;
-    }
+    this.destroyAnalyzer();
 
     // 清理 volumeGainNode
     if (this.volumeGainNode) {

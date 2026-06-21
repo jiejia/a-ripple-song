@@ -1,89 +1,42 @@
 <?php
 
-use Carbon_Fields\Field;
-use Carbon_Fields\Widget;
-
 /**
  * Tags Cloud Widget
  * Display a tag cloud.
  */
-class TagsCloudWidget extends Widget
+class TagsCloudWidget extends WP_Widget
 {
     /**
-     * Keep the original WordPress widget id for existing widget instances.
-     *
-     * @var string
-     */
-    protected $widget_id_prefix = '';
-
-    /**
-     * Create the widget and its Carbon Fields admin form.
+     * Register widget with WordPress.
      */
     public function __construct()
     {
-        $this->setup(
+        parent::__construct(
             'tags_cloud_widget',
             __('aripplesong - Tags Cloud', 'sage'),
-            __('Display article tags cloud', 'sage'),
-            [
-                Field::make('text', 'tags_cloud_title', __('Title:', 'sage'))
-                    ->set_default_value('TAGS'),
-                Field::make('text', 'tags_cloud_number', __('Number of tags:', 'sage'))
-                    ->set_default_value('20')
-                    ->set_help_text(__('Maximum number of tags to display', 'sage')),
-                Field::make('select', 'tags_cloud_orderby', __('Order by:', 'sage'))
-                    ->add_options([
-                        'count' => __('Post Count', 'sage'),
-                        'name' => __('Tag Name', 'sage'),
-                        'term_id' => __('Tag ID', 'sage'),
-                        'rand' => __('Random', 'sage'),
-                    ])
-                    ->set_default_value('count'),
-                Field::make('select', 'tags_cloud_order', __('Sort order:', 'sage'))
-                    ->add_options([
-                        'DESC' => __('Descending (High to Low/Z to A)', 'sage'),
-                        'ASC' => __('Ascending (Low to High/A to Z)', 'sage'),
-                    ])
-                    ->set_default_value('DESC'),
-            ]
+            ['description' => __('Display article tags cloud', 'sage')]
         );
     }
 
     /**
-     * Render the Carbon Fields form with legacy values mapped to unique keys.
-     *
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
-     */
-    public function form($instance)
-    {
-        parent::form($this->withLegacyAliases($instance, [
-            'tags_cloud_title' => 'title',
-            'tags_cloud_number' => 'number',
-            'tags_cloud_orderby' => 'orderby',
-            'tags_cloud_order' => 'order',
-        ]));
-    }
-
-    /**
-     * Render the widget with values normalized from legacy and Carbon Fields storage.
+     * Front-end display of widget.
      *
      * @param  array<string,mixed>  $args  Widget wrapper arguments.
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
+     * @param  array<string,mixed>  $instance  Saved widget option values.
      */
-    public function widget($args, $instance)
+    public function widget($args, $instance): void
     {
         echo $args['before_widget'];
 
-        $title = $this->textValue($instance, ['tags_cloud_title', 'title'], 'TAGS');
-        $number = $this->numberValue($instance, ['tags_cloud_number', 'number'], 20);
-        $orderby = $this->choiceValue($instance, ['tags_cloud_orderby', 'orderby'], ['count', 'name', 'term_id', 'rand'], 'count');
-        $order = $this->choiceValue($instance, ['tags_cloud_order', 'order'], ['ASC', 'DESC'], 'DESC');
+        $title = ! empty($instance['title']) ? sanitize_text_field((string) $instance['title']) : 'TAGS';
+        $number = ! empty($instance['number']) ? max(1, absint($instance['number'])) : 20;
+        $orderby = ! empty($instance['orderby']) ? sanitize_key((string) $instance['orderby']) : 'count';
+        $order = ! empty($instance['order']) ? strtoupper(sanitize_key((string) $instance['order'])) : 'DESC';
 
-        // Fetch tags.
         $tags = get_tags([
             'number' => $number,
-            'orderby' => $orderby,
-            'order' => $order,
+            'orderby' => in_array($orderby, ['count', 'name', 'term_id', 'rand'], true) ? $orderby : 'count',
+            'order' => in_array($order, ['ASC', 'DESC'], true) ? $order : 'DESC',
             'hide_empty' => true,
         ]);
 
@@ -96,81 +49,89 @@ class TagsCloudWidget extends Widget
     }
 
     /**
-     * Return a text setting with a fallback.
+     * Back-end widget form displayed in the WordPress admin.
      *
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
-     * @param  string  $key  Instance key.
-     * @param  string  $default  Fallback value.
+     * @param  array<string,mixed>  $instance  Current widget settings.
      */
-    private function textValue(array $instance, string|array $keys, string $default): string
+    public function form($instance): void
     {
-        foreach ((array) $keys as $key) {
-            if (isset($instance[$key]) && $instance[$key] !== '') {
-                return sanitize_text_field($instance[$key]);
-            }
-        }
+        $title = ! empty($instance['title']) ? sanitize_text_field((string) $instance['title']) : 'TAGS';
+        $number = ! empty($instance['number']) ? max(1, absint($instance['number'])) : 20;
+        $orderby = ! empty($instance['orderby']) ? sanitize_key((string) $instance['orderby']) : 'count';
+        $order = ! empty($instance['order']) ? strtoupper(sanitize_key((string) $instance['order'])) : 'DESC';
+        ?>
+        <p>
+            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>">
+                <?php esc_html_e('Title:', 'sage'); ?>
+            </label>
+            <input class="widefat"
+                   id="<?php echo esc_attr($this->get_field_id('title')); ?>"
+                   name="<?php echo esc_attr($this->get_field_name('title')); ?>"
+                   type="text"
+                   value="<?php echo esc_attr($title); ?>">
+        </p>
 
-        return $default;
+        <p>
+            <label for="<?php echo esc_attr($this->get_field_id('number')); ?>">
+                <?php esc_html_e('Number of tags:', 'sage'); ?>
+            </label>
+            <input class="tiny-text"
+                   id="<?php echo esc_attr($this->get_field_id('number')); ?>"
+                   name="<?php echo esc_attr($this->get_field_name('number')); ?>"
+                   type="number"
+                   step="1"
+                   min="1"
+                   value="<?php echo esc_attr((string) $number); ?>"
+                   size="3">
+            <small class="description"><?php esc_html_e('Maximum number of tags to display', 'sage'); ?></small>
+        </p>
+
+        <p>
+            <label for="<?php echo esc_attr($this->get_field_id('orderby')); ?>">
+                <?php esc_html_e('Order by:', 'sage'); ?>
+            </label>
+            <select class="widefat"
+                    id="<?php echo esc_attr($this->get_field_id('orderby')); ?>"
+                    name="<?php echo esc_attr($this->get_field_name('orderby')); ?>">
+                <option value="count" <?php selected($orderby, 'count'); ?>><?php esc_html_e('Post Count', 'sage'); ?></option>
+                <option value="name" <?php selected($orderby, 'name'); ?>><?php esc_html_e('Tag Name', 'sage'); ?></option>
+                <option value="term_id" <?php selected($orderby, 'term_id'); ?>><?php esc_html_e('Tag ID', 'sage'); ?></option>
+                <option value="rand" <?php selected($orderby, 'rand'); ?>><?php esc_html_e('Random', 'sage'); ?></option>
+            </select>
+        </p>
+
+        <p>
+            <label for="<?php echo esc_attr($this->get_field_id('order')); ?>">
+                <?php esc_html_e('Sort order:', 'sage'); ?>
+            </label>
+            <select class="widefat"
+                    id="<?php echo esc_attr($this->get_field_id('order')); ?>"
+                    name="<?php echo esc_attr($this->get_field_name('order')); ?>">
+                <option value="DESC" <?php selected($order, 'DESC'); ?>><?php esc_html_e('Descending (High to Low/Z to A)', 'sage'); ?></option>
+                <option value="ASC" <?php selected($order, 'ASC'); ?>><?php esc_html_e('Ascending (Low to High/A to Z)', 'sage'); ?></option>
+            </select>
+        </p>
+        <?php
     }
 
     /**
-     * Return a positive integer setting with a fallback.
+     * Sanitize widget form values as they are saved.
      *
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
-     * @param  string  $key  Instance key.
-     * @param  int  $default  Fallback value.
-     */
-    private function numberValue(array $instance, string|array $keys, int $default): int
-    {
-        $value = 0;
-
-        foreach ((array) $keys as $key) {
-            if (isset($instance[$key])) {
-                $value = absint($instance[$key]);
-                break;
-            }
-        }
-
-        return $value > 0 ? $value : $default;
-    }
-
-    /**
-     * Return an allowed select value with a fallback.
-     *
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
-     * @param  string  $key  Instance key.
-     * @param  array<int,string>  $allowed  Allowed values.
-     * @param  string  $default  Fallback value.
-     */
-    private function choiceValue(array $instance, string|array $keys, array $allowed, string $default): string
-    {
-        $value = '';
-
-        foreach ((array) $keys as $key) {
-            if (isset($instance[$key])) {
-                $value = (string) $instance[$key];
-                break;
-            }
-        }
-
-        return in_array($value, $allowed, true) ? $value : $default;
-    }
-
-    /**
-     * Copy legacy instance values to unique Carbon Fields keys for editing.
-     *
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
-     * @param  array<string,string>  $aliases  New key to legacy key map.
+     * @param  array<string,mixed>  $newInstance  New widget settings submitted from the form.
+     * @param  array<string,mixed>  $oldInstance  Previous widget settings.
      * @return array<string,mixed>
      */
-    private function withLegacyAliases(array $instance, array $aliases): array
+    public function update($newInstance, $oldInstance): array
     {
-        foreach ($aliases as $newKey => $legacyKey) {
-            if (! array_key_exists($newKey, $instance) && array_key_exists($legacyKey, $instance)) {
-                $instance[$newKey] = $instance[$legacyKey];
-            }
-        }
-
-        return $instance;
+        return [
+            'title' => ! empty($newInstance['title']) ? sanitize_text_field((string) $newInstance['title']) : '',
+            'number' => ! empty($newInstance['number']) ? max(1, absint($newInstance['number'])) : 20,
+            'orderby' => ! empty($newInstance['orderby']) && in_array($newInstance['orderby'], ['count', 'name', 'term_id', 'rand'], true)
+                ? (string) $newInstance['orderby']
+                : 'count',
+            'order' => ! empty($newInstance['order']) && in_array($newInstance['order'], ['ASC', 'DESC'], true)
+                ? (string) $newInstance['order']
+                : 'DESC',
+        ];
     }
 }

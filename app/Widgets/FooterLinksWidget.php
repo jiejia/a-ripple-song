@@ -1,71 +1,35 @@
 <?php
 
-use Carbon_Fields\Field;
-use Carbon_Fields\Widget;
-
 /**
  * Footer Links Widget
  * Display footer links or plain text items.
  */
-class FooterLinksWidget extends Widget
+class FooterLinksWidget extends WP_Widget
 {
     /**
-     * Keep the original WordPress widget id for existing widget instances.
-     *
-     * @var string
-     */
-    protected $widget_id_prefix = '';
-
-    /**
-     * Create the widget and its Carbon Fields admin form.
+     * Register widget with WordPress.
      */
     public function __construct()
     {
-        $this->setup(
+        parent::__construct(
             'footer_links_widget',
             __('aripplesong - Footer Links', 'sage'),
-            __('Display a list of links or text items in the footer', 'sage'),
-            [
-                Field::make('text', 'footer_links_title', __('Title:', 'sage'))
-                    ->set_help_text(__('e.g., Contact, Navigate, Support', 'sage')),
-                Field::make('complex', 'footer_links_items', __('Items:', 'sage'))
-                    ->add_fields([
-                        Field::make('text', 'text', __('Text:', 'sage')),
-                        Field::make('text', 'url', __('URL (optional - leave empty for plain text):', 'sage')),
-                        Field::make('checkbox', 'new_tab', __('Open in new tab', 'sage'))
-                            ->set_option_value('1'),
-                    ]),
-            ]
+            ['description' => __('Display a list of links or text items in the footer', 'sage')]
         );
     }
 
     /**
-     * Render the Carbon Fields form with legacy checkbox values normalized.
-     *
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
-     */
-    public function form($instance)
-    {
-        $instance = $this->withLegacyAliases($instance, [
-            'footer_links_title' => 'title',
-            'footer_links_items' => 'items',
-        ]);
-
-        parent::form($this->normalizeItemsForForm($instance));
-    }
-
-    /**
-     * Render the widget with values normalized from legacy and Carbon Fields storage.
+     * Front-end display of widget.
      *
      * @param  array<string,mixed>  $args  Widget wrapper arguments.
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
+     * @param  array<string,mixed>  $instance  Saved widget option values.
      */
-    public function widget($args, $instance)
+    public function widget($args, $instance): void
     {
         echo $args['before_widget'];
 
-        $title = $this->textValue($instance, ['footer_links_title', 'title'], '');
-        $items = $this->itemsValue($instance);
+        $title = ! empty($instance['title']) ? sanitize_text_field((string) $instance['title']) : '';
+        $items = $this->getSanitizedItems($instance['items'] ?? []);
 
         echo \Roots\view('widgets.footer-links', [
             'title' => $title,
@@ -76,92 +40,146 @@ class FooterLinksWidget extends Widget
     }
 
     /**
-     * Return a text setting with a fallback.
+     * Back-end widget form displayed in the WordPress admin.
      *
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
-     * @param  string  $key  Instance key.
-     * @param  string  $default  Fallback value.
+     * @param  array<string,mixed>  $instance  Current widget settings.
      */
-    private function textValue(array $instance, string|array $keys, string $default): string
+    public function form($instance): void
     {
-        foreach ((array) $keys as $key) {
-            if (isset($instance[$key]) && $instance[$key] !== '') {
-                return sanitize_text_field($instance[$key]);
-            }
-        }
+        $title = ! empty($instance['title']) ? sanitize_text_field((string) $instance['title']) : '';
+        $items = $this->getSanitizedItems($instance['items'] ?? []);
 
-        return $default;
-    }
-
-    /**
-     * Return normalized footer items for the front-end template.
-     *
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
-     * @return array<int,array<string,mixed>>
-     */
-    private function itemsValue(array $instance): array
-    {
-        $items = [];
-
-        $storedItems = $instance['footer_links_items'] ?? $instance['items'] ?? [];
-
-        if (empty($storedItems) || ! is_array($storedItems)) {
-            return $items;
-        }
-
-        foreach ($storedItems as $item) {
-            if (! is_array($item) || empty($item['text'])) {
-                continue;
-            }
-
+        if (empty($items)) {
             $items[] = [
-                'text' => sanitize_text_field($item['text']),
-                'url' => ! empty($item['url']) ? esc_url_raw($item['url']) : '',
-                'new_tab' => in_array($item['new_tab'] ?? false, [true, 1, '1', 'yes', 'on'], true),
+                'text' => '',
+                'url' => '',
+                'new_tab' => false,
             ];
         }
 
-        return $items;
+        $widgetId = $this->get_field_id('items');
+        $fieldPrefix = $this->get_field_name('items');
+        ?>
+        <div class="footer-links-widget-form" data-field-prefix="<?php echo esc_attr($fieldPrefix); ?>">
+            <p>
+                <label for="<?php echo esc_attr($this->get_field_id('title')); ?>">
+                    <?php esc_html_e('Title:', 'sage'); ?>
+                </label>
+                <input class="widefat"
+                       id="<?php echo esc_attr($this->get_field_id('title')); ?>"
+                       name="<?php echo esc_attr($this->get_field_name('title')); ?>"
+                       type="text"
+                       value="<?php echo esc_attr($title); ?>"
+                       placeholder="<?php echo esc_attr__('e.g., Contact, Navigate, Support', 'sage'); ?>">
+            </p>
+
+            <p style="margin-bottom: 8px;">
+                <strong><?php esc_html_e('Items:', 'sage'); ?></strong>
+            </p>
+
+            <div id="<?php echo esc_attr($widgetId); ?>_container" class="footer-links-container" style="margin-bottom: 10px;">
+                <?php foreach ($items as $index => $item): ?>
+                    <div class="footer-link-item" style="margin-bottom: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 4px; background: #f9f9f9;">
+                        <div style="margin-bottom: 8px;">
+                            <label style="display: block; margin-bottom: 4px; font-weight: 600;">
+                                <?php esc_html_e('Text:', 'sage'); ?>
+                            </label>
+                            <input type="text"
+                                   class="widefat footer-link-text"
+                                   name="<?php echo esc_attr($fieldPrefix); ?>[<?php echo esc_attr((string) $index); ?>][text]"
+                                   value="<?php echo esc_attr((string) ($item['text'] ?? '')); ?>"
+                                   placeholder="<?php echo esc_attr__('Display text', 'sage'); ?>">
+                        </div>
+
+                        <div style="margin-bottom: 8px;">
+                            <label style="display: block; margin-bottom: 4px; font-weight: 600;">
+                                <?php esc_html_e('URL (optional - leave empty for plain text):', 'sage'); ?>
+                            </label>
+                            <input type="url"
+                                   class="widefat footer-link-url"
+                                   name="<?php echo esc_attr($fieldPrefix); ?>[<?php echo esc_attr((string) $index); ?>][url]"
+                                   value="<?php echo esc_attr((string) ($item['url'] ?? '')); ?>"
+                                   placeholder="https://example.com">
+                        </div>
+
+                        <div style="margin-bottom: 8px;">
+                            <label>
+                                <input type="checkbox"
+                                       class="footer-link-new-tab"
+                                       name="<?php echo esc_attr($fieldPrefix); ?>[<?php echo esc_attr((string) $index); ?>][new_tab]"
+                                       value="1"
+                                       <?php checked(! empty($item['new_tab'])); ?>>
+                                <?php esc_html_e('Open in new tab', 'sage'); ?>
+                            </label>
+                        </div>
+
+                        <div style="text-align: right;">
+                            <button type="button" class="button button-link button-link-delete footer-remove-link" style="color: #b32d2e;">
+                                <?php esc_html_e('Delete', 'sage'); ?>
+                            </button>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+
+            <input type="hidden" class="footer-links-flag" name="<?php echo esc_attr($this->get_field_name('_flag')); ?>" value="1">
+
+            <p>
+                <button type="button" class="button footer-add-link" data-widget-id="<?php echo esc_attr($widgetId); ?>">
+                    <?php esc_html_e('+ Add Item', 'sage'); ?>
+                </button>
+            </p>
+        </div>
+        <?php
     }
 
     /**
-     * Normalize legacy item checkbox values before Carbon Fields renders the form.
+     * Sanitize widget form values as they are saved.
      *
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
+     * @param  array<string,mixed>  $newInstance  New widget settings submitted from the form.
+     * @param  array<string,mixed>  $oldInstance  Previous widget settings.
      * @return array<string,mixed>
      */
-    private function normalizeItemsForForm(array $instance): array
+    public function update($newInstance, $oldInstance): array
     {
-        if (empty($instance['footer_links_items']) || ! is_array($instance['footer_links_items'])) {
-            return $instance;
+        return [
+            'title' => ! empty($newInstance['title']) ? sanitize_text_field((string) $newInstance['title']) : '',
+            'items' => $this->getSanitizedItems($newInstance['items'] ?? []),
+        ];
+    }
+
+    /**
+     * Sanitize footer item rows.
+     *
+     * @param  mixed  $items  Raw footer item configuration.
+     * @return array<int,array<string,mixed>>
+     */
+    protected function getSanitizedItems($items): array
+    {
+        $sanitizedItems = [];
+
+        if (! is_array($items)) {
+            return $sanitizedItems;
         }
 
-        foreach ($instance['footer_links_items'] as $index => $item) {
+        foreach ($items as $item) {
             if (! is_array($item)) {
                 continue;
             }
 
-            $instance['footer_links_items'][$index]['new_tab'] = in_array($item['new_tab'] ?? false, [true, 1, '1', 'yes', 'on'], true) ? '1' : '';
-        }
+            $text = ! empty($item['text']) ? sanitize_text_field((string) $item['text']) : '';
 
-        return $instance;
-    }
-
-    /**
-     * Copy legacy instance values to unique Carbon Fields keys for editing.
-     *
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
-     * @param  array<string,string>  $aliases  New key to legacy key map.
-     * @return array<string,mixed>
-     */
-    private function withLegacyAliases(array $instance, array $aliases): array
-    {
-        foreach ($aliases as $newKey => $legacyKey) {
-            if (! array_key_exists($newKey, $instance) && array_key_exists($legacyKey, $instance)) {
-                $instance[$newKey] = $instance[$legacyKey];
+            if ($text === '') {
+                continue;
             }
+
+            $sanitizedItems[] = [
+                'text' => $text,
+                'url' => ! empty($item['url']) ? esc_url_raw((string) $item['url']) : '',
+                'new_tab' => ! empty($item['new_tab']),
+            ];
         }
 
-        return $instance;
+        return $sanitizedItems;
     }
 }

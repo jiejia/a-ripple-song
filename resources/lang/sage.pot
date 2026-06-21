@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-16T03:59:17+00:00\n"
+"POT-Creation-Date: 2026-06-21T03:17:11+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: sage\n"
@@ -119,15 +119,15 @@ msgstr ""
 msgid "Primary right sidebar area for displaying various content modules"
 msgstr ""
 
-#: app/Customizers/Copyright.php:22
+#: app/Customizers/Copyright.php:30
 msgid "Footer"
 msgstr ""
 
-#: app/Customizers/Copyright.php:34
+#: app/Customizers/Copyright.php:42
 msgid "Footer Copyright"
 msgstr ""
 
-#: app/Customizers/Copyright.php:35
+#: app/Customizers/Copyright.php:43
 msgid "Overrides the footer copyright line. Leave empty to use the default."
 msgstr ""
 
@@ -187,23 +187,23 @@ msgstr ""
 msgid "Enter a full URL"
 msgstr ""
 
-#: app/Customizers/ThemeColor.php:140
+#: app/Customizers/ThemeColor.php:59
 msgid "Theme Color"
 msgstr ""
 
-#: app/Customizers/ThemeColor.php:152
+#: app/Customizers/ThemeColor.php:71
 msgid "Light Theme"
 msgstr ""
 
-#: app/Customizers/ThemeColor.php:153
+#: app/Customizers/ThemeColor.php:72
 msgid "This is the default theme used when the site is in light mode."
 msgstr ""
 
-#: app/Customizers/ThemeColor.php:166
+#: app/Customizers/ThemeColor.php:85
 msgid "Dark Theme"
 msgstr ""
 
-#: app/Customizers/ThemeColor.php:167
+#: app/Customizers/ThemeColor.php:86
 msgid "This is the default theme used when the site is in dark mode."
 msgstr ""
 
@@ -314,6 +314,8 @@ msgid "Title (optional)"
 msgstr ""
 
 #: app/CustomPostTypes/Episode.php:141
+#: app/Widgets/AuthorsWidget.php:35
+#: app/Widgets/AuthorsWidget.php:92
 msgid "Members"
 msgstr ""
 
@@ -322,6 +324,8 @@ msgid "Select episode members (administrators, authors, editors)."
 msgstr ""
 
 #: app/CustomPostTypes/Episode.php:148
+#: app/Widgets/AuthorsWidget.php:39
+#: app/Widgets/AuthorsWidget.php:93
 msgid "Guests"
 msgstr ""
 
@@ -518,82 +522,82 @@ msgstr ""
 msgid "Primary Navigation"
 msgstr ""
 
-#: app/Providers/WidgetServiceProvider.php:312
-#: app/Widgets/BannerCarouselWidget.php:62
+#: app/Providers/WidgetServiceProvider.php:454
+#: app/Widgets/BannerCarouselWidget.php:68
 msgid "Image URL:"
 msgstr ""
 
-#: app/Providers/WidgetServiceProvider.php:313
-#: app/Widgets/BannerCarouselWidget.php:69
+#: app/Providers/WidgetServiceProvider.php:455
+#: app/Widgets/BannerCarouselWidget.php:75
 msgid "Image URL"
 msgstr ""
 
-#: app/Providers/WidgetServiceProvider.php:314
-#: app/Widgets/BannerCarouselWidget.php:74
+#: app/Providers/WidgetServiceProvider.php:456
+#: app/Widgets/BannerCarouselWidget.php:78
 msgid "Select Image"
 msgstr ""
 
-#: app/Providers/WidgetServiceProvider.php:315
-#: app/Widgets/BannerCarouselWidget.php:85
-msgid "Link URL (optional):"
-msgstr ""
-
-#: app/Providers/WidgetServiceProvider.php:316
-#: app/Widgets/BannerCarouselWidget.php:95
-msgid "Link Target:"
-msgstr ""
-
-#: app/Providers/WidgetServiceProvider.php:317
-#: app/Widgets/BannerCarouselWidget.php:100
-msgid "Current Page"
-msgstr ""
-
-#: app/Providers/WidgetServiceProvider.php:318
-#: app/Widgets/BannerCarouselWidget.php:103
-msgid "New Tab"
-msgstr ""
-
-#: app/Providers/WidgetServiceProvider.php:319
-#: app/Widgets/BannerCarouselWidget.php:109
-msgid "Description:"
-msgstr ""
-
-#: app/Providers/WidgetServiceProvider.php:320
-#: app/Widgets/BannerCarouselWidget.php:115
-msgid "Image description"
-msgstr ""
-
-#: app/Providers/WidgetServiceProvider.php:321
-#: app/Widgets/BannerCarouselWidget.php:119
-#: app/Widgets/FooterLinksWidget.php:91
-msgid "Delete"
-msgstr ""
-
-#: app/Providers/WidgetServiceProvider.php:322
+#: app/Providers/WidgetServiceProvider.php:457
 msgid "Select Banner Image"
 msgstr ""
 
-#: app/Providers/WidgetServiceProvider.php:323
+#: app/Providers/WidgetServiceProvider.php:458
 msgid "Use This Image"
 msgstr ""
 
-#: app/Providers/WidgetServiceProvider.php:324
-#: app/Widgets/FooterLinksWidget.php:65
+#: app/Providers/WidgetServiceProvider.php:459
+#: app/Widgets/BannerCarouselWidget.php:91
+msgid "Link URL (optional):"
+msgstr ""
+
+#: app/Providers/WidgetServiceProvider.php:460
+#: app/Widgets/BannerCarouselWidget.php:102
+msgid "Link Target:"
+msgstr ""
+
+#: app/Providers/WidgetServiceProvider.php:461
+#: app/Widgets/BannerCarouselWidget.php:107
+msgid "Current Page"
+msgstr ""
+
+#: app/Providers/WidgetServiceProvider.php:462
+#: app/Widgets/BannerCarouselWidget.php:110
+msgid "New Tab"
+msgstr ""
+
+#: app/Providers/WidgetServiceProvider.php:463
+#: app/Widgets/BannerCarouselWidget.php:117
+msgid "Description:"
+msgstr ""
+
+#: app/Providers/WidgetServiceProvider.php:464
+#: app/Widgets/BannerCarouselWidget.php:123
+msgid "Image description"
+msgstr ""
+
+#: app/Providers/WidgetServiceProvider.php:465
+#: app/Widgets/BannerCarouselWidget.php:128
+#: app/Widgets/FooterLinksWidget.php:118
+msgid "Delete"
+msgstr ""
+
+#: app/Providers/WidgetServiceProvider.php:466
+#: app/Widgets/FooterLinksWidget.php:85
 msgid "Text:"
 msgstr ""
 
-#: app/Providers/WidgetServiceProvider.php:325
-#: app/Widgets/FooterLinksWidget.php:70
+#: app/Providers/WidgetServiceProvider.php:467
+#: app/Widgets/FooterLinksWidget.php:91
 msgid "Display text"
 msgstr ""
 
-#: app/Providers/WidgetServiceProvider.php:326
-#: app/Widgets/FooterLinksWidget.php:73
+#: app/Providers/WidgetServiceProvider.php:468
+#: app/Widgets/FooterLinksWidget.php:96
 msgid "URL (optional - leave empty for plain text):"
 msgstr ""
 
-#: app/Providers/WidgetServiceProvider.php:327
-#: app/Widgets/FooterLinksWidget.php:87
+#: app/Providers/WidgetServiceProvider.php:469
+#: app/Widgets/FooterLinksWidget.php:112
 msgid "Open in new tab"
 msgstr ""
 
@@ -1322,181 +1326,194 @@ msgstr ""
 msgid "Pages:"
 msgstr ""
 
-#: app/Widgets/AuthorsWidget.php:12
+#: app/Widgets/AuthorsWidget.php:18
 msgid "aripplesong - Authors List"
 msgstr ""
 
-#: app/Widgets/AuthorsWidget.php:13
+#: app/Widgets/AuthorsWidget.php:19
 msgid "Display members and guest authors list"
 msgstr ""
 
-#: app/Widgets/AuthorsWidget.php:75
+#: app/Widgets/AuthorsWidget.php:99
 msgid "Members Title:"
 msgstr ""
 
-#: app/Widgets/AuthorsWidget.php:89
+#: app/Widgets/AuthorsWidget.php:115
 msgid "Show Members (Administrators, Editors, Authors)"
 msgstr ""
 
-#: app/Widgets/AuthorsWidget.php:93
+#: app/Widgets/AuthorsWidget.php:121
 msgid "Guests Title:"
 msgstr ""
 
-#: app/Widgets/AuthorsWidget.php:107
+#: app/Widgets/AuthorsWidget.php:137
 msgid "Show Guests (Contributors)"
 msgstr ""
 
-#: app/Widgets/BannerCarouselWidget.php:12
+#: app/Widgets/BannerCarouselWidget.php:16
 msgid "aripplesong - Banner Carousel"
 msgstr ""
 
-#: app/Widgets/BannerCarouselWidget.php:13
+#: app/Widgets/BannerCarouselWidget.php:17
 msgid "Display banner carousel with images"
 msgstr ""
 
-#: app/Widgets/BannerCarouselWidget.php:49
+#: app/Widgets/BannerCarouselWidget.php:61
 msgid "Banner Slides:"
 msgstr ""
 
-#: app/Widgets/BannerCarouselWidget.php:91
-msgid "https://example.com"
-msgstr ""
-
-#: app/Widgets/BannerCarouselWidget.php:128
+#: app/Widgets/BannerCarouselWidget.php:139
 msgid "+ Add Banner"
 msgstr ""
 
-#: app/Widgets/BlogListWidget.php:12
+#: app/Widgets/BlogListWidget.php:16
 msgid "aripplesong - Blog List"
 msgstr ""
 
-#: app/Widgets/BlogListWidget.php:13
+#: app/Widgets/BlogListWidget.php:17
 msgid "Display latest blog posts list"
 msgstr ""
 
-#: app/Widgets/BlogListWidget.php:55
-#: app/Widgets/FooterLinksWidget.php:50
-#: app/Widgets/PodcastListWidget.php:160
-#: app/Widgets/SubscribeLinksWidget.php:51
-#: app/Widgets/TagsCloudWidget.php:48
+#: app/Widgets/BlogListWidget.php:72
+#: app/Widgets/FooterLinksWidget.php:66
+#: app/Widgets/PodcastListWidget.php:126
+#: app/Widgets/SubscribeLinksWidget.php:60
+#: app/Widgets/TagsCloudWidget.php:65
 msgid "Title:"
 msgstr ""
 
-#: app/Widgets/BlogListWidget.php:63
-#: app/Widgets/PodcastListWidget.php:168
+#: app/Widgets/BlogListWidget.php:83
 msgid "Number of posts:"
 msgstr ""
 
-#: app/Widgets/BlogListWidget.php:74
+#: app/Widgets/BlogListWidget.php:97
 msgid "Number of columns:"
 msgstr ""
 
-#: app/Widgets/BlogListWidget.php:91
-#: app/Widgets/PodcastListWidget.php:184
+#: app/Widgets/BlogListWidget.php:117
+#: app/Widgets/PodcastListWidget.php:156
 msgid "Show \"See all\" link"
 msgstr ""
 
-#: app/Widgets/FooterLinksWidget.php:12
+#: app/Widgets/FooterLinksWidget.php:16
 msgid "aripplesong - Footer Links"
 msgstr ""
 
-#: app/Widgets/FooterLinksWidget.php:13
+#: app/Widgets/FooterLinksWidget.php:17
 msgid "Display a list of links or text items in the footer"
 msgstr ""
 
-#: app/Widgets/FooterLinksWidget.php:56
+#: app/Widgets/FooterLinksWidget.php:73
 msgid "e.g., Contact, Navigate, Support"
 msgstr ""
 
-#: app/Widgets/FooterLinksWidget.php:59
+#: app/Widgets/FooterLinksWidget.php:77
 msgid "Items:"
 msgstr ""
 
-#: app/Widgets/FooterLinksWidget.php:102
+#: app/Widgets/FooterLinksWidget.php:129
 msgid "+ Add Item"
 msgstr ""
 
-#: app/Widgets/PodcastListWidget.php:12
+#: app/Widgets/PodcastListWidget.php:19
 msgid "aripplesong - Podcast List"
 msgstr ""
 
-#: app/Widgets/PodcastListWidget.php:13
+#: app/Widgets/PodcastListWidget.php:20
 msgid "Display latest podcast list"
 msgstr ""
 
-#: app/Widgets/SubscribeLinksWidget.php:12
+#: app/Widgets/PodcastListWidget.php:137
+msgid "Number of episodes:"
+msgstr ""
+
+#: app/Widgets/SubscribeLinksWidget.php:16
 msgid "aripplesong - Subscribe Links"
 msgstr ""
 
-#: app/Widgets/SubscribeLinksWidget.php:13
+#: app/Widgets/SubscribeLinksWidget.php:17
 msgid "Display podcast subscription platform links"
 msgstr ""
 
-#: app/Widgets/SubscribeLinksWidget.php:62
+#: app/Widgets/SubscribeLinksWidget.php:67
+msgid "SUBSCRIBE"
+msgstr ""
+
+#: app/Widgets/SubscribeLinksWidget.php:72
 msgid "Apple Podcast Link:"
 msgstr ""
 
-#: app/Widgets/SubscribeLinksWidget.php:70
-#: app/Widgets/SubscribeLinksWidget.php:83
-#: app/Widgets/SubscribeLinksWidget.php:96
+#: app/Widgets/SubscribeLinksWidget.php:80
+#: app/Widgets/SubscribeLinksWidget.php:93
+#: app/Widgets/SubscribeLinksWidget.php:106
 msgid "Leave blank to hide this button"
 msgstr ""
 
-#: app/Widgets/SubscribeLinksWidget.php:75
+#: app/Widgets/SubscribeLinksWidget.php:85
 msgid "Spotify Link:"
 msgstr ""
 
-#: app/Widgets/SubscribeLinksWidget.php:88
-msgid "Youtube Music Link:"
+#: app/Widgets/SubscribeLinksWidget.php:98
+msgid "YouTube Music Link:"
 msgstr ""
 
-#: app/Widgets/TagsCloudWidget.php:12
+#: app/Widgets/TagsCloudWidget.php:16
 msgid "aripplesong - Tags Cloud"
 msgstr ""
 
-#: app/Widgets/TagsCloudWidget.php:13
+#: app/Widgets/TagsCloudWidget.php:17
 msgid "Display article tags cloud"
 msgstr ""
 
-#: app/Widgets/TagsCloudWidget.php:57
+#: app/Widgets/TagsCloudWidget.php:76
 msgid "Number of tags:"
 msgstr ""
 
-#: app/Widgets/TagsCloudWidget.php:66
+#: app/Widgets/TagsCloudWidget.php:86
 msgid "Maximum number of tags to display"
 msgstr ""
 
-#: app/Widgets/TagsCloudWidget.php:70
+#: app/Widgets/TagsCloudWidget.php:91
 msgid "Order by:"
 msgstr ""
 
-#: app/Widgets/TagsCloudWidget.php:74
+#: app/Widgets/TagsCloudWidget.php:96
 msgid "Post Count"
 msgstr ""
 
-#: app/Widgets/TagsCloudWidget.php:75
+#: app/Widgets/TagsCloudWidget.php:97
 msgid "Tag Name"
 msgstr ""
 
-#: app/Widgets/TagsCloudWidget.php:76
+#: app/Widgets/TagsCloudWidget.php:98
 msgid "Tag ID"
 msgstr ""
 
-#: app/Widgets/TagsCloudWidget.php:77
+#: app/Widgets/TagsCloudWidget.php:99
 #: resources/views/widgets/podcast-list.blade.php:49
 msgid "Random"
 msgstr ""
 
-#: app/Widgets/TagsCloudWidget.php:82
+#: app/Widgets/TagsCloudWidget.php:105
 msgid "Sort order:"
 msgstr ""
 
-#: app/Widgets/TagsCloudWidget.php:86
+#: app/Widgets/TagsCloudWidget.php:110
 msgid "Descending (High to Low/Z to A)"
 msgstr ""
 
-#: app/Widgets/TagsCloudWidget.php:87
+#: app/Widgets/TagsCloudWidget.php:111
 msgid "Ascending (Low to High/A to Z)"
+msgstr ""
+
+#: functions.php:36
+msgid "Error locating autoloader. Please run <code>composer install</code>."
+msgstr ""
+
+#. translators: %s is replaced with the relative file path
+#: functions.php:88
+#, php-format
+msgid "Error locating <code>%s</code> for inclusion."
 msgstr ""
 
 #. Template Name of the theme
@@ -1586,24 +1603,24 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: resources/views/sections/footer.blade.php:8
+#: resources/views/sections/footer.blade.php:4
 #, php-format
 msgid "Powered by %s"
 msgstr ""
 
-#: resources/views/sections/header.blade.php:26
+#: resources/views/sections/header.blade.php:30
 msgid "Light Mode"
 msgstr ""
 
-#: resources/views/sections/header.blade.php:26
+#: resources/views/sections/header.blade.php:30
 msgid "Dark Mode"
 msgstr ""
 
-#: resources/views/sections/header.blade.php:26
+#: resources/views/sections/header.blade.php:30
 msgid "Follow System"
 msgstr ""
 
-#: resources/views/sections/header.blade.php:30
+#: resources/views/sections/header.blade.php:34
 msgid "Toggle Theme"
 msgstr ""
 
@@ -1743,15 +1760,15 @@ msgstr ""
 msgid "No podcast content"
 msgstr ""
 
-#: resources/views/widgets/tags-cloud.blade.php:17
+#: resources/views/widgets/tags-cloud.blade.php:16
 msgid "No tags yet"
 msgstr ""
 
-#: resources/views/widgets/tags-cloud.blade.php:18
+#: resources/views/widgets/tags-cloud.blade.php:17
 msgid "Tags will appear here after publishing articles with tags"
 msgstr ""
 
-#: resources/views/widgets/tags-cloud.blade.php:28
+#: resources/views/widgets/tags-cloud.blade.php:27
 #, php-format
 msgid "%d post"
 msgid_plural "%d posts"
@@ -1838,124 +1855,4 @@ msgstr ""
 
 #: resources/js/app.js:1516
 msgid "Episode already exists:"
-msgstr ""
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Red (50)"
-msgstr ""
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Red (400)"
-msgstr ""
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Yellow (50)"
-msgstr ""
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Yellow (300)"
-msgstr ""
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Yellow (400)"
-msgstr ""
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Green (50)"
-msgstr ""
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Green (400)"
-msgstr ""
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Green (500)"
-msgstr ""
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Indigo (50)"
-msgstr ""
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Indigo (400)"
-msgstr ""
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Gray (600)"
-msgstr ""
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Gray (800)"
-msgstr ""
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "Black"
-msgstr ""
-
-#: public/build/assets/theme.json
-msgctxt "Color name"
-msgid "White"
-msgstr ""
-
-#: public/build/assets/theme.json
-msgctxt "Font family name"
-msgid "sans"
-msgstr ""
-
-#: public/build/assets/theme.json
-msgctxt "Font family name"
-msgid "mono"
-msgstr ""
-
-#: public/build/assets/theme.json
-msgctxt "Font size name"
-msgid "xs"
-msgstr ""
-
-#: public/build/assets/theme.json
-msgctxt "Font size name"
-msgid "sm"
-msgstr ""
-
-#: public/build/assets/theme.json
-msgctxt "Font size name"
-msgid "base"
-msgstr ""
-
-#: public/build/assets/theme.json
-msgctxt "Font size name"
-msgid "lg"
-msgstr ""
-
-#: public/build/assets/theme.json
-msgctxt "Font size name"
-msgid "2xl"
-msgstr ""
-
-#: public/build/assets/theme.json
-msgctxt "Border radius size name"
-msgid "md"
-msgstr ""
-
-#: public/build/assets/theme.json
-msgctxt "Border radius size name"
-msgid "lg"
-msgstr ""
-
-#: public/build/assets/theme.json
-msgctxt "Border radius size name"
-msgid "xl"
 msgstr ""

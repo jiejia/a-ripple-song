@@ -1,80 +1,41 @@
 <?php
 
-use Carbon_Fields\Field;
-use Carbon_Fields\Widget;
-
 /**
  * Blog List Widget
  * Display a list of latest blog posts.
  */
-class BlogListWidget extends Widget
+class BlogListWidget extends WP_Widget
 {
     /**
-     * Keep the original WordPress widget id for existing widget instances.
-     *
-     * @var string
-     */
-    protected $widget_id_prefix = '';
-
-    /**
-     * Create the widget and its Carbon Fields admin form.
+     * Register widget with WordPress.
      */
     public function __construct()
     {
-        $this->setup(
+        parent::__construct(
             'blog_list_widget',
             __('aripplesong - Blog List', 'sage'),
-            __('Display latest blog posts list', 'sage'),
-            [
-                Field::make('text', 'blog_list_title', __('Title:', 'sage'))
-                    ->set_default_value('BLOG'),
-                Field::make('text', 'blog_list_posts_per_page', __('Number of posts:', 'sage'))
-                    ->set_default_value('6'),
-                Field::make('text', 'blog_list_columns', __('Number of columns:', 'sage'))
-                    ->set_default_value('3'),
-                Field::make('checkbox', 'blog_list_show_see_all', __('Show "See all" link', 'sage'))
-                    ->set_option_value('1')
-                    ->set_default_value(true),
-            ]
+            ['description' => __('Display latest blog posts list', 'sage')]
         );
     }
 
     /**
-     * Render the Carbon Fields form with legacy checkbox values normalized.
-     *
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
-     */
-    public function form($instance)
-    {
-        $instance = $this->withLegacyAliases($instance, [
-            'blog_list_title' => 'title',
-            'blog_list_posts_per_page' => 'posts_per_page',
-            'blog_list_columns' => 'columns',
-            'blog_list_show_see_all' => 'show_see_all',
-        ]);
-
-        parent::form($this->normalizeCheckboxes($instance, ['blog_list_show_see_all']));
-    }
-
-    /**
-     * Render the widget with values normalized from legacy and Carbon Fields storage.
+     * Front-end display of widget.
      *
      * @param  array<string,mixed>  $args  Widget wrapper arguments.
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
+     * @param  array<string,mixed>  $instance  Saved widget option values.
      */
-    public function widget($args, $instance)
+    public function widget($args, $instance): void
     {
         echo $args['before_widget'];
 
-        $title = $this->textValue($instance, ['blog_list_title', 'title'], 'BLOG');
-        $posts_per_page = $this->numberValue($instance, ['blog_list_posts_per_page', 'posts_per_page'], 6);
-        $show_see_all = $this->booleanValue($instance, ['blog_list_show_see_all', 'show_see_all'], true);
-        $columns = min($this->numberValue($instance, ['blog_list_columns', 'columns'], 3), 6);
+        $title = ! empty($instance['title']) ? sanitize_text_field((string) $instance['title']) : 'BLOG';
+        $postsPerPage = ! empty($instance['posts_per_page']) ? max(1, absint($instance['posts_per_page'])) : 6;
+        $showSeeAll = isset($instance['show_see_all']) ? (bool) $instance['show_see_all'] : true;
+        $columns = ! empty($instance['columns']) ? min(3, max(1, absint($instance['columns']))) : 3;
 
-        // Query blog posts.
         $posts = new WP_Query([
             'post_type' => 'post',
-            'posts_per_page' => $posts_per_page,
+            'posts_per_page' => $postsPerPage,
             'post_status' => 'publish',
             'no_found_rows' => true,
             'ignore_sticky_posts' => true,
@@ -87,7 +48,7 @@ class BlogListWidget extends Widget
         echo \Roots\view('widgets.blog-list', [
             'title' => $title,
             'posts' => $posts,
-            'show_see_all' => $show_see_all,
+            'show_see_all' => $showSeeAll,
             'columns' => $columns,
         ])->render();
 
@@ -95,97 +56,84 @@ class BlogListWidget extends Widget
     }
 
     /**
-     * Return a text setting with a fallback.
+     * Back-end widget form displayed in the WordPress admin.
      *
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
-     * @param  string  $key  Instance key.
-     * @param  string  $default  Fallback value.
+     * @param  array<string,mixed>  $instance  Current widget settings.
      */
-    private function textValue(array $instance, string|array $keys, string $default): string
+    public function form($instance): void
     {
-        foreach ((array) $keys as $key) {
-            if (isset($instance[$key]) && $instance[$key] !== '') {
-                return sanitize_text_field($instance[$key]);
-            }
-        }
+        $title = ! empty($instance['title']) ? sanitize_text_field((string) $instance['title']) : 'BLOG';
+        $postsPerPage = ! empty($instance['posts_per_page']) ? max(1, absint($instance['posts_per_page'])) : 6;
+        $showSeeAll = isset($instance['show_see_all']) ? (bool) $instance['show_see_all'] : true;
+        $columns = ! empty($instance['columns']) ? min(3, max(1, absint($instance['columns']))) : 3;
+        ?>
+        <p>
+            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>">
+                <?php esc_html_e('Title:', 'sage'); ?>
+            </label>
+            <input class="widefat"
+                   id="<?php echo esc_attr($this->get_field_id('title')); ?>"
+                   name="<?php echo esc_attr($this->get_field_name('title')); ?>"
+                   type="text"
+                   value="<?php echo esc_attr($title); ?>">
+        </p>
 
-        return $default;
+        <p>
+            <label for="<?php echo esc_attr($this->get_field_id('posts_per_page')); ?>">
+                <?php esc_html_e('Number of posts:', 'sage'); ?>
+            </label>
+            <input class="tiny-text"
+                   id="<?php echo esc_attr($this->get_field_id('posts_per_page')); ?>"
+                   name="<?php echo esc_attr($this->get_field_name('posts_per_page')); ?>"
+                   type="number"
+                   step="1"
+                   min="1"
+                   value="<?php echo esc_attr((string) $postsPerPage); ?>"
+                   size="3">
+        </p>
+
+        <p>
+            <label for="<?php echo esc_attr($this->get_field_id('columns')); ?>">
+                <?php esc_html_e('Number of columns:', 'sage'); ?>
+            </label>
+            <input class="tiny-text"
+                   id="<?php echo esc_attr($this->get_field_id('columns')); ?>"
+                   name="<?php echo esc_attr($this->get_field_name('columns')); ?>"
+                   type="number"
+                   step="1"
+                   min="1"
+                   max="3"
+                   value="<?php echo esc_attr((string) $columns); ?>"
+                   size="3">
+        </p>
+
+        <p>
+            <input class="checkbox"
+                   type="checkbox"
+                   <?php checked($showSeeAll); ?>
+                   id="<?php echo esc_attr($this->get_field_id('show_see_all')); ?>"
+                   name="<?php echo esc_attr($this->get_field_name('show_see_all')); ?>">
+            <label for="<?php echo esc_attr($this->get_field_id('show_see_all')); ?>">
+                <?php esc_html_e('Show "See all" link', 'sage'); ?>
+            </label>
+        </p>
+        <?php
     }
 
     /**
-     * Return a positive integer setting with a fallback.
+     * Sanitize widget form values as they are saved.
      *
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
-     * @param  string  $key  Instance key.
-     * @param  int  $default  Fallback value.
-     */
-    private function numberValue(array $instance, string|array $keys, int $default): int
-    {
-        $value = 0;
-
-        foreach ((array) $keys as $key) {
-            if (isset($instance[$key])) {
-                $value = absint($instance[$key]);
-                break;
-            }
-        }
-
-        return $value > 0 ? $value : $default;
-    }
-
-    /**
-     * Return a checkbox setting from legacy and Carbon Fields values.
-     *
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
-     * @param  string  $key  Instance key.
-     * @param  bool  $default  Fallback value.
-     */
-    private function booleanValue(array $instance, string|array $keys, bool $default): bool
-    {
-        foreach ((array) $keys as $key) {
-            if (array_key_exists($key, $instance)) {
-                return in_array($instance[$key], [true, 1, '1', 'yes', 'on'], true);
-            }
-        }
-
-        return $default;
-    }
-
-    /**
-     * Normalize legacy checkbox values before Carbon Fields renders the form.
-     *
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
-     * @param  array<int,string>  $keys  Checkbox keys.
+     * @param  array<string,mixed>  $newInstance  New widget settings submitted from the form.
+     * @param  array<string,mixed>  $oldInstance  Previous widget settings.
      * @return array<string,mixed>
      */
-    private function normalizeCheckboxes(array $instance, array $keys): array
+    public function update($newInstance, $oldInstance): array
     {
-        foreach ($keys as $key) {
-            if (! array_key_exists($key, $instance)) {
-                continue;
-            }
-
-            $instance[$key] = $this->booleanValue($instance, $key, false) ? '1' : '';
-        }
-
-        return $instance;
-    }
-
-    /**
-     * Copy legacy instance values to unique Carbon Fields keys for editing.
-     *
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
-     * @param  array<string,string>  $aliases  New key to legacy key map.
-     * @return array<string,mixed>
-     */
-    private function withLegacyAliases(array $instance, array $aliases): array
-    {
-        foreach ($aliases as $newKey => $legacyKey) {
-            if (! array_key_exists($newKey, $instance) && array_key_exists($legacyKey, $instance)) {
-                $instance[$newKey] = $instance[$legacyKey];
-            }
-        }
-
-        return $instance;
+        return [
+            'title' => ! empty($newInstance['title']) ? sanitize_text_field((string) $newInstance['title']) : '',
+            'posts_per_page' => ! empty($newInstance['posts_per_page']) ? max(1, absint($newInstance['posts_per_page'])) : 6,
+            'columns' => ! empty($newInstance['columns']) ? min(3, max(1, absint($newInstance['columns']))) : 3,
+            'show_see_all' => ! empty($newInstance['show_see_all']) ? 1 : 0,
+        ];
     }
 }

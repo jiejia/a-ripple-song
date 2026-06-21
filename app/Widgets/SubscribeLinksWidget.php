@@ -1,134 +1,127 @@
 <?php
 
-use Carbon_Fields\Field;
-use Carbon_Fields\Widget;
-
 /**
  * Subscribe Links Widget
  * Display subscription platform links.
  */
-class SubscribeLinksWidget extends Widget
+class SubscribeLinksWidget extends WP_Widget
 {
     /**
-     * Keep the original WordPress widget id for existing widget instances.
-     *
-     * @var string
-     */
-    protected $widget_id_prefix = '';
-
-    /**
-     * Create the widget and its Carbon Fields admin form.
+     * Register widget with WordPress.
      */
     public function __construct()
     {
-        $this->setup(
+        parent::__construct(
             'subscribe_links_widget',
             __('aripplesong - Subscribe Links', 'sage'),
-            __('Display podcast subscription platform links', 'sage'),
-            [
-                Field::make('text', 'subscribe_links_title', __('Title:', 'sage'))
-                    ->set_default_value('SUBSCRIBE'),
-                Field::make('text', 'apple_podcast_url', __('Apple Podcast Link:', 'sage'))
-                    ->set_help_text(__('Leave blank to hide this button', 'sage')),
-                Field::make('text', 'spotify_url', __('Spotify Link:', 'sage'))
-                    ->set_help_text(__('Leave blank to hide this button', 'sage')),
-                Field::make('text', 'youtube_music_url', __('Youtube Music Link:', 'sage'))
-                    ->set_help_text(__('Leave blank to hide this button', 'sage')),
-            ]
+            ['description' => __('Display podcast subscription platform links', 'sage')]
         );
     }
 
     /**
-     * Render the Carbon Fields form with legacy values mapped to unique keys.
-     *
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
-     */
-    public function form($instance)
-    {
-        parent::form($this->withLegacyAliases($instance, [
-            'subscribe_links_title' => 'title',
-        ]));
-    }
-
-    /**
-     * Render the widget with values normalized from legacy and Carbon Fields storage.
+     * Front-end display of widget.
      *
      * @param  array<string,mixed>  $args  Widget wrapper arguments.
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
+     * @param  array<string,mixed>  $instance  Saved widget option values.
      */
-    public function widget($args, $instance)
+    public function widget($args, $instance): void
     {
         echo $args['before_widget'];
 
-        $title = $this->textValue($instance, ['subscribe_links_title', 'title'], 'SUBSCRIBE');
-        $apple_podcast_url = $this->urlValue($instance, 'apple_podcast_url');
-        $spotify_url = $this->urlValue($instance, 'spotify_url');
-        $youtube_music_url = $this->urlValue($instance, 'youtube_music_url');
-
-        // Require at least one link to render.
-        $has_links = ! empty($apple_podcast_url) || ! empty($spotify_url) || ! empty($youtube_music_url);
-
-        if (! $has_links) {
-            // Hide when nothing is configured.
-            echo $args['after_widget'];
-
-            return;
-        }
+        $title = ! empty($instance['title']) ? sanitize_text_field((string) $instance['title']) : 'SUBSCRIBE';
+        $applePodcastUrl = ! empty($instance['apple_podcast_url']) ? esc_url((string) $instance['apple_podcast_url']) : '';
+        $spotifyUrl = ! empty($instance['spotify_url']) ? esc_url((string) $instance['spotify_url']) : '';
+        $youtubeMusicUrl = ! empty($instance['youtube_music_url']) ? esc_url((string) $instance['youtube_music_url']) : '';
 
         echo \Roots\view('widgets.subscribe-links', [
             'title' => $title,
-            'apple_podcast_url' => $apple_podcast_url,
-            'spotify_url' => $spotify_url,
-            'youtube_music_url' => $youtube_music_url,
+            'apple_podcast_url' => $applePodcastUrl,
+            'spotify_url' => $spotifyUrl,
+            'youtube_music_url' => $youtubeMusicUrl,
         ])->render();
 
         echo $args['after_widget'];
     }
 
     /**
-     * Return a text setting with a fallback.
+     * Back-end widget form displayed in the WordPress admin.
      *
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
-     * @param  string  $key  Instance key.
-     * @param  string  $default  Fallback value.
+     * @param  array<string,mixed>  $instance  Current widget settings.
      */
-    private function textValue(array $instance, string|array $keys, string $default): string
+    public function form($instance): void
     {
-        foreach ((array) $keys as $key) {
-            if (isset($instance[$key]) && $instance[$key] !== '') {
-                return sanitize_text_field($instance[$key]);
-            }
-        }
+        $title = ! empty($instance['title']) ? sanitize_text_field((string) $instance['title']) : 'SUBSCRIBE';
+        $applePodcastUrl = ! empty($instance['apple_podcast_url']) ? esc_url((string) $instance['apple_podcast_url']) : '';
+        $spotifyUrl = ! empty($instance['spotify_url']) ? esc_url((string) $instance['spotify_url']) : '';
+        $youtubeMusicUrl = ! empty($instance['youtube_music_url']) ? esc_url((string) $instance['youtube_music_url']) : '';
+        ?>
+        <p>
+            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>">
+                <?php esc_html_e('Title:', 'sage'); ?>
+            </label>
+            <input class="widefat"
+                   id="<?php echo esc_attr($this->get_field_id('title')); ?>"
+                   name="<?php echo esc_attr($this->get_field_name('title')); ?>"
+                   type="text"
+                   value="<?php echo esc_attr($title); ?>"
+                   placeholder="<?php echo esc_attr__('SUBSCRIBE', 'sage'); ?>">
+        </p>
 
-        return $default;
+        <p>
+            <label for="<?php echo esc_attr($this->get_field_id('apple_podcast_url')); ?>">
+                <?php esc_html_e('Apple Podcast Link:', 'sage'); ?>
+            </label>
+            <input class="widefat"
+                   id="<?php echo esc_attr($this->get_field_id('apple_podcast_url')); ?>"
+                   name="<?php echo esc_attr($this->get_field_name('apple_podcast_url')); ?>"
+                   type="url"
+                   value="<?php echo esc_attr($applePodcastUrl); ?>"
+                   placeholder="https://podcasts.apple.com/...">
+            <small class="description"><?php esc_html_e('Leave blank to hide this button', 'sage'); ?></small>
+        </p>
+
+        <p>
+            <label for="<?php echo esc_attr($this->get_field_id('spotify_url')); ?>">
+                <?php esc_html_e('Spotify Link:', 'sage'); ?>
+            </label>
+            <input class="widefat"
+                   id="<?php echo esc_attr($this->get_field_id('spotify_url')); ?>"
+                   name="<?php echo esc_attr($this->get_field_name('spotify_url')); ?>"
+                   type="url"
+                   value="<?php echo esc_attr($spotifyUrl); ?>"
+                   placeholder="https://open.spotify.com/...">
+            <small class="description"><?php esc_html_e('Leave blank to hide this button', 'sage'); ?></small>
+        </p>
+
+        <p>
+            <label for="<?php echo esc_attr($this->get_field_id('youtube_music_url')); ?>">
+                <?php esc_html_e('YouTube Music Link:', 'sage'); ?>
+            </label>
+            <input class="widefat"
+                   id="<?php echo esc_attr($this->get_field_id('youtube_music_url')); ?>"
+                   name="<?php echo esc_attr($this->get_field_name('youtube_music_url')); ?>"
+                   type="url"
+                   value="<?php echo esc_attr($youtubeMusicUrl); ?>"
+                   placeholder="https://music.youtube.com/...">
+            <small class="description"><?php esc_html_e('Leave blank to hide this button', 'sage'); ?></small>
+        </p>
+        <?php
     }
 
     /**
-     * Return a URL setting.
+     * Sanitize widget form values as they are saved.
      *
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
-     * @param  string  $key  Instance key.
-     */
-    private function urlValue(array $instance, string $key): string
-    {
-        return ! empty($instance[$key]) ? esc_url_raw($instance[$key]) : '';
-    }
-
-    /**
-     * Copy legacy instance values to unique Carbon Fields keys for editing.
-     *
-     * @param  array<string,mixed>  $instance  Saved widget instance values.
-     * @param  array<string,string>  $aliases  New key to legacy key map.
+     * @param  array<string,mixed>  $newInstance  New widget settings submitted from the form.
+     * @param  array<string,mixed>  $oldInstance  Previous widget settings.
      * @return array<string,mixed>
      */
-    private function withLegacyAliases(array $instance, array $aliases): array
+    public function update($newInstance, $oldInstance): array
     {
-        foreach ($aliases as $newKey => $legacyKey) {
-            if (! array_key_exists($newKey, $instance) && array_key_exists($legacyKey, $instance)) {
-                $instance[$newKey] = $instance[$legacyKey];
-            }
-        }
-
-        return $instance;
+        return [
+            'title' => ! empty($newInstance['title']) ? sanitize_text_field((string) $newInstance['title']) : '',
+            'apple_podcast_url' => ! empty($newInstance['apple_podcast_url']) ? esc_url_raw((string) $newInstance['apple_podcast_url']) : '',
+            'spotify_url' => ! empty($newInstance['spotify_url']) ? esc_url_raw((string) $newInstance['spotify_url']) : '',
+            'youtube_music_url' => ! empty($newInstance['youtube_music_url']) ? esc_url_raw((string) $newInstance['youtube_music_url']) : '',
+        ];
     }
 }
