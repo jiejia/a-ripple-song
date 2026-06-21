@@ -1,20 +1,46 @@
 <?php
 
+namespace App\Widgets;
+
+use App\Abstracts\WidgetAbstract;
 use App\CustomPostTypes\Episode;
 
 /**
  * Authors Widget
  * Display the authors list (members and guests).
  */
-class AuthorsWidget extends WP_Widget
+class AuthorsWidget extends WidgetAbstract
 {
+    /**
+     * Return the WordPress widget id base.
+     */
+    public static function idBase(): string
+    {
+        return 'authors_widget';
+    }
+
+    /**
+     * Return Carbon-prefixed instance keys mapped to standard widget keys.
+     *
+     * @return array<string,string>
+     */
+    public static function instanceAliases(): array
+    {
+        return [
+            'authors_members_title' => 'members_title',
+            'authors_show_members' => 'show_members',
+            'authors_guests_title' => 'guests_title',
+            'authors_show_guests' => 'show_guests',
+        ];
+    }
+
     /**
      * Register widget with WordPress.
      */
     public function __construct()
     {
         parent::__construct(
-            'authors_widget',
+            static::idBase(),
             __('aripplesong - Authors List', 'sage'),
             ['description' => __('Display members and guest authors list', 'sage')]
         );

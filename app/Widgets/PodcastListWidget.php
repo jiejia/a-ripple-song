@@ -1,5 +1,8 @@
 <?php
 
+namespace App\Widgets;
+
+use App\Abstracts\WidgetAbstract;
 use App\CustomPostTypes\Episode;
 use App\Metas\PostViewCount;
 
@@ -7,15 +10,37 @@ use App\Metas\PostViewCount;
  * Podcast List Widget
  * Display podcast lists.
  */
-class PodcastListWidget extends WP_Widget
+class PodcastListWidget extends WidgetAbstract
 {
+    /**
+     * Return the WordPress widget id base.
+     */
+    public static function idBase(): string
+    {
+        return 'podcast_list_widget';
+    }
+
+    /**
+     * Return Carbon-prefixed instance keys mapped to standard widget keys.
+     *
+     * @return array<string,string>
+     */
+    public static function instanceAliases(): array
+    {
+        return [
+            'podcast_list_title' => 'title',
+            'podcast_list_posts_per_page' => 'posts_per_page',
+            'podcast_list_show_see_all' => 'show_see_all',
+        ];
+    }
+
     /**
      * Register widget with WordPress.
      */
     public function __construct()
     {
         parent::__construct(
-            'podcast_list_widget',
+            static::idBase(),
             __('aripplesong - Podcast List', 'sage'),
             ['description' => __('Display latest podcast list', 'sage')]
         );
@@ -35,7 +60,7 @@ class PodcastListWidget extends WP_Widget
         $postsPerPage = ! empty($instance['posts_per_page']) ? max(1, absint($instance['posts_per_page'])) : 3;
         $showSeeAll = isset($instance['show_see_all']) ? (bool) $instance['show_see_all'] : true;
 
-        $recentPodcasts = new WP_Query([
+        $recentPodcasts = new \WP_Query([
             'post_type' => Episode::slug(),
             'posts_per_page' => $postsPerPage,
             'post_status' => 'publish',
@@ -47,7 +72,7 @@ class PodcastListWidget extends WP_Widget
             'order' => 'DESC',
         ]);
 
-        $popularQuery = new WP_Query([
+        $popularQuery = new \WP_Query([
             'post_type' => Episode::slug(),
             'posts_per_page' => max($postsPerPage * 3, 20),
             'post_status' => 'publish',
@@ -82,7 +107,7 @@ class PodcastListWidget extends WP_Widget
 
         $popularPostsWithScore = array_slice($popularPostsWithScore, 0, $postsPerPage);
 
-        $randomPodcasts = new WP_Query([
+        $randomPodcasts = new \WP_Query([
             'post_type' => Episode::slug(),
             'posts_per_page' => $postsPerPage,
             'post_status' => 'publish',
@@ -194,10 +219,10 @@ class PodcastListWidget extends WP_Widget
     /**
      * Prepare podcast list data from a query.
      *
-     * @param  WP_Query  $query  Episode query object.
+     * @param  \WP_Query  $query  Episode query object.
      * @return array<int,array<string,mixed>>
      */
-    protected function preparePodcastList(WP_Query $query): array
+    protected function preparePodcastList(\WP_Query $query): array
     {
         $podcasts = [];
 

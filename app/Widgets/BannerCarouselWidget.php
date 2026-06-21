@@ -1,18 +1,42 @@
 <?php
 
+namespace App\Widgets;
+
+use App\Abstracts\WidgetAbstract;
+
 /**
  * Banner Carousel Widget
  * Display a banner carousel.
  */
-class BannerCarouselWidget extends WP_Widget
+class BannerCarouselWidget extends WidgetAbstract
 {
+    /**
+     * Return the WordPress widget id base.
+     */
+    public static function idBase(): string
+    {
+        return 'banner_carousel_widget';
+    }
+
+    /**
+     * Return Carbon-prefixed instance keys mapped to standard widget keys.
+     *
+     * @return array<string,string>
+     */
+    public static function instanceAliases(): array
+    {
+        return [
+            'banner_carousel_slides' => 'slides',
+        ];
+    }
+
     /**
      * Register widget with WordPress.
      */
     public function __construct()
     {
         parent::__construct(
-            'banner_carousel_widget',
+            static::idBase(),
             __('aripplesong - Banner Carousel', 'sage'),
             ['description' => __('Display banner carousel with images', 'sage')]
         );

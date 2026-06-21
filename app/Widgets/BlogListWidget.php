@@ -1,18 +1,45 @@
 <?php
 
+namespace App\Widgets;
+
+use App\Abstracts\WidgetAbstract;
+
 /**
  * Blog List Widget
  * Display a list of latest blog posts.
  */
-class BlogListWidget extends WP_Widget
+class BlogListWidget extends WidgetAbstract
 {
+    /**
+     * Return the WordPress widget id base.
+     */
+    public static function idBase(): string
+    {
+        return 'blog_list_widget';
+    }
+
+    /**
+     * Return Carbon-prefixed instance keys mapped to standard widget keys.
+     *
+     * @return array<string,string>
+     */
+    public static function instanceAliases(): array
+    {
+        return [
+            'blog_list_title' => 'title',
+            'blog_list_posts_per_page' => 'posts_per_page',
+            'blog_list_columns' => 'columns',
+            'blog_list_show_see_all' => 'show_see_all',
+        ];
+    }
+
     /**
      * Register widget with WordPress.
      */
     public function __construct()
     {
         parent::__construct(
-            'blog_list_widget',
+            static::idBase(),
             __('aripplesong - Blog List', 'sage'),
             ['description' => __('Display latest blog posts list', 'sage')]
         );
@@ -33,7 +60,7 @@ class BlogListWidget extends WP_Widget
         $showSeeAll = isset($instance['show_see_all']) ? (bool) $instance['show_see_all'] : true;
         $columns = ! empty($instance['columns']) ? min(3, max(1, absint($instance['columns']))) : 3;
 
-        $posts = new WP_Query([
+        $posts = new \WP_Query([
             'post_type' => 'post',
             'posts_per_page' => $postsPerPage,
             'post_status' => 'publish',

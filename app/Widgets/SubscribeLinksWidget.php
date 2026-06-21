@@ -1,18 +1,42 @@
 <?php
 
+namespace App\Widgets;
+
+use App\Abstracts\WidgetAbstract;
+
 /**
  * Subscribe Links Widget
  * Display subscription platform links.
  */
-class SubscribeLinksWidget extends WP_Widget
+class SubscribeLinksWidget extends WidgetAbstract
 {
+    /**
+     * Return the WordPress widget id base.
+     */
+    public static function idBase(): string
+    {
+        return 'subscribe_links_widget';
+    }
+
+    /**
+     * Return Carbon-prefixed instance keys mapped to standard widget keys.
+     *
+     * @return array<string,string>
+     */
+    public static function instanceAliases(): array
+    {
+        return [
+            'subscribe_links_title' => 'title',
+        ];
+    }
+
     /**
      * Register widget with WordPress.
      */
     public function __construct()
     {
         parent::__construct(
-            'subscribe_links_widget',
+            static::idBase(),
             __('aripplesong - Subscribe Links', 'sage'),
             ['description' => __('Display podcast subscription platform links', 'sage')]
         );

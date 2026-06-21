@@ -2,9 +2,17 @@
 
 namespace App\Providers;
 
+use App\Abstracts\WidgetAbstract;
 use App\Constants\ThemeConstant;
 use App\Customizers\ThemeColor;
 use App\Theme;
+use App\Widgets\AuthorsWidget;
+use App\Widgets\BannerCarouselWidget;
+use App\Widgets\BlogListWidget;
+use App\Widgets\FooterLinksWidget;
+use App\Widgets\PodcastListWidget;
+use App\Widgets\SubscribeLinksWidget;
+use App\Widgets\TagsCloudWidget;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,89 +22,18 @@ use Illuminate\Support\ServiceProvider;
 class WidgetServiceProvider extends ServiceProvider
 {
     /**
-     * Widget class files loaded by this provider.
-     *
-     * @var array<int,string>
-     */
-    private array $widgetFiles = [
-        'BannerCarouselWidget.php',
-        'PodcastListWidget.php',
-        'BlogListWidget.php',
-        'SubscribeLinksWidget.php',
-        'TagsCloudWidget.php',
-        'AuthorsWidget.php',
-        'FooterLinksWidget.php',
-    ];
-
-    /**
-     * Widget class names registered with WordPress.
+     * Widget classes registered by this provider.
      *
      * @var array<int,class-string>
      */
-    private array $widgetClasses = [
-        'BannerCarouselWidget',
-        'PodcastListWidget',
-        'BlogListWidget',
-        'SubscribeLinksWidget',
-        'TagsCloudWidget',
-        'AuthorsWidget',
-        'FooterLinksWidget',
-    ];
-
-    /**
-     * Legacy widget id bases registered by this provider.
-     *
-     * @var array<int,string>
-     */
-    private array $widgetIdBases = [
-        'banner_carousel_widget',
-        'podcast_list_widget',
-        'blog_list_widget',
-        'subscribe_links_widget',
-        'tags_cloud_widget',
-        'authors_widget',
-        'footer_links_widget',
-    ];
-
-    /**
-     * Carbon-prefixed instance keys mapped to standard widget keys.
-     *
-     * @var array<string,array<string,string>>
-     */
-    private array $widgetInstanceAliases = [
-        'banner_carousel_widget' => [
-            'banner_carousel_slides' => 'slides',
-        ],
-        'podcast_list_widget' => [
-            'podcast_list_title' => 'title',
-            'podcast_list_posts_per_page' => 'posts_per_page',
-            'podcast_list_show_see_all' => 'show_see_all',
-        ],
-        'blog_list_widget' => [
-            'blog_list_title' => 'title',
-            'blog_list_posts_per_page' => 'posts_per_page',
-            'blog_list_columns' => 'columns',
-            'blog_list_show_see_all' => 'show_see_all',
-        ],
-        'authors_widget' => [
-            'authors_members_title' => 'members_title',
-            'authors_show_members' => 'show_members',
-            'authors_guests_title' => 'guests_title',
-            'authors_show_guests' => 'show_guests',
-        ],
-        'tags_cloud_widget' => [
-            'tags_cloud_title' => 'title',
-            'tags_cloud_number' => 'number',
-            'tags_cloud_orderby' => 'orderby',
-            'tags_cloud_order' => 'order',
-        ],
-        'subscribe_links_widget' => [
-            'subscribe_links_title' => 'title',
-        ],
-        'footer_links_widget' => [
-            'footer_links_title' => 'title',
-            'footer_links_items' => 'items',
-        ],
+    private array $widgets = [
+        BannerCarouselWidget::class,
+        PodcastListWidget::class,
+        BlogListWidget::class,
+        SubscribeLinksWidget::class,
+        TagsCloudWidget::class,
+        AuthorsWidget::class,
+        FooterLinksWidget::class,
     ];
 
     /**
@@ -135,12 +72,10 @@ class WidgetServiceProvider extends ServiceProvider
     private bool $widgetEditorAssetsLoaded = false;
 
     /**
-     * Register widget hooks and load legacy global widget classes.
+     * Register widget hooks.
      */
     public function register(): void
     {
-        $this->loadWidgetClasses();
-
         add_action('widgets_init', [$this, 'registerWidgets']);
         add_action('after_switch_theme', [$this, 'setDefaultHomeWidgets']);
         add_action('widgets_init', [$this, 'maybeSetDefaultHomeWidgets'], 100);
@@ -159,32 +94,13 @@ class WidgetServiceProvider extends ServiceProvider
     public function boot(): void {}
 
     /**
-     * Load global widget classes from the Widgets directory.
-     */
-    private function loadWidgetClasses(): void
-    {
-        foreach ($this->widgetFiles as $widgetFile) {
-            $path = Theme::DIR.'/app/Widgets/'.$widgetFile;
-
-            if (file_exists($path)) {
-                require_once $path;
-            }
-        }
-    }
-
-    /**
      * Register all custom widgets with WordPress.
      */
     public function registerWidgets(): void
     {
-        foreach ($this->widgetClasses as $widgetClass) {
-            if (class_exists($widgetClass)) {
-                register_widget($widgetClass);
-            }
-        }
-
-        foreach ($this->widgetIdBases as $widgetIdBase) {
-            add_filter('widget_'.$widgetIdBase, [$this, 'normalizeWidgetInstanceForDisplay'], 10, 3);
+        foreach ($this->widgets as $widgetClass) {
+            register_widget($widgetClass);
+            add_filter('widget_'.$widgetClass::idBase(), [$this, 'normalizeWidgetInstanceForDisplay'], 10, 3);
         }
     }
 
@@ -205,7 +121,7 @@ class WidgetServiceProvider extends ServiceProvider
             return;
         }
 
-        if (! class_exists('BannerCarouselWidget') || ! class_exists('PodcastListWidget') || ! class_exists('BlogListWidget')) {
+        if (! class_exists(BannerCarouselWidget::class) || ! class_exists(PodcastListWidget::class) || ! class_exists(BlogListWidget::class)) {
             return;
         }
 
@@ -502,7 +418,7 @@ class WidgetServiceProvider extends ServiceProvider
             return $instance;
         }
 
-        return $this->applyWidgetInstanceAliases($instance, $widget->id_base);
+        return $this->applyWidgetInstanceAliases($instance, $widget);
     }
 
     /**
@@ -520,7 +436,7 @@ class WidgetServiceProvider extends ServiceProvider
             return $instance;
         }
 
-        return $this->applyWidgetInstanceAliases($instance, $widget->id_base);
+        return $this->applyWidgetInstanceAliases($instance, $widget);
     }
 
     /**
@@ -537,7 +453,7 @@ class WidgetServiceProvider extends ServiceProvider
             return $instance;
         }
 
-        return $this->applyWidgetInstanceAliases($instance, $widget->id_base);
+        return $this->applyWidgetInstanceAliases($instance, $widget);
     }
 
     /**
@@ -547,17 +463,17 @@ class WidgetServiceProvider extends ServiceProvider
      */
     private function isThemeWidget(\WP_Widget $widget): bool
     {
-        return in_array($widget->id_base, $this->widgetIdBases, true);
+        return $widget instanceof WidgetAbstract;
     }
 
     /**
      * Copy legacy and Carbon-prefixed keys to standard widget instance keys.
      *
      * @param  array<string,mixed>  $instance  Widget instance values.
-     * @param  string  $widgetIdBase  Widget id base.
+     * @param  WidgetAbstract  $widget  Theme widget object.
      * @return array<string,mixed>
      */
-    private function applyWidgetInstanceAliases(array $instance, string $widgetIdBase): array
+    private function applyWidgetInstanceAliases(array $instance, WidgetAbstract $widget): array
     {
         foreach ($instance as $key => $value) {
             if (! is_string($key) || $key === '_multiwidget' || ! str_starts_with($key, '_')) {
@@ -571,7 +487,7 @@ class WidgetServiceProvider extends ServiceProvider
             }
         }
 
-        $aliases = $this->widgetInstanceAliases[$widgetIdBase] ?? [];
+        $aliases = $widget::instanceAliases();
 
         foreach ($aliases as $legacyKey => $standardKey) {
             if (! array_key_exists($standardKey, $instance) && array_key_exists($legacyKey, $instance)) {

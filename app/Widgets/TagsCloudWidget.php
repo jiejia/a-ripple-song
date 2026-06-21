@@ -1,18 +1,45 @@
 <?php
 
+namespace App\Widgets;
+
+use App\Abstracts\WidgetAbstract;
+
 /**
  * Tags Cloud Widget
  * Display a tag cloud.
  */
-class TagsCloudWidget extends WP_Widget
+class TagsCloudWidget extends WidgetAbstract
 {
+    /**
+     * Return the WordPress widget id base.
+     */
+    public static function idBase(): string
+    {
+        return 'tags_cloud_widget';
+    }
+
+    /**
+     * Return Carbon-prefixed instance keys mapped to standard widget keys.
+     *
+     * @return array<string,string>
+     */
+    public static function instanceAliases(): array
+    {
+        return [
+            'tags_cloud_title' => 'title',
+            'tags_cloud_number' => 'number',
+            'tags_cloud_orderby' => 'orderby',
+            'tags_cloud_order' => 'order',
+        ];
+    }
+
     /**
      * Register widget with WordPress.
      */
     public function __construct()
     {
         parent::__construct(
-            'tags_cloud_widget',
+            static::idBase(),
             __('aripplesong - Tags Cloud', 'sage'),
             ['description' => __('Display article tags cloud', 'sage')]
         );

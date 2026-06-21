@@ -1,18 +1,43 @@
 <?php
 
+namespace App\Widgets;
+
+use App\Abstracts\WidgetAbstract;
+
 /**
  * Footer Links Widget
  * Display footer links or plain text items.
  */
-class FooterLinksWidget extends WP_Widget
+class FooterLinksWidget extends WidgetAbstract
 {
+    /**
+     * Return the WordPress widget id base.
+     */
+    public static function idBase(): string
+    {
+        return 'footer_links_widget';
+    }
+
+    /**
+     * Return Carbon-prefixed instance keys mapped to standard widget keys.
+     *
+     * @return array<string,string>
+     */
+    public static function instanceAliases(): array
+    {
+        return [
+            'footer_links_title' => 'title',
+            'footer_links_items' => 'items',
+        ];
+    }
+
     /**
      * Register widget with WordPress.
      */
     public function __construct()
     {
         parent::__construct(
-            'footer_links_widget',
+            static::idBase(),
             __('aripplesong - Footer Links', 'sage'),
             ['description' => __('Display a list of links or text items in the footer', 'sage')]
         );
