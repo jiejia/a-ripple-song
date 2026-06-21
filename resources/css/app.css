@@ -38,6 +38,12 @@ a {
     text-decoration: none;
 }
 
+/* Keep links inside comment content underlined for readability. */
+.comment-content a {
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
 /* 评论样式 */
 .comment-list {
     list-style: none;
@@ -81,11 +87,11 @@ a {
 
 @layer components {
     input[type="range"].aripplesong-progress-range::-webkit-slider-runnable-track {
-        background: var(--aripplesong-progress-gradient, var(--range-bg));
+        background: var(--range-bg);
     }
 
     input[type="range"].aripplesong-progress-range::-moz-range-track {
-        background: var(--aripplesong-progress-gradient, var(--range-bg));
+        background: var(--range-bg);
     }
 }
 
@@ -121,4 +127,24 @@ a {
     min-width: 0;
     overflow-wrap: anywhere;
     word-break: break-word;
+}
+
+/* 当显示 WordPress 管理工具栏时的调整 */
+body.admin-bar #swup-header ,body.admin-bar .drawer-side{
+    top: 32px;
+}
+
+body.admin-bar .sticky.top-\[70px\] {
+    top: 102px;
+}
+
+@media screen and (max-width: 782px) {
+    body.admin-bar #swup-header ,body.admin-bar .drawer-side{
+        top: 46px;
+    }
+    
+
+    body.admin-bar .sticky.top-\[70px\] {
+        top: 116px;
+    }
 }

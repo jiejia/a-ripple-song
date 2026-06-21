@@ -50,10 +50,6 @@
                 <div class="grid grid-cols-[30px_1fr_30px] gap-2 items-center text-xs">
                     <span x-text="$store.player.currentTimeText">00:00</span>
                     <div class="relative w-full">
-                        {{-- Heatmap background layer with fade-in effect --}}
-                        <div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-1 rounded-full transition-opacity duration-500 ease-out pointer-events-none"
-                            :class="$store.player.progressHeatmapReady ? 'opacity-100' : 'opacity-0'"
-                            :style="{ background: $store.player.progressHeatmapGradient }"></div>
                         <input type="range" min="0" :max="$store.player.duration" :value="$store.player.currentTime"
                             x-on:input="$store.player.seek($event.target.value)"
                             class="range range-xs w-full aripplesong-progress-range relative z-10 text-base-content/20 [--range-bg:orange] [--range-thumb:pink] [--range-fill:0]" />

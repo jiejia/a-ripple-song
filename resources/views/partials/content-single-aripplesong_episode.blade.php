@@ -20,6 +20,4 @@ $episode_data = get_episode_data($post_id);
         @include('partials.entry-authors')
     </div>
 </div>
-<div class="mt-4 rounded-lg bg-base-100 p-4">
-    @php(comments_template())
-</div>
+@php(comments_template())

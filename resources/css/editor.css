@@ -17,6 +17,12 @@ a {
     text-decoration: none;
 }
 
+/* Keep links inside comment content underlined for readability. */
+.comment-content a {
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
 /* 评论样式 */
 .comment-list {
     list-style: none;

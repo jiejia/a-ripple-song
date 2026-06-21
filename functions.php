@@ -1,5 +1,6 @@
 <?php
 
+use App\Providers\CommentServiceProvider;
 use App\Providers\ThemeServiceProvider;
 use App\Providers\CarbonFieldsServiceProvider;
 use App\Providers\CustomAreasServiceProvider;
@@ -53,6 +54,7 @@ require $composer;
 Application::configure()
     ->withProviders([
         ThemeServiceProvider::class,
+        CommentServiceProvider::class,
         CarbonFieldsServiceProvider::class,
         CustomPostTypeServiceProvider::class,
         TaxonomyServiceProvider::class,
