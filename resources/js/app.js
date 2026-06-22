@@ -71,8 +71,7 @@ const swup = new Swup({
 function initPageEnhancements() {
   scheduleIconRefresh();
   initImageLightbox();
-  maybeSendViewMetric();
-  hydrateMetricsFromDom();
+  void maybeSendViewMetric().finally(() => hydrateMetricsFromDom());
 }
 
 document.addEventListener('DOMContentLoaded', initPageEnhancements);

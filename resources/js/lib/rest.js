@@ -4,8 +4,8 @@ const METRIC_ROUTES = {
 };
 
 export const METRIC_ACTIONS = {
-  view: 'aripplesong_increment_view',
-  play: 'aripplesong_increment_play',
+  view: 'view',
+  play: 'play',
 };
 
 let lastViewMetricKey = null;
@@ -114,21 +114,21 @@ export async function sendMetric(action, postId) {
 /**
  * Send a page view metric once per post and URL combination.
  *
- * @return {void}
+ * @return {Promise<object|null>}
  */
 export function maybeSendViewMetric() {
   const postId = resolvePrimaryPostId();
   if (!postId) {
-    return;
+    return Promise.resolve(null);
   }
 
   const key = `${postId}:${window.location.href}`;
   if (lastViewMetricKey === key) {
-    return;
+    return Promise.resolve(null);
   }
 
   lastViewMetricKey = key;
-  void sendMetric(METRIC_ACTIONS.view, postId);
+  return sendMetric(METRIC_ACTIONS.view, postId);
 }
 
 /**
