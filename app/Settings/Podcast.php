@@ -81,8 +81,7 @@ class Podcast extends SettingAbstract
         $coverField = Field::make('image', $this->fieldName('cover'), __('Podcast Cover (1400-3000px square)', 'sage'));
         $coverField
             ->set_value_type('url')
-            ->set_help_text(__('Required. Square JPG/PNG between 1400-3000px for itunes:image. Apple recommends keeping the file under 512KB.', 'sage'))
-            ->set_required(true);
+            ->set_help_text(__('Required. Square JPG/PNG between 1400-3000px for itunes:image. Apple recommends keeping the file under 512KB.', 'sage'));
 
         /** @var \Carbon_Fields\Field\Select_Field $explicitField */
         $explicitField = Field::make('select', $this->fieldName('explicit'), __('Default Explicit Flag', 'sage'));
@@ -92,23 +91,20 @@ class Podcast extends SettingAbstract
                 'explicit' => __('explicit', 'sage'),
             ])
             ->set_default_value('clean')
-            ->set_help_text(__('Required. Single-episode value can override.', 'sage'))
-            ->set_required(true);
+            ->set_help_text(__('Required. Single-episode value can override.', 'sage'));
 
         /** @var \Carbon_Fields\Field\Select_Field $languageField */
         $languageField = Field::make('select', $this->fieldName('language'), __('Language (RFC 5646)', 'sage'));
         $languageField
             ->set_options($this->podcastLanguageOptions())
             ->set_default_value((string) (get_bloginfo('language') ?: 'en-US'))
-            ->set_help_text(__('Required. Typically en-US, zh-CN, etc.', 'sage'))
-            ->set_required(true);
+            ->set_help_text(__('Required. Typically en-US, zh-CN, etc.', 'sage'));
 
         /** @var \Carbon_Fields\Field\Select_Field $primaryCategoryField */
         $primaryCategoryField = Field::make('select', $this->fieldName('category_primary'), __('Primary Category (Apple Podcasts)', 'sage'));
         $primaryCategoryField
             ->set_options($notSetOptions + $this->itunesCategories())
-            ->set_help_text(__('Required by Apple Podcasts. Choose at least a primary category.', 'sage'))
-            ->set_required(true);
+            ->set_help_text(__('Required by Apple Podcasts. Choose at least a primary category.', 'sage'));
 
         /** @var \Carbon_Fields\Field\Select_Field $secondaryCategoryField */
         $secondaryCategoryField = Field::make('select', $this->fieldName('category_secondary'), __('Secondary Category (optional)', 'sage'));
@@ -153,27 +149,22 @@ class Podcast extends SettingAbstract
             $rssUrlField,
             Field::make('text', $this->fieldName('title'), __('Podcast Title', 'sage'))
                 ->set_default_value((string) get_bloginfo('name'))
-                ->set_help_text(__('Required. If empty, falls back to site title.', 'sage'))
-                ->set_required(true),
+                ->set_help_text(__('Required. If empty, falls back to site title.', 'sage')),
             Field::make('text', $this->fieldName('subtitle'), __('Podcast Subtitle', 'sage'))
                 ->set_help_text(__('Short tagline shown in some apps.', 'sage')),
             Field::make('textarea', $this->fieldName('description'), __('Podcast Description', 'sage'))
                 ->set_default_value((string) get_bloginfo('description'))
-                ->set_help_text(__('Required. Plain text description of the show.', 'sage'))
-                ->set_required(true),
+                ->set_help_text(__('Required. Plain text description of the show.', 'sage')),
             Field::make('text', $this->fieldName('author'), __('Podcast Author (itunes:author)', 'sage'))
                 ->set_default_value((string) get_bloginfo('name'))
-                ->set_help_text(__('Required. Displayed as show author in directories.', 'sage'))
-                ->set_required(true),
+                ->set_help_text(__('Required. Displayed as show author in directories.', 'sage')),
             Field::make('text', $this->fieldName('owner_name'), __('Owner Name', 'sage'))
                 ->set_default_value((string) get_bloginfo('name'))
-                ->set_help_text(__('Required. For itunes:owner itunes:name.', 'sage'))
-                ->set_required(true),
+                ->set_help_text(__('Required. For itunes:owner itunes:name.', 'sage')),
             Field::make('text', $this->fieldName('owner_email'), __('Owner Email', 'sage'))
                 ->set_attribute('type', 'email')
                 ->set_default_value((string) get_bloginfo('admin_email'))
-                ->set_help_text(__('Required. For itunes:owner itunes:email. Use a monitored inbox.', 'sage'))
-                ->set_required(true),
+                ->set_help_text(__('Required. For itunes:owner itunes:email. Use a monitored inbox.', 'sage')),
             $coverField,
             $explicitField,
             $languageField,
