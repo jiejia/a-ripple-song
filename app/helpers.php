@@ -434,6 +434,24 @@ function modify_author_archive_query($query) {
 add_action('pre_get_posts', 'modify_author_archive_query');
 
 /**
+ * Modify tag archive query to include podcast episodes.
+ *
+ * @param WP_Query $query The WordPress query instance.
+ * @return void
+ */
+function aripplesong_include_episode_post_type_in_tag_archive($query): void
+{
+    // Only modify the public main query on tag archive pages.
+    if (is_admin() || !$query->is_main_query() || !$query->is_tag()) {
+        return;
+    }
+
+    // Include regular posts and podcast episodes that use the shared post_tag taxonomy.
+    $query->set('post_type', ['post', aripplesong_episode_post_type()]);
+}
+add_action('pre_get_posts', 'aripplesong_include_episode_post_type_in_tag_archive');
+
+/**
  * Get primary navigation menu items with parent-child relationship structure
  *
  * @param string $location Menu location name, defaults to 'primary_navigation'
