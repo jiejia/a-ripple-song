@@ -5,6 +5,22 @@ Podcast List Widget Template
 @param array $podcast_data
 --}}
 
+@php
+// Resolve the podcast index page by template because its slug can differ from its title.
+$podcastPages = get_pages([
+  'meta_key' => '_wp_page_template',
+  'meta_value' => 'template-podcast.blade.php',
+  'number' => 1,
+  'post_status' => 'publish',
+]);
+
+// Fall back to the original slug lookup for sites that do not use the podcast template.
+$podcastPage = $podcastPages[0] ?? get_page_by_path('podcast');
+
+// Use the resolved page permalink and avoid silently falling back to the current page.
+$podcastArchiveUrl = $podcastPage instanceof \WP_Post ? get_permalink($podcastPage->ID) : home_url('/');
+@endphp
+
 <div
      x-data="{
        activeTab: 'recent',
@@ -16,7 +32,7 @@ Podcast List Widget Template
     </h2>
     @if($show_see_all)
       <span class="text-xs text-base-content/70">
-        <a href="{{ esc_url(get_permalink(get_page_by_path('podcasts'))) }}">{{ __('See all', 'sage') }}</a>
+        <a href="{{ esc_url($podcastArchiveUrl) }}">{{ __('See all', 'sage') }}</a>
       </span>
     @endif
   </div>
