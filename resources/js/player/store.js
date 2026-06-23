@@ -72,6 +72,22 @@ export function registerPlayerStore(Alpine) {
       return this.playbackRate === 1 ? '1x' : `${this.playbackRate}x`;
     },
 
+    /**
+     * Convert volume input into a safe gain value.
+     *
+     * @param {number|string} volume Volume input from Alpine or storage.
+     * @return {number} Normalized volume between 0 and 1.
+     */
+    normalizeVolume(volume) {
+      const parsedVolume = Number.parseFloat(volume);
+
+      if (!Number.isFinite(parsedVolume)) {
+        return this.volume;
+      }
+
+      return Math.min(Math.max(parsedVolume, 0), 1);
+    },
+
     get currentEpisodePublishDate() {
       if (!this.currentEpisode?.publishDate) {
         return '-';
@@ -343,15 +359,17 @@ export function registerPlayerStore(Alpine) {
     },
 
     setVolume(volume) {
-      this.volume = volume;
+      const normalizedVolume = this.normalizeVolume(volume);
+
+      this.volume = normalizedVolume;
 
       if (this.volumeGainNode) {
-        this.volumeGainNode.gain.value = volume;
+        this.volumeGainNode.gain.value = normalizedVolume;
       }
 
-      this.isMuted = volume === 0;
-      if (volume > 0) {
-        this.lastVolume = volume;
+      this.isMuted = normalizedVolume === 0;
+      if (normalizedVolume > 0) {
+        this.lastVolume = normalizedVolume;
       }
 
       scheduleIconRefresh();
@@ -634,7 +652,7 @@ export function registerPlayerStore(Alpine) {
         return;
       }
 
-      const volume = Number.parseFloat(savedVolume);
+      const volume = this.normalizeVolume(savedVolume);
       this.volume = volume;
       this.lastVolume = volume > 0 ? volume : this.lastVolume;
       this.isMuted = volume === 0;
