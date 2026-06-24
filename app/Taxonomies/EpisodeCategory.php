@@ -70,8 +70,12 @@ class EpisodeCategory
     {
         // Ensure the taxonomy is available in Appearance > Menus.
         add_filter('nav_menu_meta_box_object', [$this, 'enableNavMenuMetaBox']);
+        // Keep the menu panel visible by default for users who have not saved menu screen preferences yet.
+        add_filter('default_hidden_meta_boxes', [$this, 'removeNavMenuMetaBoxFromDefaultHidden'], 10, 2);
         // Add the taxonomy meta box explicitly if WordPress does not add it automatically.
         add_action('load-nav-menus.php', [$this, 'registerNavMenuMetaBox']);
+        // Remove any previously saved hidden state for the taxonomy menu panel.
+        add_action('load-nav-menus.php', [$this, 'showNavMenuMetaBoxForCurrentUser'], 20);
     }
 
     /**
@@ -114,5 +118,55 @@ class EpisodeCategory
             'default',
             $taxonomy
         );
+    }
+
+    /**
+     * Remove the episode category menu panel from default hidden meta boxes.
+     *
+     * @param array<int,string> $hidden Default hidden meta box ids.
+     * @param \WP_Screen $screen Current admin screen object.
+     * @return array<int,string>
+     */
+    public function removeNavMenuMetaBoxFromDefaultHidden(array $hidden, \WP_Screen $screen): array
+    {
+        if ($screen->id !== 'nav-menus') {
+            return $hidden;
+        }
+
+        return array_values(array_diff($hidden, [$this->navMenuMetaBoxId()]));
+    }
+
+    /**
+     * Remove the hidden state for the episode category menu panel on the current user.
+     *
+     * @return void
+     */
+    public function showNavMenuMetaBoxForCurrentUser(): void
+    {
+        $userId = get_current_user_id();
+
+        if ($userId <= 0) {
+            return;
+        }
+
+        $hidden = get_user_option('metaboxhidden_nav-menus', $userId);
+
+        if (! is_array($hidden) || ! in_array($this->navMenuMetaBoxId(), $hidden, true)) {
+            return;
+        }
+
+        $hidden = array_values(array_diff($hidden, [$this->navMenuMetaBoxId()]));
+
+        update_user_option($userId, 'metaboxhidden_nav-menus', $hidden, true);
+    }
+
+    /**
+     * Return the menu screen meta box id used by WordPress.
+     *
+     * @return string
+     */
+    private function navMenuMetaBoxId(): string
+    {
+        return 'add-' . $this->slug();
     }
 }
