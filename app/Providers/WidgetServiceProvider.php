@@ -42,6 +42,11 @@ class WidgetServiceProvider extends ServiceProvider
     private const WIDGET_STYLE_HANDLE = 'aripplesong-widget-editor';
 
     /**
+     * Style handle used for scoped widget admin screen styles.
+     */
+    private const WIDGET_ADMIN_STYLE_HANDLE = 'aripplesong-widget-admin';
+
+    /**
      * Script handle used for widget preview iframes.
      */
     private const WIDGET_PREVIEW_HANDLE = 'aripplesong-widget-preview';
@@ -83,6 +88,7 @@ class WidgetServiceProvider extends ServiceProvider
         add_filter('widget_update_callback', [$this, 'normalizeWidgetInstanceOnUpdate'], 10, 4);
         add_action('wp_enqueue_scripts', [$this, 'enqueueLegacyWidgetPreviewAssets'], 5);
         add_action('admin_enqueue_scripts', [$this, 'enqueueWidgetAdminAssets']);
+        add_action('admin_print_styles-widgets.php', [$this, 'enqueueWidgetMediaModalStyles']);
         add_action('enqueue_block_assets', [$this, 'enqueueWidgetAdminAssets']);
         add_action('wp_head', [$this, 'printCustomizerPreviewThemeScript'], 999);
         add_filter('script_loader_tag', [$this, 'filterWidgetPreviewScriptTag'], 10, 3);
@@ -188,12 +194,20 @@ class WidgetServiceProvider extends ServiceProvider
 
         $this->widgetEditorAssetsLoaded = true;
 
-        $this->enqueueWidgetEditorStyles();
-        wp_add_inline_style('wp-admin', $this->widgetAdminCss());
+        $this->enqueueWidgetAdminStyles();
         wp_enqueue_media();
+        wp_enqueue_style('media-views');
         wp_enqueue_script('jquery');
         wp_add_inline_script('jquery', $this->widgetAdminScript(), 'after');
         wp_add_inline_script('jquery', $this->widgetEditorThemeBridgeScript(), 'after');
+    }
+
+    /**
+     * Enqueue WordPress media modal styles on the parent widgets screen.
+     */
+    public function enqueueWidgetMediaModalStyles(): void
+    {
+        wp_enqueue_style('media-views');
     }
 
     /**
@@ -259,6 +273,20 @@ class WidgetServiceProvider extends ServiceProvider
         } catch (\Throwable $throwable) {
             error_log('Failed to enqueue widget editor styles: '.$throwable->getMessage());
         }
+    }
+
+    /**
+     * Enqueue scoped widget admin styles without loading the frontend stylesheet.
+     */
+    private function enqueueWidgetAdminStyles(): void
+    {
+        if (! wp_style_is(self::WIDGET_ADMIN_STYLE_HANDLE, 'registered')) {
+            wp_register_style(self::WIDGET_ADMIN_STYLE_HANDLE, false, [], null);
+        }
+
+        wp_enqueue_style(self::WIDGET_ADMIN_STYLE_HANDLE);
+        wp_add_inline_style(self::WIDGET_ADMIN_STYLE_HANDLE, $this->buildThemePaletteCss());
+        wp_add_inline_style(self::WIDGET_ADMIN_STYLE_HANDLE, $this->widgetAdminCss());
     }
 
     /**
