@@ -7,7 +7,7 @@ import Swup from 'swup';
 import SwupFormsPlugin from '@swup/forms-plugin';
 import SwupScriptsPlugin from '@swup/scripts-plugin';
 import Alpine from 'alpinejs';
-import { hydrateMetricsFromDom, maybeSendViewMetric } from '@scripts/lib/rest.js';
+import { hydrateMetricsFromDom, maybeSendViewMetric, syncPrimaryPostContext } from '@scripts/lib/rest.js';
 import { registerDateFormatter } from '@scripts/lib/date.js';
 import { createIcons, icons, scheduleIconRefresh } from '@scripts/lib/icons.js';
 import { registerThemeStore } from '@scripts/theme/store.js';
@@ -71,6 +71,7 @@ const swup = new Swup({
 function initPageEnhancements() {
   scheduleIconRefresh();
   initImageLightbox();
+  syncPrimaryPostContext();
   void maybeSendViewMetric().finally(() => hydrateMetricsFromDom());
 }
 

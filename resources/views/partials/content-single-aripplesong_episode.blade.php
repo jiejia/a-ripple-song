@@ -4,7 +4,12 @@ $audio_file = aripplesong_get_episode_meta($post_id, 'audio_file');
 $episode_data = get_episode_data($post_id);
 @endphp
 
-<div class="rounded-lg bg-base-100 p-4" x-data="{ episode: @js($episode_data) }">
+<div
+    class="rounded-lg bg-base-100 p-4"
+    x-data="{ episode: @js($episode_data) }"
+    data-primary-post-id="{{ $post_id }}"
+    data-primary-post-type="{{ get_post_type($post_id) }}"
+>
     <div class="grid grid-flow-row gap-2">
         @include('partials.podcast-episode-card', [
             'post_id' => $post_id,

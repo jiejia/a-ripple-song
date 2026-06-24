@@ -11,6 +11,35 @@ export const METRIC_ACTIONS = {
 let lastViewMetricKey = null;
 
 /**
+ * Resolve the current primary post context from the active Swup content.
+ *
+ * @return {{postId:number, postType:string}}
+ */
+export function resolvePrimaryPostContext() {
+  const primaryElement = document.querySelector('#swup-main [data-primary-post-id]');
+  const primaryPostId = Number(primaryElement?.dataset.primaryPostId || 0);
+  const primaryPostType = String(primaryElement?.dataset.primaryPostType || '');
+
+  if (primaryPostId > 0) {
+    return {
+      postId: primaryPostId,
+      postType: primaryPostType,
+    };
+  }
+
+  const ids = [...new Set(
+    Array.from(document.querySelectorAll('#swup-main .js-views-count[data-post-id]'))
+      .map((element) => Number(element.dataset.postId))
+      .filter(Boolean),
+  )];
+
+  return {
+    postId: ids.length === 1 ? ids[0] : 0,
+    postType: '',
+  };
+}
+
+/**
  * Build a WordPress REST API URL for both pretty and plain permalink structures.
  *
  * @param {string} route REST route without a leading slash.
@@ -62,18 +91,36 @@ export function bumpPlayCountDom(postId) {
  * @return {number}
  */
 export function resolvePrimaryPostId() {
-  const ajaxPostId = window.aripplesongData?.ajax?.postId;
-  if (ajaxPostId) {
-    return ajaxPostId;
+  const context = resolvePrimaryPostContext();
+
+  if (context.postId > 0) {
+    return context.postId;
   }
 
-  const ids = [...new Set(
-    Array.from(document.querySelectorAll('.js-views-count[data-post-id]'))
-      .map((element) => Number(element.dataset.postId))
-      .filter(Boolean),
-  )];
+  const ajaxPostId = Number(window.aripplesongData?.ajax?.postId || 0);
+  return ajaxPostId > 0 ? ajaxPostId : 0;
+}
 
-  return ids.length === 1 ? ids[0] : 0;
+/**
+ * Synchronize the global page context after initial load or a Swup navigation.
+ *
+ * @return {{postId:number, postType:string}}
+ */
+export function syncPrimaryPostContext() {
+  const context = resolvePrimaryPostContext();
+
+  if (!window.aripplesongData) {
+    window.aripplesongData = {};
+  }
+
+  if (!window.aripplesongData.ajax) {
+    window.aripplesongData.ajax = {};
+  }
+
+  window.aripplesongData.ajax.postId = context.postId;
+  window.aripplesongData.ajax.postType = context.postType;
+
+  return context;
 }
 
 /**

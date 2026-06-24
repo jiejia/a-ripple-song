@@ -1,4 +1,8 @@
-<article class="rounded-lg bg-base-100 p-4">
+<article
+  class="rounded-lg bg-base-100 p-4"
+  data-primary-post-id="{{ get_the_ID() }}"
+  data-primary-post-type="{{ get_post_type() }}"
+>
   <div class="grid grid-flow-row gap-2">
     <div class="grid grid-flow-row gap-1">
       <h4 class="text-md font-bold">{{ $title }}</h4>
