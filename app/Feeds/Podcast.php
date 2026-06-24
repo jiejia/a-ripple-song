@@ -4,7 +4,8 @@ namespace App\Feeds;
 
 use App\Abstracts\FeedAbstract;
 use App\CustomPostTypes\Episode;
-use App\Settings\Podcast as PodcastSettings;
+use App\Providers\Settings\Podcast as PodcastSettings;
+
 if (!defined('ABSPATH')) {
     exit;
 }
@@ -687,192 +688,192 @@ class Podcast extends FeedAbstract
     xmlns:content="http://purl.org/rss/1.0/modules/content/"
     xmlns:podcast="https://podcastindex.org/namespace/1.0">
     <channel>
-        <title><?php 
+        <title><?php
         echo esc_html($channel_title);
         ?></title>
-        <link><?php 
+        <link><?php
         echo esc_url($site_url);
         ?></link>
-	        <atom:link href="<?php 
+	        <atom:link href="<?php
         echo esc_url($feed_url);
         ?>" rel="self" type="application/rss+xml" />
-	        <language><?php 
+	        <language><?php
         echo esc_html($channel_language);
         ?></language>
-	        <description><![CDATA[<?php 
+	        <description><![CDATA[<?php
         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped for CDATA by escape_cdata().
         echo $this->escapeCdata((string) $channel_description);
         ?>]]></description>
-	        <itunes:summary><![CDATA[<?php 
+	        <itunes:summary><![CDATA[<?php
         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped for CDATA by escape_cdata().
         echo $this->escapeCdata((string) $channel_description);
         ?>]]></itunes:summary>
-        <itunes:subtitle><?php 
+        <itunes:subtitle><?php
         echo esc_html((string) $channel_subtitle);
         ?></itunes:subtitle>
-        <itunes:author><?php 
+        <itunes:author><?php
         echo esc_html((string) $channel_author);
         ?></itunes:author>
-        <itunes:explicit><?php 
+        <itunes:explicit><?php
         echo esc_html((string) $channel_explicit);
         ?></itunes:explicit>
-        <lastBuildDate><?php 
+        <lastBuildDate><?php
         echo esc_html($last_build_date);
         ?></lastBuildDate>
         <itunes:owner>
-            <itunes:name><?php 
+            <itunes:name><?php
         echo esc_html((string) $channel_owner_name);
         ?></itunes:name>
-            <itunes:email><?php 
+            <itunes:email><?php
         echo esc_html((string) $channel_owner_email);
         ?></itunes:email>
         </itunes:owner>
-        <?php 
+        <?php
         if ($channel_cover) {
             ?>
-        <itunes:image href="<?php 
+        <itunes:image href="<?php
             echo esc_url($channel_cover);
             ?>" />
-        <?php 
+        <?php
         }
         ?>
-        <?php 
+        <?php
         if ($channel_category_primary) {
             ?>
-        <?php 
+        <?php
             $primary_parts = explode('::', (string) $channel_category_primary);
             ?>
-        <itunes:category text="<?php 
+        <itunes:category text="<?php
             echo esc_attr($primary_parts[0]);
             ?>">
-            <?php 
+            <?php
             if (isset($primary_parts[1])) {
                 ?>
-            <itunes:category text="<?php 
+            <itunes:category text="<?php
                 echo esc_attr($primary_parts[1]);
                 ?>" />
-            <?php 
+            <?php
             }
             ?>
         </itunes:category>
-        <?php 
+        <?php
         }
         ?>
-        <?php 
+        <?php
         if ($channel_category_secondary) {
             ?>
-        <?php 
+        <?php
             $secondary_parts = explode('::', (string) $channel_category_secondary);
             ?>
-        <itunes:category text="<?php 
+        <itunes:category text="<?php
             echo esc_attr($secondary_parts[0]);
             ?>">
-            <?php 
+            <?php
             if (isset($secondary_parts[1])) {
                 ?>
-            <itunes:category text="<?php 
+            <itunes:category text="<?php
                 echo esc_attr($secondary_parts[1]);
                 ?>" />
-            <?php 
+            <?php
             }
             ?>
         </itunes:category>
-        <?php 
+        <?php
         }
         ?>
-        <?php 
+        <?php
         if ($channel_copyright) {
             ?>
-        <copyright><?php 
+        <copyright><?php
             echo esc_html((string) $channel_copyright);
             ?></copyright>
-        <?php 
+        <?php
         }
         ?>
-        <?php 
+        <?php
         if ($itunes_type) {
             ?>
-        <itunes:type><?php 
+        <itunes:type><?php
             echo esc_html((string) $itunes_type);
             ?></itunes:type>
-        <?php 
+        <?php
         }
         ?>
-        <?php 
+        <?php
         if ($itunes_title) {
             ?>
-        <itunes:title><?php 
+        <itunes:title><?php
             echo esc_html((string) $itunes_title);
             ?></itunes:title>
-        <?php 
+        <?php
         }
         ?>
-        <?php 
+        <?php
         if ($itunes_block === 'yes') {
             ?>
         <itunes:block>yes</itunes:block>
-        <?php 
+        <?php
         }
         ?>
-        <?php 
+        <?php
         if ($itunes_complete === 'yes') {
             ?>
         <itunes:complete>yes</itunes:complete>
-        <?php 
+        <?php
         }
         ?>
-        <?php 
+        <?php
         if ($itunes_new_feed_url) {
             ?>
-        <itunes:new-feed-url><?php 
+        <itunes:new-feed-url><?php
             echo esc_url((string) $itunes_new_feed_url);
             ?></itunes:new-feed-url>
-        <?php 
+        <?php
         }
         ?>
-        <?php 
+        <?php
         if ($podcast_locked === 'yes') {
             ?>
-        <podcast:locked owner="<?php 
+        <podcast:locked owner="<?php
             echo esc_attr((string) $podcast_locked_owner);
             ?>">yes</podcast:locked>
-        <?php 
+        <?php
         }
         ?>
-        <?php 
+        <?php
         if ($podcast_guid) {
             ?>
-        <podcast:guid><?php 
+        <podcast:guid><?php
             echo esc_html((string) $podcast_guid);
             ?></podcast:guid>
-        <?php 
+        <?php
         }
         ?>
-        <?php 
+        <?php
         if ($apple_verify_code) {
             ?>
-        <podcast:txt purpose="applepodcastsverify"><?php 
+        <podcast:txt purpose="applepodcastsverify"><?php
             echo esc_html((string) $apple_verify_code);
             ?></podcast:txt>
-        <?php 
+        <?php
         }
         ?>
-        <?php 
+        <?php
         if ($generator) {
             ?>
-        <generator><?php 
+        <generator><?php
             echo esc_html((string) $generator);
             ?></generator>
-        <?php 
+        <?php
         }
         ?>
-        <?php 
+        <?php
         if (is_array($podcast_funding) && !empty($podcast_funding)) {
             ?>
-            <?php 
+            <?php
             foreach ($podcast_funding as $fund) {
                 ?>
-                <?php 
+                <?php
                 if (!is_array($fund)) {
                     continue;
                 }
@@ -882,19 +883,19 @@ class Podcast extends FeedAbstract
                     continue;
                 }
                 ?>
-        <podcast:funding url="<?php 
+        <podcast:funding url="<?php
                 echo esc_url($url);
-                ?>"><?php 
+                ?>"><?php
                 echo esc_html($label);
                 ?></podcast:funding>
-            <?php 
+            <?php
             }
             ?>
-        <?php 
+        <?php
         }
         ?>
 
-        <?php 
+        <?php
         if ($query->have_posts()) {
             while ($query->have_posts()) {
                 $query->the_post();
@@ -942,100 +943,100 @@ class Podcast extends FeedAbstract
                 $audio_mime = $this->normalizeEnclosureMime((string) $audio_url, (string) $audio_mime_raw);
                 ?>
         <item>
-            <title><?php 
+            <title><?php
                 echo esc_html(get_the_title());
                 ?></title>
-            <link><?php 
+            <link><?php
                 echo esc_url(get_permalink());
                 ?></link>
-            <guid isPermaLink="<?php 
+            <guid isPermaLink="<?php
                 echo esc_attr($episode_guid === $episode_permalink ? 'true' : 'false');
-                ?>"><?php 
+                ?>"><?php
                 echo esc_html($episode_guid);
                 ?></guid>
-            <pubDate><?php 
+            <pubDate><?php
                 echo esc_html($pub_date);
                 ?></pubDate>
-	            <description><![CDATA[<?php 
+	            <description><![CDATA[<?php
                 // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped for CDATA by escape_cdata().
                 echo $this->escapeCdata((string) $item_summary);
                 ?>]]></description>
-	            <itunes:summary><![CDATA[<?php 
+	            <itunes:summary><![CDATA[<?php
                 // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped for CDATA by escape_cdata().
                 echo $this->escapeCdata((string) $item_summary);
                 ?>]]></itunes:summary>
-	            <?php 
+	            <?php
                 if ($content_html) {
                     ?>
-	            <content:encoded><![CDATA[<?php 
+	            <content:encoded><![CDATA[<?php
                     // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- HTML content is sanitized by core filters; wrapped in CDATA.
                     echo $this->escapeCdata((string) $content_html);
                     ?>]]></content:encoded>
-	            <?php 
+	            <?php
                 }
                 ?>
-            <?php 
+            <?php
                 if ($audio_url) {
                     ?>
-            <enclosure url="<?php 
+            <enclosure url="<?php
                     echo esc_url($audio_url);
-                    ?>" length="<?php 
+                    ?>" length="<?php
                     echo esc_attr($audio_length);
-                    ?>" type="<?php 
+                    ?>" type="<?php
                     echo esc_attr($audio_mime);
                     ?>" />
-            <?php 
+            <?php
                 }
                 ?>
-            <?php 
+            <?php
                 if ($duration_seconds) {
                     ?>
-            <itunes:duration><?php 
+            <itunes:duration><?php
                     echo esc_html($duration_seconds);
                     ?></itunes:duration>
-            <?php 
+            <?php
                 }
                 ?>
-            <itunes:explicit><?php 
+            <itunes:explicit><?php
                 echo esc_html($episode_explicit);
                 ?></itunes:explicit>
-            <itunes:author><?php 
+            <itunes:author><?php
                 echo esc_html($episode_author);
                 ?></itunes:author>
-            <?php 
+            <?php
                 if ($episode_itunes_title !== '') {
                     ?>
-            <itunes:title><?php 
+            <itunes:title><?php
                     echo esc_html((string) $episode_itunes_title);
                     ?></itunes:title>
-            <?php 
+            <?php
                 }
                 ?>
-            <?php 
+            <?php
                 if ($episode_subtitle) {
                     ?>
-            <itunes:subtitle><?php 
+            <itunes:subtitle><?php
                     echo esc_html((string) $episode_subtitle);
                     ?></itunes:subtitle>
-            <?php 
+            <?php
                 }
                 ?>
-            <?php 
+            <?php
                 if ($episode_image) {
                     ?>
-            <itunes:image href="<?php 
+            <itunes:image href="<?php
                     echo esc_url($episode_image);
                     ?>" />
-            <?php 
+            <?php
                 }
                 ?>
-	            <?php 
+	            <?php
                 if (!empty($episode_people)) {
                     ?>
-	                <?php 
+	                <?php
                     foreach ($episode_people as $person) {
                         ?>
-	            <podcast:person<?php 
+	            <podcast:person<?php
                         if (!empty($person['role'])) {
                             echo ' role="' . esc_attr($person['role']) . '"';
                         }
@@ -1045,38 +1046,38 @@ class Podcast extends FeedAbstract
                         if (!empty($person['img'])) {
                             echo ' img="' . esc_url($person['img']) . '"';
                         }
-                        ?>><?php 
+                        ?>><?php
                         echo esc_html($person['name']);
                         ?></podcast:person>
-	                <?php 
+	                <?php
                     }
                     ?>
-	            <?php 
+	            <?php
                 }
                 ?>
-            <?php 
+            <?php
                 if ($transcript_url) {
                     ?>
-            <podcast:transcript url="<?php 
+            <podcast:transcript url="<?php
                     echo esc_url($transcript_url);
-                    ?>" type="<?php 
+                    ?>" type="<?php
                     echo esc_attr($this->guessTranscriptType($transcript_url));
                     ?>" />
-            <?php 
+            <?php
                 }
                 ?>
-            <?php 
+            <?php
                 if ($episode_chapters_url && (preg_match('~^https://~i', $episode_chapters_url) || preg_match('~^https?://localhost(?::\d+)?/~i', $episode_chapters_url))) {
                     ?>
-            <podcast:chapters url="<?php 
+            <podcast:chapters url="<?php
                     echo esc_url($episode_chapters_url);
-                    ?>" type="<?php 
+                    ?>" type="<?php
                     echo esc_attr((string) $episode_chapters_type);
                     ?>" />
-            <?php 
+            <?php
                 }
                 ?>
-            <?php 
+            <?php
                 if (is_array($episode_soundbites) && !empty($episode_soundbites)) {
                     foreach ($episode_soundbites as $soundbite) {
                         if (!is_array($soundbite)) {
@@ -1089,68 +1090,68 @@ class Podcast extends FeedAbstract
                         }
                         $sb_title = trim((string) ($soundbite[Episode::fieldKey('title')] ?? ''));
                         ?>
-            <?php 
+            <?php
                         if ($sb_title !== '') {
                             ?>
-            <podcast:soundbite startTime="<?php 
+            <podcast:soundbite startTime="<?php
                             echo esc_attr($start);
-                            ?>" duration="<?php 
+                            ?>" duration="<?php
                             echo esc_attr($dur);
-                            ?>"><?php 
+                            ?>"><?php
                             echo esc_html($sb_title);
                             ?></podcast:soundbite>
-            <?php 
+            <?php
                         } else {
                             ?>
-            <podcast:soundbite startTime="<?php 
+            <podcast:soundbite startTime="<?php
                             echo esc_attr($start);
-                            ?>" duration="<?php 
+                            ?>" duration="<?php
                             echo esc_attr($dur);
                             ?>" />
-            <?php 
+            <?php
                         }
                         ?>
-            <?php 
+            <?php
                     }
                 }
                 ?>
-            <?php 
+            <?php
                 if ($episode_number > 0) {
                     ?>
-            <itunes:episode><?php 
+            <itunes:episode><?php
                     echo esc_html((int) $episode_number);
                     ?></itunes:episode>
-            <?php 
+            <?php
                 }
                 ?>
-            <?php 
+            <?php
                 if ($season_number > 0) {
                     ?>
-            <itunes:season><?php 
+            <itunes:season><?php
                     echo esc_html((int) $season_number);
                     ?></itunes:season>
-            <?php 
+            <?php
                 }
                 ?>
-            <itunes:episodeType><?php 
+            <itunes:episodeType><?php
                 echo esc_html($episode_type ? $episode_type : 'full');
                 ?></itunes:episodeType>
-            <?php 
+            <?php
                 if ($episode_block === 'yes') {
                     ?>
             <itunes:block>yes</itunes:block>
-            <?php 
+            <?php
                 }
                 ?>
         </item>
-				<?php 
+				<?php
             }
             wp_reset_postdata();
         }
         ?>
     </channel>
 </rss>
-		<?php 
+		<?php
         exit;
     }
 }

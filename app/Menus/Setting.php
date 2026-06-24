@@ -2,7 +2,7 @@
 
 namespace App\Menus;
 
-use App\Settings\Podcast;
+use App\Providers\Settings\Podcast;
 use App\Theme;
 
 /**

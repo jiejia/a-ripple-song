@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Contracts\SettingInterface;
-use App\Settings\Podcast;
+use App\Providers\Settings\Podcast;
 use Carbon_Fields\Container;
 use Illuminate\Support\ServiceProvider;
 

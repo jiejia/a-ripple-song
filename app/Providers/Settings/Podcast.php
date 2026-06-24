@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Settings;
+namespace App\Providers\Settings;
 
 use App\Abstracts\SettingAbstract;
 use App\Theme;
