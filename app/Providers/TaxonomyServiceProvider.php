@@ -28,6 +28,15 @@ class TaxonomyServiceProvider extends ServiceProvider
     public function register(): void
     {
         add_action('init', [$this, 'registerTaxonomies']);
+
+        foreach (array_keys($this->taxonomies) as $taxonomyClass) {
+            // Allow each taxonomy to attach its own supporting hooks.
+            $taxonomy = new $taxonomyClass();
+
+            if (method_exists($taxonomy, 'registerHooks')) {
+                $taxonomy->registerHooks();
+            }
+        }
     }
 
     /**

@@ -60,4 +60,59 @@ class EpisodeCategory
             'rewrite' => ['slug' => 'podcast-category'],
         ];
     }
+
+    /**
+     * Register hooks required by the taxonomy.
+     *
+     * @return void
+     */
+    public function registerHooks(): void
+    {
+        // Ensure the taxonomy is available in Appearance > Menus.
+        add_filter('nav_menu_meta_box_object', [$this, 'enableNavMenuMetaBox']);
+        // Add the taxonomy meta box explicitly if WordPress does not add it automatically.
+        add_action('load-nav-menus.php', [$this, 'registerNavMenuMetaBox']);
+    }
+
+    /**
+     * Ensure the episode category taxonomy can be selected on the menu editor screen.
+     *
+     * @param mixed $taxonomy Current menu meta box object.
+     * @return mixed
+     */
+    public function enableNavMenuMetaBox($taxonomy)
+    {
+        if (! $taxonomy instanceof \WP_Taxonomy || $taxonomy->name !== $this->slug()) {
+            return $taxonomy;
+        }
+
+        $taxonomy->show_in_nav_menus = true;
+
+        return $taxonomy;
+    }
+
+    /**
+     * Register the episode category meta box on Appearance > Menus.
+     *
+     * @return void
+     */
+    public function registerNavMenuMetaBox(): void
+    {
+        $taxonomy = get_taxonomy($this->slug());
+
+        if (! $taxonomy instanceof \WP_Taxonomy) {
+            return;
+        }
+
+        // Reuse WordPress core taxonomy menu item UI for consistent search and selection behavior.
+        add_meta_box(
+            'add-' . $taxonomy->name,
+            $taxonomy->labels->name,
+            'wp_nav_menu_item_taxonomy_meta_box',
+            'nav-menus',
+            'side',
+            'default',
+            $taxonomy
+        );
+    }
 }
