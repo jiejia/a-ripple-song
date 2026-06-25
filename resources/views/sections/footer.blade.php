@@ -1,8 +1,8 @@
 <footer class="text-center text-base-content/70 text-xs">
   <div class="max-w-screen-xl mx-auto p-4 pt-0">
-    @php($footerCopyright = \App\Customizers\Copyright::getCopyright())
-    @php($defaultCopyright = sprintf(__('Powered by %s', 'a-ripple-song'), '<a href="https://github.com/jiejia/a-ripple-song" target="_blank" class="text-primary">A Ripple Song</a> Theme'))
     @php
+      $footerCopyright = \App\Customizers\Copyright::getCopyright();
+      $defaultCopyright = \App\Customizers\Copyright::getDefaultCopyright();
       // Use the site date format, then extract the year for the copyright line.
       $copyrightDate = wp_date(get_option('date_format'));
       preg_match('/\d{4}/', $copyrightDate, $copyrightYearMatches);

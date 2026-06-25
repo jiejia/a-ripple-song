@@ -20,6 +20,24 @@ class Copyright extends CustomizerAbstract
     }
 
     /**
+     * Return the default footer copyright line with a linked theme name.
+     */
+    public static function getDefaultCopyright(): string
+    {
+        $themeLink = sprintf(
+            '<a href="%s" target="_blank" rel="noopener" class="text-primary">%s</a>',
+            esc_url(Theme::REPOSITORY_URI),
+            esc_html(Theme::NAME)
+        );
+
+        return sprintf(
+            /* translators: %s: linked theme name followed by the word "Theme". */
+            __('Powered by %s', Theme::TEXT_DOMAIN),
+            $themeLink . ' Theme'
+        );
+    }
+
+    /**
      * Register the footer copyright Customizer field.
      *
      * @param WP_Customize_Manager $wpCustomize WordPress Customizer manager.

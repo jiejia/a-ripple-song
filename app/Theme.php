@@ -7,6 +7,16 @@ class Theme
 
     public const NAME = 'A Ripple Song';
 
+    /**
+     * Theme text domain; must match the Text Domain header in style.css.
+     */
+    public const TEXT_DOMAIN = 'a-ripple-song';
+
+    /**
+     * Public source repository URL used for theme attribution links.
+     */
+    public const REPOSITORY_URI = 'https://github.com/jiejia/a-ripple-song';
+
     public const VERSION = '1.0.0';
 
     public const DIR = A_RIPPLE_SONG_THEME_DIR;

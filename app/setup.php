@@ -95,6 +95,13 @@ add_action('after_setup_theme', function () {
     add_theme_support('title-tag');
 
     /**
+     * Enable automatic RSS feed links in the document head.
+     *
+     * @link https://developer.wordpress.org/reference/functions/add_theme_support/#feed-links
+     */
+    add_theme_support('automatic-feed-links');
+
+    /**
      * Enable post thumbnail support.
      *
      * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/

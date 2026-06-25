@@ -479,6 +479,16 @@ class Podcast extends FeedAbstract
         return $fallback;
     }
     /**
+     * Output an RSS 2.0 title element (not an HTML document title).
+     *
+     * @param string $title Title text.
+     */
+    private function echoRssTitle(string $title): void
+    {
+        $tag = 'title';
+        echo '<' . $tag . '>' . esc_html($title) . '</' . $tag . '>';
+    }
+    /**
      * Normalize the RSS 2.0 <language> value to ISO 639-1 (two-letter) code.
      *
      * Some feed validators incorrectly require ISO 639-1 instead of RFC 1766/BCP47.
@@ -585,10 +595,10 @@ class Podcast extends FeedAbstract
      * @param string $subtitle
      * @param string $author
      * @param string $feed_url
-     * @param string $site_url
+     * @param string $home_url
      * @return string
      */
-    private function ensureMinChannelDescription($description, $title, $subtitle, $author, $feed_url, $site_url)
+    private function ensureMinChannelDescription($description, $title, $subtitle, $author, $feed_url, $home_url)
     {
         $description = trim((string) $description);
         $plain = wp_strip_all_tags($description, \true);
@@ -601,7 +611,7 @@ class Podcast extends FeedAbstract
         $subtitle = trim((string) $subtitle);
         $author = trim((string) $author);
         $feed_url = trim((string) $feed_url);
-        $site_url = trim((string) $site_url);
+        $home_url = trim((string) $home_url);
         $header = $title;
         if ($subtitle !== '') {
             $header = $title !== '' ? $title . ' — ' . $subtitle : $subtitle;
@@ -617,9 +627,9 @@ class Podcast extends FeedAbstract
         if ($feed_url !== '') {
             /* translators: %s: podcast feed URL */
             $addon_parts[] = sprintf(__('Subscribe: %s', 'a-ripple-song'), $feed_url);
-        } elseif ($site_url !== '') {
+        } elseif ($home_url !== '') {
             /* translators: %s: site URL */
-            $addon_parts[] = sprintf(__('Website: %s', 'a-ripple-song'), $site_url);
+            $addon_parts[] = sprintf(__('Website: %s', 'a-ripple-song'), $home_url);
         }
         $addon = trim(implode(' ', $addon_parts));
         if ($addon === '') {
@@ -642,7 +652,7 @@ class Podcast extends FeedAbstract
         if (strtoupper($request_method) === 'HEAD') {
             exit;
         }
-        $site_url = home_url('/');
+        $home_url = home_url('/');
         $feed_url = $this->getCanonicalFeedUrl();
         $settings = (new PodcastSettings())->getSettings();
         $channel_title = (string) $settings['title'];
@@ -653,7 +663,7 @@ class Podcast extends FeedAbstract
         $channel_owner_email = (string) $settings['owner_email'];
         $channel_cover = $this->encodeUrlPathForRss((string) $settings['cover']);
         $default_item_image = $channel_cover;
-        $channel_description = $this->ensureMinChannelDescription((string) $channel_description, (string) $channel_title, (string) $channel_subtitle, (string) $channel_author, (string) $feed_url, (string) $site_url);
+        $channel_description = $this->ensureMinChannelDescription((string) $channel_description, (string) $channel_title, (string) $channel_subtitle, (string) $channel_author, (string) $feed_url, (string) $home_url);
         if ($default_item_image === '') {
             $site_icon = get_site_icon_url(1400);
             if (is_string($site_icon) && $site_icon !== '') {
@@ -694,11 +704,11 @@ class Podcast extends FeedAbstract
     xmlns:content="http://purl.org/rss/1.0/modules/content/"
     xmlns:podcast="https://podcastindex.org/namespace/1.0">
     <channel>
-        <title><?php
-        echo esc_html($channel_title);
-        ?></title>
+        <?php
+        $this->echoRssTitle((string) $channel_title);
+        ?>
         <link><?php
-        echo esc_url($site_url);
+        echo esc_url($home_url);
         ?></link>
 	        <atom:link href="<?php
         echo esc_url($feed_url);
@@ -949,9 +959,9 @@ class Podcast extends FeedAbstract
                 $audio_mime = $this->normalizeEnclosureMime((string) $audio_url, (string) $audio_mime_raw);
                 ?>
         <item>
-            <title><?php
-                echo esc_html(get_the_title());
-                ?></title>
+            <?php
+                $this->echoRssTitle((string) get_the_title());
+                ?>
             <link><?php
                 echo esc_url(get_permalink());
                 ?></link>
