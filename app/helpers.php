@@ -272,10 +272,20 @@ function aripplesong_get_participated_podcast_ids(int $user_id): array
         'members',
         'guests',
     ];
+    $people_meta_prefixes = [
+        Episode::storedFieldKey('members') . '|||',
+        Episode::storedFieldKey('guests') . '|||',
+        'members|||',
+        'guests|||',
+    ];
     $meta_key_placeholders = implode(', ', array_fill(0, count($people_meta_keys), '%s'));
+    $meta_prefix_placeholders = implode(' OR ', array_fill(0, count($people_meta_prefixes), 'people_meta.meta_key LIKE %s'));
     $serialized_string_like = '%' . $wpdb->esc_like('"' . $user_id . '"') . '%';
     $serialized_int_like = '%' . $wpdb->esc_like('i:' . $user_id . ';') . '%';
     $raw_id = (string) $user_id;
+    $exploded_meta_prefixes = array_map(static function (string $prefix) use ($wpdb): string {
+        return $wpdb->esc_like($prefix) . '%|value';
+    }, $people_meta_prefixes);
 
     $ids = $wpdb->get_col($wpdb->prepare(
         "SELECT DISTINCT posts.ID
@@ -283,17 +293,27 @@ function aripplesong_get_participated_podcast_ids(int $user_id): array
         INNER JOIN {$wpdb->postmeta} people_meta ON posts.ID = people_meta.post_id
         WHERE posts.post_type = %s
             AND posts.post_status = 'publish'
-            AND people_meta.meta_key IN ({$meta_key_placeholders})
             AND (
-                people_meta.meta_value LIKE %s
-                OR people_meta.meta_value LIKE %s
-                OR people_meta.meta_value = %s
+                (
+                    people_meta.meta_key IN ({$meta_key_placeholders})
+                    AND (
+                        people_meta.meta_value LIKE %s
+                        OR people_meta.meta_value LIKE %s
+                        OR people_meta.meta_value = %s
+                    )
+                )
+                OR (
+                    ({$meta_prefix_placeholders})
+                    AND people_meta.meta_value = %s
+                )
             )
         ORDER BY posts.post_date DESC",
         array_merge(
             [aripplesong_episode_post_type()],
             $people_meta_keys,
-            [$serialized_string_like, $serialized_int_like, $raw_id]
+            [$serialized_string_like, $serialized_int_like, $raw_id],
+            $exploded_meta_prefixes,
+            [$raw_id]
         )
     ));
 
