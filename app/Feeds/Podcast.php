@@ -233,6 +233,12 @@ class Podcast extends FeedAbstract
     private function resolveMediaUrl($postId, $urlMetaKey)
     {
         $url = (string) $this->getEpisodeMetaValue($postId, $urlMetaKey, '');
+        if ($urlMetaKey === 'audio_file' && is_numeric($url) && (int) $url > 0) {
+            $attachmentUrl = wp_get_attachment_url((int) $url);
+            if (is_string($attachmentUrl) && $attachmentUrl !== '') {
+                return $attachmentUrl;
+            }
+        }
         $attachmentId = (int) $this->getEpisodeMetaValue($postId, $urlMetaKey . '_id', 0);
         if ($attachmentId > 0) {
             $attachmentUrl = wp_get_attachment_url($attachmentId);

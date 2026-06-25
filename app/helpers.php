@@ -225,6 +225,10 @@ function aripplesong_get_episode_meta(int $post_id, string $key, $default = '')
     $value = get_post_meta($post_id, Episode::storedFieldKey($key), true);
 
     if ($value !== '' && $value !== []) {
+        if ($key === 'audio_file') {
+            return Episode::resolveStoredAudioFileValue($value);
+        }
+
         return $value;
     }
 

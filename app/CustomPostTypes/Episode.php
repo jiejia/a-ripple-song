@@ -77,8 +77,8 @@ class Episode extends CustomPostTypeAbstract
         $audioFileField = Field::make('file', self::fieldKey('audio_file'), __('Audio File', 'sage'));
         $audioFileField
             ->set_type('audio')
-            ->set_value_type('url')
-            ->set_help_text(__('Required. Upload an audio file; the saved value is the audio file URL.', 'sage'))
+            ->set_value_type('id')
+            ->set_help_text(__('Required. Upload an audio file; the saved value is the media attachment ID.', 'sage'))
             ->set_required(true);
 
         /** @var \Carbon_Fields\Field\Select_Field $explicitField */
@@ -224,10 +224,10 @@ class Episode extends CustomPostTypeAbstract
         add_filter('wp_insert_post_data', [$this, 'setDefaultCommentStatus'], 10, 2);
         add_filter('upload_mimes', [$this, 'allowUploadMimes']);
         add_filter('wp_check_filetype_and_ext', [$this, 'fixFiletypeAndExt'], 10, 4);
+        add_action('load-post.php', [$this, 'normalizeCurrentAdminAudioFileValue']);
         add_action('carbon_fields_post_meta_container_saved', [$this, 'onPostMetaSaved'], 10, 2);
         add_action('aripplesong_carbon_fields_post_meta_container_saved', [$this, 'onPostMetaSaved'], 10, 2);
         add_action('admin_notices', [$this, 'showAudioMetaErrorNotice']);
-        add_action('admin_footer', [$this, 'printAudioFileFieldPreviewScript']);
     }
 
     /**
@@ -288,6 +288,23 @@ class Episode extends CustomPostTypeAbstract
     }
 
     /**
+     * Normalize legacy audio file URLs before Carbon Fields renders the editor.
+     *
+     * @return void
+     */
+    public function normalizeCurrentAdminAudioFileValue(): void
+    {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only routing for the current editor screen.
+        $postId = isset($_GET['post']) ? absint(wp_unslash($_GET['post'])) : 0;
+
+        if ($postId <= 0 || get_post_type($postId) !== self::slug() || ! current_user_can('edit_post', $postId)) {
+            return;
+        }
+
+        $this->normalizeAudioFileValue($postId);
+    }
+
+    /**
      * Update audio metadata after Carbon Fields saves episode fields.
      *
      * @param int $postId Post ID.
@@ -320,7 +337,7 @@ class Episode extends CustomPostTypeAbstract
     public function registerEpisodeMeta(): void
     {
         $postType = self::slug();
-        $this->registerStringMeta($postType, 'audio_file', true);
+        $this->registerIntMeta($postType, 'audio_file');
         $this->registerIntMeta($postType, 'duration');
         $this->registerIntMeta($postType, 'audio_length');
         $this->registerStringMeta($postType, 'audio_mime');
@@ -372,7 +389,7 @@ class Episode extends CustomPostTypeAbstract
         ]);
         register_rest_field($postType, 'audio_file', [
             'get_callback' => static function (array $post): string {
-                return (string) self::getStoredPostMetaValue((int) $post['id'], 'audio_file', '');
+                return self::resolveStoredAudioFileValue(self::getStoredPostMetaValue((int) $post['id'], 'audio_file', ''));
             },
             'schema' => [
                 'description' => __('Audio file URL', 'sage'),
@@ -528,36 +545,34 @@ class Episode extends CustomPostTypeAbstract
     }
 
     /**
-     * Normalize the stored audio file URL to the local attachment URL when possible.
-     *
-     * This keeps Carbon Fields file controls able to resolve the selected media
-     * item on edit screens even when the stored value currently points at the
-     * public CDN domain.
+     * Normalize the stored audio file value to the media attachment ID when possible.
      *
      * @param int $postId Post ID.
      * @return void
      */
     private function normalizeAudioFileValue(int $postId): void
     {
-        $audioUrl = $this->getEpisodeFieldValue($postId, 'audio_file');
+        $audioValue = $this->getEpisodeFieldValue($postId, 'audio_file');
 
-        if ($audioUrl === '' || (! str_starts_with($audioUrl, 'http://') && ! str_starts_with($audioUrl, 'https://'))) {
+        if ($audioValue === '') {
             return;
         }
 
-        $attachmentId = $this->resolveAttachmentIdFromMediaUrl($audioUrl);
+        if (ctype_digit($audioValue) && (int) $audioValue > 0) {
+            return;
+        }
+
+        if (! str_starts_with($audioValue, 'http://') && ! str_starts_with($audioValue, 'https://')) {
+            return;
+        }
+
+        $attachmentId = $this->resolveAttachmentIdFromMediaUrl($audioValue);
 
         if ($attachmentId <= 0) {
             return;
         }
 
-        $attachmentUrl = $this->localUploadUrlForAttachment($attachmentId);
-
-        if (! is_string($attachmentUrl) || $attachmentUrl === '') {
-            return;
-        }
-
-        $this->setEpisodeFieldValue($postId, 'audio_file', $attachmentUrl);
+        $this->setEpisodeFieldValue($postId, 'audio_file', $attachmentId);
     }
 
     /**
@@ -640,6 +655,12 @@ class Episode extends CustomPostTypeAbstract
     {
         if ($audioUrl === '') {
             return '';
+        }
+
+        if (ctype_digit($audioUrl) && (int) $audioUrl > 0) {
+            $filePath = get_attached_file((int) $audioUrl);
+
+            return is_string($filePath) && file_exists($filePath) ? $filePath : '';
         }
 
         if (file_exists($audioUrl)) {
@@ -747,30 +768,6 @@ class Episode extends CustomPostTypeAbstract
     }
 
     /**
-     * Build the site-local upload URL for an attachment.
-     *
-     * @param int $attachmentId Attachment ID.
-     * @return string
-     */
-    private function localUploadUrlForAttachment(int $attachmentId): string
-    {
-        $relativePath = (string) get_post_meta($attachmentId, '_wp_attached_file', true);
-
-        if ($relativePath === '') {
-            return '';
-        }
-
-        $uploadDir = wp_get_upload_dir();
-        $baseUrl = isset($uploadDir['baseurl']) ? (string) $uploadDir['baseurl'] : '';
-
-        if ($baseUrl === '') {
-            return '';
-        }
-
-        return trailingslashit($baseUrl) . ltrim($relativePath, '/');
-    }
-
-    /**
      * Return a URL path that safely preserves non-ASCII file names.
      *
      * @param string $mediaUrl Attachment URL or CDN URL.
@@ -851,6 +848,35 @@ class Episode extends CustomPostTypeAbstract
     }
 
     /**
+     * Resolve the stored audio file value to a public URL.
+     *
+     * @param mixed $value Stored attachment ID or legacy URL.
+     * @return string Public audio URL.
+     */
+    public static function resolveStoredAudioFileValue(mixed $value): string
+    {
+        if (is_numeric($value) && (int) $value > 0) {
+            $attachmentUrl = wp_get_attachment_url((int) $value);
+
+            return is_string($attachmentUrl) ? $attachmentUrl : '';
+        }
+
+        if (! is_string($value) || $value === '') {
+            return '';
+        }
+
+        $attachmentId = attachment_url_to_postid($value);
+
+        if ($attachmentId > 0) {
+            $attachmentUrl = wp_get_attachment_url($attachmentId);
+
+            return is_string($attachmentUrl) ? $attachmentUrl : $value;
+        }
+
+        return $value;
+    }
+
+    /**
      * Persist an Episode Details field using native post meta.
      *
      * @param int $postId Post ID.
@@ -927,87 +953,6 @@ class Episode extends CustomPostTypeAbstract
         }
 
         echo '<div class="notice notice-warning"><p>' . esc_html($message) . '</p></div>';
-    }
-
-    /**
-     * Show the saved audio file name below the Carbon Fields file button.
-     *
-     * @return void
-     */
-    public function printAudioFileFieldPreviewScript(): void
-    {
-        if (! is_admin() || ! function_exists('get_current_screen')) {
-            return;
-        }
-
-        $screen = get_current_screen();
-
-        if (! $screen || $screen->post_type !== self::slug()) {
-            return;
-        }
-
-        ?>
-        <script>
-            (function () {
-                var fieldSelector = 'input[name="carbon_fields_compact_input[_aripplesong_episode_audio_file]"]';
-
-                function basename(value) {
-                    var segment = String(value || '').split('/').pop();
-
-                    try {
-                        return decodeURIComponent(segment);
-                    } catch (error) {
-                        return segment;
-                    }
-                }
-
-                function syncPreview(input) {
-                    var fieldInner = input.closest('.cf-file__inner');
-
-                    if (!fieldInner) {
-                        return;
-                    }
-
-                    var preview = fieldInner.querySelector('.aripplesong-audio-file-preview');
-
-                    if (!preview) {
-                        preview = document.createElement('div');
-                        preview.className = 'aripplesong-audio-file-preview';
-                        preview.style.marginTop = '8px';
-                        preview.style.fontSize = '12px';
-                        preview.style.lineHeight = '1.4';
-                        preview.style.color = '#50575e';
-                        fieldInner.appendChild(preview);
-                    }
-
-                    preview.textContent = input.value ? basename(input.value) : '';
-                }
-
-                function bindPreview() {
-                    var input = document.querySelector(fieldSelector);
-
-                    if (!input || input.dataset.aripplesongAudioPreviewBound) {
-                        return;
-                    }
-
-                    input.dataset.aripplesongAudioPreviewBound = '1';
-                    input.addEventListener('change', function () {
-                        syncPreview(input);
-                    });
-                    syncPreview(input);
-                }
-
-                if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', bindPreview);
-                } else {
-                    bindPreview();
-                }
-
-                window.addEventListener('load', bindPreview);
-                window.setTimeout(bindPreview, 500);
-            }());
-        </script>
-        <?php
     }
 
     /**
