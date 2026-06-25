@@ -19,7 +19,7 @@
     </ul>
 
 
-    {!! the_posts_pagination() !!}
+    @include('partials.pagination')
 @endsection
 
 

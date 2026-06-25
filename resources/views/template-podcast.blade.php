@@ -25,7 +25,7 @@ $wp_query = new WP_Query([
   @includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
 @endwhile
 
-{!! the_posts_pagination() !!}
+@include('partials.pagination')
 
 @php(wp_reset_postdata())
 @php($wp_query = $original_query)

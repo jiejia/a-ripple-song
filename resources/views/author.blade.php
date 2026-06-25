@@ -15,7 +15,7 @@
             @includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
         @endwhile
 
-        {!! the_posts_pagination() !!}
+        @include('partials.pagination')
     @else
         <x-alert type="warning">
             {!! __('Sorry, no results were found.', 'sage') !!}
