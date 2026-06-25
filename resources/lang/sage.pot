@@ -320,7 +320,7 @@ msgid "Members"
 msgstr ""
 
 #: app/CustomPostTypes/Episode.php:145
-msgid "Select episode members (administrators, authors, editors)."
+msgid "Select episode members (authors)."
 msgstr ""
 
 #: app/CustomPostTypes/Episode.php:148
@@ -330,7 +330,7 @@ msgid "Guests"
 msgstr ""
 
 #: app/CustomPostTypes/Episode.php:151
-msgid "Select episode guests (contributors)."
+msgid "Select episode guests (subscribers)."
 msgstr ""
 
 #: app/CustomPostTypes/Episode.php:154
@@ -1379,7 +1379,7 @@ msgid "Members Title:"
 msgstr ""
 
 #: app/Widgets/AuthorsWidget.php:141
-msgid "Show Members (Administrators, Editors, Authors)"
+msgid "Show Members (Authors)"
 msgstr ""
 
 #: app/Widgets/AuthorsWidget.php:147
@@ -1387,7 +1387,7 @@ msgid "Guests Title:"
 msgstr ""
 
 #: app/Widgets/AuthorsWidget.php:163
-msgid "Show Guests (Contributors)"
+msgid "Show Guests (Subscribers)"
 msgstr ""
 
 #: app/Widgets/BannerCarouselWidget.php:40

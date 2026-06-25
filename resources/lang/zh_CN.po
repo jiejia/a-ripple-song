@@ -120,16 +120,16 @@ msgid "Members Title:"
 msgstr "成员标题："
 
 #: app/Widgets/AuthorsWidget.php:141
-msgid "Show Members (Administrators, Editors, Authors)"
-msgstr "显示成员（管理员、编辑、作者）"
+msgid "Show Members (Authors)"
+msgstr "显示成员（作者）"
 
 #: app/Widgets/AuthorsWidget.php:147
 msgid "Guests Title:"
 msgstr "访客标题："
 
 #: app/Widgets/AuthorsWidget.php:163
-msgid "Show Guests (Contributors)"
-msgstr "显示访客（投稿者）"
+msgid "Show Guests (Subscribers)"
+msgstr "显示嘉宾（订阅者）"
 
 #: app/Widgets/BannerCarouselWidget.php:40
 msgid "aripplesong - Banner Carousel"
@@ -1130,12 +1130,12 @@ msgid "Title (optional)"
 msgstr ""
 
 #: app/CustomPostTypes/Episode.php:145
-msgid "Select episode members (administrators, authors, editors)."
-msgstr ""
+msgid "Select episode members (authors)."
+msgstr "选择单集成员（作者）。"
 
 #: app/CustomPostTypes/Episode.php:151
-msgid "Select episode guests (contributors)."
-msgstr ""
+msgid "Select episode guests (subscribers)."
+msgstr "选择单集嘉宾（订阅者）。"
 
 #: app/CustomPostTypes/Episode.php:154
 msgid "Audio"

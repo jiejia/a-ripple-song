@@ -140,15 +140,15 @@ class Episode extends CustomPostTypeAbstract
         /** @var \Carbon_Fields\Field\Multiselect_Field $membersField */
         $membersField = Field::make('multiselect', self::fieldKey('members'), __('Members', 'sage'));
         $membersField
-            ->set_options([$this, 'userOptions'])
+            ->set_options([$this, 'memberOptions'])
             ->set_default_value($this->defaultMemberIds())
-            ->set_help_text(__('Select episode members (administrators, authors, editors).', 'sage'));
+            ->set_help_text(__('Select episode members (authors).', 'sage'));
 
         /** @var \Carbon_Fields\Field\Multiselect_Field $guestsField */
         $guestsField = Field::make('multiselect', self::fieldKey('guests'), __('Guests', 'sage'));
         $guestsField
-            ->set_options([$this, 'userOptions'])
-            ->set_help_text(__('Select episode guests (contributors).', 'sage'));
+            ->set_options([$this, 'guestOptions'])
+            ->set_help_text(__('Select episode guests (subscribers).', 'sage'));
 
         return [
             Field::make('separator', self::fieldKey('episode_audio_separator'), __('Audio', 'sage')),
@@ -464,14 +464,36 @@ class Episode extends CustomPostTypeAbstract
     }
 
     /**
-     * Return selectable WordPress users for member and guest fields.
+     * Return selectable WordPress users for the member field.
      *
      * @return array<int,string>
      */
-    public function userOptions(): array
+    public function memberOptions(): array
+    {
+        return $this->userOptionsByRole('author');
+    }
+
+    /**
+     * Return selectable WordPress users for the guest field.
+     *
+     * @return array<int,string>
+     */
+    public function guestOptions(): array
+    {
+        return $this->userOptionsByRole('subscriber');
+    }
+
+    /**
+     * Return selectable WordPress users for a specific role.
+     *
+     * @param string $role User role slug.
+     * @return array<int,string>
+     */
+    private function userOptionsByRole(string $role): array
     {
         $options = [];
         $users = get_users([
+            'role' => $role,
             'orderby' => 'display_name',
             'order' => 'ASC',
             'fields' => ['ID', 'display_name', 'user_login'],
@@ -514,9 +536,7 @@ class Episode extends CustomPostTypeAbstract
             return [];
         }
 
-        $allowedRoles = ['administrator', 'author', 'editor'];
-
-        if (empty(array_intersect($allowedRoles, (array) $currentUser->roles))) {
+        if (! in_array('author', (array) $currentUser->roles, true)) {
             return [];
         }
 

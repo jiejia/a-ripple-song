@@ -68,13 +68,13 @@ class AuthorsWidget extends WidgetAbstract
         $showGuests = isset($instance['show_guests']) ? (bool) $instance['show_guests'] : true;
 
         $members = get_users([
-            'role__in' => ['administrator', 'editor', 'author'],
+            'role' => 'author',
             'orderby' => 'display_name',
             'order' => 'ASC',
         ]);
 
         $contributors = get_users([
-            'role' => 'contributor',
+            'role' => 'subscriber',
             'orderby' => 'display_name',
             'order' => 'ASC',
         ]);
@@ -138,7 +138,7 @@ class AuthorsWidget extends WidgetAbstract
                    id="<?php echo esc_attr($this->get_field_id('show_members')); ?>"
                    name="<?php echo esc_attr($this->get_field_name('show_members')); ?>">
             <label for="<?php echo esc_attr($this->get_field_id('show_members')); ?>">
-                <?php esc_html_e('Show Members (Administrators, Editors, Authors)', 'sage'); ?>
+                <?php esc_html_e('Show Members (Authors)', 'sage'); ?>
             </label>
         </p>
 
@@ -160,7 +160,7 @@ class AuthorsWidget extends WidgetAbstract
                    id="<?php echo esc_attr($this->get_field_id('show_guests')); ?>"
                    name="<?php echo esc_attr($this->get_field_name('show_guests')); ?>">
             <label for="<?php echo esc_attr($this->get_field_id('show_guests')); ?>">
-                <?php esc_html_e('Show Guests (Contributors)', 'sage'); ?>
+                <?php esc_html_e('Show Guests (Subscribers)', 'sage'); ?>
             </label>
         </p>
         <?php
