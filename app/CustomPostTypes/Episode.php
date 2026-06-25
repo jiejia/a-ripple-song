@@ -227,6 +227,7 @@ class Episode extends CustomPostTypeAbstract
         add_action('carbon_fields_post_meta_container_saved', [$this, 'onPostMetaSaved'], 10, 2);
         add_action('aripplesong_carbon_fields_post_meta_container_saved', [$this, 'onPostMetaSaved'], 10, 2);
         add_action('admin_notices', [$this, 'showAudioMetaErrorNotice']);
+        add_action('admin_footer', [$this, 'printAudioFileFieldPreviewScript']);
     }
 
     /**
@@ -307,6 +308,7 @@ class Episode extends CustomPostTypeAbstract
             return;
         }
 
+        $this->normalizeAudioFileValue($postId);
         $this->autoFillAudioMeta($postId);
     }
 
@@ -526,6 +528,39 @@ class Episode extends CustomPostTypeAbstract
     }
 
     /**
+     * Normalize the stored audio file URL to the local attachment URL when possible.
+     *
+     * This keeps Carbon Fields file controls able to resolve the selected media
+     * item on edit screens even when the stored value currently points at the
+     * public CDN domain.
+     *
+     * @param int $postId Post ID.
+     * @return void
+     */
+    private function normalizeAudioFileValue(int $postId): void
+    {
+        $audioUrl = $this->getEpisodeFieldValue($postId, 'audio_file');
+
+        if ($audioUrl === '' || (! str_starts_with($audioUrl, 'http://') && ! str_starts_with($audioUrl, 'https://'))) {
+            return;
+        }
+
+        $attachmentId = $this->resolveAttachmentIdFromMediaUrl($audioUrl);
+
+        if ($attachmentId <= 0) {
+            return;
+        }
+
+        $attachmentUrl = $this->localUploadUrlForAttachment($attachmentId);
+
+        if (! is_string($attachmentUrl) || $attachmentUrl === '') {
+            return;
+        }
+
+        $this->setEpisodeFieldValue($postId, 'audio_file', $attachmentUrl);
+    }
+
+    /**
      * Calculate podcast audio metadata via WordPress bundled getID3.
      *
      * @param int $postId Post ID.
@@ -624,9 +659,24 @@ class Episode extends CustomPostTypeAbstract
             }
         }
 
-        $urlPath = (string) wp_parse_url($audioUrl, PHP_URL_PATH);
+        $urlPath = $this->extractNormalizedMediaUrlPath($audioUrl);
 
         if ($urlPath !== '') {
+            if ($baseDir !== '') {
+                $relativeUploadPath = ltrim(rawurldecode($urlPath), '/');
+                $uploadSubdir = ltrim((string) ($uploadDir['subdir'] ?? ''), '/');
+
+                if ($uploadSubdir !== '' && str_contains($relativeUploadPath, $uploadSubdir . '/')) {
+                    $relativeUploadPath = substr($relativeUploadPath, strpos($relativeUploadPath, $uploadSubdir . '/'));
+                }
+
+                $uploadCandidate = trailingslashit($baseDir) . ltrim($relativeUploadPath, '/');
+
+                if (file_exists($uploadCandidate)) {
+                    return $uploadCandidate;
+                }
+            }
+
             $candidate = ABSPATH . ltrim(rawurldecode($urlPath), '/');
 
             if (file_exists($candidate)) {
@@ -635,6 +685,122 @@ class Episode extends CustomPostTypeAbstract
         }
 
         return '';
+    }
+
+    /**
+     * Resolve a media URL to a local attachment ID.
+     *
+     * @param string $mediaUrl Attachment URL or CDN URL.
+     * @return int
+     */
+    private function resolveAttachmentIdFromMediaUrl(string $mediaUrl): int
+    {
+        $attachmentId = attachment_url_to_postid($mediaUrl);
+
+        if ($attachmentId > 0) {
+            return $attachmentId;
+        }
+
+        $uploadDir = wp_get_upload_dir();
+        $baseUrl = isset($uploadDir['baseurl']) ? (string) $uploadDir['baseurl'] : '';
+        $baseDir = isset($uploadDir['basedir']) ? (string) $uploadDir['basedir'] : '';
+        $urlPath = $this->extractNormalizedMediaUrlPath($mediaUrl);
+
+        if ($urlPath === '' || $baseUrl === '' || $baseDir === '') {
+            return 0;
+        }
+
+        $relativeUploadPath = ltrim(rawurldecode($urlPath), '/');
+        $uploadSubdir = ltrim((string) ($uploadDir['subdir'] ?? ''), '/');
+
+        if ($uploadSubdir !== '' && str_contains($relativeUploadPath, $uploadSubdir . '/')) {
+            $relativeUploadPath = substr($relativeUploadPath, strpos($relativeUploadPath, $uploadSubdir . '/'));
+        }
+
+        $normalizedLocalUrl = trailingslashit($baseUrl) . ltrim($relativeUploadPath, '/');
+        $attachmentId = attachment_url_to_postid($normalizedLocalUrl);
+
+        if ($attachmentId > 0) {
+            return $attachmentId;
+        }
+
+        $filePath = trailingslashit($baseDir) . ltrim($relativeUploadPath, '/');
+
+        if (! file_exists($filePath)) {
+            return 0;
+        }
+
+        $attachment = get_posts([
+            'post_type' => 'attachment',
+            'post_status' => 'inherit',
+            'posts_per_page' => 1,
+            'fields' => 'ids',
+            'meta_query' => [
+                [
+                    'key' => '_wp_attached_file',
+                    'value' => ltrim($relativeUploadPath, '/'),
+                ],
+            ],
+        ]);
+
+        return isset($attachment[0]) ? (int) $attachment[0] : 0;
+    }
+
+    /**
+     * Build the site-local upload URL for an attachment.
+     *
+     * @param int $attachmentId Attachment ID.
+     * @return string
+     */
+    private function localUploadUrlForAttachment(int $attachmentId): string
+    {
+        $relativePath = (string) get_post_meta($attachmentId, '_wp_attached_file', true);
+
+        if ($relativePath === '') {
+            return '';
+        }
+
+        $uploadDir = wp_get_upload_dir();
+        $baseUrl = isset($uploadDir['baseurl']) ? (string) $uploadDir['baseurl'] : '';
+
+        if ($baseUrl === '') {
+            return '';
+        }
+
+        return trailingslashit($baseUrl) . ltrim($relativePath, '/');
+    }
+
+    /**
+     * Return a URL path that safely preserves non-ASCII file names.
+     *
+     * @param string $mediaUrl Attachment URL or CDN URL.
+     * @return string
+     */
+    private function extractNormalizedMediaUrlPath(string $mediaUrl): string
+    {
+        if ($mediaUrl === '') {
+            return '';
+        }
+
+        $encodedUrl = preg_replace_callback(
+            '#^(https?://[^/]+)(/.*)$#u',
+            static function (array $matches): string {
+                $segments = explode('/', (string) $matches[2]);
+
+                foreach ($segments as $index => $segment) {
+                    if ($segment === '') {
+                        continue;
+                    }
+
+                    $segments[$index] = rawurlencode(rawurldecode($segment));
+                }
+
+                return (string) $matches[1] . implode('/', $segments);
+            },
+            $mediaUrl
+        );
+
+        return (string) wp_parse_url(is_string($encodedUrl) ? $encodedUrl : $mediaUrl, PHP_URL_PATH);
     }
 
     /**
@@ -761,6 +927,87 @@ class Episode extends CustomPostTypeAbstract
         }
 
         echo '<div class="notice notice-warning"><p>' . esc_html($message) . '</p></div>';
+    }
+
+    /**
+     * Show the saved audio file name below the Carbon Fields file button.
+     *
+     * @return void
+     */
+    public function printAudioFileFieldPreviewScript(): void
+    {
+        if (! is_admin() || ! function_exists('get_current_screen')) {
+            return;
+        }
+
+        $screen = get_current_screen();
+
+        if (! $screen || $screen->post_type !== self::slug()) {
+            return;
+        }
+
+        ?>
+        <script>
+            (function () {
+                var fieldSelector = 'input[name="carbon_fields_compact_input[_aripplesong_episode_audio_file]"]';
+
+                function basename(value) {
+                    var segment = String(value || '').split('/').pop();
+
+                    try {
+                        return decodeURIComponent(segment);
+                    } catch (error) {
+                        return segment;
+                    }
+                }
+
+                function syncPreview(input) {
+                    var fieldInner = input.closest('.cf-file__inner');
+
+                    if (!fieldInner) {
+                        return;
+                    }
+
+                    var preview = fieldInner.querySelector('.aripplesong-audio-file-preview');
+
+                    if (!preview) {
+                        preview = document.createElement('div');
+                        preview.className = 'aripplesong-audio-file-preview';
+                        preview.style.marginTop = '8px';
+                        preview.style.fontSize = '12px';
+                        preview.style.lineHeight = '1.4';
+                        preview.style.color = '#50575e';
+                        fieldInner.appendChild(preview);
+                    }
+
+                    preview.textContent = input.value ? basename(input.value) : '';
+                }
+
+                function bindPreview() {
+                    var input = document.querySelector(fieldSelector);
+
+                    if (!input || input.dataset.aripplesongAudioPreviewBound) {
+                        return;
+                    }
+
+                    input.dataset.aripplesongAudioPreviewBound = '1';
+                    input.addEventListener('change', function () {
+                        syncPreview(input);
+                    });
+                    syncPreview(input);
+                }
+
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', bindPreview);
+                } else {
+                    bindPreview();
+                }
+
+                window.addEventListener('load', bindPreview);
+                window.setTimeout(bindPreview, 500);
+            }());
+        </script>
+        <?php
     }
 
     /**
