@@ -38,7 +38,7 @@ class Episode extends CustomPostTypeAbstract
      */
     public static function singularName(): string
     {
-        return __('Episode', 'sage');
+        return __('Episode', 'a-ripple-song');
     }
 
     /**
@@ -48,7 +48,7 @@ class Episode extends CustomPostTypeAbstract
      */
     public static function pluralName(): string
     {
-        return __('Episodes', 'sage');
+        return __('Episodes', 'a-ripple-song');
     }
 
     /**
@@ -74,137 +74,137 @@ class Episode extends CustomPostTypeAbstract
     public function fields(): array
     {
         /** @var \Carbon_Fields\Field\File_Field $audioFileField */
-        $audioFileField = Field::make('file', self::fieldKey('audio_file'), __('Audio File', 'sage'));
+        $audioFileField = Field::make('file', self::fieldKey('audio_file'), __('Audio File', 'a-ripple-song'));
         $audioFileField
             ->set_type('audio')
             ->set_value_type('id')
-            ->set_help_text(__('Required. Upload an audio file; the saved value is the media attachment ID.', 'sage'))
+            ->set_help_text(__('Required. Upload an audio file; the saved value is the media attachment ID.', 'a-ripple-song'))
             ->set_required(true);
 
         /** @var \Carbon_Fields\Field\Select_Field $explicitField */
-        $explicitField = Field::make('select', self::fieldKey('episode_explicit'), __('Explicit', 'sage'));
+        $explicitField = Field::make('select', self::fieldKey('episode_explicit'), __('Explicit', 'a-ripple-song'));
         $explicitField
             ->set_options([
-                'clean' => __('clean', 'sage'),
-                'explicit' => __('explicit', 'sage'),
+                'clean' => __('clean', 'a-ripple-song'),
+                'explicit' => __('explicit', 'a-ripple-song'),
             ])
             ->set_default_value('clean')
-            ->set_help_text(__('Required. clean / explicit.', 'sage'))
+            ->set_help_text(__('Required. clean / explicit.', 'a-ripple-song'))
             ->set_required(true);
 
         /** @var \Carbon_Fields\Field\Select_Field $episodeTypeField */
-        $episodeTypeField = Field::make('select', self::fieldKey('episode_type'), __('Episode Type', 'sage'));
+        $episodeTypeField = Field::make('select', self::fieldKey('episode_type'), __('Episode Type', 'a-ripple-song'));
         $episodeTypeField
             ->set_options([
-                'full' => __('full', 'sage'),
-                'trailer' => __('trailer', 'sage'),
-                'bonus' => __('bonus', 'sage'),
+                'full' => __('full', 'a-ripple-song'),
+                'trailer' => __('trailer', 'a-ripple-song'),
+                'bonus' => __('bonus', 'a-ripple-song'),
             ])
             ->set_default_value('full')
-            ->set_help_text(__('Required. full / trailer / bonus.', 'sage'));
+            ->set_help_text(__('Required. full / trailer / bonus.', 'a-ripple-song'));
 
         /** @var \Carbon_Fields\Field\Image_Field $episodeImageField */
-        $episodeImageField = Field::make('image', self::fieldKey('episode_image'), __('Episode Cover (square)', 'sage'));
+        $episodeImageField = Field::make('image', self::fieldKey('episode_image'), __('Episode Cover (square)', 'a-ripple-song'));
         $episodeImageField
             ->set_value_type('id')
-            ->set_help_text(__('Optional. Square 1400-3000px. Overrides channel cover. The saved value is the media attachment ID.', 'sage'));
+            ->set_help_text(__('Optional. Square 1400-3000px. Overrides channel cover. The saved value is the media attachment ID.', 'a-ripple-song'));
 
         /** @var \Carbon_Fields\Field\Select_Field $episodeBlockField */
-        $episodeBlockField = Field::make('select', self::fieldKey('episode_block'), __('iTunes Block', 'sage'));
+        $episodeBlockField = Field::make('select', self::fieldKey('episode_block'), __('iTunes Block', 'a-ripple-song'));
         $episodeBlockField
             ->set_options([
-                'no' => __('no', 'sage'),
-                'yes' => __('yes', 'sage'),
+                'no' => __('no', 'a-ripple-song'),
+                'yes' => __('yes', 'a-ripple-song'),
             ])
             ->set_default_value('no')
-            ->set_help_text(__('Optional. yes = hide this episode in Apple Podcasts.', 'sage'));
+            ->set_help_text(__('Optional. yes = hide this episode in Apple Podcasts.', 'a-ripple-song'));
 
         /** @var \Carbon_Fields\Field\Complex_Field $soundbitesField */
-        $soundbitesField = Field::make('complex', self::fieldKey('episode_soundbites'), __('Soundbites', 'sage'));
-        $soundbitesField->set_help_text(__('Optional. Adds one or more <podcast:soundbite> tags.', 'sage'));
-        $soundbitesField->set_header_template('<%- ' . self::fieldKey('title') . ' || "' . esc_html__('Soundbite', 'sage') . '" %>');
+        $soundbitesField = Field::make('complex', self::fieldKey('episode_soundbites'), __('Soundbites', 'a-ripple-song'));
+        $soundbitesField->set_help_text(__('Optional. Adds one or more <podcast:soundbite> tags.', 'a-ripple-song'));
+        $soundbitesField->set_header_template('<%- ' . self::fieldKey('title') . ' || "' . esc_html__('Soundbite', 'a-ripple-song') . '" %>');
         $soundbitesField->add_fields([
-            Field::make('text', self::fieldKey('start_time'), __('Start Time (seconds)', 'sage'))
+            Field::make('text', self::fieldKey('start_time'), __('Start Time (seconds)', 'a-ripple-song'))
                 ->set_attribute('type', 'number')
                 ->set_attribute('min', '0')
                 ->set_attribute('step', '0.01')
                 ->set_width(33),
-            Field::make('text', self::fieldKey('duration'), __('Duration (seconds)', 'sage'))
+            Field::make('text', self::fieldKey('duration'), __('Duration (seconds)', 'a-ripple-song'))
                 ->set_attribute('type', 'number')
                 ->set_attribute('min', '0.01')
                 ->set_attribute('step', '0.01')
                 ->set_width(33),
-            Field::make('text', self::fieldKey('title'), __('Title (optional)', 'sage'))->set_width(33),
+            Field::make('text', self::fieldKey('title'), __('Title (optional)', 'a-ripple-song'))->set_width(33),
         ]);
 
         /** @var \Carbon_Fields\Field\Multiselect_Field $membersField */
-        $membersField = Field::make('multiselect', self::fieldKey('members'), __('Members', 'sage'));
+        $membersField = Field::make('multiselect', self::fieldKey('members'), __('Members', 'a-ripple-song'));
         $membersField
             ->set_options([$this, 'memberOptions'])
             ->set_default_value($this->defaultMemberIds())
-            ->set_help_text(__('Select episode members (authors).', 'sage'));
+            ->set_help_text(__('Select episode members (authors).', 'a-ripple-song'));
 
         /** @var \Carbon_Fields\Field\Multiselect_Field $guestsField */
-        $guestsField = Field::make('multiselect', self::fieldKey('guests'), __('Guests', 'sage'));
+        $guestsField = Field::make('multiselect', self::fieldKey('guests'), __('Guests', 'a-ripple-song'));
         $guestsField
             ->set_options([$this, 'guestOptions'])
-            ->set_help_text(__('Select episode guests (subscribers).', 'sage'));
+            ->set_help_text(__('Select episode guests (subscribers).', 'a-ripple-song'));
 
         return [
-            Field::make('separator', self::fieldKey('episode_audio_separator'), __('Audio', 'sage')),
+            Field::make('separator', self::fieldKey('episode_audio_separator'), __('Audio', 'a-ripple-song')),
             $audioFileField,
-            Field::make('text', self::fieldKey('duration'), __('Duration (seconds)', 'sage'))
+            Field::make('text', self::fieldKey('duration'), __('Duration (seconds)', 'a-ripple-song'))
                 ->set_attribute('type', 'number')
                 ->set_attribute('min', '0')
                 ->set_attribute('step', '1')
                 ->set_attribute('readOnly', 'readOnly')
-                ->set_help_text(__('Auto detected from "Audio File" after saving.', 'sage')),
-            Field::make('text', self::fieldKey('audio_length'), __('Audio Length (bytes)', 'sage'))
+                ->set_help_text(__('Auto detected from "Audio File" after saving.', 'a-ripple-song')),
+            Field::make('text', self::fieldKey('audio_length'), __('Audio Length (bytes)', 'a-ripple-song'))
                 ->set_attribute('type', 'number')
                 ->set_attribute('min', '0')
                 ->set_attribute('step', '1')
                 ->set_attribute('readOnly', 'readOnly')
-                ->set_help_text(__('Auto detected from "Audio File" after saving.', 'sage')),
-            Field::make('text', self::fieldKey('audio_mime'), __('Audio MIME Type', 'sage'))
+                ->set_help_text(__('Auto detected from "Audio File" after saving.', 'a-ripple-song')),
+            Field::make('text', self::fieldKey('audio_mime'), __('Audio MIME Type', 'a-ripple-song'))
                 ->set_default_value('audio/mpeg')
                 ->set_attribute('readOnly', 'readOnly')
-                ->set_help_text(__('Auto detected from "Audio File" after saving.', 'sage')),
-            Field::make('separator', self::fieldKey('episode_metadata_separator'), __('Podcast Metadata', 'sage')),
+                ->set_help_text(__('Auto detected from "Audio File" after saving.', 'a-ripple-song')),
+            Field::make('separator', self::fieldKey('episode_metadata_separator'), __('Podcast Metadata', 'a-ripple-song')),
             $explicitField,
             $episodeTypeField,
-            Field::make('text', self::fieldKey('episode_number'), __('Episode Number', 'sage'))
+            Field::make('text', self::fieldKey('episode_number'), __('Episode Number', 'a-ripple-song'))
                 ->set_attribute('type', 'number')
                 ->set_attribute('min', '0')
                 ->set_attribute('step', '1')
-                ->set_help_text(__('Optional but recommended. Integer.', 'sage')),
-            Field::make('text', self::fieldKey('season_number'), __('Season Number', 'sage'))
+                ->set_help_text(__('Optional but recommended. Integer.', 'a-ripple-song')),
+            Field::make('text', self::fieldKey('season_number'), __('Season Number', 'a-ripple-song'))
                 ->set_attribute('type', 'number')
                 ->set_attribute('min', '0')
                 ->set_attribute('step', '1')
-                ->set_help_text(__('Optional. Integer.', 'sage')),
-            Field::make('text', self::fieldKey('episode_author'), __('Episode Author (override)', 'sage'))
-                ->set_help_text(__('Optional. Overrides channel author for this episode.', 'sage')),
+                ->set_help_text(__('Optional. Integer.', 'a-ripple-song')),
+            Field::make('text', self::fieldKey('episode_author'), __('Episode Author (override)', 'a-ripple-song'))
+                ->set_help_text(__('Optional. Overrides channel author for this episode.', 'a-ripple-song')),
             $episodeImageField,
-            Field::make('text', self::fieldKey('episode_transcript'), __('Transcript (optional)', 'sage'))
+            Field::make('text', self::fieldKey('episode_transcript'), __('Transcript (optional)', 'a-ripple-song'))
                 ->set_attribute('type', 'url')
-                ->set_help_text(__('Optional. Transcript file URL (vtt/srt/txt/pdf).', 'sage')),
-            Field::make('text', self::fieldKey('itunes_title'), __('iTunes Title (optional)', 'sage'))
-                ->set_help_text(__('Optional. Apple Podcasts: overrides the episode title for <itunes:title>.', 'sage')),
-            Field::make('text', self::fieldKey('episode_chapters'), __('Chapters (Podcasting 2.0)', 'sage'))
+                ->set_help_text(__('Optional. Transcript file URL (vtt/srt/txt/pdf).', 'a-ripple-song')),
+            Field::make('text', self::fieldKey('itunes_title'), __('iTunes Title (optional)', 'a-ripple-song'))
+                ->set_help_text(__('Optional. Apple Podcasts: overrides the episode title for <itunes:title>.', 'a-ripple-song')),
+            Field::make('text', self::fieldKey('episode_chapters'), __('Chapters (Podcasting 2.0)', 'a-ripple-song'))
                 ->set_attribute('type', 'url')
-                ->set_help_text(__('Optional. Provide a chapters JSON URL/file for <podcast:chapters>.', 'sage')),
-            Field::make('text', self::fieldKey('episode_chapters_type'), __('Chapters MIME Type', 'sage'))
+                ->set_help_text(__('Optional. Provide a chapters JSON URL/file for <podcast:chapters>.', 'a-ripple-song')),
+            Field::make('text', self::fieldKey('episode_chapters_type'), __('Chapters MIME Type', 'a-ripple-song'))
                 ->set_default_value('application/json+chapters')
-                ->set_help_text(__('Optional. Defaults to application/json+chapters.', 'sage')),
-            Field::make('textarea', self::fieldKey('episode_subtitle'), __('Subtitle', 'sage'))
-                ->set_help_text(__('Optional. Short subtitle for iTunes.', 'sage')),
-            Field::make('textarea', self::fieldKey('episode_summary'), __('Summary', 'sage'))
-                ->set_help_text(__('Optional. Plain text summary for iTunes.', 'sage')),
-            Field::make('text', self::fieldKey('episode_guid'), __('Custom GUID (optional)', 'sage'))
-                ->set_help_text(__('Optional. If empty, feed uses WP permalink as GUID.', 'sage')),
+                ->set_help_text(__('Optional. Defaults to application/json+chapters.', 'a-ripple-song')),
+            Field::make('textarea', self::fieldKey('episode_subtitle'), __('Subtitle', 'a-ripple-song'))
+                ->set_help_text(__('Optional. Short subtitle for iTunes.', 'a-ripple-song')),
+            Field::make('textarea', self::fieldKey('episode_summary'), __('Summary', 'a-ripple-song'))
+                ->set_help_text(__('Optional. Plain text summary for iTunes.', 'a-ripple-song')),
+            Field::make('text', self::fieldKey('episode_guid'), __('Custom GUID (optional)', 'a-ripple-song'))
+                ->set_help_text(__('Optional. If empty, feed uses WP permalink as GUID.', 'a-ripple-song')),
             $episodeBlockField,
             $soundbitesField,
-            Field::make('separator', self::fieldKey('episode_people_separator'), __('People', 'sage')),
+            Field::make('separator', self::fieldKey('episode_people_separator'), __('People', 'a-ripple-song')),
             $membersField,
             $guestsField,
         ];
@@ -389,7 +389,7 @@ class Episode extends CustomPostTypeAbstract
                 return wp_strip_all_tags(html_entity_decode($title, ENT_QUOTES, 'UTF-8'), true);
             },
             'schema' => [
-                'description' => __('Episode title (plain text)', 'sage'),
+                'description' => __('Episode title (plain text)', 'a-ripple-song'),
                 'type' => 'string',
             ],
         ]);
@@ -398,7 +398,7 @@ class Episode extends CustomPostTypeAbstract
                 return self::resolveStoredAudioFileValue(self::getStoredPostMetaValue((int) $post['id'], 'audio_file', ''));
             },
             'schema' => [
-                'description' => __('Audio file URL', 'sage'),
+                'description' => __('Audio file URL', 'a-ripple-song'),
                 'type' => 'string',
             ],
         ]);
@@ -407,7 +407,7 @@ class Episode extends CustomPostTypeAbstract
                 return (int) self::getStoredPostMetaValue((int) $post['id'], 'duration', 0);
             },
             'schema' => [
-                'description' => __('Audio duration (seconds)', 'sage'),
+                'description' => __('Audio duration (seconds)', 'a-ripple-song'),
                 'type' => 'integer',
             ],
         ]);
@@ -416,7 +416,7 @@ class Episode extends CustomPostTypeAbstract
                 return (string) self::getStoredPostMetaValue((int) $post['id'], 'episode_transcript', '');
             },
             'schema' => [
-                'description' => __('Episode transcript URL', 'sage'),
+                'description' => __('Episode transcript URL', 'a-ripple-song'),
                 'type' => 'string',
             ],
         ]);
@@ -1012,17 +1012,17 @@ class Episode extends CustomPostTypeAbstract
         return match ($code) {
             'getid3_missing' => sprintf(
                 /* translators: %d: episode post ID */
-                __('Episode #%d: getID3 not available', 'sage'),
+                __('Episode #%d: getID3 not available', 'a-ripple-song'),
                 $postId
             ),
             'audio_file_missing' => sprintf(
                 /* translators: %d: episode post ID */
-                __('Episode #%d: audio file missing for duration/size/mime detection', 'sage'),
+                __('Episode #%d: audio file missing for duration/size/mime detection', 'a-ripple-song'),
                 $postId
             ),
             'getid3_error' => sprintf(
                 /* translators: 1: episode post ID, 2: error message */
-                __('Episode #%1$d: getID3 error - %2$s', 'sage'),
+                __('Episode #%1$d: getID3 error - %2$s', 'a-ripple-song'),
                 $postId,
                 $detail
             ),

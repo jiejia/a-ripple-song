@@ -56,7 +56,7 @@ class ThemeColor extends CustomizerAbstract
     public function register(WP_Customize_Manager $wpCustomize): void
     {
         $wpCustomize->add_section(Theme::fieldKey('theme_color'), [
-            'title' => __('Theme Color', 'sage'),
+            'title' => __('Theme Color', 'a-ripple-song'),
             'priority' => 180,
         ]);
 
@@ -68,8 +68,8 @@ class ThemeColor extends CustomizerAbstract
 
         $wpCustomize->add_control(self::lightThemeSettingKey(), [
             'section' => Theme::fieldKey('theme_color'),
-            'label' => __('Light Theme', 'sage'),
-            'description' => __('This is the default theme used when the site is in light mode.', 'sage'),
+            'label' => __('Light Theme', 'a-ripple-song'),
+            'description' => __('This is the default theme used when the site is in light mode.', 'a-ripple-song'),
             'type' => 'select',
             'choices' => ThemeConstant::getLightThemeLabels(),
         ]);
@@ -82,8 +82,8 @@ class ThemeColor extends CustomizerAbstract
 
         $wpCustomize->add_control(self::darkThemeSettingKey(), [
             'section' => Theme::fieldKey('theme_color'),
-            'label' => __('Dark Theme', 'sage'),
-            'description' => __('This is the default theme used when the site is in dark mode.', 'sage'),
+            'label' => __('Dark Theme', 'a-ripple-song'),
+            'description' => __('This is the default theme used when the site is in dark mode.', 'a-ripple-song'),
             'type' => 'select',
             'choices' => ThemeConstant::getDarkThemeLabels(),
         ]);

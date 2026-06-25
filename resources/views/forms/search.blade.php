@@ -12,7 +12,7 @@
           <path d="m21 21-4.3-4.3"></path>
         </g>
       </svg>
-      <input type="search" placeholder="{!! esc_attr_x('Search &hellip;', 'placeholder', 'sage') !!}"
+      <input type="search" placeholder="{!! esc_attr_x('Search &hellip;', 'placeholder', 'a-ripple-song') !!}"
         value="{{ get_search_query() }}" name="s">
     </label>
     <a class="btn btn-square bg-base-100" href="{{ get_feed_link() }}" target="_blank">

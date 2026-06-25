@@ -139,7 +139,7 @@ add_action('after_setup_theme', function () {
 }, 20);
 
 add_action('after_setup_theme', function () {
-    load_textdomain('sage', get_template_directory().'/resources/lang/'.determine_locale().'.mo');
+    load_theme_textdomain('a-ripple-song', get_template_directory() . '/resources/lang');
 });
 
 /**
@@ -167,7 +167,7 @@ add_action('wp_enqueue_scripts', function () {
         }
 
         wp_enqueue_script('aripplesong-app', $jsUrl, ['wp-i18n'], null, true);
-        wp_set_script_translations('aripplesong-app', 'sage', get_template_directory().'/resources/lang');
+        wp_set_script_translations('aripplesong-app', 'a-ripple-song', get_template_directory() . '/resources/lang');
 
         $currentPostId = is_singular() ? get_queried_object_id() : 0;
         $currentPostType = $currentPostId ? get_post_type($currentPostId) : '';

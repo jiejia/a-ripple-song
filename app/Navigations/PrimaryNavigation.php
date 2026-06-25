@@ -26,6 +26,6 @@ class PrimaryNavigation implements NavigationInterface
      */
     public function label(): string
     {
-        return __('Primary Navigation', 'sage');
+        return __('Primary Navigation', 'a-ripple-song');
     }
 }

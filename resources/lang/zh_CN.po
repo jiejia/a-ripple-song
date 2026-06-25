@@ -11,7 +11,7 @@ msgstr ""
 "PO-Revision-Date: 2025-11-17 10:00+0800\n"
 "Language: zh_CN: Sage Starter Theme 11.0.1\n"
 "X-Generator: WP-CLI 2.12.0\n"
-"X-Domain: sage\n"
+"X-Domain: a-ripple-song\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. Author of the theme
@@ -418,7 +418,7 @@ msgstr "抱歉，您尝试查看的页面不存在。"
 msgid "Sorry, no results were found."
 msgstr "抱歉，未找到结果。"
 
-#: resources/views/forms/search.blade.php:15
+#: searchform.php:23
 msgctxt "placeholder"
 msgid "Search &hellip;"
 msgstr "搜索 &hellip;"
@@ -984,14 +984,6 @@ msgstr "大"
 msgctxt "Font size name"
 msgid "2xl"
 msgstr "超大"
-
-#: resources/js/player/store.js:172
-msgid "Failed to fetch latest podcasts:"
-msgstr "获取最新播客失败："
-
-#: resources/js/player/store.js:277
-msgid "Audio load error:"
-msgstr "音频加载错误："
 
 #. Theme Name of the theme
 #: style.css
@@ -1910,7 +1902,6 @@ msgctxt "comments title"
 msgid "One response"
 msgid_plural "%1$s responses"
 msgstr[0] "1 条回复"
-msgstr[1] "%1$s 条回复"
 
 #: app/View/Composers/Comments.php:59
 msgid "Older comments"

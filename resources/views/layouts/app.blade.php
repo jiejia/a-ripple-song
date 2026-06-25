@@ -84,7 +84,7 @@
            py-3 px-1
            hover:bg-base-300 hover:text-base-content hover:px-2
            transition-all duration-200"
-    aria-label="{{ __('Open Left Sidebar', 'sage') }}"
+    aria-label="{{ __('Open Left Sidebar', 'a-ripple-song') }}"
   >
     <i data-lucide="chevron-right" class="w-3 h-3"></i>
   </label>
@@ -98,7 +98,7 @@
            py-3 px-1
            hover:bg-base-300 hover:text-base-content hover:px-2
            transition-all duration-200"
-    aria-label="{{ __('Open Right Sidebar', 'sage') }}"
+    aria-label="{{ __('Open Right Sidebar', 'a-ripple-song') }}"
   >
     <i data-lucide="chevron-left" class="w-3 h-3"></i>
   </label>

@@ -26,7 +26,7 @@ class LeftbarPrimary extends CustomAreaAbstract
      */
     public function name(): string
     {
-        return __('Leftbar Primary', 'sage');
+        return __('Leftbar Primary', 'a-ripple-song');
     }
 
     /**
@@ -36,6 +36,6 @@ class LeftbarPrimary extends CustomAreaAbstract
      */
     public function description(): string
     {
-        return __('Primary left sidebar area for displaying various content modules', 'sage');
+        return __('Primary left sidebar area for displaying various content modules', 'a-ripple-song');
     }
 }

@@ -52,7 +52,7 @@ abstract class CustomPostTypeAbstract implements CustomPostTypeInterface
     public function metaBoxTitle(): string
     {
         /* translators: %s is the singular custom post type name. */
-        return sprintf(__('%s Details', 'sage'), static::singularName());
+        return sprintf(__('%s Details', 'a-ripple-song'), static::singularName());
     }
     /**
      * Register extra hooks required by this custom post type.
@@ -76,19 +76,19 @@ abstract class CustomPostTypeAbstract implements CustomPostTypeInterface
             'name' => $pluralName,
             'singular_name' => $singularName,
             /* translators: %s is the singular custom post type name. */
-            'add_new_item' => sprintf(__('Add New %s', 'sage'), $singularName),
+            'add_new_item' => sprintf(__('Add New %s', 'a-ripple-song'), $singularName),
             /* translators: %s is the singular custom post type name. */
-            'edit_item' => sprintf(__('Edit %s', 'sage'), $singularName),
+            'edit_item' => sprintf(__('Edit %s', 'a-ripple-song'), $singularName),
             /* translators: %s is the singular custom post type name. */
-            'new_item' => sprintf(__('New %s', 'sage'), $singularName),
+            'new_item' => sprintf(__('New %s', 'a-ripple-song'), $singularName),
             /* translators: %s is the singular custom post type name. */
-            'view_item' => sprintf(__('View %s', 'sage'), $singularName),
+            'view_item' => sprintf(__('View %s', 'a-ripple-song'), $singularName),
             /* translators: %s is the plural custom post type name. */
-            'search_items' => sprintf(__('Search %s', 'sage'), $pluralName),
+            'search_items' => sprintf(__('Search %s', 'a-ripple-song'), $pluralName),
             /* translators: %s is the lowercase plural custom post type name. */
-            'not_found' => sprintf(__('No %s found', 'sage'), strtolower($pluralName)),
+            'not_found' => sprintf(__('No %s found', 'a-ripple-song'), strtolower($pluralName)),
             /* translators: %s is the lowercase plural custom post type name. */
-            'not_found_in_trash' => sprintf(__('No %s found in Trash', 'sage'), strtolower($pluralName)),
+            'not_found_in_trash' => sprintf(__('No %s found in Trash', 'a-ripple-song'), strtolower($pluralName)),
         ];
     }
     /**

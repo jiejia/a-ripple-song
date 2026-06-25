@@ -40,8 +40,8 @@ class AuthorsWidget extends WidgetAbstract
     {
         parent::__construct(
             static::idBase(),
-            __('aripplesong - Authors List', 'sage'),
-            ['description' => __('Display members and guest authors list', 'sage')]
+            __('aripplesong - Authors List', 'a-ripple-song'),
+            ['description' => __('Display members and guest authors list', 'a-ripple-song')]
         );
     }
 
@@ -57,11 +57,11 @@ class AuthorsWidget extends WidgetAbstract
 
         $membersTitle = ! empty($instance['members_title'])
             ? sanitize_text_field((string) $instance['members_title'])
-            : __('Members', 'sage');
+            : __('Members', 'a-ripple-song');
 
         $guestsTitle = ! empty($instance['guests_title'])
             ? sanitize_text_field((string) $instance['guests_title'])
-            : __('Guests', 'sage');
+            : __('Guests', 'a-ripple-song');
 
         $showMembers = isset($instance['show_members']) ? (bool) $instance['show_members'] : true;
         $showGuests = isset($instance['show_guests']) ? (bool) $instance['show_guests'] : true;
@@ -97,14 +97,14 @@ class AuthorsWidget extends WidgetAbstract
      */
     public function form($instance): void
     {
-        $membersTitle = ! empty($instance['members_title']) ? $instance['members_title'] : __('Members', 'sage');
-        $guestsTitle = ! empty($instance['guests_title']) ? $instance['guests_title'] : __('Guests', 'sage');
+        $membersTitle = ! empty($instance['members_title']) ? $instance['members_title'] : __('Members', 'a-ripple-song');
+        $guestsTitle = ! empty($instance['guests_title']) ? $instance['guests_title'] : __('Guests', 'a-ripple-song');
         $showMembers = isset($instance['show_members']) ? (bool) $instance['show_members'] : true;
         $showGuests = isset($instance['show_guests']) ? (bool) $instance['show_guests'] : true;
         ?>
         <p>
             <label for="<?php echo esc_attr($this->get_field_id('members_title')); ?>">
-                <?php esc_html_e('Members Title:', 'sage'); ?>
+                <?php esc_html_e('Members Title:', 'a-ripple-song'); ?>
             </label>
             <input class="widefat"
                    id="<?php echo esc_attr($this->get_field_id('members_title')); ?>"
@@ -120,13 +120,13 @@ class AuthorsWidget extends WidgetAbstract
                    id="<?php echo esc_attr($this->get_field_id('show_members')); ?>"
                    name="<?php echo esc_attr($this->get_field_name('show_members')); ?>">
             <label for="<?php echo esc_attr($this->get_field_id('show_members')); ?>">
-                <?php esc_html_e('Show Members (Authors)', 'sage'); ?>
+                <?php esc_html_e('Show Members (Authors)', 'a-ripple-song'); ?>
             </label>
         </p>
 
         <p>
             <label for="<?php echo esc_attr($this->get_field_id('guests_title')); ?>">
-                <?php esc_html_e('Guests Title:', 'sage'); ?>
+                <?php esc_html_e('Guests Title:', 'a-ripple-song'); ?>
             </label>
             <input class="widefat"
                    id="<?php echo esc_attr($this->get_field_id('guests_title')); ?>"
@@ -142,7 +142,7 @@ class AuthorsWidget extends WidgetAbstract
                    id="<?php echo esc_attr($this->get_field_id('show_guests')); ?>"
                    name="<?php echo esc_attr($this->get_field_name('show_guests')); ?>">
             <label for="<?php echo esc_attr($this->get_field_id('show_guests')); ?>">
-                <?php esc_html_e('Show Guests (Subscribers)', 'sage'); ?>
+                <?php esc_html_e('Show Guests (Subscribers)', 'a-ripple-song'); ?>
             </label>
         </p>
         <?php

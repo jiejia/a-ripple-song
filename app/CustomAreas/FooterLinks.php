@@ -26,7 +26,7 @@ class FooterLinks extends CustomAreaAbstract
      */
     public function name(): string
     {
-        return __('Footer Links', 'sage');
+        return __('Footer Links', 'a-ripple-song');
     }
 
     /**
@@ -36,7 +36,7 @@ class FooterLinks extends CustomAreaAbstract
      */
     public function description(): string
     {
-        return __('Footer links area for displaying link columns', 'sage');
+        return __('Footer links area for displaying link columns', 'a-ripple-song');
     }
 
     /**

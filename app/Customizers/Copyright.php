@@ -27,7 +27,7 @@ class Copyright extends CustomizerAbstract
     public function register(WP_Customize_Manager $wpCustomize): void
     {
         $wpCustomize->add_section(Theme::fieldKey('footer'), [
-            'title' => __('Footer', 'sage'),
+            'title' => __('Footer', 'a-ripple-song'),
             'priority' => 160,
         ]);
 
@@ -39,8 +39,8 @@ class Copyright extends CustomizerAbstract
 
         $wpCustomize->add_control(Theme::fieldKey('footer_copyright'), [
             'section' => Theme::fieldKey('footer'),
-            'label' => __('Footer Copyright', 'sage'),
-            'description' => __('Overrides the footer copyright line. Leave empty to use the default.', 'sage'),
+            'label' => __('Footer Copyright', 'a-ripple-song'),
+            'description' => __('Overrides the footer copyright line. Leave empty to use the default.', 'a-ripple-song'),
             'type' => 'text',
         ]);
     }

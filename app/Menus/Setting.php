@@ -17,7 +17,7 @@ class Setting
      */
     public function topMenuTitle(): string
     {
-        return __('A Ripple Song', 'sage');
+        return __('A Ripple Song', 'a-ripple-song');
     }
 
     /**

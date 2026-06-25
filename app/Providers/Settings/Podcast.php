@@ -38,7 +38,7 @@ class Podcast extends SettingAbstract
      */
     public function pageTitle(): string
     {
-        return __('Podcast Settings', 'sage');
+        return __('Podcast Settings', 'a-ripple-song');
     }
 
     /**
@@ -59,139 +59,139 @@ class Podcast extends SettingAbstract
     public function fields(): array
     {
         // Reuse option lists across related select fields.
-        $notSetOptions = ['' => __('(not set)', 'sage')];
+        $notSetOptions = ['' => __('(not set)', 'a-ripple-song')];
         // Reuse yes/no choices for iTunes boolean tags.
-        $yesNoOptions = ['no' => __('no', 'sage'), 'yes' => __('yes', 'sage')];
+        $yesNoOptions = ['no' => __('no', 'a-ripple-song'), 'yes' => __('yes', 'a-ripple-song')];
 
         /** @var \Carbon_Fields\Field\Complex_Field $fundingField */
-        $fundingField = Field::make('complex', $this->fieldName('funding'), __('Podcasting 2.0 Funding Links (podcast:funding)', 'sage'));
-        $fundingField->set_help_text(__('Optional. If empty, no podcast:funding tags will be generated. URLs should be https.', 'sage'));
+        $fundingField = Field::make('complex', $this->fieldName('funding'), __('Podcasting 2.0 Funding Links (podcast:funding)', 'a-ripple-song'));
+        $fundingField->set_help_text(__('Optional. If empty, no podcast:funding tags will be generated. URLs should be https.', 'a-ripple-song'));
         $fundingField->add_fields([
-            Field::make('text', 'url', __('URL', 'sage'))
+            Field::make('text', 'url', __('URL', 'a-ripple-song'))
                 ->set_attribute('type', 'url')
                 ->set_width(60),
-            Field::make('text', 'label', __('Label', 'sage'))->set_width(40),
+            Field::make('text', 'label', __('Label', 'a-ripple-song'))->set_width(40),
         ]);
 
         /** @var \Carbon_Fields\Field\Html_Field $rssUrlField */
-        $rssUrlField = Field::make('html', $this->fieldName('rss_url'), __('Podcast RSS URL', 'sage'));
+        $rssUrlField = Field::make('html', $this->fieldName('rss_url'), __('Podcast RSS URL', 'a-ripple-song'));
         $rssUrlField->set_html([$this, 'renderPodcastFeedUrlField']);
 
         /** @var \Carbon_Fields\Field\Image_Field $coverField */
-        $coverField = Field::make('image', $this->fieldName('cover'), __('Podcast Cover (1400-3000px square)', 'sage'));
+        $coverField = Field::make('image', $this->fieldName('cover'), __('Podcast Cover (1400-3000px square)', 'a-ripple-song'));
         $coverField
             ->set_value_type('url')
-            ->set_help_text(__('Required. Square JPG/PNG between 1400-3000px for itunes:image. Apple recommends keeping the file under 512KB.', 'sage'));
+            ->set_help_text(__('Required. Square JPG/PNG between 1400-3000px for itunes:image. Apple recommends keeping the file under 512KB.', 'a-ripple-song'));
 
         /** @var \Carbon_Fields\Field\Select_Field $explicitField */
-        $explicitField = Field::make('select', $this->fieldName('explicit'), __('Default Explicit Flag', 'sage'));
+        $explicitField = Field::make('select', $this->fieldName('explicit'), __('Default Explicit Flag', 'a-ripple-song'));
         $explicitField
             ->set_options([
-                'clean' => __('clean (no explicit content)', 'sage'),
-                'explicit' => __('explicit', 'sage'),
+                'clean' => __('clean (no explicit content)', 'a-ripple-song'),
+                'explicit' => __('explicit', 'a-ripple-song'),
             ])
             ->set_default_value('clean')
-            ->set_help_text(__('Required. Single-episode value can override.', 'sage'));
+            ->set_help_text(__('Required. Single-episode value can override.', 'a-ripple-song'));
 
         /** @var \Carbon_Fields\Field\Select_Field $languageField */
-        $languageField = Field::make('select', $this->fieldName('language'), __('Language (RFC 5646)', 'sage'));
+        $languageField = Field::make('select', $this->fieldName('language'), __('Language (RFC 5646)', 'a-ripple-song'));
         $languageField
             ->set_options($this->podcastLanguageOptions())
             ->set_default_value((string) (get_bloginfo('language') ?: 'en-US'))
-            ->set_help_text(__('Required. Typically en-US, zh-CN, etc.', 'sage'));
+            ->set_help_text(__('Required. Typically en-US, zh-CN, etc.', 'a-ripple-song'));
 
         /** @var \Carbon_Fields\Field\Select_Field $primaryCategoryField */
-        $primaryCategoryField = Field::make('select', $this->fieldName('category_primary'), __('Primary Category (Apple Podcasts)', 'sage'));
+        $primaryCategoryField = Field::make('select', $this->fieldName('category_primary'), __('Primary Category (Apple Podcasts)', 'a-ripple-song'));
         $primaryCategoryField
             ->set_options($notSetOptions + $this->itunesCategories())
-            ->set_help_text(__('Required by Apple Podcasts. Choose at least a primary category.', 'sage'));
+            ->set_help_text(__('Required by Apple Podcasts. Choose at least a primary category.', 'a-ripple-song'));
 
         /** @var \Carbon_Fields\Field\Select_Field $secondaryCategoryField */
-        $secondaryCategoryField = Field::make('select', $this->fieldName('category_secondary'), __('Secondary Category (optional)', 'sage'));
+        $secondaryCategoryField = Field::make('select', $this->fieldName('category_secondary'), __('Secondary Category (optional)', 'a-ripple-song'));
         $secondaryCategoryField
             ->set_options($notSetOptions + $this->itunesCategories())
-            ->set_help_text(__('Optional. Some directories support a second category.', 'sage'));
+            ->set_help_text(__('Optional. Some directories support a second category.', 'a-ripple-song'));
 
         /** @var \Carbon_Fields\Field\Select_Field $itunesTypeField */
-        $itunesTypeField = Field::make('select', $this->fieldName('itunes_type'), __('iTunes Type (itunes:type)', 'sage'));
+        $itunesTypeField = Field::make('select', $this->fieldName('itunes_type'), __('iTunes Type (itunes:type)', 'a-ripple-song'));
         $itunesTypeField
             ->set_options($notSetOptions + [
-                'episodic' => __('episodic', 'sage'),
-                'serial' => __('serial', 'sage'),
+                'episodic' => __('episodic', 'a-ripple-song'),
+                'serial' => __('serial', 'a-ripple-song'),
             ])
-            ->set_help_text(__('Optional. Apple Podcasts: episodic or serial.', 'sage'));
+            ->set_help_text(__('Optional. Apple Podcasts: episodic or serial.', 'a-ripple-song'));
 
         /** @var \Carbon_Fields\Field\Select_Field $itunesBlockField */
-        $itunesBlockField = Field::make('select', $this->fieldName('itunes_block'), __('iTunes Block (itunes:block)', 'sage'));
+        $itunesBlockField = Field::make('select', $this->fieldName('itunes_block'), __('iTunes Block (itunes:block)', 'a-ripple-song'));
         $itunesBlockField
             ->set_options($yesNoOptions)
             ->set_default_value('no')
-            ->set_help_text(__('Optional. yes = hide this show in Apple Podcasts.', 'sage'));
+            ->set_help_text(__('Optional. yes = hide this show in Apple Podcasts.', 'a-ripple-song'));
 
         /** @var \Carbon_Fields\Field\Select_Field $itunesCompleteField */
-        $itunesCompleteField = Field::make('select', $this->fieldName('itunes_complete'), __('iTunes Complete (itunes:complete)', 'sage'));
+        $itunesCompleteField = Field::make('select', $this->fieldName('itunes_complete'), __('iTunes Complete (itunes:complete)', 'a-ripple-song'));
         $itunesCompleteField
             ->set_options($yesNoOptions)
             ->set_default_value('no')
-            ->set_help_text(__('Optional. yes = this show is complete with no more episodes.', 'sage'));
+            ->set_help_text(__('Optional. yes = this show is complete with no more episodes.', 'a-ripple-song'));
 
         /** @var \Carbon_Fields\Field\Select_Field $lockedField */
-        $lockedField = Field::make('select', $this->fieldName('locked'), __('podcast:locked', 'sage'));
+        $lockedField = Field::make('select', $this->fieldName('locked'), __('podcast:locked', 'a-ripple-song'));
         $lockedField
             ->set_options([
-                'yes' => __('yes (recommended, prevents unauthorized moves)', 'sage'),
-                'no' => __('no', 'sage'),
+                'yes' => __('yes (recommended, prevents unauthorized moves)', 'a-ripple-song'),
+                'no' => __('no', 'a-ripple-song'),
             ])
             ->set_default_value('yes')
-            ->set_help_text(__('Podcasting 2.0: lock feed to this publisher.', 'sage'));
+            ->set_help_text(__('Podcasting 2.0: lock feed to this publisher.', 'a-ripple-song'));
 
         return [
             $rssUrlField,
-            Field::make('text', $this->fieldName('title'), __('Podcast Title', 'sage'))
+            Field::make('text', $this->fieldName('title'), __('Podcast Title', 'a-ripple-song'))
                 ->set_default_value((string) get_bloginfo('name'))
-                ->set_help_text(__('Required. If empty, falls back to site title.', 'sage')),
-            Field::make('text', $this->fieldName('subtitle'), __('Podcast Subtitle', 'sage'))
-                ->set_help_text(__('Short tagline shown in some apps.', 'sage')),
-            Field::make('textarea', $this->fieldName('description'), __('Podcast Description', 'sage'))
+                ->set_help_text(__('Required. If empty, falls back to site title.', 'a-ripple-song')),
+            Field::make('text', $this->fieldName('subtitle'), __('Podcast Subtitle', 'a-ripple-song'))
+                ->set_help_text(__('Short tagline shown in some apps.', 'a-ripple-song')),
+            Field::make('textarea', $this->fieldName('description'), __('Podcast Description', 'a-ripple-song'))
                 ->set_default_value((string) get_bloginfo('description'))
-                ->set_help_text(__('Required. Plain text description of the show.', 'sage')),
-            Field::make('text', $this->fieldName('author'), __('Podcast Author (itunes:author)', 'sage'))
+                ->set_help_text(__('Required. Plain text description of the show.', 'a-ripple-song')),
+            Field::make('text', $this->fieldName('author'), __('Podcast Author (itunes:author)', 'a-ripple-song'))
                 ->set_default_value((string) get_bloginfo('name'))
-                ->set_help_text(__('Required. Displayed as show author in directories.', 'sage')),
-            Field::make('text', $this->fieldName('owner_name'), __('Owner Name', 'sage'))
+                ->set_help_text(__('Required. Displayed as show author in directories.', 'a-ripple-song')),
+            Field::make('text', $this->fieldName('owner_name'), __('Owner Name', 'a-ripple-song'))
                 ->set_default_value((string) get_bloginfo('name'))
-                ->set_help_text(__('Required. For itunes:owner itunes:name.', 'sage')),
-            Field::make('text', $this->fieldName('owner_email'), __('Owner Email', 'sage'))
+                ->set_help_text(__('Required. For itunes:owner itunes:name.', 'a-ripple-song')),
+            Field::make('text', $this->fieldName('owner_email'), __('Owner Email', 'a-ripple-song'))
                 ->set_attribute('type', 'email')
                 ->set_default_value((string) get_bloginfo('admin_email'))
-                ->set_help_text(__('Required. For itunes:owner itunes:email. Use a monitored inbox.', 'sage')),
+                ->set_help_text(__('Required. For itunes:owner itunes:email. Use a monitored inbox.', 'a-ripple-song')),
             $coverField,
             $explicitField,
             $languageField,
             $primaryCategoryField,
             $secondaryCategoryField,
-            Field::make('text', $this->fieldName('copyright'), __('Copyright (optional)', 'sage'))
-                ->set_help_text(__('Optional. For copyright.', 'sage')),
+            Field::make('text', $this->fieldName('copyright'), __('Copyright (optional)', 'a-ripple-song'))
+                ->set_help_text(__('Optional. For copyright.', 'a-ripple-song')),
             $itunesTypeField,
-            Field::make('text', $this->fieldName('itunes_title'), __('iTunes Title (optional)', 'sage'))
-                ->set_help_text(__('Optional. Use only if you need a separate Apple-facing title.', 'sage')),
+            Field::make('text', $this->fieldName('itunes_title'), __('iTunes Title (optional)', 'a-ripple-song'))
+                ->set_help_text(__('Optional. Use only if you need a separate Apple-facing title.', 'a-ripple-song')),
             $itunesBlockField,
             $itunesCompleteField,
-            Field::make('text', $this->fieldName('itunes_new_feed_url'), __('iTunes New Feed URL (itunes:new-feed-url)', 'sage'))
+            Field::make('text', $this->fieldName('itunes_new_feed_url'), __('iTunes New Feed URL (itunes:new-feed-url)', 'a-ripple-song'))
                 ->set_attribute('type', 'url')
-                ->set_help_text(__('Optional. Only for moving your show to a new RSS feed URL.', 'sage')),
+                ->set_help_text(__('Optional. Only for moving your show to a new RSS feed URL.', 'a-ripple-song')),
             $lockedField,
-            Field::make('text', $this->fieldName('locked_owner'), __('podcast:locked owner (optional)', 'sage'))
+            Field::make('text', $this->fieldName('locked_owner'), __('podcast:locked owner (optional)', 'a-ripple-song'))
                 ->set_attribute('type', 'email')
-                ->set_help_text(__('Optional. Podcasting 2.0: email used to verify ownership during moves.', 'sage')),
-            Field::make('text', $this->fieldName('guid'), __('podcast:guid (optional)', 'sage'))
+                ->set_help_text(__('Optional. Podcasting 2.0: email used to verify ownership during moves.', 'a-ripple-song')),
+            Field::make('text', $this->fieldName('guid'), __('podcast:guid (optional)', 'a-ripple-song'))
                 ->set_default_value(home_url('/'))
-                ->set_help_text(__('Podcasting 2.0 GUID. If empty, feed will use site URL as fallback.', 'sage')),
-            Field::make('text', $this->fieldName('apple_verify'), __('Apple Podcasts Verify Code', 'sage'))
-                ->set_help_text(__('Optional. Used by Apple Podcasts to verify feed ownership.', 'sage')),
+                ->set_help_text(__('Podcasting 2.0 GUID. If empty, feed will use site URL as fallback.', 'a-ripple-song')),
+            Field::make('text', $this->fieldName('apple_verify'), __('Apple Podcasts Verify Code', 'a-ripple-song'))
+                ->set_help_text(__('Optional. Used by Apple Podcasts to verify feed ownership.', 'a-ripple-song')),
             $fundingField,
-            Field::make('text', $this->fieldName('generator'), __('Generator (optional)', 'sage'))
-                ->set_help_text(__('Optional. If empty, generator tag will not be included.', 'sage')),
+            Field::make('text', $this->fieldName('generator'), __('Generator (optional)', 'a-ripple-song'))
+                ->set_help_text(__('Optional. If empty, generator tag will not be included.', 'a-ripple-song')),
         ];
     }
 
@@ -206,7 +206,7 @@ class Podcast extends SettingAbstract
         return sprintf(
             '<input type="text" class="regular-text" value="%1$s" readonly onclick="this.select();" /><p class="description">%2$s</p>',
             esc_attr($this->podcastFeedUrl()),
-            esc_html__('Your podcast RSS feed URL. Click to select and copy.', 'sage')
+            esc_html__('Your podcast RSS feed URL. Click to select and copy.', 'a-ripple-song')
         );
     }
 
@@ -289,113 +289,113 @@ class Podcast extends SettingAbstract
     {
         // Keep values compatible with the previous plugin's feed rendering.
         return [
-            'Arts' => __('Arts', 'sage'),
-            'Arts::Books' => __('Arts > Books', 'sage'),
-            'Arts::Design' => __('Arts > Design', 'sage'),
-            'Arts::Fashion & Beauty' => __('Arts > Fashion & Beauty', 'sage'),
-            'Arts::Food' => __('Arts > Food', 'sage'),
-            'Arts::Performing Arts' => __('Arts > Performing Arts', 'sage'),
-            'Arts::Visual Arts' => __('Arts > Visual Arts', 'sage'),
-            'Business' => __('Business', 'sage'),
-            'Business::Careers' => __('Business > Careers', 'sage'),
-            'Business::Entrepreneurship' => __('Business > Entrepreneurship', 'sage'),
-            'Business::Investing' => __('Business > Investing', 'sage'),
-            'Business::Management' => __('Business > Management', 'sage'),
-            'Business::Marketing' => __('Business > Marketing', 'sage'),
-            'Business::Non-Profit' => __('Business > Non-Profit', 'sage'),
-            'Comedy' => __('Comedy', 'sage'),
-            'Comedy::Comedy Interviews' => __('Comedy > Comedy Interviews', 'sage'),
-            'Comedy::Improv' => __('Comedy > Improv', 'sage'),
-            'Comedy::Stand-Up' => __('Comedy > Stand-Up', 'sage'),
-            'Education' => __('Education', 'sage'),
-            'Education::Courses' => __('Education > Courses', 'sage'),
-            'Education::How To' => __('Education > How To', 'sage'),
-            'Education::Language Learning' => __('Education > Language Learning', 'sage'),
-            'Education::Self-Improvement' => __('Education > Self-Improvement', 'sage'),
-            'Fiction' => __('Fiction', 'sage'),
-            'Fiction::Comedy Fiction' => __('Fiction > Comedy Fiction', 'sage'),
-            'Fiction::Drama' => __('Fiction > Drama', 'sage'),
-            'Fiction::Science Fiction' => __('Fiction > Science Fiction', 'sage'),
-            'Government' => __('Government', 'sage'),
-            'History' => __('History', 'sage'),
-            'Health & Fitness' => __('Health & Fitness', 'sage'),
-            'Health & Fitness::Alternative Health' => __('Health & Fitness > Alternative Health', 'sage'),
-            'Health & Fitness::Fitness' => __('Health & Fitness > Fitness', 'sage'),
-            'Health & Fitness::Medicine' => __('Health & Fitness > Medicine', 'sage'),
-            'Health & Fitness::Mental Health' => __('Health & Fitness > Mental Health', 'sage'),
-            'Health & Fitness::Nutrition' => __('Health & Fitness > Nutrition', 'sage'),
-            'Health & Fitness::Sexuality' => __('Health & Fitness > Sexuality', 'sage'),
-            'Kids & Family' => __('Kids & Family', 'sage'),
-            'Kids & Family::Education for Kids' => __('Kids & Family > Education for Kids', 'sage'),
-            'Kids & Family::Parenting' => __('Kids & Family > Parenting', 'sage'),
-            'Kids & Family::Pets & Animals' => __('Kids & Family > Pets & Animals', 'sage'),
-            'Kids & Family::Stories for Kids' => __('Kids & Family > Stories for Kids', 'sage'),
-            'Leisure' => __('Leisure', 'sage'),
-            'Leisure::Animation & Manga' => __('Leisure > Animation & Manga', 'sage'),
-            'Leisure::Automotive' => __('Leisure > Automotive', 'sage'),
-            'Leisure::Aviation' => __('Leisure > Aviation', 'sage'),
-            'Leisure::Crafts' => __('Leisure > Crafts', 'sage'),
-            'Leisure::Games' => __('Leisure > Games', 'sage'),
-            'Leisure::Hobbies' => __('Leisure > Hobbies', 'sage'),
-            'Leisure::Home & Garden' => __('Leisure > Home & Garden', 'sage'),
-            'Leisure::Video Games' => __('Leisure > Video Games', 'sage'),
-            'Music' => __('Music', 'sage'),
-            'Music::Music Commentary' => __('Music > Music Commentary', 'sage'),
-            'Music::Music History' => __('Music > Music History', 'sage'),
-            'Music::Music Interviews' => __('Music > Music Interviews', 'sage'),
-            'News' => __('News', 'sage'),
-            'News::Business News' => __('News > Business News', 'sage'),
-            'News::Daily News' => __('News > Daily News', 'sage'),
-            'News::Entertainment News' => __('News > Entertainment News', 'sage'),
-            'News::News Commentary' => __('News > News Commentary', 'sage'),
-            'News::Politics' => __('News > Politics', 'sage'),
-            'News::Sports News' => __('News > Sports News', 'sage'),
-            'News::Tech News' => __('News > Tech News', 'sage'),
-            'Religion & Spirituality' => __('Religion & Spirituality', 'sage'),
-            'Religion & Spirituality::Buddhism' => __('Religion & Spirituality > Buddhism', 'sage'),
-            'Religion & Spirituality::Christianity' => __('Religion & Spirituality > Christianity', 'sage'),
-            'Religion & Spirituality::Hinduism' => __('Religion & Spirituality > Hinduism', 'sage'),
-            'Religion & Spirituality::Islam' => __('Religion & Spirituality > Islam', 'sage'),
-            'Religion & Spirituality::Judaism' => __('Religion & Spirituality > Judaism', 'sage'),
-            'Religion & Spirituality::Religion' => __('Religion & Spirituality > Religion', 'sage'),
-            'Religion & Spirituality::Spirituality' => __('Religion & Spirituality > Spirituality', 'sage'),
-            'Science' => __('Science', 'sage'),
-            'Science::Astronomy' => __('Science > Astronomy', 'sage'),
-            'Science::Chemistry' => __('Science > Chemistry', 'sage'),
-            'Science::Earth Sciences' => __('Science > Earth Sciences', 'sage'),
-            'Science::Life Sciences' => __('Science > Life Sciences', 'sage'),
-            'Science::Mathematics' => __('Science > Mathematics', 'sage'),
-            'Science::Natural Sciences' => __('Science > Natural Sciences', 'sage'),
-            'Science::Nature' => __('Science > Nature', 'sage'),
-            'Science::Physics' => __('Science > Physics', 'sage'),
-            'Society & Culture' => __('Society & Culture', 'sage'),
-            'Society & Culture::Documentary' => __('Society & Culture > Documentary', 'sage'),
-            'Society & Culture::Personal Journals' => __('Society & Culture > Personal Journals', 'sage'),
-            'Society & Culture::Philosophy' => __('Society & Culture > Philosophy', 'sage'),
-            'Society & Culture::Places & Travel' => __('Society & Culture > Places & Travel', 'sage'),
-            'Society & Culture::Relationships' => __('Society & Culture > Relationships', 'sage'),
-            'Sports' => __('Sports', 'sage'),
-            'Sports::Baseball' => __('Sports > Baseball', 'sage'),
-            'Sports::Basketball' => __('Sports > Basketball', 'sage'),
-            'Sports::Cricket' => __('Sports > Cricket', 'sage'),
-            'Sports::Fantasy Sports' => __('Sports > Fantasy Sports', 'sage'),
-            'Sports::Football' => __('Sports > Football', 'sage'),
-            'Sports::Golf' => __('Sports > Golf', 'sage'),
-            'Sports::Hockey' => __('Sports > Hockey', 'sage'),
-            'Sports::Rugby' => __('Sports > Rugby', 'sage'),
-            'Sports::Running' => __('Sports > Running', 'sage'),
-            'Sports::Soccer' => __('Sports > Soccer', 'sage'),
-            'Sports::Swimming' => __('Sports > Swimming', 'sage'),
-            'Sports::Tennis' => __('Sports > Tennis', 'sage'),
-            'Sports::Volleyball' => __('Sports > Volleyball', 'sage'),
-            'Technology' => __('Technology', 'sage'),
-            'True Crime' => __('True Crime', 'sage'),
-            'TV & Film' => __('TV & Film', 'sage'),
-            'TV & Film::After Shows' => __('TV & Film > After Shows', 'sage'),
-            'TV & Film::Film History' => __('TV & Film > Film History', 'sage'),
-            'TV & Film::Film Interviews' => __('TV & Film > Film Interviews', 'sage'),
-            'TV & Film::Film Reviews' => __('TV & Film > Film Reviews', 'sage'),
-            'TV & Film::TV Reviews' => __('TV & Film > TV Reviews', 'sage'),
+            'Arts' => __('Arts', 'a-ripple-song'),
+            'Arts::Books' => __('Arts > Books', 'a-ripple-song'),
+            'Arts::Design' => __('Arts > Design', 'a-ripple-song'),
+            'Arts::Fashion & Beauty' => __('Arts > Fashion & Beauty', 'a-ripple-song'),
+            'Arts::Food' => __('Arts > Food', 'a-ripple-song'),
+            'Arts::Performing Arts' => __('Arts > Performing Arts', 'a-ripple-song'),
+            'Arts::Visual Arts' => __('Arts > Visual Arts', 'a-ripple-song'),
+            'Business' => __('Business', 'a-ripple-song'),
+            'Business::Careers' => __('Business > Careers', 'a-ripple-song'),
+            'Business::Entrepreneurship' => __('Business > Entrepreneurship', 'a-ripple-song'),
+            'Business::Investing' => __('Business > Investing', 'a-ripple-song'),
+            'Business::Management' => __('Business > Management', 'a-ripple-song'),
+            'Business::Marketing' => __('Business > Marketing', 'a-ripple-song'),
+            'Business::Non-Profit' => __('Business > Non-Profit', 'a-ripple-song'),
+            'Comedy' => __('Comedy', 'a-ripple-song'),
+            'Comedy::Comedy Interviews' => __('Comedy > Comedy Interviews', 'a-ripple-song'),
+            'Comedy::Improv' => __('Comedy > Improv', 'a-ripple-song'),
+            'Comedy::Stand-Up' => __('Comedy > Stand-Up', 'a-ripple-song'),
+            'Education' => __('Education', 'a-ripple-song'),
+            'Education::Courses' => __('Education > Courses', 'a-ripple-song'),
+            'Education::How To' => __('Education > How To', 'a-ripple-song'),
+            'Education::Language Learning' => __('Education > Language Learning', 'a-ripple-song'),
+            'Education::Self-Improvement' => __('Education > Self-Improvement', 'a-ripple-song'),
+            'Fiction' => __('Fiction', 'a-ripple-song'),
+            'Fiction::Comedy Fiction' => __('Fiction > Comedy Fiction', 'a-ripple-song'),
+            'Fiction::Drama' => __('Fiction > Drama', 'a-ripple-song'),
+            'Fiction::Science Fiction' => __('Fiction > Science Fiction', 'a-ripple-song'),
+            'Government' => __('Government', 'a-ripple-song'),
+            'History' => __('History', 'a-ripple-song'),
+            'Health & Fitness' => __('Health & Fitness', 'a-ripple-song'),
+            'Health & Fitness::Alternative Health' => __('Health & Fitness > Alternative Health', 'a-ripple-song'),
+            'Health & Fitness::Fitness' => __('Health & Fitness > Fitness', 'a-ripple-song'),
+            'Health & Fitness::Medicine' => __('Health & Fitness > Medicine', 'a-ripple-song'),
+            'Health & Fitness::Mental Health' => __('Health & Fitness > Mental Health', 'a-ripple-song'),
+            'Health & Fitness::Nutrition' => __('Health & Fitness > Nutrition', 'a-ripple-song'),
+            'Health & Fitness::Sexuality' => __('Health & Fitness > Sexuality', 'a-ripple-song'),
+            'Kids & Family' => __('Kids & Family', 'a-ripple-song'),
+            'Kids & Family::Education for Kids' => __('Kids & Family > Education for Kids', 'a-ripple-song'),
+            'Kids & Family::Parenting' => __('Kids & Family > Parenting', 'a-ripple-song'),
+            'Kids & Family::Pets & Animals' => __('Kids & Family > Pets & Animals', 'a-ripple-song'),
+            'Kids & Family::Stories for Kids' => __('Kids & Family > Stories for Kids', 'a-ripple-song'),
+            'Leisure' => __('Leisure', 'a-ripple-song'),
+            'Leisure::Animation & Manga' => __('Leisure > Animation & Manga', 'a-ripple-song'),
+            'Leisure::Automotive' => __('Leisure > Automotive', 'a-ripple-song'),
+            'Leisure::Aviation' => __('Leisure > Aviation', 'a-ripple-song'),
+            'Leisure::Crafts' => __('Leisure > Crafts', 'a-ripple-song'),
+            'Leisure::Games' => __('Leisure > Games', 'a-ripple-song'),
+            'Leisure::Hobbies' => __('Leisure > Hobbies', 'a-ripple-song'),
+            'Leisure::Home & Garden' => __('Leisure > Home & Garden', 'a-ripple-song'),
+            'Leisure::Video Games' => __('Leisure > Video Games', 'a-ripple-song'),
+            'Music' => __('Music', 'a-ripple-song'),
+            'Music::Music Commentary' => __('Music > Music Commentary', 'a-ripple-song'),
+            'Music::Music History' => __('Music > Music History', 'a-ripple-song'),
+            'Music::Music Interviews' => __('Music > Music Interviews', 'a-ripple-song'),
+            'News' => __('News', 'a-ripple-song'),
+            'News::Business News' => __('News > Business News', 'a-ripple-song'),
+            'News::Daily News' => __('News > Daily News', 'a-ripple-song'),
+            'News::Entertainment News' => __('News > Entertainment News', 'a-ripple-song'),
+            'News::News Commentary' => __('News > News Commentary', 'a-ripple-song'),
+            'News::Politics' => __('News > Politics', 'a-ripple-song'),
+            'News::Sports News' => __('News > Sports News', 'a-ripple-song'),
+            'News::Tech News' => __('News > Tech News', 'a-ripple-song'),
+            'Religion & Spirituality' => __('Religion & Spirituality', 'a-ripple-song'),
+            'Religion & Spirituality::Buddhism' => __('Religion & Spirituality > Buddhism', 'a-ripple-song'),
+            'Religion & Spirituality::Christianity' => __('Religion & Spirituality > Christianity', 'a-ripple-song'),
+            'Religion & Spirituality::Hinduism' => __('Religion & Spirituality > Hinduism', 'a-ripple-song'),
+            'Religion & Spirituality::Islam' => __('Religion & Spirituality > Islam', 'a-ripple-song'),
+            'Religion & Spirituality::Judaism' => __('Religion & Spirituality > Judaism', 'a-ripple-song'),
+            'Religion & Spirituality::Religion' => __('Religion & Spirituality > Religion', 'a-ripple-song'),
+            'Religion & Spirituality::Spirituality' => __('Religion & Spirituality > Spirituality', 'a-ripple-song'),
+            'Science' => __('Science', 'a-ripple-song'),
+            'Science::Astronomy' => __('Science > Astronomy', 'a-ripple-song'),
+            'Science::Chemistry' => __('Science > Chemistry', 'a-ripple-song'),
+            'Science::Earth Sciences' => __('Science > Earth Sciences', 'a-ripple-song'),
+            'Science::Life Sciences' => __('Science > Life Sciences', 'a-ripple-song'),
+            'Science::Mathematics' => __('Science > Mathematics', 'a-ripple-song'),
+            'Science::Natural Sciences' => __('Science > Natural Sciences', 'a-ripple-song'),
+            'Science::Nature' => __('Science > Nature', 'a-ripple-song'),
+            'Science::Physics' => __('Science > Physics', 'a-ripple-song'),
+            'Society & Culture' => __('Society & Culture', 'a-ripple-song'),
+            'Society & Culture::Documentary' => __('Society & Culture > Documentary', 'a-ripple-song'),
+            'Society & Culture::Personal Journals' => __('Society & Culture > Personal Journals', 'a-ripple-song'),
+            'Society & Culture::Philosophy' => __('Society & Culture > Philosophy', 'a-ripple-song'),
+            'Society & Culture::Places & Travel' => __('Society & Culture > Places & Travel', 'a-ripple-song'),
+            'Society & Culture::Relationships' => __('Society & Culture > Relationships', 'a-ripple-song'),
+            'Sports' => __('Sports', 'a-ripple-song'),
+            'Sports::Baseball' => __('Sports > Baseball', 'a-ripple-song'),
+            'Sports::Basketball' => __('Sports > Basketball', 'a-ripple-song'),
+            'Sports::Cricket' => __('Sports > Cricket', 'a-ripple-song'),
+            'Sports::Fantasy Sports' => __('Sports > Fantasy Sports', 'a-ripple-song'),
+            'Sports::Football' => __('Sports > Football', 'a-ripple-song'),
+            'Sports::Golf' => __('Sports > Golf', 'a-ripple-song'),
+            'Sports::Hockey' => __('Sports > Hockey', 'a-ripple-song'),
+            'Sports::Rugby' => __('Sports > Rugby', 'a-ripple-song'),
+            'Sports::Running' => __('Sports > Running', 'a-ripple-song'),
+            'Sports::Soccer' => __('Sports > Soccer', 'a-ripple-song'),
+            'Sports::Swimming' => __('Sports > Swimming', 'a-ripple-song'),
+            'Sports::Tennis' => __('Sports > Tennis', 'a-ripple-song'),
+            'Sports::Volleyball' => __('Sports > Volleyball', 'a-ripple-song'),
+            'Technology' => __('Technology', 'a-ripple-song'),
+            'True Crime' => __('True Crime', 'a-ripple-song'),
+            'TV & Film' => __('TV & Film', 'a-ripple-song'),
+            'TV & Film::After Shows' => __('TV & Film > After Shows', 'a-ripple-song'),
+            'TV & Film::Film History' => __('TV & Film > Film History', 'a-ripple-song'),
+            'TV & Film::Film Interviews' => __('TV & Film > Film Interviews', 'a-ripple-song'),
+            'TV & Film::Film Reviews' => __('TV & Film > Film Reviews', 'a-ripple-song'),
+            'TV & Film::TV Reviews' => __('TV & Film > TV Reviews', 'a-ripple-song'),
         ];
     }
 }

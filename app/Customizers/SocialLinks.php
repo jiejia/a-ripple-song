@@ -20,47 +20,47 @@ class SocialLinks extends CustomizerAbstract
     {
         return [
             'facebook' => [
-                'label' => __('Facebook', 'sage'),
+                'label' => __('Facebook', 'a-ripple-song'),
                 'icon' => 'facebook',
             ],
             'twitter' => [
-                'label' => __('Twitter / X', 'sage'),
+                'label' => __('Twitter / X', 'a-ripple-song'),
                 'icon' => 'twitter',
             ],
             'instagram' => [
-                'label' => __('Instagram', 'sage'),
+                'label' => __('Instagram', 'a-ripple-song'),
                 'icon' => 'instagram',
             ],
             'linkedin' => [
-                'label' => __('LinkedIn', 'sage'),
+                'label' => __('LinkedIn', 'a-ripple-song'),
                 'icon' => 'linkedin',
             ],
             'youtube' => [
-                'label' => __('YouTube', 'sage'),
+                'label' => __('YouTube', 'a-ripple-song'),
                 'icon' => 'youtube',
             ],
             'tiktok' => [
-                'label' => __('TikTok', 'sage'),
+                'label' => __('TikTok', 'a-ripple-song'),
                 'icon' => 'tiktok',
             ],
             'pinterest' => [
-                'label' => __('Pinterest', 'sage'),
+                'label' => __('Pinterest', 'a-ripple-song'),
                 'icon' => 'pinterest',
             ],
             'threads' => [
-                'label' => __('Threads', 'sage'),
+                'label' => __('Threads', 'a-ripple-song'),
                 'icon' => 'threads',
             ],
             'weibo' => [
-                'label' => __('Weibo', 'sage'),
+                'label' => __('Weibo', 'a-ripple-song'),
                 'icon' => 'weibo',
             ],
             'wechat' => [
-                'label' => __('WeChat', 'sage'),
+                'label' => __('WeChat', 'a-ripple-song'),
                 'icon' => 'wechat',
             ],
             'rss' => [
-                'label' => __('RSS Feed', 'sage'),
+                'label' => __('RSS Feed', 'a-ripple-song'),
                 'icon' => 'rss',
             ],
         ];
@@ -108,7 +108,7 @@ class SocialLinks extends CustomizerAbstract
     public function register(WP_Customize_Manager $wpCustomize): void
     {
         $wpCustomize->add_section(Theme::fieldKey('social_links'), [
-            'title' => __('Social Links', 'sage'),
+            'title' => __('Social Links', 'a-ripple-song'),
             'priority' => 170,
         ]);
 
@@ -122,10 +122,10 @@ class SocialLinks extends CustomizerAbstract
             $wpCustomize->add_control(self::settingKey($platformKey), [
                 'section' => Theme::fieldKey('social_links'),
                 'label' => $platformData['label'],
-                'description' => __('Optional. Enter a full URL.', 'sage'),
+                'description' => __('Optional. Enter a full URL.', 'a-ripple-song'),
                 'type' => 'url',
                 'input_attrs' => [
-                    'placeholder' => __('Enter a full URL', 'sage'),
+                    'placeholder' => __('Enter a full URL', 'a-ripple-song'),
                 ],
             ]);
         }

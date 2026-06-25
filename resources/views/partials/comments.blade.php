@@ -12,7 +12,7 @@
     </ol>
 
     @if ($paginated())
-    <nav aria-label="{{ esc_attr__('Comment', 'sage') }}" class="mt-4">
+    <nav aria-label="{{ esc_attr__('Comment', 'a-ripple-song') }}" class="mt-4">
       <ul class="flex justify-center gap-2 text-sm">
         @if ($previous())
         <li class="previous">
@@ -39,14 +39,14 @@
     @if ($closed())
     <div class="alert alert-warning mb-6 rounded-lg text-sm">
       <i data-lucide="lock" class="h-4 w-4"></i>
-      <span>{!! __('Comments are closed.', 'sage') !!}</span>
+      <span>{!! __('Comments are closed.', 'a-ripple-song') !!}</span>
     </div>
     @endif
 
     <div class="mt-4 rounded-lg bg-base-200/50 p-4">
       <h3 class="mb-4 flex items-center gap-2 text-base font-bold">
         <i data-lucide="pen-line" class="h-4 w-4"></i>
-        {!! __('Leave a Comment', 'sage') !!}
+        {!! __('Leave a Comment', 'a-ripple-song') !!}
       </h3>
       @php(comment_form())
     </div>

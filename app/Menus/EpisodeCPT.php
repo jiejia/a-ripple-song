@@ -18,7 +18,7 @@ class EpisodeCPT
      */
     public function topMenuTitle(): string
     {
-        return Theme::NAME_PREFIX . ' ' . __('Episodes', 'sage');
+        return Theme::NAME_PREFIX . ' ' . __('Episodes', 'a-ripple-song');
     }
 
     /**
@@ -62,10 +62,10 @@ class EpisodeCPT
         $postTypeSlug = $this->postTypeSlug();
         $taxonomySlug = $this->taxonomySlug();
 
-        add_submenu_page($this->topMenuSlug(), __('All Episodes', 'sage'), __('All Episodes', 'sage'), $this->capability(), 'edit.php?post_type=' . $postTypeSlug);
-        add_submenu_page($this->topMenuSlug(), __('Add New Episode', 'sage'), __('Add New Episode', 'sage'), $this->capability(), 'post-new.php?post_type=' . $postTypeSlug);
-        add_submenu_page($this->topMenuSlug(), __('Episode Categories', 'sage'), __('Episode Categories', 'sage'), 'manage_categories', 'edit-tags.php?taxonomy=' . $taxonomySlug . '&post_type=' . $postTypeSlug);
-        add_submenu_page($this->topMenuSlug(), __('Tags', 'sage'), __('Tags', 'sage'), 'manage_categories', 'edit-tags.php?taxonomy=post_tag&post_type=' . $postTypeSlug);
+        add_submenu_page($this->topMenuSlug(), __('All Episodes', 'a-ripple-song'), __('All Episodes', 'a-ripple-song'), $this->capability(), 'edit.php?post_type=' . $postTypeSlug);
+        add_submenu_page($this->topMenuSlug(), __('Add New Episode', 'a-ripple-song'), __('Add New Episode', 'a-ripple-song'), $this->capability(), 'post-new.php?post_type=' . $postTypeSlug);
+        add_submenu_page($this->topMenuSlug(), __('Episode Categories', 'a-ripple-song'), __('Episode Categories', 'a-ripple-song'), 'manage_categories', 'edit-tags.php?taxonomy=' . $taxonomySlug . '&post_type=' . $postTypeSlug);
+        add_submenu_page($this->topMenuSlug(), __('Tags', 'a-ripple-song'), __('Tags', 'a-ripple-song'), 'manage_categories', 'edit-tags.php?taxonomy=post_tag&post_type=' . $postTypeSlug);
     }
 
     /**

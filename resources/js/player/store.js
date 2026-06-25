@@ -185,7 +185,7 @@ export function registerPlayerStore(Alpine) {
 
         return addedEpisodes;
       } catch (error) {
-        console.error(__('Failed to fetch latest podcasts:', 'sage'), error);
+        console.error(__('Failed to fetch latest podcasts:', 'a-ripple-song'), error);
         return [];
       }
     },
@@ -290,7 +290,7 @@ export function registerPlayerStore(Alpine) {
         },
         onloaderror: (_id, error) => {
           this.isLoading = false;
-          console.error(__('Audio load error:', 'sage'), error);
+          console.error(__('Audio load error:', 'a-ripple-song'), error);
         },
         onend: () => {
           this.playNext();

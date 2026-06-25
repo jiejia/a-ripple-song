@@ -40,8 +40,8 @@ class TagsCloudWidget extends WidgetAbstract
     {
         parent::__construct(
             static::idBase(),
-            __('aripplesong - Tags Cloud', 'sage'),
-            ['description' => __('Display article tags cloud', 'sage')]
+            __('aripplesong - Tags Cloud', 'a-ripple-song'),
+            ['description' => __('Display article tags cloud', 'a-ripple-song')]
         );
     }
 
@@ -89,7 +89,7 @@ class TagsCloudWidget extends WidgetAbstract
         ?>
         <p>
             <label for="<?php echo esc_attr($this->get_field_id('title')); ?>">
-                <?php esc_html_e('Title:', 'sage'); ?>
+                <?php esc_html_e('Title:', 'a-ripple-song'); ?>
             </label>
             <input class="widefat"
                    id="<?php echo esc_attr($this->get_field_id('title')); ?>"
@@ -100,7 +100,7 @@ class TagsCloudWidget extends WidgetAbstract
 
         <p>
             <label for="<?php echo esc_attr($this->get_field_id('number')); ?>">
-                <?php esc_html_e('Number of tags:', 'sage'); ?>
+                <?php esc_html_e('Number of tags:', 'a-ripple-song'); ?>
             </label>
             <input class="tiny-text"
                    id="<?php echo esc_attr($this->get_field_id('number')); ?>"
@@ -110,32 +110,32 @@ class TagsCloudWidget extends WidgetAbstract
                    min="1"
                    value="<?php echo esc_attr((string) $number); ?>"
                    size="3">
-            <small class="description"><?php esc_html_e('Maximum number of tags to display', 'sage'); ?></small>
+            <small class="description"><?php esc_html_e('Maximum number of tags to display', 'a-ripple-song'); ?></small>
         </p>
 
         <p>
             <label for="<?php echo esc_attr($this->get_field_id('orderby')); ?>">
-                <?php esc_html_e('Order by:', 'sage'); ?>
+                <?php esc_html_e('Order by:', 'a-ripple-song'); ?>
             </label>
             <select class="widefat"
                     id="<?php echo esc_attr($this->get_field_id('orderby')); ?>"
                     name="<?php echo esc_attr($this->get_field_name('orderby')); ?>">
-                <option value="count" <?php selected($orderby, 'count'); ?>><?php esc_html_e('Post Count', 'sage'); ?></option>
-                <option value="name" <?php selected($orderby, 'name'); ?>><?php esc_html_e('Tag Name', 'sage'); ?></option>
-                <option value="term_id" <?php selected($orderby, 'term_id'); ?>><?php esc_html_e('Tag ID', 'sage'); ?></option>
-                <option value="rand" <?php selected($orderby, 'rand'); ?>><?php esc_html_e('Random', 'sage'); ?></option>
+                <option value="count" <?php selected($orderby, 'count'); ?>><?php esc_html_e('Post Count', 'a-ripple-song'); ?></option>
+                <option value="name" <?php selected($orderby, 'name'); ?>><?php esc_html_e('Tag Name', 'a-ripple-song'); ?></option>
+                <option value="term_id" <?php selected($orderby, 'term_id'); ?>><?php esc_html_e('Tag ID', 'a-ripple-song'); ?></option>
+                <option value="rand" <?php selected($orderby, 'rand'); ?>><?php esc_html_e('Random', 'a-ripple-song'); ?></option>
             </select>
         </p>
 
         <p>
             <label for="<?php echo esc_attr($this->get_field_id('order')); ?>">
-                <?php esc_html_e('Sort order:', 'sage'); ?>
+                <?php esc_html_e('Sort order:', 'a-ripple-song'); ?>
             </label>
             <select class="widefat"
                     id="<?php echo esc_attr($this->get_field_id('order')); ?>"
                     name="<?php echo esc_attr($this->get_field_name('order')); ?>">
-                <option value="DESC" <?php selected($order, 'DESC'); ?>><?php esc_html_e('Descending (High to Low/Z to A)', 'sage'); ?></option>
-                <option value="ASC" <?php selected($order, 'ASC'); ?>><?php esc_html_e('Ascending (Low to High/A to Z)', 'sage'); ?></option>
+                <option value="DESC" <?php selected($order, 'DESC'); ?>><?php esc_html_e('Descending (High to Low/Z to A)', 'a-ripple-song'); ?></option>
+                <option value="ASC" <?php selected($order, 'ASC'); ?>><?php esc_html_e('Ascending (Low to High/A to Z)', 'a-ripple-song'); ?></option>
             </select>
         </p>
         <?php

@@ -32,7 +32,7 @@ $podcastArchiveUrl = $podcastPage instanceof \WP_Post ? get_permalink($podcastPa
     </h2>
     @if($show_see_all)
       <span class="text-xs text-base-content/70">
-        <a href="{{ esc_url($podcastArchiveUrl) }}">{{ __('See all', 'sage') }}</a>
+        <a href="{{ esc_url($podcastArchiveUrl) }}">{{ __('See all', 'a-ripple-song') }}</a>
       </span>
     @endif
   </div>
@@ -43,7 +43,7 @@ $podcastArchiveUrl = $podcastPage instanceof \WP_Post ? get_permalink($podcastPa
         @click="activeTab = 'recent'"
         :class="activeTab === 'recent' ? 'bg-base-200' : 'bg-base-100'"
         class="btn rounded-full btn-sm">
-        {{ __('Recent', 'sage') }}
+        {{ __('Recent', 'a-ripple-song') }}
       </button>
     </li>
     <li>
@@ -51,7 +51,7 @@ $podcastArchiveUrl = $podcastPage instanceof \WP_Post ? get_permalink($podcastPa
         @click="activeTab = 'popular'"
         :class="activeTab === 'popular' ? 'bg-base-200' : 'bg-base-100'"
         class="btn rounded-full btn-sm">
-        {{ __('Popular', 'sage') }}
+        {{ __('Popular', 'a-ripple-song') }}
       </button>
     </li>
     <li>
@@ -59,7 +59,7 @@ $podcastArchiveUrl = $podcastPage instanceof \WP_Post ? get_permalink($podcastPa
         @click="activeTab = 'random'"
         :class="activeTab === 'random' ? 'bg-base-200' : 'bg-base-100'"
         class="btn rounded-full btn-sm">
-        {{ __('Random', 'sage') }}
+        {{ __('Random', 'a-ripple-song') }}
       </button>
     </li>
   </ul>
@@ -79,7 +79,7 @@ $podcastArchiveUrl = $podcastPage instanceof \WP_Post ? get_permalink($podcastPa
           </li>
         @endforeach
       @else
-        <li class="text-center text-base-content/50 py-8">{{ __('No podcast content', 'sage') }}</li>
+        <li class="text-center text-base-content/50 py-8">{{ __('No podcast content', 'a-ripple-song') }}</li>
       @endif
     </ul>
   @endforeach

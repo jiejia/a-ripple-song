@@ -26,7 +26,7 @@ class RightbarPrimary extends CustomAreaAbstract
      */
     public function name(): string
     {
-        return __('Rightbar Primary', 'sage');
+        return __('Rightbar Primary', 'a-ripple-song');
     }
 
     /**
@@ -36,6 +36,6 @@ class RightbarPrimary extends CustomAreaAbstract
      */
     public function description(): string
     {
-        return __('Primary right sidebar area for displaying various content modules', 'sage');
+        return __('Primary right sidebar area for displaying various content modules', 'a-ripple-song');
     }
 }

@@ -23,7 +23,7 @@ class Comments extends Composer
     {
         return sprintf(
             /* translators: %s: number of comments */
-            _nx('One response', '%1$s responses', get_comments_number(), 'comments title', 'sage'),
+            _nx('One response', '%1$s responses', get_comments_number(), 'comments title', 'a-ripple-song'),
             number_format_i18n(get_comments_number())
         );
     }
@@ -56,7 +56,7 @@ class Comments extends Composer
         }
 
         return get_previous_comments_link(
-            __('Older comments', 'sage')
+            __('Older comments', 'a-ripple-song')
         );
     }
 
@@ -70,7 +70,7 @@ class Comments extends Composer
         }
 
         return get_next_comments_link(
-            __('Newer comments', 'sage')
+            __('Newer comments', 'a-ripple-song')
         );
     }
 

@@ -41,8 +41,8 @@ class PodcastListWidget extends WidgetAbstract
     {
         parent::__construct(
             static::idBase(),
-            __('aripplesong - Podcast List', 'sage'),
-            ['description' => __('Display latest podcast list', 'sage')]
+            __('aripplesong - Podcast List', 'a-ripple-song'),
+            ['description' => __('Display latest podcast list', 'a-ripple-song')]
         );
     }
 
@@ -148,7 +148,7 @@ class PodcastListWidget extends WidgetAbstract
         ?>
         <p>
             <label for="<?php echo esc_attr($this->get_field_id('title')); ?>">
-                <?php esc_html_e('Title:', 'sage'); ?>
+                <?php esc_html_e('Title:', 'a-ripple-song'); ?>
             </label>
             <input class="widefat"
                    id="<?php echo esc_attr($this->get_field_id('title')); ?>"
@@ -159,7 +159,7 @@ class PodcastListWidget extends WidgetAbstract
 
         <p>
             <label for="<?php echo esc_attr($this->get_field_id('posts_per_page')); ?>">
-                <?php esc_html_e('Number of episodes:', 'sage'); ?>
+                <?php esc_html_e('Number of episodes:', 'a-ripple-song'); ?>
             </label>
             <input class="tiny-text"
                    id="<?php echo esc_attr($this->get_field_id('posts_per_page')); ?>"
@@ -178,7 +178,7 @@ class PodcastListWidget extends WidgetAbstract
                    id="<?php echo esc_attr($this->get_field_id('show_see_all')); ?>"
                    name="<?php echo esc_attr($this->get_field_name('show_see_all')); ?>">
             <label for="<?php echo esc_attr($this->get_field_id('show_see_all')); ?>">
-                <?php esc_html_e('Show "See all" link', 'sage'); ?>
+                <?php esc_html_e('Show "See all" link', 'a-ripple-song'); ?>
             </label>
         </p>
         <?php

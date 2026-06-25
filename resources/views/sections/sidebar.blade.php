@@ -5,7 +5,7 @@
         @php(dynamic_sidebar(\App\Theme::SIDEBAR_PRIMARY))
         @else
         <div class="rounded-lg bg-base-100 p-4 mt-4 text-center text-base-content/50 mb-4">
-            <p>{!! __('Please add widgets to "Sidebar" area in Appearance > Widgets in the admin panel.', 'sage') !!}</p>
+            <p>{!! __('Please add widgets to "Sidebar" area in Appearance > Widgets in the admin panel.', 'a-ripple-song') !!}</p>
         </div>
         @endif
     </div>

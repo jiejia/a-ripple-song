@@ -14,8 +14,8 @@ Banner Carousel Widget Template
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
         </svg>
-        <p class="text-sm font-medium">{{ __('No banner yet', 'sage') }}</p>
-        <p class="text-xs mt-1">{{ __('Please add banner content in the admin panel', 'sage') }}</p>
+        <p class="text-sm font-medium">{{ __('No banner yet', 'a-ripple-song') }}</p>
+        <p class="text-xs mt-1">{{ __('Please add banner content in the admin panel', 'a-ripple-song') }}</p>
       </div>
     </div>
   </div>
@@ -51,7 +51,7 @@ Banner Carousel Widget Template
       @if(count($slides) > 1)
         <button type="button"
           class="banner-prev absolute top-1/2 left-2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center w-8 h-8 rounded-full bg-black/20 hover:bg-black/40 text-white transition-colors backdrop-blur-sm"
-          data-carousel-prev="{{ $carousel_id }}" aria-label="{{ __('Previous slide', 'sage') }}">
+          data-carousel-prev="{{ $carousel_id }}" aria-label="{{ __('Previous slide', 'a-ripple-song') }}">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="m15 18-6-6 6-6" />
@@ -59,7 +59,7 @@ Banner Carousel Widget Template
         </button>
         <button type="button"
           class="banner-next absolute top-1/2 right-2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center w-8 h-8 rounded-full bg-black/20 hover:bg-black/40 text-white transition-colors backdrop-blur-sm"
-          data-carousel-next="{{ $carousel_id }}" aria-label="{{ __('Next slide', 'sage') }}">
+          data-carousel-next="{{ $carousel_id }}" aria-label="{{ __('Next slide', 'a-ripple-song') }}">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="m9 18 6-6-6-6" />
@@ -74,7 +74,7 @@ Banner Carousel Widget Template
             <button type="button"
               class="banner-dot w-2.5 h-2.5 rounded-full transition-all duration-300 shadow-sm {{ $index === 0 ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/80' }}"
               data-carousel="{{ $carousel_id }}" data-index="{{ $index }}"
-              aria-label="{{ sprintf(__('Go to slide %d', 'sage'), $index + 1) }}">
+              aria-label="{{ sprintf(__('Go to slide %d', 'a-ripple-song'), $index + 1) }}">
             </button>
           @endforeach
         </div>

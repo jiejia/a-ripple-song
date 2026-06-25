@@ -1055,22 +1055,22 @@ JS;
     private function widgetAdminScript(): string
     {
         $labelsJson = wp_json_encode([
-            'imageUrl' => __('Image URL:', 'sage'),
-            'imageUrlPlaceholder' => __('Image URL', 'sage'),
-            'selectImage' => __('Select Image', 'sage'),
-            'selectBannerImage' => __('Select Banner Image', 'sage'),
-            'useThisImage' => __('Use This Image', 'sage'),
-            'linkUrlOptional' => __('Link URL (optional):', 'sage'),
-            'linkTarget' => __('Link Target:', 'sage'),
-            'currentPage' => __('Current Page', 'sage'),
-            'newTab' => __('New Tab', 'sage'),
-            'description' => __('Description:', 'sage'),
-            'imageDescription' => __('Image description', 'sage'),
-            'delete' => __('Delete', 'sage'),
-            'text' => __('Text:', 'sage'),
-            'displayText' => __('Display text', 'sage'),
-            'urlOptionalPlainText' => __('URL (optional - leave empty for plain text):', 'sage'),
-            'openInNewTab' => __('Open in new tab', 'sage'),
+            'imageUrl' => __('Image URL:', 'a-ripple-song'),
+            'imageUrlPlaceholder' => __('Image URL', 'a-ripple-song'),
+            'selectImage' => __('Select Image', 'a-ripple-song'),
+            'selectBannerImage' => __('Select Banner Image', 'a-ripple-song'),
+            'useThisImage' => __('Use This Image', 'a-ripple-song'),
+            'linkUrlOptional' => __('Link URL (optional):', 'a-ripple-song'),
+            'linkTarget' => __('Link Target:', 'a-ripple-song'),
+            'currentPage' => __('Current Page', 'a-ripple-song'),
+            'newTab' => __('New Tab', 'a-ripple-song'),
+            'description' => __('Description:', 'a-ripple-song'),
+            'imageDescription' => __('Image description', 'a-ripple-song'),
+            'delete' => __('Delete', 'a-ripple-song'),
+            'text' => __('Text:', 'a-ripple-song'),
+            'displayText' => __('Display text', 'a-ripple-song'),
+            'urlOptionalPlainText' => __('URL (optional - leave empty for plain text):', 'a-ripple-song'),
+            'openInNewTab' => __('Open in new tab', 'a-ripple-song'),
         ]);
 
         if (! is_string($labelsJson)) {

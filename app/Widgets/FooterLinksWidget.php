@@ -38,8 +38,8 @@ class FooterLinksWidget extends WidgetAbstract
     {
         parent::__construct(
             static::idBase(),
-            __('aripplesong - Footer Links', 'sage'),
-            ['description' => __('Display a list of links or text items in the footer', 'sage')]
+            __('aripplesong - Footer Links', 'a-ripple-song'),
+            ['description' => __('Display a list of links or text items in the footer', 'a-ripple-song')]
         );
     }
 
@@ -88,18 +88,18 @@ class FooterLinksWidget extends WidgetAbstract
         <div class="footer-links-widget-form" data-field-prefix="<?php echo esc_attr($fieldPrefix); ?>">
             <p>
                 <label for="<?php echo esc_attr($this->get_field_id('title')); ?>">
-                    <?php esc_html_e('Title:', 'sage'); ?>
+                    <?php esc_html_e('Title:', 'a-ripple-song'); ?>
                 </label>
                 <input class="widefat"
                        id="<?php echo esc_attr($this->get_field_id('title')); ?>"
                        name="<?php echo esc_attr($this->get_field_name('title')); ?>"
                        type="text"
                        value="<?php echo esc_attr($title); ?>"
-                       placeholder="<?php echo esc_attr__('e.g., Contact, Navigate, Support', 'sage'); ?>">
+                       placeholder="<?php echo esc_attr__('e.g., Contact, Navigate, Support', 'a-ripple-song'); ?>">
             </p>
 
             <p style="margin-bottom: 8px;">
-                <strong><?php esc_html_e('Items:', 'sage'); ?></strong>
+                <strong><?php esc_html_e('Items:', 'a-ripple-song'); ?></strong>
             </p>
 
             <div id="<?php echo esc_attr($widgetId); ?>_container" class="footer-links-container" style="margin-bottom: 10px;">
@@ -107,18 +107,18 @@ class FooterLinksWidget extends WidgetAbstract
                     <div class="footer-link-item" style="margin-bottom: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 4px; background: #f9f9f9;">
                         <div style="margin-bottom: 8px;">
                             <label style="display: block; margin-bottom: 4px; font-weight: 600;">
-                                <?php esc_html_e('Text:', 'sage'); ?>
+                                <?php esc_html_e('Text:', 'a-ripple-song'); ?>
                             </label>
                             <input type="text"
                                    class="widefat footer-link-text"
                                    name="<?php echo esc_attr($fieldPrefix); ?>[<?php echo esc_attr((string) $index); ?>][text]"
                                    value="<?php echo esc_attr((string) ($item['text'] ?? '')); ?>"
-                                   placeholder="<?php echo esc_attr__('Display text', 'sage'); ?>">
+                                   placeholder="<?php echo esc_attr__('Display text', 'a-ripple-song'); ?>">
                         </div>
 
                         <div style="margin-bottom: 8px;">
                             <label style="display: block; margin-bottom: 4px; font-weight: 600;">
-                                <?php esc_html_e('URL (optional - leave empty for plain text):', 'sage'); ?>
+                                <?php esc_html_e('URL (optional - leave empty for plain text):', 'a-ripple-song'); ?>
                             </label>
                             <input type="url"
                                    class="widefat footer-link-url"
@@ -134,13 +134,13 @@ class FooterLinksWidget extends WidgetAbstract
                                        name="<?php echo esc_attr($fieldPrefix); ?>[<?php echo esc_attr((string) $index); ?>][new_tab]"
                                        value="1"
                                        <?php checked(! empty($item['new_tab'])); ?>>
-                                <?php esc_html_e('Open in new tab', 'sage'); ?>
+                                <?php esc_html_e('Open in new tab', 'a-ripple-song'); ?>
                             </label>
                         </div>
 
                         <div style="text-align: right;">
                             <button type="button" class="button button-link button-link-delete footer-remove-link" style="color: #b32d2e;">
-                                <?php esc_html_e('Delete', 'sage'); ?>
+                                <?php esc_html_e('Delete', 'a-ripple-song'); ?>
                             </button>
                         </div>
                     </div>
@@ -151,7 +151,7 @@ class FooterLinksWidget extends WidgetAbstract
 
             <p>
                 <button type="button" class="button footer-add-link" data-widget-id="<?php echo esc_attr($widgetId); ?>">
-                    <?php esc_html_e('+ Add Item', 'sage'); ?>
+                    <?php esc_html_e('+ Add Item', 'a-ripple-song'); ?>
                 </button>
             </p>
         </div>

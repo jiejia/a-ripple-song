@@ -26,7 +26,7 @@ class HomeMain extends CustomAreaAbstract
      */
     public function name(): string
     {
-        return __('Home Main', 'sage');
+        return __('Home Main', 'a-ripple-song');
     }
 
     /**
@@ -36,6 +36,6 @@ class HomeMain extends CustomAreaAbstract
      */
     public function description(): string
     {
-        return __('Main area of the homepage for displaying various content modules', 'sage');
+        return __('Main area of the homepage for displaying various content modules', 'a-ripple-song');
     }
 }

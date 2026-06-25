@@ -6,7 +6,7 @@
     <div class="bg-base-100 min-h-full w-72 max-w-[85vw]">
       {{-- Header --}}
       <div class="sticky top-0 bg-base-100 p-4 border-b border-base-300 flex items-center justify-between z-10">
-        <h3 class="font-bold text-lg">{!! __('Left Sidebar', 'sage') !!}</h3>
+        <h3 class="font-bold text-lg">{!! __('Left Sidebar', 'a-ripple-song') !!}</h3>
         <label for="leftbar-drawer" class="btn btn-sm btn-circle btn-ghost">
           <i data-lucide="x" class="w-4 h-4"></i>
         </label>
@@ -18,7 +18,7 @@
           @php(dynamic_sidebar(\App\Theme::SIDEBAR_LEFTBAR))
         @else
           <div class="rounded-lg bg-base-200 p-4 text-center text-base-content/50">
-            <p>{!! __('Please add widgets to "Leftbar" area in Appearance > Widgets in the admin panel.', 'sage') !!}</p>
+            <p>{!! __('Please add widgets to "Leftbar" area in Appearance > Widgets in the admin panel.', 'a-ripple-song') !!}</p>
           </div>
         @endif
       </div>

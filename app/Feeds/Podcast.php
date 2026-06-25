@@ -612,14 +612,14 @@ class Podcast extends FeedAbstract
         }
         if ($author !== '') {
             /* translators: %s: host/author name */
-            $addon_parts[] = sprintf(__('Hosted by %s.', 'sage'), $author);
+            $addon_parts[] = sprintf(__('Hosted by %s.', 'a-ripple-song'), $author);
         }
         if ($feed_url !== '') {
             /* translators: %s: podcast feed URL */
-            $addon_parts[] = sprintf(__('Subscribe: %s', 'sage'), $feed_url);
+            $addon_parts[] = sprintf(__('Subscribe: %s', 'a-ripple-song'), $feed_url);
         } elseif ($site_url !== '') {
             /* translators: %s: site URL */
-            $addon_parts[] = sprintf(__('Website: %s', 'sage'), $site_url);
+            $addon_parts[] = sprintf(__('Website: %s', 'a-ripple-song'), $site_url);
         }
         $addon = trim(implode(' ', $addon_parts));
         if ($addon === '') {

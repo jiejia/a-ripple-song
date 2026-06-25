@@ -37,8 +37,8 @@ class SubscribeLinksWidget extends WidgetAbstract
     {
         parent::__construct(
             static::idBase(),
-            __('aripplesong - Subscribe Links', 'sage'),
-            ['description' => __('Display podcast subscription platform links', 'sage')]
+            __('aripplesong - Subscribe Links', 'a-ripple-song'),
+            ['description' => __('Display podcast subscription platform links', 'a-ripple-song')]
         );
     }
 
@@ -81,19 +81,19 @@ class SubscribeLinksWidget extends WidgetAbstract
         ?>
         <p>
             <label for="<?php echo esc_attr($this->get_field_id('title')); ?>">
-                <?php esc_html_e('Title:', 'sage'); ?>
+                <?php esc_html_e('Title:', 'a-ripple-song'); ?>
             </label>
             <input class="widefat"
                    id="<?php echo esc_attr($this->get_field_id('title')); ?>"
                    name="<?php echo esc_attr($this->get_field_name('title')); ?>"
                    type="text"
                    value="<?php echo esc_attr($title); ?>"
-                   placeholder="<?php echo esc_attr__('SUBSCRIBE', 'sage'); ?>">
+                   placeholder="<?php echo esc_attr__('SUBSCRIBE', 'a-ripple-song'); ?>">
         </p>
 
         <p>
             <label for="<?php echo esc_attr($this->get_field_id('apple_podcast_url')); ?>">
-                <?php esc_html_e('Apple Podcast Link:', 'sage'); ?>
+                <?php esc_html_e('Apple Podcast Link:', 'a-ripple-song'); ?>
             </label>
             <input class="widefat"
                    id="<?php echo esc_attr($this->get_field_id('apple_podcast_url')); ?>"
@@ -101,12 +101,12 @@ class SubscribeLinksWidget extends WidgetAbstract
                    type="url"
                    value="<?php echo esc_attr($applePodcastUrl); ?>"
                    placeholder="https://podcasts.apple.com/...">
-            <small class="description"><?php esc_html_e('Leave blank to hide this button', 'sage'); ?></small>
+            <small class="description"><?php esc_html_e('Leave blank to hide this button', 'a-ripple-song'); ?></small>
         </p>
 
         <p>
             <label for="<?php echo esc_attr($this->get_field_id('spotify_url')); ?>">
-                <?php esc_html_e('Spotify Link:', 'sage'); ?>
+                <?php esc_html_e('Spotify Link:', 'a-ripple-song'); ?>
             </label>
             <input class="widefat"
                    id="<?php echo esc_attr($this->get_field_id('spotify_url')); ?>"
@@ -114,12 +114,12 @@ class SubscribeLinksWidget extends WidgetAbstract
                    type="url"
                    value="<?php echo esc_attr($spotifyUrl); ?>"
                    placeholder="https://open.spotify.com/...">
-            <small class="description"><?php esc_html_e('Leave blank to hide this button', 'sage'); ?></small>
+            <small class="description"><?php esc_html_e('Leave blank to hide this button', 'a-ripple-song'); ?></small>
         </p>
 
         <p>
             <label for="<?php echo esc_attr($this->get_field_id('youtube_music_url')); ?>">
-                <?php esc_html_e('YouTube Music Link:', 'sage'); ?>
+                <?php esc_html_e('YouTube Music Link:', 'a-ripple-song'); ?>
             </label>
             <input class="widefat"
                    id="<?php echo esc_attr($this->get_field_id('youtube_music_url')); ?>"
@@ -127,7 +127,7 @@ class SubscribeLinksWidget extends WidgetAbstract
                    type="url"
                    value="<?php echo esc_attr($youtubeMusicUrl); ?>"
                    placeholder="https://music.youtube.com/...">
-            <small class="description"><?php esc_html_e('Leave blank to hide this button', 'sage'); ?></small>
+            <small class="description"><?php esc_html_e('Leave blank to hide this button', 'a-ripple-song'); ?></small>
         </p>
         <?php
     }

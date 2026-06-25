@@ -10,7 +10,7 @@
       @endif
       <a href="{{ esc_url(wp_get_attachment_url()) }}" download class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">
         <i data-lucide="download" class="w-4 h-4"></i>
-        {{ __('Download', 'sage') }}
+        {{ __('Download', 'a-ripple-song') }}
       </a>
     </div>
     @include('partials.entry-authors')

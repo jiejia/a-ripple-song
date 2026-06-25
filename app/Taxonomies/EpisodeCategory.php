@@ -26,7 +26,7 @@ class EpisodeCategory
      */
     public function name(): string
     {
-        return Theme::NAME_PREFIX . ' ' . __('Episode Category', 'sage');
+        return Theme::NAME_PREFIX . ' ' . __('Episode Category', 'a-ripple-song');
     }
 
     /**
@@ -38,17 +38,17 @@ class EpisodeCategory
     {
         return [
             'labels' => [
-                'name' => __('Episode Categories', 'sage'),
-                'singular_name' => __('Episode Category', 'sage'),
-                'search_items' => __('Search Episode Categories', 'sage'),
-                'all_items' => __('All Episode Categories', 'sage'),
-                'parent_item' => __('Parent Episode Category', 'sage'),
-                'parent_item_colon' => __('Parent Episode Category:', 'sage'),
-                'edit_item' => __('Edit Episode Category', 'sage'),
-                'update_item' => __('Update Episode Category', 'sage'),
-                'add_new_item' => __('Add New Episode Category', 'sage'),
-                'new_item_name' => __('New Episode Category Name', 'sage'),
-                'menu_name' => __('Episode Categories', 'sage'),
+                'name' => __('Episode Categories', 'a-ripple-song'),
+                'singular_name' => __('Episode Category', 'a-ripple-song'),
+                'search_items' => __('Search Episode Categories', 'a-ripple-song'),
+                'all_items' => __('All Episode Categories', 'a-ripple-song'),
+                'parent_item' => __('Parent Episode Category', 'a-ripple-song'),
+                'parent_item_colon' => __('Parent Episode Category:', 'a-ripple-song'),
+                'edit_item' => __('Edit Episode Category', 'a-ripple-song'),
+                'update_item' => __('Update Episode Category', 'a-ripple-song'),
+                'add_new_item' => __('Add New Episode Category', 'a-ripple-song'),
+                'new_item_name' => __('New Episode Category Name', 'a-ripple-song'),
+                'menu_name' => __('Episode Categories', 'a-ripple-song'),
             ],
             'public' => true,
             'hierarchical' => true,

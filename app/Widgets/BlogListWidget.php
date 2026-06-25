@@ -40,8 +40,8 @@ class BlogListWidget extends WidgetAbstract
     {
         parent::__construct(
             static::idBase(),
-            __('aripplesong - Blog List', 'sage'),
-            ['description' => __('Display latest blog posts list', 'sage')]
+            __('aripplesong - Blog List', 'a-ripple-song'),
+            ['description' => __('Display latest blog posts list', 'a-ripple-song')]
         );
     }
 
@@ -96,7 +96,7 @@ class BlogListWidget extends WidgetAbstract
         ?>
         <p>
             <label for="<?php echo esc_attr($this->get_field_id('title')); ?>">
-                <?php esc_html_e('Title:', 'sage'); ?>
+                <?php esc_html_e('Title:', 'a-ripple-song'); ?>
             </label>
             <input class="widefat"
                    id="<?php echo esc_attr($this->get_field_id('title')); ?>"
@@ -107,7 +107,7 @@ class BlogListWidget extends WidgetAbstract
 
         <p>
             <label for="<?php echo esc_attr($this->get_field_id('posts_per_page')); ?>">
-                <?php esc_html_e('Number of posts:', 'sage'); ?>
+                <?php esc_html_e('Number of posts:', 'a-ripple-song'); ?>
             </label>
             <input class="tiny-text"
                    id="<?php echo esc_attr($this->get_field_id('posts_per_page')); ?>"
@@ -121,7 +121,7 @@ class BlogListWidget extends WidgetAbstract
 
         <p>
             <label for="<?php echo esc_attr($this->get_field_id('columns')); ?>">
-                <?php esc_html_e('Number of columns:', 'sage'); ?>
+                <?php esc_html_e('Number of columns:', 'a-ripple-song'); ?>
             </label>
             <input class="tiny-text"
                    id="<?php echo esc_attr($this->get_field_id('columns')); ?>"
@@ -141,7 +141,7 @@ class BlogListWidget extends WidgetAbstract
                    id="<?php echo esc_attr($this->get_field_id('show_see_all')); ?>"
                    name="<?php echo esc_attr($this->get_field_name('show_see_all')); ?>">
             <label for="<?php echo esc_attr($this->get_field_id('show_see_all')); ?>">
-                <?php esc_html_e('Show "See all" link', 'sage'); ?>
+                <?php esc_html_e('Show "See all" link', 'a-ripple-song'); ?>
             </label>
         </p>
         <?php

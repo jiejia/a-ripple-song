@@ -13,7 +13,7 @@ Blog List Widget Template
     </h2>
     @if($show_see_all)
       <span class="text-xs text-base-content/70">
-        <a href="{{ esc_url(get_permalink(get_page_by_path('blog'))) }}">{{ __('See all', 'sage') }}</a>
+        <a href="{{ esc_url(get_permalink(get_page_by_path('blog'))) }}">{{ __('See all', 'a-ripple-song') }}</a>
       </span>
     @endif
   </div>
@@ -45,7 +45,7 @@ Blog List Widget Template
       @php(wp_reset_postdata())
     @else
       <li class="col-span-{{ esc_attr($columns) }} text-center text-base-content/50 py-8">
-        {{ __('No blog posts yet', 'sage') }}
+        {{ __('No blog posts yet', 'a-ripple-song') }}
       </li>
     @endif
   </ul>

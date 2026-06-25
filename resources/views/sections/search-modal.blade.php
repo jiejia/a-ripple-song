@@ -3,5 +3,5 @@
   <div class="modal-box">
   @php(get_search_form())
   </div>
-  <label class="modal-backdrop" for="search-modal">{!! __('Close', 'sage') !!}</label>
+  <label class="modal-backdrop" for="search-modal">{!! __('Close', 'a-ripple-song') !!}</label>
 </div>
