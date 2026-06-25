@@ -5,7 +5,7 @@
       @include('partials.entry-meta')
     </div>
     <div class="prose max-w-none text-sm text-base-content/80 [&_p]:py-2 [&_img]:mx-auto [&_img]:cursor-pointer [&_img]:rounded-lg [&_img]:shadow-md" id="content">
-      @php(the_excerpt())
+      {!! wp_kses_post(wpautop(get_the_excerpt())) !!}
     </div>
     @include('partials.entry-tags')
     @include('partials.entry-authors')
