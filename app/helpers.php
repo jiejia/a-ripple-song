@@ -562,6 +562,33 @@ function get_episode_data($post_id = null) {
 }
 
 /**
+ * Return excerpt HTML while preserving paragraph boundaries for list views.
+ *
+ * @param int|null $post_id Post ID (defaults to current post).
+ * @return string Sanitized excerpt HTML.
+ */
+function aripplesong_get_paragraph_excerpt($post_id = null): string
+{
+    $post_id = $post_id ?: get_the_ID();
+    $post = get_post($post_id);
+
+    if (!$post instanceof \WP_Post) {
+        return '';
+    }
+
+    $source = trim((string) $post->post_excerpt) !== '' ? $post->post_excerpt : $post->post_content;
+
+    if (trim(wp_strip_all_tags($source)) === '') {
+        return '';
+    }
+
+    $source = strip_shortcodes($source);
+    $html = has_blocks($source) ? do_blocks($source) : wpautop($source);
+
+    return wp_kses_post($html);
+}
+
+/**
  * Get latest podcast episodes for hydrating the default player playlist.
  *
  * Returns a signature based on the ordered post IDs so clients can detect

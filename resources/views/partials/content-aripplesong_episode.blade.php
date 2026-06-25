@@ -14,7 +14,7 @@ $episode_data = get_episode_data($post_id);
         'show_link' => true
         ])
         <div class="prose max-w-none text-sm text-base-content/80 [&_p]:py-2 [&_img]:mx-auto [&_img]:cursor-pointer [&_img]:rounded-lg [&_img]:shadow-md" id="content">
-            {!! wp_kses_post(wpautop(get_the_excerpt())) !!}
+            {!! aripplesong_get_paragraph_excerpt() !!}
         </div>
         @include('partials.entry-tags')
         @include('partials.entry-authors')
