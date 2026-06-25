@@ -233,7 +233,7 @@ class Podcast extends FeedAbstract
     private function resolveMediaUrl($postId, $urlMetaKey)
     {
         $url = (string) $this->getEpisodeMetaValue($postId, $urlMetaKey, '');
-        if ($urlMetaKey === 'audio_file' && is_numeric($url) && (int) $url > 0) {
+        if (is_numeric($url) && (int) $url > 0) {
             $attachmentUrl = wp_get_attachment_url((int) $url);
             if (is_string($attachmentUrl) && $attachmentUrl !== '') {
                 return $attachmentUrl;

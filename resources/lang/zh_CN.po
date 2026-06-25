@@ -1098,16 +1098,16 @@ msgid "Episodes"
 msgstr ""
 
 #: app/CustomPostTypes/Episode.php:81
-msgid "Required. Upload an audio file; the saved value is the audio file URL."
-msgstr ""
+msgid "Required. Upload an audio file; the saved value is the media attachment ID."
+msgstr "必填。上传一个音频文件；保存值为媒体附件 ID。"
 
 #: app/CustomPostTypes/Episode.php:104
 msgid "Required. full / trailer / bonus."
 msgstr ""
 
 #: app/CustomPostTypes/Episode.php:110
-msgid "Optional. Square 1400-3000px. Overrides channel cover."
-msgstr ""
+msgid "Optional. Square 1400-3000px. Overrides channel cover. The saved value is the media attachment ID."
+msgstr "可选。方形图片，1400-3000px。覆盖频道封面；保存值为媒体附件 ID。"
 
 #: app/CustomPostTypes/Episode.php:123
 msgid "Soundbites"

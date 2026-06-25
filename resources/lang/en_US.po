@@ -1099,7 +1099,7 @@ msgid "Episodes"
 msgstr ""
 
 #: app/CustomPostTypes/Episode.php:81
-msgid "Required. Upload an audio file; the saved value is the audio file URL."
+msgid "Required. Upload an audio file; the saved value is the media attachment ID."
 msgstr ""
 
 #: app/CustomPostTypes/Episode.php:104
@@ -1107,7 +1107,7 @@ msgid "Required. full / trailer / bonus."
 msgstr ""
 
 #: app/CustomPostTypes/Episode.php:110
-msgid "Optional. Square 1400-3000px. Overrides channel cover."
+msgid "Optional. Square 1400-3000px. Overrides channel cover. The saved value is the media attachment ID."
 msgstr ""
 
 #: app/CustomPostTypes/Episode.php:123

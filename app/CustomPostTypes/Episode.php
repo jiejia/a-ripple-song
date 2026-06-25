@@ -106,8 +106,8 @@ class Episode extends CustomPostTypeAbstract
         /** @var \Carbon_Fields\Field\Image_Field $episodeImageField */
         $episodeImageField = Field::make('image', self::fieldKey('episode_image'), __('Episode Cover (square)', 'sage'));
         $episodeImageField
-            ->set_value_type('url')
-            ->set_help_text(__('Optional. Square 1400-3000px. Overrides channel cover.', 'sage'));
+            ->set_value_type('id')
+            ->set_help_text(__('Optional. Square 1400-3000px. Overrides channel cover. The saved value is the media attachment ID.', 'sage'));
 
         /** @var \Carbon_Fields\Field\Select_Field $episodeBlockField */
         $episodeBlockField = Field::make('select', self::fieldKey('episode_block'), __('iTunes Block', 'sage'));
@@ -224,7 +224,7 @@ class Episode extends CustomPostTypeAbstract
         add_filter('wp_insert_post_data', [$this, 'setDefaultCommentStatus'], 10, 2);
         add_filter('upload_mimes', [$this, 'allowUploadMimes']);
         add_filter('wp_check_filetype_and_ext', [$this, 'fixFiletypeAndExt'], 10, 4);
-        add_action('load-post.php', [$this, 'normalizeCurrentAdminAudioFileValue']);
+        add_action('load-post.php', [$this, 'normalizeCurrentAdminMediaFieldValues']);
         add_action('carbon_fields_post_meta_container_saved', [$this, 'onPostMetaSaved'], 10, 2);
         add_action('aripplesong_carbon_fields_post_meta_container_saved', [$this, 'onPostMetaSaved'], 10, 2);
         add_action('admin_notices', [$this, 'showAudioMetaErrorNotice']);
@@ -292,7 +292,7 @@ class Episode extends CustomPostTypeAbstract
      *
      * @return void
      */
-    public function normalizeCurrentAdminAudioFileValue(): void
+    public function normalizeCurrentAdminMediaFieldValues(): void
     {
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only routing for the current editor screen.
         $postId = isset($_GET['post']) ? absint(wp_unslash($_GET['post'])) : 0;
@@ -301,7 +301,8 @@ class Episode extends CustomPostTypeAbstract
             return;
         }
 
-        $this->normalizeAudioFileValue($postId);
+        $this->normalizeEpisodeMediaFieldValue($postId, 'audio_file');
+        $this->normalizeEpisodeMediaFieldValue($postId, 'episode_image');
     }
 
     /**
@@ -325,7 +326,8 @@ class Episode extends CustomPostTypeAbstract
             return;
         }
 
-        $this->normalizeAudioFileValue($postId);
+        $this->normalizeEpisodeMediaFieldValue($postId, 'audio_file');
+        $this->normalizeEpisodeMediaFieldValue($postId, 'episode_image');
         $this->autoFillAudioMeta($postId);
     }
 
@@ -346,7 +348,7 @@ class Episode extends CustomPostTypeAbstract
         $this->registerIntMeta($postType, 'episode_number');
         $this->registerIntMeta($postType, 'season_number');
         $this->registerStringMeta($postType, 'episode_author');
-        $this->registerStringMeta($postType, 'episode_image', true);
+        $this->registerIntMeta($postType, 'episode_image');
         $this->registerStringMeta($postType, 'episode_transcript', true);
         $this->registerStringMeta($postType, 'itunes_title');
         $this->registerStringMeta($postType, 'episode_chapters', true);
@@ -545,34 +547,35 @@ class Episode extends CustomPostTypeAbstract
     }
 
     /**
-     * Normalize the stored audio file value to the media attachment ID when possible.
+     * Normalize a stored media field value to the media attachment ID when possible.
      *
      * @param int $postId Post ID.
+     * @param string $key Episode meta key.
      * @return void
      */
-    private function normalizeAudioFileValue(int $postId): void
+    private function normalizeEpisodeMediaFieldValue(int $postId, string $key): void
     {
-        $audioValue = $this->getEpisodeFieldValue($postId, 'audio_file');
+        $mediaValue = $this->getEpisodeFieldValue($postId, $key);
 
-        if ($audioValue === '') {
+        if ($mediaValue === '') {
             return;
         }
 
-        if (ctype_digit($audioValue) && (int) $audioValue > 0) {
+        if (ctype_digit($mediaValue) && (int) $mediaValue > 0) {
             return;
         }
 
-        if (! str_starts_with($audioValue, 'http://') && ! str_starts_with($audioValue, 'https://')) {
+        if (! str_starts_with($mediaValue, 'http://') && ! str_starts_with($mediaValue, 'https://')) {
             return;
         }
 
-        $attachmentId = $this->resolveAttachmentIdFromMediaUrl($audioValue);
+        $attachmentId = $this->resolveAttachmentIdFromMediaUrl($mediaValue);
 
         if ($attachmentId <= 0) {
             return;
         }
 
-        $this->setEpisodeFieldValue($postId, 'audio_file', $attachmentId);
+        $this->setEpisodeFieldValue($postId, $key, $attachmentId);
     }
 
     /**
@@ -854,6 +857,17 @@ class Episode extends CustomPostTypeAbstract
      * @return string Public audio URL.
      */
     public static function resolveStoredAudioFileValue(mixed $value): string
+    {
+        return self::resolveStoredMediaFileValue($value);
+    }
+
+    /**
+     * Resolve the stored media field value to a public URL.
+     *
+     * @param mixed $value Stored attachment ID or legacy URL.
+     * @return string Public media URL.
+     */
+    public static function resolveStoredMediaFileValue(mixed $value): string
     {
         if (is_numeric($value) && (int) $value > 0) {
             $attachmentUrl = wp_get_attachment_url((int) $value);
