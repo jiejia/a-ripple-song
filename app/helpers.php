@@ -264,42 +264,38 @@ function aripplesong_get_participated_podcast_ids(int $user_id): array
         return $cache[$user_id];
     }
 
-    $needle_string = '"' . $user_id . '"';
-    $needle_int = 'i:' . $user_id . ';';
+    global $wpdb;
 
-    $ids = get_posts([
-        'post_type' => aripplesong_episode_post_type(),
-        'post_status' => 'publish',
-        'posts_per_page' => -1,
-        'fields' => 'ids',
-        'author__not_in' => [$user_id],
-        'no_found_rows' => true,
-        'update_post_meta_cache' => false,
-        'update_post_term_cache' => false,
-        'meta_query' => [
-            'relation' => 'OR',
-            [
-                'key' => 'members',
-                'value' => $needle_string,
-                'compare' => 'LIKE',
-            ],
-            [
-                'key' => 'guests',
-                'value' => $needle_string,
-                'compare' => 'LIKE',
-            ],
-            [
-                'key' => 'members',
-                'value' => $needle_int,
-                'compare' => 'LIKE',
-            ],
-            [
-                'key' => 'guests',
-                'value' => $needle_int,
-                'compare' => 'LIKE',
-            ],
-        ],
-    ]);
+    $people_meta_keys = [
+        Episode::storedFieldKey('members'),
+        Episode::storedFieldKey('guests'),
+        'members',
+        'guests',
+    ];
+    $meta_key_placeholders = implode(', ', array_fill(0, count($people_meta_keys), '%s'));
+    $serialized_string_like = '%' . $wpdb->esc_like('"' . $user_id . '"') . '%';
+    $serialized_int_like = '%' . $wpdb->esc_like('i:' . $user_id . ';') . '%';
+    $raw_id = (string) $user_id;
+
+    $ids = $wpdb->get_col($wpdb->prepare(
+        "SELECT DISTINCT posts.ID
+        FROM {$wpdb->posts} posts
+        INNER JOIN {$wpdb->postmeta} people_meta ON posts.ID = people_meta.post_id
+        WHERE posts.post_type = %s
+            AND posts.post_status = 'publish'
+            AND people_meta.meta_key IN ({$meta_key_placeholders})
+            AND (
+                people_meta.meta_value LIKE %s
+                OR people_meta.meta_value LIKE %s
+                OR people_meta.meta_value = %s
+            )
+        ORDER BY posts.post_date DESC",
+        array_merge(
+            [aripplesong_episode_post_type()],
+            $people_meta_keys,
+            [$serialized_string_like, $serialized_int_like, $raw_id]
+        )
+    ));
 
     $cache[$user_id] = array_values(array_unique(array_filter(array_map('absint', $ids))));
     set_transient($transient_key, $cache[$user_id], HOUR_IN_SECONDS);
@@ -321,7 +317,7 @@ function aripplesong_bump_participation_cache_version(): void
  *
  * This includes:
  * - All posts published by the user (including podcasts)
- * - Podcasts where the user is listed in members or guests fields (excluding podcasts authored by the user)
+ * - Podcasts where the user is listed in members or guests fields
  *
  * @param int $user_id User ID
  * @return array Array of post IDs
@@ -358,7 +354,7 @@ function get_user_all_post_ids($user_id) {
  *
  * This includes:
  * - All posts published by the user (including podcasts)
- * - Podcasts where the user is listed in members or guests fields (excluding podcasts authored by the user)
+ * - Podcasts where the user is listed in members or guests fields
  *
  * @param int $user_id User ID
  * @return int Total post count
@@ -369,13 +365,7 @@ function calculate_user_post_count($user_id) {
         return 0;
     }
 
-    // Base count: all posts published by the user
-    // count_user_posts() only counts 'post' type by default, so we need to count 'podcast' separately
-    $regular_posts_count = count_user_posts($user_id, 'post');
-    $podcast_posts_count = count_user_posts($user_id, aripplesong_episode_post_type());
-    $base_count = $regular_posts_count + $podcast_posts_count;
-
-    return $base_count + count(aripplesong_get_participated_podcast_ids($user_id));
+    return count(get_user_all_post_ids($user_id));
 }
 
 /**

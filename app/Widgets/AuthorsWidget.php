@@ -3,7 +3,6 @@
 namespace App\Widgets;
 
 use App\Abstracts\WidgetAbstract;
-use App\CustomPostTypes\Episode;
 
 /**
  * Authors Widget
@@ -79,21 +78,6 @@ class AuthorsWidget extends WidgetAbstract
             'order' => 'ASC',
         ]);
 
-        $postCountsByUser = [];
-        $podcastCountsByUser = [];
-
-        if (function_exists('count_many_users_posts')) {
-            $allUsers = array_merge($members ?: [], $contributors ?: []);
-            $userIds = array_values(array_unique(array_map(static function ($user) {
-                return (int) $user->ID;
-            }, $allUsers)));
-
-            if (! empty($userIds)) {
-                $postCountsByUser = count_many_users_posts($userIds, 'post', true);
-                $podcastCountsByUser = count_many_users_posts($userIds, Episode::slug(), true);
-            }
-        }
-
         echo \Roots\view('widgets.authors', [
             'members_title' => $membersTitle,
             'guests_title' => $guestsTitle,
@@ -101,8 +85,6 @@ class AuthorsWidget extends WidgetAbstract
             'show_guests' => $showGuests,
             'members' => $members,
             'contributors' => $contributors,
-            'post_counts_by_user' => $postCountsByUser,
-            'podcast_counts_by_user' => $podcastCountsByUser,
         ])->render();
 
         echo $args['after_widget'];

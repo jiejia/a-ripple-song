@@ -329,6 +329,10 @@ class Episode extends CustomPostTypeAbstract
         $this->normalizeEpisodeMediaFieldValue($postId, 'audio_file');
         $this->normalizeEpisodeMediaFieldValue($postId, 'episode_image');
         $this->autoFillAudioMeta($postId);
+
+        if (function_exists('aripplesong_bump_participation_cache_version')) {
+            aripplesong_bump_participation_cache_version();
+        }
     }
 
     /**

@@ -6,8 +6,6 @@ Authors Widget Template
 @param bool $show_guests
 @param array $members
 @param array $contributors
-@param array $post_counts_by_user
-@param array $podcast_counts_by_user
 --}}
 
 <div>
@@ -17,9 +15,7 @@ Authors Widget Template
       @foreach($members as $user)
         @php
           $avatar_url = get_avatar_url($user->ID, ['size' => 192]);
-          $base_count = (int) ($post_counts_by_user[$user->ID] ?? 0) + (int) ($podcast_counts_by_user[$user->ID] ?? 0);
-          $participated_count = function_exists('aripplesong_get_participated_podcast_ids') ? count(aripplesong_get_participated_podcast_ids($user->ID)) : 0;
-          $post_count = $base_count + $participated_count;
+          $post_count = function_exists('calculate_user_post_count') ? calculate_user_post_count($user->ID) : 0;
         @endphp
         <a href="{{ esc_url(get_author_posts_url($user->ID)) }}" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
           <div class="avatar">
@@ -40,9 +36,7 @@ Authors Widget Template
       @foreach($contributors as $user)
         @php
           $avatar_url = get_avatar_url($user->ID, ['size' => 192]);
-          $base_count = (int) ($post_counts_by_user[$user->ID] ?? 0) + (int) ($podcast_counts_by_user[$user->ID] ?? 0);
-          $participated_count = function_exists('aripplesong_get_participated_podcast_ids') ? count(aripplesong_get_participated_podcast_ids($user->ID)) : 0;
-          $post_count = $base_count + $participated_count;
+          $post_count = function_exists('calculate_user_post_count') ? calculate_user_post_count($user->ID) : 0;
         @endphp
         <a href="{{ esc_url(get_author_posts_url($user->ID)) }}" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
           <div class="avatar">
