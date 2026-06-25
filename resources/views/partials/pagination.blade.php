@@ -19,25 +19,27 @@
                     /**
                      * Convert core pagination markup into daisyUI buttons.
                      */
-                    $paginationClasses = 'join-item btn btn-sm md:btn-md bg-base-100 border-base-300 hover:bg-base-200';
+                    $paginationClasses = 'join-item btn btn-sm md:btn-md border-base-300';
+                    $defaultPaginationClasses = $paginationClasses . ' bg-base-100 hover:bg-base-200';
+                    $currentPaginationClasses = $paginationClasses . ' btn-primary border-primary text-primary-content pointer-events-none';
 
                     if (str_contains($paginationLink, 'dots')) {
                         $paginationLink = sprintf(
                             '<span class="%s pointer-events-none">%s</span>',
-                            esc_attr($paginationClasses . ' btn-disabled'),
+                            esc_attr($defaultPaginationClasses . ' btn-disabled'),
                             esc_html(wp_strip_all_tags($paginationLink))
                         );
                     } elseif (str_contains($paginationLink, 'current')) {
                         $paginationLink = preg_replace(
                             '/class="([^"]*)"/',
-                            'class="' . esc_attr($paginationClasses . ' btn-active') . '"',
+                            'class="' . esc_attr($currentPaginationClasses) . '"',
                             $paginationLink,
                             1
                         );
                     } else {
                         $paginationLink = preg_replace(
                             '/class="([^"]*)"/',
-                            'class="' . esc_attr($paginationClasses) . '"',
+                            'class="' . esc_attr($defaultPaginationClasses) . '"',
                             $paginationLink,
                             1
                         );
