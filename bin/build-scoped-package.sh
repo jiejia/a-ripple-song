@@ -31,6 +31,189 @@ ARS_SCOPER_INPUT_DIR="${RUNTIME_DIR}" \
   --output-dir="${SCOPE_DIR}" \
   -f
 
+SCOPE_DIR="${SCOPE_DIR}" php <<'PHP'
+<?php
+
+$scopeDir = getenv('SCOPE_DIR');
+$vendorDir = $scopeDir . '/vendor';
+$prefix = '\\Jiejia\\ARippleSong\\Vendor\\';
+$helpers = array_fill_keys([
+    'abort',
+    'abort_if',
+    'abort_unless',
+    'action',
+    'app',
+    'app_path',
+    'append_config',
+    'array_add',
+    'array_collapse',
+    'array_divide',
+    'array_dot',
+    'array_except',
+    'array_first',
+    'array_flatten',
+    'array_forget',
+    'array_get',
+    'array_has',
+    'array_last',
+    'array_only',
+    'array_pluck',
+    'array_prepend',
+    'array_pull',
+    'array_random',
+    'array_set',
+    'array_sort',
+    'array_sort_recursive',
+    'array_where',
+    'array_wrap',
+    'asset',
+    'auth',
+    'back',
+    'base_path',
+    'bcrypt',
+    'blank',
+    'broadcast',
+    'cache',
+    'class_basename',
+    'class_uses_recursive',
+    'collect',
+    'config',
+    'config_path',
+    'cookie',
+    'csrf_field',
+    'csrf_token',
+    'data_fill',
+    'data_get',
+    'data_set',
+    'database_path',
+    'decrypt',
+    'defer',
+    'dispatch',
+    'dispatch_sync',
+    'e',
+    'encrypt',
+    'env',
+    'event',
+    'fake',
+    'filled',
+    'fluent',
+    'head',
+    'info',
+    'last',
+    'literal',
+    'logger',
+    'method_field',
+    'now',
+    'object_get',
+    'old',
+    'once',
+    'optional',
+    'policy',
+    'public_path',
+    'redirect',
+    'report',
+    'report_if',
+    'report_unless',
+    'request',
+    'rescue',
+    'resolve',
+    'resource_path',
+    'response',
+    'retry',
+    'route',
+    'secure_asset',
+    'secure_url',
+    'session',
+    'storage_path',
+    'str',
+    'tap',
+    'throw_if',
+    'throw_unless',
+    'today',
+    'trait_uses_recursive',
+    'transform',
+    'url',
+    'validator',
+    'value',
+    'view',
+    'windows_os',
+    'with',
+], true);
+
+if (! is_dir($vendorDir)) {
+    fwrite(STDERR, "Missing scoped vendor directory: {$vendorDir}\n");
+    exit(1);
+}
+
+$files = new RecursiveIteratorIterator(
+    new RecursiveDirectoryIterator($vendorDir, FilesystemIterator::SKIP_DOTS)
+);
+
+foreach ($files as $fileInfo) {
+    if (! $fileInfo->isFile() || $fileInfo->getExtension() !== 'php') {
+        continue;
+    }
+
+    $path = $fileInfo->getPathname();
+    $contents = file_get_contents($path);
+    if ($contents === false) {
+        continue;
+    }
+
+    $tokens = token_get_all($contents);
+    $changed = false;
+    $output = '';
+    $count = count($tokens);
+
+    for ($index = 0; $index < $count; $index++) {
+        $token = $tokens[$index];
+
+        if (! is_array($token) || $token[0] !== T_STRING || ! isset($helpers[$token[1]])) {
+            $output .= is_array($token) ? $token[1] : $token;
+            continue;
+        }
+
+        $previous = null;
+        for ($previousIndex = $index - 1; $previousIndex >= 0; $previousIndex--) {
+            $candidate = $tokens[$previousIndex];
+            if (is_array($candidate) && in_array($candidate[0], [T_WHITESPACE, T_COMMENT, T_DOC_COMMENT], true)) {
+                continue;
+            }
+            $previous = $candidate;
+            break;
+        }
+
+        $next = null;
+        for ($nextIndex = $index + 1; $nextIndex < $count; $nextIndex++) {
+            $candidate = $tokens[$nextIndex];
+            if (is_array($candidate) && $candidate[0] === T_WHITESPACE) {
+                continue;
+            }
+            $next = $candidate;
+            break;
+        }
+
+        $previousType = is_array($previous) ? $previous[0] : $previous;
+        $isCall = $next === '(';
+        $isDeclaration = $previousType === T_FUNCTION;
+        $isMethodOrStaticCall = in_array($previousType, [T_OBJECT_OPERATOR, T_NULLSAFE_OBJECT_OPERATOR, T_DOUBLE_COLON], true);
+        $isAlreadyQualified = $previousType === T_NS_SEPARATOR || $previousType === T_NAME_FULLY_QUALIFIED;
+
+        if ($isCall && ! $isDeclaration && ! $isMethodOrStaticCall && ! $isAlreadyQualified) {
+            $output .= $prefix . $token[1];
+            $changed = true;
+            continue;
+        }
+
+        $output .= $token[1];
+    }
+
+    if ($changed) {
+        file_put_contents($path, $output);
+    }
+}
+PHP
+
 # Copy non-PHP theme files after scoping; Blade templates are not PHP-scoper input.
 rsync -a \
   --include "*/" \

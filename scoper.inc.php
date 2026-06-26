@@ -84,7 +84,7 @@ return [
     ],
 
     'expose-global-classes' => true,
-    'expose-global-functions' => true,
+    'expose-global-functions' => false,
     'expose-global-constants' => true,
 
     'exclude-namespaces' => [
