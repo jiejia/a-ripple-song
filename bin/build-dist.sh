@@ -18,7 +18,7 @@ DIST_ROOT="${BUILD_DIR}/dist"
 DIST_THEME_DIR="${DIST_ROOT}/a-ripple-song"
 
 if [[ ! -f "${SCOPE_DIR}/functions.php" || ! -f "${SCOPE_DIR}/vendor/autoload.php" ]]; then
-  echo "Missing scoped package in ${SCOPE_DIR}. Run: composer run scoper:build"
+  echo "Missing staged package in ${SCOPE_DIR}. Run: composer run release:stage"
   exit 1
 fi
 

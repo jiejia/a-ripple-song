@@ -59,10 +59,10 @@ jobs:
       - name: Compile translations
         run: npm run translate:compile
 
-      - name: Build scoped package
-        run: composer run -n scoper:build
+      - name: Stage release package
+        run: composer run -n release:stage
 
-      - name: Lint scoped PHP
+      - name: Lint staged PHP
         run: |
           find build/scoped -name '*.php' ! -name '*.blade.php' -print0 | xargs -0 -n1 php -l
 
