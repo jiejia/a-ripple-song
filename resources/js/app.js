@@ -10,6 +10,7 @@ import Alpine from 'alpinejs';
 import { hydrateMetricsFromDom, maybeSendViewMetric, syncPrimaryPostContext } from '@scripts/lib/rest.js';
 import { registerDateFormatter } from '@scripts/lib/date.js';
 import { createIcons, icons, scheduleIconRefresh } from '@scripts/lib/icons.js';
+import { renderSocialIcons } from '@scripts/lib/social-icons.js';
 import { registerThemeStore } from '@scripts/theme/store.js';
 import { registerPlayerStore } from '@scripts/player/store.js';
 
@@ -70,6 +71,7 @@ const swup = new Swup({
  */
 function initPageEnhancements() {
   scheduleIconRefresh();
+  renderSocialIcons();
   initImageLightbox();
   syncPrimaryPostContext();
   void maybeSendViewMetric().finally(() => hydrateMetricsFromDom());

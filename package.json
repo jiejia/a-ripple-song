@@ -33,6 +33,7 @@
     "howler": "^2.2.4",
     "lucide": "^1.18.0",
     "luxon": "^3.7.2",
+    "simple-icons": "^16.24.0",
     "soundtouchjs": "^0.3.0",
     "swup": "^4.9.2",
     "tone": "^15.1.22"

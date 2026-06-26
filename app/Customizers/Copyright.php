@@ -32,7 +32,7 @@ class Copyright extends CustomizerAbstract
 
         return sprintf(
             /* translators: %s: linked theme name followed by the word "Theme". */
-            __('Powered by %s', Theme::TEXT_DOMAIN),
+            __('Powered by %s', 'a-ripple-song'),
             $themeLink . ' Theme'
         );
     }

@@ -35,7 +35,7 @@ Subscribe Links Widget Template
       target="_blank"
       rel="noopener noreferrer"
       class="btn bg-gradient-to-r from-yellow-300 via-yellow-400 to-[#FEE502] btn-sm text-[#181600] border-[#f1d800] transition-all duration-500 ease-in-out hover:from-[#FEE502] hover:via-yellow-400 hover:to-yellow-300">
-      <i data-lucide="youtube" class="w-4 h-4"></i>
+      <i data-si-icon="youtube" class="w-4 h-4"></i>
       Youtube Music
     </a>
     @endif

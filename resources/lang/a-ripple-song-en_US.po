@@ -1,18 +1,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/aripplesong\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/a-ripple-song\n"
 "Last-Translator: aripplesong\n"
-"Language-Team: Chinese (Simplified)\n"
+"Language-Team: English (United States)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-11-17T01:57:30+00:00\n"
 "PO-Revision-Date: 2025-11-17 10:00+0800\n"
-"Language: zh_CN: Sage Starter Theme 11.0.1\n"
+"Language: en_US\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: a-ripple-song\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. Author of the theme
 #: style.css
@@ -26,215 +26,197 @@ msgstr "https://roots.io/"
 
 #: app/filters.php:15
 msgid "Continued"
-msgstr "继续阅读"
+msgstr "Continued"
 
 #: resources/views/sections/player.blade.php:10
 msgid "Podcast"
-msgstr "播客"
+msgstr "Podcast"
 
 #: app/CustomPostTypes/Episode.php:77
 msgid "Audio File"
-msgstr "音频文件"
+msgstr "Audio File"
 
 #: app/CustomPostTypes/Episode.php:132
 #: app/CustomPostTypes/Episode.php:156
 msgid "Duration (seconds)"
-msgstr "时长（秒）"
+msgstr "Duration (seconds)"
 
 #: app/CustomPostTypes/Episode.php:141
 #: app/Widgets/AuthorsWidget.php:61
 #: app/Widgets/AuthorsWidget.php:118
 msgid "Members"
-msgstr "成员"
+msgstr "Members"
 
 #: app/CustomPostTypes/Episode.php:148
 #: app/Widgets/AuthorsWidget.php:65
 #: app/Widgets/AuthorsWidget.php:119
 msgid "Guests"
-msgstr "嘉宾"
+msgstr "Guests"
 
 #: app/CustomPostTypes/Episode.php:376
 msgid "Audio file URL"
-msgstr "音频文件 URL"
+msgstr "Audio file URL"
 
 #: app/CustomPostTypes/Episode.php:385
 msgid "Audio duration (seconds)"
-msgstr "音频时长（秒）"
+msgstr "Audio duration (seconds)"
 
 #: app/Navigations/PrimaryNavigation.php:29
 msgid "Primary Navigation"
-msgstr "主导航"
+msgstr "Primary Navigation"
 
 #: app/CustomAreas/HomeMain.php:29
 msgid "Home Main"
-msgstr "首页主要"
+msgstr "Home Main"
 
 #: app/CustomAreas/HomeMain.php:39
 msgid "Main area of the homepage for displaying various content modules"
-msgstr "首页主要区域，用于显示首页的各种内容模块"
+msgstr "Main area of the homepage for displaying various content modules"
 
 #: app/CustomAreas/LeftbarPrimary.php:29
 msgid "Leftbar Primary"
-msgstr "左侧栏主要"
+msgstr "Leftbar Primary"
 
 #: app/CustomAreas/LeftbarPrimary.php:39
 msgid "Primary left sidebar area for displaying various content modules"
-msgstr "左侧栏主要区域，用于显示左侧栏的各种内容模块"
+msgstr "Primary left sidebar area for displaying various content modules"
 
 #: app/View/Composers/Post.php:34
 msgid "Latest Posts"
-msgstr "最新文章"
+msgstr "Latest Posts"
 
 #. translators: %s is replaced with the search query
 #: app/View/Composers/Post.php:44
 #, php-format
 msgid "Search Results for %s"
-msgstr "%s 的搜索结果"
+msgstr "Search Results for %s"
 
 #: app/View/Composers/Post.php:50
 msgid "Not Found"
-msgstr "未找到"
+msgstr "Not Found"
 
 #: app/View/Composers/Post.php:63
 msgid "Pages:"
-msgstr "页面："
+msgstr "Pages:"
 
 #: app/Widgets/AuthorsWidget.php:44
 msgid "aripplesong - Authors List"
-msgstr "aripplesong - 作者列表"
+msgstr "aripplesong - Authors List"
 
 #: app/Widgets/AuthorsWidget.php:45
 msgid "Display members and guest authors list"
-msgstr "显示成员和访客作者列表"
+msgstr "Display members and guest authors list"
 
 #: resources/views/widgets/authors.blade.php:68
 msgid "No authors yet"
-msgstr "暂无作者"
+msgstr "No authors yet"
 
 #: resources/views/widgets/authors.blade.php:69
 msgid "Authors will appear here after adding users"
-msgstr "添加用户后将显示在这里"
+msgstr "Authors will appear here after adding users"
 
 #: app/Widgets/AuthorsWidget.php:125
 msgid "Members Title:"
-msgstr "成员标题："
+msgstr "Members Title:"
 
 #: app/Widgets/AuthorsWidget.php:141
 msgid "Show Members (Authors)"
-msgstr "显示成员（作者）"
+msgstr "Show Members (Authors)"
 
 #: app/Widgets/AuthorsWidget.php:147
 msgid "Guests Title:"
-msgstr "访客标题："
+msgstr "Guests Title:"
 
 #: app/Widgets/AuthorsWidget.php:163
 msgid "Show Guests (Subscribers)"
-msgstr "显示嘉宾（订阅者）"
+msgstr "Show Guests (Subscribers)"
 
 #: app/Widgets/BannerCarouselWidget.php:40
 msgid "aripplesong - Banner Carousel"
-msgstr "aripplesong - 横幅轮播"
+msgstr "aripplesong - Banner Carousel"
 
 #: app/Widgets/BannerCarouselWidget.php:41
 msgid "Display banner carousel with images"
-msgstr "显示图片轮播横幅"
+msgstr "Display banner carousel with images"
 
 #: resources/views/widgets/banner-carousel.blade.php:17
 msgid "No banner yet"
-msgstr "暂无横幅"
+msgstr "No banner yet"
 
 #: resources/views/widgets/banner-carousel.blade.php:18
 msgid "Please add banner content in the admin panel"
-msgstr "请在后台添加横幅内容"
+msgstr "Please add banner content in the admin panel"
 
 #: app/Widgets/BannerCarouselWidget.php:85
 msgid "Banner Slides:"
-msgstr "横幅幻灯片："
+msgstr "Banner Slides:"
 
 #: app/Providers/WidgetServiceProvider.php:1030
 #: app/Widgets/BannerCarouselWidget.php:92
 msgid "Image URL:"
-msgstr "图片地址："
+msgstr "Image URL:"
 
 #: app/Providers/WidgetServiceProvider.php:1031
 #: app/Widgets/BannerCarouselWidget.php:99
 msgid "Image URL"
-msgstr "图片URL"
+msgstr "Image URL"
 
 #: app/Providers/WidgetServiceProvider.php:1032
 #: app/Widgets/BannerCarouselWidget.php:102
 msgid "Select Image"
-msgstr "选择图片"
+msgstr "Select Image"
 
 #: app/Providers/WidgetServiceProvider.php:1035
 #: app/Widgets/BannerCarouselWidget.php:115
 msgid "Link URL (optional):"
-msgstr "链接地址（可选）："
+msgstr "Link URL (optional):"
 
 #: app/Providers/WidgetServiceProvider.php:1036
 #: app/Widgets/BannerCarouselWidget.php:126
 msgid "Link Target:"
-msgstr "链接打开方式："
+msgstr "Link Target:"
 
 #: app/Providers/WidgetServiceProvider.php:1037
 #: app/Widgets/BannerCarouselWidget.php:131
 msgid "Current Page"
-msgstr "当前页面"
+msgstr "Current Page"
 
 #: app/Providers/WidgetServiceProvider.php:1038
 #: app/Widgets/BannerCarouselWidget.php:134
 msgid "New Tab"
-msgstr "新标签页"
+msgstr "New Tab"
 
 #: app/Providers/WidgetServiceProvider.php:1039
 #: app/Widgets/BannerCarouselWidget.php:141
 msgid "Description:"
-msgstr "描述："
+msgstr "Description:"
 
 #: app/Providers/WidgetServiceProvider.php:1040
 #: app/Widgets/BannerCarouselWidget.php:147
 msgid "Image description"
-msgstr "图片描述"
+msgstr "Image description"
 
 #: app/Providers/WidgetServiceProvider.php:1041
 #: app/Widgets/BannerCarouselWidget.php:152
 #: app/Widgets/FooterLinksWidget.php:143
 msgid "Delete"
-msgstr "删除"
+msgstr "Delete"
 
 #: app/Widgets/BannerCarouselWidget.php:163
 msgid "+ Add Banner"
-msgstr "+ 添加横幅"
-
-#: app/Widgets/TagsCloudWidget.php:126
-#: resources/views/widgets/podcast-list.blade.php:49
-msgid "Random"
-msgstr "随机"
-
-#: resources/views/widgets/blog-list.blade.php:17
-#: resources/views/widgets/podcast-list.blade.php:20
-msgid "See all"
-msgstr "查看全部"
-
-#: resources/views/widgets/podcast-list.blade.php:31
-msgid "Recent"
-msgstr "最新"
-
-#: resources/views/widgets/podcast-list.blade.php:40
-msgid "Popular"
-msgstr "热门"
+msgstr "+ Add Banner"
 
 #: app/Widgets/BlogListWidget.php:43
 msgid "aripplesong - Blog List"
-msgstr "aripplesong - 博客列表"
+msgstr "aripplesong - Blog List"
 
 #: app/Widgets/BlogListWidget.php:44
 msgid "Display latest blog posts list"
-msgstr "显示最新的博客文章列表"
+msgstr "Display latest blog posts list"
 
 #: resources/views/widgets/blog-list.blade.php:51
 msgid "No blog posts yet"
-msgstr "暂无博客文章"
+msgstr "No blog posts yet"
 
 #: app/Widgets/BlogListWidget.php:99
 #: app/Widgets/FooterLinksWidget.php:91
@@ -242,313 +224,332 @@ msgstr "暂无博客文章"
 #: app/Widgets/SubscribeLinksWidget.php:84
 #: app/Widgets/TagsCloudWidget.php:92
 msgid "Title:"
-msgstr "标题："
+msgstr "Title:"
 
 #: app/Widgets/BlogListWidget.php:110
 msgid "Number of posts:"
-msgstr "显示数量："
+msgstr "Number of posts:"
 
 #: app/Widgets/BlogListWidget.php:124
 msgid "Number of columns:"
-msgstr "列数："
+msgstr "Number of columns:"
 
 #: app/Widgets/BlogListWidget.php:144
 #: app/Widgets/PodcastListWidget.php:181
 msgid "Show \"See all\" link"
-msgstr "显示\"查看全部\"链接"
+msgstr "Show \"See all\" link"
 
 #: app/Widgets/PodcastListWidget.php:44
 msgid "aripplesong - Podcast List"
-msgstr "aripplesong - 播客列表"
+msgstr "aripplesong - Podcast List"
 
 #: app/Widgets/PodcastListWidget.php:45
 msgid "Display latest podcast list"
-msgstr "显示最新的播客列表"
+msgstr "Display latest podcast list"
 
 #: resources/views/widgets/podcast-list.blade.php:73
 msgid "No podcast content"
-msgstr "暂无播客内容"
+msgstr "No podcast content"
 
 #: app/Widgets/SubscribeLinksWidget.php:40
 msgid "aripplesong - Subscribe Links"
-msgstr "aripplesong - 订阅链接"
+msgstr "aripplesong - Subscribe Links"
 
 #: app/Widgets/SubscribeLinksWidget.php:41
 msgid "Display podcast subscription platform links"
-msgstr "显示播客订阅平台链接"
+msgstr "Display podcast subscription platform links"
 
 #: app/Widgets/SubscribeLinksWidget.php:96
 msgid "Apple Podcast Link:"
-msgstr "Apple Podcast 链接："
+msgstr "Apple Podcast Link:"
 
 #: app/Widgets/SubscribeLinksWidget.php:104
 #: app/Widgets/SubscribeLinksWidget.php:117
 #: app/Widgets/SubscribeLinksWidget.php:130
 msgid "Leave blank to hide this button"
-msgstr "留空则不显示该按钮"
+msgstr "Leave blank to hide this button"
 
 #: app/Widgets/SubscribeLinksWidget.php:109
 msgid "Spotify Link:"
-msgstr "Spotify 链接："
+msgstr "Spotify Link:"
 
 #: app/Widgets/TagsCloudWidget.php:43
 msgid "aripplesong - Tags Cloud"
-msgstr "aripplesong - 标签云"
+msgstr "aripplesong - Tags Cloud"
 
 #: app/Widgets/TagsCloudWidget.php:44
 msgid "Display article tags cloud"
-msgstr "显示文章标签云"
+msgstr "Display article tags cloud"
 
 #: resources/views/widgets/tags-cloud.blade.php:16
 msgid "No tags yet"
-msgstr "暂无标签"
+msgstr "No tags yet"
 
 #: resources/views/widgets/tags-cloud.blade.php:17
 msgid "Tags will appear here after publishing articles with tags"
-msgstr "发布文章并添加标签后将显示在这里"
+msgstr "Tags will appear here after publishing articles with tags"
 
 #: resources/views/widgets/tags-cloud.blade.php:27
 #, php-format
 msgid "%d post"
 msgid_plural "%d posts"
-msgstr[0] "%d 篇文章"
+msgstr[0] "%d post"
+msgstr[1] "%d posts"
 
 #: app/Widgets/TagsCloudWidget.php:103
 msgid "Number of tags:"
-msgstr "显示数量："
+msgstr "Number of tags:"
 
 #: app/Widgets/TagsCloudWidget.php:113
 msgid "Maximum number of tags to display"
-msgstr "最多显示多少个标签"
+msgstr "Maximum number of tags to display"
 
 #: app/Widgets/TagsCloudWidget.php:118
 msgid "Order by:"
-msgstr "排序依据："
+msgstr "Order by:"
 
 #: app/Widgets/TagsCloudWidget.php:123
 msgid "Post Count"
-msgstr "文章数量"
+msgstr "Post Count"
 
 #: app/Widgets/TagsCloudWidget.php:124
 msgid "Tag Name"
-msgstr "标签名称"
+msgstr "Tag Name"
 
 #: app/Widgets/TagsCloudWidget.php:125
 msgid "Tag ID"
-msgstr "标签ID"
+msgstr "Tag ID"
+
+#: app/Widgets/TagsCloudWidget.php:126
+#: resources/views/widgets/podcast-list.blade.php:49
+msgid "Random"
+msgstr "Random"
+
+#: resources/views/widgets/blog-list.blade.php:17
+#: resources/views/widgets/podcast-list.blade.php:20
+msgid "See all"
+msgstr "See all"
+
+#: resources/views/widgets/podcast-list.blade.php:31
+msgid "Recent"
+msgstr "Recent"
+
+#: resources/views/widgets/podcast-list.blade.php:40
+msgid "Popular"
+msgstr "Popular"
 
 #: app/Widgets/TagsCloudWidget.php:132
 msgid "Sort order:"
-msgstr "排序顺序："
+msgstr "Sort order:"
 
 #: app/Widgets/TagsCloudWidget.php:137
 msgid "Descending (High to Low/Z to A)"
-msgstr "降序（多到少/Z到A）"
+msgstr "Descending (High to Low/Z to A)"
 
 #: app/Widgets/TagsCloudWidget.php:138
 msgid "Ascending (Low to High/A to Z)"
-msgstr "升序（少到多/A到Z）"
+msgstr "Ascending (Low to High/A to Z)"
 
 #: app/Widgets/FooterLinksWidget.php:41
 msgid "aripplesong - Footer Links"
-msgstr "aripplesong - 页脚链接"
+msgstr "aripplesong - Footer Links"
 
 #: app/Widgets/FooterLinksWidget.php:42
 msgid "Display a list of links or text items in the footer"
-msgstr "在页脚显示链接或文字项目列表"
+msgstr "Display a list of links or text items in the footer"
 
 #: app/Widgets/FooterLinksWidget.php:98
 msgid "e.g., Contact, Navigate, Support"
-msgstr "例如：联系、导航、支持"
+msgstr "e.g., Contact, Navigate, Support"
 
 #: app/Widgets/FooterLinksWidget.php:102
 msgid "Items:"
-msgstr "项目："
+msgstr "Items:"
 
 #: app/Providers/WidgetServiceProvider.php:1042
 #: app/Widgets/FooterLinksWidget.php:110
 msgid "Text:"
-msgstr "文字："
+msgstr "Text:"
 
 #: app/Providers/WidgetServiceProvider.php:1043
 #: app/Widgets/FooterLinksWidget.php:116
 msgid "Display text"
-msgstr "显示文字"
+msgstr "Display text"
 
 #: app/Providers/WidgetServiceProvider.php:1044
 #: app/Widgets/FooterLinksWidget.php:121
 msgid "URL (optional - leave empty for plain text):"
-msgstr "链接（可选 - 留空则显示纯文字）："
+msgstr "URL (optional - leave empty for plain text):"
 
 #: app/Providers/WidgetServiceProvider.php:1045
 #: app/Widgets/FooterLinksWidget.php:137
 msgid "Open in new tab"
-msgstr "在新标签页打开"
+msgstr "Open in new tab"
 
 #: app/Widgets/FooterLinksWidget.php:154
 msgid "+ Add Item"
-msgstr "+ 添加项目"
+msgstr "+ Add Item"
 
 #: app/CustomAreas/FooterLinks.php:29
 msgid "Footer Links"
-msgstr "页脚链接"
+msgstr "Footer Links"
 
 #: app/CustomAreas/FooterLinks.php:39
 msgid "Footer links area for displaying link columns"
-msgstr "页脚链接区域，用于显示链接列"
+msgstr "Footer links area for displaying link columns"
 
 #. Template Name of the theme
 msgid "Blog Template"
-msgstr "博客模板"
+msgstr "Blog Template"
 
 #. Template Name of the theme
 msgid "Custom Template"
-msgstr "自定义模板"
+msgstr "Custom Template"
 
 #. Template Name of the theme
 msgid "Podcast Template"
-msgstr "播客模板"
+msgstr "Podcast Template"
 
 #: resources/views/404.blade.php:8
 msgid "Sorry, but the page you are trying to view does not exist."
-msgstr "抱歉，您尝试查看的页面不存在。"
+msgstr "Sorry, but the page you are trying to view does not exist."
 
 #: resources/views/author.blade.php:22
 #: resources/views/search.blade.php:7
 msgid "Sorry, no results were found."
-msgstr "抱歉，未找到结果。"
+msgstr "Sorry, no results were found."
 
 #: searchform.php:23
 msgctxt "placeholder"
 msgid "Search &hellip;"
-msgstr "搜索 &hellip;"
+msgstr "Search &hellip;"
 
 #: resources/views/partials/comments.blade.php:46
 msgid "Comments are closed."
-msgstr "评论已关闭。"
+msgstr "Comments are closed."
 
 #: resources/views/partials/entry-meta.blade.php:7
 msgid "By"
-msgstr "作者"
+msgstr "By"
 
 #: resources/views/template-home.blade.php:13
 msgid "Please add widgets to \"Home Main\" area in Appearance > Widgets in the admin panel."
-msgstr "请在后台的 外观 > 小工具 中添加小工具到\"首页主要区域\"。"
+msgstr "Please add widgets to \"Home Main\" area in Appearance > Widgets in the admin panel."
 
 #: resources/views/author.blade.php:9
 msgid "Author:"
-msgstr "作者："
+msgstr "Author:"
 
 #: resources/views/partials/comments.blade.php:53
 msgid "Leave a Comment"
-msgstr "发表评论"
+msgstr "Leave a Comment"
 
 #: resources/views/partials/podcast-episode-card.blade.php:60
 msgid "Pause"
-msgstr "暂停"
+msgstr "Pause"
 
 #: resources/views/partials/podcast-episode-card.blade.php:60
 #: resources/views/sections/autoplay-confirm.blade.php:34
 msgid "Play"
-msgstr "播放"
+msgstr "Play"
 
 #: resources/views/sections/leftbar-drawer.blade.php:21
 #: resources/views/sections/leftbar.blade.php:6
 msgid "Please add widgets to \"Leftbar\" area in Appearance > Widgets in the admin panel."
-msgstr "请在后台的 外观 > 小工具 中添加小工具到\"左侧栏\"。"
+msgstr "Please add widgets to \"Leftbar\" area in Appearance > Widgets in the admin panel."
 
 #: resources/views/sections/sidebar-drawer.blade.php:22
 #: resources/views/sections/sidebar.blade.php:8
 msgid "Please add widgets to \"Sidebar\" area in Appearance > Widgets in the admin panel."
-msgstr "请在后台的 外观 > 小工具 中添加小工具到\"侧边栏\"。"
+msgstr "Please add widgets to \"Sidebar\" area in Appearance > Widgets in the admin panel."
 
 #: resources/views/sections/mobile-menu.blade.php:7
 msgid "Menu"
-msgstr "菜单"
+msgstr "Menu"
 
 #: resources/views/sections/search-modal.blade.php:6
 msgid "Close"
-msgstr "关闭"
+msgstr "Close"
 
 #: resources/views/sections/header.blade.php:30
 msgid "Light Mode"
-msgstr "明亮模式"
+msgstr "Light Mode"
 
 #: resources/views/sections/header.blade.php:30
 msgid "Dark Mode"
-msgstr "黑暗模式"
+msgstr "Dark Mode"
 
 #: resources/views/sections/header.blade.php:30
 msgid "Follow System"
-msgstr "跟随系统"
+msgstr "Follow System"
 
 #: resources/views/sections/player.blade.php:3
 msgid "NOW PLAYING"
-msgstr "正在播放"
+msgstr "NOW PLAYING"
 
 #: resources/views/sections/player.blade.php:26
 msgid "No Episode Playing"
-msgstr "暂无播放"
+msgstr "No Episode Playing"
 
 #: resources/views/sections/player.blade.php:27
 msgid "Podcast Episode"
-msgstr "播客节目"
+msgstr "Podcast Episode"
 
 #: resources/views/sections/playlist-drawer.blade.php:8
 msgid "Playlist"
-msgstr "播放列表"
+msgstr "Playlist"
 
 #: resources/views/sections/playlist-drawer.blade.php:15
 msgid "Total"
-msgstr "共"
+msgstr "Total"
 
 #: resources/views/sections/playlist-drawer.blade.php:15
 msgid "episodes"
-msgstr "首"
+msgstr "episodes"
 
 #: resources/views/sections/playlist-drawer.blade.php:17
 msgid "Are you sure you want to clear the playlist?"
-msgstr "确定要清空播放列表吗？"
+msgstr "Are you sure you want to clear the playlist?"
 
 #: resources/views/sections/playlist-drawer.blade.php:19
 msgid "Clear Playlist"
-msgstr "清空播放列表"
+msgstr "Clear Playlist"
 
 #: resources/views/sections/playlist-drawer.blade.php:21
 msgid "Clear"
-msgstr "清空"
+msgstr "Clear"
 
 #: resources/views/sections/playlist-drawer.blade.php:32
 msgid "Playlist is empty"
-msgstr "播放列表为空"
+msgstr "Playlist is empty"
 
 #: resources/views/sections/playlist-drawer.blade.php:33
 msgid "Add some episodes to start listening"
-msgstr "添加一些节目开始收听吧"
+msgstr "Add some episodes to start listening"
 
 #: resources/views/sections/playlist-drawer.blade.php:83
 msgid "Remove"
-msgstr "删除"
+msgstr "Remove"
 
 #: resources/views/sections/autoplay-confirm.blade.php:22
 msgid "Continue playing?"
-msgstr "继续播放？"
+msgstr "Continue playing?"
 
 #: resources/views/sections/autoplay-confirm.blade.php:25
 msgid "Unknown episode"
-msgstr "未知节目"
+msgstr "Unknown episode"
 
 #: resources/views/sections/autoplay-confirm.blade.php:42
 msgid "Cancel"
-msgstr "取消"
+msgstr "Cancel"
 
 #: resources/views/sections/player.blade.php:47
 msgid "Loading audio"
-msgstr "正在加载音频"
+msgstr "Loading audio"
 
 #: app/Customizers/SocialLinks.php:111
 msgid "Social Links"
-msgstr "社交链接"
+msgstr "Social Links"
 
 #: app/Customizers/SocialLinks.php:23
 msgid "Facebook"
@@ -564,7 +565,7 @@ msgstr "Instagram"
 
 #: app/Customizers/SocialLinks.php:35
 msgid "LinkedIn"
-msgstr "领英"
+msgstr "LinkedIn"
 
 #: app/Customizers/SocialLinks.php:39
 msgid "YouTube"
@@ -572,7 +573,7 @@ msgstr "YouTube"
 
 #: app/Customizers/SocialLinks.php:43
 msgid "TikTok"
-msgstr "抖音国际版"
+msgstr "TikTok"
 
 #: app/Customizers/SocialLinks.php:47
 msgid "Pinterest"
@@ -584,91 +585,83 @@ msgstr "Threads"
 
 #: app/Customizers/SocialLinks.php:55
 msgid "Weibo"
-msgstr "微博"
+msgstr "Weibo"
 
 #: app/Customizers/SocialLinks.php:59
 msgid "WeChat"
-msgstr "微信"
+msgstr "WeChat"
 
 #: app/Customizers/SocialLinks.php:63
 msgid "RSS Feed"
-msgstr "RSS 订阅"
+msgstr "RSS Feed"
 
 #: resources/views/sections/leftbar-drawer.blade.php:9
 msgid "Left Sidebar"
-msgstr "左边栏"
+msgstr "Left Sidebar"
 
 #: resources/views/sections/sidebar-drawer.blade.php:9
 msgid "Right Sidebar"
-msgstr "右边栏"
+msgstr "Right Sidebar"
 
 #: resources/views/layouts/app.blade.php:87
 msgid "Open Left Sidebar"
-msgstr "打开左边栏"
+msgstr "Open Left Sidebar"
 
 #: resources/views/layouts/app.blade.php:101
 msgid "Open Right Sidebar"
-msgstr "打开右边栏"
-
-#: app/Customizers/ThemeColor.php:71
-msgid "Light Theme"
-msgstr "浅色主题"
-
-#: app/Customizers/ThemeColor.php:85
-msgid "Dark Theme"
-msgstr "深色主题"
+msgstr "Open Right Sidebar"
 
 #: app/Settings/Podcast.php:41
 msgid "Podcast Settings"
-msgstr "播客设置"
+msgstr "Podcast Settings"
 
 #: app/Settings/Podcast.php:154
 msgid "Podcast Title"
-msgstr "播客标题"
+msgstr "Podcast Title"
 
 #: app/Settings/Podcast.php:156
 msgid "Required. If empty, falls back to site title."
-msgstr "必填。如留空，将使用站点标题。"
+msgstr "Required. If empty, falls back to site title."
 
 #: app/Settings/Podcast.php:158
 msgid "Podcast Subtitle"
-msgstr "播客副标题"
+msgstr "Podcast Subtitle"
 
 #: app/Settings/Podcast.php:159
 msgid "Short tagline shown in some apps."
-msgstr "在部分应用中显示的简短标语。"
+msgstr "Short tagline shown in some apps."
 
 #: app/Settings/Podcast.php:160
 msgid "Podcast Description"
-msgstr "播客描述"
+msgstr "Podcast Description"
 
 #: app/Settings/Podcast.php:162
 msgid "Required. Plain text description of the show."
-msgstr "必填。节目纯文本描述。"
+msgstr "Required. Plain text description of the show."
 
 #: app/Settings/Podcast.php:164
 msgid "Podcast Author (itunes:author)"
-msgstr "播客作者 (itunes:author)"
+msgstr "Podcast Author (itunes:author)"
 
 #: app/Settings/Podcast.php:166
 msgid "Required. Displayed as show author in directories."
-msgstr "必填。用于目录中显示节目作者。"
+msgstr "Required. Displayed as show author in directories."
 
 #: app/Settings/Podcast.php:168
 msgid "Owner Name"
-msgstr "所有者姓名"
+msgstr "Owner Name"
 
 #: app/Settings/Podcast.php:172
 msgid "Owner Email"
-msgstr "所有者邮箱"
+msgstr "Owner Email"
 
 #: app/Settings/Podcast.php:88
 msgid "Default Explicit Flag"
-msgstr "默认露骨标记"
+msgstr "Default Explicit Flag"
 
 #: app/Settings/Podcast.php:91
 msgid "clean (no explicit content)"
-msgstr "clean（无露骨内容）"
+msgstr "clean (no explicit content)"
 
 #: app/CustomPostTypes/Episode.php:89
 #: app/Settings/Podcast.php:92
@@ -677,15 +670,15 @@ msgstr "explicit"
 
 #: app/Settings/Podcast.php:95
 msgid "Required. Single-episode value can override."
-msgstr "必填。可被单集值覆盖。"
+msgstr "Required. Single-episode value can override."
 
 #: app/Settings/Podcast.php:114
 msgid "Secondary Category (optional)"
-msgstr "次要分类（可选）"
+msgstr "Secondary Category (optional)"
 
 #: app/Settings/Podcast.php:182
 msgid "Copyright (optional)"
-msgstr "版权（可选）"
+msgstr "Copyright (optional)"
 
 #: app/Settings/Podcast.php:143
 msgid "podcast:locked"
@@ -693,7 +686,7 @@ msgstr "podcast:locked"
 
 #: app/Settings/Podcast.php:146
 msgid "yes (recommended, prevents unauthorized moves)"
-msgstr "yes（推荐，可防止未授权迁移）"
+msgstr "yes (recommended, prevents unauthorized moves)"
 
 #: app/CustomPostTypes/Episode.php:116
 #: app/Settings/Podcast.php:64
@@ -703,39 +696,47 @@ msgstr "no"
 
 #: app/Settings/Podcast.php:150
 msgid "Podcasting 2.0: lock feed to this publisher."
-msgstr "Podcasting 2.0：将订阅源锁定到此发布者。"
+msgstr "Podcasting 2.0: lock feed to this publisher."
 
 #: app/Settings/Podcast.php:196
 msgid "podcast:guid (optional)"
-msgstr "podcast:guid（可选）"
+msgstr "podcast:guid (optional)"
 
 #: app/Settings/Podcast.php:198
 msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
-msgstr "Podcasting 2.0 GUID。如留空，源将使用站点 URL 作为后备。"
+msgstr "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
 
 #: app/CustomPostTypes/Episode.php:92
 msgid "Required. clean / explicit."
-msgstr "必填。clean / explicit。"
+msgstr "Required. clean / explicit."
 
 #: app/Settings/Podcast.php:77
 msgid "Podcast RSS URL"
-msgstr "播客 RSS 地址"
+msgstr "Podcast RSS URL"
 
 #: app/Settings/Podcast.php:218
 msgid "Your podcast RSS feed URL. Click to select and copy."
-msgstr "您的播客 RSS 订阅地址。点击选择并复制。"
+msgstr "Your podcast RSS feed URL. Click to select and copy."
+
+#: app/Customizers/ThemeColor.php:71
+msgid "Light Theme"
+msgstr ""
+
+#: app/Customizers/ThemeColor.php:85
+msgid "Dark Theme"
+msgstr ""
 
 #: app/CustomPostTypes/Episode.php:162
 msgid "Audio Length (bytes)"
-msgstr "音频大小（字节）"
+msgstr "Audio Length (bytes)"
 
 #: app/CustomPostTypes/Episode.php:168
 msgid "Audio MIME Type"
-msgstr "音频 MIME 类型"
+msgstr "Audio MIME Type"
 
 #: app/CustomPostTypes/Episode.php:85
 msgid "Explicit"
-msgstr "内容分级"
+msgstr "Explicit"
 
 #: app/CustomPostTypes/Episode.php:88
 msgid "clean"
@@ -743,7 +744,7 @@ msgstr "clean"
 
 #: app/CustomPostTypes/Episode.php:96
 msgid "Episode Type"
-msgstr "单集类型"
+msgstr "Episode Type"
 
 #: app/CustomPostTypes/Episode.php:99
 msgid "full"
@@ -759,63 +760,63 @@ msgstr "bonus"
 
 #: app/CustomPostTypes/Episode.php:175
 msgid "Episode Number"
-msgstr "集数"
+msgstr "Episode Number"
 
 #: app/CustomPostTypes/Episode.php:179
 msgid "Optional but recommended. Integer."
-msgstr "可选但推荐。整数。"
+msgstr "Optional but recommended. Integer."
 
 #: app/CustomPostTypes/Episode.php:180
 msgid "Season Number"
-msgstr "季数"
+msgstr "Season Number"
 
 #: app/CustomPostTypes/Episode.php:184
 msgid "Optional. Integer."
-msgstr "可选。整数。"
+msgstr "Optional. Integer."
 
 #: app/CustomPostTypes/Episode.php:185
 msgid "Episode Author (override)"
-msgstr "单集作者（覆盖）"
+msgstr "Episode Author (override)"
 
 #: app/CustomPostTypes/Episode.php:186
 msgid "Optional. Overrides channel author for this episode."
-msgstr "可选。覆盖该集的节目作者。"
+msgstr "Optional. Overrides channel author for this episode."
 
 #: app/CustomPostTypes/Episode.php:107
 msgid "Episode Cover (square)"
-msgstr "单集封面（正方形）"
+msgstr "Episode Cover (square)"
 
 #: app/CustomPostTypes/Episode.php:199
 msgid "Subtitle"
-msgstr "副标题"
+msgstr "Subtitle"
 
 #: app/CustomPostTypes/Episode.php:200
 msgid "Optional. Short subtitle for iTunes."
-msgstr "可选。iTunes 短副标题。"
+msgstr "Optional. Short subtitle for iTunes."
 
 #: app/CustomPostTypes/Episode.php:201
 msgid "Summary"
-msgstr "摘要"
+msgstr "Summary"
 
 #: app/CustomPostTypes/Episode.php:202
 msgid "Optional. Plain text summary for iTunes."
-msgstr "可选。iTunes 纯文本摘要。"
+msgstr "Optional. Plain text summary for iTunes."
 
 #: app/CustomPostTypes/Episode.php:203
 msgid "Custom GUID (optional)"
-msgstr "自定义 GUID（可选）"
+msgstr "Custom GUID (optional)"
 
 #: app/CustomPostTypes/Episode.php:204
 msgid "Optional. If empty, feed uses WP permalink as GUID."
-msgstr "可选。留空则使用 WP 固定链接作为 GUID。"
+msgstr "Optional. If empty, feed uses WP permalink as GUID."
 
 #: app/CustomPostTypes/Episode.php:113
 msgid "iTunes Block"
-msgstr "iTunes 屏蔽"
+msgstr "iTunes Block"
 
 #: app/CustomPostTypes/Episode.php:120
 msgid "Optional. yes = hide this episode in Apple Podcasts."
-msgstr "可选。yes = 在 Apple Podcasts 中隐藏该集。"
+msgstr "Optional. yes = hide this episode in Apple Podcasts."
 
 #: app/CustomPostTypes/Episode.php:117
 #: app/Settings/Podcast.php:64
@@ -824,166 +825,166 @@ msgstr "yes"
 
 #: app/Providers/WidgetServiceProvider.php:1033
 msgid "Select Banner Image"
-msgstr "选择横幅图片"
+msgstr ""
 
 #: app/Providers/WidgetServiceProvider.php:1034
 msgid "Use This Image"
-msgstr "使用此图片"
+msgstr ""
 
 #: resources/views/partials/content-single-attachment.blade.php:13
 msgid "Download"
-msgstr "下载"
+msgstr ""
 
 #: resources/views/sections/header.blade.php:34
 msgid "Toggle Theme"
-msgstr "切换主题"
+msgstr ""
 
 #: resources/views/widgets/banner-carousel.blade.php:55
 msgid "Previous slide"
-msgstr "上一张"
+msgstr ""
 
 #: resources/views/widgets/banner-carousel.blade.php:63
 msgid "Next slide"
-msgstr "下一张"
+msgstr ""
 
 #: resources/views/widgets/banner-carousel.blade.php:79
 #, php-format
 msgid "Go to slide %d"
-msgstr "跳转到第 %d 张"
+msgstr ""
 
 #: app/CustomPostTypes/Episode.php:188
 msgid "Transcript (optional)"
-msgstr "文字稿（可选）"
+msgstr "Transcript (optional)"
 
 #: app/CustomPostTypes/Episode.php:394
 msgid "Episode transcript URL"
-msgstr "文字稿 URL"
+msgstr "Episode transcript URL"
 
 #: app/Customizers/Copyright.php:42
 msgid "Footer Copyright"
-msgstr "页脚版权"
+msgstr ""
 
 #: app/Customizers/Copyright.php:43
 msgid "Overrides the footer copyright line. Leave empty to use the default."
-msgstr "覆盖页脚版权行。留空以使用默认值。"
+msgstr "Overrides the footer copyright line. Leave empty to use the default."
 
 #: resources/views/partials/entry-meta.blade.php:36
 msgid "views"
-msgstr "次浏览"
+msgstr ""
 
 #: resources/views/partials/entry-meta.blade.php:39
 msgid "plays"
-msgstr "次播放"
+msgstr ""
 
 #: resources/views/sections/footer.blade.php:4
 #, php-format
 msgid "Powered by %s"
-msgstr "由 %s 驱动"
+msgstr ""
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Red (50)"
-msgstr "红色 (50)"
+msgstr ""
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Red (400)"
-msgstr "红色 (400)"
+msgstr ""
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (50)"
-msgstr "黄色 (50)"
+msgstr ""
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (300)"
-msgstr "黄色 (300)"
+msgstr ""
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Yellow (400)"
-msgstr "黄色 (400)"
+msgstr ""
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (50)"
-msgstr "绿色 (50)"
+msgstr ""
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (400)"
-msgstr "绿色 (400)"
+msgstr ""
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Green (500)"
-msgstr "绿色 (500)"
+msgstr ""
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Indigo (50)"
-msgstr "靛蓝 (50)"
+msgstr ""
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Indigo (400)"
-msgstr "靛蓝 (400)"
+msgstr ""
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Gray (600)"
-msgstr "灰色 (600)"
+msgstr ""
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Gray (800)"
-msgstr "灰色 (800)"
+msgstr ""
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "Black"
-msgstr "黑色"
+msgstr ""
 
 #: public/build/assets/theme.json
 msgctxt "Color name"
 msgid "White"
-msgstr "白色"
+msgstr ""
 
 #: public/build/assets/theme.json
 msgctxt "Font family name"
 msgid "sans"
-msgstr "无衬线"
+msgstr ""
 
 #: public/build/assets/theme.json
 msgctxt "Font family name"
 msgid "mono"
-msgstr "等宽"
+msgstr ""
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "xs"
-msgstr "超小"
+msgstr ""
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "sm"
-msgstr "小"
+msgstr ""
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "base"
-msgstr "基础"
+msgstr ""
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "lg"
-msgstr "大"
+msgstr ""
 
 #: public/build/assets/theme.json
 msgctxt "Font size name"
 msgid "2xl"
-msgstr "超大"
+msgstr ""
 
 #. Theme Name of the theme
 #: style.css
@@ -1091,7 +1092,7 @@ msgstr ""
 
 #: app/CustomPostTypes/Episode.php:81
 msgid "Required. Upload an audio file; the saved value is the media attachment ID."
-msgstr "必填。上传一个音频文件；保存值为媒体附件 ID。"
+msgstr ""
 
 #: app/CustomPostTypes/Episode.php:104
 msgid "Required. full / trailer / bonus."
@@ -1099,7 +1100,7 @@ msgstr ""
 
 #: app/CustomPostTypes/Episode.php:110
 msgid "Optional. Square 1400-3000px. Overrides channel cover. The saved value is the media attachment ID."
-msgstr "可选。方形图片，1400-3000px。覆盖频道封面；保存值为媒体附件 ID。"
+msgstr ""
 
 #: app/CustomPostTypes/Episode.php:123
 msgid "Soundbites"
@@ -1123,11 +1124,11 @@ msgstr ""
 
 #: app/CustomPostTypes/Episode.php:145
 msgid "Select episode members (authors)."
-msgstr "选择单集成员（作者）。"
+msgstr "Select episode members (authors)."
 
 #: app/CustomPostTypes/Episode.php:151
 msgid "Select episode guests (subscribers)."
-msgstr "选择单集嘉宾（订阅者）。"
+msgstr "Select episode guests (subscribers)."
 
 #: app/CustomPostTypes/Episode.php:154
 msgid "Audio"
@@ -1852,64 +1853,65 @@ msgstr ""
 
 #: app/Supports/Comment.php:40
 msgid "Author"
-msgstr "作者"
+msgstr ""
 
 #: app/Supports/Comment.php:49
 msgid "Pending Approval"
-msgstr "待审核"
+msgstr ""
 
 #: app/Supports/Comment.php:65
 msgid "Reply"
-msgstr "回复"
+msgstr ""
 
 #: app/Supports/Comment.php:71
 msgid "Edit"
-msgstr "编辑"
+msgstr ""
 
 #: app/Supports/Comment.php:99
 msgid "Your email address will not be published."
-msgstr "您的电子邮件地址不会被公开。"
+msgstr ""
 
 #: app/Supports/Comment.php:103
 #, php-format
 msgid "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\">Log out?</a>"
-msgstr "以 <a href=\"%1$s\">%2$s</a> 登录。<a href=\"%3$s\">退出登录？</a>"
+msgstr ""
 
 #: app/Supports/Comment.php:130
 msgid "Name"
-msgstr "姓名"
+msgstr ""
 
 #: app/Supports/Comment.php:132
 msgid "Email"
-msgstr "邮箱"
+msgstr ""
 
 #: app/Supports/Comment.php:134
 msgid "Website"
-msgstr "网站"
+msgstr ""
 
 #: app/Supports/Comment.php:136
 msgid "Save my name, email, and website in this browser for the next time I comment."
-msgstr "在此浏览器中保存我的姓名、邮箱和网站，以便下次评论时使用。"
+msgstr ""
 
 #: app/Supports/Comment.php:149
 #: resources/views/partials/comments.blade.php:17
 msgid "Comment"
-msgstr "评论"
+msgstr ""
 
 #. translators: %s: number of comments
 #: app/View/Composers/Comments.php:26
 msgctxt "comments title"
 msgid "One response"
 msgid_plural "%1$s responses"
-msgstr[0] "1 条回复"
+msgstr[0] ""
+msgstr[1] ""
 
 #: app/View/Composers/Comments.php:59
 msgid "Older comments"
-msgstr "较早的评论"
+msgstr ""
 
 #: app/View/Composers/Comments.php:73
 msgid "Newer comments"
-msgstr "较新的评论"
+msgstr ""
 
 #: app/Widgets/PodcastListWidget.php:162
 msgid "Number of episodes:"

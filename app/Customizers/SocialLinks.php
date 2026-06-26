@@ -25,7 +25,7 @@ class SocialLinks extends CustomizerAbstract
             ],
             'twitter' => [
                 'label' => __('Twitter / X', 'a-ripple-song'),
-                'icon' => 'twitter',
+                'icon' => 'x',
             ],
             'instagram' => [
                 'label' => __('Instagram', 'a-ripple-song'),
@@ -53,7 +53,7 @@ class SocialLinks extends CustomizerAbstract
             ],
             'weibo' => [
                 'label' => __('Weibo', 'a-ripple-song'),
-                'icon' => 'weibo',
+                'icon' => 'sinaweibo',
             ],
             'wechat' => [
                 'label' => __('WeChat', 'a-ripple-song'),

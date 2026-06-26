@@ -3,6 +3,7 @@ import AudioMotionAnalyzer from 'audiomotion-analyzer';
 import { buildRestUrl, bumpPlayCountDom, METRIC_ACTIONS, sendMetric } from '@scripts/lib/rest.js';
 import { safeLocalStorage } from '@scripts/lib/storage.js';
 import { scheduleIconRefresh } from '@scripts/lib/icons.js';
+import { renderSocialIcons } from '@scripts/lib/social-icons.js';
 import {
   ANALYZER_OPTIONS,
   AUTOPLAY_COUNTDOWN_SECONDS,
@@ -209,6 +210,7 @@ export function registerPlayerStore(Alpine) {
       this.showAutoplayConfirm = true;
       this.autoplayCountdown = AUTOPLAY_COUNTDOWN_SECONDS;
       scheduleIconRefresh();
+      renderSocialIcons();
 
       this.autoplayCountdownTimer = window.setInterval(() => {
         this.autoplayCountdown -= 1;
@@ -373,6 +375,7 @@ export function registerPlayerStore(Alpine) {
       }
 
       scheduleIconRefresh();
+      renderSocialIcons();
       this.saveVolume();
     },
 
@@ -389,6 +392,7 @@ export function registerPlayerStore(Alpine) {
       }
 
       scheduleIconRefresh();
+      renderSocialIcons();
     },
 
     cyclePlaybackRate() {
@@ -644,6 +648,7 @@ export function registerPlayerStore(Alpine) {
       safeLocalStorage.setItem(PLAYER_STORAGE_KEYS.currentIndex, String(this.currentIndex));
       window.dispatchEvent(new CustomEvent('playlist-updated'));
       scheduleIconRefresh();
+      renderSocialIcons();
     },
 
     loadVolume() {

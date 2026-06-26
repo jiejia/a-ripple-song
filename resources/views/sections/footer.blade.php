@@ -23,7 +23,7 @@
             @foreach($socialLinks as $key => $social)
               <li>
                 <a href="{{ $social['url'] }}" target="_blank" rel="noopener" title="{{ $social['label'] }}">
-                  <i data-lucide="{{ $social['icon'] }}" class="w-4 h-4"></i>
+                  <i data-si-icon="{{ $social['icon'] }}" class="w-4 h-4"></i>
                 </a>
               </li>
             @endforeach

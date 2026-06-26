@@ -1,4 +1,4 @@
-=== Daisy A Ripple Song ===
+=== A Ripple Song ===
 Contributors: Jamie
 Requires at least: 6.0
 Tested up to: 6.9
@@ -11,7 +11,7 @@ Classic WordPress theme with rich color schemes, Swup page transitions, widgets,
 
 == Description ==
 
-Daisy A Ripple Song is a classic WordPress theme. After installing the podcast plugin, you can use the audio player, podcast widgets, and related features.
+A Ripple Song is a classic WordPress theme. After installing the podcast plugin, you can use the audio player, podcast widgets, and related features.
 
 Key features:
 
