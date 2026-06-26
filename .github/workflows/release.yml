@@ -1,0 +1,151 @@
+name: Build & Release
+
+on:
+  push:
+    tags:
+      - "*"
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Release tag to publish, e.g. v1.0.0."
+        required: false
+        type: string
+
+concurrency:
+  group: theme-release-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  RELEASE_TAG: ${{ inputs.release_tag || github.ref_name }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.4"
+          tools: composer
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install WP-CLI
+        run: |
+          curl -L https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -o wp
+          chmod +x wp
+          sudo mv wp /usr/local/bin/wp
+          wp --info
+
+      - name: Install PHP dependencies
+        run: composer install --prefer-dist --no-interaction --no-progress --optimize-autoloader
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Build frontend assets
+        run: npm run build
+
+      - name: Compile translations
+        run: npm run translate:compile
+
+      - name: Build scoped package
+        run: composer run -n scoper:build
+
+      - name: Lint scoped PHP
+        run: |
+          find build/scoped -name '*.php' ! -name '*.blade.php' -print0 | xargs -0 -n1 php -l
+
+      - name: Build theme zip
+        run: ARS_DIST_ZIP_NAME="a-ripple-song.zip" composer run -n build:dist -- "${RELEASE_TAG}"
+
+      - name: Remove old versioned zips
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const tag = process.env.RELEASE_TAG;
+
+            try {
+              const { data: release } = await github.rest.repos.getReleaseByTag({ owner, repo, tag });
+
+              for (const asset of release.assets ?? []) {
+                if (asset.name === 'a-ripple-song.zip') continue;
+                if (asset.name.startsWith('a-ripple-song-') && asset.name.endsWith('.zip')) {
+                  core.info(`Deleting asset: ${asset.name}`);
+                  await github.rest.repos.deleteReleaseAsset({ owner, repo, asset_id: asset.id });
+                }
+              }
+            } catch (e) {
+              core.info(`No existing release for tag ${tag} (or unable to fetch).`);
+            }
+
+      - name: Sync GitHub Release
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const tag = process.env.RELEASE_TAG;
+            const prerelease = tag.includes('-');
+
+            const releases = await github.paginate(github.rest.repos.listReleases, {
+              owner,
+              repo,
+              per_page: 100,
+            });
+
+            const matches = releases.filter((release) => release.tag_name === tag);
+            const canonical = matches.find((release) => !release.draft) ?? matches[0];
+
+            for (const release of matches) {
+              if (canonical && release.id === canonical.id) continue;
+              if (!release.draft) continue;
+
+              core.info(`Deleting duplicate draft release ${release.id} for tag ${tag}...`);
+              await github.rest.repos.deleteRelease({
+                owner,
+                repo,
+                release_id: release.id,
+              });
+            }
+
+            if (canonical) {
+              core.info(`Updating release ${canonical.id} for tag ${tag}...`);
+              await github.rest.repos.updateRelease({
+                owner,
+                repo,
+                release_id: canonical.id,
+                tag_name: tag,
+                name: canonical.name || tag,
+                draft: false,
+                prerelease,
+              });
+              return;
+            }
+
+            core.info(`Creating release for tag ${tag}...`);
+            await github.rest.repos.createRelease({
+              owner,
+              repo,
+              tag_name: tag,
+              name: tag,
+              draft: false,
+              prerelease,
+            });
+
+      - name: Upload GitHub Release Asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload "${RELEASE_TAG}" build/a-ripple-song.zip --clobber

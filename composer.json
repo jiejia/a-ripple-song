@@ -44,6 +44,7 @@
     "roots/acorn": "^6.0"
   },
   "require-dev": {
+    "humbug/php-scoper": "^0.18.13",
     "laravel/pint": "^1.20"
   },
   "suggest": {
@@ -59,6 +60,12 @@
   "scripts": {
     "post-autoload-dump": [
       "Roots\\Acorn\\ComposerScripts::postAutoloadDump"
+    ],
+    "scope": "php-scoper add-prefix --config=scoper.inc.php --force",
+    "scoper:build": "bash bin/build-scoped-package.sh",
+    "build:dist": "bash bin/build-dist.sh",
+    "build": [
+      "@scoper:build"
     ]
   }
 }
