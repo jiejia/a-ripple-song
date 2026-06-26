@@ -34,7 +34,8 @@ if [[ ! -d "${CARBON_FIELDS_DIR}" ]]; then
 fi
 
 # Isolate Carbon Fields hooks and related runtime identifiers in the release package only.
-find "${SCOPE_DIR}/app" "${CARBON_FIELDS_DIR}" -type f \( -name "*.php" -o -name "*.js" \) -print0 \
+# Theme bridge hooks in app/ must stay unchanged to avoid recursive do_action() calls.
+find "${CARBON_FIELDS_DIR}" -type f \( -name "*.php" -o -name "*.js" \) -print0 \
   | xargs -0 perl -0pi -e 's/(?<!aripplesong_)carbon_fields_(?!core__)/aripplesong_carbon_fields_/g'
 
 if [[ ! -f "${CARBON_FIELDS_DIR}/build/classic/vendor.min.js" || ! -f "${CARBON_FIELDS_DIR}/build/classic/metaboxes.min.css" ]]; then
