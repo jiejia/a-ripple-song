@@ -25,7 +25,7 @@ class CustomPostTypeServiceProvider extends ServiceProvider
         // Register custom post types during WordPress initialization.
         add_action('init', [$this, 'registerPostTypes']);
         // Register post type fields when Carbon Fields collects field definitions.
-        add_action('aripplesong_carbon_fields_register_fields', [$this, 'registerPostTypeFields']);
+        add_action('carbon_fields_register_fields', [$this, 'registerPostTypeFields']);
         foreach ($this->postTypes as $postTypeClass) {
             // Allow each custom post type to attach its own supporting hooks.
             (new $postTypeClass())->registerHooks();

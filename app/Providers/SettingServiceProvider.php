@@ -23,7 +23,7 @@ class SettingServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        add_action('aripplesong_carbon_fields_register_fields', [$this, 'registerSettings']);
+        add_action('carbon_fields_register_fields', [$this, 'registerSettings']);
     }
 
     /**

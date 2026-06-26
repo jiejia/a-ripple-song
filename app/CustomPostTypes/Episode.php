@@ -226,7 +226,6 @@ class Episode extends CustomPostTypeAbstract
         add_filter('wp_check_filetype_and_ext', [$this, 'fixFiletypeAndExt'], 10, 4);
         add_action('load-post.php', [$this, 'normalizeCurrentAdminMediaFieldValues']);
         add_action('carbon_fields_post_meta_container_saved', [$this, 'onPostMetaSaved'], 10, 2);
-        add_action('aripplesong_carbon_fields_post_meta_container_saved', [$this, 'onPostMetaSaved'], 10, 2);
         add_action('admin_notices', [$this, 'showAudioMetaErrorNotice']);
     }
 

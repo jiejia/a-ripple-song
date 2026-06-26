@@ -20,7 +20,6 @@ class CarbonFieldsServiceProvider extends ServiceProvider
     public function register(): void
     {
         add_action('after_setup_theme', [$this, 'bootCarbonFields']);
-        add_action('carbon_fields_register_fields', [$this, 'registerThemeFields']);
         add_action('current_screen', [$this, 'prioritizeThemeCarbonFieldsAssets']);
 
         if (did_action('after_setup_theme') && ! did_action('init')) {
@@ -41,16 +40,6 @@ class CarbonFieldsServiceProvider extends ServiceProvider
         }
 
         Carbon_Fields::boot();
-    }
-
-    /**
-     * Trigger theme-owned Carbon Fields registration.
-     *
-     * @return void
-     */
-    public function registerThemeFields(): void
-    {
-        do_action('aripplesong_carbon_fields_register_fields');
     }
 
     /**
