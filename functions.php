@@ -82,7 +82,7 @@ Application::configure()
 |
 */
 
-collect(['helpers', 'setup', 'filters'])
+collect(['helpers', 'setup', 'filters', 'import'])
     ->each(function ($file) {
         if (! locate_template($file = "app/{$file}.php", true, true)) {
             wp_die(
