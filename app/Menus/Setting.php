@@ -2,7 +2,8 @@
 
 namespace App\Menus;
 
-use App\Providers\Settings\Podcast;
+use App\Settings\Podcast;
+use App\Settings\RecommendedPlugins;
 use App\Theme;
 
 /**
@@ -37,6 +38,10 @@ class Setting
      */
     public function topMenu(): void
     {
+        // Register handlers for recommended plugin install and activation buttons.
+        add_action('admin_post_aripplesong_recommended_plugin_install', [RecommendedPlugins::class, 'handleInstallAction']);
+        add_action('admin_post_aripplesong_recommended_plugin_activate', [RecommendedPlugins::class, 'handleActivateAction']);
+
         // Add the parent menu used by Carbon Fields setting containers.
         add_menu_page(
             $this->topMenuTitle(),
@@ -58,6 +63,16 @@ class Setting
     public function subMenu(): void
     {
         // Podcast settings are registered from App\Settings\Podcast before Carbon Fields boots.
+        $recommendedPlugins = new RecommendedPlugins();
+
+        add_submenu_page(
+            $recommendedPlugins->parentPageSlug(),
+            $recommendedPlugins->pageTitle(),
+            $recommendedPlugins->pageTitle(),
+            'install_plugins',
+            $recommendedPlugins->pageSlug(),
+            [$recommendedPlugins, 'renderPage']
+        );
     }
 
     /**
