@@ -634,9 +634,15 @@ function aripplesong_get_latest_playlist_data($limit = 10) {
  */
 function aripplesong_truncate_excerpt(int $maxLength = 255, string $ellipsis = '…'): string
 {
+    // Get excerpt text without markup.
     $excerpt = wp_strip_all_tags(get_the_excerpt());
+
+    // Decode WordPress excerpt entities before measuring or truncating text.
+    $excerpt = html_entity_decode($excerpt, ENT_QUOTES | ENT_HTML5, get_bloginfo('charset') ?: 'UTF-8');
+
     if (mb_strlen($excerpt) <= $maxLength) {
         return $excerpt;
     }
+
     return mb_substr($excerpt, 0, $maxLength) . $ellipsis;
 }
