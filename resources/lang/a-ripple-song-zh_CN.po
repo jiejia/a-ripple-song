@@ -2117,11 +2117,3 @@ msgstr "插件启用失败。"
 #: resources/views/layouts/app.blade.php:119
 msgid "Back to top"
 msgstr ""
-
-#: resources/js/player/store.js:207
-msgid "Failed to fetch latest podcasts:"
-msgstr ""
-
-#: resources/js/player/store.js:314
-msgid "Audio load error:"
-msgstr ""
