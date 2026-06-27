@@ -861,7 +861,7 @@ msgid "Podcast Cover (1400-3000px square)"
 msgstr ""
 
 #: app/Settings/Podcast.php:84
-msgid "Required. Square JPG/PNG between 1400-3000px for itunes:image. Apple recommends keeping the file under 512KB."
+msgid "Required. Square JPG/PNG between 1400-3000px for itunes:image. Apple recommends keeping the file under 512KB. The saved value is the media attachment ID."
 msgstr ""
 
 #: app/Settings/Podcast.php:87

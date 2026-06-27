@@ -1128,11 +1128,11 @@ msgstr ""
 
 #: app/Settings/Podcast.php:81
 msgid "Podcast Cover (1400-3000px square)"
-msgstr ""
+msgstr "播客封面（1400-3000 像素正方形）"
 
 #: app/Settings/Podcast.php:84
-msgid "Required. Square JPG/PNG between 1400-3000px for itunes:image. Apple recommends keeping the file under 512KB."
-msgstr ""
+msgid "Required. Square JPG/PNG between 1400-3000px for itunes:image. Apple recommends keeping the file under 512KB. The saved value is the media attachment ID."
+msgstr "必填。用于 itunes:image 的 JPG/PNG 正方形图片尺寸需在 1400-3000 像素之间。Apple 建议文件小于 512KB。保存值为媒体附件 ID。"
 
 #: app/Settings/Podcast.php:97
 msgid "Language (RFC 5646)"

@@ -1129,11 +1129,11 @@ msgstr ""
 
 #: app/Settings/Podcast.php:81
 msgid "Podcast Cover (1400-3000px square)"
-msgstr ""
+msgstr "Podcast Cover (1400-3000px square)"
 
 #: app/Settings/Podcast.php:84
-msgid "Required. Square JPG/PNG between 1400-3000px for itunes:image. Apple recommends keeping the file under 512KB."
-msgstr ""
+msgid "Required. Square JPG/PNG between 1400-3000px for itunes:image. Apple recommends keeping the file under 512KB. The saved value is the media attachment ID."
+msgstr "Required. Square JPG/PNG between 1400-3000px for itunes:image. Apple recommends keeping the file under 512KB. The saved value is the media attachment ID."
 
 #: app/Settings/Podcast.php:97
 msgid "Language (RFC 5646)"

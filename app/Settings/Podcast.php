@@ -3,6 +3,7 @@
 namespace App\Settings;
 
 use App\Abstracts\SettingAbstract;
+use App\CustomPostTypes\Episode;
 use App\Theme;
 use Carbon_Fields\Field;
 
@@ -58,6 +59,8 @@ class Podcast extends SettingAbstract
      */
     public function fields(): array
     {
+        $this->maybeMigrateCoverValueToAttachmentId();
+
         // Reuse option lists across related select fields.
         $notSetOptions = ['' => __('(not set)', 'a-ripple-song')];
         // Reuse yes/no choices for iTunes boolean tags.
@@ -80,8 +83,8 @@ class Podcast extends SettingAbstract
         /** @var \Carbon_Fields\Field\Image_Field $coverField */
         $coverField = Field::make('image', $this->fieldName('cover'), __('Podcast Cover (1400-3000px square)', 'a-ripple-song'));
         $coverField
-            ->set_value_type('url')
-            ->set_help_text(__('Required. Square JPG/PNG between 1400-3000px for itunes:image. Apple recommends keeping the file under 512KB.', 'a-ripple-song'));
+            ->set_value_type('id')
+            ->set_help_text(__('Required. Square JPG/PNG between 1400-3000px for itunes:image. Apple recommends keeping the file under 512KB. The saved value is the media attachment ID.', 'a-ripple-song'));
 
         /** @var \Carbon_Fields\Field\Select_Field $explicitField */
         $explicitField = Field::make('select', $this->fieldName('explicit'), __('Default Explicit Flag', 'a-ripple-song'));
@@ -243,6 +246,127 @@ class Podcast extends SettingAbstract
             'funding' => [],
             'generator' => '',
         ];
+    }
+
+    /**
+     * Return saved podcast settings with the cover normalized to a public URL.
+     *
+     * @return array<string,mixed>
+     */
+    public function getSettings(): array
+    {
+        $settings = parent::getSettings();
+        $settings['cover'] = Episode::resolveStoredMediaFileValue($settings['cover'] ?? '');
+
+        return $settings;
+    }
+
+    /**
+     * Migrate a legacy cover URL value to an attachment ID when possible.
+     *
+     * @return void
+     */
+    private function maybeMigrateCoverValueToAttachmentId(): void
+    {
+        if (! function_exists('carbon_get_theme_option') || ! function_exists('carbon_set_theme_option')) {
+            return;
+        }
+
+        $optionKey = $this->fieldName('cover');
+        $storedValue = carbon_get_theme_option($optionKey);
+
+        if (is_numeric($storedValue) || ! is_string($storedValue) || $storedValue === '') {
+            return;
+        }
+
+        $attachmentId = $this->resolveAttachmentIdFromMediaUrl($storedValue);
+        if ($attachmentId > 0) {
+            carbon_set_theme_option($optionKey, $attachmentId);
+        }
+    }
+
+    /**
+     * Resolve a media URL or CDN URL to a local attachment ID.
+     *
+     * @param string $mediaUrl Attachment URL or CDN URL.
+     * @return int
+     */
+    private function resolveAttachmentIdFromMediaUrl(string $mediaUrl): int
+    {
+        $attachmentId = attachment_url_to_postid($mediaUrl);
+        if ($attachmentId > 0) {
+            return $attachmentId;
+        }
+
+        $uploadDir = wp_get_upload_dir();
+        $baseUrl = isset($uploadDir['baseurl']) ? (string) $uploadDir['baseurl'] : '';
+        $urlPath = $this->extractNormalizedMediaUrlPath($mediaUrl);
+
+        if ($urlPath === '' || $baseUrl === '') {
+            return 0;
+        }
+
+        $relativeUploadPath = ltrim(rawurldecode($urlPath), '/');
+        $normalizedLocalUrl = trailingslashit($baseUrl) . ltrim($relativeUploadPath, '/');
+        $attachmentId = attachment_url_to_postid($normalizedLocalUrl);
+
+        if ($attachmentId > 0) {
+            return $attachmentId;
+        }
+
+        $attachment = get_posts([
+            'post_type' => 'attachment',
+            'post_status' => 'inherit',
+            'posts_per_page' => 1,
+            'fields' => 'ids',
+            'meta_query' => [
+                [
+                    'key' => '_wp_attached_file',
+                    'value' => ltrim($relativeUploadPath, '/'),
+                ],
+            ],
+        ]);
+
+        return isset($attachment[0]) ? (int) $attachment[0] : 0;
+    }
+
+    /**
+     * Return a normalized URL path for local and CDN media URLs.
+     *
+     * @param string $mediaUrl Attachment URL or CDN URL.
+     * @return string
+     */
+    private function extractNormalizedMediaUrlPath(string $mediaUrl): string
+    {
+        if ($mediaUrl === '') {
+            return '';
+        }
+
+        $encodedUrl = preg_replace_callback(
+            '#^(https?://[^/]+)(/.*)$#u',
+            static function (array $matches): string {
+                $segments = explode('/', (string) $matches[2]);
+
+                foreach ($segments as $index => $segment) {
+                    if ($segment === '') {
+                        continue;
+                    }
+
+                    $segments[$index] = rawurlencode(rawurldecode($segment));
+                }
+
+                return (string) $matches[1] . implode('/', $segments);
+            },
+            $mediaUrl
+        );
+
+        if (! is_string($encodedUrl) || $encodedUrl === '') {
+            return '';
+        }
+
+        $path = (string) wp_parse_url($encodedUrl, PHP_URL_PATH);
+
+        return $path !== '' ? $path : '';
     }
 
     /**
