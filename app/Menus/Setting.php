@@ -38,10 +38,6 @@ class Setting
      */
     public function topMenu(): void
     {
-        // Register handlers for recommended plugin install and activation buttons.
-        add_action('admin_post_aripplesong_recommended_plugin_install', [RecommendedPlugins::class, 'handleInstallAction']);
-        add_action('admin_post_aripplesong_recommended_plugin_activate', [RecommendedPlugins::class, 'handleActivateAction']);
-
         // Add the parent menu used by Carbon Fields setting containers.
         add_menu_page(
             $this->topMenuTitle(),
@@ -53,6 +49,7 @@ class Setting
             60
         );
         add_action('admin_menu', [self::class, 'removeDuplicateLandingPage'], 999);
+        add_action('admin_menu', [self::class, 'registerRecommendedPluginsSubmenu'], 1000);
     }
 
     /**
@@ -63,16 +60,6 @@ class Setting
     public function subMenu(): void
     {
         // Podcast settings are registered from App\Settings\Podcast before Carbon Fields boots.
-        $recommendedPlugins = new RecommendedPlugins();
-
-        add_submenu_page(
-            $recommendedPlugins->parentPageSlug(),
-            $recommendedPlugins->pageTitle(),
-            $recommendedPlugins->pageTitle(),
-            'install_plugins',
-            $recommendedPlugins->pageSlug(),
-            [$recommendedPlugins, 'renderPage']
-        );
     }
 
     /**
@@ -96,5 +83,25 @@ class Setting
     {
         // Keep the settings menu concise.
         remove_submenu_page(Theme::SLUG, Theme::SLUG);
+    }
+
+    /**
+     * Register recommended plugins below Carbon Fields setting pages.
+     *
+     * @return void
+     */
+    public static function registerRecommendedPluginsSubmenu(): void
+    {
+        // Add this submenu after Carbon Fields registers Podcast Settings.
+        $recommendedPlugins = new RecommendedPlugins();
+
+        add_submenu_page(
+            $recommendedPlugins->parentPageSlug(),
+            $recommendedPlugins->pageTitle(),
+            $recommendedPlugins->pageTitle(),
+            'install_plugins',
+            $recommendedPlugins->pageSlug(),
+            [$recommendedPlugins, 'renderPage']
+        );
     }
 }

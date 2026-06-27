@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Menus\EpisodeCPT;
 use App\Menus\Setting;
+use App\Settings\RecommendedPlugins;
 use Illuminate\Support\ServiceProvider;
 
 /**
@@ -25,6 +26,10 @@ class MenuServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        // Register admin-post handlers before admin-post.php dispatches plugin actions.
+        add_action('admin_post_aripplesong_recommended_plugin_install', [RecommendedPlugins::class, 'handleInstallAction']);
+        add_action('admin_post_aripplesong_recommended_plugin_activate', [RecommendedPlugins::class, 'handleActivateAction']);
+
         add_action('admin_menu', [$this, 'registerMenus']);
     }
 
