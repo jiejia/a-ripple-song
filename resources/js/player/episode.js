@@ -9,6 +9,19 @@ function stripHtml(value) {
 }
 
 /**
+ * Decode HTML entities from text received from WordPress.
+ *
+ * @param {string} value Text that may contain HTML entities.
+ * @return {string}
+ */
+export function decodeTextEntities(value) {
+  const text = stripHtml(value);
+  const textarea = document.createElement('textarea');
+  textarea.innerHTML = text;
+  return textarea.value;
+}
+
+/**
  * Build a player episode object from a WordPress REST post payload.
  *
  * @param {object} post REST API post object.
@@ -23,8 +36,8 @@ export function parseEpisodeFromRestPost(post) {
   return {
     id: post.id,
     audioUrl,
-    title: post.title?.rendered || '',
-    description: stripHtml(post.excerpt?.rendered),
+    title: decodeTextEntities(post.title?.rendered || ''),
+    description: decodeTextEntities(post.excerpt?.rendered || ''),
     publishDate: Math.floor(new Date(post.date).getTime() / 1000),
     featuredImage: post._embedded?.['wp:featuredmedia']?.[0]?.source_url || null,
     link: post.link || '',

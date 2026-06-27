@@ -11,7 +11,7 @@ import {
   PLAYER_STORAGE_KEYS,
   PLAYBACK_RATES,
 } from '@scripts/player/constants.js';
-import { mergeEpisodesIntoPlaylist, parseEpisodeFromRestPost } from '@scripts/player/episode.js';
+import { decodeTextEntities, mergeEpisodesIntoPlaylist, parseEpisodeFromRestPost } from '@scripts/player/episode.js';
 import {
   ensureToneContext,
   getPitchCompensationSemitones,
@@ -89,6 +89,24 @@ export function registerPlayerStore(Alpine) {
       return Math.min(Math.max(parsedVolume, 0), 1);
     },
 
+    /**
+     * Normalize episode text fields before rendering or saving.
+     *
+     * @param {object} episode Player episode object.
+     * @return {object}
+     */
+    normalizeEpisode(episode) {
+      if (!episode || typeof episode !== 'object') {
+        return episode;
+      }
+
+      return {
+        ...episode,
+        title: decodeTextEntities(episode.title || ''),
+        description: decodeTextEntities(episode.description || ''),
+      };
+    },
+
     get currentEpisodePublishDate() {
       if (!this.currentEpisode?.publishDate) {
         return '-';
@@ -116,7 +134,7 @@ export function registerPlayerStore(Alpine) {
         return;
       }
 
-      this.currentEpisode = episode;
+      this.currentEpisode = this.normalizeEpisode(episode);
       this.loadTrack(episode.audioUrl);
 
       if (playbackState.currentTime > 0) {
@@ -198,8 +216,9 @@ export function registerPlayerStore(Alpine) {
       }
 
       this.currentIndex = index;
-      this.currentEpisode = episode;
-      this.loadTrack(episode.audioUrl);
+      const normalizedEpisode = this.normalizeEpisode(episode);
+      this.currentEpisode = normalizedEpisode;
+      this.loadTrack(normalizedEpisode.audioUrl);
       this.savePlaylist();
       this.showAutoplayConfirmDialog();
       return true;
@@ -637,7 +656,8 @@ export function registerPlayerStore(Alpine) {
 
     loadPlaylist() {
       const data = safeLocalStorage.getItem(PLAYER_STORAGE_KEYS.playlist);
-      this.playlist = data ? JSON.parse(data) : [];
+      const playlist = data ? JSON.parse(data) : [];
+      this.playlist = Array.isArray(playlist) ? playlist.map((episode) => this.normalizeEpisode(episode)) : [];
 
       const index = safeLocalStorage.getItem(PLAYER_STORAGE_KEYS.currentIndex);
       this.currentIndex = index ? Number.parseInt(index, 10) : 0;
@@ -704,8 +724,9 @@ export function registerPlayerStore(Alpine) {
     },
 
     startEpisode(episode, { autoplay = true, resetProgress = true } = {}) {
-      this.currentEpisode = episode;
-      this.loadTrack(episode.audioUrl);
+      const normalizedEpisode = this.normalizeEpisode(episode);
+      this.currentEpisode = normalizedEpisode;
+      this.loadTrack(normalizedEpisode.audioUrl);
 
       if (autoplay) {
         this.play();
@@ -720,24 +741,27 @@ export function registerPlayerStore(Alpine) {
     },
 
     addEpisode(episode) {
-      const existingIndex = this.playlist.findIndex((item) => item.id === episode.id);
+      const normalizedEpisode = this.normalizeEpisode(episode);
+      const existingIndex = this.playlist.findIndex((item) => item.id === normalizedEpisode.id);
       if (existingIndex !== -1) {
         this.currentIndex = existingIndex;
-        this.startEpisode(episode);
+        this.playlist[existingIndex] = normalizedEpisode;
+        this.startEpisode(normalizedEpisode);
         return;
       }
 
-      this.playlist.push(episode);
+      this.playlist.push(normalizedEpisode);
       this.currentIndex = this.playlist.length - 1;
-      this.startEpisode(episode);
+      this.startEpisode(normalizedEpisode);
     },
 
     addEpisodeToPlaylist(episode) {
-      if (this.playlist.some((item) => item.id === episode.id)) {
+      const normalizedEpisode = this.normalizeEpisode(episode);
+      if (this.playlist.some((item) => item.id === normalizedEpisode.id)) {
         return false;
       }
 
-      this.playlist.push(episode);
+      this.playlist.push(normalizedEpisode);
       this.savePlaylist();
       return true;
     },

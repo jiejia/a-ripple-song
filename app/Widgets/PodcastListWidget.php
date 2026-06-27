@@ -235,7 +235,7 @@ class PodcastListWidget extends WidgetAbstract
                     'post_id' => $postId,
                     'audio_file' => aripplesong_get_episode_meta($postId, 'audio_file'),
                     'episode_data' => get_episode_data($postId),
-                    'title' => get_the_title(),
+                    'title' => aripplesong_decode_plain_text(get_the_title()),
                 ];
             }
         }
@@ -261,7 +261,7 @@ class PodcastListWidget extends WidgetAbstract
                 'post_id' => $postId,
                 'audio_file' => aripplesong_get_episode_meta($postId, 'audio_file'),
                 'episode_data' => get_episode_data($postId),
-                'title' => $post->post_title,
+                'title' => aripplesong_decode_plain_text($post->post_title),
             ];
         }
 

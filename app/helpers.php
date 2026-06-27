@@ -551,6 +551,20 @@ function is_menu_item_active($item, $children = [], $current_url = '') {
 }
 
 /**
+ * Decode text entities for plain text display.
+ *
+ * @param string $text Text that may contain HTML entities.
+ * @return string Decoded plain text.
+ */
+function aripplesong_decode_plain_text(string $text): string
+{
+    // Remove markup before decoding entities used in WordPress titles and excerpts.
+    $text = wp_strip_all_tags($text);
+
+    return html_entity_decode($text, ENT_QUOTES | ENT_HTML5, get_bloginfo('charset') ?: 'UTF-8');
+}
+
+/**
  * Get episode data for a podcast post
  *
  * @param int|null $post_id Post ID (defaults to current post)
@@ -567,8 +581,8 @@ function get_episode_data($post_id = null) {
     return [
         'id' => $post_id,
         'audioUrl' => $audio_file,
-        'title' => get_the_title($post_id),
-        'description' => wp_strip_all_tags(get_the_excerpt()),
+        'title' => aripplesong_decode_plain_text(get_the_title($post_id)),
+        'description' => aripplesong_decode_plain_text(get_the_excerpt($post_id)),
         'publishDate' => get_post_time('U', false, $post_id), // Return Unix timestamp
         'featuredImage' => $featured_image,
         'link' => get_permalink($post_id)
@@ -634,11 +648,8 @@ function aripplesong_get_latest_playlist_data($limit = 10) {
  */
 function aripplesong_truncate_excerpt(int $maxLength = 255, string $ellipsis = '…'): string
 {
-    // Get excerpt text without markup.
-    $excerpt = wp_strip_all_tags(get_the_excerpt());
-
     // Decode WordPress excerpt entities before measuring or truncating text.
-    $excerpt = html_entity_decode($excerpt, ENT_QUOTES | ENT_HTML5, get_bloginfo('charset') ?: 'UTF-8');
+    $excerpt = aripplesong_decode_plain_text(get_the_excerpt());
 
     if (mb_strlen($excerpt) <= $maxLength) {
         return $excerpt;
