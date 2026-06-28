@@ -188,6 +188,19 @@ function aripplesong_clear_default_home_widgets_before_import(array $selectedImp
 function aripplesong_resolve_primary_navigation_menu(): ?\WP_Term
 {
     // Prefer the menu bundled in demo.xml by its stable imported slug.
+    $primaryMenu = wp_get_nav_menu_object('ars-primary-navigation');
+
+    if ($primaryMenu instanceof \WP_Term) {
+        return $primaryMenu;
+    }
+
+    $primaryMenu = wp_get_nav_menu_object('ARS Primary Navigation');
+
+    if ($primaryMenu instanceof \WP_Term) {
+        return $primaryMenu;
+    }
+
+    // Keep the previous demo menu identifier as a compatibility fallback.
     $primaryMenu = wp_get_nav_menu_object('menu-1');
 
     if ($primaryMenu instanceof \WP_Term) {
