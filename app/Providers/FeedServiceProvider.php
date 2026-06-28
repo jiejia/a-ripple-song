@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Contracts\FeedInterface;
-use App\Taxonomies\Feeds\Podcast;
+use App\Feeds\Podcast;
 use Illuminate\Support\ServiceProvider;
 
 /**
