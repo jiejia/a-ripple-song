@@ -55,6 +55,17 @@ function aripplesong_register_demo_import_plugins(array $plugins): array
 }
 
 /**
+ * Return whether the selected import matches this theme's predefined demo import.
+ *
+ * @param array<string,mixed> $selectedImport Imported demo metadata from OCDI.
+ * @return bool
+ */
+function aripplesong_is_theme_demo_import(array $selectedImport): bool
+{
+    return ($selectedImport['import_file_name'] ?? null) === __('A Ripple Song Demo', 'a-ripple-song');
+}
+
+/**
  * Resolve the imported homepage and normalize its slug for front-page usage.
  *
  * @return \WP_Post|null
@@ -97,6 +108,143 @@ function aripplesong_resolve_home_front_page(): ?\WP_Post
 }
 
 /**
+ * Clear the theme's auto-injected homepage widgets before OCDI imports widget data.
+ *
+ * @param array<string,mixed> $selectedImport Imported demo metadata from OCDI.
+ * @return void
+ */
+function aripplesong_clear_default_home_widgets_before_import(array $selectedImport): void
+{
+    // Only clear default widgets for the bundled theme demo import flow.
+    if (! aripplesong_is_theme_demo_import($selectedImport)) {
+        return;
+    }
+
+    $homeSidebarId = \App\Theme::SIDEBAR_HOME_MAIN;
+    $sidebarsWidgets = get_option('sidebars_widgets', []);
+
+    if (! is_array($sidebarsWidgets)) {
+        return;
+    }
+
+    $homeWidgets = $sidebarsWidgets[$homeSidebarId] ?? [];
+
+    if (! is_array($homeWidgets) || $homeWidgets === []) {
+        update_option('aripplesong_home_widgets_set', false);
+        return;
+    }
+
+    $widgetOptionMap = [
+        'banner_carousel_widget-' => 'widget_banner_carousel_widget',
+        'podcast_list_widget-' => 'widget_podcast_list_widget',
+        'blog_list_widget-' => 'widget_blog_list_widget',
+    ];
+    $removedWidgetIds = [];
+
+    // Remove the theme's temporary default widgets from the homepage sidebar before import.
+    $sidebarsWidgets[$homeSidebarId] = array_values(array_filter($homeWidgets, function ($widgetId) use ($widgetOptionMap, &$removedWidgetIds) {
+        if (! is_string($widgetId)) {
+            return true;
+        }
+
+        foreach ($widgetOptionMap as $widgetPrefix => $optionName) {
+            if (! str_starts_with($widgetId, $widgetPrefix)) {
+                continue;
+            }
+
+            $removedWidgetIds[$optionName][] = substr($widgetId, strlen($widgetPrefix));
+
+            return false;
+        }
+
+        return true;
+    }));
+
+    update_option('sidebars_widgets', $sidebarsWidgets);
+
+    // Delete stored widget instances for the temporary defaults so imported widgets get a clean state.
+    foreach ($removedWidgetIds as $optionName => $instanceIds) {
+        $widgetOptions = get_option($optionName, []);
+
+        if (! is_array($widgetOptions)) {
+            continue;
+        }
+
+        foreach ($instanceIds as $instanceId) {
+            unset($widgetOptions[(int) $instanceId], $widgetOptions[$instanceId]);
+        }
+
+        update_option($optionName, $widgetOptions);
+    }
+
+    update_option('aripplesong_home_widgets_set', false);
+}
+
+/**
+ * Resolve the imported navigation menu that should be assigned to Primary Navigation.
+ *
+ * @return \WP_Term|null
+ */
+function aripplesong_resolve_primary_navigation_menu(): ?\WP_Term
+{
+    // Prefer the menu bundled in demo.xml by its stable imported slug.
+    $primaryMenu = wp_get_nav_menu_object('menu-1');
+
+    if ($primaryMenu instanceof \WP_Term) {
+        return $primaryMenu;
+    }
+
+    $primaryMenu = wp_get_nav_menu_object('Menu 1');
+
+    if ($primaryMenu instanceof \WP_Term) {
+        return $primaryMenu;
+    }
+
+    $menus = wp_get_nav_menus([
+        'orderby' => 'term_id',
+        'order' => 'ASC',
+    ]);
+
+    foreach ($menus as $menu) {
+        if ($menu instanceof \WP_Term && (int) $menu->count > 0) {
+            return $menu;
+        }
+    }
+
+    return null;
+}
+
+/**
+ * Bind the imported menu to the Primary Navigation theme location.
+ *
+ * @param array<string,mixed> $selectedImport Imported demo metadata from OCDI.
+ * @return void
+ */
+function aripplesong_assign_primary_navigation_menu(array $selectedImport): void
+{
+    // Only bind menus for the bundled theme demo import flow.
+    if (! aripplesong_is_theme_demo_import($selectedImport)) {
+        return;
+    }
+
+    $primaryMenu = aripplesong_resolve_primary_navigation_menu();
+
+    if (! $primaryMenu instanceof \WP_Term) {
+        return;
+    }
+
+    $menuLocations = get_theme_mod('nav_menu_locations', []);
+
+    if (! is_array($menuLocations)) {
+        $menuLocations = [];
+    }
+
+    $menuLocations['primary_navigation'] = (int) $primaryMenu->term_id;
+
+    set_theme_mod('nav_menu_locations', $menuLocations);
+}
+
+/**
  * Assign the imported homepage as the static front page.
  *
  * @param array<string,mixed> $selectedImport Imported demo metadata from OCDI.
@@ -105,7 +253,7 @@ function aripplesong_resolve_home_front_page(): ?\WP_Post
 function aripplesong_assign_home_front_page(array $selectedImport): void
 {
     // Limit the homepage assignment to this theme's predefined demo import.
-    if (($selectedImport['import_file_name'] ?? null) !== __('A Ripple Song Demo', 'a-ripple-song')) {
+    if (! aripplesong_is_theme_demo_import($selectedImport)) {
         return;
     }
 
@@ -116,11 +264,14 @@ function aripplesong_assign_home_front_page(array $selectedImport): void
         return;
     }
 
-    // Persist the WordPress reading settings so the podcast page becomes the homepage.
+    // Persist the WordPress reading settings so the imported page becomes the homepage.
     update_option('show_on_front', 'page');
     update_option('page_on_front', $frontPage->ID);
+    update_option('aripplesong_home_widgets_set', true);
 }
 
 add_filter('ocdi/import_files', 'aripplesong_register_demo_import_files');
 add_filter('ocdi/register_plugins', 'aripplesong_register_demo_import_plugins');
+add_action('ocdi/before_widgets_import', 'aripplesong_clear_default_home_widgets_before_import');
+add_action('ocdi/after_import', 'aripplesong_assign_primary_navigation_menu');
 add_action('ocdi/after_import', 'aripplesong_assign_home_front_page');
