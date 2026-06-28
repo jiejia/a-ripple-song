@@ -55,14 +55,14 @@ function aripplesong_register_demo_import_plugins(array $plugins): array
 }
 
 /**
- * Resolve the imported podcast page and normalize its slug for homepage usage.
+ * Resolve the imported homepage and normalize its slug for front-page usage.
  *
  * @return \WP_Post|null
  */
-function aripplesong_resolve_podcast_front_page(): ?\WP_Post
+function aripplesong_resolve_home_front_page(): ?\WP_Post
 {
     // Prefer an existing page that already uses the target slug.
-    $frontPage = get_page_by_path('podcast', OBJECT, 'page');
+    $frontPage = get_page_by_path('home', OBJECT, 'page');
 
     if ($frontPage instanceof \WP_Post) {
         return $frontPage;
@@ -84,7 +84,7 @@ function aripplesong_resolve_podcast_front_page(): ?\WP_Post
     // Rename the imported page back to the desired slug before using it as the homepage.
     $updatedPageId = wp_update_post([
         'ID' => $podcastPages[0]->ID,
-        'post_name' => 'podcast',
+        'post_name' => 'home',
     ], true);
 
     if (is_wp_error($updatedPageId)) {
@@ -97,20 +97,20 @@ function aripplesong_resolve_podcast_front_page(): ?\WP_Post
 }
 
 /**
- * Assign the imported podcast page as the static front page.
+ * Assign the imported homepage as the static front page.
  *
  * @param array<string,mixed> $selectedImport Imported demo metadata from OCDI.
  * @return void
  */
-function aripplesong_assign_podcast_front_page(array $selectedImport): void
+function aripplesong_assign_home_front_page(array $selectedImport): void
 {
     // Limit the homepage assignment to this theme's predefined demo import.
     if (($selectedImport['import_file_name'] ?? null) !== __('A Ripple Song Demo', 'a-ripple-song')) {
         return;
     }
 
-    // Resolve the imported podcast page after content and widget imports are finished.
-    $frontPage = aripplesong_resolve_podcast_front_page();
+    // Resolve the imported homepage after content and widget imports are finished.
+    $frontPage = aripplesong_resolve_home_front_page();
 
     if (! $frontPage instanceof \WP_Post) {
         return;
@@ -123,4 +123,4 @@ function aripplesong_assign_podcast_front_page(array $selectedImport): void
 
 add_filter('ocdi/import_files', 'aripplesong_register_demo_import_files');
 add_filter('ocdi/register_plugins', 'aripplesong_register_demo_import_plugins');
-add_action('ocdi/after_import', 'aripplesong_assign_podcast_front_page');
+add_action('ocdi/after_import', 'aripplesong_assign_home_front_page');
