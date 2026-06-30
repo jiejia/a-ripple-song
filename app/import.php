@@ -258,6 +258,56 @@ function aripplesong_assign_primary_navigation_menu(array $selectedImport): void
 }
 
 /**
+ * Normalize imported custom home links so demo navigation points to the current site root.
+ *
+ * @param array<string,mixed> $selectedImport Imported demo metadata from OCDI.
+ * @return void
+ */
+function aripplesong_normalize_primary_navigation_home_link(array $selectedImport): void
+{
+    // Limit the menu-link normalization to this theme's predefined demo import.
+    if (! aripplesong_is_theme_demo_import($selectedImport)) {
+        return;
+    }
+
+    $primaryMenu = aripplesong_resolve_primary_navigation_menu();
+
+    if (! $primaryMenu instanceof \WP_Term) {
+        return;
+    }
+
+    $menuItems = wp_get_nav_menu_items($primaryMenu->term_id, [
+        'post_status' => 'any',
+    ]);
+
+    if (! is_array($menuItems) || $menuItems === []) {
+        return;
+    }
+
+    foreach ($menuItems as $menuItem) {
+        if (! $menuItem instanceof \WP_Post) {
+            continue;
+        }
+
+        $menuItemTitle = trim(wp_strip_all_tags((string) $menuItem->post_title));
+        $menuItemType = get_post_meta($menuItem->ID, '_menu_item_type', true);
+        $menuItemObject = get_post_meta($menuItem->ID, '_menu_item_object', true);
+        $menuItemUrl = get_post_meta($menuItem->ID, '_menu_item_url', true);
+
+        if ($menuItemTitle !== 'Home' || $menuItemType !== 'custom' || $menuItemObject !== 'custom') {
+            continue;
+        }
+
+        // Force the imported Home entry to stay portable across local domains and environments.
+        if ($menuItemUrl !== '/') {
+            update_post_meta($menuItem->ID, '_menu_item_url', '/');
+        }
+
+        break;
+    }
+}
+
+/**
  * Assign the imported homepage as the static front page.
  *
  * @param array<string,mixed> $selectedImport Imported demo metadata from OCDI.
@@ -287,4 +337,5 @@ add_filter('ocdi/import_files', 'aripplesong_register_demo_import_files');
 add_filter('ocdi/register_plugins', 'aripplesong_register_demo_import_plugins');
 add_action('ocdi/before_widgets_import', 'aripplesong_clear_default_home_widgets_before_import');
 add_action('ocdi/after_import', 'aripplesong_assign_primary_navigation_menu');
+add_action('ocdi/after_import', 'aripplesong_normalize_primary_navigation_home_link');
 add_action('ocdi/after_import', 'aripplesong_assign_home_front_page');
