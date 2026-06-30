@@ -11,11 +11,64 @@ use App\Customizers\ThemeColor;
 use Illuminate\Support\Facades\Vite;
 
 /**
+ * Fall back to built assets when the Vite hot file points to an invalid dev server.
+ *
+ * @return void
+ */
+function prepareViteAssetResolution(): void
+{
+    static $prepared = false;
+
+    if ($prepared || ! class_exists(Vite::class)) {
+        return;
+    }
+
+    $prepared = true;
+
+    $hotFile = Vite::hotFile();
+
+    if (! is_file($hotFile) || ! is_readable($hotFile)) {
+        return;
+    }
+
+    $hotUrl = trim((string) file_get_contents($hotFile));
+
+    if ($hotUrl === '') {
+        Vite::useHotFile($hotFile.'.disabled');
+
+        return;
+    }
+
+    $expectedBuildPath = trailingslashit((string) wp_parse_url(get_theme_file_uri('public/build'), PHP_URL_PATH));
+    $hotBuildPath = trailingslashit((string) wp_parse_url($hotUrl, PHP_URL_PATH));
+
+    if ($expectedBuildPath === '' || $hotBuildPath === '' || ! str_ends_with($hotBuildPath, $expectedBuildPath)) {
+        Vite::useHotFile($hotFile.'.disabled');
+
+        return;
+    }
+
+    $response = wp_remote_get(
+        untrailingslashit($hotUrl).'/@vite/client',
+        [
+            'timeout' => 0.5,
+            'sslverify' => false,
+        ]
+    );
+
+    if (is_wp_error($response) || wp_remote_retrieve_response_code($response) >= 400) {
+        Vite::useHotFile($hotFile.'.disabled');
+    }
+}
+
+/**
  * Inject styles into the block editor.
  *
  * @return array
  */
 add_filter('block_editor_settings_all', function ($settings) {
+    prepareViteAssetResolution();
+
     $style = Vite::asset('resources/css/editor.css');
 
     $settings['styles'][] = [
@@ -34,6 +87,8 @@ add_action('admin_head', function () {
     if (! get_current_screen()?->is_block_editor()) {
         return;
     }
+
+    prepareViteAssetResolution();
 
     if (! Vite::isRunningHot()) {
         $dependencies = json_decode(Vite::content('editor.deps.json'));
@@ -156,6 +211,8 @@ add_action('wp_enqueue_scripts', function () {
     if (! class_exists(Vite::class)) {
         return;
     }
+
+    prepareViteAssetResolution();
 
     try {
         $cssUrl = Vite::asset('resources/css/app.css');

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use function App\prepareViteAssetResolution;
+
 use App\Abstracts\WidgetAbstract;
 use App\Constants\ThemeConstant;
 use App\Customizers\ThemeColor;
@@ -219,6 +221,7 @@ class WidgetServiceProvider extends ServiceProvider
             return;
         }
 
+        prepareViteAssetResolution();
         $this->enqueueWidgetEditorStyles();
 
         try {
@@ -261,6 +264,8 @@ class WidgetServiceProvider extends ServiceProvider
         if (wp_style_is(self::WIDGET_STYLE_HANDLE, 'enqueued')) {
             return;
         }
+
+        prepareViteAssetResolution();
 
         try {
             $cssUrl = Vite::asset('resources/css/app.css');
