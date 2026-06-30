@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Taxonomies\Feeds;
+namespace App\Feeds;
 
 use App\Abstracts\FeedAbstract;
 use App\CustomPostTypes\Episode;
-use App\Providers\Settings\Podcast as PodcastSettings;
+use App\Settings\Podcast as PodcastSettings;
 
 if (!defined('ABSPATH')) {
     exit;
@@ -157,8 +157,8 @@ class Podcast extends FeedAbstract
         if (!is_admin() || !current_user_can('manage_options')) {
             return;
         }
-        $flag = 'aripplesong_podcast_feed_rewrite_flushed_v1';
-        if (get_option($flag)) {
+        $flag = 'aripplesong_podcast_feed_rewrite_flushed_v2';
+        if (get_option($flag) && $this->prettyPodcastFeedIsRegistered()) {
             return;
         }
         flush_rewrite_rules(\false);
