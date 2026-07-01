@@ -115,7 +115,8 @@ class Podcast extends SettingAbstract
         $coverField = Field::make('image', $this->fieldName('cover'), __('Podcast Cover (1400-3000px square)', 'a-ripple-song'));
         $coverField
             ->set_value_type('id')
-            ->set_help_text(__('Required. Square JPG/PNG between 1400-3000px for itunes:image. File size must not exceed 512KB. The saved value is the media attachment ID.', 'a-ripple-song'));
+            ->set_help_text(__('Required. Square JPG/PNG between 1400-3000px for itunes:image. File size must not exceed 512KB. The saved value is the media attachment ID.', 'a-ripple-song'))
+            ->set_required(true);
 
         /** @var \Carbon_Fields\Field\Select_Field $explicitField */
         $explicitField = Field::make('select', $this->fieldName('explicit'), __('Default Explicit Flag', 'a-ripple-song'));
@@ -125,20 +126,23 @@ class Podcast extends SettingAbstract
                 'explicit' => __('explicit', 'a-ripple-song'),
             ])
             ->set_default_value('clean')
-            ->set_help_text(__('Required. Single-episode value can override.', 'a-ripple-song'));
+            ->set_help_text(__('Required. Single-episode value can override.', 'a-ripple-song'))
+            ->set_required(true);
 
         /** @var \Carbon_Fields\Field\Select_Field $languageField */
         $languageField = Field::make('select', $this->fieldName('language'), __('Language (RFC 5646)', 'a-ripple-song'));
         $languageField
             ->set_options($this->podcastLanguageOptions())
             ->set_default_value((string) (get_bloginfo('language') ?: 'en-US'))
-            ->set_help_text(__('Required. Typically en-US, zh-CN, etc.', 'a-ripple-song'));
+            ->set_help_text(__('Required. Typically en-US, zh-CN, etc.', 'a-ripple-song'))
+            ->set_required(true);
 
         /** @var \Carbon_Fields\Field\Select_Field $primaryCategoryField */
         $primaryCategoryField = Field::make('select', $this->fieldName('category_primary'), __('Primary Category (Apple Podcasts)', 'a-ripple-song'));
         $primaryCategoryField
             ->set_options($notSetOptions + $this->itunesCategories())
-            ->set_help_text(__('Required by Apple Podcasts. Choose at least a primary category.', 'a-ripple-song'));
+            ->set_help_text(__('Required by Apple Podcasts. Choose at least a primary category.', 'a-ripple-song'))
+            ->set_required(true);
 
         /** @var \Carbon_Fields\Field\Select_Field $secondaryCategoryField */
         $secondaryCategoryField = Field::make('select', $this->fieldName('category_secondary'), __('Secondary Category (optional)', 'a-ripple-song'));
@@ -183,22 +187,27 @@ class Podcast extends SettingAbstract
             $rssUrlField,
             Field::make('text', $this->fieldName('title'), __('Podcast Title', 'a-ripple-song'))
                 ->set_default_value((string) get_bloginfo('name'))
-                ->set_help_text(__('Required. If empty, falls back to site title.', 'a-ripple-song')),
+                ->set_help_text(__('Required. If empty, falls back to site title.', 'a-ripple-song'))
+                ->set_required(true),
             Field::make('text', $this->fieldName('subtitle'), __('Podcast Subtitle', 'a-ripple-song'))
                 ->set_help_text(__('Short tagline shown in some apps.', 'a-ripple-song')),
             Field::make('textarea', $this->fieldName('description'), __('Podcast Description', 'a-ripple-song'))
                 ->set_default_value((string) get_bloginfo('description'))
-                ->set_help_text(__('Required. Plain text description of the show.', 'a-ripple-song')),
+                ->set_help_text(__('Required. Plain text description of the show.', 'a-ripple-song'))
+                ->set_required(true),
             Field::make('text', $this->fieldName('author'), __('Podcast Author (itunes:author)', 'a-ripple-song'))
                 ->set_default_value((string) get_bloginfo('name'))
-                ->set_help_text(__('Required. Displayed as show author in directories.', 'a-ripple-song')),
+                ->set_help_text(__('Required. Displayed as show author in directories.', 'a-ripple-song'))
+                ->set_required(true),
             Field::make('text', $this->fieldName('owner_name'), __('Owner Name', 'a-ripple-song'))
                 ->set_default_value((string) get_bloginfo('name'))
-                ->set_help_text(__('Required. For itunes:owner itunes:name.', 'a-ripple-song')),
+                ->set_help_text(__('Required. For itunes:owner itunes:name.', 'a-ripple-song'))
+                ->set_required(true),
             Field::make('text', $this->fieldName('owner_email'), __('Owner Email', 'a-ripple-song'))
                 ->set_attribute('type', 'email')
                 ->set_default_value((string) get_bloginfo('admin_email'))
-                ->set_help_text(__('Required. For itunes:owner itunes:email. Use a monitored inbox.', 'a-ripple-song')),
+                ->set_help_text(__('Required. For itunes:owner itunes:email. Use a monitored inbox.', 'a-ripple-song'))
+                ->set_required(true),
             $coverField,
             $explicitField,
             $languageField,
@@ -306,6 +315,7 @@ class Podcast extends SettingAbstract
         add_filter('sanitize_option_' . $this->coverStorageOptionName(), [$this, 'validateCoverOptionBeforeSave'], 10, 3);
         add_filter('pre_update_option_' . $this->coverStorageOptionName(), [$this, 'validateCoverOptionBeforeUpdate'], 10, 3);
         add_action('admin_notices', [$this, 'renderCoverValidationNotice']);
+        add_action('admin_head', [$this, 'renderRequiredFieldStyles']);
 
         self::$validationHooksRegistered = true;
     }
@@ -427,6 +437,20 @@ class Podcast extends SettingAbstract
             '<div class="notice notice-error is-dismissible"><p>%s</p></div>',
             esc_html($notice)
         );
+    }
+
+    /**
+     * Render the required-field indicator styles for the podcast settings page.
+     *
+     * @return void
+     */
+    public function renderRequiredFieldStyles(): void
+    {
+        if (! $this->isPodcastSettingsPage()) {
+            return;
+        }
+
+        echo '<style>.cf-field__asterisk{color:#d63638;font-weight:700;margin-left:4px;}</style>';
     }
 
     /**
