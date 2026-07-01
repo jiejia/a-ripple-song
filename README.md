@@ -112,6 +112,11 @@ composer run build:dist
 - Repository: [github.com/jiejia/a-ripple-song](https://github.com/jiejia/a-ripple-song)
 - Website: [aripplesong.com](https://aripplesong.com/)
 
+## Languages
+
+- [English](README.md)
+- [简体中文](README.zh.md)
+
 ## License
 
 Released under the [GNU General Public License v3.0](LICENSE).
