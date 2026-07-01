@@ -3,8 +3,6 @@
 namespace App\Settings;
 
 use App\Theme;
-use Automatic_Upgrader_Skin;
-use Plugin_Upgrader;
 use WP_Error;
 
 /**
@@ -147,6 +145,10 @@ class RecommendedPlugins
      */
     public function actionUrl(string $action, string $slug): string
     {
+        if ($action === 'install') {
+            return $this->installUrl($slug);
+        }
+
         $url = add_query_arg(
             [
                 'action' => 'aripplesong_recommended_plugin_' . $action,
@@ -156,6 +158,23 @@ class RecommendedPlugins
         );
 
         return wp_nonce_url($url, $this->nonceAction($action, $slug));
+    }
+
+    /**
+     * Return the WordPress core install URL for a plugin slug.
+     *
+     * This keeps the install flow identical to core so filesystem credential
+     * prompts appear when direct writes are unavailable.
+     *
+     * @param string $slug Plugin slug.
+     * @return string
+     */
+    private function installUrl(string $slug): string
+    {
+        return wp_nonce_url(
+            self_admin_url('update.php?action=install-plugin&plugin=' . urlencode($slug)),
+            'install-plugin_' . $slug
+        );
     }
 
     /**
