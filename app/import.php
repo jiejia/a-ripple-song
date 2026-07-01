@@ -181,6 +181,77 @@ function aripplesong_clear_default_home_widgets_before_import(array $selectedImp
 }
 
 /**
+ * Return the sidebar IDs that are fully managed by the bundled demo widget file.
+ *
+ * @return array<int,string>
+ */
+function aripplesong_demo_widget_sidebar_ids(): array
+{
+    return [
+        \App\Theme::SIDEBAR_HOME_MAIN,
+        \App\Theme::SIDEBAR_PRIMARY,
+        \App\Theme::SIDEBAR_LEFTBAR,
+    ];
+}
+
+/**
+ * Move the current widgets from a sidebar into Inactive Widgets and clear the sidebar.
+ *
+ * @param array<string,mixed> $sidebarsWidgets Current WordPress sidebar assignments.
+ * @param string $sidebarId Sidebar ID to clear before demo widget import.
+ * @return array<string,mixed>
+ */
+function aripplesong_move_sidebar_widgets_to_inactive(array $sidebarsWidgets, string $sidebarId): array
+{
+    $sidebarWidgets = $sidebarsWidgets[$sidebarId] ?? [];
+
+    if (! is_array($sidebarWidgets) || $sidebarWidgets === []) {
+        return $sidebarsWidgets;
+    }
+
+    $inactiveWidgets = $sidebarsWidgets['wp_inactive_widgets'] ?? [];
+
+    if (! is_array($inactiveWidgets)) {
+        $inactiveWidgets = [];
+    }
+
+    $inactiveWidgets = array_values(array_filter(array_merge($inactiveWidgets, $sidebarWidgets), 'is_string'));
+    $sidebarsWidgets['wp_inactive_widgets'] = array_values(array_unique($inactiveWidgets));
+    $sidebarsWidgets[$sidebarId] = [];
+
+    return $sidebarsWidgets;
+}
+
+/**
+ * Clear sidebars that will be replaced by the bundled demo widget import file.
+ *
+ * @param array<string,mixed> $selectedImport Imported demo metadata from OCDI.
+ * @return void
+ */
+function aripplesong_prepare_demo_widget_sidebars_before_import(array $selectedImport): void
+{
+    // Limit sidebar cleanup to the bundled theme demo import flow.
+    if (! aripplesong_is_theme_demo_import($selectedImport)) {
+        return;
+    }
+
+    // Remove the activation-time homepage defaults before clearing the managed sidebars.
+    aripplesong_clear_default_home_widgets_before_import($selectedImport);
+
+    $sidebarsWidgets = get_option('sidebars_widgets', []);
+
+    if (! is_array($sidebarsWidgets)) {
+        return;
+    }
+
+    foreach (aripplesong_demo_widget_sidebar_ids() as $sidebarId) {
+        $sidebarsWidgets = aripplesong_move_sidebar_widgets_to_inactive($sidebarsWidgets, $sidebarId);
+    }
+
+    update_option('sidebars_widgets', $sidebarsWidgets);
+}
+
+/**
  * Resolve the imported navigation menu that should be assigned to Primary Navigation.
  *
  * @return \WP_Term|null
@@ -335,7 +406,7 @@ function aripplesong_assign_home_front_page(array $selectedImport): void
 
 add_filter('ocdi/import_files', 'aripplesong_register_demo_import_files');
 add_filter('ocdi/register_plugins', 'aripplesong_register_demo_import_plugins');
-add_action('ocdi/before_widgets_import', 'aripplesong_clear_default_home_widgets_before_import');
+add_action('ocdi/before_widgets_import', 'aripplesong_prepare_demo_widget_sidebars_before_import');
 add_action('ocdi/after_import', 'aripplesong_assign_primary_navigation_menu');
 add_action('ocdi/after_import', 'aripplesong_normalize_primary_navigation_home_link');
 add_action('ocdi/after_import', 'aripplesong_assign_home_front_page');
