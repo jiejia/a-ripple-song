@@ -1,42 +1,117 @@
-<p align="center">
-  <a href="https://roots.io/sage/"><img alt="Sage" src="https://cdn.roots.io/app/uploads/logo-sage.svg" height="100"></a>
-</p>
+# A Ripple Song
 
-<p align="center">
-  <a href="https://packagist.org/packages/roots/sage"><img alt="Packagist Installs" src="https://img.shields.io/packagist/dt/roots/sage?label=projects%20created&colorB=2b3072&colorA=525ddc&style=flat-square"></a>
-  <a href="https://github.com/roots/sage/actions/workflows/main.yml"><img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/roots/sage/main.yml?branch=main&logo=github&label=CI&style=flat-square"></a>
-  <a href="https://twitter.com/rootswp"><img alt="Follow Roots" src="https://img.shields.io/badge/follow%20@rootswp-1da1f2?logo=twitter&logoColor=ffffff&message=&style=flat-square"></a>
-  <a href="https://github.com/sponsors/roots"><img src="https://img.shields.io/badge/sponsor%20roots-525ddc?logo=github&style=flat-square&logoColor=ffffff&message=" alt="Sponsor Roots"></a>
-</p>
+A Ripple Song is a classic WordPress podcast theme with built-in episode publishing, podcast RSS output, a persistent audio player, curated widgets, and bundled demo import data. It is built on Sage, Acorn, Carbon Fields, and a modern Vite-based frontend workflow.
 
-# Sage
+<img src="screenshot.png" alt="A Ripple Song theme screenshot" />
 
-**Advanced hybrid WordPress starter theme with Laravel Blade and Tailwind CSS**
+## Overview
 
-- 🔧 Clean, efficient theme templating with Laravel Blade
-- ⚡️ Modern front-end development workflow powered by Vite
-- 🎨 Out of the box support for Tailwind CSS
-- 🚀 Harness the power of Laravel with [Acorn integration](https://github.com/roots/acorn)
-- 📦 Block editor support built-in
+This theme is designed for podcast-first WordPress sites that also publish regular articles, author content, and curated homepage sections. It includes the podcast content model, feed configuration, playback UI, and admin tooling inside the theme package, so the core podcast experience works without a separate podcast plugin.
 
-Sage brings proper PHP templating and modern JavaScript tooling to WordPress themes. Write organized, component-based code using Laravel Blade, enjoy instant builds and CSS hot-reloading with Vite, and leverage Laravel's robust feature set through Acorn.
+## Features
 
-[Read the docs to get started](https://roots.io/sage/docs/installation/)
+- Built-in podcast episode custom post type with audio upload support and episode metadata.
+- Built-in `/feed/podcast/` RSS feed for Apple Podcasts, Spotify, and other podcast directories.
+- Podcast Settings screen for feed metadata such as title, author, owner, cover image, language, and Apple category.
+- Persistent bottom audio player with playlist drawer, playback speed controls, waveform area, and volume controls.
+- Theme-specific widget areas for homepage, sidebar, leftbar, and footer content.
+- Bundled widgets for banner carousel, podcast list, blog list, authors, subscribe links, tags cloud, and footer links.
+- One Click Demo Import integration with bundled content and widget data.
+- Light and dark theme preset selection through the WordPress Customizer.
+- Responsive layout with mobile menu, search modal, leftbar drawer, sidebar drawer, and playlist drawer.
+- Built-in post view and episode play metrics tracking.
+- Translation-ready structure with English and Simplified Chinese language files.
 
-## Support us
+## Optional Plugins
 
-Roots is an independent open source org, supported only by developers like you. Your sponsorship funds [WP Packages](https://wp-packages.org/) and the entire Roots ecosystem, and keeps them independent. Support us by purchasing [Radicle](https://roots.io/radicle/) or [sponsoring us on GitHub](https://github.com/sponsors/roots) — sponsors get access to our private Discord.
+- [One Click Demo Import](https://wordpress.org/plugins/one-click-demo-import/) for importing the bundled demo pages, menus, widgets, and sample content.
+- [Advanced Media Offloader](https://wordpress.org/plugins/advanced-media-offloader/) for serving media files from external storage.
 
-### Sponsors
+These plugins are recommended for specific workflows, but they are not required for the theme's built-in podcast feed, player, or episode publishing features.
 
-<a href="https://carrot.com/"><img src="https://cdn.roots.io/app/uploads/carrot.svg" alt="Carrot" height="90"></a> <a href="https://wordpress.com/"><img src="https://cdn.roots.io/app/uploads/wordpress.svg" alt="WordPress.com" height="90"></a> <a href="https://www.itineris.co.uk/"><img src="https://cdn.roots.io/app/uploads/itineris.svg" alt="Itineris" height="90"></a> <a href="https://kinsta.com/?kaid=OFDHAJIXUDIV"><img src="https://cdn.roots.io/app/uploads/kinsta.svg" alt="Kinsta" height="90"></a> <a href="https://40q.agency/"><img src="https://cdn.roots.io/app/uploads/40q.svg" alt="40Q" height="90"></a>
+## Installation
 
-## Community
+### Release package
 
-Keep track of development and community news.
+1. Download the packaged theme zip release.
+2. In WordPress, go to `Appearance > Themes > Add New > Upload Theme`.
+3. Upload the zip file, install it, and activate the theme.
+4. Open `A Ripple Song > Podcast Settings` to configure your podcast feed metadata.
 
-- Join us on Discord by [sponsoring us on GitHub](https://github.com/sponsors/roots)
-- Join us on [Roots Discourse](https://discourse.roots.io/)
-- Follow [@rootswp on Twitter](https://twitter.com/rootswp)
-- Follow the [Roots Blog](https://roots.io/blog/)
-- Subscribe to the [Roots Newsletter](https://roots.io/subscribe/)
+### Demo import
+
+1. Install and activate `One Click Demo Import`.
+2. Go to `Appearance > Import Demo Data`.
+3. Run the bundled `A Ripple Song Demo` import.
+4. Review the imported navigation, widgets, and homepage assignment.
+
+### Runtime requirements
+
+- WordPress `6.6+`
+- PHP `8.3+`
+
+## Development
+
+Use the source version of the theme when you need to customize, build, or package it locally.
+
+```bash
+composer install
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Build production assets:
+
+```bash
+npm run build
+```
+
+Compile translation files:
+
+```bash
+wp i18n make-mo resources/lang
+```
+
+Build the packaged release assets:
+
+```bash
+composer run release:stage
+composer run build:dist
+```
+
+## Tech Stack
+
+- [Sage](https://roots.io/sage/)
+- [Acorn](https://roots.io/acorn/)
+- [Carbon Fields](https://carbonfields.net/)
+- [Vite](https://vite.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [daisyUI](https://daisyui.com/)
+- [Alpine.js](https://alpinejs.dev/)
+- [Swup](https://swup.js.org/)
+- [Howler.js](https://howlerjs.com/)
+- [Tone.js](https://tonejs.github.io/)
+- [audioMotion-analyzer](https://github.com/hvianna/audioMotion-analyzer)
+- [Lucide](https://lucide.dev/)
+- [Simple Icons](https://simpleicons.org/)
+
+## Project Structure
+
+- `app/` contains theme logic such as feeds, settings, custom post types, widgets, providers, and import hooks.
+- `resources/views/` contains Blade templates for layouts, templates, partials, and widgets.
+- `resources/js/` and `resources/css/` contain frontend scripts, player logic, editor assets, and styles.
+- `resources/data/` contains bundled demo import files for content and widgets.
+
+## Links
+
+- Repository: [github.com/jiejia/a-ripple-song](https://github.com/jiejia/a-ripple-song)
+- Website: [aripplesong.com](https://aripplesong.com/)
+
+## License
+
+Released under the [GNU General Public License v3.0](LICENSE).
