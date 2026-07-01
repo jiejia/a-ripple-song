@@ -38,6 +38,11 @@ class Podcast extends SettingAbstract
     private static bool $validationHooksRegistered = false;
 
     /**
+     * Preserve a validation notice across Carbon Fields fallback sanitization.
+     */
+    private static bool $preserveCoverValidationNotice = false;
+
+    /**
      * Return the prefix used for all podcast option keys.
      *
      * @return string
@@ -298,7 +303,8 @@ class Podcast extends SettingAbstract
             return;
         }
 
-        add_filter('pre_update_option_' . $this->fieldName('cover'), [$this, 'validateCoverOptionBeforeSave'], 10, 3);
+        add_filter('sanitize_option_' . $this->coverStorageOptionName(), [$this, 'validateCoverOptionBeforeSave'], 10, 3);
+        add_filter('pre_update_option_' . $this->coverStorageOptionName(), [$this, 'validateCoverOptionBeforeUpdate'], 10, 3);
         add_action('admin_notices', [$this, 'renderCoverValidationNotice']);
 
         self::$validationHooksRegistered = true;
@@ -308,13 +314,64 @@ class Podcast extends SettingAbstract
      * Validate the podcast cover attachment before the option is saved.
      *
      * @param mixed $newValue New option value being saved.
+     * @param string $option Option name being sanitized.
+     * @param mixed $originalValue Original option value before sanitization.
+     * @return mixed
+     */
+    public function validateCoverOptionBeforeSave(mixed $newValue, string $option, mixed $originalValue): mixed
+    {
+        if ($option !== $this->coverStorageOptionName()) {
+            return $newValue;
+        }
+
+        if (self::$preserveCoverValidationNotice) {
+            self::$preserveCoverValidationNotice = false;
+
+            return $newValue;
+        }
+
+        // Let update_option() requests be handled by the dedicated pre-update hook.
+        if (get_option($option, null) !== null) {
+            return $newValue;
+        }
+
+        $this->clearCoverValidationNotice();
+
+        if ($newValue === '' || $newValue === null) {
+            return $newValue;
+        }
+
+        $attachmentId = is_numeric($newValue) ? (int) $newValue : 0;
+
+        if ($attachmentId <= 0) {
+            return $newValue;
+        }
+
+        $validationError = $this->validateCoverAttachment($attachmentId);
+
+        if ($validationError === null) {
+            return $newValue;
+        }
+
+        $this->storeCoverValidationNotice($validationError);
+        self::$preserveCoverValidationNotice = true;
+
+        $existingValue = get_option($option, '');
+
+        return $existingValue !== false ? $existingValue : '';
+    }
+
+    /**
+     * Validate the podcast cover before an existing option is updated.
+     *
+     * @param mixed $newValue New option value being saved.
      * @param mixed $oldValue Previous option value.
      * @param string $option Option name being updated.
      * @return mixed
      */
-    public function validateCoverOptionBeforeSave(mixed $newValue, mixed $oldValue, string $option): mixed
+    public function validateCoverOptionBeforeUpdate(mixed $newValue, mixed $oldValue, string $option): mixed
     {
-        if ($option !== $this->fieldName('cover')) {
+        if ($option !== $this->coverStorageOptionName()) {
             return $newValue;
         }
 
@@ -509,6 +566,16 @@ class Podcast extends SettingAbstract
         }
 
         return null;
+    }
+
+    /**
+     * Return the Carbon Fields storage key used for the cover option in wp_options.
+     *
+     * @return string
+     */
+    private function coverStorageOptionName(): string
+    {
+        return '_' . $this->fieldName('cover');
     }
 
     /**
