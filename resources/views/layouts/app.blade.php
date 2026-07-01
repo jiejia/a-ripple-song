@@ -10,6 +10,10 @@
   {{-- Vite assets are now loaded via wp_enqueue_scripts in setup.php --}}
   {{-- This ensures they work in all contexts including customizer preview --}}
   <style>
+    [x-cloak] {
+      display: none !important;
+    }
+
     /* html {
       margin-top: 0px !important;
       scrollbar-gutter: stable;
@@ -107,6 +111,7 @@
   <button
     x-data="{ show: false }"
     x-init="window.addEventListener('scroll', () => { show = window.scrollY > 300 })"
+    x-cloak
     x-show="show"
     x-transition:enter="transition ease-out duration-300"
     x-transition:enter-start="opacity-0 translate-y-4"

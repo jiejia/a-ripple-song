@@ -37,7 +37,7 @@
         <div>
             <div class="h-[40px] relative" id="wave">
                 {{-- 加载状态提示 --}}
-                <div x-show="$store.player.isLoading" x-transition:enter="transition ease-out duration-200"
+                <div x-cloak x-show="$store.player.isLoading" x-transition:enter="transition ease-out duration-200"
                     x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
                     x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100"
                     x-transition:leave-end="opacity-0"
@@ -68,7 +68,7 @@
                             x-text="$store.player.playbackRateText"
                             x-on:click="$store.player.togglePlaybackRatePanel()">1x</label>
 
-                        <div x-show="$store.player.playbackRatePanelOpen"
+                        <div x-cloak x-show="$store.player.playbackRatePanelOpen"
                             @click.outside="$store.player.playbackRatePanelOpen = false"
                             class="absolute bottom-full left-0 mb-2 bg-base-100 rounded-lg shadow-lg p-2 min-w-[80px] z-20">
                             <template x-for="rate in $store.player.availableRates" :key="rate">
@@ -84,30 +84,30 @@
                 <div class="flex justify-center gap-4 items-center">
                     <i data-lucide="skip-back" class="cursor-pointer w-4 h-4"
                         x-on:click="$store.player.playPrevious()"></i>
-                    <i x-show="!$store.player.isPlaying" data-lucide="play"
+                    <i x-cloak x-show="!$store.player.isPlaying" data-lucide="play"
                         class="cursor-pointer w-4 h-4 bg-success-500 rounded-full"
                         x-on:click="$store.player.togglePlay()"></i>
-                    <i x-show="$store.player.isPlaying" data-lucide="pause"
+                    <i x-cloak x-show="$store.player.isPlaying" data-lucide="pause"
                         class="cursor-pointer w-4 h-4 bg-success-500 rounded-full"
                         x-on:click="$store.player.togglePlay()"></i>
                     <i data-lucide="skip-forward" class="cursor-pointer w-4 h-4"
                         x-on:click="$store.player.playNext()"></i>
                 </div>
                 <div class="justify-self-end relative">
-                    <i x-show="!$store.player.isMuted" data-lucide="volume" class="cursor-pointer w-4 h-4"
+                    <i x-cloak x-show="!$store.player.isMuted" data-lucide="volume" class="cursor-pointer w-4 h-4"
                         x-on:click="$store.player.toggleVolumePanel()"></i>
-                    <i x-show="$store.player.isMuted" data-lucide="volume-x" class="cursor-pointer w-4 h-4"
+                    <i x-cloak x-show="$store.player.isMuted" data-lucide="volume-x" class="cursor-pointer w-4 h-4"
                         x-on:click="$store.player.toggleVolumePanel()"></i>
 
-                    <div x-show="$store.player.volumePanelOpen" @click.outside="$store.player.volumePanelOpen = false"
+                    <div x-cloak x-show="$store.player.volumePanelOpen" @click.outside="$store.player.volumePanelOpen = false"
                         class="absolute bottom-full right-[-8px] mb-2 bg-base-100 rounded-full shadow-lg p-2 w-10 h-32 z-20">
                         <input type="range" min="0" max="1" step="0.01" :value="$store.player.volume"
                             x-on:input="$store.player.setVolume($event.target.value)"
                             class="w-22 absolute left-[-23px] bottom-[70px] range range-xs range-success transform -rotate-90" />
                         <label class="swap absolute bottom-3 left-3 cursor-pointer">
-                            <i x-show="!$store.player.isMuted" data-lucide="volume-2" class="w-4 h-4 "
+                            <i x-cloak x-show="!$store.player.isMuted" data-lucide="volume-2" class="w-4 h-4 "
                                 x-on:click="$store.player.toggleMute()"></i>
-                            <i x-show="$store.player.isMuted" data-lucide="volume-x" class="w-4 h-4 "
+                            <i x-cloak x-show="$store.player.isMuted" data-lucide="volume-x" class="w-4 h-4 "
                                 x-on:click="$store.player.toggleMute()"></i>
                         </label>
                     </div>

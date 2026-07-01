@@ -59,9 +59,11 @@
                     :title="$store.player.currentEpisode && $store.player.currentEpisode.id === episode.id && $store.player.isPlaying ? '{{ __('Pause', 'a-ripple-song') }}' : '{{ __('Play', 'a-ripple-song') }}'">
                     <i data-lucide="pause" 
                        class="text-xs h-4"
+                       x-cloak
                        x-show="$store.player.currentEpisode && $store.player.currentEpisode.id === episode.id && $store.player.isPlaying"></i>
                     <i data-lucide="play" 
                        class="text-xs h-4"
+                       x-cloak
                        x-show="!($store.player.currentEpisode && $store.player.currentEpisode.id === episode.id && $store.player.isPlaying)"></i>
                 </button>
             @endif

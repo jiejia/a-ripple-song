@@ -27,9 +27,9 @@
           <button type="button" class="btn btn-ghost btn-sm btn-circle"
             @click="$store.theme.toggle()"
             :title="$store.theme.mode === 'light' ? '{{ __('Light Mode', 'a-ripple-song') }}' : ($store.theme.mode === 'dark' ? '{{ __('Dark Mode', 'a-ripple-song') }}' : '{{ __('Follow System', 'a-ripple-song') }}')">
-            <i data-lucide="sun" class="w-5 h-5" x-show="$store.theme.isLight"></i>
-            <i data-lucide="moon" class="w-5 h-5" x-show="$store.theme.isDark && !$store.theme.isAuto"></i>
-            <i data-lucide="sun-moon" class="w-5 h-5" x-show="$store.theme.isAuto"></i>
+            <i data-lucide="sun" class="w-5 h-5" x-cloak x-show="$store.theme.isLight"></i>
+            <i data-lucide="moon" class="w-5 h-5" x-cloak x-show="$store.theme.isDark && !$store.theme.isAuto"></i>
+            <i data-lucide="sun-moon" class="w-5 h-5" x-cloak x-show="$store.theme.isAuto"></i>
             <span class="sr-only">{{ __('Toggle Theme', 'a-ripple-song') }}</span>
           </button>
 
