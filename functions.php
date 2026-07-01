@@ -21,6 +21,43 @@ if (!defined('A_RIPPLE_SONG_THEME_DIR')) {
     define('A_RIPPLE_SONG_THEME_DIR', get_stylesheet_directory());
 }
 
+if (! function_exists('aRippleSongEnsureAcornRuntimeDirectories')) {
+    /**
+     * Create the Acorn runtime directories required on a fresh theme install.
+     */
+    function aRippleSongEnsureAcornRuntimeDirectories(string $storagePath): void
+    {
+        /**
+         * Keep the manifest, compiled views, sessions, and logs inside the theme package.
+         *
+         * @var string[] $runtimeDirectories
+         */
+        $runtimeDirectories = [
+            $storagePath.'/framework/cache',
+            $storagePath.'/framework/cache/data',
+            $storagePath.'/framework/views',
+            $storagePath.'/framework/sessions',
+            $storagePath.'/logs',
+        ];
+
+        foreach ($runtimeDirectories as $runtimeDirectory) {
+            if (! is_dir($runtimeDirectory)) {
+                wp_mkdir_p($runtimeDirectory);
+            }
+        }
+    }
+}
+
+/**
+ * Use a theme-local Acorn storage path so a packaged install can boot without
+ * depending on pre-existing cache directories in wp-content/cache.
+ *
+ * @var string $aRippleSongStoragePath
+ */
+$aRippleSongStoragePath = __DIR__.'/storage';
+
+aRippleSongEnsureAcornRuntimeDirectories($aRippleSongStoragePath);
+
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +89,10 @@ require $composer;
 */
 
 Application::configure()
+    ->withPaths(
+        storage: $aRippleSongStoragePath,
+        bootstrap: $aRippleSongStoragePath.'/framework',
+    )
     ->withProviders([
         ThemeServiceProvider::class,
         CommentServiceProvider::class,
