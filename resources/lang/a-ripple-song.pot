@@ -868,8 +868,24 @@ msgstr ""
 msgid "Podcast Cover (1400-3000px square)"
 msgstr ""
 
-#: app/Settings/Podcast.php:87
-msgid "Required. Square JPG/PNG between 1400-3000px for itunes:image. Apple recommends keeping the file under 512KB. The saved value is the media attachment ID."
+#: app/Settings/Podcast.php:109
+msgid "Required. Square JPG/PNG between 1400-3000px for itunes:image. File size must not exceed 512KB. The saved value is the media attachment ID."
+msgstr ""
+
+#: app/Settings/Podcast.php:338
+msgid "Unable to validate the selected podcast cover dimensions. Please choose an image from the WordPress Media Library."
+msgstr ""
+
+#: app/Settings/Podcast.php:342
+msgid "Podcast cover must be a square image between 1400x1400 and 3000x3000 pixels."
+msgstr ""
+
+#: app/Settings/Podcast.php:348
+msgid "Unable to validate the selected podcast cover file size. Please choose an image stored locally in the WordPress Media Library."
+msgstr ""
+
+#: app/Settings/Podcast.php:352
+msgid "Podcast cover image must be 512 KB or smaller."
 msgstr ""
 
 #: app/Settings/Podcast.php:90

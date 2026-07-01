@@ -1130,9 +1130,25 @@ msgstr ""
 msgid "Podcast Cover (1400-3000px square)"
 msgstr "播客封面（1400-3000 像素正方形）"
 
-#: app/Settings/Podcast.php:87
-msgid "Required. Square JPG/PNG between 1400-3000px for itunes:image. Apple recommends keeping the file under 512KB. The saved value is the media attachment ID."
-msgstr "必填。用于 itunes:image 的 JPG/PNG 正方形图片尺寸需在 1400-3000 像素之间。Apple 建议文件小于 512KB。保存值为媒体附件 ID。"
+#: app/Settings/Podcast.php:109
+msgid "Required. Square JPG/PNG between 1400-3000px for itunes:image. File size must not exceed 512KB. The saved value is the media attachment ID."
+msgstr "必填。用于 itunes:image 的 JPG/PNG 正方形图片尺寸需在 1400-3000 像素之间，文件大小不能超过 512KB。保存值为媒体附件 ID。"
+
+#: app/Settings/Podcast.php:338
+msgid "Unable to validate the selected podcast cover dimensions. Please choose an image from the WordPress Media Library."
+msgstr "无法验证所选播客封面的尺寸。请选择 WordPress 媒体库中的图片。"
+
+#: app/Settings/Podcast.php:342
+msgid "Podcast cover must be a square image between 1400x1400 and 3000x3000 pixels."
+msgstr "播客封面必须是 1400x1400 到 3000x3000 像素之间的正方形图片。"
+
+#: app/Settings/Podcast.php:348
+msgid "Unable to validate the selected podcast cover file size. Please choose an image stored locally in the WordPress Media Library."
+msgstr "无法验证所选播客封面的文件大小。请选择存储在 WordPress 媒体库本地的图片。"
+
+#: app/Settings/Podcast.php:352
+msgid "Podcast cover image must be 512 KB or smaller."
+msgstr "播客封面图片大小必须不超过 512 KB。"
 
 #: app/Settings/Podcast.php:100
 msgid "Language (RFC 5646)"

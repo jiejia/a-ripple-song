@@ -13,6 +13,31 @@ use Carbon_Fields\Field;
 class Podcast extends SettingAbstract
 {
     /**
+     * Minimum allowed cover dimension in pixels.
+     */
+    private const COVER_MIN_DIMENSION = 1400;
+
+    /**
+     * Maximum allowed cover dimension in pixels.
+     */
+    private const COVER_MAX_DIMENSION = 3000;
+
+    /**
+     * Maximum allowed cover file size in bytes.
+     */
+    private const COVER_MAX_FILE_SIZE = 524288;
+
+    /**
+     * User meta key used to persist cover validation notices across redirects.
+     */
+    private const COVER_VALIDATION_NOTICE_META_KEY = 'aripplesong_podcast_cover_validation_notice';
+
+    /**
+     * Ensure the validation hooks are only registered once per request.
+     */
+    private static bool $validationHooksRegistered = false;
+
+    /**
      * Return the prefix used for all podcast option keys.
      *
      * @return string
@@ -59,6 +84,7 @@ class Podcast extends SettingAbstract
      */
     public function fields(): array
     {
+        $this->registerCoverValidationHooks();
         $this->maybeMigrateCoverValueToAttachmentId();
 
         // Reuse option lists across related select fields.
@@ -84,7 +110,7 @@ class Podcast extends SettingAbstract
         $coverField = Field::make('image', $this->fieldName('cover'), __('Podcast Cover (1400-3000px square)', 'a-ripple-song'));
         $coverField
             ->set_value_type('id')
-            ->set_help_text(__('Required. Square JPG/PNG between 1400-3000px for itunes:image. Apple recommends keeping the file under 512KB. The saved value is the media attachment ID.', 'a-ripple-song'));
+            ->set_help_text(__('Required. Square JPG/PNG between 1400-3000px for itunes:image. File size must not exceed 512KB. The saved value is the media attachment ID.', 'a-ripple-song'));
 
         /** @var \Carbon_Fields\Field\Select_Field $explicitField */
         $explicitField = Field::make('select', $this->fieldName('explicit'), __('Default Explicit Flag', 'a-ripple-song'));
@@ -262,6 +288,91 @@ class Podcast extends SettingAbstract
     }
 
     /**
+     * Register the podcast cover validation hooks.
+     *
+     * @return void
+     */
+    private function registerCoverValidationHooks(): void
+    {
+        if (self::$validationHooksRegistered) {
+            return;
+        }
+
+        add_filter('pre_update_option_' . $this->fieldName('cover'), [$this, 'validateCoverOptionBeforeSave'], 10, 3);
+        add_action('admin_notices', [$this, 'renderCoverValidationNotice']);
+
+        self::$validationHooksRegistered = true;
+    }
+
+    /**
+     * Validate the podcast cover attachment before the option is saved.
+     *
+     * @param mixed $newValue New option value being saved.
+     * @param mixed $oldValue Previous option value.
+     * @param string $option Option name being updated.
+     * @return mixed
+     */
+    public function validateCoverOptionBeforeSave(mixed $newValue, mixed $oldValue, string $option): mixed
+    {
+        if ($option !== $this->fieldName('cover')) {
+            return $newValue;
+        }
+
+        $this->clearCoverValidationNotice();
+
+        if ($newValue === '' || $newValue === null) {
+            return $newValue;
+        }
+
+        $attachmentId = is_numeric($newValue) ? (int) $newValue : 0;
+
+        if ($attachmentId <= 0) {
+            return $newValue;
+        }
+
+        $validationError = $this->validateCoverAttachment($attachmentId);
+
+        if ($validationError === null) {
+            return $newValue;
+        }
+
+        $this->storeCoverValidationNotice($validationError);
+
+        return $oldValue;
+    }
+
+    /**
+     * Render the persisted cover validation notice on the podcast settings page.
+     *
+     * @return void
+     */
+    public function renderCoverValidationNotice(): void
+    {
+        if (! $this->isPodcastSettingsPage()) {
+            return;
+        }
+
+        $userId = get_current_user_id();
+
+        if ($userId <= 0) {
+            return;
+        }
+
+        $notice = get_user_meta($userId, self::COVER_VALIDATION_NOTICE_META_KEY, true);
+
+        if (! is_string($notice) || $notice === '') {
+            return;
+        }
+
+        delete_user_meta($userId, self::COVER_VALIDATION_NOTICE_META_KEY);
+
+        printf(
+            '<div class="notice notice-error is-dismissible"><p>%s</p></div>',
+            esc_html($notice)
+        );
+    }
+
+    /**
      * Migrate a legacy cover URL value to an attachment ID when possible.
      *
      * @return void
@@ -367,6 +478,142 @@ class Podcast extends SettingAbstract
         $path = (string) wp_parse_url($encodedUrl, PHP_URL_PATH);
 
         return $path !== '' ? $path : '';
+    }
+
+    /**
+     * Return a validation error for the selected cover attachment, or null when valid.
+     *
+     * @param int $attachmentId Attachment ID selected in the settings page.
+     * @return string|null
+     */
+    private function validateCoverAttachment(int $attachmentId): ?string
+    {
+        [$width, $height] = $this->coverAttachmentDimensions($attachmentId);
+
+        if ($width <= 0 || $height <= 0) {
+            return __('Unable to validate the selected podcast cover dimensions. Please choose an image from the WordPress Media Library.', 'a-ripple-song');
+        }
+
+        if ($width !== $height || $width < self::COVER_MIN_DIMENSION || $width > self::COVER_MAX_DIMENSION) {
+            return __('Podcast cover must be a square image between 1400x1400 and 3000x3000 pixels.', 'a-ripple-song');
+        }
+
+        $fileSize = $this->coverAttachmentFileSize($attachmentId);
+
+        if ($fileSize <= 0) {
+            return __('Unable to validate the selected podcast cover file size. Please choose an image stored locally in the WordPress Media Library.', 'a-ripple-song');
+        }
+
+        if ($fileSize > self::COVER_MAX_FILE_SIZE) {
+            return __('Podcast cover image must be 512 KB or smaller.', 'a-ripple-song');
+        }
+
+        return null;
+    }
+
+    /**
+     * Return the selected cover dimensions in pixels.
+     *
+     * @param int $attachmentId Attachment ID selected in the settings page.
+     * @return array{0:int,1:int}
+     */
+    private function coverAttachmentDimensions(int $attachmentId): array
+    {
+        $metadata = wp_get_attachment_metadata($attachmentId);
+        $width = is_array($metadata) && isset($metadata['width']) ? (int) $metadata['width'] : 0;
+        $height = is_array($metadata) && isset($metadata['height']) ? (int) $metadata['height'] : 0;
+
+        if ($width > 0 && $height > 0) {
+            return [$width, $height];
+        }
+
+        $filePath = get_attached_file($attachmentId);
+
+        if (! is_string($filePath) || $filePath === '' || ! file_exists($filePath)) {
+            return [0, 0];
+        }
+
+        $imageSize = wp_getimagesize($filePath);
+
+        if (! is_array($imageSize)) {
+            return [0, 0];
+        }
+
+        return [(int) ($imageSize[0] ?? 0), (int) ($imageSize[1] ?? 0)];
+    }
+
+    /**
+     * Return the selected cover file size in bytes.
+     *
+     * @param int $attachmentId Attachment ID selected in the settings page.
+     * @return int
+     */
+    private function coverAttachmentFileSize(int $attachmentId): int
+    {
+        $metadata = wp_get_attachment_metadata($attachmentId);
+
+        if (is_array($metadata) && isset($metadata['filesize']) && is_numeric($metadata['filesize'])) {
+            return (int) $metadata['filesize'];
+        }
+
+        $filePath = get_attached_file($attachmentId);
+
+        if (! is_string($filePath) || $filePath === '' || ! file_exists($filePath)) {
+            return 0;
+        }
+
+        $fileSize = filesize($filePath);
+
+        return $fileSize !== false ? (int) $fileSize : 0;
+    }
+
+    /**
+     * Persist a validation notice for the current user.
+     *
+     * @param string $message Validation error message.
+     * @return void
+     */
+    private function storeCoverValidationNotice(string $message): void
+    {
+        $userId = get_current_user_id();
+
+        if ($userId <= 0) {
+            return;
+        }
+
+        update_user_meta($userId, self::COVER_VALIDATION_NOTICE_META_KEY, $message);
+    }
+
+    /**
+     * Clear any persisted validation notice for the current user.
+     *
+     * @return void
+     */
+    private function clearCoverValidationNotice(): void
+    {
+        $userId = get_current_user_id();
+
+        if ($userId <= 0) {
+            return;
+        }
+
+        delete_user_meta($userId, self::COVER_VALIDATION_NOTICE_META_KEY);
+    }
+
+    /**
+     * Return whether the current admin request is the podcast settings page.
+     *
+     * @return bool
+     */
+    private function isPodcastSettingsPage(): bool
+    {
+        if (! is_admin()) {
+            return false;
+        }
+
+        $page = isset($_GET['page']) ? sanitize_key((string) wp_unslash($_GET['page'])) : '';
+
+        return $page === $this->pageSlug();
     }
 
     /**
