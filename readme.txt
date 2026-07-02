@@ -1,9 +1,9 @@
 === A Ripple Song ===
 Contributors: Jamie
 Requires at least: 6.0
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 0.5.2
+Stable tag: 0.5.0
 License: GNU General Public License v3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
