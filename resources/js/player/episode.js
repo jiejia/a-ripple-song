@@ -76,3 +76,23 @@ export function mergeEpisodesIntoPlaylist(episodes, playlist, addEpisode) {
 
   return { addedEpisodes, firstNewEpisode };
 }
+
+/**
+ * Return whether the latest REST playlist contains episodes missing locally.
+ *
+ * @param {object[]} latestEpisodes Latest episodes returned by the REST API.
+ * @param {object[]} playlist Current locally cached playlist.
+ * @return {boolean}
+ */
+export function playlistNeedsRefresh(latestEpisodes, playlist) {
+  const playlistIds = new Set(
+    (Array.isArray(playlist) ? playlist : [])
+      .map((episode) => Number.parseInt(episode?.id, 10))
+      .filter(Number.isFinite),
+  );
+
+  return (Array.isArray(latestEpisodes) ? latestEpisodes : []).some((episode) => {
+    const episodeId = Number.parseInt(episode?.id, 10);
+    return Number.isFinite(episodeId) && !playlistIds.has(episodeId);
+  });
+}

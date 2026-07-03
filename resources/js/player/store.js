@@ -11,7 +11,12 @@ import {
   PLAYER_STORAGE_KEYS,
   PLAYBACK_RATES,
 } from '@scripts/player/constants.js';
-import { decodeTextEntities, mergeEpisodesIntoPlaylist, parseEpisodeFromRestPost } from '@scripts/player/episode.js';
+import {
+  decodeTextEntities,
+  mergeEpisodesIntoPlaylist,
+  parseEpisodeFromRestPost,
+  playlistNeedsRefresh,
+} from '@scripts/player/episode.js';
 import {
   ensureToneContext,
   getPitchCompensationSemitones,
@@ -122,32 +127,17 @@ export function registerPlayerStore(Alpine) {
 
       const playbackState = this.loadPlaybackState();
       if (this.playlist.length === 0) {
-        const hydrated = this.hydratePlaylistFromServer(true);
-        if (!hydrated) {
-          await this.fetchLatestPodcast(true);
-        }
+        this.hydratePlaylistFromServer();
+      }
+
+      const latestEpisodes = await this.fetchLatestPodcastEpisodes();
+      const didRefreshPlaylist = this.syncPlaylistWithLatestEpisodes(latestEpisodes);
+
+      if (didRefreshPlaylist) {
         return;
       }
 
-      const episode = this.playlist[this.currentIndex];
-      if (!episode) {
-        return;
-      }
-
-      this.currentEpisode = this.normalizeEpisode(episode);
-      this.loadTrack(episode.audioUrl);
-
-      if (playbackState.currentTime > 0) {
-        this.currentTime = playbackState.currentTime;
-        this.currentSound.once('load', () => {
-          this.seek(playbackState.currentTime);
-          if (playbackState.isPlaying) {
-            this.showAutoplayConfirmDialog();
-          }
-        });
-      } else if (playbackState.isPlaying) {
-        this.showAutoplayConfirmDialog();
-      }
+      this.restoreCurrentEpisode(playbackState);
     },
 
     hydratePlaylistFromServer(autoPlay = false) {
@@ -169,10 +159,15 @@ export function registerPlayerStore(Alpine) {
       return this.playlist.length > 0;
     },
 
-    async fetchLatestPodcast(autoPlay = false) {
+    /**
+     * Fetch the latest podcast playlist from the WordPress REST API.
+     *
+     * @return {Promise<object[]>}
+     */
+    async fetchLatestPodcastEpisodes() {
       try {
         const apiUrl = buildRestUrl(`wp/v2/${EPISODE_REST_TYPE}`, new URLSearchParams({
-          per_page: '5',
+          per_page: '10',
           orderby: 'date',
           order: 'desc',
           _embed: '',
@@ -188,24 +183,98 @@ export function registerPlayerStore(Alpine) {
           return [];
         }
 
-        const episodes = posts
+        return posts
           .map((post) => parseEpisodeFromRestPost(post))
           .filter(Boolean);
-
-        const { addedEpisodes, firstNewEpisode } = mergeEpisodesIntoPlaylist(
-          episodes,
-          this.playlist,
-          (episode) => this.addEpisodeToPlaylist(episode),
-        );
-
-        if (autoPlay && firstNewEpisode) {
-          this.prepareAutoplayCandidate(firstNewEpisode);
-        }
-
-        return addedEpisodes;
       } catch (error) {
         console.error(__('Failed to fetch latest podcasts:', 'a-ripple-song'), error);
         return [];
+      }
+    },
+
+    /**
+     * Replace the cached playlist when the REST API returns newer episodes.
+     *
+     * @param {object[]} latestEpisodes Latest REST playlist candidates.
+     * @return {boolean}
+     */
+    syncPlaylistWithLatestEpisodes(latestEpisodes) {
+      if (!Array.isArray(latestEpisodes) || latestEpisodes.length === 0) {
+        return false;
+      }
+
+      if (this.playlist.length === 0) {
+        this.replacePlaylist(latestEpisodes);
+        return true;
+      }
+
+      if (!playlistNeedsRefresh(latestEpisodes, this.playlist)) {
+        return false;
+      }
+
+      // Replace stale cached entries so the player reflects the latest published episodes.
+      this.replacePlaylist(latestEpisodes);
+      return true;
+    },
+
+    /**
+     * Replace the local playlist with the latest normalized episode list.
+     *
+     * @param {object[]} episodes Latest episodes to persist locally.
+     * @return {void}
+     */
+    replacePlaylist(episodes) {
+      const normalizedEpisodes = episodes
+        .map((episode) => this.normalizeEpisode(episode))
+        .filter((episode) => episode?.audioUrl);
+
+      this.stopAndClear();
+      this.playlist = normalizedEpisodes;
+      this.currentIndex = 0;
+
+      if (this.playlist.length === 0) {
+        this.savePlaylist();
+        return;
+      }
+
+      this.currentEpisode = this.playlist[0];
+      this.loadTrack(this.currentEpisode.audioUrl);
+      this.savePlaylist();
+    },
+
+    /**
+     * Restore the current episode and playback state from the cached playlist.
+     *
+     * @param {{currentTime:number, isPlaying:boolean}} playbackState Saved playback state.
+     * @return {void}
+     */
+    restoreCurrentEpisode(playbackState) {
+      const safeIndex = this.currentIndex >= 0 && this.currentIndex < this.playlist.length
+        ? this.currentIndex
+        : 0;
+      const episode = this.playlist[safeIndex];
+
+      if (!episode) {
+        return;
+      }
+
+      this.currentIndex = safeIndex;
+      this.currentEpisode = this.normalizeEpisode(episode);
+      this.loadTrack(episode.audioUrl);
+
+      if (playbackState.currentTime > 0) {
+        this.currentTime = playbackState.currentTime;
+        this.currentSound.once('load', () => {
+          this.seek(playbackState.currentTime);
+          if (playbackState.isPlaying) {
+            this.showAutoplayConfirmDialog();
+          }
+        });
+        return;
+      }
+
+      if (playbackState.isPlaying) {
+        this.showAutoplayConfirmDialog();
       }
     },
 
