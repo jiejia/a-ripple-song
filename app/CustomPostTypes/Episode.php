@@ -220,6 +220,7 @@ class Episode extends CustomPostTypeAbstract
         add_action('init', [$this, 'registerPlayCountMeta']);
         add_action('init', [$this, 'registerEpisodeMeta']);
         add_action('rest_api_init', [$this, 'registerEpisodeRestFields']);
+        add_action('rest_after_insert_' . self::slug(), [$this, 'onRestAfterInsert'], 10, 3);
         add_action('save_post', [$this, 'ensurePlayCountDefault'], 10, 2);
         add_filter('wp_insert_post_data', [$this, 'setDefaultCommentStatus'], 10, 2);
         add_filter('upload_mimes', [$this, 'allowUploadMimes']);
@@ -322,6 +323,31 @@ class Episode extends CustomPostTypeAbstract
         }
 
         if (! current_user_can('edit_post', $postId)) {
+            return;
+        }
+
+        $this->normalizeEpisodeMediaFieldValue($postId, 'audio_file');
+        $this->normalizeEpisodeMediaFieldValue($postId, 'episode_image');
+        $this->autoFillAudioMeta($postId);
+
+        if (function_exists('aripplesong_bump_participation_cache_version')) {
+            aripplesong_bump_participation_cache_version();
+        }
+    }
+
+    /**
+     * Recalculate audio-derived fields after REST API writes episode meta.
+     *
+     * @param \WP_Post $post Inserted or updated post object.
+     * @param \WP_REST_Request $request REST request.
+     * @param bool $creating Whether this is a create operation.
+     * @return void
+     */
+    public function onRestAfterInsert(\WP_Post $post, \WP_REST_Request $request, bool $creating): void
+    {
+        $postId = (int) $post->ID;
+
+        if ($postId <= 0 || $post->post_type !== self::slug()) {
             return;
         }
 
@@ -517,7 +543,7 @@ class Episode extends CustomPostTypeAbstract
      */
     protected function supports(): array
     {
-        return ['title', 'editor', 'thumbnail', 'excerpt', 'author', 'comments', 'trackbacks'];
+        return ['title', 'editor', 'thumbnail', 'excerpt', 'author', 'comments', 'trackbacks', 'custom-fields'];
     }
 
     /**
