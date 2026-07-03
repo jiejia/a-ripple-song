@@ -1104,7 +1104,7 @@ msgstr "标签"
 #: style.css
 #: app/Menus/Setting.php:21
 msgid "A Ripple Song"
-msgstr "A Ripple Song 主题"
+msgstr "脉动之音"
 
 #: app/Settings/Podcast.php:65
 msgid "(not set)"
