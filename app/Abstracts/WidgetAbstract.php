@@ -21,4 +21,23 @@ abstract class WidgetAbstract extends \WP_Widget
     {
         return [];
     }
+
+    /**
+     * Normalize a widget title while preserving legacy English defaults.
+     *
+     * @param mixed $value Raw widget title value.
+     * @param string $defaultTitle Localized default title.
+     * @param array<int,string> $legacyTitles Legacy saved titles that should follow the current locale.
+     * @return string
+     */
+    protected function normalizeWidgetTitle($value, string $defaultTitle, array $legacyTitles = []): string
+    {
+        $title = is_string($value) ? sanitize_text_field($value) : '';
+
+        if ($title === '' || in_array($title, $legacyTitles, true)) {
+            return $defaultTitle;
+        }
+
+        return $title;
+    }
 }

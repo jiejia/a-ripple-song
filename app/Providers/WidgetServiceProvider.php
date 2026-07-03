@@ -143,7 +143,7 @@ class WidgetServiceProvider extends ServiceProvider
         $podcastOptions = get_option('widget_podcast_list_widget', []);
         $podcastInstanceId = count($podcastOptions) + 1;
         $podcastOptions[$podcastInstanceId] = [
-            'title' => 'PODCAST',
+            'title' => __('Podcast', 'a-ripple-song'),
             'posts_per_page' => 3,
             'show_see_all' => 1,
         ];
@@ -152,7 +152,7 @@ class WidgetServiceProvider extends ServiceProvider
         $blogOptions = get_option('widget_blog_list_widget', []);
         $blogInstanceId = count($blogOptions) + 1;
         $blogOptions[$blogInstanceId] = [
-            'title' => 'BLOG',
+            'title' => __('Blog', 'a-ripple-song'),
             'posts_per_page' => 6,
             'show_see_all' => 1,
             'columns' => 3,

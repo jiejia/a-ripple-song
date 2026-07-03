@@ -55,7 +55,7 @@ class BlogListWidget extends WidgetAbstract
     {
         echo $args['before_widget'];
 
-        $title = ! empty($instance['title']) ? sanitize_text_field((string) $instance['title']) : 'BLOG';
+        $title = $this->defaultTitle($instance);
         $postsPerPage = ! empty($instance['posts_per_page']) ? max(1, absint($instance['posts_per_page'])) : 6;
         $showSeeAll = isset($instance['show_see_all']) ? (bool) $instance['show_see_all'] : true;
         $columns = ! empty($instance['columns']) ? min(3, max(1, absint($instance['columns']))) : 3;
@@ -89,7 +89,7 @@ class BlogListWidget extends WidgetAbstract
      */
     public function form($instance): void
     {
-        $title = ! empty($instance['title']) ? sanitize_text_field((string) $instance['title']) : 'BLOG';
+        $title = $this->defaultTitle($instance);
         $postsPerPage = ! empty($instance['posts_per_page']) ? max(1, absint($instance['posts_per_page'])) : 6;
         $showSeeAll = isset($instance['show_see_all']) ? (bool) $instance['show_see_all'] : true;
         $columns = ! empty($instance['columns']) ? min(3, max(1, absint($instance['columns']))) : 3;
@@ -162,5 +162,20 @@ class BlogListWidget extends WidgetAbstract
             'columns' => ! empty($newInstance['columns']) ? min(3, max(1, absint($newInstance['columns']))) : 3,
             'show_see_all' => ! empty($newInstance['show_see_all']) ? 1 : 0,
         ];
+    }
+
+    /**
+     * Return the normalized widget title.
+     *
+     * @param array<string,mixed> $instance Saved widget options.
+     * @return string
+     */
+    private function defaultTitle(array $instance): string
+    {
+        return $this->normalizeWidgetTitle(
+            $instance['title'] ?? '',
+            __('Blog', 'a-ripple-song'),
+            ['BLOG']
+        );
     }
 }

@@ -55,7 +55,7 @@ class TagsCloudWidget extends WidgetAbstract
     {
         echo $args['before_widget'];
 
-        $title = ! empty($instance['title']) ? sanitize_text_field((string) $instance['title']) : 'TAGS';
+        $title = $this->defaultTitle($instance);
         $number = ! empty($instance['number']) ? max(1, absint($instance['number'])) : 20;
         $orderby = ! empty($instance['orderby']) ? sanitize_key((string) $instance['orderby']) : 'count';
         $order = ! empty($instance['order']) ? strtoupper(sanitize_key((string) $instance['order'])) : 'DESC';
@@ -82,7 +82,7 @@ class TagsCloudWidget extends WidgetAbstract
      */
     public function form($instance): void
     {
-        $title = ! empty($instance['title']) ? sanitize_text_field((string) $instance['title']) : 'TAGS';
+        $title = $this->defaultTitle($instance);
         $number = ! empty($instance['number']) ? max(1, absint($instance['number'])) : 20;
         $orderby = ! empty($instance['orderby']) ? sanitize_key((string) $instance['orderby']) : 'count';
         $order = ! empty($instance['order']) ? strtoupper(sanitize_key((string) $instance['order'])) : 'DESC';
@@ -160,5 +160,20 @@ class TagsCloudWidget extends WidgetAbstract
                 ? (string) $newInstance['order']
                 : 'DESC',
         ];
+    }
+
+    /**
+     * Return the normalized widget title.
+     *
+     * @param array<string,mixed> $instance Saved widget options.
+     * @return string
+     */
+    private function defaultTitle(array $instance): string
+    {
+        return $this->normalizeWidgetTitle(
+            $instance['title'] ?? '',
+            __('Tags', 'a-ripple-song'),
+            ['TAGS']
+        );
     }
 }

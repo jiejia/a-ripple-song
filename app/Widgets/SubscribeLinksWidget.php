@@ -52,7 +52,7 @@ class SubscribeLinksWidget extends WidgetAbstract
     {
         echo $args['before_widget'];
 
-        $title = ! empty($instance['title']) ? sanitize_text_field((string) $instance['title']) : 'SUBSCRIBE';
+        $title = $this->defaultTitle($instance);
         $applePodcastUrl = ! empty($instance['apple_podcast_url']) ? esc_url((string) $instance['apple_podcast_url']) : '';
         $spotifyUrl = ! empty($instance['spotify_url']) ? esc_url((string) $instance['spotify_url']) : '';
         $youtubeMusicUrl = ! empty($instance['youtube_music_url']) ? esc_url((string) $instance['youtube_music_url']) : '';
@@ -74,7 +74,7 @@ class SubscribeLinksWidget extends WidgetAbstract
      */
     public function form($instance): void
     {
-        $title = ! empty($instance['title']) ? sanitize_text_field((string) $instance['title']) : 'SUBSCRIBE';
+        $title = $this->defaultTitle($instance);
         $applePodcastUrl = ! empty($instance['apple_podcast_url']) ? esc_url((string) $instance['apple_podcast_url']) : '';
         $spotifyUrl = ! empty($instance['spotify_url']) ? esc_url((string) $instance['spotify_url']) : '';
         $youtubeMusicUrl = ! empty($instance['youtube_music_url']) ? esc_url((string) $instance['youtube_music_url']) : '';
@@ -147,5 +147,20 @@ class SubscribeLinksWidget extends WidgetAbstract
             'spotify_url' => ! empty($newInstance['spotify_url']) ? esc_url_raw((string) $newInstance['spotify_url']) : '',
             'youtube_music_url' => ! empty($newInstance['youtube_music_url']) ? esc_url_raw((string) $newInstance['youtube_music_url']) : '',
         ];
+    }
+
+    /**
+     * Return the normalized widget title.
+     *
+     * @param array<string,mixed> $instance Saved widget options.
+     * @return string
+     */
+    private function defaultTitle(array $instance): string
+    {
+        return $this->normalizeWidgetTitle(
+            $instance['title'] ?? '',
+            __('SUBSCRIBE', 'a-ripple-song'),
+            ['SUBSCRIBE']
+        );
     }
 }

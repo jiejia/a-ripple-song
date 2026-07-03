@@ -207,13 +207,11 @@ class PodcastListWidget extends WidgetAbstract
      */
     protected function getWidgetTitle(array $instance): string
     {
-        $savedTitle = ! empty($instance['title']) ? sanitize_text_field((string) $instance['title']) : '';
-
-        if ($savedTitle === '') {
-            return 'PODCAST';
-        }
-
-        return $savedTitle;
+        return $this->normalizeWidgetTitle(
+            $instance['title'] ?? '',
+            __('Podcast', 'a-ripple-song'),
+            ['PODCAST']
+        );
     }
 
     /**

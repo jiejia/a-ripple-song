@@ -201,7 +201,26 @@ add_action('after_setup_theme', function () {
 }, 20);
 
 add_action('after_setup_theme', function () {
-    load_theme_textdomain('a-ripple-song', get_template_directory() . '/resources/lang');
+    $languagePath = get_template_directory() . '/resources/lang';
+    $locale = determine_locale();
+    $mofiles = [
+        $languagePath . '/' . $locale . '.mo',
+        $languagePath . '/a-ripple-song-' . $locale . '.mo',
+    ];
+
+    load_theme_textdomain('a-ripple-song', $languagePath);
+
+    foreach ($mofiles as $mofile) {
+        if (! is_readable($mofile)) {
+            continue;
+        }
+
+        // Load the actual packaged MO filename used by this theme.
+        unload_textdomain('a-ripple-song');
+        load_textdomain('a-ripple-song', $mofile);
+
+        break;
+    }
 });
 
 /**
