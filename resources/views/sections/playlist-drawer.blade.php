@@ -66,6 +66,7 @@
                 <!-- 节目信息 -->
                 <div class="flex-1 min-w-0">
                   <p 
+                    :title="episode.title"
                     x-text="episode.title"
                     :class="index === $store.player.currentIndex ? 'text-base-content' : 'text-base-content/80'"
                     class="font-semibold text-sm truncate"></p>
@@ -90,4 +91,3 @@
     </div>
   </div>
 </div>
-

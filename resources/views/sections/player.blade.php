@@ -23,6 +23,7 @@
             </div>
             <div>
                 <h4 class="text-md font-bold line-clamp-2"
+                    :title="$store.player.currentEpisode?.title || '{{ __('No Episode Playing', 'a-ripple-song') }}'"
                     x-text="$store.player.currentEpisode?.title || '{{ __('No Episode Playing', 'a-ripple-song') }}'">
                     {{ __('Podcast Episode', 'a-ripple-song') }}
                 </h4>
