@@ -35,13 +35,13 @@ Banner Carousel Widget Template
           <div id="{{ $slide_id }}" class="carousel-item relative w-full rounded-lg snap-center"
             style="scroll-snap-stop: always">
             @if($link_url)
-              <a href="{{ esc_url($link_url) }}" target="{{ esc_attr($link_target) }}" class="w-full">
+              <a href="{{ esc_url($link_url) }}" target="{{ esc_attr($link_target) }}" class="w-full" @if($link_target === '_blank') rel="noopener noreferrer" @endif>
                 <img src="{{ esc_url($image_url) }}" class="w-full h-48 object-cover rounded-lg"
-                  alt="{{ esc_attr($description) }}" />
+                  alt="{{ esc_attr($description) }}" width="1200" height="384" loading="lazy" />
               </a>
             @else
               <img src="{{ esc_url($image_url) }}" class="w-full h-48 object-cover rounded-lg"
-                alt="{{ esc_attr($description) }}" />
+                alt="{{ esc_attr($description) }}" width="1200" height="384" loading="lazy" />
             @endif
           </div>
         @endforeach

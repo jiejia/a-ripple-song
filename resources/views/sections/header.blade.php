@@ -21,20 +21,34 @@
         </h1>
         @include('sections.primary-navigation')
         <div class="grid grid-flow-col justify-end gap-2 place-items-center">
-          <label for="search-modal" class="md:hidden block"><i data-lucide="search"
-              class="w-5 h-5 cursor-pointer"></i></label>
+          <button
+            type="button"
+            class="md:hidden block btn btn-ghost btn-sm btn-circle"
+            aria-label="{{ __('Open Search', 'a-ripple-song') }}"
+            aria-controls="search-modal"
+            onclick="document.getElementById('search-modal').checked = true;"
+          >
+            <i data-lucide="search" class="w-5 h-5" aria-hidden="true"></i>
+          </button>
           <!-- 主题循环切换按钮 -->
           <button type="button" class="btn btn-ghost btn-sm btn-circle"
             @click="$store.theme.toggle()"
             :title="$store.theme.mode === 'light' ? '{{ __('Light Mode', 'a-ripple-song') }}' : ($store.theme.mode === 'dark' ? '{{ __('Dark Mode', 'a-ripple-song') }}' : '{{ __('Follow System', 'a-ripple-song') }}')">
-            <i data-lucide="sun" class="w-5 h-5" x-cloak x-show="$store.theme.isLight"></i>
-            <i data-lucide="moon" class="w-5 h-5" x-cloak x-show="$store.theme.isDark && !$store.theme.isAuto"></i>
-            <i data-lucide="sun-moon" class="w-5 h-5" x-cloak x-show="$store.theme.isAuto"></i>
+            <i data-lucide="sun" class="w-5 h-5" x-cloak x-show="$store.theme.isLight" aria-hidden="true"></i>
+            <i data-lucide="moon" class="w-5 h-5" x-cloak x-show="$store.theme.isDark && !$store.theme.isAuto" aria-hidden="true"></i>
+            <i data-lucide="sun-moon" class="w-5 h-5" x-cloak x-show="$store.theme.isAuto" aria-hidden="true"></i>
             <span class="sr-only">{{ __('Toggle Theme', 'a-ripple-song') }}</span>
           </button>
 
-          <label for="mobile-menu" class="xl:hidden block"><i data-lucide="menu"
-              class="w-5 h-5 cursor-pointer"></i></label>
+          <button
+            type="button"
+            class="xl:hidden block btn btn-ghost btn-sm btn-circle"
+            aria-label="{{ __('Menu', 'a-ripple-song') }}"
+            aria-controls="mobile-menu"
+            onclick="document.getElementById('mobile-menu').checked = true;"
+          >
+            <i data-lucide="menu" class="w-5 h-5" aria-hidden="true"></i>
+          </button>
 
         </div>
       </div>

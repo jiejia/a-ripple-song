@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-03T03:15:19+00:00\n"
+"POT-Creation-Date: 2026-07-05T02:15:08+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: a-ripple-song\n"
@@ -403,6 +403,7 @@ msgid "WeChat"
 msgstr ""
 
 #: app/Customizers/SocialLinks.php:63
+#: searchform.php:29
 msgid "RSS Feed"
 msgstr ""
 
@@ -761,6 +762,7 @@ msgstr ""
 
 #: app/Providers/WidgetServiceProvider.php:146
 #: app/Widgets/PodcastListWidget.php:212
+#: storage/framework/views/a43691b144a81e70774c017e46269e9e.php:10
 #: resources/views/sections/player.blade.php:10
 msgid "Podcast"
 msgstr ""
@@ -1649,6 +1651,7 @@ msgid "Save my name, email, and website in this browser for the next time I comm
 msgstr ""
 
 #: app/Supports/Comment.php:149
+#: storage/framework/views/d0c85bc48ca24366f516d99c9dcb4849.php:17
 #: resources/views/partials/comments.blade.php:17
 msgid "Comment"
 msgstr ""
@@ -1889,6 +1892,7 @@ msgid "Tag ID"
 msgstr ""
 
 #: app/Widgets/TagsCloudWidget.php:126
+#: storage/framework/views/34df5098c6014d040ac16431e6773d17.php:60
 #: resources/views/widgets/podcast-list.blade.php:65
 msgid "Random"
 msgstr ""
@@ -1931,237 +1935,108 @@ msgstr ""
 msgid "Podcast Template"
 msgstr ""
 
-#: searchform.php:23
+#: searchform.php:12
+#: searchform.php:25
+msgid "Search"
+msgstr ""
+
+#: searchform.php:24
 msgctxt "placeholder"
 msgid "Search &hellip;"
 msgstr ""
 
+#: storage/framework/views/08ea059d705e6aff8742c0923edb2815.php:15
 #: resources/views/404.blade.php:8
 msgid "Sorry, but the page you are trying to view does not exist."
 msgstr ""
 
-#: resources/views/author.blade.php:9
-msgid "Author:"
-msgstr ""
-
-#: resources/views/author.blade.php:21
-#: resources/views/search.blade.php:7
-msgid "Sorry, no results were found."
-msgstr ""
-
-#: resources/views/layouts/app.blade.php:91
-msgid "Open Left Sidebar"
-msgstr ""
-
-#: resources/views/layouts/app.blade.php:105
-msgid "Open Right Sidebar"
-msgstr ""
-
-#: resources/views/layouts/app.blade.php:124
-msgid "Back to top"
-msgstr ""
-
-#: resources/views/partials/comments.blade.php:46
-msgid "Comments are closed."
-msgstr ""
-
-#: resources/views/partials/comments.blade.php:53
-msgid "Leave a Comment"
-msgstr ""
-
-#: resources/views/partials/content-single-attachment.blade.php:13
-msgid "Download"
-msgstr ""
-
-#: resources/views/partials/entry-meta.blade.php:7
-msgid "By"
-msgstr ""
-
-#: resources/views/partials/entry-meta.blade.php:36
-msgid "views"
-msgstr ""
-
-#: resources/views/partials/entry-meta.blade.php:39
-msgid "plays"
-msgstr ""
-
-#: resources/views/partials/podcast-episode-card.blade.php:60
-msgid "Pause"
-msgstr ""
-
-#: resources/views/partials/podcast-episode-card.blade.php:60
-#: resources/views/sections/autoplay-confirm.blade.php:34
-msgid "Play"
-msgstr ""
-
-#: resources/views/sections/autoplay-confirm.blade.php:22
-msgid "Continue playing?"
-msgstr ""
-
-#: resources/views/sections/autoplay-confirm.blade.php:25
-msgid "Unknown episode"
-msgstr ""
-
-#: resources/views/sections/autoplay-confirm.blade.php:42
-msgid "Cancel"
-msgstr ""
-
-#: resources/views/sections/header.blade.php:30
-msgid "Light Mode"
-msgstr ""
-
-#: resources/views/sections/header.blade.php:30
-msgid "Dark Mode"
-msgstr ""
-
-#: resources/views/sections/header.blade.php:30
-msgid "Follow System"
-msgstr ""
-
-#: resources/views/sections/header.blade.php:34
-msgid "Toggle Theme"
-msgstr ""
-
-#: resources/views/sections/leftbar-drawer.blade.php:9
-msgid "Left Sidebar"
-msgstr ""
-
-#: resources/views/sections/leftbar-drawer.blade.php:21
-#: resources/views/sections/leftbar.blade.php:6
-msgid "Please add widgets to \"Leftbar\" area in Appearance > Widgets in the admin panel."
-msgstr ""
-
-#: resources/views/sections/mobile-menu.blade.php:7
-msgid "Menu"
-msgstr ""
-
-#: resources/views/sections/player.blade.php:3
-msgid "NOW PLAYING"
-msgstr ""
-
-#: resources/views/sections/player.blade.php:26
-msgid "No Episode Playing"
-msgstr ""
-
-#: resources/views/sections/player.blade.php:27
-msgid "Podcast Episode"
-msgstr ""
-
-#: resources/views/sections/player.blade.php:47
-msgid "Loading audio"
-msgstr ""
-
-#: resources/views/sections/playlist-drawer.blade.php:8
-msgid "Playlist"
-msgstr ""
-
-#: resources/views/sections/playlist-drawer.blade.php:15
-msgid "Total"
-msgstr ""
-
-#: resources/views/sections/playlist-drawer.blade.php:15
-msgid "episodes"
-msgstr ""
-
-#: resources/views/sections/playlist-drawer.blade.php:17
-msgid "Are you sure you want to clear the playlist?"
-msgstr ""
-
-#: resources/views/sections/playlist-drawer.blade.php:19
-msgid "Clear Playlist"
-msgstr ""
-
-#: resources/views/sections/playlist-drawer.blade.php:21
-msgid "Clear"
-msgstr ""
-
-#: resources/views/sections/playlist-drawer.blade.php:32
-msgid "Playlist is empty"
-msgstr ""
-
-#: resources/views/sections/playlist-drawer.blade.php:33
-msgid "Add some episodes to start listening"
-msgstr ""
-
-#: resources/views/sections/playlist-drawer.blade.php:83
-msgid "Remove"
-msgstr ""
-
-#: resources/views/sections/search-modal.blade.php:6
-msgid "Close"
-msgstr ""
-
-#: resources/views/sections/sidebar-drawer.blade.php:9
-msgid "Right Sidebar"
-msgstr ""
-
-#: resources/views/sections/sidebar-drawer.blade.php:22
-#: resources/views/sections/sidebar.blade.php:8
-msgid "Please add widgets to \"Sidebar\" area in Appearance > Widgets in the admin panel."
-msgstr ""
-
-#: resources/views/template-home.blade.php:13
-msgid "Please add widgets to \"Home Main\" area in Appearance > Widgets in the admin panel."
-msgstr ""
-
+#: storage/framework/views/1a50df49bc633ff0705da626a3f9dbe5.php:52
 #: resources/views/widgets/authors.blade.php:62
 msgid "No authors yet"
 msgstr ""
 
+#: storage/framework/views/1a50df49bc633ff0705da626a3f9dbe5.php:53
 #: resources/views/widgets/authors.blade.php:63
 msgid "Authors will appear here after adding users"
 msgstr ""
 
-#: resources/views/widgets/banner-carousel.blade.php:17
-msgid "No banner yet"
+#: storage/framework/views/1ce96fb579a03c1c14fb2ee6f2c8da20.php:7
+#: resources/views/partials/entry-meta.blade.php:7
+msgid "By"
 msgstr ""
 
-#: resources/views/widgets/banner-carousel.blade.php:18
-msgid "Please add banner content in the admin panel"
+#: storage/framework/views/1ce96fb579a03c1c14fb2ee6f2c8da20.php:36
+#: resources/views/partials/entry-meta.blade.php:36
+msgid "views"
 msgstr ""
 
-#: resources/views/widgets/banner-carousel.blade.php:55
-msgid "Previous slide"
+#: storage/framework/views/1ce96fb579a03c1c14fb2ee6f2c8da20.php:39
+#: resources/views/partials/entry-meta.blade.php:39
+msgid "plays"
 msgstr ""
 
-#: resources/views/widgets/banner-carousel.blade.php:63
-msgid "Next slide"
+#: storage/framework/views/3e47c6ebfce4e5ed40e01ea056284023.php:22
+#: resources/views/sections/autoplay-confirm.blade.php:22
+msgid "Continue playing?"
 msgstr ""
 
-#: resources/views/widgets/banner-carousel.blade.php:79
-#, php-format
-msgid "Go to slide %d"
+#: storage/framework/views/3e47c6ebfce4e5ed40e01ea056284023.php:25
+#: resources/views/sections/autoplay-confirm.blade.php:25
+msgid "Unknown episode"
 msgstr ""
 
-#: resources/views/widgets/blog-list.blade.php:17
-#: resources/views/widgets/podcast-list.blade.php:36
-msgid "See all"
+#: storage/framework/views/3e47c6ebfce4e5ed40e01ea056284023.php:34
+#: storage/framework/views/a43691b144a81e70774c017e46269e9e.php:99
+#: storage/framework/views/cb35f5082df942bb78eef63336162e6e.php:53
+#: storage/framework/views/cb35f5082df942bb78eef63336162e6e.php:54
+#: resources/views/partials/podcast-episode-card.blade.php:62
+#: resources/views/partials/podcast-episode-card.blade.php:63
+#: resources/views/sections/autoplay-confirm.blade.php:34
+#: resources/views/sections/player.blade.php:99
+msgid "Play"
 msgstr ""
 
-#: resources/views/widgets/blog-list.blade.php:51
-msgid "No blog posts yet"
+#: storage/framework/views/3e47c6ebfce4e5ed40e01ea056284023.php:42
+#: resources/views/sections/autoplay-confirm.blade.php:42
+msgid "Cancel"
 msgstr ""
 
-#: resources/views/widgets/podcast-list.blade.php:47
-msgid "Recent"
+#: storage/framework/views/5d2f2dafb2ee9b2f464c4841985e0dd1.php:5
+#: storage/framework/views/5d2f2dafb2ee9b2f464c4841985e0dd1.php:12
+#: storage/framework/views/1442c9dbe96da20c84fbb037a7ed1b87.php:4
+#: storage/framework/views/1442c9dbe96da20c84fbb037a7ed1b87.php:8
+#: storage/framework/views/5673e7ad058f27d524749749a6cee14d.php:5
+#: storage/framework/views/5673e7ad058f27d524749749a6cee14d.php:10
+#: storage/framework/views/119428ce0c2bfd96bc149094371f1d15.php:5
+#: storage/framework/views/119428ce0c2bfd96bc149094371f1d15.php:10
+#: storage/framework/views/afaa5f4a57ee68dceb36a51f538faa7f.php:6
+#: storage/framework/views/d6e6f42b7e0ba89e3fa7cd4a802df69a.php:4
+#: storage/framework/views/d6e6f42b7e0ba89e3fa7cd4a802df69a.php:9
+#: resources/views/partials/image-lightbox.blade.php:5
+#: resources/views/partials/image-lightbox.blade.php:12
+#: resources/views/sections/leftbar-drawer.blade.php:5
+#: resources/views/sections/leftbar-drawer.blade.php:10
+#: resources/views/sections/mobile-menu.blade.php:4
+#: resources/views/sections/mobile-menu.blade.php:8
+#: resources/views/sections/playlist-drawer.blade.php:4
+#: resources/views/sections/playlist-drawer.blade.php:9
+#: resources/views/sections/search-modal.blade.php:6
+#: resources/views/sections/sidebar-drawer.blade.php:5
+#: resources/views/sections/sidebar-drawer.blade.php:10
+msgid "Close"
 msgstr ""
 
-#: resources/views/widgets/podcast-list.blade.php:56
-msgid "Popular"
-msgstr ""
-
-#: resources/views/widgets/podcast-list.blade.php:89
-msgid "No podcast content"
-msgstr ""
-
+#: storage/framework/views/6d9d8ac0409e08b537906fb8d604e9df.php:12
 #: resources/views/widgets/tags-cloud.blade.php:16
 msgid "No tags yet"
 msgstr ""
 
+#: storage/framework/views/6d9d8ac0409e08b537906fb8d604e9df.php:13
 #: resources/views/widgets/tags-cloud.blade.php:17
 msgid "Tags will appear here after publishing articles with tags"
 msgstr ""
 
+#: storage/framework/views/6d9d8ac0409e08b537906fb8d604e9df.php:22
 #: resources/views/widgets/tags-cloud.blade.php:27
 #, php-format
 msgid "%d post"
@@ -2169,10 +2044,284 @@ msgid_plural "%d posts"
 msgstr[0] ""
 msgstr[1] ""
 
-#: resources/js/player/store.js:207
+#: storage/framework/views/7bbd4184c8789b46ca15c6e5aaa2e7f6.php:7
+#: resources/views/author.blade.php:9
+msgid "Author:"
+msgstr ""
+
+#: storage/framework/views/7bbd4184c8789b46ca15c6e5aaa2e7f6.php:28
+#: resources/views/author.blade.php:21
+#: resources/views/search.blade.php:7
+msgid "Sorry, no results were found."
+msgstr ""
+
+#: storage/framework/views/8d4c92805e73475888b18570bebaecbc.php:6
+#: storage/framework/views/5673e7ad058f27d524749749a6cee14d.php:22
+#: resources/views/sections/leftbar-drawer.blade.php:22
+#: resources/views/sections/leftbar.blade.php:6
+msgid "Please add widgets to \"Leftbar\" area in Appearance > Widgets in the admin panel."
+msgstr ""
+
+#: storage/framework/views/34df5098c6014d040ac16431e6773d17.php:31
+#: storage/framework/views/b16ecbdb834e3dcaf98e48d5ce12b772.php:11
+#: resources/views/widgets/blog-list.blade.php:17
+#: resources/views/widgets/podcast-list.blade.php:36
+msgid "See all"
+msgstr ""
+
+#: storage/framework/views/34df5098c6014d040ac16431e6773d17.php:42
+#: resources/views/widgets/podcast-list.blade.php:47
+msgid "Recent"
+msgstr ""
+
+#: storage/framework/views/34df5098c6014d040ac16431e6773d17.php:51
+#: resources/views/widgets/podcast-list.blade.php:56
+msgid "Popular"
+msgstr ""
+
+#: storage/framework/views/34df5098c6014d040ac16431e6773d17.php:82
+#: resources/views/widgets/podcast-list.blade.php:89
+msgid "No podcast content"
+msgstr ""
+
+#: storage/framework/views/38bbfe86b952cebbac62321edd747970.php:13
+#: resources/views/widgets/banner-carousel.blade.php:17
+msgid "No banner yet"
+msgstr ""
+
+#: storage/framework/views/38bbfe86b952cebbac62321edd747970.php:14
+#: resources/views/widgets/banner-carousel.blade.php:18
+msgid "Please add banner content in the admin panel"
+msgstr ""
+
+#: storage/framework/views/38bbfe86b952cebbac62321edd747970.php:50
+#: resources/views/widgets/banner-carousel.blade.php:55
+msgid "Previous slide"
+msgstr ""
+
+#: storage/framework/views/38bbfe86b952cebbac62321edd747970.php:58
+#: resources/views/widgets/banner-carousel.blade.php:63
+msgid "Next slide"
+msgstr ""
+
+#: storage/framework/views/38bbfe86b952cebbac62321edd747970.php:73
+#: resources/views/widgets/banner-carousel.blade.php:79
+#, php-format
+msgid "Go to slide %d"
+msgstr ""
+
+#: storage/framework/views/393c79712d9c74b32912e3cf922ead9f.php:55
+#: resources/views/layouts/app.blade.php:55
+msgid "Skip to content"
+msgstr ""
+
+#: storage/framework/views/393c79712d9c74b32912e3cf922ead9f.php:98
+#: resources/views/layouts/app.blade.php:98
+msgid "Open Left Sidebar"
+msgstr ""
+
+#: storage/framework/views/393c79712d9c74b32912e3cf922ead9f.php:114
+#: resources/views/layouts/app.blade.php:114
+msgid "Open Right Sidebar"
+msgstr ""
+
+#: storage/framework/views/393c79712d9c74b32912e3cf922ead9f.php:135
+#: resources/views/layouts/app.blade.php:135
+msgid "Back to top"
+msgstr ""
+
+#: storage/framework/views/1442c9dbe96da20c84fbb037a7ed1b87.php:7
+#: storage/framework/views/bb5d20fe703c258b7d88189ea97ec288.php:47
+#: resources/views/sections/header.blade.php:47
+#: resources/views/sections/mobile-menu.blade.php:7
+msgid "Menu"
+msgstr ""
+
+#: storage/framework/views/5673e7ad058f27d524749749a6cee14d.php:9
+#: resources/views/sections/leftbar-drawer.blade.php:9
+msgid "Left Sidebar"
+msgstr ""
+
+#: storage/framework/views/119428ce0c2bfd96bc149094371f1d15.php:9
+#: resources/views/sections/sidebar-drawer.blade.php:9
+msgid "Right Sidebar"
+msgstr ""
+
+#: storage/framework/views/119428ce0c2bfd96bc149094371f1d15.php:23
+#: storage/framework/views/ee1b2c14381a8c1da16dacf5eb5f0b54.php:8
+#: resources/views/sections/sidebar-drawer.blade.php:23
+#: resources/views/sections/sidebar.blade.php:8
+msgid "Please add widgets to \"Sidebar\" area in Appearance > Widgets in the admin panel."
+msgstr ""
+
+#: storage/framework/views/a43691b144a81e70774c017e46269e9e.php:3
+#: resources/views/sections/player.blade.php:3
+msgid "NOW PLAYING"
+msgstr ""
+
+#: storage/framework/views/a43691b144a81e70774c017e46269e9e.php:28
+#: storage/framework/views/a43691b144a81e70774c017e46269e9e.php:29
+#: resources/views/sections/player.blade.php:28
+#: resources/views/sections/player.blade.php:29
+msgid "No Episode Playing"
+msgstr ""
+
+#: storage/framework/views/a43691b144a81e70774c017e46269e9e.php:30
+#: resources/views/sections/player.blade.php:30
+msgid "Podcast Episode"
+msgstr ""
+
+#: storage/framework/views/a43691b144a81e70774c017e46269e9e.php:50
+#: resources/views/sections/player.blade.php:50
+msgid "Loading audio"
+msgstr ""
+
+#: storage/framework/views/a43691b144a81e70774c017e46269e9e.php:59
+#: resources/views/sections/player.blade.php:59
+msgid "Seek audio position"
+msgstr ""
+
+#: storage/framework/views/a43691b144a81e70774c017e46269e9e.php:67
+#: storage/framework/views/d6e6f42b7e0ba89e3fa7cd4a802df69a.php:8
+#: resources/views/sections/player.blade.php:67
+#: resources/views/sections/playlist-drawer.blade.php:8
+msgid "Playlist"
+msgstr ""
+
+#: storage/framework/views/a43691b144a81e70774c017e46269e9e.php:74
+#: resources/views/sections/player.blade.php:74
+msgid "Playback speed"
+msgstr ""
+
+#: storage/framework/views/a43691b144a81e70774c017e46269e9e.php:95
+#: resources/views/sections/player.blade.php:95
+msgid "Previous Episode"
+msgstr ""
+
+#: storage/framework/views/a43691b144a81e70774c017e46269e9e.php:99
+#: storage/framework/views/cb35f5082df942bb78eef63336162e6e.php:53
+#: storage/framework/views/cb35f5082df942bb78eef63336162e6e.php:54
+#: resources/views/partials/podcast-episode-card.blade.php:62
+#: resources/views/partials/podcast-episode-card.blade.php:63
+#: resources/views/sections/player.blade.php:99
+msgid "Pause"
+msgstr ""
+
+#: storage/framework/views/a43691b144a81e70774c017e46269e9e.php:106
+#: resources/views/sections/player.blade.php:106
+msgid "Next Episode"
+msgstr ""
+
+#: storage/framework/views/a43691b144a81e70774c017e46269e9e.php:112
+#: resources/views/sections/player.blade.php:112
+msgid "Volume controls"
+msgstr ""
+
+#: storage/framework/views/a43691b144a81e70774c017e46269e9e.php:125
+#: resources/views/sections/player.blade.php:125
+msgid "Volume"
+msgstr ""
+
+#: storage/framework/views/a43691b144a81e70774c017e46269e9e.php:128
+#: resources/views/sections/player.blade.php:128
+msgid "Toggle mute"
+msgstr ""
+
+#: storage/framework/views/b16ecbdb834e3dcaf98e48d5ce12b772.php:45
+#: resources/views/widgets/blog-list.blade.php:51
+msgid "No blog posts yet"
+msgstr ""
+
+#: storage/framework/views/bb1b9f0a7718f5b594e5bc1f24329c5b.php:7
+#: resources/views/template-home.blade.php:13
+msgid "Please add widgets to \"Home Main\" area in Appearance > Widgets in the admin panel."
+msgstr ""
+
+#: storage/framework/views/bb5d20fe703c258b7d88189ea97ec288.php:28
+#: resources/views/sections/header.blade.php:28
+msgid "Open Search"
+msgstr ""
+
+#: storage/framework/views/bb5d20fe703c258b7d88189ea97ec288.php:37
+#: resources/views/sections/header.blade.php:37
+msgid "Light Mode"
+msgstr ""
+
+#: storage/framework/views/bb5d20fe703c258b7d88189ea97ec288.php:37
+#: resources/views/sections/header.blade.php:37
+msgid "Dark Mode"
+msgstr ""
+
+#: storage/framework/views/bb5d20fe703c258b7d88189ea97ec288.php:37
+#: resources/views/sections/header.blade.php:37
+msgid "Follow System"
+msgstr ""
+
+#: storage/framework/views/bb5d20fe703c258b7d88189ea97ec288.php:41
+#: resources/views/sections/header.blade.php:41
+msgid "Toggle Theme"
+msgstr ""
+
+#: storage/framework/views/d0c85bc48ca24366f516d99c9dcb4849.php:46
+#: resources/views/partials/comments.blade.php:46
+msgid "Comments are closed."
+msgstr ""
+
+#: storage/framework/views/d0c85bc48ca24366f516d99c9dcb4849.php:53
+#: resources/views/partials/comments.blade.php:53
+msgid "Leave a Comment"
+msgstr ""
+
+#: storage/framework/views/d6e6f42b7e0ba89e3fa7cd4a802df69a.php:16
+#: resources/views/sections/playlist-drawer.blade.php:16
+msgid "Total"
+msgstr ""
+
+#: storage/framework/views/d6e6f42b7e0ba89e3fa7cd4a802df69a.php:16
+#: resources/views/sections/playlist-drawer.blade.php:16
+msgid "episodes"
+msgstr ""
+
+#: storage/framework/views/d6e6f42b7e0ba89e3fa7cd4a802df69a.php:18
+#: resources/views/sections/playlist-drawer.blade.php:18
+msgid "Are you sure you want to clear the playlist?"
+msgstr ""
+
+#: storage/framework/views/d6e6f42b7e0ba89e3fa7cd4a802df69a.php:20
+#: resources/views/sections/playlist-drawer.blade.php:20
+msgid "Clear Playlist"
+msgstr ""
+
+#: storage/framework/views/d6e6f42b7e0ba89e3fa7cd4a802df69a.php:22
+#: resources/views/sections/playlist-drawer.blade.php:22
+msgid "Clear"
+msgstr ""
+
+#: storage/framework/views/d6e6f42b7e0ba89e3fa7cd4a802df69a.php:33
+#: resources/views/sections/playlist-drawer.blade.php:33
+msgid "Playlist is empty"
+msgstr ""
+
+#: storage/framework/views/d6e6f42b7e0ba89e3fa7cd4a802df69a.php:34
+#: resources/views/sections/playlist-drawer.blade.php:34
+msgid "Add some episodes to start listening"
+msgstr ""
+
+#: storage/framework/views/d6e6f42b7e0ba89e3fa7cd4a802df69a.php:93
+#: storage/framework/views/d6e6f42b7e0ba89e3fa7cd4a802df69a.php:94
+#: resources/views/sections/playlist-drawer.blade.php:93
+#: resources/views/sections/playlist-drawer.blade.php:94
+msgid "Remove"
+msgstr ""
+
+#: resources/views/partials/content-single-attachment.blade.php:13
+msgid "Download"
+msgstr ""
+
+#: resources/js/player/store.js:190
 msgid "Failed to fetch latest podcasts:"
 msgstr ""
 
-#: resources/js/player/store.js:314
+#: resources/js/player/store.js:383
 msgid "Audio load error:"
 msgstr ""

@@ -2132,7 +2132,7 @@ msgstr "插件启用失败。"
 
 #: resources/views/layouts/app.blade.php:119
 msgid "Back to top"
-msgstr ""
+msgstr "返回顶部"
 
 #: app/import.php:15
 msgid "A Ripple Song Demo"
@@ -2155,7 +2155,7 @@ msgstr ""
 #: searchform.php:23
 msgctxt "placeholder"
 msgid "Search &hellip;"
-msgstr ""
+msgstr "搜索…"
 
 #: resources/js/player/store.js:207
 msgid "Failed to fetch latest podcasts:"
@@ -2164,3 +2164,43 @@ msgstr ""
 #: resources/js/player/store.js:314
 msgid "Audio load error:"
 msgstr ""
+
+#: resources/views/layouts/app.blade.php:47
+msgid "Skip to content"
+msgstr "跳转到主要内容"
+
+#: resources/views/sections/header.blade.php:28
+msgid "Open Search"
+msgstr "打开搜索"
+
+#: searchform.php:12 searchform.php:21
+msgid "Search"
+msgstr "搜索"
+
+#: resources/views/sections/player.blade.php:59
+msgid "Seek audio position"
+msgstr "调整音频播放位置"
+
+#: resources/views/sections/player.blade.php:72
+msgid "Playback speed"
+msgstr "播放速度"
+
+#: resources/views/sections/player.blade.php:89
+msgid "Previous Episode"
+msgstr "上一集"
+
+#: resources/views/sections/player.blade.php:99
+msgid "Next Episode"
+msgstr "下一集"
+
+#: resources/views/sections/player.blade.php:105
+msgid "Volume controls"
+msgstr "音量控制"
+
+#: resources/views/sections/player.blade.php:114
+msgid "Volume"
+msgstr "音量"
+
+#: resources/views/sections/player.blade.php:117
+msgid "Toggle mute"
+msgstr "切换静音"

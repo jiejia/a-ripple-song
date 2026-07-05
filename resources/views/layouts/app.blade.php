@@ -48,6 +48,12 @@
 </head>
 
 <body @php(body_class('bg-base-200'))>
+  <a
+    href="#swup-main"
+    class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[300] focus:rounded-md focus:bg-base-100 focus:px-4 focus:py-2 focus:text-base-content focus:shadow-lg"
+  >
+    {{ __('Skip to content', 'a-ripple-song') }}
+  </a>
   <div class="mb-[190px] md:mb-0">
     <div class="max-w-screen-xl mx-auto">
       @php(wp_body_open())
@@ -80,8 +86,8 @@
   @include('sections.sidebar-drawer')
 
   {{-- Leftbar Drawer Toggle Button - Shows when leftbar is hidden (below lg) --}}
-  <label 
-    for="leftbar-drawer" 
+  <button
+    type="button"
     class="fixed left-0 top-1/2 -translate-y-1/2 z-[99] lg:hidden cursor-pointer
            bg-base-300/80 text-base-content/70 
            rounded-r-md shadow-sm
@@ -89,13 +95,15 @@
            hover:bg-base-300 hover:text-base-content hover:px-2
            transition-all duration-200"
     aria-label="{{ __('Open Left Sidebar', 'a-ripple-song') }}"
+    aria-controls="leftbar-drawer"
+    onclick="document.getElementById('leftbar-drawer').checked = true;"
   >
-    <i data-lucide="chevron-right" class="w-3 h-3"></i>
-  </label>
+    <i data-lucide="chevron-right" class="w-3 h-3" aria-hidden="true"></i>
+  </button>
 
   {{-- Sidebar Drawer Toggle Button - Shows when sidebar is hidden (below md) --}}
-  <label 
-    for="sidebar-drawer" 
+  <button
+    type="button"
     class="fixed right-0 top-1/2 -translate-y-1/2 z-[99] md:hidden cursor-pointer
            bg-base-300/80 text-base-content/70 
            rounded-l-md shadow-sm
@@ -103,9 +111,11 @@
            hover:bg-base-300 hover:text-base-content hover:px-2
            transition-all duration-200"
     aria-label="{{ __('Open Right Sidebar', 'a-ripple-song') }}"
+    aria-controls="sidebar-drawer"
+    onclick="document.getElementById('sidebar-drawer').checked = true;"
   >
-    <i data-lucide="chevron-left" class="w-3 h-3"></i>
-  </label>
+    <i data-lucide="chevron-left" class="w-3 h-3" aria-hidden="true"></i>
+  </button>
 
   {{-- Back to Top Button --}}
   <button
@@ -123,7 +133,7 @@
     class="fixed bottom-52 md:bottom-6 right-4 z-50 btn btn-circle btn-primary shadow-lg"
     aria-label="{{ __('Back to top', 'a-ripple-song') }}"
   >
-    <i data-lucide="arrow-up" class="w-5 h-5"></i>
+    <i data-lucide="arrow-up" class="w-5 h-5" aria-hidden="true"></i>
   </button>
 </body>
 

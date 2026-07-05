@@ -1,11 +1,12 @@
 <div class="drawer drawer-start z-[101]" id="swup-mobile-menu">
   <input type="checkbox" id="mobile-menu" class="drawer-toggle" />
   <div class="drawer-side">
-    <label for="mobile-menu" aria-label="close sidebar" class="drawer-overlay"></label>
+    <label for="mobile-menu" aria-label="{{ __('Close', 'a-ripple-song') }}" class="drawer-overlay"></label>
     <div class="bg-base-100 h-full w-80 max-w-xs">
       <div class="sticky top-0 bg-base-100 p-4 border-b border-base-300 flex items-center justify-between">
         <h3 class="font-bold text-lg">{!! __('Menu', 'a-ripple-song') !!}</h3>
-        <label for="mobile-menu" class="btn btn-sm btn-circle btn-ghost">✕</label>
+        <button type="button" class="btn btn-sm btn-circle btn-ghost" aria-label="{{ __('Close', 'a-ripple-song') }}"
+          aria-controls="mobile-menu" onclick="document.getElementById('mobile-menu').checked = false;">✕</button>
       </div>
       
       <ul class="menu p-4 w-full">

@@ -20,7 +20,7 @@ Authors Widget Template
         <a href="{{ esc_url(get_author_posts_url($user->ID)) }}" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
           <div class="avatar">
             <div class="ring-base-content/50 ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
-              <img src="{{ esc_url($avatar_url) }}" alt="{{ esc_attr($user->display_name) }}" />
+              <img src="{{ esc_url($avatar_url) }}" alt="{{ esc_attr($user->display_name) }}" width="24" height="24" />
             </div>
           </div>
           <span class="text-xs">{{ esc_html($user->display_name) }}</span>
@@ -41,7 +41,7 @@ Authors Widget Template
         <a href="{{ esc_url(get_author_posts_url($user->ID)) }}" class="grid grid-cols-[40px_1fr_40px] items-center gap-2 bg-base-200/50 hover:bg-base-200 rounded-lg p-2">
           <div class="avatar">
             <div class="ring-base-content/50 ring-offset-base-100 w-6 rounded-full ring-1 ring-offset-1">
-              <img src="{{ esc_url($avatar_url) }}" alt="{{ esc_attr($user->display_name) }}" />
+              <img src="{{ esc_url($avatar_url) }}" alt="{{ esc_attr($user->display_name) }}" width="24" height="24" />
             </div>
           </div>
           <span class="text-xs">{{ esc_html($user->display_name) }}</span>

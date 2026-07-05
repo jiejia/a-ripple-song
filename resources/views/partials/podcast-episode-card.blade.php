@@ -20,13 +20,15 @@
                 @if(has_post_thumbnail($post_id))
                     <img src="{{ get_the_post_thumbnail_url($post_id, 'thumbnail') }}"
                          alt="{{ get_the_title($post_id) }}"
+                         width="80"
+                         height="80"
                          class="w-20 h-20 rounded-md object-cover" />
                     <div class="pointer-events-none absolute inset-0 bg-base-900/30 flex items-center justify-center">
-                        <i data-lucide="podcast" class="w-5 h-5 text-base-100"></i>
+                        <i data-lucide="podcast" class="w-5 h-5 text-base-100" aria-hidden="true"></i>
                     </div>
                 @else
                     <div class="w-20 h-20 rounded-md bg-base-300/50 flex items-center justify-center">
-                        <i data-lucide="podcast" class="w-5 h-5 text-base-content/70"></i>
+                        <i data-lucide="podcast" class="w-5 h-5 text-base-content/70" aria-hidden="true"></i>
                     </div>
                 @endif
             </a>
@@ -56,15 +58,18 @@
                         }
                     "
                     class="cursor-pointer hover:text-primary transition-colors"
-                    :title="$store.player.currentEpisode && $store.player.currentEpisode.id === episode.id && $store.player.isPlaying ? '{{ __('Pause', 'a-ripple-song') }}' : '{{ __('Play', 'a-ripple-song') }}'">
+                    :title="$store.player.currentEpisode && $store.player.currentEpisode.id === episode.id && $store.player.isPlaying ? '{{ __('Pause', 'a-ripple-song') }}' : '{{ __('Play', 'a-ripple-song') }}'"
+                    :aria-label="$store.player.currentEpisode && $store.player.currentEpisode.id === episode.id && $store.player.isPlaying ? '{{ __('Pause', 'a-ripple-song') }}' : '{{ __('Play', 'a-ripple-song') }}'">
                     <i data-lucide="pause" 
                        class="text-xs h-4"
                        x-cloak
-                       x-show="$store.player.currentEpisode && $store.player.currentEpisode.id === episode.id && $store.player.isPlaying"></i>
+                       x-show="$store.player.currentEpisode && $store.player.currentEpisode.id === episode.id && $store.player.isPlaying"
+                       aria-hidden="true"></i>
                     <i data-lucide="play" 
                        class="text-xs h-4"
                        x-cloak
-                       x-show="!($store.player.currentEpisode && $store.player.currentEpisode.id === episode.id && $store.player.isPlaying)"></i>
+                       x-show="!($store.player.currentEpisode && $store.player.currentEpisode.id === episode.id && $store.player.isPlaying)"
+                       aria-hidden="true"></i>
                 </button>
             @endif
             <!-- <i data-lucide="ellipsis-vertical" class="text-xs h-4 cursor-pointer"></i> -->

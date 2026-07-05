@@ -2134,7 +2134,7 @@ msgstr "Plugin activation failed."
 
 #: resources/views/layouts/app.blade.php:119
 msgid "Back to top"
-msgstr ""
+msgstr "Back to top"
 
 #: app/import.php:15
 msgid "A Ripple Song Demo"
@@ -2157,7 +2157,7 @@ msgstr ""
 #: searchform.php:23
 msgctxt "placeholder"
 msgid "Search &hellip;"
-msgstr ""
+msgstr "Search &hellip;"
 
 #: resources/js/player/store.js:207
 msgid "Failed to fetch latest podcasts:"
@@ -2166,3 +2166,43 @@ msgstr ""
 #: resources/js/player/store.js:314
 msgid "Audio load error:"
 msgstr ""
+
+#: resources/views/layouts/app.blade.php:47
+msgid "Skip to content"
+msgstr "Skip to content"
+
+#: resources/views/sections/header.blade.php:28
+msgid "Open Search"
+msgstr "Open Search"
+
+#: searchform.php:12 searchform.php:21
+msgid "Search"
+msgstr "Search"
+
+#: resources/views/sections/player.blade.php:59
+msgid "Seek audio position"
+msgstr "Seek audio position"
+
+#: resources/views/sections/player.blade.php:72
+msgid "Playback speed"
+msgstr "Playback speed"
+
+#: resources/views/sections/player.blade.php:89
+msgid "Previous Episode"
+msgstr "Previous Episode"
+
+#: resources/views/sections/player.blade.php:99
+msgid "Next Episode"
+msgstr "Next Episode"
+
+#: resources/views/sections/player.blade.php:105
+msgid "Volume controls"
+msgstr "Volume controls"
+
+#: resources/views/sections/player.blade.php:114
+msgid "Volume"
+msgstr "Volume"
+
+#: resources/views/sections/player.blade.php:117
+msgid "Toggle mute"
+msgstr "Toggle mute"
