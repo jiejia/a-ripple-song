@@ -287,6 +287,18 @@ add_action('wp_enqueue_scripts', function () {
 }, 100);
 
 /**
+ * Inject podcast feed autodiscovery link into <head> so podcast clients can find the feed.
+ */
+add_action('wp_head', function () {
+    printf(
+        '<link rel="alternate" type="application/rss+xml" title="%s" href="%s">%s',
+        esc_attr(get_bloginfo('name') . ' — ' . __('Podcast Feed', 'a-ripple-song')),
+        esc_url(get_feed_link('podcast')),
+        "\n"
+    );
+});
+
+/**
  * Mark Vite JavaScript entrypoints as ES modules.
  */
 add_filter('script_loader_tag', function ($tag, $handle, $src) {

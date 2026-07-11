@@ -687,7 +687,8 @@ class Podcast extends FeedAbstract
         $generator = (string) $settings['generator'];
         $apple_verify_code = (string) $settings['apple_verify'];
         $podcast_funding = (array) $settings['funding'];
-        $query = new \WP_Query(array('post_type' => $this->postTypeSlug(), 'post_status' => 'publish', 'posts_per_page' => 100, 'orderby' => 'date', 'order' => 'DESC'));
+        $feedLimit = (int) apply_filters('aripplesong_podcast_feed_limit', 300);
+        $query = new \WP_Query(array('post_type' => $this->postTypeSlug(), 'post_status' => 'publish', 'posts_per_page' => $feedLimit < 1 ? -1 : $feedLimit, 'orderby' => 'date', 'order' => 'DESC'));
         $last_build_date = $this->formatRfc2822Gmt(time());
         if (!empty($query->posts)) {
             $latest_post_id = (int) $query->posts[0]->ID;

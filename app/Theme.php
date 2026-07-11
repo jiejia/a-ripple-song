@@ -17,7 +17,23 @@ class Theme
      */
     public const REPOSITORY_URI = 'https://github.com/jiejia/a-ripple-song';
 
-    public const VERSION = '1.0.0';
+    public const VERSION = '0.5.0';
+
+    /**
+     * Return the theme version from style.css at runtime.
+     */
+    public static function version(): string
+    {
+        static $version = null;
+
+        if ($version === null) {
+            $version = function_exists('wp_get_theme')
+                ? (string) wp_get_theme()->get('Version')
+                : self::VERSION;
+        }
+
+        return $version ?: self::VERSION;
+    }
 
     public const DIR = A_RIPPLE_SONG_THEME_DIR;
 

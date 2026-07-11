@@ -30,8 +30,9 @@ class RouteServiceProvider extends ServiceProvider
     {
         $metricsController = new MetricsController();
 
-        $this->post('/metrics/views', [$metricsController, 'incrementViewCount'], $this->postIdArgs());
-        $this->post('/metrics/plays', [$metricsController, 'incrementPlayCount'], $this->postIdArgs());
+        $rateLimited = $this->rateLimitedPermission();
+        $this->post('/metrics/views', [$metricsController, 'incrementViewCount'], $this->postIdArgs(), $rateLimited);
+        $this->post('/metrics/plays', [$metricsController, 'incrementPlayCount'], $this->postIdArgs(), $rateLimited);
         $this->get('/metrics', [$metricsController, 'getMetrics'], $this->postIdsArgs());
     }
 
@@ -68,16 +69,41 @@ class RouteServiceProvider extends ServiceProvider
      * @param string $route REST route path.
      * @param callable $callback Route callback.
      * @param array<string,mixed> $args Route arguments.
+     * @param callable|string $permissionCallback Optional permission callback override.
      * @return void
      */
-    private function route(string $method, string $route, callable $callback, array $args = []): void
+    private function route(string $method, string $route, callable $callback, array $args = [], $permissionCallback = '__return_true'): void
     {
         register_rest_route($this->namespace(), $route, [
             'methods' => $method,
             'callback' => $callback,
-            'permission_callback' => '__return_true',
+            'permission_callback' => $permissionCallback,
             'args' => $args,
         ]);
+    }
+
+    /**
+     * Build a permission callback that rate-limits by IP and post_id.
+     *
+     * Allows one write per (IP, post_id) pair every 5 minutes to prevent count inflation.
+     *
+     * @return callable
+     */
+    private function rateLimitedPermission(): callable
+    {
+        return function (\WP_REST_Request $request): bool|\WP_Error {
+            $postId = (int) $request->get_param('post_id');
+            $ip = sanitize_text_field(wp_unslash($_SERVER['REMOTE_ADDR'] ?? ''));
+            $key = 'aripplesong_rl_' . md5($ip . '_' . $postId);
+
+            if (get_transient($key)) {
+                return new \WP_Error('rate_limited', __('Too many requests.', 'a-ripple-song'), ['status' => 429]);
+            }
+
+            set_transient($key, 1, 5 * MINUTE_IN_SECONDS);
+
+            return true;
+        };
     }
 
     /**

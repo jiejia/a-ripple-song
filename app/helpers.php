@@ -147,11 +147,11 @@ function get_post_all_authors($post_id) {
         $authors[] = (int)$author_id;
     }
 
-    // If it's a podcast, also get members and guests
+    // If it's a podcast episode, also get members and guests
     $post_type = get_post_type($post_id);
-    if ($post_type === 'podcast') {
-        $members = get_post_meta($post_id, 'members', true);
-        $guests = get_post_meta($post_id, 'guests', true);
+    if ($post_type === aripplesong_episode_post_type()) {
+        $members = get_post_meta($post_id, Episode::storedFieldKey('members'), true);
+        $guests = get_post_meta($post_id, Episode::storedFieldKey('guests'), true);
 
         $authors = array_merge(
             $authors,
@@ -166,10 +166,10 @@ function get_post_all_authors($post_id) {
 }
 
 /**
- * Extract user IDs from a CMB2 multicheck value.
+ * Extract user IDs from a Carbon Fields multiselect value.
  *
- * CMB2 multicheck typically stores selected values as an associative array of
- * "id" => "on". Some installs may store a simple numeric array instead.
+ * Carbon Fields stores selected values as an associative array of "id" => "on".
+ * Some legacy installs may store a simple numeric array instead.
  *
  * @param mixed $value
  * @return int[]

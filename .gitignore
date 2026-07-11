@@ -3,5 +3,8 @@
 /build
 /public/*
 !/public/.gitkeep
+/storage/framework/views/
+/storage/framework/sessions/
+/storage/logs/
 .env
 npm-debug.log
