@@ -662,7 +662,7 @@ msgstr "explicit"
 
 #: app/Settings/Podcast.php:97
 msgid "Required. Single-episode value can override."
-msgstr "必填。可被单集值覆盖。"
+msgstr "必填。可被播客值覆盖。"
 
 #: app/Settings/Podcast.php:113
 msgid "Secondary Category (optional)"
@@ -728,7 +728,7 @@ msgstr "clean"
 
 #: app/CustomPostTypes/Episode.php:96
 msgid "Episode Type"
-msgstr "单集类型"
+msgstr "播客类型"
 
 #: app/CustomPostTypes/Episode.php:99
 msgid "full"
@@ -760,7 +760,7 @@ msgstr "可选。整数。"
 
 #: app/CustomPostTypes/Episode.php:185
 msgid "Episode Author (override)"
-msgstr "单集作者（覆盖）"
+msgstr "播客作者（覆盖）"
 
 #: app/CustomPostTypes/Episode.php:186
 msgid "Optional. Overrides channel author for this episode."
@@ -768,7 +768,7 @@ msgstr "可选。覆盖该集的节目作者。"
 
 #: app/CustomPostTypes/Episode.php:107
 msgid "Episode Cover (square)"
-msgstr "单集封面（正方形）"
+msgstr "播客封面（正方形）"
 
 #: app/CustomPostTypes/Episode.php:199
 msgid "Subtitle"
@@ -948,12 +948,12 @@ msgstr ""
 
 #: app/CustomPostTypes/Episode.php:41
 msgid "Episode"
-msgstr "单集"
+msgstr "播客"
 
 #: app/CustomPostTypes/Episode.php:51
 #: app/Menus/EpisodeCPT.php:21
 msgid "Episodes"
-msgstr "单集"
+msgstr "播客"
 
 #: app/CustomPostTypes/Episode.php:81
 msgid "Required. Upload an audio file; the saved value is the media attachment ID."
@@ -989,11 +989,11 @@ msgstr "标题（可选）"
 
 #: app/CustomPostTypes/Episode.php:145
 msgid "Select episode members (authors)."
-msgstr "选择单集成员（作者）。"
+msgstr "选择播客成员（作者）。"
 
 #: app/CustomPostTypes/Episode.php:151
 msgid "Select episode guests (subscribers)."
-msgstr "选择单集嘉宾（订阅者）。"
+msgstr "选择播客嘉宾（订阅者）。"
 
 #: app/CustomPostTypes/Episode.php:154
 msgid "Audio"
@@ -1044,25 +1044,25 @@ msgstr "人员"
 
 #: app/CustomPostTypes/Episode.php:391
 msgid "Episode title (plain text)"
-msgstr "单集标题（纯文本）"
+msgstr "播客标题（纯文本）"
 
 #. translators: %d: episode post ID
 #: app/CustomPostTypes/Episode.php:1014
 #, php-format
 msgid "Episode #%d: getID3 not available"
-msgstr "单集 #%d：getID3 不可用"
+msgstr "播客 #%d：getID3 不可用"
 
 #. translators: %d: episode post ID
 #: app/CustomPostTypes/Episode.php:1019
 #, php-format
 msgid "Episode #%d: audio file missing for duration/size/mime detection"
-msgstr "单集 #%d：缺少音频文件，无法检测时长/大小/MIME"
+msgstr "播客 #%d：缺少音频文件，无法检测时长/大小/MIME"
 
 #. translators: 1: episode post ID, 2: error message
 #: app/CustomPostTypes/Episode.php:1024
 #, php-format
 msgid "Episode #%1$d: getID3 error - %2$s"
-msgstr "单集 #%1$d：getID3 错误 - %2$s"
+msgstr "播客 #%1$d：getID3 错误 - %2$s"
 
 #. translators: %s: host/author name
 #: app/Feeds/Podcast.php:625
@@ -1084,17 +1084,17 @@ msgstr ""
 
 #: app/Menus/EpisodeCPT.php:65
 msgid "All Episodes"
-msgstr "全部单集"
+msgstr "全部播客"
 
 #: app/Menus/EpisodeCPT.php:66
 msgid "Add New Episode"
-msgstr "添加单集"
+msgstr "添加播客"
 
 #: app/Menus/EpisodeCPT.php:67
 #: app/Taxonomies/EpisodeCategory.php:41
 #: app/Taxonomies/EpisodeCategory.php:51
 msgid "Episode Categories"
-msgstr "单集分类"
+msgstr "播客分类"
 
 #: app/Menus/EpisodeCPT.php:68
 msgid "Tags"
@@ -1176,7 +1176,7 @@ msgstr "iTunes 类型（itunes:type）"
 
 #: app/Settings/Podcast.php:122
 msgid "episodic"
-msgstr "episodic（单集式）"
+msgstr "episodic（播客式）"
 
 #: app/Settings/Podcast.php:123
 msgid "serial"
@@ -1681,39 +1681,39 @@ msgstr "电视与电影 > 电视评论"
 #: app/Taxonomies/EpisodeCategory.php:29
 #: app/Taxonomies/EpisodeCategory.php:42
 msgid "Episode Category"
-msgstr "单集分类"
+msgstr "播客分类"
 
 #: app/Taxonomies/EpisodeCategory.php:43
 msgid "Search Episode Categories"
-msgstr "搜索单集分类"
+msgstr "搜索播客分类"
 
 #: app/Taxonomies/EpisodeCategory.php:44
 msgid "All Episode Categories"
-msgstr "全部单集分类"
+msgstr "全部播客分类"
 
 #: app/Taxonomies/EpisodeCategory.php:45
 msgid "Parent Episode Category"
-msgstr "父级单集分类"
+msgstr "父级播客分类"
 
 #: app/Taxonomies/EpisodeCategory.php:46
 msgid "Parent Episode Category:"
-msgstr "父级单集分类："
+msgstr "父级播客分类："
 
 #: app/Taxonomies/EpisodeCategory.php:47
 msgid "Edit Episode Category"
-msgstr "编辑单集分类"
+msgstr "编辑播客分类"
 
 #: app/Taxonomies/EpisodeCategory.php:48
 msgid "Update Episode Category"
-msgstr "更新单集分类"
+msgstr "更新播客分类"
 
 #: app/Taxonomies/EpisodeCategory.php:49
 msgid "Add New Episode Category"
-msgstr "添加单集分类"
+msgstr "添加播客分类"
 
 #: app/Taxonomies/EpisodeCategory.php:50
 msgid "New Episode Category Name"
-msgstr "新单集分类名称"
+msgstr "新播客分类名称"
 
 #. Template Name of the theme
 msgid "Home Template"
@@ -1782,7 +1782,7 @@ msgstr "较新的评论"
 
 #: app/Widgets/PodcastListWidget.php:162
 msgid "Number of episodes:"
-msgstr "显示单集数："
+msgstr "显示播客数："
 
 #: app/Widgets/SubscribeLinksWidget.php:91
 msgid "SUBSCRIBE"
