@@ -1,6 +1,6 @@
 # A Ripple Song
 
-A Ripple Song 是一个经典的 WordPress 播客主题，内置播客节目发布、播客 RSS 输出、常驻音频播放器、主题专用小工具，以及开箱即用的演示导入数据。项目基于 Sage、Acorn、Carbon Fields 和现代化的 Vite 前端工作流构建。
+A Ripple Song 是一个经典 WordPress 播客主题，内置播客节目发布、播客 RSS 输出、常驻音频播放器、主题专用小工具，以及开箱即用的演示导入数据。项目基于 Sage、Acorn、Carbon Fields 和现代化的 Vite 前端工作流构建。
 
 <img src="screenshot.png" alt="A Ripple Song 主题截图" />
 
