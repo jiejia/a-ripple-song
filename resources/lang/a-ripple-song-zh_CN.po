@@ -603,6 +603,26 @@ msgstr "浅色主题"
 msgid "Dark Theme"
 msgstr "深色主题"
 
+#: app/Settings/General.php:45
+msgid "General Settings"
+msgstr "常规设置"
+
+#: app/Settings/General.php:66
+msgid "Player Type"
+msgstr "播放器类型"
+
+#: app/Settings/General.php:68
+msgid "Howler"
+msgstr "Howler"
+
+#: app/Settings/General.php:69
+msgid "WaveSurfer"
+msgstr "WaveSurfer"
+
+#: app/Settings/General.php:72
+msgid "Choose the audio player engine used on the frontend."
+msgstr "选择前台使用的音频播放器引擎。"
+
 #: app/Settings/Podcast.php:42
 msgid "Podcast Settings"
 msgstr "播客设置"

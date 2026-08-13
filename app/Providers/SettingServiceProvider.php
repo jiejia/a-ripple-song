@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Contracts\SettingInterface;
+use App\Settings\General;
 use App\Settings\Podcast;
 use Carbon_Fields\Container;
 use Illuminate\Support\ServiceProvider;
@@ -14,7 +15,7 @@ class SettingServiceProvider extends ServiceProvider
      *
      * @var array<int,class-string<SettingInterface>>
      */
-    private array $settings = [Podcast::class];
+    private array $settings = [General::class, Podcast::class];
 
     /**
      * Register setting services.

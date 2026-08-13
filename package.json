@@ -36,6 +36,7 @@
     "simple-icons": "^16.24.0",
     "soundtouchjs": "^0.3.0",
     "swup": "^4.9.2",
-    "tone": "^15.1.22"
+    "tone": "^15.1.22",
+    "wavesurfer.js": "^7.12.11"
   }
 }

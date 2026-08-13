@@ -2,7 +2,7 @@
 
 namespace App\Menus;
 
-use App\Settings\Podcast;
+use App\Settings\General;
 use App\Settings\RecommendedPlugins;
 use App\Theme;
 
@@ -59,18 +59,18 @@ class Setting
      */
     public function subMenu(): void
     {
-        // Podcast settings are registered from App\Settings\Podcast before Carbon Fields boots.
+        // Carbon Fields registers General and Podcast settings before the admin menu is rendered.
     }
 
     /**
-     * Redirect direct parent menu visits to the podcast settings page.
+     * Redirect direct parent menu visits to the general settings page.
      *
      * @return void
      */
     public static function renderLandingPage(): void
     {
         // Send users to the first available settings page.
-        wp_safe_redirect(admin_url('admin.php?page=' . (new Podcast())->pageSlug()));
+        wp_safe_redirect(admin_url('admin.php?page=' . (new General())->pageSlug()));
         exit;
     }
 
@@ -92,7 +92,7 @@ class Setting
      */
     public static function registerRecommendedPluginsSubmenu(): void
     {
-        // Add this submenu after Carbon Fields registers Podcast Settings.
+        // Add this submenu after Carbon Fields registers the theme settings pages.
         $recommendedPlugins = new RecommendedPlugins();
 
         add_submenu_page(

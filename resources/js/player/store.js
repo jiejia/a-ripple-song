@@ -1,5 +1,6 @@
 import { Howl, Howler } from 'howler';
 import AudioMotionAnalyzer from 'audiomotion-analyzer';
+import WaveSurfer from 'wavesurfer.js';
 import { buildRestUrl, bumpPlayCountDom, METRIC_ACTIONS, sendMetric } from '@scripts/lib/rest.js';
 import { safeLocalStorage } from '@scripts/lib/storage.js';
 import { scheduleIconRefresh } from '@scripts/lib/icons.js';
@@ -26,6 +27,36 @@ import {
 
 const { __ } = wp.i18n;
 
+const PLAYER_TYPE_HOWLER = 'howler';
+const PLAYER_TYPE_WAVESURFER = 'wavesurfer';
+
+/**
+ * Resolve the server-provided player type against the supported engines.
+ *
+ * @param {unknown} playerType Configured player type.
+ * @return {string}
+ */
+function resolvePlayerType(playerType) {
+  return playerType === PLAYER_TYPE_WAVESURFER
+    ? PLAYER_TYPE_WAVESURFER
+    : PLAYER_TYPE_HOWLER;
+}
+
+/**
+ * Read a theme CSS variable for WaveSurfer colors.
+ *
+ * @param {string} variableName CSS variable name.
+ * @param {string} fallback Fallback color.
+ * @return {string}
+ */
+function getThemeColor(variableName, fallback) {
+  const color = window.getComputedStyle(document.documentElement)
+    .getPropertyValue(variableName)
+    .trim();
+
+  return color || fallback;
+}
+
 /**
  * Register the Alpine player store.
  *
@@ -34,8 +65,15 @@ const { __ } = wp.i18n;
  */
 export function registerPlayerStore(Alpine) {
   Alpine.store('player', {
+    playerType: resolvePlayerType(window.aripplesongData?.player?.type),
     currentSound: null,
     soundId: null,
+    currentWaveSurfer: null,
+    waveSurferTrackToken: 0,
+    waveSurferReadyPromise: Promise.resolve(false),
+    waveSurferPlayPending: false,
+    waveSurferPlayTracked: false,
+    lastWaveSurferStateSaveAt: 0,
     audioMotion: null,
     analyzerAudioContext: null,
     analyzerSourceNode: null,
@@ -76,6 +114,10 @@ export function registerPlayerStore(Alpine) {
 
     get playbackRateText() {
       return this.playbackRate === 1 ? '1x' : `${this.playbackRate}x`;
+    },
+
+    get isWaveSurfer() {
+      return this.playerType === PLAYER_TYPE_WAVESURFER;
     },
 
     /**
@@ -262,6 +304,23 @@ export function registerPlayerStore(Alpine) {
       this.currentEpisode = this.normalizeEpisode(episode);
       this.loadTrack(episode.audioUrl);
 
+      if (this.isWaveSurfer) {
+        void this.waveSurferReadyPromise.then((isReady) => {
+          if (!isReady || this.currentEpisode?.id !== episode.id) {
+            return;
+          }
+
+          if (playbackState.currentTime > 0) {
+            this.seek(playbackState.currentTime);
+          }
+
+          if (playbackState.isPlaying) {
+            this.showAutoplayConfirmDialog();
+          }
+        });
+        return;
+      }
+
       if (playbackState.currentTime > 0) {
         this.currentTime = playbackState.currentTime;
         this.currentSound.once('load', () => {
@@ -289,7 +348,17 @@ export function registerPlayerStore(Alpine) {
       this.currentEpisode = normalizedEpisode;
       this.loadTrack(normalizedEpisode.audioUrl);
       this.savePlaylist();
-      this.showAutoplayConfirmDialog();
+
+      if (this.isWaveSurfer) {
+        void this.waveSurferReadyPromise.then((isReady) => {
+          if (isReady && this.currentEpisode?.id === normalizedEpisode.id) {
+            this.showAutoplayConfirmDialog();
+          }
+        });
+      } else {
+        this.showAutoplayConfirmDialog();
+      }
+
       return true;
     },
 
@@ -335,12 +404,32 @@ export function registerPlayerStore(Alpine) {
       this.savePlaybackState();
     },
 
+    destroyWaveSurfer() {
+      if (!this.currentWaveSurfer) {
+        return;
+      }
+
+      try {
+        this.currentWaveSurfer.destroy();
+      } catch {
+        // Ignore destroy failures while replacing the active track.
+      }
+
+      this.currentWaveSurfer = null;
+    },
+
     resetAudioChain({ unloadSound = false } = {}) {
       if (unloadSound && this.currentSound) {
         this.currentSound.stop();
         this.currentSound.unload();
       }
 
+      this.waveSurferTrackToken += 1;
+      this.waveSurferReadyPromise = Promise.resolve(false);
+      this.waveSurferPlayPending = false;
+      this.waveSurferPlayTracked = false;
+      this.lastWaveSurferStateSaveAt = 0;
+      this.destroyWaveSurfer();
       this.soundId = null;
       this.destroyAnalyzer();
       safeDisconnect(this.volumeGainNode);
@@ -359,6 +448,12 @@ export function registerPlayerStore(Alpine) {
     loadTrack(audioUrl) {
       this.resetAudioChain({ unloadSound: true });
       this.isLoading = true;
+      this.currentSound = null;
+
+      if (this.isWaveSurfer) {
+        this.loadWaveSurferTrack(audioUrl);
+        return;
+      }
 
       this.currentSound = new Howl({
         src: [audioUrl],
@@ -388,7 +483,171 @@ export function registerPlayerStore(Alpine) {
       });
     },
 
+    loadWaveSurferTrack(audioUrl) {
+      const container = document.getElementById('wave-surfer');
+      const trackToken = this.waveSurferTrackToken;
+
+      if (!container) {
+        this.isLoading = false;
+        this.waveSurferReadyPromise = Promise.resolve(false);
+        return;
+      }
+
+      const isCurrentTrack = () => trackToken === this.waveSurferTrackToken;
+
+      let wavesurfer;
+
+      try {
+        wavesurfer = WaveSurfer.create({
+          container,
+          backend: 'MediaElement',
+          height: 40,
+          fillParent: true,
+          hideScrollbar: true,
+          interact: true,
+          dragToSeek: true,
+          mediaControls: false,
+          waveColor: 'orange',
+          progressColor: getThemeColor('--color-primary', '#555'),
+          cursorColor: getThemeColor('--color-primary', '#555'),
+          cursorWidth: 1,
+        });
+      } catch (error) {
+        this.isLoading = false;
+        this.waveSurferReadyPromise = Promise.resolve(false);
+        console.error(__('Audio load error:', 'a-ripple-song'), error);
+        return;
+      }
+
+      this.currentWaveSurfer = wavesurfer;
+      this.waveSurferPlayTracked = false;
+      this.lastWaveSurferStateSaveAt = 0;
+
+      const media = wavesurfer.getMediaElement();
+      media.crossOrigin = 'anonymous';
+      media.preload = 'auto';
+      media.src = audioUrl;
+      media.load();
+
+      wavesurfer.on('loading', () => {
+        if (isCurrentTrack()) {
+          this.isLoading = true;
+        }
+      });
+
+      wavesurfer.on('ready', (duration) => {
+        if (!isCurrentTrack()) {
+          return;
+        }
+
+        this.duration = Number(duration) || wavesurfer.getDuration() || 0;
+        this.isLoading = false;
+        wavesurfer.setVolume(this.volume);
+        wavesurfer.setPlaybackRate(this.playbackRate, true);
+
+        if (this.waveSurferPlayPending && !wavesurfer.isPlaying()) {
+          void wavesurfer.play().then(() => {
+            if (isCurrentTrack()) {
+              this.isPlaying = true;
+              this.savePlaybackState();
+            }
+          }).catch((error) => {
+            if (isCurrentTrack()) {
+              this.waveSurferPlayPending = false;
+              this.isPlaying = false;
+              console.error(__('Audio load error:', 'a-ripple-song'), error);
+            }
+          });
+        }
+      });
+
+      wavesurfer.on('play', () => {
+        if (isCurrentTrack()) {
+          this.isPlaying = true;
+          this.savePlaybackState();
+        }
+      });
+
+      wavesurfer.on('pause', () => {
+        if (isCurrentTrack()) {
+          this.isPlaying = false;
+          this.savePlaybackState();
+        }
+      });
+
+      wavesurfer.on('timeupdate', (currentTime) => {
+        if (!isCurrentTrack()) {
+          return;
+        }
+
+        this.currentTime = Number(currentTime) || 0;
+
+        const now = Date.now();
+        if (now - this.lastWaveSurferStateSaveAt >= 1000) {
+          this.lastWaveSurferStateSaveAt = now;
+          this.savePlaybackState();
+        }
+      });
+
+      wavesurfer.on('finish', () => {
+        if (!isCurrentTrack()) {
+          return;
+        }
+
+        this.currentTime = this.duration;
+        this.isPlaying = false;
+        this.savePlaybackState();
+        this.playNext();
+      });
+
+      wavesurfer.on('error', (error) => {
+        if (!isCurrentTrack()) {
+          return;
+        }
+
+        this.waveSurferPlayPending = false;
+        this.isLoading = false;
+        this.isPlaying = false;
+        console.error(__('Audio load error:', 'a-ripple-song'), error);
+      });
+
+      this.waveSurferReadyPromise = wavesurfer.load(audioUrl)
+        .then(() => true)
+        .catch(() => false);
+    },
+
     async play() {
+      if (this.isWaveSurfer) {
+        if (!this.currentWaveSurfer) {
+          return;
+        }
+
+        this.waveSurferPlayPending = true;
+
+        if (this.showAutoplayConfirm) {
+          this.clearAutoplayTimers();
+          this.showAutoplayConfirm = false;
+          this.pendingAutoplay = false;
+        }
+
+        if (!this.waveSurferPlayTracked && this.currentEpisode?.id) {
+          bumpPlayCountDom(this.currentEpisode.id);
+          void sendMetric(METRIC_ACTIONS.play, this.currentEpisode.id);
+          this.waveSurferPlayTracked = true;
+        }
+
+        try {
+          await this.currentWaveSurfer.play();
+          this.isPlaying = true;
+          this.savePlaybackState();
+        } catch (error) {
+          this.isPlaying = false;
+          console.error(__('Audio load error:', 'a-ripple-song'), error);
+        }
+
+        return;
+      }
+
       if (!this.currentSound) {
         return;
       }
@@ -419,6 +678,18 @@ export function registerPlayerStore(Alpine) {
     },
 
     pause() {
+      if (this.isWaveSurfer) {
+        if (!this.currentWaveSurfer) {
+          return;
+        }
+
+        this.waveSurferPlayPending = false;
+        this.currentWaveSurfer.pause();
+        this.isPlaying = false;
+        this.savePlaybackState();
+        return;
+      }
+
       if (!this.currentSound) {
         return;
       }
@@ -438,6 +709,22 @@ export function registerPlayerStore(Alpine) {
     },
 
     seek(position) {
+      if (this.isWaveSurfer) {
+        if (!this.currentWaveSurfer) {
+          return;
+        }
+
+        const nextPosition = Number.parseFloat(position);
+        if (!Number.isFinite(nextPosition)) {
+          return;
+        }
+
+        this.currentWaveSurfer.setTime(nextPosition);
+        this.currentTime = Math.max(0, Math.min(nextPosition, this.duration));
+        this.savePlaybackState();
+        return;
+      }
+
       if (!this.currentSound) {
         return;
       }
@@ -455,6 +742,10 @@ export function registerPlayerStore(Alpine) {
 
       if (this.volumeGainNode) {
         this.volumeGainNode.gain.value = normalizedVolume;
+      }
+
+      if (this.currentWaveSurfer) {
+        this.currentWaveSurfer.setVolume(normalizedVolume);
       }
 
       this.isMuted = normalizedVolume === 0;
@@ -498,6 +789,10 @@ export function registerPlayerStore(Alpine) {
 
       if (this.currentSound && this.soundId !== null) {
         this.currentSound.rate(rate, this.soundId);
+      }
+
+      if (this.currentWaveSurfer) {
+        this.currentWaveSurfer.setPlaybackRate(rate, true);
       }
 
       this.applyPitchCompensation();
@@ -700,6 +995,10 @@ export function registerPlayerStore(Alpine) {
     },
 
     startProgressTimer() {
+      if (this.isWaveSurfer) {
+        return;
+      }
+
       let saveCounter = 0;
       this.timer = window.setInterval(() => {
         if (!this.currentSound || !this.isPlaying) {
@@ -859,6 +1158,7 @@ export function registerPlayerStore(Alpine) {
     stopAndClear() {
       this.resetAudioChain({ unloadSound: true });
       this.currentSound = null;
+      this.currentWaveSurfer = null;
       this.stopProgressTimer();
       this.isPlaying = false;
       this.currentTime = 0;

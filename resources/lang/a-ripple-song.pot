@@ -851,6 +851,26 @@ msgstr ""
 msgid "Open in new tab"
 msgstr ""
 
+#: app/Settings/General.php:45
+msgid "General Settings"
+msgstr ""
+
+#: app/Settings/General.php:66
+msgid "Player Type"
+msgstr ""
+
+#: app/Settings/General.php:68
+msgid "Howler"
+msgstr ""
+
+#: app/Settings/General.php:69
+msgid "WaveSurfer"
+msgstr ""
+
+#: app/Settings/General.php:72
+msgid "Choose the audio player engine used on the frontend."
+msgstr ""
+
 #: app/Settings/Podcast.php:72
 msgid "Podcast Settings"
 msgstr ""

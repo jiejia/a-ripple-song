@@ -8,6 +8,7 @@ namespace App;
 
 use App\Constants\ThemeConstant;
 use App\Customizers\ThemeColor;
+use App\Settings\General;
 use Illuminate\Support\Facades\Vite;
 
 /**
@@ -254,6 +255,7 @@ add_action('wp_enqueue_scripts', function () {
 
         $currentPostId = is_singular() ? get_queried_object_id() : 0;
         $currentPostType = $currentPostId ? get_post_type($currentPostId) : '';
+        $playerType = (new General())->playerType();
         $latestPlaylistData = function_exists('aripplesong_get_latest_playlist_data')
             ? \aripplesong_get_latest_playlist_data(10)
             : [
@@ -265,6 +267,9 @@ add_action('wp_enqueue_scripts', function () {
             'restUrl' => esc_url_raw(rest_url()),
             'restNonce' => wp_create_nonce('wp_rest'),
             'siteUrl' => esc_url_raw(home_url('/')),
+            'player' => [
+                'type' => $playerType,
+            ],
             'latestPlaylistSignature' => $latestPlaylistData['signature'] ?? '',
             'latestPlaylistEpisodes' => $latestPlaylistData['episodes'] ?? [],
             'ajax' => [

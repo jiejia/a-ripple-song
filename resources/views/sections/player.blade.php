@@ -37,30 +37,59 @@
                 </p> -->
             </div>
         </div>
+        @php($frontendPlayerType = (new \App\Settings\General())->playerType())
         <div>
-            <div class="h-[40px] relative" id="wave">
-                {{-- 加载状态提示 --}}
-                <div x-cloak x-show="$store.player.isLoading" x-transition:enter="transition ease-out duration-200"
-                    x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
-                    x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100"
-                    x-transition:leave-end="opacity-0"
-                    class="absolute inset-0 flex items-center justify-center gap-2 text-base-content/60">
-                    <span class="loading loading-ring loading-lg text-base-content"></span>
-                    <span class="text-xs text-base-content/75">{{ __('Loading audio', 'a-ripple-song') }}</span>
+            @if ($frontendPlayerType !== \App\Settings\General::PLAYER_TYPE_WAVESURFER)
+                <div class="h-[40px] relative" id="wave">
+                    {{-- 加载状态提示 --}}
+                    <div x-cloak x-show="$store.player.isLoading" x-transition:enter="transition ease-out duration-200"
+                        x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                        x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100"
+                        x-transition:leave-end="opacity-0"
+                        class="absolute inset-0 flex items-center justify-center gap-2 text-base-content/60">
+                        <span class="loading loading-ring loading-lg text-base-content"></span>
+                        <span class="text-xs text-base-content/75">{{ __('Loading audio', 'a-ripple-song') }}</span>
+                    </div>
                 </div>
-            </div>
-            <div class="mt-0 w-full">
+                <div class="mt-0 w-full">
+                    <div class="grid grid-cols-[30px_1fr_30px] gap-2 items-center text-xs">
+                        <span x-text="$store.player.currentTimeText">00:00</span>
+                        <div class="relative w-full">
+                            <input type="range" min="0" :max="$store.player.duration" :value="$store.player.currentTime"
+                                x-on:input="$store.player.seek($event.target.value)"
+                                aria-label="{{ __('Seek audio position', 'a-ripple-song') }}"
+                                class="range range-xs w-full aripplesong-progress-range relative z-10 text-base-content/20 [--range-bg:orange] [--range-thumb:pink] [--range-fill:0]" />
+                        </div>
+                        <span class="justify-self-end" x-text="$store.player.durationText">00:00</span>
+                    </div>
+                </div>
+            @else
                 <div class="grid grid-cols-[30px_1fr_30px] gap-2 items-center text-xs">
                     <span x-text="$store.player.currentTimeText">00:00</span>
-                    <div class="relative w-full">
-                        <input type="range" min="0" :max="$store.player.duration" :value="$store.player.currentTime"
-                            x-on:input="$store.player.seek($event.target.value)"
-                            aria-label="{{ __('Seek audio position', 'a-ripple-song') }}"
-                            class="range range-xs w-full aripplesong-progress-range relative z-10 text-base-content/20 [--range-bg:orange] [--range-thumb:pink] [--range-fill:0]" />
+                    <div class="h-[40px] min-w-0 relative aripplesong-wavesurfer" id="wave-surfer"
+                        role="slider" tabindex="0"
+                        aria-label="{{ __('Seek audio position', 'a-ripple-song') }}"
+                        aria-valuemin="0"
+                        :aria-valuemax="$store.player.duration"
+                        :aria-valuenow="$store.player.currentTime"
+                        :aria-valuetext="$store.player.currentTimeText + ' / ' + $store.player.durationText"
+                        x-on:keydown.left.prevent="$store.player.seek($store.player.currentTime - 5)"
+                        x-on:keydown.right.prevent="$store.player.seek($store.player.currentTime + 5)"
+                        x-on:keydown.home.prevent="$store.player.seek(0)"
+                        x-on:keydown.end.prevent="$store.player.seek($store.player.duration)">
+                        {{-- 加载状态提示 --}}
+                        <div x-cloak x-show="$store.player.isLoading" x-transition:enter="transition ease-out duration-200"
+                            x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                            x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100"
+                            x-transition:leave-end="opacity-0"
+                            class="absolute inset-0 z-10 flex items-center justify-center gap-2 text-base-content/60">
+                            <span class="loading loading-ring loading-lg text-base-content"></span>
+                            <span class="text-xs text-base-content/75">{{ __('Loading audio', 'a-ripple-song') }}</span>
+                        </div>
                     </div>
                     <span class="justify-self-end" x-text="$store.player.durationText">00:00</span>
                 </div>
-            </div>
+            @endif
             <div class="mt-1 md:mt-2 grid grid-cols-[1fr_1fr_1fr] gap-4 items-center w-full">
                 <div class="flex items-center gap-2">
                     <button type="button" class="btn btn-ghost btn-xs btn-circle" aria-label="{{ __('Playlist', 'a-ripple-song') }}"
