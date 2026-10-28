@@ -22,7 +22,7 @@ final readonly class Field
      * @param string $label Label shown above the control.
      * @param string $help Help text shown below the control.
      * @param string $description Separator only: text below the section title.
-     * @param mixed $default Value used when nothing is stored yet, or a Closure returning it.
+     * @param mixed $default Value used when nothing is stored yet, or a Closure returning it; switch fields store "yes" or "no".
      * @param bool $required Whether an empty value fails validation.
      * @param bool $readonly Filled by code (e.g. audio metadata detection), never by the form.
      * @param FieldWidth $width Column width in the form grid.

@@ -43,11 +43,6 @@ class PodcastCPT extends CPTAbstract
      */
     public function fields(): array
     {
-        $yesNo = [
-            'no' => __('no', 'a-ripple-song'),
-            'yes' => __('yes', 'a-ripple-song'),
-        ];
-
         return [
             [
                 'type' => 'separator',
@@ -155,13 +150,12 @@ class PodcastCPT extends CPTAbstract
                 'help' => __('Required. clean / explicit.', 'a-ripple-song'),
             ],
             [
-                'type' => 'select',
+                'type' => 'switch',
                 'key' => 'episode_block',
                 'label' => __('iTunes Block', 'a-ripple-song'),
                 'width' => 'half',
-                'options' => $yesNo,
                 'default' => 'no',
-                'help' => __('Optional. yes = hide this episode in Apple Podcasts.', 'a-ripple-song'),
+                'help' => __('Optional. Turn on to hide this episode in Apple Podcasts.', 'a-ripple-song'),
             ],
             [
                 'type' => 'text',

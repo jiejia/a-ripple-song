@@ -1,0 +1,1449 @@
+# Copyright (C) 2026 jiejia
+# This file is distributed under the GPL-3.0.
+msgid ""
+msgstr ""
+"Project-Id-Version: A Ripple Song 0.5.2\n"
+"Report-Msgid-Bugs-To: https://github.com/jiejia/a-ripple-song/issues\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-28T12:53:00+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: a-ripple-song\n"
+
+#. Plugin Name of the plugin
+#: a-ripple-song.php
+#: app/Providers/SettingServiceProvider.php:49
+#: app/Providers/SettingServiceProvider.php:50
+msgid "A Ripple Song"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: a-ripple-song.php
+msgid "https://github.com/jiejia/a-ripple-song"
+msgstr ""
+
+#. Description of the plugin
+#: a-ripple-song.php
+msgid "Podcast features for the A Ripple Song theme: Episode CPT + /feed/podcast RSS (iTunes & Podcasting 2.0 tags)."
+msgstr ""
+
+#. Author of the plugin
+#: a-ripple-song.php
+msgid "jiejia"
+msgstr ""
+
+#. Author URI of the plugin
+#: a-ripple-song.php
+msgid "https://github.com/jiejia/"
+msgstr ""
+
+#. translators: %s is the singular custom post type name.
+#: app/Abstracts/CPTAbstract.php:71
+#, php-format
+msgid "Add New %s"
+msgstr ""
+
+#. translators: %s is the singular custom post type name.
+#: app/Abstracts/CPTAbstract.php:73
+#, php-format
+msgid "Edit %s"
+msgstr ""
+
+#. translators: %s is the singular custom post type name.
+#: app/Abstracts/CPTAbstract.php:75
+#, php-format
+msgid "New %s"
+msgstr ""
+
+#. translators: %s is the singular custom post type name.
+#: app/Abstracts/CPTAbstract.php:77
+#, php-format
+msgid "View %s"
+msgstr ""
+
+#. translators: %s is the plural custom post type name.
+#: app/Abstracts/CPTAbstract.php:79
+#, php-format
+msgid "Search %s"
+msgstr ""
+
+#. translators: %s is the lowercase plural custom post type name.
+#: app/Abstracts/CPTAbstract.php:81
+#, php-format
+msgid "No %s found"
+msgstr ""
+
+#. translators: %s is the lowercase plural custom post type name.
+#: app/Abstracts/CPTAbstract.php:83
+#, php-format
+msgid "No %s found in Trash"
+msgstr ""
+
+#: app/Controllers/PodcastPlayController.php:160
+msgid "Episode not found."
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:24
+msgid "Episode"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:34
+msgid "Episodes"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:49
+msgid "Audio"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:54
+msgid "Audio File"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:63
+msgid "Required. Upload an audio file; the saved value is the audio file URL."
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:68
+#: app/CPTs/PodcastCPT.php:238
+msgid "Duration (seconds)"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:72
+#: app/CPTs/PodcastCPT.php:81
+#: app/CPTs/PodcastCPT.php:90
+msgid "Auto detected from \"Audio File\"."
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:77
+msgid "Audio Length (bytes)"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:86
+msgid "Audio MIME Type"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:95
+msgid "Podcast Metadata"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:100
+msgid "Episode Cover (square)"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:108
+msgid "Optional. Square 1400-3000px. Overrides channel cover."
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:113
+msgid "Episode Type"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:116
+msgid "full"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:117
+msgid "trailer"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:118
+msgid "bonus"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:121
+msgid "Required. full / trailer / bonus."
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:126
+msgid "Episode Number"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:129
+msgid "Optional but recommended. Integer."
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:134
+msgid "Season Number"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:137
+msgid "Optional. Integer."
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:142
+msgid "Explicit"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:146
+msgid "clean"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:147
+#: app/Settings/PodcastSetting.php:110
+msgid "explicit"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:150
+msgid "Required. clean / explicit."
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:155
+msgid "iTunes Block"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:158
+msgid "Optional. Turn on to hide this episode in Apple Podcasts."
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:163
+#: app/Settings/PodcastSetting.php:209
+msgid "iTunes Title (optional)"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:165
+msgid "Optional. Apple Podcasts: overrides the episode title for <itunes:title>."
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:170
+msgid "Episode Author (override)"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:172
+msgid "Optional. Overrides channel author for this episode."
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:177
+msgid "Subtitle"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:178
+msgid "Optional. Short subtitle for iTunes."
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:183
+msgid "Summary"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:184
+msgid "Optional. Plain text summary for iTunes."
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:189
+msgid "Podcasting 2.0 & Advanced"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:194
+msgid "Transcript (optional)"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:196
+msgid "Optional. Transcript file URL (vtt/srt/txt/pdf)."
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:201
+msgid "Custom GUID (optional)"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:203
+msgid "Optional. If empty, feed uses WP permalink as GUID."
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:208
+msgid "Chapters (Podcasting 2.0)"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:210
+msgid "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:215
+msgid "Chapters MIME Type"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:218
+msgid "Optional. Defaults to application/json+chapters."
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:223
+msgid "Soundbites"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:224
+msgid "Soundbite"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:226
+msgid "Optional. Adds one or more <podcast:soundbite> tags."
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:231
+msgid "Start Time (seconds)"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:245
+msgid "Title (optional)"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:253
+msgid "People"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:258
+msgid "Members"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:262
+msgid "Select episode members (administrators, authors, editors)."
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:267
+msgid "Guests"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:270
+msgid "Select episode guests (contributors)."
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:413
+msgid "Statistics"
+msgstr ""
+
+#: app/CPTs/PodcastCPT.php:430
+msgid "Plays"
+msgstr ""
+
+#. translators: %s: host/author name
+#: app/Feeds/PodcastFeed.php:391
+#, php-format
+msgid "Hosted by %s."
+msgstr ""
+
+#. translators: %s: podcast feed URL
+#: app/Feeds/PodcastFeed.php:393
+#, php-format
+msgid "Subscribe: %s"
+msgstr ""
+
+#. translators: %s: comma separated list of field labels.
+#: app/Libraries/Fields/FieldAssets.php:45
+#, php-format
+msgid "Please fix these fields before saving: %s"
+msgstr ""
+
+#: app/Libraries/Fields/FieldAssets.php:46
+msgid "This field is required."
+msgstr ""
+
+#. translators: 1: image width, 2: image height.
+#: app/Libraries/Fields/FieldAssets.php:48
+#, php-format
+msgid "Current: %1$d × %2$d px."
+msgstr ""
+
+#: app/Libraries/Fields/FieldAssets.php:49
+msgid "The image could not be loaded."
+msgstr ""
+
+#. translators: %s: field label.
+#: app/Libraries/Fields/FieldValidator.php:58
+#, php-format
+msgid "%s must be a valid email address."
+msgstr ""
+
+#. translators: %s: field label.
+#: app/Libraries/Fields/FieldValidator.php:61
+#, php-format
+msgid "%s is required."
+msgstr ""
+
+#: app/Libraries/Fields/ImageDimensions.php:76
+msgid "square"
+msgstr ""
+
+#. translators: 1: minimum width, 2: minimum height.
+#: app/Libraries/Fields/ImageDimensions.php:81
+#, php-format
+msgid "at least %1$d × %2$d px"
+msgstr ""
+
+#. translators: 1: maximum width, 2: maximum height.
+#: app/Libraries/Fields/ImageDimensions.php:86
+#, php-format
+msgid "at most %1$d × %2$d px"
+msgstr ""
+
+#. translators: %s: comma separated list of image size rules.
+#: app/Libraries/Fields/ImageDimensions.php:90
+#, php-format
+msgid "Image must be %s."
+msgstr ""
+
+#: app/Libraries/Fields/OptionStore.php:106
+msgid "You are not allowed to manage these settings."
+msgstr ""
+
+#. translators: %s is the singular custom post type name.
+#: app/Libraries/Fields/PostMetaStore.php:64
+#, php-format
+msgid "%s Details"
+msgstr ""
+
+#. translators: %s: number of plays.
+#: app/Player/EpisodeMeta.php:79
+#: app/Player/EpisodeMeta.php:83
+#: app/Player/EpisodeMeta.php:85
+#, php-format
+msgid "%s play"
+msgid_plural "%s plays"
+msgstr[0] ""
+msgstr[1] ""
+
+#: app/Player/GlobalPlayer.php:161
+msgid "Playing"
+msgstr ""
+
+#: app/Player/GlobalPlayer.php:162
+msgid "Paused"
+msgstr ""
+
+#: app/Player/GlobalPlayer.php:163
+msgid "Loading…"
+msgstr ""
+
+#: app/Player/GlobalPlayer.php:164
+msgid "The audio could not be loaded."
+msgstr ""
+
+#: app/Player/GlobalPlayer.php:165
+#: resources/templates/player/skins/default.php:69
+#: resources/templates/player/skins/default.php:127
+msgid "Play"
+msgstr ""
+
+#: app/Player/GlobalPlayer.php:166
+#: resources/templates/episode/meta/default.php:24
+msgid "Pause"
+msgstr ""
+
+#: app/Player/GlobalPlayer.php:167
+#: resources/templates/player/skins/default.php:86
+#: resources/templates/player/skins/default.php:138
+msgid "Mute"
+msgstr ""
+
+#: app/Player/GlobalPlayer.php:168
+msgid "Unmute"
+msgstr ""
+
+#. translators: %s: episode number.
+#: app/Player/GlobalPlayer.php:170
+#, php-format
+msgid "EP.%s"
+msgstr ""
+
+#: app/Player/PlayerSkin.php:38
+msgid "Default: plain bar"
+msgstr ""
+
+#: app/Player/PlayerSkin.php:39
+msgid "Night Signal: dark tech, neon green"
+msgstr ""
+
+#: app/Player/PlayerSkin.php:40
+msgid "Broadcast: Swiss brutalist, ON AIR light"
+msgstr ""
+
+#: app/Player/PlayerSkin.php:41
+msgid "Evening Paper: newspaper, serif"
+msgstr ""
+
+#: app/Player/PlayerSkin.php:42
+msgid "Pulse: dark app, electric blue"
+msgstr ""
+
+#: app/Player/PlayerSkin.php:43
+msgid "Cassette: 70s tape deck, VU meters"
+msgstr ""
+
+#: app/Player/PlayerSkin.php:44
+msgid "Aurora: frosted glass capsule"
+msgstr ""
+
+#: app/Player/PlayerSkin.php:45
+msgid "Terminal: CRT command line"
+msgstr ""
+
+#: app/Player/PlayerSkin.php:46
+msgid "Zine: risograph collage"
+msgstr ""
+
+#: app/Player/PlayerSkin.php:47
+msgid "Soft: neumorphic radio, volume knob"
+msgstr ""
+
+#: app/Player/PlayerSkin.php:48
+msgid "Circle: social feed card"
+msgstr ""
+
+#: app/Player/PlayerSkin.php:49
+msgid "Coral: listening dashboard"
+msgstr ""
+
+#: app/Player/PlayerSkin.php:50
+msgid "Wisteria: soft purple mobile app"
+msgstr ""
+
+#: app/Settings/DashboardSetting.php:24
+msgid "Dashboard"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:19
+msgid "Player Settings"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:32
+msgid "Global Player"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:37
+msgid "Show Global Player"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:40
+msgid "Shows a player bar at the bottom of every front-end page. With a theme that uses swup, playback continues across pages."
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:45
+msgid "Before Anything Is Played"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:49
+msgid "Show the player with an episode loaded (paused)"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:50
+msgid "Hide the player until a play button is used"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:53
+msgid "For visitors without a saved position. The loaded episode is the one being viewed on an episode page, otherwise the latest. \"Hide\" needs play buttons on the page, which the theme has to provide."
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:58
+msgid "Player Style"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:63
+msgid "The look of the player bar and its full-screen \"Now Playing\" panel. Ignored when the theme styles the player itself."
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:68
+msgid "Player Width"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:72
+msgid "Match the theme's wide width"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:73
+msgid "Match the theme's content width"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:74
+msgid "The style's own width"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:75
+msgid "Full width"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:78
+msgid "Theme widths are measured from the theme's WordPress layout (block themes and themes with theme.json), so the bar lines up with the header, footer or post content. Themes without it keep the style's own width."
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:83
+msgid "Player Bar Background"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:87
+msgid "Translucent (frosted glass)"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:88
+msgid "Solid"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:91
+msgid "Translucent lets the page show through the bar, blurred. The Aurora style is always frosted."
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:96
+msgid "Player Colors"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:100
+msgid "Follow the site theme (auto detect)"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:101
+msgid "Follow the visitor's system setting"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:102
+msgid "Always light"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:103
+msgid "Always dark"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:106
+msgid "Every style has a light and a dark variant. Auto detect reads the light / dark markers and the background color of the current theme, and follows its toggle. Ignored when the theme styles the player itself."
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:110
+msgid "Episode Page"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:115
+msgid "Episode Meta Bar"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:119
+msgid "Before the episode content"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:120
+msgid "After the episode content"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:121
+msgid "Do not show"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:124
+msgid "Play and favorite buttons plus the play count on single episode pages, in the player style. Shown while the global player is on and the episode has audio; favorites are kept in the visitor's browser."
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:25
+msgid "Podcast Settings"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:38
+msgid "Feed"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:43
+msgid "Podcast RSS URL"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:47
+msgid "Your podcast RSS feed URL. Submit it to Apple Podcasts, Spotify and other directories."
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:52
+msgid "Show"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:57
+msgid "Podcast Cover (1400-3000px square)"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:66
+msgid "Required. Square JPG/PNG between 1400-3000px for itunes:image. Apple recommends keeping the file under 512KB."
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:71
+msgid "Podcast Title"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:75
+msgid "Required. If empty, falls back to site title."
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:80
+msgid "Podcast Subtitle"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:82
+msgid "Short tagline shown in some apps."
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:87
+msgid "Podcast Description"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:90
+msgid "Required. Plain text description of the show."
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:95
+msgid "Language (RFC 5646)"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:100
+msgid "Required. Typically en-US, zh-CN, etc."
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:105
+msgid "Default Explicit Flag"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:109
+msgid "clean (no explicit content)"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:113
+msgid "Required. Single-episode value can override."
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:118
+msgid "Owner"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:123
+msgid "Podcast Author (itunes:author)"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:127
+msgid "Required. Displayed as show author in directories."
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:132
+msgid "Copyright (optional)"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:134
+msgid "Optional. For copyright."
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:139
+msgid "Owner Name"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:143
+msgid "Required. For itunes:owner itunes:name."
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:148
+msgid "Owner Email"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:152
+msgid "Required. For itunes:owner itunes:email. Use a monitored inbox."
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:157
+msgid "Apple Podcasts"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:162
+msgid "Primary Category (Apple Podcasts)"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:165
+#: app/Settings/PodcastSetting.php:174
+#: app/Settings/PodcastSetting.php:183
+msgid "(not set)"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:167
+msgid "Required by Apple Podcasts. Choose at least a primary category."
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:172
+msgid "Secondary Category (optional)"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:176
+msgid "Optional. Some directories support a second category."
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:181
+msgid "iTunes Type (itunes:type)"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:185
+msgid "episodic"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:186
+msgid "serial"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:188
+msgid "Optional. Apple Podcasts: episodic or serial."
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:193
+msgid "iTunes Block (itunes:block)"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:196
+msgid "Optional. Turn on to hide this show in Apple Podcasts."
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:201
+msgid "iTunes Complete (itunes:complete)"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:204
+msgid "Optional. Turn on when this show is complete with no more episodes."
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:211
+msgid "Optional. Use only if you need a separate Apple-facing title."
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:216
+msgid "Apple Podcasts Verify Code"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:218
+msgid "Optional. Used by Apple Podcasts to verify feed ownership."
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:223
+msgid "iTunes New Feed URL (itunes:new-feed-url)"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:224
+msgid "Optional. Only for moving your show to a new RSS feed URL."
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:229
+msgid "Podcasting 2.0"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:234
+msgid "podcast:locked"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:237
+msgid "Podcasting 2.0: lock feed to this publisher. Recommended, it prevents unauthorized moves."
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:242
+msgid "podcast:locked owner (optional)"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:244
+msgid "Optional. Podcasting 2.0: email used to verify ownership during moves."
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:249
+msgid "podcast:guid (optional)"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:252
+msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:257
+msgid "Generator (optional)"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:259
+msgid "Optional. If empty, generator tag will not be included."
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:264
+msgid "Podcasting 2.0 Funding Links (podcast:funding)"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:265
+msgid "Funding Link"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:267
+msgid "Optional. If empty, no podcast:funding tags will be generated. URLs should be https."
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:272
+msgid "URL"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:278
+msgid "Label"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:307
+msgid "Arts"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:308
+msgid "Arts > Books"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:309
+msgid "Arts > Design"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:310
+msgid "Arts > Fashion & Beauty"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:311
+msgid "Arts > Food"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:312
+msgid "Arts > Performing Arts"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:313
+msgid "Arts > Visual Arts"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:314
+msgid "Business"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:315
+msgid "Business > Careers"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:316
+msgid "Business > Entrepreneurship"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:317
+msgid "Business > Investing"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:318
+msgid "Business > Management"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:319
+msgid "Business > Marketing"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:320
+msgid "Business > Non-Profit"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:321
+msgid "Comedy"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:322
+msgid "Comedy > Comedy Interviews"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:323
+msgid "Comedy > Improv"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:324
+msgid "Comedy > Stand-Up"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:325
+msgid "Education"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:326
+msgid "Education > Courses"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:327
+msgid "Education > How To"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:328
+msgid "Education > Language Learning"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:329
+msgid "Education > Self-Improvement"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:330
+msgid "Fiction"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:331
+msgid "Fiction > Comedy Fiction"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:332
+msgid "Fiction > Drama"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:333
+msgid "Fiction > Science Fiction"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:334
+msgid "Government"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:335
+msgid "History"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:336
+msgid "Health & Fitness"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:337
+msgid "Health & Fitness > Alternative Health"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:338
+msgid "Health & Fitness > Fitness"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:339
+msgid "Health & Fitness > Medicine"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:340
+msgid "Health & Fitness > Mental Health"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:341
+msgid "Health & Fitness > Nutrition"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:342
+msgid "Health & Fitness > Sexuality"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:343
+msgid "Kids & Family"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:344
+msgid "Kids & Family > Education for Kids"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:345
+msgid "Kids & Family > Parenting"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:346
+msgid "Kids & Family > Pets & Animals"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:347
+msgid "Kids & Family > Stories for Kids"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:348
+msgid "Leisure"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:349
+msgid "Leisure > Animation & Manga"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:350
+msgid "Leisure > Automotive"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:351
+msgid "Leisure > Aviation"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:352
+msgid "Leisure > Crafts"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:353
+msgid "Leisure > Games"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:354
+msgid "Leisure > Hobbies"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:355
+msgid "Leisure > Home & Garden"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:356
+msgid "Leisure > Video Games"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:357
+msgid "Music"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:358
+msgid "Music > Music Commentary"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:359
+msgid "Music > Music History"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:360
+msgid "Music > Music Interviews"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:361
+msgid "News"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:362
+msgid "News > Business News"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:363
+msgid "News > Daily News"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:364
+msgid "News > Entertainment News"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:365
+msgid "News > News Commentary"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:366
+msgid "News > Politics"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:367
+msgid "News > Sports News"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:368
+msgid "News > Tech News"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:369
+msgid "Religion & Spirituality"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:370
+msgid "Religion & Spirituality > Buddhism"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:371
+msgid "Religion & Spirituality > Christianity"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:372
+msgid "Religion & Spirituality > Hinduism"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:373
+msgid "Religion & Spirituality > Islam"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:374
+msgid "Religion & Spirituality > Judaism"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:375
+msgid "Religion & Spirituality > Religion"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:376
+msgid "Religion & Spirituality > Spirituality"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:377
+msgid "Science"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:378
+msgid "Science > Astronomy"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:379
+msgid "Science > Chemistry"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:380
+msgid "Science > Earth Sciences"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:381
+msgid "Science > Life Sciences"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:382
+msgid "Science > Mathematics"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:383
+msgid "Science > Natural Sciences"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:384
+msgid "Science > Nature"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:385
+msgid "Science > Physics"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:386
+msgid "Society & Culture"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:387
+msgid "Society & Culture > Documentary"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:388
+msgid "Society & Culture > Personal Journals"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:389
+msgid "Society & Culture > Philosophy"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:390
+msgid "Society & Culture > Places & Travel"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:391
+msgid "Society & Culture > Relationships"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:392
+msgid "Sports"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:393
+msgid "Sports > Baseball"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:394
+msgid "Sports > Basketball"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:395
+msgid "Sports > Cricket"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:396
+msgid "Sports > Fantasy Sports"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:397
+msgid "Sports > Football"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:398
+msgid "Sports > Golf"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:399
+msgid "Sports > Hockey"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:400
+msgid "Sports > Rugby"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:401
+msgid "Sports > Running"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:402
+msgid "Sports > Soccer"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:403
+msgid "Sports > Swimming"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:404
+msgid "Sports > Tennis"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:405
+msgid "Sports > Volleyball"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:406
+msgid "Technology"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:407
+msgid "True Crime"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:408
+msgid "TV & Film"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:409
+msgid "TV & Film > After Shows"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:410
+msgid "TV & Film > Film History"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:411
+msgid "TV & Film > Film Interviews"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:412
+msgid "TV & Film > Film Reviews"
+msgstr ""
+
+#: app/Settings/PodcastSetting.php:413
+msgid "TV & Film > TV Reviews"
+msgstr ""
+
+#: resources/templates/episode/meta/default.php:24
+msgid "Play episode"
+msgstr ""
+
+#: resources/templates/episode/meta/default.php:28
+msgid "Remove from favorites"
+msgstr ""
+
+#: resources/templates/episode/meta/default.php:28
+msgid "Add to favorites"
+msgstr ""
+
+#: resources/templates/fields/controls/complex-row.php:24
+msgid "Drag to reorder"
+msgstr ""
+
+#: resources/templates/fields/controls/complex-row.php:26
+#: resources/templates/fields/controls/media.php:44
+msgid "Remove"
+msgstr ""
+
+#: resources/templates/fields/controls/complex.php:17
+msgid "Item"
+msgstr ""
+
+#. translators: %s: repeater row label, e.g. "Soundbite".
+#: resources/templates/fields/controls/complex.php:19
+#, php-format
+msgid "Add %s"
+msgstr ""
+
+#: resources/templates/fields/controls/complex.php:27
+msgid "Nothing added yet."
+msgstr ""
+
+#: resources/templates/fields/controls/input.php:22
+msgid "Copied!"
+msgstr ""
+
+#: resources/templates/fields/controls/input.php:22
+msgid "Copy"
+msgstr ""
+
+#: resources/templates/fields/controls/media.php:26
+msgid "Use this file"
+msgstr ""
+
+#: resources/templates/fields/controls/media.php:43
+msgid "Select Image"
+msgstr ""
+
+#: resources/templates/fields/controls/media.php:43
+msgid "Select File"
+msgstr ""
+
+#. translators: %d: number of selected options.
+#: resources/templates/fields/controls/multiselect.php:18
+#, php-format
+msgid "%d selected"
+msgstr ""
+
+#: resources/templates/fields/controls/multiselect.php:23
+msgid "Search…"
+msgstr ""
+
+#: resources/templates/fields/controls/multiselect.php:34
+msgid "No options available."
+msgstr ""
+
+#: resources/templates/fields/controls/multiselect.php:34
+msgid "No matches found."
+msgstr ""
+
+#: resources/templates/fields/label.php:24
+msgid "Auto"
+msgstr ""
+
+#: resources/templates/fields/settings-page.php:21
+msgid "Settings saved."
+msgstr ""
+
+#: resources/templates/fields/settings-page.php:26
+msgid "Settings were not saved. Please fix the following:"
+msgstr ""
+
+#: resources/templates/fields/settings-page.php:41
+msgid "Save Settings"
+msgstr ""
+
+#: resources/templates/player/skins/default.php:47
+msgid "Audio player"
+msgstr ""
+
+#: resources/templates/player/skins/default.php:52
+msgid "Open Now Playing"
+msgstr ""
+
+#: resources/templates/player/skins/default.php:67
+#: resources/templates/player/skins/default.php:125
+msgid "Previous episode"
+msgstr ""
+
+#: resources/templates/player/skins/default.php:68
+#: resources/templates/player/skins/default.php:126
+msgid "Back 15 seconds"
+msgstr ""
+
+#: resources/templates/player/skins/default.php:74
+#: resources/templates/player/skins/default.php:132
+msgid "Forward 30 seconds"
+msgstr ""
+
+#: resources/templates/player/skins/default.php:75
+#: resources/templates/player/skins/default.php:133
+msgid "Next episode"
+msgstr ""
+
+#: resources/templates/player/skins/default.php:80
+#: resources/templates/player/skins/default.php:118
+msgid "Playback position"
+msgstr ""
+
+#: resources/templates/player/skins/default.php:85
+#: resources/templates/player/skins/default.php:137
+msgid "Playback speed"
+msgstr ""
+
+#: resources/templates/player/skins/default.php:90
+#: resources/templates/player/skins/default.php:142
+msgid "Volume"
+msgstr ""
+
+#: resources/templates/player/skins/default.php:93
+msgid "Open Now Playing and queue"
+msgstr ""
+
+#: resources/templates/player/skins/default.php:98
+#: resources/templates/player/skins/default.php:101
+msgid "Now Playing"
+msgstr ""
+
+#: resources/templates/player/skins/default.php:102
+msgid "Close Now Playing"
+msgstr ""
+
+#: resources/templates/player/skins/default.php:147
+msgid "Queue"
+msgstr ""

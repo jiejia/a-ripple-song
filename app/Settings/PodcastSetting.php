@@ -32,11 +32,6 @@ class PodcastSetting extends SettingAbstract
      */
     public function fields(): array
     {
-        $yesNo = [
-            'no' => __('no', 'a-ripple-song'),
-            'yes' => __('yes', 'a-ripple-song'),
-        ];
-
         return [
             [
                 'type' => 'separator',
@@ -193,22 +188,20 @@ class PodcastSetting extends SettingAbstract
                 'help' => __('Optional. Apple Podcasts: episodic or serial.', 'a-ripple-song'),
             ],
             [
-                'type' => 'select',
+                'type' => 'switch',
                 'key' => 'itunes_block',
                 'label' => __('iTunes Block (itunes:block)', 'a-ripple-song'),
                 'width' => 'third',
-                'options' => $yesNo,
                 'default' => 'no',
-                'help' => __('Optional. yes = hide this show in Apple Podcasts.', 'a-ripple-song'),
+                'help' => __('Optional. Turn on to hide this show in Apple Podcasts.', 'a-ripple-song'),
             ],
             [
-                'type' => 'select',
+                'type' => 'switch',
                 'key' => 'itunes_complete',
                 'label' => __('iTunes Complete (itunes:complete)', 'a-ripple-song'),
                 'width' => 'third',
-                'options' => $yesNo,
                 'default' => 'no',
-                'help' => __('Optional. yes = this show is complete with no more episodes.', 'a-ripple-song'),
+                'help' => __('Optional. Turn on when this show is complete with no more episodes.', 'a-ripple-song'),
             ],
             [
                 'type' => 'text',
@@ -236,16 +229,12 @@ class PodcastSetting extends SettingAbstract
                 'label' => __('Podcasting 2.0', 'a-ripple-song'),
             ],
             [
-                'type' => 'select',
+                'type' => 'switch',
                 'key' => 'locked',
                 'label' => __('podcast:locked', 'a-ripple-song'),
                 'width' => 'half',
-                'options' => [
-                    'yes' => __('yes (recommended, prevents unauthorized moves)', 'a-ripple-song'),
-                    'no' => __('no', 'a-ripple-song'),
-                ],
                 'default' => 'yes',
-                'help' => __('Podcasting 2.0: lock feed to this publisher.', 'a-ripple-song'),
+                'help' => __('Podcasting 2.0: lock feed to this publisher. Recommended, it prevents unauthorized moves.', 'a-ripple-song'),
             ],
             [
                 'type' => 'email',

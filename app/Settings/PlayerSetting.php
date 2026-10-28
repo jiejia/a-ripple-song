@@ -32,15 +32,10 @@ class PlayerSetting extends SettingAbstract
                 'label' => __('Global Player', 'a-ripple-song'),
             ],
             [
-                'type' => 'select',
+                'type' => 'switch',
                 'key' => 'enabled',
                 'label' => __('Show Global Player', 'a-ripple-song'),
                 'width' => 'half',
-                'required' => true,
-                'options' => [
-                    'yes' => __('yes', 'a-ripple-song'),
-                    'no' => __('no', 'a-ripple-song'),
-                ],
                 'default' => 'yes',
                 'help' => __('Shows a player bar at the bottom of every front-end page. With a theme that uses swup, playback continues across pages.', 'a-ripple-song'),
             ],

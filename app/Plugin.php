@@ -11,6 +11,7 @@ use Jiejia\ARippleSong\Providers\CPTServiceProvider;
 use Jiejia\ARippleSong\Providers\FeedServiceProvider;
 use Jiejia\ARippleSong\Providers\PlayerServiceProvider;
 use Jiejia\ARippleSong\Providers\SettingServiceProvider;
+use Jiejia\ARippleSong\Providers\TranslationServiceProvider;
 
 /**
  * Main plugin application class.
@@ -33,6 +34,7 @@ class Plugin
      * @var array<int,class-string<ServiceProvider>>
      */
     private array $providers = [
+        TranslationServiceProvider::class,
         CPTServiceProvider::class,
         SettingServiceProvider::class,
         ControllerServiceProvider::class,

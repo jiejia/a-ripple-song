@@ -15,6 +15,7 @@ enum FieldType: string
     case Email = 'email';
     case Textarea = 'textarea';
     case Select = 'select';
+    case Switch = 'switch';
     case Multiselect = 'multiselect';
     case File = 'file';
     case Image = 'image';
@@ -72,6 +73,7 @@ enum FieldType: string
         return match ($this) {
             self::Textarea => 'textarea',
             self::Select => 'select',
+            self::Switch => 'switch',
             self::Multiselect => 'multiselect',
             self::File, self::Image => 'media',
             self::Complex => 'complex',

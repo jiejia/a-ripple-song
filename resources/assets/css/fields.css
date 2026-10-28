@@ -274,6 +274,94 @@
 	box-shadow: 0 0 0 1px var(--ars-danger);
 }
 
+/* Switch */
+
+/* A box the size of an input, so a switch fills its column like the controls beside it; clicking anywhere toggles. */
+.ars-switch {
+	display: flex;
+	align-items: center;
+	box-sizing: border-box;
+	min-height: 36px;
+	padding: 0 10px;
+	border: 1px solid var(--ars-border);
+	border-radius: var(--ars-radius);
+	background: var(--ars-subtle);
+	cursor: pointer;
+	transition: border-color 0.1s ease, box-shadow 0.1s ease;
+}
+
+.ars-switch:has(:checked) {
+	border-color: var(--ars-accent);
+}
+
+.ars-switch:has(:focus-visible) {
+	border-color: var(--ars-accent);
+	box-shadow: 0 0 0 1px var(--ars-accent);
+}
+
+.ars-switch:has(:disabled) {
+	cursor: default;
+}
+
+/* The checkbox itself is the track; the knob is its ::before, replacing the wp-admin checkmark. */
+.ars-fields input[type="checkbox"].ars-switch__input {
+	position: relative;
+	flex: none;
+	width: 36px;
+	height: 20px;
+	min-width: 0;
+	margin: 0;
+	padding: 0;
+	border: 1px solid var(--ars-input-border);
+	border-radius: 10px;
+	background: #fff;
+	box-shadow: none;
+	cursor: pointer;
+	appearance: none;
+	transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.ars-fields input[type="checkbox"].ars-switch__input::before {
+	content: "";
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 12px;
+	height: 12px;
+	margin: 0;
+	border-radius: 50%;
+	background: var(--ars-text);
+	transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.ars-fields input[type="checkbox"].ars-switch__input:checked {
+	border-color: var(--ars-accent);
+	background: var(--ars-accent);
+}
+
+.ars-fields input[type="checkbox"].ars-switch__input:checked::before {
+	background: #fff;
+	transform: translateX(16px);
+}
+
+/* The box shows keyboard focus instead. */
+.ars-fields input[type="checkbox"].ars-switch__input:focus {
+	box-shadow: none;
+	outline: 2px solid transparent;
+}
+
+.ars-fields input[type="checkbox"].ars-switch__input:disabled {
+	opacity: 0.5;
+	cursor: default;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.ars-fields input[type="checkbox"].ars-switch__input,
+	.ars-fields input[type="checkbox"].ars-switch__input::before {
+		transition: none;
+	}
+}
+
 /* Buttons */
 
 .ars-fields .button {

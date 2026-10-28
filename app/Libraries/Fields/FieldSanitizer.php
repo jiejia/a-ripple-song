@@ -13,7 +13,7 @@ final class FieldSanitizer
      * Sanitize submitted values for every savable field.
      *
      * Missing keys are treated as empty, so an unchecked multiselect or a
-     * repeater with all rows removed is saved as an empty list.
+     * repeater with all rows removed is saved as an empty list, and a switch as "no".
      *
      * @param array<int,Field> $fields Fields to sanitize.
      * @param array<string,mixed> $input Unslashed submitted values keyed by field key.
@@ -50,6 +50,7 @@ final class FieldSanitizer
             FieldType::Url, FieldType::File, FieldType::Image => $this->string($value, static fn (string $url): string => esc_url_raw(trim($url))),
             FieldType::Email => $this->string($value, sanitize_email(...)),
             FieldType::Textarea => $this->string($value, sanitize_textarea_field(...)),
+            FieldType::Switch => $value === 'yes' ? 'yes' : 'no',
             FieldType::Select => $this->matchOptions($field, [$value])[0] ?? $field->defaultValue(),
             FieldType::Multiselect => $this->matchOptions($field, is_array($value) ? $value : []),
             FieldType::Complex => $this->sanitizeRows($field, is_array($value) ? $value : []),
