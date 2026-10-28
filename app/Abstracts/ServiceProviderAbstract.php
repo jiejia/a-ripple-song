@@ -4,12 +4,12 @@ namespace Jiejia\ARippleSong\Abstracts;
 
 defined('ABSPATH') || exit;
 
-use Jiejia\ARippleSong\Contracts\ServiceProvider;
+use Jiejia\ARippleSong\Contracts\ServiceProviderContract;
 
 /**
  * Base service provider for plugin feature registration.
  */
-abstract class AbstractServiceProvider implements ServiceProvider
+abstract class ServiceProviderAbstract implements ServiceProviderContract
 {
     /**
      * Register WordPress hooks, services, or plugin features.

@@ -6,6 +6,8 @@ namespace Jiejia\ARippleSong;
 defined('ABSPATH') || exit;
 
 use Jiejia\ARippleSong\Contracts\ServiceProvider;
+use Jiejia\ARippleSong\Providers\CPTServiceProvider;
+use Jiejia\ARippleSong\Providers\SettingServiceProvider;
 
 /**
  * Main plugin application class.
@@ -20,12 +22,16 @@ class Plugin
 
     public const DIR = A_RIPPLE_SONG_PLUGIN_DIR;
 
+    public const PREFIX = 'a_ripple_song_';
+
     /**
      * Service provider classes registered by this plugin.
      *
      * @var array<int,class-string<ServiceProvider>>
      */
     private array $providers = [
+        CPTServiceProvider::class,
+        SettingServiceProvider::class
     ];
 
     /**
