@@ -7,6 +7,7 @@ defined('ABSPATH') || exit;
 use Jiejia\ARippleSong\Abstracts\ServiceProviderAbstract;
 use Jiejia\ARippleSong\Contracts\CPT;
 use Jiejia\ARippleSong\CPTs\PodcastCPT;
+use Jiejia\ARippleSong\Libraries\Fields\PostMetaStore;
 
 /**
  * Registers plugin custom post types.
@@ -32,9 +33,11 @@ class CPTServiceProvider extends ServiceProviderAbstract
         // Register custom post types during WordPress initialization.
         add_action('init', [$this, 'registerPostTypes']);
 
+        $this->registerPostTypeFields();
+
         foreach ($this->postTypes as $postTypeClass) {
             // Allow each custom post type to attach its own supporting hooks.
-//            (new $postTypeClass())->registerHooks();
+            (new $postTypeClass())->registerHooks();
         }
     }
 
@@ -54,16 +57,15 @@ class CPTServiceProvider extends ServiceProviderAbstract
     }
 
     /**
-     * Register Carbon Fields meta boxes for all configured custom post types.
+     * Register field meta boxes for all configured custom post types.
      *
      * @return void
      */
     public function registerPostTypeFields(): void
     {
         foreach ($this->postTypes as $postTypeClass) {
-            // Build post type fields only when the post type exposes any fields.
-            $postType = new $postTypeClass();
-
+            // The store skips the meta box itself when the post type exposes no fields.
+            (new PostMetaStore(new $postTypeClass()))->register();
         }
     }
 }

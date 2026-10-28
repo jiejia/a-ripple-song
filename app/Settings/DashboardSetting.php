@@ -10,15 +10,14 @@ use Jiejia\ARippleSong\Abstracts\SettingAbstract;
  */
 class DashboardSetting extends SettingAbstract
 {
+    public string $slug = 'dashboard';
+
+
     public function isTopLevelMenu(): bool
     {
         return true;
     }
 
-    public function slug(): string
-    {
-        return 'dashboard';
-    }
 
     public function title(): string
     {

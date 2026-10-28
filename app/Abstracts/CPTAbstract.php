@@ -2,15 +2,43 @@
 namespace Jiejia\ARippleSong\Abstracts;
 
 
-use Jiejia\ARippleSong\Contracts\CPT;
+use Jiejia\ARippleSong\Plugin;
 
 abstract class CPTAbstract
 {
-    abstract protected function slug();
+    public string $slug;
 
-    abstract public function singularName();
+    abstract public function singularName(): string;
 
-    abstract public function pluralName();
+    abstract public function pluralName(): string;
+
+    abstract public function fields(): array;
+
+    public function slug(): string
+    {
+        return Plugin::PREFIX . $this->slug;
+    }
+
+    /**
+     * Return the stored post meta key of a field, e.g. _ars_podcast_audio_file.
+     *
+     * @param string $key Field key.
+     * @return string
+     */
+    public function fieldMetaKey(string $key): string
+    {
+        return '_' . $this->slug() . '_' . $key;
+    }
+
+    /**
+     * Register extra hooks required by this post type.
+     *
+     * @return void
+     */
+    public function registerHooks(): void
+    {
+        // Child post types may override this method when extra hooks are needed.
+    }
 
     public function args(): array
     {

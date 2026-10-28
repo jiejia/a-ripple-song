@@ -6,12 +6,13 @@ defined('ABSPATH') || exit;
 
 use Jiejia\ARippleSong\Abstracts\ServiceProviderAbstract;
 use Jiejia\ARippleSong\Abstracts\SettingAbstract;
+use Jiejia\ARippleSong\Libraries\Fields\OptionStore;
 use Jiejia\ARippleSong\Settings\DashboardSetting;
 use Jiejia\ARippleSong\Settings\PodcastSetting;
 use Jiejia\ARippleSong\Plugin;
 
 /**
- * Registers Carbon Fields settings pages.
+ * Registers plugin settings pages.
  */
 class SettingServiceProvider extends ServiceProviderAbstract
 {
@@ -40,7 +41,7 @@ class SettingServiceProvider extends ServiceProviderAbstract
             foreach ($this->settings as $settingClass) {
                 $setting = new $settingClass();
                 if ($setting->isTopLevelMenu()) {
-                    $topPageSlug = Plugin::PREFIX . $setting->slug();
+                    $topPageSlug = Plugin::PREFIX . $setting->slug;
 
                     add_menu_page(
                         __('A Ripple Song', 'a-ripple-song'),                  // page title
@@ -59,7 +60,7 @@ class SettingServiceProvider extends ServiceProviderAbstract
             foreach ($this->settings as $settingClass) {
                 $setting = new $settingClass();
 
-                $pageSlug = Plugin::PREFIX . $setting->slug();
+                $pageSlug = $setting->slug();
 
                 //  Register submenu page
                 add_submenu_page(
@@ -72,5 +73,10 @@ class SettingServiceProvider extends ServiceProviderAbstract
                 );
             }
         });
+
+        foreach ($this->settings as $settingClass) {
+            // Each settings page saves its fields into a single option.
+            (new OptionStore(new $settingClass()))->register();
+        }
     }
 }
