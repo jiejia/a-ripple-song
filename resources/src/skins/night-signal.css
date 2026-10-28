@@ -1,0 +1,135 @@
+/*
+ * Player skin "夜航" (night-signal); built into resources/dist/skins/night-signal.css by `npm run build:css`.
+ * Converted from ~/workspace/podcast/night-signal: its @theme config and theme.css, minus page-level rules
+ * (html / body backgrounds, swup transitions, entry content, selection colors).
+ * Light colors apply to .ars-player, dark ones to .ars-player[data-ars-scheme="dark"] (set by player.js);
+ * elements with data-ars-theme="light|dark" pin a variant, like the prototype's local data-theme.
+ */
+@import "tailwindcss" source(none);
+@source "../../templates/player/skins/night-signal.php";
+
+@plugin "daisyui" {
+  root: ".ars-player";
+  themes: false;
+  logs: false;
+}
+@theme {
+  --font-sans: "Noto Sans SC", system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Noto Sans SC", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+/* 让 Tailwind 认识 daisyUI 的颜色，任意变体（group-hover:、!、/透明度）都能生成 */
+@theme inline {
+  --color-primary: var(--color-primary);
+  --color-primary-content: var(--color-primary-content);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-content: var(--color-secondary-content);
+  --color-accent: var(--color-accent);
+  --color-accent-content: var(--color-accent-content);
+  --color-neutral: var(--color-neutral);
+  --color-neutral-content: var(--color-neutral-content);
+  --color-info: var(--color-info);
+  --color-info-content: var(--color-info-content);
+  --color-success: var(--color-success);
+  --color-success-content: var(--color-success-content);
+  --color-warning: var(--color-warning);
+  --color-warning-content: var(--color-warning-content);
+  --color-error: var(--color-error);
+  --color-error-content: var(--color-error-content);
+  --color-base-100: var(--color-base-100);
+  --color-base-200: var(--color-base-200);
+  --color-base-300: var(--color-base-300);
+  --color-base-content: var(--color-base-content);
+}
+
+/* ==========================================================
+   夜航电波 Night Signal — 主题样式
+   daisyUI 5 自定义主题 + Swup 过渡 + WordPress 内容排版
+   ========================================================== */
+
+/* ---------- daisyUI 主题：夜间（默认） ---------- */
+.ars-player[data-ars-scheme="dark"], .ars-player [data-ars-theme="dark"] {
+  color-scheme: dark;
+  --color-base-100: oklch(19% 0.012 265);
+  --color-base-200: oklch(16.5% 0.01 265);
+  --color-base-300: oklch(25% 0.012 265);
+  --color-base-content: oklch(93% 0.01 110);
+  --color-primary: oklch(91% 0.2 125);
+  --color-primary-content: oklch(20% 0.03 125);
+  --color-secondary: oklch(80% 0.11 295);
+  --color-secondary-content: oklch(20% 0.04 295);
+  --color-accent: oklch(76% 0.16 50);
+  --color-accent-content: oklch(20% 0.04 50);
+  --color-neutral: oklch(27% 0.012 265);
+  --color-neutral-content: oklch(92% 0.01 265);
+  --color-info: oklch(74% 0.14 235);
+  --color-info-content: oklch(20% 0.04 235);
+  --color-success: oklch(78% 0.16 155);
+  --color-success-content: oklch(20% 0.04 155);
+  --color-warning: oklch(84% 0.16 85);
+  --color-warning-content: oklch(22% 0.05 85);
+  --color-error: oklch(70% 0.19 22);
+  --color-error-content: oklch(98% 0.01 22);
+  --radius-selector: 1rem;
+  --radius-field: 0.75rem;
+  --radius-box: 1.25rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+/* ---------- daisyUI 主题：日间 ---------- */
+.ars-player, .ars-player [data-ars-theme="light"] {
+  color-scheme: light;
+  --color-base-100: oklch(98.5% 0.004 110);
+  --color-base-200: oklch(95.5% 0.006 110);
+  --color-base-300: oklch(89% 0.008 110);
+  --color-base-content: oklch(21% 0.012 265);
+  --color-primary: oklch(47% 0.13 135);
+  --color-primary-content: oklch(98% 0.02 125);
+  --color-secondary: oklch(48% 0.17 295);
+  --color-secondary-content: oklch(98% 0.01 295);
+  --color-accent: oklch(66% 0.17 50);
+  --color-accent-content: oklch(18% 0.04 50);
+  --color-neutral: oklch(22% 0.012 265);
+  --color-neutral-content: oklch(96% 0.006 265);
+  --color-info: oklch(52% 0.14 240);
+  --color-info-content: oklch(98% 0.01 240);
+  --color-success: oklch(50% 0.13 155);
+  --color-success-content: oklch(98% 0.01 155);
+  --color-warning: oklch(78% 0.16 80);
+  --color-warning-content: oklch(22% 0.05 80);
+  --color-error: oklch(55% 0.2 25);
+  --color-error-content: oklch(98% 0.01 25);
+  --radius-selector: 1rem;
+  --radius-field: 0.75rem;
+  --radius-box: 1.25rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+body { -webkit-font-smoothing: antialiased; }
+
+/* ---------- Swup 页面过渡 ---------- */
+.transition-fade {
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .transition-fade { transition: none; }
+}
+
+/* 切页时顶部加载条 */
+
+/* ---------- 播放中指示（均衡器小动画） ---------- */
+.eq { display: inline-flex; align-items: flex-end; gap: 2px; height: 12px; }
+.eq i { width: 3px; height: 100%; border-radius: 2px; background: currentColor; transform-origin: bottom; animation: eq 0.9s ease-in-out infinite; }
+.eq i:nth-child(2) { animation-delay: -0.3s; }
+.eq i:nth-child(3) { animation-delay: -0.6s; }
+@keyframes eq { 0%, 100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+@media (prefers-reduced-motion: reduce) { .eq i { animation: none; transform: scaleY(0.7); } }
+
+/* ---------- WordPress 正文排版（the_content 输出） ---------- */

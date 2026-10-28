@@ -29,14 +29,14 @@ final class FieldAssets
             self::HANDLE,
             A_RIPPLE_SONG_PLUGIN_URL . 'resources/css/fields.css',
             ['dashicons'],
-            self::version('resources/css/fields.css')
+            Plugin::assetVersion('resources/css/fields.css')
         );
 
         wp_enqueue_script(
             self::HANDLE,
             A_RIPPLE_SONG_PLUGIN_URL . 'resources/js/fields.js',
             ['jquery', 'jquery-ui-sortable'],
-            self::version('resources/js/fields.js'),
+            Plugin::assetVersion('resources/js/fields.js'),
             true
         );
 
@@ -48,18 +48,5 @@ final class FieldAssets
             'currentSize' => __('Current: %1$d × %2$d px.', 'a-ripple-song'),
             'imageLoadError' => __('The image could not be loaded.', 'a-ripple-song'),
         ]);
-    }
-
-    /**
-     * Use the file modification time as version so edits bust the browser cache.
-     *
-     * @param string $path Path relative to the plugin directory.
-     * @return string
-     */
-    private static function version(string $path): string
-    {
-        $mtime = @filemtime(Plugin::DIR . $path);
-
-        return $mtime !== false ? (string) $mtime : Plugin::VERSION;
     }
 }

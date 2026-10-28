@@ -1,0 +1,165 @@
+/*
+ * Player skin "终端" (terminal); built into resources/dist/skins/terminal.css by `npm run build:css`.
+ * Converted from ~/workspace/podcast/terminal: its @theme config and theme.css, minus page-level rules
+ * (html / body backgrounds, swup transitions, entry content, selection colors).
+ * Light colors apply to .ars-player, dark ones to .ars-player[data-ars-scheme="dark"] (set by player.js);
+ * elements with data-ars-theme="light|dark" pin a variant, like the prototype's local data-theme.
+ */
+@import "tailwindcss" source(none);
+@source "../../templates/player/skins/terminal.php";
+
+@plugin "daisyui" {
+  root: ".ars-player";
+  themes: false;
+  logs: false;
+}
+@theme {
+  --font-sans: "JetBrains Mono", "Noto Sans SC", ui-monospace, monospace;
+  --font-mono: "JetBrains Mono", "Noto Sans SC", ui-monospace, monospace;
+  --font-pixel: "VT323", "JetBrains Mono", monospace;
+}
+/* 让 Tailwind 认识 daisyUI 的颜色，任意变体（group-hover:、!、/透明度）都能生成 */
+@theme inline {
+  --color-primary: var(--color-primary);
+  --color-primary-content: var(--color-primary-content);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-content: var(--color-secondary-content);
+  --color-accent: var(--color-accent);
+  --color-accent-content: var(--color-accent-content);
+  --color-neutral: var(--color-neutral);
+  --color-neutral-content: var(--color-neutral-content);
+  --color-info: var(--color-info);
+  --color-info-content: var(--color-info-content);
+  --color-success: var(--color-success);
+  --color-success-content: var(--color-success-content);
+  --color-warning: var(--color-warning);
+  --color-warning-content: var(--color-warning-content);
+  --color-error: var(--color-error);
+  --color-error-content: var(--color-error-content);
+  --color-base-100: var(--color-base-100);
+  --color-base-200: var(--color-base-200);
+  --color-base-300: var(--color-base-300);
+  --color-base-content: var(--color-base-content);
+}
+
+/* ==========================================================
+   终端 Terminal — CRT 荧光屏 / 命令行风格播客主题
+   等宽字体、扫描线、荧光辉光、闪烁光标、方括号命令按钮、
+   ls -l 列表、man 手册式单集页、ASCII 字符频谱、键盘快捷键
+   ========================================================== */
+
+.ars-player[data-ars-scheme="dark"],
+.ars-player [data-ars-theme="dark"] {
+  color-scheme: dark;
+  --color-base-100: oklch(16% 0.02 150);
+  --color-base-200: oklch(20.5% 0.026 150);
+  --color-base-300: oklch(28% 0.035 150);
+  --color-base-content: oklch(86% 0.17 148);
+  --color-primary: oklch(83% 0.16 78);
+  --color-primary-content: oklch(16% 0.02 150);
+  --color-secondary: oklch(83% 0.11 200);
+  --color-secondary-content: oklch(16% 0.02 150);
+  --color-accent: oklch(74% 0.19 335);
+  --color-accent-content: oklch(16% 0.02 150);
+  --color-neutral: oklch(86% 0.17 148);
+  --color-neutral-content: oklch(16% 0.02 150);
+  --color-info: oklch(83% 0.11 200);
+  --color-info-content: oklch(16% 0.02 150);
+  --color-success: oklch(86% 0.17 148);
+  --color-success-content: oklch(16% 0.02 150);
+  --color-warning: oklch(83% 0.16 78);
+  --color-warning-content: oklch(16% 0.02 150);
+  --color-error: oklch(70% 0.2 28);
+  --color-error-content: oklch(16% 0.02 150);
+  --radius-selector: 0rem;
+  --radius-field: 0rem;
+  --radius-box: 0rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+  --glow: 0 0 6px color-mix(in oklab, currentColor 55%, transparent);
+  --crt: 1;
+}
+
+.ars-player,
+.ars-player [data-ars-theme="light"] {
+  color-scheme: light;
+  --color-base-100: oklch(96.5% 0.012 95);
+  --color-base-200: oklch(92.5% 0.016 95);
+  --color-base-300: oklch(86% 0.02 95);
+  --color-base-content: oklch(26% 0.03 150);
+  --color-primary: oklch(52% 0.14 52);
+  --color-primary-content: oklch(97% 0.01 95);
+  --color-secondary: oklch(48% 0.1 225);
+  --color-secondary-content: oklch(97% 0.01 95);
+  --color-accent: oklch(50% 0.19 335);
+  --color-accent-content: oklch(97% 0.01 95);
+  --color-neutral: oklch(26% 0.03 150);
+  --color-neutral-content: oklch(97% 0.01 95);
+  --color-info: oklch(48% 0.1 225);
+  --color-info-content: oklch(97% 0.01 95);
+  --color-success: oklch(45% 0.12 148);
+  --color-success-content: oklch(97% 0.01 95);
+  --color-warning: oklch(52% 0.14 52);
+  --color-warning-content: oklch(97% 0.01 95);
+  --color-error: oklch(52% 0.2 28);
+  --color-error-content: oklch(97% 0.01 95);
+  --radius-selector: 0rem;
+  --radius-field: 0rem;
+  --radius-box: 0rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+  --glow: none;
+  --crt: 0;
+}
+body { -webkit-font-smoothing: antialiased; font-variant-ligatures: none; text-shadow: var(--glow); }
+
+/* 扫描线 + 暗角（只在荧光屏模式） */
+
+.dim { opacity: 0.6; }
+.tui-line { border-color: color-mix(in oklab, var(--color-base-content) 40%, transparent); }
+
+/* 文本框：标题压在边框上 */
+.tui { position: relative; border: 1px solid color-mix(in oklab, var(--color-base-content) 40%, transparent); }
+.tui-title {
+  position: absolute; top: -0.8em; left: 1.5ch; padding: 0 1ch; line-height: 1.6;
+  background: var(--tui-bg, var(--color-base-100)); color: var(--color-primary);
+}
+
+/* 命令行提示符与光标 */
+.prompt::before { content: "$ "; color: var(--color-primary); }
+.cursor::after { content: "█"; margin-left: 0.15ch; color: var(--color-base-content); animation: blink 1.1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* [ 命令按钮 ]：自带 display，要响应式隐藏时外面包一层 */
+.cmd { display: inline-flex; align-items: center; gap: 0.6ch; padding: 0.1em 0.4ch; white-space: nowrap; cursor: pointer; }
+.cmd::before { content: "["; opacity: 0.55; }
+.cmd::after { content: "]"; opacity: 0.55; }
+.cmd:hover, .cmd:focus-visible, .cmd.is-on {
+  background: var(--color-base-content); color: var(--color-base-100); text-shadow: none; outline: none;
+}
+.cmd.is-on::before, .cmd.is-on::after { opacity: 1; }
+
+/* 单色显像管配图 */
+.mono-img { filter: grayscale(1) contrast(1.25) brightness(0.9) sepia(1) hue-rotate(60deg) saturate(2.6); image-rendering: pixelated; }
+:is(.ars-player:not([data-ars-scheme="dark"]), [data-ars-theme="light"]) .mono-img { filter: grayscale(1) contrast(1.1); }
+
+/* 文本进度条上叠一个透明 range，用来拖动跳转 */
+.bar-seek { position: relative; display: block; }
+.bar-seek input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+.bar-seek:focus-within { outline: 1px dashed var(--color-primary); outline-offset: 2px; }
+
+/* ---------- Swup 过渡：显像管闪一下 ---------- */
+.transition-crt { transition: opacity 0.16s steps(3), filter 0.16s steps(3); }
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor::after { animation: none; }
+  .transition-crt { transition: none; }
+}
+
+/* ---------- WordPress 正文排版：man 手册段落 ---------- */

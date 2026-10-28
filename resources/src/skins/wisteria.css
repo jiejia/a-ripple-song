@@ -1,0 +1,151 @@
+/*
+ * Player skin "紫藤" (wisteria); built into resources/dist/skins/wisteria.css by `npm run build:css`.
+ * Converted from ~/workspace/podcast/wisteria: its @theme config and theme.css, minus page-level rules
+ * (html / body backgrounds, swup transitions, entry content, selection colors).
+ * Light colors apply to .ars-player, dark ones to .ars-player[data-ars-scheme="dark"] (set by player.js);
+ * elements with data-ars-theme="light|dark" pin a variant, like the prototype's local data-theme.
+ */
+@import "tailwindcss" source(none);
+@source "../../templates/player/skins/wisteria.php";
+
+@plugin "daisyui" {
+  root: ".ars-player";
+  themes: false;
+  logs: false;
+}
+@theme {
+  --font-sans: "Urbanist", "Noto Sans SC", system-ui, sans-serif;
+}
+/* 让 Tailwind 认识 daisyUI 的颜色，任意变体（group-hover:、!、/透明度）都能生成 */
+@theme inline {
+  --color-primary: var(--color-primary);
+  --color-primary-content: var(--color-primary-content);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-content: var(--color-secondary-content);
+  --color-accent: var(--color-accent);
+  --color-accent-content: var(--color-accent-content);
+  --color-neutral: var(--color-neutral);
+  --color-neutral-content: var(--color-neutral-content);
+  --color-info: var(--color-info);
+  --color-info-content: var(--color-info-content);
+  --color-success: var(--color-success);
+  --color-success-content: var(--color-success-content);
+  --color-warning: var(--color-warning);
+  --color-warning-content: var(--color-warning-content);
+  --color-error: var(--color-error);
+  --color-error-content: var(--color-error-content);
+  --color-base-100: var(--color-base-100);
+  --color-base-200: var(--color-base-200);
+  --color-base-300: var(--color-base-300);
+  --color-base-content: var(--color-base-content);
+}
+
+/* ==========================================================
+   紫藤 Wisteria — 柔和紫色移动应用风播客主题
+   风格参考 Dribbble：Ui Sharks「Podcast App Design」
+   浅灰紫底、大圆角白卡、紫色主色、鲜艳海报封面、描边圆形播放键、
+   热门轮播（‹ ›）、On Live 胶囊、三行歌词式文字稿、手机端底部标签栏
+   ========================================================== */
+
+.ars-player,
+.ars-player [data-ars-theme="light"] {
+  color-scheme: light;
+  --color-base-100: oklch(100% 0 0);
+  --color-base-200: oklch(97% 0.008 285);
+  --color-base-300: oklch(93% 0.016 285);
+  --color-base-content: oklch(24% 0.03 285);
+  --color-primary: oklch(61% 0.19 285);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(80% 0.12 195);
+  --color-secondary-content: oklch(25% 0.05 220);
+  --color-accent: oklch(70% 0.17 15);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(24% 0.03 285);
+  --color-neutral-content: oklch(100% 0 0);
+  --color-info: oklch(80% 0.12 195);
+  --color-info-content: oklch(25% 0.05 220);
+  --color-success: oklch(72% 0.15 160);
+  --color-success-content: oklch(22% 0.04 160);
+  --color-warning: oklch(84% 0.15 85);
+  --color-warning-content: oklch(28% 0.05 85);
+  --color-error: oklch(64% 0.21 20);
+  --color-error-content: oklch(100% 0 0);
+  --radius-selector: 1rem;
+  --radius-field: 1rem;
+  --radius-box: 1.75rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+  --page: oklch(96.2% 0.01 285);
+  --mute: oklch(58% 0.025 285);
+  --lift: 0 18px 40px -22px oklch(45% 0.12 285 / 0.35);
+}
+
+.ars-player[data-ars-scheme="dark"],
+.ars-player [data-ars-theme="dark"] {
+  color-scheme: dark;
+  --color-base-100: oklch(23% 0.03 285);
+  --color-base-200: oklch(20% 0.028 285);
+  --color-base-300: oklch(30% 0.04 285);
+  --color-base-content: oklch(95% 0.01 285);
+  --color-primary: oklch(66% 0.18 285);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(80% 0.12 195);
+  --color-secondary-content: oklch(22% 0.05 220);
+  --color-accent: oklch(72% 0.16 15);
+  --color-accent-content: oklch(18% 0.04 15);
+  --color-neutral: oklch(95% 0.01 285);
+  --color-neutral-content: oklch(23% 0.03 285);
+  --color-info: oklch(80% 0.12 195);
+  --color-info-content: oklch(22% 0.05 220);
+  --color-success: oklch(76% 0.14 160);
+  --color-success-content: oklch(18% 0.04 160);
+  --color-warning: oklch(84% 0.14 85);
+  --color-warning-content: oklch(22% 0.04 85);
+  --color-error: oklch(70% 0.19 20);
+  --color-error-content: oklch(18% 0.04 20);
+  --radius-selector: 1rem;
+  --radius-field: 1rem;
+  --radius-box: 1.75rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+  --page: oklch(17% 0.025 285);
+  --mute: oklch(72% 0.02 285);
+  --lift: 0 18px 40px -22px oklch(5% 0.02 285 / 0.7);
+}
+body { -webkit-font-smoothing: antialiased; }
+
+.mute { color: var(--mute); }
+
+/* 白卡片：只设背景和阴影，圆角 / 内边距用工具类 */
+@layer components {
+  .card-w { background: var(--color-base-100); box-shadow: var(--lift); }
+  /* 描边圆形播放键；.is-on 时变成实心紫色 */
+  .ring-play { display: inline-grid; place-items: center; border-radius: 9999px; border: 1.5px solid color-mix(in oklab, var(--color-base-content) 22%, transparent); color: var(--color-base-content); transition: background-color 0.15s, color 0.15s, border-color 0.15s; }
+  .ring-play:hover { border-color: var(--color-primary); color: var(--color-primary); }
+  .ring-play.is-on { background: var(--color-primary); border-color: var(--color-primary); color: var(--color-primary-content); box-shadow: 0 8px 18px -8px var(--color-primary); }
+}
+
+/* On Live 胶囊上的呼吸点 */
+.live-dot { width: 0.5rem; height: 0.5rem; border-radius: 9999px; background: currentColor; box-shadow: 0 0 0 3px color-mix(in oklab, currentColor 30%, transparent); }
+.is-on .live-dot { animation: breathe 1.4s ease-in-out infinite; }
+@keyframes breathe { 50% { box-shadow: 0 0 0 6px color-mix(in oklab, currentColor 0%, transparent); } }
+
+/* 三行歌词式文字稿：上一句、当前句、下一句 */
+.lyric-prev, .lyric-next { color: var(--mute); opacity: 0.7; font-size: 0.8125rem; }
+.lyric-now { font-weight: 600; }
+
+/* ---------- Swup 过渡 ---------- */
+.transition-rise { transition: opacity 0.25s ease, transform 0.25s ease; }
+
+@media (prefers-reduced-motion: reduce) {
+  .is-on .live-dot { animation: none; }
+  .transition-rise { transition: none; }
+}
+
+/* ---------- WordPress 正文排版 ---------- */

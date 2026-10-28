@@ -1,0 +1,193 @@
+/*
+ * Player skin "软陶" (soft); built into resources/dist/skins/soft.css by `npm run build:css`.
+ * Converted from ~/workspace/podcast/soft: its @theme config and theme.css, minus page-level rules
+ * (html / body backgrounds, swup transitions, entry content, selection colors).
+ * Light colors apply to .ars-player, dark ones to .ars-player[data-ars-scheme="dark"] (set by player.js);
+ * elements with data-ars-theme="light|dark" pin a variant, like the prototype's local data-theme.
+ */
+@import "tailwindcss" source(none);
+@source "../../templates/player/skins/soft.php";
+
+@plugin "daisyui" {
+  root: ".ars-player";
+  themes: false;
+  logs: false;
+}
+@theme {
+  --font-sans: "Manrope", "Noto Sans SC", system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, monospace;
+}
+/* 让 Tailwind 认识 daisyUI 的颜色，任意变体（group-hover:、!、/透明度）都能生成 */
+@theme inline {
+  --color-primary: var(--color-primary);
+  --color-primary-content: var(--color-primary-content);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-content: var(--color-secondary-content);
+  --color-accent: var(--color-accent);
+  --color-accent-content: var(--color-accent-content);
+  --color-neutral: var(--color-neutral);
+  --color-neutral-content: var(--color-neutral-content);
+  --color-info: var(--color-info);
+  --color-info-content: var(--color-info-content);
+  --color-success: var(--color-success);
+  --color-success-content: var(--color-success-content);
+  --color-warning: var(--color-warning);
+  --color-warning-content: var(--color-warning-content);
+  --color-error: var(--color-error);
+  --color-error-content: var(--color-error-content);
+  --color-base-100: var(--color-base-100);
+  --color-base-200: var(--color-base-200);
+  --color-base-300: var(--color-base-300);
+  --color-base-content: var(--color-base-content);
+}
+
+/* ==========================================================
+   软陶 Soft — 新拟态（Neumorphism）硬件收音机风播客主题
+   同色系浮起 / 凹陷软阴影、LCD 液晶屏、喇叭网孔、
+   预设电台按键、进度环播放键、可拖动 / 滚轮调节的音量旋钮
+   ========================================================== */
+
+.ars-player,
+.ars-player [data-ars-theme="light"] {
+  color-scheme: light;
+  --color-base-100: oklch(93% 0.008 260);
+  --color-base-200: oklch(90.5% 0.01 260);
+  --color-base-300: oklch(86% 0.013 260);
+  --color-base-content: oklch(36% 0.025 260);
+  --color-primary: oklch(67% 0.19 40);
+  --color-primary-content: oklch(99% 0.005 40);
+  --color-secondary: oklch(60% 0.12 250);
+  --color-secondary-content: oklch(99% 0.005 250);
+  --color-accent: oklch(74% 0.13 165);
+  --color-accent-content: oklch(25% 0.04 165);
+  --color-neutral: oklch(36% 0.025 260);
+  --color-neutral-content: oklch(93% 0.008 260);
+  --color-info: oklch(60% 0.12 250);
+  --color-info-content: oklch(99% 0.005 250);
+  --color-success: oklch(64% 0.14 155);
+  --color-success-content: oklch(99% 0.005 155);
+  --color-warning: oklch(78% 0.14 75);
+  --color-warning-content: oklch(30% 0.04 75);
+  --color-error: oklch(62% 0.2 25);
+  --color-error-content: oklch(99% 0.005 25);
+  --radius-selector: 1rem;
+  --radius-field: 1rem;
+  --radius-box: 1.75rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+  --sh-light: oklch(100% 0 0 / 0.95);
+  --sh-dark: oklch(72% 0.025 260 / 0.6);
+  --lcd-bg: oklch(84% 0.055 125);
+  --lcd-ink: oklch(30% 0.05 140);
+}
+
+.ars-player[data-ars-scheme="dark"],
+.ars-player [data-ars-theme="dark"] {
+  color-scheme: dark;
+  --color-base-100: oklch(28.5% 0.012 260);
+  --color-base-200: oklch(26% 0.012 260);
+  --color-base-300: oklch(33% 0.014 260);
+  --color-base-content: oklch(87% 0.012 260);
+  --color-primary: oklch(72% 0.18 45);
+  --color-primary-content: oklch(20% 0.03 45);
+  --color-secondary: oklch(72% 0.11 250);
+  --color-secondary-content: oklch(20% 0.03 250);
+  --color-accent: oklch(78% 0.12 165);
+  --color-accent-content: oklch(20% 0.03 165);
+  --color-neutral: oklch(87% 0.012 260);
+  --color-neutral-content: oklch(28.5% 0.012 260);
+  --color-info: oklch(72% 0.11 250);
+  --color-info-content: oklch(20% 0.03 250);
+  --color-success: oklch(76% 0.14 155);
+  --color-success-content: oklch(20% 0.03 155);
+  --color-warning: oklch(82% 0.13 75);
+  --color-warning-content: oklch(20% 0.03 75);
+  --color-error: oklch(70% 0.18 25);
+  --color-error-content: oklch(20% 0.03 25);
+  --radius-selector: 1rem;
+  --radius-field: 1rem;
+  --radius-box: 1.75rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+  --sh-light: oklch(36% 0.014 260 / 0.9);
+  --sh-dark: oklch(15% 0.01 260 / 0.85);
+  --lcd-bg: oklch(25% 0.045 150);
+  --lcd-ink: oklch(86% 0.17 140);
+}
+body { -webkit-font-smoothing: antialiased; }
+
+/* ---------- 新拟态：只设背景和阴影，圆角 / 内边距用工具类 ---------- */
+.raised { background: var(--color-base-100); box-shadow: 7px 7px 16px var(--sh-dark), -7px -7px 16px var(--sh-light); }
+.raised-sm { background: var(--color-base-100); box-shadow: 3px 3px 8px var(--sh-dark), -3px -3px 8px var(--sh-light); }
+.inset { background: var(--color-base-100); box-shadow: inset 4px 4px 9px var(--sh-dark), inset -4px -4px 9px var(--sh-light); }
+.press { transition: box-shadow 0.15s ease, color 0.15s ease, transform 0.15s ease; }
+.press:hover { color: var(--color-primary); }
+.press:active, .press.is-on {
+  color: var(--color-primary);
+  box-shadow: inset 3px 3px 7px var(--sh-dark), inset -3px -3px 7px var(--sh-light);
+}
+
+/* 主色实心按键 */
+.key-primary {
+  background: var(--color-primary); color: var(--color-primary-content);
+  box-shadow: 5px 5px 12px var(--sh-dark), -5px -5px 12px var(--sh-light), inset 1px 1px 2px oklch(100% 0 0 / 0.35);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+.key-primary:active { transform: scale(0.97); box-shadow: inset 3px 3px 7px oklch(0% 0 0 / 0.25); }
+
+/* LCD 液晶屏：里面的频谱读 --color-primary，所以在这里改成液晶墨色 */
+.lcd {
+  background:
+    repeating-linear-gradient(0deg, oklch(0% 0 0 / 0.04) 0 1px, transparent 1px 3px),
+    var(--lcd-bg);
+  color: var(--lcd-ink); font-family: var(--font-mono);
+  box-shadow: inset 3px 3px 8px oklch(0% 0 0 / 0.28), inset -1px -1px 2px oklch(100% 0 0 / 0.2);
+  --color-primary: var(--lcd-ink);
+}
+
+/* 喇叭网孔 */
+.grille {
+  background-image: radial-gradient(circle, var(--sh-dark) 2px, transparent 2.6px);
+  background-size: 11px 11px;
+  background-position: center;
+}
+
+/* 拨动开关：.switch > .switch-thumb，开时加 .is-on */
+.switch { position: relative; display: inline-block; flex: none; width: 3.25rem; height: 1.85rem; border-radius: 9999px; }
+.switch-thumb {
+  position: absolute; top: 0.25rem; left: 0.25rem; width: 1.35rem; height: 1.35rem; border-radius: 9999px;
+  background: var(--color-base-100); box-shadow: 2px 2px 5px var(--sh-dark), -1px -1px 3px var(--sh-light);
+  transition: translate 0.2s ease, background-color 0.2s ease;
+}
+.switch.is-on .switch-thumb { translate: 1.4rem 0; background: var(--color-primary); }
+
+/* 旋钮：.knob > .knob-dial（用 --angle 转动） */
+.knob { position: relative; border-radius: 9999px; touch-action: none; cursor: grab; }
+.knob-dial {
+  position: absolute; inset: 14%; border-radius: 9999px; rotate: var(--angle, 0deg);
+  background: linear-gradient(145deg, var(--sh-light), var(--color-base-100) 45%, var(--color-base-300));
+  box-shadow: 2px 2px 5px var(--sh-dark);
+}
+.knob-dial::after {
+  content: ""; position: absolute; top: 9%; left: 50%; width: 12%; height: 12%; border-radius: 9999px;
+  translate: -50% 0; background: var(--color-primary); box-shadow: 0 0 6px var(--color-primary);
+}
+
+/* 进度环 */
+.ring-track { stroke: var(--sh-dark); opacity: 0.45; }
+.ring-fill { stroke: var(--color-primary); transition: stroke-dashoffset 0.25s linear; }
+
+/* ---------- Swup 过渡 ---------- */
+.transition-soft { transition: opacity 0.25s ease, transform 0.25s ease; }
+
+@media (prefers-reduced-motion: reduce) {
+  .transition-soft, .press, .switch-thumb, .ring-fill { transition: none; }
+}
+
+/* ---------- WordPress 正文排版 ---------- */

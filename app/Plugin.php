@@ -9,6 +9,7 @@ use Jiejia\ARippleSong\Contracts\ServiceProvider;
 use Jiejia\ARippleSong\Providers\ControllerServiceProvider;
 use Jiejia\ARippleSong\Providers\CPTServiceProvider;
 use Jiejia\ARippleSong\Providers\FeedServiceProvider;
+use Jiejia\ARippleSong\Providers\PlayerServiceProvider;
 use Jiejia\ARippleSong\Providers\SettingServiceProvider;
 
 /**
@@ -36,6 +37,7 @@ class Plugin
         SettingServiceProvider::class,
         ControllerServiceProvider::class,
         FeedServiceProvider::class,
+        PlayerServiceProvider::class,
     ];
 
     /**
@@ -44,6 +46,19 @@ class Plugin
      * @var array<int,ServiceProvider>
      */
     private array $providerInstances = [];
+
+    /**
+     * Return an asset version that changes whenever the file does, so edits bust the browser cache.
+     *
+     * @param string $path Path relative to the plugin directory.
+     * @return string
+     */
+    public static function assetVersion(string $path): string
+    {
+        $mtime = @filemtime(self::DIR . $path);
+
+        return $mtime !== false ? (string) $mtime : self::VERSION;
+    }
 
     /**
      * Create the plugin application and boot its providers.
