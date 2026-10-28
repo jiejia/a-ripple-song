@@ -7,7 +7,7 @@ defined('ABSPATH') || exit;
 use Jiejia\ARippleSong\Plugin;
 
 /**
- * Inline Lucide icons from resources/icons (copied there by `npm run build:icons`).
+ * Inline Lucide icons from resources/assets/icons (copied there by `npm run build:icons`).
  *
  * Icons are printed as SVG markup, so they need no JavaScript and survive swup page swaps.
  */
@@ -60,7 +60,7 @@ final class Icon
      */
     private static function load(string $name): string
     {
-        $file = Plugin::DIR . 'resources/icons/' . sanitize_file_name($name) . '.svg';
+        $file = Plugin::DIR . 'resources/assets/icons/' . sanitize_file_name($name) . '.svg';
 
         return is_readable($file) ? trim((string) file_get_contents($file)) : '';
     }

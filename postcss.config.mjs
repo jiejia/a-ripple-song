@@ -1,4 +1,4 @@
-// Builds resources/dist/player.css: Tailwind CSS 4 + daisyUI 5, confined to the player.
+// Builds the player skin stylesheets (resources/assets/css/player → public/dist/skins): Tailwind CSS 4 + daisyUI 5, confined to the player.
 //
 // The player is printed into any theme, so its CSS must neither leak out nor be overridden:
 // - every selector is prefixed with .ars-player (Preflight then only resets the player);

@@ -2,7 +2,7 @@
 /**
  * Player skin "软陶" (soft), converted from the ~/workspace/podcast/soft prototype.
  *
- * Bindings use the plugin's small Alpine-like binder (resources/src/binder.js):
+ * Bindings use the plugin's small Alpine-like binder (resources/assets/js/player/binder.js):
  * ars-text, ars-show, ars-bind:attr, ars-on:event, ars-for, ars-data, ars-transition:*, ars-cloak.
  * Expressions run against the player store, e.g. toggle(), fmt(position), current?.title.
  * Themes can override this file with {theme}/a-ripple-song/player/skins/soft.php.
@@ -15,7 +15,7 @@ use Jiejia\ARippleSong\Libraries\Icon;
 <div class="ars-player" data-ars-player data-ars-skin="soft" hidden>
     <?php /* ============ 播放器：机身面板（常驻） ============ */ ?>
     <div class="fixed inset-x-0 bottom-3 z-[9990] px-3" role="region" data-ars-bar aria-label="音频播放器">
-      <div data-ars-width="box" class="raised mx-auto flex h-20 max-w-5xl items-center gap-3 rounded-[2rem] px-3 sm:gap-4 sm:px-4">
+      <div data-ars-width="box" data-ars-surface class="raised mx-auto flex h-20 max-w-5xl items-center gap-3 rounded-[2rem] px-3 sm:gap-4 sm:px-4">
         <button type="button" class="lcd flex h-14 min-w-0 flex-1 flex-col justify-center rounded-2xl px-4 text-left md:w-64 md:flex-none" ars-on:click="expanded = true" aria-label="展开正在播放">
           <span class="flex items-center justify-between gap-2 text-[11px] uppercase tracking-wider">
             <span ars-text="error || `EP.${current?.number} ${loading ? 'LOAD' : (playing ? '▶ PLAY' : '❚❚ PAUSE')}`"></span>
@@ -68,7 +68,7 @@ use Jiejia\ARippleSong\Libraries\Icon;
          ars-transition:leave="transition duration-150 ease-in" ars-transition:leave-start="opacity-100" ars-transition:leave-end="opacity-0"
          ars-on:keydown.escape.window="expanded = false"
          class="fixed inset-0 z-[9991] overflow-y-auto bg-base-100" role="dialog" aria-modal="true" aria-label="正在播放">
-      <div class="mx-auto max-w-6xl px-4 py-6 sm:px-6">
+      <div data-ars-panel-width="content" class="mx-auto max-w-6xl px-4 py-6 sm:px-6">
         <div class="flex items-center justify-between">
           <p class="text-xs font-bold uppercase tracking-widest opacity-60">Now Playing</p>
           <button type="button" class="raised-sm press grid size-11 place-items-center rounded-full" ars-on:click="expanded = false" aria-label="收起"><?php Icon::render('chevron-down', 'size-5'); ?></button>

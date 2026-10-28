@@ -84,6 +84,19 @@ class PlayerSetting extends SettingAbstract
             ],
             [
                 'type' => 'select',
+                'key' => 'background',
+                'label' => __('Player Bar Background', 'a-ripple-song'),
+                'width' => 'half',
+                'required' => true,
+                'options' => [
+                    'translucent' => __('Translucent (frosted glass)', 'a-ripple-song'),
+                    'solid' => __('Solid', 'a-ripple-song'),
+                ],
+                'default' => 'translucent',
+                'help' => __('Translucent lets the page show through the bar, blurred. The Aurora style is always frosted.', 'a-ripple-song'),
+            ],
+            [
+                'type' => 'select',
                 'key' => 'color_scheme',
                 'label' => __('Player Colors', 'a-ripple-song'),
                 'width' => 'half',
@@ -96,6 +109,24 @@ class PlayerSetting extends SettingAbstract
                 ],
                 'default' => 'auto',
                 'help' => __('Every style has a light and a dark variant. Auto detect reads the light / dark markers and the background color of the current theme, and follows its toggle. Ignored when the theme styles the player itself.', 'a-ripple-song'),
+            ],
+            [
+                'type' => 'separator',
+                'label' => __('Episode Page', 'a-ripple-song'),
+            ],
+            [
+                'type' => 'select',
+                'key' => 'episode_meta',
+                'label' => __('Episode Meta Bar', 'a-ripple-song'),
+                'width' => 'half',
+                'required' => true,
+                'options' => [
+                    'before' => __('Before the episode content', 'a-ripple-song'),
+                    'after' => __('After the episode content', 'a-ripple-song'),
+                    'hidden' => __('Do not show', 'a-ripple-song'),
+                ],
+                'default' => 'before',
+                'help' => __('Play and favorite buttons plus the play count on single episode pages, in the player style. Shown while the global player is on and the episode has audio; favorites are kept in the visitor\'s browser.', 'a-ripple-song'),
             ],
         ];
     }
@@ -132,6 +163,28 @@ class PlayerSetting extends SettingAbstract
         $width = (string) $this->value('width');
 
         return in_array($width, ['wide', 'content', 'skin', 'full'], true) ? $width : 'wide';
+    }
+
+    /**
+     * Return where the meta bar goes on episode pages: before, after (the content) or hidden.
+     *
+     * @return string
+     */
+    public function episodeMetaPosition(): string
+    {
+        $position = (string) $this->value('episode_meta');
+
+        return in_array($position, ['before', 'after', 'hidden'], true) ? $position : 'before';
+    }
+
+    /**
+     * Whether the player bar background is translucent (frosted glass) rather than solid.
+     *
+     * @return bool
+     */
+    public function isTranslucent(): bool
+    {
+        return $this->value('background') !== 'solid';
     }
 
     /**

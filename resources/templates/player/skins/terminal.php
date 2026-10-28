@@ -2,7 +2,7 @@
 /**
  * Player skin "终端" (terminal), converted from the ~/workspace/podcast/terminal prototype.
  *
- * Bindings use the plugin's small Alpine-like binder (resources/src/binder.js):
+ * Bindings use the plugin's small Alpine-like binder (resources/assets/js/player/binder.js):
  * ars-text, ars-show, ars-bind:attr, ars-on:event, ars-for, ars-data, ars-transition:*, ars-cloak.
  * Expressions run against the player store, e.g. toggle(), fmt(position), current?.title.
  * Themes can override this file with {theme}/a-ripple-song/player/skins/terminal.php.
@@ -11,10 +11,11 @@
 defined('ABSPATH') || exit;
 
 use Jiejia\ARippleSong\Libraries\Icon;
+use Jiejia\ARippleSong\Libraries\Template;
 ?>
 <div class="ars-player" data-ars-player data-ars-skin="terminal" hidden>
     <?php /* ============ 播放器：底部状态行（常驻） ============ */ ?>
-    <div class="fixed inset-x-0 bottom-0 z-[9990] border-t tui-line bg-base-200 [--tui-bg:var(--color-base-200)]" role="region" data-ars-bar aria-label="音频播放器">
+    <div class="fixed inset-x-0 bottom-0 z-[9990] border-t tui-line bg-base-200 [--tui-bg:var(--color-base-200)]" role="region" data-ars-bar data-ars-surface="base-200" aria-label="音频播放器">
       <div data-ars-width="content" class="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4">
         <div class="flex shrink-0 items-center">
           <span class="hidden md:contents">
@@ -42,7 +43,7 @@ use Jiejia\ARippleSong\Libraries\Icon;
         <canvas data-spectrum="ascii" data-bar="11" data-gap="1" class="hidden h-10 w-28 shrink-0 xl:block" aria-hidden="true"></canvas>
         <span class="hidden lg:contents">
           <button type="button" class="cmd" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}x`">1x</button>
-          <button type="button" class="cmd" ars-on:click="toggleMute()" ars-bind:aria-label="muted ? '取消静音' : '静音'" ars-text="muted ? 'mute' : 'vol'">vol</button>
+          <?php (new Template())->renderThemeable('player/parts/volume', ['button' => 'cmd', 'icon' => '', 'popover' => 'tui bg-base-200', 'range' => 'accent-primary']); ?>
         </span>
         <button type="button" class="cmd" ars-on:click="expanded = true" aria-label="展开播放器与播放队列">^</button>
       </div>
@@ -54,7 +55,7 @@ use Jiejia\ARippleSong\Libraries\Icon;
          ars-transition:leave="transition duration-100 ease-in" ars-transition:leave-start="opacity-100" ars-transition:leave-end="opacity-0"
          ars-on:keydown.escape.window="expanded = false"
          class="fixed inset-0 z-[9991] overflow-y-auto bg-base-100" role="dialog" aria-modal="true" aria-label="正在播放">
-      <div class="mx-auto max-w-6xl px-4 py-6">
+      <div data-ars-panel-width="content" class="mx-auto max-w-6xl px-4 py-6">
         <div class="flex items-center justify-between">
           <p class="prompt">now-playing --watch</p>
           <button type="button" class="cmd" ars-on:click="expanded = false" aria-label="收起">q 退出</button>

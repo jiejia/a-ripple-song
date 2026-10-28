@@ -27,16 +27,16 @@ final class FieldAssets
 
         wp_enqueue_style(
             self::HANDLE,
-            A_RIPPLE_SONG_PLUGIN_URL . 'resources/css/fields.css',
+            A_RIPPLE_SONG_PLUGIN_URL . 'resources/assets/css/fields.css',
             ['dashicons'],
-            Plugin::assetVersion('resources/css/fields.css')
+            Plugin::assetVersion('resources/assets/css/fields.css')
         );
 
         wp_enqueue_script(
             self::HANDLE,
-            A_RIPPLE_SONG_PLUGIN_URL . 'resources/js/fields.js',
+            A_RIPPLE_SONG_PLUGIN_URL . 'resources/assets/js/fields.js',
             ['jquery', 'jquery-ui-sortable'],
-            Plugin::assetVersion('resources/js/fields.js'),
+            Plugin::assetVersion('resources/assets/js/fields.js'),
             true
         );
 

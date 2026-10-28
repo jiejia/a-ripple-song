@@ -2,7 +2,7 @@
 /**
  * Player skin "广播站" (broadcast), converted from the ~/workspace/podcast/broadcast prototype.
  *
- * Bindings use the plugin's small Alpine-like binder (resources/src/binder.js):
+ * Bindings use the plugin's small Alpine-like binder (resources/assets/js/player/binder.js):
  * ars-text, ars-show, ars-bind:attr, ars-on:event, ars-for, ars-data, ars-transition:*, ars-cloak.
  * Expressions run against the player store, e.g. toggle(), fmt(position), current?.title.
  * Themes can override this file with {theme}/a-ripple-song/player/skins/broadcast.php.
@@ -11,10 +11,11 @@
 defined('ABSPATH') || exit;
 
 use Jiejia\ARippleSong\Libraries\Icon;
+use Jiejia\ARippleSong\Libraries\Template;
 ?>
 <div class="ars-player" data-ars-player data-ars-skin="broadcast" hidden>
     <?php /* ============ 播放器（常驻，固定深色） ============ */ ?>
-    <div data-ars-theme="dark" class="fixed inset-x-0 bottom-0 z-[9990] border-t-2 border-base-content bg-base-100 text-base-content" role="region" data-ars-bar aria-label="音频播放器">
+    <div data-ars-theme="dark" class="fixed inset-x-0 bottom-0 z-[9990] border-t-2 border-base-content bg-base-100 text-base-content" role="region" data-ars-bar data-ars-surface aria-label="音频播放器">
       <div class="flex h-[4.5rem] items-stretch">
         <button type="button" class="flex min-w-0 flex-1 items-center gap-3 border-r-2 border-base-content/25 pr-3 text-left hover:bg-base-200 md:w-80 md:flex-none" ars-on:click="expanded = true" aria-label="展开正在播放">
           <img ars-bind:src="current?.cover" alt="" class="h-full w-[4.5rem] shrink-0 border-r-2 border-base-content/25 object-cover">
@@ -45,10 +46,7 @@ use Jiejia\ARippleSong\Libraries\Icon;
         <canvas data-spectrum="led" data-bar="4" data-gap="2" data-color="accent" class="my-3 mr-4 hidden w-40 xl:block" aria-hidden="true"></canvas>
         <div class="hidden items-stretch border-l-2 border-base-content/25 lg:flex">
           <button type="button" class="label w-16 hover:bg-base-200" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
-          <button type="button" class="grid w-12 place-items-center hover:bg-base-200" ars-on:click="toggleMute()" ars-bind:aria-label="muted ? '取消静音' : '静音'" aria-label="静音">
-            <span ars-show="!muted"><?php Icon::render('volume-2', 'size-4'); ?></span>
-            <span ars-show="muted" ars-cloak><?php Icon::render('volume-x', 'size-4'); ?></span>
-          </button>
+          <?php (new Template())->renderThemeable('player/parts/volume', ['button' => 'grid h-full w-12 place-items-center hover:bg-base-200', 'popover' => 'border-2 border-base-content bg-base-100 text-base-content', 'align' => 'end']); ?>
         </div>
         <button type="button" class="grid w-14 place-items-center border-l-2 border-base-content/25 hover:bg-base-200" ars-on:click="expanded = true" aria-label="展开播放器与播放队列"><?php Icon::render('maximize-2', 'size-4'); ?></button>
       </div>

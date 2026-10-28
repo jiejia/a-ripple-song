@@ -2,7 +2,7 @@
 /**
  * Player skin "夜航" (night-signal), converted from the ~/workspace/podcast/night-signal prototype.
  *
- * Bindings use the plugin's small Alpine-like binder (resources/src/binder.js):
+ * Bindings use the plugin's small Alpine-like binder (resources/assets/js/player/binder.js):
  * ars-text, ars-show, ars-bind:attr, ars-on:event, ars-for, ars-data, ars-transition:*, ars-cloak.
  * Expressions run against the player store, e.g. toggle(), fmt(position), current?.title.
  * Themes can override this file with {theme}/a-ripple-song/player/skins/night-signal.php.
@@ -14,7 +14,7 @@ use Jiejia\ARippleSong\Libraries\Icon;
 ?>
 <div class="ars-player" data-ars-player data-ars-skin="night-signal" hidden>
     <?php /* ============ 底部播放器（常驻，不随 Swup 切页重载） ============ */ ?>
-    <div class="fixed inset-x-0 bottom-0 z-[9990] border-t border-base-300 bg-base-200" role="region" data-ars-bar aria-label="音频播放器">
+    <div class="fixed inset-x-0 bottom-0 z-[9990] border-t border-base-300 bg-base-200" role="region" data-ars-bar data-ars-surface="base-200" aria-label="音频播放器">
       <div class="h-1 w-full bg-base-300 md:hidden" aria-hidden="true"><div class="h-full bg-primary transition-[width]" ars-bind:style="`width:${progress}%`"></div></div>
       <div data-ars-width="content" class="mx-auto flex max-w-6xl items-center gap-3 px-3 py-2.5 sm:px-6 md:gap-6">
         <button type="button" class="flex min-w-0 flex-1 items-center gap-3 rounded-field text-left md:w-64 md:flex-none" ars-on:click="expanded = true" aria-label="展开正在播放">
@@ -74,7 +74,7 @@ use Jiejia\ARippleSong\Libraries\Icon;
          ars-transition:leave="transition duration-200 ease-in" ars-transition:leave-start="translate-y-0" ars-transition:leave-end="translate-y-full"
          ars-on:keydown.escape.window="expanded = false"
          class="fixed inset-0 z-[9991] overflow-y-auto bg-base-100" role="dialog" aria-modal="true" aria-label="正在播放">
-      <div class="mx-auto max-w-6xl px-4 pb-10 sm:px-6">
+      <div data-ars-panel-width="content" class="mx-auto max-w-6xl px-4 pb-10 sm:px-6">
         <div class="flex h-16 items-center justify-between">
           <p class="text-sm font-medium text-base-content/70">正在播放</p>
           <button type="button" class="btn btn-ghost btn-circle" ars-on:click="expanded = false" aria-label="收起"><?php Icon::render('chevron-down', 'size-6'); ?></button>

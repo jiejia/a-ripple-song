@@ -5,10 +5,11 @@ namespace Jiejia\ARippleSong\Providers;
 defined('ABSPATH') || exit;
 
 use Jiejia\ARippleSong\Abstracts\ServiceProviderAbstract;
+use Jiejia\ARippleSong\Player\EpisodeMeta;
 use Jiejia\ARippleSong\Player\GlobalPlayer;
 
 /**
- * Registers the front-end global player.
+ * Registers the front-end global player and the episode page meta bar.
  */
 class PlayerServiceProvider extends ServiceProviderAbstract
 {
@@ -19,6 +20,8 @@ class PlayerServiceProvider extends ServiceProviderAbstract
      */
     public function register(): void
     {
-        (new GlobalPlayer())->register();
+        $player = new GlobalPlayer();
+        $player->register();
+        (new EpisodeMeta($player))->register();
     }
 }

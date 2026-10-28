@@ -2,7 +2,7 @@
 /**
  * Player skin "珊瑚" (coral), converted from the ~/workspace/podcast/coral prototype.
  *
- * Bindings use the plugin's small Alpine-like binder (resources/src/binder.js):
+ * Bindings use the plugin's small Alpine-like binder (resources/assets/js/player/binder.js):
  * ars-text, ars-show, ars-bind:attr, ars-on:event, ars-for, ars-data, ars-transition:*, ars-cloak.
  * Expressions run against the player store, e.g. toggle(), fmt(position), current?.title.
  * Themes can override this file with {theme}/a-ripple-song/player/skins/coral.php.
@@ -11,11 +11,12 @@
 defined('ABSPATH') || exit;
 
 use Jiejia\ARippleSong\Libraries\Icon;
+use Jiejia\ARippleSong\Libraries\Template;
 ?>
 <div class="ars-player" data-ars-player data-ars-skin="coral" hidden>
     <?php /* ============ 播放器（常驻，底部悬浮） ============ */ ?>
     <div class="fixed inset-x-0 bottom-0 z-[9990] px-2 pb-2 sm:px-5 sm:pb-5" role="region" data-ars-bar aria-label="音频播放器">
-      <div data-ars-width="box" class="panel mx-auto flex max-w-7xl items-center gap-3 rounded-2xl p-2.5 shadow-[0_20px_50px_-20px_oklch(30%_0.05_270/0.45)] sm:gap-4 sm:px-4">
+      <div data-ars-width="box" data-ars-surface class="panel mx-auto flex max-w-7xl items-center gap-3 rounded-2xl p-2.5 shadow-[0_20px_50px_-20px_oklch(30%_0.05_270/0.45)] sm:gap-4 sm:px-4">
         <button type="button" class="shrink-0" ars-on:click="expanded = true" aria-label="展开播放器"><img ars-bind:src="current?.cover" alt="" class="size-12 rounded-xl"></button>
         <div class="min-w-0 flex-1 md:w-56 md:flex-none">
           <a ars-bind:href="current?.url" class="block truncate text-sm font-semibold hover:text-primary" ars-text="current?.title"></a>
@@ -39,6 +40,7 @@ use Jiejia\ARippleSong\Libraries\Icon;
           </div>
           <span class="mute text-xs tabular-nums" ars-text="fmt(duration)">00:00</span>
         </div>
+        <?php (new Template())->renderThemeable('player/parts/volume', ['button' => 'grid size-10 shrink-0 place-items-center rounded-full hover:bg-base-200', 'popover' => 'panel rounded-2xl shadow-lg']); ?>
         <button type="button" class="hidden size-10 shrink-0 place-items-center rounded-full bg-base-200 text-primary lg:grid" ars-on:click="toggleFav(current?.id)" ars-bind:aria-pressed="isFav(current?.id)" aria-label="收藏当前节目">
           <span ars-show="!isFav(current?.id)"><?php Icon::render('heart', 'size-4'); ?></span>
           <span ars-show="isFav(current?.id)" ars-cloak><?php Icon::render('heart', 'size-4 fill-current'); ?></span>
@@ -53,7 +55,7 @@ use Jiejia\ARippleSong\Libraries\Icon;
          ars-transition:leave="transition duration-150 ease-in" ars-transition:leave-start="opacity-100" ars-transition:leave-end="opacity-0"
          ars-on:keydown.escape.window="expanded = false"
          class="fixed inset-0 z-[9991] overflow-y-auto bg-[var(--page)] sm:p-5" role="dialog" aria-modal="true" aria-label="正在播放">
-      <div class="dash mx-auto min-h-full max-w-6xl p-4 sm:rounded-[2rem] sm:p-8">
+      <div data-ars-panel-width="box" class="dash mx-auto min-h-full max-w-6xl p-4 sm:rounded-[2rem] sm:p-8">
         <div class="flex items-center justify-between">
           <p class="kicker mute">Now Playing · 正在播放</p>
           <button type="button" class="grid size-11 place-items-center rounded-full bg-base-200" ars-on:click="expanded = false" aria-label="收起"><?php Icon::render('x', 'size-5'); ?></button>

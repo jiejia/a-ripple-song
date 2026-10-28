@@ -8,7 +8,7 @@ defined('ABSPATH') || exit;
  * Selectable looks of the global player.
  *
  * Each skin has a template (resources/templates/player/skins/{value}.php) and a stylesheet
- * (resources/dist/skins/{value}.css). All but Default were converted from the
+ * (public/dist/skins/{value}.css). All but Default were converted from the
  * ~/workspace/podcast theme prototypes.
  */
 enum PlayerSkin: string
@@ -94,7 +94,7 @@ enum PlayerSkin: string
      */
     public function stylesheet(): string
     {
-        return 'resources/dist/skins/' . $this->value . '.css';
+        return 'public/dist/skins/' . $this->value . '.css';
     }
 
     /**

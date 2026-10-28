@@ -15,9 +15,9 @@ use Jiejia\ARippleSong\Settings\PodcastSetting;
  * The site-wide player, printed once in wp_footer on every front-end page.
  *
  * Its look is a skin chosen in the player settings (see PlayerSkin): a template in
- * resources/templates/player/skins/ plus a stylesheet in resources/dist/skins/. A theme
+ * resources/templates/player/skins/ plus a stylesheet in public/dist/skins/. A theme
  * overrides a template with {theme}/a-ripple-song/player/skins/{skin}.php. Behavior lives in
- * resources/src/player.js.
+ * resources/assets/js/player/player.js.
  *
  * Themes that style the player themselves declare add_theme_support('a-ripple-song-player');
  * the plugin then loads neither the skin stylesheet nor its fonts, and leaves colors to the theme.
@@ -81,8 +81,15 @@ final class GlobalPlayer
         wp_register_style(self::HANDLE . '-base', false, [], Plugin::VERSION);
         wp_enqueue_style(self::HANDLE . '-base');
         wp_add_inline_style(self::HANDLE . '-base', 'body.has-ars-player{padding-bottom:var(--ars-player-height,5.5rem)}html.ars-player-panel-open{overflow:hidden}[ars-cloak]{display:none!important}'
-            // Width set by player.js (setting "Player Width"); content-width containers keep their padding outside.
-            . '.ars-player[data-ars-fit] [data-ars-width]{max-width:var(--ars-fit-width)!important}.ars-player[data-ars-fit] [data-ars-width=content]{box-sizing:content-box!important}');
+            // Bar and panel widths set by player.js (setting "Player Width"); "content" containers keep their padding outside.
+            . '.ars-player[data-ars-fit] [data-ars-width]{max-width:var(--ars-fit-width)!important}'
+            . '.ars-player[data-ars-fit] [data-ars-width=content]{box-sizing:content-box!important}'
+            // On phones the panel stays edge to edge like the prototypes; theme margins would squeeze its controls.
+            . '@media (min-width:640px){.ars-player[data-ars-fit] [data-ars-panel-width]{max-width:var(--ars-fit-panel-width)!important}'
+            . '.ars-player[data-ars-fit] [data-ars-panel-width=content]{box-sizing:content-box!important}}'
+            // Frosted bar (setting "Player Bar Background"), tinted with the surface's own daisyUI color.
+            . '.ars-player[data-ars-translucent] [data-ars-surface]{background-color:color-mix(in oklab,var(--color-base-100) 72%,transparent)!important;-webkit-backdrop-filter:blur(16px) saturate(180%);backdrop-filter:blur(16px) saturate(180%)}'
+            . '.ars-player[data-ars-translucent] [data-ars-surface=base-200]{background-color:color-mix(in oklab,var(--color-base-200) 72%,transparent)!important}');
 
         if (! current_theme_supports(self::THEME_SUPPORT)) {
             wp_enqueue_style(self::HANDLE, A_RIPPLE_SONG_PLUGIN_URL . $skin->stylesheet(), [], Plugin::assetVersion($skin->stylesheet()));
@@ -93,7 +100,7 @@ final class GlobalPlayer
             }
         }
 
-        wp_enqueue_script(self::HANDLE, A_RIPPLE_SONG_PLUGIN_URL . 'resources/dist/player.js', [], Plugin::assetVersion('resources/dist/player.js'), true);
+        wp_enqueue_script(self::HANDLE, A_RIPPLE_SONG_PLUGIN_URL . 'public/dist/player.js', [], Plugin::assetVersion('public/dist/player.js'), true);
         wp_add_inline_script(self::HANDLE, 'window.ARS_PLAYER = ' . wp_json_encode($this->config($episodes)) . ';', 'before');
     }
 
@@ -110,11 +117,11 @@ final class GlobalPlayer
     }
 
     /**
-     * Whether the player shows on the current request.
+     * Whether the player is switched on for the current request (it still needs a playable episode to show).
      *
      * @return bool
      */
-    private function isEnabled(): bool
+    public function isEnabled(): bool
     {
         /**
          * Filters whether the global player is shown on the current page.
@@ -145,6 +152,7 @@ final class GlobalPlayer
                 ? (is_singular($this->podcast->slug()) ? get_queried_object_id() : (int) ($episodes[0]['id'] ?? 0))
                 : 0,
             'width' => $this->setting->width(),
+            'translucent' => $this->setting->isTranslucent(),
             // A theme that styles the player owns its colors; the player then just inherits them.
             'scheme' => current_theme_supports(self::THEME_SUPPORT) ? 'inherit' : $this->setting->colorScheme(),
             'storageKey' => self::HANDLE,

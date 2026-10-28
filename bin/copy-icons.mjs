@@ -1,4 +1,4 @@
-// Copies the Lucide icons the PHP templates use into resources/icons as one-line SVGs.
+// Copies the Lucide icons the PHP templates use into resources/assets/icons as one-line SVGs.
 // Icons are found by scanning resources/templates for Icon::render('name' / Icon::svg('name'.
 // Usage: npm run build:icons
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, rmSync } from 'node:fs';
@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 const require = createRequire(import.meta.url);
 const source = join(dirname(require.resolve('lucide-static/package.json')), 'icons');
 const templates = fileURLToPath(new URL('../resources/templates/', import.meta.url));
-const target = fileURLToPath(new URL('../resources/icons/', import.meta.url));
+const target = fileURLToPath(new URL('../resources/assets/icons/', import.meta.url));
 
 const icons = new Set();
 for (const file of readdirSync(templates, { recursive: true })) {
@@ -33,4 +33,4 @@ for (const name of [...icons].sort()) {
   writeFileSync(join(target, `${name}.svg`), `${svg}\n`);
 }
 
-console.log(`Copied ${icons.size} Lucide icons (ISC license) to resources/icons/`);
+console.log(`Copied ${icons.size} Lucide icons (ISC license) to resources/assets/icons/`);

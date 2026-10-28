@@ -2,7 +2,7 @@
 /**
  * Player skin "极光" (aurora), converted from the ~/workspace/podcast/aurora prototype.
  *
- * Bindings use the plugin's small Alpine-like binder (resources/src/binder.js):
+ * Bindings use the plugin's small Alpine-like binder (resources/assets/js/player/binder.js):
  * ars-text, ars-show, ars-bind:attr, ars-on:event, ars-for, ars-data, ars-transition:*, ars-cloak.
  * Expressions run against the player store, e.g. toggle(), fmt(position), current?.title.
  * Themes can override this file with {theme}/a-ripple-song/player/skins/aurora.php.
@@ -11,11 +11,12 @@
 defined('ABSPATH') || exit;
 
 use Jiejia\ARippleSong\Libraries\Icon;
+use Jiejia\ARippleSong\Libraries\Template;
 ?>
 <div class="ars-player" data-ars-player data-ars-skin="aurora" hidden>
     <?php /* ============ 播放器：悬浮玻璃胶囊（常驻） ============ */ ?>
     <div class="fixed inset-x-0 bottom-3 z-[9990] px-3" role="region" data-ars-bar aria-label="音频播放器">
-      <div data-ars-width="box" class="frost frost-strong relative mx-auto flex h-[4.5rem] max-w-4xl items-center gap-2 overflow-hidden rounded-full pl-2 pr-3 sm:gap-3">
+      <div data-ars-width="box" class="frost frost-strong relative mx-auto flex h-[4.5rem] max-w-4xl items-center gap-2 rounded-full pl-2 pr-3 sm:gap-3">
         <span class="bg-aurora absolute inset-x-6 bottom-0 h-0.5 origin-left rounded-full" ars-bind:style="`transform: scaleX(${progress / 100})`" aria-hidden="true"></span>
         <button type="button" class="flex min-w-0 flex-1 items-center gap-3 rounded-full text-left md:w-64 md:flex-none" ars-on:click="expanded = true" aria-label="展开正在播放">
           <img ars-bind:src="current?.cover" alt="" class="spin size-14 shrink-0 rounded-full ring-2 ring-base-100" ars-bind:class="playing && 'is-on'">
@@ -39,6 +40,7 @@ use Jiejia\ARippleSong\Libraries\Icon;
           <span class="opacity-50" ars-text="fmt(duration)">00:00</span>
         </div>
         <canvas data-spectrum="mirror" data-bar="2" data-gap="2" class="hidden h-8 w-20 shrink-0 lg:block" aria-hidden="true"></canvas>
+        <?php (new Template())->renderThemeable('player/parts/volume', ['popover' => 'frost frost-strong rounded-box', 'range' => 'range range-xs']); ?>
         <button type="button" class="btn btn-ghost btn-sm hidden rounded-full font-normal tabular-nums lg:inline-flex" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
         <button type="button" class="btn btn-ghost btn-circle btn-sm" ars-on:click="expanded = true" aria-label="展开播放器与播放队列"><?php Icon::render('chevron-up', 'size-5'); ?></button>
       </div>
@@ -50,7 +52,7 @@ use Jiejia\ARippleSong\Libraries\Icon;
          ars-transition:leave="transition duration-200 ease-in" ars-transition:leave-start="opacity-100" ars-transition:leave-end="opacity-0"
          ars-on:keydown.escape.window="expanded = false"
          class="fixed inset-0 z-[9991] overflow-y-auto bg-base-200/60 backdrop-blur-3xl" role="dialog" aria-modal="true" aria-label="正在播放">
-      <div class="mx-auto max-w-6xl px-4 py-6 sm:px-6">
+      <div data-ars-panel-width="content" class="mx-auto max-w-6xl px-4 py-6 sm:px-6">
         <div class="flex items-center justify-between">
           <p class="eyebrow">Now Playing</p>
           <button type="button" class="btn btn-ghost btn-circle" ars-on:click="expanded = false" aria-label="收起"><?php Icon::render('chevron-down', 'size-6'); ?></button>

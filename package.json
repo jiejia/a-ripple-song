@@ -5,10 +5,10 @@
   "scripts": {
     "build": "npm run build:icons && npm run build:css && npm run build:js",
     "build:icons": "node bin/copy-icons.mjs",
-    "build:css": "postcss \"resources/src/skins/*.css\" --dir resources/dist/skins --no-map",
-    "build:js": "esbuild resources/src/player.js --bundle --minify --format=iife --target=es2019 --outfile=resources/dist/player.js",
-    "watch:css": "postcss \"resources/src/skins/*.css\" --dir resources/dist/skins --no-map --watch",
-    "watch:js": "esbuild resources/src/player.js --bundle --format=iife --target=es2019 --outfile=resources/dist/player.js --watch"
+    "build:css": "postcss \"resources/assets/css/player/*.css\" --dir public/dist/skins --no-map",
+    "build:js": "esbuild resources/assets/js/player/player.js --bundle --minify --format=iife --target=es2019 --outfile=public/dist/player.js",
+    "watch:css": "postcss \"resources/assets/css/player/*.css\" --dir public/dist/skins --no-map --watch",
+    "watch:js": "esbuild resources/assets/js/player/player.js --bundle --format=iife --target=es2019 --outfile=public/dist/player.js --watch"
   },
   "devDependencies": {
     "@csstools/postcss-cascade-layers": "^6.0.2",

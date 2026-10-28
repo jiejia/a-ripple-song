@@ -14,6 +14,11 @@
  *   [data-ars-bar]             Element whose height reserves room at the page bottom (--ars-player-height).
  *   [data-ars-width="box|content"]  Bar container sized by the "Player Width" setting: "box" lines up its outer
  *                              edge with the theme layout, "content" its content (padding stays outside).
+ *   [data-ars-panel-width="box|content"]  The same for the full-screen panel's container; it follows the theme's
+ *                              wide width (also when the bar uses the content width, which is too narrow for a panel).
+ *                              Clicks beside it (backdrop, margins) close the panel.
+ *   [data-ars-surface="base-100|base-200"]  Element painting the bar background (base-100 when empty); the
+ *                              "Player Bar Background" setting turns it into frosted glass of that daisyUI color.
  *   [data-ars-panel]           Full-screen panel; a <dialog> (opened modal) or any element (toggled `hidden`).
  *                              Esc and links inside it close it.
  *   [data-ars-action="…"]      Buttons: toggle, prev, next, back, forward, rate, mute, panel (open / close the panel).
@@ -43,7 +48,7 @@ $bigButton = 'btn btn-ghost btn-circle';
 
     <?php /* ---------- Bar ---------- */ ?>
     <div class="fixed inset-x-0 bottom-0 z-[9990] px-2 pb-2 sm:px-4 sm:pb-4" data-ars-bar>
-        <div data-ars-width="box" class="mx-auto flex h-16 max-w-6xl items-center gap-2 rounded-box border border-base-300 bg-base-100 px-2 text-base-content shadow-lg sm:gap-3 sm:px-3">
+        <div data-ars-width="box" data-ars-surface class="mx-auto flex h-16 max-w-6xl items-center gap-2 rounded-box border border-base-300 bg-base-100 px-2 text-base-content shadow-lg sm:gap-3 sm:px-3">
             <button type="button" class="flex min-w-0 flex-1 items-center gap-3 text-left md:w-64 md:flex-none" data-ars-action="panel" aria-label="<?php esc_attr_e('Open Now Playing', 'a-ripple-song'); ?>">
                 <span class="grid size-11 shrink-0 place-items-center overflow-hidden rounded-field bg-base-200">
                     <img class="size-full object-cover" alt="" data-ars-src="cover" data-ars-show="cover">
@@ -91,7 +96,7 @@ $bigButton = 'btn btn-ghost btn-circle';
 
     <?php /* ---------- Full-screen "Now Playing" panel ---------- */ ?>
     <dialog class="m-0 size-full max-h-none max-w-none overflow-y-auto bg-base-200 p-0 text-base-content opacity-100 transition-[opacity,translate] duration-200 backdrop:bg-transparent starting:open:translate-y-6 starting:open:opacity-0 sm:p-4" data-ars-panel aria-label="<?php esc_attr_e('Now Playing', 'a-ripple-song'); ?>">
-        <div class="mx-auto min-h-full max-w-6xl bg-base-100 p-4 sm:rounded-box sm:p-6 lg:p-8">
+        <div data-ars-panel-width="box" class="mx-auto min-h-full max-w-6xl bg-base-100 p-4 sm:rounded-box sm:p-6 lg:p-8">
             <div class="flex items-center justify-between">
                 <p class="text-xs font-semibold tracking-widest uppercase opacity-60"><?php esc_html_e('Now Playing', 'a-ripple-song'); ?></p>
                 <button type="button" class="btn btn-soft btn-square" data-ars-action="panel" aria-label="<?php esc_attr_e('Close Now Playing', 'a-ripple-song'); ?>"><?php Icon::render('chevron-down', 'size-5'); ?></button>
