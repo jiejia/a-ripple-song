@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: A Ripple Song 0.5.2\n"
 "Report-Msgid-Bugs-To: https://github.com/jiejia/a-ripple-song/issues\n"
-"POT-Creation-Date: 2026-10-28T12:53:00+00:00\n"
+"POT-Creation-Date: 2026-10-28T13:03:13+00:00\n"
 "PO-Revision-Date: 2026-10-28T12:48:34+00:00\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: English (United States)\n"
@@ -1311,7 +1311,7 @@ msgid "Drag to reorder"
 msgstr "Drag to reorder"
 
 #: resources/templates/fields/controls/complex-row.php:26
-#: resources/templates/fields/controls/media.php:44
+#: resources/templates/fields/controls/media.php:57
 msgid "Remove"
 msgstr "Remove"
 
@@ -1341,11 +1341,17 @@ msgstr "Copy"
 msgid "Use this file"
 msgstr "Use this file"
 
-#: resources/templates/fields/controls/media.php:43
+#: resources/templates/fields/controls/media.php:38
+#: resources/templates/fields/controls/media.php:44
+#: resources/templates/fields/controls/media.php:56
 msgid "Select Image"
 msgstr "Select Image"
 
-#: resources/templates/fields/controls/media.php:43
+#: resources/templates/fields/controls/media.php:48
+msgid "Replace"
+msgstr "Replace"
+
+#: resources/templates/fields/controls/media.php:56
 msgid "Select File"
 msgstr "Select File"
 

@@ -18,7 +18,11 @@
 		$media.toggleClass('has-value', url !== '');
 
 		if ($image.length) {
-			$image.attr('src', url);
+			if ($image.attr('src') !== url) {
+				$image.attr('src', url);
+			}
+
+			showImageMeta($media);
 		}
 
 		if ($audio.length && $audio.attr('src') !== url) {
@@ -28,6 +32,38 @@
 				$audio.removeAttr('src');
 			}
 		}
+	}
+
+	// "cover.jpg · 3000 × 3000 px" below the URL; empty until the image has loaded.
+	function showImageMeta($media) {
+		var image = $media.find('.ars-media__image')[0];
+		var $meta = $media.find('.ars-media__meta');
+		var url = $.trim($media.find('.ars-media__input').val());
+
+		function render() {
+			var name = url.split(/[?#]/)[0].split('/').pop();
+			var parts = [];
+
+			try {
+				name = decodeURIComponent(name);
+			} catch (error) {
+				// Keep the raw name when it is not valid percent-encoding.
+			}
+
+			if (name) {
+				parts.push(name);
+			}
+
+			if (image.naturalWidth) {
+				parts.push(image.naturalWidth + ' × ' + image.naturalHeight + ' px');
+			}
+
+			$meta.text(url ? parts.join(' · ') : '');
+		}
+
+		image.onload = render;
+		image.onerror = render;
+		render();
 	}
 
 	// "1:02:03" / "3:25" => seconds.
@@ -406,6 +442,10 @@
 	$(function () {
 		$('[data-ars-repeater]').each(function () {
 			initSortable($(this));
+		});
+
+		$('[data-ars-media]').each(function () {
+			syncMedia($(this));
 		});
 
 		$('[data-ars-media][data-dimensions]').each(function () {

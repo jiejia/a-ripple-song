@@ -407,28 +407,59 @@
 	gap: 12px;
 }
 
-/* Center the input and help text against the square preview. */
+/* Image fields are a card: the preview tile picks the image, the body holds the URL, details and help. */
 .ars-media--image {
 	align-items: center;
 	gap: 16px;
+	padding: 12px;
+	border: 1px solid var(--ars-border);
+	border-radius: 6px;
+	background: var(--ars-subtle);
 }
 
-.ars-media__preview {
+.ars-field.is-invalid .ars-media--image {
+	border-color: var(--ars-danger);
+}
+
+.ars-fields .ars-media__preview {
+	position: relative;
 	display: flex;
 	flex: none;
 	align-items: center;
 	justify-content: center;
-	width: 80px;
-	height: 80px;
+	width: 112px;
+	height: 112px;
+	margin: 0;
+	padding: 0;
 	overflow: hidden;
 	border: 1px dashed var(--ars-input-border);
 	border-radius: var(--ars-radius);
-	background: var(--ars-subtle);
+	background: #fff;
 	color: var(--ars-muted);
+	font: inherit;
+	transition: border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
 }
 
-.ars-media.has-value .ars-media__preview {
-	border: 1px solid var(--ars-border);
+button.ars-media__preview {
+	cursor: pointer;
+}
+
+.ars-fields button.ars-media__preview:hover {
+	border-color: var(--ars-accent);
+	color: var(--ars-accent);
+}
+
+.ars-fields button.ars-media__preview:focus-visible {
+	border-color: var(--ars-accent);
+	box-shadow: 0 0 0 1px var(--ars-accent);
+	outline: 2px solid transparent;
+}
+
+/* A checkerboard shows through transparent PNGs. */
+.ars-fields .ars-media.has-value .ars-media__preview {
+	border-style: solid;
+	border-color: var(--ars-border);
+	background: repeating-conic-gradient(#f0f0f1 0% 25%, #fff 0% 50%) 0 0 / 16px 16px;
 }
 
 .ars-media__image {
@@ -442,14 +473,54 @@
 	display: block;
 }
 
-.ars-media.has-value .ars-media__placeholder {
+.ars-media__empty {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 6px;
+	font-size: 12px;
+	line-height: 1.3;
+}
+
+.ars-media.has-value .ars-media__empty {
 	display: none;
 }
 
-.ars-media__placeholder.dashicons {
+.ars-media__empty .dashicons {
 	width: 28px;
 	height: 28px;
 	font-size: 28px;
+}
+
+/* "Replace" over the chosen image on hover / keyboard focus. */
+.ars-media__overlay {
+	position: absolute;
+	inset: 0;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	background: rgb(0 0 0 / 0.5);
+	color: #fff;
+	font-size: 12px;
+	font-weight: 500;
+	opacity: 0;
+	transition: opacity 0.15s ease;
+}
+
+.ars-media__overlay .dashicons {
+	width: 16px;
+	height: 16px;
+	font-size: 16px;
+}
+
+.ars-media.has-value .ars-media__overlay {
+	display: flex;
+}
+
+.ars-media__preview:hover .ars-media__overlay,
+.ars-media__preview:focus-visible .ars-media__overlay {
+	opacity: 1;
 }
 
 .ars-media__body {
@@ -458,10 +529,6 @@
 	flex-direction: column;
 	gap: 6px;
 	min-width: 0;
-}
-
-.ars-media__audio {
-	margin-top: 4px;
 }
 
 .ars-media__row {
@@ -479,10 +546,19 @@
 	flex: none;
 }
 
-.ars-fields .ars-media__remove {
-	flex: none;
-	padding: 0 4px;
-	text-decoration: none;
+/* Icon-only remove button, red on hover like wp-admin delete links. */
+.ars-fields .button.ars-media__remove {
+	width: 36px;
+	padding: 0;
+	border-color: var(--ars-input-border);
+	background: #fff;
+	color: var(--ars-muted);
+}
+
+.ars-fields .button.ars-media__remove:hover,
+.ars-fields .button.ars-media__remove:focus {
+	border-color: var(--ars-danger);
+	color: var(--ars-danger);
 }
 
 .ars-media:not(.has-value) .ars-media__remove,
@@ -490,10 +566,39 @@
 	display: none;
 }
 
+.ars-fields .ars-media__meta {
+	margin: 0;
+	overflow: hidden;
+	font-size: 12px;
+	color: var(--ars-text);
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.ars-fields .ars-media__meta:empty {
+	display: none;
+}
+
 .ars-media__audio {
 	display: block;
 	width: 100%;
 	height: 40px;
+	margin-top: 4px;
+}
+
+/* Narrow columns stack the preview above the body. */
+@container (max-width: 480px) {
+	.ars-media--image {
+		flex-direction: column;
+		align-items: stretch;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.ars-fields .ars-media__preview,
+	.ars-media__overlay {
+		transition: none;
+	}
 }
 
 /* Multiselect (checkbox list) */

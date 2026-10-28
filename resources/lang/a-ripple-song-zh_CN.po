@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: A Ripple Song 0.5.2\n"
 "Report-Msgid-Bugs-To: https://github.com/jiejia/a-ripple-song/issues\n"
-"POT-Creation-Date: 2026-10-28T12:53:00+00:00\n"
+"POT-Creation-Date: 2026-10-28T13:03:13+00:00\n"
 "PO-Revision-Date: 2026-10-28 12:49+0000\n"
 "Last-Translator: jiejia <jiejia2009@gmail.com>\n"
 "Language-Team: Chinese (China)\n"
@@ -1309,7 +1309,7 @@ msgid "Drag to reorder"
 msgstr "拖动排序"
 
 #: resources/templates/fields/controls/complex-row.php:26
-#: resources/templates/fields/controls/media.php:44
+#: resources/templates/fields/controls/media.php:57
 msgid "Remove"
 msgstr "移除"
 
@@ -1339,11 +1339,17 @@ msgstr "复制"
 msgid "Use this file"
 msgstr "使用此文件"
 
-#: resources/templates/fields/controls/media.php:43
+#: resources/templates/fields/controls/media.php:38
+#: resources/templates/fields/controls/media.php:44
+#: resources/templates/fields/controls/media.php:56
 msgid "Select Image"
 msgstr "选择图片"
 
-#: resources/templates/fields/controls/media.php:43
+#: resources/templates/fields/controls/media.php:48
+msgid "Replace"
+msgstr "更换"
+
+#: resources/templates/fields/controls/media.php:56
 msgid "Select File"
 msgstr "选择文件"
 
