@@ -1,0 +1,49 @@
+# Builds the WordPress-ready plugin zip when a version tag is pushed (v0.5.3 or 0.5.3)
+# and attaches it to a GitHub release of that tag.
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v[0-9]*'
+      - '[0-9]*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      # Stop before releasing a zip whose version doesn't match the tag.
+      - name: Check the tag matches the plugin version
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          header=$(sed -n 's/^ \* Version: *//p' a-ripple-song.php)
+          constant=$(sed -n "s/.*public const VERSION = '\(.*\)';/\1/p" app/Plugin.php)
+          stable=$(sed -n 's/^Stable tag: *//p' README.txt)
+          echo "tag=$tag header=$header Plugin::VERSION=$constant stable=$stable"
+          if [ "$header" != "$tag" ] || [ "$constant" != "$tag" ] || [ "$stable" != "$tag" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match the plugin header Version, Plugin::VERSION and README Stable tag."
+            exit 1
+          fi
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Builds the assets and writes ../a-ripple-song.zip (see bin/build-zip.mjs).
+      - run: npm run zip
+
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # On a re-run the release already exists, so replace its zip instead.
+          gh release create "$GITHUB_REF_NAME" ../a-ripple-song.zip --title "$GITHUB_REF_NAME" --generate-notes \
+            || gh release upload "$GITHUB_REF_NAME" ../a-ripple-song.zip --clobber
