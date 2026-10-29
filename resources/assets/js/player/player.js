@@ -9,8 +9,9 @@
  *   MutationObserver, so the player needs no swup hooks. Without swup, the episode and position
  *   are restored from localStorage on the next page.
  *
- * The playlist (queue) is kept in localStorage. A new visitor, or one who cleared the playlist, starts
- * with the latest episodes (config.playlist); playing an episode that is not queued adds it.
+ * The playlist (queue) is kept in localStorage. A new visitor, one who cleared the playlist, and one who
+ * never changed it get the latest episodes (config.playlist) on each page load; an edited playlist is kept.
+ * Playing an episode that is not queued adds it.
  *
  * Themes can drive it through window.ARippleSongPlayer (see the API at the bottom) and follow it
  * through the "ars-player:change" event on document.
@@ -56,6 +57,8 @@ class PlayerStore {
     this.queue = [];
     /** After the current episode was removed from the queue: the queued episode that followed it. */
     this.followUp = null;
+    /** The latest episodes the queue was filled with; while the queue still equals it, it follows new episodes. */
+    this.seed = [];
     this.current = null;
     this.playing = false;
     this.loading = false;
@@ -361,9 +364,18 @@ class PlayerStore {
     // Saved episodes stay playable after they drop out of the latest episodes; the page's data is fresher, so it wins.
     this.register((Array.isArray(saved.items) ? saved.items : []).filter((item) => !this.episode(item.id)));
 
-    const queue = (Array.isArray(saved.queue) ? saved.queue : []).map(Number).filter((id) => this.episode(id));
-    // A new visitor, or an emptied playlist, starts again from the latest episodes.
-    this.queue = queue.length ? queue : [].concat(playlist || []).map(Number).filter((id) => this.episode(id));
+    const ids = (list) => (Array.isArray(list) ? list : []).map(Number).filter((id) => this.episode(id));
+    const queue = ids(saved.queue);
+    const untouched = queue.join() === ids(saved.seed).join();
+
+    // An edited playlist is kept as it is. A new visitor, an emptied playlist, and one never changed since it
+    // was filled get the latest episodes, so newly published ones show up.
+    if (queue.length && !untouched) {
+      this.queue = queue;
+    } else {
+      this.queue = ids([].concat(playlist || []));
+      this.seed = [...this.queue];
+    }
 
     const resumed = this.episode(saved.id);
     // Without a saved episode, load the one the page suggests (setting "Before Anything Is Played"),
@@ -383,6 +395,7 @@ class PlayerStore {
     storage.write({
       id: this.current && this.current.id,
       queue: this.queue,
+      seed: this.seed,
       items: [...items],
       position: this.position,
       rate: this.rate,
