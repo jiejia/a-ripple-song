@@ -7,7 +7,7 @@ defined('ABSPATH') || exit;
 use Jiejia\ARippleSong\Abstracts\SettingAbstract;
 
 /**
- * Subscribe links settings page: the show's page on each podcast platform, stored in the ars_subscription_settings option.
+ * Subscription settings page: the show's page on each podcast platform, stored in the ars_subscription_settings option.
  */
 class SubscriptionSetting extends SettingAbstract
 {
@@ -15,7 +15,7 @@ class SubscriptionSetting extends SettingAbstract
 
     public function title(): string
     {
-        return __('Subscribe Links', 'a-ripple-song');
+        return __('Subscription Settings', 'a-ripple-song');
     }
 
     /**

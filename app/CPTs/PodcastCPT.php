@@ -6,6 +6,7 @@ defined('ABSPATH') || exit;
 
 use Jiejia\ARippleSong\Abstracts\CPTAbstract;
 use Jiejia\ARippleSong\Feeds\PodcastFeed;
+use Jiejia\ARippleSong\Libraries\Users;
 
 /**
  * Defines the podcast episode custom post type.
@@ -251,7 +252,7 @@ class PodcastCPT extends CPTAbstract
                 'key' => 'members',
                 'label' => __('Members', 'a-ripple-song'),
                 'width' => 'half',
-                'options' => fn (): array => $this->userOptions(),
+                'options' => Users::options(...),
                 'default' => fn (): array => $this->defaultMemberIds(),
                 'help' => __('Select episode members (administrators, authors, editors).', 'a-ripple-song'),
             ],
@@ -260,41 +261,10 @@ class PodcastCPT extends CPTAbstract
                 'key' => 'guests',
                 'label' => __('Guests', 'a-ripple-song'),
                 'width' => 'half',
-                'options' => fn (): array => $this->userOptions(),
+                'options' => Users::options(...),
                 'help' => __('Select episode guests (contributors).', 'a-ripple-song'),
             ],
         ];
-    }
-
-    /**
-     * Return selectable WordPress users for member and guest fields.
-     *
-     * @return array<int,array{label:string,image:string,meta:string}>
-     */
-    public function userOptions(): array
-    {
-        $options = [];
-        $roleNames = wp_roles()->get_names();
-        $users = get_users([
-            'orderby' => 'display_name',
-            'order' => 'ASC',
-            'number' => 500,
-        ]);
-
-        foreach ($users as $user) {
-            $roles = array_map(
-                static fn (string $role): string => isset($roleNames[$role]) ? translate_user_role($roleNames[$role]) : $role,
-                (array) $user->roles
-            );
-
-            $options[(int) $user->ID] = [
-                'label' => $user->display_name ? $user->display_name : $user->user_login,
-                'image' => (string) get_avatar_url($user->ID, ['size' => 48]),
-                'meta' => implode(', ', $roles),
-            ];
-        }
-
-        return $options;
     }
 
     /**

@@ -9,15 +9,15 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-29T11:51:42+00:00\n"
+"POT-Creation-Date: 2026-10-29T13:05:10+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: a-ripple-song\n"
 
 #. Plugin Name of the plugin
 #: a-ripple-song.php
-#: app/Providers/SettingServiceProvider.php:51
-#: app/Providers/SettingServiceProvider.php:52
+#: app/Providers/SettingServiceProvider.php:53
+#: app/Providers/SettingServiceProvider.php:54
 msgid "A Ripple Song"
 msgstr ""
 
@@ -87,233 +87,234 @@ msgstr ""
 msgid "Episode not found."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:24
+#: app/CPTs/PodcastCPT.php:25
 #: resources/templates/dashboard/page.php:311
 msgid "Episode"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:34
+#: app/CPTs/PodcastCPT.php:35
 msgid "Episodes"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:49
+#: app/CPTs/PodcastCPT.php:50
 msgid "Audio"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:54
+#: app/CPTs/PodcastCPT.php:55
 msgid "Audio File"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:63
+#: app/CPTs/PodcastCPT.php:64
 msgid "Required. Upload an audio file; the saved value is the audio file URL."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:68
-#: app/CPTs/PodcastCPT.php:232
+#: app/CPTs/PodcastCPT.php:69
+#: app/CPTs/PodcastCPT.php:233
 msgid "Duration (seconds)"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:72
-#: app/CPTs/PodcastCPT.php:81
-#: app/CPTs/PodcastCPT.php:90
+#: app/CPTs/PodcastCPT.php:73
+#: app/CPTs/PodcastCPT.php:82
+#: app/CPTs/PodcastCPT.php:91
 msgid "Auto detected from \"Audio File\"."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:77
+#: app/CPTs/PodcastCPT.php:78
 msgid "Audio Length (bytes)"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:86
+#: app/CPTs/PodcastCPT.php:87
 msgid "Audio MIME Type"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:95
+#: app/CPTs/PodcastCPT.php:96
 msgid "Podcast Metadata"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:100
+#: app/CPTs/PodcastCPT.php:101
 msgid "Episode Cover (square)"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:102
+#: app/CPTs/PodcastCPT.php:103
 msgid "Optional. Square JPG/PNG between 1400-3000px, at most 512 KB, without transparency. Overrides channel cover."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:107
+#: app/CPTs/PodcastCPT.php:108
 msgid "Episode Type"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:110
+#: app/CPTs/PodcastCPT.php:111
 msgid "full"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:111
+#: app/CPTs/PodcastCPT.php:112
 msgid "trailer"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:112
+#: app/CPTs/PodcastCPT.php:113
 msgid "bonus"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:115
+#: app/CPTs/PodcastCPT.php:116
 msgid "Required. full / trailer / bonus."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:120
+#: app/CPTs/PodcastCPT.php:121
 msgid "Episode Number"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:123
+#: app/CPTs/PodcastCPT.php:124
 msgid "Optional but recommended. Integer."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:128
+#: app/CPTs/PodcastCPT.php:129
 msgid "Season Number"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:131
+#: app/CPTs/PodcastCPT.php:132
 msgid "Optional. Integer."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:136
+#: app/CPTs/PodcastCPT.php:137
 msgid "Explicit"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:140
+#: app/CPTs/PodcastCPT.php:141
 msgid "clean"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:141
+#: app/CPTs/PodcastCPT.php:142
 #: app/Settings/PodcastSetting.php:104
 msgid "explicit"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:144
+#: app/CPTs/PodcastCPT.php:145
 msgid "Required. clean / explicit."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:149
+#: app/CPTs/PodcastCPT.php:150
 msgid "iTunes Block"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:152
+#: app/CPTs/PodcastCPT.php:153
 msgid "Optional. Turn on to hide this episode in Apple Podcasts."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:157
+#: app/CPTs/PodcastCPT.php:158
 #: app/Settings/PodcastSetting.php:203
 msgid "iTunes Title (optional)"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:159
+#: app/CPTs/PodcastCPT.php:160
 msgid "Optional. Apple Podcasts: overrides the episode title for <itunes:title>."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:164
+#: app/CPTs/PodcastCPT.php:165
 msgid "Episode Author (override)"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:166
+#: app/CPTs/PodcastCPT.php:167
 msgid "Optional. Overrides channel author for this episode."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:171
+#: app/CPTs/PodcastCPT.php:172
 msgid "Subtitle"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:172
+#: app/CPTs/PodcastCPT.php:173
 msgid "Optional. Short subtitle for iTunes."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:177
+#: app/CPTs/PodcastCPT.php:178
 msgid "Summary"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:178
+#: app/CPTs/PodcastCPT.php:179
 msgid "Optional. Plain text summary for iTunes."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:183
+#: app/CPTs/PodcastCPT.php:184
 msgid "Podcasting 2.0 & Advanced"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:188
+#: app/CPTs/PodcastCPT.php:189
 msgid "Transcript (optional)"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:190
+#: app/CPTs/PodcastCPT.php:191
 msgid "Optional. Transcript file URL (vtt/srt/txt/pdf)."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:195
+#: app/CPTs/PodcastCPT.php:196
 msgid "Custom GUID (optional)"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:197
+#: app/CPTs/PodcastCPT.php:198
 msgid "Optional. If empty, feed uses WP permalink as GUID."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:202
+#: app/CPTs/PodcastCPT.php:203
 msgid "Chapters (Podcasting 2.0)"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:204
+#: app/CPTs/PodcastCPT.php:205
 msgid "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:209
+#: app/CPTs/PodcastCPT.php:210
 msgid "Chapters MIME Type"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:212
+#: app/CPTs/PodcastCPT.php:213
 msgid "Optional. Defaults to application/json+chapters."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:217
+#: app/CPTs/PodcastCPT.php:218
 msgid "Soundbites"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:218
+#: app/CPTs/PodcastCPT.php:219
 msgid "Soundbite"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:220
+#: app/CPTs/PodcastCPT.php:221
 msgid "Optional. Adds one or more <podcast:soundbite> tags."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:225
+#: app/CPTs/PodcastCPT.php:226
 msgid "Start Time (seconds)"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:239
+#: app/CPTs/PodcastCPT.php:240
 msgid "Title (optional)"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:247
+#: app/CPTs/PodcastCPT.php:248
 msgid "People"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:252
+#: app/CPTs/PodcastCPT.php:253
+#: app/Settings/MemberSetting.php:37
 msgid "Members"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:256
+#: app/CPTs/PodcastCPT.php:257
 msgid "Select episode members (administrators, authors, editors)."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:261
+#: app/CPTs/PodcastCPT.php:262
 msgid "Guests"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:264
+#: app/CPTs/PodcastCPT.php:265
 msgid "Select episode guests (contributors)."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:457
+#: app/CPTs/PodcastCPT.php:427
 msgid "Statistics"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:474
+#: app/CPTs/PodcastCPT.php:444
 #: resources/templates/dashboard/page.php:172
 #: resources/templates/dashboard/page.php:208
 #: resources/templates/dashboard/page.php:217
@@ -527,6 +528,18 @@ msgstr ""
 
 #: app/Settings/DashboardSetting.php:27
 msgid "Dashboard"
+msgstr ""
+
+#: app/Settings/MemberSetting.php:19
+msgid "Member Settings"
+msgstr ""
+
+#: app/Settings/MemberSetting.php:32
+msgid "Podcast Members"
+msgstr ""
+
+#: app/Settings/MemberSetting.php:39
+msgid "Select one or more WordPress users who make this podcast."
 msgstr ""
 
 #: app/Settings/PlayerSetting.php:19
@@ -1352,7 +1365,7 @@ msgid "TV & Film > TV Reviews"
 msgstr ""
 
 #: app/Settings/SubscriptionSetting.php:18
-msgid "Subscribe Links"
+msgid "Subscription Settings"
 msgstr ""
 
 #: app/Settings/SubscriptionSetting.php:81

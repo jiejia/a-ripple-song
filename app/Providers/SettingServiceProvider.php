@@ -8,6 +8,7 @@ use Jiejia\ARippleSong\Abstracts\ServiceProviderAbstract;
 use Jiejia\ARippleSong\Abstracts\SettingAbstract;
 use Jiejia\ARippleSong\Libraries\Fields\OptionStore;
 use Jiejia\ARippleSong\Settings\DashboardSetting;
+use Jiejia\ARippleSong\Settings\MemberSetting;
 use Jiejia\ARippleSong\Settings\PlayerSetting;
 use Jiejia\ARippleSong\Settings\PodcastSetting;
 use Jiejia\ARippleSong\Settings\SubscriptionSetting;
@@ -26,6 +27,7 @@ class SettingServiceProvider extends ServiceProviderAbstract
     private array $settings = [
         DashboardSetting::class,
         PodcastSetting::class,
+        MemberSetting::class,
         SubscriptionSetting::class,
         PlayerSetting::class,
     ];
