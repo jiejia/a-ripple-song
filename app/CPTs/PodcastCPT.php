@@ -5,6 +5,7 @@ namespace Jiejia\ARippleSong\CPTs;
 defined('ABSPATH') || exit;
 
 use Jiejia\ARippleSong\Abstracts\CPTAbstract;
+use Jiejia\ARippleSong\Feeds\PodcastFeed;
 
 /**
  * Defines the podcast episode custom post type.
@@ -97,14 +98,8 @@ class PodcastCPT extends CPTAbstract
                 'type' => 'image',
                 'key' => 'episode_image',
                 'label' => __('Episode Cover (square)', 'a-ripple-song'),
-                'dimensions' => [
-                    'square' => true,
-                    'min_width' => 1400,
-                    'min_height' => 1400,
-                    'max_width' => 3000,
-                    'max_height' => 3000,
-                ],
-                'help' => __('Optional. Square 1400-3000px. Overrides channel cover.', 'a-ripple-song'),
+                ...PodcastFeed::ARTWORK_RULES,
+                'help' => __('Optional. Square JPG/PNG between 1400-3000px, at most 512 KB, without transparency. Overrides channel cover.', 'a-ripple-song'),
             ],
             [
                 'type' => 'select',

@@ -23,7 +23,8 @@ $checkDimensions = $isImage && ! $field->dimensions->isEmpty();
 $attributes = [
     'class' => Html::classes(['ars-media', 'ars-media--' . $field->type->value, 'has-value' => $url !== '']),
     'data-ars-media' => true,
-    'data-library' => $isImage ? 'image' : $field->mediaType,
+    // The picker then lists only files of the allowed types.
+    'data-library' => $field->mimeTypes !== [] ? wp_json_encode($field->mimeTypes) : ($isImage ? 'image' : $field->mediaType),
     'data-frame-title' => $field->label,
     'data-frame-button' => __('Use this file', 'a-ripple-song'),
     'data-autofill' => $field->autofill !== [] ? wp_json_encode($field->autofill) : null,
@@ -31,6 +32,10 @@ $attributes = [
     'data-dimensions-message' => $checkDimensions ? $field->dimensions->message() : null,
     'data-max-size' => $field->maxSize > 0 ? $field->maxSize : null,
     'data-max-size-message' => $field->maxSize > 0 ? $field->maxSizeMessage() : null,
+    'data-mime-types' => $field->mimeTypes !== [] ? wp_json_encode($field->mimeTypes) : null,
+    'data-mime-types-message' => $field->mimeTypes !== [] ? $field->mimeTypesMessage() : null,
+    'data-opaque' => $isImage && $field->opaque,
+    'data-opaque-message' => $isImage && $field->opaque ? $field->opaqueMessage() : null,
 ];
 ?>
 <div<?php echo Html::attributes($attributes); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped by Html::attributes(). ?>>

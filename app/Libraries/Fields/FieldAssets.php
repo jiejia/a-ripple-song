@@ -47,8 +47,8 @@ final class FieldAssets
             /* translators: 1: image width, 2: image height. */
             'currentSize' => __('Current: %1$d × %2$d px.', 'a-ripple-song'),
             'imageLoadError' => __('The image could not be loaded.', 'a-ripple-song'),
-            /* translators: %s: current file size, e.g. "830.5 KB". */
-            'currentFileSize' => __('Current: %s.', 'a-ripple-song'),
+            /* translators: %s: current file type or size, e.g. "WEBP" or "830.5 KB". */
+            'currentFile' => __('Current: %s.', 'a-ripple-song'),
         ]);
     }
 }

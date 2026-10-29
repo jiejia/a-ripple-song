@@ -25,6 +25,23 @@ class PodcastFeed extends FeedAbstract
     private const MAX_ITEMS = 100;
 
     /**
+     * Field rules of show and episode covers, after Apple Podcasts' artwork specs:
+     * square JPG/PNG of 1400-3000px without transparency; 512 KB is the common hosting limit.
+     */
+    public const ARTWORK_RULES = [
+        'dimensions' => [
+            'square' => true,
+            'min_width' => 1400,
+            'min_height' => 1400,
+            'max_width' => 3000,
+            'max_height' => 3000,
+        ],
+        'mime_types' => ['image/jpeg', 'image/png'],
+        'opaque' => true,
+        'max_size' => 512 * KB_IN_BYTES,
+    ];
+
+    /**
      * Option set once the rewrite rules include the feed endpoint.
      */
     private const REWRITE_FLAG = Plugin::PREFIX . 'podcast_feed_rewrite_flushed';

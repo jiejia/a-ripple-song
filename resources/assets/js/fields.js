@@ -343,7 +343,7 @@
 
 	function checkMedia($media) {
 		checkImageSize($media);
-		checkFileSize($media);
+		checkFile($media);
 	}
 
 	// Load the image in the browser to measure it; works for media library picks and pasted URLs alike.
@@ -397,31 +397,158 @@
 		return bytes >= 1048576 ? (bytes / 1048576).toFixed(1) + ' MB' : (bytes / 1024).toFixed(1) + ' KB';
 	}
 
-	// Read Content-Length with a HEAD request; files on other hosts without CORS are left to the check on save.
-	function checkFileSize($media) {
-		var max = $media.data('maxSize');
+	// Bytes read from the start of a file; PNG transparency is declared before the image data.
+	var HEAD_BYTES = 65536;
+
+	// Fetch the start of a file and its total size; mirrors FileProbe on the server.
+	function readFileHead(url) {
+		return fetch(url, { headers: { Range: 'bytes=0-' + (HEAD_BYTES - 1) } }).then(function (response) {
+			if (!response.ok) {
+				throw new Error(response.status);
+			}
+
+			// 206: "bytes 0-65535/830000" holds the total; 200: Content-Length is the whole file.
+			var range = /\/(\d+)$/.exec(response.headers.get('Content-Range') || '');
+			var size = range ? Number(range[1]) : (response.status === 200 ? Number(response.headers.get('Content-Length')) : 0);
+			var declared = (response.headers.get('Content-Type') || '').split(';')[0].trim().toLowerCase();
+
+			return readBytes(response, HEAD_BYTES).then(function (bytes) {
+				return { size: size || 0, bytes: bytes, mime: sniffType(bytes) || declared };
+			});
+		});
+	}
+
+	// Stop downloading once enough bytes arrived, in case the server ignored the Range header.
+	function readBytes(response, limit) {
+		var reader = response.body.getReader();
+		var bytes = new Uint8Array(limit);
+		var length = 0;
+
+		function pump() {
+			return reader.read().then(function (result) {
+				if (!result.done) {
+					var part = result.value.subarray(0, limit - length);
+
+					bytes.set(part, length);
+					length += part.length;
+				}
+
+				if (result.done || length >= limit) {
+					if (!result.done) {
+						reader.cancel();
+					}
+
+					return bytes.subarray(0, length);
+				}
+
+				return pump();
+			});
+		}
+
+		return pump();
+	}
+
+	function ascii(bytes, start, length) {
+		return String.fromCharCode.apply(null, bytes.subarray(start, start + length));
+	}
+
+	function sniffType(bytes) {
+		if (bytes[0] === 0xFF && bytes[1] === 0xD8 && bytes[2] === 0xFF) {
+			return 'image/jpeg';
+		}
+
+		if (ascii(bytes, 0, 8) === '\x89PNG\r\n\x1a\n') {
+			return 'image/png';
+		}
+
+		if (ascii(bytes, 0, 4) === 'GIF8') {
+			return 'image/gif';
+		}
+
+		if (ascii(bytes, 0, 4) === 'RIFF' && ascii(bytes, 8, 4) === 'WEBP') {
+			return 'image/webp';
+		}
+
+		return '';
+	}
+
+	// An alpha color type (4, 6) or a tRNS chunk; null when the chunks before the image data were not all read.
+	function pngHasAlpha(bytes) {
+		var view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+		var offset;
+
+		if (bytes.length < 26) {
+			return null;
+		}
+
+		if (bytes[25] === 4 || bytes[25] === 6) {
+			return true;
+		}
+
+		// Each chunk: 4-byte length, 4-byte type, data, 4-byte CRC.
+		for (offset = 8; offset + 8 <= bytes.length; offset += 12 + view.getUint32(offset)) {
+			var type = ascii(bytes, offset + 4, 4);
+
+			if (type === 'tRNS') {
+				return true;
+			}
+
+			if (type === 'IDAT' || type === 'IEND') {
+				return false;
+			}
+		}
+
+		return null;
+	}
+
+	// "image/jpeg" => "JPG", like FileProbe::label().
+	function typeLabel(mime) {
+		var subtype = mime.split('/').pop().toUpperCase();
+
+		return subtype === 'JPEG' ? 'JPG' : subtype;
+	}
+
+	// Check type, transparency and size; files on other hosts without CORS are left to the check on save.
+	function checkFile($media) {
+		var maxSize = $media.data('maxSize');
+		var types = $media.data('mimeTypes');
+		var opaque = $media.data('opaque') !== undefined;
 		var input = $media.find('.ars-media__input')[0];
 		var url = $.trim(input.value);
 
-		if (!max) {
+		if (!maxSize && !types && !opaque) {
 			return;
 		}
 
-		// Drop the previous file's error; a failed request then leaves the field valid.
-		setMediaError($media, 'size', '');
+		// Drop the previous file's errors; a failed request then leaves the field valid.
+		setMediaError($media, 'file', '');
 
-		if (!url) {
+		if (!url || !window.fetch) {
 			return;
 		}
 
-		$.ajax({ url: url, method: 'HEAD' }).done(function (data, status, xhr) {
-			var size = parseInt(xhr.getResponseHeader('Content-Length'), 10);
+		readFileHead(url).then(function (file) {
+			var errors = [];
 
-			if ($.trim(input.value) !== url || !(size > 0)) {
+			if ($.trim(input.value) !== url) {
 				return;
 			}
 
-			setMediaError($media, 'size', size > max ? $media.data('maxSizeMessage') + ' ' + l10n.currentFileSize.replace('%s', formatSize(size)) : '');
+			if (types && file.mime && types.indexOf(file.mime) === -1) {
+				errors.push($media.data('mimeTypesMessage') + ' ' + l10n.currentFile.replace('%s', typeLabel(file.mime)));
+			}
+
+			if (opaque && file.mime === 'image/png' && pngHasAlpha(file.bytes) === true) {
+				errors.push($media.data('opaqueMessage'));
+			}
+
+			if (maxSize && file.size > maxSize) {
+				errors.push($media.data('maxSizeMessage') + ' ' + l10n.currentFile.replace('%s', formatSize(file.size)));
+			}
+
+			setMediaError($media, 'file', errors.join(' '));
+		}, function () {
+			// Unreadable here (e.g. blocked by CORS); the server checks it on save.
 		});
 	}
 
@@ -500,7 +627,7 @@
 			syncMedia($(this));
 		});
 
-		$('[data-ars-media][data-dimensions], [data-ars-media][data-max-size]').each(function () {
+		$('[data-ars-media][data-dimensions], [data-ars-media][data-max-size], [data-ars-media][data-mime-types], [data-ars-media][data-opaque]').each(function () {
 			checkMedia($(this));
 		});
 

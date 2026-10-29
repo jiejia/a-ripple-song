@@ -56,15 +56,8 @@ class PodcastSetting extends SettingAbstract
                 'key' => 'cover',
                 'label' => __('Podcast Cover (1400-3000px square)', 'a-ripple-song'),
                 'required' => true,
-                'dimensions' => [
-                    'square' => true,
-                    'min_width' => 1400,
-                    'min_height' => 1400,
-                    'max_width' => 3000,
-                    'max_height' => 3000,
-                ],
-                'max_size' => 512 * KB_IN_BYTES,
-                'help' => __('Required. Square JPG/PNG between 1400-3000px, at most 512 KB, for itunes:image.', 'a-ripple-song'),
+                ...PodcastFeed::ARTWORK_RULES,
+                'help' => __('Required. Square JPG/PNG between 1400-3000px, at most 512 KB, without transparency, for itunes:image.', 'a-ripple-song'),
             ],
             [
                 'type' => 'text',

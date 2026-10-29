@@ -60,7 +60,7 @@ final class FieldValidator
                 /* translators: %s: field label. */
                 => sprintf(__('%s is required.', 'a-ripple-song'), $field->displayName()),
             $this->violatesDimensions($field, $value) => $field->dimensions->message(),
-            default => $this->sizeError($field, $value),
+            default => $this->fileError($field, $value),
         };
     }
 
@@ -123,54 +123,40 @@ final class FieldValidator
     }
 
     /**
-     * Return the error of a file or image larger than the field's size limit, or null.
+     * Return the errors of a file or image that breaks the field's type, transparency or size rules, or null.
      *
-     * Sizes that cannot be read (e.g. no Content-Length header) are not reported.
+     * Facts that cannot be read (e.g. a server without Content-Length) are not reported.
      *
      * @param Field $field Field definition.
      * @param mixed $value Sanitized value.
      * @return string|null
      */
-    private function sizeError(Field $field, mixed $value): ?string
+    private function fileError(Field $field, mixed $value): ?string
     {
-        if (! in_array($field->type, [FieldType::File, FieldType::Image], true) || $field->maxSize <= 0 || ! is_string($value) || $value === '') {
+        $isImage = $field->type === FieldType::Image;
+        $hasRules = $field->maxSize > 0 || $field->mimeTypes !== [] || ($isImage && $field->opaque);
+
+        if (! ($isImage || $field->type === FieldType::File) || ! $hasRules || ! is_string($value) || $value === '') {
             return null;
         }
 
-        $size = $this->fileSize($value);
+        $probe = FileProbe::fromUrl($value);
+        $errors = [];
 
-        if ($size === null || $size <= $field->maxSize) {
-            return null;
+        if ($field->mimeTypes !== [] && $probe->mime !== '' && ! in_array($probe->mime, $field->mimeTypes, true)) {
+            /* translators: %s: current file type or size, e.g. "WEBP" or "830.5 KB". */
+            $errors[] = $field->mimeTypesMessage() . ' ' . sprintf(__('Current: %s.', 'a-ripple-song'), FileProbe::label($probe->mime));
         }
 
-        /* translators: %s: current file size, e.g. "830.5 KB". */
-        return $field->maxSizeMessage() . ' ' . sprintf(__('Current: %s.', 'a-ripple-song'), size_format($size, 1));
-    }
-
-    /**
-     * Return the size in bytes of a media library file, or of an external file via a HEAD request.
-     *
-     * @param string $url File URL.
-     * @return int|null Null when the size is unknown.
-     */
-    private function fileSize(string $url): ?int
-    {
-        $attachmentId = attachment_url_to_postid($url);
-
-        if ($attachmentId > 0) {
-            $meta = wp_get_attachment_metadata($attachmentId);
-
-            if (is_array($meta) && ! empty($meta['filesize'])) {
-                return (int) $meta['filesize'];
-            }
-
-            $path = (string) get_attached_file($attachmentId);
-
-            return $path !== '' && is_file($path) ? (int) filesize($path) : null;
+        if ($isImage && $field->opaque && $probe->hasAlpha === true) {
+            $errors[] = $field->opaqueMessage();
         }
 
-        $length = wp_remote_retrieve_header(wp_safe_remote_head($url, ['timeout' => 5]), 'content-length');
+        if ($field->maxSize > 0 && $probe->size !== null && $probe->size > $field->maxSize) {
+            /* translators: %s: current file type or size, e.g. "WEBP" or "830.5 KB". */
+            $errors[] = $field->maxSizeMessage() . ' ' . sprintf(__('Current: %s.', 'a-ripple-song'), size_format($probe->size, 1));
+        }
 
-        return is_numeric($length) && (int) $length > 0 ? (int) $length : null;
+        return $errors !== [] ? implode(' ', $errors) : null;
     }
 }

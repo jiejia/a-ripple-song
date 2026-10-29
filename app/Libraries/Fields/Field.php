@@ -34,6 +34,8 @@ final readonly class Field
      * @param array<string,string> $autofill File / image: target field key => attachment property (duration, filesize, mime, width, height, ...).
      * @param ImageDimensions $dimensions Image: size rules.
      * @param int $maxSize File / image: largest allowed file size in bytes; 0 means unrestricted.
+     * @param array<int,string> $mimeTypes File / image: allowed MIME types, e.g. ['image/jpeg', 'image/png']; empty allows any.
+     * @param bool $opaque Image: reject PNGs that have an alpha channel or a transparent color.
      * @param array<int,Field> $fields Complex: sub fields of each row.
      * @param string $rowLabel Complex: label of one row, e.g. "Soundbite".
      * @param string $rowTitleField Complex: sub field key whose value titles the row.
@@ -59,6 +61,8 @@ final readonly class Field
         public array $autofill = [],
         public ImageDimensions $dimensions = new ImageDimensions(),
         public int $maxSize = 0,
+        public array $mimeTypes = [],
+        public bool $opaque = false,
         public array $fields = [],
         public string $rowLabel = '',
         public string $rowTitleField = '',
@@ -94,6 +98,8 @@ final readonly class Field
             autofill: (array) ($definition['autofill'] ?? []),
             dimensions: ImageDimensions::fromArray((array) ($definition['dimensions'] ?? [])),
             maxSize: (int) ($definition['max_size'] ?? 0),
+            mimeTypes: array_values(array_map('strval', (array) ($definition['mime_types'] ?? []))),
+            opaque: (bool) ($definition['opaque'] ?? false),
             fields: self::collect((array) ($definition['fields'] ?? [])),
             rowLabel: (string) ($definition['row_label'] ?? ''),
             rowTitleField: (string) ($definition['row_title_field'] ?? ''),
@@ -209,6 +215,27 @@ final readonly class Field
     {
         /* translators: %s: maximum file size, e.g. "512 KB". */
         return sprintf(__('File must be %s or smaller.', 'a-ripple-song'), size_format($this->maxSize));
+    }
+
+    /**
+     * Describe the allowed file types, e.g. "Allowed file types: JPG, PNG."
+     *
+     * @return string
+     */
+    public function mimeTypesMessage(): string
+    {
+        /* translators: %s: comma separated list of file types, e.g. "JPG, PNG". */
+        return sprintf(__('Allowed file types: %s.', 'a-ripple-song'), implode(', ', array_map(FileProbe::label(...), $this->mimeTypes)));
+    }
+
+    /**
+     * Describe the transparency rule.
+     *
+     * @return string
+     */
+    public function opaqueMessage(): string
+    {
+        return __('Image must not contain transparency or an alpha channel.', 'a-ripple-song');
     }
 
     /**
