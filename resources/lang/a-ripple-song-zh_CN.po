@@ -400,45 +400,45 @@ msgid "%s play"
 msgid_plural "%s plays"
 msgstr[0] "%s 次播放"
 
-#: app/Player/GlobalPlayer.php:186
+#: app/Player/GlobalPlayer.php:189
 msgid "Playing"
 msgstr "正在播放"
 
-#: app/Player/GlobalPlayer.php:187
+#: app/Player/GlobalPlayer.php:190
 msgid "Paused"
 msgstr "已暂停"
 
-#: app/Player/GlobalPlayer.php:188
+#: app/Player/GlobalPlayer.php:191
 msgid "Loading…"
 msgstr "加载中…"
 
-#: app/Player/GlobalPlayer.php:189
+#: app/Player/GlobalPlayer.php:192
 msgid "The audio could not be loaded."
 msgstr "无法加载该音频。"
 
-#: app/Player/GlobalPlayer.php:190
+#: app/Player/GlobalPlayer.php:193
 #: resources/templates/player/skins/default.php:79
 #: resources/templates/player/skins/default.php:140
 msgid "Play"
 msgstr "播放"
 
-#: app/Player/GlobalPlayer.php:191
+#: app/Player/GlobalPlayer.php:194
 #: resources/templates/episode/meta/default.php:26
 msgid "Pause"
 msgstr "暂停"
 
-#: app/Player/GlobalPlayer.php:192
+#: app/Player/GlobalPlayer.php:195
 #: resources/templates/player/skins/default.php:99
 #: resources/templates/player/skins/default.php:151
 msgid "Mute"
 msgstr "静音"
 
-#: app/Player/GlobalPlayer.php:193
+#: app/Player/GlobalPlayer.php:196
 msgid "Unmute"
 msgstr "取消静音"
 
 #. translators: %s: episode number.
-#: app/Player/GlobalPlayer.php:195
+#: app/Player/GlobalPlayer.php:198
 #, php-format
 msgid "EP.%s"
 msgstr "第 %s 期"
@@ -547,7 +547,7 @@ msgstr "播放器宽度"
 msgid "Match the theme's wide width"
 msgstr "与主题的宽版宽度一致"
 
-#: app/Settings/PlayerSetting.php:87
+#: app/Settings/PlayerSetting.php:88
 msgid "Match the theme's content width"
 msgstr "与主题的内容宽度一致"
 
@@ -1882,10 +1882,10 @@ msgstr "播放列表是空的"
 msgid "Remove from queue"
 msgstr "从播放列表移除"
 
-#: app/Settings/PlayerSetting.php:88
-msgid "Match the theme's content width, full-width background"
-msgstr "与主题的内容宽度一致（背景全宽）"
+#: app/Settings/PlayerSetting.php:87
+msgid "Match the theme's wide width, full-width background"
+msgstr "与主题的宽版宽度一致（背景全宽）"
 
 #: app/Settings/PlayerSetting.php:93
-msgid "Theme widths are measured from the theme's WordPress layout (block themes and themes with theme.json), so the bar lines up with the header, footer or post content. With a full-width background the bar spans the whole window with square corners and its controls line up with the post content. Themes without it keep the style's own width."
-msgstr "主题宽度根据主题的 WordPress 布局（区块主题及带 theme.json 的主题）测得，使播放条与页眉、页脚或文章内容对齐。选择背景全宽时，播放条横跨整个窗口、取消圆角，其中的控件与文章内容对齐。没有此布局的主题使用样式自身的宽度。"
+msgid "Theme widths are measured from the theme's WordPress layout (block themes and themes with theme.json), so the bar lines up with the header, footer or post content. With a full-width background the bar spans the whole window with square corners, and its controls line up with the theme's wide width. Themes without it keep the style's own width."
+msgstr "主题宽度根据主题的 WordPress 布局（区块主题及带 theme.json 的主题）测得，使播放条与页眉、页脚或文章内容对齐。选择背景全宽时，播放条横跨整个窗口、取消圆角，其中的控件与主题的宽版宽度对齐。没有此布局的主题使用样式自身的宽度。"

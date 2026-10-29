@@ -825,16 +825,16 @@ function measureThemeWidth(kind) {
  * a two-column full-screen panel does not fit the narrow post column.
  *
  * @param {Element} root Player root.
- * @param {string} mode wide | content (match the theme), content-full (content width on a full-width bar,
- *                      see the base styles in GlobalPlayer.php), full, or skin (keep the style's own widths).
+ * @param {string} mode wide | content (match the theme), wide-full (see bindBleed()), full, or skin (keep the style's own widths).
  */
 function bindWidth(root, mode) {
   if (mode === 'skin') return;
+  if (mode === 'wide-full') bindBleed(root);
 
   const px = (width) => (width === 'none' ? width : `${width}px`);
   const apply = () => {
     const wide = mode === 'full' ? 'none' : measureThemeWidth('wide');
-    const bar = mode === 'content' || mode === 'content-full' ? measureThemeWidth('content') : wide;
+    const bar = mode === 'content' ? measureThemeWidth('content') : wide;
 
     if (bar && wide) {
       root.dataset.arsFit = mode;
@@ -844,6 +844,40 @@ function bindWidth(root, mode) {
       // The theme has no WordPress layout to match: keep the style's own widths.
       delete root.dataset.arsFit;
     }
+  };
+
+  let frame = 0;
+  apply();
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame(frame);
+    frame = requestAnimationFrame(apply);
+  });
+}
+
+/**
+ * Setting "Player Width" = wide-full: the bar's [data-ars-width] containers span the window with square corners,
+ * and their padding centers the controls in a column of the theme's wide width (the whole window when the theme
+ * has no WordPress layout or the window is narrower). The style's own side padding is kept inside that column,
+ * so the controls sit where the "wide" setting puts them. Rules: base styles in GlobalPlayer.php.
+ *
+ * @param {Element} root Player root.
+ */
+function bindBleed(root) {
+  const boxes = root.querySelectorAll('[data-ars-width]');
+  const apply = () => {
+    const wide = measureThemeWidth('wide');
+
+    // Read the style's own (responsive) padding without the bleed rules; nothing is painted in between.
+    delete root.dataset.arsBleed;
+    boxes.forEach((box) => {
+      const style = getComputedStyle(box);
+      box.style.setProperty('--ars-bleed-pad-left', style.paddingLeft);
+      box.style.setProperty('--ars-bleed-pad-right', style.paddingRight);
+    });
+    root.dataset.arsBleed = '';
+
+    if (wide) root.style.setProperty('--ars-bleed-width', `${wide}px`);
+    else root.style.removeProperty('--ars-bleed-width');
   };
 
   let frame = 0;

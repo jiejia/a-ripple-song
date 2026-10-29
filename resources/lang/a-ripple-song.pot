@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-29T08:46:46+00:00\n"
+"POT-Creation-Date: 2026-10-29T08:53:57+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: a-ripple-song\n"
@@ -430,45 +430,45 @@ msgid_plural "%s plays"
 msgstr[0] ""
 msgstr[1] ""
 
-#: app/Player/GlobalPlayer.php:186
+#: app/Player/GlobalPlayer.php:189
 msgid "Playing"
 msgstr ""
 
-#: app/Player/GlobalPlayer.php:187
+#: app/Player/GlobalPlayer.php:190
 msgid "Paused"
 msgstr ""
 
-#: app/Player/GlobalPlayer.php:188
+#: app/Player/GlobalPlayer.php:191
 msgid "Loading…"
 msgstr ""
 
-#: app/Player/GlobalPlayer.php:189
+#: app/Player/GlobalPlayer.php:192
 msgid "The audio could not be loaded."
 msgstr ""
 
-#: app/Player/GlobalPlayer.php:190
+#: app/Player/GlobalPlayer.php:193
 #: resources/templates/player/skins/default.php:79
 #: resources/templates/player/skins/default.php:140
 msgid "Play"
 msgstr ""
 
-#: app/Player/GlobalPlayer.php:191
+#: app/Player/GlobalPlayer.php:194
 #: resources/templates/episode/meta/default.php:26
 msgid "Pause"
 msgstr ""
 
-#: app/Player/GlobalPlayer.php:192
+#: app/Player/GlobalPlayer.php:195
 #: resources/templates/player/skins/default.php:99
 #: resources/templates/player/skins/default.php:151
 msgid "Mute"
 msgstr ""
 
-#: app/Player/GlobalPlayer.php:193
+#: app/Player/GlobalPlayer.php:196
 msgid "Unmute"
 msgstr ""
 
 #. translators: %s: episode number.
-#: app/Player/GlobalPlayer.php:195
+#: app/Player/GlobalPlayer.php:198
 #, php-format
 msgid "EP.%s"
 msgstr ""
@@ -598,11 +598,11 @@ msgid "Match the theme's wide width"
 msgstr ""
 
 #: app/Settings/PlayerSetting.php:87
-msgid "Match the theme's content width"
+msgid "Match the theme's wide width, full-width background"
 msgstr ""
 
 #: app/Settings/PlayerSetting.php:88
-msgid "Match the theme's content width, full-width background"
+msgid "Match the theme's content width"
 msgstr ""
 
 #: app/Settings/PlayerSetting.php:89
@@ -614,7 +614,7 @@ msgid "Full width"
 msgstr ""
 
 #: app/Settings/PlayerSetting.php:93
-msgid "Theme widths are measured from the theme's WordPress layout (block themes and themes with theme.json), so the bar lines up with the header, footer or post content. With a full-width background the bar spans the whole window with square corners and its controls line up with the post content. Themes without it keep the style's own width."
+msgid "Theme widths are measured from the theme's WordPress layout (block themes and themes with theme.json), so the bar lines up with the header, footer or post content. With a full-width background the bar spans the whole window with square corners, and its controls line up with the theme's wide width. Themes without it keep the style's own width."
 msgstr ""
 
 #: app/Settings/PlayerSetting.php:98

@@ -84,13 +84,13 @@ class PlayerSetting extends SettingAbstract
                 'required' => true,
                 'options' => [
                     'wide' => __("Match the theme's wide width", 'a-ripple-song'),
+                    'wide-full' => __("Match the theme's wide width, full-width background", 'a-ripple-song'),
                     'content' => __("Match the theme's content width", 'a-ripple-song'),
-                    'content-full' => __("Match the theme's content width, full-width background", 'a-ripple-song'),
                     'skin' => __("The style's own width", 'a-ripple-song'),
                     'full' => __('Full width', 'a-ripple-song'),
                 ],
                 'default' => 'wide',
-                'help' => __('Theme widths are measured from the theme\'s WordPress layout (block themes and themes with theme.json), so the bar lines up with the header, footer or post content. With a full-width background the bar spans the whole window with square corners and its controls line up with the post content. Themes without it keep the style\'s own width.', 'a-ripple-song'),
+                'help' => __('Theme widths are measured from the theme\'s WordPress layout (block themes and themes with theme.json), so the bar lines up with the header, footer or post content. With a full-width background the bar spans the whole window with square corners, and its controls line up with the theme\'s wide width. Themes without it keep the style\'s own width.', 'a-ripple-song'),
             ],
             [
                 'type' => 'select',
@@ -164,7 +164,7 @@ class PlayerSetting extends SettingAbstract
     }
 
     /**
-     * Return how wide the player bar is: wide, content, content-full (content width on a full-width background), skin or full.
+     * Return how wide the player bar is: wide, wide-full (wide width on a full-width background), content, skin or full.
      *
      * @return string
      */
@@ -172,7 +172,7 @@ class PlayerSetting extends SettingAbstract
     {
         $width = (string) $this->value('width');
 
-        return in_array($width, ['wide', 'content', 'content-full', 'skin', 'full'], true) ? $width : 'wide';
+        return in_array($width, ['wide', 'wide-full', 'content', 'skin', 'full'], true) ? $width : 'wide';
     }
 
     /**

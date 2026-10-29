@@ -402,45 +402,45 @@ msgid_plural "%s plays"
 msgstr[0] "%s play"
 msgstr[1] "%s plays"
 
-#: app/Player/GlobalPlayer.php:186
+#: app/Player/GlobalPlayer.php:189
 msgid "Playing"
 msgstr "Playing"
 
-#: app/Player/GlobalPlayer.php:187
+#: app/Player/GlobalPlayer.php:190
 msgid "Paused"
 msgstr "Paused"
 
-#: app/Player/GlobalPlayer.php:188
+#: app/Player/GlobalPlayer.php:191
 msgid "Loading…"
 msgstr "Loading…"
 
-#: app/Player/GlobalPlayer.php:189
+#: app/Player/GlobalPlayer.php:192
 msgid "The audio could not be loaded."
 msgstr "The audio could not be loaded."
 
-#: app/Player/GlobalPlayer.php:190
+#: app/Player/GlobalPlayer.php:193
 #: resources/templates/player/skins/default.php:79
 #: resources/templates/player/skins/default.php:140
 msgid "Play"
 msgstr "Play"
 
-#: app/Player/GlobalPlayer.php:191
+#: app/Player/GlobalPlayer.php:194
 #: resources/templates/episode/meta/default.php:26
 msgid "Pause"
 msgstr "Pause"
 
-#: app/Player/GlobalPlayer.php:192
+#: app/Player/GlobalPlayer.php:195
 #: resources/templates/player/skins/default.php:99
 #: resources/templates/player/skins/default.php:151
 msgid "Mute"
 msgstr "Mute"
 
-#: app/Player/GlobalPlayer.php:193
+#: app/Player/GlobalPlayer.php:196
 msgid "Unmute"
 msgstr "Unmute"
 
 #. translators: %s: episode number.
-#: app/Player/GlobalPlayer.php:195
+#: app/Player/GlobalPlayer.php:198
 #, php-format
 msgid "EP.%s"
 msgstr "EP.%s"
@@ -549,7 +549,7 @@ msgstr "Player Width"
 msgid "Match the theme's wide width"
 msgstr "Match the theme's wide width"
 
-#: app/Settings/PlayerSetting.php:87
+#: app/Settings/PlayerSetting.php:88
 msgid "Match the theme's content width"
 msgstr "Match the theme's content width"
 
@@ -1886,10 +1886,10 @@ msgstr ""
 msgid "Remove from queue"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:88
-msgid "Match the theme's content width, full-width background"
-msgstr "Match the theme's content width, full-width background"
+#: app/Settings/PlayerSetting.php:87
+msgid "Match the theme's wide width, full-width background"
+msgstr "Match the theme's wide width, full-width background"
 
 #: app/Settings/PlayerSetting.php:93
-msgid "Theme widths are measured from the theme's WordPress layout (block themes and themes with theme.json), so the bar lines up with the header, footer or post content. With a full-width background the bar spans the whole window with square corners and its controls line up with the post content. Themes without it keep the style's own width."
-msgstr "Theme widths are measured from the theme's WordPress layout (block themes and themes with theme.json), so the bar lines up with the header, footer or post content. With a full-width background the bar spans the whole window with square corners and its controls line up with the post content. Themes without it keep the style's own width."
+msgid "Theme widths are measured from the theme's WordPress layout (block themes and themes with theme.json), so the bar lines up with the header, footer or post content. With a full-width background the bar spans the whole window with square corners, and its controls line up with the theme's wide width. Themes without it keep the style's own width."
+msgstr "Theme widths are measured from the theme's WordPress layout (block themes and themes with theme.json), so the bar lines up with the header, footer or post content. With a full-width background the bar spans the whole window with square corners, and its controls line up with the theme's wide width. Themes without it keep the style's own width."
