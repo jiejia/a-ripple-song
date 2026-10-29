@@ -9,15 +9,15 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-29T08:53:57+00:00\n"
+"POT-Creation-Date: 2026-10-29T11:51:42+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: a-ripple-song\n"
 
 #. Plugin Name of the plugin
 #: a-ripple-song.php
-#: app/Providers/SettingServiceProvider.php:49
-#: app/Providers/SettingServiceProvider.php:50
+#: app/Providers/SettingServiceProvider.php:51
+#: app/Providers/SettingServiceProvider.php:52
 msgid "A Ripple Song"
 msgstr ""
 
@@ -1349,6 +1349,54 @@ msgstr ""
 
 #: app/Settings/PodcastSetting.php:407
 msgid "TV & Film > TV Reviews"
+msgstr ""
+
+#: app/Settings/SubscriptionSetting.php:18
+msgid "Subscribe Links"
+msgstr ""
+
+#: app/Settings/SubscriptionSetting.php:81
+msgid "Major Platforms"
+msgstr ""
+
+#: app/Settings/SubscriptionSetting.php:96
+msgid "Podcast Apps"
+msgstr ""
+
+#: app/Settings/SubscriptionSetting.php:112
+msgid "Chinese Platforms"
+msgstr ""
+
+#: app/Settings/SubscriptionSetting.php:114
+msgid "Xiaoyuzhou"
+msgstr ""
+
+#: app/Settings/SubscriptionSetting.php:115
+msgid "Ximalaya"
+msgstr ""
+
+#: app/Settings/SubscriptionSetting.php:116
+msgid "NetEase Cloud Music"
+msgstr ""
+
+#: app/Settings/SubscriptionSetting.php:117
+msgid "QQ Music"
+msgstr ""
+
+#: app/Settings/SubscriptionSetting.php:118
+msgid "Lizhi FM"
+msgstr ""
+
+#: app/Settings/SubscriptionSetting.php:119
+msgid "Qingting FM"
+msgstr ""
+
+#: app/Settings/SubscriptionSetting.php:120
+msgid "Bilibili"
+msgstr ""
+
+#: app/Settings/SubscriptionSetting.php:124
+msgid "Directories & Smart Links"
 msgstr ""
 
 #. translators: Short date on the chart axis, see https://www.php.net/manual/datetime.format.php

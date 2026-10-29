@@ -16,8 +16,8 @@ msgstr ""
 
 #. Plugin Name of the plugin
 #: a-ripple-song.php
-#: app/Providers/SettingServiceProvider.php:49
-#: app/Providers/SettingServiceProvider.php:50
+#: app/Providers/SettingServiceProvider.php:51
+#: app/Providers/SettingServiceProvider.php:52
 msgid "A Ripple Song"
 msgstr "A Ripple Song"
 
@@ -1893,3 +1893,51 @@ msgstr "Match the theme's wide width, full-width background"
 #: app/Settings/PlayerSetting.php:93
 msgid "Theme widths are measured from the theme's WordPress layout (block themes and themes with theme.json), so the bar lines up with the header, footer or post content. With a full-width background the bar spans the whole window with square corners, and its controls line up with the theme's wide width. Themes without it keep the style's own width."
 msgstr "Theme widths are measured from the theme's WordPress layout (block themes and themes with theme.json), so the bar lines up with the header, footer or post content. With a full-width background the bar spans the whole window with square corners, and its controls line up with the theme's wide width. Themes without it keep the style's own width."
+
+#: app/Settings/SubscriptionSetting.php:18
+msgid "Subscribe Links"
+msgstr "Subscribe Links"
+
+#: app/Settings/SubscriptionSetting.php:81
+msgid "Major Platforms"
+msgstr "Major Platforms"
+
+#: app/Settings/SubscriptionSetting.php:96
+msgid "Podcast Apps"
+msgstr "Podcast Apps"
+
+#: app/Settings/SubscriptionSetting.php:112
+msgid "Chinese Platforms"
+msgstr "Chinese Platforms"
+
+#: app/Settings/SubscriptionSetting.php:114
+msgid "Xiaoyuzhou"
+msgstr "Xiaoyuzhou"
+
+#: app/Settings/SubscriptionSetting.php:115
+msgid "Ximalaya"
+msgstr "Ximalaya"
+
+#: app/Settings/SubscriptionSetting.php:116
+msgid "NetEase Cloud Music"
+msgstr "NetEase Cloud Music"
+
+#: app/Settings/SubscriptionSetting.php:117
+msgid "QQ Music"
+msgstr "QQ Music"
+
+#: app/Settings/SubscriptionSetting.php:118
+msgid "Lizhi FM"
+msgstr "Lizhi FM"
+
+#: app/Settings/SubscriptionSetting.php:119
+msgid "Qingting FM"
+msgstr "Qingting FM"
+
+#: app/Settings/SubscriptionSetting.php:120
+msgid "Bilibili"
+msgstr "Bilibili"
+
+#: app/Settings/SubscriptionSetting.php:124
+msgid "Directories & Smart Links"
+msgstr "Directories & Smart Links"

@@ -15,8 +15,8 @@ msgstr ""
 
 #. Plugin Name of the plugin
 #: a-ripple-song.php
-#: app/Providers/SettingServiceProvider.php:49
-#: app/Providers/SettingServiceProvider.php:50
+#: app/Providers/SettingServiceProvider.php:51
+#: app/Providers/SettingServiceProvider.php:52
 msgid "A Ripple Song"
 msgstr "脉动之音"
 
@@ -1889,3 +1889,51 @@ msgstr "与主题的宽版宽度一致（背景全宽）"
 #: app/Settings/PlayerSetting.php:93
 msgid "Theme widths are measured from the theme's WordPress layout (block themes and themes with theme.json), so the bar lines up with the header, footer or post content. With a full-width background the bar spans the whole window with square corners, and its controls line up with the theme's wide width. Themes without it keep the style's own width."
 msgstr "主题宽度根据主题的 WordPress 布局（区块主题及带 theme.json 的主题）测得，使播放条与页眉、页脚或文章内容对齐。选择背景全宽时，播放条横跨整个窗口、取消圆角，其中的控件与主题的宽版宽度对齐。没有此布局的主题使用样式自身的宽度。"
+
+#: app/Settings/SubscriptionSetting.php:18
+msgid "Subscribe Links"
+msgstr "订阅链接"
+
+#: app/Settings/SubscriptionSetting.php:81
+msgid "Major Platforms"
+msgstr "主流平台"
+
+#: app/Settings/SubscriptionSetting.php:96
+msgid "Podcast Apps"
+msgstr "播客应用"
+
+#: app/Settings/SubscriptionSetting.php:112
+msgid "Chinese Platforms"
+msgstr "中文平台"
+
+#: app/Settings/SubscriptionSetting.php:114
+msgid "Xiaoyuzhou"
+msgstr "小宇宙"
+
+#: app/Settings/SubscriptionSetting.php:115
+msgid "Ximalaya"
+msgstr "喜马拉雅"
+
+#: app/Settings/SubscriptionSetting.php:116
+msgid "NetEase Cloud Music"
+msgstr "网易云音乐"
+
+#: app/Settings/SubscriptionSetting.php:117
+msgid "QQ Music"
+msgstr "QQ 音乐"
+
+#: app/Settings/SubscriptionSetting.php:118
+msgid "Lizhi FM"
+msgstr "荔枝"
+
+#: app/Settings/SubscriptionSetting.php:119
+msgid "Qingting FM"
+msgstr "蜻蜓FM"
+
+#: app/Settings/SubscriptionSetting.php:120
+msgid "Bilibili"
+msgstr "哔哩哔哩"
+
+#: app/Settings/SubscriptionSetting.php:124
+msgid "Directories & Smart Links"
+msgstr "目录与聚合链接"
