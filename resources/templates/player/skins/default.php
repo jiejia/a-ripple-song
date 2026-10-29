@@ -14,6 +14,9 @@
  *   [data-ars-bar]             Element whose height reserves room at the page bottom (--ars-player-height).
  *   [data-ars-width="box|content"]  Bar container sized by the "Player Width" setting: "box" lines up its outer
  *                              edge with the theme layout, "content" its content (padding stays outside).
+ *                              With "content width, full-width background" it spans the window instead, with square
+ *                              corners, no side borders and side padding that centers its content at the content width;
+ *                              [data-ars-bar] then loses its padding so the bar sits on the window's bottom edge.
  *   [data-ars-panel-width="box|content"]  The same for the full-screen panel's container; it follows the theme's
  *                              wide width (also when the bar uses the content width, which is too narrow for a panel).
  *                              Clicks beside it (backdrop, margins) close the panel.

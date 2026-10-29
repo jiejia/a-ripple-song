@@ -825,7 +825,8 @@ function measureThemeWidth(kind) {
  * a two-column full-screen panel does not fit the narrow post column.
  *
  * @param {Element} root Player root.
- * @param {string} mode wide | content (match the theme), full, or skin (keep the style's own widths).
+ * @param {string} mode wide | content (match the theme), content-full (content width on a full-width bar,
+ *                      see the base styles in GlobalPlayer.php), full, or skin (keep the style's own widths).
  */
 function bindWidth(root, mode) {
   if (mode === 'skin') return;
@@ -833,7 +834,7 @@ function bindWidth(root, mode) {
   const px = (width) => (width === 'none' ? width : `${width}px`);
   const apply = () => {
     const wide = mode === 'full' ? 'none' : measureThemeWidth('wide');
-    const bar = mode === 'content' ? measureThemeWidth('content') : wide;
+    const bar = mode === 'content' || mode === 'content-full' ? measureThemeWidth('content') : wide;
 
     if (bar && wide) {
       root.dataset.arsFit = mode;

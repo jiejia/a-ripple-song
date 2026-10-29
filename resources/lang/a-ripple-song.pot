@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-29T03:14:00+00:00\n"
+"POT-Creation-Date: 2026-10-29T08:46:46+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: a-ripple-song\n"
@@ -430,45 +430,45 @@ msgid_plural "%s plays"
 msgstr[0] ""
 msgstr[1] ""
 
-#: app/Player/GlobalPlayer.php:180
+#: app/Player/GlobalPlayer.php:186
 msgid "Playing"
 msgstr ""
 
-#: app/Player/GlobalPlayer.php:181
+#: app/Player/GlobalPlayer.php:187
 msgid "Paused"
 msgstr ""
 
-#: app/Player/GlobalPlayer.php:182
+#: app/Player/GlobalPlayer.php:188
 msgid "Loading…"
 msgstr ""
 
-#: app/Player/GlobalPlayer.php:183
+#: app/Player/GlobalPlayer.php:189
 msgid "The audio could not be loaded."
 msgstr ""
 
-#: app/Player/GlobalPlayer.php:184
-#: resources/templates/player/skins/default.php:76
-#: resources/templates/player/skins/default.php:137
+#: app/Player/GlobalPlayer.php:190
+#: resources/templates/player/skins/default.php:79
+#: resources/templates/player/skins/default.php:140
 msgid "Play"
 msgstr ""
 
-#: app/Player/GlobalPlayer.php:185
+#: app/Player/GlobalPlayer.php:191
 #: resources/templates/episode/meta/default.php:26
 msgid "Pause"
 msgstr ""
 
-#: app/Player/GlobalPlayer.php:186
-#: resources/templates/player/skins/default.php:96
-#: resources/templates/player/skins/default.php:148
+#: app/Player/GlobalPlayer.php:192
+#: resources/templates/player/skins/default.php:99
+#: resources/templates/player/skins/default.php:151
 msgid "Mute"
 msgstr ""
 
-#: app/Player/GlobalPlayer.php:187
+#: app/Player/GlobalPlayer.php:193
 msgid "Unmute"
 msgstr ""
 
 #. translators: %s: episode number.
-#: app/Player/GlobalPlayer.php:189
+#: app/Player/GlobalPlayer.php:195
 #, php-format
 msgid "EP.%s"
 msgstr ""
@@ -602,78 +602,82 @@ msgid "Match the theme's content width"
 msgstr ""
 
 #: app/Settings/PlayerSetting.php:88
-msgid "The style's own width"
+msgid "Match the theme's content width, full-width background"
 msgstr ""
 
 #: app/Settings/PlayerSetting.php:89
+msgid "The style's own width"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:90
 msgid "Full width"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:92
-msgid "Theme widths are measured from the theme's WordPress layout (block themes and themes with theme.json), so the bar lines up with the header, footer or post content. Themes without it keep the style's own width."
+#: app/Settings/PlayerSetting.php:93
+msgid "Theme widths are measured from the theme's WordPress layout (block themes and themes with theme.json), so the bar lines up with the header, footer or post content. With a full-width background the bar spans the whole window with square corners and its controls line up with the post content. Themes without it keep the style's own width."
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:97
+#: app/Settings/PlayerSetting.php:98
 msgid "Player Bar Background"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:101
+#: app/Settings/PlayerSetting.php:102
 msgid "Translucent (frosted glass)"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:102
+#: app/Settings/PlayerSetting.php:103
 msgid "Solid"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:105
+#: app/Settings/PlayerSetting.php:106
 msgid "Translucent lets the page show through the bar, blurred. The Aurora style is always frosted."
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:110
+#: app/Settings/PlayerSetting.php:111
 msgid "Player Colors"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:114
+#: app/Settings/PlayerSetting.php:115
 msgid "Follow the site theme (auto detect)"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:115
+#: app/Settings/PlayerSetting.php:116
 msgid "Follow the visitor's system setting"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:116
+#: app/Settings/PlayerSetting.php:117
 msgid "Always light"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:117
+#: app/Settings/PlayerSetting.php:118
 msgid "Always dark"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:120
+#: app/Settings/PlayerSetting.php:121
 msgid "Every style has a light and a dark variant. Auto detect reads the light / dark markers and the background color of the current theme, and follows its toggle. Ignored when the theme styles the player itself."
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:124
+#: app/Settings/PlayerSetting.php:125
 msgid "Episode Page"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:129
+#: app/Settings/PlayerSetting.php:130
 msgid "Episode Meta Bar"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:133
+#: app/Settings/PlayerSetting.php:134
 msgid "Before the episode content"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:134
+#: app/Settings/PlayerSetting.php:135
 msgid "After the episode content"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:135
+#: app/Settings/PlayerSetting.php:136
 msgid "Do not show"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:138
+#: app/Settings/PlayerSetting.php:139
 msgid "Play and favorite buttons plus the play count on single episode pages with audio, in the player style; favorites are kept in the visitor's browser. While the global player is off, WordPress's own audio player is shown instead."
 msgstr ""
 
@@ -1819,73 +1823,73 @@ msgid "Save Settings"
 msgstr ""
 
 #: resources/templates/player/parts/progress.php:48
-#: resources/templates/player/skins/default.php:128
+#: resources/templates/player/skins/default.php:131
 msgid "Playback position"
 msgstr ""
 
-#: resources/templates/player/skins/default.php:54
+#: resources/templates/player/skins/default.php:57
 msgid "Audio player"
 msgstr ""
 
-#: resources/templates/player/skins/default.php:59
+#: resources/templates/player/skins/default.php:62
 msgid "Open Now Playing"
 msgstr ""
 
-#: resources/templates/player/skins/default.php:74
-#: resources/templates/player/skins/default.php:135
+#: resources/templates/player/skins/default.php:77
+#: resources/templates/player/skins/default.php:138
 msgid "Previous episode"
 msgstr ""
 
-#: resources/templates/player/skins/default.php:75
-#: resources/templates/player/skins/default.php:136
+#: resources/templates/player/skins/default.php:78
+#: resources/templates/player/skins/default.php:139
 msgid "Back 15 seconds"
 msgstr ""
 
-#: resources/templates/player/skins/default.php:81
-#: resources/templates/player/skins/default.php:142
+#: resources/templates/player/skins/default.php:84
+#: resources/templates/player/skins/default.php:145
 msgid "Forward 30 seconds"
 msgstr ""
 
-#: resources/templates/player/skins/default.php:82
-#: resources/templates/player/skins/default.php:143
+#: resources/templates/player/skins/default.php:85
+#: resources/templates/player/skins/default.php:146
 msgid "Next episode"
 msgstr ""
 
-#: resources/templates/player/skins/default.php:95
-#: resources/templates/player/skins/default.php:147
+#: resources/templates/player/skins/default.php:98
+#: resources/templates/player/skins/default.php:150
 msgid "Playback speed"
 msgstr ""
 
-#: resources/templates/player/skins/default.php:100
-#: resources/templates/player/skins/default.php:152
+#: resources/templates/player/skins/default.php:103
+#: resources/templates/player/skins/default.php:155
 msgid "Volume"
 msgstr ""
 
-#: resources/templates/player/skins/default.php:103
+#: resources/templates/player/skins/default.php:106
 msgid "Open Now Playing and queue"
 msgstr ""
 
-#: resources/templates/player/skins/default.php:108
 #: resources/templates/player/skins/default.php:111
+#: resources/templates/player/skins/default.php:114
 msgid "Now Playing"
 msgstr ""
 
-#: resources/templates/player/skins/default.php:112
+#: resources/templates/player/skins/default.php:115
 msgid "Close Now Playing"
 msgstr ""
 
-#: resources/templates/player/skins/default.php:158
+#: resources/templates/player/skins/default.php:161
 msgid "Queue"
 msgstr ""
 
-#: resources/templates/player/skins/default.php:159
+#: resources/templates/player/skins/default.php:162
 msgid "Clear"
 msgstr ""
 
-#: resources/templates/player/skins/default.php:161
+#: resources/templates/player/skins/default.php:164
 msgid "The queue is empty."
 msgstr ""
 
-#: resources/templates/player/skins/default.php:170
+#: resources/templates/player/skins/default.php:173
 msgid "Remove from queue"
 msgstr ""

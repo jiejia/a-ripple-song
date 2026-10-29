@@ -89,6 +89,9 @@ final class GlobalPlayer
             // Bar and panel widths set by player.js (setting "Player Width"); "content" containers keep their padding outside.
             . '.ars-player[data-ars-fit] [data-ars-width]{max-width:var(--ars-fit-width)!important}'
             . '.ars-player[data-ars-fit] [data-ars-width=content]{box-sizing:content-box!important}'
+            // "content-full": the bar spans the window edge to edge with square corners, its padding centers the controls at the content width.
+            . '.ars-player[data-ars-fit=content-full] [data-ars-bar]{padding:0!important;bottom:0!important}'
+            . '.ars-player[data-ars-fit=content-full] [data-ars-width]{max-width:none!important;border-radius:0!important;border-left-width:0!important;border-right-width:0!important;padding-left:max(.75rem,calc((100% - var(--ars-fit-width))/2))!important;padding-right:max(.75rem,calc((100% - var(--ars-fit-width))/2))!important}'
             // On phones the panel stays edge to edge like the prototypes; theme margins would squeeze its controls.
             . '@media (min-width:640px){.ars-player[data-ars-fit] [data-ars-panel-width]{max-width:var(--ars-fit-panel-width)!important}'
             . '.ars-player[data-ars-fit] [data-ars-panel-width=content]{box-sizing:content-box!important}}'
