@@ -11,6 +11,7 @@ use Jiejia\ARippleSong\Providers\CPTServiceProvider;
 use Jiejia\ARippleSong\Providers\FeedServiceProvider;
 use Jiejia\ARippleSong\Providers\PlayerServiceProvider;
 use Jiejia\ARippleSong\Providers\SettingServiceProvider;
+use Jiejia\ARippleSong\Providers\StatisticsServiceProvider;
 use Jiejia\ARippleSong\Providers\TranslationServiceProvider;
 
 /**
@@ -22,7 +23,7 @@ class Plugin
 
     public const NAME = 'A Ripple Song';
 
-    public const VERSION = '0.5.1';
+    public const VERSION = '0.5.2';
 
     public const DIR = A_RIPPLE_SONG_PLUGIN_DIR;
 
@@ -40,6 +41,7 @@ class Plugin
         ControllerServiceProvider::class,
         FeedServiceProvider::class,
         PlayerServiceProvider::class,
+        StatisticsServiceProvider::class,
     ];
 
     /**

@@ -5,7 +5,6 @@ namespace Jiejia\ARippleSong\Libraries\Fields;
 defined('ABSPATH') || exit;
 
 use Jiejia\ARippleSong\Abstracts\CPTAbstract;
-use Jiejia\ARippleSong\Plugin;
 
 /**
  * Shows a custom post type's fields in a meta box and stores them as post meta.
@@ -134,7 +133,7 @@ final class PostMetaStore extends FieldStore
          * @param CPTAbstract $postType Custom post type definition.
          * @param array<string,mixed> $values Saved values keyed by field key.
          */
-        do_action(Plugin::PREFIX . 'post_fields_saved', $postId, $this->postType, $submission->values);
+        do_action('a_ripple_song_post_fields_saved', $postId, $this->postType, $submission->values);
     }
 
     /**

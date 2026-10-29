@@ -9,6 +9,8 @@
 
 defined('ABSPATH') || exit;
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Templates run inside Template::include(), so their variables are local.
+
 use Jiejia\ARippleSong\Libraries\Fields\FieldContext;
 use Jiejia\ARippleSong\Libraries\Fields\FieldRenderer;
 ?>

@@ -10,13 +10,19 @@
 
 defined('ABSPATH') || exit;
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Templates run inside Template::include(), so their variables are local.
+
 use Jiejia\ARippleSong\Libraries\Icon;
 use Jiejia\ARippleSong\Libraries\Template;
 ?>
 <div class="ars-player" data-ars-player data-ars-skin="terminal" hidden>
     <?php /* ============ 播放器：底部状态行（常驻） ============ */ ?>
-    <div class="fixed inset-x-0 bottom-0 z-[9990] border-t tui-line bg-base-200 [--tui-bg:var(--color-base-200)]" role="region" data-ars-bar data-ars-surface="base-200" aria-label="音频播放器">
-      <div data-ars-width="content" class="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4">
+    <div class="fixed inset-x-0 bottom-0 z-[9990]" role="region" data-ars-bar aria-label="音频播放器">
+      <div data-ars-width="box" data-ars-surface="base-200" class="mx-auto flex h-16 max-w-6xl items-center gap-3 border-x border-t tui-line bg-base-200 px-4 text-sm [--tui-bg:var(--color-base-200)]">
+        <button type="button" class="min-w-0 flex-1 text-left hover:text-primary lg:max-w-56 xl:max-w-xs" ars-on:click="expanded = true" aria-label="展开正在播放">
+          <span class="dim block text-xs" ars-text="error || `EP.${String(current?.number).padStart(3, '0')} ${loading ? 'loading…' : (playing ? 'playing' : 'paused')}`"></span>
+          <span class="block truncate" ars-text="current?.title"></span>
+        </button>
         <div class="flex shrink-0 items-center">
           <span class="hidden md:contents">
             <button type="button" class="cmd" ars-on:click="prev()" aria-label="上一集">|&lt;</button>
@@ -28,22 +34,25 @@ use Jiejia\ARippleSong\Libraries\Template;
             <button type="button" class="cmd" ars-on:click="next()" aria-label="下一集">&gt;|</button>
           </span>
         </div>
-        <button type="button" class="min-w-0 flex-1 text-left hover:text-primary lg:max-w-xs" ars-on:click="expanded = true" aria-label="展开正在播放">
-          <span class="dim block text-xs" ars-text="error || `EP.${String(current?.number).padStart(3, '0')} ${loading ? 'loading…' : (playing ? 'playing' : 'paused')}`"></span>
-          <span class="block truncate" ars-text="current?.title"></span>
-        </button>
-        <div class="hidden shrink-0 items-center gap-3 tabular-nums md:flex">
-          <label class="bar-seek tracking-[-0.05em] text-primary">
+        <?php
+        (new Template())->renderThemeable('player/parts/progress', [
+            // No min-w-0: the text bar has a fixed width, so the title gives way instead.
+            'class' => 'hidden flex-1 items-center gap-3 tabular-nums md:flex',
+            'time' => '', 'timeEnd' => 'dim',
+            'bar' => static function (): void { ?>
+          <label class="bar-seek shrink-0 tracking-[-0.05em] text-primary">
             <span class="sr-only">播放进度</span>
-            <span aria-hidden="true" ars-text="'█'.repeat(Math.round(progress / 100 * 20)) + '░'.repeat(20 - Math.round(progress / 100 * 20))">░░░░░░░░░░░░░░░░░░░░</span>
+            <span aria-hidden="true" ars-text="'█'.repeat(Math.round(progress / 100 * 16)) + '░'.repeat(16 - Math.round(progress / 100 * 16))">░░░░░░░░░░░░░░░░</span>
             <input type="range" min="0" ars-bind:max="duration" step="1" ars-bind:value="position" ars-on:input="scrub($event.target.value)" ars-on:change="commit($event.target.value)">
           </label>
-          <span><span ars-text="fmt(position)">00:00</span><span class="dim">/<span ars-text="fmt(duration)">00:00</span></span></span>
-        </div>
-        <canvas data-spectrum="ascii" data-bar="11" data-gap="1" class="hidden h-10 w-28 shrink-0 xl:block" aria-hidden="true"></canvas>
+            <?php },
+            'spectrum' => ['data-spectrum' => 'ascii', 'data-bar' => '11', 'data-gap' => '1', 'class' => 'hidden h-10 w-24 shrink-0 2xl:block'],
+            'wave' => ['data-gap' => '1'],
+        ]);
+        ?>
         <span class="hidden lg:contents">
           <button type="button" class="cmd" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}x`">1x</button>
-          <?php (new Template())->renderThemeable('player/parts/volume', ['button' => 'cmd', 'icon' => '', 'popover' => 'tui bg-base-200', 'range' => 'accent-primary']); ?>
+          <?php (new Template())->renderThemeable('player/parts/volume', ['button' => 'cmd', 'icon' => '', 'range' => 'accent-primary']); ?>
         </span>
         <button type="button" class="cmd" ars-on:click="expanded = true" aria-label="展开播放器与播放队列">^</button>
       </div>

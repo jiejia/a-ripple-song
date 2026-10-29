@@ -1,4 +1,7 @@
 <?php
+
+defined('ABSPATH') || exit;
+
 // PSR-4 autoloader: Jiejia\ARippleSong\Foo\Bar => app/Foo/Bar.php
 spl_autoload_register(static function (string $class): void {
     $prefix = 'Jiejia\\ARippleSong\\';

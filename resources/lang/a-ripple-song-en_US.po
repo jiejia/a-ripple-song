@@ -1,23 +1,22 @@
-# Copyright (C) 2026 jiejia
-# This file is distributed under the GPL-3.0.
 msgid ""
 msgstr ""
 "Project-Id-Version: A Ripple Song 0.5.2\n"
 "Report-Msgid-Bugs-To: https://github.com/jiejia/a-ripple-song/issues\n"
-"POT-Creation-Date: 2026-10-28T13:03:13+00:00\n"
-"PO-Revision-Date: 2026-10-28T12:48:34+00:00\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: English (United States)\n"
-"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-28T13:03:13+00:00\n"
+"PO-Revision-Date: 2026-10-28T12:48:34+00:00\n"
+"Language: en_US\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: a-ripple-song\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. Plugin Name of the plugin
-#: a-ripple-song.php app/Providers/SettingServiceProvider.php:49
+#: a-ripple-song.php
+#: app/Providers/SettingServiceProvider.php:49
 #: app/Providers/SettingServiceProvider.php:50
 msgid "A Ripple Song"
 msgstr "A Ripple Song"
@@ -84,11 +83,12 @@ msgstr "No %s found"
 msgid "No %s found in Trash"
 msgstr "No %s found in Trash"
 
-#: app/Controllers/PodcastPlayController.php:160
+#: app/Controllers/PodcastPlayController.php:170
 msgid "Episode not found."
 msgstr "Episode not found."
 
 #: app/CPTs/PodcastCPT.php:24
+#: resources/templates/dashboard/page.php:309
 msgid "Episode"
 msgstr "Episode"
 
@@ -108,11 +108,13 @@ msgstr "Audio File"
 msgid "Required. Upload an audio file; the saved value is the audio file URL."
 msgstr "Required. Upload an audio file; the saved value is the audio file URL."
 
-#: app/CPTs/PodcastCPT.php:68 app/CPTs/PodcastCPT.php:238
+#: app/CPTs/PodcastCPT.php:68
+#: app/CPTs/PodcastCPT.php:238
 msgid "Duration (seconds)"
 msgstr "Duration (seconds)"
 
-#: app/CPTs/PodcastCPT.php:72 app/CPTs/PodcastCPT.php:81
+#: app/CPTs/PodcastCPT.php:72
+#: app/CPTs/PodcastCPT.php:81
 #: app/CPTs/PodcastCPT.php:90
 msgid "Auto detected from \"Audio File\"."
 msgstr "Auto detected from \"Audio File\"."
@@ -181,7 +183,8 @@ msgstr "Explicit"
 msgid "clean"
 msgstr "clean"
 
-#: app/CPTs/PodcastCPT.php:147 app/Settings/PodcastSetting.php:110
+#: app/CPTs/PodcastCPT.php:147
+#: app/Settings/PodcastSetting.php:110
 msgid "explicit"
 msgstr "explicit"
 
@@ -197,7 +200,8 @@ msgstr "iTunes Block"
 msgid "Optional. Turn on to hide this episode in Apple Podcasts."
 msgstr "Optional. Turn on to hide this episode in Apple Podcasts."
 
-#: app/CPTs/PodcastCPT.php:163 app/Settings/PodcastSetting.php:209
+#: app/CPTs/PodcastCPT.php:163
+#: app/Settings/PodcastSetting.php:209
 msgid "iTunes Title (optional)"
 msgstr "iTunes Title (optional)"
 
@@ -310,6 +314,9 @@ msgid "Statistics"
 msgstr "Statistics"
 
 #: app/CPTs/PodcastCPT.php:430
+#: resources/templates/dashboard/page.php:170
+#: resources/templates/dashboard/page.php:206
+#: resources/templates/dashboard/page.php:215
 msgid "Plays"
 msgstr "Plays"
 
@@ -390,53 +397,54 @@ msgid "%s Details"
 msgstr "%s Details"
 
 #. translators: %s: number of plays.
-#: app/Player/EpisodeMeta.php:79 app/Player/EpisodeMeta.php:83
-#: app/Player/EpisodeMeta.php:85
+#: app/Player/EpisodeMeta.php:138
+#: app/Player/EpisodeMeta.php:142
+#: app/Player/EpisodeMeta.php:144
 #, php-format
 msgid "%s play"
 msgid_plural "%s plays"
 msgstr[0] "%s play"
 msgstr[1] "%s plays"
 
-#: app/Player/GlobalPlayer.php:161
+#: app/Player/GlobalPlayer.php:174
 msgid "Playing"
 msgstr "Playing"
 
-#: app/Player/GlobalPlayer.php:162
+#: app/Player/GlobalPlayer.php:175
 msgid "Paused"
 msgstr "Paused"
 
-#: app/Player/GlobalPlayer.php:163
+#: app/Player/GlobalPlayer.php:176
 msgid "Loading…"
 msgstr "Loading…"
 
-#: app/Player/GlobalPlayer.php:164
+#: app/Player/GlobalPlayer.php:177
 msgid "The audio could not be loaded."
 msgstr "The audio could not be loaded."
 
-#: app/Player/GlobalPlayer.php:165
-#: resources/templates/player/skins/default.php:69
-#: resources/templates/player/skins/default.php:127
+#: app/Player/GlobalPlayer.php:178
+#: resources/templates/player/skins/default.php:71
+#: resources/templates/player/skins/default.php:132
 msgid "Play"
 msgstr "Play"
 
-#: app/Player/GlobalPlayer.php:166
+#: app/Player/GlobalPlayer.php:179
 #: resources/templates/episode/meta/default.php:24
 msgid "Pause"
 msgstr "Pause"
 
-#: app/Player/GlobalPlayer.php:167
-#: resources/templates/player/skins/default.php:86
-#: resources/templates/player/skins/default.php:138
+#: app/Player/GlobalPlayer.php:180
+#: resources/templates/player/skins/default.php:91
+#: resources/templates/player/skins/default.php:143
 msgid "Mute"
 msgstr "Mute"
 
-#: app/Player/GlobalPlayer.php:168
+#: app/Player/GlobalPlayer.php:181
 msgid "Unmute"
 msgstr "Unmute"
 
 #. translators: %s: episode number.
-#: app/Player/GlobalPlayer.php:170
+#: app/Player/GlobalPlayer.php:183
 #, php-format
 msgid "EP.%s"
 msgstr "EP.%s"
@@ -493,7 +501,7 @@ msgstr "Coral: listening dashboard"
 msgid "Wisteria: soft purple mobile app"
 msgstr "Wisteria: soft purple mobile app"
 
-#: app/Settings/DashboardSetting.php:24
+#: app/Settings/DashboardSetting.php:27
 msgid "Dashboard"
 msgstr "Dashboard"
 
@@ -537,93 +545,89 @@ msgstr "Player Style"
 msgid "The look of the player bar and its full-screen \"Now Playing\" panel. Ignored when the theme styles the player itself."
 msgstr "The look of the player bar and its full-screen \"Now Playing\" panel. Ignored when the theme styles the player itself."
 
-#: app/Settings/PlayerSetting.php:68
+#: app/Settings/PlayerSetting.php:82
 msgid "Player Width"
 msgstr "Player Width"
 
-#: app/Settings/PlayerSetting.php:72
+#: app/Settings/PlayerSetting.php:86
 msgid "Match the theme's wide width"
 msgstr "Match the theme's wide width"
 
-#: app/Settings/PlayerSetting.php:73
+#: app/Settings/PlayerSetting.php:87
 msgid "Match the theme's content width"
 msgstr "Match the theme's content width"
 
-#: app/Settings/PlayerSetting.php:74
+#: app/Settings/PlayerSetting.php:88
 msgid "The style's own width"
 msgstr "The style's own width"
 
-#: app/Settings/PlayerSetting.php:75
+#: app/Settings/PlayerSetting.php:89
 msgid "Full width"
 msgstr "Full width"
 
-#: app/Settings/PlayerSetting.php:78
+#: app/Settings/PlayerSetting.php:92
 msgid "Theme widths are measured from the theme's WordPress layout (block themes and themes with theme.json), so the bar lines up with the header, footer or post content. Themes without it keep the style's own width."
 msgstr "Theme widths are measured from the theme's WordPress layout (block themes and themes with theme.json), so the bar lines up with the header, footer or post content. Themes without it keep the style's own width."
 
-#: app/Settings/PlayerSetting.php:83
+#: app/Settings/PlayerSetting.php:97
 msgid "Player Bar Background"
 msgstr "Player Bar Background"
 
-#: app/Settings/PlayerSetting.php:87
+#: app/Settings/PlayerSetting.php:101
 msgid "Translucent (frosted glass)"
 msgstr "Translucent (frosted glass)"
 
-#: app/Settings/PlayerSetting.php:88
+#: app/Settings/PlayerSetting.php:102
 msgid "Solid"
 msgstr "Solid"
 
-#: app/Settings/PlayerSetting.php:91
+#: app/Settings/PlayerSetting.php:105
 msgid "Translucent lets the page show through the bar, blurred. The Aurora style is always frosted."
 msgstr "Translucent lets the page show through the bar, blurred. The Aurora style is always frosted."
 
-#: app/Settings/PlayerSetting.php:96
+#: app/Settings/PlayerSetting.php:110
 msgid "Player Colors"
 msgstr "Player Colors"
 
-#: app/Settings/PlayerSetting.php:100
+#: app/Settings/PlayerSetting.php:114
 msgid "Follow the site theme (auto detect)"
 msgstr "Follow the site theme (auto detect)"
 
-#: app/Settings/PlayerSetting.php:101
+#: app/Settings/PlayerSetting.php:115
 msgid "Follow the visitor's system setting"
 msgstr "Follow the visitor's system setting"
 
-#: app/Settings/PlayerSetting.php:102
+#: app/Settings/PlayerSetting.php:116
 msgid "Always light"
 msgstr "Always light"
 
-#: app/Settings/PlayerSetting.php:103
+#: app/Settings/PlayerSetting.php:117
 msgid "Always dark"
 msgstr "Always dark"
 
-#: app/Settings/PlayerSetting.php:106
+#: app/Settings/PlayerSetting.php:120
 msgid "Every style has a light and a dark variant. Auto detect reads the light / dark markers and the background color of the current theme, and follows its toggle. Ignored when the theme styles the player itself."
 msgstr "Every style has a light and a dark variant. Auto detect reads the light / dark markers and the background color of the current theme, and follows its toggle. Ignored when the theme styles the player itself."
 
-#: app/Settings/PlayerSetting.php:110
+#: app/Settings/PlayerSetting.php:124
 msgid "Episode Page"
 msgstr "Episode Page"
 
-#: app/Settings/PlayerSetting.php:115
+#: app/Settings/PlayerSetting.php:129
 msgid "Episode Meta Bar"
 msgstr "Episode Meta Bar"
 
-#: app/Settings/PlayerSetting.php:119
+#: app/Settings/PlayerSetting.php:133
 msgid "Before the episode content"
 msgstr "Before the episode content"
 
-#: app/Settings/PlayerSetting.php:120
+#: app/Settings/PlayerSetting.php:134
 msgid "After the episode content"
 msgstr "After the episode content"
 
-#: app/Settings/PlayerSetting.php:121
+#: app/Settings/PlayerSetting.php:135
 msgid "Do not show"
 msgstr "Do not show"
-
-#: app/Settings/PlayerSetting.php:124
-msgid "Play and favorite buttons plus the play count on single episode pages, in the player style. Shown while the global player is on and the episode has audio; favorites are kept in the visitor's browser."
-msgstr "Play and favorite buttons plus the play count on single episode pages, in the player style. Shown while the global player is on and the episode has audio; favorites are kept in the visitor's browser."
 
 #: app/Settings/PodcastSetting.php:25
 msgid "Podcast Settings"
@@ -741,7 +745,8 @@ msgstr "Apple Podcasts"
 msgid "Primary Category (Apple Podcasts)"
 msgstr "Primary Category (Apple Podcasts)"
 
-#: app/Settings/PodcastSetting.php:165 app/Settings/PodcastSetting.php:174
+#: app/Settings/PodcastSetting.php:165
+#: app/Settings/PodcastSetting.php:174
 #: app/Settings/PodcastSetting.php:183
 msgid "(not set)"
 msgstr "(not set)"
@@ -1311,7 +1316,7 @@ msgid "Drag to reorder"
 msgstr "Drag to reorder"
 
 #: resources/templates/fields/controls/complex-row.php:26
-#: resources/templates/fields/controls/media.php:57
+#: resources/templates/fields/controls/media.php:60
 msgid "Remove"
 msgstr "Remove"
 
@@ -1343,7 +1348,6 @@ msgstr "Use this file"
 
 #: resources/templates/fields/controls/media.php:38
 #: resources/templates/fields/controls/media.php:44
-#: resources/templates/fields/controls/media.php:56
 msgid "Select Image"
 msgstr "Select Image"
 
@@ -1351,7 +1355,7 @@ msgstr "Select Image"
 msgid "Replace"
 msgstr "Replace"
 
-#: resources/templates/fields/controls/media.php:56
+#: resources/templates/fields/controls/media.php:58
 msgid "Select File"
 msgstr "Select File"
 
@@ -1389,62 +1393,463 @@ msgstr "Settings were not saved. Please fix the following:"
 msgid "Save Settings"
 msgstr "Save Settings"
 
-#: resources/templates/player/skins/default.php:47
+#: resources/templates/player/skins/default.php:49
 msgid "Audio player"
 msgstr "Audio player"
 
-#: resources/templates/player/skins/default.php:52
+#: resources/templates/player/skins/default.php:54
 msgid "Open Now Playing"
 msgstr "Open Now Playing"
 
-#: resources/templates/player/skins/default.php:67
-#: resources/templates/player/skins/default.php:125
+#: resources/templates/player/skins/default.php:69
+#: resources/templates/player/skins/default.php:130
 msgid "Previous episode"
 msgstr "Previous episode"
 
-#: resources/templates/player/skins/default.php:68
-#: resources/templates/player/skins/default.php:126
+#: resources/templates/player/skins/default.php:70
+#: resources/templates/player/skins/default.php:131
 msgid "Back 15 seconds"
 msgstr "Back 15 seconds"
 
-#: resources/templates/player/skins/default.php:74
-#: resources/templates/player/skins/default.php:132
+#: resources/templates/player/skins/default.php:76
+#: resources/templates/player/skins/default.php:137
 msgid "Forward 30 seconds"
 msgstr "Forward 30 seconds"
 
-#: resources/templates/player/skins/default.php:75
-#: resources/templates/player/skins/default.php:133
+#: resources/templates/player/skins/default.php:77
+#: resources/templates/player/skins/default.php:138
 msgid "Next episode"
 msgstr "Next episode"
 
-#: resources/templates/player/skins/default.php:80
-#: resources/templates/player/skins/default.php:118
+#: resources/templates/player/parts/progress.php:46
+#: resources/templates/player/skins/default.php:123
 msgid "Playback position"
 msgstr "Playback position"
 
-#: resources/templates/player/skins/default.php:85
-#: resources/templates/player/skins/default.php:137
+#: resources/templates/player/skins/default.php:90
+#: resources/templates/player/skins/default.php:142
 msgid "Playback speed"
 msgstr "Playback speed"
 
-#: resources/templates/player/skins/default.php:90
-#: resources/templates/player/skins/default.php:142
+#: resources/templates/player/skins/default.php:95
+#: resources/templates/player/skins/default.php:147
 msgid "Volume"
 msgstr "Volume"
 
-#: resources/templates/player/skins/default.php:93
+#: resources/templates/player/skins/default.php:98
 msgid "Open Now Playing and queue"
 msgstr "Open Now Playing and queue"
 
-#: resources/templates/player/skins/default.php:98
-#: resources/templates/player/skins/default.php:101
+#: resources/templates/player/skins/default.php:103
+#: resources/templates/player/skins/default.php:106
 msgid "Now Playing"
 msgstr "Now Playing"
 
-#: resources/templates/player/skins/default.php:102
+#: resources/templates/player/skins/default.php:107
 msgid "Close Now Playing"
 msgstr "Close Now Playing"
 
-#: resources/templates/player/skins/default.php:147
+#: resources/templates/player/skins/default.php:152
 msgid "Queue"
 msgstr "Queue"
+
+#. translators: Short date on the chart axis, see https://www.php.net/manual/datetime.format.php
+#: app/Statistics/DashboardStats.php:191
+msgid "n/j"
+msgstr ""
+
+#. translators: 1: first day, 2: last day of a week.
+#: app/Statistics/DashboardStats.php:195
+#, php-format
+msgid "%1$s – %2$s"
+msgstr ""
+
+#. translators: Month on the chart axis, see https://www.php.net/manual/datetime.format.php
+#: app/Statistics/DashboardStats.php:263
+msgid "M"
+msgstr ""
+
+#. translators: Month and year in the chart tooltip, see https://www.php.net/manual/datetime.format.php
+#: app/Statistics/DashboardStats.php:265
+msgid "F Y"
+msgstr ""
+
+#: app/Statistics/DashboardStats.php:290
+msgid "Full"
+msgstr ""
+
+#: app/Statistics/DashboardStats.php:291
+msgid "Trailer"
+msgstr ""
+
+#: app/Statistics/DashboardStats.php:292
+msgid "Bonus"
+msgstr ""
+
+#: app/Statistics/DashboardStats.php:313
+msgid "Show cover"
+msgstr ""
+
+#: app/Statistics/DashboardStats.php:314
+msgid "Primary category"
+msgstr ""
+
+#: app/Statistics/DashboardStats.php:315
+msgid "Show description"
+msgstr ""
+
+#: app/Statistics/DashboardStats.php:316
+msgid "Author"
+msgstr ""
+
+#: app/Statistics/DashboardStats.php:317
+msgid "Owner email"
+msgstr ""
+
+#: app/Statistics/DashboardStats.php:343
+msgid "Audio file"
+msgstr ""
+
+#: app/Statistics/DashboardStats.php:344
+msgid "Podcast apps cannot play an episode without one."
+msgstr ""
+
+#: app/Statistics/DashboardStats.php:348
+msgid "Duration"
+msgstr ""
+
+#: app/Statistics/DashboardStats.php:349
+msgid "Detected when the episode is saved; audio on another site cannot be measured."
+msgstr ""
+
+#: app/Statistics/DashboardStats.php:353
+msgid "Episode number"
+msgstr ""
+
+#: app/Statistics/DashboardStats.php:354
+msgid "Recommended by Apple Podcasts."
+msgstr ""
+
+#: app/Statistics/DashboardStats.php:358
+msgid "Episode cover"
+msgstr ""
+
+#: app/Statistics/DashboardStats.php:359
+msgid "Optional. Episodes without one use the show cover."
+msgstr ""
+
+#: app/Statistics/DashboardStats.php:363
+msgid "Transcript"
+msgstr ""
+
+#: app/Statistics/DashboardStats.php:364
+#: app/Statistics/DashboardStats.php:369
+msgid "Optional. Shown by apps that support Podcasting 2.0."
+msgstr ""
+
+#: app/Statistics/DashboardStats.php:368
+msgid "Chapters"
+msgstr ""
+
+#. translators: %s: number of minutes.
+#: app/Statistics/DashboardStats.php:412
+#, php-format
+msgid "%s min"
+msgstr ""
+
+#. translators: 1: number of hours, 2: number of minutes.
+#: app/Statistics/DashboardStats.php:416
+#, php-format
+msgid "%1$s h %2$s min"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:33
+msgid "7 days"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:34
+msgid "30 days"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:35
+msgid "90 days"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:36
+msgid "12 months"
+msgstr ""
+
+#. translators: %s: period such as "30 days".
+#: resources/templates/dashboard/page.php:39
+#, php-format
+msgid "Last %s"
+msgstr ""
+
+#. translators: %s: number of episodes.
+#: resources/templates/dashboard/page.php:42
+#, php-format
+msgid "%s episode"
+msgid_plural "%s episodes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: resources/templates/dashboard/page.php:48
+msgid "No earlier plays to compare with"
+msgstr ""
+
+#. translators: %s: number of plays in the previous period.
+#: resources/templates/dashboard/page.php:58
+#, php-format
+msgid "vs %s the period before"
+msgstr ""
+
+#. translators: %s: number of drafts.
+#: resources/templates/dashboard/page.php:65
+#, php-format
+msgid "%s draft"
+msgid_plural "%s drafts"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: number of scheduled episodes.
+#: resources/templates/dashboard/page.php:70
+#, php-format
+msgid "%s scheduled"
+msgstr ""
+
+#. translators: %s: time since the latest episode, e.g. "3 days".
+#: resources/templates/dashboard/page.php:75
+#, php-format
+msgid "latest %s ago"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:84
+msgid "Show as table"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:102
+msgid "Overview"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:107
+msgid "Published episodes"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:113
+#: resources/templates/dashboard/page.php:313
+msgid "Total plays"
+msgstr ""
+
+#. translators: %s: average number of plays.
+#. translators: %s: average episode length, e.g. "45 min".
+#: resources/templates/dashboard/page.php:116
+#: resources/templates/dashboard/page.php:123
+#, php-format
+msgid "%s per episode on average"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:120
+msgid "Total audio length"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:127
+msgid "Audio file size"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:129
+msgid "Audio on another site is not counted"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:137
+msgid "Listening"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:138
+msgid "Period"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:152
+msgid "No plays recorded by date yet. Daily statistics start with the next play; plays counted before this update only show up in the totals."
+msgstr ""
+
+#. translators: %s: date of the first recorded play.
+#: resources/templates/dashboard/page.php:160
+#, php-format
+msgid "Plays are recorded by date since %s, so this period is incomplete."
+msgstr ""
+
+#: resources/templates/dashboard/page.php:177
+msgid "Daily average"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:183
+msgid "Best day"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:189
+msgid "Episodes played"
+msgstr ""
+
+#. translators: %s: number of published episodes.
+#: resources/templates/dashboard/page.php:192
+#, php-format
+msgid "of %s published"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:200
+msgid "Plays per week"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:200
+msgid "Plays per day"
+msgstr ""
+
+#. translators: 1: period such as "Last 30 days", 2: number of plays.
+#: resources/templates/dashboard/page.php:210
+#, php-format
+msgid "Plays chart, %1$s: %2$s in total"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:215
+msgid "Week"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:215
+msgid "Day"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:220
+msgid "Top episodes"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:224
+msgid "No plays in this period."
+msgstr ""
+
+#: resources/templates/dashboard/page.php:245
+msgid "Library"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:250
+msgid "Episodes published per month"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:251
+msgid "Last 12 months"
+msgstr ""
+
+#. translators: %s: number of episodes.
+#: resources/templates/dashboard/page.php:260
+#, php-format
+msgid "Episodes published per month over the last 12 months: %s in total"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:264
+msgid "Month"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:269
+msgid "Episode types"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:273
+#: resources/templates/dashboard/page.php:302
+msgid "No published episodes yet."
+msgstr ""
+
+#: resources/templates/dashboard/page.php:298
+msgid "Most played episodes"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:299
+msgid "All time"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:310
+msgid "Published"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:311
+msgid "Length"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:322
+msgid "View"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:338
+msgid "Feed health"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:343
+msgid "Show settings"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:344
+msgid "Edit"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:352
+msgid "Set"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:352
+msgid "Missing"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:362
+msgid "Episode fields"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:363
+msgid "Published episodes missing each field"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:373
+msgid "All set"
+msgstr ""
+
+#. translators: 1: episodes missing the field, 2: published episodes.
+#: resources/templates/dashboard/page.php:375
+#, php-format
+msgid "%1$s of %2$s"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:383
+msgid "Show episodes"
+msgstr ""
+
+#. translators: %s: number of further episodes.
+#: resources/templates/dashboard/page.php:392
+#, php-format
+msgid "and %s more"
+msgstr ""
+
+#: resources/templates/dashboard/page.php:256
+#: resources/templates/dashboard/page.php:264
+msgid "Episodes published"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:138
+msgid "Play and favorite buttons plus the play count on single episode pages with audio, in the player style; favorites are kept in the visitor's browser. While the global player is off, WordPress's own audio player is shown instead."
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:68
+msgid "Progress Bar & Spectrum"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:72
+msgid "Progress bar with a live spectrum on its right (like Night Signal)"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:73
+msgid "Progress bar only (like Default)"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:74
+msgid "Waveform progress bar: the loudness of the whole episode (like Pulse)"
+msgstr ""
+
+#: app/Settings/PlayerSetting.php:77
+msgid "Applies to the player bar of every style. The live spectrum only moves for audio hosted on this site. The waveform is drawn by wavesurfer.js in the visitor's browser: the first time an episode is shown it downloads the whole audio file once (audio on another site needs CORS), then the browser keeps the waveform. Not drawn on phones, where the bar has no progress row."
+msgstr ""

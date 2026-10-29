@@ -6,7 +6,6 @@ defined('ABSPATH') || exit;
 
 use Jiejia\ARippleSong\Abstracts\SettingAbstract;
 use Jiejia\ARippleSong\Libraries\Template;
-use Jiejia\ARippleSong\Plugin;
 
 /**
  * Renders a settings page's fields and stores them in a single option.
@@ -121,7 +120,7 @@ final class OptionStore extends FieldStore
              * @param SettingAbstract $setting Settings page definition.
              * @param array<string,mixed> $values Saved values keyed by field key.
              */
-            do_action(Plugin::PREFIX . 'settings_saved', $this->setting, $values);
+            do_action('a_ripple_song_settings_saved', $this->setting, $values);
 
             $this->setFlash(['saved' => true]);
         } else {

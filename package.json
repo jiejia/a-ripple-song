@@ -6,9 +6,10 @@
     "build": "npm run build:icons && npm run build:css && npm run build:js",
     "build:icons": "node bin/copy-icons.mjs",
     "build:css": "postcss \"resources/assets/css/player/*.css\" --dir public/dist/skins --no-map",
-    "build:js": "esbuild resources/assets/js/player/player.js --bundle --minify --format=iife --target=es2019 --outfile=public/dist/player.js",
+    "build:js": "esbuild resources/assets/js/player/player.js --bundle --minify --format=iife --target=es2019 --outfile=public/dist/player.js && esbuild resources/assets/js/player/waveform.js --bundle --minify --format=iife --target=es2019 --outfile=public/dist/waveform.js",
     "watch:css": "postcss \"resources/assets/css/player/*.css\" --dir public/dist/skins --no-map --watch",
-    "watch:js": "esbuild resources/assets/js/player/player.js --bundle --format=iife --target=es2019 --outfile=public/dist/player.js --watch"
+    "watch:js": "esbuild resources/assets/js/player/player.js --bundle --format=iife --target=es2019 --outfile=public/dist/player.js --watch",
+    "watch:waveform": "esbuild resources/assets/js/player/waveform.js --bundle --format=iife --target=es2019 --outfile=public/dist/waveform.js --watch"
   },
   "devDependencies": {
     "@csstools/postcss-cascade-layers": "^6.0.2",
@@ -22,6 +23,7 @@
     "tailwindcss": "^4.3.3"
   },
   "dependencies": {
-    "howler": "^2.2.4"
+    "howler": "^2.2.4",
+    "wavesurfer.js": "8.0.2"
   }
 }

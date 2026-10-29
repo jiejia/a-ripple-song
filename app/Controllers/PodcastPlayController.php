@@ -113,6 +113,16 @@ class PodcastPlayController extends ControllerAbstract
         $counted = $post->post_status === 'publish' && $this->claimPlay($post->ID);
         $count = $counted ? $this->podcast->incrementPlayCount($post->ID) : $this->podcast->playCount($post->ID);
 
+        if ($counted) {
+            /**
+             * Fires after a play of an episode has been counted.
+             *
+             * @param int $postId Episode ID.
+             * @param int $count New play count.
+             */
+            do_action('a_ripple_song_play_counted', $post->ID, $count);
+        }
+
         return rest_ensure_response([
             'id' => $post->ID,
             'play_count' => $count,
@@ -177,7 +187,7 @@ class PodcastPlayController extends ControllerAbstract
          * @param int $seconds Dedupe window.
          * @param int $postId Episode ID.
          */
-        $seconds = (int) apply_filters(Plugin::PREFIX . 'play_dedupe_seconds', self::DEDUPE_SECONDS, $postId);
+        $seconds = (int) apply_filters('a_ripple_song_play_dedupe_seconds', self::DEDUPE_SECONDS, $postId);
 
         if ($seconds <= 0) {
             return true;

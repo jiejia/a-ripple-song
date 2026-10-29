@@ -5,7 +5,6 @@ namespace Jiejia\ARippleSong\CPTs;
 defined('ABSPATH') || exit;
 
 use Jiejia\ARippleSong\Abstracts\CPTAbstract;
-use Jiejia\ARippleSong\Plugin;
 
 /**
  * Defines the podcast episode custom post type.
@@ -327,10 +326,59 @@ class PodcastCPT extends CPTAbstract
      */
     public function registerHooks(): void
     {
-        add_action(Plugin::PREFIX . 'post_fields_saved', [$this, 'fillAudioMeta'], 10, 2);
+        add_action('a_ripple_song_post_fields_saved', [$this, 'fillAudioMeta'], 10, 2);
         add_action('init', [$this, 'registerPlayCountMeta']);
         add_action('save_post_' . $this->slug(), [$this, 'ensurePlayCount']);
         add_action('add_meta_boxes_' . $this->slug(), [$this, 'addStatisticsMetaBox']);
+        add_filter('upload_mimes', [$this, 'addM4aMime']);
+        add_filter('wp_check_filetype_and_ext', [$this, 'acceptM4aUpload'], 10, 5);
+    }
+
+    /**
+     * Register .m4a / .m4b as audio/x-m4a, the type Apple Podcasts expects, instead of core's audio/mpeg (MP3).
+     *
+     * wp_check_filetype() takes the first matching entry, so it goes before core's "mp3|m4a|m4b".
+     *
+     * @param array<string,string> $mimes Allowed MIME types keyed by extension pattern.
+     * @return array<string,string>
+     */
+    public function addM4aMime(array $mimes): array
+    {
+        // Only where audio uploads are allowed at all.
+        if (! in_array('audio/mpeg', $mimes, true)) {
+            return $mimes;
+        }
+
+        return ['m4a|m4b' => 'audio/x-m4a'] + $mimes;
+    }
+
+    /**
+     * Let .m4a / .m4b files through the upload type check when their content is an MP4 container.
+     *
+     * Many encoders (ffmpeg, most editors) write an "isom" / "mp42" brand that file type detection reports as
+     * video/mp4, and core rejects a video/* file with an audio extension.
+     *
+     * @param array{ext:string|false,type:string|false,proper_filename:string|false} $data Result of the check.
+     * @param string $file Full path of the uploaded file.
+     * @param string $filename File name.
+     * @param array<string,string>|null $mimes Allowed MIME types, null for the user's defaults.
+     * @param string|false $realMime MIME type detected from the content.
+     * @return array{ext:string|false,type:string|false,proper_filename:string|false}
+     */
+    public function acceptM4aUpload(array $data, string $file, string $filename, ?array $mimes, string|false $realMime): array
+    {
+        $extension = strtolower((string) pathinfo($filename, PATHINFO_EXTENSION));
+
+        if (
+            ! empty($data['ext'])
+            || ! in_array($extension, ['m4a', 'm4b'], true)
+            || ! in_array($realMime, ['video/mp4', 'audio/mp4', 'audio/x-m4a', 'audio/m4a'], true)
+            || wp_check_filetype($filename, $mimes)['type'] === false
+        ) {
+            return $data;
+        }
+
+        return ['ext' => $extension, 'type' => 'audio/x-m4a', 'proper_filename' => $data['proper_filename'] ?? false];
     }
 
     /**
@@ -386,6 +434,7 @@ class PodcastCPT extends CPTAbstract
         $metaKey = $this->fieldMetaKey('play_count');
 
         // A single UPDATE keeps concurrent plays from overwriting each other (read + write would lose counts).
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- Atomic increment; the post_meta cache is cleared below.
         $updated = $wpdb->query($wpdb->prepare(
             "UPDATE {$wpdb->postmeta} SET meta_value = CAST(meta_value AS UNSIGNED) + 1 WHERE post_id = %d AND meta_key = %s",
             $postId,

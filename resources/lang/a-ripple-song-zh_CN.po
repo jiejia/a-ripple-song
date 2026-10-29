@@ -1,22 +1,21 @@
-# Copyright (C) 2026 jiejia
-# This file is distributed under the GPL-3.0.
 msgid ""
 msgstr ""
 "Project-Id-Version: A Ripple Song 0.5.2\n"
 "Report-Msgid-Bugs-To: https://github.com/jiejia/a-ripple-song/issues\n"
-"POT-Creation-Date: 2026-10-28T13:03:13+00:00\n"
-"PO-Revision-Date: 2026-10-28 12:49+0000\n"
 "Last-Translator: jiejia <jiejia2009@gmail.com>\n"
 "Language-Team: Chinese (China)\n"
-"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-28T13:03:13+00:00\n"
+"PO-Revision-Date: 2026-10-28 12:49+0000\n"
+"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Domain: a-ripple-song\n"
 
 #. Plugin Name of the plugin
-#: a-ripple-song.php app/Providers/SettingServiceProvider.php:49
+#: a-ripple-song.php
+#: app/Providers/SettingServiceProvider.php:49
 #: app/Providers/SettingServiceProvider.php:50
 msgid "A Ripple Song"
 msgstr "脉动之音"
@@ -83,11 +82,12 @@ msgstr "未找到%s"
 msgid "No %s found in Trash"
 msgstr "回收站中未找到%s"
 
-#: app/Controllers/PodcastPlayController.php:160
+#: app/Controllers/PodcastPlayController.php:170
 msgid "Episode not found."
 msgstr "未找到该单集。"
 
 #: app/CPTs/PodcastCPT.php:24
+#: resources/templates/dashboard/page.php:309
 msgid "Episode"
 msgstr "播客"
 
@@ -107,11 +107,13 @@ msgstr "音频文件"
 msgid "Required. Upload an audio file; the saved value is the audio file URL."
 msgstr "必填。上传音频文件；保存的值是音频文件 URL。"
 
-#: app/CPTs/PodcastCPT.php:68 app/CPTs/PodcastCPT.php:238
+#: app/CPTs/PodcastCPT.php:68
+#: app/CPTs/PodcastCPT.php:238
 msgid "Duration (seconds)"
 msgstr "时长（秒）"
 
-#: app/CPTs/PodcastCPT.php:72 app/CPTs/PodcastCPT.php:81
+#: app/CPTs/PodcastCPT.php:72
+#: app/CPTs/PodcastCPT.php:81
 #: app/CPTs/PodcastCPT.php:90
 msgid "Auto detected from \"Audio File\"."
 msgstr "根据“音频文件”自动识别。"
@@ -180,7 +182,8 @@ msgstr "露骨内容"
 msgid "clean"
 msgstr "无露骨内容"
 
-#: app/CPTs/PodcastCPT.php:147 app/Settings/PodcastSetting.php:110
+#: app/CPTs/PodcastCPT.php:147
+#: app/Settings/PodcastSetting.php:110
 msgid "explicit"
 msgstr "含露骨内容"
 
@@ -196,7 +199,8 @@ msgstr "iTunes 屏蔽"
 msgid "Optional. Turn on to hide this episode in Apple Podcasts."
 msgstr "可选。开启后会在 Apple Podcasts 中隐藏此播客。"
 
-#: app/CPTs/PodcastCPT.php:163 app/Settings/PodcastSetting.php:209
+#: app/CPTs/PodcastCPT.php:163
+#: app/Settings/PodcastSetting.php:209
 msgid "iTunes Title (optional)"
 msgstr "iTunes 标题（可选）"
 
@@ -309,6 +313,9 @@ msgid "Statistics"
 msgstr "统计"
 
 #: app/CPTs/PodcastCPT.php:430
+#: resources/templates/dashboard/page.php:170
+#: resources/templates/dashboard/page.php:206
+#: resources/templates/dashboard/page.php:215
 msgid "Plays"
 msgstr "播放次数"
 
@@ -389,52 +396,53 @@ msgid "%s Details"
 msgstr "%s详情"
 
 #. translators: %s: number of plays.
-#: app/Player/EpisodeMeta.php:79 app/Player/EpisodeMeta.php:83
-#: app/Player/EpisodeMeta.php:85
+#: app/Player/EpisodeMeta.php:138
+#: app/Player/EpisodeMeta.php:142
+#: app/Player/EpisodeMeta.php:144
 #, php-format
 msgid "%s play"
 msgid_plural "%s plays"
 msgstr[0] "%s 次播放"
 
-#: app/Player/GlobalPlayer.php:161
+#: app/Player/GlobalPlayer.php:174
 msgid "Playing"
 msgstr "正在播放"
 
-#: app/Player/GlobalPlayer.php:162
+#: app/Player/GlobalPlayer.php:175
 msgid "Paused"
 msgstr "已暂停"
 
-#: app/Player/GlobalPlayer.php:163
+#: app/Player/GlobalPlayer.php:176
 msgid "Loading…"
 msgstr "加载中…"
 
-#: app/Player/GlobalPlayer.php:164
+#: app/Player/GlobalPlayer.php:177
 msgid "The audio could not be loaded."
 msgstr "无法加载该音频。"
 
-#: app/Player/GlobalPlayer.php:165
-#: resources/templates/player/skins/default.php:69
-#: resources/templates/player/skins/default.php:127
+#: app/Player/GlobalPlayer.php:178
+#: resources/templates/player/skins/default.php:71
+#: resources/templates/player/skins/default.php:132
 msgid "Play"
 msgstr "播放"
 
-#: app/Player/GlobalPlayer.php:166
+#: app/Player/GlobalPlayer.php:179
 #: resources/templates/episode/meta/default.php:24
 msgid "Pause"
 msgstr "暂停"
 
-#: app/Player/GlobalPlayer.php:167
-#: resources/templates/player/skins/default.php:86
-#: resources/templates/player/skins/default.php:138
+#: app/Player/GlobalPlayer.php:180
+#: resources/templates/player/skins/default.php:91
+#: resources/templates/player/skins/default.php:143
 msgid "Mute"
 msgstr "静音"
 
-#: app/Player/GlobalPlayer.php:168
+#: app/Player/GlobalPlayer.php:181
 msgid "Unmute"
 msgstr "取消静音"
 
 #. translators: %s: episode number.
-#: app/Player/GlobalPlayer.php:170
+#: app/Player/GlobalPlayer.php:183
 #, php-format
 msgid "EP.%s"
 msgstr "第 %s 期"
@@ -491,7 +499,7 @@ msgstr "珊瑚：收听仪表盘"
 msgid "Wisteria: soft purple mobile app"
 msgstr "紫藤：柔紫色移动应用"
 
-#: app/Settings/DashboardSetting.php:24
+#: app/Settings/DashboardSetting.php:27
 msgid "Dashboard"
 msgstr "仪表盘"
 
@@ -535,93 +543,89 @@ msgstr "播放器样式"
 msgid "The look of the player bar and its full-screen \"Now Playing\" panel. Ignored when the theme styles the player itself."
 msgstr "播放条及其全屏“正在播放”面板的外观。主题自行定义播放器样式时，此项不生效。"
 
-#: app/Settings/PlayerSetting.php:68
+#: app/Settings/PlayerSetting.php:82
 msgid "Player Width"
 msgstr "播放器宽度"
 
-#: app/Settings/PlayerSetting.php:72
+#: app/Settings/PlayerSetting.php:86
 msgid "Match the theme's wide width"
 msgstr "与主题的宽版宽度一致"
 
-#: app/Settings/PlayerSetting.php:73
+#: app/Settings/PlayerSetting.php:87
 msgid "Match the theme's content width"
 msgstr "与主题的内容宽度一致"
 
-#: app/Settings/PlayerSetting.php:74
+#: app/Settings/PlayerSetting.php:88
 msgid "The style's own width"
 msgstr "使用样式自身的宽度"
 
-#: app/Settings/PlayerSetting.php:75
+#: app/Settings/PlayerSetting.php:89
 msgid "Full width"
 msgstr "全宽"
 
-#: app/Settings/PlayerSetting.php:78
+#: app/Settings/PlayerSetting.php:92
 msgid "Theme widths are measured from the theme's WordPress layout (block themes and themes with theme.json), so the bar lines up with the header, footer or post content. Themes without it keep the style's own width."
 msgstr "主题宽度根据主题的 WordPress 布局（区块主题及带 theme.json 的主题）测得，使播放条与页眉、页脚或文章内容对齐。没有此布局的主题使用样式自身的宽度。"
 
-#: app/Settings/PlayerSetting.php:83
+#: app/Settings/PlayerSetting.php:97
 msgid "Player Bar Background"
 msgstr "播放条背景"
 
-#: app/Settings/PlayerSetting.php:87
+#: app/Settings/PlayerSetting.php:101
 msgid "Translucent (frosted glass)"
 msgstr "半透明（磨砂玻璃）"
 
-#: app/Settings/PlayerSetting.php:88
+#: app/Settings/PlayerSetting.php:102
 msgid "Solid"
 msgstr "不透明"
 
-#: app/Settings/PlayerSetting.php:91
+#: app/Settings/PlayerSetting.php:105
 msgid "Translucent lets the page show through the bar, blurred. The Aurora style is always frosted."
 msgstr "半透明会让页面内容模糊地透过播放条显示。极光样式始终为磨砂效果。"
 
-#: app/Settings/PlayerSetting.php:96
+#: app/Settings/PlayerSetting.php:110
 msgid "Player Colors"
 msgstr "播放器配色"
 
-#: app/Settings/PlayerSetting.php:100
+#: app/Settings/PlayerSetting.php:114
 msgid "Follow the site theme (auto detect)"
 msgstr "跟随网站主题（自动识别）"
 
-#: app/Settings/PlayerSetting.php:101
+#: app/Settings/PlayerSetting.php:115
 msgid "Follow the visitor's system setting"
 msgstr "跟随访客的系统设置"
 
-#: app/Settings/PlayerSetting.php:102
+#: app/Settings/PlayerSetting.php:116
 msgid "Always light"
 msgstr "始终浅色"
 
-#: app/Settings/PlayerSetting.php:103
+#: app/Settings/PlayerSetting.php:117
 msgid "Always dark"
 msgstr "始终深色"
 
-#: app/Settings/PlayerSetting.php:106
+#: app/Settings/PlayerSetting.php:120
 msgid "Every style has a light and a dark variant. Auto detect reads the light / dark markers and the background color of the current theme, and follows its toggle. Ignored when the theme styles the player itself."
 msgstr "每种样式都有浅色和深色两个版本。自动识别会读取当前主题的浅色 / 深色标记和背景色，并跟随主题的切换。主题自行定义播放器样式时，此项不生效。"
 
-#: app/Settings/PlayerSetting.php:110
+#: app/Settings/PlayerSetting.php:124
 msgid "Episode Page"
 msgstr "单集页面"
 
-#: app/Settings/PlayerSetting.php:115
+#: app/Settings/PlayerSetting.php:129
 msgid "Episode Meta Bar"
 msgstr "单集信息栏"
 
-#: app/Settings/PlayerSetting.php:119
+#: app/Settings/PlayerSetting.php:133
 msgid "Before the episode content"
 msgstr "单集内容之前"
 
-#: app/Settings/PlayerSetting.php:120
+#: app/Settings/PlayerSetting.php:134
 msgid "After the episode content"
 msgstr "单集内容之后"
 
-#: app/Settings/PlayerSetting.php:121
+#: app/Settings/PlayerSetting.php:135
 msgid "Do not show"
 msgstr "不显示"
-
-#: app/Settings/PlayerSetting.php:124
-msgid "Play and favorite buttons plus the play count on single episode pages, in the player style. Shown while the global player is on and the episode has audio; favorites are kept in the visitor's browser."
-msgstr "在单集页面以播放器样式显示播放、收藏按钮和播放次数。仅在全局播放器开启且该单集有音频时显示；收藏记录保存在访客的浏览器中。"
 
 #: app/Settings/PodcastSetting.php:25
 msgid "Podcast Settings"
@@ -739,7 +743,8 @@ msgstr "Apple Podcasts"
 msgid "Primary Category (Apple Podcasts)"
 msgstr "主分类（Apple Podcasts）"
 
-#: app/Settings/PodcastSetting.php:165 app/Settings/PodcastSetting.php:174
+#: app/Settings/PodcastSetting.php:165
+#: app/Settings/PodcastSetting.php:174
 #: app/Settings/PodcastSetting.php:183
 msgid "(not set)"
 msgstr "（未设置）"
@@ -1309,7 +1314,7 @@ msgid "Drag to reorder"
 msgstr "拖动排序"
 
 #: resources/templates/fields/controls/complex-row.php:26
-#: resources/templates/fields/controls/media.php:57
+#: resources/templates/fields/controls/media.php:60
 msgid "Remove"
 msgstr "移除"
 
@@ -1341,7 +1346,6 @@ msgstr "使用此文件"
 
 #: resources/templates/fields/controls/media.php:38
 #: resources/templates/fields/controls/media.php:44
-#: resources/templates/fields/controls/media.php:56
 msgid "Select Image"
 msgstr "选择图片"
 
@@ -1349,7 +1353,7 @@ msgstr "选择图片"
 msgid "Replace"
 msgstr "更换"
 
-#: resources/templates/fields/controls/media.php:56
+#: resources/templates/fields/controls/media.php:58
 msgid "Select File"
 msgstr "选择文件"
 
@@ -1387,62 +1391,461 @@ msgstr "设置未保存，请修正以下问题："
 msgid "Save Settings"
 msgstr "保存设置"
 
-#: resources/templates/player/skins/default.php:47
+#: resources/templates/player/skins/default.php:49
 msgid "Audio player"
 msgstr "音频播放器"
 
-#: resources/templates/player/skins/default.php:52
+#: resources/templates/player/skins/default.php:54
 msgid "Open Now Playing"
 msgstr "打开“正在播放”"
 
-#: resources/templates/player/skins/default.php:67
-#: resources/templates/player/skins/default.php:125
+#: resources/templates/player/skins/default.php:69
+#: resources/templates/player/skins/default.php:130
 msgid "Previous episode"
 msgstr "上一集"
 
-#: resources/templates/player/skins/default.php:68
-#: resources/templates/player/skins/default.php:126
+#: resources/templates/player/skins/default.php:70
+#: resources/templates/player/skins/default.php:131
 msgid "Back 15 seconds"
 msgstr "后退 15 秒"
 
-#: resources/templates/player/skins/default.php:74
-#: resources/templates/player/skins/default.php:132
+#: resources/templates/player/skins/default.php:76
+#: resources/templates/player/skins/default.php:137
 msgid "Forward 30 seconds"
 msgstr "前进 30 秒"
 
-#: resources/templates/player/skins/default.php:75
-#: resources/templates/player/skins/default.php:133
+#: resources/templates/player/skins/default.php:77
+#: resources/templates/player/skins/default.php:138
 msgid "Next episode"
 msgstr "下一集"
 
-#: resources/templates/player/skins/default.php:80
-#: resources/templates/player/skins/default.php:118
+#: resources/templates/player/parts/progress.php:46
+#: resources/templates/player/skins/default.php:123
 msgid "Playback position"
 msgstr "播放进度"
 
-#: resources/templates/player/skins/default.php:85
-#: resources/templates/player/skins/default.php:137
+#: resources/templates/player/skins/default.php:90
+#: resources/templates/player/skins/default.php:142
 msgid "Playback speed"
 msgstr "播放速度"
 
-#: resources/templates/player/skins/default.php:90
-#: resources/templates/player/skins/default.php:142
+#: resources/templates/player/skins/default.php:95
+#: resources/templates/player/skins/default.php:147
 msgid "Volume"
 msgstr "音量"
 
-#: resources/templates/player/skins/default.php:93
+#: resources/templates/player/skins/default.php:98
 msgid "Open Now Playing and queue"
 msgstr "打开“正在播放”和播放队列"
 
-#: resources/templates/player/skins/default.php:98
-#: resources/templates/player/skins/default.php:101
+#: resources/templates/player/skins/default.php:103
+#: resources/templates/player/skins/default.php:106
 msgid "Now Playing"
 msgstr "正在播放"
 
-#: resources/templates/player/skins/default.php:102
+#: resources/templates/player/skins/default.php:107
 msgid "Close Now Playing"
 msgstr "关闭“正在播放”"
 
-#: resources/templates/player/skins/default.php:147
+#: resources/templates/player/skins/default.php:152
 msgid "Queue"
 msgstr "播放队列"
+
+#. translators: Short date on the chart axis, see https://www.php.net/manual/datetime.format.php
+#: app/Statistics/DashboardStats.php:191
+msgid "n/j"
+msgstr "n/j"
+
+#. translators: 1: first day, 2: last day of a week.
+#: app/Statistics/DashboardStats.php:195
+#, php-format
+msgid "%1$s – %2$s"
+msgstr "%1$s – %2$s"
+
+#. translators: Month on the chart axis, see https://www.php.net/manual/datetime.format.php
+#: app/Statistics/DashboardStats.php:263
+msgid "M"
+msgstr "n月"
+
+#. translators: Month and year in the chart tooltip, see https://www.php.net/manual/datetime.format.php
+#: app/Statistics/DashboardStats.php:265
+msgid "F Y"
+msgstr "Y年n月"
+
+#: app/Statistics/DashboardStats.php:290
+msgid "Full"
+msgstr "完整"
+
+#: app/Statistics/DashboardStats.php:291
+msgid "Trailer"
+msgstr "预告"
+
+#: app/Statistics/DashboardStats.php:292
+msgid "Bonus"
+msgstr "番外"
+
+#: app/Statistics/DashboardStats.php:313
+msgid "Show cover"
+msgstr "节目封面"
+
+#: app/Statistics/DashboardStats.php:314
+msgid "Primary category"
+msgstr "主分类"
+
+#: app/Statistics/DashboardStats.php:315
+msgid "Show description"
+msgstr "节目简介"
+
+#: app/Statistics/DashboardStats.php:316
+msgid "Author"
+msgstr "作者"
+
+#: app/Statistics/DashboardStats.php:317
+msgid "Owner email"
+msgstr "所有者邮箱"
+
+#: app/Statistics/DashboardStats.php:343
+msgid "Audio file"
+msgstr "音频文件"
+
+#: app/Statistics/DashboardStats.php:344
+msgid "Podcast apps cannot play an episode without one."
+msgstr "没有音频文件，播客应用就无法播放这一集。"
+
+#: app/Statistics/DashboardStats.php:348
+msgid "Duration"
+msgstr "时长"
+
+#: app/Statistics/DashboardStats.php:349
+msgid "Detected when the episode is saved; audio on another site cannot be measured."
+msgstr "保存单集时自动检测；其他网站上的音频无法测量。"
+
+#: app/Statistics/DashboardStats.php:353
+msgid "Episode number"
+msgstr "集数"
+
+#: app/Statistics/DashboardStats.php:354
+msgid "Recommended by Apple Podcasts."
+msgstr "Apple Podcasts 建议填写。"
+
+#: app/Statistics/DashboardStats.php:358
+msgid "Episode cover"
+msgstr "单集封面"
+
+#: app/Statistics/DashboardStats.php:359
+msgid "Optional. Episodes without one use the show cover."
+msgstr "可选。没有单集封面时使用节目封面。"
+
+#: app/Statistics/DashboardStats.php:363
+msgid "Transcript"
+msgstr "文字稿"
+
+#: app/Statistics/DashboardStats.php:364
+#: app/Statistics/DashboardStats.php:369
+msgid "Optional. Shown by apps that support Podcasting 2.0."
+msgstr "可选。支持 Podcasting 2.0 的应用会显示。"
+
+#: app/Statistics/DashboardStats.php:368
+msgid "Chapters"
+msgstr "章节"
+
+#. translators: %s: number of minutes.
+#: app/Statistics/DashboardStats.php:412
+#, php-format
+msgid "%s min"
+msgstr "%s 分钟"
+
+#. translators: 1: number of hours, 2: number of minutes.
+#: app/Statistics/DashboardStats.php:416
+#, php-format
+msgid "%1$s h %2$s min"
+msgstr "%1$s 小时 %2$s 分钟"
+
+#: resources/templates/dashboard/page.php:33
+msgid "7 days"
+msgstr "7 天"
+
+#: resources/templates/dashboard/page.php:34
+msgid "30 days"
+msgstr "30 天"
+
+#: resources/templates/dashboard/page.php:35
+msgid "90 days"
+msgstr "90 天"
+
+#: resources/templates/dashboard/page.php:36
+msgid "12 months"
+msgstr "12 个月"
+
+#. translators: %s: period such as "30 days".
+#: resources/templates/dashboard/page.php:39
+#, php-format
+msgid "Last %s"
+msgstr "最近 %s"
+
+#. translators: %s: number of episodes.
+#: resources/templates/dashboard/page.php:42
+#, php-format
+msgid "%s episode"
+msgid_plural "%s episodes"
+msgstr[0] "%s 集"
+
+#: resources/templates/dashboard/page.php:48
+msgid "No earlier plays to compare with"
+msgstr "没有更早的播放数据可对比"
+
+#. translators: %s: number of plays in the previous period.
+#: resources/templates/dashboard/page.php:58
+#, php-format
+msgid "vs %s the period before"
+msgstr "上一周期为 %s"
+
+#. translators: %s: number of drafts.
+#: resources/templates/dashboard/page.php:65
+#, php-format
+msgid "%s draft"
+msgid_plural "%s drafts"
+msgstr[0] "%s 篇草稿"
+
+#. translators: %s: number of scheduled episodes.
+#: resources/templates/dashboard/page.php:70
+#, php-format
+msgid "%s scheduled"
+msgstr "%s 篇定时发布"
+
+#. translators: %s: time since the latest episode, e.g. "3 days".
+#: resources/templates/dashboard/page.php:75
+#, php-format
+msgid "latest %s ago"
+msgstr "最新一集发布于 %s前"
+
+#: resources/templates/dashboard/page.php:84
+msgid "Show as table"
+msgstr "以表格显示"
+
+#: resources/templates/dashboard/page.php:102
+msgid "Overview"
+msgstr "概览"
+
+#: resources/templates/dashboard/page.php:107
+msgid "Published episodes"
+msgstr "已发布单集"
+
+#: resources/templates/dashboard/page.php:113
+#: resources/templates/dashboard/page.php:313
+msgid "Total plays"
+msgstr "总播放次数"
+
+#. translators: %s: average number of plays.
+#. translators: %s: average episode length, e.g. "45 min".
+#: resources/templates/dashboard/page.php:116
+#: resources/templates/dashboard/page.php:123
+#, php-format
+msgid "%s per episode on average"
+msgstr "平均每集 %s"
+
+#: resources/templates/dashboard/page.php:120
+msgid "Total audio length"
+msgstr "音频总时长"
+
+#: resources/templates/dashboard/page.php:127
+msgid "Audio file size"
+msgstr "音频文件大小"
+
+#: resources/templates/dashboard/page.php:129
+msgid "Audio on another site is not counted"
+msgstr "不含其他网站上的音频"
+
+#: resources/templates/dashboard/page.php:137
+msgid "Listening"
+msgstr "收听"
+
+#: resources/templates/dashboard/page.php:138
+msgid "Period"
+msgstr "时间范围"
+
+#: resources/templates/dashboard/page.php:152
+msgid "No plays recorded by date yet. Daily statistics start with the next play; plays counted before this update only show up in the totals."
+msgstr "还没有按日期记录的播放。每日统计从下一次播放开始；此次更新之前的播放只计入总数。"
+
+#. translators: %s: date of the first recorded play.
+#: resources/templates/dashboard/page.php:160
+#, php-format
+msgid "Plays are recorded by date since %s, so this period is incomplete."
+msgstr "按日期记录播放始于 %s，因此该时间段的数据不完整。"
+
+#: resources/templates/dashboard/page.php:177
+msgid "Daily average"
+msgstr "日均播放"
+
+#: resources/templates/dashboard/page.php:183
+msgid "Best day"
+msgstr "单日最高"
+
+#: resources/templates/dashboard/page.php:189
+msgid "Episodes played"
+msgstr "被收听的单集"
+
+#. translators: %s: number of published episodes.
+#: resources/templates/dashboard/page.php:192
+#, php-format
+msgid "of %s published"
+msgstr "共 %s 集已发布"
+
+#: resources/templates/dashboard/page.php:200
+msgid "Plays per week"
+msgstr "每周播放次数"
+
+#: resources/templates/dashboard/page.php:200
+msgid "Plays per day"
+msgstr "每日播放次数"
+
+#. translators: 1: period such as "Last 30 days", 2: number of plays.
+#: resources/templates/dashboard/page.php:210
+#, php-format
+msgid "Plays chart, %1$s: %2$s in total"
+msgstr "播放次数图表，%1$s：共 %2$s 次"
+
+#: resources/templates/dashboard/page.php:215
+msgid "Week"
+msgstr "周"
+
+#: resources/templates/dashboard/page.php:215
+msgid "Day"
+msgstr "日期"
+
+#: resources/templates/dashboard/page.php:220
+msgid "Top episodes"
+msgstr "热门单集"
+
+#: resources/templates/dashboard/page.php:224
+msgid "No plays in this period."
+msgstr "该时间段内没有播放。"
+
+#: resources/templates/dashboard/page.php:245
+msgid "Library"
+msgstr "节目库"
+
+#: resources/templates/dashboard/page.php:250
+msgid "Episodes published per month"
+msgstr "每月发布单集数"
+
+#: resources/templates/dashboard/page.php:251
+msgid "Last 12 months"
+msgstr "最近 12 个月"
+
+#. translators: %s: number of episodes.
+#: resources/templates/dashboard/page.php:260
+#, php-format
+msgid "Episodes published per month over the last 12 months: %s in total"
+msgstr "最近 12 个月每月发布的单集数：共 %s 集"
+
+#: resources/templates/dashboard/page.php:264
+msgid "Month"
+msgstr "月份"
+
+#: resources/templates/dashboard/page.php:269
+msgid "Episode types"
+msgstr "单集类型"
+
+#: resources/templates/dashboard/page.php:273
+#: resources/templates/dashboard/page.php:302
+msgid "No published episodes yet."
+msgstr "还没有已发布的单集。"
+
+#: resources/templates/dashboard/page.php:298
+msgid "Most played episodes"
+msgstr "播放最多的单集"
+
+#: resources/templates/dashboard/page.php:299
+msgid "All time"
+msgstr "全部时间"
+
+#: resources/templates/dashboard/page.php:310
+msgid "Published"
+msgstr "发布日期"
+
+#: resources/templates/dashboard/page.php:311
+msgid "Length"
+msgstr "时长"
+
+#: resources/templates/dashboard/page.php:322
+msgid "View"
+msgstr "查看"
+
+#: resources/templates/dashboard/page.php:338
+msgid "Feed health"
+msgstr "Feed 健康检查"
+
+#: resources/templates/dashboard/page.php:343
+msgid "Show settings"
+msgstr "节目设置"
+
+#: resources/templates/dashboard/page.php:344
+msgid "Edit"
+msgstr "编辑"
+
+#: resources/templates/dashboard/page.php:352
+msgid "Set"
+msgstr "已设置"
+
+#: resources/templates/dashboard/page.php:352
+msgid "Missing"
+msgstr "缺失"
+
+#: resources/templates/dashboard/page.php:362
+msgid "Episode fields"
+msgstr "单集字段"
+
+#: resources/templates/dashboard/page.php:363
+msgid "Published episodes missing each field"
+msgstr "缺少各字段的已发布单集"
+
+#: resources/templates/dashboard/page.php:373
+msgid "All set"
+msgstr "全部完成"
+
+#. translators: 1: episodes missing the field, 2: published episodes.
+#: resources/templates/dashboard/page.php:375
+#, php-format
+msgid "%1$s of %2$s"
+msgstr "%1$s / %2$s"
+
+#: resources/templates/dashboard/page.php:383
+msgid "Show episodes"
+msgstr "显示单集"
+
+#. translators: %s: number of further episodes.
+#: resources/templates/dashboard/page.php:392
+#, php-format
+msgid "and %s more"
+msgstr "还有 %s 集"
+
+#: resources/templates/dashboard/page.php:256
+#: resources/templates/dashboard/page.php:264
+msgid "Episodes published"
+msgstr "发布单集数"
+
+#: app/Settings/PlayerSetting.php:138
+msgid "Play and favorite buttons plus the play count on single episode pages with audio, in the player style; favorites are kept in the visitor's browser. While the global player is off, WordPress's own audio player is shown instead."
+msgstr "在有音频的单集页面显示播放按钮、收藏按钮和播放次数，样式跟随播放器；收藏保存在访客的浏览器中。关闭全局播放器时，改为显示 WordPress 自带的音频播放器。"
+
+#: app/Settings/PlayerSetting.php:68
+msgid "Progress Bar & Spectrum"
+msgstr "进度条与频谱样式"
+
+#: app/Settings/PlayerSetting.php:72
+msgid "Progress bar with a live spectrum on its right (like Night Signal)"
+msgstr "左侧进度条 + 右侧实时频谱（同夜间信号）"
+
+#: app/Settings/PlayerSetting.php:73
+msgid "Progress bar only (like Default)"
+msgstr "只有进度条（同默认）"
+
+#: app/Settings/PlayerSetting.php:74
+msgid "Waveform progress bar: the loudness of the whole episode (like Pulse)"
+msgstr "波形进度条：静态显示整集各时间点的音量高低（同脉冲）"
+
+#: app/Settings/PlayerSetting.php:77
+msgid "Applies to the player bar of every style. The live spectrum only moves for audio hosted on this site. The waveform is drawn by wavesurfer.js in the visitor's browser: the first time an episode is shown it downloads the whole audio file once (audio on another site needs CORS), then the browser keeps the waveform. Not drawn on phones, where the bar has no progress row."
+msgstr "对所有风格的播放条生效。实时频谱只对本站托管的音频有跳动效果。波形由 wavesurfer.js 在访客的浏览器中绘制：某一集第一次显示时会完整下载一次音频（其他网站上的音频需要允许 CORS），之后由浏览器缓存波形。手机上播放条没有进度区域，因此不绘制。"

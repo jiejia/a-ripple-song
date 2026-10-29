@@ -10,6 +10,8 @@
 
 defined('ABSPATH') || exit;
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Templates run inside Template::include(), so their variables are local.
+
 use Jiejia\ARippleSong\Libraries\Icon;
 use Jiejia\ARippleSong\Libraries\Template;
 ?>
@@ -35,17 +37,16 @@ use Jiejia\ARippleSong\Libraries\Template;
           <button type="button" class="btn btn-ghost btn-circle btn-sm hidden sm:inline-flex" ars-on:click="skip(30)" aria-label="快进 30 秒"><?php Icon::render('rotate-cw', 'size-4'); ?></button>
           <button type="button" class="btn btn-ghost btn-circle btn-sm hidden sm:inline-flex" ars-on:click="next()" aria-label="下一集"><?php Icon::render('skip-forward', 'size-4 fill-current'); ?></button>
         </div>
-        <div class="hidden min-w-0 flex-1 items-center gap-3 md:flex">
-          <span class="muted text-xs tabular-nums" ars-text="fmt(position)">00:00</span>
-          <div class="wave-wrap relative h-10 min-w-0 flex-1">
-            <canvas data-spectrum="pulse" data-bar="3" data-gap="4" data-color="content" class="block h-full w-full" aria-hidden="true"></canvas>
-            <input type="range" class="wave-seek" min="0" ars-bind:max="duration" step="1" ars-bind:value="position" ars-on:input="scrub($event.target.value)" ars-on:change="commit($event.target.value)" aria-label="播放进度">
-          </div>
-          <span class="muted text-xs tabular-nums" ars-text="fmt(duration)">00:00</span>
-        </div>
+        <?php
+        (new Template())->renderThemeable('player/parts/progress', [
+            'time' => 'muted',
+            'spectrum' => ['data-spectrum' => 'bars', 'data-bar' => '3', 'data-gap' => '2', 'data-color' => 'content', 'class' => 'hidden h-10 w-24 shrink-0 xl:block'],
+            'wave' => ['data-bar' => '3', 'data-gap' => '4', 'data-color' => 'content'], 'waveClass' => 'h-10',
+        ]);
+        ?>
         <div class="hidden items-center gap-1 lg:flex">
           <button type="button" class="btn btn-ghost btn-sm w-12 px-0 text-sm" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
-          <?php (new Template())->renderThemeable('player/parts/volume', ['popover' => 'rounded-2xl bg-base-200 shadow-2xl ring-1 ring-[color-mix(in_oklch,var(--color-base-content)_10%,transparent)]']); ?>
+          <?php (new Template())->renderThemeable('player/parts/volume'); ?>
         </div>
         <button type="button" class="btn btn-ghost btn-circle btn-sm" ars-on:click="expanded = true" aria-label="展开播放器与播放队列"><?php Icon::render('chevron-up', 'size-5'); ?></button>
       </div>

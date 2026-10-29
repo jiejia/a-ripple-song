@@ -8,6 +8,8 @@
 
 defined('ABSPATH') || exit;
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Templates run inside Template::include(), so their variables are local.
+
 use Jiejia\ARippleSong\Libraries\Icon;
 ?>
 <div class="ars-player" data-ars-island ars-data="{ id: <?php echo (int) $postId; ?> }">
@@ -20,6 +22,6 @@ use Jiejia\ARippleSong\Libraries\Icon;
       <span ars-show="!isFav(id)"><?php Icon::render('heart', 'size-5'); ?></span>
       <span ars-show="isFav(id)" ars-cloak class="text-primary"><?php Icon::render('heart', 'size-5 fill-current'); ?></span>
     </button>
-    <span class="text-sm text-base-content/70 inline-flex items-center gap-1.5"><?php Icon::render('headphones', 'size-4'); ?><span<?php echo $playsAttributes; ?>><?php echo esc_html($playsText); ?></span></span>
+    <span class="text-sm text-base-content/70 inline-flex items-center gap-1.5"><?php Icon::render('headphones', 'size-4'); ?><span<?php echo $playsAttributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped by Html::attributes(). ?>><?php echo esc_html($playsText); ?></span></span>
   </div>
 </div>

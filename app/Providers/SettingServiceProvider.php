@@ -71,7 +71,8 @@ class SettingServiceProvider extends ServiceProviderAbstract
                     $setting->title(),                  // menu title
                     'manage_options',           // required capability
                     $pageSlug,                // page slug
-                    [$setting, 'page']  // page callback function
+                    // The top-level page already renders through add_menu_page(); a second callback would print it twice.
+                    $pageSlug === $topPageSlug ? '' : [$setting, 'page']
                 );
             }
         });

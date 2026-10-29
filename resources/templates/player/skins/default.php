@@ -23,7 +23,8 @@
  *                              Esc and links inside it close it.
  *   [data-ars-action="…"]      Buttons: toggle, prev, next, back, forward, rate, mute, panel (open / close the panel).
  *                              back / forward skip the seconds in data-ars-seconds.
- *   [data-ars-seek]            <input type="range"> for the progress.
+ *   [data-ars-seek]            <input type="range"> for the progress. The bar's progress row comes from
+ *                              player/parts/progress.php, which follows the "Progress Bar & Spectrum" setting.
  *   [data-ars-volume]          <input type="range" min="0" max="1"> for the volume.
  *   [data-ars-text="…"]        Text filled by JS: title, number, status, position, duration, rate.
  *   [data-ars-src="cover"]     <img> showing the episode cover.
@@ -39,7 +40,10 @@
 
 defined('ABSPATH') || exit;
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Templates run inside Template::include(), so their variables are local.
+
 use Jiejia\ARippleSong\Libraries\Icon;
+use Jiejia\ARippleSong\Libraries\Template;
 
 $iconButton = 'btn btn-ghost btn-circle btn-sm';
 $bigButton = 'btn btn-ghost btn-circle';
@@ -75,11 +79,14 @@ $bigButton = 'btn btn-ghost btn-circle';
                 <button type="button" class="<?php echo esc_attr($iconButton); ?> hidden sm:inline-flex" data-ars-action="next" aria-label="<?php esc_attr_e('Next episode', 'a-ripple-song'); ?>"><?php Icon::render('skip-forward', 'size-4'); ?></button>
             </div>
 
-            <div class="hidden min-w-0 flex-1 items-center gap-3 text-xs tabular-nums md:flex">
-                <span class="opacity-70" data-ars-text="position">00:00</span>
-                <input type="range" class="range range-primary range-xs min-w-0 flex-1" min="0" max="0" step="1" value="0" data-ars-seek aria-label="<?php esc_attr_e('Playback position', 'a-ripple-song'); ?>">
-                <span class="opacity-50" data-ars-text="duration">00:00</span>
-            </div>
+            <?php
+            (new Template())->renderThemeable('player/parts/progress', [
+                'hooks' => 'data',
+                'time' => 'opacity-70',
+                'timeEnd' => 'opacity-50',
+                'spectrum' => ['data-spectrum' => 'bars', 'class' => 'hidden h-8 w-24 shrink-0 xl:block'],
+            ]);
+            ?>
 
             <div class="hidden shrink-0 items-center gap-1 lg:flex">
                 <button type="button" class="btn btn-ghost btn-sm font-semibold tabular-nums" data-ars-action="rate" aria-label="<?php esc_attr_e('Playback speed', 'a-ripple-song'); ?>"><span data-ars-text="rate">1×</span></button>

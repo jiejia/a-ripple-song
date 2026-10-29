@@ -10,6 +10,8 @@
 
 defined('ABSPATH') || exit;
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Templates run inside Template::include(), so their variables are local.
+
 use Jiejia\ARippleSong\Libraries\Icon;
 use Jiejia\ARippleSong\Libraries\Template;
 ?>
@@ -18,7 +20,7 @@ use Jiejia\ARippleSong\Libraries\Template;
     <div class="fixed inset-x-0 bottom-0 z-[9990] px-2 pb-2 sm:px-5 sm:pb-5" role="region" data-ars-bar aria-label="音频播放器">
       <div data-ars-width="box" data-ars-surface class="panel mx-auto flex max-w-7xl items-center gap-3 rounded-2xl p-2.5 shadow-[0_20px_50px_-20px_oklch(30%_0.05_270/0.45)] sm:gap-4 sm:px-4">
         <button type="button" class="shrink-0" ars-on:click="expanded = true" aria-label="展开播放器"><img ars-bind:src="current?.cover" alt="" class="size-12 rounded-xl"></button>
-        <div class="min-w-0 flex-1 md:w-56 md:flex-none">
+        <div class="min-w-0 flex-1 md:w-40 md:flex-none xl:w-56">
           <a ars-bind:href="current?.url" class="block truncate text-sm font-semibold hover:text-primary" ars-text="current?.title"></a>
           <p class="mute truncate text-xs" ars-text="error || (loading ? '加载中…' : (current?.hosts ? 'by ' + current.hosts : ''))"></p>
         </div>
@@ -32,15 +34,14 @@ use Jiejia\ARippleSong\Libraries\Template;
           <button type="button" class="btn btn-ghost btn-circle btn-sm hidden sm:inline-flex" ars-on:click="next()" aria-label="下一集"><?php Icon::render('skip-forward', 'size-4 fill-current'); ?></button>
           <button type="button" class="btn btn-ghost btn-sm hidden w-11 px-0 text-xs sm:inline-flex" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
         </div>
-        <div class="hidden min-w-0 flex-1 items-center gap-3 md:flex">
-          <span class="mute text-xs tabular-nums" ars-text="fmt(position)">00:00</span>
-          <div class="wave-wrap relative h-9 min-w-0 flex-1">
-            <canvas data-spectrum="pulse" data-bar="2" data-gap="2" class="block h-full w-full" aria-hidden="true"></canvas>
-            <input type="range" class="wave-seek" min="0" ars-bind:max="duration" step="1" ars-bind:value="position" ars-on:input="scrub($event.target.value)" ars-on:change="commit($event.target.value)" aria-label="播放进度">
-          </div>
-          <span class="mute text-xs tabular-nums" ars-text="fmt(duration)">00:00</span>
-        </div>
-        <?php (new Template())->renderThemeable('player/parts/volume', ['button' => 'grid size-10 shrink-0 place-items-center rounded-full hover:bg-base-200', 'popover' => 'panel rounded-2xl shadow-lg']); ?>
+        <?php
+        (new Template())->renderThemeable('player/parts/progress', [
+            'time' => 'mute',
+            'spectrum' => ['data-spectrum' => 'bars', 'data-bar' => '2', 'data-gap' => '2', 'class' => 'hidden h-9 w-24 shrink-0 xl:block'],
+            'waveClass' => 'h-9',
+        ]);
+        ?>
+        <?php (new Template())->renderThemeable('player/parts/volume', ['button' => 'grid size-10 shrink-0 place-items-center rounded-full hover:bg-base-200']); ?>
         <button type="button" class="hidden size-10 shrink-0 place-items-center rounded-full bg-base-200 text-primary lg:grid" ars-on:click="toggleFav(current?.id)" ars-bind:aria-pressed="isFav(current?.id)" aria-label="收藏当前节目">
           <span ars-show="!isFav(current?.id)"><?php Icon::render('heart', 'size-4'); ?></span>
           <span ars-show="isFav(current?.id)" ars-cloak><?php Icon::render('heart', 'size-4 fill-current'); ?></span>

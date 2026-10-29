@@ -39,7 +39,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
         <?php if ($channel['cover'] !== '') : ?>
         <itunes:image href="<?php echo esc_url($channel['cover']); ?>" />
         <?php endif; ?>
-        <?php foreach ($channel['categories'] as $category) : ?>
+        <?php foreach ($channel['categories'] as $category) : // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Local to Template::include(). ?>
         <itunes:category text="<?php echo esc_attr($category[0]); ?>">
             <?php if (isset($category[1])) : ?>
             <itunes:category text="<?php echo esc_attr($category[1]); ?>" />
@@ -80,7 +80,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
         <podcast:funding url="<?php echo esc_url(trim((string) $link['url'])); ?>"><?php echo esc_html(trim((string) ($link['label'] ?? ''))); ?></podcast:funding>
         <?php endforeach; ?>
 
-        <?php foreach ($items as $item) : ?>
+        <?php foreach ($items as $item) : // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Local to Template::include(). ?>
         <item>
             <title><?php echo esc_html($item['title']); ?></title>
             <link><?php echo esc_url($item['link']); ?></link>
@@ -110,7 +110,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
             <?php if ($item['image'] !== '') : ?>
             <itunes:image href="<?php echo esc_url($item['image']); ?>" />
             <?php endif; ?>
-            <?php foreach ($item['people'] as $person) : ?>
+            <?php foreach ($item['people'] as $person) : // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Local to Template::include(). ?>
             <podcast:person role="<?php echo esc_attr($person['role']); ?>"<?php echo Html::attributes(['href' => $person['href'] ?: null, 'img' => $person['img'] ?: null], esc_url(...)); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped by Html::attributes(). ?>><?php echo esc_html($person['name']); ?></podcast:person>
             <?php endforeach; ?>
             <?php if ($item['transcript'] !== null) : ?>
@@ -119,7 +119,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
             <?php if ($item['chapters'] !== null) : ?>
             <podcast:chapters url="<?php echo esc_url($item['chapters']['url']); ?>" type="<?php echo esc_attr($item['chapters']['type']); ?>" />
             <?php endif; ?>
-            <?php foreach ($item['soundbites'] as $soundbite) : ?>
+            <?php foreach ($item['soundbites'] as $soundbite) : // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Local to Template::include(). ?>
                 <?php if ($soundbite['title'] !== '') : ?>
             <podcast:soundbite startTime="<?php echo esc_attr((string) $soundbite['start']); ?>" duration="<?php echo esc_attr((string) $soundbite['duration']); ?>"><?php echo esc_html($soundbite['title']); ?></podcast:soundbite>
                 <?php else : ?>

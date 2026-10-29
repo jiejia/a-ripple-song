@@ -8,6 +8,7 @@
 @import "tailwindcss" source(none);
 @source "../../../templates/player/skins/default.php";
 @source "../../../templates/episode/meta/default.php";
+@source "../../../templates/player/parts/progress.php";
 
 @plugin "daisyui" {
   root: ".ars-player";

@@ -8,6 +8,7 @@
 @import "tailwindcss" source(none);
 @source "../../../templates/player/skins/terminal.php";
 @source "../../../templates/episode/meta/terminal.php";
+@source "../../../templates/player/parts/progress.php";
 @source "../../../templates/player/parts/volume.php";
 
 @plugin "daisyui" {

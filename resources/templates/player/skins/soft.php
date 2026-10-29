@@ -10,7 +10,10 @@
 
 defined('ABSPATH') || exit;
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Templates run inside Template::include(), so their variables are local.
+
 use Jiejia\ARippleSong\Libraries\Icon;
+use Jiejia\ARippleSong\Libraries\Template;
 ?>
 <div class="ars-player" data-ars-player data-ars-skin="soft" hidden>
     <?php /* ============ 播放器：机身面板（常驻） ============ */ ?>
@@ -38,10 +41,13 @@ use Jiejia\ARippleSong\Libraries\Icon;
           <button type="button" class="raised-sm press hidden size-10 place-items-center rounded-full sm:grid" ars-on:click="skip(30)" aria-label="快进 30 秒"><?php Icon::render('rotate-cw', 'size-4'); ?></button>
           <button type="button" class="raised-sm press hidden size-10 place-items-center rounded-full sm:grid" ars-on:click="next()" aria-label="下一集"><?php Icon::render('skip-forward', 'size-4'); ?></button>
         </div>
-        <div class="hidden min-w-0 flex-1 md:block">
-          <input type="range" class="range range-primary range-xs w-full" min="0" ars-bind:max="duration" step="1" ars-bind:value="position" ars-on:input="scrub($event.target.value)" ars-on:change="commit($event.target.value)" aria-label="播放进度">
-          <p class="mt-1 flex justify-between font-mono text-[11px] opacity-60"><span ars-text="fmt(position)">00:00</span><span ars-text="fmt(duration)">00:00</span></p>
-        </div>
+        <?php
+        (new Template())->renderThemeable('player/parts/progress', [
+            'class' => 'hidden min-w-0 flex-1 items-center gap-3 font-mono text-[11px] tabular-nums md:flex',
+            'time' => 'opacity-60',
+            'spectrum' => ['data-spectrum' => 'bars', 'class' => 'hidden h-8 w-24 shrink-0 xl:block'],
+        ]);
+        ?>
         <div class="hidden items-center gap-3 lg:flex">
           <button type="button" class="raised-sm press h-9 rounded-full px-3 font-mono text-xs" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
           <button type="button" role="slider" aria-label="音量（拖动、滚轮或方向键调节）" aria-valuemin="0" aria-valuemax="100" ars-bind:aria-valuenow="Math.round((muted ? 0 : volume) * 100)"

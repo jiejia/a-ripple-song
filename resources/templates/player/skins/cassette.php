@@ -10,15 +10,18 @@
 
 defined('ABSPATH') || exit;
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Templates run inside Template::include(), so their variables are local.
+
 use Jiejia\ARippleSong\Libraries\Icon;
 use Jiejia\ARippleSong\Libraries\Template;
 ?>
 <div class="ars-player" data-ars-player data-ars-skin="cassette" hidden>
     <?php /* ============ 播放器：卡座（常驻，固定深色） ============ */ ?>
-    <div data-ars-theme="dark" class="fixed inset-x-0 bottom-0 z-[9990] bg-base-100 text-base-content" role="region" data-ars-bar data-ars-surface aria-label="音频播放器">
+    <div data-ars-theme="dark" class="fixed inset-x-0 bottom-0 z-[9990]" role="region" data-ars-bar aria-label="音频播放器">
+      <div data-ars-width="box" data-ars-surface class="mx-auto max-w-7xl bg-base-100 text-base-content">
       <div class="stripes h-2" aria-hidden="true"></div>
-      <div data-ars-width="content" class="mx-auto flex h-20 max-w-7xl items-center gap-3 px-3 sm:gap-4 sm:px-6">
-        <button type="button" class="flex min-w-0 flex-1 items-center gap-3 rounded-xl py-1 pr-2 text-left hover:bg-base-200 lg:w-72 lg:flex-none" ars-on:click="expanded = true" aria-label="展开正在播放">
+      <div class="flex h-20 items-center gap-3 px-3 sm:gap-4 sm:px-6">
+        <button type="button" class="flex min-w-0 flex-1 items-center gap-3 rounded-xl py-1 pr-2 text-left hover:bg-base-200 lg:w-56 lg:flex-none xl:w-72" ars-on:click="expanded = true" aria-label="展开正在播放">
           <span class="tape-window h-11 w-24 shrink-0" ars-bind:class="playing && 'is-rolling'" aria-hidden="true"><span class="reel"></span><span class="spool"></span><span class="reel"></span></span>
           <span class="min-w-0">
             <span class="tag block text-secondary" ars-text="error || `EP.${current?.number} · ${loading ? '装带中' : (playing ? 'PLAY' : 'PAUSE')}`"></span>
@@ -39,17 +42,20 @@ use Jiejia\ARippleSong\Libraries\Template;
             <button type="button" class="key size-10" ars-on:click="next()" aria-label="下一集"><?php Icon::render('skip-forward', 'size-4'); ?></button>
           </span>
         </div>
-        <div class="hidden min-w-0 flex-1 items-center gap-3 md:flex">
-          <span class="counter text-sm" ars-text="fmt(position)">00:00</span>
-          <input type="range" class="range range-primary range-xs min-w-0 flex-1" min="0" ars-bind:max="duration" step="1" ars-bind:value="position" ars-on:input="scrub($event.target.value)" ars-on:change="commit($event.target.value)" aria-label="播放进度">
-          <span class="font-mono text-sm opacity-60" ars-text="fmt(duration)">00:00</span>
-        </div>
-        <div class="vu-face hidden h-14 w-28 shrink-0 xl:block" aria-hidden="true"><canvas data-spectrum="vu" data-color="content" class="block size-full"></canvas></div>
+        <?php
+        (new Template())->renderThemeable('player/parts/progress', [
+            'class' => 'hidden min-w-0 flex-1 items-center gap-3 md:flex',
+            'time' => 'counter text-sm', 'timeEnd' => 'font-mono text-sm opacity-60',
+            'spectrum' => ['data-spectrum' => 'vu', 'data-color' => 'content'], 'spectrumWrap' => 'vu-face hidden h-12 w-24 shrink-0 xl:block',
+            'waveClass' => 'h-10',
+        ]);
+        ?>
         <div class="hidden items-center gap-1 lg:flex">
           <button type="button" class="btn btn-ghost btn-sm font-mono" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
-          <?php (new Template())->renderThemeable('player/parts/volume', ['button' => 'btn btn-ghost btn-sm btn-square', 'popover' => 'rounded-box bg-base-200 text-base-content shadow-lg']); ?>
+          <?php (new Template())->renderThemeable('player/parts/volume', ['button' => 'btn btn-ghost btn-sm btn-square']); ?>
         </div>
         <button type="button" class="btn btn-ghost btn-circle" ars-on:click="expanded = true" aria-label="展开播放器与播放队列"><?php Icon::render('chevron-up', 'size-5'); ?></button>
+      </div>
       </div>
     </div>
 

@@ -10,14 +10,17 @@
 
 defined('ABSPATH') || exit;
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Templates run inside Template::include(), so their variables are local.
+
 use Jiejia\ARippleSong\Libraries\Icon;
 use Jiejia\ARippleSong\Libraries\Template;
 ?>
 <div class="ars-player" data-ars-player data-ars-skin="broadcast" hidden>
     <?php /* ============ 播放器（常驻，固定深色） ============ */ ?>
-    <div data-ars-theme="dark" class="fixed inset-x-0 bottom-0 z-[9990] border-t-2 border-base-content bg-base-100 text-base-content" role="region" data-ars-bar data-ars-surface aria-label="音频播放器">
-      <div class="flex h-[4.5rem] items-stretch">
-        <button type="button" class="flex min-w-0 flex-1 items-center gap-3 border-r-2 border-base-content/25 pr-3 text-left hover:bg-base-200 md:w-80 md:flex-none" ars-on:click="expanded = true" aria-label="展开正在播放">
+    <div data-ars-theme="dark" class="fixed inset-x-0 bottom-0 z-[9990]" role="region" data-ars-bar aria-label="音频播放器">
+      <?php /* No max-width: with the style's own width the bar runs edge to edge like the prototype. */ ?>
+      <div data-ars-width="box" data-ars-surface class="mx-auto flex h-[4.5rem] items-stretch border-x-2 border-t-2 border-base-content bg-base-100 text-base-content">
+        <button type="button" class="flex min-w-0 flex-1 items-center gap-3 border-r-2 border-base-content/25 pr-3 text-left hover:bg-base-200 md:w-56 md:flex-none xl:w-80" ars-on:click="expanded = true" aria-label="展开正在播放">
           <img ars-bind:src="current?.cover" alt="" class="h-full w-[4.5rem] shrink-0 border-r-2 border-base-content/25 object-cover">
           <span class="min-w-0">
             <span class="label block text-accent" ars-text="error || `EP.${current?.number} · ${loading ? 'Loading' : (playing ? 'On Air' : 'Paused')}`"></span>
@@ -36,17 +39,17 @@ use Jiejia\ARippleSong\Libraries\Template;
           <button type="button" class="grid w-12 place-items-center hover:bg-base-200" ars-on:click="skip(30)" aria-label="快进 30 秒"><?php Icon::render('rotate-cw', 'size-4'); ?></button>
           <button type="button" class="grid w-12 place-items-center border-r-2 border-base-content/25 hover:bg-base-200" ars-on:click="next()" aria-label="下一集"><?php Icon::render('skip-forward', 'size-4'); ?></button>
         </div>
-        <div class="hidden min-w-0 flex-1 flex-col justify-center gap-1.5 px-5 md:flex">
-          <div class="flex items-baseline justify-between font-mono text-sm">
-            <span class="text-lg font-semibold text-accent" ars-text="fmt(position)">00:00</span>
-            <span class="text-base-content/60" ars-text="fmt(duration)">00:00</span>
-          </div>
-          <input type="range" class="range range-accent range-xs w-full" min="0" ars-bind:max="duration" step="1" ars-bind:value="position" ars-on:input="scrub($event.target.value)" ars-on:change="commit($event.target.value)" aria-label="播放进度">
-        </div>
-        <canvas data-spectrum="led" data-bar="4" data-gap="2" data-color="accent" class="my-3 mr-4 hidden w-40 xl:block" aria-hidden="true"></canvas>
+        <?php
+        (new Template())->renderThemeable('player/parts/progress', [
+            'class' => 'hidden min-w-0 flex-1 items-center gap-3 px-5 font-mono md:flex',
+            'time' => 'text-base font-semibold text-accent', 'timeEnd' => 'text-sm text-base-content/60', 'range' => 'range range-accent range-xs',
+            'spectrum' => ['data-spectrum' => 'led', 'data-bar' => '4', 'data-gap' => '2', 'data-color' => 'accent', 'class' => 'hidden h-10 w-28 shrink-0 2xl:block'],
+            'wave' => ['data-color' => 'accent'], 'waveClass' => 'h-10',
+        ]);
+        ?>
         <div class="hidden items-stretch border-l-2 border-base-content/25 lg:flex">
           <button type="button" class="label w-16 hover:bg-base-200" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
-          <?php (new Template())->renderThemeable('player/parts/volume', ['button' => 'grid h-full w-12 place-items-center hover:bg-base-200', 'popover' => 'border-2 border-base-content bg-base-100 text-base-content', 'align' => 'end']); ?>
+          <?php (new Template())->renderThemeable('player/parts/volume', ['button' => 'grid h-full w-12 place-items-center hover:bg-base-200', 'range' => 'range range-accent range-xs mr-4']); ?>
         </div>
         <button type="button" class="grid w-14 place-items-center border-l-2 border-base-content/25 hover:bg-base-200" ars-on:click="expanded = true" aria-label="展开播放器与播放队列"><?php Icon::render('maximize-2', 'size-4'); ?></button>
       </div>

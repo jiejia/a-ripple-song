@@ -12,6 +12,8 @@
  */
 
 defined('ABSPATH') || exit;
+
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Templates run inside Template::include(), so their variables are local.
 ?>
 <div class="wrap ars-settings">
     <h1><?php echo esc_html($title); ?></h1>

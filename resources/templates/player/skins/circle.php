@@ -10,6 +10,8 @@
 
 defined('ABSPATH') || exit;
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Templates run inside Template::include(), so their variables are local.
+
 use Jiejia\ARippleSong\Libraries\Icon;
 use Jiejia\ARippleSong\Libraries\Template;
 ?>
@@ -37,15 +39,16 @@ use Jiejia\ARippleSong\Libraries\Template;
           <button type="button" class="btn btn-ghost btn-circle btn-sm hidden sm:inline-flex" ars-on:click="skip(30)" aria-label="快进 30 秒"><?php Icon::render('rotate-cw', 'size-4'); ?></button>
           <button type="button" class="btn btn-ghost btn-circle btn-sm hidden sm:inline-flex" ars-on:click="next()" aria-label="下一集"><?php Icon::render('skip-forward', 'size-4'); ?></button>
         </div>
-        <div class="hidden min-w-0 flex-1 items-center gap-3 text-xs tabular-nums md:flex">
-          <span class="opacity-60" ars-text="fmt(position)">00:00</span>
-          <input type="range" class="range range-primary range-xs min-w-0 flex-1" min="0" ars-bind:max="duration" step="1" ars-bind:value="position" ars-on:input="scrub($event.target.value)" ars-on:change="commit($event.target.value)" aria-label="播放进度">
-          <span class="opacity-40" ars-text="fmt(duration)">00:00</span>
-        </div>
-        <canvas data-spectrum="mirror" data-bar="3" data-gap="2" data-color="secondary" class="hidden h-9 w-28 shrink-0 xl:block" aria-hidden="true"></canvas>
+        <?php
+        (new Template())->renderThemeable('player/parts/progress', [
+            'time' => 'opacity-60', 'timeEnd' => 'opacity-40',
+            'spectrum' => ['data-spectrum' => 'mirror', 'data-bar' => '3', 'data-gap' => '2', 'data-color' => 'secondary', 'class' => 'hidden h-9 w-24 shrink-0 xl:block'],
+            'wave' => ['data-bar' => '3'], 'waveClass' => 'h-9',
+        ]);
+        ?>
         <div class="hidden items-center gap-1 lg:flex">
           <button type="button" class="btn btn-ghost btn-sm rounded-lg font-semibold" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
-          <?php (new Template())->renderThemeable('player/parts/volume', ['popover' => 'rounded-2xl border border-base-300 bg-base-100 shadow-lg', 'range' => 'range range-secondary range-xs']); ?>
+          <?php (new Template())->renderThemeable('player/parts/volume', ['range' => 'range range-secondary range-xs']); ?>
         </div>
         <button type="button" class="tint grid size-10 shrink-0 place-items-center rounded-xl hover:text-primary" ars-on:click="expanded = true" aria-label="展开播放器与播放队列"><?php Icon::render('chevron-up', 'size-5'); ?></button>
       </div>

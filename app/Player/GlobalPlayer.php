@@ -89,7 +89,15 @@ final class GlobalPlayer
             . '.ars-player[data-ars-fit] [data-ars-panel-width=content]{box-sizing:content-box!important}}'
             // Frosted bar (setting "Player Bar Background"), tinted with the surface's own daisyUI color.
             . '.ars-player[data-ars-translucent] [data-ars-surface]{background-color:color-mix(in oklab,var(--color-base-100) 72%,transparent)!important;-webkit-backdrop-filter:blur(16px) saturate(180%);backdrop-filter:blur(16px) saturate(180%)}'
-            . '.ars-player[data-ars-translucent] [data-ars-surface=base-200]{background-color:color-mix(in oklab,var(--color-base-200) 72%,transparent)!important}');
+            . '.ars-player[data-ars-translucent] [data-ars-surface=base-200]{background-color:color-mix(in oklab,var(--color-base-200) 72%,transparent)!important}'
+            // Waveform progress (player/parts/progress.php): wavesurfer draws, an invisible range input on top seeks.
+            // !important beats the skins' form reset, which raises its specificity with :not(#\#) to beat themes.
+            . '.ars-player .ars-wave{position:relative}.ars-player .ars-wave-seek{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;margin:0!important;opacity:0!important;cursor:pointer;z-index:1}'
+            . '.ars-player .ars-wave:has(.ars-wave-seek:focus-visible){outline:2px solid var(--color-primary,currentColor);outline-offset:4px;border-radius:.375rem}'
+            // wavesurfer's unplayed layer (shadow part), faded; the played part keeps the full color.
+            . '.ars-player [data-ars-waveform] *::part(canvases){opacity:.3}'
+            // Until the waveform is decoded (or when it cannot be), a faint line stands in for it.
+            . '.ars-player .ars-wave:not(:has([data-ars-wave-ready]))::before{content:"";position:absolute;inset:50% 0 auto;height:2px;margin-top:-1px;border-radius:1px;background:currentColor;opacity:.2}');
 
         if (! current_theme_supports(self::THEME_SUPPORT)) {
             wp_enqueue_style(self::HANDLE, A_RIPPLE_SONG_PLUGIN_URL . $skin->stylesheet(), [], Plugin::assetVersion($skin->stylesheet()));
@@ -102,6 +110,11 @@ final class GlobalPlayer
 
         wp_enqueue_script(self::HANDLE, A_RIPPLE_SONG_PLUGIN_URL . 'public/dist/player.js', [], Plugin::assetVersion('public/dist/player.js'), true);
         wp_add_inline_script(self::HANDLE, 'window.ARS_PLAYER = ' . wp_json_encode($this->config($episodes)) . ';', 'before');
+
+        if ($this->setting->progressStyle() === 'waveform') {
+            // wavesurfer.js, only for the waveform progress style; it follows the player through window.ARippleSongPlayer.
+            wp_enqueue_script(self::HANDLE . '-waveform', A_RIPPLE_SONG_PLUGIN_URL . 'public/dist/waveform.js', [self::HANDLE], Plugin::assetVersion('public/dist/waveform.js'), true);
+        }
     }
 
     /**
@@ -128,7 +141,7 @@ final class GlobalPlayer
          *
          * @param bool $enabled Whether the player setting is on.
          */
-        return (bool) apply_filters(Plugin::PREFIX . 'global_player_enabled', $this->setting->isEnabled());
+        return (bool) apply_filters('a_ripple_song_global_player_enabled', $this->setting->isEnabled());
     }
 
     /**

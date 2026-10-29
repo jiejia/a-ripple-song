@@ -64,6 +64,20 @@ class PlayerSetting extends SettingAbstract
             ],
             [
                 'type' => 'select',
+                'key' => 'progress_style',
+                'label' => __('Progress Bar & Spectrum', 'a-ripple-song'),
+                'width' => 'half',
+                'required' => true,
+                'options' => [
+                    'spectrum' => __('Progress bar with a live spectrum on its right (like Night Signal)', 'a-ripple-song'),
+                    'bar' => __('Progress bar only (like Default)', 'a-ripple-song'),
+                    'waveform' => __('Waveform progress bar: the loudness of the whole episode (like Pulse)', 'a-ripple-song'),
+                ],
+                'default' => 'spectrum',
+                'help' => __('Applies to the player bar of every style. The live spectrum only moves for audio hosted on this site. The waveform is drawn by wavesurfer.js in the visitor\'s browser: the first time an episode is shown it downloads the whole audio file once (audio on another site needs CORS), then the browser keeps the waveform. Not drawn on phones, where the bar has no progress row.', 'a-ripple-song'),
+            ],
+            [
+                'type' => 'select',
                 'key' => 'width',
                 'label' => __('Player Width', 'a-ripple-song'),
                 'width' => 'half',
@@ -121,7 +135,7 @@ class PlayerSetting extends SettingAbstract
                     'hidden' => __('Do not show', 'a-ripple-song'),
                 ],
                 'default' => 'before',
-                'help' => __('Play and favorite buttons plus the play count on single episode pages, in the player style. Shown while the global player is on and the episode has audio; favorites are kept in the visitor\'s browser.', 'a-ripple-song'),
+                'help' => __('Play and favorite buttons plus the play count on single episode pages with audio, in the player style; favorites are kept in the visitor\'s browser. While the global player is off, WordPress\'s own audio player is shown instead.', 'a-ripple-song'),
             ],
         ];
     }
@@ -158,6 +172,18 @@ class PlayerSetting extends SettingAbstract
         $width = (string) $this->value('width');
 
         return in_array($width, ['wide', 'content', 'skin', 'full'], true) ? $width : 'wide';
+    }
+
+    /**
+     * Return how the bar shows progress: spectrum (bar plus live spectrum), bar (bar only) or waveform (static waveform).
+     *
+     * @return string
+     */
+    public function progressStyle(): string
+    {
+        $style = (string) $this->value('progress_style');
+
+        return in_array($style, ['spectrum', 'bar', 'waveform'], true) ? $style : 'spectrum';
     }
 
     /**

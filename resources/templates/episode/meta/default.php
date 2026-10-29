@@ -2,7 +2,7 @@
 /**
  * Episode meta bar in the "Default" style: icon play and favorite buttons plus the play count.
  * Added to single episode pages by Player\EpisodeMeta, in the style of the selected player skin
- * (episode/meta/{skin}.php), and only while the global player is on.
+ * (episode/meta/{skin}.php), while the global player is on (otherwise episode/audio.php is used).
  *
  * Themes can override this file with {theme}/a-ripple-song/episode/meta/{skin}.php. The root carries the
  * player's `.ars-player` class and data-ars-island: player.js binds its ars-* attributes to the player store
@@ -17,6 +17,8 @@
 
 defined('ABSPATH') || exit;
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Templates run inside Template::include(), so their variables are local.
+
 use Jiejia\ARippleSong\Libraries\Icon;
 ?>
 <div class="ars-player" data-ars-island ars-data="{ id: <?php echo (int) $postId; ?> }">
@@ -29,6 +31,6 @@ use Jiejia\ARippleSong\Libraries\Icon;
       <span ars-show="!isFav(id)"><?php Icon::render('heart', 'size-5'); ?></span>
       <span ars-show="isFav(id)" ars-cloak class="text-primary"><?php Icon::render('heart', 'size-5 fill-current'); ?></span>
     </button>
-    <span class="ml-1 inline-flex items-center gap-1.5 text-sm opacity-70"><?php Icon::render('headphones', 'size-4'); ?><span<?php echo $playsAttributes; ?>><?php echo esc_html($playsText); ?></span></span>
+    <span class="ml-1 inline-flex items-center gap-1.5 text-sm opacity-70"><?php Icon::render('headphones', 'size-4'); ?><span<?php echo $playsAttributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped by Html::attributes(). ?>><?php echo esc_html($playsText); ?></span></span>
   </div>
 </div>
