@@ -98,6 +98,9 @@ final class GlobalPlayer
             // Waveform progress (player/parts/progress.php): wavesurfer draws, an invisible range input on top seeks.
             // !important beats the skins' form reset, which raises its specificity with :not(#\#) to beat themes.
             . '.ars-player .ars-wave{position:relative}.ars-player .ars-wave-seek{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;margin:0!important;opacity:0!important;cursor:pointer;z-index:1}'
+            // The waveform only draws: its own stacking context keeps wavesurfer's z-indexed layers (wrapper z-index 2)
+            // below the seek range, and it never takes the pointer.
+            . '.ars-player [data-ars-waveform]{position:relative;z-index:0;pointer-events:none}'
             . '.ars-player .ars-wave:has(.ars-wave-seek:focus-visible){outline:2px solid var(--color-primary,currentColor);outline-offset:4px;border-radius:.375rem}'
             // wavesurfer's unplayed layer (shadow part), faded; the played part keeps the full color.
             . '.ars-player [data-ars-waveform] *::part(canvases){opacity:.3}'
