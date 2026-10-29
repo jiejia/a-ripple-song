@@ -101,7 +101,7 @@ use Jiejia\ARippleSong\Libraries\Template;
           </div>
           <section class="min-w-0 rounded-[1.5rem] bg-base-200 p-4 sm:p-5" aria-labelledby="queue-title">
             <div class="flex items-center justify-between gap-2"><h3 id="queue-title" class="caps px-2">播放队列</h3><button type="button" class="caps px-2 hover:opacity-100" ars-show="queueItems.length" ars-on:click="clearQueue()">清空</button></div>
-            <ul class="mt-3 space-y-1">
+            <ul class="mt-3 space-y-1 max-h-[min(32rem,60dvh)] overflow-y-auto overscroll-contain [scrollbar-width:thin] -mx-1 px-1 py-1">
               <template ars-for="ep in queueItems">
                 <li class="flex items-center gap-1">
                   <button type="button" class="flex min-w-0 flex-1 items-center gap-3 rounded-xl px-2 py-2 text-left hover:bg-base-100" ars-bind:class="isCurrent(ep.id) && 'bg-base-100 soft-shadow'" ars-on:click="toggle(ep.id)">

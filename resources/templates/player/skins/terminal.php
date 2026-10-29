@@ -104,7 +104,7 @@ use Jiejia\ARippleSong\Libraries\Template;
           </div>
           <section class="tui min-w-0 p-4 pt-6" aria-labelledby="queue-title">
             <h3 id="queue-title" class="tui-title">ls -l ./queue</h3><button type="button" class="tui-title cmd" style="left:auto;right:1.5ch" ars-show="queueItems.length" ars-on:click="clearQueue()">clear</button>
-            <ul>
+            <ul class="max-h-[min(32rem,60dvh)] overflow-y-auto overscroll-contain [scrollbar-width:thin]">
               <template ars-for="ep in queueItems">
                 <li class="flex items-center gap-1">
                   <button type="button" class="flex min-w-0 flex-1 gap-3 px-1 py-1 text-left hover:bg-base-content hover:text-base-100" ars-bind:class="isCurrent(ep.id) && 'text-primary'" ars-on:click="toggle(ep.id)">

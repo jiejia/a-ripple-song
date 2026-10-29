@@ -92,7 +92,7 @@ use Jiejia\ARippleSong\Libraries\Template;
           <section class="min-w-0" aria-labelledby="queue-title">
             <div class="flex items-center justify-between"><h3 id="queue-title" class="text-lg font-bold">播放队列</h3><span class="flex items-center gap-3"><span class="mute text-sm" ars-text="queueItems.length + ' 期'"></span><button type="button" class="mute text-sm hover:text-primary" ars-show="queueItems.length" ars-on:click="clearQueue()">清空</button></span></div>
             <canvas data-spectrum="mirror" data-bar="3" data-gap="3" class="mt-4 block h-14 w-full" aria-hidden="true"></canvas>
-            <ul class="mt-4 space-y-2">
+            <ul class="mt-4 space-y-2 max-h-[min(32rem,60dvh)] overflow-y-auto overscroll-contain [scrollbar-width:thin] -mx-1 px-1 py-1">
               <template ars-for="ep in queueItems">
                 <li class="flex items-center gap-1">
                   <button type="button" class="flex min-w-0 flex-1 items-center gap-4 rounded-[1.25rem] p-2 pr-3 text-left transition hover:bg-base-100" ars-bind:class="isCurrent(ep.id) && 'card-w'" ars-on:click="toggle(ep.id)">

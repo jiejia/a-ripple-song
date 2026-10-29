@@ -110,7 +110,7 @@ use Jiejia\ARippleSong\Libraries\Template;
           </div>
           <section class="min-w-0 rounded-box bg-base-200 p-5 sm:p-6" aria-labelledby="queue-title">
             <div class="flex items-center justify-between gap-3"><h3 id="queue-title" class="font-display text-2xl">曲目表</h3><button type="button" class="font-mono text-sm opacity-60 hover:opacity-100" ars-show="queueItems.length" ars-on:click="clearQueue()">清空</button></div>
-            <ol class="mt-4 space-y-1">
+            <ol class="mt-4 space-y-1 max-h-[min(32rem,60dvh)] overflow-y-auto overscroll-contain [scrollbar-width:thin] -mx-1 px-1 py-1">
               <template ars-for="(ep, i) in queueItems">
                 <li class="flex items-center gap-1">
                   <button type="button" class="flex min-w-0 flex-1 items-baseline gap-3 rounded-lg px-2 py-2.5 text-left hover:bg-base-300" ars-bind:class="isCurrent(ep.id) && 'text-secondary'" ars-on:click="toggle(ep.id)">

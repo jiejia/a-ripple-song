@@ -153,13 +153,13 @@ $bigButton = 'btn btn-ghost btn-circle';
                     </div>
                 </div>
 
-                <section class="min-w-0 rounded-box bg-base-200 p-3 sm:p-4 lg:max-h-[calc(100dvh-10rem)] lg:overflow-y-auto">
+                <section class="min-w-0 rounded-box bg-base-200 p-3 sm:p-4">
                     <div class="flex items-center justify-between gap-2">
                         <h2 class="flex items-center gap-2 px-2 text-xs font-semibold tracking-widest uppercase opacity-60"><?php Icon::render('list-music', 'size-4'); ?><?php esc_html_e('Queue', 'a-ripple-song'); ?></h2>
                         <button type="button" class="btn btn-ghost btn-xs" data-ars-action="clear" data-ars-show="queue"><?php esc_html_e('Clear', 'a-ripple-song'); ?></button>
                     </div>
                     <p class="px-2 py-6 text-center text-sm opacity-60" data-ars-show="noqueue" hidden><?php esc_html_e('The queue is empty.', 'a-ripple-song'); ?></p>
-                    <ul class="mt-3 space-y-1" data-ars-queue>
+                    <ul class="mt-3 space-y-1 max-h-[min(32rem,60dvh)] overflow-y-auto overscroll-contain [scrollbar-width:thin] -mx-1 px-1 py-1" data-ars-queue>
                         <template>
                             <li class="flex items-center gap-1">
                                 <button type="button" class="flex min-w-0 flex-1 items-center gap-3 rounded-field px-2 py-2 text-left hover:bg-base-100 data-[ars-state=paused]:bg-base-100 data-[ars-state=paused]:text-primary data-[ars-state=playing]:bg-base-100 data-[ars-state=playing]:text-primary" data-ars-play>
