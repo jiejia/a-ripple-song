@@ -86,236 +86,236 @@ msgstr "回收站中未找到%s"
 msgid "Episode not found."
 msgstr "未找到该单集。"
 
-#: app/CPTs/PodcastCPT.php:24
-#: resources/templates/dashboard/page.php:309
+#: app/CPTs/PodcastCPT.php:23
+#: resources/templates/dashboard/page.php:311
 msgid "Episode"
 msgstr "播客"
 
-#: app/CPTs/PodcastCPT.php:34
+#: app/CPTs/PodcastCPT.php:33
 msgid "Episodes"
 msgstr "播客"
 
-#: app/CPTs/PodcastCPT.php:49
+#: app/CPTs/PodcastCPT.php:48
 msgid "Audio"
 msgstr "音频"
 
-#: app/CPTs/PodcastCPT.php:54
+#: app/CPTs/PodcastCPT.php:53
 msgid "Audio File"
 msgstr "音频文件"
 
-#: app/CPTs/PodcastCPT.php:63
+#: app/CPTs/PodcastCPT.php:62
 msgid "Required. Upload an audio file; the saved value is the audio file URL."
 msgstr "必填。上传音频文件；保存的值是音频文件 URL。"
 
-#: app/CPTs/PodcastCPT.php:68
-#: app/CPTs/PodcastCPT.php:238
+#: app/CPTs/PodcastCPT.php:67
+#: app/CPTs/PodcastCPT.php:237
 msgid "Duration (seconds)"
 msgstr "时长（秒）"
 
-#: app/CPTs/PodcastCPT.php:72
-#: app/CPTs/PodcastCPT.php:81
-#: app/CPTs/PodcastCPT.php:90
+#: app/CPTs/PodcastCPT.php:71
+#: app/CPTs/PodcastCPT.php:80
+#: app/CPTs/PodcastCPT.php:89
 msgid "Auto detected from \"Audio File\"."
 msgstr "根据“音频文件”自动识别。"
 
-#: app/CPTs/PodcastCPT.php:77
+#: app/CPTs/PodcastCPT.php:76
 msgid "Audio Length (bytes)"
 msgstr "音频大小（字节）"
 
-#: app/CPTs/PodcastCPT.php:86
+#: app/CPTs/PodcastCPT.php:85
 msgid "Audio MIME Type"
 msgstr "音频 MIME 类型"
 
-#: app/CPTs/PodcastCPT.php:95
+#: app/CPTs/PodcastCPT.php:94
 msgid "Podcast Metadata"
 msgstr "播客元数据"
 
-#: app/CPTs/PodcastCPT.php:100
+#: app/CPTs/PodcastCPT.php:99
 msgid "Episode Cover (square)"
 msgstr "播客封面（正方形）"
 
-#: app/CPTs/PodcastCPT.php:108
+#: app/CPTs/PodcastCPT.php:107
 msgid "Optional. Square 1400-3000px. Overrides channel cover."
 msgstr "可选。1400-3000px 正方形图片，会覆盖频道封面。"
 
-#: app/CPTs/PodcastCPT.php:113
+#: app/CPTs/PodcastCPT.php:112
 msgid "Episode Type"
 msgstr "播客类型"
 
-#: app/CPTs/PodcastCPT.php:116
+#: app/CPTs/PodcastCPT.php:115
 msgid "full"
 msgstr "完整节目"
 
-#: app/CPTs/PodcastCPT.php:117
+#: app/CPTs/PodcastCPT.php:116
 msgid "trailer"
 msgstr "预告"
 
-#: app/CPTs/PodcastCPT.php:118
+#: app/CPTs/PodcastCPT.php:117
 msgid "bonus"
 msgstr "加更"
 
-#: app/CPTs/PodcastCPT.php:121
+#: app/CPTs/PodcastCPT.php:120
 msgid "Required. full / trailer / bonus."
 msgstr "必填。完整节目 / 预告 / 加更。"
 
-#: app/CPTs/PodcastCPT.php:126
+#: app/CPTs/PodcastCPT.php:125
 msgid "Episode Number"
 msgstr "播客编号"
 
-#: app/CPTs/PodcastCPT.php:129
+#: app/CPTs/PodcastCPT.php:128
 msgid "Optional but recommended. Integer."
 msgstr "可选但推荐填写。整数。"
 
-#: app/CPTs/PodcastCPT.php:134
+#: app/CPTs/PodcastCPT.php:133
 msgid "Season Number"
 msgstr "季编号"
 
-#: app/CPTs/PodcastCPT.php:137
+#: app/CPTs/PodcastCPT.php:136
 msgid "Optional. Integer."
 msgstr "可选。整数。"
 
-#: app/CPTs/PodcastCPT.php:142
+#: app/CPTs/PodcastCPT.php:141
 msgid "Explicit"
 msgstr "露骨内容"
 
-#: app/CPTs/PodcastCPT.php:146
+#: app/CPTs/PodcastCPT.php:145
 msgid "clean"
 msgstr "无露骨内容"
 
-#: app/CPTs/PodcastCPT.php:147
-#: app/Settings/PodcastSetting.php:110
+#: app/CPTs/PodcastCPT.php:146
+#: app/Settings/PodcastSetting.php:111
 msgid "explicit"
 msgstr "含露骨内容"
 
-#: app/CPTs/PodcastCPT.php:150
+#: app/CPTs/PodcastCPT.php:149
 msgid "Required. clean / explicit."
 msgstr "必填。无露骨内容 / 含露骨内容。"
 
-#: app/CPTs/PodcastCPT.php:155
+#: app/CPTs/PodcastCPT.php:154
 msgid "iTunes Block"
 msgstr "iTunes 屏蔽"
 
-#: app/CPTs/PodcastCPT.php:158
+#: app/CPTs/PodcastCPT.php:157
 msgid "Optional. Turn on to hide this episode in Apple Podcasts."
 msgstr "可选。开启后会在 Apple Podcasts 中隐藏此播客。"
 
-#: app/CPTs/PodcastCPT.php:163
-#: app/Settings/PodcastSetting.php:209
+#: app/CPTs/PodcastCPT.php:162
+#: app/Settings/PodcastSetting.php:210
 msgid "iTunes Title (optional)"
 msgstr "iTunes 标题（可选）"
 
-#: app/CPTs/PodcastCPT.php:165
+#: app/CPTs/PodcastCPT.php:164
 msgid "Optional. Apple Podcasts: overrides the episode title for <itunes:title>."
 msgstr "可选。Apple Podcasts：覆盖 <itunes:title> 的播客标题。"
 
-#: app/CPTs/PodcastCPT.php:170
+#: app/CPTs/PodcastCPT.php:169
 msgid "Episode Author (override)"
 msgstr "播客作者（覆盖）"
 
-#: app/CPTs/PodcastCPT.php:172
+#: app/CPTs/PodcastCPT.php:171
 msgid "Optional. Overrides channel author for this episode."
 msgstr "可选。覆盖此播客的频道作者。"
 
-#: app/CPTs/PodcastCPT.php:177
+#: app/CPTs/PodcastCPT.php:176
 msgid "Subtitle"
 msgstr "副标题"
 
-#: app/CPTs/PodcastCPT.php:178
+#: app/CPTs/PodcastCPT.php:177
 msgid "Optional. Short subtitle for iTunes."
 msgstr "可选。用于 iTunes 的短副标题。"
 
-#: app/CPTs/PodcastCPT.php:183
+#: app/CPTs/PodcastCPT.php:182
 msgid "Summary"
 msgstr "摘要"
 
-#: app/CPTs/PodcastCPT.php:184
+#: app/CPTs/PodcastCPT.php:183
 msgid "Optional. Plain text summary for iTunes."
 msgstr "可选。用于 iTunes 的纯文本摘要。"
 
-#: app/CPTs/PodcastCPT.php:189
+#: app/CPTs/PodcastCPT.php:188
 msgid "Podcasting 2.0 & Advanced"
 msgstr "Podcasting 2.0 与高级"
 
-#: app/CPTs/PodcastCPT.php:194
+#: app/CPTs/PodcastCPT.php:193
 msgid "Transcript (optional)"
 msgstr "文字稿（可选）"
 
-#: app/CPTs/PodcastCPT.php:196
+#: app/CPTs/PodcastCPT.php:195
 msgid "Optional. Transcript file URL (vtt/srt/txt/pdf)."
 msgstr "可选。文字稿文件 URL（vtt/srt/txt/pdf）。"
 
-#: app/CPTs/PodcastCPT.php:201
+#: app/CPTs/PodcastCPT.php:200
 msgid "Custom GUID (optional)"
 msgstr "自定义 GUID（可选）"
 
-#: app/CPTs/PodcastCPT.php:203
+#: app/CPTs/PodcastCPT.php:202
 msgid "Optional. If empty, feed uses WP permalink as GUID."
 msgstr "可选。留空时，Feed 使用 WordPress 固定链接作为 GUID。"
 
-#: app/CPTs/PodcastCPT.php:208
+#: app/CPTs/PodcastCPT.php:207
 msgid "Chapters (Podcasting 2.0)"
 msgstr "章节（Podcasting 2.0）"
 
-#: app/CPTs/PodcastCPT.php:210
+#: app/CPTs/PodcastCPT.php:209
 msgid "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
 msgstr "可选。为 <podcast:chapters> 提供章节 JSON URL/文件。"
 
-#: app/CPTs/PodcastCPT.php:215
+#: app/CPTs/PodcastCPT.php:214
 msgid "Chapters MIME Type"
 msgstr "章节 MIME 类型"
 
-#: app/CPTs/PodcastCPT.php:218
+#: app/CPTs/PodcastCPT.php:217
 msgid "Optional. Defaults to application/json+chapters."
 msgstr "可选。默认是 application/json+chapters。"
 
-#: app/CPTs/PodcastCPT.php:223
+#: app/CPTs/PodcastCPT.php:222
 msgid "Soundbites"
 msgstr "精彩片段"
 
-#: app/CPTs/PodcastCPT.php:224
+#: app/CPTs/PodcastCPT.php:223
 msgid "Soundbite"
 msgstr "精彩片段"
 
-#: app/CPTs/PodcastCPT.php:226
+#: app/CPTs/PodcastCPT.php:225
 msgid "Optional. Adds one or more <podcast:soundbite> tags."
 msgstr "可选。添加一个或多个 <podcast:soundbite> 标签。"
 
-#: app/CPTs/PodcastCPT.php:231
+#: app/CPTs/PodcastCPT.php:230
 msgid "Start Time (seconds)"
 msgstr "开始时间（秒）"
 
-#: app/CPTs/PodcastCPT.php:245
+#: app/CPTs/PodcastCPT.php:244
 msgid "Title (optional)"
 msgstr "标题（可选）"
 
-#: app/CPTs/PodcastCPT.php:253
+#: app/CPTs/PodcastCPT.php:252
 msgid "People"
 msgstr "人物"
 
-#: app/CPTs/PodcastCPT.php:258
+#: app/CPTs/PodcastCPT.php:257
 msgid "Members"
 msgstr "成员"
 
-#: app/CPTs/PodcastCPT.php:262
+#: app/CPTs/PodcastCPT.php:261
 msgid "Select episode members (administrators, authors, editors)."
 msgstr "选择播客成员（管理员、作者、编辑）。"
 
-#: app/CPTs/PodcastCPT.php:267
+#: app/CPTs/PodcastCPT.php:266
 msgid "Guests"
 msgstr "嘉宾"
 
-#: app/CPTs/PodcastCPT.php:270
+#: app/CPTs/PodcastCPT.php:269
 msgid "Select episode guests (contributors)."
 msgstr "选择播客嘉宾（贡献者）。"
 
-#: app/CPTs/PodcastCPT.php:413
+#: app/CPTs/PodcastCPT.php:462
 msgid "Statistics"
 msgstr "统计"
 
-#: app/CPTs/PodcastCPT.php:430
-#: resources/templates/dashboard/page.php:170
-#: resources/templates/dashboard/page.php:206
-#: resources/templates/dashboard/page.php:215
+#: app/CPTs/PodcastCPT.php:479
+#: resources/templates/dashboard/page.php:172
+#: resources/templates/dashboard/page.php:208
+#: resources/templates/dashboard/page.php:217
 msgid "Plays"
 msgstr "播放次数"
 
@@ -385,12 +385,12 @@ msgstr "至多 %1$d × %2$d px"
 msgid "Image must be %s."
 msgstr "图片必须为%s。"
 
-#: app/Libraries/Fields/OptionStore.php:106
+#: app/Libraries/Fields/OptionStore.php:105
 msgid "You are not allowed to manage these settings."
 msgstr "你无权管理这些设置。"
 
 #. translators: %s is the singular custom post type name.
-#: app/Libraries/Fields/PostMetaStore.php:64
+#: app/Libraries/Fields/PostMetaStore.php:63
 #, php-format
 msgid "%s Details"
 msgstr "%s详情"
@@ -421,19 +421,19 @@ msgid "The audio could not be loaded."
 msgstr "无法加载该音频。"
 
 #: app/Player/GlobalPlayer.php:178
-#: resources/templates/player/skins/default.php:71
-#: resources/templates/player/skins/default.php:132
+#: resources/templates/player/skins/default.php:73
+#: resources/templates/player/skins/default.php:134
 msgid "Play"
 msgstr "播放"
 
 #: app/Player/GlobalPlayer.php:179
-#: resources/templates/episode/meta/default.php:24
+#: resources/templates/episode/meta/default.php:26
 msgid "Pause"
 msgstr "暂停"
 
 #: app/Player/GlobalPlayer.php:180
-#: resources/templates/player/skins/default.php:91
-#: resources/templates/player/skins/default.php:143
+#: resources/templates/player/skins/default.php:93
+#: resources/templates/player/skins/default.php:145
 msgid "Mute"
 msgstr "静音"
 
@@ -651,803 +651,799 @@ msgstr "节目"
 msgid "Podcast Cover (1400-3000px square)"
 msgstr "播客封面（1400-3000px 正方形）"
 
-#: app/Settings/PodcastSetting.php:66
-msgid "Required. Square JPG/PNG between 1400-3000px for itunes:image. Apple recommends keeping the file under 512KB."
-msgstr "必填。用于 itunes:image 的 1400-3000px 正方形 JPG/PNG。Apple 建议文件小于 512KB。"
-
-#: app/Settings/PodcastSetting.php:71
+#: app/Settings/PodcastSetting.php:72
 msgid "Podcast Title"
 msgstr "播客标题"
 
-#: app/Settings/PodcastSetting.php:75
+#: app/Settings/PodcastSetting.php:76
 msgid "Required. If empty, falls back to site title."
 msgstr "必填。留空时回退到站点标题。"
 
-#: app/Settings/PodcastSetting.php:80
+#: app/Settings/PodcastSetting.php:81
 msgid "Podcast Subtitle"
 msgstr "播客副标题"
 
-#: app/Settings/PodcastSetting.php:82
+#: app/Settings/PodcastSetting.php:83
 msgid "Short tagline shown in some apps."
 msgstr "在部分应用中显示的短标语。"
 
-#: app/Settings/PodcastSetting.php:87
+#: app/Settings/PodcastSetting.php:88
 msgid "Podcast Description"
 msgstr "播客描述"
 
-#: app/Settings/PodcastSetting.php:90
+#: app/Settings/PodcastSetting.php:91
 msgid "Required. Plain text description of the show."
 msgstr "必填。节目的纯文本描述。"
 
-#: app/Settings/PodcastSetting.php:95
+#: app/Settings/PodcastSetting.php:96
 msgid "Language (RFC 5646)"
 msgstr "语言（RFC 5646）"
 
-#: app/Settings/PodcastSetting.php:100
+#: app/Settings/PodcastSetting.php:101
 msgid "Required. Typically en-US, zh-CN, etc."
 msgstr "必填。通常为 en-US、zh-CN 等。"
 
-#: app/Settings/PodcastSetting.php:105
+#: app/Settings/PodcastSetting.php:106
 msgid "Default Explicit Flag"
 msgstr "默认露骨内容标记"
 
-#: app/Settings/PodcastSetting.php:109
+#: app/Settings/PodcastSetting.php:110
 msgid "clean (no explicit content)"
 msgstr "无露骨内容"
 
-#: app/Settings/PodcastSetting.php:113
+#: app/Settings/PodcastSetting.php:114
 msgid "Required. Single-episode value can override."
 msgstr "必填。播客设置可以覆盖此值。"
 
-#: app/Settings/PodcastSetting.php:118
+#: app/Settings/PodcastSetting.php:119
 msgid "Owner"
 msgstr "所有者"
 
-#: app/Settings/PodcastSetting.php:123
+#: app/Settings/PodcastSetting.php:124
 msgid "Podcast Author (itunes:author)"
 msgstr "播客作者（itunes:author）"
 
-#: app/Settings/PodcastSetting.php:127
+#: app/Settings/PodcastSetting.php:128
 msgid "Required. Displayed as show author in directories."
 msgstr "必填。在目录中显示为节目作者。"
 
-#: app/Settings/PodcastSetting.php:132
+#: app/Settings/PodcastSetting.php:133
 msgid "Copyright (optional)"
 msgstr "版权（可选）"
 
-#: app/Settings/PodcastSetting.php:134
+#: app/Settings/PodcastSetting.php:135
 msgid "Optional. For copyright."
 msgstr "可选。用于版权信息。"
 
-#: app/Settings/PodcastSetting.php:139
+#: app/Settings/PodcastSetting.php:140
 msgid "Owner Name"
 msgstr "所有者姓名"
 
-#: app/Settings/PodcastSetting.php:143
+#: app/Settings/PodcastSetting.php:144
 msgid "Required. For itunes:owner itunes:name."
 msgstr "必填。用于 itunes:owner 的 itunes:name。"
 
-#: app/Settings/PodcastSetting.php:148
+#: app/Settings/PodcastSetting.php:149
 msgid "Owner Email"
 msgstr "所有者邮箱"
 
-#: app/Settings/PodcastSetting.php:152
+#: app/Settings/PodcastSetting.php:153
 msgid "Required. For itunes:owner itunes:email. Use a monitored inbox."
 msgstr "必填。用于 itunes:owner 的 itunes:email。请使用有人查看的邮箱。"
 
-#: app/Settings/PodcastSetting.php:157
+#: app/Settings/PodcastSetting.php:158
 msgid "Apple Podcasts"
 msgstr "Apple Podcasts"
 
-#: app/Settings/PodcastSetting.php:162
+#: app/Settings/PodcastSetting.php:163
 msgid "Primary Category (Apple Podcasts)"
 msgstr "主分类（Apple Podcasts）"
 
-#: app/Settings/PodcastSetting.php:165
-#: app/Settings/PodcastSetting.php:174
-#: app/Settings/PodcastSetting.php:183
+#: app/Settings/PodcastSetting.php:166
+#: app/Settings/PodcastSetting.php:175
+#: app/Settings/PodcastSetting.php:184
 msgid "(not set)"
 msgstr "（未设置）"
 
-#: app/Settings/PodcastSetting.php:167
+#: app/Settings/PodcastSetting.php:168
 msgid "Required by Apple Podcasts. Choose at least a primary category."
 msgstr "Apple Podcasts 要求填写。至少选择一个主分类。"
 
-#: app/Settings/PodcastSetting.php:172
+#: app/Settings/PodcastSetting.php:173
 msgid "Secondary Category (optional)"
 msgstr "副分类（可选）"
 
-#: app/Settings/PodcastSetting.php:176
+#: app/Settings/PodcastSetting.php:177
 msgid "Optional. Some directories support a second category."
 msgstr "可选。部分目录支持第二分类。"
 
-#: app/Settings/PodcastSetting.php:181
+#: app/Settings/PodcastSetting.php:182
 msgid "iTunes Type (itunes:type)"
 msgstr "iTunes 类型（itunes:type）"
 
-#: app/Settings/PodcastSetting.php:185
+#: app/Settings/PodcastSetting.php:186
 msgid "episodic"
 msgstr "分集型"
 
-#: app/Settings/PodcastSetting.php:186
+#: app/Settings/PodcastSetting.php:187
 msgid "serial"
 msgstr "连续型"
 
-#: app/Settings/PodcastSetting.php:188
+#: app/Settings/PodcastSetting.php:189
 msgid "Optional. Apple Podcasts: episodic or serial."
 msgstr "可选。Apple Podcasts：分集型或连续型。"
 
-#: app/Settings/PodcastSetting.php:193
+#: app/Settings/PodcastSetting.php:194
 msgid "iTunes Block (itunes:block)"
 msgstr "iTunes 屏蔽（itunes:block）"
 
-#: app/Settings/PodcastSetting.php:196
+#: app/Settings/PodcastSetting.php:197
 msgid "Optional. Turn on to hide this show in Apple Podcasts."
 msgstr "可选。开启后会在 Apple Podcasts 中隐藏此节目。"
 
-#: app/Settings/PodcastSetting.php:201
+#: app/Settings/PodcastSetting.php:202
 msgid "iTunes Complete (itunes:complete)"
 msgstr "iTunes 完结（itunes:complete）"
 
-#: app/Settings/PodcastSetting.php:204
+#: app/Settings/PodcastSetting.php:205
 msgid "Optional. Turn on when this show is complete with no more episodes."
 msgstr "可选。节目已完结且不再更新时开启。"
 
-#: app/Settings/PodcastSetting.php:211
+#: app/Settings/PodcastSetting.php:212
 msgid "Optional. Use only if you need a separate Apple-facing title."
 msgstr "可选。仅在需要单独面向 Apple 的标题时使用。"
 
-#: app/Settings/PodcastSetting.php:216
+#: app/Settings/PodcastSetting.php:217
 msgid "Apple Podcasts Verify Code"
 msgstr "Apple Podcasts 验证码"
 
-#: app/Settings/PodcastSetting.php:218
+#: app/Settings/PodcastSetting.php:219
 msgid "Optional. Used by Apple Podcasts to verify feed ownership."
 msgstr "可选。Apple Podcasts 用于验证 Feed 所有权。"
 
-#: app/Settings/PodcastSetting.php:223
+#: app/Settings/PodcastSetting.php:224
 msgid "iTunes New Feed URL (itunes:new-feed-url)"
 msgstr "iTunes 新 Feed URL（itunes:new-feed-url）"
 
-#: app/Settings/PodcastSetting.php:224
+#: app/Settings/PodcastSetting.php:225
 msgid "Optional. Only for moving your show to a new RSS feed URL."
 msgstr "可选。仅在将节目迁移到新的 RSS Feed URL 时使用。"
 
-#: app/Settings/PodcastSetting.php:229
+#: app/Settings/PodcastSetting.php:230
 msgid "Podcasting 2.0"
 msgstr "Podcasting 2.0"
 
-#: app/Settings/PodcastSetting.php:234
+#: app/Settings/PodcastSetting.php:235
 msgid "podcast:locked"
 msgstr "podcast:locked"
 
-#: app/Settings/PodcastSetting.php:237
+#: app/Settings/PodcastSetting.php:238
 msgid "Podcasting 2.0: lock feed to this publisher. Recommended, it prevents unauthorized moves."
 msgstr "Podcasting 2.0：将 Feed 锁定到此发布者。推荐开启，可防止未经授权的迁移。"
 
-#: app/Settings/PodcastSetting.php:242
+#: app/Settings/PodcastSetting.php:243
 msgid "podcast:locked owner (optional)"
 msgstr "podcast:locked 所有者（可选）"
 
-#: app/Settings/PodcastSetting.php:244
+#: app/Settings/PodcastSetting.php:245
 msgid "Optional. Podcasting 2.0: email used to verify ownership during moves."
 msgstr "可选。Podcasting 2.0：迁移时用于验证所有权的邮箱。"
 
-#: app/Settings/PodcastSetting.php:249
+#: app/Settings/PodcastSetting.php:250
 msgid "podcast:guid (optional)"
 msgstr "podcast:guid（可选）"
 
-#: app/Settings/PodcastSetting.php:252
+#: app/Settings/PodcastSetting.php:253
 msgid "Podcasting 2.0 GUID. If empty, feed will use site URL as fallback."
 msgstr "Podcasting 2.0 GUID。留空时 Feed 会使用站点 URL 作为回退。"
 
-#: app/Settings/PodcastSetting.php:257
+#: app/Settings/PodcastSetting.php:258
 msgid "Generator (optional)"
 msgstr "生成器（可选）"
 
-#: app/Settings/PodcastSetting.php:259
+#: app/Settings/PodcastSetting.php:260
 msgid "Optional. If empty, generator tag will not be included."
 msgstr "可选。留空时不会包含 generator 标签。"
 
-#: app/Settings/PodcastSetting.php:264
+#: app/Settings/PodcastSetting.php:265
 msgid "Podcasting 2.0 Funding Links (podcast:funding)"
 msgstr "Podcasting 2.0 赞助链接（podcast:funding）"
 
-#: app/Settings/PodcastSetting.php:265
+#: app/Settings/PodcastSetting.php:266
 msgid "Funding Link"
 msgstr "赞助链接"
 
-#: app/Settings/PodcastSetting.php:267
+#: app/Settings/PodcastSetting.php:268
 msgid "Optional. If empty, no podcast:funding tags will be generated. URLs should be https."
 msgstr "可选。留空时不会生成 podcast:funding 标签。URL 应使用 https。"
 
-#: app/Settings/PodcastSetting.php:272
+#: app/Settings/PodcastSetting.php:273
 msgid "URL"
 msgstr "URL"
 
-#: app/Settings/PodcastSetting.php:278
+#: app/Settings/PodcastSetting.php:279
 msgid "Label"
 msgstr "标签"
 
-#: app/Settings/PodcastSetting.php:307
+#: app/Settings/PodcastSetting.php:308
 msgid "Arts"
 msgstr "艺术"
 
-#: app/Settings/PodcastSetting.php:308
+#: app/Settings/PodcastSetting.php:309
 msgid "Arts > Books"
 msgstr "艺术 > 图书"
 
-#: app/Settings/PodcastSetting.php:309
+#: app/Settings/PodcastSetting.php:310
 msgid "Arts > Design"
 msgstr "艺术 > 设计"
 
-#: app/Settings/PodcastSetting.php:310
+#: app/Settings/PodcastSetting.php:311
 msgid "Arts > Fashion & Beauty"
 msgstr "艺术 > 时尚与美妆"
 
-#: app/Settings/PodcastSetting.php:311
+#: app/Settings/PodcastSetting.php:312
 msgid "Arts > Food"
 msgstr "艺术 > 美食"
 
-#: app/Settings/PodcastSetting.php:312
+#: app/Settings/PodcastSetting.php:313
 msgid "Arts > Performing Arts"
 msgstr "艺术 > 表演艺术"
 
-#: app/Settings/PodcastSetting.php:313
+#: app/Settings/PodcastSetting.php:314
 msgid "Arts > Visual Arts"
 msgstr "艺术 > 视觉艺术"
 
-#: app/Settings/PodcastSetting.php:314
+#: app/Settings/PodcastSetting.php:315
 msgid "Business"
 msgstr "商业"
 
-#: app/Settings/PodcastSetting.php:315
+#: app/Settings/PodcastSetting.php:316
 msgid "Business > Careers"
 msgstr "商业 > 职业"
 
-#: app/Settings/PodcastSetting.php:316
+#: app/Settings/PodcastSetting.php:317
 msgid "Business > Entrepreneurship"
 msgstr "商业 > 创业"
 
-#: app/Settings/PodcastSetting.php:317
+#: app/Settings/PodcastSetting.php:318
 msgid "Business > Investing"
 msgstr "商业 > 投资"
 
-#: app/Settings/PodcastSetting.php:318
+#: app/Settings/PodcastSetting.php:319
 msgid "Business > Management"
 msgstr "商业 > 管理"
 
-#: app/Settings/PodcastSetting.php:319
+#: app/Settings/PodcastSetting.php:320
 msgid "Business > Marketing"
 msgstr "商业 > 营销"
 
-#: app/Settings/PodcastSetting.php:320
+#: app/Settings/PodcastSetting.php:321
 msgid "Business > Non-Profit"
 msgstr "商业 > 非营利"
 
-#: app/Settings/PodcastSetting.php:321
+#: app/Settings/PodcastSetting.php:322
 msgid "Comedy"
 msgstr "喜剧"
 
-#: app/Settings/PodcastSetting.php:322
+#: app/Settings/PodcastSetting.php:323
 msgid "Comedy > Comedy Interviews"
 msgstr "喜剧 > 喜剧访谈"
 
-#: app/Settings/PodcastSetting.php:323
+#: app/Settings/PodcastSetting.php:324
 msgid "Comedy > Improv"
 msgstr "喜剧 > 即兴"
 
-#: app/Settings/PodcastSetting.php:324
+#: app/Settings/PodcastSetting.php:325
 msgid "Comedy > Stand-Up"
 msgstr "喜剧 > 单口喜剧"
 
-#: app/Settings/PodcastSetting.php:325
+#: app/Settings/PodcastSetting.php:326
 msgid "Education"
 msgstr "教育"
 
-#: app/Settings/PodcastSetting.php:326
+#: app/Settings/PodcastSetting.php:327
 msgid "Education > Courses"
 msgstr "教育 > 课程"
 
-#: app/Settings/PodcastSetting.php:327
+#: app/Settings/PodcastSetting.php:328
 msgid "Education > How To"
 msgstr "教育 > 教程"
 
-#: app/Settings/PodcastSetting.php:328
+#: app/Settings/PodcastSetting.php:329
 msgid "Education > Language Learning"
 msgstr "教育 > 语言学习"
 
-#: app/Settings/PodcastSetting.php:329
+#: app/Settings/PodcastSetting.php:330
 msgid "Education > Self-Improvement"
 msgstr "教育 > 自我提升"
 
-#: app/Settings/PodcastSetting.php:330
+#: app/Settings/PodcastSetting.php:331
 msgid "Fiction"
 msgstr "虚构故事"
 
-#: app/Settings/PodcastSetting.php:331
+#: app/Settings/PodcastSetting.php:332
 msgid "Fiction > Comedy Fiction"
 msgstr "虚构故事 > 喜剧小说"
 
-#: app/Settings/PodcastSetting.php:332
+#: app/Settings/PodcastSetting.php:333
 msgid "Fiction > Drama"
 msgstr "虚构故事 > 剧情"
 
-#: app/Settings/PodcastSetting.php:333
+#: app/Settings/PodcastSetting.php:334
 msgid "Fiction > Science Fiction"
 msgstr "虚构故事 > 科幻"
 
-#: app/Settings/PodcastSetting.php:334
+#: app/Settings/PodcastSetting.php:335
 msgid "Government"
 msgstr "政府"
 
-#: app/Settings/PodcastSetting.php:335
+#: app/Settings/PodcastSetting.php:336
 msgid "History"
 msgstr "历史"
 
-#: app/Settings/PodcastSetting.php:336
+#: app/Settings/PodcastSetting.php:337
 msgid "Health & Fitness"
 msgstr "健康与健身"
 
-#: app/Settings/PodcastSetting.php:337
+#: app/Settings/PodcastSetting.php:338
 msgid "Health & Fitness > Alternative Health"
 msgstr "健康与健身 > 替代健康"
 
-#: app/Settings/PodcastSetting.php:338
+#: app/Settings/PodcastSetting.php:339
 msgid "Health & Fitness > Fitness"
 msgstr "健康与健身 > 健身"
 
-#: app/Settings/PodcastSetting.php:339
+#: app/Settings/PodcastSetting.php:340
 msgid "Health & Fitness > Medicine"
 msgstr "健康与健身 > 医学"
 
-#: app/Settings/PodcastSetting.php:340
+#: app/Settings/PodcastSetting.php:341
 msgid "Health & Fitness > Mental Health"
 msgstr "健康与健身 > 心理健康"
 
-#: app/Settings/PodcastSetting.php:341
+#: app/Settings/PodcastSetting.php:342
 msgid "Health & Fitness > Nutrition"
 msgstr "健康与健身 > 营养"
 
-#: app/Settings/PodcastSetting.php:342
+#: app/Settings/PodcastSetting.php:343
 msgid "Health & Fitness > Sexuality"
 msgstr "健康与健身 > 性健康"
 
-#: app/Settings/PodcastSetting.php:343
+#: app/Settings/PodcastSetting.php:344
 msgid "Kids & Family"
 msgstr "儿童与家庭"
 
-#: app/Settings/PodcastSetting.php:344
+#: app/Settings/PodcastSetting.php:345
 msgid "Kids & Family > Education for Kids"
 msgstr "儿童与家庭 > 儿童教育"
 
-#: app/Settings/PodcastSetting.php:345
+#: app/Settings/PodcastSetting.php:346
 msgid "Kids & Family > Parenting"
 msgstr "儿童与家庭 > 育儿"
 
-#: app/Settings/PodcastSetting.php:346
+#: app/Settings/PodcastSetting.php:347
 msgid "Kids & Family > Pets & Animals"
 msgstr "儿童与家庭 > 宠物与动物"
 
-#: app/Settings/PodcastSetting.php:347
+#: app/Settings/PodcastSetting.php:348
 msgid "Kids & Family > Stories for Kids"
 msgstr "儿童与家庭 > 儿童故事"
 
-#: app/Settings/PodcastSetting.php:348
+#: app/Settings/PodcastSetting.php:349
 msgid "Leisure"
 msgstr "休闲"
 
-#: app/Settings/PodcastSetting.php:349
+#: app/Settings/PodcastSetting.php:350
 msgid "Leisure > Animation & Manga"
 msgstr "休闲 > 动画与漫画"
 
-#: app/Settings/PodcastSetting.php:350
+#: app/Settings/PodcastSetting.php:351
 msgid "Leisure > Automotive"
 msgstr "休闲 > 汽车"
 
-#: app/Settings/PodcastSetting.php:351
+#: app/Settings/PodcastSetting.php:352
 msgid "Leisure > Aviation"
 msgstr "休闲 > 航空"
 
-#: app/Settings/PodcastSetting.php:352
+#: app/Settings/PodcastSetting.php:353
 msgid "Leisure > Crafts"
 msgstr "休闲 > 手工艺"
 
-#: app/Settings/PodcastSetting.php:353
+#: app/Settings/PodcastSetting.php:354
 msgid "Leisure > Games"
 msgstr "休闲 > 游戏"
 
-#: app/Settings/PodcastSetting.php:354
+#: app/Settings/PodcastSetting.php:355
 msgid "Leisure > Hobbies"
 msgstr "休闲 > 爱好"
 
-#: app/Settings/PodcastSetting.php:355
+#: app/Settings/PodcastSetting.php:356
 msgid "Leisure > Home & Garden"
 msgstr "休闲 > 家居与园艺"
 
-#: app/Settings/PodcastSetting.php:356
+#: app/Settings/PodcastSetting.php:357
 msgid "Leisure > Video Games"
 msgstr "休闲 > 电子游戏"
 
-#: app/Settings/PodcastSetting.php:357
+#: app/Settings/PodcastSetting.php:358
 msgid "Music"
 msgstr "音乐"
 
-#: app/Settings/PodcastSetting.php:358
+#: app/Settings/PodcastSetting.php:359
 msgid "Music > Music Commentary"
 msgstr "音乐 > 音乐评论"
 
-#: app/Settings/PodcastSetting.php:359
+#: app/Settings/PodcastSetting.php:360
 msgid "Music > Music History"
 msgstr "音乐 > 音乐史"
 
-#: app/Settings/PodcastSetting.php:360
+#: app/Settings/PodcastSetting.php:361
 msgid "Music > Music Interviews"
 msgstr "音乐 > 音乐访谈"
 
-#: app/Settings/PodcastSetting.php:361
+#: app/Settings/PodcastSetting.php:362
 msgid "News"
 msgstr "新闻"
 
-#: app/Settings/PodcastSetting.php:362
+#: app/Settings/PodcastSetting.php:363
 msgid "News > Business News"
 msgstr "新闻 > 商业新闻"
 
-#: app/Settings/PodcastSetting.php:363
+#: app/Settings/PodcastSetting.php:364
 msgid "News > Daily News"
 msgstr "新闻 > 每日新闻"
 
-#: app/Settings/PodcastSetting.php:364
+#: app/Settings/PodcastSetting.php:365
 msgid "News > Entertainment News"
 msgstr "新闻 > 娱乐新闻"
 
-#: app/Settings/PodcastSetting.php:365
+#: app/Settings/PodcastSetting.php:366
 msgid "News > News Commentary"
 msgstr "新闻 > 新闻评论"
 
-#: app/Settings/PodcastSetting.php:366
+#: app/Settings/PodcastSetting.php:367
 msgid "News > Politics"
 msgstr "新闻 > 政治"
 
-#: app/Settings/PodcastSetting.php:367
+#: app/Settings/PodcastSetting.php:368
 msgid "News > Sports News"
 msgstr "新闻 > 体育新闻"
 
-#: app/Settings/PodcastSetting.php:368
+#: app/Settings/PodcastSetting.php:369
 msgid "News > Tech News"
 msgstr "新闻 > 科技新闻"
 
-#: app/Settings/PodcastSetting.php:369
+#: app/Settings/PodcastSetting.php:370
 msgid "Religion & Spirituality"
 msgstr "宗教与灵性"
 
-#: app/Settings/PodcastSetting.php:370
+#: app/Settings/PodcastSetting.php:371
 msgid "Religion & Spirituality > Buddhism"
 msgstr "宗教与灵性 > 佛教"
 
-#: app/Settings/PodcastSetting.php:371
+#: app/Settings/PodcastSetting.php:372
 msgid "Religion & Spirituality > Christianity"
 msgstr "宗教与灵性 > 基督教"
 
-#: app/Settings/PodcastSetting.php:372
+#: app/Settings/PodcastSetting.php:373
 msgid "Religion & Spirituality > Hinduism"
 msgstr "宗教与灵性 > 印度教"
 
-#: app/Settings/PodcastSetting.php:373
+#: app/Settings/PodcastSetting.php:374
 msgid "Religion & Spirituality > Islam"
 msgstr "宗教与灵性 > 伊斯兰教"
 
-#: app/Settings/PodcastSetting.php:374
+#: app/Settings/PodcastSetting.php:375
 msgid "Religion & Spirituality > Judaism"
 msgstr "宗教与灵性 > 犹太教"
 
-#: app/Settings/PodcastSetting.php:375
+#: app/Settings/PodcastSetting.php:376
 msgid "Religion & Spirituality > Religion"
 msgstr "宗教与灵性 > 宗教"
 
-#: app/Settings/PodcastSetting.php:376
+#: app/Settings/PodcastSetting.php:377
 msgid "Religion & Spirituality > Spirituality"
 msgstr "宗教与灵性 > 灵性"
 
-#: app/Settings/PodcastSetting.php:377
+#: app/Settings/PodcastSetting.php:378
 msgid "Science"
 msgstr "科学"
 
-#: app/Settings/PodcastSetting.php:378
+#: app/Settings/PodcastSetting.php:379
 msgid "Science > Astronomy"
 msgstr "科学 > 天文学"
 
-#: app/Settings/PodcastSetting.php:379
+#: app/Settings/PodcastSetting.php:380
 msgid "Science > Chemistry"
 msgstr "科学 > 化学"
 
-#: app/Settings/PodcastSetting.php:380
+#: app/Settings/PodcastSetting.php:381
 msgid "Science > Earth Sciences"
 msgstr "科学 > 地球科学"
 
-#: app/Settings/PodcastSetting.php:381
+#: app/Settings/PodcastSetting.php:382
 msgid "Science > Life Sciences"
 msgstr "科学 > 生命科学"
 
-#: app/Settings/PodcastSetting.php:382
+#: app/Settings/PodcastSetting.php:383
 msgid "Science > Mathematics"
 msgstr "科学 > 数学"
 
-#: app/Settings/PodcastSetting.php:383
+#: app/Settings/PodcastSetting.php:384
 msgid "Science > Natural Sciences"
 msgstr "科学 > 自然科学"
 
-#: app/Settings/PodcastSetting.php:384
+#: app/Settings/PodcastSetting.php:385
 msgid "Science > Nature"
 msgstr "科学 > 自然"
 
-#: app/Settings/PodcastSetting.php:385
+#: app/Settings/PodcastSetting.php:386
 msgid "Science > Physics"
 msgstr "科学 > 物理"
 
-#: app/Settings/PodcastSetting.php:386
+#: app/Settings/PodcastSetting.php:387
 msgid "Society & Culture"
 msgstr "社会与文化"
 
-#: app/Settings/PodcastSetting.php:387
+#: app/Settings/PodcastSetting.php:388
 msgid "Society & Culture > Documentary"
 msgstr "社会与文化 > 纪实"
 
-#: app/Settings/PodcastSetting.php:388
+#: app/Settings/PodcastSetting.php:389
 msgid "Society & Culture > Personal Journals"
 msgstr "社会与文化 > 个人日记"
 
-#: app/Settings/PodcastSetting.php:389
+#: app/Settings/PodcastSetting.php:390
 msgid "Society & Culture > Philosophy"
 msgstr "社会与文化 > 哲学"
 
-#: app/Settings/PodcastSetting.php:390
+#: app/Settings/PodcastSetting.php:391
 msgid "Society & Culture > Places & Travel"
 msgstr "社会与文化 > 地点与旅行"
 
-#: app/Settings/PodcastSetting.php:391
+#: app/Settings/PodcastSetting.php:392
 msgid "Society & Culture > Relationships"
 msgstr "社会与文化 > 人际关系"
 
-#: app/Settings/PodcastSetting.php:392
+#: app/Settings/PodcastSetting.php:393
 msgid "Sports"
 msgstr "体育"
 
-#: app/Settings/PodcastSetting.php:393
+#: app/Settings/PodcastSetting.php:394
 msgid "Sports > Baseball"
 msgstr "体育 > 棒球"
 
-#: app/Settings/PodcastSetting.php:394
+#: app/Settings/PodcastSetting.php:395
 msgid "Sports > Basketball"
 msgstr "体育 > 篮球"
 
-#: app/Settings/PodcastSetting.php:395
+#: app/Settings/PodcastSetting.php:396
 msgid "Sports > Cricket"
 msgstr "体育 > 板球"
 
-#: app/Settings/PodcastSetting.php:396
+#: app/Settings/PodcastSetting.php:397
 msgid "Sports > Fantasy Sports"
 msgstr "体育 > 梦幻体育"
 
-#: app/Settings/PodcastSetting.php:397
+#: app/Settings/PodcastSetting.php:398
 msgid "Sports > Football"
 msgstr "体育 > 美式足球"
 
-#: app/Settings/PodcastSetting.php:398
+#: app/Settings/PodcastSetting.php:399
 msgid "Sports > Golf"
 msgstr "体育 > 高尔夫"
 
-#: app/Settings/PodcastSetting.php:399
+#: app/Settings/PodcastSetting.php:400
 msgid "Sports > Hockey"
 msgstr "体育 > 曲棍球"
 
-#: app/Settings/PodcastSetting.php:400
+#: app/Settings/PodcastSetting.php:401
 msgid "Sports > Rugby"
 msgstr "体育 > 橄榄球"
 
-#: app/Settings/PodcastSetting.php:401
+#: app/Settings/PodcastSetting.php:402
 msgid "Sports > Running"
 msgstr "体育 > 跑步"
 
-#: app/Settings/PodcastSetting.php:402
+#: app/Settings/PodcastSetting.php:403
 msgid "Sports > Soccer"
 msgstr "体育 > 足球"
 
-#: app/Settings/PodcastSetting.php:403
+#: app/Settings/PodcastSetting.php:404
 msgid "Sports > Swimming"
 msgstr "体育 > 游泳"
 
-#: app/Settings/PodcastSetting.php:404
+#: app/Settings/PodcastSetting.php:405
 msgid "Sports > Tennis"
 msgstr "体育 > 网球"
 
-#: app/Settings/PodcastSetting.php:405
+#: app/Settings/PodcastSetting.php:406
 msgid "Sports > Volleyball"
 msgstr "体育 > 排球"
 
-#: app/Settings/PodcastSetting.php:406
+#: app/Settings/PodcastSetting.php:407
 msgid "Technology"
 msgstr "科技"
 
-#: app/Settings/PodcastSetting.php:407
+#: app/Settings/PodcastSetting.php:408
 msgid "True Crime"
 msgstr "真实犯罪"
 
-#: app/Settings/PodcastSetting.php:408
+#: app/Settings/PodcastSetting.php:409
 msgid "TV & Film"
 msgstr "电视与电影"
 
-#: app/Settings/PodcastSetting.php:409
+#: app/Settings/PodcastSetting.php:410
 msgid "TV & Film > After Shows"
 msgstr "电视与电影 > 剧后节目"
 
-#: app/Settings/PodcastSetting.php:410
+#: app/Settings/PodcastSetting.php:411
 msgid "TV & Film > Film History"
 msgstr "电视与电影 > 电影史"
 
-#: app/Settings/PodcastSetting.php:411
+#: app/Settings/PodcastSetting.php:412
 msgid "TV & Film > Film Interviews"
 msgstr "电视与电影 > 电影访谈"
 
-#: app/Settings/PodcastSetting.php:412
+#: app/Settings/PodcastSetting.php:413
 msgid "TV & Film > Film Reviews"
 msgstr "电视与电影 > 电影评论"
 
-#: app/Settings/PodcastSetting.php:413
+#: app/Settings/PodcastSetting.php:414
 msgid "TV & Film > TV Reviews"
 msgstr "电视与电影 > 电视评论"
 
-#: resources/templates/episode/meta/default.php:24
+#: resources/templates/episode/meta/default.php:26
 msgid "Play episode"
 msgstr "播放单集"
 
-#: resources/templates/episode/meta/default.php:28
+#: resources/templates/episode/meta/default.php:30
 msgid "Remove from favorites"
 msgstr "取消收藏"
 
-#: resources/templates/episode/meta/default.php:28
+#: resources/templates/episode/meta/default.php:30
 msgid "Add to favorites"
 msgstr "收藏"
 
-#: resources/templates/fields/controls/complex-row.php:24
+#: resources/templates/fields/controls/complex-row.php:26
 msgid "Drag to reorder"
 msgstr "拖动排序"
 
-#: resources/templates/fields/controls/complex-row.php:26
-#: resources/templates/fields/controls/media.php:60
+#: resources/templates/fields/controls/complex-row.php:28
+#: resources/templates/fields/controls/media.php:64
 msgid "Remove"
 msgstr "移除"
 
-#: resources/templates/fields/controls/complex.php:17
+#: resources/templates/fields/controls/complex.php:19
 msgid "Item"
 msgstr "项目"
 
 #. translators: %s: repeater row label, e.g. "Soundbite".
-#: resources/templates/fields/controls/complex.php:19
+#: resources/templates/fields/controls/complex.php:21
 #, php-format
 msgid "Add %s"
 msgstr "添加%s"
 
-#: resources/templates/fields/controls/complex.php:27
+#: resources/templates/fields/controls/complex.php:29
 msgid "Nothing added yet."
 msgstr "尚未添加任何内容。"
 
-#: resources/templates/fields/controls/input.php:22
+#: resources/templates/fields/controls/input.php:24
 msgid "Copied!"
 msgstr "已复制！"
 
-#: resources/templates/fields/controls/input.php:22
+#: resources/templates/fields/controls/input.php:24
 msgid "Copy"
 msgstr "复制"
 
-#: resources/templates/fields/controls/media.php:26
+#: resources/templates/fields/controls/media.php:28
 msgid "Use this file"
 msgstr "使用此文件"
 
-#: resources/templates/fields/controls/media.php:38
-#: resources/templates/fields/controls/media.php:44
+#: resources/templates/fields/controls/media.php:42
+#: resources/templates/fields/controls/media.php:48
 msgid "Select Image"
 msgstr "选择图片"
 
-#: resources/templates/fields/controls/media.php:48
+#: resources/templates/fields/controls/media.php:52
 msgid "Replace"
 msgstr "更换"
 
-#: resources/templates/fields/controls/media.php:58
+#: resources/templates/fields/controls/media.php:62
 msgid "Select File"
 msgstr "选择文件"
 
 #. translators: %d: number of selected options.
-#: resources/templates/fields/controls/multiselect.php:18
+#: resources/templates/fields/controls/multiselect.php:20
 #, php-format
 msgid "%d selected"
 msgstr "已选择 %d 项"
 
-#: resources/templates/fields/controls/multiselect.php:23
+#: resources/templates/fields/controls/multiselect.php:25
 msgid "Search…"
 msgstr "搜索…"
 
-#: resources/templates/fields/controls/multiselect.php:34
+#: resources/templates/fields/controls/multiselect.php:36
 msgid "No options available."
 msgstr "没有可用选项。"
 
-#: resources/templates/fields/controls/multiselect.php:34
+#: resources/templates/fields/controls/multiselect.php:36
 msgid "No matches found."
 msgstr "未找到匹配项。"
 
-#: resources/templates/fields/label.php:24
+#: resources/templates/fields/label.php:26
 msgid "Auto"
 msgstr "自动"
 
-#: resources/templates/fields/settings-page.php:21
+#: resources/templates/fields/settings-page.php:23
 msgid "Settings saved."
 msgstr "设置已保存。"
 
-#: resources/templates/fields/settings-page.php:26
+#: resources/templates/fields/settings-page.php:28
 msgid "Settings were not saved. Please fix the following:"
 msgstr "设置未保存，请修正以下问题："
 
-#: resources/templates/fields/settings-page.php:41
+#: resources/templates/fields/settings-page.php:43
 msgid "Save Settings"
 msgstr "保存设置"
 
-#: resources/templates/player/skins/default.php:49
+#: resources/templates/player/skins/default.php:51
 msgid "Audio player"
 msgstr "音频播放器"
 
-#: resources/templates/player/skins/default.php:54
+#: resources/templates/player/skins/default.php:56
 msgid "Open Now Playing"
 msgstr "打开“正在播放”"
 
-#: resources/templates/player/skins/default.php:69
-#: resources/templates/player/skins/default.php:130
+#: resources/templates/player/skins/default.php:71
+#: resources/templates/player/skins/default.php:132
 msgid "Previous episode"
 msgstr "上一集"
 
-#: resources/templates/player/skins/default.php:70
-#: resources/templates/player/skins/default.php:131
+#: resources/templates/player/skins/default.php:72
+#: resources/templates/player/skins/default.php:133
 msgid "Back 15 seconds"
 msgstr "后退 15 秒"
 
-#: resources/templates/player/skins/default.php:76
-#: resources/templates/player/skins/default.php:137
+#: resources/templates/player/skins/default.php:78
+#: resources/templates/player/skins/default.php:139
 msgid "Forward 30 seconds"
 msgstr "前进 30 秒"
 
-#: resources/templates/player/skins/default.php:77
-#: resources/templates/player/skins/default.php:138
+#: resources/templates/player/skins/default.php:79
+#: resources/templates/player/skins/default.php:140
 msgid "Next episode"
 msgstr "下一集"
 
-#: resources/templates/player/parts/progress.php:46
-#: resources/templates/player/skins/default.php:123
+#: resources/templates/player/parts/progress.php:48
+#: resources/templates/player/skins/default.php:125
 msgid "Playback position"
 msgstr "播放进度"
 
-#: resources/templates/player/skins/default.php:90
-#: resources/templates/player/skins/default.php:142
+#: resources/templates/player/skins/default.php:92
+#: resources/templates/player/skins/default.php:144
 msgid "Playback speed"
 msgstr "播放速度"
 
-#: resources/templates/player/skins/default.php:95
-#: resources/templates/player/skins/default.php:147
+#: resources/templates/player/skins/default.php:97
+#: resources/templates/player/skins/default.php:149
 msgid "Volume"
 msgstr "音量"
 
-#: resources/templates/player/skins/default.php:98
+#: resources/templates/player/skins/default.php:100
 msgid "Open Now Playing and queue"
 msgstr "打开“正在播放”和播放队列"
 
-#: resources/templates/player/skins/default.php:103
-#: resources/templates/player/skins/default.php:106
+#: resources/templates/player/skins/default.php:105
+#: resources/templates/player/skins/default.php:108
 msgid "Now Playing"
 msgstr "正在播放"
 
-#: resources/templates/player/skins/default.php:107
+#: resources/templates/player/skins/default.php:109
 msgid "Close Now Playing"
 msgstr "关闭“正在播放”"
 
-#: resources/templates/player/skins/default.php:152
+#: resources/templates/player/skins/default.php:154
 msgid "Queue"
 msgstr "播放队列"
 
@@ -1561,268 +1557,268 @@ msgstr "%s 分钟"
 msgid "%1$s h %2$s min"
 msgstr "%1$s 小时 %2$s 分钟"
 
-#: resources/templates/dashboard/page.php:33
+#: resources/templates/dashboard/page.php:35
 msgid "7 days"
 msgstr "7 天"
 
-#: resources/templates/dashboard/page.php:34
+#: resources/templates/dashboard/page.php:36
 msgid "30 days"
 msgstr "30 天"
 
-#: resources/templates/dashboard/page.php:35
+#: resources/templates/dashboard/page.php:37
 msgid "90 days"
 msgstr "90 天"
 
-#: resources/templates/dashboard/page.php:36
+#: resources/templates/dashboard/page.php:38
 msgid "12 months"
 msgstr "12 个月"
 
 #. translators: %s: period such as "30 days".
-#: resources/templates/dashboard/page.php:39
+#: resources/templates/dashboard/page.php:41
 #, php-format
 msgid "Last %s"
 msgstr "最近 %s"
 
 #. translators: %s: number of episodes.
-#: resources/templates/dashboard/page.php:42
+#: resources/templates/dashboard/page.php:44
 #, php-format
 msgid "%s episode"
 msgid_plural "%s episodes"
 msgstr[0] "%s 集"
 
-#: resources/templates/dashboard/page.php:48
+#: resources/templates/dashboard/page.php:50
 msgid "No earlier plays to compare with"
 msgstr "没有更早的播放数据可对比"
 
 #. translators: %s: number of plays in the previous period.
-#: resources/templates/dashboard/page.php:58
+#: resources/templates/dashboard/page.php:60
 #, php-format
 msgid "vs %s the period before"
 msgstr "上一周期为 %s"
 
 #. translators: %s: number of drafts.
-#: resources/templates/dashboard/page.php:65
+#: resources/templates/dashboard/page.php:67
 #, php-format
 msgid "%s draft"
 msgid_plural "%s drafts"
 msgstr[0] "%s 篇草稿"
 
 #. translators: %s: number of scheduled episodes.
-#: resources/templates/dashboard/page.php:70
+#: resources/templates/dashboard/page.php:72
 #, php-format
 msgid "%s scheduled"
 msgstr "%s 篇定时发布"
 
 #. translators: %s: time since the latest episode, e.g. "3 days".
-#: resources/templates/dashboard/page.php:75
+#: resources/templates/dashboard/page.php:77
 #, php-format
 msgid "latest %s ago"
 msgstr "最新一集发布于 %s前"
 
-#: resources/templates/dashboard/page.php:84
+#: resources/templates/dashboard/page.php:86
 msgid "Show as table"
 msgstr "以表格显示"
 
-#: resources/templates/dashboard/page.php:102
+#: resources/templates/dashboard/page.php:104
 msgid "Overview"
 msgstr "概览"
 
-#: resources/templates/dashboard/page.php:107
+#: resources/templates/dashboard/page.php:109
 msgid "Published episodes"
 msgstr "已发布单集"
 
-#: resources/templates/dashboard/page.php:113
-#: resources/templates/dashboard/page.php:313
+#: resources/templates/dashboard/page.php:115
+#: resources/templates/dashboard/page.php:315
 msgid "Total plays"
 msgstr "总播放次数"
 
 #. translators: %s: average number of plays.
 #. translators: %s: average episode length, e.g. "45 min".
-#: resources/templates/dashboard/page.php:116
-#: resources/templates/dashboard/page.php:123
+#: resources/templates/dashboard/page.php:118
+#: resources/templates/dashboard/page.php:125
 #, php-format
 msgid "%s per episode on average"
 msgstr "平均每集 %s"
 
-#: resources/templates/dashboard/page.php:120
+#: resources/templates/dashboard/page.php:122
 msgid "Total audio length"
 msgstr "音频总时长"
 
-#: resources/templates/dashboard/page.php:127
+#: resources/templates/dashboard/page.php:129
 msgid "Audio file size"
 msgstr "音频文件大小"
 
-#: resources/templates/dashboard/page.php:129
+#: resources/templates/dashboard/page.php:131
 msgid "Audio on another site is not counted"
 msgstr "不含其他网站上的音频"
 
-#: resources/templates/dashboard/page.php:137
+#: resources/templates/dashboard/page.php:139
 msgid "Listening"
 msgstr "收听"
 
-#: resources/templates/dashboard/page.php:138
+#: resources/templates/dashboard/page.php:140
 msgid "Period"
 msgstr "时间范围"
 
-#: resources/templates/dashboard/page.php:152
+#: resources/templates/dashboard/page.php:154
 msgid "No plays recorded by date yet. Daily statistics start with the next play; plays counted before this update only show up in the totals."
 msgstr "还没有按日期记录的播放。每日统计从下一次播放开始；此次更新之前的播放只计入总数。"
 
 #. translators: %s: date of the first recorded play.
-#: resources/templates/dashboard/page.php:160
+#: resources/templates/dashboard/page.php:162
 #, php-format
 msgid "Plays are recorded by date since %s, so this period is incomplete."
 msgstr "按日期记录播放始于 %s，因此该时间段的数据不完整。"
 
-#: resources/templates/dashboard/page.php:177
+#: resources/templates/dashboard/page.php:179
 msgid "Daily average"
 msgstr "日均播放"
 
-#: resources/templates/dashboard/page.php:183
+#: resources/templates/dashboard/page.php:185
 msgid "Best day"
 msgstr "单日最高"
 
-#: resources/templates/dashboard/page.php:189
+#: resources/templates/dashboard/page.php:191
 msgid "Episodes played"
 msgstr "被收听的单集"
 
 #. translators: %s: number of published episodes.
-#: resources/templates/dashboard/page.php:192
+#: resources/templates/dashboard/page.php:194
 #, php-format
 msgid "of %s published"
 msgstr "共 %s 集已发布"
 
-#: resources/templates/dashboard/page.php:200
+#: resources/templates/dashboard/page.php:202
 msgid "Plays per week"
 msgstr "每周播放次数"
 
-#: resources/templates/dashboard/page.php:200
+#: resources/templates/dashboard/page.php:202
 msgid "Plays per day"
 msgstr "每日播放次数"
 
 #. translators: 1: period such as "Last 30 days", 2: number of plays.
-#: resources/templates/dashboard/page.php:210
+#: resources/templates/dashboard/page.php:212
 #, php-format
 msgid "Plays chart, %1$s: %2$s in total"
 msgstr "播放次数图表，%1$s：共 %2$s 次"
 
-#: resources/templates/dashboard/page.php:215
+#: resources/templates/dashboard/page.php:217
 msgid "Week"
 msgstr "周"
 
-#: resources/templates/dashboard/page.php:215
+#: resources/templates/dashboard/page.php:217
 msgid "Day"
 msgstr "日期"
 
-#: resources/templates/dashboard/page.php:220
+#: resources/templates/dashboard/page.php:222
 msgid "Top episodes"
 msgstr "热门单集"
 
-#: resources/templates/dashboard/page.php:224
+#: resources/templates/dashboard/page.php:226
 msgid "No plays in this period."
 msgstr "该时间段内没有播放。"
 
-#: resources/templates/dashboard/page.php:245
+#: resources/templates/dashboard/page.php:247
 msgid "Library"
 msgstr "节目库"
 
-#: resources/templates/dashboard/page.php:250
+#: resources/templates/dashboard/page.php:252
 msgid "Episodes published per month"
 msgstr "每月发布单集数"
 
-#: resources/templates/dashboard/page.php:251
+#: resources/templates/dashboard/page.php:253
 msgid "Last 12 months"
 msgstr "最近 12 个月"
 
 #. translators: %s: number of episodes.
-#: resources/templates/dashboard/page.php:260
+#: resources/templates/dashboard/page.php:262
 #, php-format
 msgid "Episodes published per month over the last 12 months: %s in total"
 msgstr "最近 12 个月每月发布的单集数：共 %s 集"
 
-#: resources/templates/dashboard/page.php:264
+#: resources/templates/dashboard/page.php:266
 msgid "Month"
 msgstr "月份"
 
-#: resources/templates/dashboard/page.php:269
+#: resources/templates/dashboard/page.php:271
 msgid "Episode types"
 msgstr "单集类型"
 
-#: resources/templates/dashboard/page.php:273
-#: resources/templates/dashboard/page.php:302
+#: resources/templates/dashboard/page.php:275
+#: resources/templates/dashboard/page.php:304
 msgid "No published episodes yet."
 msgstr "还没有已发布的单集。"
 
-#: resources/templates/dashboard/page.php:298
+#: resources/templates/dashboard/page.php:300
 msgid "Most played episodes"
 msgstr "播放最多的单集"
 
-#: resources/templates/dashboard/page.php:299
+#: resources/templates/dashboard/page.php:301
 msgid "All time"
 msgstr "全部时间"
 
-#: resources/templates/dashboard/page.php:310
+#: resources/templates/dashboard/page.php:312
 msgid "Published"
 msgstr "发布日期"
 
-#: resources/templates/dashboard/page.php:311
+#: resources/templates/dashboard/page.php:313
 msgid "Length"
 msgstr "时长"
 
-#: resources/templates/dashboard/page.php:322
+#: resources/templates/dashboard/page.php:324
 msgid "View"
 msgstr "查看"
 
-#: resources/templates/dashboard/page.php:338
+#: resources/templates/dashboard/page.php:340
 msgid "Feed health"
 msgstr "Feed 健康检查"
 
-#: resources/templates/dashboard/page.php:343
+#: resources/templates/dashboard/page.php:345
 msgid "Show settings"
 msgstr "节目设置"
 
-#: resources/templates/dashboard/page.php:344
+#: resources/templates/dashboard/page.php:346
 msgid "Edit"
 msgstr "编辑"
 
-#: resources/templates/dashboard/page.php:352
+#: resources/templates/dashboard/page.php:354
 msgid "Set"
 msgstr "已设置"
 
-#: resources/templates/dashboard/page.php:352
+#: resources/templates/dashboard/page.php:354
 msgid "Missing"
 msgstr "缺失"
 
-#: resources/templates/dashboard/page.php:362
+#: resources/templates/dashboard/page.php:364
 msgid "Episode fields"
 msgstr "单集字段"
 
-#: resources/templates/dashboard/page.php:363
+#: resources/templates/dashboard/page.php:365
 msgid "Published episodes missing each field"
 msgstr "缺少各字段的已发布单集"
 
-#: resources/templates/dashboard/page.php:373
+#: resources/templates/dashboard/page.php:375
 msgid "All set"
 msgstr "全部完成"
 
 #. translators: 1: episodes missing the field, 2: published episodes.
-#: resources/templates/dashboard/page.php:375
+#: resources/templates/dashboard/page.php:377
 #, php-format
 msgid "%1$s of %2$s"
 msgstr "%1$s / %2$s"
 
-#: resources/templates/dashboard/page.php:383
+#: resources/templates/dashboard/page.php:385
 msgid "Show episodes"
 msgstr "显示单集"
 
 #. translators: %s: number of further episodes.
-#: resources/templates/dashboard/page.php:392
+#: resources/templates/dashboard/page.php:394
 #, php-format
 msgid "and %s more"
 msgstr "还有 %s 集"
 
-#: resources/templates/dashboard/page.php:256
-#: resources/templates/dashboard/page.php:264
+#: resources/templates/dashboard/page.php:258
+#: resources/templates/dashboard/page.php:266
 msgid "Episodes published"
 msgstr "发布单集数"
 
@@ -1849,3 +1845,20 @@ msgstr "波形进度条：静态显示整集各时间点的音量高低（同脉
 #: app/Settings/PlayerSetting.php:77
 msgid "Applies to the player bar of every style. The live spectrum only moves for audio hosted on this site. The waveform is drawn by wavesurfer.js in the visitor's browser: the first time an episode is shown it downloads the whole audio file once (audio on another site needs CORS), then the browser keeps the waveform. Not drawn on phones, where the bar has no progress row."
 msgstr "对所有风格的播放条生效。实时频谱只对本站托管的音频有跳动效果。波形由 wavesurfer.js 在访客的浏览器中绘制：某一集第一次显示时会完整下载一次音频（其他网站上的音频需要允许 CORS），之后由浏览器缓存波形。手机上播放条没有进度区域，因此不绘制。"
+
+#. translators: %s: maximum file size, e.g. "512 KB".
+#: app/Libraries/Fields/Field.php:211
+#, php-format
+msgid "File must be %s or smaller."
+msgstr "文件不能超过 %s。"
+
+#. translators: %s: current file size, e.g. "830.5 KB".
+#: app/Libraries/Fields/FieldAssets.php:51
+#: app/Libraries/Fields/FieldValidator.php:147
+#, php-format
+msgid "Current: %s."
+msgstr "当前：%s。"
+
+#: app/Settings/PodcastSetting.php:67
+msgid "Required. Square JPG/PNG between 1400-3000px, at most 512 KB, for itunes:image."
+msgstr "必填。用于 itunes:image 的 1400-3000px 正方形 JPG/PNG，文件不超过 512 KB。"

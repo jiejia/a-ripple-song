@@ -29,6 +29,8 @@ $attributes = [
     'data-autofill' => $field->autofill !== [] ? wp_json_encode($field->autofill) : null,
     'data-dimensions' => $checkDimensions ? wp_json_encode($field->dimensions) : null,
     'data-dimensions-message' => $checkDimensions ? $field->dimensions->message() : null,
+    'data-max-size' => $field->maxSize > 0 ? $field->maxSize : null,
+    'data-max-size-message' => $field->maxSize > 0 ? $field->maxSizeMessage() : null,
 ];
 ?>
 <div<?php echo Html::attributes($attributes); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped by Html::attributes(). ?>>

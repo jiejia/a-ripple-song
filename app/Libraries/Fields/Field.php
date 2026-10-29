@@ -33,6 +33,7 @@ final readonly class Field
      * @param string $mediaType File: restricts the media library, e.g. "audio".
      * @param array<string,string> $autofill File / image: target field key => attachment property (duration, filesize, mime, width, height, ...).
      * @param ImageDimensions $dimensions Image: size rules.
+     * @param int $maxSize File / image: largest allowed file size in bytes; 0 means unrestricted.
      * @param array<int,Field> $fields Complex: sub fields of each row.
      * @param string $rowLabel Complex: label of one row, e.g. "Soundbite".
      * @param string $rowTitleField Complex: sub field key whose value titles the row.
@@ -57,6 +58,7 @@ final readonly class Field
         public string $mediaType = '',
         public array $autofill = [],
         public ImageDimensions $dimensions = new ImageDimensions(),
+        public int $maxSize = 0,
         public array $fields = [],
         public string $rowLabel = '',
         public string $rowTitleField = '',
@@ -91,6 +93,7 @@ final readonly class Field
             mediaType: (string) ($definition['media_type'] ?? ''),
             autofill: (array) ($definition['autofill'] ?? []),
             dimensions: ImageDimensions::fromArray((array) ($definition['dimensions'] ?? [])),
+            maxSize: (int) ($definition['max_size'] ?? 0),
             fields: self::collect((array) ($definition['fields'] ?? [])),
             rowLabel: (string) ($definition['row_label'] ?? ''),
             rowTitleField: (string) ($definition['row_title_field'] ?? ''),
@@ -195,6 +198,17 @@ final readonly class Field
     public function content(): string
     {
         return (string) ($this->content instanceof Closure ? ($this->content)() : $this->content);
+    }
+
+    /**
+     * Describe the file size limit, e.g. "File must be 512 KB or smaller."
+     *
+     * @return string
+     */
+    public function maxSizeMessage(): string
+    {
+        /* translators: %s: maximum file size, e.g. "512 KB". */
+        return sprintf(__('File must be %s or smaller.', 'a-ripple-song'), size_format($this->maxSize));
     }
 
     /**

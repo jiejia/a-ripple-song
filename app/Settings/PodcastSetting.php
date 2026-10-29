@@ -63,7 +63,8 @@ class PodcastSetting extends SettingAbstract
                     'max_width' => 3000,
                     'max_height' => 3000,
                 ],
-                'help' => __('Required. Square JPG/PNG between 1400-3000px for itunes:image. Apple recommends keeping the file under 512KB.', 'a-ripple-song'),
+                'max_size' => 512 * KB_IN_BYTES,
+                'help' => __('Required. Square JPG/PNG between 1400-3000px, at most 512 KB, for itunes:image.', 'a-ripple-song'),
             ],
             [
                 'type' => 'text',

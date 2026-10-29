@@ -151,7 +151,7 @@
 	});
 
 	$(document).on('change', '.ars-media__input', function () {
-		checkImageSize($(this).closest('[data-ars-media]'));
+		checkMedia($(this).closest('[data-ars-media]'));
 	});
 
 	/* Copy button */
@@ -318,23 +318,42 @@
 		return $field.data('arsError') || '';
 	}
 
+	// Each check reports into its own slot, so one async result never clears another check's error.
+	function setMediaError($media, check, message) {
+		var $field = $media.closest('.ars-field');
+		var input = $media.find('.ars-media__input')[0];
+		var errors = $media.data('arsErrors') || {};
+
+		errors[check] = message;
+		$media.data('arsErrors', errors);
+		message = $.map(errors, function (text) {
+			return text || null;
+		}).join(' ');
+
+		$field.data('arsError', message);
+
+		if (message) {
+			$field.data('touched', true);
+		}
+
+		// Classic forms (settings pages) then block submission natively.
+		input.setCustomValidity(message);
+		validate();
+	}
+
+	function checkMedia($media) {
+		checkImageSize($media);
+		checkFileSize($media);
+	}
+
 	// Load the image in the browser to measure it; works for media library picks and pasted URLs alike.
 	function checkImageSize($media) {
 		var rules = $media.data('dimensions');
-		var $field = $media.closest('.ars-field');
 		var input = $media.find('.ars-media__input')[0];
 		var url = $.trim(input.value);
 
 		function setError(message) {
-			$field.data('arsError', message);
-
-			if (message) {
-				$field.data('touched', true);
-			}
-
-			// Classic forms (settings pages) then block submission natively.
-			input.setCustomValidity(message);
-			validate();
+			setMediaError($media, 'dimensions', message);
 		}
 
 		if (!rules) {
@@ -371,6 +390,39 @@
 		};
 
 		probe.src = url;
+	}
+
+	// Matches size_format(): 1 KB = 1024 bytes.
+	function formatSize(bytes) {
+		return bytes >= 1048576 ? (bytes / 1048576).toFixed(1) + ' MB' : (bytes / 1024).toFixed(1) + ' KB';
+	}
+
+	// Read Content-Length with a HEAD request; files on other hosts without CORS are left to the check on save.
+	function checkFileSize($media) {
+		var max = $media.data('maxSize');
+		var input = $media.find('.ars-media__input')[0];
+		var url = $.trim(input.value);
+
+		if (!max) {
+			return;
+		}
+
+		// Drop the previous file's error; a failed request then leaves the field valid.
+		setMediaError($media, 'size', '');
+
+		if (!url) {
+			return;
+		}
+
+		$.ajax({ url: url, method: 'HEAD' }).done(function (data, status, xhr) {
+			var size = parseInt(xhr.getResponseHeader('Content-Length'), 10);
+
+			if ($.trim(input.value) !== url || !(size > 0)) {
+				return;
+			}
+
+			setMediaError($media, 'size', size > max ? $media.data('maxSizeMessage') + ' ' + l10n.currentFileSize.replace('%s', formatSize(size)) : '');
+		});
 	}
 
 	// The field's own error element, skipping those of sub fields inside repeater rows.
@@ -448,8 +500,8 @@
 			syncMedia($(this));
 		});
 
-		$('[data-ars-media][data-dimensions]').each(function () {
-			checkImageSize($(this));
+		$('[data-ars-media][data-dimensions], [data-ars-media][data-max-size]').each(function () {
+			checkMedia($(this));
 		});
 
 		validate();
