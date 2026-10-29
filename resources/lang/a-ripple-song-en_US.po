@@ -402,45 +402,45 @@ msgid_plural "%s plays"
 msgstr[0] "%s play"
 msgstr[1] "%s plays"
 
-#: app/Player/GlobalPlayer.php:174
+#: app/Player/GlobalPlayer.php:180
 msgid "Playing"
 msgstr "Playing"
 
-#: app/Player/GlobalPlayer.php:175
+#: app/Player/GlobalPlayer.php:181
 msgid "Paused"
 msgstr "Paused"
 
-#: app/Player/GlobalPlayer.php:176
+#: app/Player/GlobalPlayer.php:182
 msgid "Loading…"
 msgstr "Loading…"
 
-#: app/Player/GlobalPlayer.php:177
+#: app/Player/GlobalPlayer.php:183
 msgid "The audio could not be loaded."
 msgstr "The audio could not be loaded."
 
-#: app/Player/GlobalPlayer.php:178
-#: resources/templates/player/skins/default.php:73
-#: resources/templates/player/skins/default.php:134
+#: app/Player/GlobalPlayer.php:184
+#: resources/templates/player/skins/default.php:76
+#: resources/templates/player/skins/default.php:137
 msgid "Play"
 msgstr "Play"
 
-#: app/Player/GlobalPlayer.php:179
+#: app/Player/GlobalPlayer.php:185
 #: resources/templates/episode/meta/default.php:26
 msgid "Pause"
 msgstr "Pause"
 
-#: app/Player/GlobalPlayer.php:180
-#: resources/templates/player/skins/default.php:93
-#: resources/templates/player/skins/default.php:145
+#: app/Player/GlobalPlayer.php:186
+#: resources/templates/player/skins/default.php:96
+#: resources/templates/player/skins/default.php:148
 msgid "Mute"
 msgstr "Mute"
 
-#: app/Player/GlobalPlayer.php:181
+#: app/Player/GlobalPlayer.php:187
 msgid "Unmute"
 msgstr "Unmute"
 
 #. translators: %s: episode number.
-#: app/Player/GlobalPlayer.php:183
+#: app/Player/GlobalPlayer.php:189
 #, php-format
 msgid "EP.%s"
 msgstr "EP.%s"
@@ -1385,63 +1385,63 @@ msgstr "Settings were not saved. Please fix the following:"
 msgid "Save Settings"
 msgstr "Save Settings"
 
-#: resources/templates/player/skins/default.php:51
+#: resources/templates/player/skins/default.php:54
 msgid "Audio player"
 msgstr "Audio player"
 
-#: resources/templates/player/skins/default.php:56
+#: resources/templates/player/skins/default.php:59
 msgid "Open Now Playing"
 msgstr "Open Now Playing"
 
-#: resources/templates/player/skins/default.php:71
-#: resources/templates/player/skins/default.php:132
+#: resources/templates/player/skins/default.php:74
+#: resources/templates/player/skins/default.php:135
 msgid "Previous episode"
 msgstr "Previous episode"
 
-#: resources/templates/player/skins/default.php:72
-#: resources/templates/player/skins/default.php:133
+#: resources/templates/player/skins/default.php:75
+#: resources/templates/player/skins/default.php:136
 msgid "Back 15 seconds"
 msgstr "Back 15 seconds"
 
-#: resources/templates/player/skins/default.php:78
-#: resources/templates/player/skins/default.php:139
+#: resources/templates/player/skins/default.php:81
+#: resources/templates/player/skins/default.php:142
 msgid "Forward 30 seconds"
 msgstr "Forward 30 seconds"
 
-#: resources/templates/player/skins/default.php:79
-#: resources/templates/player/skins/default.php:140
+#: resources/templates/player/skins/default.php:82
+#: resources/templates/player/skins/default.php:143
 msgid "Next episode"
 msgstr "Next episode"
 
 #: resources/templates/player/parts/progress.php:48
-#: resources/templates/player/skins/default.php:125
+#: resources/templates/player/skins/default.php:128
 msgid "Playback position"
 msgstr "Playback position"
 
-#: resources/templates/player/skins/default.php:92
-#: resources/templates/player/skins/default.php:144
+#: resources/templates/player/skins/default.php:95
+#: resources/templates/player/skins/default.php:147
 msgid "Playback speed"
 msgstr "Playback speed"
 
-#: resources/templates/player/skins/default.php:97
-#: resources/templates/player/skins/default.php:149
+#: resources/templates/player/skins/default.php:100
+#: resources/templates/player/skins/default.php:152
 msgid "Volume"
 msgstr "Volume"
 
-#: resources/templates/player/skins/default.php:100
+#: resources/templates/player/skins/default.php:103
 msgid "Open Now Playing and queue"
 msgstr "Open Now Playing and queue"
 
-#: resources/templates/player/skins/default.php:105
 #: resources/templates/player/skins/default.php:108
+#: resources/templates/player/skins/default.php:111
 msgid "Now Playing"
 msgstr "Now Playing"
 
-#: resources/templates/player/skins/default.php:109
+#: resources/templates/player/skins/default.php:112
 msgid "Close Now Playing"
 msgstr "Close Now Playing"
 
-#: resources/templates/player/skins/default.php:154
+#: resources/templates/player/skins/default.php:158
 msgid "Queue"
 msgstr "Queue"
 
@@ -1876,4 +1876,16 @@ msgstr ""
 
 #: app/Settings/PodcastSetting.php:60
 msgid "Required. Square JPG/PNG between 1400-3000px, at most 512 KB, without transparency, for itunes:image."
+msgstr ""
+
+#: resources/templates/player/skins/default.php:159
+msgid "Clear"
+msgstr ""
+
+#: resources/templates/player/skins/default.php:161
+msgid "The queue is empty."
+msgstr ""
+
+#: resources/templates/player/skins/default.php:170
+msgid "Remove from queue"
 msgstr ""

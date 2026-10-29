@@ -103,19 +103,21 @@ use Jiejia\ARippleSong\Libraries\Template;
             </label>
           </div>
           <section class="tui min-w-0 p-4 pt-6" aria-labelledby="queue-title">
-            <h3 id="queue-title" class="tui-title">ls -l ./queue</h3>
+            <h3 id="queue-title" class="tui-title">ls -l ./queue</h3><button type="button" class="tui-title cmd" style="left:auto;right:1.5ch" ars-show="queueItems.length" ars-on:click="clearQueue()">clear</button>
             <ul>
               <template ars-for="ep in queueItems">
-                <li>
-                  <button type="button" class="flex w-full gap-3 px-1 py-1 text-left hover:bg-base-content hover:text-base-100" ars-bind:class="isCurrent(ep.id) && 'text-primary'" ars-on:click="toggle(ep.id)">
+                <li class="flex items-center gap-1">
+                  <button type="button" class="flex min-w-0 flex-1 gap-3 px-1 py-1 text-left hover:bg-base-content hover:text-base-100" ars-bind:class="isCurrent(ep.id) && 'text-primary'" ars-on:click="toggle(ep.id)">
                     <span class="w-2 shrink-0" ars-text="isCurrent(ep.id) ? '>' : ''"></span>
                     <span class="shrink-0" ars-text="String(ep.number).padStart(3, '0')"></span>
                     <span class="min-w-0 flex-1 truncate" ars-text="ep.title"></span>
                     <span class="dim shrink-0 tabular-nums" ars-text="fmt(ep.duration)"></span>
                   </button>
+                  <button type="button" class="cmd dim shrink-0 hover:opacity-100" ars-on:click="removeFromQueue(ep.id)" aria-label="从播放列表移除" title="从播放列表移除">x</button>
                 </li>
               </template>
             </ul>
+            <p class="dim px-1 py-1" ars-show="!queueItems.length">播放列表是空的</p>
           </section>
         </div>
       </div>

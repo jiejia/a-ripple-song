@@ -400,45 +400,45 @@ msgid "%s play"
 msgid_plural "%s plays"
 msgstr[0] "%s 次播放"
 
-#: app/Player/GlobalPlayer.php:174
+#: app/Player/GlobalPlayer.php:180
 msgid "Playing"
 msgstr "正在播放"
 
-#: app/Player/GlobalPlayer.php:175
+#: app/Player/GlobalPlayer.php:181
 msgid "Paused"
 msgstr "已暂停"
 
-#: app/Player/GlobalPlayer.php:176
+#: app/Player/GlobalPlayer.php:182
 msgid "Loading…"
 msgstr "加载中…"
 
-#: app/Player/GlobalPlayer.php:177
+#: app/Player/GlobalPlayer.php:183
 msgid "The audio could not be loaded."
 msgstr "无法加载该音频。"
 
-#: app/Player/GlobalPlayer.php:178
-#: resources/templates/player/skins/default.php:73
-#: resources/templates/player/skins/default.php:134
+#: app/Player/GlobalPlayer.php:184
+#: resources/templates/player/skins/default.php:76
+#: resources/templates/player/skins/default.php:137
 msgid "Play"
 msgstr "播放"
 
-#: app/Player/GlobalPlayer.php:179
+#: app/Player/GlobalPlayer.php:185
 #: resources/templates/episode/meta/default.php:26
 msgid "Pause"
 msgstr "暂停"
 
-#: app/Player/GlobalPlayer.php:180
-#: resources/templates/player/skins/default.php:93
-#: resources/templates/player/skins/default.php:145
+#: app/Player/GlobalPlayer.php:186
+#: resources/templates/player/skins/default.php:96
+#: resources/templates/player/skins/default.php:148
 msgid "Mute"
 msgstr "静音"
 
-#: app/Player/GlobalPlayer.php:181
+#: app/Player/GlobalPlayer.php:187
 msgid "Unmute"
 msgstr "取消静音"
 
 #. translators: %s: episode number.
-#: app/Player/GlobalPlayer.php:183
+#: app/Player/GlobalPlayer.php:189
 #, php-format
 msgid "EP.%s"
 msgstr "第 %s 期"
@@ -1383,63 +1383,63 @@ msgstr "设置未保存，请修正以下问题："
 msgid "Save Settings"
 msgstr "保存设置"
 
-#: resources/templates/player/skins/default.php:51
+#: resources/templates/player/skins/default.php:54
 msgid "Audio player"
 msgstr "音频播放器"
 
-#: resources/templates/player/skins/default.php:56
+#: resources/templates/player/skins/default.php:59
 msgid "Open Now Playing"
 msgstr "打开“正在播放”"
 
-#: resources/templates/player/skins/default.php:71
-#: resources/templates/player/skins/default.php:132
+#: resources/templates/player/skins/default.php:74
+#: resources/templates/player/skins/default.php:135
 msgid "Previous episode"
 msgstr "上一集"
 
-#: resources/templates/player/skins/default.php:72
-#: resources/templates/player/skins/default.php:133
+#: resources/templates/player/skins/default.php:75
+#: resources/templates/player/skins/default.php:136
 msgid "Back 15 seconds"
 msgstr "后退 15 秒"
 
-#: resources/templates/player/skins/default.php:78
-#: resources/templates/player/skins/default.php:139
+#: resources/templates/player/skins/default.php:81
+#: resources/templates/player/skins/default.php:142
 msgid "Forward 30 seconds"
 msgstr "前进 30 秒"
 
-#: resources/templates/player/skins/default.php:79
-#: resources/templates/player/skins/default.php:140
+#: resources/templates/player/skins/default.php:82
+#: resources/templates/player/skins/default.php:143
 msgid "Next episode"
 msgstr "下一集"
 
 #: resources/templates/player/parts/progress.php:48
-#: resources/templates/player/skins/default.php:125
+#: resources/templates/player/skins/default.php:128
 msgid "Playback position"
 msgstr "播放进度"
 
-#: resources/templates/player/skins/default.php:92
-#: resources/templates/player/skins/default.php:144
+#: resources/templates/player/skins/default.php:95
+#: resources/templates/player/skins/default.php:147
 msgid "Playback speed"
 msgstr "播放速度"
 
-#: resources/templates/player/skins/default.php:97
-#: resources/templates/player/skins/default.php:149
+#: resources/templates/player/skins/default.php:100
+#: resources/templates/player/skins/default.php:152
 msgid "Volume"
 msgstr "音量"
 
-#: resources/templates/player/skins/default.php:100
+#: resources/templates/player/skins/default.php:103
 msgid "Open Now Playing and queue"
 msgstr "打开“正在播放”和播放队列"
 
-#: resources/templates/player/skins/default.php:105
 #: resources/templates/player/skins/default.php:108
+#: resources/templates/player/skins/default.php:111
 msgid "Now Playing"
 msgstr "正在播放"
 
-#: resources/templates/player/skins/default.php:109
+#: resources/templates/player/skins/default.php:112
 msgid "Close Now Playing"
 msgstr "关闭“正在播放”"
 
-#: resources/templates/player/skins/default.php:154
+#: resources/templates/player/skins/default.php:158
 msgid "Queue"
 msgstr "播放队列"
 
@@ -1873,3 +1873,15 @@ msgstr "图片不能包含透明区域或 Alpha 通道。"
 #: app/Settings/PodcastSetting.php:60
 msgid "Required. Square JPG/PNG between 1400-3000px, at most 512 KB, without transparency, for itunes:image."
 msgstr "必填。用于 itunes:image 的 1400-3000px 正方形 JPG/PNG，文件不超过 512 KB，不能透明。"
+
+#: resources/templates/player/skins/default.php:159
+msgid "Clear"
+msgstr "清空"
+
+#: resources/templates/player/skins/default.php:161
+msgid "The queue is empty."
+msgstr "播放列表是空的"
+
+#: resources/templates/player/skins/default.php:170
+msgid "Remove from queue"
+msgstr "从播放列表移除"

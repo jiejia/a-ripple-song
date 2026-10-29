@@ -131,18 +131,20 @@ use Jiejia\ARippleSong\Libraries\Template;
             </div>
           </div>
           <section class="inset min-w-0 rounded-[2rem] p-4 sm:p-5" aria-labelledby="queue-title">
-            <h3 id="queue-title" class="px-2 py-1 text-xs font-bold uppercase tracking-widest opacity-60">播放队列</h3>
+            <div class="flex items-center justify-between gap-2"><h3 id="queue-title" class="px-2 py-1 text-xs font-bold uppercase tracking-widest opacity-60">播放队列</h3><button type="button" class="px-2 py-1 text-xs font-bold tracking-widest opacity-60 hover:opacity-100" ars-show="queueItems.length" ars-on:click="clearQueue()">清空</button></div>
             <ul class="mt-2 space-y-2">
               <template ars-for="ep in queueItems">
-                <li>
-                  <button type="button" class="flex w-full items-center gap-3 rounded-2xl p-2 text-left" ars-bind:class="isCurrent(ep.id) ? 'raised-sm text-primary' : 'hover:text-primary'" ars-on:click="toggle(ep.id)">
+                <li class="flex items-center gap-1">
+                  <button type="button" class="flex min-w-0 flex-1 items-center gap-3 rounded-2xl p-2 text-left" ars-bind:class="isCurrent(ep.id) ? 'raised-sm text-primary' : 'hover:text-primary'" ars-on:click="toggle(ep.id)">
                     <img ars-bind:src="ep.cover" alt="" class="size-11 shrink-0 rounded-xl">
                     <span class="min-w-0 flex-1 truncate font-bold" ars-text="ep.title"></span>
                     <span class="shrink-0 font-mono text-xs opacity-70" ars-text="isPlaying(ep.id) ? '▶' : fmt(ep.duration)"></span>
                   </button>
+                  <button type="button" class="shrink-0 rounded-full p-1.5 opacity-50 transition hover:opacity-100" ars-on:click="removeFromQueue(ep.id)" aria-label="从播放列表移除" title="从播放列表移除"><?php Icon::render('x', 'size-4'); ?></button>
                 </li>
               </template>
             </ul>
+            <p class="py-6 text-center text-sm opacity-60" ars-show="!queueItems.length">播放列表是空的</p>
           </section>
         </div>
       </div>

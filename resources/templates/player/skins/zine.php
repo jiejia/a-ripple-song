@@ -97,19 +97,21 @@ use Jiejia\ARippleSong\Libraries\Template;
             </div>
           </div>
           <section class="cutout min-w-0 rotate-1 p-5" aria-labelledby="queue-title">
-            <h3 id="queue-title" class="misprint font-display text-3xl">目录</h3>
+            <div class="flex items-center justify-between gap-3"><h3 id="queue-title" class="misprint font-display text-3xl">目录</h3><button type="button" class="font-hand text-xl text-primary hover:underline" ars-show="queueItems.length" ars-on:click="clearQueue()">清空</button></div>
             <ol class="mt-3">
               <template ars-for="ep in queueItems">
-                <li>
-                  <button type="button" class="flex w-full items-baseline gap-2 rounded px-2 py-2 text-left hover:bg-accent hover:text-accent-content" ars-bind:class="isCurrent(ep.id) && 'hl'" ars-on:click="toggle(ep.id)">
+                <li class="flex items-center gap-1">
+                  <button type="button" class="flex min-w-0 flex-1 items-baseline gap-2 rounded px-2 py-2 text-left hover:bg-accent hover:text-accent-content" ars-bind:class="isCurrent(ep.id) && 'hl'" ars-on:click="toggle(ep.id)">
                     <span class="w-9 shrink-0 font-hand text-xl text-primary" ars-text="'#' + ep.number"></span>
                     <span class="min-w-0 truncate font-bold" ars-text="ep.title"></span>
                     <span class="min-w-4 flex-1 translate-y-[-0.25em] border-b-2 border-dotted border-current/40" aria-hidden="true"></span>
                     <span class="shrink-0 text-sm tabular-nums" ars-text="isPlaying(ep.id) ? '♫' : fmt(ep.duration)"></span>
                   </button>
+                  <button type="button" class="shrink-0 rounded-full p-1.5 opacity-50 transition hover:opacity-100" ars-on:click="removeFromQueue(ep.id)" aria-label="从播放列表移除" title="从播放列表移除"><?php Icon::render('x', 'size-4'); ?></button>
                 </li>
               </template>
             </ol>
+            <p class="py-6 text-center text-sm opacity-60" ars-show="!queueItems.length">播放列表是空的</p>
           </section>
         </div>
       </div>

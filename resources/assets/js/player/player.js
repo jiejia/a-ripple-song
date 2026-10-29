@@ -9,6 +9,9 @@
  *   MutationObserver, so the player needs no swup hooks. Without swup, the episode and position
  *   are restored from localStorage on the next page.
  *
+ * The playlist (queue) is kept in localStorage. A new visitor, or one who cleared the playlist, starts
+ * with the latest episodes (config.playlist); playing an episode that is not queued adds it.
+ *
  * Themes can drive it through window.ARippleSongPlayer (see the API at the bottom) and follow it
  * through the "ars-player:change" event on document.
  */
@@ -17,7 +20,7 @@ import { Binder } from './binder.js';
 import { startSpectrum, refreshSpectrumColors } from './spectrum.js';
 
 const RATES = [1, 1.25, 1.5, 2, 0.8];
-const config = window.ARS_PLAYER || { episodes: [], show: {}, i18n: {}, storageKey: 'ars_player', playsUrl: '' };
+const config = window.ARS_PLAYER || { episodes: [], playlist: [], show: {}, i18n: {}, storageKey: 'ars_player', playsUrl: '' };
 const t = (key) => config.i18n[key] || key;
 
 function formatTime(seconds) {
@@ -47,9 +50,12 @@ const storage = {
 };
 
 class PlayerStore {
-  constructor(episodes) {
+  constructor(episodes, playlist) {
+    /** Every episode the player can play, by id; only `queue` is shown as the playlist. */
     this.episodes = new Map();
     this.queue = [];
+    /** After the current episode was removed from the queue: the queued episode that followed it. */
+    this.followUp = null;
     this.current = null;
     this.playing = false;
     this.loading = false;
@@ -67,23 +73,64 @@ class PlayerStore {
     this.favs = [];
     this.listeners = new Set();
 
-    this.add(episodes);
-    this.restore();
+    this.register(episodes);
+    this.restore(playlist);
     this.tick();
     window.addEventListener('pagehide', () => this.save());
   }
 
-  /** Add episodes ({id, title, url, audio, cover, duration, number}) to the library and the queue. */
-  add(episodes) {
+  /** Make episodes ({id, title, url, audio, cover, duration, number}) playable without queueing them; returns their ids. */
+  register(episodes) {
+    const ids = [];
+
     for (const episode of [].concat(episodes || [])) {
       const id = Number(episode.id);
 
       if (!id || !episode.audio) continue;
       this.episodes.set(id, { ...episode, id });
-      if (!this.queue.includes(id)) this.queue.push(id);
+      ids.push(id);
     }
 
+    return ids;
+  }
+
+  /** Make episodes playable and append the ones not queued yet to the queue. */
+  add(episodes) {
+    const ids = this.register(episodes).filter((id) => !this.queue.includes(id));
+
+    this.queue = [...this.queue, ...ids];
+    this.save();
     this.emit();
+  }
+
+  /** Remove an episode from the queue; a playing episode keeps playing and is then followed by the one after it. */
+  removeFromQueue(id) {
+    id = Number(id);
+    const index = this.queue.indexOf(id);
+
+    if (index < 0) return;
+    if (this.isCurrent(id) || this.followUp === id) this.followUp = this.queue[index + 1] || null;
+    this.queue = this.queue.filter((queued) => queued !== id);
+    this.save();
+    this.emit();
+  }
+
+  /** Empty the queue; the current episode keeps playing. The next page load starts again from the latest episodes. */
+  clearQueue() {
+    this.queue = [];
+    this.followUp = null;
+    this.save();
+    this.emit();
+  }
+
+  /** Queue an episode that is not queued yet after the current one, or where the removed current one was. */
+  enqueue(id) {
+    if (this.queue.includes(id)) return;
+
+    const index = this.current ? this.queue.indexOf(this.current.id) : -1;
+    const at = index >= 0 ? index + 1 : this.followUp ? this.queue.indexOf(this.followUp) : this.queue.length;
+
+    this.queue = [...this.queue.slice(0, at), id, ...this.queue.slice(at)];
   }
 
   /** Progress of the current episode in percent. */
@@ -155,6 +202,9 @@ class PlayerStore {
     if (!episode) return;
     if (this.howl) this.howl.unload();
     this.resumeAudio();
+    // Playing an episode that is not in the playlist adds it.
+    this.enqueue(episode.id);
+    this.followUp = null;
 
     Object.assign(this, {
       current: episode,
@@ -281,9 +331,10 @@ class PlayerStore {
   /** Play the next queued episode; returns false at the end of the queue. */
   next() {
     const index = this.current ? this.queue.indexOf(this.current.id) : -1;
+    const id = index >= 0 ? this.queue[index + 1] : this.followUp;
 
-    if (index < 0 || index >= this.queue.length - 1) return false;
-    this.load(this.queue[index + 1]);
+    if (!id) return false;
+    this.load(id);
 
     return true;
   }
@@ -300,12 +351,19 @@ class PlayerStore {
     if (index > 0) this.load(this.queue[index - 1]);
   }
 
-  restore() {
+  restore(playlist) {
     const saved = storage.read();
 
     this.rate = RATES.includes(saved.rate) ? saved.rate : 1;
     this.volume = typeof saved.volume === 'number' ? saved.volume : 0.8;
     this.favs = Array.isArray(saved.favs) ? saved.favs.map(Number) : [];
+
+    // Saved episodes stay playable after they drop out of the latest episodes; the page's data is fresher, so it wins.
+    this.register((Array.isArray(saved.items) ? saved.items : []).filter((item) => !this.episode(item.id)));
+
+    const queue = (Array.isArray(saved.queue) ? saved.queue : []).map(Number).filter((id) => this.episode(id));
+    // A new visitor, or an emptied playlist, starts again from the latest episodes.
+    this.queue = queue.length ? queue : [].concat(playlist || []).map(Number).filter((id) => this.episode(id));
 
     const resumed = this.episode(saved.id);
     // Without a saved episode, load the one the page suggests (setting "Before Anything Is Played"),
@@ -319,8 +377,13 @@ class PlayerStore {
   }
 
   save() {
+    const items = new Set(this.queueItems);
+
+    if (this.current) items.add(this.current);
     storage.write({
       id: this.current && this.current.id,
+      queue: this.queue,
+      items: [...items],
       position: this.position,
       rate: this.rate,
       volume: this.volume,
@@ -435,6 +498,7 @@ function bindBar(root, store) {
     rate: () => store.cycleRate(),
     mute: () => store.toggleMute(),
     panel: () => setPanel(!isPanelOpen()),
+    clear: () => store.clearQueue(),
   };
 
   // The panel is a <dialog> in the default template (modal: Esc, focus trap, top layer),
@@ -470,7 +534,9 @@ function bindBar(root, store) {
 
   root.addEventListener('click', (event) => {
     const button = event.target.closest('[data-ars-action]');
+    const remove = event.target.closest('[data-ars-remove]');
     if (button && actions[button.dataset.arsAction]) actions[button.dataset.arsAction](button);
+    if (remove) store.removeFromQueue(remove.dataset.arsRemove);
     // Following a link (e.g. the episode title, swup navigation) or clicking beside the panel's box leaves the panel.
     if (panel && panel.contains(event.target) && (event.target.closest('a[href]') || isOutsidePanelBox(panel, event.target))) setPanel(false);
   });
@@ -505,6 +571,7 @@ function bindBar(root, store) {
       const fill = (name, apply) => item.querySelectorAll(`[data-ars-item="${name}"]`).forEach(apply);
 
       item.querySelectorAll('[data-ars-play]').forEach((button) => (button.dataset.arsPlay = id));
+      item.querySelectorAll('[data-ars-remove]').forEach((button) => (button.dataset.arsRemove = id));
       fill('title', (node) => (node.textContent = episode.title));
       fill('duration', (node) => (node.textContent = episode.duration ? formatTime(episode.duration) : ''));
       fill('cover', (node) => (episode.cover ? (node.src = episode.cover) : (node.hidden = true)));
@@ -523,6 +590,8 @@ function bindBar(root, store) {
       unmuted: !store.muted,
       cover: !!(episode && episode.cover),
       nocover: !(episode && episode.cover),
+      queue: store.queue.length > 0,
+      noqueue: store.queue.length === 0,
     };
     const texts = {
       title: episode ? episode.title : '',
@@ -868,7 +937,7 @@ function bindIslands(root, store) {
 
 /* ---------------- Boot ---------------- */
 
-const store = new PlayerStore(config.episodes);
+const store = new PlayerStore(config.episodes, config.playlist);
 const root = document.querySelector('[data-ars-player]');
 
 if (root) {
@@ -884,7 +953,8 @@ bindPlayButtons(store);
 
 /**
  * Public API for themes, e.g. ARippleSongPlayer.toggle(42), ARippleSongPlayer.playAt(42, 225),
- * ARippleSongPlayer.add([{ id, title, url, audio, cover, duration, number }]),
+ * ARippleSongPlayer.add([{ id, title, url, audio, cover, duration, number }]) (playable and queued),
+ * ARippleSongPlayer.register([…]) (playable only), ARippleSongPlayer.remove(42), ARippleSongPlayer.clear(),
  * ARippleSongPlayer.subscribe((player) => …).
  */
 window.ARippleSongPlayer = {
@@ -895,5 +965,8 @@ window.ARippleSongPlayer = {
   playAt: (id, seconds) => store.playAt(id, seconds),
   pause: () => store.pause(),
   add: (episodes) => store.add(episodes),
+  register: (episodes) => store.register(episodes),
+  remove: (id) => store.removeFromQueue(id),
+  clear: () => store.clearQueue(),
   subscribe: (listener) => store.subscribe(listener),
 };

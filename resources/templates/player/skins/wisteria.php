@@ -90,19 +90,21 @@ use Jiejia\ARippleSong\Libraries\Template;
             </div>
           </div>
           <section class="min-w-0" aria-labelledby="queue-title">
-            <div class="flex items-center justify-between"><h3 id="queue-title" class="text-lg font-bold">播放队列</h3><span class="mute text-sm" ars-text="queueItems.length + ' 期'"></span></div>
+            <div class="flex items-center justify-between"><h3 id="queue-title" class="text-lg font-bold">播放队列</h3><span class="flex items-center gap-3"><span class="mute text-sm" ars-text="queueItems.length + ' 期'"></span><button type="button" class="mute text-sm hover:text-primary" ars-show="queueItems.length" ars-on:click="clearQueue()">清空</button></span></div>
             <canvas data-spectrum="mirror" data-bar="3" data-gap="3" class="mt-4 block h-14 w-full" aria-hidden="true"></canvas>
             <ul class="mt-4 space-y-2">
               <template ars-for="ep in queueItems">
-                <li>
-                  <button type="button" class="flex w-full items-center gap-4 rounded-[1.25rem] p-2 pr-3 text-left transition hover:bg-base-100" ars-bind:class="isCurrent(ep.id) && 'card-w'" ars-on:click="toggle(ep.id)">
+                <li class="flex items-center gap-1">
+                  <button type="button" class="flex min-w-0 flex-1 items-center gap-4 rounded-[1.25rem] p-2 pr-3 text-left transition hover:bg-base-100" ars-bind:class="isCurrent(ep.id) && 'card-w'" ars-on:click="toggle(ep.id)">
                     <img ars-bind:src="ep.cover" alt="" class="size-14 shrink-0 rounded-2xl">
                     <span class="min-w-0 flex-1"><span class="block truncate font-semibold" ars-text="ep.title"></span><span class="mute block text-xs" ars-text="join(categoryName(ep.category), fmt(ep.duration))"></span></span>
                     <span class="ring-play size-10 shrink-0 text-xs" ars-bind:class="isPlaying(ep.id) && 'is-on'" ars-text="isPlaying(ep.id) ? '❚❚' : '▶'"></span>
                   </button>
+                  <button type="button" class="shrink-0 rounded-full p-1.5 opacity-50 transition hover:opacity-100" ars-on:click="removeFromQueue(ep.id)" aria-label="从播放列表移除" title="从播放列表移除"><?php Icon::render('x', 'size-4'); ?></button>
                 </li>
               </template>
             </ul>
+            <p class="py-6 text-center text-sm opacity-60" ars-show="!queueItems.length">播放列表是空的</p>
           </section>
         </div>
       </div>

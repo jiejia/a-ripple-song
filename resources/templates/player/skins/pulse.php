@@ -98,18 +98,20 @@ use Jiejia\ARippleSong\Libraries\Template;
             </div>
           </div>
           <section aria-labelledby="queue-title">
-            <h3 id="queue-title" class="eyebrow">播放队列</h3>
+            <div class="flex items-center justify-between gap-3"><h3 id="queue-title" class="eyebrow">播放队列</h3><button type="button" class="muted text-sm hover:text-primary" ars-show="queueItems.length" ars-on:click="clearQueue()">清空</button></div>
             <ul class="mt-5 space-y-3">
               <template ars-for="ep in queueItems">
-                <li>
-                  <button type="button" class="row-card flex w-full items-center gap-4 p-2.5 pr-4 text-left" ars-bind:class="isCurrent(ep.id) && 'ring-2 ring-[var(--color-primary)]'" ars-on:click="toggle(ep.id)">
+                <li class="flex items-center gap-1">
+                  <button type="button" class="row-card flex min-w-0 flex-1 items-center gap-4 p-2.5 pr-4 text-left" ars-bind:class="isCurrent(ep.id) && 'ring-2 ring-[var(--color-primary)]'" ars-on:click="toggle(ep.id)">
                     <span class="h-14 w-16 shrink-0 overflow-hidden rounded-xl bg-primary"><img ars-bind:src="ep.cover" alt="" class="size-full object-cover"></span>
                     <span class="min-w-0 flex-1"><span class="block truncate font-medium" ars-text="ep.title"></span><span class="muted block text-sm" ars-text="`第 ${ep.number} 期 · ${fmt(ep.duration)}`"></span></span>
                     <span ars-show="isPlaying(ep.id)" class="eq text-primary" aria-label="正在播放"><i></i><i></i><i></i></span>
                   </button>
+                  <button type="button" class="shrink-0 rounded-full p-1.5 opacity-50 transition hover:opacity-100" ars-on:click="removeFromQueue(ep.id)" aria-label="从播放列表移除" title="从播放列表移除"><?php Icon::render('x', 'size-4'); ?></button>
                 </li>
               </template>
             </ul>
+            <p class="py-6 text-center text-sm opacity-60" ars-show="!queueItems.length">播放列表是空的</p>
           </section>
         </div>
       </div>

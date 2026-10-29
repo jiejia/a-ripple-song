@@ -100,19 +100,21 @@ use Jiejia\ARippleSong\Libraries\Template;
             </div>
           </div>
           <section class="min-w-0 rounded-[1.5rem] bg-base-200 p-4 sm:p-5" aria-labelledby="queue-title">
-            <h3 id="queue-title" class="caps px-2">播放队列</h3>
+            <div class="flex items-center justify-between gap-2"><h3 id="queue-title" class="caps px-2">播放队列</h3><button type="button" class="caps px-2 hover:opacity-100" ars-show="queueItems.length" ars-on:click="clearQueue()">清空</button></div>
             <ul class="mt-3 space-y-1">
               <template ars-for="ep in queueItems">
-                <li>
-                  <button type="button" class="flex w-full items-center gap-3 rounded-xl px-2 py-2 text-left hover:bg-base-100" ars-bind:class="isCurrent(ep.id) && 'bg-base-100 soft-shadow'" ars-on:click="toggle(ep.id)">
+                <li class="flex items-center gap-1">
+                  <button type="button" class="flex min-w-0 flex-1 items-center gap-3 rounded-xl px-2 py-2 text-left hover:bg-base-100" ars-bind:class="isCurrent(ep.id) && 'bg-base-100 soft-shadow'" ars-on:click="toggle(ep.id)">
                     <img ars-bind:src="ep.cover" alt="" class="size-10 shrink-0 rounded-full">
                     <span class="min-w-0 flex-1 truncate text-sm font-medium" ars-bind:class="isCurrent(ep.id) && 'text-primary'" ars-text="ep.title"></span>
                     <span ars-show="isPlaying(ep.id)" class="size-2 shrink-0 rounded-full bg-secondary"></span>
                     <span ars-show="!isPlaying(ep.id)" class="shrink-0 text-xs tabular-nums opacity-50" ars-text="fmt(ep.duration)"></span>
                   </button>
+                  <button type="button" class="shrink-0 rounded-full p-1.5 opacity-50 transition hover:opacity-100" ars-on:click="removeFromQueue(ep.id)" aria-label="从播放列表移除" title="从播放列表移除"><?php Icon::render('x', 'size-4'); ?></button>
                 </li>
               </template>
             </ul>
+            <p class="py-6 text-center text-sm opacity-60" ars-show="!queueItems.length">播放列表是空的</p>
           </section>
         </div>
       </div>

@@ -97,18 +97,20 @@ use Jiejia\ARippleSong\Libraries\Template;
           </div>
         </div>
         <section class="lg:col-span-4" aria-labelledby="queue-title">
-          <h3 id="queue-title" class="label border-b-2 rule px-6 py-4">播放队列</h3>
+          <div class="flex items-center justify-between gap-4 border-b-2 rule px-6 py-4"><h3 id="queue-title" class="label">播放队列</h3><button type="button" class="label hover:text-primary" ars-show="queueItems.length" ars-on:click="clearQueue()">清空</button></div>
           <ul>
             <template ars-for="ep in queueItems">
-              <li>
-                <button type="button" class="flex w-full items-center gap-4 border-b-2 rule px-6 py-3 text-left hover:bg-accent hover:text-accent-content" ars-bind:class="isCurrent(ep.id) && 'bg-base-200'" ars-on:click="toggle(ep.id)">
+              <li class="flex items-stretch border-b-2 rule">
+                <button type="button" class="flex min-w-0 flex-1 items-center gap-4 px-6 py-3 text-left hover:bg-accent hover:text-accent-content" ars-bind:class="isCurrent(ep.id) && 'bg-base-200'" ars-on:click="toggle(ep.id)">
                   <span class="w-10 font-mono text-xl font-semibold" ars-text="ep.number"></span>
                   <span class="min-w-0 flex-1 truncate font-bold" ars-text="ep.title"></span>
                   <span class="label" ars-text="isPlaying(ep.id) ? 'On Air' : fmt(ep.duration)"></span>
                 </button>
+                <button type="button" class="shrink-0 self-stretch px-4 hover:bg-accent hover:text-accent-content" ars-bind:class="isCurrent(ep.id) && 'bg-base-200'" ars-on:click="removeFromQueue(ep.id)" aria-label="从播放列表移除" title="从播放列表移除"><?php Icon::render('x', 'size-4'); ?></button>
               </li>
             </template>
           </ul>
+          <p class="px-6 py-6 text-center text-sm opacity-60" ars-show="!queueItems.length">播放列表是空的</p>
         </section>
       </div>
     </div>

@@ -29,9 +29,14 @@ final class GlobalPlayer
     public const THEME_SUPPORT = Plugin::SLUG . '-player';
 
     /**
-     * Number of latest episodes the player can queue without another request.
+     * Number of latest episodes sent to the player, so their play buttons work without another request.
      */
-    private const QUEUE_SIZE = 50;
+    private const LIBRARY_SIZE = 50;
+
+    /**
+     * Number of latest episodes in the playlist of a new visitor, and after the playlist was cleared.
+     */
+    private const PLAYLIST_SIZE = 20;
 
     private PodcastCPT $podcast;
 
@@ -156,6 +161,7 @@ final class GlobalPlayer
 
         return [
             'episodes' => $episodes,
+            'playlist' => array_slice(array_column($episodes, 'id'), 0, self::PLAYLIST_SIZE),
             'show' => [
                 'title' => (string) $podcast->value('title'),
                 'cover' => (string) $podcast->value('cover'),
@@ -186,7 +192,7 @@ final class GlobalPlayer
     }
 
     /**
-     * Return the latest playable episodes, plus the episode being viewed.
+     * Return the latest playable episodes, newest first, plus the episode being viewed.
      *
      * @return array<int,array<string,mixed>>
      */
@@ -195,7 +201,7 @@ final class GlobalPlayer
         $posts = get_posts([
             'post_type' => $this->podcast->slug(),
             'post_status' => 'publish',
-            'numberposts' => self::QUEUE_SIZE,
+            'numberposts' => self::LIBRARY_SIZE,
             'orderby' => 'date',
             'order' => 'DESC',
         ]);
@@ -203,8 +209,9 @@ final class GlobalPlayer
         // An older episode page must be playable even when it is not in the latest list.
         $viewed = is_singular($this->podcast->slug()) ? get_queried_object() : null;
 
+        // Appended, so the list stays newest first for the default playlist.
         if ($viewed instanceof \WP_Post && ! in_array($viewed->ID, wp_list_pluck($posts, 'ID'), true)) {
-            array_unshift($posts, $viewed);
+            $posts[] = $viewed;
         }
 
         $fallbackCover = (string) (new PodcastSetting())->value('cover');

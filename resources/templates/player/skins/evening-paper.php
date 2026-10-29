@@ -96,18 +96,20 @@ use Jiejia\ARippleSong\Libraries\Template;
             </div>
           </div>
           <section aria-labelledby="queue-title">
-            <h3 id="queue-title" class="section-title text-lg font-black"><span>节目目录</span></h3>
+            <div class="flex items-center gap-4"><h3 id="queue-title" class="section-title flex-1 text-lg font-black"><span>节目目录</span></h3><button type="button" class="meta shrink-0 hover:text-primary" ars-show="queueItems.length" ars-on:click="clearQueue()">清空</button></div>
             <ol class="mt-4">
               <template ars-for="ep in queueItems">
-                <li>
-                  <button type="button" class="leaders w-full border-b hair py-3 text-left hover:text-primary" ars-bind:class="isCurrent(ep.id) && 'text-primary'" ars-on:click="toggle(ep.id)">
+                <li class="flex items-center gap-1 border-b hair">
+                  <button type="button" class="leaders min-w-0 flex-1 py-3 text-left hover:text-primary" ars-bind:class="isCurrent(ep.id) && 'text-primary'" ars-on:click="toggle(ep.id)">
                     <span class="font-display text-xl italic" ars-text="ep.number"></span>
                     <span class="truncate text-[15px] font-semibold" ars-text="ep.title"></span><span class="fill"></span>
                     <span class="meta shrink-0" ars-text="isPlaying(ep.id) ? '收听中' : fmt(ep.duration)"></span>
                   </button>
+                  <button type="button" class="shrink-0 rounded-full p-1.5 opacity-50 transition hover:opacity-100 hover:text-primary" ars-on:click="removeFromQueue(ep.id)" aria-label="从播放列表移除" title="从播放列表移除"><?php Icon::render('x', 'size-4'); ?></button>
                 </li>
               </template>
             </ol>
+            <p class="py-6 text-center text-sm opacity-60" ars-show="!queueItems.length">播放列表是空的</p>
           </section>
         </div>
       </div>

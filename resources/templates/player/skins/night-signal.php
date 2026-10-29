@@ -114,11 +114,11 @@ use Jiejia\ARippleSong\Libraries\Template;
           </div>
 
           <section aria-labelledby="queue-title">
-            <h3 id="queue-title" class="mb-3 flex items-center gap-2 font-bold"><?php Icon::render('list-music', 'size-4'); ?>播放队列</h3>
+            <div class="mb-3 flex items-center justify-between gap-2"><h3 id="queue-title" class="flex items-center gap-2 font-bold"><?php Icon::render('list-music', 'size-4'); ?>播放队列</h3><button type="button" class="font-mono text-xs text-base-content/60 hover:text-primary" ars-show="queueItems.length" ars-on:click="clearQueue()">清空</button></div>
             <ul class="space-y-1">
               <template ars-for="ep in queueItems">
-                <li>
-                  <button type="button" class="flex w-full items-center gap-3 rounded-field p-2 text-left hover:bg-base-200" ars-bind:class="isCurrent(ep.id) && 'bg-base-200'" ars-on:click="toggle(ep.id)">
+                <li class="flex items-center gap-1">
+                  <button type="button" class="flex min-w-0 flex-1 items-center gap-3 rounded-field p-2 text-left hover:bg-base-200" ars-bind:class="isCurrent(ep.id) && 'bg-base-200'" ars-on:click="toggle(ep.id)">
                     <img ars-bind:src="ep.cover" alt="" class="size-11 rounded-lg">
                     <span class="min-w-0 flex-1">
                       <span class="block truncate text-sm font-medium" ars-text="ep.title"></span>
@@ -126,9 +126,11 @@ use Jiejia\ARippleSong\Libraries\Template;
                     </span>
                     <span ars-show="isPlaying(ep.id)" class="eq mr-2 text-primary" aria-label="正在播放"><i></i><i></i><i></i></span>
                   </button>
+                  <button type="button" class="shrink-0 rounded-full p-1.5 opacity-50 transition hover:opacity-100" ars-on:click="removeFromQueue(ep.id)" aria-label="从播放列表移除" title="从播放列表移除"><?php Icon::render('x', 'size-4'); ?></button>
                 </li>
               </template>
             </ul>
+            <p class="py-6 text-center text-sm opacity-60" ars-show="!queueItems.length">播放列表是空的</p>
           </section>
         </div>
       </div>

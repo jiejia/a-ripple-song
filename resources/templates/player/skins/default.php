@@ -21,7 +21,8 @@
  *                              "Player Bar Background" setting turns it into frosted glass of that daisyUI color.
  *   [data-ars-panel]           Full-screen panel; a <dialog> (opened modal) or any element (toggled `hidden`).
  *                              Esc and links inside it close it.
- *   [data-ars-action="…"]      Buttons: toggle, prev, next, back, forward, rate, mute, panel (open / close the panel).
+ *   [data-ars-action="…"]      Buttons: toggle, prev, next, back, forward, rate, mute, panel (open / close the panel),
+ *                              clear (empty the queue; the next page load starts again from the latest episodes).
  *                              back / forward skip the seconds in data-ars-seconds.
  *   [data-ars-seek]            <input type="range"> for the progress. The bar's progress row comes from
  *                              player/parts/progress.php, which follows the "Progress Bar & Spectrum" setting.
@@ -29,9 +30,11 @@
  *   [data-ars-text="…"]        Text filled by JS: title, number, status, position, duration, rate.
  *   [data-ars-src="cover"]     <img> showing the episode cover.
  *   [data-ars-href="url"]      Link to the episode page.
- *   [data-ars-show="…"]        Shown only in that state: playing, paused, loading, muted, unmuted, cover, nocover.
+ *   [data-ars-show="…"]        Shown only in that state: playing, paused, loading, muted, unmuted, cover, nocover,
+ *                              queue / noqueue (the queue has episodes / is empty).
  *   [data-ars-queue]           Queue list; JS clones its <template> per episode and fills
- *                              [data-ars-item="cover|title|duration"]; [data-ars-play] makes the row playable.
+ *                              [data-ars-item="cover|title|duration"]; [data-ars-play] makes the row playable,
+ *                              [data-ars-remove] removes it from the queue.
  *
  * Anywhere on the page, <button data-ars-play="123"> plays / pauses episode 123
  * (add data-ars-at="225" to start at 3:45). JS sets data-ars-state="playing|paused|idle"
@@ -151,15 +154,20 @@ $bigButton = 'btn btn-ghost btn-circle';
                 </div>
 
                 <section class="min-w-0 rounded-box bg-base-200 p-3 sm:p-4 lg:max-h-[calc(100dvh-10rem)] lg:overflow-y-auto">
-                    <h2 class="flex items-center gap-2 px-2 text-xs font-semibold tracking-widest uppercase opacity-60"><?php Icon::render('list-music', 'size-4'); ?><?php esc_html_e('Queue', 'a-ripple-song'); ?></h2>
+                    <div class="flex items-center justify-between gap-2">
+                        <h2 class="flex items-center gap-2 px-2 text-xs font-semibold tracking-widest uppercase opacity-60"><?php Icon::render('list-music', 'size-4'); ?><?php esc_html_e('Queue', 'a-ripple-song'); ?></h2>
+                        <button type="button" class="btn btn-ghost btn-xs" data-ars-action="clear" data-ars-show="queue"><?php esc_html_e('Clear', 'a-ripple-song'); ?></button>
+                    </div>
+                    <p class="px-2 py-6 text-center text-sm opacity-60" data-ars-show="noqueue" hidden><?php esc_html_e('The queue is empty.', 'a-ripple-song'); ?></p>
                     <ul class="mt-3 space-y-1" data-ars-queue>
                         <template>
-                            <li>
-                                <button type="button" class="flex w-full items-center gap-3 rounded-field px-2 py-2 text-left hover:bg-base-100 data-[ars-state=paused]:bg-base-100 data-[ars-state=paused]:text-primary data-[ars-state=playing]:bg-base-100 data-[ars-state=playing]:text-primary" data-ars-play>
+                            <li class="flex items-center gap-1">
+                                <button type="button" class="flex min-w-0 flex-1 items-center gap-3 rounded-field px-2 py-2 text-left hover:bg-base-100 data-[ars-state=paused]:bg-base-100 data-[ars-state=paused]:text-primary data-[ars-state=playing]:bg-base-100 data-[ars-state=playing]:text-primary" data-ars-play>
                                     <img class="size-10 shrink-0 rounded-field bg-base-300 object-cover" alt="" data-ars-item="cover">
                                     <span class="min-w-0 flex-1 truncate text-sm font-medium" data-ars-item="title"></span>
                                     <span class="shrink-0 text-xs tabular-nums opacity-60" data-ars-item="duration"></span>
                                 </button>
+                                <button type="button" class="<?php echo esc_attr($iconButton); ?> shrink-0 opacity-60 hover:opacity-100" data-ars-remove aria-label="<?php esc_attr_e('Remove from queue', 'a-ripple-song'); ?>" title="<?php esc_attr_e('Remove from queue', 'a-ripple-song'); ?>"><?php Icon::render('x', 'size-4'); ?></button>
                             </li>
                         </template>
                     </ul>
