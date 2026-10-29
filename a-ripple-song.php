@@ -15,7 +15,7 @@
  * Plugin Name:       A Ripple Song
  * Plugin URI:        https://github.com/jiejia/a-ripple-song
  * Description:       Podcast features for the A Ripple Song theme: Episode CPT + /feed/podcast RSS (iTunes & Podcasting 2.0 tags).
- * Version:           0.5.2
+ * Version:           0.5.3
  * Author:            jiejia
  * Author URI:        https://github.com/jiejia/
  * License:           GPL-3.0

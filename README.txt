@@ -5,7 +5,7 @@ Tags: podcast, rss, feed, itunes, podcasting2.0
 Requires at least: 6.6
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 0.5.2
+Stable tag: 0.5.3
 License: GPL-3.0
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -60,10 +60,18 @@ The plugin uses getID3 to analyze audio when an episode is saved. For remote aud
 
 == Changelog ==
 
+= 0.5.3 =
+* Add a play statistics dashboard.
+* Plugin Check fixes: prepared SQL for the play log table, escaping notes, direct file access guard.
+* Hooks renamed from `ars_*` to `a_ripple_song_*` (e.g. `a_ripple_song_play_counted`).
+
 = 0.5.0 =
 * Beta release: podcast post type, podcast RSS feed, admin settings, and episode metadata.
 
 == Upgrade Notice ==
+
+= 0.5.3 =
+Hooks are renamed from `ars_*` to `a_ripple_song_*`; update any custom code that uses them.
 
 = 0.5.0 =
 Beta release.
