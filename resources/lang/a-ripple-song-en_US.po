@@ -110,7 +110,7 @@ msgstr "Audio File"
 msgid "Required. Upload an audio file; the saved value is the audio file URL."
 msgstr "Required. Upload an audio file; the saved value is the audio file URL."
 
-#: app/CPTs/PodcastCPT.php:69 app/CPTs/PodcastCPT.php:236
+#: app/CPTs/PodcastCPT.php:69 app/CPTs/PodcastCPT.php:259
 msgid "Duration (seconds)"
 msgstr "Duration (seconds)"
 
@@ -229,15 +229,15 @@ msgstr "Summary"
 msgid "Optional. Plain text summary for iTunes."
 msgstr "Optional. Plain text summary for iTunes."
 
-#: app/CPTs/PodcastCPT.php:184
+#: app/CPTs/PodcastCPT.php:207
 msgid "Podcasting 2.0 & Advanced"
 msgstr "Podcasting 2.0 & Advanced"
 
-#: app/CPTs/PodcastCPT.php:189
+#: app/CPTs/PodcastCPT.php:212
 msgid "Transcript (optional)"
 msgstr "Transcript (optional)"
 
-#: app/CPTs/PodcastCPT.php:193
+#: app/CPTs/PodcastCPT.php:216
 msgid ""
 "Optional. Upload a transcript file or enter its URL (vtt/srt/json/html/txt/"
 "pdf)."
@@ -245,19 +245,19 @@ msgstr ""
 "Optional. Upload a transcript file or enter its URL (vtt/srt/json/html/txt/"
 "pdf)."
 
-#: app/CPTs/PodcastCPT.php:198
+#: app/CPTs/PodcastCPT.php:221
 msgid "Custom GUID (optional)"
 msgstr "Custom GUID (optional)"
 
-#: app/CPTs/PodcastCPT.php:200
+#: app/CPTs/PodcastCPT.php:223
 msgid "Optional. If empty, feed uses WP permalink as GUID."
 msgstr "Optional. If empty, feed uses WP permalink as GUID."
 
-#: app/CPTs/PodcastCPT.php:205
+#: app/CPTs/PodcastCPT.php:228
 msgid "Chapters (Podcasting 2.0)"
 msgstr "Chapters (Podcasting 2.0)"
 
-#: app/CPTs/PodcastCPT.php:208
+#: app/CPTs/PodcastCPT.php:231
 msgid ""
 "Optional. Upload a chapters JSON file or enter its URL for "
 "<podcast:chapters>."
@@ -265,59 +265,59 @@ msgstr ""
 "Optional. Upload a chapters JSON file or enter its URL for "
 "<podcast:chapters>."
 
-#: app/CPTs/PodcastCPT.php:213
+#: app/CPTs/PodcastCPT.php:236
 msgid "Chapters MIME Type"
 msgstr "Chapters MIME Type"
 
-#: app/CPTs/PodcastCPT.php:216
+#: app/CPTs/PodcastCPT.php:239
 msgid "Optional. Defaults to application/json+chapters."
 msgstr "Optional. Defaults to application/json+chapters."
 
-#: app/CPTs/PodcastCPT.php:221
+#: app/CPTs/PodcastCPT.php:244
 msgid "Soundbites"
 msgstr "Soundbites"
 
-#: app/CPTs/PodcastCPT.php:222
+#: app/CPTs/PodcastCPT.php:245
 msgid "Soundbite"
 msgstr "Soundbite"
 
-#: app/CPTs/PodcastCPT.php:224
+#: app/CPTs/PodcastCPT.php:247
 msgid "Optional. Adds one or more <podcast:soundbite> tags."
 msgstr "Optional. Adds one or more <podcast:soundbite> tags."
 
-#: app/CPTs/PodcastCPT.php:229
+#: app/CPTs/PodcastCPT.php:252
 msgid "Start Time (seconds)"
 msgstr "Start Time (seconds)"
 
-#: app/CPTs/PodcastCPT.php:243
+#: app/CPTs/PodcastCPT.php:266
 msgid "Title (optional)"
 msgstr "Title (optional)"
 
-#: app/CPTs/PodcastCPT.php:251
+#: app/CPTs/PodcastCPT.php:274
 msgid "People"
 msgstr "People"
 
-#: app/CPTs/PodcastCPT.php:256 app/Settings/MemberSetting.php:37
+#: app/CPTs/PodcastCPT.php:279 app/Settings/MemberSetting.php:37
 msgid "Members"
 msgstr "Members"
 
-#: app/CPTs/PodcastCPT.php:260
+#: app/CPTs/PodcastCPT.php:283
 msgid "Select episode members (administrators, authors, editors)."
 msgstr "Select episode members (administrators, authors, editors)."
 
-#: app/CPTs/PodcastCPT.php:265
+#: app/CPTs/PodcastCPT.php:288
 msgid "Guests"
 msgstr "Guests"
 
-#: app/CPTs/PodcastCPT.php:268
+#: app/CPTs/PodcastCPT.php:291
 msgid "Select episode guests (contributors)."
 msgstr "Select episode guests (contributors)."
 
-#: app/CPTs/PodcastCPT.php:469
+#: app/CPTs/PodcastCPT.php:493
 msgid "Statistics"
 msgstr "Statistics"
 
-#: app/CPTs/PodcastCPT.php:486 resources/templates/dashboard/page.php:172
+#: app/CPTs/PodcastCPT.php:510 resources/templates/dashboard/page.php:172
 #: resources/templates/dashboard/page.php:208
 #: resources/templates/dashboard/page.php:217
 msgid "Plays"
@@ -336,22 +336,22 @@ msgid "Subscribe: %s"
 msgstr "Subscribe: %s"
 
 #. translators: %s: comma separated list of field labels.
-#: app/Libraries/Fields/FieldAssets.php:45
+#: app/Libraries/Fields/FieldAssets.php:41
 #, php-format
 msgid "Please fix these fields before saving: %s"
 msgstr "Please fix these fields before saving: %s"
 
-#: app/Libraries/Fields/FieldAssets.php:46
+#: app/Libraries/Fields/FieldAssets.php:42
 msgid "This field is required."
 msgstr "This field is required."
 
 #. translators: 1: image width, 2: image height.
-#: app/Libraries/Fields/FieldAssets.php:48
+#: app/Libraries/Fields/FieldAssets.php:44
 #, php-format
 msgid "Current: %1$d × %2$d px."
 msgstr "Current: %1$d × %2$d px."
 
-#: app/Libraries/Fields/FieldAssets.php:49
+#: app/Libraries/Fields/FieldAssets.php:45
 msgid "The image could not be loaded."
 msgstr "The image could not be loaded."
 
@@ -1345,7 +1345,7 @@ msgid "Drag to reorder"
 msgstr "Drag to reorder"
 
 #: resources/templates/fields/controls/complex-row.php:28
-#: resources/templates/fields/controls/media.php:74
+#: resources/templates/fields/controls/media.php:79
 msgid "Remove"
 msgstr "Remove"
 
@@ -1371,20 +1371,20 @@ msgstr "Copied!"
 msgid "Copy"
 msgstr "Copy"
 
-#: resources/templates/fields/controls/media.php:34
+#: resources/templates/fields/controls/media.php:37
 msgid "Use this file"
 msgstr "Use this file"
 
-#: resources/templates/fields/controls/media.php:52
-#: resources/templates/fields/controls/media.php:58
+#: resources/templates/fields/controls/media.php:57
+#: resources/templates/fields/controls/media.php:63
 msgid "Select Image"
 msgstr "Select Image"
 
-#: resources/templates/fields/controls/media.php:62
+#: resources/templates/fields/controls/media.php:67
 msgid "Replace"
 msgstr "Replace"
 
-#: resources/templates/fields/controls/media.php:72
+#: resources/templates/fields/controls/media.php:77
 msgid "Select File"
 msgstr "Select File"
 
@@ -1907,13 +1907,13 @@ msgstr ""
 "the waveform. Not drawn on phones, where the bar has no progress row."
 
 #. translators: %s: maximum file size, e.g. "512 KB".
-#: app/Libraries/Fields/Field.php:219
+#: app/Libraries/Fields/Field.php:222
 #, php-format
 msgid "File must be %s or smaller."
 msgstr "File must be %s or smaller."
 
 #. translators: %s: current file type or size, e.g. "WEBP" or "830.5 KB".
-#: app/Libraries/Fields/FieldAssets.php:51
+#: app/Libraries/Fields/FieldAssets.php:47
 #: app/Libraries/Fields/FieldValidator.php:151
 #: app/Libraries/Fields/FieldValidator.php:160
 #, php-format
@@ -1929,12 +1929,12 @@ msgstr ""
 "transparency. Overrides channel cover."
 
 #. translators: %s: comma separated list of file types, e.g. "JPG, PNG".
-#: app/Libraries/Fields/Field.php:230
+#: app/Libraries/Fields/Field.php:233
 #, php-format
 msgid "Allowed file types: %s."
 msgstr "Allowed file types: %s."
 
-#: app/Libraries/Fields/Field.php:240
+#: app/Libraries/Fields/Field.php:243
 msgid "Image must not contain transparency or an alpha channel."
 msgstr "Image must not contain transparency or an alpha channel."
 
@@ -2179,3 +2179,62 @@ msgstr "Optional. A small square image, e.g. a 128 × 128 px PNG."
 #: app/Taxonomies/PodcastCategoryTaxonomy.php:119
 msgid "Icon"
 msgstr "Icon"
+
+#: app/CPTs/FeaturedColumn.php:58 app/CPTs/FeaturedColumn.php:62
+#: app/CPTs/PodcastCPT.php:199
+msgid "Featured"
+msgstr "Featured"
+
+#. translators: %s: post title.
+#: app/CPTs/FeaturedColumn.php:82
+#, php-format
+msgid "Featured: %s"
+msgstr "Featured: %s"
+
+#: app/CPTs/FeaturedColumn.php:137
+msgid "Featured."
+msgstr "Featured."
+
+#: app/CPTs/FeaturedColumn.php:138
+msgid "No longer featured."
+msgstr "No longer featured."
+
+#: app/CPTs/FeaturedColumn.php:139
+msgid "The change could not be saved."
+msgstr "The change could not be saved."
+
+#: app/CPTs/PodcastCPT.php:184
+msgid "Display"
+msgstr "Display"
+
+#: app/CPTs/PodcastCPT.php:185
+msgid "How themes present this episode on the site."
+msgstr "How themes present this episode on the site."
+
+#: app/CPTs/PodcastCPT.php:190
+msgid "Banner"
+msgstr "Banner"
+
+#: app/CPTs/PodcastCPT.php:194
+msgid ""
+"Optional. Wide image shown by themes; it is cropped to 864 × 278.5 (saved at "
+"up to 1728 × 557 px) after you choose it."
+msgstr ""
+"Optional. Wide image shown by themes; it is cropped to 864 × 278.5 (saved at "
+"up to 1728 × 557 px) after you choose it."
+
+#: app/CPTs/PodcastCPT.php:202
+msgid ""
+"Optional. Themes can highlight featured episodes. Also switchable in the "
+"episode list."
+msgstr ""
+"Optional. Themes can highlight featured episodes. Also switchable in the "
+"episode list."
+
+#: app/Libraries/Fields/FieldAssets.php:48
+msgid "Choose Image"
+msgstr "Choose Image"
+
+#: app/Libraries/Fields/FieldAssets.php:49
+msgid "Select and Crop"
+msgstr "Select and Crop"

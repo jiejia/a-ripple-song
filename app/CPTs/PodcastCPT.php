@@ -181,6 +181,29 @@ class PodcastCPT extends CPTAbstract
 
             [
                 'type' => 'separator',
+                'label' => __('Display', 'a-ripple-song'),
+                'description' => __('How themes present this episode on the site.', 'a-ripple-song'),
+            ],
+            [
+                'type' => 'image',
+                'key' => 'banner',
+                'label' => __('Banner', 'a-ripple-song'),
+                'width' => 'half',
+                // 864 × 278.5 at 2x.
+                'crop' => ['width' => 1728, 'height' => 557],
+                'help' => __('Optional. Wide image shown by themes; it is cropped to 864 × 278.5 (saved at up to 1728 × 557 px) after you choose it.', 'a-ripple-song'),
+            ],
+            [
+                'type' => 'switch',
+                'key' => 'featured',
+                'label' => __('Featured', 'a-ripple-song'),
+                'width' => 'half',
+                'default' => 'no',
+                'help' => __('Optional. Themes can highlight featured episodes. Also switchable in the episode list.', 'a-ripple-song'),
+            ],
+
+            [
+                'type' => 'separator',
                 'label' => __('Podcasting 2.0 & Advanced', 'a-ripple-song'),
             ],
             [
@@ -302,6 +325,7 @@ class PodcastCPT extends CPTAbstract
         add_filter('wp_check_filetype_and_ext', [$this, 'acceptM4aUpload'], 10, 5);
         add_filter('upload_mimes', [$this, 'addJsonMime']);
         add_filter('wp_check_filetype_and_ext', [$this, 'acceptJsonUpload'], 10, 5);
+        (new FeaturedColumn($this))->register();
     }
 
     /**

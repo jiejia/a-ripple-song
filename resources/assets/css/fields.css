@@ -840,3 +840,13 @@ button.ars-media__preview {
 .column-ars_icon {
 	width: 48px;
 }
+
+/* Featured switch column in the episode list. */
+.column-ars_featured {
+	width: 72px;
+}
+
+.ars-featured.ars-fields {
+	display: inline-flex;
+	vertical-align: middle;
+}

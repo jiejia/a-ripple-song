@@ -20,6 +20,9 @@ use Jiejia\ARippleSong\Libraries\Html;
 $url = $control->scalar();
 $isImage = $field->type === FieldType::Image;
 $checkDimensions = $isImage && ! $field->dimensions->isEmpty();
+$crop = $isImage && ($field->crop['width'] ?? 0) > 0 && ($field->crop['height'] ?? 0) > 0
+    ? ['width' => $field->crop['width'], 'height' => $field->crop['height']]
+    : null;
 $attributes = [
     'class' => Html::classes(['ars-media', 'ars-media--' . $field->type->value, 'has-value' => $url !== '']),
     'data-ars-media' => true,
@@ -32,6 +35,8 @@ $attributes = [
     },
     'data-frame-title' => $field->label,
     'data-frame-button' => __('Use this file', 'a-ripple-song'),
+    // Opens a cropper locked to this aspect ratio after an image is picked.
+    'data-crop' => $crop !== null ? wp_json_encode($crop) : null,
     'data-autofill' => $field->autofill !== [] ? wp_json_encode($field->autofill) : null,
     'data-dimensions' => $checkDimensions ? wp_json_encode($field->dimensions) : null,
     'data-dimensions-message' => $checkDimensions ? $field->dimensions->message() : null,

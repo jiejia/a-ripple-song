@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: A Ripple Song 0.5.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/a-ripple-song\n"
-"POT-Creation-Date: 2026-10-30T06:24:56+00:00\n"
+"POT-Creation-Date: 2026-10-30T06:38:00+00:00\n"
 "PO-Revision-Date: 2026-10-28 12:49+0000\n"
 "Last-Translator: jiejia <jiejia2009@gmail.com>\n"
 "Language-Team: Chinese (China)\n"
@@ -119,6 +119,29 @@ msgstr "&larr; 前往%s"
 msgid "Episode not found."
 msgstr "未找到该单集。"
 
+#: app/CPTs/FeaturedColumn.php:58 app/CPTs/FeaturedColumn.php:62
+#: app/CPTs/PodcastCPT.php:199
+msgid "Featured"
+msgstr "推荐"
+
+#. translators: %s: post title.
+#: app/CPTs/FeaturedColumn.php:82
+#, php-format
+msgid "Featured: %s"
+msgstr "推荐：%s"
+
+#: app/CPTs/FeaturedColumn.php:137
+msgid "Featured."
+msgstr "已设为推荐。"
+
+#: app/CPTs/FeaturedColumn.php:138
+msgid "No longer featured."
+msgstr "已取消推荐。"
+
+#: app/CPTs/FeaturedColumn.php:139
+msgid "The change could not be saved."
+msgstr "无法保存此更改。"
+
 #: app/CPTs/PodcastCPT.php:25 resources/templates/dashboard/page.php:311
 msgid "Episode"
 msgstr "播客"
@@ -139,7 +162,7 @@ msgstr "音频文件"
 msgid "Required. Upload an audio file; the saved value is the audio file URL."
 msgstr "必填。上传音频文件；保存的值是音频文件 URL。"
 
-#: app/CPTs/PodcastCPT.php:69 app/CPTs/PodcastCPT.php:236
+#: app/CPTs/PodcastCPT.php:69 app/CPTs/PodcastCPT.php:259
 msgid "Duration (seconds)"
 msgstr "时长（秒）"
 
@@ -266,90 +289,116 @@ msgid "Optional. Plain text summary for iTunes."
 msgstr "可选。用于 iTunes 的纯文本摘要。"
 
 #: app/CPTs/PodcastCPT.php:184
+msgid "Display"
+msgstr "展示"
+
+#: app/CPTs/PodcastCPT.php:185
+msgid "How themes present this episode on the site."
+msgstr "主题在站点上展示本期节目的方式。"
+
+#: app/CPTs/PodcastCPT.php:190
+msgid "Banner"
+msgstr "横幅"
+
+#: app/CPTs/PodcastCPT.php:194
+msgid ""
+"Optional. Wide image shown by themes; it is cropped to 864 × 278.5 (saved at "
+"up to 1728 × 557 px) after you choose it."
+msgstr ""
+"可选。由主题显示的横幅图片；选择后会裁剪为 864 × 278.5 的比例（最大保存为 "
+"1728 × 557 px）。"
+
+#: app/CPTs/PodcastCPT.php:202
+msgid ""
+"Optional. Themes can highlight featured episodes. Also switchable in the "
+"episode list."
+msgstr "可选。主题可以突出显示推荐的节目。也可以在节目列表中直接切换。"
+
+#: app/CPTs/PodcastCPT.php:207
 msgid "Podcasting 2.0 & Advanced"
 msgstr "Podcasting 2.0 与高级"
 
-#: app/CPTs/PodcastCPT.php:189
+#: app/CPTs/PodcastCPT.php:212
 msgid "Transcript (optional)"
 msgstr "文字稿（可选）"
 
-#: app/CPTs/PodcastCPT.php:193
+#: app/CPTs/PodcastCPT.php:216
 msgid ""
 "Optional. Upload a transcript file or enter its URL (vtt/srt/json/html/txt/"
 "pdf)."
 msgstr "可选。上传文字稿文件或填写其 URL（vtt/srt/json/html/txt/pdf）。"
 
-#: app/CPTs/PodcastCPT.php:198
+#: app/CPTs/PodcastCPT.php:221
 msgid "Custom GUID (optional)"
 msgstr "自定义 GUID（可选）"
 
-#: app/CPTs/PodcastCPT.php:200
+#: app/CPTs/PodcastCPT.php:223
 msgid "Optional. If empty, feed uses WP permalink as GUID."
 msgstr "可选。留空时，Feed 使用 WordPress 固定链接作为 GUID。"
 
-#: app/CPTs/PodcastCPT.php:205
+#: app/CPTs/PodcastCPT.php:228
 msgid "Chapters (Podcasting 2.0)"
 msgstr "章节（Podcasting 2.0）"
 
-#: app/CPTs/PodcastCPT.php:208
+#: app/CPTs/PodcastCPT.php:231
 msgid ""
 "Optional. Upload a chapters JSON file or enter its URL for "
 "<podcast:chapters>."
 msgstr "可选。上传章节 JSON 文件或填写其 URL，用于 <podcast:chapters>。"
 
-#: app/CPTs/PodcastCPT.php:213
+#: app/CPTs/PodcastCPT.php:236
 msgid "Chapters MIME Type"
 msgstr "章节 MIME 类型"
 
-#: app/CPTs/PodcastCPT.php:216
+#: app/CPTs/PodcastCPT.php:239
 msgid "Optional. Defaults to application/json+chapters."
 msgstr "可选。默认是 application/json+chapters。"
 
-#: app/CPTs/PodcastCPT.php:221
+#: app/CPTs/PodcastCPT.php:244
 msgid "Soundbites"
 msgstr "精彩片段"
 
-#: app/CPTs/PodcastCPT.php:222
+#: app/CPTs/PodcastCPT.php:245
 msgid "Soundbite"
 msgstr "精彩片段"
 
-#: app/CPTs/PodcastCPT.php:224
+#: app/CPTs/PodcastCPT.php:247
 msgid "Optional. Adds one or more <podcast:soundbite> tags."
 msgstr "可选。添加一个或多个 <podcast:soundbite> 标签。"
 
-#: app/CPTs/PodcastCPT.php:229
+#: app/CPTs/PodcastCPT.php:252
 msgid "Start Time (seconds)"
 msgstr "开始时间（秒）"
 
-#: app/CPTs/PodcastCPT.php:243
+#: app/CPTs/PodcastCPT.php:266
 msgid "Title (optional)"
 msgstr "标题（可选）"
 
-#: app/CPTs/PodcastCPT.php:251
+#: app/CPTs/PodcastCPT.php:274
 msgid "People"
 msgstr "人物"
 
-#: app/CPTs/PodcastCPT.php:256 app/Settings/MemberSetting.php:37
+#: app/CPTs/PodcastCPT.php:279 app/Settings/MemberSetting.php:37
 msgid "Members"
 msgstr "成员"
 
-#: app/CPTs/PodcastCPT.php:260
+#: app/CPTs/PodcastCPT.php:283
 msgid "Select episode members (administrators, authors, editors)."
 msgstr "选择播客成员（管理员、作者、编辑）。"
 
-#: app/CPTs/PodcastCPT.php:265
+#: app/CPTs/PodcastCPT.php:288
 msgid "Guests"
 msgstr "嘉宾"
 
-#: app/CPTs/PodcastCPT.php:268
+#: app/CPTs/PodcastCPT.php:291
 msgid "Select episode guests (contributors)."
 msgstr "选择播客嘉宾（贡献者）。"
 
-#: app/CPTs/PodcastCPT.php:469
+#: app/CPTs/PodcastCPT.php:493
 msgid "Statistics"
 msgstr "统计"
 
-#: app/CPTs/PodcastCPT.php:486 resources/templates/dashboard/page.php:172
+#: app/CPTs/PodcastCPT.php:510 resources/templates/dashboard/page.php:172
 #: resources/templates/dashboard/page.php:208
 #: resources/templates/dashboard/page.php:217
 msgid "Plays"
@@ -368,48 +417,56 @@ msgid "Subscribe: %s"
 msgstr "订阅：%s"
 
 #. translators: %s: maximum file size, e.g. "512 KB".
-#: app/Libraries/Fields/Field.php:219
+#: app/Libraries/Fields/Field.php:222
 #, php-format
 msgid "File must be %s or smaller."
 msgstr "文件不能超过 %s。"
 
 #. translators: %s: comma separated list of file types, e.g. "JPG, PNG".
-#: app/Libraries/Fields/Field.php:230
+#: app/Libraries/Fields/Field.php:233
 #, php-format
 msgid "Allowed file types: %s."
 msgstr "允许的文件类型：%s。"
 
-#: app/Libraries/Fields/Field.php:240
+#: app/Libraries/Fields/Field.php:243
 msgid "Image must not contain transparency or an alpha channel."
 msgstr "图片不能包含透明区域或 Alpha 通道。"
 
 #. translators: %s: comma separated list of field labels.
-#: app/Libraries/Fields/FieldAssets.php:45
+#: app/Libraries/Fields/FieldAssets.php:41
 #, php-format
 msgid "Please fix these fields before saving: %s"
 msgstr "保存前请修正以下字段：%s"
 
-#: app/Libraries/Fields/FieldAssets.php:46
+#: app/Libraries/Fields/FieldAssets.php:42
 msgid "This field is required."
 msgstr "此字段为必填项。"
 
 #. translators: 1: image width, 2: image height.
-#: app/Libraries/Fields/FieldAssets.php:48
+#: app/Libraries/Fields/FieldAssets.php:44
 #, php-format
 msgid "Current: %1$d × %2$d px."
 msgstr "当前：%1$d × %2$d px。"
 
-#: app/Libraries/Fields/FieldAssets.php:49
+#: app/Libraries/Fields/FieldAssets.php:45
 msgid "The image could not be loaded."
 msgstr "无法加载该图片。"
 
 #. translators: %s: current file type or size, e.g. "WEBP" or "830.5 KB".
-#: app/Libraries/Fields/FieldAssets.php:51
+#: app/Libraries/Fields/FieldAssets.php:47
 #: app/Libraries/Fields/FieldValidator.php:151
 #: app/Libraries/Fields/FieldValidator.php:160
 #, php-format
 msgid "Current: %s."
 msgstr "当前：%s。"
+
+#: app/Libraries/Fields/FieldAssets.php:48
+msgid "Choose Image"
+msgstr "选择图片"
+
+#: app/Libraries/Fields/FieldAssets.php:49
+msgid "Select and Crop"
+msgstr "选择并裁剪"
 
 #. translators: %s: field label.
 #: app/Libraries/Fields/FieldValidator.php:58
@@ -2001,7 +2058,7 @@ msgid "Drag to reorder"
 msgstr "拖动排序"
 
 #: resources/templates/fields/controls/complex-row.php:28
-#: resources/templates/fields/controls/media.php:74
+#: resources/templates/fields/controls/media.php:79
 msgid "Remove"
 msgstr "移除"
 
@@ -2027,20 +2084,20 @@ msgstr "已复制！"
 msgid "Copy"
 msgstr "复制"
 
-#: resources/templates/fields/controls/media.php:34
+#: resources/templates/fields/controls/media.php:37
 msgid "Use this file"
 msgstr "使用此文件"
 
-#: resources/templates/fields/controls/media.php:52
-#: resources/templates/fields/controls/media.php:58
+#: resources/templates/fields/controls/media.php:57
+#: resources/templates/fields/controls/media.php:63
 msgid "Select Image"
 msgstr "选择图片"
 
-#: resources/templates/fields/controls/media.php:62
+#: resources/templates/fields/controls/media.php:67
 msgid "Replace"
 msgstr "更换"
 
-#: resources/templates/fields/controls/media.php:72
+#: resources/templates/fields/controls/media.php:77
 msgid "Select File"
 msgstr "选择文件"
 

@@ -24,18 +24,14 @@ final class FieldAssets
     public static function enqueue(): void
     {
         wp_enqueue_media();
-
-        wp_enqueue_style(
-            self::HANDLE,
-            A_RIPPLE_SONG_PLUGIN_URL . 'resources/assets/css/fields.css',
-            ['dashicons'],
-            Plugin::assetVersion('resources/assets/css/fields.css')
-        );
+        self::enqueueStyle();
+        // The media modal's cropper (image fields with "crop") draws its selection with imgAreaSelect.
+        wp_enqueue_style('imgareaselect');
 
         wp_enqueue_script(
             self::HANDLE,
             A_RIPPLE_SONG_PLUGIN_URL . 'resources/assets/js/fields.js',
-            ['jquery', 'jquery-ui-sortable'],
+            ['jquery', 'jquery-ui-sortable', 'imgareaselect'],
             Plugin::assetVersion('resources/assets/js/fields.js'),
             true
         );
@@ -49,6 +45,23 @@ final class FieldAssets
             'imageLoadError' => __('The image could not be loaded.', 'a-ripple-song'),
             /* translators: %s: current file type or size, e.g. "WEBP" or "830.5 KB". */
             'currentFile' => __('Current: %s.', 'a-ripple-song'),
+            'cropTitle' => __('Choose Image', 'a-ripple-song'),
+            'cropButton' => __('Select and Crop', 'a-ripple-song'),
         ]);
+    }
+
+    /**
+     * Enqueue only the field styles, e.g. for a switch outside a form.
+     *
+     * @return void
+     */
+    public static function enqueueStyle(): void
+    {
+        wp_enqueue_style(
+            self::HANDLE,
+            A_RIPPLE_SONG_PLUGIN_URL . 'resources/assets/css/fields.css',
+            ['dashicons'],
+            Plugin::assetVersion('resources/assets/css/fields.css')
+        );
     }
 }

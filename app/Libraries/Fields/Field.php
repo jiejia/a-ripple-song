@@ -36,6 +36,7 @@ final readonly class Field
      * @param int $maxSize File / image: largest allowed file size in bytes; 0 means unrestricted.
      * @param array<int,string> $mimeTypes File / image: allowed MIME types, e.g. ['image/jpeg', 'image/png']; empty allows any.
      * @param bool $opaque Image: reject PNGs that have an alpha channel or a transparent color.
+     * @param array{width?:int,height?:int} $crop Image: after picking, crop to this aspect ratio in the media modal; the copy is saved at most this size.
      * @param array<int,Field> $fields Complex: sub fields of each row.
      * @param string $rowLabel Complex: label of one row, e.g. "Soundbite".
      * @param string $rowTitleField Complex: sub field key whose value titles the row.
@@ -63,6 +64,7 @@ final readonly class Field
         public int $maxSize = 0,
         public array $mimeTypes = [],
         public bool $opaque = false,
+        public array $crop = [],
         public array $fields = [],
         public string $rowLabel = '',
         public string $rowTitleField = '',
@@ -102,6 +104,7 @@ final readonly class Field
             maxSize: (int) ($definition['max_size'] ?? 0),
             mimeTypes: array_values(array_map('strval', (array) ($definition['mime_types'] ?? []))),
             opaque: (bool) ($definition['opaque'] ?? false),
+            crop: array_map('intval', (array) ($definition['crop'] ?? [])),
             fields: self::collect((array) ($definition['fields'] ?? [])),
             rowLabel: (string) ($definition['row_label'] ?? ''),
             rowTitleField: (string) ($definition['row_title_field'] ?? ''),

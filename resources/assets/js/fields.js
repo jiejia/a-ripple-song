@@ -108,11 +108,105 @@
 		});
 	}
 
+	function useAttachment($media, attachment) {
+		$media.find('.ars-media__input').val(attachment.url).trigger('change');
+		autofill($media, attachment);
+	}
+
+	// Center the largest selection of the required aspect ratio, like the core site icon cropper.
+	function cropSelectOptions(crop) {
+		return function (attachment) {
+			var width = attachment.get('width');
+			var height = attachment.get('height');
+			var ratio = crop.width / crop.height;
+			var selWidth = width / height > ratio ? Math.round(height * ratio) : width;
+			var selHeight = width / height > ratio ? height : Math.round(width / ratio);
+			var x1 = Math.round((width - selWidth) / 2);
+			var y1 = Math.round((height - selHeight) / 2);
+
+			return {
+				aspectRatio: crop.width + ':' + crop.height,
+				handles: true,
+				keys: true,
+				instance: true,
+				persistent: true,
+				imageWidth: width,
+				imageHeight: height,
+				x1: x1,
+				y1: y1,
+				x2: x1 + selWidth,
+				y2: y1 + selHeight
+			};
+		};
+	}
+
+	// Pick an image, then crop a copy to the field's aspect ratio through core's crop-image Ajax action.
+	function openCropFrame($media, crop) {
+		var Cropper = wp.media.controller.Cropper.extend({
+			doCrop: function (attachment) {
+				var details = attachment.get('cropDetails');
+				// Scale down to the target size; never scale up.
+				var scale = Math.min(1, crop.width / details.width);
+
+				return wp.ajax.post('crop-image', {
+					nonce: attachment.get('nonces').edit,
+					id: attachment.get('id'),
+					context: 'ars_field_crop',
+					cropDetails: $.extend({}, details, {
+						dst_width: Math.round(details.width * scale),
+						dst_height: Math.round(details.height * scale)
+					})
+				});
+			}
+		});
+		var library = $media.data('library');
+		var frame = wp.media({
+			button: { text: l10n.cropButton, close: false },
+			states: [
+				new wp.media.controller.Library({
+					title: $media.data('frameTitle') || l10n.cropTitle,
+					library: wp.media.query({ type: library || 'image' }),
+					multiple: false,
+					date: false,
+					suggestedWidth: crop.width,
+					suggestedHeight: crop.height
+				}),
+				new Cropper({ imgSelectOptions: cropSelectOptions(crop) })
+			]
+		});
+
+		frame.on('select', function () {
+			var attachment = frame.state().get('selection').first();
+			var ratio = attachment.get('width') / attachment.get('height');
+
+			// Images already in the right shape (within 1%) are used as they are.
+			if (Math.abs(ratio / (crop.width / crop.height) - 1) < 0.01) {
+				useAttachment($media, attachment.toJSON());
+				frame.close();
+			} else {
+				frame.setState('cropper');
+			}
+		});
+
+		frame.on('cropped', function (attachment) {
+			useAttachment($media, attachment);
+		});
+
+		frame.open();
+	}
+
 	$(document).on('click', '.ars-media__select', function (event) {
 		event.preventDefault();
 
 		var $media = $(this).closest('[data-ars-media]');
 		var frame = $media.data('arsFrame');
+
+		// A new frame each time: the cropper state keeps the previous image.
+		if ($media.data('crop')) {
+			openCropFrame($media, $media.data('crop'));
+
+			return;
+		}
 
 		if (!frame) {
 			var library = $media.data('library');
@@ -125,10 +219,7 @@
 			});
 
 			frame.on('select', function () {
-				var attachment = frame.state().get('selection').first().toJSON();
-
-				$media.find('.ars-media__input').val(attachment.url).trigger('change');
-				autofill($media, attachment);
+				useAttachment($media, frame.state().get('selection').first().toJSON());
 			});
 
 			$media.data('arsFrame', frame);
