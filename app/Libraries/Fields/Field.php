@@ -30,7 +30,7 @@ final readonly class Field
      * @param bool $copyable Single-line inputs: show a Copy button next to the input.
      * @param array<string,mixed> $attributes Extra control attributes; number fields honor min, max and step.
      * @param array<int|string,mixed>|Closure $options Select options: labels or ['label', 'image', 'meta'], or a Closure returning them.
-     * @param string $mediaType File: restricts the media library, e.g. "audio".
+     * @param string|array<int,string> $mediaType File: restricts the media library, e.g. "audio" or ['text/vtt', 'application/pdf']; unlike mime_types it is not validated.
      * @param array<string,string> $autofill File / image: target field key => attachment property (duration, filesize, mime, width, height, ...).
      * @param ImageDimensions $dimensions Image: size rules.
      * @param int $maxSize File / image: largest allowed file size in bytes; 0 means unrestricted.
@@ -57,7 +57,7 @@ final readonly class Field
         public bool $copyable = false,
         public array $attributes = [],
         public array|Closure $options = [],
-        public string $mediaType = '',
+        public string|array $mediaType = '',
         public array $autofill = [],
         public ImageDimensions $dimensions = new ImageDimensions(),
         public int $maxSize = 0,
@@ -94,7 +94,9 @@ final readonly class Field
             copyable: (bool) ($definition['copyable'] ?? false),
             attributes: (array) ($definition['attributes'] ?? []),
             options: $definition['options'] ?? [],
-            mediaType: (string) ($definition['media_type'] ?? ''),
+            mediaType: is_array($definition['media_type'] ?? null)
+                ? array_values(array_map('strval', $definition['media_type']))
+                : (string) ($definition['media_type'] ?? ''),
             autofill: (array) ($definition['autofill'] ?? []),
             dimensions: ImageDimensions::fromArray((array) ($definition['dimensions'] ?? [])),
             maxSize: (int) ($definition['max_size'] ?? 0),

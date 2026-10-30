@@ -238,8 +238,8 @@ msgid "Transcript (optional)"
 msgstr "Transcript (optional)"
 
 #: app/CPTs/PodcastCPT.php:191
-msgid "Optional. Transcript file URL (vtt/srt/txt/pdf)."
-msgstr "Optional. Transcript file URL (vtt/srt/txt/pdf)."
+msgid "Optional. Upload a transcript file or enter its URL (vtt/srt/json/html/txt/pdf)."
+msgstr "Optional. Upload a transcript file or enter its URL (vtt/srt/json/html/txt/pdf)."
 
 #: app/CPTs/PodcastCPT.php:196
 msgid "Custom GUID (optional)"
@@ -254,8 +254,8 @@ msgid "Chapters (Podcasting 2.0)"
 msgstr "Chapters (Podcasting 2.0)"
 
 #: app/CPTs/PodcastCPT.php:205
-msgid "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
-msgstr "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
+msgid "Optional. Upload a chapters JSON file or enter its URL for <podcast:chapters>."
+msgstr "Optional. Upload a chapters JSON file or enter its URL for <podcast:chapters>."
 
 #: app/CPTs/PodcastCPT.php:210
 msgid "Chapters MIME Type"

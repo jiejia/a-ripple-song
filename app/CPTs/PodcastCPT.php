@@ -184,11 +184,13 @@ class PodcastCPT extends CPTAbstract
                 'label' => __('Podcasting 2.0 & Advanced', 'a-ripple-song'),
             ],
             [
-                'type' => 'url',
+                'type' => 'file',
                 'key' => 'episode_transcript',
                 'label' => __('Transcript (optional)', 'a-ripple-song'),
                 'width' => 'half',
-                'help' => __('Optional. Transcript file URL (vtt/srt/txt/pdf).', 'a-ripple-song'),
+                // Uploaded .srt files are stored as text/plain.
+                'media_type' => ['text/vtt', 'text/plain', 'application/json', 'text/html', 'application/pdf'],
+                'help' => __('Optional. Upload a transcript file or enter its URL (vtt/srt/json/html/txt/pdf).', 'a-ripple-song'),
             ],
             [
                 'type' => 'text',
@@ -198,11 +200,12 @@ class PodcastCPT extends CPTAbstract
                 'help' => __('Optional. If empty, feed uses WP permalink as GUID.', 'a-ripple-song'),
             ],
             [
-                'type' => 'url',
+                'type' => 'file',
                 'key' => 'episode_chapters',
                 'label' => __('Chapters (Podcasting 2.0)', 'a-ripple-song'),
                 'width' => 'half',
-                'help' => __('Optional. Provide a chapters JSON URL/file for <podcast:chapters>.', 'a-ripple-song'),
+                'media_type' => ['application/json'],
+                'help' => __('Optional. Upload a chapters JSON file or enter its URL for <podcast:chapters>.', 'a-ripple-song'),
             ],
             [
                 'type' => 'text',
@@ -297,6 +300,8 @@ class PodcastCPT extends CPTAbstract
         add_action('add_meta_boxes_' . $this->slug(), [$this, 'addStatisticsMetaBox']);
         add_filter('upload_mimes', [$this, 'addM4aMime']);
         add_filter('wp_check_filetype_and_ext', [$this, 'acceptM4aUpload'], 10, 5);
+        add_filter('upload_mimes', [$this, 'addJsonMime']);
+        add_filter('wp_check_filetype_and_ext', [$this, 'acceptJsonUpload'], 10, 5);
     }
 
     /**
@@ -344,6 +349,43 @@ class PodcastCPT extends CPTAbstract
         }
 
         return ['ext' => $extension, 'type' => 'audio/x-m4a', 'proper_filename' => $data['proper_filename'] ?? false];
+    }
+
+    /**
+     * Allow .json uploads for chapters and JSON transcripts; core does not list JSON.
+     *
+     * @param array<string,string> $mimes Allowed MIME types keyed by extension pattern.
+     * @return array<string,string>
+     */
+    public function addJsonMime(array $mimes): array
+    {
+        return $mimes + ['json' => 'application/json'];
+    }
+
+    /**
+     * Let .json files through the upload type check when file type detection reports them as text/plain.
+     *
+     * Older libmagic versions do not recognise JSON, and core only forgives text/plain for a few text types.
+     *
+     * @param array{ext:string|false,type:string|false,proper_filename:string|false} $data Result of the check.
+     * @param string $file Full path of the uploaded file.
+     * @param string $filename File name.
+     * @param array<string,string>|null $mimes Allowed MIME types, null for the user's defaults.
+     * @param string|false $realMime MIME type detected from the content.
+     * @return array{ext:string|false,type:string|false,proper_filename:string|false}
+     */
+    public function acceptJsonUpload(array $data, string $file, string $filename, ?array $mimes, string|false $realMime): array
+    {
+        if (
+            ! empty($data['ext'])
+            || strtolower((string) pathinfo($filename, PATHINFO_EXTENSION)) !== 'json'
+            || $realMime !== 'text/plain'
+            || wp_check_filetype($filename, $mimes)['type'] !== 'application/json'
+        ) {
+            return $data;
+        }
+
+        return ['ext' => 'json', 'type' => 'application/json', 'proper_filename' => $data['proper_filename'] ?? false];
     }
 
     /**

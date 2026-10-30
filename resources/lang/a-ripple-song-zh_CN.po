@@ -237,8 +237,8 @@ msgid "Transcript (optional)"
 msgstr "文字稿（可选）"
 
 #: app/CPTs/PodcastCPT.php:191
-msgid "Optional. Transcript file URL (vtt/srt/txt/pdf)."
-msgstr "可选。文字稿文件 URL（vtt/srt/txt/pdf）。"
+msgid "Optional. Upload a transcript file or enter its URL (vtt/srt/json/html/txt/pdf)."
+msgstr "可选。上传文字稿文件或填写其 URL（vtt/srt/json/html/txt/pdf）。"
 
 #: app/CPTs/PodcastCPT.php:196
 msgid "Custom GUID (optional)"
@@ -253,8 +253,8 @@ msgid "Chapters (Podcasting 2.0)"
 msgstr "章节（Podcasting 2.0）"
 
 #: app/CPTs/PodcastCPT.php:205
-msgid "Optional. Provide a chapters JSON URL/file for <podcast:chapters>."
-msgstr "可选。为 <podcast:chapters> 提供章节 JSON URL/文件。"
+msgid "Optional. Upload a chapters JSON file or enter its URL for <podcast:chapters>."
+msgstr "可选。上传章节 JSON 文件或填写其 URL，用于 <podcast:chapters>。"
 
 #: app/CPTs/PodcastCPT.php:210
 msgid "Chapters MIME Type"

@@ -24,7 +24,12 @@ $attributes = [
     'class' => Html::classes(['ars-media', 'ars-media--' . $field->type->value, 'has-value' => $url !== '']),
     'data-ars-media' => true,
     // The picker then lists only files of the allowed types.
-    'data-library' => $field->mimeTypes !== [] ? wp_json_encode($field->mimeTypes) : ($isImage ? 'image' : $field->mediaType),
+    'data-library' => match (true) {
+        $field->mimeTypes !== [] => wp_json_encode($field->mimeTypes),
+        $isImage => 'image',
+        is_array($field->mediaType) => wp_json_encode($field->mediaType),
+        default => $field->mediaType,
+    },
     'data-frame-title' => $field->label,
     'data-frame-button' => __('Use this file', 'a-ripple-song'),
     'data-autofill' => $field->autofill !== [] ? wp_json_encode($field->autofill) : null,
