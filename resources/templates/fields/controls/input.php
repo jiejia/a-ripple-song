@@ -1,6 +1,6 @@
 <?php
 /**
- * Single-line input (text, number, url, email), optionally with a Copy button.
+ * Single-line input (text, number, url, email, time), optionally with a Copy button.
  *
  * @var FieldContext $control
  * @var Field $field

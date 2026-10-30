@@ -15,6 +15,11 @@ class PodcastSetting extends SettingAbstract
 
     public string $slug = 'podcast_settings';
 
+    /**
+     * RRULE weekday codes => WP_Locale weekday index (0 = Sunday), in the order shown on the settings page.
+     */
+    private const WEEKDAYS = ['MO' => 1, 'TU' => 2, 'WE' => 3, 'TH' => 4, 'FR' => 5, 'SA' => 6, 'SU' => 0];
+
     public function isTopLevelMenu(): bool
     {
         return false;
@@ -105,6 +110,47 @@ class PodcastSetting extends SettingAbstract
                 ],
                 'default' => 'clean',
                 'help' => __('Required. Single-episode value can override.', 'a-ripple-song'),
+            ],
+
+            [
+                'type' => 'separator',
+                'label' => __('Release Schedule', 'a-ripple-song'),
+                'description' => __('Shown by themes and written to the feed as podcast:updateFrequency. Times use the site timezone.', 'a-ripple-song'),
+            ],
+            [
+                'type' => 'select',
+                'key' => 'schedule_frequency',
+                'label' => __('Frequency', 'a-ripple-song'),
+                'width' => 'third',
+                'placeholder' => __('(not set)', 'a-ripple-song'),
+                'options' => [
+                    'daily' => __('Daily', 'a-ripple-song'),
+                    'weekly' => __('Weekly', 'a-ripple-song'),
+                    'biweekly' => __('Every other week', 'a-ripple-song'),
+                    'monthly' => __('Monthly', 'a-ripple-song'),
+                ],
+                'help' => __('Optional. Leave unset to hide the schedule.', 'a-ripple-song'),
+            ],
+            [
+                'type' => 'multiselect',
+                'key' => 'schedule_days',
+                'label' => __('Release Days', 'a-ripple-song'),
+                'width' => 'third',
+                'options' => $this->weekdayOptions(...),
+                'help' => __('For weekly and every-other-week shows.', 'a-ripple-song'),
+            ],
+            [
+                'type' => 'time',
+                'key' => 'schedule_time',
+                'label' => __('Release Time', 'a-ripple-song'),
+                'width' => 'third',
+                'help' => __('Optional. 24-hour time, e.g. 21:00.', 'a-ripple-song'),
+            ],
+            [
+                'type' => 'text',
+                'key' => 'schedule_text',
+                'label' => __('Custom Schedule Text (optional)', 'a-ripple-song'),
+                'help' => __('Optional. Replaces the generated text, e.g. "On break until March".', 'a-ripple-song'),
             ],
 
             [
@@ -278,6 +324,85 @@ class PodcastSetting extends SettingAbstract
     }
 
     /**
+     * Return the release schedule for themes and the feed, or null when none is set.
+     *
+     * "day" and "time" are the two halves of the generated text (e.g. "每周四" and "21:00");
+     * "text" is the custom text when filled in, else both halves; "rrule" is an iCalendar RRULE, "" when unknown.
+     *
+     * @return array{day:string,time:string,text:string,rrule:string}|null
+     */
+    public function schedule(): ?array
+    {
+        $frequency = (string) $this->value('schedule_frequency');
+        $time = (string) $this->value('schedule_time');
+        $custom = trim((string) $this->value('schedule_text'));
+        $days = in_array($frequency, ['weekly', 'biweekly'], true)
+            ? array_values(array_intersect(array_keys($this->weekdayOptions()), (array) $this->value('schedule_days')))
+            : [];
+        $dayNames = implode(wp_get_list_item_separator(), array_map($this->weekdayAbbreviation(...), $days));
+
+        $day = match ($frequency) {
+            'daily' => __('Daily', 'a-ripple-song'),
+            /* translators: %s: abbreviated weekdays, e.g. "Tue, Thu". */
+            'weekly' => $days !== [] ? sprintf(_x('Every %s', 'release schedule', 'a-ripple-song'), $dayNames) : __('Weekly', 'a-ripple-song'),
+            /* translators: %s: abbreviated weekdays, e.g. "Tue, Thu". */
+            'biweekly' => $days !== [] ? sprintf(_x('Every other %s', 'release schedule', 'a-ripple-song'), $dayNames) : __('Every other week', 'a-ripple-song'),
+            'monthly' => __('Monthly', 'a-ripple-song'),
+            default => '',
+        };
+        $text = $custom !== '' ? $custom : trim($day . ' ' . $time);
+
+        if ($text === '') {
+            return null;
+        }
+
+        $rrule = match ($frequency) {
+            'daily' => 'FREQ=DAILY',
+            'weekly' => 'FREQ=WEEKLY',
+            'biweekly' => 'FREQ=WEEKLY;INTERVAL=2',
+            'monthly' => 'FREQ=MONTHLY',
+            default => '',
+        };
+
+        if ($rrule !== '' && $days !== []) {
+            $rrule .= ';BYDAY=' . implode(',', $days);
+        }
+
+        return ['day' => $day, 'time' => $time, 'text' => $text, 'rrule' => $rrule];
+    }
+
+    /**
+     * Return weekday options keyed by their RRULE code, Monday first.
+     *
+     * @return array<string,string>
+     */
+    private function weekdayOptions(): array
+    {
+        global $wp_locale;
+
+        $options = [];
+
+        foreach (self::WEEKDAYS as $code => $index) {
+            $options[$code] = $wp_locale->get_weekday($index);
+        }
+
+        return $options;
+    }
+
+    /**
+     * Return the abbreviated weekday name of an RRULE code, e.g. "TH" => "Thu" (周四 in Chinese).
+     *
+     * @param string $code RRULE weekday code.
+     * @return string
+     */
+    private function weekdayAbbreviation(string $code): string
+    {
+        global $wp_locale;
+
+        return $wp_locale->get_weekday_abbrev($wp_locale->get_weekday(self::WEEKDAYS[$code]));
+    }
+
+        /**
      * Return supported podcast language options.
      *
      * @return array<string,string>

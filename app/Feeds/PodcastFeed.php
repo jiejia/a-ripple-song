@@ -256,6 +256,8 @@ class PodcastFeed extends FeedAbstract
             'guid' => $this->settingText('guid'),
             'appleVerify' => $this->settingText('apple_verify'),
             'generator' => $this->settingText('generator'),
+            // A complete show has no more releases to announce.
+            'schedule' => $this->settingText('itunes_complete') === 'yes' ? null : $this->setting->schedule(),
             'funding' => array_values(array_filter(
                 is_array($funding) ? $funding : [],
                 static fn (mixed $link): bool => is_array($link) && trim((string) ($link['url'] ?? '')) !== ''

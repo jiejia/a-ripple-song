@@ -56,6 +56,9 @@ final class FieldValidator
             $field->type === FieldType::Email && $this->isInvalidEmail($raw)
                 /* translators: %s: field label. */
                 => sprintf(__('%s must be a valid email address.', 'a-ripple-song'), $field->displayName()),
+            $field->type === FieldType::Time && is_string($raw) && trim($raw) !== '' && FieldSanitizer::time($raw) === ''
+                /* translators: %s: field label. */
+                => sprintf(__('%s must be a time in HH:MM format.', 'a-ripple-song'), $field->displayName()),
             $field->required && ($value === null || $value === '' || $value === [])
                 /* translators: %s: field label. */
                 => sprintf(__('%s is required.', 'a-ripple-song'), $field->displayName()),

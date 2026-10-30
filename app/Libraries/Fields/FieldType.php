@@ -13,6 +13,7 @@ enum FieldType: string
     case Number = 'number';
     case Url = 'url';
     case Email = 'email';
+    case Time = 'time';
     case Textarea = 'textarea';
     case Select = 'select';
     case Switch = 'switch';
@@ -90,7 +91,7 @@ enum FieldType: string
     public function inputType(): string
     {
         return match ($this) {
-            self::Number, self::Url, self::Email => $this->value,
+            self::Number, self::Url, self::Email, self::Time => $this->value,
             default => 'text',
         };
     }

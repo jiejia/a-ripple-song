@@ -73,6 +73,9 @@ echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
         <?php if ($channel['appleVerify'] !== '') : ?>
         <podcast:txt purpose="applepodcastsverify"><?php echo esc_html($channel['appleVerify']); ?></podcast:txt>
         <?php endif; ?>
+        <?php if ($channel['schedule'] !== null) : ?>
+        <podcast:updateFrequency<?php echo Html::attributes(['rrule' => $channel['schedule']['rrule'] ?: null]); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped by Html::attributes(). ?>><?php echo esc_html($channel['schedule']['text']); ?></podcast:updateFrequency>
+        <?php endif; ?>
         <?php if ($channel['generator'] !== '') : ?>
         <generator><?php echo esc_html($channel['generator']); ?></generator>
         <?php endif; ?>

@@ -21,7 +21,7 @@ $countTemplate = __('%d selected', 'a-ripple-song');
 ?>
 <div class="ars-choices" data-ars-choices data-count-template="<?php echo esc_attr($countTemplate); ?>" role="group" aria-labelledby="<?php echo esc_attr($control->id . '-label'); ?>">
     <?php // A search box only pays off once the list gets long. ?>
-    <?php if (count($options) > 6) : ?>
+    <?php if (count($options) > 7) : ?>
         <div class="ars-choices__search"><span class="dashicons dashicons-search" aria-hidden="true"></span><input type="search" class="ars-choices__search-input" placeholder="<?php esc_attr_e('Search…', 'a-ripple-song'); ?>" aria-label="<?php esc_attr_e('Search…', 'a-ripple-song'); ?>"></div>
     <?php endif; ?>
     <ul class="ars-choices__list">

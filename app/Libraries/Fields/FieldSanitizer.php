@@ -49,6 +49,7 @@ final class FieldSanitizer
             FieldType::Number => $this->sanitizeNumber($field, $value),
             FieldType::Url, FieldType::File, FieldType::Image => $this->string($value, static fn (string $url): string => esc_url_raw(trim($url))),
             FieldType::Email => $this->string($value, sanitize_email(...)),
+            FieldType::Time => $this->string($value, self::time(...)),
             FieldType::Textarea => $this->string($value, sanitize_textarea_field(...)),
             FieldType::Switch => $value === 'yes' ? 'yes' : 'no',
             FieldType::Select => $this->matchOptions($field, [$value])[0] ?? $field->defaultValue(),
@@ -68,6 +69,17 @@ final class FieldSanitizer
     private function string(mixed $value, callable $sanitizer): string
     {
         return is_string($value) ? $sanitizer($value) : '';
+    }
+
+    /**
+     * Normalize a 24-hour time to HH:MM; seconds are dropped, anything else becomes empty.
+     *
+     * @param string $time Submitted time, e.g. "21:00" or "21:00:00".
+     * @return string
+     */
+    public static function time(string $time): string
+    {
+        return preg_match('/^([01]\d|2[0-3]):[0-5]\d(?::[0-5]\d)?$/', trim($time)) === 1 ? substr(trim($time), 0, 5) : '';
     }
 
     /**
