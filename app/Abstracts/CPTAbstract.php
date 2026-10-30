@@ -67,17 +67,17 @@ abstract class CPTAbstract
         return [
             'name' => $pluralName,
             'singular_name' => $singularName,
-            /* translators: %s is the singular custom post type name. */
+            /* translators: %s is the singular post type or taxonomy name. */
             'add_new_item' => sprintf(__('Add New %s', 'a-ripple-song'), $singularName),
-            /* translators: %s is the singular custom post type name. */
+            /* translators: %s is the singular post type or taxonomy name. */
             'edit_item' => sprintf(__('Edit %s', 'a-ripple-song'), $singularName),
             /* translators: %s is the singular custom post type name. */
             'new_item' => sprintf(__('New %s', 'a-ripple-song'), $singularName),
-            /* translators: %s is the singular custom post type name. */
+            /* translators: %s is the singular post type or taxonomy name. */
             'view_item' => sprintf(__('View %s', 'a-ripple-song'), $singularName),
-            /* translators: %s is the plural custom post type name. */
+            /* translators: %s is the plural post type or taxonomy name. */
             'search_items' => sprintf(__('Search %s', 'a-ripple-song'), $pluralName),
-            /* translators: %s is the lowercase plural custom post type name. */
+            /* translators: %s is the lowercase plural post type or taxonomy name. */
             'not_found' => sprintf(__('No %s found', 'a-ripple-song'), strtolower($pluralName)),
             /* translators: %s is the lowercase plural custom post type name. */
             'not_found_in_trash' => sprintf(__('No %s found in Trash', 'a-ripple-song'), strtolower($pluralName)),

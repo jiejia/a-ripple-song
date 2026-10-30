@@ -822,3 +822,21 @@ button.ars-media__preview {
 .ars-fields .ars-repeater__add {
 	margin-top: 12px;
 }
+
+/* Term screens: fields below the core inputs of the add form and the edit table. */
+.ars-term-fields {
+	margin: 0 0 16px;
+}
+
+/* Line up with the core inputs of the add form, which are 95% wide. */
+#addtag .ars-term-fields {
+	width: 95%;
+}
+
+.ars-term-fields > td {
+	padding: 0 0 16px;
+}
+
+.column-ars_icon {
+	width: 48px;
+}

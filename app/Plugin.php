@@ -12,6 +12,7 @@ use Jiejia\ARippleSong\Providers\FeedServiceProvider;
 use Jiejia\ARippleSong\Providers\PlayerServiceProvider;
 use Jiejia\ARippleSong\Providers\SettingServiceProvider;
 use Jiejia\ARippleSong\Providers\StatisticsServiceProvider;
+use Jiejia\ARippleSong\Providers\TaxonomyServiceProvider;
 use Jiejia\ARippleSong\Providers\TranslationServiceProvider;
 
 /**
@@ -37,6 +38,7 @@ class Plugin
     private array $providers = [
         TranslationServiceProvider::class,
         CPTServiceProvider::class,
+        TaxonomyServiceProvider::class,
         SettingServiceProvider::class,
         ControllerServiceProvider::class,
         FeedServiceProvider::class,

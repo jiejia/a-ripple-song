@@ -44,14 +44,14 @@ msgstr "jiejia"
 msgid "https://github.com/jiejia/"
 msgstr "https://github.com/jiejia/"
 
-#. translators: %s is the singular custom post type name.
-#: app/Abstracts/CPTAbstract.php:71
+#. translators: %s is the singular post type or taxonomy name.
+#: app/Abstracts/CPTAbstract.php:71 app/Abstracts/TaxonomyAbstract.php:105
 #, php-format
 msgid "Add New %s"
 msgstr "Add New %s"
 
-#. translators: %s is the singular custom post type name.
-#: app/Abstracts/CPTAbstract.php:73
+#. translators: %s is the singular post type or taxonomy name.
+#: app/Abstracts/CPTAbstract.php:73 app/Abstracts/TaxonomyAbstract.php:99
 #, php-format
 msgid "Edit %s"
 msgstr "Edit %s"
@@ -62,20 +62,20 @@ msgstr "Edit %s"
 msgid "New %s"
 msgstr "New %s"
 
-#. translators: %s is the singular custom post type name.
-#: app/Abstracts/CPTAbstract.php:77
+#. translators: %s is the singular post type or taxonomy name.
+#: app/Abstracts/CPTAbstract.php:77 app/Abstracts/TaxonomyAbstract.php:101
 #, php-format
 msgid "View %s"
 msgstr "View %s"
 
-#. translators: %s is the plural custom post type name.
-#: app/Abstracts/CPTAbstract.php:79
+#. translators: %s is the plural post type or taxonomy name.
+#: app/Abstracts/CPTAbstract.php:79 app/Abstracts/TaxonomyAbstract.php:111
 #, php-format
 msgid "Search %s"
 msgstr "Search %s"
 
-#. translators: %s is the lowercase plural custom post type name.
-#: app/Abstracts/CPTAbstract.php:81
+#. translators: %s is the lowercase plural post type or taxonomy name.
+#: app/Abstracts/CPTAbstract.php:81 app/Abstracts/TaxonomyAbstract.php:113
 #, php-format
 msgid "No %s found"
 msgstr "No %s found"
@@ -2117,3 +2117,65 @@ msgstr "Every %s"
 msgctxt "release schedule"
 msgid "Every other %s"
 msgstr "Every other %s"
+
+#. translators: %s is the plural taxonomy name.
+#: app/Abstracts/TaxonomyAbstract.php:97
+#, php-format
+msgid "All %s"
+msgstr "All %s"
+
+#. translators: %s is the singular taxonomy name.
+#: app/Abstracts/TaxonomyAbstract.php:103
+#, php-format
+msgid "Update %s"
+msgstr "Update %s"
+
+#. translators: %s is the singular taxonomy name.
+#: app/Abstracts/TaxonomyAbstract.php:107
+#, php-format
+msgid "New %s Name"
+msgstr "New %s Name"
+
+#. translators: %s is the singular taxonomy name.
+#: app/Abstracts/TaxonomyAbstract.php:109
+#, php-format
+msgid "Parent %s"
+msgstr "Parent %s"
+
+#. translators: %s is the plural taxonomy name.
+#: app/Abstracts/TaxonomyAbstract.php:115
+#, php-format
+msgid "&larr; Go to %s"
+msgstr "&larr; Go to %s"
+
+#: app/Taxonomies/PodcastCategoryTaxonomy.php:19
+msgid "Episode Category"
+msgstr "Episode Category"
+
+#: app/Taxonomies/PodcastCategoryTaxonomy.php:24
+msgid "Episode Categories"
+msgstr "Episode Categories"
+
+#: app/Taxonomies/PodcastCategoryTaxonomy.php:38
+msgid "Category Image"
+msgstr "Category Image"
+
+#: app/Taxonomies/PodcastCategoryTaxonomy.php:41
+msgid ""
+"Optional. A square image shown by themes on the category page and in "
+"category lists."
+msgstr ""
+"Optional. A square image shown by themes on the category page and in "
+"category lists."
+
+#: app/Taxonomies/PodcastCategoryTaxonomy.php:46
+msgid "Category Icon"
+msgstr "Category Icon"
+
+#: app/Taxonomies/PodcastCategoryTaxonomy.php:49
+msgid "Optional. A small square image, e.g. a 128 × 128 px PNG."
+msgstr "Optional. A small square image, e.g. a 128 × 128 px PNG."
+
+#: app/Taxonomies/PodcastCategoryTaxonomy.php:119
+msgid "Icon"
+msgstr "Icon"

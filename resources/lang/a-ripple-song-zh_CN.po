@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: A Ripple Song 0.5.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/a-ripple-song\n"
-"POT-Creation-Date: 2026-10-30T05:17:21+00:00\n"
+"POT-Creation-Date: 2026-10-30T06:24:56+00:00\n"
 "PO-Revision-Date: 2026-10-28 12:49+0000\n"
 "Last-Translator: jiejia <jiejia2009@gmail.com>\n"
 "Language-Team: Chinese (China)\n"
@@ -43,14 +43,14 @@ msgstr "jiejia"
 msgid "https://github.com/jiejia/"
 msgstr "https://github.com/jiejia/"
 
-#. translators: %s is the singular custom post type name.
-#: app/Abstracts/CPTAbstract.php:71
+#. translators: %s is the singular post type or taxonomy name.
+#: app/Abstracts/CPTAbstract.php:71 app/Abstracts/TaxonomyAbstract.php:105
 #, php-format
 msgid "Add New %s"
 msgstr "添加%s"
 
-#. translators: %s is the singular custom post type name.
-#: app/Abstracts/CPTAbstract.php:73
+#. translators: %s is the singular post type or taxonomy name.
+#: app/Abstracts/CPTAbstract.php:73 app/Abstracts/TaxonomyAbstract.php:99
 #, php-format
 msgid "Edit %s"
 msgstr "编辑%s"
@@ -61,20 +61,20 @@ msgstr "编辑%s"
 msgid "New %s"
 msgstr "新%s"
 
-#. translators: %s is the singular custom post type name.
-#: app/Abstracts/CPTAbstract.php:77
+#. translators: %s is the singular post type or taxonomy name.
+#: app/Abstracts/CPTAbstract.php:77 app/Abstracts/TaxonomyAbstract.php:101
 #, php-format
 msgid "View %s"
 msgstr "查看%s"
 
-#. translators: %s is the plural custom post type name.
-#: app/Abstracts/CPTAbstract.php:79
+#. translators: %s is the plural post type or taxonomy name.
+#: app/Abstracts/CPTAbstract.php:79 app/Abstracts/TaxonomyAbstract.php:111
 #, php-format
 msgid "Search %s"
 msgstr "搜索%s"
 
-#. translators: %s is the lowercase plural custom post type name.
-#: app/Abstracts/CPTAbstract.php:81
+#. translators: %s is the lowercase plural post type or taxonomy name.
+#: app/Abstracts/CPTAbstract.php:81 app/Abstracts/TaxonomyAbstract.php:113
 #, php-format
 msgid "No %s found"
 msgstr "未找到%s"
@@ -84,6 +84,36 @@ msgstr "未找到%s"
 #, php-format
 msgid "No %s found in Trash"
 msgstr "回收站中未找到%s"
+
+#. translators: %s is the plural taxonomy name.
+#: app/Abstracts/TaxonomyAbstract.php:97
+#, php-format
+msgid "All %s"
+msgstr "所有%s"
+
+#. translators: %s is the singular taxonomy name.
+#: app/Abstracts/TaxonomyAbstract.php:103
+#, php-format
+msgid "Update %s"
+msgstr "更新%s"
+
+#. translators: %s is the singular taxonomy name.
+#: app/Abstracts/TaxonomyAbstract.php:107
+#, php-format
+msgid "New %s Name"
+msgstr "新%s名称"
+
+#. translators: %s is the singular taxonomy name.
+#: app/Abstracts/TaxonomyAbstract.php:109
+#, php-format
+msgid "Parent %s"
+msgstr "父级%s"
+
+#. translators: %s is the plural taxonomy name.
+#: app/Abstracts/TaxonomyAbstract.php:115
+#, php-format
+msgid "&larr; Go to %s"
+msgstr "&larr; 前往%s"
 
 #: app/Controllers/PodcastPlayController.php:170
 msgid "Episode not found."
@@ -1654,6 +1684,36 @@ msgstr "%s 分钟"
 #, php-format
 msgid "%1$s h %2$s min"
 msgstr "%1$s 小时 %2$s 分钟"
+
+#: app/Taxonomies/PodcastCategoryTaxonomy.php:19
+msgid "Episode Category"
+msgstr "节目分类"
+
+#: app/Taxonomies/PodcastCategoryTaxonomy.php:24
+msgid "Episode Categories"
+msgstr "节目分类"
+
+#: app/Taxonomies/PodcastCategoryTaxonomy.php:38
+msgid "Category Image"
+msgstr "分类图片"
+
+#: app/Taxonomies/PodcastCategoryTaxonomy.php:41
+msgid ""
+"Optional. A square image shown by themes on the category page and in "
+"category lists."
+msgstr "可选。正方形图片，由主题显示在分类页和分类列表中。"
+
+#: app/Taxonomies/PodcastCategoryTaxonomy.php:46
+msgid "Category Icon"
+msgstr "分类图标"
+
+#: app/Taxonomies/PodcastCategoryTaxonomy.php:49
+msgid "Optional. A small square image, e.g. a 128 × 128 px PNG."
+msgstr "可选。小尺寸正方形图片，例如 128 × 128 px 的 PNG。"
+
+#: app/Taxonomies/PodcastCategoryTaxonomy.php:119
+msgid "Icon"
+msgstr "图标"
 
 #: resources/templates/dashboard/page.php:35
 msgid "7 days"

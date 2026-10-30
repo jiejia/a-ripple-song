@@ -618,6 +618,18 @@
 		validate();
 	}, true);
 
+	// The "Add New" term form is sent by AJAX and core only clears its own inputs; clear ours once a term is added.
+	$(document).ajaxSuccess(function (event, xhr, settings) {
+		if (typeof settings.data !== 'string' || settings.data.indexOf('action=add-tag') === -1 || xhr.responseText.indexOf('wp_error') !== -1) {
+			return;
+		}
+
+		$('#addtag [data-ars-media]').each(function () {
+			$(this).find('.ars-media__input').val('').trigger('input');
+			$(this).closest('.ars-field').data('touched', false);
+		});
+	});
+
 	$(function () {
 		$('[data-ars-repeater]').each(function () {
 			initSortable($(this));
