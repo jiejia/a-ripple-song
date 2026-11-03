@@ -6,6 +6,7 @@ declare(strict_types=1);
  * PHP-Scoper config: `composer scope` copies the plugin to build/ with every namespace (App\ and
  * any runtime Composer package) moved under ARippleSong\, so it can't clash with other plugins.
  * WordPress core symbols are left alone (sniccowp/php-scoper-wordpress-excludes).
+ * Both tools live in vendor-bin/php-scoper (bamarni/composer-bin-plugin), away from the plugin's autoloader.
  *
  * @see https://github.com/humbug/php-scoper/blob/main/docs/configuration.md
  */
@@ -13,12 +14,12 @@ declare(strict_types=1);
 use Isolated\Symfony\Component\Finder\Finder;
 
 $wpExcludes = static function (string $kind): array {
-    $file = __DIR__ . "/vendor/sniccowp/php-scoper-wordpress-excludes/generated/exclude-wordpress-{$kind}.json";
+    $file = __DIR__ . "/vendor-bin/php-scoper/vendor/sniccowp/php-scoper-wordpress-excludes/generated/exclude-wordpress-{$kind}.json";
 
     return json_decode((string) file_get_contents($file), true, 512, JSON_THROW_ON_ERROR);
 };
 
-// Only runtime packages go into the build; dev tools (php-scoper itself, ...) stay out.
+// Only runtime packages go into the build; dev packages (composer-bin-plugin, ...) stay out.
 $installed = json_decode((string) file_get_contents(__DIR__ . '/vendor/composer/installed.json'), true, 512, JSON_THROW_ON_ERROR);
 $devPackages = $installed['dev-package-names'] ?? [];
 $runtimePackages = array_values(array_filter(

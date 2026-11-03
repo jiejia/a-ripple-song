@@ -2,3 +2,4 @@ node_modules/
 public/dist/
 vendor/
 build/
+vendor-bin/*/vendor/

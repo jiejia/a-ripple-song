@@ -13,10 +13,6 @@
     "require": {
         "php": ">=8.2"
     },
-    "require-dev": {
-        "humbug/php-scoper": "^0.18.20",
-        "sniccowp/php-scoper-wordpress-excludes": "^7.1"
-    },
     "autoload": {
         "psr-4": {
             "App\\": "app/"
@@ -27,7 +23,10 @@
             "php": "8.2.0"
         },
         "optimize-autoloader": true,
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "bamarni/composer-bin-plugin": true
+        }
     },
     "scripts": {
         "scope": [
@@ -38,5 +37,15 @@
     },
     "scripts-descriptions": {
         "scope": "Copy the plugin to build/ with every PHP namespace prefixed (see scoper.inc.php), ready to zip."
+    },
+    "extra": {
+        "bamarni-bin": {
+            "bin-links": true,
+            "forward-command": true,
+            "target-directory": "vendor-bin"
+        }
+    },
+    "require-dev": {
+        "bamarni/composer-bin-plugin": "^1.8"
     }
 }
