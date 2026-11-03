@@ -1,10 +1,10 @@
 <?php
 
-namespace Jiejia\ARippleSong\Libraries\Fields;
+namespace App\Libraries\Fields;
 
 defined('ABSPATH') || exit;
 
-use Jiejia\ARippleSong\Libraries\Template;
+use App\Libraries\Template;
 
 /**
  * Renders fields into admin form markup using the templates in resources/templates/fields.

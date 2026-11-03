@@ -1,12 +1,12 @@
 <?php
 
-namespace Jiejia\ARippleSong\Providers;
+namespace App\Providers;
 
 defined('ABSPATH') || exit;
 
-use Jiejia\ARippleSong\Abstracts\FeedAbstract;
-use Jiejia\ARippleSong\Abstracts\ServiceProviderAbstract;
-use Jiejia\ARippleSong\Feeds\PodcastFeed;
+use App\Abstracts\FeedAbstract;
+use App\Abstracts\ServiceProviderAbstract;
+use App\Feeds\PodcastFeed;
 
 /**
  * Registers plugin feed endpoints.

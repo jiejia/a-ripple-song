@@ -1,6 +1,6 @@
 <?php
 
-namespace Jiejia\ARippleSong\Player;
+namespace App\Player;
 
 defined('ABSPATH') || exit;
 

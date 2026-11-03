@@ -36,6 +36,6 @@ if (!defined('A_RIPPLE_SONG_PLUGIN_URL')) {
     define('A_RIPPLE_SONG_PLUGIN_URL', plugin_dir_url(__FILE__));
 }
 
-require_once A_RIPPLE_SONG_PLUGIN_DIR . 'app/autoload.php';
+require_once A_RIPPLE_SONG_PLUGIN_DIR . 'vendor/autoload.php';
 
-new \Jiejia\ARippleSong\Plugin();
+new \App\Plugin();

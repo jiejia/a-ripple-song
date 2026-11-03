@@ -1,10 +1,10 @@
 <?php
 
-namespace Jiejia\ARippleSong\Libraries\Fields;
+namespace App\Libraries\Fields;
 
 defined('ABSPATH') || exit;
 
-use Jiejia\ARippleSong\Abstracts\CPTAbstract;
+use App\Abstracts\CPTAbstract;
 
 /**
  * Shows a custom post type's fields in a meta box and stores them as post meta.

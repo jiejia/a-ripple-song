@@ -1,9 +1,9 @@
 <?php
-namespace Jiejia\ARippleSong\Abstracts;
+namespace App\Abstracts;
 
 
-use Jiejia\ARippleSong\Libraries\Fields\OptionStore;
-use Jiejia\ARippleSong\Plugin;
+use App\Libraries\Fields\OptionStore;
+use App\Plugin;
 
 abstract class SettingAbstract
 {

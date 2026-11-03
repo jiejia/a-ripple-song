@@ -1,11 +1,11 @@
 <?php
 
-namespace Jiejia\ARippleSong\Statistics;
+namespace App\Statistics;
 
 defined('ABSPATH') || exit;
 
-use Jiejia\ARippleSong\CPTs\PodcastCPT;
-use Jiejia\ARippleSong\Settings\PodcastSetting;
+use App\CPTs\PodcastCPT;
+use App\Settings\PodcastSetting;
 
 /**
  * Collects the numbers shown on the plugin dashboard.

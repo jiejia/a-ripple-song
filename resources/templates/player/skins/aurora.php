@@ -12,8 +12,8 @@ defined('ABSPATH') || exit;
 
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Templates run inside Template::include(), so their variables are local.
 
-use Jiejia\ARippleSong\Libraries\Icon;
-use Jiejia\ARippleSong\Libraries\Template;
+use App\Libraries\Icon;
+use App\Libraries\Template;
 ?>
 <div class="ars-player" data-ars-player data-ars-skin="aurora" hidden>
     <?php /* ============ 播放器：悬浮玻璃胶囊（常驻） ============ */ ?>

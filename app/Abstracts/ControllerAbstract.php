@@ -1,10 +1,10 @@
 <?php
 
-namespace Jiejia\ARippleSong\Abstracts;
+namespace App\Abstracts;
 
 defined('ABSPATH') || exit;
 
-use Jiejia\ARippleSong\Plugin;
+use App\Plugin;
 
 /**
  * Base class for REST API controllers.

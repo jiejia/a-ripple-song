@@ -1,11 +1,11 @@
 <?php
 
-namespace Jiejia\ARippleSong\Libraries\Fields;
+namespace App\Libraries\Fields;
 
 defined('ABSPATH') || exit;
 
-use Jiejia\ARippleSong\Abstracts\SettingAbstract;
-use Jiejia\ARippleSong\Libraries\Template;
+use App\Abstracts\SettingAbstract;
+use App\Libraries\Template;
 
 /**
  * Renders a settings page's fields and stores them in a single option.

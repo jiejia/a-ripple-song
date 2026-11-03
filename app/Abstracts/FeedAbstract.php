@@ -1,6 +1,6 @@
 <?php
 
-namespace Jiejia\ARippleSong\Abstracts;
+namespace App\Abstracts;
 
 defined('ABSPATH') || exit;
 

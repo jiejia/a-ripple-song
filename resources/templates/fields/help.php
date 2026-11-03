@@ -10,8 +10,8 @@ defined('ABSPATH') || exit;
 
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Templates run inside Template::include(), so their variables are local.
 
-use Jiejia\ARippleSong\Libraries\Fields\Field;
-use Jiejia\ARippleSong\Libraries\Fields\FieldContext;
+use App\Libraries\Fields\Field;
+use App\Libraries\Fields\FieldContext;
 ?>
 <?php if ($field->help !== '') : ?>
     <p class="ars-field__help" id="<?php echo esc_attr($control->id . '-help'); ?>"><?php echo esc_html($field->help); ?></p>

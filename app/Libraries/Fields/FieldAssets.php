@@ -1,10 +1,10 @@
 <?php
 
-namespace Jiejia\ARippleSong\Libraries\Fields;
+namespace App\Libraries\Fields;
 
 defined('ABSPATH') || exit;
 
-use Jiejia\ARippleSong\Plugin;
+use App\Plugin;
 
 /**
  * Enqueues the CSS and JS used by rendered fields.

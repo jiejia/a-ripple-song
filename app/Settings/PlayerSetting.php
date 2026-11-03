@@ -1,11 +1,11 @@
 <?php
 
-namespace Jiejia\ARippleSong\Settings;
+namespace App\Settings;
 
 defined('ABSPATH') || exit;
 
-use Jiejia\ARippleSong\Abstracts\SettingAbstract;
-use Jiejia\ARippleSong\Player\PlayerSkin;
+use App\Abstracts\SettingAbstract;
+use App\Player\PlayerSkin;
 
 /**
  * Global player settings page, stored in the ars_player_settings option.

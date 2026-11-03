@@ -1,12 +1,12 @@
 <?php
 
-namespace Jiejia\ARippleSong\CPTs;
+namespace App\CPTs;
 
 defined('ABSPATH') || exit;
 
-use Jiejia\ARippleSong\Abstracts\CPTAbstract;
-use Jiejia\ARippleSong\Feeds\PodcastFeed;
-use Jiejia\ARippleSong\Libraries\Users;
+use App\Abstracts\CPTAbstract;
+use App\Feeds\PodcastFeed;
+use App\Libraries\Users;
 
 /**
  * Defines the podcast episode custom post type.

@@ -1,18 +1,18 @@
 <?php
 
-namespace Jiejia\ARippleSong\Providers;
+namespace App\Providers;
 
 defined('ABSPATH') || exit;
 
-use Jiejia\ARippleSong\Abstracts\ServiceProviderAbstract;
-use Jiejia\ARippleSong\Abstracts\SettingAbstract;
-use Jiejia\ARippleSong\Libraries\Fields\OptionStore;
-use Jiejia\ARippleSong\Settings\DashboardSetting;
-use Jiejia\ARippleSong\Settings\MemberSetting;
-use Jiejia\ARippleSong\Settings\PlayerSetting;
-use Jiejia\ARippleSong\Settings\PodcastSetting;
-use Jiejia\ARippleSong\Settings\SubscriptionSetting;
-use Jiejia\ARippleSong\Plugin;
+use App\Abstracts\ServiceProviderAbstract;
+use App\Abstracts\SettingAbstract;
+use App\Libraries\Fields\OptionStore;
+use App\Settings\DashboardSetting;
+use App\Settings\MemberSetting;
+use App\Settings\PlayerSetting;
+use App\Settings\PodcastSetting;
+use App\Settings\SubscriptionSetting;
+use App\Plugin;
 
 /**
  * Registers plugin settings pages.

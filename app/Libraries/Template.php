@@ -1,10 +1,10 @@
 <?php
 
-namespace Jiejia\ARippleSong\Libraries;
+namespace App\Libraries;
 
 defined('ABSPATH') || exit;
 
-use Jiejia\ARippleSong\Plugin;
+use App\Plugin;
 
 /**
  * Renders PHP templates from resources/templates.

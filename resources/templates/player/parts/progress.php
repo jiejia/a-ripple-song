@@ -26,8 +26,8 @@ defined('ABSPATH') || exit;
 
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Templates run inside Template::include(), so their variables are local.
 
-use Jiejia\ARippleSong\Libraries\Html;
-use Jiejia\ARippleSong\Settings\PlayerSetting;
+use App\Libraries\Html;
+use App\Settings\PlayerSetting;
 
 $style ??= (new PlayerSetting())->progressStyle();
 $hooks ??= 'binder';

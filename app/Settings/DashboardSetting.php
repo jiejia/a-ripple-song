@@ -1,12 +1,12 @@
 <?php
 
-namespace Jiejia\ARippleSong\Settings;
+namespace App\Settings;
 
 defined('ABSPATH') || exit;
 
-use Jiejia\ARippleSong\Abstracts\SettingAbstract;
-use Jiejia\ARippleSong\Libraries\Template;
-use Jiejia\ARippleSong\Statistics\DashboardStats;
+use App\Abstracts\SettingAbstract;
+use App\Libraries\Template;
+use App\Statistics\DashboardStats;
 
 /**
  * Statistics dashboard: the plugin's top-level page.

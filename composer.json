@@ -1,0 +1,42 @@
+{
+    "name": "jiejia/a-ripple-song",
+    "description": "Podcast features for the A Ripple Song theme: Episode CPT + /feed/podcast RSS (iTunes & Podcasting 2.0 tags).",
+    "type": "wordpress-plugin",
+    "license": "GPL-3.0-only",
+    "homepage": "https://github.com/jiejia/a-ripple-song",
+    "authors": [
+        {
+            "name": "jiejia",
+            "homepage": "https://github.com/jiejia/"
+        }
+    ],
+    "require": {
+        "php": ">=8.2"
+    },
+    "require-dev": {
+        "humbug/php-scoper": "^0.18.20",
+        "sniccowp/php-scoper-wordpress-excludes": "^7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "8.2.0"
+        },
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "scripts": {
+        "scope": [
+            "php-scoper add-prefix --output-dir=build --force --no-interaction",
+            "composer dump-autoload --working-dir=build --classmap-authoritative --no-dev",
+            "@php bin/scope-installed-versions.php"
+        ]
+    },
+    "scripts-descriptions": {
+        "scope": "Copy the plugin to build/ with every PHP namespace prefixed (see scoper.inc.php), ready to zip."
+    }
+}

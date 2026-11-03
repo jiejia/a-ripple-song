@@ -8,8 +8,8 @@
 
 defined('ABSPATH') || exit;
 
-use Jiejia\ARippleSong\Feeds\PodcastFeed;
-use Jiejia\ARippleSong\Libraries\Html;
+use App\Feeds\PodcastFeed;
+use App\Libraries\Html;
 
 // Printed from PHP so short_open_tag cannot mistake it for a PHP tag.
 echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";

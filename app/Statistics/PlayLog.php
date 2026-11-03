@@ -1,10 +1,10 @@
 <?php
 
-namespace Jiejia\ARippleSong\Statistics;
+namespace App\Statistics;
 
 defined('ABSPATH') || exit;
 
-use Jiejia\ARippleSong\Plugin;
+use App\Plugin;
 
 /**
  * Daily play counts per episode, stored in the {prefix}ars_play_stats table.

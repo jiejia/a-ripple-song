@@ -1,12 +1,12 @@
 <?php
 
-namespace Jiejia\ARippleSong\Providers;
+namespace App\Providers;
 
 defined('ABSPATH') || exit;
 
-use Jiejia\ARippleSong\Abstracts\ControllerAbstract;
-use Jiejia\ARippleSong\Abstracts\ServiceProviderAbstract;
-use Jiejia\ARippleSong\Controllers\PodcastPlayController;
+use App\Abstracts\ControllerAbstract;
+use App\Abstracts\ServiceProviderAbstract;
+use App\Controllers\PodcastPlayController;
 
 /**
  * Registers plugin REST API controllers.

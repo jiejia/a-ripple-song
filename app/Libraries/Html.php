@@ -1,6 +1,6 @@
 <?php
 
-namespace Jiejia\ARippleSong\Libraries;
+namespace App\Libraries;
 
 defined('ABSPATH') || exit;
 

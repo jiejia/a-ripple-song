@@ -1,10 +1,10 @@
 <?php
 
-namespace Jiejia\ARippleSong\Libraries\Fields;
+namespace App\Libraries\Fields;
 
 defined('ABSPATH') || exit;
 
-use Jiejia\ARippleSong\Libraries\Html;
+use App\Libraries\Html;
 
 /**
  * One field ready to render: its definition, current value, input name and error.

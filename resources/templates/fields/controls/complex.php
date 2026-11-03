@@ -11,9 +11,9 @@ defined('ABSPATH') || exit;
 
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Templates run inside Template::include(), so their variables are local.
 
-use Jiejia\ARippleSong\Libraries\Fields\Field;
-use Jiejia\ARippleSong\Libraries\Fields\FieldContext;
-use Jiejia\ARippleSong\Libraries\Fields\FieldRenderer;
+use App\Libraries\Fields\Field;
+use App\Libraries\Fields\FieldContext;
+use App\Libraries\Fields\FieldRenderer;
 
 $rows = array_values(array_filter($control->list(), 'is_array'));
 $rowLabel = $field->rowLabel !== '' ? $field->rowLabel : __('Item', 'a-ripple-song');

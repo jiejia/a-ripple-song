@@ -1,12 +1,12 @@
 <?php
 
-namespace Jiejia\ARippleSong\Providers;
+namespace App\Providers;
 
 defined('ABSPATH') || exit;
 
-use Jiejia\ARippleSong\Abstracts\ServiceProviderAbstract;
-use Jiejia\ARippleSong\Player\EpisodeMeta;
-use Jiejia\ARippleSong\Player\GlobalPlayer;
+use App\Abstracts\ServiceProviderAbstract;
+use App\Player\EpisodeMeta;
+use App\Player\GlobalPlayer;
 
 /**
  * Registers the front-end global player and the episode page meta bar.

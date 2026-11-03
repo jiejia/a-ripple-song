@@ -1,11 +1,11 @@
 <?php
 
-namespace Jiejia\ARippleSong\Providers;
+namespace App\Providers;
 
 defined('ABSPATH') || exit;
 
-use Jiejia\ARippleSong\Abstracts\ServiceProviderAbstract;
-use Jiejia\ARippleSong\Plugin;
+use App\Abstracts\ServiceProviderAbstract;
+use App\Plugin;
 
 /**
  * Loads the plugin translations bundled in resources/lang.

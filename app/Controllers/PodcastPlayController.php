@@ -1,12 +1,12 @@
 <?php
 
-namespace Jiejia\ARippleSong\Controllers;
+namespace App\Controllers;
 
 defined('ABSPATH') || exit;
 
-use Jiejia\ARippleSong\Abstracts\ControllerAbstract;
-use Jiejia\ARippleSong\CPTs\PodcastCPT;
-use Jiejia\ARippleSong\Plugin;
+use App\Abstracts\ControllerAbstract;
+use App\CPTs\PodcastCPT;
+use App\Plugin;
 
 /**
  * REST endpoints for reading and recording podcast episode plays.

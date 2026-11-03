@@ -7,16 +7,16 @@
  *
  * @var string $title Page title.
  * @var string $pageUrl Dashboard URL without the period.
- * @var \Jiejia\ARippleSong\Statistics\DashboardStats $stats Dashboard numbers.
+ * @var \App\Statistics\DashboardStats $stats Dashboard numbers.
  */
 
 defined('ABSPATH') || exit;
 
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Templates run inside Template::include(), so their variables are local.
 
-use Jiejia\ARippleSong\Libraries\Template;
-use Jiejia\ARippleSong\Settings\PodcastSetting;
-use Jiejia\ARippleSong\Statistics\DashboardStats;
+use App\Libraries\Template;
+use App\Settings\PodcastSetting;
+use App\Statistics\DashboardStats;
 
 $template = new Template();
 $dateFormat = (string) get_option('date_format');

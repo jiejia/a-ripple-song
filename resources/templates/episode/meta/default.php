@@ -19,7 +19,7 @@ defined('ABSPATH') || exit;
 
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Templates run inside Template::include(), so their variables are local.
 
-use Jiejia\ARippleSong\Libraries\Icon;
+use App\Libraries\Icon;
 ?>
 <div class="ars-player" data-ars-island ars-data="{ id: <?php echo (int) $postId; ?> }">
   <div class="<?php echo $position === 'after' ? 'mt-8' : 'mb-8'; ?> flex flex-wrap items-center gap-2 text-base-content">

@@ -48,8 +48,8 @@ defined('ABSPATH') || exit;
 
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Templates run inside Template::include(), so their variables are local.
 
-use Jiejia\ARippleSong\Libraries\Icon;
-use Jiejia\ARippleSong\Libraries\Template;
+use App\Libraries\Icon;
+use App\Libraries\Template;
 
 $iconButton = 'btn btn-ghost btn-circle btn-sm';
 $bigButton = 'btn btn-ghost btn-circle';

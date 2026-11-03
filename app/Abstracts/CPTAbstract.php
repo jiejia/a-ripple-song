@@ -1,8 +1,8 @@
 <?php
-namespace Jiejia\ARippleSong\Abstracts;
+namespace App\Abstracts;
 
 
-use Jiejia\ARippleSong\Plugin;
+use App\Plugin;
 
 abstract class CPTAbstract
 {

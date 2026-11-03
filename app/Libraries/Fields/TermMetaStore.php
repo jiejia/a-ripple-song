@@ -1,10 +1,10 @@
 <?php
 
-namespace Jiejia\ARippleSong\Libraries\Fields;
+namespace App\Libraries\Fields;
 
 defined('ABSPATH') || exit;
 
-use Jiejia\ARippleSong\Abstracts\TaxonomyAbstract;
+use App\Abstracts\TaxonomyAbstract;
 
 /**
  * Shows a custom taxonomy's fields on the add / edit term screens and stores them as term meta.

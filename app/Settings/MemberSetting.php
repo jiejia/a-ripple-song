@@ -1,11 +1,11 @@
 <?php
 
-namespace Jiejia\ARippleSong\Settings;
+namespace App\Settings;
 
 defined('ABSPATH') || exit;
 
-use Jiejia\ARippleSong\Abstracts\SettingAbstract;
-use Jiejia\ARippleSong\Libraries\Users;
+use App\Abstracts\SettingAbstract;
+use App\Libraries\Users;
 
 /**
  * Member settings page: the WordPress users who make the podcast, stored in the ars_member_settings option.
