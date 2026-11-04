@@ -266,13 +266,21 @@ final class GlobalPlayer
         $text = static fn (string $html): string => trim(html_entity_decode(wp_strip_all_tags($html), ENT_QUOTES, 'UTF-8'));
         $terms = get_the_terms($post, 'post_tag');
 
+        /**
+         * Filters the cover the player shows for an episode, e.g. so a theme can give episodes without one its own.
+         *
+         * @param string $cover Episode image, else featured image, else podcast cover.
+         * @param \WP_Post $post Episode.
+         */
+        $cover = (string) apply_filters('a_ripple_song_player_episode_cover', (string) $meta('episode_image') ?: (string) get_the_post_thumbnail_url($post, 'medium') ?: $fallbackCover, $post);
+
         return [
             'id' => $post->ID,
             'number' => (int) $meta('episode_number') ?: $autoNumber,
             'title' => $text(get_the_title($post)),
             'url' => (string) get_permalink($post),
             'audio' => (string) $meta('audio_file'),
-            'cover' => (string) $meta('episode_image') ?: (string) get_the_post_thumbnail_url($post, 'medium') ?: $fallbackCover,
+            'cover' => $cover,
             'duration' => (int) $meta('duration'),
             'excerpt' => $text(get_the_excerpt($post)),
             'category' => is_array($terms) && $terms !== [] ? $terms[0]->name : '',
