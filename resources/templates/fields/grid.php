@@ -11,8 +11,8 @@ defined('ABSPATH') || exit;
 
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Templates run inside Template::include(), so their variables are local.
 
-use App\Libraries\Fields\FieldContext;
-use App\Libraries\Fields\FieldRenderer;
+use Jiejia\ARippleSong\Libraries\Fields\FieldContext;
+use Jiejia\ARippleSong\Libraries\Fields\FieldRenderer;
 ?>
 <div class="<?php echo esc_attr(trim('ars-fields__grid ' . $extraClass)); ?>">
     <?php foreach ($controls as $control) : ?>

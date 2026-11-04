@@ -1,19 +1,19 @@
 <?php
 
 
-namespace App;
+namespace Jiejia\ARippleSong;
 
 defined('ABSPATH') || exit;
 
-use App\Contracts\ServiceProviderContract;
-use App\Providers\ControllerServiceProvider;
-use App\Providers\CPTServiceProvider;
-use App\Providers\FeedServiceProvider;
-use App\Providers\PlayerServiceProvider;
-use App\Providers\SettingServiceProvider;
-use App\Providers\StatisticsServiceProvider;
-use App\Providers\TaxonomyServiceProvider;
-use App\Providers\TranslationServiceProvider;
+use Jiejia\ARippleSong\Contracts\ServiceProviderContract;
+use Jiejia\ARippleSong\Providers\ControllerServiceProvider;
+use Jiejia\ARippleSong\Providers\CPTServiceProvider;
+use Jiejia\ARippleSong\Providers\FeedServiceProvider;
+use Jiejia\ARippleSong\Providers\PlayerServiceProvider;
+use Jiejia\ARippleSong\Providers\SettingServiceProvider;
+use Jiejia\ARippleSong\Providers\StatisticsServiceProvider;
+use Jiejia\ARippleSong\Providers\TaxonomyServiceProvider;
+use Jiejia\ARippleSong\Providers\TranslationServiceProvider;
 
 /**
  * Main plugin application class.

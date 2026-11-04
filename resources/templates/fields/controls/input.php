@@ -10,8 +10,8 @@ defined('ABSPATH') || exit;
 
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Templates run inside Template::include(), so their variables are local.
 
-use App\Libraries\Fields\Field;
-use App\Libraries\Fields\FieldContext;
+use Jiejia\ARippleSong\Libraries\Fields\Field;
+use Jiejia\ARippleSong\Libraries\Fields\FieldContext;
 
 $attributes = $control->attributes([
     'type' => $field->type->inputType(),

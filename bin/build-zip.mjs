@@ -1,20 +1,19 @@
 // Packages the plugin for WordPress.org as ../a-ripple-song.zip (next to the plugin folder, outside the repo).
-// It zips the php-scoper output in build/ (namespaces prefixed with ARippleSong\, Composer autoloader
-// without dev packages), and only the runtime files below, so dev files stay out.
-// Usage: npm run zip (builds the assets, then runs `composer scope`)
+// Only the runtime files below are copied, so dev files (.gitignore, AGENTS.md, node_modules, build config) stay out.
+// Usage: npm run zip (builds the assets first)
 import { cpSync, existsSync, mkdtempSync, rmSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import { basename, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const root = fileURLToPath(new URL('../build/', import.meta.url));
+const root = fileURLToPath(new URL('../', import.meta.url));
 const slug = 'a-ripple-song';
-const files = ['a-ripple-song.php', 'README.txt', 'LICENSE', 'app', 'resources', 'public', 'vendor'];
-const output = join(root, '..', '..', `${slug}.zip`);
+const files = ['a-ripple-song.php', 'README.txt', 'LICENSE', 'app', 'resources', 'public'];
+const output = join(root, '..', `${slug}.zip`);
 
 if (!existsSync(join(root, 'public/dist/player.js'))) {
-  throw new Error('build/public/dist is missing, run `npm run build && composer scope` first.');
+  throw new Error('public/dist is missing, run `npm run build` first.');
 }
 
 const staging = mkdtempSync(join(tmpdir(), `${slug}-`));

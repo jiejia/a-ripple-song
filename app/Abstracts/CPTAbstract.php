@@ -1,8 +1,8 @@
 <?php
-namespace App\Abstracts;
+namespace Jiejia\ARippleSong\Abstracts;
 
 
-use App\App;
+use Jiejia\ARippleSong\App;
 
 abstract class CPTAbstract
 {

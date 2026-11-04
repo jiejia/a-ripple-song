@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Abstracts;
+namespace Jiejia\ARippleSong\Abstracts;
 
 defined('ABSPATH') || exit;
 
-use App\Contracts\ServiceProviderContract;
+use Jiejia\ARippleSong\Contracts\ServiceProviderContract;
 
 /**
  * Base service provider for plugin feature registration.

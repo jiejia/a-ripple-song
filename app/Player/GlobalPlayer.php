@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Player;
+namespace Jiejia\ARippleSong\Player;
 
 defined('ABSPATH') || exit;
 
-use App\Abstracts\ControllerAbstract;
-use App\CPTs\PodcastCPT;
-use App\Libraries\Template;
-use App\App;
-use App\Settings\PlayerSetting;
-use App\Settings\PodcastSetting;
+use Jiejia\ARippleSong\Abstracts\ControllerAbstract;
+use Jiejia\ARippleSong\CPTs\PodcastCPT;
+use Jiejia\ARippleSong\Libraries\Template;
+use Jiejia\ARippleSong\App;
+use Jiejia\ARippleSong\Settings\PlayerSetting;
+use Jiejia\ARippleSong\Settings\PodcastSetting;
 
 /**
  * The site-wide player, printed once in wp_footer on every front-end page.

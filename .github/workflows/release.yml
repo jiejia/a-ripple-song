@@ -30,14 +30,6 @@ jobs:
             exit 1
           fi
 
-      # php-scoper (a Composer dev dependency) prefixes the plugin's namespaces for the zip.
-      - uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.2'
-          tools: composer:v2
-
-      - run: composer install --no-interaction --no-progress
-
       - uses: actions/setup-node@v7
         with:
           node-version: 22
@@ -45,7 +37,7 @@ jobs:
 
       - run: npm ci
 
-      # Builds the assets, scopes the PHP into build/ and writes ../a-ripple-song.zip (see bin/build-zip.mjs).
+      # Builds the assets and writes ../a-ripple-song.zip (see bin/build-zip.mjs).
       - run: npm run zip
 
       - name: Publish the release

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Feeds;
+namespace Jiejia\ARippleSong\Feeds;
 
 defined('ABSPATH') || exit;
 
-use App\Abstracts\FeedAbstract;
-use App\CPTs\PodcastCPT;
-use App\Libraries\Template;
-use App\App;
-use App\Settings\PodcastSetting;
+use Jiejia\ARippleSong\Abstracts\FeedAbstract;
+use Jiejia\ARippleSong\CPTs\PodcastCPT;
+use Jiejia\ARippleSong\Libraries\Template;
+use Jiejia\ARippleSong\App;
+use Jiejia\ARippleSong\Settings\PodcastSetting;
 
 /**
  * Podcast RSS feed at /feed/podcast/ for Apple Podcasts, Spotify and other directories.

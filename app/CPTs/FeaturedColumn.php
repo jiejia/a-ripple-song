@@ -1,12 +1,12 @@
 <?php
 
-namespace App\CPTs;
+namespace Jiejia\ARippleSong\CPTs;
 
 defined('ABSPATH') || exit;
 
-use App\Abstracts\CPTAbstract;
-use App\Libraries\Fields\FieldAssets;
-use App\App;
+use Jiejia\ARippleSong\Abstracts\CPTAbstract;
+use Jiejia\ARippleSong\Libraries\Fields\FieldAssets;
+use Jiejia\ARippleSong\App;
 
 /**
  * "Featured" switch column in a post type's list, saved through admin-ajax.

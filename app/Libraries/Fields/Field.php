@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Libraries\Fields;
+namespace Jiejia\ARippleSong\Libraries\Fields;
 
 defined('ABSPATH') || exit;
 

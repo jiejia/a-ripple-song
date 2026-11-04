@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Providers;
+namespace Jiejia\ARippleSong\Providers;
 
 defined('ABSPATH') || exit;
 
-use App\Abstracts\ServiceProviderAbstract;
-use App\CPTs\PodcastCPT;
-use App\App;
-use App\Settings\DashboardSetting;
-use App\Statistics\PlayLog;
+use Jiejia\ARippleSong\Abstracts\ServiceProviderAbstract;
+use Jiejia\ARippleSong\CPTs\PodcastCPT;
+use Jiejia\ARippleSong\App;
+use Jiejia\ARippleSong\Settings\DashboardSetting;
+use Jiejia\ARippleSong\Statistics\PlayLog;
 
 /**
  * Records daily plays and loads the dashboard assets.

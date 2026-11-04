@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Taxonomies;
+namespace Jiejia\ARippleSong\Taxonomies;
 
 defined('ABSPATH') || exit;
 
-use App\Abstracts\TaxonomyAbstract;
-use App\CPTs\PodcastCPT;
+use Jiejia\ARippleSong\Abstracts\TaxonomyAbstract;
+use Jiejia\ARippleSong\CPTs\PodcastCPT;
 
 /**
  * Hierarchical episode categories (ars_podcast_category), separate from post categories.

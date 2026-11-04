@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Player;
+namespace Jiejia\ARippleSong\Player;
 
 defined('ABSPATH') || exit;
 
-use App\Abstracts\ControllerAbstract;
-use App\CPTs\PodcastCPT;
-use App\Libraries\Html;
-use App\Libraries\Template;
-use App\App;
-use App\Settings\PlayerSetting;
+use Jiejia\ARippleSong\Abstracts\ControllerAbstract;
+use Jiejia\ARippleSong\CPTs\PodcastCPT;
+use Jiejia\ARippleSong\Libraries\Html;
+use Jiejia\ARippleSong\Libraries\Template;
+use Jiejia\ARippleSong\App;
+use Jiejia\ARippleSong\Settings\PlayerSetting;
 
 /**
  * The meta bar of single episode pages: play button, favorite button and play count.

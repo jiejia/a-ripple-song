@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Settings;
+namespace Jiejia\ARippleSong\Settings;
 
 defined('ABSPATH') || exit;
 
-use App\Abstracts\SettingAbstract;
-use App\Feeds\PodcastFeed;
+use Jiejia\ARippleSong\Abstracts\SettingAbstract;
+use Jiejia\ARippleSong\Feeds\PodcastFeed;
 
 /**
  * Podcast (channel) settings page, stored in the ars_podcast_settings option.

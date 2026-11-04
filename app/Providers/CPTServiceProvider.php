@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Providers;
+namespace Jiejia\ARippleSong\Providers;
 
 defined('ABSPATH') || exit;
 
-use App\Abstracts\ServiceProviderAbstract;
-use App\Contracts\CPT;
-use App\CPTs\PodcastCPT;
-use App\Libraries\Fields\PostMetaStore;
+use Jiejia\ARippleSong\Abstracts\ServiceProviderAbstract;
+use Jiejia\ARippleSong\Contracts\CPT;
+use Jiejia\ARippleSong\CPTs\PodcastCPT;
+use Jiejia\ARippleSong\Libraries\Fields\PostMetaStore;
 
 /**
  * Registers plugin custom post types.

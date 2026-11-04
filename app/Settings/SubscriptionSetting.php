@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Settings;
+namespace Jiejia\ARippleSong\Settings;
 
 defined('ABSPATH') || exit;
 
-use App\Abstracts\SettingAbstract;
+use Jiejia\ARippleSong\Abstracts\SettingAbstract;
 
 /**
  * Subscription settings page: the show's page on each podcast platform, stored in the ars_subscription_settings option.

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Providers;
+namespace Jiejia\ARippleSong\Providers;
 
 defined('ABSPATH') || exit;
 
-use App\Abstracts\ServiceProviderAbstract;
-use App\Abstracts\TaxonomyAbstract;
-use App\Libraries\Fields\TermMetaStore;
-use App\App;
-use App\Taxonomies\PodcastCategoryTaxonomy;
+use Jiejia\ARippleSong\Abstracts\ServiceProviderAbstract;
+use Jiejia\ARippleSong\Abstracts\TaxonomyAbstract;
+use Jiejia\ARippleSong\Libraries\Fields\TermMetaStore;
+use Jiejia\ARippleSong\App;
+use Jiejia\ARippleSong\Taxonomies\PodcastCategoryTaxonomy;
 
 /**
  * Registers plugin custom taxonomies.

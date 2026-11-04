@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Abstracts;
+namespace Jiejia\ARippleSong\Abstracts;
 
 defined('ABSPATH') || exit;
 
-use App\App;
+use Jiejia\ARippleSong\App;
 
 /**
  * Base class of the plugin's custom taxonomies.
