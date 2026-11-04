@@ -571,10 +571,6 @@ msgstr ""
 msgid "Default: plain bar"
 msgstr ""
 
-#: app/Player/PlayerSkin.php:39
-msgid "Night Signal: dark tech, neon green"
-msgstr ""
-
 #: app/Player/PlayerSkin.php:40
 msgid "Broadcast: Swiss brutalist, ON AIR light"
 msgstr ""
@@ -617,6 +613,9 @@ msgstr ""
 
 #: app/Player/PlayerSkin.php:50
 msgid "Wisteria: soft purple mobile app"
+msgstr ""
+
+msgid "Petal: component-library site, floating glass bar"
 msgstr ""
 
 #: app/Settings/DashboardSetting.php:27
@@ -680,7 +679,7 @@ msgid "Progress Bar & Spectrum"
 msgstr ""
 
 #: app/Settings/PlayerSetting.php:72
-msgid "Progress bar with a live spectrum on its right (like Night Signal)"
+msgid "Progress bar with a live spectrum on its right"
 msgstr ""
 
 #: app/Settings/PlayerSetting.php:73

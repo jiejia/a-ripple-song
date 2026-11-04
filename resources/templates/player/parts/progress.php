@@ -12,7 +12,7 @@
  *   $class         Classes of the row (layout, visibility, text size).
  *   $time          Classes of the elapsed time; $timeEnd of the total time (defaults to $time).
  *   $range         Classes of the range input.
- *   $bar           Optional Closure printing the skin's own progress bar instead of the range input (terminal).
+ *   $bar           Optional Closure printing the skin's own progress bar instead of the range input (ars-terminal).
  *   $spectrum      Attributes of the spectrum canvas (data-spectrum, data-bar, data-color, class …).
  *   $spectrumWrap  Optional classes of an element around the spectrum canvas, which then fills it (cassette's VU face).
  *   $wave          Attributes of the waveform element (data-bar, data-gap, data-color); $waveClass its height.

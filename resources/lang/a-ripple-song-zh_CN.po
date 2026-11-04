@@ -573,10 +573,6 @@ msgstr "第 %s 期"
 msgid "Default: plain bar"
 msgstr "默认：简洁播放条"
 
-#: app/Player/PlayerSkin.php:39
-msgid "Night Signal: dark tech, neon green"
-msgstr "夜间信号：深色科技风，霓虹绿"
-
 #: app/Player/PlayerSkin.php:40
 msgid "Broadcast: Swiss brutalist, ON AIR light"
 msgstr "广播：瑞士粗野主义，ON AIR 指示灯"
@@ -620,6 +616,9 @@ msgstr "珊瑚：收听仪表盘"
 #: app/Player/PlayerSkin.php:50
 msgid "Wisteria: soft purple mobile app"
 msgstr "紫藤：柔紫色移动应用"
+
+msgid "Petal: component-library site, floating glass bar"
+msgstr "花瓣：组件库官网风，悬浮玻璃播放条"
 
 #: app/Settings/DashboardSetting.php:27
 msgid "Dashboard"
@@ -693,8 +692,8 @@ msgid "Progress Bar & Spectrum"
 msgstr "进度条与频谱样式"
 
 #: app/Settings/PlayerSetting.php:72
-msgid "Progress bar with a live spectrum on its right (like Night Signal)"
-msgstr "左侧进度条 + 右侧实时频谱（同夜间信号）"
+msgid "Progress bar with a live spectrum on its right"
+msgstr "左侧进度条 + 右侧实时频谱"
 
 #: app/Settings/PlayerSetting.php:73
 msgid "Progress bar only (like Default)"

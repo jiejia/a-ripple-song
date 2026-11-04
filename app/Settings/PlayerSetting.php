@@ -69,7 +69,7 @@ class PlayerSetting extends SettingAbstract
                 'width' => 'half',
                 'required' => true,
                 'options' => [
-                    'spectrum' => __('Progress bar with a live spectrum on its right (like Night Signal)', 'a-ripple-song'),
+                    'spectrum' => __('Progress bar with a live spectrum on its right', 'a-ripple-song'),
                     'bar' => __('Progress bar only (like Default)', 'a-ripple-song'),
                     'waveform' => __('Waveform progress bar: the loudness of the whole episode (like Pulse)', 'a-ripple-song'),
                 ],
@@ -148,7 +148,7 @@ class PlayerSetting extends SettingAbstract
      */
     public function skin(): PlayerSkin
     {
-        return PlayerSkin::tryFrom((string) $this->value('skin')) ?? PlayerSkin::Default;
+        return PlayerSkin::fromStored((string) $this->value('skin'));
     }
 
     /**

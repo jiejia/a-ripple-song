@@ -39,3 +39,6 @@ if (!defined('A_RIPPLE_SONG_PLUGIN_URL')) {
 require_once A_RIPPLE_SONG_PLUGIN_DIR . 'app/autoload.php';
 
 new \Jiejia\ARippleSong\App();
+
+// A theme with a matching player skin (e.g. ars-petal) selects it when the plugin is activated.
+register_activation_hook(__FILE__, [\Jiejia\ARippleSong\Player\ThemeSkin::class, 'sync']);

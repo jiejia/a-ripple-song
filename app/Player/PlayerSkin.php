@@ -9,23 +9,24 @@ defined('ABSPATH') || exit;
  *
  * Each skin has a template (resources/templates/player/skins/{value}.php) and a stylesheet
  * (public/dist/skins/{value}.css). All but Default were converted from the
- * ~/workspace/podcast theme prototypes.
+ * ~/workspace/podcast theme prototypes. Values carry the ars- prefix; fromStored() still reads
+ * the unprefixed values saved before the rename.
  */
 enum PlayerSkin: string
 {
-    case Default = 'default';
-    case NightSignal = 'night-signal';
-    case Broadcast = 'broadcast';
-    case EveningPaper = 'evening-paper';
-    case Pulse = 'pulse';
-    case Cassette = 'cassette';
-    case Aurora = 'aurora';
-    case Terminal = 'terminal';
-    case Zine = 'zine';
-    case Soft = 'soft';
-    case Circle = 'circle';
-    case Coral = 'coral';
-    case Wisteria = 'wisteria';
+    case Default = 'ars-default';
+    case Broadcast = 'ars-broadcast';
+    case EveningPaper = 'ars-evening-paper';
+    case Pulse = 'ars-pulse';
+    case Cassette = 'ars-cassette';
+    case Aurora = 'ars-aurora';
+    case Terminal = 'ars-terminal';
+    case Zine = 'ars-zine';
+    case Soft = 'ars-soft';
+    case Circle = 'ars-circle';
+    case Coral = 'ars-coral';
+    case Wisteria = 'ars-wisteria';
+    case Petal = 'ars-petal';
 
     /**
      * Return the name shown in the settings.
@@ -36,7 +37,6 @@ enum PlayerSkin: string
     {
         return match ($this) {
             self::Default => __('Default: plain bar', 'a-ripple-song'),
-            self::NightSignal => __('Night Signal: dark tech, neon green', 'a-ripple-song'),
             self::Broadcast => __('Broadcast: Swiss brutalist, ON AIR light', 'a-ripple-song'),
             self::EveningPaper => __('Evening Paper: newspaper, serif', 'a-ripple-song'),
             self::Pulse => __('Pulse: dark app, electric blue', 'a-ripple-song'),
@@ -48,6 +48,7 @@ enum PlayerSkin: string
             self::Circle => __('Circle: social feed card', 'a-ripple-song'),
             self::Coral => __('Coral: listening dashboard', 'a-ripple-song'),
             self::Wisteria => __('Wisteria: soft purple mobile app', 'a-ripple-song'),
+            self::Petal => __('Petal: component-library site, floating glass bar', 'a-ripple-song'),
         };
     }
 
@@ -60,7 +61,6 @@ enum PlayerSkin: string
     {
         $families = match ($this) {
             self::Default => '',
-            self::NightSignal => 'family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&family=Space+Grotesk:wght@500;600;700',
             self::Broadcast => 'family=Archivo:wght@400;600;800;900&family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;700;900',
             self::EveningPaper => 'family=Instrument+Serif:ital@0;1&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;900',
             self::Pulse => 'family=Noto+Sans+SC:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800',
@@ -72,6 +72,7 @@ enum PlayerSkin: string
             self::Circle => 'family=Noto+Sans+SC:wght@400;500;600;700&family=Poppins:wght@400;500;600;700',
             self::Coral => 'family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Noto+Sans+SC:wght@400;500;600;700',
             self::Wisteria => 'family=Noto+Sans+SC:wght@400;500;600;700&family=Urbanist:wght@400;500;600;700;800',
+            self::Petal => 'family=Noto+Sans+SC:wght@300;400;500;700;900&family=Outfit:wght@300;400;500;600;700;800;900',
         };
 
         return $families !== '' ? 'https://fonts.googleapis.com/css2?' . $families . '&display=swap' : '';
@@ -95,6 +96,18 @@ enum PlayerSkin: string
     public function stylesheet(): string
     {
         return 'public/dist/skins/' . $this->value . '.css';
+    }
+
+    /**
+     * Return the skin for a saved setting value, accepting the unprefixed values saved before the ars- rename.
+     * Unknown or removed skins (night-signal) fall back to Default.
+     *
+     * @param string $value
+     * @return self
+     */
+    public static function fromStored(string $value): self
+    {
+        return self::tryFrom($value) ?? self::tryFrom('ars-' . $value) ?? self::Default;
     }
 
     /**

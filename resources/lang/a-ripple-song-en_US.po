@@ -455,10 +455,6 @@ msgstr "EP.%s"
 msgid "Default: plain bar"
 msgstr "Default: plain bar"
 
-#: app/Player/PlayerSkin.php:39
-msgid "Night Signal: dark tech, neon green"
-msgstr "Night Signal: dark tech, neon green"
-
 #: app/Player/PlayerSkin.php:40
 msgid "Broadcast: Swiss brutalist, ON AIR light"
 msgstr "Broadcast: Swiss brutalist, ON AIR light"
@@ -502,6 +498,9 @@ msgstr "Coral: listening dashboard"
 #: app/Player/PlayerSkin.php:50
 msgid "Wisteria: soft purple mobile app"
 msgstr "Wisteria: soft purple mobile app"
+
+msgid "Petal: component-library site, floating glass bar"
+msgstr "Petal: component-library site, floating glass bar"
 
 #: app/Settings/DashboardSetting.php:27
 msgid "Dashboard"
@@ -1881,8 +1880,8 @@ msgid "Progress Bar & Spectrum"
 msgstr "Progress Bar & Spectrum"
 
 #: app/Settings/PlayerSetting.php:72
-msgid "Progress bar with a live spectrum on its right (like Night Signal)"
-msgstr "Progress bar with a live spectrum on its right (like Night Signal)"
+msgid "Progress bar with a live spectrum on its right"
+msgstr "Progress bar with a live spectrum on its right"
 
 #: app/Settings/PlayerSetting.php:73
 msgid "Progress bar only (like Default)"
