@@ -86,6 +86,9 @@ final class GlobalPlayer
         wp_register_style(self::HANDLE . '-base', false, [], App::VERSION);
         wp_enqueue_style(self::HANDLE . '-base');
         wp_add_inline_style(self::HANDLE . '-base', 'body.has-ars-player{padding-bottom:var(--ars-player-height,5.5rem)}html.ars-player-panel-open{overflow:hidden}[ars-cloak]{display:none!important}'
+            // The bar box is a size container: the partials (progress, spectrum, volume) show by the bar's own width
+            // (@2xl:, @5xl: …), not the window's, so a bar matched to a narrow theme width does not cram them together.
+            . '.ars-player [data-ars-width=box]{container-type:inline-size}'
             // Bar and panel widths set by player.js (setting "Player Width"); "content" containers keep their padding outside.
             . '.ars-player[data-ars-fit] [data-ars-width]{max-width:var(--ars-fit-width)!important}'
             . '.ars-player[data-ars-fit] [data-ars-width=content]{box-sizing:content-box!important}'

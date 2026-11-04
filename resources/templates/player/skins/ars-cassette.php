@@ -21,7 +21,7 @@ use Jiejia\ARippleSong\Libraries\Template;
       <div data-ars-width="box" data-ars-surface class="mx-auto max-w-7xl bg-base-100 text-base-content">
       <div class="stripes h-2" aria-hidden="true"></div>
       <div class="flex h-20 items-center gap-3 px-3 sm:gap-4 sm:px-6">
-        <button type="button" class="flex min-w-0 flex-1 items-center gap-3 rounded-xl py-1 pr-2 text-left hover:bg-base-200 lg:w-56 lg:flex-none xl:w-72" ars-on:click="expanded = true" aria-label="展开正在播放">
+        <button type="button" class="flex min-w-0 flex-1 items-center gap-3 rounded-xl py-1 pr-2 text-left hover:bg-base-200 @4xl:w-56 @4xl:flex-none @5xl:w-72" ars-on:click="expanded = true" aria-label="展开正在播放">
           <span class="tape-window h-11 w-24 shrink-0" ars-bind:class="playing && 'is-rolling'" aria-hidden="true"><span class="reel"></span><span class="spool"></span><span class="reel"></span></span>
           <span class="min-w-0">
             <span class="tag block text-secondary" ars-text="error || `EP.${current?.number} · ${loading ? '装带中' : (playing ? 'PLAY' : 'PAUSE')}`"></span>
@@ -29,7 +29,7 @@ use Jiejia\ARippleSong\Libraries\Template;
           </span>
         </button>
         <div class="flex items-center gap-1.5">
-          <span class="hidden md:contents">
+          <span class="hidden @2xl:contents">
             <button type="button" class="key size-10" ars-on:click="prev()" aria-label="上一集"><?php Icon::render('skip-back', 'size-4'); ?></button>
             <button type="button" class="key size-10" ars-on:click="skip(-15)" aria-label="后退 15 秒"><?php Icon::render('rewind', 'size-4'); ?></button>
           </span>
@@ -37,20 +37,20 @@ use Jiejia\ARippleSong\Libraries\Template;
             <span ars-show="!playing"><?php Icon::render('play', 'size-6 fill-current'); ?></span>
             <span ars-show="playing" ars-cloak><?php Icon::render('pause', 'size-6 fill-current'); ?></span>
           </button>
-          <span class="hidden md:contents">
+          <span class="hidden @2xl:contents">
             <button type="button" class="key size-10" ars-on:click="skip(30)" aria-label="快进 30 秒"><?php Icon::render('fast-forward', 'size-4'); ?></button>
             <button type="button" class="key size-10" ars-on:click="next()" aria-label="下一集"><?php Icon::render('skip-forward', 'size-4'); ?></button>
           </span>
         </div>
         <?php
         (new Template())->renderThemeable('player/parts/progress', [
-            'class' => 'hidden min-w-0 flex-1 items-center gap-3 md:flex',
+            'class' => 'hidden min-w-0 flex-1 items-center gap-3 @2xl:flex',
             'time' => 'counter text-sm', 'timeEnd' => 'font-mono text-sm opacity-60',
-            'spectrum' => ['data-spectrum' => 'vu', 'data-color' => 'content'], 'spectrumWrap' => 'vu-face hidden h-12 w-24 shrink-0 xl:block',
+            'spectrum' => ['data-spectrum' => 'vu', 'data-color' => 'content'], 'spectrumWrap' => 'vu-face hidden h-12 w-24 shrink-0 @5xl:block',
             'waveClass' => 'h-10',
         ]);
         ?>
-        <div class="hidden items-center gap-1 lg:flex">
+        <div class="hidden items-center gap-1 @4xl:flex">
           <button type="button" class="btn btn-ghost btn-sm font-mono" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
           <?php (new Template())->renderThemeable('player/parts/volume', ['button' => 'btn btn-ghost btn-sm btn-square']); ?>
         </div>

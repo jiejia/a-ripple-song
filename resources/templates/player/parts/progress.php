@@ -31,7 +31,7 @@ use Jiejia\ARippleSong\Settings\PlayerSetting;
 
 $style ??= (new PlayerSetting())->progressStyle();
 $hooks ??= 'binder';
-$class ??= 'hidden min-w-0 flex-1 items-center gap-3 text-xs tabular-nums md:flex';
+$class ??= 'hidden min-w-0 flex-1 items-center gap-3 text-xs tabular-nums @2xl:flex';
 $time ??= 'opacity-70';
 $timeEnd ??= $time;
 $range ??= 'range range-primary range-xs';

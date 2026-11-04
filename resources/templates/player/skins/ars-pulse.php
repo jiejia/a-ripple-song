@@ -23,7 +23,7 @@ use Jiejia\ARippleSong\Libraries\Template;
           <img ars-bind:src="current?.cover" alt="" class="size-full object-cover">
           <span ars-show="loading" ars-cloak class="absolute inset-0 grid place-items-center bg-black/40"><span class="loading loading-spinner loading-sm text-white"></span></span>
         </button>
-        <div class="min-w-0 flex-1 md:w-60 md:flex-none">
+        <div class="min-w-0 flex-1 @4xl:w-60 @4xl:flex-none">
           <a ars-bind:href="current?.url" class="block truncate font-semibold hover:text-primary" ars-text="current?.title"></a>
           <p class="muted truncate text-xs" ars-text="error || join(`第 ${current?.number} 期`, current?.hosts)"></p>
         </div>
@@ -40,11 +40,11 @@ use Jiejia\ARippleSong\Libraries\Template;
         <?php
         (new Template())->renderThemeable('player/parts/progress', [
             'time' => 'muted',
-            'spectrum' => ['data-spectrum' => 'bars', 'data-bar' => '3', 'data-gap' => '2', 'data-color' => 'content', 'class' => 'hidden h-10 w-24 shrink-0 xl:block'],
+            'spectrum' => ['data-spectrum' => 'bars', 'data-bar' => '3', 'data-gap' => '2', 'data-color' => 'content', 'class' => 'hidden h-10 w-24 shrink-0 @5xl:block'],
             'wave' => ['data-bar' => '3', 'data-gap' => '4', 'data-color' => 'content'], 'waveClass' => 'h-10',
         ]);
         ?>
-        <div class="hidden items-center gap-1 lg:flex">
+        <div class="hidden items-center gap-1 @4xl:flex">
           <button type="button" class="btn btn-ghost btn-sm w-12 px-0 text-sm" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
           <?php (new Template())->renderThemeable('player/parts/volume'); ?>
         </div>

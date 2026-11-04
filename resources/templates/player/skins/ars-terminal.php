@@ -19,17 +19,17 @@ use Jiejia\ARippleSong\Libraries\Template;
     <?php /* ============ 播放器：底部状态行（常驻） ============ */ ?>
     <div class="fixed inset-x-0 bottom-0 z-[9990]" role="region" data-ars-bar aria-label="音频播放器">
       <div data-ars-width="box" data-ars-surface="base-200" class="mx-auto flex h-16 max-w-6xl items-center gap-3 border-x border-t tui-line bg-base-200 px-4 text-sm [--tui-bg:var(--color-base-200)]">
-        <button type="button" class="min-w-0 flex-1 text-left hover:text-primary lg:max-w-56 xl:max-w-xs" ars-on:click="expanded = true" aria-label="展开正在播放">
+        <button type="button" class="min-w-0 flex-1 text-left hover:text-primary @4xl:max-w-56 @5xl:max-w-xs" ars-on:click="expanded = true" aria-label="展开正在播放">
           <span class="dim block text-xs" ars-text="error || `EP.${String(current?.number).padStart(3, '0')} ${loading ? 'loading…' : (playing ? 'playing' : 'paused')}`"></span>
           <span class="block truncate" ars-text="current?.title"></span>
         </button>
         <div class="flex shrink-0 items-center">
-          <span class="hidden md:contents">
+          <span class="hidden @2xl:contents">
             <button type="button" class="cmd" ars-on:click="prev()" aria-label="上一集">|&lt;</button>
             <button type="button" class="cmd" ars-on:click="skip(-15)" aria-label="后退 15 秒">-15</button>
           </span>
           <button type="button" class="cmd text-lg text-primary" ars-bind:class="playing && 'is-on'" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放" ars-text="playing ? '❚❚' : '▶ '">▶ </button>
-          <span class="hidden md:contents">
+          <span class="hidden @2xl:contents">
             <button type="button" class="cmd" ars-on:click="skip(30)" aria-label="快进 30 秒">+30</button>
             <button type="button" class="cmd" ars-on:click="next()" aria-label="下一集">&gt;|</button>
           </span>
@@ -37,7 +37,7 @@ use Jiejia\ARippleSong\Libraries\Template;
         <?php
         (new Template())->renderThemeable('player/parts/progress', [
             // No min-w-0: the text bar has a fixed width, so the title gives way instead.
-            'class' => 'hidden flex-1 items-center gap-3 tabular-nums md:flex',
+            'class' => 'hidden flex-1 items-center gap-3 tabular-nums @2xl:flex',
             'time' => '', 'timeEnd' => 'dim',
             'bar' => static function (): void { ?>
           <label class="bar-seek shrink-0 tracking-[-0.05em] text-primary">
@@ -46,11 +46,11 @@ use Jiejia\ARippleSong\Libraries\Template;
             <input type="range" min="0" ars-bind:max="duration" step="1" ars-bind:value="position" ars-on:input="scrub($event.target.value)" ars-on:change="commit($event.target.value)">
           </label>
             <?php },
-            'spectrum' => ['data-spectrum' => 'ascii', 'data-bar' => '11', 'data-gap' => '1', 'class' => 'hidden h-10 w-24 shrink-0 2xl:block'],
+            'spectrum' => ['data-spectrum' => 'ascii', 'data-bar' => '11', 'data-gap' => '1', 'class' => 'hidden h-10 w-24 shrink-0 @6xl:block'],
             'wave' => ['data-gap' => '1'],
         ]);
         ?>
-        <span class="hidden lg:contents">
+        <span class="hidden @4xl:contents">
           <button type="button" class="cmd" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}x`">1x</button>
           <?php (new Template())->renderThemeable('player/parts/volume', ['button' => 'cmd', 'icon' => '', 'range' => 'accent-primary']); ?>
         </span>

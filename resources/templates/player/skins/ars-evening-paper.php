@@ -21,7 +21,7 @@ use Jiejia\ARippleSong\Libraries\Template;
       <div data-ars-width="box" data-ars-surface class="mx-auto max-w-6xl bg-base-100">
       <div class="rule-double"></div>
       <div class="flex items-center gap-4 px-4 py-3 sm:px-6">
-        <button type="button" class="min-w-0 flex-1 text-left md:w-60 md:flex-none" ars-on:click="expanded = true" aria-label="展开正在播放">
+        <button type="button" class="min-w-0 flex-1 text-left @4xl:w-60 @4xl:flex-none" ars-on:click="expanded = true" aria-label="展开正在播放">
           <span class="kicker block" ars-text="error || join(`第 ${current?.number} 期`, categoryName(current?.category))"></span>
           <span class="block truncate text-[15px] font-semibold" ars-text="current?.title"></span>
         </button>
@@ -37,14 +37,14 @@ use Jiejia\ARippleSong\Libraries\Template;
         </div>
         <?php
         (new Template())->renderThemeable('player/parts/progress', [
-            'class' => 'hidden min-w-0 flex-1 items-center gap-4 md:flex',
+            'class' => 'hidden min-w-0 flex-1 items-center gap-4 @2xl:flex',
             'time' => 'meta shrink-0 tabular-nums', 'range' => 'range range-xs [--range-thumb:var(--color-primary)]',
-            'spectrum' => ['data-spectrum' => 'wave', 'data-bar' => '1.25', 'data-color' => 'content', 'class' => 'hidden h-7 w-28 shrink-0 xl:block'],
+            'spectrum' => ['data-spectrum' => 'wave', 'data-bar' => '1.25', 'data-color' => 'content', 'class' => 'hidden h-7 w-28 shrink-0 @5xl:block'],
             'wave' => ['data-color' => 'content'], 'waveClass' => 'h-7',
         ]);
         ?>
         <div class="flex shrink-0 items-center gap-1 font-sans">
-          <button type="button" class="btn btn-ghost btn-sm hidden w-14 lg:inline-flex" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
+          <button type="button" class="btn btn-ghost btn-sm hidden w-14 @4xl:inline-flex" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
           <?php (new Template())->renderThemeable('player/parts/volume', ['range' => 'range range-xs']); ?>
           <button type="button" class="btn btn-ghost btn-sm btn-circle" ars-on:click="expanded = true" aria-label="展开播放器与节目目录"><?php Icon::render('book-open', 'size-4'); ?></button>
         </div>

@@ -20,7 +20,7 @@ use Jiejia\ARippleSong\Libraries\Template;
     <div class="fixed inset-x-0 bottom-3 z-[9990] px-3" role="region" data-ars-bar aria-label="音频播放器">
       <div data-ars-width="box" class="frost frost-strong relative mx-auto flex h-[4.5rem] max-w-4xl items-center gap-2 rounded-full pl-2 pr-3 sm:gap-3">
         <span class="bg-aurora absolute inset-x-6 bottom-0 h-0.5 origin-left rounded-full" ars-bind:style="`transform: scaleX(${progress / 100})`" aria-hidden="true"></span>
-        <button type="button" class="flex min-w-0 flex-1 items-center gap-3 rounded-full text-left md:w-64 md:flex-none" ars-on:click="expanded = true" aria-label="展开正在播放">
+        <button type="button" class="flex min-w-0 flex-1 items-center gap-3 rounded-full text-left @4xl:w-64 @4xl:flex-none" ars-on:click="expanded = true" aria-label="展开正在播放">
           <img ars-bind:src="current?.cover" alt="" class="spin size-14 shrink-0 rounded-full ring-2 ring-base-100" ars-bind:class="playing && 'is-on'">
           <span class="min-w-0">
             <span class="block truncate text-xs opacity-60" ars-text="error || `EP.${current?.number} · ${loading ? '加载中' : (playing ? '正在播放' : '已暂停')}`"></span>
@@ -39,11 +39,11 @@ use Jiejia\ARippleSong\Libraries\Template;
         <?php
         (new Template())->renderThemeable('player/parts/progress', [
             'time' => 'opacity-70', 'timeEnd' => 'opacity-50',
-            'spectrum' => ['data-spectrum' => 'mirror', 'data-bar' => '2', 'data-gap' => '2', 'class' => 'hidden h-8 w-20 shrink-0 xl:block'],
+            'spectrum' => ['data-spectrum' => 'mirror', 'data-bar' => '2', 'data-gap' => '2', 'class' => 'hidden h-8 w-20 shrink-0 @5xl:block'],
         ]);
         ?>
         <?php (new Template())->renderThemeable('player/parts/volume', ['range' => 'range range-xs']); ?>
-        <button type="button" class="btn btn-ghost btn-sm hidden rounded-full font-normal tabular-nums lg:inline-flex" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
+        <button type="button" class="btn btn-ghost btn-sm hidden rounded-full font-normal tabular-nums @4xl:inline-flex" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
         <button type="button" class="btn btn-ghost btn-circle btn-sm" ars-on:click="expanded = true" aria-label="展开播放器与播放队列"><?php Icon::render('chevron-up', 'size-5'); ?></button>
       </div>
     </div>

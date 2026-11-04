@@ -19,7 +19,7 @@ use Jiejia\ARippleSong\Libraries\Template;
     <?php /* ============ 播放器（常驻，悬浮卡片） ============ */ ?>
     <div class="fixed inset-x-0 bottom-0 z-[9990] px-2 pb-2 sm:px-4 sm:pb-4" role="region" data-ars-bar aria-label="音频播放器">
       <div data-ars-width="box" data-ars-surface class="soft-shadow mx-auto flex h-[4.5rem] max-w-7xl items-center gap-3 rounded-2xl border border-base-300 bg-base-100 px-2.5 sm:px-4">
-        <button type="button" class="flex min-w-0 flex-1 items-center gap-3 text-left md:w-72 md:flex-none" ars-on:click="expanded = true" aria-label="展开正在播放">
+        <button type="button" class="flex min-w-0 flex-1 items-center gap-3 text-left @4xl:w-72 @4xl:flex-none" ars-on:click="expanded = true" aria-label="展开正在播放">
           <img ars-bind:src="current?.cover" alt="" class="size-12 shrink-0 rounded-xl">
           <span class="min-w-0">
             <span class="flex items-center gap-2 text-xs">
@@ -42,11 +42,11 @@ use Jiejia\ARippleSong\Libraries\Template;
         <?php
         (new Template())->renderThemeable('player/parts/progress', [
             'time' => 'opacity-60', 'timeEnd' => 'opacity-40',
-            'spectrum' => ['data-spectrum' => 'mirror', 'data-bar' => '3', 'data-gap' => '2', 'data-color' => 'secondary', 'class' => 'hidden h-9 w-24 shrink-0 xl:block'],
+            'spectrum' => ['data-spectrum' => 'mirror', 'data-bar' => '3', 'data-gap' => '2', 'data-color' => 'secondary', 'class' => 'hidden h-9 w-24 shrink-0 @5xl:block'],
             'wave' => ['data-bar' => '3'], 'waveClass' => 'h-9',
         ]);
         ?>
-        <div class="hidden items-center gap-1 lg:flex">
+        <div class="hidden items-center gap-1 @4xl:flex">
           <button type="button" class="btn btn-ghost btn-sm rounded-lg font-semibold" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
           <?php (new Template())->renderThemeable('player/parts/volume', ['range' => 'range range-secondary range-xs']); ?>
         </div>

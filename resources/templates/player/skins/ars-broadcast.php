@@ -20,14 +20,14 @@ use Jiejia\ARippleSong\Libraries\Template;
     <div data-ars-theme="dark" class="fixed inset-x-0 bottom-0 z-[9990]" role="region" data-ars-bar aria-label="音频播放器">
       <?php /* No max-width: with the style's own width the bar runs edge to edge like the prototype. */ ?>
       <div data-ars-width="box" data-ars-surface class="mx-auto flex h-[4.5rem] items-stretch border-x-2 border-t-2 border-base-content bg-base-100 text-base-content">
-        <button type="button" class="flex min-w-0 flex-1 items-center gap-3 border-r-2 border-base-content/25 pr-3 text-left hover:bg-base-200 md:w-56 md:flex-none xl:w-80" ars-on:click="expanded = true" aria-label="展开正在播放">
+        <button type="button" class="flex min-w-0 flex-1 items-center gap-3 border-r-2 border-base-content/25 pr-3 text-left hover:bg-base-200 @4xl:w-56 @4xl:flex-none @5xl:w-80" ars-on:click="expanded = true" aria-label="展开正在播放">
           <img ars-bind:src="current?.cover" alt="" class="h-full w-[4.5rem] shrink-0 border-r-2 border-base-content/25 object-cover">
           <span class="min-w-0">
             <span class="label block text-accent" ars-text="error || `EP.${current?.number} · ${loading ? 'Loading' : (playing ? 'On Air' : 'Paused')}`"></span>
             <span class="block truncate font-bold" ars-text="current?.title"></span>
           </span>
         </button>
-        <div class="hidden items-stretch md:flex">
+        <div class="hidden items-stretch @2xl:flex">
           <button type="button" class="grid w-12 place-items-center hover:bg-base-200" ars-on:click="prev()" aria-label="上一集"><?php Icon::render('skip-back', 'size-4'); ?></button>
           <button type="button" class="grid w-12 place-items-center hover:bg-base-200" ars-on:click="skip(-15)" aria-label="后退 15 秒"><?php Icon::render('rotate-ccw', 'size-4'); ?></button>
         </div>
@@ -35,19 +35,19 @@ use Jiejia\ARippleSong\Libraries\Template;
           <span ars-show="!playing"><?php Icon::render('play', 'size-7 fill-current'); ?></span>
           <span ars-show="playing" ars-cloak><?php Icon::render('pause', 'size-7 fill-current'); ?></span>
         </button>
-        <div class="hidden items-stretch md:flex">
+        <div class="hidden items-stretch @2xl:flex">
           <button type="button" class="grid w-12 place-items-center hover:bg-base-200" ars-on:click="skip(30)" aria-label="快进 30 秒"><?php Icon::render('rotate-cw', 'size-4'); ?></button>
           <button type="button" class="grid w-12 place-items-center border-r-2 border-base-content/25 hover:bg-base-200" ars-on:click="next()" aria-label="下一集"><?php Icon::render('skip-forward', 'size-4'); ?></button>
         </div>
         <?php
         (new Template())->renderThemeable('player/parts/progress', [
-            'class' => 'hidden min-w-0 flex-1 items-center gap-3 px-5 font-mono md:flex',
+            'class' => 'hidden min-w-0 flex-1 items-center gap-3 px-5 font-mono @2xl:flex',
             'time' => 'text-base font-semibold text-accent', 'timeEnd' => 'text-sm text-base-content/60', 'range' => 'range range-accent range-xs',
-            'spectrum' => ['data-spectrum' => 'led', 'data-bar' => '4', 'data-gap' => '2', 'data-color' => 'accent', 'class' => 'hidden h-10 w-28 shrink-0 2xl:block'],
+            'spectrum' => ['data-spectrum' => 'led', 'data-bar' => '4', 'data-gap' => '2', 'data-color' => 'accent', 'class' => 'hidden h-10 w-28 shrink-0 @6xl:block'],
             'wave' => ['data-color' => 'accent'], 'waveClass' => 'h-10',
         ]);
         ?>
-        <div class="hidden items-stretch border-l-2 border-base-content/25 lg:flex">
+        <div class="hidden items-stretch border-l-2 border-base-content/25 @4xl:flex">
           <button type="button" class="label w-16 hover:bg-base-200" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
           <?php (new Template())->renderThemeable('player/parts/volume', ['button' => 'grid h-full w-12 place-items-center hover:bg-base-200', 'range' => 'range range-accent range-xs mr-4']); ?>
         </div>

@@ -59,7 +59,7 @@ $bigButton = 'btn btn-ghost btn-circle';
     <?php /* ---------- Bar ---------- */ ?>
     <div class="fixed inset-x-0 bottom-0 z-[9990] px-2 pb-2 sm:px-4 sm:pb-4" data-ars-bar>
         <div data-ars-width="box" data-ars-surface class="mx-auto flex h-16 max-w-6xl items-center gap-2 rounded-box border border-base-300 bg-base-100 px-2 text-base-content shadow-lg sm:gap-3 sm:px-3">
-            <button type="button" class="flex min-w-0 flex-1 items-center gap-3 text-left md:w-64 md:flex-none" data-ars-action="panel" aria-label="<?php esc_attr_e('Open Now Playing', 'a-ripple-song'); ?>">
+            <button type="button" class="flex min-w-0 flex-1 items-center gap-3 text-left @4xl:w-64 @4xl:flex-none" data-ars-action="panel" aria-label="<?php esc_attr_e('Open Now Playing', 'a-ripple-song'); ?>">
                 <span class="grid size-11 shrink-0 place-items-center overflow-hidden rounded-field bg-base-200">
                     <img class="size-full object-cover" alt="" data-ars-src="cover" data-ars-show="cover">
                     <span class="opacity-50" data-ars-show="nocover"><?php Icon::render('podcast', 'size-5'); ?></span>
@@ -90,11 +90,11 @@ $bigButton = 'btn btn-ghost btn-circle';
                 'hooks' => 'data',
                 'time' => 'opacity-70',
                 'timeEnd' => 'opacity-50',
-                'spectrum' => ['data-spectrum' => 'bars', 'class' => 'hidden h-8 w-24 shrink-0 xl:block'],
+                'spectrum' => ['data-spectrum' => 'bars', 'class' => 'hidden h-8 w-24 shrink-0 @5xl:block'],
             ]);
             ?>
 
-            <div class="hidden shrink-0 items-center gap-1 lg:flex">
+            <div class="hidden shrink-0 items-center gap-1 @4xl:flex">
                 <button type="button" class="btn btn-ghost btn-sm font-semibold tabular-nums" data-ars-action="rate" aria-label="<?php esc_attr_e('Playback speed', 'a-ripple-song'); ?>"><span data-ars-text="rate">1×</span></button>
                 <button type="button" class="<?php echo esc_attr($iconButton); ?>" data-ars-action="mute" aria-label="<?php esc_attr_e('Mute', 'a-ripple-song'); ?>">
                     <span data-ars-show="unmuted"><?php Icon::render('volume-2', 'size-4'); ?></span>

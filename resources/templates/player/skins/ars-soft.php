@@ -19,7 +19,7 @@ use Jiejia\ARippleSong\Libraries\Template;
     <?php /* ============ 播放器：机身面板（常驻） ============ */ ?>
     <div class="fixed inset-x-0 bottom-3 z-[9990] px-3" role="region" data-ars-bar aria-label="音频播放器">
       <div data-ars-width="box" data-ars-surface class="raised mx-auto flex h-20 max-w-5xl items-center gap-3 rounded-[2rem] px-3 sm:gap-4 sm:px-4">
-        <button type="button" class="lcd flex h-14 min-w-0 flex-1 flex-col justify-center rounded-2xl px-4 text-left md:w-64 md:flex-none" ars-on:click="expanded = true" aria-label="展开正在播放">
+        <button type="button" class="lcd flex h-14 min-w-0 flex-1 flex-col justify-center rounded-2xl px-4 text-left @4xl:w-64 @4xl:flex-none" ars-on:click="expanded = true" aria-label="展开正在播放">
           <span class="flex items-center justify-between gap-2 text-[11px] uppercase tracking-wider">
             <span ars-text="error || `EP.${current?.number} ${loading ? 'LOAD' : (playing ? '▶ PLAY' : '❚❚ PAUSE')}`"></span>
             <span class="tabular-nums" ars-text="fmt(position)">00:00</span>
@@ -43,12 +43,12 @@ use Jiejia\ARippleSong\Libraries\Template;
         </div>
         <?php
         (new Template())->renderThemeable('player/parts/progress', [
-            'class' => 'hidden min-w-0 flex-1 items-center gap-3 font-mono text-[11px] tabular-nums md:flex',
+            'class' => 'hidden min-w-0 flex-1 items-center gap-3 font-mono text-[11px] tabular-nums @2xl:flex',
             'time' => 'opacity-60',
-            'spectrum' => ['data-spectrum' => 'bars', 'class' => 'hidden h-8 w-24 shrink-0 xl:block'],
+            'spectrum' => ['data-spectrum' => 'bars', 'class' => 'hidden h-8 w-24 shrink-0 @5xl:block'],
         ]);
         ?>
-        <div class="hidden items-center gap-3 lg:flex">
+        <div class="hidden items-center gap-3 @4xl:flex">
           <button type="button" class="raised-sm press h-9 rounded-full px-3 font-mono text-xs" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
           <button type="button" role="slider" aria-label="音量（拖动、滚轮或方向键调节）" aria-valuemin="0" aria-valuemax="100" ars-bind:aria-valuenow="Math.round((muted ? 0 : volume) * 100)"
                   class="knob raised-sm size-12"

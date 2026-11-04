@@ -20,7 +20,7 @@ use Jiejia\ARippleSong\Libraries\Template;
     <div class="fixed inset-x-0 bottom-0 z-[9990] px-2 pb-2 sm:px-5 sm:pb-5" role="region" data-ars-bar aria-label="音频播放器">
       <div data-ars-width="box" data-ars-surface class="panel mx-auto flex max-w-7xl items-center gap-3 rounded-2xl p-2.5 shadow-[0_20px_50px_-20px_oklch(30%_0.05_270/0.45)] sm:gap-4 sm:px-4">
         <button type="button" class="shrink-0" ars-on:click="expanded = true" aria-label="展开播放器"><img ars-bind:src="current?.cover" alt="" class="size-12 rounded-xl"></button>
-        <div class="min-w-0 flex-1 md:w-40 md:flex-none xl:w-56">
+        <div class="min-w-0 flex-1 @4xl:w-40 @4xl:flex-none @5xl:w-56">
           <a ars-bind:href="current?.url" class="block truncate text-sm font-semibold hover:text-primary" ars-text="current?.title"></a>
           <p class="mute truncate text-xs" ars-text="error || (loading ? '加载中…' : (current?.hosts ? 'by ' + current.hosts : ''))"></p>
         </div>
@@ -37,12 +37,12 @@ use Jiejia\ARippleSong\Libraries\Template;
         <?php
         (new Template())->renderThemeable('player/parts/progress', [
             'time' => 'mute',
-            'spectrum' => ['data-spectrum' => 'bars', 'data-bar' => '2', 'data-gap' => '2', 'class' => 'hidden h-9 w-24 shrink-0 xl:block'],
+            'spectrum' => ['data-spectrum' => 'bars', 'data-bar' => '2', 'data-gap' => '2', 'class' => 'hidden h-9 w-24 shrink-0 @5xl:block'],
             'waveClass' => 'h-9',
         ]);
         ?>
         <?php (new Template())->renderThemeable('player/parts/volume', ['button' => 'grid size-10 shrink-0 place-items-center rounded-full hover:bg-base-200']); ?>
-        <button type="button" class="hidden size-10 shrink-0 place-items-center rounded-full bg-base-200 text-primary lg:grid" ars-on:click="toggleFav(current?.id)" ars-bind:aria-pressed="isFav(current?.id)" aria-label="收藏当前节目">
+        <button type="button" class="hidden size-10 shrink-0 place-items-center rounded-full bg-base-200 text-primary @4xl:grid" ars-on:click="toggleFav(current?.id)" ars-bind:aria-pressed="isFav(current?.id)" aria-label="收藏当前节目">
           <span ars-show="!isFav(current?.id)"><?php Icon::render('heart', 'size-4'); ?></span>
           <span ars-show="isFav(current?.id)" ars-cloak><?php Icon::render('heart', 'size-4 fill-current'); ?></span>
         </button>

@@ -20,7 +20,7 @@ use Jiejia\ARippleSong\Libraries\Template;
     <div class="fixed inset-x-0 bottom-0 z-[9990] px-3 pb-3" role="region" data-ars-bar aria-label="音频播放器">
       <div data-ars-width="box" data-ars-surface class="card-w mx-auto flex max-w-6xl items-center gap-3 rounded-[1.75rem] p-2.5 sm:gap-4 sm:pr-4">
         <button type="button" class="shrink-0" ars-on:click="expanded = true" aria-label="展开正在播放"><img ars-bind:src="current?.cover" alt="" class="size-14 rounded-2xl"></button>
-        <div class="min-w-0 flex-1 md:w-56 md:flex-none">
+        <div class="min-w-0 flex-1 @4xl:w-56 @4xl:flex-none">
           <p class="flex items-center gap-2">
             <span ars-show="playing" ars-cloak class="is-on inline-flex items-center gap-1 rounded-full bg-secondary/25 px-2 py-0.5 text-[10px] font-semibold text-[oklch(45%_0.1_210)]"><span class="live-dot"></span>On Live</span>
             <span class="mute truncate text-xs" ars-text="error || (loading ? '加载中…' : `第 ${current?.number} 期`)"></span>
@@ -38,12 +38,12 @@ use Jiejia\ARippleSong\Libraries\Template;
         <?php
         (new Template())->renderThemeable('player/parts/progress', [
             'time' => 'mute',
-            'spectrum' => ['data-spectrum' => 'mirror', 'data-bar' => '3', 'data-gap' => '2', 'class' => 'hidden h-9 w-24 shrink-0 xl:block'],
+            'spectrum' => ['data-spectrum' => 'mirror', 'data-bar' => '3', 'data-gap' => '2', 'class' => 'hidden h-9 w-24 shrink-0 @5xl:block'],
             'waveClass' => 'h-9',
         ]);
         ?>
         <?php (new Template())->renderThemeable('player/parts/volume'); ?>
-        <button type="button" class="btn btn-ghost btn-sm hidden w-11 px-0 text-xs lg:inline-flex" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
+        <button type="button" class="btn btn-ghost btn-sm hidden w-11 px-0 text-xs @4xl:inline-flex" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
         <button type="button" class="btn btn-ghost btn-circle btn-sm" ars-on:click="expanded = true" aria-label="展开播放器与播放队列"><?php Icon::render('chevron-up', 'size-5'); ?></button>
       </div>
     </div>

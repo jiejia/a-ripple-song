@@ -24,7 +24,7 @@ $button ??= 'btn btn-ghost btn-circle btn-sm';
 $icon ??= 'size-4';
 $range ??= 'range range-primary range-xs';
 ?>
-<div class="hidden shrink-0 items-center gap-1 lg:flex">
+<div class="hidden shrink-0 items-center gap-1 @3xl:flex">
   <button type="button" class="<?php echo esc_attr($button); ?>" ars-on:click="toggleMute()" ars-bind:aria-label="muted ? '取消静音' : '静音'" aria-label="静音">
     <?php if ($icon === '') : ?>
       <span ars-text="muted ? 'mute' : 'vol'">vol</span>
@@ -33,5 +33,5 @@ $range ??= 'range range-primary range-xs';
       <span ars-show="muted" ars-cloak><?php Icon::render('volume-x', $icon); ?></span>
     <?php endif; ?>
   </button>
-  <input type="range" class="<?php echo esc_attr($range); ?> hidden w-20 xl:block" min="0" max="1" step="0.05" ars-bind:value="muted ? 0 : volume" ars-on:input="setVolume($event.target.value)" aria-label="音量">
+  <input type="range" class="<?php echo esc_attr($range); ?> hidden w-20 @5xl:block" min="0" max="1" step="0.05" ars-bind:value="muted ? 0 : volume" ars-on:input="setVolume($event.target.value)" aria-label="音量">
 </div>
