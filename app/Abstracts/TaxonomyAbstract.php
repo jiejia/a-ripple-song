@@ -4,7 +4,7 @@ namespace App\Abstracts;
 
 defined('ABSPATH') || exit;
 
-use App\Plugin;
+use App\App;
 
 /**
  * Base class of the plugin's custom taxonomies.
@@ -26,7 +26,7 @@ abstract class TaxonomyAbstract
 
     public function slug(): string
     {
-        return Plugin::PREFIX . $this->slug;
+        return App::PREFIX . $this->slug;
     }
 
     /**

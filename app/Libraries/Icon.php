@@ -4,7 +4,7 @@ namespace App\Libraries;
 
 defined('ABSPATH') || exit;
 
-use App\Plugin;
+use App\App;
 
 /**
  * Inline Lucide icons from resources/assets/icons (copied there by `npm run build:icons`).
@@ -60,7 +60,7 @@ final class Icon
      */
     private static function load(string $name): string
     {
-        $file = Plugin::DIR . 'resources/assets/icons/' . sanitize_file_name($name) . '.svg';
+        $file = App::DIR . 'resources/assets/icons/' . sanitize_file_name($name) . '.svg';
 
         return is_readable($file) ? trim((string) file_get_contents($file)) : '';
     }

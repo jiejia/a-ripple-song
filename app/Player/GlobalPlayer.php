@@ -7,7 +7,7 @@ defined('ABSPATH') || exit;
 use App\Abstracts\ControllerAbstract;
 use App\CPTs\PodcastCPT;
 use App\Libraries\Template;
-use App\Plugin;
+use App\App;
 use App\Settings\PlayerSetting;
 use App\Settings\PodcastSetting;
 
@@ -24,9 +24,9 @@ use App\Settings\PodcastSetting;
  */
 final class GlobalPlayer
 {
-    public const HANDLE = Plugin::PREFIX . 'player';
+    public const HANDLE = App::PREFIX . 'player';
 
-    public const THEME_SUPPORT = Plugin::SLUG . '-player';
+    public const THEME_SUPPORT = App::SLUG . '-player';
 
     /**
      * Number of latest episodes sent to the player, so their play buttons work without another request.
@@ -83,7 +83,7 @@ final class GlobalPlayer
 
         // Page-level rules, kept even when the theme styles the player itself: room for the fixed bar,
         // no page scrolling behind the full-screen panel, skin elements hidden until bound, bar width.
-        wp_register_style(self::HANDLE . '-base', false, [], Plugin::VERSION);
+        wp_register_style(self::HANDLE . '-base', false, [], App::VERSION);
         wp_enqueue_style(self::HANDLE . '-base');
         wp_add_inline_style(self::HANDLE . '-base', 'body.has-ars-player{padding-bottom:var(--ars-player-height,5.5rem)}html.ars-player-panel-open{overflow:hidden}[ars-cloak]{display:none!important}'
             // Bar and panel widths set by player.js (setting "Player Width"); "content" containers keep their padding outside.
@@ -114,7 +114,7 @@ final class GlobalPlayer
             . '.ars-player .ars-wave:not(:has([data-ars-wave-ready]))::before{content:"";position:absolute;inset:50% 0 auto;height:2px;margin-top:-1px;border-radius:1px;background:currentColor;opacity:.2}');
 
         if (! current_theme_supports(self::THEME_SUPPORT)) {
-            wp_enqueue_style(self::HANDLE, A_RIPPLE_SONG_PLUGIN_URL . $skin->stylesheet(), [], Plugin::assetVersion($skin->stylesheet()));
+            wp_enqueue_style(self::HANDLE, A_RIPPLE_SONG_PLUGIN_URL . $skin->stylesheet(), [], App::assetVersion($skin->stylesheet()));
 
             if ($skin->fontsUrl() !== '') {
                 // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- Google Fonts versions itself.
@@ -122,12 +122,12 @@ final class GlobalPlayer
             }
         }
 
-        wp_enqueue_script(self::HANDLE, A_RIPPLE_SONG_PLUGIN_URL . 'public/dist/player.js', [], Plugin::assetVersion('public/dist/player.js'), true);
+        wp_enqueue_script(self::HANDLE, A_RIPPLE_SONG_PLUGIN_URL . 'public/dist/player.js', [], App::assetVersion('public/dist/player.js'), true);
         wp_add_inline_script(self::HANDLE, 'window.ARS_PLAYER = ' . wp_json_encode($this->config($episodes)) . ';', 'before');
 
         if ($this->setting->progressStyle() === 'waveform') {
             // wavesurfer.js, only for the waveform progress style; it follows the player through window.ARippleSongPlayer.
-            wp_enqueue_script(self::HANDLE . '-waveform', A_RIPPLE_SONG_PLUGIN_URL . 'public/dist/waveform.js', [self::HANDLE], Plugin::assetVersion('public/dist/waveform.js'), true);
+            wp_enqueue_script(self::HANDLE . '-waveform', A_RIPPLE_SONG_PLUGIN_URL . 'public/dist/waveform.js', [self::HANDLE], App::assetVersion('public/dist/waveform.js'), true);
         }
     }
 

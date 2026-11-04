@@ -4,7 +4,7 @@ namespace App\Libraries;
 
 defined('ABSPATH') || exit;
 
-use App\Plugin;
+use App\App;
 
 /**
  * Renders PHP templates from resources/templates.
@@ -14,7 +14,7 @@ final class Template
     /**
      * @param string $directory Template root, with trailing slash.
      */
-    public function __construct(private readonly string $directory = Plugin::DIR . 'resources/templates/')
+    public function __construct(private readonly string $directory = App::DIR . 'resources/templates/')
     {
     }
 
@@ -42,7 +42,7 @@ final class Template
      */
     public function renderThemeable(string $name, array $data = []): void
     {
-        $override = locate_template(Plugin::SLUG . '/' . $name . '.php');
+        $override = locate_template(App::SLUG . '/' . $name . '.php');
 
         $this->include($override !== '' ? $override : $this->directory . $name . '.php', $name, $data);
     }

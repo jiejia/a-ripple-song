@@ -6,7 +6,7 @@ defined('ABSPATH') || exit;
 
 use App\Abstracts\CPTAbstract;
 use App\Libraries\Fields\FieldAssets;
-use App\Plugin;
+use App\App;
 
 /**
  * "Featured" switch column in a post type's list, saved through admin-ajax.
@@ -17,7 +17,7 @@ final class FeaturedColumn
 {
     private const COLUMN = 'ars_featured';
 
-    private const ACTION = Plugin::PREFIX . 'toggle_featured';
+    private const ACTION = App::PREFIX . 'toggle_featured';
 
     /**
      * @param CPTAbstract $postType Post type whose list gets the column.
@@ -127,7 +127,7 @@ final class FeaturedColumn
             self::ACTION,
             A_RIPPLE_SONG_PLUGIN_URL . 'resources/assets/js/featured-column.js',
             ['jquery', 'wp-a11y'],
-            Plugin::assetVersion('resources/assets/js/featured-column.js'),
+            App::assetVersion('resources/assets/js/featured-column.js'),
             true
         );
 

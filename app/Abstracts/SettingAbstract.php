@@ -3,7 +3,7 @@ namespace App\Abstracts;
 
 
 use App\Libraries\Fields\OptionStore;
-use App\Plugin;
+use App\App;
 
 abstract class SettingAbstract
 {
@@ -39,7 +39,7 @@ abstract class SettingAbstract
 
     public function slug(): string
     {
-        return Plugin::PREFIX . $this->slug;
+        return App::PREFIX . $this->slug;
     }
 
     /**

@@ -4,7 +4,7 @@ namespace App\Libraries\Fields;
 
 defined('ABSPATH') || exit;
 
-use App\Plugin;
+use App\App;
 
 /**
  * Enqueues the CSS and JS used by rendered fields.
@@ -14,7 +14,7 @@ final class FieldAssets
     /**
      * Handle shared by the style and the script.
      */
-    private const HANDLE = Plugin::PREFIX . 'fields';
+    private const HANDLE = App::PREFIX . 'fields';
 
     /**
      * Enqueue field styles, scripts and the media library.
@@ -32,7 +32,7 @@ final class FieldAssets
             self::HANDLE,
             A_RIPPLE_SONG_PLUGIN_URL . 'resources/assets/js/fields.js',
             ['jquery', 'jquery-ui-sortable', 'imgareaselect'],
-            Plugin::assetVersion('resources/assets/js/fields.js'),
+            App::assetVersion('resources/assets/js/fields.js'),
             true
         );
 
@@ -61,7 +61,7 @@ final class FieldAssets
             self::HANDLE,
             A_RIPPLE_SONG_PLUGIN_URL . 'resources/assets/css/fields.css',
             ['dashicons'],
-            Plugin::assetVersion('resources/assets/css/fields.css')
+            App::assetVersion('resources/assets/css/fields.css')
         );
     }
 }

@@ -4,7 +4,7 @@ namespace App\Statistics;
 
 defined('ABSPATH') || exit;
 
-use App\Plugin;
+use App\App;
 
 /**
  * Daily play counts per episode, stored in the {prefix}ars_play_stats table.
@@ -19,7 +19,7 @@ final class PlayLog
      */
     private const DB_VERSION = '1';
 
-    private const VERSION_OPTION = Plugin::PREFIX . 'play_log_db_version';
+    private const VERSION_OPTION = App::PREFIX . 'play_log_db_version';
 
     /**
      * Return the table name.
@@ -30,7 +30,7 @@ final class PlayLog
     {
         global $wpdb;
 
-        return $wpdb->prefix . Plugin::PREFIX . 'play_stats';
+        return $wpdb->prefix . App::PREFIX . 'play_stats';
     }
 
     /**

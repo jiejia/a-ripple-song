@@ -38,4 +38,4 @@ if (!defined('A_RIPPLE_SONG_PLUGIN_URL')) {
 
 require_once A_RIPPLE_SONG_PLUGIN_DIR . 'vendor/autoload.php';
 
-new \App\Plugin();
+new \App\App();

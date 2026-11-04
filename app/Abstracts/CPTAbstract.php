@@ -2,7 +2,7 @@
 namespace App\Abstracts;
 
 
-use App\Plugin;
+use App\App;
 
 abstract class CPTAbstract
 {
@@ -16,7 +16,7 @@ abstract class CPTAbstract
 
     public function slug(): string
     {
-        return Plugin::PREFIX . $this->slug;
+        return App::PREFIX . $this->slug;
     }
 
     /**

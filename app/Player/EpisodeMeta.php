@@ -8,7 +8,7 @@ use App\Abstracts\ControllerAbstract;
 use App\CPTs\PodcastCPT;
 use App\Libraries\Html;
 use App\Libraries\Template;
-use App\Plugin;
+use App\App;
 use App\Settings\PlayerSetting;
 
 /**
@@ -96,18 +96,18 @@ final class EpisodeMeta
         $url = (string) get_post_meta($postId, $this->podcast->fieldMetaKey('audio_file'), true);
 
         wp_enqueue_script(
-            Plugin::PREFIX . 'episode-audio',
+            App::PREFIX . 'episode-audio',
             A_RIPPLE_SONG_PLUGIN_URL . 'resources/assets/js/episode-audio.js',
             [],
-            Plugin::assetVersion('resources/assets/js/episode-audio.js'),
+            App::assetVersion('resources/assets/js/episode-audio.js'),
             true
         );
 
         // No stylesheet of its own: a few spacing rules, printed in the footer when enqueued this late.
-        wp_register_style(Plugin::PREFIX . 'episode-audio', false, [], Plugin::VERSION);
-        wp_enqueue_style(Plugin::PREFIX . 'episode-audio');
+        wp_register_style(App::PREFIX . 'episode-audio', false, [], App::VERSION);
+        wp_enqueue_style(App::PREFIX . 'episode-audio');
         wp_add_inline_style(
-            Plugin::PREFIX . 'episode-audio',
+            App::PREFIX . 'episode-audio',
             '.ars-episode-audio{margin-block:0 1.5em}.ars-episode-audio--after{margin-block:1.5em 0}.ars-episode-audio__plays{margin:.5em 0 0;font-size:.875em;opacity:.7}'
         );
 

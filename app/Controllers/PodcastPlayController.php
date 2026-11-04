@@ -6,7 +6,7 @@ defined('ABSPATH') || exit;
 
 use App\Abstracts\ControllerAbstract;
 use App\CPTs\PodcastCPT;
-use App\Plugin;
+use App\App;
 
 /**
  * REST endpoints for reading and recording podcast episode plays.
@@ -195,7 +195,7 @@ class PodcastPlayController extends ControllerAbstract
 
         $ip = isset($_SERVER['REMOTE_ADDR']) ? sanitize_text_field(wp_unslash($_SERVER['REMOTE_ADDR'])) : '';
         // Only a salted hash is stored, never the raw IP.
-        $key = Plugin::PREFIX . 'play_' . md5(wp_hash($ip . '|' . $postId));
+        $key = App::PREFIX . 'play_' . md5(wp_hash($ip . '|' . $postId));
 
         if (get_transient($key)) {
             return false;

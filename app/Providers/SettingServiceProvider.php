@@ -12,7 +12,7 @@ use App\Settings\MemberSetting;
 use App\Settings\PlayerSetting;
 use App\Settings\PodcastSetting;
 use App\Settings\SubscriptionSetting;
-use App\Plugin;
+use App\App;
 
 /**
  * Registers plugin settings pages.
@@ -43,11 +43,11 @@ class SettingServiceProvider extends ServiceProviderAbstract
         add_action('admin_menu', function (): void {
 
             // register admin top level menu
-            $topPageSlug = Plugin::PREFIX . "dashboard";
+            $topPageSlug = App::PREFIX . "dashboard";
             foreach ($this->settings as $settingClass) {
                 $setting = new $settingClass();
                 if ($setting->isTopLevelMenu()) {
-                    $topPageSlug = Plugin::PREFIX . $setting->slug;
+                    $topPageSlug = App::PREFIX . $setting->slug;
 
                     add_menu_page(
                         __('A Ripple Song', 'a-ripple-song'),                  // page title

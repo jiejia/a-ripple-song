@@ -7,7 +7,7 @@ defined('ABSPATH') || exit;
 use App\Abstracts\ServiceProviderAbstract;
 use App\Abstracts\TaxonomyAbstract;
 use App\Libraries\Fields\TermMetaStore;
-use App\Plugin;
+use App\App;
 use App\Taxonomies\PodcastCategoryTaxonomy;
 
 /**
@@ -18,7 +18,7 @@ class TaxonomyServiceProvider extends ServiceProviderAbstract
     /**
      * Option holding the taxonomy list the rewrite rules were last flushed for.
      */
-    private const REWRITE_OPTION = Plugin::PREFIX . 'taxonomy_rewrite_flushed';
+    private const REWRITE_OPTION = App::PREFIX . 'taxonomy_rewrite_flushed';
 
     /**
      * Custom taxonomy classes registered by this provider.

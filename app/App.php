@@ -5,7 +5,7 @@ namespace App;
 
 defined('ABSPATH') || exit;
 
-use App\Contracts\ServiceProvider;
+use App\Contracts\ServiceProviderContract;
 use App\Providers\ControllerServiceProvider;
 use App\Providers\CPTServiceProvider;
 use App\Providers\FeedServiceProvider;
@@ -18,7 +18,7 @@ use App\Providers\TranslationServiceProvider;
 /**
  * Main plugin application class.
  */
-class Plugin
+class App
 {
     public const SLUG = 'a-ripple-song';
 
@@ -33,7 +33,7 @@ class Plugin
     /**
      * Service provider classes registered by this plugin.
      *
-     * @var array<int,class-string<ServiceProvider>>
+     * @var array<int,class-string<ServiceProviderContract>>
      */
     private array $providers = [
         TranslationServiceProvider::class,
@@ -49,7 +49,7 @@ class Plugin
     /**
      * Service provider instances created during plugin boot.
      *
-     * @var array<int,ServiceProvider>
+     * @var array<int,ServiceProviderContract>
      */
     private array $providerInstances = [];
 

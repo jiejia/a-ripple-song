@@ -5,7 +5,7 @@ namespace App\Providers;
 defined('ABSPATH') || exit;
 
 use App\Abstracts\ServiceProviderAbstract;
-use App\Plugin;
+use App\App;
 
 /**
  * Loads the plugin translations bundled in resources/lang.
@@ -30,6 +30,6 @@ class TranslationServiceProvider extends ServiceProviderAbstract
      */
     public function loadTextdomain(): void
     {
-        load_plugin_textdomain(Plugin::SLUG, false, basename(Plugin::DIR) . '/resources/lang');
+        load_plugin_textdomain(App::SLUG, false, basename(App::DIR) . '/resources/lang');
     }
 }

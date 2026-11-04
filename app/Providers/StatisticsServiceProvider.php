@@ -6,7 +6,7 @@ defined('ABSPATH') || exit;
 
 use App\Abstracts\ServiceProviderAbstract;
 use App\CPTs\PodcastCPT;
-use App\Plugin;
+use App\App;
 use App\Settings\DashboardSetting;
 use App\Statistics\PlayLog;
 
@@ -15,7 +15,7 @@ use App\Statistics\PlayLog;
  */
 class StatisticsServiceProvider extends ServiceProviderAbstract
 {
-    private const HANDLE = Plugin::PREFIX . 'dashboard';
+    private const HANDLE = App::PREFIX . 'dashboard';
 
     private PlayLog $log;
 
@@ -68,14 +68,14 @@ class StatisticsServiceProvider extends ServiceProviderAbstract
             self::HANDLE,
             A_RIPPLE_SONG_PLUGIN_URL . 'resources/assets/css/dashboard.css',
             ['dashicons'],
-            Plugin::assetVersion('resources/assets/css/dashboard.css')
+            App::assetVersion('resources/assets/css/dashboard.css')
         );
 
         wp_enqueue_script(
             self::HANDLE,
             A_RIPPLE_SONG_PLUGIN_URL . 'resources/assets/js/dashboard.js',
             [],
-            Plugin::assetVersion('resources/assets/js/dashboard.js'),
+            App::assetVersion('resources/assets/js/dashboard.js'),
             true
         );
     }

@@ -7,7 +7,7 @@ defined('ABSPATH') || exit;
 use App\Abstracts\FeedAbstract;
 use App\CPTs\PodcastCPT;
 use App\Libraries\Template;
-use App\Plugin;
+use App\App;
 use App\Settings\PodcastSetting;
 
 /**
@@ -44,7 +44,7 @@ class PodcastFeed extends FeedAbstract
     /**
      * Option set once the rewrite rules include the feed endpoint.
      */
-    private const REWRITE_FLAG = Plugin::PREFIX . 'podcast_feed_rewrite_flushed';
+    private const REWRITE_FLAG = App::PREFIX . 'podcast_feed_rewrite_flushed';
 
     /**
      * URL paths that serve the feed.
