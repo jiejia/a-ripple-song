@@ -12,7 +12,7 @@
     "watch:css": "postcss \"resources/assets/css/player/*.css\" --dir public/dist/skins --no-map --watch",
     "watch:js": "esbuild resources/assets/js/player/player.js --bundle --format=iife --target=es2019 --outfile=public/dist/player.js --watch",
     "watch:waveform": "esbuild resources/assets/js/player/waveform.js --bundle --format=iife --target=es2019 --outfile=public/dist/waveform.js --watch",
-    "release": "node bin/release.mjs"
+    "release": "bash bin/release.sh"
   },
   "devDependencies": {
     "@csstools/postcss-cascade-layers": "^6.0.2",

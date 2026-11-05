@@ -22,11 +22,11 @@ jobs:
         run: |
           tag="${GITHUB_REF_NAME#v}"
           header=$(sed -n 's/^ \* Version: *//p' a-ripple-song.php)
-          constant=$(sed -n "s/.*public const VERSION = '\(.*\)';/\1/p" app/Plugin.php)
+          constant=$(sed -n "s/.*public const VERSION = '\(.*\)';/\1/p" app/App.php)
           stable=$(sed -n 's/^Stable tag: *//p' README.txt)
-          echo "tag=$tag header=$header Plugin::VERSION=$constant stable=$stable"
+          echo "tag=$tag header=$header App::VERSION=$constant stable=$stable"
           if [ "$header" != "$tag" ] || [ "$constant" != "$tag" ] || [ "$stable" != "$tag" ]; then
-            echo "::error::Tag $GITHUB_REF_NAME does not match the plugin header Version, Plugin::VERSION and README Stable tag."
+            echo "::error::Tag $GITHUB_REF_NAME does not match the plugin header Version, App::VERSION and README Stable tag."
             exit 1
           fi
 

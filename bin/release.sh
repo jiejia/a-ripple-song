@@ -1,0 +1,87 @@
+#!/usr/bin/env bash
+# Releases a new plugin version: sets the version everywhere, commits, tags and pushes.
+# The tag push starts .github/workflows/release.yml, which builds and publishes a-ripple-song.zip.
+#
+# Usage: npm run release 0.5.1              (or: bash bin/release.sh v0.5.1)
+#        npm run release 0.5.1 -- --no-push   (commit and tag locally only)
+#
+# Files updated: a-ripple-song.php (header Version), README.txt (Stable tag + a changelog entry),
+# app/App.php, package.json, package-lock.json and the translation headers in resources/lang.
+# `@since` tags and older changelog entries are history and stay as they are.
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+push=1
+version=""
+
+for arg in "$@"; do
+  case "$arg" in
+    --no-push) push=0 ;;
+    -*) echo "Unknown option: $arg" >&2; exit 1 ;;
+    *) version="${arg#v}" ;;
+  esac
+done
+
+fail() { echo "release: $*" >&2; exit 1; }
+
+[[ -n "$version" ]] || fail "give a version, e.g. npm run release 0.5.1"
+[[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || fail "version must look like 1.2.3, got $version"
+
+tag="v$version"
+current="$(sed -n 's/^ \* Version:[[:space:]]*//p' a-ripple-song.php | tr -d '[:space:]')"
+
+[[ "$version" != "$current" ]] || fail "a-ripple-song.php is already at $version"
+
+[[ "$(git branch --show-current)" == "main" ]] || fail "switch to the main branch first"
+# AGENTS.md is local notes, so it doesn't count as a pending change.
+if ! git diff --quiet -- . ':!AGENTS.md' || ! git diff --cached --quiet -- . ':!AGENTS.md'; then
+  fail "commit or stash your changes first"
+fi
+git rev-parse -q --verify "refs/tags/$tag" > /dev/null && fail "tag $tag already exists"
+
+if [[ $push -eq 1 ]]; then
+  git fetch -q origin main --tags
+  [[ -z "$(git rev-list HEAD..origin/main)" ]] || fail "main is behind origin/main, pull first"
+  git ls-remote --exit-code --tags origin "refs/tags/$tag" > /dev/null && fail "tag $tag already exists on origin"
+fi
+
+echo "Releasing $current -> $version"
+
+# Changelog entry: the commit subjects since the last version tag.
+previous="$(git describe --tags --abbrev=0 --match 'v[0-9]*' 2> /dev/null || true)"
+changes="$(git log --no-merges --format='* %s' ${previous:+"$previous"..HEAD} | grep -v '^\* Release v' || true)"
+[[ -n "$changes" ]] || changes="* Maintenance release."
+
+sed -i.bak "s/^\( \* Version:[[:space:]]*\).*/\1$version/" a-ripple-song.php
+sed -i.bak "s/^Stable tag: .*/Stable tag: $version/" README.txt
+sed -i.bak "s/public const VERSION = '[^']*';/public const VERSION = '$version';/" app/App.php
+sed -i.bak "s/\"Project-Id-Version: A Ripple Song [^\\\\]*\\\\n\"/\"Project-Id-Version: A Ripple Song $version\\\\n\"/" resources/lang/*.pot resources/lang/*.po
+rm -f a-ripple-song.php.bak README.txt.bak app/App.php.bak resources/lang/*.bak
+
+# New changelog entry right under "== Changelog ==".
+CHANGES="$changes" VERSION="$version" perl -0pi -e 's/(== Changelog ==\n\n)/$1= $ENV{VERSION} =\n$ENV{CHANGES}\n\n/' README.txt
+
+npm version "$version" --no-git-tag-version --allow-same-version > /dev/null
+
+# Every place must now carry the new version.
+grep -q "^ \* Version:[[:space:]]*$version$" a-ripple-song.php || fail "a-ripple-song.php was not updated"
+grep -q "^Stable tag: $version$" README.txt || fail "README.txt was not updated"
+grep -q "^= $version =$" README.txt || fail "README.txt changelog was not updated"
+grep -q "VERSION = '$version'" app/App.php || fail "app/App.php was not updated"
+for file in resources/lang/*.pot resources/lang/*.po; do
+  grep -q "Project-Id-Version: A Ripple Song $version" "$file" || fail "$file was not updated"
+done
+
+files=(a-ripple-song.php README.txt app/App.php package.json package-lock.json resources/lang)
+git add -- "${files[@]}"
+git commit -q -m "Release $tag" -- "${files[@]}"
+git tag -a "$tag" -m "$tag"
+echo "Committed and tagged $tag"
+
+if [[ $push -eq 1 ]]; then
+  git push -q --atomic origin main "$tag"
+  echo "Pushed main and $tag. GitHub Actions now builds and publishes a-ripple-song.zip."
+else
+  echo "Not pushed. When ready: git push --atomic origin main $tag"
+fi
