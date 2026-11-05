@@ -44,6 +44,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          # On a re-run the release already exists, so replace its zip instead.
+          # On a re-run or a re-release (npm run release with the current version) the release
+          # already exists: replace its zip and publish it again, since deleting its tag turns it into a draft.
           gh release create "$GITHUB_REF_NAME" ../a-ripple-song.zip --title "$GITHUB_REF_NAME" --generate-notes \
-            || gh release upload "$GITHUB_REF_NAME" ../a-ripple-song.zip --clobber
+            || { gh release upload "$GITHUB_REF_NAME" ../a-ripple-song.zip --clobber \
+                 && gh release edit "$GITHUB_REF_NAME" --draft=false; }
