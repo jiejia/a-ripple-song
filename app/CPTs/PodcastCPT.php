@@ -319,6 +319,7 @@ class PodcastCPT extends CPTAbstract
     {
         add_action('a_ripple_song_post_fields_saved', [$this, 'fillAudioMeta'], 10, 2);
         add_action('init', [$this, 'registerPlayCountMeta']);
+        add_action('init', [$this, 'registerRestMeta']);
         add_action('save_post_' . $this->slug(), [$this, 'ensurePlayCount']);
         add_action('add_meta_boxes_' . $this->slug(), [$this, 'addStatisticsMetaBox']);
         add_filter('upload_mimes', [$this, 'addM4aMime']);
@@ -410,6 +411,45 @@ class PodcastCPT extends CPTAbstract
         }
 
         return ['ext' => 'json', 'type' => 'application/json', 'proper_filename' => $data['proper_filename'] ?? false];
+    }
+
+    /**
+     * Add custom-fields support, which WordPress requires before post meta can be exposed in REST.
+     *
+     * {@inheritDoc}
+     */
+    protected function supports(): array
+    {
+        return [...parent::supports(), 'custom-fields'];
+    }
+
+    /**
+     * Expose the audio and episode type meta in the REST API so importers can set them.
+     *
+     * Writes are limited to users who can edit posts; the editor meta box is unaffected.
+     *
+     * @return void
+     */
+    public function registerRestMeta(): void
+    {
+        $fields = [
+            'audio_file' => 'string',
+            'duration' => 'integer',
+            'audio_length' => 'integer',
+            'audio_mime' => 'string',
+            'episode_type' => 'string',
+            'episode_explicit' => 'string',
+        ];
+
+        foreach ($fields as $key => $type) {
+            register_post_meta($this->slug(), $this->fieldMetaKey($key), [
+                'type' => $type,
+                'single' => true,
+                'show_in_rest' => true,
+                'sanitize_callback' => $type === 'string' ? 'sanitize_text_field' : 'absint',
+                'auth_callback' => static fn (): bool => current_user_can('edit_posts'),
+            ]);
+        }
     }
 
     /**
