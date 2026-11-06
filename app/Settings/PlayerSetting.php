@@ -78,22 +78,6 @@ class PlayerSetting extends SettingAbstract
             ],
             [
                 'type' => 'select',
-                'key' => 'width',
-                'label' => __('Player Width', 'a-ripple-song'),
-                'width' => 'half',
-                'required' => true,
-                'options' => [
-                    'wide' => __("Match the theme's wide width", 'a-ripple-song'),
-                    'wide-full' => __("Match the theme's wide width, full-width background", 'a-ripple-song'),
-                    'content' => __("Match the theme's content width", 'a-ripple-song'),
-                    'skin' => __("The style's own width", 'a-ripple-song'),
-                    'full' => __('Full width', 'a-ripple-song'),
-                ],
-                'default' => 'wide',
-                'help' => __('Theme widths are measured from the theme\'s WordPress layout (block themes and themes with theme.json), so the bar lines up with the header, footer or post content. With a full-width background the bar spans the whole window with square corners, and its controls line up with the theme\'s wide width. Themes without it keep the style\'s own width.', 'a-ripple-song'),
-            ],
-            [
-                'type' => 'select',
                 'key' => 'background',
                 'label' => __('Player Bar Background', 'a-ripple-song'),
                 'width' => 'half',
@@ -161,18 +145,6 @@ class PlayerSetting extends SettingAbstract
         $scheme = (string) $this->value('color_scheme');
 
         return in_array($scheme, ['auto', 'system', 'light', 'dark'], true) ? $scheme : 'auto';
-    }
-
-    /**
-     * Return how wide the player bar is: wide, wide-full (wide width on a full-width background), content, skin or full.
-     *
-     * @return string
-     */
-    public function width(): string
-    {
-        $width = (string) $this->value('width');
-
-        return in_array($width, ['wide', 'wide-full', 'content', 'skin', 'full'], true) ? $width : 'wide';
     }
 
     /**

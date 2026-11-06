@@ -14,6 +14,8 @@
  *   $range         Classes of the range input.
  *   $bar           Optional Closure printing the skin's own progress bar instead of the range input (ars-terminal).
  *   $spectrum      Attributes of the spectrum canvas (data-spectrum, data-bar, data-color, class …).
+ *   $spectrumTop   Optional attributes of a second spectrum canvas printed above the row (full width), for narrow bars
+ *                  that hide the one beside the progress bar; hide it again with a class when the bar is wide.
  *   $spectrumWrap  Optional classes of an element around the spectrum canvas, which then fills it (cassette's VU face).
  *   $wave          Attributes of the waveform element (data-bar, data-gap, data-color); $waveClass its height.
  *   $hooks         "binder" (ars-* expressions, default) or "data" (the default skin's data-ars-* hooks).
@@ -37,11 +39,31 @@ $timeEnd ??= $time;
 $range ??= 'range range-primary range-xs';
 $bar ??= null;
 $spectrum ??= ['data-spectrum' => 'bars', 'class' => 'hidden h-8 w-24 shrink-0 xl:block'];
+$spectrumTop ??= null;
 $spectrumWrap ??= '';
 $wave ??= [];
 $waveClass ??= 'h-8';
 
 $binder = $hooks !== 'data';
+// While the audio loads (root [data-state=loading]) the spectrum gives way to a daisyUI loading ring, same box and breakpoints.
+// Class names built below, spelled out so Tailwind finds them: [.ars-player[data-state=loading]_&]:flex [.ars-player[data-state=loading]_&]:!hidden
+// @2xl:[.ars-player[data-state=loading]_&]:flex @3xl:[.ars-player[data-state=loading]_&]:flex @4xl:[.ars-player[data-state=loading]_&]:flex @5xl:[.ars-player[data-state=loading]_&]:flex @6xl:[.ars-player[data-state=loading]_&]:flex @xl:[.ars-player[data-state=loading]_&]:flex
+// @2xl:!hidden @3xl:!hidden @4xl:!hidden @5xl:!hidden @6xl:!hidden
+$loadingRing = static function (string $class, string $label = ''): string {
+    $tokens = preg_split('/\s+/', trim($class)) ?: [];
+    $size = array_filter($tokens, static fn (string $t): bool => (bool) preg_match('/^(?:h|w|size|min-w|flex)-\S+$|^shrink-0$/', $t));
+    $show = 'hidden [.ars-player[data-state=loading]_&]:flex';
+    foreach ($tokens as $t) {
+        if (preg_match('/^(@\w+):(?:block|flex)$/', $t, $m)) {
+            $show = 'hidden ' . $m[1] . ':[.ars-player[data-state=loading]_&]:flex'; // spectrum appears from this width on
+        } elseif (preg_match('/^(@\w+):hidden$/', $t, $m)) {
+            $show .= ' ' . $m[1] . ':!hidden'; // narrow-bar spectrum, hidden again from this width on
+        }
+    }
+    $text = $label !== '' ? '<span class="truncate text-sm opacity-70">' . esc_html($label) . '</span>' : '';
+
+    return '<span class="' . esc_attr($show . ' items-center justify-center gap-2 ' . implode(' ', $size)) . '" aria-hidden="true"><span class="loading loading-ring loading-md shrink-0"></span>' . $text . '</span>';
+};
 $seek = ($binder
     ? ['min' => '0', 'step' => '1', 'ars-bind:max' => 'duration', 'ars-bind:value' => 'position', 'ars-on:input' => 'scrub($event.target.value)', 'ars-on:change' => 'commit($event.target.value)']
     : ['min' => '0', 'max' => '0', 'step' => '1', 'value' => '0', 'data-ars-seek' => true])
@@ -50,6 +72,10 @@ $text = static fn (string $which): array => $binder ? ['ars-text' => "fmt({$whic
 // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- Html::attributes() escapes.
 ?>
 <div class="<?php echo esc_attr($class); ?>">
+  <?php if ($style === 'spectrum' && $spectrumTop !== null) : ?>
+    <canvas<?php echo Html::attributes(['class' => trim(($spectrumTop['class'] ?? '') . ' [.ars-player[data-state=loading]_&]:!hidden'), 'aria-hidden' => 'true'] + $spectrumTop); ?>></canvas>
+    <?php echo $loadingRing($spectrumTop['class'] ?? '', __('Loading audio', 'a-ripple-song')); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Built from escaped parts. ?>
+  <?php endif; ?>
   <span<?php echo Html::attributes(['class' => $time] + $text('position')); ?>>00:00</span>
   <?php if ($style === 'waveform') : ?>
     <div class="ars-wave min-w-0 flex-1 <?php echo esc_attr($waveClass); ?>">
@@ -64,9 +90,11 @@ $text = static fn (string $which): array => $binder ? ['ars-text' => "fmt({$whic
   <span<?php echo Html::attributes(['class' => $timeEnd] + $text('duration')); ?>>00:00</span>
   <?php if ($style === 'spectrum') : ?>
     <?php if ($spectrumWrap !== '') : ?>
-      <div class="<?php echo esc_attr($spectrumWrap); ?>" aria-hidden="true"><canvas<?php echo Html::attributes(['class' => 'block size-full'] + $spectrum); ?>></canvas></div>
+      <div class="<?php echo esc_attr($spectrumWrap . ' [.ars-player[data-state=loading]_&]:!hidden'); ?>" aria-hidden="true"><canvas<?php echo Html::attributes(['class' => 'block size-full'] + $spectrum); ?>></canvas></div>
+      <?php echo $loadingRing($spectrumWrap); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Built from escaped parts. ?>
     <?php else : ?>
-      <canvas<?php echo Html::attributes($spectrum + ['aria-hidden' => 'true']); ?>></canvas>
+      <canvas<?php echo Html::attributes(['class' => trim(($spectrum['class'] ?? '') . ' [.ars-player[data-state=loading]_&]:!hidden'), 'aria-hidden' => 'true'] + $spectrum); ?>></canvas>
+      <?php echo $loadingRing($spectrum['class'] ?? ''); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Built from escaped parts. ?>
     <?php endif; ?>
   <?php endif; ?>
 </div>

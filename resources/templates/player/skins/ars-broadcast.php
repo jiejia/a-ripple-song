@@ -19,99 +19,49 @@ use Jiejia\ARippleSong\Libraries\Template;
     <?php /* ============ 播放器（常驻，固定深色） ============ */ ?>
     <div data-ars-theme="dark" class="fixed inset-x-0 bottom-0 z-[9990]" role="region" data-ars-bar aria-label="音频播放器">
       <?php /* No max-width: with the style's own width the bar runs edge to edge like the prototype. */ ?>
-      <div data-ars-width="box" data-ars-surface class="mx-auto flex h-[4.5rem] items-stretch border-x-2 border-t-2 border-base-content bg-base-100 text-base-content">
-        <button type="button" class="flex min-w-0 flex-1 items-center gap-3 border-r-2 border-base-content/25 pr-3 text-left hover:bg-base-200 @4xl:w-56 @4xl:flex-none @5xl:w-80" ars-on:click="expanded = true" aria-label="展开正在播放">
-          <img ars-bind:src="current?.cover" alt="" class="h-full w-[4.5rem] shrink-0 border-r-2 border-base-content/25 object-cover">
+      <div data-ars-width="box" data-ars-surface class="mx-auto border-x-2 border-t-2 border-base-content bg-base-100 text-base-content">
+        <div class="flex flex-wrap items-stretch @5xl:min-h-[4.5rem] @5xl:flex-nowrap">
+        <a ars-bind:href="current?.url" class="order-1 flex min-h-[4.5rem] min-w-0 basis-full items-center gap-3 border-b-2 border-base-content/25 pr-3 text-left hover:bg-base-200 @5xl:order-none @5xl:basis-auto @5xl:w-80 @5xl:flex-none @5xl:border-b-0 @5xl:border-r-2 @5xl:h-auto" ars-bind:aria-label="current?.title">
+          <img ars-bind:src="current?.cover" alt="" class="w-[4.5rem] shrink-0 self-stretch border-r-2 border-base-content/25 object-cover">
           <span class="min-w-0">
             <span class="label block text-accent" ars-text="error || `EP.${current?.number} · ${loading ? 'Loading' : (playing ? 'On Air' : 'Paused')}`"></span>
-            <span class="block truncate font-bold" ars-text="current?.title"></span>
+            <span class="block break-words text-sm font-bold" ars-text="current?.title"></span>
           </span>
-        </button>
-        <div class="hidden items-stretch @2xl:flex">
+        </a>
+        <div class="order-5 flex h-14 items-stretch justify-center @5xl:order-none @5xl:h-auto">
+        <div class="contents">
           <button type="button" class="grid w-12 place-items-center hover:bg-base-200" ars-on:click="prev()" aria-label="上一集"><?php Icon::render('skip-back', 'size-4'); ?></button>
-          <button type="button" class="grid w-12 place-items-center hover:bg-base-200" ars-on:click="skip(-15)" aria-label="后退 15 秒"><?php Icon::render('rotate-ccw', 'size-4'); ?></button>
         </div>
         <button type="button" class="grid w-[4.5rem] shrink-0 place-items-center bg-primary text-primary-content hover:bg-accent hover:text-accent-content" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放">
           <span ars-show="!playing"><?php Icon::render('play', 'size-7 fill-current'); ?></span>
           <span ars-show="playing" ars-cloak><?php Icon::render('pause', 'size-7 fill-current'); ?></span>
         </button>
-        <div class="hidden items-stretch @2xl:flex">
-          <button type="button" class="grid w-12 place-items-center hover:bg-base-200" ars-on:click="skip(30)" aria-label="快进 30 秒"><?php Icon::render('rotate-cw', 'size-4'); ?></button>
+        <div class="contents">
           <button type="button" class="grid w-12 place-items-center border-r-2 border-base-content/25 hover:bg-base-200" ars-on:click="next()" aria-label="下一集"><?php Icon::render('skip-forward', 'size-4'); ?></button>
+        </div>
         </div>
         <?php
         (new Template())->renderThemeable('player/parts/progress', [
-            'class' => 'hidden min-w-0 flex-1 items-center gap-3 px-5 font-mono @2xl:flex',
+            'class' => 'order-3 flex w-full min-w-0 basis-full flex-wrap items-center gap-x-3 gap-y-1 border-b-2 border-base-content/25 px-4 py-2 font-mono @5xl:order-none @5xl:w-auto @5xl:flex-1 @5xl:basis-auto @5xl:flex-nowrap @5xl:border-b-0 @5xl:px-5 @5xl:py-0',
+            'spectrumTop' => ['data-spectrum' => 'led', 'data-bar' => '4', 'data-gap' => '2', 'data-color' => 'accent', 'class' => 'block h-10 w-full @5xl:hidden'],
             'time' => 'text-base font-semibold text-accent', 'timeEnd' => 'text-sm text-base-content/60', 'range' => 'range range-accent range-xs',
             'spectrum' => ['data-spectrum' => 'led', 'data-bar' => '4', 'data-gap' => '2', 'data-color' => 'accent', 'class' => 'hidden h-10 w-28 shrink-0 @6xl:block'],
             'wave' => ['data-color' => 'accent'], 'waveClass' => 'h-10',
         ]);
         ?>
-        <div class="hidden items-stretch border-l-2 border-base-content/25 @4xl:flex">
-          <button type="button" class="label w-16 hover:bg-base-200" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
-          <?php (new Template())->renderThemeable('player/parts/volume', ['button' => 'grid h-full w-12 place-items-center hover:bg-base-200', 'range' => 'range range-accent range-xs mr-4']); ?>
+        <?php (new Template())->renderThemeable('player/parts/volume', ['class' => 'order-4 flex h-14 flex-1 items-stretch @5xl:h-auto @5xl:items-center shrink-0 justify-start gap-1 @5xl:order-8 @5xl:flex-none @5xl:border-l-2 @5xl:border-base-content/25', 'button' => 'grid h-full w-12 place-items-center hover:bg-base-200', 'range' => 'range range-accent range-xs mr-4']); ?>
+        <div class="order-6 flex flex-1 h-14 items-stretch @5xl:h-auto justify-end gap-0 @5xl:contents">
+          <button type="button" class="label w-16 hover:bg-base-200 @5xl:order-7 @5xl:border-l-2 @5xl:border-base-content/25" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
+        <button type="button" class="grid w-14 place-items-center border-l-2 border-base-content/25 hover:bg-base-200 @5xl:order-9" ars-on:click="expanded = true" aria-label="播放队列"><?php Icon::render('list-music', 'size-4'); ?></button>
         </div>
-        <button type="button" class="grid w-14 place-items-center border-l-2 border-base-content/25 hover:bg-base-200" ars-on:click="expanded = true" aria-label="展开播放器与播放队列"><?php Icon::render('maximize-2', 'size-4'); ?></button>
+        </div>
       </div>
     </div>
 
-    <?php /* ============ 正在播放（展开面板） ============ */ ?>
-    <div ars-show="expanded" ars-cloak
-         ars-transition:enter="transition duration-200 ease-out" ars-transition:enter-start="translate-y-full" ars-transition:enter-end="translate-y-0"
-         ars-transition:leave="transition duration-150 ease-in" ars-transition:leave-start="translate-y-0" ars-transition:leave-end="translate-y-full"
-         ars-on:keydown.escape.window="expanded = false"
-         class="fixed inset-0 z-[9991] overflow-y-auto bg-base-100" role="dialog" aria-modal="true" aria-label="正在播放">
-      <div class="flex h-16 items-stretch border-b-2 rule">
-        <p class="onair label flex items-center gap-2 border-r-2 rule px-6" ars-bind:class="playing && 'is-live'"><span class="dot"></span>Now Playing</p>
-        <button type="button" class="ml-auto grid w-16 place-items-center border-l-2 rule hover:bg-accent hover:text-accent-content" ars-on:click="expanded = false" aria-label="收起"><?php Icon::render('x', 'size-6'); ?></button>
-      </div>
-      <div class="grid lg:grid-cols-12">
-        <div class="border-b-2 rule p-6 sm:p-10 lg:col-span-8 lg:border-b-0 lg:border-r-2">
-          <div class="flex flex-col gap-8 sm:flex-row sm:items-end">
-            <img ars-bind:src="current?.cover" alt="" class="aspect-square w-40 border-2 rule hard-shadow sm:w-56">
-            <div class="min-w-0">
-              <p class="font-mono text-7xl font-semibold leading-none sm:text-8xl" ars-text="current?.number"></p>
-              <h2 class="mt-3 text-3xl font-black leading-tight" ars-text="current?.title"></h2>
-            </div>
-          </div>
-          <canvas data-spectrum="led" data-bar="7" data-gap="3" class="mt-10 h-40 w-full" aria-hidden="true"></canvas>
-          <div class="mt-6 flex items-baseline justify-between font-mono">
-            <span class="text-4xl font-semibold" ars-text="fmt(position)"></span>
-            <span class="text-lg text-base-content/60" ars-text="fmt(duration)"></span>
-          </div>
-          <input type="range" class="range range-primary mt-3 w-full" min="0" ars-bind:max="duration" step="1" ars-bind:value="position" ars-on:input="scrub($event.target.value)" ars-on:change="commit($event.target.value)" aria-label="播放进度">
-          <div class="mt-8 flex flex-wrap items-center gap-3">
-            <button type="button" class="btn btn-square btn-lg border-2 rule bg-base-100" ars-on:click="prev()" aria-label="上一集"><?php Icon::render('skip-back', 'size-5'); ?></button>
-            <button type="button" class="btn btn-square btn-lg border-2 rule bg-base-100" ars-on:click="skip(-15)" aria-label="后退 15 秒"><?php Icon::render('rotate-ccw', 'size-5'); ?></button>
-            <button type="button" class="btn btn-primary btn-lg press hard-shadow border-2 rule px-10" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放">
-              <span ars-show="!playing"><?php Icon::render('play', 'size-6 fill-current'); ?></span>
-              <span ars-show="playing" ars-cloak><?php Icon::render('pause', 'size-6 fill-current'); ?></span>
-            </button>
-            <button type="button" class="btn btn-square btn-lg border-2 rule bg-base-100" ars-on:click="skip(30)" aria-label="快进 30 秒"><?php Icon::render('rotate-cw', 'size-5'); ?></button>
-            <button type="button" class="btn btn-square btn-lg border-2 rule bg-base-100" ars-on:click="next()" aria-label="下一集"><?php Icon::render('skip-forward', 'size-5'); ?></button>
-            <button type="button" class="btn btn-lg border-2 rule bg-base-100 font-mono" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
-            <label class="flex items-center gap-2">
-              <?php Icon::render('volume-2', 'size-5'); ?><span class="sr-only">音量</span>
-              <input type="range" class="range range-xs w-28" min="0" max="1" step="0.05" ars-bind:value="muted ? 0 : volume" ars-on:input="setVolume($event.target.value)">
-            </label>
-          </div>
-        </div>
-        <section class="lg:col-span-4" aria-labelledby="queue-title">
-          <div class="flex items-center justify-between gap-4 border-b-2 rule px-6 py-4"><h3 id="queue-title" class="label">播放队列</h3><button type="button" class="label hover:text-primary" ars-show="queueItems.length" ars-on:click="clearQueue()">清空</button></div>
-          <ul class="max-h-[min(32rem,60dvh)] overflow-y-auto overscroll-contain [scrollbar-width:thin]">
-            <template ars-for="ep in queueItems">
-              <li class="flex items-stretch border-b-2 rule">
-                <button type="button" class="flex min-w-0 flex-1 items-center gap-4 px-6 py-3 text-left hover:bg-accent hover:text-accent-content" ars-bind:class="isCurrent(ep.id) && 'bg-base-200'" ars-on:click="toggle(ep.id)">
-                  <span class="w-10 font-mono text-xl font-semibold" ars-text="ep.number"></span>
-                  <span class="min-w-0 flex-1 truncate font-bold" ars-text="ep.title"></span>
-                  <span class="label" ars-text="isPlaying(ep.id) ? 'On Air' : fmt(ep.duration)"></span>
-                </button>
-                <button type="button" class="shrink-0 self-stretch px-4 hover:bg-accent hover:text-accent-content" ars-bind:class="isCurrent(ep.id) && 'bg-base-200'" ars-on:click="removeFromQueue(ep.id)" aria-label="从播放列表移除" title="从播放列表移除"><?php Icon::render('x', 'size-4'); ?></button>
-              </li>
-            </template>
-          </ul>
-          <p class="px-6 py-6 text-center text-sm opacity-60" ars-show="!queueItems.length">播放列表是空的</p>
-        </section>
-      </div>
-    </div>
+    <?php (new Template())->renderThemeable('player/parts/queue', [
+        'theme' => 'dark', 'panel' => 'border-r-2 border-base-content bg-base-100 text-base-content', 'divider' => 'border-t-2 border-base-content', 'title' => 'label px-5 py-4 text-lg text-accent', 'meta' => 'font-mono text-sm text-base-content/60', 'clear' => 'label hover:text-accent', 'row' => 'border-b-2 border-base-content/25 hover:bg-base-200', 'rowOn' => 'bg-primary text-primary-content hover:bg-primary', 'cover' => 'bg-base-300', 'name' => 'font-bold', 'nameOn' => '', 'sub' => 'font-mono text-xs opacity-70', 'trash' => 'grid size-9 place-items-center hover:bg-accent hover:text-accent-content',
+    ]); ?>
+    <?php (new Template())->renderThemeable('player/parts/resume', [
+        'theme' => 'dark', 'panel' => 'border-2 border-base-content bg-base-100', 'icon' => 'text-accent', 'heading' => 'font-bold', 'accept' => 'btn rounded-none border-0 bg-primary text-primary-content', 'cancel' => 'btn btn-ghost rounded-none border-2 border-base-content/25',
+    ]); ?>
 </div>

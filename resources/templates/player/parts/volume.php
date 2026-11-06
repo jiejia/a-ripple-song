@@ -6,6 +6,8 @@
  * so the progress bar keeps its room on small laptops.
  *
  * Included by the skin templates, each passing its own look:
+ *   $class    Classes of the wrapper (layout, visibility).
+ *   $slider   Extra classes of the slider (size, visibility); hidden below @5xl by default.
  *   $button   Classes of the mute button.
  *   $icon     Classes of the button icon; empty renders the text "vol" / "mute" instead (terminal style).
  *   $range    Classes of the slider.
@@ -20,11 +22,13 @@ defined('ABSPATH') || exit;
 
 use Jiejia\ARippleSong\Libraries\Icon;
 
+$class ??= 'hidden shrink-0 items-center gap-1 @3xl:flex';
+$slider ??= 'hidden w-20 @5xl:block';
 $button ??= 'btn btn-ghost btn-circle btn-sm';
 $icon ??= 'size-4';
 $range ??= 'range range-primary range-xs';
 ?>
-<div class="hidden shrink-0 items-center gap-1 @3xl:flex">
+<div class="<?php echo esc_attr($class); ?>">
   <button type="button" class="<?php echo esc_attr($button); ?>" ars-on:click="toggleMute()" ars-bind:aria-label="muted ? '取消静音' : '静音'" aria-label="静音">
     <?php if ($icon === '') : ?>
       <span ars-text="muted ? 'mute' : 'vol'">vol</span>
@@ -33,5 +37,5 @@ $range ??= 'range range-primary range-xs';
       <span ars-show="muted" ars-cloak><?php Icon::render('volume-x', $icon); ?></span>
     <?php endif; ?>
   </button>
-  <input type="range" class="<?php echo esc_attr($range); ?> hidden w-20 @5xl:block" min="0" max="1" step="0.05" ars-bind:value="muted ? 0 : volume" ars-on:input="setVolume($event.target.value)" aria-label="音量">
+  <input type="range" class="<?php echo esc_attr($range); ?> <?php echo esc_attr($slider); ?>" min="0" max="1" step="0.05" ars-bind:value="muted ? 0 : volume" ars-on:input="setVolume($event.target.value)" aria-label="音量">
 </div>

@@ -82,10 +82,10 @@ final class GlobalPlayer
         $skin = $this->setting->skin();
 
         // Page-level rules, kept even when the theme styles the player itself: room for the fixed bar,
-        // no page scrolling behind the full-screen panel, skin elements hidden until bound, bar width.
+        // skin elements hidden until bound, bar width.
         wp_register_style(self::HANDLE . '-base', false, [], App::VERSION);
         wp_enqueue_style(self::HANDLE . '-base');
-        wp_add_inline_style(self::HANDLE . '-base', 'body.has-ars-player{padding-bottom:var(--ars-player-height,5.5rem)}html.ars-player-panel-open{overflow:hidden}[ars-cloak]{display:none!important}'
+        wp_add_inline_style(self::HANDLE . '-base', 'body.has-ars-player{padding-bottom:var(--ars-player-height,5.5rem)}[ars-cloak]{display:none!important}'
             // The bar box is a size container: the partials (progress, spectrum, volume) show by the bar's own width
             // (@2xl:, @5xl: …), not the window's, so a bar matched to a narrow theme width does not cram them together.
             . '.ars-player [data-ars-width=box]{container-type:inline-size}'
@@ -98,9 +98,6 @@ final class GlobalPlayer
             . '.ars-player[data-ars-bleed] [data-ars-width]{max-width:none!important;border-radius:0!important;border-left-width:0!important;border-right-width:0!important;'
             . 'padding-left:calc(max(0px,(100% - var(--ars-bleed-width,100%))/2) + var(--ars-bleed-pad-left,0px))!important;'
             . 'padding-right:calc(max(0px,(100% - var(--ars-bleed-width,100%))/2) + var(--ars-bleed-pad-right,0px))!important}'
-            // On phones the panel stays edge to edge like the prototypes; theme margins would squeeze its controls.
-            . '@media (min-width:640px){.ars-player[data-ars-fit] [data-ars-panel-width]{max-width:var(--ars-fit-panel-width)!important}'
-            . '.ars-player[data-ars-fit] [data-ars-panel-width=content]{box-sizing:content-box!important}}'
             // Frosted bar (setting "Player Bar Background"), tinted with the surface's own daisyUI color.
             . '.ars-player[data-ars-translucent] [data-ars-surface]{background-color:color-mix(in oklab,var(--color-base-100) 72%,transparent)!important;-webkit-backdrop-filter:blur(16px) saturate(180%);backdrop-filter:blur(16px) saturate(180%)}'
             . '.ars-player[data-ars-translucent] [data-ars-surface=base-200]{background-color:color-mix(in oklab,var(--color-base-200) 72%,transparent)!important}'
@@ -182,7 +179,7 @@ final class GlobalPlayer
             'initial' => $this->setting->preloadsEpisode()
                 ? (is_singular($this->podcast->slug()) ? get_queried_object_id() : (int) ($episodes[0]['id'] ?? 0))
                 : 0,
-            'width' => $this->setting->width(),
+            'width' => 'wide',
             'translucent' => $this->setting->isTranslucent(),
             // A theme that styles the player owns its colors; the player then just inherits them.
             'scheme' => current_theme_supports(self::THEME_SUPPORT) ? 'inherit' : $this->setting->colorScheme(),

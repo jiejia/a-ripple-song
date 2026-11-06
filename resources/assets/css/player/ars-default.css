@@ -9,11 +9,13 @@
 @source "../../../templates/player/skins/ars-default.php";
 @source "../../../templates/episode/meta/ars-default.php";
 @source "../../../templates/player/parts/progress.php";
+@source "../../../templates/player/parts/queue.php";
+@source "../../../templates/player/parts/resume.php";
 
 @plugin "daisyui" {
   root: ".ars-player";
   themes: light --default, dark --prefersdark;
-  include: button, badge, range, loading;
+  include: button, badge, range, loading, drawer;
   logs: false;
 }
 

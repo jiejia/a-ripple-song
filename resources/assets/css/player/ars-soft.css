@@ -9,6 +9,8 @@
 @source "../../../templates/player/skins/ars-soft.php";
 @source "../../../templates/episode/meta/ars-soft.php";
 @source "../../../templates/player/parts/progress.php";
+@source "../../../templates/player/parts/queue.php";
+@source "../../../templates/player/parts/resume.php";
 
 @plugin "daisyui" {
   root: ".ars-player";

@@ -7,7 +7,8 @@
  * - The bar lives in wp_footer, outside a theme's swup container: with swup, playback continues
  *   across pages. Buttons in swapped-in content are picked up through event delegation and a
  *   MutationObserver, so the player needs no swup hooks. Without swup, the episode and position
- *   are restored from localStorage on the next page.
+ *   are restored from localStorage on the next page. If it was playing when the page went away (reload, leaving,
+ *   closing the tab), the visitor is asked whether to continue: browsers block audio that starts without a click.
  *
  * The playlist (queue) is kept in localStorage. A new visitor, one who cleared the playlist, and one who
  * never changed it get the latest episodes (config.playlist) on each page load; an edited playlist is kept.
@@ -23,6 +24,8 @@ import { startSpectrum, refreshSpectrumColors } from './spectrum.js';
 const RATES = [1, 1.25, 1.5, 2, 0.8];
 const config = window.ARS_PLAYER || { episodes: [], playlist: [], show: {}, i18n: {}, storageKey: 'ars_player', playsUrl: '' };
 const t = (key) => config.i18n[key] || key;
+// How long the "Continue playing?" offer stays up before it goes away by itself.
+const RESUME_SECONDS = 10;
 
 function formatTime(seconds) {
   const total = Math.max(0, Math.floor(seconds || 0));
@@ -73,6 +76,9 @@ class PlayerStore {
     this.soundId = undefined;
     this.counted = new Set();
     this.expanded = false;
+    this.resumeOffer = false;
+    this.resumeLeft = 0;
+    this.resumeTimer = 0;
     this.favs = [];
     this.listeners = new Set();
 
@@ -204,6 +210,7 @@ class PlayerStore {
 
     if (!episode) return;
     if (this.howl) this.howl.unload();
+    this.closeResumeOffer();
     this.resumeAudio();
     // Playing an episode that is not in the playlist adds it.
     this.enqueue(episode.id);
@@ -307,6 +314,13 @@ class PlayerStore {
     this.seek(seconds);
   }
 
+  /** Open or close the queue drawer. */
+  setExpanded(open) {
+    if (this.expanded === !!open) return;
+    this.expanded = !!open;
+    this.emit();
+  }
+
   cycleRate() {
     this.rate = RATES[(RATES.indexOf(this.rate) + 1) % RATES.length];
     if (this.howl) this.howl.rate(this.rate);
@@ -331,10 +345,10 @@ class PlayerStore {
     this.emit();
   }
 
-  /** Play the next queued episode; returns false at the end of the queue. */
+  /** Play the next queued episode; after the last one the queue starts over. Returns false only for an empty queue. */
   next() {
     const index = this.current ? this.queue.indexOf(this.current.id) : -1;
-    const id = index >= 0 ? this.queue[index + 1] : this.followUp;
+    const id = index >= 0 ? this.queue[(index + 1) % this.queue.length] : this.followUp;
 
     if (!id) return false;
     this.load(id);
@@ -342,7 +356,7 @@ class PlayerStore {
     return true;
   }
 
-  /** Restart the episode, or go to the previous one when near its start. */
+  /** Restart the episode, or go to the previous one when near its start (the first wraps to the last). */
   prev() {
     if (this.position > 5) {
       this.seek(0);
@@ -351,7 +365,7 @@ class PlayerStore {
 
     const index = this.current ? this.queue.indexOf(this.current.id) : -1;
 
-    if (index > 0) this.load(this.queue[index - 1]);
+    if (index >= 0) this.load(this.queue[(index - 1 + this.queue.length) % this.queue.length]);
   }
 
   restore(playlist) {
@@ -386,6 +400,36 @@ class PlayerStore {
       Object.assign(this, { current: episode, duration: episode.duration || 0, position: resumed ? saved.position || 0 : 0 });
       this.updateMediaSession();
     }
+    if (resumed && saved.playing) this.offerResume();
+  }
+
+  /** Ask whether to continue (player/parts/resume.php); the offer goes away by itself, without playing. */
+  offerResume() {
+    this.resumeOffer = true;
+    this.resumeLeft = RESUME_SECONDS;
+    this.resumeTimer = setInterval(() => {
+      this.resumeLeft -= 1;
+      if (this.resumeLeft > 0) this.emit();
+      else this.dismissResume();
+    }, 1000);
+  }
+
+  closeResumeOffer() {
+    clearInterval(this.resumeTimer);
+    this.resumeOffer = false;
+  }
+
+  /** "Play" on the offer: continue where it stopped. */
+  acceptResume() {
+    this.closeResumeOffer();
+    this.toggle();
+  }
+
+  /** "Cancel" on the offer, or its time ran out: stay paused and do not ask again. */
+  dismissResume() {
+    this.closeResumeOffer();
+    this.save();
+    this.emit();
   }
 
   save() {
@@ -398,6 +442,8 @@ class PlayerStore {
       seed: this.seed,
       items: [...items],
       position: this.position,
+      // Also while loading and while the offer is up: reloading then asks again.
+      playing: this.playing || this.loading || this.resumeOffer,
       rate: this.rate,
       volume: this.volume,
       favs: this.favs,
@@ -497,7 +543,6 @@ class PlayerStore {
 function bindBar(root, store) {
   const all = (selector) => root.querySelectorAll(selector);
   const bar = root.querySelector('[data-ars-bar]') || root;
-  const panel = root.querySelector('[data-ars-panel]');
   const list = root.querySelector('[data-ars-queue]');
   const itemTemplate = list && list.querySelector('template');
   let queueKey = '';
@@ -506,55 +551,18 @@ function bindBar(root, store) {
     toggle: () => store.toggle(),
     prev: () => store.prev(),
     next: () => store.next(),
-    back: (button) => store.skip(-Number(button.dataset.arsSeconds || 15)),
-    forward: (button) => store.skip(Number(button.dataset.arsSeconds || 30)),
     rate: () => store.cycleRate(),
     mute: () => store.toggleMute(),
-    panel: () => setPanel(!isPanelOpen()),
+    panel: () => store.setExpanded(!store.expanded),
     clear: () => store.clearQueue(),
   };
-
-  // The panel is a <dialog> in the default template (modal: Esc, focus trap, top layer),
-  // but a theme may use any element, which is then toggled with `hidden`.
-  const isDialog = panel instanceof HTMLDialogElement;
-  const isPanelOpen = () => !!panel && (isDialog ? panel.open : !panel.hidden);
-
-  function setPanel(open) {
-    if (!panel || open === isPanelOpen()) return;
-
-    if (isDialog) {
-      open ? panel.showModal() : panel.close();
-    } else {
-      panel.hidden = !open;
-    }
-
-    if (open) {
-      const current = panel.querySelector('[data-ars-state="playing"], [data-ars-state="paused"]');
-      if (current) current.scrollIntoView({ block: 'nearest' });
-    }
-    syncPanelState();
-  }
-
-  function syncPanelState() {
-    const open = isPanelOpen();
-    all('[data-ars-bar] [data-ars-action="panel"]').forEach((button) => button.setAttribute('aria-expanded', String(open)));
-    // The store's expanded flag drives the page scroll lock, as it does for skins.
-    if (store.expanded !== open) {
-      store.expanded = open;
-      store.emit();
-    }
-  }
 
   root.addEventListener('click', (event) => {
     const button = event.target.closest('[data-ars-action]');
     const remove = event.target.closest('[data-ars-remove]');
     if (button && actions[button.dataset.arsAction]) actions[button.dataset.arsAction](button);
     if (remove) store.removeFromQueue(remove.dataset.arsRemove);
-    // Following a link (e.g. the episode title, swup navigation) or clicking beside the panel's box leaves the panel.
-    if (panel && panel.contains(event.target) && (event.target.closest('a[href]') || isOutsidePanelBox(panel, event.target))) setPanel(false);
   });
-  // A <dialog> also closes itself on Esc.
-  if (panel) panel.addEventListener('close', syncPanelState);
   root.addEventListener('input', (event) => {
     if (event.target.matches('[data-ars-seek]')) store.scrub(event.target.value);
     if (event.target.matches('[data-ars-volume]')) store.setVolume(event.target.value);
@@ -562,10 +570,6 @@ function bindBar(root, store) {
   root.addEventListener('change', (event) => {
     if (event.target.matches('[data-ars-seek]')) store.commit(event.target.value);
   });
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && !isDialog) setPanel(false);
-  });
-
   // Reserve room at the page bottom for the fixed bar.
   new ResizeObserver(() => {
     document.documentElement.style.setProperty('--ars-player-height', `${bar.offsetHeight}px`);
@@ -813,9 +817,15 @@ function measureThemeWidth(kind) {
   // Inserted, measured and removed in one task: the page never paints it.
   host.append(probe);
   const width = box.getBoundingClientRect().width;
+  // A theme with WordPress layout styles caps the box (max-width); without them nothing does.
+  const capped = getComputedStyle(box).maxWidth !== 'none';
   probe.remove();
 
-  return width > 0 && width < document.documentElement.clientWidth - 1 ? Math.round(width) : 0;
+  if (width <= 0) return 0;
+  if (width < document.documentElement.clientWidth - 1) return Math.round(width);
+
+  // The window is narrower than the theme's width: the theme's layout fills it, so the bar does too.
+  return capped ? Infinity : 0;
 }
 
 /**
@@ -831,7 +841,7 @@ function bindWidth(root, mode) {
   if (mode === 'skin') return;
   if (mode === 'wide-full') bindBleed(root);
 
-  const px = (width) => (width === 'none' ? width : `${width}px`);
+  const px = (width) => (width === 'none' || width === Infinity ? 'none' : `${width}px`);
   const apply = () => {
     const wide = mode === 'full' ? 'none' : measureThemeWidth('wide');
     const bar = mode === 'content' ? measureThemeWidth('content') : wide;
@@ -876,7 +886,7 @@ function bindBleed(root) {
     });
     root.dataset.arsBleed = '';
 
-    if (wide) root.style.setProperty('--ars-bleed-width', `${wide}px`);
+    if (Number.isFinite(wide) && wide) root.style.setProperty('--ars-bleed-width', `${wide}px`);
     else root.style.removeProperty('--ars-bleed-width');
   };
 
@@ -889,16 +899,6 @@ function bindBleed(root) {
 }
 
 /* ---------------- Skins ---------------- */
-
-/**
- * Whether a click inside a full-screen panel landed beside its [data-ars-panel-width] box (on the backdrop
- * or the margins), which closes the panel. Panels without a marked box (e.g. full-bleed layouts) never do.
- */
-function isOutsidePanelBox(panel, target) {
-  const box = panel.querySelector('[data-ars-panel-width]');
-
-  return !!box && target.isConnected && !box.contains(target);
-}
 
 /**
  * The scope skin expressions run in: the store's state and methods plus fmt(), join(), compact(), categoryName() and show.
@@ -930,19 +930,19 @@ function skinScope(store) {
 function bindSkin(root, store) {
   const binder = new Binder(root, skinScope(store), () => store.emit());
 
-  root.addEventListener('click', (event) => {
-    const panel = event.target.closest('[aria-modal="true"]');
+  // The queue drawer (player/parts/queue.php) is a daisyUI checkbox drawer: keep it in step with store.expanded.
+  const drawer = root.querySelector('[data-ars-drawer]');
 
-    if (store.expanded && panel && isOutsidePanelBox(panel, event.target)) {
-      store.expanded = false;
-      store.emit();
-    }
-  });
+  if (drawer) {
+    drawer.addEventListener('change', () => store.setExpanded(drawer.checked));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && store.expanded) store.setExpanded(false);
+    });
+  }
 
   store.subscribe(() => {
     binder.render();
-    // No page scrolling behind a full-screen "Now Playing" panel.
-    document.documentElement.classList.toggle('ars-player-panel-open', !!store.expanded);
+    if (drawer) drawer.checked = !!store.expanded;
   });
 }
 

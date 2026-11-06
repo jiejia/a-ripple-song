@@ -2205,3 +2205,24 @@ msgstr "播放列表是空的"
 #: resources/templates/player/skins/default.php:173
 msgid "Remove from queue"
 msgstr "从播放列表移除"
+
+#: resources/templates/player/parts/queue.php
+msgid "Playlist"
+msgstr "播放列表"
+
+#. translators: %s: number of episodes in the playlist.
+#: resources/templates/player/parts/queue.php
+msgid "Total %s episodes"
+msgstr "共 %s 期"
+
+#: resources/templates/player/parts/progress.php
+msgid "Loading audio"
+msgstr "正在加载音频"
+
+#: resources/templates/player/parts/resume.php
+msgid "Continue playing?"
+msgstr "继续播放？"
+
+#: resources/templates/player/parts/resume.php
+msgid "Cancel"
+msgstr "取消"

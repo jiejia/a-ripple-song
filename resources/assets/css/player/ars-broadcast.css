@@ -9,6 +9,8 @@
 @source "../../../templates/player/skins/ars-broadcast.php";
 @source "../../../templates/episode/meta/ars-broadcast.php";
 @source "../../../templates/player/parts/progress.php";
+@source "../../../templates/player/parts/queue.php";
+@source "../../../templates/player/parts/resume.php";
 @source "../../../templates/player/parts/volume.php";
 
 @plugin "daisyui" {
