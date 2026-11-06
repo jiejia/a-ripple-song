@@ -96,7 +96,7 @@ $iconButton = 'btn btn-ghost btn-circle btn-sm';
                 <input type="range" class="range range-primary range-xs hidden w-20 @5xl:block" min="0" max="1" step="0.05" value="0.8" data-ars-volume aria-label="<?php esc_attr_e('Volume', 'a-ripple-song'); ?>">
             </div>
             <div class="order-6 flex flex-1 items-center justify-end gap-1 @5xl:contents">
-                <button type="button" class="btn btn-ghost btn-sm font-semibold tabular-nums @5xl:order-7" data-ars-action="rate" aria-label="<?php esc_attr_e('Playback speed', 'a-ripple-song'); ?>"><span data-ars-text="rate">1×</span></button>
+                <button type="button" class="btn btn-ghost btn-sm w-14 shrink-0 px-0 font-semibold tabular-nums @5xl:order-7" data-ars-action="rate" aria-label="<?php esc_attr_e('Playback speed', 'a-ripple-song'); ?>"><span data-ars-text="rate">1×</span></button>
             <button type="button" class="btn btn-soft btn-square btn-sm shrink-0 @5xl:order-9" data-ars-action="panel" aria-label="<?php esc_attr_e('Queue', 'a-ripple-song'); ?>" aria-expanded="false"><?php Icon::render('list-music', 'size-5'); ?></button>
             </div>
             </div>

@@ -29,12 +29,12 @@ use Jiejia\ARippleSong\Libraries\Template;
         </div>
         <div class="order-5 flex shrink-0 items-center gap-1 rounded-xl bg-base-200 p-1 sm:gap-2 sm:px-2 @5xl:order-none">
           <button type="button" class="btn btn-ghost btn-circle btn-sm inline-flex" ars-on:click="prev()" aria-label="上一集"><?php Icon::render('skip-back', 'size-4 fill-current'); ?></button>
-          <button type="button" class="grid size-10 place-items-center rounded-full bg-secondary text-secondary-content transition hover:scale-105" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放">
+          <button type="button" class="grid size-9 place-items-center rounded-full @5xl:size-10 bg-secondary text-secondary-content transition hover:scale-105" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放">
             <span ars-show="!playing"><?php Icon::render('play', 'ml-0.5 size-4 fill-current'); ?></span>
             <span ars-show="playing" ars-cloak><?php Icon::render('pause', 'size-4 fill-current'); ?></span>
           </button>
           <button type="button" class="btn btn-ghost btn-circle btn-sm inline-flex" ars-on:click="next()" aria-label="下一集"><?php Icon::render('skip-forward', 'size-4 fill-current'); ?></button>
-          <button type="button" class="btn btn-ghost btn-sm hidden w-11 px-0 text-xs inline-flex" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
+          <button type="button" class="btn btn-ghost btn-sm w-12 shrink-0 px-0 text-xs" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
         </div>
         <?php
         (new Template())->renderThemeable('player/parts/progress', [
@@ -45,13 +45,13 @@ use Jiejia\ARippleSong\Libraries\Template;
             'waveClass' => 'h-9',
         ]);
         ?>
-        <?php (new Template())->renderThemeable('player/parts/volume', ['class' => 'order-4 flex flex-1 shrink-0 items-center justify-start gap-1 @5xl:order-none @5xl:flex-none', 'button' => 'grid size-10 shrink-0 place-items-center rounded-full hover:bg-base-200']); ?>
+        <?php (new Template())->renderThemeable('player/parts/volume', ['class' => 'order-4 flex flex-1 shrink-0 items-center justify-start gap-1 @5xl:order-none @5xl:flex-none', 'button' => 'grid size-8 shrink-0 place-items-center rounded-full hover:bg-base-200 @5xl:size-10']); ?>
         <button type="button" class="hidden size-10 shrink-0 place-items-center rounded-full bg-base-200 text-primary @5xl:grid" ars-on:click="toggleFav(current?.id)" ars-bind:aria-pressed="isFav(current?.id)" aria-label="收藏当前节目">
           <span ars-show="!isFav(current?.id)"><?php Icon::render('heart', 'size-4'); ?></span>
           <span ars-show="isFav(current?.id)" ars-cloak><?php Icon::render('heart', 'size-4 fill-current'); ?></span>
         </button>
         <div class="order-6 flex flex-1 items-center justify-end gap-1 @5xl:contents">
-        <button type="button" class="grid size-10 shrink-0 place-items-center rounded-full hover:bg-base-200" ars-on:click="expanded = true" aria-label="播放队列"><?php Icon::render('list-music', 'size-5'); ?></button>
+        <button type="button" class="grid size-8 shrink-0 place-items-center rounded-full hover:bg-base-200 @5xl:size-10" ars-on:click="expanded = true" aria-label="播放队列"><?php Icon::render('list-music', 'size-5'); ?></button>
         </div>
         </div>
       </div>

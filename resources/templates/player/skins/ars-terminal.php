@@ -28,7 +28,7 @@ use Jiejia\ARippleSong\Libraries\Template;
           <span class="contents">
             <button type="button" class="cmd" ars-on:click="prev()" aria-label="上一集">|&lt;</button>
           </span>
-          <button type="button" class="cmd text-lg text-primary" ars-bind:class="playing && 'is-on'" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放" ars-text="playing ? '❚❚' : '▶ '">▶ </button>
+          <button type="button" class="cmd text-base text-primary @5xl:text-lg" ars-bind:class="playing && 'is-on'" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放" ars-text="playing ? '❚❚' : '▶ '">▶ </button>
           <span class="contents">
             <button type="button" class="cmd" ars-on:click="next()" aria-label="下一集">&gt;|</button>
           </span>
@@ -52,7 +52,7 @@ use Jiejia\ARippleSong\Libraries\Template;
         ?>
         <?php (new Template())->renderThemeable('player/parts/volume', ['class' => 'order-4 flex flex-1 shrink-0 items-center justify-start gap-1 @5xl:order-8 @5xl:flex-none', 'button' => 'cmd', 'icon' => '', 'range' => 'accent-primary']); ?>
         <div class="order-6 flex flex-1 items-center justify-end gap-1 @5xl:contents">
-          <button type="button" class="cmd @5xl:order-7" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}x`">1x</button>
+          <button type="button" class="cmd w-[9ch] shrink-0 justify-between @5xl:order-7" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}x`">1x</button>
         <button type="button" class="cmd @5xl:order-9" ars-on:click="expanded = true" aria-label="播放队列">ls</button>
         </div>
         </div>

@@ -28,16 +28,16 @@ use Jiejia\ARippleSong\Libraries\Template;
             <span class="block break-words text-sm font-bold" ars-text="current?.title"></span>
           </span>
         </a>
-        <div class="order-5 flex h-14 items-stretch justify-center @5xl:order-none @5xl:h-auto">
+        <div class="order-5 flex h-12 items-stretch justify-center @5xl:order-none @5xl:h-auto">
         <div class="contents">
-          <button type="button" class="grid w-12 place-items-center hover:bg-base-200" ars-on:click="prev()" aria-label="上一集"><?php Icon::render('skip-back', 'size-4'); ?></button>
+          <button type="button" class="grid w-10 place-items-center hover:bg-base-200 @5xl:w-12" ars-on:click="prev()" aria-label="上一集"><?php Icon::render('skip-back', 'size-4'); ?></button>
         </div>
-        <button type="button" class="grid w-[4.5rem] shrink-0 place-items-center bg-primary text-primary-content hover:bg-accent hover:text-accent-content" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放">
-          <span ars-show="!playing"><?php Icon::render('play', 'size-7 fill-current'); ?></span>
-          <span ars-show="playing" ars-cloak><?php Icon::render('pause', 'size-7 fill-current'); ?></span>
+        <button type="button" class="grid w-14 shrink-0 place-items-center @5xl:w-[4.5rem] bg-primary text-primary-content hover:bg-accent hover:text-accent-content" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放">
+          <span ars-show="!playing"><?php Icon::render('play', 'size-6 fill-current @5xl:size-7'); ?></span>
+          <span ars-show="playing" ars-cloak><?php Icon::render('pause', 'size-6 fill-current @5xl:size-7'); ?></span>
         </button>
         <div class="contents">
-          <button type="button" class="grid w-12 place-items-center border-r-2 border-base-content/25 hover:bg-base-200" ars-on:click="next()" aria-label="下一集"><?php Icon::render('skip-forward', 'size-4'); ?></button>
+          <button type="button" class="grid w-10 place-items-center border-r-2 border-base-content/25 hover:bg-base-200 @5xl:w-12" ars-on:click="next()" aria-label="下一集"><?php Icon::render('skip-forward', 'size-4'); ?></button>
         </div>
         </div>
         <?php
@@ -49,10 +49,10 @@ use Jiejia\ARippleSong\Libraries\Template;
             'wave' => ['data-color' => 'accent'], 'waveClass' => 'h-10',
         ]);
         ?>
-        <?php (new Template())->renderThemeable('player/parts/volume', ['class' => 'order-4 flex h-14 flex-1 items-stretch @5xl:h-auto @5xl:items-center shrink-0 justify-start gap-1 @5xl:order-8 @5xl:flex-none @5xl:border-l-2 @5xl:border-base-content/25', 'button' => 'grid h-full w-12 place-items-center hover:bg-base-200', 'range' => 'range range-accent range-xs mr-4']); ?>
-        <div class="order-6 flex flex-1 h-14 items-stretch @5xl:h-auto justify-end gap-0 @5xl:contents">
-          <button type="button" class="label w-16 hover:bg-base-200 @5xl:order-7 @5xl:border-l-2 @5xl:border-base-content/25" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
-        <button type="button" class="grid w-14 place-items-center border-l-2 border-base-content/25 hover:bg-base-200 @5xl:order-9" ars-on:click="expanded = true" aria-label="播放队列"><?php Icon::render('list-music', 'size-4'); ?></button>
+        <?php (new Template())->renderThemeable('player/parts/volume', ['class' => 'order-4 flex h-12 flex-1 items-stretch @5xl:h-auto @5xl:items-center shrink-0 justify-start gap-1 @5xl:order-8 @5xl:flex-none @5xl:border-l-2 @5xl:border-base-content/25', 'button' => 'grid h-full w-10 place-items-center hover:bg-base-200 @5xl:w-12', 'range' => 'range range-accent range-xs mr-4']); ?>
+        <div class="order-6 flex flex-1 h-12 items-stretch @5xl:h-auto justify-end gap-0 @5xl:contents">
+          <button type="button" class="label w-14 shrink-0 hover:bg-base-200 @5xl:w-16 @5xl:order-7 @5xl:border-l-2 @5xl:border-base-content/25" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
+        <button type="button" class="grid w-12 place-items-center border-l-2 border-base-content/25 hover:bg-base-200 @5xl:order-9 @5xl:w-14" ars-on:click="expanded = true" aria-label="播放队列"><?php Icon::render('list-music', 'size-4'); ?></button>
         </div>
         </div>
       </div>

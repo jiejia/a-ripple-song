@@ -30,14 +30,14 @@ use Jiejia\ARippleSong\Libraries\Template;
         </a>
         <div class="order-5 flex items-center gap-1.5 @5xl:order-none">
           <span class="contents">
-            <button type="button" class="key size-10" ars-on:click="prev()" aria-label="上一集"><?php Icon::render('skip-back', 'size-4'); ?></button>
+            <button type="button" class="key size-8 @5xl:size-10" ars-on:click="prev()" aria-label="上一集"><?php Icon::render('skip-back', 'size-4'); ?></button>
           </span>
-          <button type="button" class="key h-12 w-14" ars-bind:class="playing && 'is-down'" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放">
-            <span ars-show="!playing"><?php Icon::render('play', 'size-6 fill-current'); ?></span>
-            <span ars-show="playing" ars-cloak><?php Icon::render('pause', 'size-6 fill-current'); ?></span>
+          <button type="button" class="key h-10 w-12 @5xl:h-12 @5xl:w-14" ars-bind:class="playing && 'is-down'" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放">
+            <span ars-show="!playing"><?php Icon::render('play', 'size-5 fill-current @5xl:size-6'); ?></span>
+            <span ars-show="playing" ars-cloak><?php Icon::render('pause', 'size-5 fill-current @5xl:size-6'); ?></span>
           </button>
           <span class="contents">
-            <button type="button" class="key size-10" ars-on:click="next()" aria-label="下一集"><?php Icon::render('skip-forward', 'size-4'); ?></button>
+            <button type="button" class="key size-8 @5xl:size-10" ars-on:click="next()" aria-label="下一集"><?php Icon::render('skip-forward', 'size-4'); ?></button>
           </span>
         </div>
         <?php
@@ -51,8 +51,8 @@ use Jiejia\ARippleSong\Libraries\Template;
         ?>
         <?php (new Template())->renderThemeable('player/parts/volume', ['class' => 'order-4 flex flex-1 shrink-0 items-center justify-start gap-1 @5xl:order-8 @5xl:flex-none', 'button' => 'btn btn-ghost btn-sm btn-square']); ?>
         <div class="order-6 flex flex-1 items-center justify-end gap-1 @5xl:contents">
-          <button type="button" class="btn btn-ghost btn-sm font-mono @5xl:order-7" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
-        <button type="button" class="btn btn-ghost btn-circle @5xl:order-9" ars-on:click="expanded = true" aria-label="播放队列"><?php Icon::render('list-music', 'size-5'); ?></button>
+          <button type="button" class="btn btn-ghost btn-sm w-14 shrink-0 px-0 font-mono @5xl:order-7" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
+        <button type="button" class="btn btn-ghost btn-circle btn-sm @5xl:btn-md @5xl:order-9" ars-on:click="expanded = true" aria-label="播放队列"><?php Icon::render('list-music', 'size-5'); ?></button>
         </div>
       </div>
       </div>

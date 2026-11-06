@@ -30,7 +30,7 @@ use Jiejia\ARippleSong\Libraries\Template;
         </a>
         <div class="order-5 flex items-center gap-1 @5xl:order-none">
           <button type="button" class="btn btn-ghost btn-circle btn-sm inline-flex" ars-on:click="prev()" aria-label="上一集"><?php Icon::render('skip-back', 'size-4'); ?></button>
-          <button type="button" class="bg-aurora grid size-12 place-items-center rounded-full text-white shadow-lg transition hover:scale-105" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放">
+          <button type="button" class="bg-aurora grid size-10 place-items-center @5xl:size-12 rounded-full text-white shadow-lg transition hover:scale-105" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放">
             <span ars-show="!playing"><?php Icon::render('play', 'ml-0.5 size-5 fill-current'); ?></span>
             <span ars-show="playing" ars-cloak><?php Icon::render('pause', 'size-5 fill-current'); ?></span>
           </button>
@@ -46,7 +46,7 @@ use Jiejia\ARippleSong\Libraries\Template;
         ?>
         <?php (new Template())->renderThemeable('player/parts/volume', ['class' => 'order-4 flex flex-1 shrink-0 items-center justify-start gap-1 @5xl:order-none @5xl:flex-none', 'range' => 'range range-xs']); ?>
         <div class="order-6 flex flex-1 items-center justify-end gap-1 @5xl:contents">
-        <button type="button" class="btn btn-ghost btn-sm rounded-full font-normal tabular-nums" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
+        <button type="button" class="btn btn-ghost btn-sm w-14 shrink-0 rounded-full px-0 font-normal tabular-nums" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
         <button type="button" class="btn btn-ghost btn-circle btn-sm" ars-on:click="expanded = true" aria-label="播放队列"><?php Icon::render('list-music', 'size-5'); ?></button>
         </div>
         </div>
