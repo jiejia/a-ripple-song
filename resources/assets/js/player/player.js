@@ -76,6 +76,7 @@ class PlayerStore {
     this.soundId = undefined;
     this.counted = new Set();
     this.expanded = false;
+    this.confirmClear = false;
     this.resumeOffer = false;
     this.resumeLeft = 0;
     this.resumeTimer = 0;
@@ -318,6 +319,7 @@ class PlayerStore {
   setExpanded(open) {
     if (this.expanded === !!open) return;
     this.expanded = !!open;
+    if (!open) this.confirmClear = false;
     this.emit();
   }
 

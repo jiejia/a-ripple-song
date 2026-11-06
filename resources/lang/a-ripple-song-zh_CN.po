@@ -2226,3 +2226,7 @@ msgstr "继续播放？"
 #: resources/templates/player/parts/resume.php
 msgid "Cancel"
 msgstr "取消"
+
+#: resources/templates/player/parts/queue.php
+msgid "Clear the playlist?"
+msgstr "清空播放列表？"

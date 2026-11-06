@@ -1,6 +1,6 @@
 <?php
 /**
- * "Continue playing?" offer, shared by every skin: shown above the bar after a page load when the episode was
+ * "Continue playing?" offer, shared by every skin: shown at the very bottom of the window, over the bar, after a page load when the episode was
  * playing as the last page went away. Browsers block audio that starts without a click, so the visitor decides.
  * The store runs it (resumeOffer, resumeLeft, acceptResume(), dismissResume()); when time runs out it just goes away.
  *
@@ -29,7 +29,7 @@ $heading ??= 'font-semibold';
 $accept ??= 'btn btn-primary';
 $cancel ??= 'btn btn-soft';
 ?>
-<div class="fixed bottom-[calc(var(--ars-player-height,5.5rem)+0.75rem)] left-1/2 z-[9991] w-[min(26rem,calc(100vw-1.5rem))] -translate-x-1/2 p-4 text-base-content <?php echo esc_attr($panel); ?>"<?php echo $theme !== '' ? ' data-ars-theme="' . esc_attr($theme) . '"' : ''; ?> role="dialog" aria-labelledby="ars-resume-title"
+<div class="fixed bottom-3 left-1/2 z-[9991] w-[min(26rem,calc(100vw-1.5rem))] -translate-x-1/2 p-4 text-base-content <?php echo esc_attr($panel); ?>"<?php echo $theme !== '' ? ' data-ars-theme="' . esc_attr($theme) . '"' : ''; ?> role="dialog" aria-labelledby="ars-resume-title"
      ars-show="resumeOffer" ars-cloak
      ars-transition:enter="transition duration-200 ease-out" ars-transition:enter-start="translate-y-2 opacity-0" ars-transition:enter-end="translate-y-0 opacity-100"
      ars-transition:leave="transition duration-150 ease-in" ars-transition:leave-start="opacity-100" ars-transition:leave-end="opacity-0">

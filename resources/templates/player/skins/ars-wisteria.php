@@ -57,7 +57,7 @@ use Jiejia\ARippleSong\Libraries\Template;
     </div>
 
     <?php (new Template())->renderThemeable('player/parts/queue', [
-        'panel' => 'card-w !rounded-none', 'meta' => 'mute text-sm', 'sub' => 'mute text-sm', 'cover' => 'rounded-2xl bg-base-300',
+        'panel' => 'card-w !rounded-none', 'meta' => 'mute', 'sub' => 'mute', 'cover' => 'rounded-2xl bg-base-300',
     ]); ?>
     <?php (new Template())->renderThemeable('player/parts/resume', [
         'panel' => 'card-w rounded-[1.75rem]', 'accept' => 'btn btn-primary rounded-full', 'cancel' => 'btn btn-ghost rounded-full',

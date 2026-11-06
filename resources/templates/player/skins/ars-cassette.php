@@ -59,7 +59,7 @@ use Jiejia\ARippleSong\Libraries\Template;
     </div>
 
     <?php (new Template())->renderThemeable('player/parts/queue', [
-        'theme' => 'dark', 'panel' => 'border-r border-base-content/20 bg-base-100 text-base-content', 'divider' => 'border-t border-base-content/20', 'title' => 'tag px-5 py-4 text-lg text-secondary', 'meta' => 'font-mono text-sm opacity-60', 'row' => 'rounded-xl hover:bg-base-200', 'rowOn' => 'bg-base-200', 'cover' => 'rounded-lg bg-base-300', 'nameOn' => 'text-secondary', 'sub' => 'font-mono text-xs opacity-60',
+        'theme' => 'dark', 'panel' => 'border-r border-base-content/20 bg-base-100 text-base-content', 'divider' => 'border-t border-base-content/20', 'title' => 'tag px-4 py-3 text-sm text-secondary', 'meta' => 'font-mono opacity-60', 'row' => 'rounded-xl hover:bg-base-200', 'rowOn' => 'bg-base-200', 'cover' => 'rounded-lg bg-base-300', 'nameOn' => 'text-secondary', 'sub' => 'font-mono opacity-60',
     ]); ?>
     <?php (new Template())->renderThemeable('player/parts/resume', [
         'theme' => 'dark', 'panel' => 'rounded-2xl border border-base-content/20 bg-base-100', 'icon' => 'rounded-full bg-base-200 text-secondary', 'accept' => 'key h-11 auto-cols-max grid-flow-col justify-center gap-2', 'cancel' => 'key h-11 auto-cols-max grid-flow-col justify-center gap-2',

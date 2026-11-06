@@ -31,50 +31,58 @@ use Jiejia\ARippleSong\Libraries\Icon;
 $theme ??= '';
 $panel ??= 'border-r border-base-300 bg-base-100 shadow-2xl';
 $divider ??= 'border-t border-base-300';
-$title ??= 'px-5 py-4 text-xl font-bold';
-$meta ??= 'text-sm opacity-70';
+$title ??= 'px-4 py-3 text-base font-bold';
+$meta ??= 'opacity-70';
 $clear ??= 'font-semibold hover:opacity-100';
 $row ??= 'rounded-2xl hover:bg-base-200';
 $rowOn ??= 'bg-base-200';
 $cover ??= 'rounded-xl bg-base-300';
 $name ??= 'font-semibold';
 $nameOn ??= 'text-primary';
-$sub ??= 'text-sm opacity-60';
+$sub ??= 'opacity-60';
 $trash ??= 'btn btn-ghost btn-circle btn-sm';
 ?>
 <div class="drawer ars-queue-drawer">
   <input id="ars-queue-drawer" type="checkbox" class="drawer-toggle" data-ars-drawer aria-label="<?php esc_attr_e('Playlist', 'a-ripple-song'); ?>">
   <div class="drawer-side z-[9992] top-[var(--wp-admin--admin-bar--height,0px)] h-[calc(100dvh-var(--wp-admin--admin-bar--height,0px))]">
     <label for="ars-queue-drawer" aria-label="<?php esc_attr_e('Close', 'a-ripple-song'); ?>" class="drawer-overlay"></label>
-    <div class="h-full w-[min(24rem,92vw)] text-base-content"<?php echo $theme !== '' ? ' data-ars-theme="' . esc_attr($theme) . '"' : ''; ?> role="dialog" aria-label="<?php esc_attr_e('Playlist', 'a-ripple-song'); ?>">
+    <div class="h-full w-72 max-w-[85vw] text-base-content"<?php echo $theme !== '' ? ' data-ars-theme="' . esc_attr($theme) . '"' : ''; ?> role="dialog" aria-label="<?php esc_attr_e('Playlist', 'a-ripple-song'); ?>">
       <div class="flex h-full flex-col overflow-hidden <?php echo esc_attr($panel); ?>">
         <h2 class="<?php echo esc_attr($title); ?>"><?php esc_html_e('Playlist', 'a-ripple-song'); ?></h2>
-        <section class="flex min-h-0 flex-1 flex-col px-3 pb-3 <?php echo esc_attr($divider); ?>">
+        <section class="flex min-h-0 flex-1 flex-col px-2 pb-2 <?php echo esc_attr($divider); ?>">
           <header class="px-2">
-            <p class="flex items-center justify-between gap-2 py-3 <?php echo esc_attr($meta); ?>">
+            <p ars-show="!confirmClear" class="flex items-center justify-between gap-2 py-2.5 text-xs <?php echo esc_attr($meta); ?>">
               <span class="tabular-nums"><?php
               // translators: %s: number of episodes in the playlist.
               echo wp_kses(sprintf(__('Total %s episodes', 'a-ripple-song'), '<span ars-text="queueItems.length"></span>'), ['span' => ['ars-text' => true]]);
               ?></span>
-              <button type="button" class="flex items-center gap-1.5 <?php echo esc_attr($clear); ?>" ars-show="queueItems.length" ars-on:click="clearQueue()"><?php Icon::render('trash-2', 'size-4'); ?><?php esc_html_e('Clear', 'a-ripple-song'); ?></button>
+              <button type="button" class="flex items-center gap-1.5 <?php echo esc_attr($clear); ?>" ars-show="queueItems.length" ars-on:click="confirmClear = true"><?php Icon::render('trash-2', 'size-3.5'); ?><?php esc_html_e('Clear', 'a-ripple-song'); ?></button>
+            </p>
+            <?php /* "Clear" asks first; closing the drawer takes the question back (PlayerStore::setExpanded). */ ?>
+            <p ars-show="confirmClear" ars-cloak class="flex items-center justify-between gap-2 py-2.5 text-xs <?php echo esc_attr($meta); ?>">
+              <span class="min-w-0 truncate"><?php esc_html_e('Clear the playlist?', 'a-ripple-song'); ?></span>
+              <span class="flex shrink-0 items-center gap-3">
+                <button type="button" class="text-error <?php echo esc_attr($clear); ?>" ars-on:click="confirmClear = false; clearQueue()"><?php esc_html_e('Clear', 'a-ripple-song'); ?></button>
+                <button type="button" class="<?php echo esc_attr($clear); ?>" ars-on:click="confirmClear = false"><?php esc_html_e('Cancel', 'a-ripple-song'); ?></button>
+              </span>
             </p>
           </header>
           <ul class="min-h-0 flex-1 space-y-1 overflow-y-auto overscroll-contain [scrollbar-width:thin]">
             <template ars-for="ep in queueItems">
               <li class="group relative">
-                <button type="button" class="flex w-full min-w-0 items-center gap-3 p-2 pr-12 text-left <?php echo esc_attr($row); ?>" ars-bind:class="isCurrent(ep.id) && '<?php echo esc_attr($rowOn); ?>'" ars-on:click="toggle(ep.id)">
-                  <img ars-bind:src="ep.cover" alt="" class="size-14 shrink-0 object-cover <?php echo esc_attr($cover); ?>">
+                <button type="button" class="flex w-full min-w-0 items-center gap-2.5 p-1.5 pr-10 text-left <?php echo esc_attr($row); ?>" ars-bind:class="isCurrent(ep.id) && '<?php echo esc_attr($rowOn); ?>'" ars-on:click="toggle(ep.id)">
+                  <img ars-bind:src="ep.cover" alt="" class="size-11 shrink-0 object-cover <?php echo esc_attr($cover); ?>">
                   <span class="min-w-0 flex-1">
-                    <span class="block truncate <?php echo esc_attr($name); ?>" ars-bind:class="isCurrent(ep.id) && '<?php echo esc_attr($nameOn); ?>'" ars-text="ep.title"></span>
-                    <span class="block truncate <?php echo esc_attr($sub); ?>" ars-text="join(categoryName(ep.category), fmt(ep.duration))"></span>
+                    <span class="block truncate text-sm <?php echo esc_attr($name); ?>" ars-bind:class="isCurrent(ep.id) && '<?php echo esc_attr($nameOn); ?>'" ars-text="ep.title"></span>
+                    <span class="block truncate text-xs <?php echo esc_attr($sub); ?>" ars-text="join(categoryName(ep.category), fmt(ep.duration))"></span>
                   </span>
                 </button>
-                <span class="pointer-events-none absolute inset-y-0 right-4 flex items-center group-hover:hidden group-focus-within:hidden [@media(hover:none)]:hidden" ars-show="isPlaying(ep.id)" ars-cloak><span class="loading loading-bars loading-sm text-primary"></span></span>
-                <button type="button" class="<?php echo esc_attr($trash); ?> absolute top-1/2 right-2 -translate-y-1/2 opacity-0 transition group-hover:opacity-100 focus-visible:opacity-100 [@media(hover:none)]:opacity-100" ars-on:click="removeFromQueue(ep.id)" aria-label="<?php esc_attr_e('Remove from queue', 'a-ripple-song'); ?>" title="<?php esc_attr_e('Remove from queue', 'a-ripple-song'); ?>"><?php Icon::render('trash-2', 'size-4'); ?></button>
+                <span class="pointer-events-none absolute inset-y-0 right-3 flex items-center group-hover:hidden group-focus-within:hidden [@media(hover:none)]:hidden" ars-show="isPlaying(ep.id)" ars-cloak><span class="loading loading-bars loading-xs text-primary"></span></span>
+                <button type="button" class="<?php echo esc_attr($trash); ?> absolute top-1/2 right-1 -translate-y-1/2 opacity-0 transition group-hover:opacity-100 focus-visible:opacity-100 [@media(hover:none)]:opacity-100" ars-on:click="removeFromQueue(ep.id)" aria-label="<?php esc_attr_e('Remove from queue', 'a-ripple-song'); ?>" title="<?php esc_attr_e('Remove from queue', 'a-ripple-song'); ?>"><?php Icon::render('trash-2', 'size-3.5'); ?></button>
               </li>
             </template>
           </ul>
-          <p class="py-8 text-center text-sm opacity-60" ars-show="!queueItems.length" ars-cloak><?php esc_html_e('The queue is empty.', 'a-ripple-song'); ?></p>
+          <p class="py-8 text-center text-xs opacity-60" ars-show="!queueItems.length" ars-cloak><?php esc_html_e('The queue is empty.', 'a-ripple-song'); ?></p>
         </section>
       </div>
     </div>

@@ -60,7 +60,7 @@ use Jiejia\ARippleSong\Libraries\Template;
     </div>
 
     <?php (new Template())->renderThemeable('player/parts/queue', [
-        'panel' => 'border-r tui-line bg-base-200 font-mono text-sm [--tui-bg:var(--color-base-200)]', 'divider' => 'border-t tui-line', 'title' => 'px-5 py-4 text-base text-primary', 'meta' => 'dim', 'clear' => 'cmd', 'row' => 'hover:text-primary', 'rowOn' => 'text-primary', 'cover' => 'mono-img bg-base-300', 'name' => '', 'sub' => 'dim text-xs', 'trash' => 'cmd',
+        'panel' => 'border-r tui-line bg-base-200 font-mono text-sm [--tui-bg:var(--color-base-200)]', 'divider' => 'border-t tui-line', 'title' => 'px-4 py-3 text-sm text-primary', 'meta' => 'dim', 'clear' => 'cmd', 'row' => 'hover:text-primary', 'rowOn' => 'text-primary', 'cover' => 'mono-img bg-base-300', 'name' => '', 'sub' => 'dim', 'trash' => 'cmd',
     ]); ?>
     <?php (new Template())->renderThemeable('player/parts/resume', [
         'panel' => 'border tui-line bg-base-200 font-mono text-sm', 'icon' => 'text-primary', 'heading' => 'text-primary', 'accept' => 'cmd justify-center text-primary', 'cancel' => 'cmd justify-center',

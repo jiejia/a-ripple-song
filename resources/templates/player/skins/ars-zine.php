@@ -55,7 +55,7 @@ use Jiejia\ARippleSong\Libraries\Template;
     </div>
 
     <?php (new Template())->renderThemeable('player/parts/queue', [
-        'panel' => 'border-r-2 ink bg-base-100', 'divider' => 'border-t-2 ink', 'title' => 'font-hand px-5 py-4 text-3xl text-primary', 'row' => 'border-2 border-transparent hover:ink', 'rowOn' => 'ink bg-base-200 shadow-[3px_3px_0_var(--color-base-content)]', 'cover' => 'rounded border-2 ink', 'name' => 'font-bold',
+        'panel' => 'border-r-2 ink bg-base-100', 'divider' => 'border-t-2 ink', 'title' => 'font-hand px-4 py-3 text-2xl text-primary', 'row' => 'border-2 border-transparent hover:ink', 'rowOn' => 'ink bg-base-200 shadow-[3px_3px_0_var(--color-base-content)]', 'cover' => 'rounded border-2 ink', 'name' => 'font-bold',
     ]); ?>
     <?php (new Template())->renderThemeable('player/parts/resume', [
         'panel' => 'border-2 ink bg-base-100 shadow-[4px_4px_0_var(--color-base-content)]', 'icon' => 'rounded-full border-2 ink bg-base-100 text-primary', 'heading' => 'font-bold', 'accept' => 'btn btn-primary rounded-full border-2 ink', 'cancel' => 'btn btn-ghost rounded-full border-2 ink',
