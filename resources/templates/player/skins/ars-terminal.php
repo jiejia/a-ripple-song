@@ -46,7 +46,7 @@ use Jiejia\ARippleSong\Libraries\Template;
             <input type="range" min="0" ars-bind:max="duration" step="1" ars-bind:value="position" ars-on:input="scrub($event.target.value)" ars-on:change="commit($event.target.value)">
           </label>
             <?php },
-            'spectrum' => ['data-spectrum' => 'ascii', 'data-bar' => '11', 'data-gap' => '1', 'class' => 'hidden h-10 w-24 shrink-0 @6xl:block'],
+            'spectrum' => ['data-spectrum' => 'ascii', 'data-bar' => '11', 'data-gap' => '1', 'class' => 'hidden h-10 w-24 shrink-0 @[70rem]:block'],
             'wave' => ['data-gap' => '1'],
         ]);
         ?>

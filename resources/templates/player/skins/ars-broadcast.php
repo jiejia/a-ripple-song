@@ -45,13 +45,13 @@ use Jiejia\ARippleSong\Libraries\Template;
             'class' => 'order-3 flex w-full min-w-0 basis-full flex-wrap items-center gap-x-3 gap-y-1 border-b-2 border-base-content/25 px-4 py-2 font-mono @5xl:order-none @5xl:w-auto @5xl:flex-1 @5xl:basis-auto @5xl:flex-nowrap @5xl:border-b-0 @5xl:px-5 @5xl:py-0',
             'spectrumTop' => ['data-spectrum' => 'led', 'data-bar' => '4', 'data-gap' => '2', 'data-color' => 'accent', 'class' => 'block h-10 w-full @5xl:hidden'],
             'time' => 'text-base font-semibold text-accent', 'timeEnd' => 'text-sm text-base-content/60', 'range' => 'range range-accent range-xs',
-            'spectrum' => ['data-spectrum' => 'led', 'data-bar' => '4', 'data-gap' => '2', 'data-color' => 'accent', 'class' => 'hidden h-10 w-28 shrink-0 @6xl:block'],
+            'spectrum' => ['data-spectrum' => 'led', 'data-bar' => '4', 'data-gap' => '2', 'data-color' => 'accent', 'class' => 'hidden h-10 w-28 shrink-0 @[70rem]:block'],
             'wave' => ['data-color' => 'accent'], 'waveClass' => 'h-10',
         ]);
         ?>
         <?php (new Template())->renderThemeable('player/parts/volume', ['class' => 'order-4 flex h-12 flex-1 items-stretch @5xl:h-auto @5xl:items-center shrink-0 justify-start gap-1 @5xl:order-8 @5xl:flex-none @5xl:border-l-2 @5xl:border-base-content/25', 'button' => 'grid h-full w-10 place-items-center hover:bg-base-200 @5xl:w-12', 'range' => 'range range-accent range-xs mr-4']); ?>
         <div class="order-6 flex flex-1 h-12 items-stretch @5xl:h-auto justify-end gap-0 @5xl:contents">
-          <button type="button" class="label w-14 shrink-0 hover:bg-base-200 @5xl:w-16 @5xl:order-7 @5xl:border-l-2 @5xl:border-base-content/25" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
+          <button type="button" class="label w-14 shrink-0 justify-center hover:bg-base-200 @5xl:w-16 @5xl:order-7 @5xl:border-l-2 @5xl:border-base-content/25" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
         <button type="button" class="grid w-12 place-items-center border-l-2 border-base-content/25 hover:bg-base-200 @5xl:order-9 @5xl:w-14" ars-on:click="expanded = true" aria-label="播放队列"><?php Icon::render('list-music', 'size-4'); ?></button>
         </div>
         </div>

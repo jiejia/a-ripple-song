@@ -47,14 +47,14 @@ $waveClass ??= 'h-8';
 $binder = $hooks !== 'data';
 // While the audio loads (root [data-state=loading]) the spectrum gives way to a daisyUI loading ring, same box and breakpoints.
 // Class names built below, spelled out so Tailwind finds them: [.ars-player[data-state=loading]_&]:flex [.ars-player[data-state=loading]_&]:!hidden
-// @2xl:[.ars-player[data-state=loading]_&]:flex @3xl:[.ars-player[data-state=loading]_&]:flex @4xl:[.ars-player[data-state=loading]_&]:flex @5xl:[.ars-player[data-state=loading]_&]:flex @6xl:[.ars-player[data-state=loading]_&]:flex @xl:[.ars-player[data-state=loading]_&]:flex
+// @2xl:[.ars-player[data-state=loading]_&]:flex @3xl:[.ars-player[data-state=loading]_&]:flex @4xl:[.ars-player[data-state=loading]_&]:flex @5xl:[.ars-player[data-state=loading]_&]:flex @6xl:[.ars-player[data-state=loading]_&]:flex @[70rem]:[.ars-player[data-state=loading]_&]:flex @xl:[.ars-player[data-state=loading]_&]:flex
 // @2xl:!hidden @3xl:!hidden @4xl:!hidden @5xl:!hidden @6xl:!hidden
 $loadingRing = static function (string $class, string $label = ''): string {
     $tokens = preg_split('/\s+/', trim($class)) ?: [];
     $size = array_filter($tokens, static fn (string $t): bool => (bool) preg_match('/^(?:h|w|size|min-w|flex)-\S+$|^shrink-0$/', $t));
     $show = 'hidden [.ars-player[data-state=loading]_&]:flex';
     foreach ($tokens as $t) {
-        if (preg_match('/^(@\w+):(?:block|flex)$/', $t, $m)) {
+        if (preg_match('/^(@[^:]+):(?:block|flex)$/', $t, $m)) {
             $show = 'hidden ' . $m[1] . ':[.ars-player[data-state=loading]_&]:flex'; // spectrum appears from this width on
         } elseif (preg_match('/^(@\w+):hidden$/', $t, $m)) {
             $show .= ' ' . $m[1] . ':!hidden'; // narrow-bar spectrum, hidden again from this width on
