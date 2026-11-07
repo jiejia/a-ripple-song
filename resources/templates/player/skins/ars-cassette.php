@@ -17,7 +17,7 @@ use Jiejia\ARippleSong\Libraries\Template;
 ?>
 <div class="ars-player" data-ars-player data-ars-skin="ars-cassette" hidden>
     <?php /* ============ 播放器：卡座（常驻，固定深色） ============ */ ?>
-    <div data-ars-theme="dark" class="fixed inset-x-0 bottom-0 z-[9990]" role="region" data-ars-bar aria-label="音频播放器">
+    <div class="fixed inset-x-0 bottom-0 z-[9990]" role="region" data-ars-bar aria-label="音频播放器">
       <div data-ars-width="box" data-ars-surface class="mx-auto max-w-7xl bg-base-100 text-base-content">
       <div class="stripes h-2" aria-hidden="true"></div>
       <div class="flex flex-wrap items-center gap-x-3 gap-y-2 px-3 py-3 @5xl:min-h-20 @5xl:flex-nowrap @5xl:gap-4 @5xl:py-0 sm:px-6">
@@ -59,9 +59,9 @@ use Jiejia\ARippleSong\Libraries\Template;
     </div>
 
     <?php (new Template())->renderThemeable('player/parts/queue', [
-        'theme' => 'dark', 'panel' => 'border-r border-base-content/20 bg-base-100 text-base-content', 'divider' => 'border-t border-base-content/20', 'title' => 'tag px-4 py-3 text-sm text-secondary', 'meta' => 'font-mono opacity-60', 'row' => 'rounded-xl hover:bg-base-200', 'rowOn' => 'bg-base-200', 'cover' => 'rounded-lg bg-base-300', 'nameOn' => 'text-secondary', 'sub' => 'font-mono opacity-60',
+        'panel' => 'border-r border-base-content/20 bg-base-100 text-base-content', 'divider' => 'border-t border-base-content/20', 'title' => 'tag px-4 py-3 text-sm text-secondary', 'meta' => 'font-mono opacity-60', 'row' => 'rounded-xl hover:bg-base-200', 'rowOn' => 'bg-base-200', 'cover' => 'rounded-lg bg-base-300', 'nameOn' => 'text-secondary', 'sub' => 'font-mono opacity-60',
     ]); ?>
     <?php (new Template())->renderThemeable('player/parts/resume', [
-        'theme' => 'dark', 'panel' => 'rounded-2xl border border-base-content/20 bg-base-100', 'icon' => 'rounded-full bg-base-200 text-secondary', 'accept' => 'key h-11 auto-cols-max grid-flow-col justify-center gap-2', 'cancel' => 'key h-11 auto-cols-max grid-flow-col justify-center gap-2',
+        'panel' => 'rounded-2xl border border-base-content/20 bg-base-100', 'icon' => 'rounded-full bg-base-200 text-secondary', 'accept' => 'key h-11 auto-cols-max grid-flow-col justify-center gap-2', 'cancel' => 'key h-11 auto-cols-max grid-flow-col justify-center gap-2',
     ]); ?>
 </div>
