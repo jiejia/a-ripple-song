@@ -150,6 +150,12 @@ final class GlobalPlayer
      */
     public function isEnabled(): bool
     {
+        // The widget editor previews a legacy widget as a front-end page in an iframe; no player belongs in that preview.
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Only tests that the parameter is present.
+        if (! empty($_GET['legacy-widget-preview'])) {
+            return false;
+        }
+
         /**
          * Filters whether the global player is shown on the current page.
          *
