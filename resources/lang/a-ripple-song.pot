@@ -618,6 +618,9 @@ msgstr ""
 msgid "Petal: component-library site, floating glass bar"
 msgstr ""
 
+msgid "Prisma: black and white minimal, thin-line capsule"
+msgstr ""
+
 #: app/Settings/DashboardSetting.php:27
 msgid "Dashboard"
 msgstr ""

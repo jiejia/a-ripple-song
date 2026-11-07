@@ -502,6 +502,9 @@ msgstr "Wisteria: soft purple mobile app"
 msgid "Petal: component-library site, floating glass bar"
 msgstr "Petal: component-library site, floating glass bar"
 
+msgid "Prisma: black and white minimal, thin-line capsule"
+msgstr "Prisma: black and white minimal, thin-line capsule"
+
 #: app/Settings/DashboardSetting.php:27
 msgid "Dashboard"
 msgstr "Dashboard"

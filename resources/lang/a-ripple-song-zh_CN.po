@@ -620,6 +620,9 @@ msgstr "紫藤：柔紫色移动应用"
 msgid "Petal: component-library site, floating glass bar"
 msgstr "花瓣：组件库官网风，悬浮玻璃播放条"
 
+msgid "Prisma: black and white minimal, thin-line capsule"
+msgstr "棱镜：黑白极简，细边胶囊播放条"
+
 #: app/Settings/DashboardSetting.php:27
 msgid "Dashboard"
 msgstr "仪表盘"
