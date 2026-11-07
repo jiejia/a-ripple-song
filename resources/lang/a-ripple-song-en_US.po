@@ -505,6 +505,9 @@ msgstr "Petal: component-library site, floating glass bar"
 msgid "Prisma: black and white minimal, thin-line capsule"
 msgstr "Prisma: black and white minimal, thin-line capsule"
 
+msgid "Bazaar: shopping app, electric purple floating bar"
+msgstr "Bazaar: shopping app, electric purple floating bar"
+
 #: app/Settings/DashboardSetting.php:27
 msgid "Dashboard"
 msgstr "Dashboard"

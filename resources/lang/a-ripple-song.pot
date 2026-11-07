@@ -621,6 +621,9 @@ msgstr ""
 msgid "Prisma: black and white minimal, thin-line capsule"
 msgstr ""
 
+msgid "Bazaar: shopping app, electric purple floating bar"
+msgstr ""
+
 #: app/Settings/DashboardSetting.php:27
 msgid "Dashboard"
 msgstr ""

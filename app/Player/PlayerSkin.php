@@ -28,6 +28,7 @@ enum PlayerSkin: string
     case Wisteria = 'ars-wisteria';
     case Petal = 'ars-petal';
     case Prisma = 'ars-prisma';
+    case Bazaar = 'ars-bazaar';
 
     /**
      * Return the name shown in the settings.
@@ -51,6 +52,7 @@ enum PlayerSkin: string
             self::Wisteria => __('Wisteria: soft purple mobile app', 'a-ripple-song'),
             self::Petal => __('Petal: component-library site, floating glass bar', 'a-ripple-song'),
             self::Prisma => __('Prisma: black and white minimal, thin-line capsule', 'a-ripple-song'),
+            self::Bazaar => __('Bazaar: shopping app, electric purple floating bar', 'a-ripple-song'),
         };
     }
 
@@ -76,6 +78,7 @@ enum PlayerSkin: string
             self::Wisteria => 'family=Noto+Sans+SC:wght@400;500;600;700&family=Urbanist:wght@400;500;600;700;800',
             self::Petal => 'family=Noto+Sans+SC:wght@300;400;500;700;900&family=Outfit:wght@300;400;500;600;700;800;900',
             self::Prisma => 'family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700',
+            self::Bazaar => 'family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700',
         };
 
         return $families !== '' ? 'https://fonts.googleapis.com/css2?' . $families . '&display=swap' : '';

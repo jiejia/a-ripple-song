@@ -623,6 +623,9 @@ msgstr "花瓣：组件库官网风，悬浮玻璃播放条"
 msgid "Prisma: black and white minimal, thin-line capsule"
 msgstr "棱镜：黑白极简，细边胶囊播放条"
 
+msgid "Bazaar: shopping app, electric purple floating bar"
+msgstr "集市：购物 App 风，电光紫浮层播放条"
+
 #: app/Settings/DashboardSetting.php:27
 msgid "Dashboard"
 msgstr "仪表盘"
