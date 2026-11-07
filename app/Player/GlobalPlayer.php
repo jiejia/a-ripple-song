@@ -150,9 +150,10 @@ final class GlobalPlayer
      */
     public function isEnabled(): bool
     {
-        // The widget editor previews a legacy widget as a front-end page in an iframe; no player belongs in that preview.
+        // The widget editor previews a legacy widget as a whole page (with wp_footer) rendered by a REST request, or by the
+        // legacy-widget-preview request of older WordPress versions; no player belongs in either preview.
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Only tests that the parameter is present.
-        if (! empty($_GET['legacy-widget-preview'])) {
+        if (wp_is_serving_rest_request() || ! empty($_GET['legacy-widget-preview'])) {
             return false;
         }
 
