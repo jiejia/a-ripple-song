@@ -24,7 +24,7 @@
  *   [data-ars-seek]            <input type="range"> for the progress. The bar's progress row comes from
  *                              player/parts/progress.php, which follows the "Progress Bar & Spectrum" setting.
  *   [data-ars-volume]          <input type="range" min="0" max="1"> for the volume.
- *   [data-ars-text="…"]        Text filled by JS: title, number, status, position, duration, rate.
+ *   [data-ars-text="…"]        Text filled by JS: title, number, meta, status, position, duration, rate.
  *   [data-ars-src="cover"]     <img> showing the episode cover.
  *   [data-ars-href="url"]      Link to the episode page.
  *   [data-ars-show="…"]        Shown only in that state: playing, paused, loading, muted, unmuted, cover, nocover,
@@ -53,19 +53,12 @@ $iconButton = 'btn btn-ghost btn-circle btn-sm';
     <div class="fixed inset-x-0 bottom-0 z-[9990] px-2 pb-2 sm:px-4 sm:pb-4" data-ars-bar>
         <div data-ars-width="box" data-ars-surface class="mx-auto max-w-6xl rounded-box border border-base-300 bg-base-100 text-base-content shadow-lg">
             <div class="flex flex-wrap items-center gap-x-3 gap-y-2 p-2 @5xl:min-h-16 @5xl:flex-nowrap @5xl:gap-3 @5xl:px-3 @5xl:py-0">
-            <a data-ars-href="url" class="flex min-w-0 flex-1 items-center gap-3 text-left order-1 basis-full rounded-box bg-base-content/5 p-2 @5xl:order-none @5xl:basis-auto @5xl:w-64 @5xl:flex-none @5xl:bg-transparent @5xl:p-0">
-                <span class="grid size-11 shrink-0 place-items-center overflow-hidden rounded-field bg-base-200">
-                    <img class="size-full object-cover" alt="" data-ars-src="cover" data-ars-show="cover">
-                    <span class="opacity-50" data-ars-show="nocover"><?php Icon::render('podcast', 'size-5'); ?></span>
-                </span>
-                <span class="min-w-0">
-                    <span class="flex items-center gap-2 text-xs">
-                        <span class="badge badge-xs badge-soft group-data-[state=playing]:badge-primary group-data-[state=error]:badge-error" data-ars-text="status"></span>
-                        <span class="opacity-60" data-ars-text="number"></span>
-                    </span>
-                    <span class="block break-words text-sm font-semibold" data-ars-text="title"></span>
-                </span>
-            </a>
+            <?php (new Template())->renderThemeable('player/parts/info', [
+                'hooks' => 'data',
+                'width' => '@5xl:w-64',
+                'cover' => 'rounded-field bg-base-200',
+                'meta' => 'opacity-70 group-data-[state=error]:text-error',
+            ]); ?>
 
             <div class="order-5 flex shrink-0 items-center gap-0.5 sm:gap-1 @5xl:order-none">
                 <button type="button" class="<?php echo esc_attr($iconButton); ?> inline-flex" data-ars-action="prev" aria-label="<?php esc_attr_e('Previous episode', 'a-ripple-song'); ?>"><?php Icon::render('skip-back', 'size-4'); ?></button>

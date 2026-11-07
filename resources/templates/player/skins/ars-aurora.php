@@ -21,13 +21,12 @@ use Jiejia\ARippleSong\Libraries\Template;
       <div data-ars-width="box" class="frost frost-strong relative mx-auto max-w-4xl rounded-[2rem]">
         <div class="flex flex-wrap items-center gap-x-3 gap-y-2 p-3 @5xl:min-h-[4.5rem] @5xl:flex-nowrap @5xl:py-0 @5xl:pl-2 @5xl:pr-3">
         <span class="bg-aurora absolute inset-x-6 bottom-0 h-0.5 origin-left rounded-full" ars-bind:style="`transform: scaleX(${progress / 100})`" aria-hidden="true"></span>
-        <a ars-bind:href="current?.url" class="flex min-w-0 flex-1 items-center gap-3 text-left @5xl:w-64 @5xl:flex-none order-1 basis-full rounded-2xl bg-base-content/5 p-2 @5xl:order-none @5xl:basis-auto @5xl:bg-transparent @5xl:p-0" ars-bind:aria-label="current?.title">
-          <img ars-bind:src="current?.cover" alt="" class="spin size-14 shrink-0 rounded-full ring-2 ring-base-100" ars-bind:class="playing && 'is-on'">
-          <span class="min-w-0">
-            <span class="block truncate text-xs text-error" ars-show="error" ars-cloak ars-text="error"></span>
-            <span class="block break-words text-sm" ars-text="current?.title"></span>
-          </span>
-        </a>
+        <?php (new Template())->renderThemeable('player/parts/info', [
+            'width' => '@5xl:w-64',
+            'cover' => 'spin rounded-full ring-2 ring-base-100',
+            'coverBind' => 'playing && \'is-on\'',
+            'title' => 'hover:text-primary',
+        ]); ?>
         <div class="order-5 flex items-center gap-1 @5xl:order-none">
           <button type="button" class="btn btn-ghost btn-circle btn-sm inline-flex" ars-on:click="prev()" aria-label="上一集"><?php Icon::render('skip-back', 'size-4'); ?></button>
           <button type="button" class="bg-aurora grid size-10 place-items-center @5xl:size-12 rounded-full text-white shadow-lg transition hover:scale-105" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放">

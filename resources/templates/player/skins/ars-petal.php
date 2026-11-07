@@ -22,15 +22,12 @@ use Jiejia\ARippleSong\Libraries\Template;
       <div data-ars-width="box" class="player-bar mx-auto max-w-3xl rounded-[1.75rem] p-3 @5xl:p-2 @5xl:pr-3" ars-bind:style="`--p:${progress}%`">
         <?php /* Narrow bar: cover + title, the progress row, then list / speed, prev-play-next, mute. From @5xl on everything sits in one row. */ ?>
         <div class="flex flex-wrap items-center gap-x-3 gap-y-2 @5xl:flex-nowrap @5xl:gap-4">
-          <div class="order-1 flex w-full items-center gap-3 rounded-2xl bg-base-content/5 p-2 @5xl:contents">
-            <a ars-bind:href="current?.url" class="block shrink-0" ars-bind:aria-label="current?.title">
-              <img ars-bind:src="current?.cover" alt="" class="size-14 rounded-[1.1rem] object-cover">
-            </a>
-            <div class="min-w-0 flex-1 @5xl:w-48 @5xl:flex-none">
-              <p class="mute truncate text-xs" ars-show="error" ars-cloak ars-text="error"></p>
-              <a ars-bind:href="current?.url" class="block break-words text-sm font-semibold leading-tight hover:underline" ars-text="current?.title"></a>
-            </div>
-          </div>
+          <?php (new Template())->renderThemeable('player/parts/info', [
+              'width' => '@5xl:w-64',
+              'cover' => 'rounded-[1.1rem] bg-base-300',
+              'title' => 'font-semibold hover:underline',
+              'meta' => 'mute',
+          ]); ?>
           <div class="order-5 flex shrink-0 items-center gap-1 @5xl:order-none @5xl:gap-2">
             <button type="button" class="btn-plain inline-flex size-8 rounded-full @5xl:size-9" ars-on:click="prev()" aria-label="上一集"><?php Icon::render('skip-back', 'size-4 @5xl:size-[1.05rem]'); ?></button>
             <button type="button" class="btn btn-primary btn-circle size-10 shrink-0 @5xl:size-12 shadow-lg shadow-primary/30" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放">

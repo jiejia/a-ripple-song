@@ -20,16 +20,11 @@ use Jiejia\ARippleSong\Libraries\Template;
     <div class="fixed inset-x-0 bottom-3 z-[9990] px-3" role="region" data-ars-bar aria-label="音频播放器">
       <div data-ars-width="box" data-ars-surface="base-200" class="mx-auto max-w-6xl rounded-[24px] bg-base-200 shadow-2xl ring-1 ring-[color-mix(in_oklch,var(--color-base-content)_10%,transparent)]">
         <div class="flex flex-wrap items-center gap-x-3 gap-y-2 p-2.5 @5xl:flex-nowrap @5xl:gap-4 @5xl:pr-4">
-        <div class="order-1 flex basis-full items-center gap-3 rounded-2xl bg-base-content/5 p-2 @5xl:contents">
-          <a ars-bind:href="current?.url" class="block relative h-14 w-16 shrink-0 overflow-hidden rounded-2xl bg-primary" ars-bind:aria-label="current?.title">
-          <img ars-bind:src="current?.cover" alt="" class="size-full object-cover">
-          <span ars-show="loading" ars-cloak class="absolute inset-0 grid place-items-center bg-black/40"><span class="loading loading-spinner loading-sm text-white"></span></span>
-        </a>
-        <div class="min-w-0 flex-1 @5xl:w-60 @5xl:flex-none">
-          <a ars-bind:href="current?.url" class="block break-words text-sm font-semibold hover:text-primary" ars-text="current?.title"></a>
-          <p class="truncate text-xs text-error" ars-show="error" ars-cloak ars-text="error"></p>
-        </div>
-        </div>
+        <?php (new Template())->renderThemeable('player/parts/info', [
+            'width' => '@5xl:w-80',
+            'cover' => 'rounded-2xl bg-primary',
+            'meta' => 'muted',
+        ]); ?>
         <div class="order-5 flex shrink-0 items-center gap-1 sm:gap-2 @5xl:order-none">
           <button type="button" class="btn btn-ghost btn-circle btn-sm inline-flex" ars-on:click="prev()" aria-label="上一集"><?php Icon::render('skip-back', 'size-4 fill-current'); ?></button>
           <button type="button" class="grid size-10 place-items-center rounded-full @5xl:size-12 bg-base-content text-base-100 transition hover:scale-105" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放">

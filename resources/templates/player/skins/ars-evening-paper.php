@@ -21,10 +21,10 @@ use Jiejia\ARippleSong\Libraries\Template;
       <div data-ars-width="box" data-ars-surface class="mx-auto max-w-6xl bg-base-100">
       <div class="rule-double"></div>
       <div class="flex flex-wrap items-center gap-x-4 gap-y-2 px-4 py-3 @5xl:flex-nowrap sm:px-6">
-        <a ars-bind:href="current?.url" class="block min-w-0 flex-1 text-left @5xl:w-60 @5xl:flex-none order-1 basis-full rounded-2xl bg-base-content/5 p-2 @5xl:order-none @5xl:basis-auto @5xl:bg-transparent @5xl:p-0" ars-bind:aria-label="current?.title">
-          <span class="kicker block" ars-text="error || join(`第 ${current?.number} 期`, categoryName(current?.category))"></span>
-          <span class="block break-words text-sm font-semibold" ars-text="current?.title"></span>
-        </a>
+        <?php (new Template())->renderThemeable('player/parts/info', [
+            'width' => '@5xl:w-72',
+            'cover' => 'print-img bg-base-300',
+        ]); ?>
         <div class="order-5 flex shrink-0 items-center gap-1.5 @5xl:order-none">
           <button type="button" class="btn btn-ghost btn-sm btn-circle inline-flex" ars-on:click="prev()" aria-label="上一期"><?php Icon::render('skip-back', 'size-4'); ?></button>
           <button type="button" class="btn-ring size-10 shrink-0 @5xl:size-12" ars-bind:class="playing && 'is-on'" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放">

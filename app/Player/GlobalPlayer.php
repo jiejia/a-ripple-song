@@ -277,6 +277,7 @@ final class GlobalPlayer
         return [
             'id' => $post->ID,
             'number' => (int) $meta('episode_number') ?: $autoNumber,
+            'date' => $text(get_the_date('', $post)),
             'title' => $text(get_the_title($post)),
             'url' => (string) get_permalink($post),
             'audio' => (string) $meta('audio_file'),

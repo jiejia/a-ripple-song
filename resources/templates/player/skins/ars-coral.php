@@ -20,13 +20,11 @@ use Jiejia\ARippleSong\Libraries\Template;
     <div class="fixed inset-x-0 bottom-0 z-[9990] px-2 pb-2 sm:px-5 sm:pb-5" role="region" data-ars-bar aria-label="音频播放器">
       <div data-ars-width="box" data-ars-surface class="panel mx-auto max-w-7xl rounded-2xl shadow-[0_20px_50px_-20px_oklch(30%_0.05_270/0.45)]">
         <div class="flex flex-wrap items-center gap-x-3 gap-y-2 p-2.5 @5xl:flex-nowrap @5xl:gap-4 @5xl:px-4">
-        <div class="order-1 flex basis-full items-center gap-3 rounded-2xl bg-base-content/5 p-2 @5xl:contents">
-          <a ars-bind:href="current?.url" class="block shrink-0" ars-bind:aria-label="current?.title"><img ars-bind:src="current?.cover" alt="" class="size-12 rounded-xl"></a>
-        <div class="min-w-0 flex-1 @5xl:w-56 @5xl:flex-none">
-          <a ars-bind:href="current?.url" class="block break-words text-sm font-semibold hover:text-primary" ars-text="current?.title"></a>
-          <p class="mute truncate text-xs" ars-text="error || (loading ? '加载中…' : (current?.hosts ? 'by ' + current.hosts : ''))"></p>
-        </div>
-        </div>
+        <?php (new Template())->renderThemeable('player/parts/info', [
+            'width' => '@5xl:w-72',
+            'cover' => 'rounded-xl bg-base-300',
+            'meta' => 'mute',
+        ]); ?>
         <div class="order-5 flex shrink-0 items-center gap-1 rounded-xl bg-base-200 p-1 sm:gap-2 sm:px-2 @5xl:order-none">
           <button type="button" class="btn btn-ghost btn-circle btn-sm inline-flex" ars-on:click="prev()" aria-label="上一集"><?php Icon::render('skip-back', 'size-4 fill-current'); ?></button>
           <button type="button" class="grid size-9 place-items-center rounded-full @5xl:size-10 bg-secondary text-secondary-content transition hover:scale-105" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放">

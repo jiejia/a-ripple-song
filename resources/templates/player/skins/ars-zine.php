@@ -21,13 +21,12 @@ use Jiejia\ARippleSong\Libraries\Template;
       <div data-ars-width="box" data-ars-surface class="relative mx-auto max-w-6xl border-x-2 border-t-2 ink bg-base-100">
       <div class="halftone absolute inset-x-0 -top-2.5 h-2 opacity-70" aria-hidden="true"></div>
       <div class="flex flex-wrap items-center gap-x-3 gap-y-2 px-3 py-3 @5xl:min-h-[4.75rem] @5xl:flex-nowrap @5xl:py-0 sm:px-6">
-        <a ars-bind:href="current?.url" class="flex min-w-0 flex-1 items-center gap-3 text-left @5xl:w-72 @5xl:flex-none order-1 basis-full rounded-2xl bg-base-content/5 p-2 @5xl:order-none @5xl:basis-auto @5xl:bg-transparent @5xl:p-0" ars-bind:aria-label="current?.title">
-          <span class="duo size-14 shrink-0 -rotate-3 rounded border-2 ink"><img ars-bind:src="current?.cover" alt="" class="size-full"></span>
-          <span class="min-w-0">
-            <span class="block font-hand text-lg leading-none text-primary" ars-text="error || `#${current?.number} · ${loading ? '加载中…' : (playing ? '正在播放!' : '暂停中')}`"></span>
-            <span class="block break-words text-sm font-bold" ars-text="current?.title"></span>
-          </span>
-        </a>
+        <?php (new Template())->renderThemeable('player/parts/info', [
+            'width' => '@5xl:w-72',
+            'cover' => 'duo -rotate-3 rounded border-2 ink',
+            'title' => 'font-bold hover:text-primary',
+            'meta' => 'font-bold text-primary',
+        ]); ?>
         <div class="order-5 flex items-center gap-1.5 @5xl:order-none">
           <button type="button" class="btn btn-ghost btn-circle btn-sm inline-flex" ars-on:click="prev()" aria-label="上一集"><?php Icon::render('skip-back', 'size-4'); ?></button>
           <button type="button" class="grid size-10 place-items-center rounded-full @5xl:size-12 border-2 ink bg-primary text-primary-content shadow-[3px_3px_0_var(--color-base-content)] transition active:translate-x-0.5 active:translate-y-0.5 active:shadow-none" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放">

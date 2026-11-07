@@ -21,13 +21,11 @@ use Jiejia\ARippleSong\Libraries\Template;
       <div data-ars-width="box" data-ars-surface class="mx-auto max-w-7xl bg-base-100 text-base-content">
       <div class="stripes h-2" aria-hidden="true"></div>
       <div class="flex flex-wrap items-center gap-x-3 gap-y-2 px-3 py-3 @5xl:min-h-20 @5xl:flex-nowrap @5xl:gap-4 @5xl:py-0 sm:px-6">
-        <a ars-bind:href="current?.url" class="flex min-w-0 flex-1 items-center gap-3 rounded-xl py-1 pr-2 text-left hover:bg-base-200 order-1 basis-full bg-base-content/5 p-2 @5xl:order-none @5xl:basis-auto @5xl:bg-transparent @5xl:w-72 @5xl:flex-none @5xl:p-0" ars-bind:aria-label="current?.title">
-          <span class="tape-window h-11 w-24 shrink-0" ars-bind:class="playing && 'is-rolling'" aria-hidden="true"><span class="reel"></span><span class="spool"></span><span class="reel"></span></span>
-          <span class="min-w-0">
-            <span class="tag block text-secondary" ars-text="error || `EP.${current?.number} · ${loading ? '装带中' : (playing ? 'PLAY' : 'PAUSE')}`"></span>
-            <span class="block break-words text-sm font-semibold" ars-text="current?.title"></span>
-          </span>
-        </a>
+        <?php (new Template())->renderThemeable('player/parts/info', [
+            'width' => '@5xl:w-72',
+            'cover' => 'rounded-lg bg-base-300',
+            'meta' => 'font-mono text-secondary',
+        ]); ?>
         <div class="order-5 flex items-center gap-1.5 @5xl:order-none">
           <span class="contents">
             <button type="button" class="key size-8 @5xl:size-10" ars-on:click="prev()" aria-label="上一集"><?php Icon::render('skip-back', 'size-4'); ?></button>

@@ -89,7 +89,7 @@ class PlayerStore {
     window.addEventListener('pagehide', () => this.save());
   }
 
-  /** Make episodes ({id, title, url, audio, cover, duration, number}) playable without queueing them; returns their ids. */
+  /** Make episodes ({id, title, url, audio, cover, duration, number, date}) playable without queueing them; returns their ids. */
   register(episodes) {
     const ids = [];
 
@@ -97,7 +97,7 @@ class PlayerStore {
       const id = Number(episode.id);
 
       if (!id || !episode.audio) continue;
-      this.episodes.set(id, { ...episode, id });
+      this.episodes.set(id, { ...this.episodes.get(id), ...episode, id }); // Merged: a source without a field (a theme's page data, an old saved queue) keeps what is known.
       ids.push(id);
     }
 
@@ -615,6 +615,7 @@ function bindBar(root, store) {
     const texts = {
       title: episode ? episode.title : '',
       number: episode && episode.number ? t('episode').replace('%s', episode.number) : '',
+      meta: store.error || (episode ? [episode.date, episode.number && `EP.${episode.number}`].filter(Boolean).join(' / ') : ''),
       status: store.error || t(state),
       position: formatTime(store.position),
       duration: formatTime(store.duration),
@@ -632,9 +633,13 @@ function bindBar(root, store) {
     all('[data-ars-show]').forEach((node) => (node.hidden = !flags[node.dataset.arsShow]));
     all('[data-ars-src="cover"]').forEach((node) => {
       if (episode && episode.cover && node.getAttribute('src') !== episode.cover) node.src = episode.cover;
+      if (episode) node.alt = episode.title;
     });
     all('[data-ars-href="url"]').forEach((node) => {
-      if (episode) node.href = episode.url;
+      if (!episode) return;
+      node.href = episode.url;
+      node.title = episode.title;
+      node.setAttribute('aria-label', episode.title);
     });
     all('[data-ars-action="toggle"]').forEach((node) => node.setAttribute('aria-label', t(store.playing ? 'pause' : 'play')));
     all('[data-ars-action="mute"]').forEach((node) => node.setAttribute('aria-label', t(store.muted ? 'unmute' : 'mute')));
@@ -1003,7 +1008,7 @@ bindPlayButtons(store);
 
 /**
  * Public API for themes, e.g. ARippleSongPlayer.toggle(42), ARippleSongPlayer.playAt(42, 225),
- * ARippleSongPlayer.add([{ id, title, url, audio, cover, duration, number }]) (playable and queued),
+ * ARippleSongPlayer.add([{ id, title, url, audio, cover, duration, number, date }]) (playable and queued),
  * ARippleSongPlayer.register([…]) (playable only), ARippleSongPlayer.remove(42), ARippleSongPlayer.clear(),
  * ARippleSongPlayer.subscribe((player) => …).
  */

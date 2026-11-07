@@ -20,16 +20,10 @@ use Jiejia\ARippleSong\Libraries\Template;
     <div class="fixed inset-x-0 bottom-0 z-[9990] px-2 pb-2 sm:px-4 sm:pb-4" role="region" data-ars-bar aria-label="音频播放器">
       <div data-ars-width="box" data-ars-surface class="soft-shadow mx-auto max-w-7xl rounded-2xl border border-base-300 bg-base-100">
         <div class="flex flex-wrap items-center gap-x-3 gap-y-2 p-2.5 @5xl:min-h-[4.5rem] @5xl:flex-nowrap @5xl:px-4 @5xl:py-0">
-        <a ars-bind:href="current?.url" class="flex min-w-0 flex-1 items-center gap-3 text-left @5xl:w-72 @5xl:flex-none order-1 basis-full rounded-2xl bg-base-content/5 p-2 @5xl:order-none @5xl:basis-auto @5xl:bg-transparent @5xl:p-0" ars-bind:aria-label="current?.title">
-          <img ars-bind:src="current?.cover" alt="" class="size-12 shrink-0 rounded-xl">
-          <span class="min-w-0">
-            <span class="flex items-center gap-2 text-xs">
-              <span class="inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-[10px] font-semibold" ars-bind:class="playing ? 'is-on bg-accent text-accent-content' : 'bg-base-300'"><span class="live-dot"></span><span ars-text="playing ? 'LIVE' : (loading ? '加载中' : '暂停')">暂停</span></span>
-              <span class="opacity-50" ars-text="error || 'EP.' + current?.number"></span>
-            </span>
-            <span class="mt-0.5 block break-words text-sm font-semibold" ars-text="current?.title"></span>
-          </span>
-        </a>
+        <?php (new Template())->renderThemeable('player/parts/info', [
+            'width' => '@5xl:w-72',
+            'cover' => 'rounded-xl bg-base-300',
+        ]); ?>
         <div class="order-5 flex items-center gap-1 @5xl:order-none">
           <button type="button" class="btn btn-ghost btn-circle btn-sm inline-flex" ars-on:click="prev()" aria-label="上一集"><?php Icon::render('skip-back', 'size-4'); ?></button>
           <button type="button" class="soft-shadow grid size-10 place-items-center @5xl:size-12 rounded-xl bg-primary text-primary-content transition hover:scale-105" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放">

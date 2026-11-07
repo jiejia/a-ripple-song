@@ -20,10 +20,12 @@ use Jiejia\ARippleSong\Libraries\Template;
     <div class="fixed inset-x-0 bottom-0 z-[9990]" role="region" data-ars-bar aria-label="音频播放器">
       <div data-ars-width="box" data-ars-surface="base-200" class="mx-auto max-w-6xl border-x border-t tui-line bg-base-200 text-sm [--tui-bg:var(--color-base-200)]">
         <div class="flex flex-wrap items-center gap-x-3 gap-y-2 px-4 py-3 @5xl:min-h-16 @5xl:flex-nowrap @5xl:py-0">
-        <a ars-bind:href="current?.url" class="block min-w-0 flex-1 text-left hover:text-primary order-1 basis-full border border-dashed tui-line p-2 @5xl:order-none @5xl:basis-auto @5xl:border-0 @5xl:p-0 @5xl:max-w-xs" ars-bind:aria-label="current?.title">
-          <span class="dim block text-xs" ars-text="error || `EP.${String(current?.number).padStart(3, '0')} ${loading ? 'loading…' : (playing ? 'playing' : 'paused')}`"></span>
-          <span class="block break-words text-sm" ars-text="current?.title"></span>
-        </a>
+        <?php (new Template())->renderThemeable('player/parts/info', [
+            'class' => 'order-1 flex-1 basis-full border border-dashed tui-line p-2 @5xl:order-none @5xl:max-w-xs @5xl:basis-auto @5xl:border-0 @5xl:p-0',
+            'cover' => 'mono-img bg-base-300',
+            'title' => 'hover:text-primary',
+            'meta' => 'dim',
+        ]); ?>
         <div class="order-5 flex shrink-0 items-center @5xl:order-none">
           <span class="contents">
             <button type="button" class="cmd" ars-on:click="prev()" aria-label="上一集">|&lt;</button>
@@ -42,7 +44,7 @@ use Jiejia\ARippleSong\Libraries\Template;
             'bar' => static function (): void { ?>
           <label class="bar-seek shrink-0 tracking-[-0.05em] text-primary">
             <span class="sr-only">播放进度</span>
-            <span aria-hidden="true" ars-text="'█'.repeat(Math.round(progress / 100 * 16)) + '░'.repeat(16 - Math.round(progress / 100 * 16))">░░░░░░░░░░░░░░░░</span>
+            <span aria-hidden="true" ars-text="'█'.repeat(Math.round(progress / 100 * 12)) + '░'.repeat(12 - Math.round(progress / 100 * 12))">░░░░░░░░░░░░</span>
             <input type="range" min="0" ars-bind:max="duration" step="1" ars-bind:value="position" ars-on:input="scrub($event.target.value)" ars-on:change="commit($event.target.value)">
           </label>
             <?php },

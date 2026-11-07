@@ -20,13 +20,11 @@ use Jiejia\ARippleSong\Libraries\Template;
     <div class="fixed inset-x-0 bottom-3 z-[9990] px-3" role="region" data-ars-bar aria-label="音频播放器">
       <div data-ars-width="box" data-ars-surface class="raised mx-auto max-w-5xl rounded-[2rem]">
         <div class="flex flex-wrap items-center gap-x-3 gap-y-2 p-3 @5xl:min-h-20 @5xl:flex-nowrap @5xl:gap-4 @5xl:px-4 @5xl:py-0">
-        <a ars-bind:href="current?.url" class="lcd flex min-h-14 @5xl:h-14 min-w-0 flex-1 flex-col justify-center rounded-2xl px-4 text-left order-1 basis-full @5xl:order-none @5xl:basis-auto @5xl:w-64 @5xl:flex-none" ars-bind:aria-label="current?.title">
-          <span class="flex items-center justify-between gap-2 text-[11px] uppercase tracking-wider">
-            <span ars-text="error || `EP.${current?.number} ${loading ? 'LOAD' : (playing ? '▶ PLAY' : '❚❚ PAUSE')}`"></span>
-            <span class="tabular-nums" ars-text="fmt(position)">00:00</span>
-          </span>
-          <span class="mt-0.5 block break-words text-sm" ars-text="current?.title"></span>
-        </a>
+        <?php (new Template())->renderThemeable('player/parts/info', [
+            'class' => 'lcd order-1 flex-1 basis-full rounded-2xl p-2 @5xl:order-none @5xl:w-72 @5xl:flex-none @5xl:basis-auto',
+            'cover' => 'rounded-xl bg-base-300',
+            'title' => '',
+        ]); ?>
         <div class="order-5 flex items-center gap-2.5 @5xl:order-none">
           <button type="button" class="raised-sm press grid size-8 place-items-center rounded-full @5xl:size-10" ars-on:click="prev()" aria-label="上一集"><?php Icon::render('skip-back', 'size-4'); ?></button>
           <span class="relative grid size-12 shrink-0 place-items-center @5xl:size-16">

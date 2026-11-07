@@ -21,13 +21,12 @@ use Jiejia\ARippleSong\Libraries\Template;
       <?php /* No max-width: with the style's own width the bar runs edge to edge like the prototype. */ ?>
       <div data-ars-width="box" data-ars-surface class="mx-auto border-x-2 border-t-2 border-base-content bg-base-100 text-base-content">
         <div class="flex flex-wrap items-stretch @5xl:min-h-[4.5rem] @5xl:flex-nowrap">
-        <a ars-bind:href="current?.url" class="order-1 flex min-h-[4.5rem] min-w-0 basis-full items-center gap-3 border-b-2 border-base-content/25 pr-3 text-left hover:bg-base-200 @5xl:order-none @5xl:basis-auto @5xl:w-80 @5xl:flex-none @5xl:border-b-0 @5xl:border-r-2 @5xl:h-auto" ars-bind:aria-label="current?.title">
-          <img ars-bind:src="current?.cover" alt="" class="w-[4.5rem] shrink-0 self-stretch border-r-2 border-base-content/25 object-cover">
-          <span class="min-w-0">
-            <span class="label block text-accent" ars-text="error || `EP.${current?.number} · ${loading ? 'Loading' : (playing ? 'On Air' : 'Paused')}`"></span>
-            <span class="block break-words text-sm font-bold" ars-text="current?.title"></span>
-          </span>
-        </a>
+        <?php (new Template())->renderThemeable('player/parts/info', [
+            'class' => 'order-1 min-h-[4.5rem] basis-full border-b-2 border-base-content/25 px-3 @5xl:order-none @5xl:w-80 @5xl:flex-none @5xl:basis-auto @5xl:border-b-0 @5xl:border-r-2',
+            'cover' => 'bg-base-300',
+            'title' => 'font-bold hover:text-accent',
+            'meta' => 'font-mono text-accent',
+        ]); ?>
         <div class="order-5 flex h-12 items-stretch justify-center @5xl:order-none @5xl:h-auto">
         <div class="contents">
           <button type="button" class="grid w-10 place-items-center hover:bg-base-200 @5xl:w-12" ars-on:click="prev()" aria-label="上一集"><?php Icon::render('skip-back', 'size-4'); ?></button>
