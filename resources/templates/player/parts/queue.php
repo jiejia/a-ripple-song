@@ -51,7 +51,10 @@ $trash ??= 'btn btn-ghost btn-circle btn-sm';
     <div class="h-full w-72 max-w-[85vw] text-base-content"<?php echo $theme !== '' ? ' data-ars-theme="' . esc_attr($theme) . '"' : ''; ?> role="dialog" aria-label="<?php esc_attr_e('Playlist', 'a-ripple-song'); ?>">
       <div class="flex h-full flex-col overflow-hidden <?php echo esc_attr($panel); ?>">
         <?php /* .ars-queue-title is a stable hook for themes that want the title to match their own drawers. */ ?>
-        <h2 class="ars-queue-title <?php echo esc_attr($title); ?>"><?php esc_html_e('Playlist', 'a-ripple-song'); ?></h2>
+        <div class="flex items-center justify-between gap-2 pr-2">
+          <h2 class="ars-queue-title min-w-0 truncate <?php echo esc_attr($title); ?>"><?php esc_html_e('Playlist', 'a-ripple-song'); ?></h2>
+          <label for="ars-queue-drawer" class="grid size-9 shrink-0 cursor-pointer place-items-center rounded-full hover:bg-base-content/10" aria-label="<?php esc_attr_e('Close', 'a-ripple-song'); ?>"><?php Icon::render('x', 'size-5'); ?></label>
+        </div>
         <section class="flex min-h-0 flex-1 flex-col px-2 pb-2 <?php echo esc_attr($divider); ?>">
           <header class="px-2">
             <p class="flex items-center justify-between gap-2 py-2.5 text-xs <?php echo esc_attr($meta); ?>">
