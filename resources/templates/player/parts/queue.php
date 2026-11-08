@@ -11,7 +11,7 @@
  *   $theme    "dark" pins the drawer to the dark palette (skins whose bar is always dark).
  *   $panel    Classes of the drawer panel (background, border, shadow).
  *   $divider  Classes of the line under the title.
- *   $title    Classes of the "Playlist" title.
+ *   $title    Classes of the "Playlist" title (type and color only; the header row sets the spacing).
  *   $meta     Classes of the "Total N episodes" / "Clear" line.
  *   $clear    Classes of the "Clear" button.
  *   $row      Classes of an episode row; $rowOn those added to the current one.
@@ -31,7 +31,7 @@ use Jiejia\ARippleSong\Libraries\Icon;
 $theme ??= '';
 $panel ??= 'border-r border-base-300 bg-base-100 shadow-2xl';
 $divider ??= 'border-t border-base-300';
-$title ??= 'px-4 py-3 text-base font-bold';
+$title ??= 'text-base font-bold';
 $meta ??= 'opacity-70';
 $clear ??= 'font-semibold hover:opacity-100';
 $row ??= 'rounded-2xl hover:bg-base-200';
@@ -50,10 +50,11 @@ $trash ??= 'btn btn-ghost btn-circle btn-sm';
     <label for="ars-queue-drawer" aria-label="<?php esc_attr_e('Close', 'a-ripple-song'); ?>" class="drawer-overlay"></label>
     <div class="h-full w-72 max-w-[85vw] text-base-content"<?php echo $theme !== '' ? ' data-ars-theme="' . esc_attr($theme) . '"' : ''; ?> role="dialog" aria-label="<?php esc_attr_e('Playlist', 'a-ripple-song'); ?>">
       <div class="flex h-full flex-col overflow-hidden <?php echo esc_attr($panel); ?>">
-        <?php /* .ars-queue-title is a stable hook for themes that want the title to match their own drawers. */ ?>
-        <div class="flex items-center justify-between gap-2 pr-2">
+        <?php /* Header row spaced like the theme's menu drawer header (px-4 py-3, gap-3); the $divider line below it is its border-b.
+           .ars-queue-title is a stable hook for themes that want the title to match their own drawers. */ ?>
+        <div class="flex items-center justify-between gap-3 px-4 py-3">
           <h2 class="ars-queue-title min-w-0 truncate <?php echo esc_attr($title); ?>"><?php esc_html_e('Playlist', 'a-ripple-song'); ?></h2>
-          <label for="ars-queue-drawer" class="grid size-9 shrink-0 cursor-pointer place-items-center rounded-full hover:bg-base-content/10" aria-label="<?php esc_attr_e('Close', 'a-ripple-song'); ?>"><?php Icon::render('x', 'size-5'); ?></label>
+          <label for="ars-queue-drawer" class="grid size-9 shrink-0 cursor-pointer place-items-center rounded-full hover:bg-base-200" aria-label="<?php esc_attr_e('Close', 'a-ripple-song'); ?>"><?php Icon::render('x', 'size-5'); ?></label>
         </div>
         <section class="flex min-h-0 flex-1 flex-col px-2 pb-2 <?php echo esc_attr($divider); ?>">
           <header class="px-2">

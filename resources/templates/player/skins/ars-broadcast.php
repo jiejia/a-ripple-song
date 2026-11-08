@@ -58,7 +58,7 @@ use Jiejia\ARippleSong\Libraries\Template;
     </div>
 
     <?php (new Template())->renderThemeable('player/parts/queue', [
-        'panel' => 'border-r-2 border-base-content bg-base-100 text-base-content', 'divider' => 'border-t-2 border-base-content', 'title' => 'label px-4 py-3 text-sm text-accent', 'meta' => 'font-mono text-base-content/60', 'clear' => 'label hover:text-accent', 'row' => 'border-b-2 border-base-content/25 hover:bg-base-200', 'rowOn' => 'bg-primary text-primary-content hover:bg-primary', 'cover' => 'bg-base-300', 'name' => 'font-bold', 'nameOn' => '', 'sub' => 'font-mono opacity-70', 'trash' => 'grid size-9 place-items-center hover:bg-accent hover:text-accent-content',
+        'panel' => 'border-r-2 border-base-content bg-base-100 text-base-content', 'divider' => 'border-t-2 border-base-content', 'title' => 'label text-sm text-accent', 'meta' => 'font-mono text-base-content/60', 'clear' => 'label hover:text-accent', 'row' => 'border-b-2 border-base-content/25 hover:bg-base-200', 'rowOn' => 'bg-primary text-primary-content hover:bg-primary', 'cover' => 'bg-base-300', 'name' => 'font-bold', 'nameOn' => '', 'sub' => 'font-mono opacity-70', 'trash' => 'grid size-9 place-items-center hover:bg-accent hover:text-accent-content',
     ]); ?>
     <?php (new Template())->renderThemeable('player/parts/resume', [
         'panel' => 'border-2 border-base-content bg-base-100', 'icon' => 'text-accent', 'heading' => 'font-bold', 'accept' => 'btn rounded-none border-0 bg-primary text-primary-content', 'cancel' => 'btn btn-ghost rounded-none border-2 border-base-content/25',
