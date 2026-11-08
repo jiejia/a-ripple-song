@@ -50,7 +50,8 @@ $trash ??= 'btn btn-ghost btn-circle btn-sm';
     <label for="ars-queue-drawer" aria-label="<?php esc_attr_e('Close', 'a-ripple-song'); ?>" class="drawer-overlay"></label>
     <div class="h-full w-72 max-w-[85vw] text-base-content"<?php echo $theme !== '' ? ' data-ars-theme="' . esc_attr($theme) . '"' : ''; ?> role="dialog" aria-label="<?php esc_attr_e('Playlist', 'a-ripple-song'); ?>">
       <div class="flex h-full flex-col overflow-hidden <?php echo esc_attr($panel); ?>">
-        <h2 class="<?php echo esc_attr($title); ?>"><?php esc_html_e('Playlist', 'a-ripple-song'); ?></h2>
+        <?php /* .ars-queue-title is a stable hook for themes that want the title to match their own drawers. */ ?>
+        <h2 class="ars-queue-title <?php echo esc_attr($title); ?>"><?php esc_html_e('Playlist', 'a-ripple-song'); ?></h2>
         <section class="flex min-h-0 flex-1 flex-col px-2 pb-2 <?php echo esc_attr($divider); ?>">
           <header class="px-2">
             <p class="flex items-center justify-between gap-2 py-2.5 text-xs <?php echo esc_attr($meta); ?>">
