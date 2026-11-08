@@ -940,16 +940,32 @@ function bindSkin(root, store) {
   // The queue drawer (player/parts/queue.php) is a daisyUI checkbox drawer: keep it in step with store.expanded.
   const drawer = root.querySelector('[data-ars-drawer]');
 
+  // The "Clear the playlist?" modal (a <dialog> in the drawer) is open while store.confirmClear is set.
+  const clearDialog = root.querySelector('[data-ars-clear-dialog]');
+
   if (drawer) {
     drawer.addEventListener('change', () => store.setExpanded(drawer.checked));
     document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && store.expanded) store.setExpanded(false);
+      // Esc with the modal open closes only the modal (the dialog's own cancel), not the drawer behind it.
+      if (event.key === 'Escape' && store.expanded && !clearDialog?.open) store.setExpanded(false);
+    });
+  }
+
+  if (clearDialog) {
+    clearDialog.addEventListener('close', () => {
+      if (!store.confirmClear) return;
+      store.confirmClear = false;
+      store.emit();
     });
   }
 
   store.subscribe(() => {
     binder.render();
     if (drawer) drawer.checked = !!store.expanded;
+    if (clearDialog && !!store.confirmClear !== clearDialog.open) {
+      if (store.confirmClear) clearDialog.showModal();
+      else clearDialog.close();
+    }
   });
 }
 

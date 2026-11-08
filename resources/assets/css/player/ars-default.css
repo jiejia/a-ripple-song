@@ -16,7 +16,7 @@
 @plugin "daisyui" {
   root: ".ars-player";
   themes: light --default, dark --prefersdark;
-  include: button, badge, range, loading, drawer;
+  include: button, badge, range, loading, drawer, modal;
   logs: false;
 }
 

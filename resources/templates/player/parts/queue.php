@@ -44,29 +44,35 @@ $trash ??= 'btn btn-ghost btn-circle btn-sm';
 ?>
 <div class="drawer ars-queue-drawer">
   <input id="ars-queue-drawer" type="checkbox" class="drawer-toggle" data-ars-drawer aria-label="<?php esc_attr_e('Playlist', 'a-ripple-song'); ?>">
-  <div class="drawer-side z-[9992] top-[var(--wp-admin--admin-bar--height,0px)] h-[calc(100dvh-var(--wp-admin--admin-bar--height,0px))]">
+  <?php /* Topmost layer, full viewport height: above the theme's header and the WordPress admin bar (z-index 99999),
+     which scrolls away on narrow screens and would otherwise leave a gap above the drawer. */ ?>
+  <div class="drawer-side z-[100001]">
     <label for="ars-queue-drawer" aria-label="<?php esc_attr_e('Close', 'a-ripple-song'); ?>" class="drawer-overlay"></label>
     <div class="h-full w-72 max-w-[85vw] text-base-content"<?php echo $theme !== '' ? ' data-ars-theme="' . esc_attr($theme) . '"' : ''; ?> role="dialog" aria-label="<?php esc_attr_e('Playlist', 'a-ripple-song'); ?>">
       <div class="flex h-full flex-col overflow-hidden <?php echo esc_attr($panel); ?>">
         <h2 class="<?php echo esc_attr($title); ?>"><?php esc_html_e('Playlist', 'a-ripple-song'); ?></h2>
         <section class="flex min-h-0 flex-1 flex-col px-2 pb-2 <?php echo esc_attr($divider); ?>">
           <header class="px-2">
-            <p ars-show="!confirmClear" class="flex items-center justify-between gap-2 py-2.5 text-xs <?php echo esc_attr($meta); ?>">
+            <p class="flex items-center justify-between gap-2 py-2.5 text-xs <?php echo esc_attr($meta); ?>">
               <span class="tabular-nums"><?php
               // translators: %s: number of episodes in the playlist.
               echo wp_kses(sprintf(__('Total %s episodes', 'a-ripple-song'), '<span ars-text="queueItems.length"></span>'), ['span' => ['ars-text' => true]]);
               ?></span>
               <button type="button" class="flex items-center gap-1.5 <?php echo esc_attr($clear); ?>" ars-show="queueItems.length" ars-on:click="confirmClear = true"><?php Icon::render('trash-2', 'size-3.5'); ?><?php esc_html_e('Clear', 'a-ripple-song'); ?></button>
             </p>
-            <?php /* "Clear" asks first; closing the drawer takes the question back (PlayerStore::setExpanded). */ ?>
-            <p ars-show="confirmClear" ars-cloak class="flex items-center justify-between gap-2 py-2.5 text-xs <?php echo esc_attr($meta); ?>">
-              <span class="min-w-0 truncate"><?php esc_html_e('Clear the playlist?', 'a-ripple-song'); ?></span>
-              <span class="flex shrink-0 items-center gap-3">
-                <button type="button" class="text-error <?php echo esc_attr($clear); ?>" ars-on:click="confirmClear = false; clearQueue()"><?php esc_html_e('Clear', 'a-ripple-song'); ?></button>
-                <button type="button" class="<?php echo esc_attr($clear); ?>" ars-on:click="confirmClear = false"><?php esc_html_e('Cancel', 'a-ripple-song'); ?></button>
-              </span>
-            </p>
           </header>
+          <?php /* "Clear" asks first in a modal: player.js opens it while `confirmClear` is set (showModal puts it in the top layer)
+             and resets the flag when it closes (Esc, backdrop, Cancel). Closing the drawer takes the question back too. */ ?>
+          <dialog class="modal" data-ars-clear-dialog aria-labelledby="ars-clear-title">
+            <div class="modal-box max-w-xs text-base-content">
+              <h3 id="ars-clear-title" class="text-base font-bold"><?php esc_html_e('Clear the playlist?', 'a-ripple-song'); ?></h3>
+              <div class="modal-action mt-5">
+                <button type="button" class="btn btn-ghost btn-sm" ars-on:click="confirmClear = false"><?php esc_html_e('Cancel', 'a-ripple-song'); ?></button>
+                <button type="button" class="btn btn-error btn-sm" ars-on:click="confirmClear = false; clearQueue()"><?php esc_html_e('Clear', 'a-ripple-song'); ?></button>
+              </div>
+            </div>
+            <form method="dialog" class="modal-backdrop"><button><?php esc_html_e('Close', 'a-ripple-song'); ?></button></form>
+          </dialog>
           <ul class="min-h-0 flex-1 space-y-1 overflow-y-auto overscroll-contain [scrollbar-width:thin]">
             <template ars-for="ep in queueItems">
               <li class="group relative">
