@@ -23,6 +23,7 @@ const MAX_HZ = 7000;
 
 let store = null;
 let analyser = null;
+let output = null;
 let freq = null;
 let wave = null;
 const routed = new WeakSet();
@@ -35,19 +36,27 @@ function resumeContext() {
 function ensureAnalyser() {
   if (!Howler.ctx) return null;
   if (!analyser) {
+    // <audio> → analyser → output gain → speakers: the analyser sees the signal before the volume,
+    // so the spectrum keeps moving at any volume, muted included.
     analyser = Howler.ctx.createAnalyser();
     analyser.fftSize = 1024;
     analyser.smoothingTimeConstant = 0.8;
-    analyser.connect(Howler.ctx.destination);
+    output = Howler.ctx.createGain();
+    analyser.connect(output);
+    output.connect(Howler.ctx.destination);
     freq = new Uint8Array(analyser.frequencyBinCount);
     wave = new Uint8Array(analyser.fftSize);
   }
   return analyser;
 }
 
+function nodeOf(h) {
+  return h && h._sounds[0] && h._sounds[0]._node;
+}
+
 // 把 Howler 的 <audio> 节点接入分析器；同一个节点只能接一次（Howler 会复用节点池）
 function route(h) {
-  const node = h._sounds[0] && h._sounds[0]._node;
+  const node = nodeOf(h);
   if (!node || routed.has(node) || !ensureAnalyser()) return;
   try {
     Howler.ctx.createMediaElementSource(node).connect(analyser);
@@ -55,6 +64,27 @@ function route(h) {
   } catch (err) {
     console.warn('[player] 无法接入频谱分析：', err);
   }
+}
+
+/**
+ * Apply the visitor's volume to a sound. Audio routed through the analyser plays at full element volume
+ * and is turned down by the output gain after the analyser; other audio uses the element volume as before.
+ *
+ * @param {Howl|null} h       The sound.
+ * @param {number}    volume  0–1.
+ * @param {boolean}   muted
+ */
+export function applyVolume(h, volume, muted) {
+  if (!h) return;
+  if (output && routed.has(nodeOf(h))) {
+    if (h.volume() !== 1) h.volume(1);
+    if (h.mute()) h.mute(false);
+    const level = muted ? 0 : volume;
+    if (output.gain.value !== level) output.gain.value = level;
+    return;
+  }
+  h.volume(volume);
+  h.mute(muted);
 }
 
 /* ---------------- 频谱绘制 ----------------
@@ -397,6 +427,8 @@ export function startSpectrum(player) {
       route(howl);
       resumeContext();
     }
+    // Once a sound is routed (or Howler hands a new sound a routed pooled node), its volume moves to the output gain.
+    if (howl && output && routed.has(nodeOf(howl))) applyVolume(howl, store.volume, store.muted);
 
     const active = !!(howl && store.playing && analyser);
     if (active) {

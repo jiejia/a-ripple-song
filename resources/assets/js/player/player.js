@@ -19,7 +19,7 @@
  */
 import { Howl, Howler } from 'howler';
 import { Binder } from './binder.js';
-import { startSpectrum, refreshSpectrumColors } from './spectrum.js';
+import { startSpectrum, refreshSpectrumColors, applyVolume } from './spectrum.js';
 
 const RATES = [1, 1.25, 1.5, 2, 0.8];
 const config = window.ARS_PLAYER || { episodes: [], playlist: [], show: {}, i18n: {}, storageKey: 'ars_player', playsUrl: '' };
@@ -333,17 +333,14 @@ class PlayerStore {
   setVolume(volume) {
     this.volume = Math.min(1, Math.max(0, Number(volume)));
     this.muted = this.volume === 0;
-    if (this.howl) {
-      this.howl.volume(this.volume);
-      this.howl.mute(this.muted);
-    }
+    applyVolume(this.howl, this.volume, this.muted);
     this.save();
     this.emit();
   }
 
   toggleMute() {
     this.muted = !this.muted;
-    if (this.howl) this.howl.mute(this.muted);
+    applyVolume(this.howl, this.volume, this.muted);
     this.emit();
   }
 
