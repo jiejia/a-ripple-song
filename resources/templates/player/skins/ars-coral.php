@@ -29,8 +29,9 @@ use Jiejia\ARippleSong\Libraries\Template;
         <div class="order-5 flex shrink-0 items-center gap-1 rounded-xl bg-base-200 p-1 sm:gap-2 sm:px-2 @5xl:order-none">
           <button type="button" class="btn btn-ghost btn-circle btn-sm inline-flex" ars-on:click="prev()" aria-label="上一集"><?php Icon::render('skip-back', 'size-4 fill-current'); ?></button>
           <button type="button" class="grid size-9 place-items-center rounded-full @5xl:size-10 bg-secondary text-secondary-content transition hover:scale-105" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放">
-            <span ars-show="!playing"><?php Icon::render('play', 'ml-0.5 size-4 fill-current'); ?></span>
-            <span ars-show="playing" ars-cloak><?php Icon::render('pause', 'size-4 fill-current'); ?></span>
+            <span ars-show="!playing && !loading"><?php Icon::render('play', 'ml-0.5 size-4 fill-current'); ?></span>
+            <span ars-show="playing && !loading" ars-cloak><?php Icon::render('pause', 'size-4 fill-current'); ?></span>
+            <span class="loading loading-spinner size-4" ars-show="loading" ars-cloak></span>
           </button>
           <button type="button" class="btn btn-ghost btn-circle btn-sm inline-flex" ars-on:click="next()" aria-label="下一集"><?php Icon::render('skip-forward', 'size-4 fill-current'); ?></button>
           <button type="button" class="btn btn-ghost btn-sm w-12 shrink-0 px-0 text-xs @max-5xl:!hidden" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>

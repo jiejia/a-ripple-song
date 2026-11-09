@@ -28,8 +28,9 @@ use Jiejia\ARippleSong\Libraries\Template;
         <div class="order-5 flex items-center gap-1 @5xl:order-none">
           <button type="button" class="btn btn-ghost btn-circle btn-sm inline-flex" ars-on:click="prev()" aria-label="上一集"><?php Icon::render('skip-back', 'size-4'); ?></button>
           <button type="button" class="soft-shadow grid size-10 place-items-center @5xl:size-12 rounded-xl bg-primary text-primary-content transition hover:scale-105" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放">
-            <span ars-show="!playing"><?php Icon::render('play', 'ml-0.5 size-5 fill-current'); ?></span>
-            <span ars-show="playing" ars-cloak><?php Icon::render('pause', 'size-5 fill-current'); ?></span>
+            <span ars-show="!playing && !loading"><?php Icon::render('play', 'ml-0.5 size-5 fill-current'); ?></span>
+            <span ars-show="playing && !loading" ars-cloak><?php Icon::render('pause', 'size-5 fill-current'); ?></span>
+            <span class="loading loading-spinner size-5" ars-show="loading" ars-cloak></span>
           </button>
           <button type="button" class="btn btn-ghost btn-circle btn-sm inline-flex" ars-on:click="next()" aria-label="下一集"><?php Icon::render('skip-forward', 'size-4'); ?></button>
         </div>

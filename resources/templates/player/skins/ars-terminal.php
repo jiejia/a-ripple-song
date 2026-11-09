@@ -31,7 +31,7 @@ use Jiejia\ARippleSong\Libraries\Template;
           <span class="contents">
             <button type="button" class="cmd" ars-on:click="prev()" aria-label="上一集">|&lt;</button>
           </span>
-          <button type="button" class="cmd text-base text-primary @5xl:text-lg" ars-bind:class="playing && 'is-on'" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放" ars-text="playing ? '❚❚' : '▶ '">▶ </button>
+          <button type="button" class="cmd text-base text-primary @5xl:text-lg" ars-bind:class="playing && 'is-on'" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放" ars-text="loading ? '… ' : playing ? '❚❚' : '▶ '">▶ </button>
           <span class="contents">
             <button type="button" class="cmd" ars-on:click="next()" aria-label="下一集">&gt;|</button>
           </span>

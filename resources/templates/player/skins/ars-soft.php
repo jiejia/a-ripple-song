@@ -34,8 +34,9 @@ use Jiejia\ARippleSong\Libraries\Template;
               <circle cx="50" cy="50" r="46" fill="none" stroke-width="5" stroke-linecap="round" pathLength="100" stroke-dasharray="100" ars-bind:stroke-dashoffset="100 - progress" class="ring-fill"></circle>
             </svg>
             <button type="button" class="key-primary grid size-9 place-items-center @5xl:size-12 rounded-full" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放">
-              <span ars-show="!playing"><?php Icon::render('play', 'ml-0.5 size-5 fill-current'); ?></span>
-              <span ars-show="playing" ars-cloak><?php Icon::render('pause', 'size-5 fill-current'); ?></span>
+              <span ars-show="!playing && !loading"><?php Icon::render('play', 'ml-0.5 size-5 fill-current'); ?></span>
+              <span ars-show="playing && !loading" ars-cloak><?php Icon::render('pause', 'size-5 fill-current'); ?></span>
+              <span class="loading loading-spinner size-5" ars-show="loading" ars-cloak></span>
             </button>
           </span>
           <button type="button" class="raised-sm press grid size-8 place-items-center rounded-full @5xl:size-10" ars-on:click="next()" aria-label="下一集"><?php Icon::render('skip-forward', 'size-4'); ?></button>

@@ -32,8 +32,9 @@ use Jiejia\ARippleSong\Libraries\Template;
             <button type="button" class="key size-8 @5xl:size-10" ars-on:click="prev()" aria-label="上一集"><?php Icon::render('skip-back', 'size-4'); ?></button>
           </span>
           <button type="button" class="key h-10 w-12 @5xl:h-12 @5xl:w-14" ars-bind:class="playing && 'is-down'" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放">
-            <span ars-show="!playing"><?php Icon::render('play', 'size-5 fill-current @5xl:size-6'); ?></span>
-            <span ars-show="playing" ars-cloak><?php Icon::render('pause', 'size-5 fill-current @5xl:size-6'); ?></span>
+            <span ars-show="!playing && !loading"><?php Icon::render('play', 'size-5 fill-current @5xl:size-6'); ?></span>
+            <span ars-show="playing && !loading" ars-cloak><?php Icon::render('pause', 'size-5 fill-current @5xl:size-6'); ?></span>
+            <span class="loading loading-spinner size-5 @5xl:size-6" ars-show="loading" ars-cloak></span>
           </button>
           <span class="contents">
             <button type="button" class="key size-8 @5xl:size-10" ars-on:click="next()" aria-label="下一集"><?php Icon::render('skip-forward', 'size-4'); ?></button>
