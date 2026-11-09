@@ -27,13 +27,17 @@ const t = (key) => config.i18n[key] || key;
 // How long the "Continue playing?" offer stays up before it goes away by itself.
 const RESUME_SECONDS = 10;
 
-function formatTime(seconds) {
+/**
+ * "MM:SS", or "HH:MM:SS" once the episode (length, default: seconds itself) reaches an hour,
+ * so elapsed and total time of one episode always share a format.
+ */
+function formatTime(seconds, length = seconds) {
   const total = Math.max(0, Math.floor(seconds || 0));
-  const h = Math.floor(total / 3600);
-  const m = String(Math.floor((total % 3600) / 60)).padStart(2, '0');
-  const s = String(total % 60).padStart(2, '0');
+  const pad = (n) => String(n).padStart(2, '0');
+  const m = pad(Math.floor((total % 3600) / 60));
+  const s = pad(total % 60);
 
-  return h ? `${h}:${m}:${s}` : `${m}:${s}`;
+  return Math.max(total, length || 0) >= 3600 ? `${pad(Math.floor(total / 3600))}:${m}:${s}` : `${m}:${s}`;
 }
 
 const storage = {
@@ -614,8 +618,9 @@ function bindBar(root, store) {
       number: episode && episode.number ? t('episode').replace('%s', episode.number) : '',
       meta: store.error || (episode ? [episode.date, episode.number && `EP.${episode.number}`].filter(Boolean).join(' / ') : ''),
       status: store.error || t(state),
-      position: formatTime(store.position),
+      position: formatTime(store.position, store.duration),
       duration: formatTime(store.duration),
+      positionSizer: formatTime(0, store.duration),
       rate: `${store.rate}×`,
     };
 

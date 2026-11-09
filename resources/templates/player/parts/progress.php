@@ -68,7 +68,10 @@ $seek = ($binder
     ? ['min' => '0', 'step' => '1', 'ars-bind:max' => 'duration', 'ars-bind:value' => 'position', 'ars-on:input' => 'scrub($event.target.value)', 'ars-on:change' => 'commit($event.target.value)']
     : ['min' => '0', 'max' => '0', 'step' => '1', 'value' => '0', 'data-ars-seek' => true])
     + ['aria-label' => __('Playback position', 'a-ripple-song')];
-$text = static fn (string $which): array => $binder ? ['ars-text' => "fmt({$which})"] : ['data-ars-text' => $which];
+// Elapsed time is written in the episode's format (HH:MM:SS once it runs an hour or more, else MM:SS).
+$text = static fn (string $which, string $expr): array => $binder ? ['ars-text' => $expr] : ['data-ars-text' => $which];
+// The elapsed time keeps one width while it counts or is dragged: an invisible "00:00" (or "00:00:00") sizes the box.
+$timeBox = 'shrink-0 whitespace-nowrap tabular-nums';
 // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- Html::attributes() escapes.
 ?>
 <div class="<?php echo esc_attr($class); ?>">
@@ -76,7 +79,10 @@ $text = static fn (string $which): array => $binder ? ['ars-text' => "fmt({$whic
     <canvas<?php echo Html::attributes(['class' => trim(($spectrumTop['class'] ?? '') . ' [.ars-player[data-state=loading]_&]:!hidden'), 'aria-hidden' => 'true'] + $spectrumTop); ?>></canvas>
     <?php echo $loadingRing($spectrumTop['class'] ?? '', __('Loading audio', 'a-ripple-song')); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Built from escaped parts. ?>
   <?php endif; ?>
-  <span<?php echo Html::attributes(['class' => $time] + $text('position')); ?>>00:00</span>
+  <span class="<?php echo esc_attr(trim($time . ' ' . $timeBox)); ?>"><span class="inline-grid">
+    <span<?php echo Html::attributes(['class' => 'invisible col-start-1 row-start-1', 'aria-hidden' => 'true'] + $text('positionSizer', 'fmt(0, duration)')); ?>>00:00</span>
+    <span<?php echo Html::attributes(['class' => 'col-start-1 row-start-1'] + $text('position', 'fmt(position, duration)')); ?>>00:00</span>
+  </span></span>
   <?php if ($style === 'waveform') : ?>
     <div class="ars-wave min-w-0 flex-1 <?php echo esc_attr($waveClass); ?>">
       <div<?php echo Html::attributes(['data-ars-waveform' => true] + $wave + ['data-bar' => '2', 'data-gap' => '2', 'class' => 'size-full', 'aria-hidden' => 'true']); ?>></div>
@@ -87,7 +93,7 @@ $text = static fn (string $which): array => $binder ? ['ars-text' => "fmt({$whic
   <?php else : ?>
     <input type="range"<?php echo Html::attributes(['class' => $range . ' min-w-0 flex-1'] + $seek); ?>>
   <?php endif; ?>
-  <span<?php echo Html::attributes(['class' => $timeEnd] + $text('duration')); ?>>00:00</span>
+  <span<?php echo Html::attributes(['class' => trim($timeEnd . ' ' . $timeBox)] + $text('duration', 'fmt(duration)')); ?>>00:00</span>
   <?php if ($style === 'spectrum') : ?>
     <?php if ($spectrumWrap !== '') : ?>
       <div class="<?php echo esc_attr($spectrumWrap . ' [.ars-player[data-state=loading]_&]:!hidden'); ?>" aria-hidden="true"><canvas<?php echo Html::attributes(['class' => 'block size-full'] + $spectrum); ?>></canvas></div>
