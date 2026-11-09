@@ -111,12 +111,11 @@ final class GlobalPlayer
             // wavesurfer's unplayed layer (shadow part), faded; the played part keeps the full color.
             . '.ars-player [data-ars-waveform] *::part(canvases){opacity:.3}'
             // Mini player (player/parts/mini.php), small screens only: the button left of the queue button (player/parts/collapse.php)
-            // collapses the bar into one row (data-ars-mini on the root, set by player.js); the button on top of that row restores it.
-            . '.ars-player [data-ars-handle],.ars-player [data-ars-mini-bar]{display:none!important}'
+            // collapses the bar into one row (data-ars-mini on the root, set by player.js); a button in that row restores it.
+            . '.ars-player [data-ars-mini-bar]{display:none!important}'
             . '@media (min-width:768px){.ars-player [data-ars-collapse]{display:none!important}}'
-            . '@media (max-width:767.98px){.ars-player[data-ars-mini] [data-ars-handle]{display:grid!important}'
-            . '.ars-player[data-ars-mini] [data-ars-mini-bar]{display:flex!important}'
-            . '.ars-player[data-ars-mini] [data-ars-width=box]>:not([data-ars-mini-bar]):not([data-ars-handle]){display:none!important}'
+            . '@media (max-width:767.98px){.ars-player[data-ars-mini] [data-ars-mini-bar]{display:flex!important}'
+            . '.ars-player[data-ars-mini] [data-ars-width=box]>:not([data-ars-mini-bar]){display:none!important}'
             . '.ars-player[data-ars-mini] [data-ars-width=box]{padding:0!important}}'
             // Its progress: an invisible range over the track (taller, for fingers) drags the knob and seeks.
             . '.ars-player .ars-mini-seek{position:absolute!important;left:0!important;top:-10px!important;width:100%!important;height:calc(100% + 20px)!important;margin:0!important;padding:0!important;opacity:0!important;cursor:pointer}'
