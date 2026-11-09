@@ -71,6 +71,7 @@ $seek = ($binder
 // Elapsed time is written in the episode's format (HH:MM:SS once it runs an hour or more, else MM:SS).
 $text = static fn (string $which, string $expr): array => $binder ? ['ars-text' => $expr] : ['data-ars-text' => $which];
 // The elapsed time keeps one width while it counts or is dragged: an invisible "00:00" (or "00:00:00") sizes the box.
+// It sits at the box's end, against the progress bar, since fonts without tabular figures (DM Sans) leave the box wider than most times.
 $timeBox = 'shrink-0 whitespace-nowrap tabular-nums';
 // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- Html::attributes() escapes.
 ?>
@@ -81,7 +82,7 @@ $timeBox = 'shrink-0 whitespace-nowrap tabular-nums';
   <?php endif; ?>
   <span class="<?php echo esc_attr(trim($time . ' ' . $timeBox)); ?>"><span class="inline-grid">
     <span<?php echo Html::attributes(['class' => 'invisible col-start-1 row-start-1', 'aria-hidden' => 'true'] + $text('positionSizer', 'fmt(0, duration)')); ?>>00:00</span>
-    <span<?php echo Html::attributes(['class' => 'col-start-1 row-start-1'] + $text('position', 'fmt(position, duration)')); ?>>00:00</span>
+    <span<?php echo Html::attributes(['class' => 'col-start-1 row-start-1 text-end'] + $text('position', 'fmt(position, duration)')); ?>>00:00</span>
   </span></span>
   <?php if ($style === 'waveform') : ?>
     <div class="ars-wave min-w-0 flex-1 <?php echo esc_attr($waveClass); ?>">
