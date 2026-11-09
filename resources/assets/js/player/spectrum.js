@@ -13,8 +13,10 @@
  * Colors are read from each canvas, so a local data-ars-theme (or a theme's data-theme) applies.
  *
  * Analysis routes the <audio> element through Web Audio. Browsers silence cross-origin audio routed
- * that way unless it is served with CORS headers, so only same-origin audio is analysed; other
- * audio still plays, its canvases just stay at rest.
+ * that way unless it is served with CORS headers, so audio loads with crossOrigin="anonymous" (see
+ * withCors()) and only elements that loaded that way are analysed. Audio from a host without CORS
+ * headers fails to load like that; the player then marks its origin (markNoCors()) and loads it
+ * again without, so it still plays and its canvases just stay at rest.
  */
 import { Howler } from 'howler';
 
@@ -28,6 +30,54 @@ let freq = null;
 let wave = null;
 const routed = new WeakSet();
 const levels = new WeakMap();
+// Origins whose audio failed to load with CORS; their audio loads without it from then on (this page view).
+const noCors = new Set();
+// Whether the <audio> element Howler takes next loads with CORS; null outside withCors().
+let pendingCors = null;
+
+function originOf(url) {
+  try {
+    return new URL(url, location.href).origin;
+  } catch {
+    return '';
+  }
+}
+
+// Howler sets src on the element it takes from its pool inside new Howl(), so crossOrigin has to be set here, before.
+const obtainHtml5Audio = Howler._obtainHtml5Audio;
+Howler._obtainHtml5Audio = function () {
+  let node = obtainHtml5Audio.call(this);
+  if (pendingCors === null) return node;
+  if (!pendingCors && routed.has(node)) {
+    // A routed element playing audio without CORS would be silent: hand Howler a fresh one, keep this for CORS audio.
+    Howler._html5AudioPool.unshift(node);
+    node = new Audio();
+  }
+  if (pendingCors) node.crossOrigin = 'anonymous';
+  else node.removeAttribute('crossorigin');
+  return node;
+};
+
+/**
+ * Create a sound (create() runs new Howl()) whose <audio> loads with CORS when its origin allows it, so it can be analysed.
+ *
+ * @param {string}   url    The audio URL.
+ * @param {Function} create Returns the new Howl.
+ * @return {{howl: Howl, cors: boolean}}
+ */
+export function withCors(url, create) {
+  pendingCors = !noCors.has(originOf(url));
+  try {
+    return { howl: create(), cors: pendingCors };
+  } finally {
+    pendingCors = null;
+  }
+}
+
+/** Remember that audio from this URL's origin fails to load with CORS. */
+export function markNoCors(url) {
+  noCors.add(originOf(url));
+}
 
 function resumeContext() {
   if (Howler.ctx && Howler.ctx.state === 'suspended') Howler.ctx.resume();
@@ -399,14 +449,6 @@ function roundRect(ctx, x, y, w, h, r) {
   ctx.fill();
 }
 
-function sameOrigin(url) {
-  try {
-    return new URL(url, location.href).origin === location.origin;
-  } catch {
-    return false;
-  }
-}
-
 /**
  * Start painting all spectrum canvases for a player store.
  *
@@ -423,7 +465,8 @@ export function startSpectrum(player) {
     const canvases = document.querySelectorAll('canvas[data-spectrum]');
     const howl = store.howl;
 
-    if (canvases.length && howl && store.current && sameOrigin(store.current.audio)) {
+    // Only an element that loaded with CORS gives the analyser real samples (one that loaded at all, with it set).
+    if (canvases.length && howl && store.current && nodeOf(howl)?.crossOrigin === 'anonymous') {
       route(howl);
       resumeContext();
     }

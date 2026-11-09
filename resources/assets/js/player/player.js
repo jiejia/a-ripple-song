@@ -19,7 +19,7 @@
  */
 import { Howl, Howler } from 'howler';
 import { Binder } from './binder.js';
-import { startSpectrum, refreshSpectrumColors, applyVolume } from './spectrum.js';
+import { startSpectrum, refreshSpectrumColors, applyVolume, withCors, markNoCors } from './spectrum.js';
 
 const RATES = [1, 1.25, 1.5, 2, 0.8];
 const config = window.ARS_PLAYER || { episodes: [], playlist: [], show: {}, i18n: {}, storageKey: 'ars_player', playsUrl: '' };
@@ -232,7 +232,7 @@ class PlayerStore {
     });
 
     const store = this;
-    this.howl = new Howl({
+    const { howl, cors } = withCors(episode.audio, () => new Howl({
       src: [episode.audio],
       html5: true,
       preload: 'metadata',
@@ -263,6 +263,13 @@ class PlayerStore {
         store.next() || store.emit();
       },
       onloaderror() {
+        if (store.howl !== this) return;
+        if (cors) {
+          // Perhaps the host sends no CORS headers: load it once more without (it plays, without a spectrum).
+          markNoCors(episode.audio);
+          store.load(episode.id, { at: store.position, autoplay });
+          return;
+        }
         Object.assign(store, { loading: false, error: t('error') });
         store.emit();
       },
@@ -270,7 +277,8 @@ class PlayerStore {
         // Autoplay was blocked: play as soon as the browser allows audio.
         this.once('unlock', () => this.play(store.soundId));
       },
-    });
+    }));
+    this.howl = howl;
 
     if (at) this.howl.seek(at);
     this.updateMediaSession();
