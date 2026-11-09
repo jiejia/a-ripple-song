@@ -450,6 +450,18 @@ class PodcastCPT extends CPTAbstract
                 'auth_callback' => static fn (): bool => current_user_can('edit_posts'),
             ]);
         }
+
+        foreach (['members', 'guests'] as $key) {
+            register_post_meta($this->slug(), $this->fieldMetaKey($key), [
+                'type' => 'array',
+                'single' => true,
+                'show_in_rest' => [
+                    'schema' => ['type' => 'array', 'items' => ['type' => 'integer']],
+                ],
+                'sanitize_callback' => static fn ($value): array => array_values(array_map('absint', (array) $value)),
+                'auth_callback' => static fn (): bool => current_user_can('edit_posts'),
+            ]);
+        }
     }
 
     /**
