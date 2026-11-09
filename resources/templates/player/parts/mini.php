@@ -4,15 +4,15 @@
  *
  * Rendered as the first child of the skin's [data-ars-width="box"] (data-ars-mini-bar), one row: round cover and title
  * (both link to the episode), the title above a
- * thin progress bar with a draggable knob (an invisible [data-ars-seek] range on top seeks), play / pause, and a button
- * that restores the full bar. The full bar collapses through the button right of its queue button
+ * thin progress bar with a draggable knob (an invisible [data-ars-seek] range on top seeks), play / pause, the queue
+ * button and a button that restores the full bar. The full bar collapses through the button right of its queue button
  * (player/parts/collapse.php). The collapsed state (data-ars-mini on the player root) is kept in localStorage.
  * On wider screens it never shows and the full bar is used. Visibility rules: base styles in GlobalPlayer.php.
  * With the "Progress Bar & Spectrum" setting on spectrum, a radial spectrum (like the aurora prototype's) rings the
  * cover: its canvas overflows the cover's 40px slot into the row's padding, so the row keeps its height.
  *
  * Included by the skin templates, each passing its own look:
- *   $handle  Classes of the restore button (text color).
+ *   $handle  Classes of the queue and restore buttons (text color).
  *   $cover   Classes of the cover (background).
  *   $track   Classes of the progress track.
  *   $fill    Classes of the played part and the knob.
@@ -61,7 +61,10 @@ $play ??= 'bg-primary text-primary-content';
     <span data-ars-show="playing" hidden><?php Icon::render('pause', 'size-4 fill-current'); ?></span>
     <span class="loading loading-spinner loading-sm" data-ars-show="loading" hidden></span>
   </button>
-  <button type="button" class="-ml-1 grid size-8 shrink-0 place-items-center rounded-full <?php echo esc_attr($handle); ?>" data-ars-action="mini" aria-expanded="false" aria-label="<?php esc_attr_e('Expand player', 'a-ripple-song'); ?>"><?php Icon::render('chevron-up', 'size-5'); ?></button>
+  <span class="-ml-1 flex shrink-0 items-center">
+    <button type="button" class="grid size-8 place-items-center rounded-full <?php echo esc_attr($handle); ?>" data-ars-action="panel" aria-expanded="false" aria-label="<?php esc_attr_e('Queue', 'a-ripple-song'); ?>"><?php Icon::render('list-music', 'size-5'); ?></button>
+    <button type="button" class="grid size-8 place-items-center rounded-full <?php echo esc_attr($handle); ?>" data-ars-action="mini" aria-expanded="false" aria-label="<?php esc_attr_e('Expand player', 'a-ripple-song'); ?>"><?php Icon::render('chevron-up', 'size-5'); ?></button>
+  </span>
 </div>
 <?php
 // phpcs:enable
