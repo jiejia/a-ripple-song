@@ -48,7 +48,7 @@ use Jiejia\ARippleSong\Libraries\Template;
             'spectrum' => ['data-spectrum' => 'bars', 'class' => 'hidden h-8 w-24 shrink-0 @5xl:block'],
         ]);
         ?>
-        <div class="order-4 flex flex-1 items-center justify-start @5xl:order-8 @5xl:flex-none">
+        <div class="order-4 flex flex-1 items-center justify-start gap-2 @5xl:order-8 @5xl:flex-none">
           <button type="button" role="slider" aria-label="音量（拖动、滚轮或方向键调节）" aria-valuemin="0" aria-valuemax="100" ars-bind:aria-valuenow="Math.round((muted ? 0 : volume) * 100)"
                   class="knob raised-sm size-9 @5xl:size-12"
                   ars-data="{ y: null, v: 0 }"
@@ -62,9 +62,12 @@ use Jiejia\ARippleSong\Libraries\Template;
                   ars-on:keydown.left.prevent="setVolume(Math.max(0, volume - 0.05))">
             <span class="knob-dial" ars-bind:style="`--angle: ${-135 + (muted ? 0 : volume) * 270}deg`"></span>
           </button>
+          <?php /* Narrow bar: the speed sits right of the volume; from @5xl on the one in the group below shows. */ ?>
+          <button type="button" class="raised-sm press h-8 w-14 shrink-0 rounded-full px-0 font-mono text-xs @5xl:!hidden" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
         </div>
         <div class="order-6 flex flex-1 items-center justify-end gap-1 @5xl:contents">
-          <button type="button" class="@5xl:order-7 raised-sm press h-8 w-14 shrink-0 rounded-full px-0 font-mono text-xs @5xl:h-9" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
+          <button type="button" class="@max-5xl:!hidden @5xl:order-7 raised-sm press h-8 w-14 shrink-0 rounded-full px-0 font-mono text-xs @5xl:h-9" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
+        <?php (new Template())->renderThemeable('player/parts/collapse', ['class' => 'raised-sm press grid size-8 shrink-0 place-items-center rounded-full', 'icon' => 'size-4']); ?>
         <button type="button" class="raised-sm press grid size-8 shrink-0 place-items-center rounded-full @5xl:order-9 @5xl:size-10" ars-on:click="expanded = true" aria-label="播放队列"><?php Icon::render('list-music', 'size-4'); ?></button>
         </div>
         </div>

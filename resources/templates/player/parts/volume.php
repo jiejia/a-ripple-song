@@ -11,6 +11,9 @@
  *   $button   Classes of the mute button.
  *   $icon     Classes of the button icon; empty renders the text "vol" / "mute" instead (terminal style).
  *   $range    Classes of the slider.
+ *   $rate     Optional: classes of a playback speed button after the slider, for the narrow bar only (below @5xl), where
+ *             the speed sits right of the volume; the skin hides its own speed button there with @max-5xl:hidden.
+ *   $rateUnit Sign after the speed, "×" by default.
  *
  * Themes can override this file with {theme}/a-ripple-song/player/parts/volume.php.
  * Every skin stylesheet scans this file, so its utility classes exist in all of them.
@@ -27,6 +30,8 @@ $slider ??= 'hidden w-20 @5xl:block';
 $button ??= 'btn btn-ghost btn-circle btn-sm';
 $icon ??= 'size-4';
 $range ??= 'range range-primary range-xs';
+$rate ??= '';
+$rateUnit ??= '×';
 ?>
 <div class="<?php echo esc_attr($class); ?>">
   <button type="button" class="<?php echo esc_attr($button); ?>" ars-on:click="toggleMute()" ars-bind:aria-label="muted ? '取消静音' : '静音'" aria-label="静音">
@@ -38,4 +43,7 @@ $range ??= 'range range-primary range-xs';
     <?php endif; ?>
   </button>
   <input type="range" class="<?php echo esc_attr($range); ?> <?php echo esc_attr($slider); ?>" min="0" max="1" step="0.05" ars-bind:value="muted ? 0 : volume" ars-bind:style="`--p:${(muted ? 0 : volume) * 100}%`" ars-on:input="setVolume($event.target.value)" aria-label="音量">
+  <?php if ($rate !== '') : ?>
+    <button type="button" class="<?php echo esc_attr($rate); ?> @5xl:!hidden" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}<?php echo esc_attr($rateUnit); ?>`">1<?php echo esc_html($rateUnit); ?></button>
+  <?php endif; ?>
 </div>

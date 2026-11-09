@@ -88,9 +88,12 @@ $iconButton = 'btn btn-ghost btn-circle btn-sm';
                     <span data-ars-show="muted" hidden><?php Icon::render('volume-x', 'size-4'); ?></span>
                 </button>
                 <input type="range" class="range range-primary range-xs hidden w-20 @5xl:block" min="0" max="1" step="0.05" value="0.8" data-ars-volume aria-label="<?php esc_attr_e('Volume', 'a-ripple-song'); ?>">
+                <?php /* Narrow bar: the speed sits right of the volume; from @5xl on the one in the group below shows. */ ?>
+                <button type="button" class="btn btn-ghost btn-sm w-14 shrink-0 px-0 font-semibold tabular-nums @5xl:!hidden" data-ars-action="rate" aria-label="<?php esc_attr_e('Playback speed', 'a-ripple-song'); ?>"><span data-ars-text="rate">1×</span></button>
             </div>
             <div class="order-6 flex flex-1 items-center justify-end gap-1 @5xl:contents">
-                <button type="button" class="btn btn-ghost btn-sm w-14 shrink-0 px-0 font-semibold tabular-nums @5xl:order-7" data-ars-action="rate" aria-label="<?php esc_attr_e('Playback speed', 'a-ripple-song'); ?>"><span data-ars-text="rate">1×</span></button>
+                <button type="button" class="btn btn-ghost btn-sm w-14 shrink-0 px-0 font-semibold tabular-nums @max-5xl:!hidden @5xl:order-7" data-ars-action="rate" aria-label="<?php esc_attr_e('Playback speed', 'a-ripple-song'); ?>"><span data-ars-text="rate">1×</span></button>
+            <?php (new Template())->renderThemeable('player/parts/collapse', ['class' => 'btn btn-ghost btn-square btn-sm shrink-0']); ?>
             <button type="button" class="btn btn-soft btn-square btn-sm shrink-0 @5xl:order-9" data-ars-action="panel" aria-label="<?php esc_attr_e('Queue', 'a-ripple-song'); ?>" aria-expanded="false"><?php Icon::render('list-music', 'size-5'); ?></button>
             </div>
             </div>

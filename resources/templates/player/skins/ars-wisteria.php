@@ -43,9 +43,10 @@ use Jiejia\ARippleSong\Libraries\Template;
             'waveClass' => 'h-9',
         ]);
         ?>
-        <?php (new Template())->renderThemeable('player/parts/volume', ['class' => 'order-4 flex flex-1 shrink-0 items-center justify-start gap-1 @5xl:order-none @5xl:flex-none']); ?>
+        <?php (new Template())->renderThemeable('player/parts/volume', ['rate' => 'btn btn-ghost btn-sm w-12 shrink-0 px-0 text-xs', 'class' => 'order-4 flex flex-1 shrink-0 items-center justify-start gap-1 @5xl:order-none @5xl:flex-none']); ?>
         <div class="order-6 flex flex-1 items-center justify-end gap-1 @5xl:contents">
-        <button type="button" class="btn btn-ghost btn-sm w-12 shrink-0 px-0 text-xs" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
+        <button type="button" class="btn btn-ghost btn-sm w-12 shrink-0 px-0 text-xs @max-5xl:!hidden" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
+        <?php (new Template())->renderThemeable('player/parts/collapse', ['class' => 'btn btn-ghost btn-circle btn-sm']); ?>
         <button type="button" class="btn btn-ghost btn-circle btn-sm" ars-on:click="expanded = true" aria-label="播放队列"><?php Icon::render('list-music', 'size-5'); ?></button>
         </div>
         </div>

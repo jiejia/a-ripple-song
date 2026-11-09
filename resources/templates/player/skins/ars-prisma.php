@@ -45,10 +45,11 @@ use Jiejia\ARippleSong\Libraries\Template;
               'spectrum' => ['data-spectrum' => 'mirror', 'data-color' => 'content', 'data-bar' => '2', 'data-gap' => '3', 'class' => 'hidden h-8 w-20 shrink-0 @5xl:block'],
               'wave' => ['data-color' => 'content'],
           ]);
-          (new Template())->renderThemeable('player/parts/volume', ['class' => 'order-4 flex flex-1 shrink-0 items-center justify-start gap-1 @5xl:order-8 @5xl:flex-none', 'button' => 'btn-plain size-8 rounded-full @5xl:size-9', 'icon' => 'size-[1.05rem]', 'range' => 'seek-s']);
+          (new Template())->renderThemeable('player/parts/volume', ['rate' => 'btn-gray h-8 w-14 shrink-0 rounded-full text-xs font-medium tabular-nums', 'class' => 'order-4 flex flex-1 shrink-0 items-center justify-start gap-1 @5xl:order-8 @5xl:flex-none', 'button' => 'btn-plain size-8 rounded-full @5xl:size-9', 'icon' => 'size-[1.05rem]', 'range' => 'seek-s']);
           ?>
           <div class="order-6 flex flex-1 items-center justify-end gap-1 @5xl:contents">
-            <button type="button" class="btn-gray h-8 w-14 shrink-0 rounded-full text-xs font-medium tabular-nums @5xl:order-7" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
+            <button type="button" class="btn-gray h-8 w-14 shrink-0 rounded-full text-xs font-medium tabular-nums @5xl:order-7 @max-5xl:!hidden" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
+            <?php (new Template())->renderThemeable('player/parts/collapse', ['class' => 'btn-plain size-8 shrink-0 rounded-full @5xl:size-9']); ?>
             <button type="button" class="btn-plain size-8 shrink-0 rounded-full @5xl:order-9 @5xl:size-9" ars-on:click="expanded = true" aria-label="播放队列"><?php Icon::render('list-music', 'size-5'); ?></button>
           </div>
         </div>
