@@ -93,8 +93,8 @@ $iconButton = 'btn btn-ghost btn-circle btn-sm';
             </div>
             <div class="order-6 flex flex-1 items-center justify-end gap-1 @5xl:contents">
                 <button type="button" class="btn btn-ghost btn-sm w-14 shrink-0 px-0 font-semibold tabular-nums @max-5xl:!hidden @5xl:order-7" data-ars-action="rate" aria-label="<?php esc_attr_e('Playback speed', 'a-ripple-song'); ?>"><span data-ars-text="rate">1×</span></button>
-            <?php (new Template())->renderThemeable('player/parts/collapse', ['class' => 'btn btn-ghost btn-square btn-sm shrink-0']); ?>
             <button type="button" class="btn btn-soft btn-square btn-sm shrink-0 @5xl:order-9" data-ars-action="panel" aria-label="<?php esc_attr_e('Queue', 'a-ripple-song'); ?>" aria-expanded="false"><?php Icon::render('list-music', 'size-5'); ?></button>
+            <?php (new Template())->renderThemeable('player/parts/collapse', ['class' => 'btn btn-ghost btn-square btn-sm shrink-0']); ?>
             </div>
             </div>
         </div>

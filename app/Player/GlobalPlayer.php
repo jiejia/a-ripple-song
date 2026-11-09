@@ -110,7 +110,7 @@ final class GlobalPlayer
             . '.ars-player .ars-wave:has(.ars-wave-seek:focus-visible){outline:2px solid var(--color-primary,currentColor);outline-offset:4px;border-radius:.375rem}'
             // wavesurfer's unplayed layer (shadow part), faded; the played part keeps the full color.
             . '.ars-player [data-ars-waveform] *::part(canvases){opacity:.3}'
-            // Mini player (player/parts/mini.php), small screens only: the button left of the queue button (player/parts/collapse.php)
+            // Mini player (player/parts/mini.php), small screens only: the button right of the queue button (player/parts/collapse.php)
             // collapses the bar into one row (data-ars-mini on the root, set by player.js); a button in that row restores it.
             . '.ars-player [data-ars-mini-bar]{display:none!important}'
             . '@media (min-width:768px){.ars-player [data-ars-collapse]{display:none!important}}'

@@ -67,8 +67,8 @@ use Jiejia\ARippleSong\Libraries\Template;
         </div>
         <div class="order-6 flex flex-1 items-center justify-end gap-1 @5xl:contents">
           <button type="button" class="@max-5xl:!hidden @5xl:order-7 raised-sm press h-8 w-14 shrink-0 rounded-full px-0 font-mono text-xs @5xl:h-9" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
-        <?php (new Template())->renderThemeable('player/parts/collapse', ['class' => 'raised-sm press grid size-8 shrink-0 place-items-center rounded-full', 'icon' => 'size-4']); ?>
         <button type="button" class="raised-sm press grid size-8 shrink-0 place-items-center rounded-full @5xl:order-9 @5xl:size-10" ars-on:click="expanded = true" aria-label="播放队列"><?php Icon::render('list-music', 'size-4'); ?></button>
+        <?php (new Template())->renderThemeable('player/parts/collapse', ['class' => 'raised-sm press grid size-8 shrink-0 place-items-center rounded-full', 'icon' => 'size-4']); ?>
         </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Small screens (below 768px): the button left of the queue button that collapses the bar into the mini player
+ * Small screens (below 768px): the button right of the queue button that collapses the bar into the mini player
  * (player/parts/mini.php, which has the button that restores it). Hidden on wider screens by the base styles in
  * GlobalPlayer.php.
  *

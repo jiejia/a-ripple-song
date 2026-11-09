@@ -4,7 +4,7 @@
  *
  * Rendered as the first child of the skin's [data-ars-width="box"] (data-ars-mini-bar), one row: cover, title above a
  * thin progress bar with a draggable knob (an invisible [data-ars-seek] range on top seeks), play / pause, and a button
- * that restores the full bar. The full bar collapses through the button left of its queue button
+ * that restores the full bar. The full bar collapses through the button right of its queue button
  * (player/parts/collapse.php). The collapsed state (data-ars-mini on the player root) is kept in localStorage.
  * On wider screens it never shows and the full bar is used. Visibility rules: base styles in GlobalPlayer.php.
  *

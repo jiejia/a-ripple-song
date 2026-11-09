@@ -50,8 +50,8 @@ use Jiejia\ARippleSong\Libraries\Template;
           <span ars-show="isFav(current?.id)" ars-cloak><?php Icon::render('heart', 'size-4 fill-current'); ?></span>
         </button>
         <div class="order-6 flex flex-1 items-center justify-end gap-1 @5xl:contents">
-        <?php (new Template())->renderThemeable('player/parts/collapse', ['class' => 'grid size-8 shrink-0 place-items-center rounded-full hover:bg-base-200 @5xl:size-10']); ?>
         <button type="button" class="grid size-8 shrink-0 place-items-center rounded-full hover:bg-base-200 @5xl:size-10" ars-on:click="expanded = true" aria-label="播放队列"><?php Icon::render('list-music', 'size-5'); ?></button>
+        <?php (new Template())->renderThemeable('player/parts/collapse', ['class' => 'grid size-8 shrink-0 place-items-center rounded-full hover:bg-base-200 @5xl:size-10']); ?>
         </div>
         </div>
       </div>

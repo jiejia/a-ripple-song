@@ -56,8 +56,8 @@ use Jiejia\ARippleSong\Libraries\Template;
         <?php (new Template())->renderThemeable('player/parts/volume', ['rate' => 'cmd w-[9ch] shrink-0 justify-between', 'rateUnit' => 'x', 'class' => 'order-4 flex flex-1 shrink-0 items-center justify-start gap-1 @5xl:order-8 @5xl:flex-none', 'button' => 'cmd', 'icon' => '', 'range' => 'accent-primary']); ?>
         <div class="order-6 flex flex-1 items-center justify-end gap-1 @5xl:contents">
           <button type="button" class="cmd w-[9ch] shrink-0 justify-between @5xl:order-7 @max-5xl:!hidden" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}x`">1x</button>
-        <?php (new Template())->renderThemeable('player/parts/collapse', ['class' => 'cmd']); ?>
         <button type="button" class="cmd @5xl:order-9" ars-on:click="expanded = true" aria-label="播放队列">ls</button>
+        <?php (new Template())->renderThemeable('player/parts/collapse', ['class' => 'cmd']); ?>
         </div>
         </div>
       </div>
