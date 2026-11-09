@@ -562,6 +562,152 @@ class PlayerStore {
 
 /* ---------------- Views ---------------- */
 
+/**
+ * A damped spring (from 0 to 1) as a CSS linear() easing, with the time it takes to settle.
+ * Falls back to an overshooting cubic-bezier where linear() is not supported.
+ */
+function spring(stiffness, damping) {
+  let x = 0;
+  let v = 0;
+  const points = [];
+  const step = 1 / 120;
+  let t = 0;
+
+  for (let rest = 0; t < 2 && rest < 12; t += step) {
+    v += (stiffness * (1 - x) - damping * v) * step;
+    x += v * step;
+    points.push(x);
+    rest = Math.abs(1 - x) < 0.002 && Math.abs(v) < 0.02 ? rest + 1 : 0;
+  }
+  const duration = Math.round(t * 1000);
+  const every = Math.max(1, Math.floor(points.length / 48));
+  const samples = points.filter((_, i) => i % every === 0).map((p) => p.toFixed(3));
+  const easing = `linear(0, ${samples.join(', ')}, 1)`;
+
+  return CSS.supports('animation-timing-function', easing)
+    ? { easing, duration }
+    : { easing: 'cubic-bezier(.34,1.45,.64,1)', duration: Math.min(duration, 560) };
+}
+
+const MINI_EASE = 'cubic-bezier(.2,.8,.2,1)';
+let miniMorphing = false;
+
+/**
+ * The frame (parent) of the shown cover <img> inside the box, with its rect and corner radius. Covers are marked
+ * data-ars-src="cover" (shared partials) or ars-bind:src="current?.cover" (binder skins).
+ */
+function coverFrame(box) {
+  const img = Array.from(box.querySelectorAll('[data-ars-src="cover"], img[ars-bind\\:src*="cover"]')).find((node) => {
+    const frame = node.parentElement;
+    return frame && frame.getClientRects().length > 0;
+  });
+  const frame = img && img.parentElement;
+  if (!frame) return null;
+  const rect = frame.getBoundingClientRect();
+  const radius = Math.min(parseFloat(getComputedStyle(frame).borderTopLeftRadius) || 0, Math.min(rect.width, rect.height) / 2);
+  return { frame, rect, radius };
+}
+
+/** The shown parts of the box's content, for the staggered entrance: the shown rows, or the single row's parts. */
+function shownParts(box) {
+  const visible = (nodes) => Array.from(nodes).filter((node) => node.getClientRects().length > 0);
+  const rows = visible(box.children);
+  return rows.length === 1 ? visible(rows[0].children) : rows;
+}
+
+/**
+ * Small screens: switch between the full bar and the mini player (player/parts/mini.php) with a shared-element
+ * transition on the bar's box ([data-ars-width="box"], parent of the mini row):
+ * 1. Everything but the cover dissolves (fade, blur, slight shrink); a ghost copy of the cover holds its place.
+ * 2. The switch happens; the box springs from its old height to the new one (the bar is fixed at the bottom, so it
+ *    grows and shrinks upwards), the ghost cover flies to the new cover's place and size, morphing its corners
+ *    (rounded square ↔ circle), and the new parts come in one after another, from blurred to sharp.
+ * Without motion (wide screens, reduced motion, no Web Animations) it just switches.
+ */
+function morphMini(root, change) {
+  const mini = root.querySelector('[data-ars-mini-bar]');
+  const box = mini && mini.parentElement;
+  const still = !box || !box.animate || !matchMedia('(max-width: 767.98px)').matches
+    || matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (still) return change();
+  if (miniMorphing) return;
+  miniMorphing = true;
+
+  const expanding = root.hasAttribute('data-ars-mini');
+  const start = coverFrame(box);
+  let ghost = null;
+
+  // The ghost: a copy of the cover frame, fixed over it, inside the player so the skin styles still apply.
+  if (start) {
+    ghost = start.frame.cloneNode(true);
+    [ghost, ...ghost.querySelectorAll('*')].forEach((node) => Array.from(node.attributes).forEach((attr) => {
+      if (/^(data-ars|ars-)/.test(attr.name)) node.removeAttribute(attr.name);
+    }));
+    ghost.removeAttribute('href');
+    ghost.setAttribute('aria-hidden', 'true');
+    const place = { position: 'fixed', margin: '0', inset: 'auto', left: '0', top: '0', 'z-index': '2147483647',
+      'pointer-events': 'none', 'transform-origin': '0 0', 'will-change': 'transform, border-radius' };
+    Object.entries(place).forEach(([name, value]) => ghost.style.setProperty(name, value, 'important'));
+    // Not !important, or they would also beat the flight animation.
+    Object.assign(ghost.style, { width: `${start.rect.width}px`, height: `${start.rect.height}px`,
+      borderRadius: `${start.radius}px`, transform: `translate(${start.rect.left}px, ${start.rect.top}px)` });
+    root.appendChild(ghost);
+  }
+
+  const out = shownParts(box).map((node) => node.animate(
+    [{ opacity: 1, filter: 'blur(0)', transform: 'none' },
+      { opacity: 0, filter: 'blur(6px)', transform: `scale(.96) translateY(${expanding ? 0 : 6}px)` }],
+    { duration: 160, easing: 'ease-in', fill: 'forwards' },
+  ));
+
+  Promise.all(out.map((animation) => animation.finished)).catch(() => {}).then(() => {
+    const from = box.getBoundingClientRect().height;
+    change();
+    out.forEach((animation) => animation.cancel());
+    const to = box.getBoundingClientRect().height;
+    const end = coverFrame(box);
+    const sizing = box.style.boxSizing;
+    const overflow = box.style.overflow;
+    const height = spring(220, 22);
+    const fly = spring(170, 17);
+    const animations = [];
+
+    // The heights include padding and border: measure and animate the border box, clipped meanwhile.
+    box.style.boxSizing = 'border-box';
+    box.style.overflow = 'hidden';
+    animations.push(box.animate([{ height: `${from}px` }, { height: `${to}px` }], height));
+
+    shownParts(box).forEach((node, i) => {
+      if (end && node.contains(end.frame)) return;
+      animations.push(node.animate(
+        [{ opacity: 0, filter: 'blur(8px)', transform: `translateY(${expanding ? 16 : -8}px) scale(.94)` },
+          { opacity: 1, filter: 'blur(0)', transform: 'none' }],
+        { duration: 420, delay: 70 + i * 45, easing: MINI_EASE, fill: 'backwards' },
+      ));
+    });
+
+    if (ghost && end) {
+      // The real cover waits under the ghost until it lands.
+      const hold = end.frame.animate([{ opacity: 0 }, { opacity: 0 }], { duration: fly.duration });
+      const path = ghost.animate([
+        { transform: `translate(${start.rect.left}px, ${start.rect.top}px)`, width: `${start.rect.width}px`,
+          height: `${start.rect.height}px`, borderRadius: `${start.radius}px` },
+        { transform: `translate(${end.rect.left}px, ${end.rect.top}px)`, width: `${end.rect.width}px`,
+          height: `${end.rect.height}px`, borderRadius: `${end.radius}px` },
+      ], { ...fly, fill: 'forwards' });
+      animations.push(path, hold);
+    }
+
+    Promise.all(animations.map((animation) => animation.finished)).catch(() => {}).then(() => {
+      if (ghost) ghost.remove();
+      box.style.boxSizing = sizing;
+      box.style.overflow = overflow;
+      miniMorphing = false;
+    });
+  });
+}
+
 /** Bind the player bar markup to the store. */
 function bindBar(root, store) {
   const all = (selector) => root.querySelectorAll(selector);
@@ -578,7 +724,7 @@ function bindBar(root, store) {
     mute: () => store.toggleMute(),
     panel: () => store.setExpanded(!store.expanded),
     clear: () => store.clearQueue(),
-    mini: () => store.setMini(!store.mini),
+    mini: () => morphMini(root, () => store.setMini(!store.mini)),
   };
 
   root.addEventListener('click', (event) => {
