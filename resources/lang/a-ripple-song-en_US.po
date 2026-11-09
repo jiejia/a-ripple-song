@@ -445,6 +445,15 @@ msgstr "Mute"
 msgid "Unmute"
 msgstr "Unmute"
 
+#: app/Player/GlobalPlayer.php:197
+#: resources/templates/player/parts/mini.php:36
+msgid "Collapse player"
+msgstr "Collapse player"
+
+#: app/Player/GlobalPlayer.php:198
+msgid "Expand player"
+msgstr "Expand player"
+
 #. translators: %s: episode number.
 #: app/Player/GlobalPlayer.php:198
 #, php-format

@@ -9,6 +9,7 @@
 @source "../../../templates/player/skins/ars-default.php";
 @source "../../../templates/episode/meta/ars-default.php";
 @source "../../../templates/player/parts/info.php";
+@source "../../../templates/player/parts/mini.php";
 @source "../../../templates/player/parts/progress.php";
 @source "../../../templates/player/parts/queue.php";
 @source "../../../templates/player/parts/resume.php";

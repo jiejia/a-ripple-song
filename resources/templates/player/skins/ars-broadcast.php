@@ -20,6 +20,7 @@ use Jiejia\ARippleSong\Libraries\Template;
     <div class="fixed inset-x-0 bottom-0 z-[9990]" role="region" data-ars-bar aria-label="音频播放器">
       <?php /* No max-width: with the style's own width the bar runs edge to edge like the prototype. */ ?>
       <div data-ars-width="box" data-ars-surface class="mx-auto border-x-2 border-t-2 border-base-content bg-base-100 text-base-content">
+        <?php (new Template())->renderThemeable('player/parts/mini', ['handle' => 'border-2 border-b-0 border-base-content bg-base-100 text-base-content', 'cover' => 'bg-base-300']); ?>
         <div class="flex flex-wrap items-stretch @5xl:min-h-[4.5rem] @5xl:flex-nowrap">
         <?php (new Template())->renderThemeable('player/parts/info', [
             'class' => 'order-1 min-h-[4.5rem] basis-full border-b-2 border-base-content/25 px-3 @5xl:order-none @5xl:w-80 @5xl:flex-none @5xl:basis-auto @5xl:border-b-0 @5xl:border-r-2',

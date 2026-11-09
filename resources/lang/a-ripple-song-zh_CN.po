@@ -563,6 +563,15 @@ msgstr "静音"
 msgid "Unmute"
 msgstr "取消静音"
 
+#: app/Player/GlobalPlayer.php:197
+#: resources/templates/player/parts/mini.php:36
+msgid "Collapse player"
+msgstr "收起播放器"
+
+#: app/Player/GlobalPlayer.php:198
+msgid "Expand player"
+msgstr "展开播放器"
+
 #. translators: %s: episode number.
 #: app/Player/GlobalPlayer.php:198
 #, php-format

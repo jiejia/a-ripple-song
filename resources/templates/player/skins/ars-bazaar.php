@@ -20,6 +20,7 @@ use Jiejia\ARippleSong\Libraries\Template;
     <?php /* ============ 底部：大圆角浮层播放条（常驻） ============ */ ?>
     <div class="fixed inset-x-0 bottom-0 z-[9990] px-3 pb-3 md:pb-5" role="region" data-ars-bar aria-label="音频播放器">
       <div data-ars-width="box" data-ars-surface class="player-bar mx-auto max-w-6xl rounded-[1.75rem] bg-base-100 text-base-content" ars-bind:style="`--p:${progress}%`">
+        <?php (new Template())->renderThemeable('player/parts/mini'); ?>
         <div class="flex flex-wrap items-center gap-x-3 gap-y-2 p-3 @5xl:flex-nowrap @5xl:gap-x-4 @5xl:py-2 @5xl:pl-2 @5xl:pr-3">
           <?php (new Template())->renderThemeable('player/parts/info', [
               'width' => '@5xl:w-64',

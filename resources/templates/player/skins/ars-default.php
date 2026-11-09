@@ -52,6 +52,7 @@ $iconButton = 'btn btn-ghost btn-circle btn-sm';
     <?php /* ---------- Bar ---------- */ ?>
     <div class="fixed inset-x-0 bottom-0 z-[9990] px-2 pb-2 sm:px-4 sm:pb-4" data-ars-bar>
         <div data-ars-width="box" data-ars-surface class="mx-auto max-w-6xl rounded-box border border-base-300 bg-base-100 text-base-content shadow-lg">
+          <?php (new Template())->renderThemeable('player/parts/mini'); ?>
             <div class="flex flex-wrap items-center gap-x-3 gap-y-2 p-2 @5xl:min-h-16 @5xl:flex-nowrap @5xl:gap-3 @5xl:px-3 @5xl:py-0">
             <?php (new Template())->renderThemeable('player/parts/info', [
                 'hooks' => 'data',

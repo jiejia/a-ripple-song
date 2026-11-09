@@ -19,6 +19,7 @@ use Jiejia\ARippleSong\Libraries\Template;
     <?php /* ============ 播放器（常驻） ============ */ ?>
     <div class="fixed inset-x-0 bottom-0 z-[9990]" role="region" data-ars-bar aria-label="音频播放器">
       <div data-ars-width="box" data-ars-surface class="mx-auto max-w-6xl bg-base-100">
+        <?php (new Template())->renderThemeable('player/parts/mini', ['handle' => 'bg-base-100 text-base-content', 'cover' => 'bg-base-300']); ?>
       <div class="rule-double"></div>
       <div class="flex flex-wrap items-center gap-x-4 gap-y-2 px-4 py-3 @5xl:flex-nowrap sm:px-6">
         <?php (new Template())->renderThemeable('player/parts/info', [

@@ -19,6 +19,7 @@ use Jiejia\ARippleSong\Libraries\Template;
     <?php /* ============ 播放器：悬浮玻璃胶囊（常驻） ============ */ ?>
     <div class="fixed inset-x-0 bottom-3 z-[9990] px-3" role="region" data-ars-bar aria-label="音频播放器">
       <div data-ars-width="box" class="frost frost-strong relative mx-auto max-w-4xl rounded-[2rem]">
+        <?php (new Template())->renderThemeable('player/parts/mini', ['surface' => false, 'handle' => 'frost rounded-t-xl text-base-content']); ?>
         <div class="flex flex-wrap items-center gap-x-3 gap-y-2 p-3 @5xl:min-h-[4.5rem] @5xl:flex-nowrap @5xl:py-0 @5xl:pl-2 @5xl:pr-3">
         <span class="bg-aurora absolute inset-x-6 bottom-0 h-0.5 origin-left rounded-full" ars-bind:style="`transform: scaleX(${progress / 100})`" aria-hidden="true"></span>
         <?php (new Template())->renderThemeable('player/parts/info', [

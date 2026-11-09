@@ -110,6 +110,14 @@ final class GlobalPlayer
             . '.ars-player .ars-wave:has(.ars-wave-seek:focus-visible){outline:2px solid var(--color-primary,currentColor);outline-offset:4px;border-radius:.375rem}'
             // wavesurfer's unplayed layer (shadow part), faded; the played part keeps the full color.
             . '.ars-player [data-ars-waveform] *::part(canvases){opacity:.3}'
+            // Mini player (player/parts/mini.php), small screens only: the tab on top of the bar collapses it into one row
+            // (data-ars-mini on the root, set by player.js) and restores it. The box is the tab's positioning parent.
+            . '.ars-player [data-ars-handle],.ars-player [data-ars-mini-bar]{display:none!important}'
+            . '@media (max-width:767.98px){.ars-player [data-ars-width=box]{position:relative}'
+            . '.ars-player [data-ars-handle]{display:grid!important}'
+            . '.ars-player[data-ars-mini] [data-ars-mini-bar]{display:flex!important}'
+            . '.ars-player[data-ars-mini] [data-ars-width=box]>:not([data-ars-mini-bar]):not([data-ars-handle]){display:none!important}'
+            . '.ars-player[data-ars-mini] [data-ars-width=box]{padding:0!important}}'
             // Until the waveform is decoded (or when it cannot be), a faint line stands in for it.
             . '.ars-player .ars-wave:not(:has([data-ars-wave-ready]))::before{content:"";position:absolute;inset:50% 0 auto;height:2px;margin-top:-1px;border-radius:1px;background:currentColor;opacity:.2}');
 
@@ -201,6 +209,8 @@ final class GlobalPlayer
                 'pause' => __('Pause', 'a-ripple-song'),
                 'mute' => __('Mute', 'a-ripple-song'),
                 'unmute' => __('Unmute', 'a-ripple-song'),
+                'collapse' => __('Collapse player', 'a-ripple-song'),
+                'expand' => __('Expand player', 'a-ripple-song'),
                 /* translators: %s: episode number. */
                 'episode' => __('EP.%s', 'a-ripple-song'),
             ],

@@ -80,6 +80,8 @@ class PlayerStore {
     this.soundId = undefined;
     this.counted = new Set();
     this.expanded = false;
+    /** Small screens: the bar is collapsed into the one-row mini player (player/parts/mini.php). */
+    this.mini = false;
     this.confirmClear = false;
     this.resumeOffer = false;
     this.resumeLeft = 0;
@@ -335,6 +337,14 @@ class PlayerStore {
     this.emit();
   }
 
+  /** Collapse the bar into the mini player, or restore it; kept for the next pages. */
+  setMini(on) {
+    if (this.mini === !!on) return;
+    this.mini = !!on;
+    this.save();
+    this.emit();
+  }
+
   cycleRate() {
     this.rate = RATES[(RATES.indexOf(this.rate) + 1) % RATES.length];
     if (this.howl) this.howl.rate(this.rate);
@@ -385,6 +395,7 @@ class PlayerStore {
     this.rate = RATES.includes(saved.rate) ? saved.rate : 1;
     this.volume = typeof saved.volume === 'number' ? saved.volume : 0.8;
     this.favs = Array.isArray(saved.favs) ? saved.favs.map(Number) : [];
+    this.mini = saved.mini === true;
 
     // Saved episodes stay playable after they drop out of the latest episodes; the page's data is fresher, so it wins.
     this.register((Array.isArray(saved.items) ? saved.items : []).filter((item) => !this.episode(item.id)));
@@ -458,6 +469,7 @@ class PlayerStore {
       rate: this.rate,
       volume: this.volume,
       favs: this.favs,
+      mini: this.mini,
     });
   }
 
@@ -566,6 +578,7 @@ function bindBar(root, store) {
     mute: () => store.toggleMute(),
     panel: () => store.setExpanded(!store.expanded),
     clear: () => store.clearQueue(),
+    mini: () => store.setMini(!store.mini),
   };
 
   root.addEventListener('click', (event) => {
@@ -620,6 +633,8 @@ function bindBar(root, store) {
       nocover: !(episode && episode.cover),
       queue: store.queue.length > 0,
       noqueue: store.queue.length === 0,
+      mini: store.mini,
+      full: !store.mini,
     };
     const texts = {
       title: episode ? episode.title : '',
@@ -634,6 +649,7 @@ function bindBar(root, store) {
 
     root.hidden = !episode;
     root.dataset.state = state;
+    root.toggleAttribute('data-ars-mini', store.mini);
     document.body.classList.toggle('has-ars-player', !!episode);
 
     all('[data-ars-text]').forEach((node) => {
@@ -653,6 +669,11 @@ function bindBar(root, store) {
     });
     all('[data-ars-action="toggle"]').forEach((node) => node.setAttribute('aria-label', t(store.playing ? 'pause' : 'play')));
     all('[data-ars-action="mute"]').forEach((node) => node.setAttribute('aria-label', t(store.muted ? 'unmute' : 'mute')));
+    all('[data-ars-action="mini"]').forEach((node) => {
+      node.setAttribute('aria-label', t(store.mini ? 'expand' : 'collapse'));
+      node.setAttribute('aria-expanded', String(!store.mini));
+    });
+    all('[data-ars-progress]').forEach((node) => (node.style.width = `${store.progress}%`));
     all('[data-ars-seek]').forEach((node) => {
       node.max = String(Math.round(store.duration));
       if (!store.scrubbing) node.value = String(Math.round(store.position));
