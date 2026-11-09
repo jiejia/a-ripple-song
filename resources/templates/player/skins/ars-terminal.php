@@ -19,7 +19,7 @@ use Jiejia\ARippleSong\Libraries\Template;
     <?php /* ============ 播放器：底部状态行（常驻） ============ */ ?>
     <div class="fixed inset-x-0 bottom-0 z-[9990]" role="region" data-ars-bar aria-label="音频播放器">
       <div data-ars-width="box" data-ars-surface="base-200" class="mx-auto max-w-6xl border-x border-t tui-line bg-base-200 text-sm [--tui-bg:var(--color-base-200)]">
-        <?php (new Template())->renderThemeable('player/parts/mini', ['surface' => 'base-200', 'handle' => 'border border-b-0 tui-line bg-base-200 text-base-content', 'cover' => 'bg-base-300']); ?>
+        <?php (new Template())->renderThemeable('player/parts/mini', ['cover' => 'bg-base-300']); ?>
         <div class="flex flex-wrap items-center gap-x-3 gap-y-2 px-4 py-3 @5xl:min-h-16 @5xl:flex-nowrap @5xl:py-0">
         <?php (new Template())->renderThemeable('player/parts/info', [
             'class' => 'order-1 flex-1 basis-full border border-dashed tui-line p-2 @5xl:order-none @5xl:max-w-xs @5xl:basis-auto @5xl:border-0 @5xl:p-0',

@@ -20,7 +20,7 @@ use Jiejia\ARippleSong\Libraries\Template;
     <?php /* ============ 底部：浮起的玻璃播放条（常驻） ============ */ ?>
     <div class="fixed inset-x-0 bottom-0 z-[9990] px-3 pb-3 md:pb-5" role="region" data-ars-bar aria-label="音频播放器">
       <div data-ars-width="box" class="player-bar mx-auto max-w-3xl rounded-[1.75rem] p-3 @5xl:p-2 @5xl:pr-3" ars-bind:style="`--p:${progress}%`">
-        <?php (new Template())->renderThemeable('player/parts/mini', ['surface' => false, 'handle' => 'player-bar rounded-t-xl border-b-0 text-base-content']); ?>
+        <?php (new Template())->renderThemeable('player/parts/mini'); ?>
         <?php /* Narrow bar: cover + title, the progress row, then list / speed, prev-play-next, mute. From @5xl on everything sits in one row. */ ?>
         <div class="flex flex-wrap items-center gap-x-3 gap-y-2 @5xl:flex-nowrap @5xl:gap-4">
           <?php (new Template())->renderThemeable('player/parts/info', [
