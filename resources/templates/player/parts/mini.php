@@ -2,7 +2,8 @@
 /**
  * Mini player of the bars, for small screens (below 768px), the same in every skin.
  *
- * Rendered as the first child of the skin's [data-ars-width="box"] (data-ars-mini-bar), one row: round cover, title above a
+ * Rendered as the first child of the skin's [data-ars-width="box"] (data-ars-mini-bar), one row: round cover and title
+ * (both link to the episode), the title above a
  * thin progress bar with a draggable knob (an invisible [data-ars-seek] range on top seeks), play / pause, and a button
  * that restores the full bar. The full bar collapses through the button right of its queue button
  * (player/parts/collapse.php). The collapsed state (data-ars-mini on the player root) is kept in localStorage.
@@ -41,13 +42,13 @@ $play ??= 'bg-primary text-primary-content';
       <span class="absolute inset-[3px] rounded-full bg-primary opacity-30 blur-md" aria-hidden="true"></span>
       <canvas data-spectrum="radial" data-inner="0.64" data-bar="1.5" data-gap="1.5" class="pointer-events-none absolute -left-2 -top-2 block size-14" aria-hidden="true"></canvas>
     <?php endif; ?>
-    <span class="absolute <?php echo $spectrum ? 'inset-[3px]' : 'inset-0'; ?> grid place-items-center overflow-hidden rounded-full <?php echo esc_attr($cover); ?>">
+    <a class="absolute <?php echo $spectrum ? 'inset-[3px]' : 'inset-0'; ?> grid place-items-center overflow-hidden rounded-full <?php echo esc_attr($cover); ?>" data-ars-href="url">
       <img class="size-full object-cover" alt="" data-ars-src="cover" data-ars-show="cover">
       <span class="opacity-50" data-ars-show="nocover"><?php Icon::render('podcast', 'size-4'); ?></span>
-    </span>
+    </a>
   </span>
   <span class="min-w-0 flex-1">
-    <span class="block truncate text-sm font-semibold leading-5" data-ars-text="title"></span>
+    <a class="block truncate text-sm font-semibold leading-5 hover:text-primary" data-ars-href="url" data-ars-text="title"></a>
     <span class="relative mt-2 mr-1.5 block h-1 rounded-full <?php echo esc_attr($track); ?>">
       <span class="relative block h-full w-0 rounded-full <?php echo esc_attr($fill); ?>" data-ars-progress>
         <span class="absolute right-0 top-1/2 size-3 -translate-y-1/2 translate-x-1/2 rounded-full shadow ring-2 ring-base-100 <?php echo esc_attr($fill); ?>" aria-hidden="true"></span>
