@@ -15,6 +15,8 @@ Podcast publishing for WordPress: episodes, an Apple Podcasts & Podcasting 2.0 R
 
 A Ripple Song turns a WordPress site into a podcast site. Publish episodes with their audio and podcast metadata, submit one RSS feed to Apple Podcasts, Spotify and other directories, and let visitors listen through a player bar that stays at the bottom of every page.
 
+It works with any theme. The A Ripple Song podcast themes are designed around it, with episode cards, show pages and a matching player style.
+
 Documentation: https://aripplesong.com/
 
 = Episodes =
