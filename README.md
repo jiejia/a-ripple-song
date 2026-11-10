@@ -42,7 +42,7 @@ This plugin turns a WordPress site into a podcast site. Publish episodes with th
 ### Publishing your podcast
 
 1. Fill in the show cover, title, description, language, author, owner, and Apple Podcasts category in `A Ripple Song > Podcast Settings`.
-2. Optionally configure `Member Settings`, `Subscription Settings`, and `Player Settings`.
+2. Optionally configure `Host & Guest Settings`, `Subscription Settings`, and `Player Settings`.
 3. Create episodes from `Episodes > Add New Episode` and choose an audio file.
 4. Copy the feed URL (by default `https://your-site.example/feed/podcast/`) and submit it to podcast directories.
 

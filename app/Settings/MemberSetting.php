@@ -18,7 +18,7 @@ class MemberSetting extends SettingAbstract
 
     public function title(): string
     {
-        return __('Member Settings', 'a-ripple-song');
+        return __('Host & Guest Settings', 'a-ripple-song');
     }
 
     /**
@@ -31,24 +31,24 @@ class MemberSetting extends SettingAbstract
         return [
             [
                 'type' => 'separator',
-                'label' => __('Podcast Members', 'a-ripple-song'),
+                'label' => __('Podcast Hosts', 'a-ripple-song'),
             ],
             [
                 'type' => 'multiselect',
                 'key' => 'member_roles',
-                'label' => __('Member Roles', 'a-ripple-song'),
+                'label' => __('Host Roles', 'a-ripple-song'),
                 'width' => 'half',
                 'options' => Users::roleOptions(...),
                 'default' => ['administrator', 'editor', 'author'],
-                'help' => __('Only users with these roles can be chosen as members. Save to refresh the member list.', 'a-ripple-song'),
+                'help' => __('Only users with these roles can be chosen as hosts. Save to refresh the host list.', 'a-ripple-song'),
             ],
             [
                 'type' => 'multiselect',
                 'key' => 'members',
-                'label' => __('Members', 'a-ripple-song'),
+                'label' => __('Hosts', 'a-ripple-song'),
                 'width' => 'half',
                 'options' => fn (): array => Users::options($this->roles('member_roles'), $this->ids('members')),
-                'help' => __('Select one or more WordPress users who make this podcast. Episodes can only choose members from this list.', 'a-ripple-song'),
+                'help' => __('Select one or more WordPress users who host this podcast. Episodes can only choose hosts from this list.', 'a-ripple-song'),
             ],
             [
                 'type' => 'separator',

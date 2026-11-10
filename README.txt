@@ -23,7 +23,7 @@ Documentation: https://aripplesong.com/
 * Duration, file size and MIME type are filled in automatically when an episode is saved, for audio in the media library or elsewhere on this site.
 * Per-episode metadata: cover, episode type (full / trailer / bonus), episode and season numbers, explicit flag, iTunes block, iTunes title, author override, subtitle and summary.
 * Podcasting 2.0 fields: transcript, chapters, soundbites and a custom GUID.
-* Members (hosts) and guests chosen from the site's users.
+* Hosts and guests chosen from the site's users.
 * A banner image and a "Featured" switch for themes, also switchable from the episode list.
 * `.m4a` / `.m4b` uploads are stored as `audio/x-m4a`, the type Apple Podcasts expects, and `.json` uploads are allowed for chapters and transcripts.
 
@@ -61,7 +61,7 @@ Documentation: https://aripplesong.com/
 1. Upload the plugin folder to `/wp-content/plugins/`, or install the ZIP through `Plugins` -> `Add New Plugin` -> `Upload Plugin`.
 2. Activate the plugin.
 3. Go to `A Ripple Song` -> `Podcast Settings` and fill in the show details: cover, title, description, language, author, owner and Apple Podcasts category.
-4. Optionally set up `Member Settings`, `Subscription Settings` and `Player Settings` under `A Ripple Song`.
+4. Optionally set up `Host & Guest Settings`, `Subscription Settings` and `Player Settings` under `A Ripple Song`.
 5. Create episodes from `Episodes` -> `Add New Episode` and choose an audio file.
 6. Copy the feed URL from `Podcast Settings` (by default `https://your-site.example/feed/podcast/`) and submit it to podcast directories.
 

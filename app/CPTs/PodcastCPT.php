@@ -277,11 +277,11 @@ class PodcastCPT extends CPTAbstract
             [
                 'type' => 'multiselect',
                 'key' => 'members',
-                'label' => __('Members', 'a-ripple-song'),
+                'label' => __('Hosts', 'a-ripple-song'),
                 'width' => 'half',
                 'options' => fn (): array => $this->peopleOptions('members'),
                 'default' => fn (): array => $this->defaultMemberIds(),
-                'help' => __('Select episode members. Only members added in Member Settings are listed.', 'a-ripple-song'),
+                'help' => __('Select episode hosts. Only hosts added in Host & Guest Settings are listed.', 'a-ripple-song'),
             ],
             [
                 'type' => 'multiselect',
@@ -289,7 +289,7 @@ class PodcastCPT extends CPTAbstract
                 'label' => __('Guests', 'a-ripple-song'),
                 'width' => 'half',
                 'options' => fn (): array => $this->peopleOptions('guests'),
-                'help' => __('Select episode guests. Only guests added in Member Settings are listed.', 'a-ripple-song'),
+                'help' => __('Select episode guests. Only guests added in Host & Guest Settings are listed.', 'a-ripple-song'),
             ],
         ];
     }

@@ -379,21 +379,20 @@ msgid "People"
 msgstr "人物"
 
 #: app/CPTs/PodcastCPT.php:280 app/Settings/MemberSetting.php:48
-msgid "Members"
-msgstr "成员"
+msgid "Hosts"
+msgstr "主播"
 
 #: app/CPTs/PodcastCPT.php:284
-msgid ""
-"Select episode members. Only members added in Member Settings are listed."
-msgstr "选择本期成员。这里只列出在成员设置中添加的成员。"
+msgid "Select episode hosts. Only hosts added in Host & Guest Settings are listed."
+msgstr "选择本期主播。这里只列出在主播与嘉宾设置中添加的主播。"
 
 #: app/CPTs/PodcastCPT.php:289 app/Settings/MemberSetting.php:69
 msgid "Guests"
 msgstr "嘉宾"
 
 #: app/CPTs/PodcastCPT.php:292
-msgid "Select episode guests. Only guests added in Member Settings are listed."
-msgstr "选择本期嘉宾。这里只列出在成员设置中添加的嘉宾。"
+msgid "Select episode guests. Only guests added in Host & Guest Settings are listed."
+msgstr "选择本期嘉宾。这里只列出在主播与嘉宾设置中添加的嘉宾。"
 
 #: app/CPTs/PodcastCPT.php:576
 msgid "Statistics"
@@ -643,30 +642,24 @@ msgid "Dashboard"
 msgstr "仪表盘"
 
 #: app/Settings/MemberSetting.php:21
-msgid "Member Settings"
-msgstr "成员设置"
+msgid "Host & Guest Settings"
+msgstr "主播与嘉宾设置"
 
 #: app/Settings/MemberSetting.php:34
-msgid "Podcast Members"
-msgstr "播客成员"
+msgid "Podcast Hosts"
+msgstr "播客主播"
 
 #: app/Settings/MemberSetting.php:39
-msgid "Member Roles"
-msgstr "成员角色"
+msgid "Host Roles"
+msgstr "主播角色"
 
 #: app/Settings/MemberSetting.php:43
-msgid ""
-"Only users with these roles can be chosen as members. Save to refresh the "
-"member list."
-msgstr "只有拥有这些角色的用户可以被选为成员。保存后成员列表会刷新。"
+msgid "Only users with these roles can be chosen as hosts. Save to refresh the host list."
+msgstr "只有拥有这些角色的用户可以被选为主播。保存后主播列表会刷新。"
 
 #: app/Settings/MemberSetting.php:51
-msgid ""
-"Select one or more WordPress users who make this podcast. Episodes can only "
-"choose members from this list."
-msgstr ""
-"从 WordPress 用户中选择一位或多位制作本播客的成员。单集只能从这个列表中选择成"
-"员。"
+msgid "Select one or more WordPress users who host this podcast. Episodes can only choose hosts from this list."
+msgstr "从 WordPress 用户中选择一位或多位主持本播客的主播。单集只能从这个列表中选择主播。"
 
 #: app/Settings/MemberSetting.php:55
 msgid "Podcast Guests"

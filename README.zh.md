@@ -42,7 +42,7 @@ A Ripple Song 是一个 WordPress 播客插件，提供播客节目发布、兼�
 ### 发布你的播客
 
 1. 在 `A Ripple Song > Podcast Settings` 中填写节目封面、标题、简介、语言、作者、所有者和 Apple Podcasts 分类。
-2. 按需配置 `Member Settings`、`Subscription Settings` 和 `Player Settings`。
+2. 按需配置 `Host & Guest Settings`、`Subscription Settings` 和 `Player Settings`。
 3. 在 `Episodes > Add New Episode` 中创建节目并选择音频文件。
 4. 复制 Feed 地址（默认为 `https://your-site.example/feed/podcast/`），提交到各播客平台。
 
