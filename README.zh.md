@@ -2,7 +2,10 @@
 
 A Ripple Song 是一个 WordPress 播客插件，提供播客节目发布、兼容 Apple Podcasts 与 Podcasting 2.0 的 RSS Feed、全站常驻音频播放器以及播放统计。项目基于 WordPress 原生 API 以纯 PHP 编写，前端使用轻量的 esbuild 与 Tailwind CSS 构建流程。
 
-<img src="" alt="A Ripple Song 插件截图" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="screenshots/players-hero-dark.png" />
+  <img src="screenshots/players-hero-light.png" alt="A Ripple Song 的六种播放器样式" />
+</picture>
 
 ## 概述
 
