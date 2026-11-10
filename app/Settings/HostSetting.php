@@ -52,9 +52,7 @@ class HostSetting extends SettingAbstract
 
         // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Checked against the site's roles in validRoles().
         $roles = $this->validRoles(wp_unslash($_POST['source'] ?? []));
-        $checked = array_map('absint', array_filter((array) wp_unslash($_POST['checked'] ?? []), 'is_scalar'));
-        // Same rule as saving: only already saved users stay listed without a ticked role.
-        $options = Users::options($roles, array_intersect($checked, $this->ids($key)));
+        $options = Users::inRoles($roles, $this->ids($key));
 
         wp_send_json_success(array_map(
             static fn (int $id, array $option): array => ['value' => $id] + $option,
@@ -94,10 +92,10 @@ class HostSetting extends SettingAbstract
                 'key' => 'hosts',
                 'label' => __('Hosts', 'a-ripple-song'),
                 'width' => 'half',
-                'options' => fn (): array => Users::options($this->roles('host_roles'), $this->ids('hosts')),
+                'options' => fn (): array => Users::inRoles($this->roles('host_roles'), $this->ids('hosts')),
                 'refresh_from' => 'host_roles',
                 'refresh_action' => self::REFRESH_ACTION,
-                'sanitize' => fn (mixed $value, Field $field, array $input): array => $this->sanitizeUsers($value, 'hosts', $input['host_roles'] ?? []),
+                'sanitize' => fn (mixed $value, Field $field, array $input): array => $this->sanitizeUsers($value, $input['host_roles'] ?? []),
                 'help' => __('Select one or more WordPress users who host this podcast. Episodes can only choose hosts from this list.', 'a-ripple-song'),
             ],
             [
@@ -118,10 +116,10 @@ class HostSetting extends SettingAbstract
                 'key' => 'guests',
                 'label' => __('Guests', 'a-ripple-song'),
                 'width' => 'half',
-                'options' => fn (): array => Users::options($this->roles('guest_roles'), $this->ids('guests')),
+                'options' => fn (): array => Users::inRoles($this->roles('guest_roles'), $this->ids('guests')),
                 'refresh_from' => 'guest_roles',
                 'refresh_action' => self::REFRESH_ACTION,
-                'sanitize' => fn (mixed $value, Field $field, array $input): array => $this->sanitizeUsers($value, 'guests', $input['guest_roles'] ?? []),
+                'sanitize' => fn (mixed $value, Field $field, array $input): array => $this->sanitizeUsers($value, $input['guest_roles'] ?? []),
                 'help' => __('Select the WordPress users who appear as guests. Episodes can only choose guests from this list.', 'a-ripple-song'),
             ],
         ];
@@ -154,19 +152,19 @@ class HostSetting extends SettingAbstract
     }
 
     /**
-     * Keep the submitted users that hold one of the submitted roles or were already saved in the list.
+     * Keep the submitted users that hold one of the submitted roles.
      *
      * The roles come from the same submission, so a role and its users can be picked in one save.
      *
      * @param mixed $value Submitted user IDs.
-     * @param string $key Either hosts or guests.
      * @param mixed $roles Submitted role slugs.
      * @return array<int,int>
      */
-    private function sanitizeUsers(mixed $value, string $key, mixed $roles): array
+    private function sanitizeUsers(mixed $value, mixed $roles): array
     {
-        $allowed = array_keys(Users::options($this->validRoles($roles), $this->ids($key)));
         $submitted = array_map('absint', array_filter(is_array($value) ? $value : [], 'is_scalar'));
+        // Submitted users go first so the list cap never cuts them off.
+        $allowed = array_keys(Users::inRoles($this->validRoles($roles), $submitted));
 
         return array_values(array_unique(array_intersect($submitted, $allowed)));
     }

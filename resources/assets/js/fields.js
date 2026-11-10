@@ -383,8 +383,7 @@
 			action: $choices.data('refreshAction'),
 			nonce: $choices.data('refreshNonce'),
 			field: $choices.data('refreshField'),
-			source: source,
-			checked: checkedValues($choices.find('input[type="checkbox"]'))
+			source: source
 		}).done(function (response) {
 			if (response && response.success) {
 				renderChoices($choices, response.data);

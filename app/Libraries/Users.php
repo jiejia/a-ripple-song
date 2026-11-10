@@ -34,6 +34,44 @@ final class Users
             ]));
         }
 
+        return self::toOptions($users);
+    }
+
+    /**
+     * Return the users holding one of $roles as options, keyed by user ID.
+     *
+     * Unlike options(), users in $first are never listed for their own sake: they only come first, in the given order.
+     *
+     * @param array<int,string> $roles Role slugs whose users are listed.
+     * @param array<int,int|string> $first User IDs listed first when they hold one of the roles, e.g. the saved selection.
+     * @return array<int,array{label:string,image:string,meta:string}>
+     */
+    public static function inRoles(array $roles, array $first = []): array
+    {
+        if ($roles === []) {
+            return [];
+        }
+
+        $first = array_values(array_unique(array_filter(array_map('absint', $first))));
+        $users = $first === [] ? [] : get_users(['include' => $first, 'role__in' => $roles, 'orderby' => 'include']);
+
+        return self::toOptions(array_merge($users, get_users([
+            'role__in' => $roles,
+            'exclude' => $first,
+            'orderby' => 'display_name',
+            'order' => 'ASC',
+            'number' => 500,
+        ])));
+    }
+
+    /**
+     * Turn users into options keyed by user ID, with their avatar and role names.
+     *
+     * @param array<int,\WP_User> $users Users to list.
+     * @return array<int,array{label:string,image:string,meta:string}>
+     */
+    private static function toOptions(array $users): array
+    {
         $roleNames = wp_roles()->get_names();
         $options = [];
 
