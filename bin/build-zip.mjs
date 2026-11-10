@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const slug = 'a-ripple-song';
-const files = ['a-ripple-song.php', 'README.txt', 'LICENSE', 'app', 'resources', 'public'];
+const files = ['a-ripple-song.php', 'README.txt', 'LICENSE', 'THIRD-PARTY-LICENSES.txt', 'app', 'resources', 'public'];
 const output = join(root, '..', `${slug}.zip`);
 
 if (!existsSync(join(root, 'public/dist/player.js'))) {

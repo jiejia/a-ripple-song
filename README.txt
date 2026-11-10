@@ -109,6 +109,16 @@ Yes. A theme can override any front-end template by copying it from `resources/t
 
 Player styles other than "Default" load their fonts from Google Fonts (`https://fonts.googleapis.com`) on front-end pages that show the player. The visitor's browser then sends a request, including its IP address, to Google. No fonts are loaded when the "Default" style is used or when the theme styles the player itself. Google's terms: https://policies.google.com/terms, privacy policy: https://policies.google.com/privacy.
 
+== Third-party libraries ==
+
+The plugin bundles the following open-source code. Full license texts are in `THIRD-PARTY-LICENSES.txt`.
+
+* Howler.js - (c) 2013-2020 James Simpson and GoldFire Studios, Inc. - MIT License - https://howlerjs.com/
+* wavesurfer.js - (c) 2012-2023 katspaugh and contributors - BSD 3-Clause License - https://wavesurfer.xyz/
+* Tailwind CSS - (c) Tailwind Labs, Inc. - MIT License - https://tailwindcss.com/
+* daisyUI - (c) 2020 Pouya Saadeghi - MIT License - https://daisyui.com/
+* Lucide icons - (c) 2026 Lucide Icons and Contributors - ISC License - https://lucide.dev/
+
 == Screenshots ==
 
 1. `A Ripple Song` -> `Dashboard` with play statistics and health checks
