@@ -128,8 +128,3 @@ The plugin bundles the following open-source code. Full license texts are in `TH
 3. Episode details on the `Episodes` edit screen
 4. The global player bar and its "Now Playing" panel
 5. `/feed/podcast/` RSS output
-
-== Changelog ==
-
-= 0.5.0 =
-Beta release.
