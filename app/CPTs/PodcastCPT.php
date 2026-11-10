@@ -7,6 +7,7 @@ defined('ABSPATH') || exit;
 use Jiejia\ARippleSong\Abstracts\CPTAbstract;
 use Jiejia\ARippleSong\Feeds\PodcastFeed;
 use Jiejia\ARippleSong\Libraries\Users;
+use Jiejia\ARippleSong\Settings\MemberSetting;
 
 /**
  * Defines the podcast episode custom post type.
@@ -278,17 +279,17 @@ class PodcastCPT extends CPTAbstract
                 'key' => 'members',
                 'label' => __('Members', 'a-ripple-song'),
                 'width' => 'half',
-                'options' => Users::options(...),
+                'options' => fn (): array => $this->peopleOptions('members'),
                 'default' => fn (): array => $this->defaultMemberIds(),
-                'help' => __('Select episode members (administrators, authors, editors).', 'a-ripple-song'),
+                'help' => __('Select episode members. Only members added in Member Settings are listed.', 'a-ripple-song'),
             ],
             [
                 'type' => 'multiselect',
                 'key' => 'guests',
                 'label' => __('Guests', 'a-ripple-song'),
                 'width' => 'half',
-                'options' => Users::options(...),
-                'help' => __('Select episode guests (contributors).', 'a-ripple-song'),
+                'options' => fn (): array => $this->peopleOptions('guests'),
+                'help' => __('Select episode guests. Only guests added in Member Settings are listed.', 'a-ripple-song'),
             ],
         ];
     }
@@ -300,14 +301,44 @@ class PodcastCPT extends CPTAbstract
      */
     private function defaultMemberIds(): array
     {
-        $currentUser = wp_get_current_user();
-        $allowedRoles = ['administrator', 'author', 'editor'];
+        $currentUserId = get_current_user_id();
 
-        if (! $currentUser->exists() || array_intersect($allowedRoles, (array) $currentUser->roles) === []) {
-            return [];
+        return in_array($currentUserId, (new MemberSetting())->ids('members'), true) ? [$currentUserId] : [];
+    }
+
+    /**
+     * Return the users an episode may pick for its members or guests: the list from the member settings,
+     * plus users already saved on the episode so editing an older episode never drops them silently.
+     *
+     * @param string $key Either members or guests.
+     * @return array<int,array{label:string,image:string,meta:string}>
+     */
+    private function peopleOptions(string $key): array
+    {
+        $ids = (new MemberSetting())->ids($key);
+        $postId = $this->editedPostId();
+
+        if ($postId > 0) {
+            $ids = array_merge($ids, array_map('absint', (array) get_post_meta($postId, $this->fieldMetaKey($key), true)));
         }
 
-        return [(int) $currentUser->ID];
+        return Users::options([], $ids);
+    }
+
+    /**
+     * Return the ID of the episode being edited or saved in the classic editor form, or 0.
+     *
+     * @return int
+     */
+    private function editedPostId(): int
+    {
+        // phpcs:disable WordPress.Security.NonceVerification -- Only reads the post ID to look up saved values; saving verifies the nonce.
+        if (isset($_POST['post_ID'])) {
+            return absint(wp_unslash($_POST['post_ID']));
+        }
+
+        return isset($_GET['post']) ? absint(wp_unslash($_GET['post'])) : 0;
+        // phpcs:enable WordPress.Security.NonceVerification
     }
 
     /**

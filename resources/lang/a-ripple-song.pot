@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-30T06:38:00+00:00\n"
+"POT-Creation-Date: 2026-11-10T00:09:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: a-ripple-song\n"
@@ -124,7 +124,7 @@ msgstr ""
 
 #: app/CPTs/FeaturedColumn.php:58
 #: app/CPTs/FeaturedColumn.php:62
-#: app/CPTs/PodcastCPT.php:199
+#: app/CPTs/PodcastCPT.php:200
 msgid "Featured"
 msgstr ""
 
@@ -146,254 +146,255 @@ msgstr ""
 msgid "The change could not be saved."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:25
+#: app/CPTs/PodcastCPT.php:26
 #: resources/templates/dashboard/page.php:311
 msgid "Episode"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:35
+#: app/CPTs/PodcastCPT.php:36
 msgid "Episodes"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:50
+#: app/CPTs/PodcastCPT.php:51
 msgid "Audio"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:55
+#: app/CPTs/PodcastCPT.php:56
 msgid "Audio File"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:64
+#: app/CPTs/PodcastCPT.php:65
 msgid "Required. Upload an audio file; the saved value is the audio file URL."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:69
-#: app/CPTs/PodcastCPT.php:259
+#: app/CPTs/PodcastCPT.php:70
+#: app/CPTs/PodcastCPT.php:260
 msgid "Duration (seconds)"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:73
-#: app/CPTs/PodcastCPT.php:82
-#: app/CPTs/PodcastCPT.php:91
+#: app/CPTs/PodcastCPT.php:74
+#: app/CPTs/PodcastCPT.php:83
+#: app/CPTs/PodcastCPT.php:92
 msgid "Auto detected from \"Audio File\"."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:78
+#: app/CPTs/PodcastCPT.php:79
 msgid "Audio Length (bytes)"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:87
+#: app/CPTs/PodcastCPT.php:88
 msgid "Audio MIME Type"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:96
+#: app/CPTs/PodcastCPT.php:97
 msgid "Podcast Metadata"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:101
+#: app/CPTs/PodcastCPT.php:102
 msgid "Episode Cover (square)"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:103
+#: app/CPTs/PodcastCPT.php:104
 msgid "Optional. Square JPG/PNG between 1400-3000px, at most 512 KB, without transparency. Overrides channel cover."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:108
+#: app/CPTs/PodcastCPT.php:109
 msgid "Episode Type"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:111
+#: app/CPTs/PodcastCPT.php:112
 msgid "full"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:112
+#: app/CPTs/PodcastCPT.php:113
 msgid "trailer"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:113
+#: app/CPTs/PodcastCPT.php:114
 msgid "bonus"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:116
+#: app/CPTs/PodcastCPT.php:117
 msgid "Required. full / trailer / bonus."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:121
+#: app/CPTs/PodcastCPT.php:122
 msgid "Episode Number"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:124
+#: app/CPTs/PodcastCPT.php:125
 msgid "Optional but recommended. Integer."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:129
+#: app/CPTs/PodcastCPT.php:130
 msgid "Season Number"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:132
+#: app/CPTs/PodcastCPT.php:133
 msgid "Optional. Integer."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:137
+#: app/CPTs/PodcastCPT.php:138
 msgid "Explicit"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:141
+#: app/CPTs/PodcastCPT.php:142
 msgid "clean"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:142
+#: app/CPTs/PodcastCPT.php:143
 #: app/Settings/PodcastSetting.php:109
 msgid "explicit"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:145
+#: app/CPTs/PodcastCPT.php:146
 msgid "Required. clean / explicit."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:150
+#: app/CPTs/PodcastCPT.php:151
 msgid "iTunes Block"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:153
+#: app/CPTs/PodcastCPT.php:154
 msgid "Optional. Turn on to hide this episode in Apple Podcasts."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:158
+#: app/CPTs/PodcastCPT.php:159
 #: app/Settings/PodcastSetting.php:249
 msgid "iTunes Title (optional)"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:160
+#: app/CPTs/PodcastCPT.php:161
 msgid "Optional. Apple Podcasts: overrides the episode title for <itunes:title>."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:165
+#: app/CPTs/PodcastCPT.php:166
 msgid "Episode Author (override)"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:167
+#: app/CPTs/PodcastCPT.php:168
 msgid "Optional. Overrides channel author for this episode."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:172
+#: app/CPTs/PodcastCPT.php:173
 msgid "Subtitle"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:173
+#: app/CPTs/PodcastCPT.php:174
 msgid "Optional. Short subtitle for iTunes."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:178
+#: app/CPTs/PodcastCPT.php:179
 msgid "Summary"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:179
+#: app/CPTs/PodcastCPT.php:180
 msgid "Optional. Plain text summary for iTunes."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:184
+#: app/CPTs/PodcastCPT.php:185
 msgid "Display"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:185
+#: app/CPTs/PodcastCPT.php:186
 msgid "How themes present this episode on the site."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:190
+#: app/CPTs/PodcastCPT.php:191
 msgid "Banner"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:194
+#: app/CPTs/PodcastCPT.php:195
 msgid "Optional. Wide image shown by themes; it is cropped to 864 × 278.5 (saved at up to 1728 × 557 px) after you choose it."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:202
+#: app/CPTs/PodcastCPT.php:203
 msgid "Optional. Themes can highlight featured episodes. Also switchable in the episode list."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:207
+#: app/CPTs/PodcastCPT.php:208
 msgid "Podcasting 2.0 & Advanced"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:212
+#: app/CPTs/PodcastCPT.php:213
 msgid "Transcript (optional)"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:216
+#: app/CPTs/PodcastCPT.php:217
 msgid "Optional. Upload a transcript file or enter its URL (vtt/srt/json/html/txt/pdf)."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:221
+#: app/CPTs/PodcastCPT.php:222
 msgid "Custom GUID (optional)"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:223
+#: app/CPTs/PodcastCPT.php:224
 msgid "Optional. If empty, feed uses WP permalink as GUID."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:228
+#: app/CPTs/PodcastCPT.php:229
 msgid "Chapters (Podcasting 2.0)"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:231
+#: app/CPTs/PodcastCPT.php:232
 msgid "Optional. Upload a chapters JSON file or enter its URL for <podcast:chapters>."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:236
+#: app/CPTs/PodcastCPT.php:237
 msgid "Chapters MIME Type"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:239
+#: app/CPTs/PodcastCPT.php:240
 msgid "Optional. Defaults to application/json+chapters."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:244
+#: app/CPTs/PodcastCPT.php:245
 msgid "Soundbites"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:245
+#: app/CPTs/PodcastCPT.php:246
 msgid "Soundbite"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:247
+#: app/CPTs/PodcastCPT.php:248
 msgid "Optional. Adds one or more <podcast:soundbite> tags."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:252
+#: app/CPTs/PodcastCPT.php:253
 msgid "Start Time (seconds)"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:266
+#: app/CPTs/PodcastCPT.php:267
 msgid "Title (optional)"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:274
+#: app/CPTs/PodcastCPT.php:275
 msgid "People"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:279
-#: app/Settings/MemberSetting.php:37
+#: app/CPTs/PodcastCPT.php:280
+#: app/Settings/MemberSetting.php:48
 msgid "Members"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:283
-msgid "Select episode members (administrators, authors, editors)."
+#: app/CPTs/PodcastCPT.php:284
+msgid "Select episode members. Only members added in Member Settings are listed."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:288
+#: app/CPTs/PodcastCPT.php:289
+#: app/Settings/MemberSetting.php:69
 msgid "Guests"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:291
-msgid "Select episode guests (contributors)."
+#: app/CPTs/PodcastCPT.php:292
+msgid "Select episode guests. Only guests added in Member Settings are listed."
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:493
+#: app/CPTs/PodcastCPT.php:576
 msgid "Statistics"
 msgstr ""
 
-#: app/CPTs/PodcastCPT.php:510
+#: app/CPTs/PodcastCPT.php:593
 #: resources/templates/dashboard/page.php:172
 #: resources/templates/dashboard/page.php:208
 #: resources/templates/dashboard/page.php:217
@@ -524,112 +525,116 @@ msgid_plural "%s plays"
 msgstr[0] ""
 msgstr[1] ""
 
-#: app/Player/GlobalPlayer.php:189
+#: app/Player/GlobalPlayer.php:205
 msgid "Playing"
 msgstr ""
 
-#: app/Player/GlobalPlayer.php:190
+#: app/Player/GlobalPlayer.php:206
 msgid "Paused"
 msgstr ""
 
-#: app/Player/GlobalPlayer.php:191
+#: app/Player/GlobalPlayer.php:207
 msgid "Loading…"
 msgstr ""
 
-#: app/Player/GlobalPlayer.php:192
+#: app/Player/GlobalPlayer.php:208
 msgid "The audio could not be loaded."
 msgstr ""
 
-#: app/Player/GlobalPlayer.php:193
-#: resources/templates/player/skins/default.php:79
-#: resources/templates/player/skins/default.php:140
+#: app/Player/GlobalPlayer.php:209
+#: resources/templates/player/parts/mini.php:59
+#: resources/templates/player/parts/resume.php:47
+#: resources/templates/player/skins/ars-default.php:66
 msgid "Play"
 msgstr ""
 
-#: app/Player/GlobalPlayer.php:194
-#: resources/templates/episode/meta/default.php:26
+#: app/Player/GlobalPlayer.php:210
+#: resources/templates/episode/meta/ars-default.php:26
 msgid "Pause"
 msgstr ""
 
-#: app/Player/GlobalPlayer.php:195
-#: resources/templates/player/skins/default.php:99
-#: resources/templates/player/skins/default.php:151
+#: app/Player/GlobalPlayer.php:211
+#: resources/templates/player/skins/ars-default.php:86
 msgid "Mute"
 msgstr ""
 
-#: app/Player/GlobalPlayer.php:196
+#: app/Player/GlobalPlayer.php:212
 msgid "Unmute"
 msgstr ""
 
-#: app/Player/GlobalPlayer.php:197
-#: resources/templates/player/parts/mini.php:36
+#: app/Player/GlobalPlayer.php:213
+#: resources/templates/player/parts/collapse.php:24
 msgid "Collapse player"
 msgstr ""
 
-#: app/Player/GlobalPlayer.php:198
+#: app/Player/GlobalPlayer.php:214
+#: resources/templates/player/parts/mini.php:66
 msgid "Expand player"
 msgstr ""
 
 #. translators: %s: episode number.
-#: app/Player/GlobalPlayer.php:198
+#: app/Player/GlobalPlayer.php:216
 #, php-format
 msgid "EP.%s"
 msgstr ""
 
-#: app/Player/PlayerSkin.php:38
+#: app/Player/PlayerSkin.php:41
 msgid "Default: plain bar"
 msgstr ""
 
-#: app/Player/PlayerSkin.php:40
+#: app/Player/PlayerSkin.php:42
 msgid "Broadcast: Swiss brutalist, ON AIR light"
 msgstr ""
 
-#: app/Player/PlayerSkin.php:41
+#: app/Player/PlayerSkin.php:43
 msgid "Evening Paper: newspaper, serif"
 msgstr ""
 
-#: app/Player/PlayerSkin.php:42
+#: app/Player/PlayerSkin.php:44
 msgid "Pulse: dark app, electric blue"
 msgstr ""
 
-#: app/Player/PlayerSkin.php:43
+#: app/Player/PlayerSkin.php:45
 msgid "Cassette: 70s tape deck, VU meters"
 msgstr ""
 
-#: app/Player/PlayerSkin.php:44
+#: app/Player/PlayerSkin.php:46
 msgid "Aurora: frosted glass capsule"
 msgstr ""
 
-#: app/Player/PlayerSkin.php:45
+#: app/Player/PlayerSkin.php:47
 msgid "Terminal: CRT command line"
 msgstr ""
 
-#: app/Player/PlayerSkin.php:46
+#: app/Player/PlayerSkin.php:48
 msgid "Zine: risograph collage"
 msgstr ""
 
-#: app/Player/PlayerSkin.php:47
+#: app/Player/PlayerSkin.php:49
 msgid "Soft: neumorphic radio, volume knob"
 msgstr ""
 
-#: app/Player/PlayerSkin.php:48
+#: app/Player/PlayerSkin.php:50
 msgid "Circle: social feed card"
 msgstr ""
 
-#: app/Player/PlayerSkin.php:49
+#: app/Player/PlayerSkin.php:51
 msgid "Coral: listening dashboard"
 msgstr ""
 
-#: app/Player/PlayerSkin.php:50
+#: app/Player/PlayerSkin.php:52
 msgid "Wisteria: soft purple mobile app"
 msgstr ""
 
+#: app/Player/PlayerSkin.php:53
 msgid "Petal: component-library site, floating glass bar"
 msgstr ""
 
+#: app/Player/PlayerSkin.php:54
 msgid "Prisma: black and white minimal, thin-line capsule"
 msgstr ""
 
+#: app/Player/PlayerSkin.php:55
 msgid "Bazaar: shopping app, electric purple floating bar"
 msgstr ""
 
@@ -637,16 +642,40 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
-#: app/Settings/MemberSetting.php:19
+#: app/Settings/MemberSetting.php:21
 msgid "Member Settings"
 msgstr ""
 
-#: app/Settings/MemberSetting.php:32
+#: app/Settings/MemberSetting.php:34
 msgid "Podcast Members"
 msgstr ""
 
 #: app/Settings/MemberSetting.php:39
-msgid "Select one or more WordPress users who make this podcast."
+msgid "Member Roles"
+msgstr ""
+
+#: app/Settings/MemberSetting.php:43
+msgid "Only users with these roles can be chosen as members. Save to refresh the member list."
+msgstr ""
+
+#: app/Settings/MemberSetting.php:51
+msgid "Select one or more WordPress users who make this podcast. Episodes can only choose members from this list."
+msgstr ""
+
+#: app/Settings/MemberSetting.php:55
+msgid "Podcast Guests"
+msgstr ""
+
+#: app/Settings/MemberSetting.php:60
+msgid "Guest Roles"
+msgstr ""
+
+#: app/Settings/MemberSetting.php:64
+msgid "Only users with these roles can be chosen as guests. Save to refresh the guest list."
+msgstr ""
+
+#: app/Settings/MemberSetting.php:72
+msgid "Select the WordPress users who appear as guests. Episodes can only choose guests from this list."
 msgstr ""
 
 #: app/Settings/PlayerSetting.php:19
@@ -710,94 +739,66 @@ msgid "Applies to the player bar of every style. The live spectrum only moves fo
 msgstr ""
 
 #: app/Settings/PlayerSetting.php:82
-msgid "Player Width"
-msgstr ""
-
-#: app/Settings/PlayerSetting.php:86
-msgid "Match the theme's wide width"
-msgstr ""
-
-#: app/Settings/PlayerSetting.php:87
-msgid "Match the theme's wide width, full-width background"
-msgstr ""
-
-#: app/Settings/PlayerSetting.php:88
-msgid "Match the theme's content width"
-msgstr ""
-
-#: app/Settings/PlayerSetting.php:89
-msgid "The style's own width"
-msgstr ""
-
-#: app/Settings/PlayerSetting.php:90
-msgid "Full width"
-msgstr ""
-
-#: app/Settings/PlayerSetting.php:93
-msgid "Theme widths are measured from the theme's WordPress layout (block themes and themes with theme.json), so the bar lines up with the header, footer or post content. With a full-width background the bar spans the whole window with square corners, and its controls line up with the theme's wide width. Themes without it keep the style's own width."
-msgstr ""
-
-#: app/Settings/PlayerSetting.php:98
 msgid "Player Bar Background"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:102
+#: app/Settings/PlayerSetting.php:86
 msgid "Translucent (frosted glass)"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:103
+#: app/Settings/PlayerSetting.php:87
 msgid "Solid"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:106
+#: app/Settings/PlayerSetting.php:90
 msgid "Translucent lets the page show through the bar, blurred. The Aurora style is always frosted."
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:111
+#: app/Settings/PlayerSetting.php:95
 msgid "Player Colors"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:115
+#: app/Settings/PlayerSetting.php:99
 msgid "Follow the site theme (auto detect)"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:116
+#: app/Settings/PlayerSetting.php:100
 msgid "Follow the visitor's system setting"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:117
+#: app/Settings/PlayerSetting.php:101
 msgid "Always light"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:118
+#: app/Settings/PlayerSetting.php:102
 msgid "Always dark"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:121
+#: app/Settings/PlayerSetting.php:105
 msgid "Every style has a light and a dark variant. Auto detect reads the light / dark markers and the background color of the current theme, and follows its toggle. Ignored when the theme styles the player itself."
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:125
+#: app/Settings/PlayerSetting.php:109
 msgid "Episode Page"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:130
+#: app/Settings/PlayerSetting.php:114
 msgid "Episode Meta Bar"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:134
+#: app/Settings/PlayerSetting.php:118
 msgid "Before the episode content"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:135
+#: app/Settings/PlayerSetting.php:119
 msgid "After the episode content"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:136
+#: app/Settings/PlayerSetting.php:120
 msgid "Do not show"
 msgstr ""
 
-#: app/Settings/PlayerSetting.php:139
+#: app/Settings/PlayerSetting.php:123
 msgid "Play and favorite buttons plus the play count on single episode pages with audio, in the player style; favorites are kept in the visitor's browser. While the global player is off, WordPress's own audio player is shown instead."
 msgstr ""
 
@@ -2001,15 +2002,15 @@ msgstr ""
 msgid "and %s more"
 msgstr ""
 
-#: resources/templates/episode/meta/default.php:26
+#: resources/templates/episode/meta/ars-default.php:26
 msgid "Play episode"
 msgstr ""
 
-#: resources/templates/episode/meta/default.php:30
+#: resources/templates/episode/meta/ars-default.php:30
 msgid "Remove from favorites"
 msgstr ""
 
-#: resources/templates/episode/meta/default.php:30
+#: resources/templates/episode/meta/ars-default.php:30
 msgid "Add to favorites"
 msgstr ""
 
@@ -2095,74 +2096,81 @@ msgstr ""
 msgid "Save Settings"
 msgstr ""
 
-#: resources/templates/player/parts/progress.php:48
-#: resources/templates/player/skins/default.php:131
+#: resources/templates/player/parts/mini.php:56
+#: resources/templates/player/parts/progress.php:70
 msgid "Playback position"
 msgstr ""
 
-#: resources/templates/player/skins/default.php:57
-msgid "Audio player"
-msgstr ""
-
-#: resources/templates/player/skins/default.php:62
-msgid "Open Now Playing"
-msgstr ""
-
-#: resources/templates/player/skins/default.php:77
-#: resources/templates/player/skins/default.php:138
-msgid "Previous episode"
-msgstr ""
-
-#: resources/templates/player/skins/default.php:78
-#: resources/templates/player/skins/default.php:139
-msgid "Back 15 seconds"
-msgstr ""
-
-#: resources/templates/player/skins/default.php:84
-#: resources/templates/player/skins/default.php:145
-msgid "Forward 30 seconds"
-msgstr ""
-
-#: resources/templates/player/skins/default.php:85
-#: resources/templates/player/skins/default.php:146
-msgid "Next episode"
-msgstr ""
-
-#: resources/templates/player/skins/default.php:98
-#: resources/templates/player/skins/default.php:150
-msgid "Playback speed"
-msgstr ""
-
-#: resources/templates/player/skins/default.php:103
-#: resources/templates/player/skins/default.php:155
-msgid "Volume"
-msgstr ""
-
-#: resources/templates/player/skins/default.php:106
-msgid "Open Now Playing and queue"
-msgstr ""
-
-#: resources/templates/player/skins/default.php:111
-#: resources/templates/player/skins/default.php:114
-msgid "Now Playing"
-msgstr ""
-
-#: resources/templates/player/skins/default.php:115
-msgid "Close Now Playing"
-msgstr ""
-
-#: resources/templates/player/skins/default.php:161
+#: resources/templates/player/parts/mini.php:65
+#: resources/templates/player/skins/ars-default.php:96
 msgid "Queue"
 msgstr ""
 
-#: resources/templates/player/skins/default.php:162
+#: resources/templates/player/parts/progress.php:81
+msgid "Loading audio"
+msgstr ""
+
+#: resources/templates/player/parts/queue.php:46
+#: resources/templates/player/parts/queue.php:51
+#: resources/templates/player/parts/queue.php:56
+msgid "Playlist"
+msgstr ""
+
+#: resources/templates/player/parts/queue.php:50
+#: resources/templates/player/parts/queue.php:57
+#: resources/templates/player/parts/queue.php:79
+msgid "Close"
+msgstr ""
+
+#. translators: %s: number of episodes in the playlist.
+#: resources/templates/player/parts/queue.php:64
+#, php-format
+msgid "Total %s episodes"
+msgstr ""
+
+#: resources/templates/player/parts/queue.php:66
+#: resources/templates/player/parts/queue.php:76
 msgid "Clear"
 msgstr ""
 
-#: resources/templates/player/skins/default.php:164
+#: resources/templates/player/parts/queue.php:73
+msgid "Clear the playlist?"
+msgstr ""
+
+#: resources/templates/player/parts/queue.php:75
+#: resources/templates/player/parts/resume.php:48
+msgid "Cancel"
+msgstr ""
+
+#: resources/templates/player/parts/queue.php:92
+msgid "Remove from queue"
+msgstr ""
+
+#: resources/templates/player/parts/queue.php:96
 msgid "The queue is empty."
 msgstr ""
 
-#: resources/templates/player/skins/default.php:173
-msgid "Remove from queue"
+#: resources/templates/player/parts/resume.php:40
+msgid "Continue playing?"
+msgstr ""
+
+#: resources/templates/player/skins/ars-default.php:50
+msgid "Audio player"
+msgstr ""
+
+#: resources/templates/player/skins/ars-default.php:65
+msgid "Previous episode"
+msgstr ""
+
+#: resources/templates/player/skins/ars-default.php:71
+msgid "Next episode"
+msgstr ""
+
+#: resources/templates/player/skins/ars-default.php:90
+msgid "Volume"
+msgstr ""
+
+#: resources/templates/player/skins/ars-default.php:92
+#: resources/templates/player/skins/ars-default.php:95
+msgid "Playback speed"
 msgstr ""
