@@ -5,6 +5,8 @@ namespace Jiejia\ARippleSong\Settings;
 defined('ABSPATH') || exit;
 
 use Jiejia\ARippleSong\Abstracts\SettingAbstract;
+use Jiejia\ARippleSong\App;
+use Jiejia\ARippleSong\Libraries\Fields\Field;
 use Jiejia\ARippleSong\Libraries\Users;
 
 /**
@@ -14,7 +16,52 @@ use Jiejia\ARippleSong\Libraries\Users;
  */
 class HostSetting extends SettingAbstract
 {
+    /**
+     * Ajax and nonce action that reloads a user list after its roles change.
+     */
+    private const REFRESH_ACTION = App::PREFIX . 'host_setting_users';
+
     public string $slug = 'host_settings';
+
+    /**
+     * {@inheritDoc}
+     */
+    public function register(): void
+    {
+        add_action('wp_ajax_' . self::REFRESH_ACTION, [$this, 'refreshUsers']);
+    }
+
+    /**
+     * Ajax: return the users a list offers for the roles currently ticked on the page.
+     *
+     * @return void
+     */
+    public function refreshUsers(): void
+    {
+        check_ajax_referer(self::REFRESH_ACTION, 'nonce');
+
+        if (! current_user_can('manage_options')) {
+            wp_send_json_error(null, 403);
+        }
+
+        $key = isset($_POST['field']) ? sanitize_key(wp_unslash($_POST['field'])) : '';
+
+        if (! in_array($key, ['hosts', 'guests'], true)) {
+            wp_send_json_error(null, 400);
+        }
+
+        // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Checked against the site's roles in validRoles().
+        $roles = $this->validRoles(wp_unslash($_POST['source'] ?? []));
+        $checked = array_map('absint', array_filter((array) wp_unslash($_POST['checked'] ?? []), 'is_scalar'));
+        // Same rule as saving: only already saved users stay listed without a ticked role.
+        $options = Users::options($roles, array_intersect($checked, $this->ids($key)));
+
+        wp_send_json_success(array_map(
+            static fn (int $id, array $option): array => ['value' => $id] + $option,
+            array_keys($options),
+            $options
+        ));
+    }
 
     public function title(): string
     {
@@ -40,7 +87,7 @@ class HostSetting extends SettingAbstract
                 'width' => 'half',
                 'options' => Users::roleOptions(...),
                 'default' => ['administrator', 'editor', 'author'],
-                'help' => __('Only users with these roles can be chosen as hosts. Save to refresh the host list.', 'a-ripple-song'),
+                'help' => __('Only users with these roles can be chosen as hosts.', 'a-ripple-song'),
             ],
             [
                 'type' => 'multiselect',
@@ -48,6 +95,9 @@ class HostSetting extends SettingAbstract
                 'label' => __('Hosts', 'a-ripple-song'),
                 'width' => 'half',
                 'options' => fn (): array => Users::options($this->roles('host_roles'), $this->ids('hosts')),
+                'refresh_from' => 'host_roles',
+                'refresh_action' => self::REFRESH_ACTION,
+                'sanitize' => fn (mixed $value, Field $field, array $input): array => $this->sanitizeUsers($value, 'hosts', $input['host_roles'] ?? []),
                 'help' => __('Select one or more WordPress users who host this podcast. Episodes can only choose hosts from this list.', 'a-ripple-song'),
             ],
             [
@@ -61,7 +111,7 @@ class HostSetting extends SettingAbstract
                 'width' => 'half',
                 'options' => Users::roleOptions(...),
                 'default' => ['contributor'],
-                'help' => __('Only users with these roles can be chosen as guests. Save to refresh the guest list.', 'a-ripple-song'),
+                'help' => __('Only users with these roles can be chosen as guests.', 'a-ripple-song'),
             ],
             [
                 'type' => 'multiselect',
@@ -69,6 +119,9 @@ class HostSetting extends SettingAbstract
                 'label' => __('Guests', 'a-ripple-song'),
                 'width' => 'half',
                 'options' => fn (): array => Users::options($this->roles('guest_roles'), $this->ids('guests')),
+                'refresh_from' => 'guest_roles',
+                'refresh_action' => self::REFRESH_ACTION,
+                'sanitize' => fn (mixed $value, Field $field, array $input): array => $this->sanitizeUsers($value, 'guests', $input['guest_roles'] ?? []),
                 'help' => __('Select the WordPress users who appear as guests. Episodes can only choose guests from this list.', 'a-ripple-song'),
             ],
         ];
@@ -98,6 +151,37 @@ class HostSetting extends SettingAbstract
     public function ids(string $key): array
     {
         return array_values(array_filter(array_map('absint', (array) $this->value($key))));
+    }
+
+    /**
+     * Keep the submitted users that hold one of the submitted roles or were already saved in the list.
+     *
+     * The roles come from the same submission, so a role and its users can be picked in one save.
+     *
+     * @param mixed $value Submitted user IDs.
+     * @param string $key Either hosts or guests.
+     * @param mixed $roles Submitted role slugs.
+     * @return array<int,int>
+     */
+    private function sanitizeUsers(mixed $value, string $key, mixed $roles): array
+    {
+        $allowed = array_keys(Users::options($this->validRoles($roles), $this->ids($key)));
+        $submitted = array_map('absint', array_filter(is_array($value) ? $value : [], 'is_scalar'));
+
+        return array_values(array_unique(array_intersect($submitted, $allowed)));
+    }
+
+    /**
+     * Return the submitted role slugs that exist on this site.
+     *
+     * @param mixed $roles Submitted role slugs.
+     * @return array<int,string>
+     */
+    private function validRoles(mixed $roles): array
+    {
+        $submitted = array_map('strval', array_filter(is_array($roles) ? $roles : [], 'is_scalar'));
+
+        return array_values(array_intersect($submitted, array_keys(Users::roleOptions())));
     }
 
     /**

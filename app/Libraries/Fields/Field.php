@@ -30,6 +30,8 @@ final readonly class Field
      * @param bool $copyable Single-line inputs: show a Copy button next to the input.
      * @param array<string,mixed> $attributes Extra control attributes; number fields honor min, max and step.
      * @param array<int|string,mixed>|Closure $options Select options: labels or ['label', 'image', 'meta'], or a Closure returning them.
+     * @param string $refreshFrom Multiselect: key of the checkbox field whose changes reload these options in the browser.
+     * @param string $refreshAction Multiselect: wp_ajax action, and nonce action, that returns the options for refreshFrom.
      * @param string|array<int,string> $mediaType File: restricts the media library, e.g. "audio" or ['text/vtt', 'application/pdf']; unlike mime_types it is not validated.
      * @param array<string,string> $autofill File / image: target field key => attachment property (duration, filesize, mime, width, height, ...).
      * @param ImageDimensions $dimensions Image: size rules.
@@ -42,7 +44,7 @@ final readonly class Field
      * @param string $rowTitleField Complex: sub field key whose value titles the row.
      * @param string $addLabel Complex: text of the add-row button.
      * @param string|Closure $content Html: markup, or a Closure returning it.
-     * @param Closure(mixed,Field):mixed|null $sanitize Overrides the built-in sanitizer.
+     * @param Closure(mixed,Field,array<string,mixed>):mixed|null $sanitize Overrides the built-in sanitizer; receives the value, the field and all unsanitized sibling input.
      */
     public function __construct(
         public FieldType $type = FieldType::Text,
@@ -58,6 +60,8 @@ final readonly class Field
         public bool $copyable = false,
         public array $attributes = [],
         public array|Closure $options = [],
+        public string $refreshFrom = '',
+        public string $refreshAction = '',
         public string|array $mediaType = '',
         public array $autofill = [],
         public ImageDimensions $dimensions = new ImageDimensions(),
@@ -96,6 +100,8 @@ final readonly class Field
             copyable: (bool) ($definition['copyable'] ?? false),
             attributes: (array) ($definition['attributes'] ?? []),
             options: $definition['options'] ?? [],
+            refreshFrom: (string) ($definition['refresh_from'] ?? ''),
+            refreshAction: (string) ($definition['refresh_action'] ?? ''),
             mediaType: is_array($definition['media_type'] ?? null)
                 ? array_values(array_map('strval', $definition['media_type']))
                 : (string) ($definition['media_type'] ?? ''),

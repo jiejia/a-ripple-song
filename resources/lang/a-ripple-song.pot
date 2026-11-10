@@ -655,7 +655,7 @@ msgid "Host Roles"
 msgstr ""
 
 #: app/Settings/HostSetting.php:43
-msgid "Only users with these roles can be chosen as hosts. Save to refresh the host list."
+msgid "Only users with these roles can be chosen as hosts."
 msgstr ""
 
 #: app/Settings/HostSetting.php:51
@@ -671,7 +671,7 @@ msgid "Guest Roles"
 msgstr ""
 
 #: app/Settings/HostSetting.php:64
-msgid "Only users with these roles can be chosen as guests. Save to refresh the guest list."
+msgid "Only users with these roles can be chosen as guests."
 msgstr ""
 
 #: app/Settings/HostSetting.php:72
@@ -2173,4 +2173,8 @@ msgstr ""
 #: resources/templates/player/skins/ars-default.php:92
 #: resources/templates/player/skins/ars-default.php:95
 msgid "Playback speed"
+msgstr ""
+
+#: app/Libraries/Fields/FieldAssets.php:48
+msgid "This list could not be updated. Please try again."
 msgstr ""

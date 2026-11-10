@@ -720,6 +720,11 @@ button.ars-media__preview {
 	color: var(--ars-muted);
 }
 
+.ars-choices.is-loading .ars-choices__list {
+	opacity: 0.55;
+	pointer-events: none;
+}
+
 /* Repeater (complex) */
 
 .ars-fields .ars-repeater__rows {

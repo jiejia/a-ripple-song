@@ -82,8 +82,11 @@ class SettingServiceProvider extends ServiceProviderAbstract
         });
 
         foreach ($this->settings as $settingClass) {
+            $setting = new $settingClass();
+
             // Each settings page saves its fields into a single option.
-            (new OptionStore(new $settingClass()))->register();
+            (new OptionStore($setting))->register();
+            $setting->register();
         }
     }
 }

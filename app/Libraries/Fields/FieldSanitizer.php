@@ -25,7 +25,7 @@ final class FieldSanitizer
 
         foreach ($fields as $field) {
             if ($field->isSavable()) {
-                $values[$field->key] = $this->sanitizeValue($field, $input[$field->key] ?? null);
+                $values[$field->key] = $this->sanitizeValue($field, $input[$field->key] ?? null, $input);
             }
         }
 
@@ -37,12 +37,13 @@ final class FieldSanitizer
      *
      * @param Field $field Field definition.
      * @param mixed $value Submitted value.
+     * @param array<string,mixed> $input Unsanitized values of the whole form, for fields that depend on a sibling.
      * @return mixed
      */
-    public function sanitizeValue(Field $field, mixed $value): mixed
+    public function sanitizeValue(Field $field, mixed $value, array $input = []): mixed
     {
         if ($field->sanitize !== null) {
-            return ($field->sanitize)($value, $field);
+            return ($field->sanitize)($value, $field, $input);
         }
 
         return match ($field->type) {

@@ -275,26 +275,147 @@
 
 	/* Multiselect (checkbox list) */
 
-	$(document).on('change', '.ars-choices input[type="checkbox"]', function () {
-		var $choices = $(this).closest('[data-ars-choices]');
+	// Longer lists get a search box; matches the check in the multiselect template.
+	var SEARCH_THRESHOLD = 7;
+
+	function updateChoiceCount($choices) {
 		var count = $choices.find('input[type="checkbox"]:checked').length;
 
 		$choices.find('.ars-choices__count').text(String($choices.data('countTemplate')).replace('%d', count));
-	});
+	}
 
-	$(document).on('input', '.ars-choices__search-input', function () {
-		var $choices = $(this).closest('[data-ars-choices]');
-		var query = $.trim($(this).val()).toLowerCase();
+	function filterChoices($choices) {
+		var query = $.trim($choices.find('.ars-choices__search-input').val() || '').toLowerCase();
+		var $items = $choices.find('.ars-choices__item');
+		var $empty = $choices.find('.ars-choices__empty');
 		var visible = 0;
 
-		$choices.find('.ars-choices__item').each(function () {
+		$items.each(function () {
 			var match = query === '' || $(this).text().toLowerCase().indexOf(query) !== -1;
 
 			$(this).prop('hidden', !match);
 			visible += match ? 1 : 0;
 		});
 
-		$choices.find('.ars-choices__empty').prop('hidden', visible > 0);
+		if ($empty.data('none')) {
+			$empty.text($items.length ? $empty.data('noMatch') : $empty.data('none'));
+		}
+
+		$empty.prop('hidden', visible > 0);
+	}
+
+	function choiceItem(option, name, key, checked) {
+		var $label = $('<label class="ars-choice">');
+
+		$('<input type="checkbox">')
+			.attr({ name: name, value: option.value, 'data-ars-key': key })
+			.prop('checked', checked)
+			.appendTo($label);
+
+		if (option.image) {
+			$('<img class="ars-choice__image" alt="" loading="lazy">').attr('src', option.image).appendTo($label);
+		}
+
+		$('<span class="ars-choice__label">').text(option.label).appendTo($label);
+
+		if (option.meta) {
+			$('<span class="ars-choice__meta">').text(option.meta).appendTo($label);
+		}
+
+		return $('<li class="ars-choices__item">').append($label);
+	}
+
+	function renderChoices($choices, options) {
+		var name = $choices.data('refreshName');
+		var key = $choices.data('refreshField');
+		var checked = {};
+		var $search = $choices.find('.ars-choices__search');
+
+		$choices.find('input[type="checkbox"]:checked').each(function () {
+			checked[this.value] = true;
+		});
+
+		$choices.find('.ars-choices__list').empty().append($.map(options, function (option) {
+			return choiceItem(option, name, key, checked[option.value] === true);
+		}));
+
+		if (options.length <= SEARCH_THRESHOLD) {
+			$search.find('input').val('');
+		}
+
+		$search.prop('hidden', options.length <= SEARCH_THRESHOLD);
+		filterChoices($choices);
+		updateChoiceCount($choices);
+	}
+
+	function checkedValues($inputs) {
+		return $inputs.filter(':checked').map(function () {
+			return this.value;
+		}).get();
+	}
+
+	function setRefreshError($choices, message) {
+		var $field = $choices.closest('.ars-field');
+
+		$field.data('arsError', message);
+
+		if (message) {
+			$field.data('touched', true);
+		}
+
+		validate();
+	}
+
+	// Reload a list whose options depend on another field; only the newest request may touch it.
+	function refreshChoices($choices, source) {
+		var running = $choices.data('arsRefresh');
+
+		if (running) {
+			running.abort();
+		}
+
+		$choices.addClass('is-loading').attr('aria-busy', 'true');
+
+		var request = $.post(window.ajaxurl, {
+			action: $choices.data('refreshAction'),
+			nonce: $choices.data('refreshNonce'),
+			field: $choices.data('refreshField'),
+			source: source,
+			checked: checkedValues($choices.find('input[type="checkbox"]'))
+		}).done(function (response) {
+			if (response && response.success) {
+				renderChoices($choices, response.data);
+				setRefreshError($choices, '');
+			} else {
+				setRefreshError($choices, l10n.refreshError);
+			}
+		}).fail(function (xhr, status) {
+			if (status !== 'abort') {
+				setRefreshError($choices, l10n.refreshError);
+			}
+		}).always(function () {
+			if ($choices.data('arsRefresh') === request) {
+				$choices.removeClass('is-loading').removeAttr('aria-busy');
+			}
+		});
+
+		$choices.data('arsRefresh', request);
+	}
+
+	$(document).on('change', '.ars-choices input[type="checkbox"]', function () {
+		var $input = $(this);
+		var key = $input.data('arsKey');
+		var $scope = $input.closest('.ars-fields');
+
+		updateChoiceCount($input.closest('[data-ars-choices]'));
+
+		$scope.find('[data-refresh-from="' + key + '"]').each(function () {
+			refreshChoices($(this), checkedValues($scope.find('[data-ars-key="' + key + '"]')));
+		});
+	});
+
+	$(document).on('input', '.ars-choices__search-input', function () {
+		filterChoices($(this).closest('[data-ars-choices]'));
 	});
 
 	// Enter in the search box must not submit the surrounding form.

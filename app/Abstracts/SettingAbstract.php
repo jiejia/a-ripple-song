@@ -20,6 +20,15 @@ abstract class SettingAbstract
     }
 
     /**
+     * Register hooks of this settings page beyond saving its fields.
+     *
+     * @return void
+     */
+    public function register(): void
+    {
+    }
+
+    /**
      * Return the settings page title.
      *
      * @return string

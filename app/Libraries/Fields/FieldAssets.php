@@ -45,6 +45,7 @@ final class FieldAssets
             'imageLoadError' => __('The image could not be loaded.', 'a-ripple-song'),
             /* translators: %s: current file type or size, e.g. "WEBP" or "830.5 KB". */
             'currentFile' => __('Current: %s.', 'a-ripple-song'),
+            'refreshError' => __('This list could not be updated. Please try again.', 'a-ripple-song'),
             'cropTitle' => __('Choose Image', 'a-ripple-song'),
             'cropButton' => __('Select and Crop', 'a-ripple-song'),
         ]);

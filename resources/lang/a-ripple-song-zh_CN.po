@@ -654,8 +654,8 @@ msgid "Host Roles"
 msgstr "主播角色"
 
 #: app/Settings/HostSetting.php:43
-msgid "Only users with these roles can be chosen as hosts. Save to refresh the host list."
-msgstr "只有拥有这些角色的用户可以被选为主播。保存后主播列表会刷新。"
+msgid "Only users with these roles can be chosen as hosts."
+msgstr "只有拥有这些角色的用户可以被选为主播。"
 
 #: app/Settings/HostSetting.php:51
 msgid "Select one or more WordPress users who host this podcast. Episodes can only choose hosts from this list."
@@ -670,10 +670,8 @@ msgid "Guest Roles"
 msgstr "嘉宾角色"
 
 #: app/Settings/HostSetting.php:64
-msgid ""
-"Only users with these roles can be chosen as guests. Save to refresh the "
-"guest list."
-msgstr "只有拥有这些角色的用户可以被选为嘉宾。保存后嘉宾列表会刷新。"
+msgid "Only users with these roles can be chosen as guests."
+msgstr "只有拥有这些角色的用户可以被选为嘉宾。"
 
 #: app/Settings/HostSetting.php:72
 msgid ""
@@ -2278,3 +2276,7 @@ msgstr "播放速度"
 
 #~ msgid "Close Now Playing"
 #~ msgstr "关闭“正在播放”"
+
+#: app/Libraries/Fields/FieldAssets.php:48
+msgid "This list could not be updated. Please try again."
+msgstr "无法更新此列表，请重试。"
