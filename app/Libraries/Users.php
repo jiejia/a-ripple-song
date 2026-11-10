@@ -5,7 +5,7 @@ namespace Jiejia\ARippleSong\Libraries;
 defined('ABSPATH') || exit;
 
 /**
- * WordPress users and roles as field options, for the member settings and the episode member / guest fields.
+ * WordPress users and roles as field options, for the host settings and the episode host / guest fields.
  */
 final class Users
 {

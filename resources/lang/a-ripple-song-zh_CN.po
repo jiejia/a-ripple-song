@@ -378,7 +378,7 @@ msgstr "标题（可选）"
 msgid "People"
 msgstr "人物"
 
-#: app/CPTs/PodcastCPT.php:280 app/Settings/MemberSetting.php:48
+#: app/CPTs/PodcastCPT.php:280 app/Settings/HostSetting.php:48
 msgid "Hosts"
 msgstr "主播"
 
@@ -386,7 +386,7 @@ msgstr "主播"
 msgid "Select episode hosts. Only hosts added in Host & Guest Settings are listed."
 msgstr "选择本期主播。这里只列出在主播与嘉宾设置中添加的主播。"
 
-#: app/CPTs/PodcastCPT.php:289 app/Settings/MemberSetting.php:69
+#: app/CPTs/PodcastCPT.php:289 app/Settings/HostSetting.php:69
 msgid "Guests"
 msgstr "嘉宾"
 
@@ -641,41 +641,41 @@ msgstr "集市：购物 App 风，电光紫浮层播放条"
 msgid "Dashboard"
 msgstr "仪表盘"
 
-#: app/Settings/MemberSetting.php:21
+#: app/Settings/HostSetting.php:21
 msgid "Host & Guest Settings"
 msgstr "主播与嘉宾设置"
 
-#: app/Settings/MemberSetting.php:34
+#: app/Settings/HostSetting.php:34
 msgid "Podcast Hosts"
 msgstr "播客主播"
 
-#: app/Settings/MemberSetting.php:39
+#: app/Settings/HostSetting.php:39
 msgid "Host Roles"
 msgstr "主播角色"
 
-#: app/Settings/MemberSetting.php:43
+#: app/Settings/HostSetting.php:43
 msgid "Only users with these roles can be chosen as hosts. Save to refresh the host list."
 msgstr "只有拥有这些角色的用户可以被选为主播。保存后主播列表会刷新。"
 
-#: app/Settings/MemberSetting.php:51
+#: app/Settings/HostSetting.php:51
 msgid "Select one or more WordPress users who host this podcast. Episodes can only choose hosts from this list."
 msgstr "从 WordPress 用户中选择一位或多位主持本播客的主播。单集只能从这个列表中选择主播。"
 
-#: app/Settings/MemberSetting.php:55
+#: app/Settings/HostSetting.php:55
 msgid "Podcast Guests"
 msgstr "播客嘉宾"
 
-#: app/Settings/MemberSetting.php:60
+#: app/Settings/HostSetting.php:60
 msgid "Guest Roles"
 msgstr "嘉宾角色"
 
-#: app/Settings/MemberSetting.php:64
+#: app/Settings/HostSetting.php:64
 msgid ""
 "Only users with these roles can be chosen as guests. Save to refresh the "
 "guest list."
 msgstr "只有拥有这些角色的用户可以被选为嘉宾。保存后嘉宾列表会刷新。"
 
-#: app/Settings/MemberSetting.php:72
+#: app/Settings/HostSetting.php:72
 msgid ""
 "Select the WordPress users who appear as guests. Episodes can only choose "
 "guests from this list."

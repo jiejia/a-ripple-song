@@ -297,7 +297,7 @@ msgstr "Title (optional)"
 msgid "People"
 msgstr "People"
 
-#: app/CPTs/PodcastCPT.php:279 app/Settings/MemberSetting.php:37
+#: app/CPTs/PodcastCPT.php:279 app/Settings/HostSetting.php:37
 msgid "Members"
 msgstr "Members"
 
@@ -2034,15 +2034,15 @@ msgstr "Bilibili"
 msgid "Directories & Smart Links"
 msgstr "Directories & Smart Links"
 
-#: app/Settings/MemberSetting.php:19
+#: app/Settings/HostSetting.php:19
 msgid "Member Settings"
 msgstr "Member Settings"
 
-#: app/Settings/MemberSetting.php:32
+#: app/Settings/HostSetting.php:32
 msgid "Podcast Members"
 msgstr "Podcast Members"
 
-#: app/Settings/MemberSetting.php:39
+#: app/Settings/HostSetting.php:39
 msgid "Select one or more WordPress users who make this podcast."
 msgstr "Select one or more WordPress users who make this podcast."
 

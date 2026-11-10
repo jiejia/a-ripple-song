@@ -6,9 +6,10 @@ defined('ABSPATH') || exit;
 
 use Jiejia\ARippleSong\Abstracts\ServiceProviderAbstract;
 use Jiejia\ARippleSong\Abstracts\SettingAbstract;
+use Jiejia\ARippleSong\Libraries\HostsMigration;
 use Jiejia\ARippleSong\Libraries\Fields\OptionStore;
 use Jiejia\ARippleSong\Settings\DashboardSetting;
-use Jiejia\ARippleSong\Settings\MemberSetting;
+use Jiejia\ARippleSong\Settings\HostSetting;
 use Jiejia\ARippleSong\Settings\PlayerSetting;
 use Jiejia\ARippleSong\Settings\PodcastSetting;
 use Jiejia\ARippleSong\Settings\SubscriptionSetting;
@@ -27,7 +28,7 @@ class SettingServiceProvider extends ServiceProviderAbstract
     private array $settings = [
         DashboardSetting::class,
         PodcastSetting::class,
-        MemberSetting::class,
+        HostSetting::class,
         SubscriptionSetting::class,
         PlayerSetting::class,
     ];
@@ -39,6 +40,9 @@ class SettingServiceProvider extends ServiceProviderAbstract
      */
     public function register(): void
     {
+        // Before anything reads the settings or the episode meta.
+        add_action('init', [new HostsMigration(), 'run'], 0);
+
         // register admin top level menu
         add_action('admin_menu', function (): void {
 

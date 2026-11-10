@@ -303,15 +303,15 @@ final class GlobalPlayer
             'duration' => (int) $meta('duration'),
             'excerpt' => $text(get_the_excerpt($post)),
             'category' => is_array($terms) && $terms !== [] ? $terms[0]->name : '',
-            'hosts' => $this->hosts($meta('members')),
+            'hosts' => $this->hosts($meta('hosts')),
             'plays' => $this->podcast->playCount($post->ID),
         ];
     }
 
     /**
-     * Join the display names of the episode members, e.g. "Asen / Xiaolu".
+     * Join the display names of the episode hosts, e.g. "Asen / Xiaolu".
      *
-     * @param mixed $ids Stored member user IDs.
+     * @param mixed $ids Stored host user IDs.
      * @return string
      */
     private function hosts(mixed $ids): string

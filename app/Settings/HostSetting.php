@@ -8,13 +8,13 @@ use Jiejia\ARippleSong\Abstracts\SettingAbstract;
 use Jiejia\ARippleSong\Libraries\Users;
 
 /**
- * Member settings page: the WordPress users who make the podcast and appear as guests, stored in the ars_member_settings option.
+ * Host and guest settings page: the WordPress users who host the podcast and appear as guests, stored in the ars_host_settings option.
  *
- * Episodes can only pick their members and guests from the users chosen here; the role fields narrow which users can be chosen.
+ * Episodes can only pick their hosts and guests from the users chosen here; the role fields narrow which users can be chosen.
  */
-class MemberSetting extends SettingAbstract
+class HostSetting extends SettingAbstract
 {
-    public string $slug = 'member_settings';
+    public string $slug = 'host_settings';
 
     public function title(): string
     {
@@ -22,7 +22,7 @@ class MemberSetting extends SettingAbstract
     }
 
     /**
-     * Return member setting field definitions.
+     * Return host and guest setting field definitions.
      *
      * @return array<int,array<string,mixed>>
      */
@@ -35,7 +35,7 @@ class MemberSetting extends SettingAbstract
             ],
             [
                 'type' => 'multiselect',
-                'key' => 'member_roles',
+                'key' => 'host_roles',
                 'label' => __('Host Roles', 'a-ripple-song'),
                 'width' => 'half',
                 'options' => Users::roleOptions(...),
@@ -44,10 +44,10 @@ class MemberSetting extends SettingAbstract
             ],
             [
                 'type' => 'multiselect',
-                'key' => 'members',
+                'key' => 'hosts',
                 'label' => __('Hosts', 'a-ripple-song'),
                 'width' => 'half',
-                'options' => fn (): array => Users::options($this->roles('member_roles'), $this->ids('members')),
+                'options' => fn (): array => Users::options($this->roles('host_roles'), $this->ids('hosts')),
                 'help' => __('Select one or more WordPress users who host this podcast. Episodes can only choose hosts from this list.', 'a-ripple-song'),
             ],
             [
@@ -75,7 +75,7 @@ class MemberSetting extends SettingAbstract
     }
 
     /**
-     * Return the podcast members in the saved order, skipping users that no longer exist.
+     * Return the podcast hosts in the saved order, skipping users that no longer exist.
      *
      * @return array<int,\WP_User>
      */
@@ -83,7 +83,7 @@ class MemberSetting extends SettingAbstract
     {
         $users = array_map(
             static fn (int $id): \WP_User|false => get_userdata($id),
-            $this->ids('members')
+            $this->ids('hosts')
         );
 
         return array_values(array_filter($users));
@@ -92,7 +92,7 @@ class MemberSetting extends SettingAbstract
     /**
      * Return the saved user IDs of a user list field.
      *
-     * @param string $key Either members or guests.
+     * @param string $key Either hosts or guests.
      * @return array<int,int>
      */
     public function ids(string $key): array
@@ -103,7 +103,7 @@ class MemberSetting extends SettingAbstract
     /**
      * Return the saved role slugs of a role field.
      *
-     * @param string $key Either member_roles or guest_roles.
+     * @param string $key Either host_roles or guest_roles.
      * @return array<int,string>
      */
     private function roles(string $key): array

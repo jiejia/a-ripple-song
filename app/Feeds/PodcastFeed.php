@@ -301,7 +301,7 @@ class PodcastFeed extends FeedAbstract
             'itunesTitle' => $text($meta('itunes_title')),
             'subtitle' => $text($meta('episode_subtitle')),
             'image' => $this->encodeUrl($text($meta('episode_image'))) ?: $channel['defaultImage'],
-            'people' => $this->people($meta('members'), $meta('guests')),
+            'people' => $this->people($meta('hosts'), $meta('guests')),
             'transcript' => $transcript !== '' ? ['url' => $transcript, 'type' => $this->transcriptType($transcript)] : null,
             // Podcasting 2.0 requires chapters over https; localhost is allowed for testing.
             'chapters' => preg_match('~^(?:https://|http://localhost(?::\d+)?/)~i', $chapters)
@@ -329,17 +329,17 @@ class PodcastFeed extends FeedAbstract
     }
 
     /**
-     * Build Podcasting 2.0 person entries: members as hosts, then guests; duplicates are dropped.
+     * Build Podcasting 2.0 person entries: hosts, then guests; duplicates are dropped.
      *
-     * @param mixed $members Stored member user IDs.
+     * @param mixed $hosts Stored host user IDs.
      * @param mixed $guests Stored guest user IDs.
      * @return array<int,array{name:string,role:string,href:string,img:string}>
      */
-    private function people(mixed $members, mixed $guests): array
+    private function people(mixed $hosts, mixed $guests): array
     {
         $people = [];
 
-        foreach (['host' => $members, 'guest' => $guests] as $role => $ids) {
+        foreach (['host' => $hosts, 'guest' => $guests] as $role => $ids) {
             foreach (array_unique(array_map('intval', is_array($ids) ? $ids : [])) as $userId) {
                 $user = $userId > 0 ? get_userdata($userId) : false;
                 $name = $user ? ($user->display_name ?: $user->user_nicename ?: $user->user_login) : '';

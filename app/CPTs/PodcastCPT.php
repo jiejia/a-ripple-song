@@ -7,7 +7,7 @@ defined('ABSPATH') || exit;
 use Jiejia\ARippleSong\Abstracts\CPTAbstract;
 use Jiejia\ARippleSong\Feeds\PodcastFeed;
 use Jiejia\ARippleSong\Libraries\Users;
-use Jiejia\ARippleSong\Settings\MemberSetting;
+use Jiejia\ARippleSong\Settings\HostSetting;
 
 /**
  * Defines the podcast episode custom post type.
@@ -276,11 +276,11 @@ class PodcastCPT extends CPTAbstract
             ],
             [
                 'type' => 'multiselect',
-                'key' => 'members',
+                'key' => 'hosts',
                 'label' => __('Hosts', 'a-ripple-song'),
                 'width' => 'half',
-                'options' => fn (): array => $this->peopleOptions('members'),
-                'default' => fn (): array => $this->defaultMemberIds(),
+                'options' => fn (): array => $this->peopleOptions('hosts'),
+                'default' => fn (): array => $this->defaultHostIds(),
                 'help' => __('Select episode hosts. Only hosts added in Host & Guest Settings are listed.', 'a-ripple-song'),
             ],
             [
@@ -295,27 +295,27 @@ class PodcastCPT extends CPTAbstract
     }
 
     /**
-     * Return default member IDs for newly created episodes.
+     * Return default host IDs for newly created episodes.
      *
      * @return array<int,int>
      */
-    private function defaultMemberIds(): array
+    private function defaultHostIds(): array
     {
         $currentUserId = get_current_user_id();
 
-        return in_array($currentUserId, (new MemberSetting())->ids('members'), true) ? [$currentUserId] : [];
+        return in_array($currentUserId, (new HostSetting())->ids('hosts'), true) ? [$currentUserId] : [];
     }
 
     /**
-     * Return the users an episode may pick for its members or guests: the list from the member settings,
+     * Return the users an episode may pick for its hosts or guests: the list from the host settings,
      * plus users already saved on the episode so editing an older episode never drops them silently.
      *
-     * @param string $key Either members or guests.
+     * @param string $key Either hosts or guests.
      * @return array<int,array{label:string,image:string,meta:string}>
      */
     private function peopleOptions(string $key): array
     {
-        $ids = (new MemberSetting())->ids($key);
+        $ids = (new HostSetting())->ids($key);
         $postId = $this->editedPostId();
 
         if ($postId > 0) {
@@ -482,7 +482,7 @@ class PodcastCPT extends CPTAbstract
             ]);
         }
 
-        foreach (['members', 'guests'] as $key) {
+        foreach (['hosts', 'guests'] as $key) {
             register_post_meta($this->slug(), $this->fieldMetaKey($key), [
                 'type' => 'array',
                 'single' => true,

@@ -373,7 +373,7 @@ msgid "People"
 msgstr ""
 
 #: app/CPTs/PodcastCPT.php:280
-#: app/Settings/MemberSetting.php:48
+#: app/Settings/HostSetting.php:48
 msgid "Hosts"
 msgstr ""
 
@@ -382,7 +382,7 @@ msgid "Select episode hosts. Only hosts added in Host & Guest Settings are liste
 msgstr ""
 
 #: app/CPTs/PodcastCPT.php:289
-#: app/Settings/MemberSetting.php:69
+#: app/Settings/HostSetting.php:69
 msgid "Guests"
 msgstr ""
 
@@ -642,39 +642,39 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
-#: app/Settings/MemberSetting.php:21
+#: app/Settings/HostSetting.php:21
 msgid "Host & Guest Settings"
 msgstr ""
 
-#: app/Settings/MemberSetting.php:34
+#: app/Settings/HostSetting.php:34
 msgid "Podcast Hosts"
 msgstr ""
 
-#: app/Settings/MemberSetting.php:39
+#: app/Settings/HostSetting.php:39
 msgid "Host Roles"
 msgstr ""
 
-#: app/Settings/MemberSetting.php:43
+#: app/Settings/HostSetting.php:43
 msgid "Only users with these roles can be chosen as hosts. Save to refresh the host list."
 msgstr ""
 
-#: app/Settings/MemberSetting.php:51
+#: app/Settings/HostSetting.php:51
 msgid "Select one or more WordPress users who host this podcast. Episodes can only choose hosts from this list."
 msgstr ""
 
-#: app/Settings/MemberSetting.php:55
+#: app/Settings/HostSetting.php:55
 msgid "Podcast Guests"
 msgstr ""
 
-#: app/Settings/MemberSetting.php:60
+#: app/Settings/HostSetting.php:60
 msgid "Guest Roles"
 msgstr ""
 
-#: app/Settings/MemberSetting.php:64
+#: app/Settings/HostSetting.php:64
 msgid "Only users with these roles can be chosen as guests. Save to refresh the guest list."
 msgstr ""
 
-#: app/Settings/MemberSetting.php:72
+#: app/Settings/HostSetting.php:72
 msgid "Select the WordPress users who appear as guests. Episodes can only choose guests from this list."
 msgstr ""
 
