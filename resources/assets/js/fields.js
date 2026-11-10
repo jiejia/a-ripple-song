@@ -325,18 +325,21 @@
 		return $('<li class="ars-choices__item">').append($label);
 	}
 
+	// Options that were already listed keep their state; options the change brought in start checked.
 	function renderChoices($choices, options) {
 		var name = $choices.data('refreshName');
 		var key = $choices.data('refreshField');
-		var checked = {};
+		var listed = {};
 		var $search = $choices.find('.ars-choices__search');
 
-		$choices.find('input[type="checkbox"]:checked').each(function () {
-			checked[this.value] = true;
+		$choices.find('.ars-choices__list input[type="checkbox"]').each(function () {
+			listed[this.value] = this.checked;
 		});
 
 		$choices.find('.ars-choices__list').empty().append($.map(options, function (option) {
-			return choiceItem(option, name, key, checked[option.value] === true);
+			var value = String(option.value);
+
+			return choiceItem(option, name, key, listed.hasOwnProperty(value) ? listed[value] : true);
 		}));
 
 		if (options.length <= SEARCH_THRESHOLD) {
