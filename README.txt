@@ -129,6 +129,15 @@ The plugin bundles the following open-source code. Full license texts are in `TH
 * daisyUI - (c) 2020 Pouya Saadeghi - MIT License - https://daisyui.com/
 * Lucide icons - (c) 2026 Lucide Icons and Contributors - ISC License - https://lucide.dev/
 
+== Source code ==
+
+The files in `public/dist/` are built and minified. Their sources are in `resources/assets/`, and the full development repository, with the build configuration, is at https://github.com/jiejia/a-ripple-song.
+
+To build the assets yourself, install Node.js, then run in the plugin folder:
+
+1. `npm install`
+2. `npm run build` - compiles the player script, the waveform script and the player style sheets into `public/dist/`.
+
 == Screenshots ==
 
 1. `A Ripple Song` -> `Dashboard` with play statistics and health checks
