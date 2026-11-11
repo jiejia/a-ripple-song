@@ -93,6 +93,10 @@ When a visitor starts an episode, the player sends one request to `/wp-json/a-ri
 
 Yes. A theme can override any front-end template by copying it from `resources/templates/` to `{theme}/a-ripple-song/`, e.g. `{theme}/a-ripple-song/player/skins/ars-default.php`. A theme that declares `add_theme_support( 'a-ripple-song-player' )` styles the player itself, and the plugin then loads no skin stylesheet. A theme whose folder name matches a player style (such as `ars-petal`) selects that style when it is activated.
 
+= Can my theme show chapters and transcripts? =
+
+Yes. `\Jiejia\ARippleSong\Episodes\Chapters::forPost( $post )` returns the episode's chapters (start, end, title, URL), and `\Jiejia\ARippleSong\Episodes\Transcript::forPost( $post )` returns the transcript URL with its cues (start, speaker, text). They read WebVTT, SRT, Podcasting 2.0 JSON and plain text files, and cache the result.
+
 = Which hooks are available? =
 
 * `a_ripple_song_play_counted` (action) - after a play is counted; receives the episode ID and the new count.
@@ -108,6 +112,8 @@ Yes. A theme can override any front-end template by copying it from `resources/t
 * The player saves the playback position, playlist, volume, speed and favorite episodes, plus cached waveforms, in the visitor's browser (localStorage); none of it is sent to the server.
 
 == External services ==
+
+Chapters and transcript files: when a theme shows an episode's chapters or transcript (see the FAQ), files in the media library are read from disk. A file the editor linked from another site is downloaded by this site's server from that URL and cached for 12 hours. The request goes only to the address the editor entered and carries no visitor data.
 
 Player styles other than "Default" load their fonts from Google Fonts (`https://fonts.googleapis.com`) on front-end pages that show the player. The visitor's browser then sends a request, including its IP address, to Google. No fonts are loaded when the "Default" style is used or when the theme styles the player itself. Google's terms: https://policies.google.com/terms, privacy policy: https://policies.google.com/privacy.
 
