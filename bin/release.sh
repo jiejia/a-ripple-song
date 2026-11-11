@@ -8,7 +8,8 @@
 # Giving the version the plugin is already at re-releases it: the old tag is deleted (locally and
 # on origin) and recreated on the current commit, so the workflow builds the zip again.
 #
-# Files updated: a-ripple-song.php (header Version), README.txt (Stable tag + a changelog entry),
+# Files updated: a-ripple-song.php (header Version), README.txt (Stable tag, plus a changelog entry
+# when it has a == Changelog == section),
 # app/App.php, package.json, package-lock.json and the translation headers in resources/lang.
 # `@since` tags and older changelog entries are history and stay as they are.
 set -euo pipefail
@@ -61,8 +62,11 @@ else
   echo "Releasing $current -> $version"
 fi
 
-# Changelog entry: the commit subjects since the last version tag (skipped when one already exists).
-if ! grep -q "^= $version =$" README.txt; then
+# Changelog entry: the commit subjects since the last version tag. Skipped when README.txt has no
+# == Changelog == section (release notes live on the website) or the entry already exists.
+has_changelog=0
+grep -q "^== Changelog ==$" README.txt && has_changelog=1
+if [[ $has_changelog -eq 1 ]] && ! grep -q "^= $version =$" README.txt; then
   previous="$(git describe --tags --abbrev=0 --match 'v[0-9]*' 2> /dev/null || true)"
   changes="$(git log --no-merges --format='* %s' ${previous:+"$previous"..HEAD} | grep -v '^\* Release v' || true)"
   [[ -n "$changes" ]] || changes="* Maintenance release."
@@ -80,7 +84,9 @@ npm version "$version" --no-git-tag-version --allow-same-version > /dev/null
 # Every place must now carry the new version.
 grep -q "^ \* Version:[[:space:]]*$version$" a-ripple-song.php || fail "a-ripple-song.php was not updated"
 grep -q "^Stable tag: $version$" README.txt || fail "README.txt was not updated"
-grep -q "^= $version =$" README.txt || fail "README.txt changelog was not updated"
+if [[ $has_changelog -eq 1 ]]; then
+  grep -q "^= $version =$" README.txt || fail "README.txt changelog was not updated"
+fi
 grep -q "VERSION = '$version'" app/App.php || fail "app/App.php was not updated"
 for file in resources/lang/*.pot resources/lang/*.po; do
   grep -q "Project-Id-Version: A Ripple Song $version" "$file" || fail "$file was not updated"
