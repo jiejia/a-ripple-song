@@ -8,9 +8,8 @@
 # Giving the version the plugin is already at re-releases it: the old tag is deleted (locally and
 # on origin) and recreated on the current commit, so the workflow builds the zip again.
 #
-# Files updated: a-ripple-song.php (header Version), README.txt (Stable tag, plus a changelog entry
-# when it has a == Changelog == section and the version is new),
-# app/App.php, package.json, package-lock.json and the translation headers in resources/lang.
+# Files updated: a-ripple-song.php (header Version), README.txt (Stable tag; the changelog is
+# edited by hand), app/App.php, package.json, package-lock.json and the translation headers in resources/lang.
 # `@since` tags and older changelog entries are history and stay as they are.
 set -euo pipefail
 
@@ -62,20 +61,6 @@ else
   echo "Releasing $current -> $version"
 fi
 
-# Changelog entry: the commit subjects since the last version tag. Skipped when README.txt has no
-# == Changelog == section (release notes live on the website), when re-releasing the current
-# version, or when the entry already exists.
-# Looks only inside == Changelog ==, since == Upgrade Notice == uses the same "= 1.2.3 =" headings.
-changelog_has() { awk -v h="= $1 =" '/^== /{s=($0=="== Changelog ==")} s&&$0==h{f=1} END{exit !f}' README.txt; }
-has_changelog=0
-grep -q "^== Changelog ==$" README.txt && has_changelog=1
-if [[ $has_changelog -eq 1 && $retag -eq 0 ]] && ! changelog_has "$version"; then
-  previous="$(git describe --tags --abbrev=0 --match 'v[0-9]*' 2> /dev/null || true)"
-  changes="$(git log --no-merges --format='* %s' ${previous:+"$previous"..HEAD} | grep -v '^\* Release v' || true)"
-  [[ -n "$changes" ]] || changes="* Maintenance release."
-  CHANGES="$changes" VERSION="$version" perl -0pi -e 's/(== Changelog ==\n\n)/$1= $ENV{VERSION} =\n$ENV{CHANGES}\n\n/' README.txt
-fi
-
 sed -i.bak "s/^\( \* Version:[[:space:]]*\).*/\1$version/" a-ripple-song.php
 sed -i.bak "s/^Stable tag: .*/Stable tag: $version/" README.txt
 sed -i.bak "s/public const VERSION = '[^']*';/public const VERSION = '$version';/" app/App.php
@@ -87,9 +72,6 @@ npm version "$version" --no-git-tag-version --allow-same-version > /dev/null
 # Every place must now carry the new version.
 grep -q "^ \* Version:[[:space:]]*$version$" a-ripple-song.php || fail "a-ripple-song.php was not updated"
 grep -q "^Stable tag: $version$" README.txt || fail "README.txt was not updated"
-if [[ $has_changelog -eq 1 && $retag -eq 0 ]]; then
-  changelog_has "$version" || fail "README.txt changelog was not updated"
-fi
 grep -q "VERSION = '$version'" app/App.php || fail "app/App.php was not updated"
 for file in resources/lang/*.pot resources/lang/*.po; do
   grep -q "Project-Id-Version: A Ripple Song $version" "$file" || fail "$file was not updated"
