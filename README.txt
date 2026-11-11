@@ -148,12 +148,6 @@ To build the assets yourself, install Node.js, then run in the plugin folder:
 
 == Changelog ==
 
-= 0.5.1 =
-* Skip the changelog entry when re-releasing the current version
-* Add Changelog and Upgrade Notice sections to README.txt
-* Link the source repository and build steps in README.txt
-* Document the cover image check request in README.txt
-
 = 0.5.0 =
 * First public release.
 
