@@ -24,7 +24,7 @@ class App
 
     public const NAME = 'A Ripple Song';
 
-    public const VERSION = '0.5.0';
+    public const VERSION = '0.5.1';
 
     public const DIR = A_RIPPLE_SONG_PLUGIN_DIR;
 

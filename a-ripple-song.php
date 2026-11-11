@@ -15,7 +15,7 @@
  * Plugin Name:       A Ripple Song
  * Plugin URI:        https://github.com/jiejia/a-ripple-song
  * Description:       Podcast publishing for WordPress: episodes, an Apple Podcasts & Podcasting 2.0 RSS feed, a site-wide audio player and play statistics.
- * Version:           0.5.0
+ * Version:           0.5.1
  * Author:            jiejia
  * Author URI:        https://github.com/jiejia/
  * License:           GPL-3.0

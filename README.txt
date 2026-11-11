@@ -5,7 +5,7 @@ Tags: podcast, rss, feed, itunes, podcasting2.0
 Requires at least: 6.6
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 0.5.0
+Stable tag: 0.5.1
 License: GPL-3.0
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -147,6 +147,12 @@ To build the assets yourself, install Node.js, then run in the plugin folder:
 5. `/feed/podcast/` RSS output
 
 == Changelog ==
+
+= 0.5.1 =
+* Skip the changelog entry when re-releasing the current version
+* Add Changelog and Upgrade Notice sections to README.txt
+* Link the source repository and build steps in README.txt
+* Document the cover image check request in README.txt
 
 = 0.5.0 =
 * First public release.
