@@ -148,10 +148,17 @@ To build the assets yourself, install Node.js, then run in the plugin folder:
 
 == Changelog ==
 
+= 0.5.1 =
+* Readme: the External services section now explains the request made to check cover images linked from another site.
+* Readme: added a Source code section with the development repository and the build steps.
+
 = 0.5.0 =
 * First public release.
 
 == Upgrade Notice ==
+
+= 0.5.1 =
+Documentation update only. No code changes.
 
 = 0.5.0 =
 First public release.
