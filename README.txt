@@ -145,3 +145,13 @@ To build the assets yourself, install Node.js, then run in the plugin folder:
 3. Episode details on the `Episodes` edit screen
 4. The global player bar and its "Now Playing" panel
 5. `/feed/podcast/` RSS output
+
+== Changelog ==
+
+= 0.5.0 =
+* First public release.
+
+== Upgrade Notice ==
+
+= 0.5.0 =
+First public release.
