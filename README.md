@@ -1,6 +1,6 @@
 # A Ripple Song
 
-A Ripple Song is a WordPress podcast plugin with episode publishing, an Apple Podcasts and Podcasting 2.0 RSS feed, a site-wide audio player, and play statistics. It is built with plain PHP on top of WordPress APIs, with a lightweight esbuild and Tailwind CSS frontend build.
+A Ripple Song is a WordPress podcast plugin: episode publishing, an Apple Podcasts and Podcasting 2.0 RSS feed, a site-wide audio player, and play statistics.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="screenshots/players-hero-dark.png" />
@@ -9,45 +9,45 @@ A Ripple Song is a WordPress podcast plugin with episode publishing, an Apple Po
 
 ## Overview
 
-This plugin turns a WordPress site into a podcast site. Publish episodes with their audio and podcast metadata, submit one RSS feed to Apple Podcasts, Spotify, and other directories, and let visitors listen through a player bar that stays at the bottom of every page. It works with any theme, and themes can restyle or fully take over the player when they want to.
+Publish episodes, submit one feed to Apple Podcasts, Spotify, and other directories, and let visitors listen through a player bar on every page. Works with any theme; themes can restyle or take over the player.
 
 ## Features
 
-- `Episodes` custom post type (URLs under `/podcasts/`) with tags and hierarchical episode categories that support an image and an icon.
-- Duration, file size, and MIME type detected automatically when an episode is saved, for audio hosted on the site.
-- Per-episode metadata: cover, episode type, episode and season numbers, explicit flag, iTunes fields, author override, subtitle, and summary.
-- Podcasting 2.0 fields: transcript, chapters, soundbites, and a custom GUID, plus hosts and guests chosen from site users.
-- Built-in `/feed/podcast/` RSS feed with iTunes tags and Podcasting 2.0 tags (locked, guid, funding, person, transcript, chapters, soundbite, updateFrequency).
-- Cover images checked against Apple's artwork rules (square JPG/PNG, 1400–3000 px, at most 512 KB, no transparency).
-- Global player bar with a playlist and a full-screen "Now Playing" panel; playback continues across pages with themes that use swup.
-- 15 player styles, each with light and dark variants, and progress shown as a plain bar, a live spectrum, or a full-episode waveform.
-- Play / favorite / play count bar on single episode pages, and playback position and playlist restored on the next visit.
-- REST API play counting with per-visitor dedupe, a statistics dashboard with trends and top episodes, and health checks for missing feed requirements.
-- Subscription links for 30+ podcast platforms and a release schedule for themes and the feed.
-- Translation-ready structure with English and Simplified Chinese language files.
+- `Episodes` post type (under `/podcasts/`) with tags and episode categories.
+- Duration, file size, and MIME type detected automatically for local audio.
+- Episode metadata: cover, type, episode/season numbers, explicit flag, iTunes fields, subtitle, and summary.
+- Podcasting 2.0 fields: transcript, chapters, soundbites, GUID, hosts, and guests.
+- `/feed/podcast/` RSS feed with iTunes and Podcasting 2.0 tags.
+- Cover images validated against Apple's artwork rules.
+- Global player bar with playlist and "Now Playing" panel; continuous playback with swup themes.
+- 15 player styles in light and dark, with bar, spectrum, or waveform progress.
+- Playback position and playlist restored on the next visit.
+- Deduplicated play counting, a statistics dashboard, and feed health checks.
+- Subscription links for 30+ platforms and a release schedule.
+- English and Simplified Chinese translations.
 
 ## Theme Integration
 
-- Any front-end template can be overridden by copying it from `resources/templates/` to `{theme}/a-ripple-song/`.
-- A theme that declares `add_theme_support( 'a-ripple-song-player' )` styles the player itself, and the plugin then loads no skin stylesheet.
-- A theme whose folder name matches a player style (such as `ars-petal`) selects that style when it is activated.
-- Hooks such as `a_ripple_song_play_counted`, `a_ripple_song_global_player_enabled`, and `a_ripple_song_player_episode_cover` let themes and plugins extend the behavior. See `README.txt` for the full list.
+- Override templates by copying them from `resources/templates/` to `{theme}/a-ripple-song/`.
+- `add_theme_support( 'a-ripple-song-player' )` lets a theme style the player itself.
+- A theme folder named after a player style (such as `ars-petal`) selects that style.
+- Hooks such as `a_ripple_song_play_counted` allow extension. See `README.txt` for the full list.
 
 ## Installation
 
 ### Release package
 
-1. Download the `a-ripple-song.zip` release package.
-2. In WordPress, go to `Plugins > Add New Plugin > Upload Plugin`.
-3. Upload the zip file, install it, and activate the plugin.
-4. Open `A Ripple Song > Podcast Settings` to configure your podcast feed metadata.
+1. Download `a-ripple-song.zip`.
+2. Go to `Plugins > Add New Plugin > Upload Plugin`.
+3. Upload, install, and activate it.
+4. Configure the feed in `A Ripple Song > Podcast Settings`.
 
 ### Publishing your podcast
 
-1. Fill in the show cover, title, description, language, author, owner, and Apple Podcasts category in `A Ripple Song > Podcast Settings`.
-2. Optionally configure `Host & Guest Settings`, `Subscription Settings`, and `Player Settings`.
-3. Create episodes from `Episodes > Add New Episode` and choose an audio file.
-4. Copy the feed URL (by default `https://your-site.example/feed/podcast/`) and submit it to podcast directories.
+1. Fill in the show details in `A Ripple Song > Podcast Settings`.
+2. Optionally configure host, subscription, and player settings.
+3. Add episodes from `Episodes > Add New Episode`.
+4. Submit the feed URL (default `https://your-site.example/feed/podcast/`) to podcast directories.
 
 ### Runtime requirements
 
@@ -56,13 +56,11 @@ This plugin turns a WordPress site into a podcast site. Publish episodes with th
 
 ## Development
 
-Use the source version of the plugin when you need to customize, build, or package it locally.
-
 ```bash
 npm install
 ```
 
-Watch player styles and scripts during development:
+Watch during development:
 
 ```bash
 npm run watch:css
@@ -76,19 +74,19 @@ Build production assets:
 npm run build
 ```
 
-Compile translation files:
+Compile translations:
 
 ```bash
 wp i18n make-mo resources/lang
 ```
 
-Build the packaged plugin zip:
+Build the plugin zip:
 
 ```bash
 npm run zip
 ```
 
-Release a new version (sets the version, commits, tags, and pushes; GitHub Actions publishes the zip):
+Release a new version (GitHub Actions publishes the zip):
 
 ```bash
 npm run release 0.5.1
@@ -107,12 +105,12 @@ npm run release 0.5.1
 
 ## Project Structure
 
-- `app/` contains plugin logic such as custom post types, taxonomies, feeds, settings pages, the player, statistics, REST controllers, and service providers.
-- `resources/templates/` contains PHP templates for the player, player skins, episode meta, feeds, dashboard, and settings fields.
-- `resources/assets/` contains player scripts, player style sources, and icons.
-- `resources/lang/` contains translation files.
-- `public/dist/` contains the built player scripts and skin stylesheets.
-- `bin/` contains build, packaging, and release scripts.
+- `app/`: plugin logic.
+- `resources/templates/`: PHP templates.
+- `resources/assets/`: player scripts, styles, and icons.
+- `resources/lang/`: translation files.
+- `public/dist/`: built assets.
+- `bin/`: build, packaging, and release scripts.
 
 ## Links
 
