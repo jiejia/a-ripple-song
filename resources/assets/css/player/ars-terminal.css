@@ -145,7 +145,14 @@ body { -webkit-font-smoothing: antialiased; font-variant-ligatures: none; text-s
 @keyframes blink { 50% { opacity: 0; } }
 
 /* [ 命令按钮 ]：自带 display，要响应式隐藏时外面包一层 */
-.cmd { display: inline-flex; align-items: center; gap: 0.6ch; padding: 0.1em 0.4ch; white-space: nowrap; cursor: pointer; }
+/* Fully reset here: the active theme may style a global .cmd of its own (ars-petal does), which would
+   otherwise leak its pill height, padding and background into the player. The bar tightens --cmd-gap /
+   --cmd-pad on narrow screens (see the skin template) so the command keys stay on one row. */
+.cmd {
+  display: inline-flex; align-items: center; gap: var(--cmd-gap, 0.6ch); padding: 0.1em var(--cmd-pad, 0.4ch);
+  white-space: nowrap; cursor: pointer;
+  height: auto; border: 0; border-radius: 0; background: transparent;
+}
 .cmd::before { content: "["; opacity: 0.55; }
 .cmd::after { content: "]"; opacity: 0.55; }
 .cmd:hover, .cmd:focus-visible, .cmd.is-on {

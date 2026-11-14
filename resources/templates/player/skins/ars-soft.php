@@ -26,20 +26,20 @@ use Jiejia\ARippleSong\Libraries\Template;
             'cover' => 'rounded-xl bg-base-300',
             'title' => '',
         ]); ?>
-        <div class="order-5 flex items-center gap-2.5 @5xl:order-none">
-          <button type="button" class="raised-sm press grid size-8 place-items-center rounded-full @5xl:size-10" ars-on:click="prev()" aria-label="上一集"><?php Icon::render('skip-back', 'size-4'); ?></button>
-          <span class="relative grid size-12 shrink-0 place-items-center @5xl:size-16">
+        <div class="order-5 flex items-center gap-2 @5xl:order-none @5xl:gap-2.5">
+          <button type="button" class="raised-sm press grid size-7 place-items-center rounded-full @5xl:size-10" ars-on:click="prev()" aria-label="上一集"><?php Icon::render('skip-back', 'size-3.5 @5xl:size-4'); ?></button>
+          <span class="relative grid size-11 shrink-0 place-items-center @5xl:size-16">
             <svg viewBox="0 0 100 100" class="pointer-events-none absolute inset-0 size-full -rotate-90" aria-hidden="true">
               <circle cx="50" cy="50" r="46" fill="none" stroke-width="5" class="ring-track"></circle>
               <circle cx="50" cy="50" r="46" fill="none" stroke-width="5" stroke-linecap="round" pathLength="100" stroke-dasharray="100" ars-bind:stroke-dashoffset="100 - progress" class="ring-fill"></circle>
             </svg>
-            <button type="button" class="key-primary grid size-9 place-items-center @5xl:size-12 rounded-full" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放">
-              <span ars-show="!playing && !loading"><?php Icon::render('play', 'ml-0.5 size-5 fill-current'); ?></span>
-              <span ars-show="playing && !loading" ars-cloak><?php Icon::render('pause', 'size-5 fill-current'); ?></span>
-              <span class="loading loading-spinner size-5" ars-show="loading" ars-cloak></span>
+            <button type="button" class="key-primary grid size-8 place-items-center rounded-full @5xl:size-12" ars-on:click="toggle()" ars-bind:aria-label="playing ? '暂停' : '播放'" aria-label="播放">
+              <span ars-show="!playing && !loading"><?php Icon::render('play', 'ml-0.5 size-4 fill-current @5xl:size-5'); ?></span>
+              <span ars-show="playing && !loading" ars-cloak><?php Icon::render('pause', 'size-4 fill-current @5xl:size-5'); ?></span>
+              <span class="loading loading-spinner size-4 @5xl:size-5" ars-show="loading" ars-cloak></span>
             </button>
           </span>
-          <button type="button" class="raised-sm press grid size-8 place-items-center rounded-full @5xl:size-10" ars-on:click="next()" aria-label="下一集"><?php Icon::render('skip-forward', 'size-4'); ?></button>
+          <button type="button" class="raised-sm press grid size-7 place-items-center rounded-full @5xl:size-10" ars-on:click="next()" aria-label="下一集"><?php Icon::render('skip-forward', 'size-3.5 @5xl:size-4'); ?></button>
         </div>
         <?php
         (new Template())->renderThemeable('player/parts/progress', [
@@ -49,9 +49,9 @@ use Jiejia\ARippleSong\Libraries\Template;
             'spectrum' => ['data-spectrum' => 'bars', 'class' => 'hidden h-8 w-24 shrink-0 @5xl:block'],
         ]);
         ?>
-        <div class="order-4 flex flex-1 items-center justify-start gap-2 @5xl:order-8 @5xl:flex-none">
+        <div class="order-4 flex flex-1 items-center justify-start gap-1.5 @5xl:order-8 @5xl:flex-none @5xl:gap-2">
           <button type="button" role="slider" aria-label="音量（拖动、滚轮或方向键调节）" aria-valuemin="0" aria-valuemax="100" ars-bind:aria-valuenow="Math.round((muted ? 0 : volume) * 100)"
-                  class="knob raised-sm size-9 @5xl:size-12"
+                  class="knob raised-sm size-8 @5xl:size-12"
                   ars-data="{ y: null, v: 0 }"
                   ars-on:pointerdown="y = $event.clientY; v = volume; $el.setPointerCapture($event.pointerId)"
                   ars-on:pointermove="if (y !== null) setVolume(Math.min(1, Math.max(0, v + (y - $event.clientY) / 150)))"
@@ -64,12 +64,12 @@ use Jiejia\ARippleSong\Libraries\Template;
             <span class="knob-dial" ars-bind:style="`--angle: ${-135 + (muted ? 0 : volume) * 270}deg`"></span>
           </button>
           <?php /* Narrow bar: the speed sits right of the volume; from @5xl on the one in the group below shows. */ ?>
-          <button type="button" class="raised-sm press h-8 w-14 shrink-0 rounded-full px-0 font-mono text-xs @5xl:!hidden" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
+          <button type="button" class="raised-sm press h-7 w-12 shrink-0 rounded-full px-0 font-mono text-[11px] @5xl:!hidden" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
         </div>
         <div class="order-6 flex flex-1 items-center justify-end gap-1 @5xl:contents">
           <button type="button" class="@max-5xl:!hidden @5xl:order-7 raised-sm press h-8 w-14 shrink-0 rounded-full px-0 font-mono text-xs @5xl:h-9" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}×`">1×</button>
-        <button type="button" class="raised-sm press grid size-8 shrink-0 place-items-center rounded-full @5xl:order-9 @5xl:size-10" ars-on:click="expanded = true" aria-label="播放队列"><?php Icon::render('list-music', 'size-4'); ?></button>
-        <?php (new Template())->renderThemeable('player/parts/collapse', ['class' => 'raised-sm press grid size-8 shrink-0 place-items-center rounded-full', 'icon' => 'size-4']); ?>
+        <button type="button" class="raised-sm press grid size-7 shrink-0 place-items-center rounded-full @5xl:order-9 @5xl:size-10" ars-on:click="expanded = true" aria-label="播放队列"><?php Icon::render('list-music', 'size-3.5 @5xl:size-4'); ?></button>
+        <?php (new Template())->renderThemeable('player/parts/collapse', ['class' => 'raised-sm press grid size-7 shrink-0 place-items-center rounded-full', 'icon' => 'size-3.5']); ?>
         </div>
         </div>
       </div>
