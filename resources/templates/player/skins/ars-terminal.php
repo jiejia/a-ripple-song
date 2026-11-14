@@ -38,14 +38,19 @@ use Jiejia\ARippleSong\Libraries\Template;
         </div>
         <?php
         (new Template())->renderThemeable('player/parts/progress', [
-            // No min-w-0: the text bar has a fixed width, so the title gives way instead.
-            'class' => 'order-3 flex w-full flex-wrap items-center gap-x-3 gap-y-1 tabular-nums @5xl:order-none @5xl:w-auto @5xl:flex-1 @5xl:flex-nowrap',
+            // min-w-0: the bar is a long character run clipped to the row width, so the row must be allowed to shrink.
+            'class' => 'order-3 flex min-w-0 w-full flex-wrap items-center gap-x-3 gap-y-1 tabular-nums @5xl:order-none @5xl:w-auto @5xl:flex-1 @5xl:flex-nowrap',
             'spectrumTop' => ['data-spectrum' => 'ascii', 'data-bar' => '11', 'data-gap' => '1', 'class' => 'block h-10 w-full @5xl:hidden'],
             'time' => '', 'timeEnd' => 'dim',
-            'bar' => static function (): void { ?>
-          <label class="bar-seek shrink-0 tracking-[-0.05em] text-primary">
+            // A character bar that stretches with the row: two identical runs of █ / ░ are stacked, and the filled
+            // run is clipped to progress% of the width, so the bar fills whatever room the row has instead of
+            // staying 12 characters wide. The run is longer than the widest row can get, so it never runs out.
+            'bar' => static function (): void {
+                $run = static fn (string $char): string => esc_html(str_repeat($char, 320)); ?>
+          <label class="bar-seek relative min-w-0 flex-1 tracking-[-0.05em] text-primary">
             <span class="sr-only">播放进度</span>
-            <span aria-hidden="true" ars-text="'█'.repeat(Math.round(progress / 100 * 12)) + '░'.repeat(12 - Math.round(progress / 100 * 12))">░░░░░░░░░░░░</span>
+            <span aria-hidden="true" class="block overflow-hidden whitespace-nowrap"><?php echo $run('░'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped above. ?></span>
+            <span aria-hidden="true" class="absolute inset-y-0 left-0 overflow-hidden whitespace-nowrap" style="width:0" ars-bind:style="'width:' + progress + '%'"><?php echo $run('█'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped above. ?></span>
             <input type="range" min="0" ars-bind:max="duration" step="1" ars-bind:value="position" ars-on:input="scrub($event.target.value)" ars-on:change="commit($event.target.value)">
           </label>
             <?php },
