@@ -20,7 +20,7 @@ use Jiejia\ARippleSong\Libraries\Template;
     <div class="fixed inset-x-0 bottom-0 z-[9990]" role="region" data-ars-bar aria-label="音频播放器">
       <div data-ars-width="box" data-ars-surface="base-200" class="mx-auto max-w-6xl border-x border-t tui-line bg-base-200 text-sm [--tui-bg:var(--color-base-200)]">
         <?php (new Template())->renderThemeable('player/parts/mini', ['cover' => 'bg-base-300']); ?>
-        <div class="flex flex-wrap items-center gap-x-3 gap-y-2 px-4 py-3 [--cmd-gap:0.6ch] [--cmd-pad:0.4ch] @max-xl:[--cmd-gap:0.35ch] @max-xl:[--cmd-pad:0.3ch] @5xl:min-h-16 @5xl:flex-nowrap @5xl:py-0">
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-2 px-4 py-3 [--cmd-gap:0.6ch] [--cmd-pad:0.4ch] @max-xl:[--cmd-gap:0.3ch] @max-xl:[--cmd-pad:0.3ch] @max-sm:[--cmd-gap:0.25ch] @max-sm:[--cmd-pad:0.25ch] @5xl:min-h-16 @5xl:flex-nowrap @5xl:py-0">
         <?php (new Template())->renderThemeable('player/parts/info', [
             'class' => 'order-1 flex-1 basis-full border border-dashed tui-line p-2 @5xl:order-none @5xl:max-w-xs @5xl:basis-auto @5xl:border-0 @5xl:p-0',
             'cover' => 'mono-img bg-base-300',
@@ -53,7 +53,7 @@ use Jiejia\ARippleSong\Libraries\Template;
             'wave' => ['data-gap' => '1'],
         ]);
         ?>
-        <?php (new Template())->renderThemeable('player/parts/volume', ['rate' => 'cmd w-[9ch] shrink-0 justify-between @max-xl:w-[7ch]', 'rateUnit' => 'x', 'class' => 'order-4 flex flex-1 shrink-0 items-center justify-start gap-1 @max-xl:text-xs @5xl:order-8 @5xl:flex-none', 'button' => 'cmd', 'icon' => '', 'range' => 'accent-primary']); ?>
+        <?php (new Template())->renderThemeable('player/parts/volume', ['rate' => 'cmd w-[9ch] shrink-0 justify-between @max-xl:w-[6ch]', 'rateUnit' => 'x', 'class' => 'order-4 flex flex-1 shrink-0 items-center justify-start gap-1 @max-xl:text-xs @5xl:order-8 @5xl:flex-none', 'button' => 'cmd', 'icon' => '', 'range' => 'accent-primary']); ?>
         <div class="order-6 flex flex-1 items-center justify-end gap-1 @max-xl:text-xs @5xl:contents">
           <button type="button" class="cmd w-[9ch] shrink-0 justify-between @5xl:order-7 @max-5xl:!hidden" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}x`">1x</button>
         <button type="button" class="cmd @5xl:order-9" ars-on:click="expanded = true" aria-label="播放队列">ls</button>
