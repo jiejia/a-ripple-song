@@ -44,8 +44,14 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          # On a re-run or a re-release (npm run release with the current version) the release
-          # already exists: replace its zip and publish it again, since deleting its tag turns it into a draft.
-          gh release create "$GITHUB_REF_NAME" ../a-ripple-song.zip --title "$GITHUB_REF_NAME" --generate-notes \
-            || { gh release upload "$GITHUB_REF_NAME" ../a-ripple-song.zip --clobber \
-                 && gh release edit "$GITHUB_REF_NAME" --draft=false; }
+          # Re-releasing deletes and recreates the tag; deleting a tag turns its release into a draft,
+          # so repeated releases of the same version pile up drafts that all point at this tag. Remove
+          # every release for the tag first (drafts and published), so this run leaves exactly one.
+          ids=$(gh api --paginate "repos/$GITHUB_REPOSITORY/releases?per_page=100" \
+            --jq ".[] | select(.tag_name == \"$GITHUB_REF_NAME\") | .id")
+          for id in $ids; do
+            echo "Deleting existing release $id for $GITHUB_REF_NAME"
+            gh api --method DELETE "repos/$GITHUB_REPOSITORY/releases/$id"
+          done
+
+          gh release create "$GITHUB_REF_NAME" ../a-ripple-song.zip --title "$GITHUB_REF_NAME" --generate-notes
