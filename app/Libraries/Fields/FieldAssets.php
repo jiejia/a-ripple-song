@@ -36,7 +36,7 @@ final class FieldAssets
             true
         );
 
-        wp_localize_script(self::HANDLE, 'arsFieldsL10n', [
+        wp_localize_script(self::HANDLE, 'aRippleSongFieldsL10n', [
             /* translators: %s: comma separated list of field labels. */
             'invalidNotice' => __('Please fix these fields before saving: %s', 'a-ripple-song'),
             'required' => __('This field is required.', 'a-ripple-song'),

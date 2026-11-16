@@ -132,7 +132,7 @@ final class GlobalPlayer
         }
 
         wp_enqueue_script(self::HANDLE, A_RIPPLE_SONG_PLUGIN_URL . 'public/dist/player.js', [], App::assetVersion('public/dist/player.js'), true);
-        wp_add_inline_script(self::HANDLE, 'window.ARS_PLAYER = ' . wp_json_encode($this->config($episodes)) . ';', 'before');
+        wp_add_inline_script(self::HANDLE, 'window.ARippleSongPlayerConfig =' . wp_json_encode($this->config($episodes)) . ';', 'before');
 
         if ($this->setting->progressStyle() === 'waveform') {
             // wavesurfer.js, only for the waveform progress style; it follows the player through window.ARippleSongPlayer.

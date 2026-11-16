@@ -131,7 +131,7 @@ final class FeaturedColumn
             true
         );
 
-        wp_localize_script(self::ACTION, 'arsFeaturedColumn', [
+        wp_localize_script(self::ACTION, 'aRippleSongFeaturedColumn', [
             'action' => self::ACTION,
             'nonce' => wp_create_nonce(self::ACTION),
             'on' => __('Featured.', 'a-ripple-song'),

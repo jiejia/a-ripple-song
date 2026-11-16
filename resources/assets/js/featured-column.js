@@ -4,7 +4,7 @@
 (function ($) {
 	'use strict';
 
-	var l10n = window.arsFeaturedColumn || {};
+	var l10n = window.aRippleSongFeaturedColumn || {};
 
 	$(document).on('change', '.ars-featured .ars-switch__input', function () {
 		var $input = $(this);

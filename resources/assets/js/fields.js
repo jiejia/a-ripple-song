@@ -5,7 +5,7 @@
 (function ($) {
 	'use strict';
 
-	var l10n = window.arsFieldsL10n || {};
+	var l10n = window.aRippleSongFieldsL10n || {};
 	var rowCounter = 0;
 
 	/* Media (file / image) */

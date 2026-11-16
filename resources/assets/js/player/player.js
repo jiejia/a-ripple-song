@@ -22,7 +22,7 @@ import { Binder } from './binder.js';
 import { startSpectrum, refreshSpectrumColors, applyVolume, withCors, markNoCors } from './spectrum.js';
 
 const RATES = [1, 1.25, 1.5, 2, 0.8];
-const config = window.ARS_PLAYER || { episodes: [], playlist: [], show: {}, i18n: {}, storageKey: 'ars_player', playsUrl: '' };
+const config = window.ARippleSongPlayerConfig || { episodes: [], playlist: [], show: {}, i18n: {}, storageKey: 'ars_player', playsUrl: '' };
 const t = (key) => config.i18n[key] || key;
 // How long the "Continue playing?" offer stays up before it goes away by itself.
 const RESUME_SECONDS = 10;
