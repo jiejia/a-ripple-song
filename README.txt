@@ -148,6 +148,10 @@ To build the assets yourself, install Node.js, then run in the plugin folder:
 
 == Changelog ==
 
+= 0.5.3 =
+* Remove bundled player fonts to reduce the plugin download size.
+* Use fonts available on the visitor's device without downloading additional fonts.
+
 = 0.5.2 =
 * Use fonts available on the visitor's device instead of requesting Google Fonts.
 * Escape dynamic template output and use distinct names for JavaScript globals.
@@ -161,6 +165,9 @@ To build the assets yourself, install Node.js, then run in the plugin folder:
 * First public release.
 
 == Upgrade Notice ==
+
+= 0.5.3 =
+Bundled fonts have been removed to reduce the download size. The player uses fonts available on your device, so its typography may vary between devices.
 
 = 0.5.2 =
 The player no longer downloads Google Fonts. This update also improves output escaping and player layouts on narrow screens.
