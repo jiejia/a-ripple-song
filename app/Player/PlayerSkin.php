@@ -57,18 +57,6 @@ enum PlayerSkin: string
     }
 
     /**
-     * Return the local font stylesheet for this skin, if any.
-     *
-     * @return string
-     */
-    public function fontsUrl(): string
-    {
-        return $this === self::Default
-            ? ''
-            : A_RIPPLE_SONG_PLUGIN_URL . 'public/fonts/skins/' . $this->value . '.css';
-    }
-
-    /**
      * Return the template name for Template::renderThemeable().
      *
      * @return string

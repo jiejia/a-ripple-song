@@ -117,11 +117,11 @@ Chapters and transcript files: when a theme shows an episode's chapters or trans
 
 Cover images: when a show or episode cover is saved, the plugin checks it against Apple's artwork rules (type, file size and transparency). A cover from the media library is read from disk. A cover the editor linked from another site is checked by this site's server, which requests the first 64 KB of the file from that URL. The request goes only to the address the editor entered, happens only when the setting is saved, and carries no visitor data.
 
-Player styles other than "Default" use locally bundled fonts. No fonts are loaded when the "Default" style is used or when the theme styles the player itself.
+The player uses fonts available on the visitor's device and does not download fonts.
 
 == Third-party libraries ==
 
-The plugin bundles the following open-source code. Full license texts are in `THIRD-PARTY-LICENSES.txt`. Fonts are sourced from https://fonts.google.com/; their individual license texts from https://github.com/google/fonts are in `public/fonts/licenses/`.
+The plugin bundles the following open-source code. Full license texts are in `THIRD-PARTY-LICENSES.txt`.
 
 * Howler.js - (c) 2013-2020 James Simpson and GoldFire Studios, Inc. - MIT License - https://howlerjs.com/
 * wavesurfer.js - (c) 2012-2023 katspaugh and contributors - BSD 3-Clause License - https://wavesurfer.xyz/
@@ -149,7 +149,7 @@ To build the assets yourself, install Node.js, then run in the plugin folder:
 == Changelog ==
 
 = 0.5.2 =
-* Load player fonts locally instead of requesting them from Google Fonts.
+* Use fonts available on the visitor's device instead of requesting Google Fonts.
 * Escape dynamic template output and use distinct names for JavaScript globals.
 * Improve the Terminal and Soft player layouts on narrow screens, including the Terminal progress bar.
 
@@ -163,7 +163,7 @@ To build the assets yourself, install Node.js, then run in the plugin folder:
 == Upgrade Notice ==
 
 = 0.5.2 =
-Player fonts are now loaded locally. This update also improves output escaping and player layouts on narrow screens.
+The player no longer downloads Google Fonts. This update also improves output escaping and player layouts on narrow screens.
 
 = 0.5.1 =
 Documentation update only. No code changes.

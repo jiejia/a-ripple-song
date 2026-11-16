@@ -124,10 +124,6 @@ final class GlobalPlayer
 
         if (! current_theme_supports(self::THEME_SUPPORT)) {
             wp_enqueue_style(self::HANDLE, A_RIPPLE_SONG_PLUGIN_URL . $skin->stylesheet(), [], App::assetVersion($skin->stylesheet()));
-
-            if ($skin->fontsUrl() !== '') {
-                wp_enqueue_style(self::HANDLE . '-fonts', $skin->fontsUrl(), [], App::VERSION);
-            }
         }
 
         wp_enqueue_script(self::HANDLE, A_RIPPLE_SONG_PLUGIN_URL . 'public/dist/player.js', [], App::assetVersion('public/dist/player.js'), true);
