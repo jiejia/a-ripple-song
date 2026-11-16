@@ -148,6 +148,11 @@ To build the assets yourself, install Node.js, then run in the plugin folder:
 
 == Changelog ==
 
+= 0.5.2 =
+* Load player fonts locally instead of requesting them from Google Fonts.
+* Escape dynamic template output and use distinct names for JavaScript globals.
+* Improve the Terminal and Soft player layouts on narrow screens, including the Terminal progress bar.
+
 = 0.5.1 =
 * Readme: the External services section now explains the request made to check cover images linked from another site.
 * Readme: added a Source code section with the development repository and the build steps.
@@ -156,6 +161,9 @@ To build the assets yourself, install Node.js, then run in the plugin folder:
 * First public release.
 
 == Upgrade Notice ==
+
+= 0.5.2 =
+Player fonts are now loaded locally. This update also improves output escaping and player layouts on narrow screens.
 
 = 0.5.1 =
 Documentation update only. No code changes.
