@@ -117,11 +117,11 @@ Chapters and transcript files: when a theme shows an episode's chapters or trans
 
 Cover images: when a show or episode cover is saved, the plugin checks it against Apple's artwork rules (type, file size and transparency). A cover from the media library is read from disk. A cover the editor linked from another site is checked by this site's server, which requests the first 64 KB of the file from that URL. The request goes only to the address the editor entered, happens only when the setting is saved, and carries no visitor data.
 
-Player styles other than "Default" load their fonts from Google Fonts (`https://fonts.googleapis.com`) on front-end pages that show the player. The visitor's browser then sends a request, including its IP address, to Google. No fonts are loaded when the "Default" style is used or when the theme styles the player itself. Google's terms: https://policies.google.com/terms, privacy policy: https://policies.google.com/privacy.
+Player styles other than "Default" use locally bundled fonts. No fonts are loaded when the "Default" style is used or when the theme styles the player itself.
 
 == Third-party libraries ==
 
-The plugin bundles the following open-source code. Full license texts are in `THIRD-PARTY-LICENSES.txt`.
+The plugin bundles the following open-source code. Full license texts are in `THIRD-PARTY-LICENSES.txt`. Fonts are sourced from https://fonts.google.com/; their individual license texts from https://github.com/google/fonts are in `public/fonts/licenses/`.
 
 * Howler.js - (c) 2013-2020 James Simpson and GoldFire Studios, Inc. - MIT License - https://howlerjs.com/
 * wavesurfer.js - (c) 2012-2023 katspaugh and contributors - BSD 3-Clause License - https://wavesurfer.xyz/

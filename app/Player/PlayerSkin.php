@@ -57,31 +57,15 @@ enum PlayerSkin: string
     }
 
     /**
-     * Return the Google Fonts stylesheet the prototype uses, if any.
+     * Return the local font stylesheet for this skin, if any.
      *
      * @return string
      */
     public function fontsUrl(): string
     {
-        $families = match ($this) {
-            self::Default => '',
-            self::Broadcast => 'family=Archivo:wght@400;600;800;900&family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;700;900',
-            self::EveningPaper => 'family=Instrument+Serif:ital@0;1&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;900',
-            self::Pulse => 'family=Noto+Sans+SC:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800',
-            self::Cassette => 'family=Long+Cang&family=Noto+Sans+SC:wght@400;500;700&family=Rubik:wght@400;500;700;800&family=Shrikhand&family=Space+Mono:wght@400;700&family=ZCOOL+KuaiLe',
-            self::Aurora => 'family=Noto+Sans+SC:wght@300;400;500;700&family=Outfit:wght@200;300;400;500;600',
-            self::Terminal => 'family=JetBrains+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=VT323',
-            self::Zine => 'family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Caveat:wght@600&family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&family=ZCOOL+QingKe+HuangYou',
-            self::Soft => 'family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;700;800&family=Noto+Sans+SC:wght@400;500;700;800',
-            self::Circle => 'family=Noto+Sans+SC:wght@400;500;600;700&family=Poppins:wght@400;500;600;700',
-            self::Coral => 'family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Noto+Sans+SC:wght@400;500;600;700',
-            self::Wisteria => 'family=Noto+Sans+SC:wght@400;500;600;700&family=Urbanist:wght@400;500;600;700;800',
-            self::Petal => 'family=Noto+Sans+SC:wght@300;400;500;700;900&family=Outfit:wght@300;400;500;600;700;800;900',
-            self::Prisma => 'family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700',
-            self::Bazaar => 'family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700',
-        };
-
-        return $families !== '' ? 'https://fonts.googleapis.com/css2?' . $families . '&display=swap' : '';
+        return $this === self::Default
+            ? ''
+            : A_RIPPLE_SONG_PLUGIN_URL . 'public/fonts/skins/' . $this->value . '.css';
     }
 
     /**

@@ -126,8 +126,7 @@ final class GlobalPlayer
             wp_enqueue_style(self::HANDLE, A_RIPPLE_SONG_PLUGIN_URL . $skin->stylesheet(), [], App::assetVersion($skin->stylesheet()));
 
             if ($skin->fontsUrl() !== '') {
-                // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- Google Fonts versions itself.
-                wp_enqueue_style(self::HANDLE . '-fonts', $skin->fontsUrl(), [], null);
+                wp_enqueue_style(self::HANDLE . '-fonts', $skin->fontsUrl(), [], App::VERSION);
             }
         }
 
