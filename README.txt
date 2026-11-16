@@ -148,6 +148,11 @@ To build the assets yourself, install Node.js, then run in the plugin folder:
 
 == Changelog ==
 
+= 0.5.4 =
+* Apply final output escaping to SVG icons, audio player markup and field label tags.
+* Fix RSS XML escaping for text, attributes and URLs, including HTML named entities.
+* Remove invalid XML characters from CDATA content while preserving article HTML.
+
 = 0.5.3 =
 * Remove bundled player fonts to reduce the plugin download size.
 * Use fonts available on the visitor's device without downloading additional fonts.
@@ -165,6 +170,9 @@ To build the assets yourself, install Node.js, then run in the plugin folder:
 * First public release.
 
 == Upgrade Notice ==
+
+= 0.5.4 =
+Improves output escaping and fixes RSS feeds that could fail to parse when text contains HTML named entities or invalid XML characters.
 
 = 0.5.3 =
 Bundled fonts have been removed to reduce the download size. The player uses fonts available on your device, so its typography may vary between devices.
