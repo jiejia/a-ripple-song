@@ -49,7 +49,25 @@ final class Icon
      */
     public static function render(string $name, string $class = ''): void
     {
-        echo self::svg($name, $class); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static SVG shipped with the plugin.
+        echo wp_kses(self::svg($name, $class), [
+            'svg' => [
+                'xmlns' => true,
+                'width' => true,
+                'height' => true,
+                'viewbox' => true,
+                'fill' => true,
+                'stroke' => true,
+                'stroke-width' => true,
+                'stroke-linecap' => true,
+                'stroke-linejoin' => true,
+                'class' => true,
+                'aria-hidden' => true,
+                'focusable' => true,
+            ],
+            'path' => ['d' => true],
+            'circle' => ['cx' => true, 'cy' => true, 'r' => true],
+            'rect' => ['x' => true, 'y' => true, 'width' => true, 'height' => true, 'rx' => true],
+        ]);
     }
 
     /**

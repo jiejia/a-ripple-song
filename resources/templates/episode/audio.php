@@ -18,8 +18,12 @@
 defined('ABSPATH') || exit;
 
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Templates run inside Template::include(), so their variables are local.
+
+// The post allowlist omits source elements, which WordPress's audio shortcode needs.
+$allowedAudioHtml = wp_kses_allowed_html('post');
+$allowedAudioHtml['source'] = ['src' => true, 'type' => true];
 ?>
 <div class="ars-episode-audio ars-episode-audio--<?php echo esc_attr($position); ?>" data-ars-plays-url="<?php echo esc_url($playsUrl); ?>">
-    <?php echo $audio; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Built and escaped by wp_audio_shortcode(). ?>
+    <?php echo wp_kses($audio, $allowedAudioHtml); ?>
     <p class="ars-episode-audio__plays"><span<?php \Jiejia\ARippleSong\Libraries\Html::renderAttributes($playsAttributeValues); ?>><?php echo esc_html($playsText); ?></span></p>
 </div>
