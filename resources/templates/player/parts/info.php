@@ -45,20 +45,17 @@ $titleText = $binder ? ['ars-text' => 'current?.title'] : ['data-ars-text' => 't
 $metaText = $binder
     ? ['ars-text' => "error || [current?.date, current?.number && 'EP.' + current.number].filter(Boolean).join(' / ')", 'ars-bind:class' => "error && '!text-error'"]
     : ['data-ars-text' => 'meta'];
-// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- Html::attributes() escapes.
 ?>
 <div class="flex min-w-0 items-center gap-3 text-left <?php echo esc_attr($class); ?>">
-  <a<?php echo Html::attributes(['class' => trim('relative grid size-14 shrink-0 box-border place-items-center overflow-hidden ' . $cover)] + $link + $coverHooks); ?>>
-    <img<?php echo Html::attributes(['class' => 'size-full object-cover', 'alt' => ''] + $image); ?>>
+  <a<?php Html::renderAttributes(['class' => trim('relative grid size-14 shrink-0 box-border place-items-center overflow-hidden ' . $cover)] + $link + $coverHooks); ?>>
+    <img<?php Html::renderAttributes(['class' => 'size-full object-cover', 'alt' => ''] + $image); ?>>
     <?php if (! $binder) : ?>
       <span class="opacity-50" data-ars-show="nocover"><?php Icon::render('podcast', 'size-5'); ?></span>
     <?php endif; ?>
     <span class="absolute inset-0 hidden place-items-center bg-black/40 text-white [.ars-player[data-state=loading]_&]:grid" aria-hidden="true"><span class="loading loading-spinner loading-sm"></span></span>
   </a>
   <span class="min-w-0 flex-1">
-    <a<?php echo Html::attributes(['class' => trim('line-clamp-2 break-words text-sm leading-5 ' . $title)] + $link + $titleText); ?>></a>
-    <span<?php echo Html::attributes(['class' => trim('block truncate text-xs leading-4 ' . $meta)] + $metaText); ?>></span>
+    <a<?php Html::renderAttributes(['class' => trim('line-clamp-2 break-words text-sm leading-5 ' . $title)] + $link + $titleText); ?>></a>
+    <span<?php Html::renderAttributes(['class' => trim('block truncate text-xs leading-4 ' . $meta)] + $metaText); ?>></span>
   </span>
 </div>
-<?php
-// phpcs:enable

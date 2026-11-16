@@ -48,7 +48,7 @@ $attributes = [
     'data-opaque-message' => $isImage && $field->opaque ? $field->opaqueMessage() : null,
 ];
 ?>
-<div<?php echo Html::attributes($attributes); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped by Html::attributes(). ?>>
+<div<?php Html::renderAttributes($attributes); ?>>
     <?php if ($isImage) : ?>
         <?php // The preview doubles as the picker button; read-only fields only show it. ?>
         <?php if ($field->readonly) : ?>
@@ -70,7 +70,7 @@ $attributes = [
     <?php endif; ?>
     <div class="ars-media__body">
         <div class="ars-media__row">
-            <input<?php echo $control->attributes(['type' => 'url', 'value' => $url, 'class' => 'ars-input ars-media__input', 'placeholder' => 'https://']); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped by FieldContext::attributes(). ?>>
+            <input<?php \Jiejia\ARippleSong\Libraries\Html::renderAttributes($control->attributeValues(['type' => 'url', 'value' => $url, 'class' => 'ars-input ars-media__input', 'placeholder' => 'https://'])); ?>>
             <?php if (! $field->readonly) : ?>
                 <?php // Image fields pick through their preview tile. ?>
                 <?php if (! $isImage) : ?>

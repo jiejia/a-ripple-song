@@ -46,11 +46,11 @@ use Jiejia\ARippleSong\Libraries\Template;
             // run is clipped to progress% of the width, so the bar fills whatever room the row has instead of
             // staying 12 characters wide. The run is longer than the widest row can get, so it never runs out.
             'bar' => static function (): void {
-                $run = static fn (string $char): string => esc_html(str_repeat($char, 320)); ?>
+                $run = static fn (string $char): string => str_repeat($char, 320); ?>
           <label class="bar-seek relative min-w-0 flex-1 tracking-[-0.05em] text-primary">
             <span class="sr-only">播放进度</span>
-            <span aria-hidden="true" class="block overflow-hidden whitespace-nowrap"><?php echo $run('░'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped above. ?></span>
-            <span aria-hidden="true" class="absolute inset-y-0 left-0 overflow-hidden whitespace-nowrap" style="width:0" ars-bind:style="'width:' + progress + '%'"><?php echo $run('█'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped above. ?></span>
+            <span aria-hidden="true" class="block overflow-hidden whitespace-nowrap"><?php echo esc_html($run('░')); ?></span>
+            <span aria-hidden="true" class="absolute inset-y-0 left-0 overflow-hidden whitespace-nowrap" style="width:0" ars-bind:style="'width:' + progress + '%'"><?php echo esc_html($run('█')); ?></span>
             <input type="range" min="0" ars-bind:max="duration" step="1" ars-bind:value="position" ars-on:input="scrub($event.target.value)" ars-on:change="commit($event.target.value)">
           </label>
             <?php },

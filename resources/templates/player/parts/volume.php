@@ -44,6 +44,6 @@ $rateUnit ??= '×';
   </button>
   <input type="range" class="<?php echo esc_attr($range); ?> <?php echo esc_attr($slider); ?>" min="0" max="1" step="0.05" ars-bind:value="muted ? 0 : volume" ars-bind:style="`--p:${(muted ? 0 : volume) * 100}%`" ars-on:input="setVolume($event.target.value)" aria-label="音量">
   <?php if ($rate !== '') : ?>
-    <button type="button" class="<?php echo esc_attr($rate); ?> @5xl:!hidden" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="`${rate}<?php echo esc_attr($rateUnit); ?>`">1<?php echo esc_html($rateUnit); ?></button>
+    <button type="button" class="<?php echo esc_attr($rate); ?> @5xl:!hidden" ars-on:click="cycleRate()" aria-label="播放速度" ars-text="<?php echo esc_attr('`${rate}` + ' . wp_json_encode($rateUnit)); ?>">1<?php echo esc_html($rateUnit); ?></button>
   <?php endif; ?>
 </div>

@@ -22,6 +22,6 @@ use Jiejia\ARippleSong\Libraries\Icon;
       <span ars-show="!isFav(id)"><?php Icon::render('heart', 'size-5'); ?></span>
       <span ars-show="isFav(id)" ars-cloak class="text-secondary"><?php Icon::render('heart', 'size-5 fill-current'); ?></span>
     </button>
-    <span class="text-sm opacity-60 inline-flex items-center gap-1.5"><?php Icon::render('headphones', 'size-4'); ?><span<?php echo $playsAttributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped by Html::attributes(). ?>><?php echo esc_html($playsText); ?></span></span>
+    <span class="text-sm opacity-60 inline-flex items-center gap-1.5"><?php Icon::render('headphones', 'size-4'); ?><span<?php \Jiejia\ARippleSong\Libraries\Html::renderAttributes($playsAttributeValues); ?>><?php echo esc_html($playsText); ?></span></span>
   </div>
 </div>

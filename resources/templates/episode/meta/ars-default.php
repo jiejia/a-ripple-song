@@ -11,7 +11,7 @@
  * @var int    $postId          Episode ID (the ars-data `id`).
  * @var string $position        "before" or "after" the content.
  * @var string $playsText       Play count text, e.g. "1,234 plays".
- * @var string $playsAttributes Escaped attributes of the play count element; player.js updates its text after a
+ * @var array<string,mixed> $playsAttributeValues Attributes of the play count element; player.js updates its text after a
  *                              counted play (data-ars-plays, data-ars-plays-one / -other).
  */
 
@@ -31,6 +31,6 @@ use Jiejia\ARippleSong\Libraries\Icon;
       <span ars-show="!isFav(id)"><?php Icon::render('heart', 'size-5'); ?></span>
       <span ars-show="isFav(id)" ars-cloak class="text-primary"><?php Icon::render('heart', 'size-5 fill-current'); ?></span>
     </button>
-    <span class="ml-1 inline-flex items-center gap-1.5 text-sm opacity-70"><?php Icon::render('headphones', 'size-4'); ?><span<?php echo $playsAttributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped by Html::attributes(). ?>><?php echo esc_html($playsText); ?></span></span>
+    <span class="ml-1 inline-flex items-center gap-1.5 text-sm opacity-70"><?php Icon::render('headphones', 'size-4'); ?><span<?php \Jiejia\ARippleSong\Libraries\Html::renderAttributes($playsAttributeValues); ?>><?php echo esc_html($playsText); ?></span></span>
   </div>
 </div>

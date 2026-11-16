@@ -78,9 +78,20 @@ final readonly class FieldContext
      */
     public function attributes(array $extra = []): string
     {
+        return Html::attributes($this->attributeValues($extra));
+    }
+
+    /**
+     * Return unescaped control attributes for rendering.
+     *
+     * @param array<string,mixed> $extra Control specific attributes.
+     * @return array<string,mixed>
+     */
+    public function attributeValues(array $extra = []): array
+    {
         $field = $this->field;
 
-        return Html::attributes(array_merge([
+        return array_merge([
             'id' => $this->id,
             'name' => $this->name,
             'class' => 'ars-input',
@@ -89,7 +100,7 @@ final readonly class FieldContext
             'aria-describedby' => $field->help !== '' ? $this->id . '-help' : null,
             'required' => $field->required,
             'readonly' => $field->readonly,
-        ], $extra, $field->attributes));
+        ], $extra, $field->attributes);
     }
 
     /**

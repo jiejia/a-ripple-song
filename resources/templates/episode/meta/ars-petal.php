@@ -24,6 +24,6 @@ use Jiejia\ARippleSong\Libraries\Icon;
         <span ars-show="isFav(id)" ars-cloak><?php Icon::render('heart', 'size-5 fill-current'); ?></span>
       </button>
     </div>
-    <span class="mono mute inline-flex items-center gap-1.5 text-sm"><?php Icon::render('headphones', 'size-4'); ?><span<?php echo $playsAttributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped by Html::attributes(). ?>><?php echo esc_html($playsText); ?></span></span>
+    <span class="mono mute inline-flex items-center gap-1.5 text-sm"><?php Icon::render('headphones', 'size-4'); ?><span<?php \Jiejia\ARippleSong\Libraries\Html::renderAttributes($playsAttributeValues); ?>><?php echo esc_html($playsText); ?></span></span>
   </div>
 </div>

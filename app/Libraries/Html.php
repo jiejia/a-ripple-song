@@ -35,6 +35,33 @@ final class Html
     }
 
     /**
+     * Print attributes, escaping each name and value at the point of output.
+     *
+     * @param array<string,mixed> $attributes Attribute name => value.
+     * @param bool $urls Whether all values are URLs.
+     * @return void
+     */
+    public static function renderAttributes(array $attributes, bool $urls = false): void
+    {
+        foreach ($attributes as $name => $value) {
+            if ($value === null || $value === false) {
+                continue;
+            }
+
+            echo ' ' . esc_attr($name);
+            if ($value !== true) {
+                echo '="';
+                if ($urls) {
+                    echo esc_url((string) $value);
+                } else {
+                    echo esc_attr((string) $value);
+                }
+                echo '"';
+            }
+        }
+    }
+
+    /**
      * Join CSS classes; string keys are added only when their value is truthy.
      *
      * @param array<int|string,mixed> $classes e.g. ['ars-field', 'is-required' => $required].

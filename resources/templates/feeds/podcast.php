@@ -65,7 +65,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
         <itunes:new-feed-url><?php echo esc_url($channel['newFeedUrl']); ?></itunes:new-feed-url>
         <?php endif; ?>
         <?php if ($channel['locked']) : ?>
-        <podcast:locked<?php echo Html::attributes(['owner' => $channel['lockedOwner'] ?: null]); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped by Html::attributes(). ?>>yes</podcast:locked>
+        <podcast:locked<?php Html::renderAttributes(['owner' => $channel['lockedOwner'] ?: null]); ?>>yes</podcast:locked>
         <?php endif; ?>
         <?php if ($channel['guid'] !== '') : ?>
         <podcast:guid><?php echo esc_html($channel['guid']); ?></podcast:guid>
@@ -74,7 +74,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
         <podcast:txt purpose="applepodcastsverify"><?php echo esc_html($channel['appleVerify']); ?></podcast:txt>
         <?php endif; ?>
         <?php if ($channel['schedule'] !== null) : ?>
-        <podcast:updateFrequency<?php echo Html::attributes(['rrule' => $channel['schedule']['rrule'] ?: null]); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped by Html::attributes(). ?>><?php echo esc_html($channel['schedule']['text']); ?></podcast:updateFrequency>
+        <podcast:updateFrequency<?php Html::renderAttributes(['rrule' => $channel['schedule']['rrule'] ?: null]); ?>><?php echo esc_html($channel['schedule']['text']); ?></podcast:updateFrequency>
         <?php endif; ?>
         <?php if ($channel['generator'] !== '') : ?>
         <generator><?php echo esc_html($channel['generator']); ?></generator>
@@ -114,7 +114,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
             <itunes:image href="<?php echo esc_url($item['image']); ?>" />
             <?php endif; ?>
             <?php foreach ($item['people'] as $person) : // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Local to Template::include(). ?>
-            <podcast:person role="<?php echo esc_attr($person['role']); ?>"<?php echo Html::attributes(['href' => $person['href'] ?: null, 'img' => $person['img'] ?: null], esc_url(...)); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped by Html::attributes(). ?>><?php echo esc_html($person['name']); ?></podcast:person>
+            <podcast:person role="<?php echo esc_attr($person['role']); ?>"<?php Html::renderAttributes(['href' => $person['href'] ?: null, 'img' => $person['img'] ?: null], true); ?>><?php echo esc_html($person['name']); ?></podcast:person>
             <?php endforeach; ?>
             <?php if ($item['transcript'] !== null) : ?>
             <podcast:transcript url="<?php echo esc_url($item['transcript']['url']); ?>" type="<?php echo esc_attr($item['transcript']['type']); ?>" />

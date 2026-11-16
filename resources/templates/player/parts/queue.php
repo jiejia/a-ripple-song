@@ -83,10 +83,10 @@ $trash ??= 'btn btn-ghost btn-circle btn-sm';
           <ul class="min-h-0 flex-1 space-y-1 overflow-y-auto overscroll-contain [scrollbar-width:thin]">
             <template ars-for="ep in queueItems">
               <li class="group relative">
-                <button type="button" class="flex w-full min-w-0 items-center gap-2.5 p-1.5 pr-10 text-left <?php echo esc_attr($row); ?>" ars-bind:class="isCurrent(ep.id) && '<?php echo esc_attr($rowOn); ?>'" ars-on:click="toggle(ep.id)">
+                <button type="button" class="flex w-full min-w-0 items-center gap-2.5 p-1.5 pr-10 text-left <?php echo esc_attr($row); ?>" ars-bind:class="isCurrent(ep.id) && '<?php echo esc_js($rowOn); ?>'" ars-on:click="toggle(ep.id)">
                   <img ars-bind:src="ep.cover" alt="" class="size-11 shrink-0 object-cover <?php echo esc_attr($cover); ?>">
                   <span class="min-w-0 flex-1">
-                    <span class="block truncate text-sm <?php echo esc_attr($name); ?>" ars-bind:class="isCurrent(ep.id) && '<?php echo esc_attr($nameOn); ?>'" ars-text="ep.title"></span>
+                    <span class="block truncate text-sm <?php echo esc_attr($name); ?>" ars-bind:class="isCurrent(ep.id) && '<?php echo esc_js($nameOn); ?>'" ars-text="ep.title"></span>
                     <span class="block truncate text-xs <?php echo esc_attr($sub); ?>" ars-text="join(categoryName(ep.category), fmt(ep.duration))"></span>
                   </span>
                 </button>

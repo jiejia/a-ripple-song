@@ -15,8 +15,7 @@ use Jiejia\ARippleSong\Libraries\Fields\FieldContext;
 ?>
 <input type="hidden" name="<?php echo esc_attr($control->name); ?>" value="no">
 <label class="ars-switch">
-    <?php // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped by FieldContext::attributes(). ?>
-    <input<?php echo $control->attributes([
+    <input<?php \Jiejia\ARippleSong\Libraries\Html::renderAttributes($control->attributeValues([
         'type' => 'checkbox',
         'role' => 'switch',
         'class' => 'ars-switch__input',
@@ -26,6 +25,5 @@ use Jiejia\ARippleSong\Libraries\Fields\FieldContext;
         'required' => null,
         'readonly' => null,
         'disabled' => $field->readonly,
-    ]); ?>>
-    <?php // phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+    ])); ?>>
 </label>

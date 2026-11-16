@@ -15,7 +15,7 @@ use Jiejia\ARippleSong\Libraries\Fields\FieldContext;
 
 $current = $control->scalar();
 ?>
-<select<?php echo $control->attributes(['placeholder' => null, 'readonly' => null]); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped by FieldContext::attributes(). ?>>
+<select<?php \Jiejia\ARippleSong\Libraries\Html::renderAttributes($control->attributeValues(['placeholder' => null, 'readonly' => null])); ?>>
     <?php if ($field->placeholder !== '') : ?>
         <option value=""><?php echo esc_html($field->placeholder); ?></option>
     <?php endif; ?>

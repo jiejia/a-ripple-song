@@ -127,22 +127,25 @@ final class EpisodeMeta
      * Return the play count text and the attributes that let scripts update it after a counted play.
      *
      * @param int $postId Episode ID.
-     * @return array{playsText:string,playsAttributes:string}
+     * @return array{playsText:string,playsAttributes:string,playsAttributeValues:array<string,string>}
      */
     private function playsData(int $postId): array
     {
         $count = $this->podcast->playCount($postId);
 
+        $attributes = [
+            'data-ars-plays' => (string) $postId,
+            /* translators: %s: number of plays. */
+            'data-ars-plays-one' => _n('%s play', '%s plays', 1, 'a-ripple-song'),
+            /* translators: %s: number of plays. */
+            'data-ars-plays-other' => _n('%s play', '%s plays', 2, 'a-ripple-song'),
+        ];
+
         return [
             /* translators: %s: number of plays. */
             'playsText' => sprintf(_n('%s play', '%s plays', $count, 'a-ripple-song'), number_format_i18n($count)),
-            'playsAttributes' => Html::attributes([
-                'data-ars-plays' => (string) $postId,
-                /* translators: %s: number of plays. */
-                'data-ars-plays-one' => _n('%s play', '%s plays', 1, 'a-ripple-song'),
-                /* translators: %s: number of plays. */
-                'data-ars-plays-other' => _n('%s play', '%s plays', 2, 'a-ripple-song'),
-            ]),
+            'playsAttributes' => Html::attributes($attributes),
+            'playsAttributeValues' => $attributes,
         ];
     }
 
