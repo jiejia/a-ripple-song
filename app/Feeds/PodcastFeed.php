@@ -204,13 +204,15 @@ class PodcastFeed extends FeedAbstract
     }
 
     /**
-     * Escape the CDATA terminator so text can be wrapped in a CDATA section.
+     * Remove invalid XML characters and split CDATA terminators without changing article HTML.
      *
      * @param string $text Text to wrap.
      * @return string
      */
     public static function cdata(string $text): string
     {
+        $text = preg_replace('/[^\x{9}\x{A}\x{D}\x{20}-\x{D7FF}\x{E000}-\x{FFFD}\x{10000}-\x{10FFFF}]/u', '', wp_check_invalid_utf8($text)) ?? '';
+
         return str_replace(']]>', ']]]]><![CDATA[>', $text);
     }
 
