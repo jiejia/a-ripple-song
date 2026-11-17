@@ -9,10 +9,6 @@ It works with any theme. [The dedicated themes](https://aripplesong.com/themes/)
   <img src="screenshots/players-hero-light.png" alt="Six of the A Ripple Song player styles" />
 </picture>
 
-## Overview
-
-Publish episodes, submit one feed to Apple Podcasts, Spotify, and other directories, and let visitors listen through a player bar on every page. Works with any theme; themes can restyle or take over the player.
-
 ## Features
 
 - `Episodes` post type (under `/podcasts/`) with tags and episode categories.
@@ -28,30 +24,7 @@ Publish episodes, submit one feed to Apple Podcasts, Spotify, and other director
 - Subscription links for 30+ platforms and a release schedule.
 - English and Simplified Chinese translations.
 
-## Theme Integration
-
-- Override templates by copying them from `resources/templates/` to `{theme}/a-ripple-song/`.
-- `add_theme_support( 'a-ripple-song-player' )` lets a theme style the player itself.
-- A theme folder named after a player style (such as `ars-petal`) selects that style.
-- Hooks such as `a_ripple_song_play_counted` allow extension. See `README.txt` for the full list.
-
-## Installation
-
-### Release package
-
-1. Download `a-ripple-song.zip`.
-2. Go to `Plugins > Add New Plugin > Upload Plugin`.
-3. Upload, install, and activate it.
-4. Configure the feed in `A Ripple Song > Podcast Settings`.
-
-### Publishing your podcast
-
-1. Fill in the show details in `A Ripple Song > Podcast Settings`.
-2. Optionally configure host, subscription, and player settings.
-3. Add episodes from `Episodes > Add New Episode`.
-4. Submit the feed URL (default `https://your-site.example/feed/podcast/`) to podcast directories.
-
-### Runtime requirements
+## Runtime requirements
 
 - WordPress `6.6+`
 - PHP `8.2+`
