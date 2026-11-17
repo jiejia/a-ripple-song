@@ -24,10 +24,38 @@ It works with any theme. [The dedicated themes](https://aripplesong.com/themes/)
 - Subscription links for 30+ platforms and a release schedule.
 - English and Simplified Chinese translations.
 
-## Runtime requirements
+## Installation
 
-- WordPress `6.6+`
-- PHP `8.2+`
+| | Minimum |
+| --- | --- |
+| WordPress | 6.6 |
+| PHP | 8.2 |
+
+Choose any of the following three ways to install A Ripple Song.
+
+### Method 1: Download from WordPress.org
+
+1. Download [`a-ripple-song.zip`](https://downloads.wordpress.org/plugin/a-ripple-song.zip) from WordPress.org.
+2. In WordPress, go to **Plugins → Add New Plugin → Upload Plugin**.
+3. Upload the zip file, click **Install Now**, then activate the plugin.
+
+### Method 2: Install from the WordPress plugin directory
+
+1. In WordPress, go to **Plugins → Add New Plugin**.
+2. Enter `a ripple song` in the search field.
+3. Find **A Ripple Song**, click **Install Now**, then activate the plugin.
+
+### Method 3: Install with WP-CLI
+
+If WP-CLI is already installed on your server, run the following command from your WordPress site's root directory to install and activate the plugin:
+
+```bash
+wp plugin install a-ripple-song --activate
+```
+
+After activation, a new **A Ripple Song** menu appears in the admin sidebar, along with an **Episodes** menu for the episode post type.
+
+Continue with the [quick start](https://aripplesong.com/docs/getting-started/quick-start/) to set up your show and publish the first episode.
 
 ## Development
 

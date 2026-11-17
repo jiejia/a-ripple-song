@@ -1,15 +1,13 @@
 # A Ripple Song
 
-A Ripple Song 是一个 WordPress 播客插件：节目发布、兼容 Apple Podcasts 与 Podcasting 2.0 的 RSS Feed、全站音频播放器和播放统计。
+[A Ripple Song](https://aripplesong.com/) 可将 WordPress 站点变成播客网站。发布包含音频和播客元数据的单集，将同一个 RSS Feed 提交到 Apple Podcasts、Spotify 等平台，访客即可通过每个页面底部的播放条收听。
+
+适用于任意主题。[专用主题](https://aripplesong.com/themes/) 围绕插件设计，提供单集卡片、播客页面和配套的播放器样式。
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="screenshots/players-hero-dark.png" />
   <img src="screenshots/players-hero-light.png" alt="A Ripple Song 的六种播放器样式" />
 </picture>
-
-## 概述
-
-发布节目，向 Apple Podcasts、Spotify 等平台提交同一个 Feed，访客可通过每个页面底部的播放条收听。适用于任意主题，主题也可重设或接管播放器。
 
 ## 功能特性
 
@@ -26,33 +24,38 @@ A Ripple Song 是一个 WordPress 播客插件：节目发布、兼容 Apple Pod
 - 30 多个平台的订阅链接和更新周期设置。
 - 英文和简体中文语言文件。
 
-## 主题集成
-
-- 将模板从 `resources/templates/` 复制到 `{theme}/a-ripple-song/` 即可覆盖。
-- 主题声明 `add_theme_support( 'a-ripple-song-player' )` 后可自行设计播放器样式。
-- 主题文件夹与播放器样式同名时（如 `ars-petal`）会自动选中该样式。
-- 提供 `a_ripple_song_play_counted` 等钩子用于扩展，完整列表见 `README.txt`。
-
 ## 安装
 
-### 安装发布包
+| | 最低版本 |
+| --- | --- |
+| WordPress | 6.6 |
+| PHP | 8.2 |
 
-1. 下载 `a-ripple-song.zip`。
-2. 进入 `插件 > 安装插件 > 上传插件`。
-3. 上传、安装并启用。
-4. 在 `A Ripple Song > Podcast Settings` 中配置 Feed。
+可以选择以下三种方式之一安装 A Ripple Song。
 
-### 发布你的播客
+### 方式一：从 WordPress.org 下载
 
-1. 在 `A Ripple Song > Podcast Settings` 中填写节目信息。
-2. 按需配置主播、订阅和播放器设置。
-3. 在 `Episodes > Add New Episode` 中添加节目。
-4. 将 Feed 地址（默认 `https://your-site.example/feed/podcast/`）提交到各播客平台。
+1. 从 WordPress.org 下载 [`a-ripple-song.zip`](https://downloads.wordpress.org/plugin/a-ripple-song.zip)。
+2. 在 WordPress 后台进入 **插件 → 安装插件 → 上传插件**。
+3. 上传 zip 文件，点击 **立即安装**，然后启用插件。
 
-### 运行环境要求
+### 方式二：从 WordPress 插件目录安装
 
-- WordPress `6.6+`
-- PHP `8.2+`
+1. 在 WordPress 后台进入 **插件 → 安装插件**。
+2. 在搜索框中输入 `a ripple song`。
+3. 找到 **A Ripple Song**，点击 **立即安装**，然后启用插件。
+
+### 方式三：使用 WP-CLI 安装
+
+如果服务器已安装 WP-CLI，在 WordPress 站点根目录运行以下命令即可安装并启用插件：
+
+```bash
+wp plugin install a-ripple-song --activate
+```
+
+启用后，后台侧边栏会出现 **A Ripple Song** 菜单，以及用于管理播客单集的 **Episodes** 菜单。
+
+接下来请参阅[快速开始](https://aripplesong.com/docs/getting-started/quick-start/)，配置播客并发布第一集。
 
 ## 开发
 
