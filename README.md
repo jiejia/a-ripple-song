@@ -1,6 +1,8 @@
 # A Ripple Song
 
-A Ripple Song is a WordPress podcast plugin: episode publishing, an Apple Podcasts and Podcasting 2.0 RSS feed, a site-wide audio player, and play statistics.
+[A Ripple Song](https://aripplesong.com/) turns a WordPress site into a podcast site. Publish episodes with their audio and podcast metadata, submit one RSS feed to Apple Podcasts, Spotify and other directories, and let visitors listen through a player bar that stays at the bottom of every page.
+
+It works with any theme. [The dedicated themes](https://aripplesong.com/themes/) are designed around it, with episode cards, show pages and a matching player style.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="screenshots/players-hero-dark.png" />
