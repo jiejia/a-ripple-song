@@ -11,18 +11,13 @@ It works with any theme. [The dedicated themes](https://aripplesong.com/themes/)
 
 ## Features
 
-- `Episodes` post type (under `/podcasts/`) with tags and episode categories.
-- Duration, file size, and MIME type detected automatically for local audio.
-- Episode metadata: cover, type, episode/season numbers, explicit flag, iTunes fields, subtitle, and summary.
-- Podcasting 2.0 fields: transcript, chapters, soundbites, GUID, hosts, and guests.
+- Publish episodes with categories, tags, transcripts, chapters, and host and guest credits.
+- A site-wide player with a playlist, a Now Playing panel, and 15 styles in light and dark. Themes that use swup support continuous playback across pages.
+- A statistics dashboard with play counts, listening trends, top episodes, and feed health checks.
+- Subscription links for 30+ platforms and a configurable release schedule.
+- Available in English and Simplified Chinese.
 - `/feed/podcast/` RSS feed with iTunes and Podcasting 2.0 tags.
 - Cover images validated against Apple's artwork rules.
-- Global player bar with playlist and "Now Playing" panel; continuous playback with swup themes.
-- 15 player styles in light and dark, with bar, spectrum, or waveform progress.
-- Playback position and playlist restored on the next visit.
-- Deduplicated play counting, a statistics dashboard, and feed health checks.
-- Subscription links for 30+ platforms and a release schedule.
-- English and Simplified Chinese translations.
 
 ## Installation
 
