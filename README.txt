@@ -97,6 +97,10 @@ Yes. `\Jiejia\ARippleSong\Episodes\Chapters::forPost( $post )` returns the episo
 
 == Changelog ==
 
+= 0.5.5 =
+* Simplify the feature overview, clarify podcast and RSS feed settings, and link to the dedicated podcast themes.
+* Expand the GitHub installation guide with WordPress admin and WP-CLI instructions.
+
 = 0.5.4 =
 * Apply final output escaping to SVG icons, audio player markup and field label tags.
 * Fix RSS XML escaping for text, attributes and URLs, including HTML named entities.
