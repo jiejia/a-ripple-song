@@ -92,6 +92,10 @@ Yes. `\Jiejia\ARippleSong\Episodes\Chapters::forPost( $post )` reads Podcasting 
 
 == Changelog ==
 
+= 0.5.6 =
+* Polish the English and Simplified Chinese readmes, with clearer feature descriptions and installation steps.
+* Condense the RSS feed overview and clarify the FAQs on play counting, chapters, and transcripts.
+
 = 0.5.5 =
 * Simplify the feature overview, clarify podcast and RSS feed settings, and link to the dedicated podcast themes.
 * Expand the GitHub installation guide to cover installation from the WordPress dashboard and with WP-CLI.
