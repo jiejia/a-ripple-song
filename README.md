@@ -11,13 +11,13 @@ It works with any theme. [The dedicated themes](https://aripplesong.com/themes/)
 
 ## Features
 
+- Configure your podcast and its RSS feed with a title, cover art, description, language, and author, plus settings for Apple Podcasts and Podcasting 2.0.
 - Publish episodes with categories, tags, transcripts, chapters, and host and guest credits.
 - A site-wide player with a playlist, a Now Playing panel, and 15 styles in light and dark. Themes that use swup support continuous playback across pages.
 - A statistics dashboard with play counts, listening trends, top episodes, and feed health checks.
 - Subscription links for 30+ platforms and a configurable release schedule.
-- Available in English and Simplified Chinese.
+- Supports internationalization.
 - `/feed/podcast/` RSS feed with iTunes and Podcasting 2.0 tags.
-- Cover images validated against Apple's artwork rules.
 
 ## Installation
 
