@@ -1,7 +1,7 @@
 === A Ripple Song ===
 Contributors: jiejia
 Donate link: https://github.com/jiejia/
-Tags: podcast, rss, feed, itunes, podcasting2.0
+Tags: podcast, rss, feed, itunes
 Requires at least: 6.6
 Tested up to: 7.1
 Requires PHP: 8.2
@@ -126,15 +126,6 @@ The plugin bundles the following open-source code. Full license texts are in `TH
 * Tailwind CSS - (c) Tailwind Labs, Inc. - MIT License - https://tailwindcss.com/
 * daisyUI - (c) 2020 Pouya Saadeghi - MIT License - https://daisyui.com/
 * Lucide icons - (c) 2026 Lucide Icons and Contributors - ISC License - https://lucide.dev/
-
-== Source code ==
-
-The files in `public/dist/` are built and minified. Their sources are in `resources/assets/`, and the full development repository, with the build configuration, is at https://github.com/jiejia/a-ripple-song.
-
-To build the assets yourself, install Node.js, then run in the plugin folder:
-
-1. `npm install`
-2. `npm run build` - compiles the player script, the waveform script and the player style sheets into `public/dist/`.
 
 == Screenshots ==
 
