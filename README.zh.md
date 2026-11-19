@@ -1,64 +1,64 @@
 # A Ripple Song
 
-[A Ripple Song](https://aripplesong.com/) 可将 WordPress 站点变成播客网站。发布包含音频和播客元数据的单集，将同一个 RSS Feed 提交到 Apple Podcasts、Spotify 等平台，访客即可通过每个页面底部的播放条收听。
+[A Ripple Song](https://aripplesong.com/) 为 WordPress 添加播客发布功能。你可以在站内发布单集，将同一个 RSS 源提交到 Apple Podcasts、Spotify 等平台。听众可通过每个页面底部的播放器收听。
 
-适用于任意主题。[专用主题](https://aripplesong.com/themes/) 围绕插件设计，提供单集卡片、播客页面和配套的播放器样式。
+插件兼容各类 WordPress 主题。如果需要单集卡片、播客节目页和配套的播放器样式，可以查看[播客专用主题](https://aripplesong.com/themes/)。
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="screenshots/players-hero-dark.png" />
   <img src="screenshots/players-hero-light.png" alt="A Ripple Song 的六种播放器样式" />
 </picture>
 
-## 功能特性
+## 主要功能
 
-- 配置播客及其 RSS 源，设置标题、封面、简介、语言和作者，并管理 Apple Podcasts 分类与 Podcasting 2.0 选项。
-- 发布播客单集，支持分类、标签、文字稿、章节，并可标注主播和嘉宾。
-- 全站播放器支持播放列表和「正在播放」面板，提供 15 种样式，每种均有浅色和深色版本。配合使用 swup 的主题可跨页连续播放。
-- 在统计面板查看播放量、播放趋势、热门单集和 Feed 健康检查结果。
-- 支持 30 多个平台的订阅链接，可设置播客更新周期。
+- 设置节目的标题、封面、简介、语言和作者。
+- 生成支持 Apple Podcasts 和 Podcasting 2.0 的 RSS 源，默认路径为 `/feed/podcast/`。
+- 用分类和标签管理单集，并添加文字稿、章节、主播和嘉宾信息。
+- 全站播放器提供播放列表和「正在播放」面板，有 15 种样式可选，每种都有浅色和深色版本。搭配使用 swup 的主题，切换页面时播放不会中断。
+- 在仪表盘查看播放量、播放趋势、播放量最高的单集，以及 RSS 源的健康检查结果。
+- 设置节目更新周期，并添加 30 多个平台的订阅链接。
 - 支持国际化。
-- `/feed/podcast/` RSS Feed，输出 iTunes 与 Podcasting 2.0 标签。
 
 ## 安装
 
-| | 最低版本 |
+| 环境 | 最低版本 |
 | --- | --- |
 | WordPress | 6.6 |
 | PHP | 8.2 |
 
-可以选择以下三种方式之一安装 A Ripple Song。
+### 下载并上传 ZIP 安装包
 
-### 方式一：从 WordPress.org 下载
+1. 从 WordPress.org 下载插件安装包 [`a-ripple-song.zip`](https://downloads.wordpress.org/plugin/a-ripple-song.zip)。
+2. 在 WordPress 后台打开 **插件 → 安装插件 → 上传插件**。
+3. 上传 ZIP 文件，点击 **立即安装**，然后启用插件。
 
-1. 从 WordPress.org 下载 [`a-ripple-song.zip`](https://downloads.wordpress.org/plugin/a-ripple-song.zip)。
-2. 在 WordPress 后台进入 **插件 → 安装插件 → 上传插件**。
-3. 上传 zip 文件，点击 **立即安装**，然后启用插件。
+### 从 WordPress 后台安装
 
-### 方式二：从 WordPress 插件目录安装
+1. 打开 **插件 → 安装插件**。
+2. 搜索 **A Ripple Song**，点击 **立即安装**。
+3. 启用插件。
 
-1. 在 WordPress 后台进入 **插件 → 安装插件**。
-2. 在搜索框中输入 `a ripple song`。
-3. 找到 **A Ripple Song**，点击 **立即安装**，然后启用插件。
+### 使用 WP-CLI 安装
 
-### 方式三：使用 WP-CLI 安装
-
-如果服务器已安装 WP-CLI，在 WordPress 站点根目录运行以下命令即可安装并启用插件：
+如果已安装 WP-CLI，在 WordPress 站点根目录运行以下命令即可安装并启用插件。
 
 ```bash
 wp plugin install a-ripple-song --activate
 ```
 
-启用后，后台侧边栏会出现 **A Ripple Song** 菜单，以及用于管理播客单集的 **Episodes** 菜单。
+启用插件后，在后台的 **A Ripple Song** 菜单中配置节目，在 **播客**（Episodes）菜单中管理单集。
 
-接下来请参阅[快速开始](https://aripplesong.com/docs/getting-started/quick-start/)，配置播客并发布第一集。
+要设置节目并发布第一集，请参阅[快速入门指南](https://aripplesong.com/docs/getting-started/quick-start/)。
 
 ## 开发
+
+安装依赖。
 
 ```bash
 npm install
 ```
 
-开发时监听变化：
+按需运行以下命令，修改文件后会自动重新构建相应资源。
 
 ```bash
 npm run watch:css
@@ -66,25 +66,25 @@ npm run watch:js
 npm run watch:waveform
 ```
 
-构建生产资源：
+构建用于发布的资源。
 
 ```bash
 npm run build
 ```
 
-编译语言文件：
+编译翻译文件。
 
 ```bash
 wp i18n make-mo resources/lang
 ```
 
-构建插件 zip 包：
+将插件打包为 ZIP 文件。
 
 ```bash
 npm run zip
 ```
 
-发布新版本（由 GitHub Actions 发布 zip 包）：
+发布时，将版本号传给发布脚本。GitHub Actions 会发布 ZIP 安装包。
 
 ```bash
 npm run release 0.5.1

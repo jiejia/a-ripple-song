@@ -1,8 +1,8 @@
 # A Ripple Song
 
-[A Ripple Song](https://aripplesong.com/) turns a WordPress site into a podcast site. Publish episodes with their audio and podcast metadata, submit one RSS feed to Apple Podcasts, Spotify and other directories, and let visitors listen through a player bar that stays at the bottom of every page.
+[A Ripple Song](https://aripplesong.com/) adds podcast publishing to WordPress. Publish episodes on your site, submit a single RSS feed to Apple Podcasts, Spotify, and other directories, and give listeners a player at the bottom of every page.
 
-It works with any theme. [The dedicated themes](https://aripplesong.com/themes/) are designed around it, with episode cards, show pages and a matching player style.
+The plugin works with any WordPress theme. For episode cards, show pages, and a matching player, explore the [dedicated podcast themes](https://aripplesong.com/themes/).
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="screenshots/players-hero-dark.png" />
@@ -11,54 +11,54 @@ It works with any theme. [The dedicated themes](https://aripplesong.com/themes/)
 
 ## Features
 
-- Configure your podcast and its RSS feed with a title, cover art, description, language, and author, plus settings for Apple Podcasts and Podcasting 2.0.
-- Publish episodes with categories, tags, transcripts, chapters, and host and guest credits.
-- A site-wide player with a playlist, a Now Playing panel, and 15 styles in light and dark. Themes that use swup support continuous playback across pages.
-- A statistics dashboard with play counts, listening trends, top episodes, and feed health checks.
-- Subscription links for 30+ platforms and a configurable release schedule.
-- Supports internationalization.
-- `/feed/podcast/` RSS feed with iTunes and Podcasting 2.0 tags.
+- Set up your show with a title, cover art, description, language, and author.
+- Publish an RSS feed with support for Apple Podcasts and Podcasting 2.0. The default path is `/feed/podcast/`.
+- Organize episodes with categories and tags. Add transcripts, chapters, and credits for hosts and guests.
+- Give listeners a site-wide player with a playlist and a Now Playing panel. Choose from 15 styles, each available in light and dark. Playback continues between pages when the active theme uses swup.
+- Track play counts and trends, see your most-played episodes, and check RSS feed health from the dashboard.
+- Set a release schedule and add subscription links for more than 30 platforms.
+- The plugin is ready for translation into other languages.
 
 ## Installation
 
-| | Minimum |
+| Requirement | Minimum version |
 | --- | --- |
 | WordPress | 6.6 |
 | PHP | 8.2 |
 
-Choose any of the following three ways to install A Ripple Song.
+### Upload the ZIP from WordPress.org
 
-### Method 1: Download from WordPress.org
+1. Download the plugin from WordPress.org as [`a-ripple-song.zip`](https://downloads.wordpress.org/plugin/a-ripple-song.zip).
+2. In the WordPress dashboard, go to **Plugins → Add New Plugin → Upload Plugin**.
+3. Upload the ZIP file and click **Install Now**, then activate the plugin.
 
-1. Download [`a-ripple-song.zip`](https://downloads.wordpress.org/plugin/a-ripple-song.zip) from WordPress.org.
-2. In WordPress, go to **Plugins → Add New Plugin → Upload Plugin**.
-3. Upload the zip file, click **Install Now**, then activate the plugin.
+### Install from the WordPress dashboard
 
-### Method 2: Install from the WordPress plugin directory
+1. Go to **Plugins → Add New Plugin**.
+2. Search for **A Ripple Song** and click **Install Now**.
+3. Activate the plugin.
 
-1. In WordPress, go to **Plugins → Add New Plugin**.
-2. Enter `a ripple song` in the search field.
-3. Find **A Ripple Song**, click **Install Now**, then activate the plugin.
+### Install with WP-CLI
 
-### Method 3: Install with WP-CLI
-
-If WP-CLI is already installed on your server, run the following command from your WordPress site's root directory to install and activate the plugin:
+If you have WP-CLI installed, run this command from the root directory of your WordPress site.
 
 ```bash
 wp plugin install a-ripple-song --activate
 ```
 
-After activation, a new **A Ripple Song** menu appears in the admin sidebar, along with an **Episodes** menu for the episode post type.
+Once you activate the plugin, the WordPress dashboard shows two new menus. Use **A Ripple Song** to configure your show and **Episodes** to manage episodes.
 
-Continue with the [quick start](https://aripplesong.com/docs/getting-started/quick-start/) to set up your show and publish the first episode.
+To set up your show and publish your first episode, see the [quick-start guide](https://aripplesong.com/docs/getting-started/quick-start/).
 
 ## Development
+
+Install dependencies.
 
 ```bash
 npm install
 ```
 
-Watch during development:
+Run the watchers you need to rebuild assets as you edit them.
 
 ```bash
 npm run watch:css
@@ -66,25 +66,25 @@ npm run watch:js
 npm run watch:waveform
 ```
 
-Build production assets:
+Build production assets.
 
 ```bash
 npm run build
 ```
 
-Compile translations:
+Compile the translations.
 
 ```bash
 wp i18n make-mo resources/lang
 ```
 
-Build the plugin zip:
+Package the plugin as a ZIP file.
 
 ```bash
 npm run zip
 ```
 
-Release a new version (GitHub Actions publishes the zip):
+Pass the version number to the release script. GitHub Actions publishes the ZIP file.
 
 ```bash
 npm run release 0.5.1
