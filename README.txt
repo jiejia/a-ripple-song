@@ -5,7 +5,7 @@ Tags: podcast, rss, feed, itunes
 Requires at least: 6.6
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 0.5.4
+Stable tag: 0.5.5
 License: GPL-3.0
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
